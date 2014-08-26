@@ -1,4 +1,4 @@
-/****** Object:  Database Paga_EDW    Script Date: 8/26/2014 1:03:23 PM ******/
+/****** Object:  Database Paga_EDW    Script Date: 8/26/2014 3:30:04 PM ******/
 
 
 USE Master;
@@ -3876,7 +3876,7 @@ CREATE TABLE Activity.FactProcessTransaction
    DimReceivingUserID INT,
    DimOnBehalffUserID INT,
    DimChannelID INT,
-   DimOrganizationLevel5ID INT,
+   DimOrganizationUnitLevel5ID INT,
    DimStartedDateID INT,
    DimStartedTimeID INT,
    DimCompletedDateID INT,
@@ -3936,16 +3936,6 @@ IF OBJECT_ID('Shared.DimDate') IS NOT NULL
        Shared.DimDate(DimDateID);
 GO
 
-IF OBJECT_ID('Shared.DimOrganizationLevel5ID') IS NOT NULL
-   ALTER TABLE Activity.FactProcessTransaction
-   ADD CONSTRAINT fk_FactProcessTransaction_DimOrganizationLevel5ID
-   FOREIGN KEY
-   (
-       DimOrganizationLevel5ID
-   )
-   REFERENCES
-       Shared.DimOrganizationLevel5(DimOrganizationLevel5ID);
-GO
 
 IF OBJECT_ID('Shared.DimTime') IS NOT NULL
    ALTER TABLE Activity.FactProcessTransaction
@@ -4043,15 +4033,15 @@ IF OBJECT_ID('Shared.DimChannel') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Activity.FactProcessTransaction
-   ADD CONSTRAINT fk_FactProcessTransaction_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactProcessTransaction_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -4349,13 +4339,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Activity',
 @level1type=N'TABLE',
 @level1name=N'FactProcessTransaction',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5ID';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
@@ -4734,7 +4724,7 @@ CREATE TABLE Finance.FactFinancialTransactions
    DimPagaAccountID INT,
    DimUserID INT,
    DimProcessTypeID INT,
-   DimOrganizationLevel5 INT,
+   DimOrganizationUnitLevel5ID INT,
    DimEffectiveDateID INT,
    DimEffectiveTimeID INT,
    DimTransactionDateID INT,
@@ -4844,15 +4834,15 @@ IF OBJECT_ID('Shared.DimProcessType') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Finance.FactFinancialTransactions
-   ADD CONSTRAINT fk_FactFinancialTransactions_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactFinancialTransactions_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -4954,6 +4944,17 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
+@value=N'DimCreatedTimeID',
+@level0type=N'SCHEMA',
+@level0name=N'Finance',
+@level1type=N'TABLE',
+@level1name=N'FactFinancialTransactions',
+@level2type=N'COLUMN',
+@level2name=N'DimCreatedTimeID';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'DisplayName',
 @value=N'DimFinancialTransactionTypeID',
 @level0type=N'SCHEMA',
 @level0name=N'Finance',
@@ -5009,13 +5010,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Finance',
 @level1type=N'TABLE',
 @level1name=N'FactFinancialTransactions',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
@@ -5137,7 +5138,7 @@ CREATE TABLE Airtime.FactAirtimeStockMovement
    DimDateID INT,
    DimMobileOperatorID INT,
    DimPagaAccountID INT,
-   DimOrganizationLevel5 INT,
+   DimOrganizationUnitLevel5ID INT,
    DimCityID INT,
    MovementAmount DECIMAL(18,2),
    RunID INT NOT NULL
@@ -5192,15 +5193,15 @@ IF OBJECT_ID('Shared.DimPagaAccount') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Airtime.FactAirtimeStockMovement
-   ADD CONSTRAINT fk_FactAirtimeStockMovement_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactAirtimeStockMovement_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -5252,13 +5253,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Airtime',
 @level1type=N'TABLE',
 @level1name=N'FactAirtimeStockMovement',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
@@ -5303,7 +5304,7 @@ CREATE TABLE Airtime.FactAirtimeStockOnHandSnapshot
    DimDateID INT,
    DimMobileOperatorID INT,
    DimPagaAccountID INT,
-   DimOrganizationLevel5 INT,
+   DimOrganizationUnitLevel5ID INT,
    DimCityID INT,
    AccountBalance DECIMAL(18,2),
    RunID INT NOT NULL
@@ -5358,15 +5359,15 @@ IF OBJECT_ID('Shared.DimPagaAccount') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Airtime.FactAirtimeStockOnHandSnapshot
-   ADD CONSTRAINT fk_FactAirtimeStockOnHandSnapshot_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactAirtimeStockOnHandSnapshot_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -5418,13 +5419,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Airtime',
 @level1type=N'TABLE',
 @level1name=N'FactAirtimeStockOnHandSnapshot',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
@@ -5471,7 +5472,7 @@ CREATE TABLE Airtime.FactAirtimeTransactions
    DimFinancialTransactionTypeID INT,
    DimFinancialAccountID INT,
    DimPagaAccountID INT,
-   DimOrganizationLevel5 INT,
+   DimOrganizationUnitLevel5ID INT,
    DimCityID INT,
    DebitAmount DECIMAL(18,2),
    CreditAmount DECIMAL(18,2),
@@ -5551,15 +5552,15 @@ IF OBJECT_ID('Shared.DimPagaAccount') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Airtime.FactAirtimeTransactions
-   ADD CONSTRAINT fk_FactAirtimeTransactions_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactAirtimeTransactions_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -5633,13 +5634,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Airtime',
 @level1type=N'TABLE',
 @level1name=N'FactAirtimeTransactions',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
@@ -5694,7 +5695,7 @@ CREATE TABLE Finance.FactDailyGLSnapshot
    FactDailyGLSnapshotID INT NOT NULL,
    DimFinancialTransactionTypeID INT,
    DimFinancialAccountID INT,
-   DimOrganizationLevel5 INT,
+   DimOrganizationUnitLevel5ID INT,
    DimAsOfDateID INT,
    DimCityID INT,
    MovementDirection DECIMAL(18,2),
@@ -5744,15 +5745,15 @@ IF OBJECT_ID('Shared.DimFinancialAccount') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Finance.FactDailyGLSnapshot
-   ADD CONSTRAINT fk_FactDailyGLSnapshot_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactDailyGLSnapshot_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -5805,13 +5806,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Finance',
 @level1type=N'TABLE',
 @level1name=N'FactDailyGLSnapshot',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
@@ -5932,7 +5933,7 @@ CREATE TABLE Finance.FactMonthlyGLSnapshot
    FactMonthlyGLSnapshotID INT NOT NULL,
    DimFinancialTransactionTypeID INT,
    DimFinancialAccountID INT,
-   DimOrganizationLevel5 INT,
+   DimOrganizationUnitLevel5ID INT,
    DimAsOfDateID INT,
    DimCityID INT,
    MovementDirection DECIMAL(18,2),
@@ -5982,15 +5983,15 @@ IF OBJECT_ID('Shared.DimFinancialAccount') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Finance.FactMonthlyGLSnapshot
-   ADD CONSTRAINT fk_FactMonthlyGLSnapshot_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactMonthlyGLSnapshot_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -6043,13 +6044,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Finance',
 @level1type=N'TABLE',
 @level1name=N'FactMonthlyGLSnapshot',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty

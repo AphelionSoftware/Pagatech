@@ -1,4 +1,4 @@
-/****** Object:  Database Paga_EDW    Script Date: 8/26/2014 1:03:23 PM ******/
+/****** Object:  Database Paga_EDW    Script Date: 8/26/2014 3:38:17 PM ******/
 
 
 USE Master;
@@ -43,6 +43,8 @@ CREATE TABLE Shared.DimDate
 (
    DimDateID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -73,6 +75,28 @@ GO
 --Add UNIQUE Constraints...
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimDate',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimDate',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -124,6 +148,8 @@ CREATE TABLE Shared.DimTime
 (
    DimTimeID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -154,6 +180,28 @@ GO
 --Add UNIQUE Constraints...
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimTime',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimTime',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -205,6 +253,8 @@ CREATE TABLE Shared.DimStatusCancellationApprovalStatus
 (
    DimStatusCancellationApprovalStatusID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -235,6 +285,28 @@ GO
 --Add UNIQUE Constraints...
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimStatusCancellationApprovalStatus',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimStatusCancellationApprovalStatus',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -286,7 +358,8 @@ CREATE TABLE Shared.DimPagaAccountStatus
 (
    DimPagaAccountStatusID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   PagaAccountStatus VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -319,6 +392,28 @@ GO
 --Table extended properties...
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimPagaAccountStatus',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimPagaAccountStatus',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
 @value=N'BusinessKey',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -350,17 +445,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DeltaHash';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'Status',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimPagaAccountStatus',
-@level2type=N'COLUMN',
-@level2name=N'PagaAccountStatus';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -379,7 +463,8 @@ CREATE TABLE Shared.DimProcessStatus
 (
    DimProcessStatusID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   ProcessStatus VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -412,6 +497,28 @@ GO
 --Table extended properties...
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimProcessStatus',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimProcessStatus',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
 @value=N'BusinessKey',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -443,17 +550,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DeltaHash';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'Status',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimProcessStatus',
-@level2type=N'COLUMN',
-@level2name=N'ProcessStatus';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -472,7 +568,8 @@ CREATE TABLE Shared.DimProcessType
 (
    DimProcessTypeID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   ProcessType VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    Description VARCHAR(1000) NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
@@ -506,6 +603,28 @@ GO
 --Table extended properties...
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimProcessType',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimProcessType',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
 @value=N'BusinessKey',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -539,17 +658,6 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'ProcessType',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimProcessType',
-@level2type=N'COLUMN',
-@level2name=N'ProcessType';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
 @value=N'Description',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -577,7 +685,8 @@ CREATE TABLE Shared.DimFinancialTransactionType
 (
    DimFinancialTransactionTypeID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   FinancialTransactionType VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    Description VARCHAR(1000) NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
@@ -611,6 +720,28 @@ GO
 --Table extended properties...
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimFinancialTransactionType',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimFinancialTransactionType',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
 @value=N'BusinessKey',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -644,17 +775,6 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'FinancialTransactionType',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimFinancialTransactionType',
-@level2type=N'COLUMN',
-@level2name=N'FinancialTransactionType';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
 @value=N'Description',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -682,7 +802,8 @@ CREATE TABLE Shared.DimAgentCommissionType
 (
    DimAgentCommissionTypeID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   AgentCommissionType VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -715,6 +836,28 @@ GO
 --Table extended properties...
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimAgentCommissionType',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimAgentCommissionType',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
 @value=N'BusinessKey',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -746,17 +889,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DeltaHash';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'AgentCommissionType',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimAgentCommissionType',
-@level2type=N'COLUMN',
-@level2name=N'AgentCommissionType';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -775,7 +907,8 @@ CREATE TABLE Shared.DimBankAccountLinkStatus
 (
    DimBankAccountLinkStatusID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   BankAccountLinkStatus VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -808,6 +941,28 @@ GO
 --Table extended properties...
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimBankAccountLinkStatus',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimBankAccountLinkStatus',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
 @value=N'BusinessKey',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -839,17 +994,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DeltaHash';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'Status',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimBankAccountLinkStatus',
-@level2type=N'COLUMN',
-@level2name=N'BankAccountLinkStatus';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -868,7 +1012,8 @@ CREATE TABLE Shared.DimOrganizationSubscriptionStatus
 (
    DimOrganizationSubscriptionStatusID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   OrganizationSubscriptionStatus VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -901,6 +1046,28 @@ GO
 --Table extended properties...
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationSubscriptionStatus',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationSubscriptionStatus',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
 @value=N'BusinessKey',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -932,17 +1099,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DeltaHash';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'Status',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationSubscriptionStatus',
-@level2type=N'COLUMN',
-@level2name=N'OrganizationSubscriptionStatus';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -961,7 +1117,8 @@ CREATE TABLE Shared.DimOrganizationVerificationStatus
 (
    DimOrganizationVerificationStatusID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   OrganizationVerificationStatus VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -994,6 +1151,28 @@ GO
 --Table extended properties...
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationVerificationStatus',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationVerificationStatus',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
 @value=N'BusinessKey',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -1025,17 +1204,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DeltaHash';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'Status',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationVerificationStatus',
-@level2type=N'COLUMN',
-@level2name=N'OrganizationVerificationStatus';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -1054,7 +1222,8 @@ CREATE TABLE Shared.DimCOALevel1
 (
    DimCOALevel1ID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   COALevel1 VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    GLCodeRange VARCHAR(255) NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
@@ -1088,6 +1257,28 @@ GO
 --Table extended properties...
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimCOALevel1',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimCOALevel1',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
 @value=N'BusinessKey',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -1121,17 +1312,6 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'COALevel1',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimCOALevel1',
-@level2type=N'COLUMN',
-@level2name=N'COALevel1';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
 @value=N'GLCodeRange',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -1159,8 +1339,9 @@ CREATE TABLE Shared.DimCOALevel2
 (
    DimCOALevel2ID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    DimCOALevel1ID INT NOT NULL,
-   COALevel2 VARCHAR(255) NULL,
    GLCodeRange VARCHAR(255) NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
@@ -1201,6 +1382,28 @@ GO
 
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimCOALevel2',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimCOALevel2',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -1247,17 +1450,6 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'COALevel2',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimCOALevel2',
-@level2type=N'COLUMN',
-@level2name=N'COALevel2';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
 @value=N'GLCodeRange',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -1285,8 +1477,9 @@ CREATE TABLE Shared.DimCOALevel3
 (
    DimCOALevel3ID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    DimCOALevel2ID INT NOT NULL,
-   COALevel3 VARCHAR(255) NULL,
    GLCodeRange VARCHAR(255) NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
@@ -1327,6 +1520,28 @@ GO
 
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimCOALevel3',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimCOALevel3',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -1373,17 +1588,6 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'COALevel3',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimCOALevel3',
-@level2type=N'COLUMN',
-@level2name=N'COALevel3';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
 @value=N'GLCodeRange',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -1411,9 +1615,10 @@ CREATE TABLE Shared.DimCOALevel4
 (
    DimCOALevel4ID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    DimCOALevel3ID INT NOT NULL,
    GLCode VARCHAR(255) NULL,
-   COALevel4 VARCHAR(255) NULL,
    Description VARCHAR(1000) NULL,
    IsNormalDebit BIT NULL,
    SourceKeyHash BIGINT NOT NULL,
@@ -1455,6 +1660,28 @@ GO
 
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimCOALevel4',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimCOALevel4',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -1512,17 +1739,6 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'COALevel4',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimCOALevel4',
-@level2type=N'COLUMN',
-@level2name=N'COALevel4';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
 @value=N'Description',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -1561,6 +1777,8 @@ CREATE TABLE Shared.DimFinancialAccount
 (
    DimFinancialAccountID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    DimCOALevel4ID INT NOT NULL,
    DimBankAccountID INT NOT NULL,
    DimCurrencyID INT NOT NULL,
@@ -1655,6 +1873,28 @@ GO
 
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimFinancialAccount',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimFinancialAccount',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -1816,7 +2056,8 @@ CREATE TABLE Shared.DimChannel
 (
    DimChannelID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   Channel VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    Description VARCHAR(1000) NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
@@ -1848,6 +2089,28 @@ GO
 --Add UNIQUE Constraints...
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimChannel',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimChannel',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -1883,17 +2146,6 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'Channel',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimChannel',
-@level2type=N'COLUMN',
-@level2name=N'Channel';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
 @value=N'Description',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -1921,6 +2173,8 @@ CREATE TABLE Shared.DimCountry
 (
    DimCountryID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    Country VARCHAR(255) NULL,
    ISOCode CHAR(3) NULL,
    SourceKeyHash BIGINT NOT NULL,
@@ -1953,6 +2207,28 @@ GO
 --Add UNIQUE Constraints...
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimCountry',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimCountry',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -2026,8 +2302,9 @@ CREATE TABLE Shared.DimGeoZone
 (
    DimGeoZoneID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    DimCountryID INT NOT NULL,
-   GeoZone VARCHAR(30) NULL,
    Symbol VARCHAR(3) NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
@@ -2068,6 +2345,28 @@ GO
 
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimGeoZone',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimGeoZone',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -2114,17 +2413,6 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'GeoZone',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimGeoZone',
-@level2type=N'COLUMN',
-@level2name=N'GeoZone';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
 @value=N'Symbol',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -2152,7 +2440,8 @@ CREATE TABLE Shared.DimRegion
 (
    DimRegionID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   Region VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -2183,6 +2472,28 @@ GO
 --Add UNIQUE Constraints...
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimRegion',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimRegion',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -2216,17 +2527,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DeltaHash';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimGeoZoneID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimRegion',
-@level2type=N'COLUMN',
-@level2name=N'Region';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -2245,6 +2545,8 @@ CREATE TABLE Shared.DimGovernmentLocalArea
 (
    DimGovernmentLocalAreaID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -2275,6 +2577,28 @@ GO
 --Add UNIQUE Constraints...
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimGovernmentLocalArea',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimGovernmentLocalArea',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -2326,7 +2650,8 @@ CREATE TABLE Shared.DimCity
 (
    DimCityID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   City VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -2357,6 +2682,28 @@ GO
 --Add UNIQUE Constraints...
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimCity',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimCity',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -2390,17 +2737,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DeltaHash';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'City',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimCity',
-@level2type=N'COLUMN',
-@level2name=N'City';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -2419,7 +2755,8 @@ CREATE TABLE Shared.DimMobileOperator
 (
    DimMobileOperatorID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   MobileOperator VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    DimOrganizationID INT NOT NULL,
    IsActive BIT NULL,
    SourceKeyHash BIGINT NOT NULL,
@@ -2463,6 +2800,28 @@ GO
 --Table extended properties...
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimMobileOperator',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimMobileOperator',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
 @value=N'BusinessKey',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -2492,17 +2851,6 @@ exec sys.sp_addextendedproperty
 @level1name=N'DimMobileOperator',
 @level2type=N'COLUMN',
 @level2name=N'DeltaHash';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'MobileOperator',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimMobileOperator',
-@level2type=N'COLUMN',
-@level2name=N'MobileOperator';
 GO
 
 exec sys.sp_addextendedproperty
@@ -2545,7 +2893,8 @@ CREATE TABLE Shared.DimOrganization
 (
    DimOrganizationID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   Organization VARCHAR(255) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    Description VARCHAR(1000) NULL,
    DimPagaAccountID INT NOT NULL,
    ReferenceNumber VARCHAR(30) NULL,
@@ -2554,7 +2903,6 @@ CREATE TABLE Shared.DimOrganization
    DimBusinessTypeID INT NOT NULL,
    RcName VARCHAR(50) NULL,
    WebsiteURL VARCHAR(100) NULL,
-   Code VARCHAR(10) NULL,
    DimOrganizationVerificationStatusID INT NOT NULL,
    DimOrganizationSubscriptionStatusID INT NOT NULL,
    DisplayName VARCHAR(100) NULL,
@@ -2626,6 +2974,28 @@ GO
 --Table extended properties...
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganization',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganization',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
 @value=N'BusinessKey',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -2655,17 +3025,6 @@ exec sys.sp_addextendedproperty
 @level1name=N'DimOrganization',
 @level2type=N'COLUMN',
 @level2name=N'DeltaHash';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'Organization',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganization',
-@level2type=N'COLUMN',
-@level2name=N'Organization';
 GO
 
 exec sys.sp_addextendedproperty
@@ -2818,10 +3177,9 @@ CREATE TABLE Shared.DimOrganizationUnitLevel1
 (
    DimOrganizationUnitLevel1ID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    DimOrganizationID INT NOT NULL,
-   DimOrganizationUnitTypeID INT NOT NULL,
-   OrganizationUnit VARCHAR(255) NULL,
-   IdentificationNumber VARCHAR(20) NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -2859,17 +3217,30 @@ UNIQUE
 GO
 
 
-ALTER TABLE Shared.DimOrganizationUnitLevel1
-ADD CONSTRAINT uc_DimOrganizationUnitLevel1_DimOrganizationUnitTypeID
-UNIQUE
-(
-   DimOrganizationUnitTypeID
-)
-GO
-
-
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationUnitLevel1',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationUnitLevel1',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -2914,28 +3285,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DimOrganizationID';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationUnitTypeID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel1',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationUnitTypeID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'OrganizationUnit',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel1',
-@level2type=N'COLUMN',
-@level2name=N'OrganizationUnit';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -2954,11 +3303,8 @@ CREATE TABLE Shared.DimOrganizationUnitLevel2
 (
    DimOrganizationUnitLevel2ID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   DimOrganizationUnitLevel1ID INT NOT NULL,
-   DimOrganizationID INT NOT NULL,
-   DimOrganizationUnitTypeID INT NOT NULL,
-   OrganizationUnit VARCHAR(255) NULL,
-   IdentificationNumber VARCHAR(20) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -2987,35 +3333,30 @@ GO
 
 
 --Add UNIQUE Constraints...
-ALTER TABLE Shared.DimOrganizationUnitLevel2
-ADD CONSTRAINT uc_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID
-UNIQUE
-(
-   DimOrganizationUnitLevel1ID
-)
-GO
-
-
-ALTER TABLE Shared.DimOrganizationUnitLevel2
-ADD CONSTRAINT uc_DimOrganizationUnitLevel2_DimOrganizationID
-UNIQUE
-(
-   DimOrganizationID
-)
-GO
-
-
-ALTER TABLE Shared.DimOrganizationUnitLevel2
-ADD CONSTRAINT uc_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID
-UNIQUE
-(
-   DimOrganizationUnitTypeID
-)
-GO
-
-
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationUnitLevel2',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationUnitLevel2',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -3049,50 +3390,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DeltaHash';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationUnitLevel1ID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel2',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationUnitLevel1ID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel2',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationUnitTypeID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel2',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationUnitTypeID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'OrganizationUnit',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel2',
-@level2type=N'COLUMN',
-@level2name=N'OrganizationUnit';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -3111,11 +3408,8 @@ CREATE TABLE Shared.DimOrganizationUnitLevel3
 (
    DimOrganizationUnitLevel3ID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   DimOrganizationUnitLevel2ID INT NOT NULL,
-   DimOrganizationID INT NOT NULL,
-   DimOrganizationUnitTypeID INT NOT NULL,
-   OrganizationUnit VARCHAR(255) NULL,
-   IdentificationNumber VARCHAR(20) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -3144,35 +3438,30 @@ GO
 
 
 --Add UNIQUE Constraints...
-ALTER TABLE Shared.DimOrganizationUnitLevel3
-ADD CONSTRAINT uc_DimOrganizationUnitLevel3_DimOrganizationUnitLevel2ID
-UNIQUE
-(
-   DimOrganizationUnitLevel2ID
-)
-GO
-
-
-ALTER TABLE Shared.DimOrganizationUnitLevel3
-ADD CONSTRAINT uc_DimOrganizationUnitLevel3_DimOrganizationID
-UNIQUE
-(
-   DimOrganizationID
-)
-GO
-
-
-ALTER TABLE Shared.DimOrganizationUnitLevel3
-ADD CONSTRAINT uc_DimOrganizationUnitLevel3_DimOrganizationUnitTypeID
-UNIQUE
-(
-   DimOrganizationUnitTypeID
-)
-GO
-
-
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationUnitLevel3',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationUnitLevel3',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -3206,50 +3495,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DeltaHash';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationUnitLevel2ID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel3',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationUnitLevel2ID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel3',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationUnitTypeID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel3',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationUnitTypeID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'OrganizationUnit',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel3',
-@level2type=N'COLUMN',
-@level2name=N'OrganizationUnit';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -3268,11 +3513,8 @@ CREATE TABLE Shared.DimOrganizationUnitLevel4
 (
    DimOrganizationUnitLevel4ID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   DimOrganizationUnitLevel3ID INT NOT NULL,
-   DimOrganizationID INT NOT NULL,
-   DimOrganizationUnitTypeID INT NOT NULL,
-   OrganizationUnit VARCHAR(255) NULL,
-   IdentificationNumber VARCHAR(20) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -3301,35 +3543,30 @@ GO
 
 
 --Add UNIQUE Constraints...
-ALTER TABLE Shared.DimOrganizationUnitLevel4
-ADD CONSTRAINT uc_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID
-UNIQUE
-(
-   DimOrganizationUnitLevel3ID
-)
-GO
-
-
-ALTER TABLE Shared.DimOrganizationUnitLevel4
-ADD CONSTRAINT uc_DimOrganizationUnitLevel4_DimOrganizationID
-UNIQUE
-(
-   DimOrganizationID
-)
-GO
-
-
-ALTER TABLE Shared.DimOrganizationUnitLevel4
-ADD CONSTRAINT uc_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID
-UNIQUE
-(
-   DimOrganizationUnitTypeID
-)
-GO
-
-
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationUnitLevel4',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationUnitLevel4',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -3363,50 +3600,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DeltaHash';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationUnitLevel3ID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel4',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationUnitLevel3ID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel4',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationUnitTypeID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel4',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationUnitTypeID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'OrganizationUnit',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel4',
-@level2type=N'COLUMN',
-@level2name=N'OrganizationUnit';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -3425,11 +3618,8 @@ CREATE TABLE Shared.DimOrganizationUnitLevel5
 (
    DimOrganizationUnitLevel5ID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
-   DimOrganizationUnitLevel4ID INT NOT NULL,
-   DimOrganizationID INT NOT NULL,
-   DimOrganizationUnitTypeID INT NOT NULL,
-   OrganizationUnit VARCHAR(255) NULL,
-   IdentificationNumber VARCHAR(20) NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    SourceKeyHash BIGINT NOT NULL,
    DeltaHash BIGINT NOT NULL,
    sysModifiedBy VARCHAR(255) NOT NULL DEFAULT SYSTEM_USER,
@@ -3458,35 +3648,30 @@ GO
 
 
 --Add UNIQUE Constraints...
-ALTER TABLE Shared.DimOrganizationUnitLevel5
-ADD CONSTRAINT uc_DimOrganizationUnitLevel5_DimOrganizationUnitLevel4ID
-UNIQUE
-(
-   DimOrganizationUnitLevel4ID
-)
-GO
-
-
-ALTER TABLE Shared.DimOrganizationUnitLevel5
-ADD CONSTRAINT uc_DimOrganizationUnitLevel5_DimOrganizationID
-UNIQUE
-(
-   DimOrganizationID
-)
-GO
-
-
-ALTER TABLE Shared.DimOrganizationUnitLevel5
-ADD CONSTRAINT uc_DimOrganizationUnitLevel5_DimOrganizationUnitTypeID
-UNIQUE
-(
-   DimOrganizationUnitTypeID
-)
-GO
-
-
 --Add Foreign Keys...
 --Table extended properties...
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationUnitLevel5',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimOrganizationUnitLevel5',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
 @value=N'BusinessKey',
@@ -3520,50 +3705,6 @@ exec sys.sp_addextendedproperty
 @level2name=N'DeltaHash';
 GO
 
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationUnitLevel4ID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel5',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationUnitLevel4ID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel5',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'DimOrganizationUnitTypeID',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel5',
-@level2type=N'COLUMN',
-@level2name=N'DimOrganizationUnitTypeID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'OrganizationUnit',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimOrganizationUnitLevel5',
-@level2type=N'COLUMN',
-@level2name=N'OrganizationUnit';
-GO
-
 
 DECLARE @sql AS NVARCHAR(200) = N'CREATE SCHEMA Shared';
 IF SCHEMA_ID('Shared')IS NULL
@@ -3582,10 +3723,11 @@ CREATE TABLE Shared.DimUser
 (
    DimUserID INT NOT NULL,
    SourceKey VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Code VARCHAR(50) NOT NULL,
    DimPagaAccountID INT NOT NULL,
    DimPagaAccountUserTypeID INT NOT NULL,
    DimOrganizationUnitLevel5ID INT NOT NULL,
-   Username VARCHAR(255) NULL,
    FirstName VARCHAR(255) NULL,
    MiddleName VARCHAR(255) NULL,
    LastName VARCHAR(255) NULL,
@@ -3653,6 +3795,28 @@ GO
 --Table extended properties...
 exec sys.sp_addextendedproperty
 @name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimUser',
+@level2type=N'COLUMN',
+@level2name=N'Name';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
+@value=N'2',
+@level0type=N'SCHEMA',
+@level0name=N'Shared',
+@level1type=N'TABLE',
+@level1name=N'DimUser',
+@level2type=N'COLUMN',
+@level2name=N'Code';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'SCDType',
 @value=N'BusinessKey',
 @level0type=N'SCHEMA',
 @level0name=N'Shared',
@@ -3715,17 +3879,6 @@ exec sys.sp_addextendedproperty
 @level1name=N'DimUser',
 @level2type=N'COLUMN',
 @level2name=N'DimOrganizationUnitLevel5ID';
-GO
-
-exec sys.sp_addextendedproperty
-@name=N'DisplayName',
-@value=N'Username',
-@level0type=N'SCHEMA',
-@level0name=N'Shared',
-@level1type=N'TABLE',
-@level1name=N'DimUser',
-@level2type=N'COLUMN',
-@level2name=N'Username';
 GO
 
 exec sys.sp_addextendedproperty
@@ -3876,7 +4029,7 @@ CREATE TABLE Activity.FactProcessTransaction
    DimReceivingUserID INT,
    DimOnBehalffUserID INT,
    DimChannelID INT,
-   DimOrganizationLevel5ID INT,
+   DimOrganizationUnitLevel5ID INT,
    DimStartedDateID INT,
    DimStartedTimeID INT,
    DimCompletedDateID INT,
@@ -3936,16 +4089,6 @@ IF OBJECT_ID('Shared.DimDate') IS NOT NULL
        Shared.DimDate(DimDateID);
 GO
 
-IF OBJECT_ID('Shared.DimOrganizationLevel5ID') IS NOT NULL
-   ALTER TABLE Activity.FactProcessTransaction
-   ADD CONSTRAINT fk_FactProcessTransaction_DimOrganizationLevel5ID
-   FOREIGN KEY
-   (
-       DimOrganizationLevel5ID
-   )
-   REFERENCES
-       Shared.DimOrganizationLevel5(DimOrganizationLevel5ID);
-GO
 
 IF OBJECT_ID('Shared.DimTime') IS NOT NULL
    ALTER TABLE Activity.FactProcessTransaction
@@ -4043,15 +4186,15 @@ IF OBJECT_ID('Shared.DimChannel') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Activity.FactProcessTransaction
-   ADD CONSTRAINT fk_FactProcessTransaction_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactProcessTransaction_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -4349,13 +4492,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Activity',
 @level1type=N'TABLE',
 @level1name=N'FactProcessTransaction',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5ID';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
@@ -4734,7 +4877,7 @@ CREATE TABLE Finance.FactFinancialTransactions
    DimPagaAccountID INT,
    DimUserID INT,
    DimProcessTypeID INT,
-   DimOrganizationLevel5 INT,
+   DimOrganizationUnitLevel5ID INT,
    DimEffectiveDateID INT,
    DimEffectiveTimeID INT,
    DimTransactionDateID INT,
@@ -4844,15 +4987,15 @@ IF OBJECT_ID('Shared.DimProcessType') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Finance.FactFinancialTransactions
-   ADD CONSTRAINT fk_FactFinancialTransactions_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactFinancialTransactions_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -4954,6 +5097,17 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
+@value=N'DimCreatedTimeID',
+@level0type=N'SCHEMA',
+@level0name=N'Finance',
+@level1type=N'TABLE',
+@level1name=N'FactFinancialTransactions',
+@level2type=N'COLUMN',
+@level2name=N'DimCreatedTimeID';
+GO
+
+exec sys.sp_addextendedproperty
+@name=N'DisplayName',
 @value=N'DimFinancialTransactionTypeID',
 @level0type=N'SCHEMA',
 @level0name=N'Finance',
@@ -5009,13 +5163,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Finance',
 @level1type=N'TABLE',
 @level1name=N'FactFinancialTransactions',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
@@ -5137,7 +5291,7 @@ CREATE TABLE Airtime.FactAirtimeStockMovement
    DimDateID INT,
    DimMobileOperatorID INT,
    DimPagaAccountID INT,
-   DimOrganizationLevel5 INT,
+   DimOrganizationUnitLevel5ID INT,
    DimCityID INT,
    MovementAmount DECIMAL(18,2),
    RunID INT NOT NULL
@@ -5192,15 +5346,15 @@ IF OBJECT_ID('Shared.DimPagaAccount') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Airtime.FactAirtimeStockMovement
-   ADD CONSTRAINT fk_FactAirtimeStockMovement_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactAirtimeStockMovement_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -5252,13 +5406,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Airtime',
 @level1type=N'TABLE',
 @level1name=N'FactAirtimeStockMovement',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
@@ -5303,7 +5457,7 @@ CREATE TABLE Airtime.FactAirtimeStockOnHandSnapshot
    DimDateID INT,
    DimMobileOperatorID INT,
    DimPagaAccountID INT,
-   DimOrganizationLevel5 INT,
+   DimOrganizationUnitLevel5ID INT,
    DimCityID INT,
    AccountBalance DECIMAL(18,2),
    RunID INT NOT NULL
@@ -5358,15 +5512,15 @@ IF OBJECT_ID('Shared.DimPagaAccount') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Airtime.FactAirtimeStockOnHandSnapshot
-   ADD CONSTRAINT fk_FactAirtimeStockOnHandSnapshot_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactAirtimeStockOnHandSnapshot_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -5418,13 +5572,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Airtime',
 @level1type=N'TABLE',
 @level1name=N'FactAirtimeStockOnHandSnapshot',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
@@ -5471,7 +5625,7 @@ CREATE TABLE Airtime.FactAirtimeTransactions
    DimFinancialTransactionTypeID INT,
    DimFinancialAccountID INT,
    DimPagaAccountID INT,
-   DimOrganizationLevel5 INT,
+   DimOrganizationUnitLevel5ID INT,
    DimCityID INT,
    DebitAmount DECIMAL(18,2),
    CreditAmount DECIMAL(18,2),
@@ -5551,15 +5705,15 @@ IF OBJECT_ID('Shared.DimPagaAccount') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Airtime.FactAirtimeTransactions
-   ADD CONSTRAINT fk_FactAirtimeTransactions_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactAirtimeTransactions_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -5633,13 +5787,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Airtime',
 @level1type=N'TABLE',
 @level1name=N'FactAirtimeTransactions',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
@@ -5694,7 +5848,7 @@ CREATE TABLE Finance.FactDailyGLSnapshot
    FactDailyGLSnapshotID INT NOT NULL,
    DimFinancialTransactionTypeID INT,
    DimFinancialAccountID INT,
-   DimOrganizationLevel5 INT,
+   DimOrganizationUnitLevel5ID INT,
    DimAsOfDateID INT,
    DimCityID INT,
    MovementDirection DECIMAL(18,2),
@@ -5744,15 +5898,15 @@ IF OBJECT_ID('Shared.DimFinancialAccount') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Finance.FactDailyGLSnapshot
-   ADD CONSTRAINT fk_FactDailyGLSnapshot_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactDailyGLSnapshot_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -5805,13 +5959,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Finance',
 @level1type=N'TABLE',
 @level1name=N'FactDailyGLSnapshot',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
@@ -5932,7 +6086,7 @@ CREATE TABLE Finance.FactMonthlyGLSnapshot
    FactMonthlyGLSnapshotID INT NOT NULL,
    DimFinancialTransactionTypeID INT,
    DimFinancialAccountID INT,
-   DimOrganizationLevel5 INT,
+   DimOrganizationUnitLevel5ID INT,
    DimAsOfDateID INT,
    DimCityID INT,
    MovementDirection DECIMAL(18,2),
@@ -5982,15 +6136,15 @@ IF OBJECT_ID('Shared.DimFinancialAccount') IS NOT NULL
 GO
 
 
-IF OBJECT_ID('Shared.DimOrgainzationLevel5') IS NOT NULL
+IF OBJECT_ID('Shared.DimOrganizationUnitLevel5') IS NOT NULL
    ALTER TABLE Finance.FactMonthlyGLSnapshot
-   ADD CONSTRAINT fk_FactMonthlyGLSnapshot_DimOrganizationLevel5
+   ADD CONSTRAINT fk_FactMonthlyGLSnapshot_DimOrganizationUnitLevel5ID
    FOREIGN KEY
    (
-       DimOrganizationLevel5
+       DimOrganizationUnitLevel5ID
    )
    REFERENCES
-       Shared.DimOrgainzationLevel5(DimOrganizationLevel5ID);
+       Shared.DimOrganizationUnitLevel5(DimOrganizationUnitLevel5ID);
 GO
 
 
@@ -6043,13 +6197,13 @@ GO
 
 exec sys.sp_addextendedproperty
 @name=N'DisplayName',
-@value=N'DimOrganizationLevel5ID',
+@value=N'DimOrganizationUnitLevel5ID',
 @level0type=N'SCHEMA',
 @level0name=N'Finance',
 @level1type=N'TABLE',
 @level1name=N'FactMonthlyGLSnapshot',
 @level2type=N'COLUMN',
-@level2name=N'DimOrganizationLevel5';
+@level2name=N'DimOrganizationUnitLevel5ID';
 GO
 
 exec sys.sp_addextendedproperty
