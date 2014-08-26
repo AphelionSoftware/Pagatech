@@ -1,72 +1,51 @@
-﻿
+﻿CREATE VIEW OLAP.DimDate AS
+SELECT 
+	[DimDateID]
+    ,[FullDate]
+    ,[FullDateUK]
+    ,[FullDateUSA]
+    ,[DayOfMonth]
+    ,[DaySuffix]
+    ,[DayName]
+    ,[DayOfWeekUSA]
+    ,[DayOfWeekUK]
+    ,[DayOfWeekInMonth]
+    ,[DayOfWeekInYear]
+    ,[DayOfQuarter]
+    ,[DayOfYear]
+    ,[WeekOfMonth]
+    ,[WeekOfQuarter]
+    ,[WeekOfYear]
+    ,[Month]
+    ,[MonthName]
+    ,[MonthOfQuarter]
+    ,[Quarter]
+    ,[QuarterName]
+    ,[Year]
+    ,[YearName]
+    ,[MonthYear]
+    ,[MMYYYY]
+    ,[FirstDayOfMonth]
+    ,[LastDayOfMonth]
+    ,[FirstDayOfQuarter]
+    ,[LastDayOfQuarter]
+    ,[FirstDayOfYear]
+    ,[LastDayOfYear]
+    ,[IsWeekday]
+    ,[FiscalDayOfYear]
+    ,[FiscalWeekOfYear]
+    ,[FiscalMonth]
+    ,[FiscalQuarter]
+    ,[FiscalQuarterName]
+    ,[FiscalYear]
+    ,[FiscalYearName]
+    ,[FiscalMonthYear]
+    ,[FiscalMMYYYY]
+    ,[FiscalFirstDayOfMonth]
+    ,[FiscalLastDayOfMonth]
+    ,[FiscalFirstDayOfQuarter]
+    ,[FiscalLastDayOfQuarter]
+    ,[FiscalFirstDayOfYear]
+    ,[FiscalLastDayOfYear]
+FROM [Shared].[DimDate]
 GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
