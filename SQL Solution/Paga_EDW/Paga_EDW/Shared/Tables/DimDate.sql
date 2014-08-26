@@ -37,10 +37,6 @@
     [HolidayUK]               VARCHAR (50)  NULL,
     [IsHolidayNG]             BIT           NULL,
     [HolidayNG]               VARCHAR (50)  NULL,
-    [sys_ModifiedBy]          VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn]          DATETIME      DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]           VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]           DATETIME      DEFAULT (getdate()) NOT NULL,
     [FiscalDayOfYear]         VARCHAR (3)   NULL,
     [FiscalWeekOfYear]        VARCHAR (3)   NULL,
     [FiscalMonth]             VARCHAR (2)   NULL,
@@ -56,6 +52,10 @@
     [FiscalLastDayOfQuarter]  DATE          NULL,
     [FiscalFirstDayOfYear]    DATE          NULL,
     [FiscalLastDayOfYear]     DATE          NULL,
+	[sys_ModifiedBy]          VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]          DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]           VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]           DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimDateID] PRIMARY KEY CLUSTERED ([DimDateID] ASC)
 );
 
