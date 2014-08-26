@@ -17,12 +17,10 @@
     [ReferenceNumber]                     VARCHAR (30)   NULL,
     [SourceKey]                           VARCHAR (255)  NOT NULL,
     [SourceKeyHash]                       BIGINT         NOT NULL,
-    [sysCreatedBy]                        VARCHAR (255)  NOT NULL,
-    [sysCreatedOn]                        DATETIME       NOT NULL,
-    [sysModifiedBy]                       VARCHAR (255)  NOT NULL,
-    [sysModifiedOn]                       DATETIME       NOT NULL,
     [TaxIDNumber]                         VARCHAR (30)   NOT NULL,
     [VATCertificationNumber]              VARCHAR (30)   NULL,
     [WebsiteURL]                          VARCHAR (100)  NULL
 );
+
+
 
