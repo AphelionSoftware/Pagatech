@@ -16,15 +16,17 @@
     [IsEnabled]                   BIT             NULL,
     [SourceKeyHash]               BIGINT          NOT NULL,
     [DeltaHash]                   BIGINT          NOT NULL,
-    [sysModifiedBy]               VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
-    [sysModifiedOn]               DATETIME        DEFAULT (getdate()) NOT NULL,
-    [sysCreatedBy]                VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
-    [sysCreatedOn]                DATETIME        DEFAULT (getdate()) NOT NULL,
+    [sys_ModifiedBy]              VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]              DATETIME        DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]               VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]               DATETIME        DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimUserID] PRIMARY KEY CLUSTERED ([DimUserID] ASC),
     CONSTRAINT [uc_DimUser_DateOfBirthID] UNIQUE NONCLUSTERED ([DateOfBirthID] ASC),
     CONSTRAINT [uc_DimUser_DimOrganizationUnitLevel5ID] UNIQUE NONCLUSTERED ([DimOrganizationUnitLevel5ID] ASC),
     CONSTRAINT [uc_DimUser_DimPagaAccountID] UNIQUE NONCLUSTERED ([DimPagaAccountID] ASC)
 );
+
+
 
 
 GO

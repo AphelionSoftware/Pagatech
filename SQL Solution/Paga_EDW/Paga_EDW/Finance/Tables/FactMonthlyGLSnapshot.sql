@@ -15,11 +15,10 @@
     [RunID]                         INT             NOT NULL,
     CONSTRAINT [pk_FactMonthlyGLSnapshotID] PRIMARY KEY CLUSTERED ([FactMonthlyGLSnapshotID] ASC),
     CONSTRAINT [fk_FactMonthlyGLSnapshot_DimAsOfDateID] FOREIGN KEY ([DimAsOfDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
-    CONSTRAINT [fk_FactMonthlyGLSnapshot_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Shared].[DimCity] ([DimCityID]),
-    CONSTRAINT [fk_FactMonthlyGLSnapshot_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Shared].[DimFinancialAccount] ([DimFinancialAccountID]),
-    CONSTRAINT [fk_FactMonthlyGLSnapshot_DimFinancialTransactionTypeID] FOREIGN KEY ([DimFinancialTransactionTypeID]) REFERENCES [Shared].[DimFinancialTransactionType] ([DimFinancialTransactionTypeID]),
     CONSTRAINT [fk_FactMonthlyGLSnapshot_DimOrganizationUnitLevel5ID] FOREIGN KEY ([DimOrganizationUnitLevel5ID]) REFERENCES [Shared].[DimOrganizationUnitLevel5] ([DimOrganizationUnitLevel5ID])
 );
+
+
 
 
 GO

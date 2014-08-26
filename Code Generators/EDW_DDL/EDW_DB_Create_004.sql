@@ -2903,7 +2903,6 @@ CREATE TABLE Shared.DimOrganization
    DimBusinessTypeID INT NOT NULL,
    RcName VARCHAR(50) NULL,
    WebsiteURL VARCHAR(100) NULL,
-   Code VARCHAR(10) NULL,
    DimOrganizationVerificationStatusID INT NOT NULL,
    DimOrganizationSubscriptionStatusID INT NOT NULL,
    DisplayName VARCHAR(100) NULL,

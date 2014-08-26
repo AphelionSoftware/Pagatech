@@ -8,12 +8,12 @@
     [MovementAmount]              DECIMAL (18, 2) NULL,
     [RunID]                       INT             NOT NULL,
     CONSTRAINT [pk_FactAirtimeStockMovementID] PRIMARY KEY CLUSTERED ([FactAirtimeStockMovementID] ASC),
-    CONSTRAINT [fk_FactAirtimeStockMovement_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Shared].[DimCity] ([DimCityID]),
     CONSTRAINT [fk_FactAirtimeStockMovement_DimDateID] FOREIGN KEY ([DimDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
-    CONSTRAINT [fk_FactAirtimeStockMovement_DimMobileOperatorID] FOREIGN KEY ([DimMobileOperatorID]) REFERENCES [Shared].[DimMobileOperator] ([DimMobileOperatorID]),
     CONSTRAINT [fk_FactAirtimeStockMovement_DimOrganizationUnitLevel5ID] FOREIGN KEY ([DimOrganizationUnitLevel5ID]) REFERENCES [Shared].[DimOrganizationUnitLevel5] ([DimOrganizationUnitLevel5ID]),
     CONSTRAINT [fk_FactAirtimeStockMovement_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
 
 
 GO

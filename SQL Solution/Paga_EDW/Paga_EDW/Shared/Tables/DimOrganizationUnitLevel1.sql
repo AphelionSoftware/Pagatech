@@ -6,13 +6,15 @@
     [DimOrganizationID]           INT           NOT NULL,
     [SourceKeyHash]               BIGINT        NOT NULL,
     [DeltaHash]                   BIGINT        NOT NULL,
-    [sysModifiedBy]               VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sysModifiedOn]               DATETIME      DEFAULT (getdate()) NOT NULL,
-    [sysCreatedBy]                VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sysCreatedOn]                DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_ModifiedBy]              VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]              DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]               VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]               DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationUnitLevel1ID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitLevel1ID] ASC),
     CONSTRAINT [uc_DimOrganizationUnitLevel1_DimOrganizationID] UNIQUE NONCLUSTERED ([DimOrganizationID] ASC)
 );
+
+
 
 
 GO
