@@ -11,8 +11,11 @@
     [sys_CreatedBy]               VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]               DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationUnitLevel1ID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitLevel1ID] ASC),
-    CONSTRAINT [uc_DimOrganizationUnitLevel1_DimOrganizationID] UNIQUE NONCLUSTERED ([DimOrganizationID] ASC)
+    CONSTRAINT [uc_DimOrganizationUnitLevel1_DimOrganizationID] UNIQUE NONCLUSTERED ([DimOrganizationID] ASC),
+    CONSTRAINT [uc_DimOrganizationUnitLevel1_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
 );
+
+
 
 
 

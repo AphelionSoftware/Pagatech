@@ -24,8 +24,11 @@
     CONSTRAINT [uc_DimOrganization_DimBusinessTypeID] UNIQUE NONCLUSTERED ([DimBusinessTypeID] ASC),
     CONSTRAINT [uc_DimOrganization_DimOrganizationSubscriptionStatusID] UNIQUE NONCLUSTERED ([DimOrganizationSubscriptionStatusID] ASC),
     CONSTRAINT [uc_DimOrganization_DimOrganizationVerificationStatusID] UNIQUE NONCLUSTERED ([DimOrganizationVerificationStatusID] ASC),
-    CONSTRAINT [uc_DimOrganization_DimPagaAccountID] UNIQUE NONCLUSTERED ([DimPagaAccountID] ASC)
+    CONSTRAINT [uc_DimOrganization_DimPagaAccountID] UNIQUE NONCLUSTERED ([DimPagaAccountID] ASC),
+    CONSTRAINT [uc_DimOrganization_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
 );
+
+
 
 
 

@@ -9,8 +9,11 @@
     [sys_ModifiedOn]             DATETIME      DEFAULT (getdate()) NOT NULL,
     [sys_CreatedBy]              VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]              DATETIME      DEFAULT (getdate()) NOT NULL,
-    CONSTRAINT [pk_DimBankAccountLinkStatusID] PRIMARY KEY CLUSTERED ([DimBankAccountLinkStatusID] ASC)
+    CONSTRAINT [pk_DimBankAccountLinkStatusID] PRIMARY KEY CLUSTERED ([DimBankAccountLinkStatusID] ASC),
+    CONSTRAINT [uc_DimBankAccountLinkStatus_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
 );
+
+
 
 
 GO

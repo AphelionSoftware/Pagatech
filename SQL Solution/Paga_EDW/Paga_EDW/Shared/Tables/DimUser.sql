@@ -23,8 +23,11 @@
     CONSTRAINT [pk_DimUserID] PRIMARY KEY CLUSTERED ([DimUserID] ASC),
     CONSTRAINT [uc_DimUser_DateOfBirthID] UNIQUE NONCLUSTERED ([DateOfBirthID] ASC),
     CONSTRAINT [uc_DimUser_DimOrganizationUnitLevel5ID] UNIQUE NONCLUSTERED ([DimOrganizationUnitLevel5ID] ASC),
-    CONSTRAINT [uc_DimUser_DimPagaAccountID] UNIQUE NONCLUSTERED ([DimPagaAccountID] ASC)
+    CONSTRAINT [uc_DimUser_DimPagaAccountID] UNIQUE NONCLUSTERED ([DimPagaAccountID] ASC),
+    CONSTRAINT [uc_DimUser_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
 );
+
+
 
 
 

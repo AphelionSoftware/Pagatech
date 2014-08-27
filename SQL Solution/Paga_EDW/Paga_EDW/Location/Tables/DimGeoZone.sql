@@ -12,8 +12,11 @@
     [sys_CreatedBy]  VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]  DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimGeoZoneID] PRIMARY KEY CLUSTERED ([DimGeoZoneID] ASC),
-    CONSTRAINT [uc_DimGeoZone_DimCountryID] UNIQUE NONCLUSTERED ([DimCountryID] ASC)
+    CONSTRAINT [uc_DimGeoZone_DimCountryID] UNIQUE NONCLUSTERED ([DimCountryID] ASC),
+    CONSTRAINT [uc_DimGeoZone_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
 );
+
+
 
 
 GO

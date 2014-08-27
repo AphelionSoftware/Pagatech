@@ -25,8 +25,11 @@
     CONSTRAINT [uc_DimFinancialAccount_DimCOALevel4ID] UNIQUE NONCLUSTERED ([DimCOALevel4ID] ASC),
     CONSTRAINT [uc_DimFinancialAccount_DimCurrencyID] UNIQUE NONCLUSTERED ([DimCurrencyID] ASC),
     CONSTRAINT [uc_DimFinancialAccount_DimFinancialAccountTypeID] UNIQUE NONCLUSTERED ([DimFinancialAccountTypeID] ASC),
-    CONSTRAINT [uc_DimFinancialAccount_DimHoldingFinancialAccountID] UNIQUE NONCLUSTERED ([DimHoldingFinancialAccountID] ASC)
+    CONSTRAINT [uc_DimFinancialAccount_DimHoldingFinancialAccountID] UNIQUE NONCLUSTERED ([DimHoldingFinancialAccountID] ASC),
+    CONSTRAINT [uc_DimFinancialAccount_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
 );
+
+
 
 
 GO
