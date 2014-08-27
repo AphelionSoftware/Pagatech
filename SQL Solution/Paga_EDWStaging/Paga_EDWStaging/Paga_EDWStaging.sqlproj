@@ -7,8 +7,8 @@
     <Name>Paga_EDWStaging</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{071b6141-9e5d-4ba6-a09e-a3ba9057143e}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <ProjectGuid>{911850d5-ccf8-44aa-aed8-e783d2cde4f9}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -49,14 +49,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
   <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
     <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
-    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Staging\" />
@@ -64,41 +64,43 @@
     <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
+    <Build Include="Staging\Tables\DimChannel.sql" />
     <Build Include="Staging\Tables\FactProcessTransaction.sql" />
+    <Build Include="Staging\Tables\DimMobileOperator.sql" />
     <Build Include="Staging\Tables\FactAirtimeStockMovement.sql" />
     <Build Include="Staging\Tables\FactAirtimeStockOnHandSnapshot.sql" />
     <Build Include="Staging\Tables\FactAirtimeTransactions.sql" />
-    <Build Include="Staging\Tables\FactDailyGLSnapshot.sql" />
-    <Build Include="Staging\Tables\FactFinancialTransactions.sql" />
-    <Build Include="Staging\Tables\FactMonthlyGLSnapshot.sql" />
     <Build Include="Staging\Tables\DimAgentCommissionType.sql" />
     <Build Include="Staging\Tables\DimBankAccountLinkStatus.sql" />
-    <Build Include="Staging\Tables\DimChannel.sql" />
-    <Build Include="Staging\Tables\DimCity.sql" />
+    <Build Include="Staging\Tables\DimFinancialTransactionType.sql" />
+    <Build Include="Staging\Tables\DimOrganizationSubscriptionStatus.sql" />
+    <Build Include="Staging\Tables\DimOrganizationVerificationStatus.sql" />
+    <Build Include="Staging\Tables\DimPagaAccountStatus.sql" />
+    <Build Include="Staging\Tables\DimPagaAccountUserType.sql" />
+    <Build Include="Staging\Tables\DimProcessStatus.sql" />
+    <Build Include="Staging\Tables\DimProcessType.sql" />
+    <Build Include="Staging\Tables\DimStatusCancellationApprovalStatus.sql" />
     <Build Include="Staging\Tables\DimCOALevel1.sql" />
     <Build Include="Staging\Tables\DimCOALevel2.sql" />
     <Build Include="Staging\Tables\DimCOALevel3.sql" />
     <Build Include="Staging\Tables\DimCOALevel4.sql" />
-    <Build Include="Staging\Tables\DimCountry.sql" />
+    <Build Include="Staging\Tables\DimCurrency.sql" />
     <Build Include="Staging\Tables\DimFinancialAccount.sql" />
-    <Build Include="Staging\Tables\DimFinancialTransactionType.sql" />
+    <Build Include="Staging\Tables\FactDailyGLSnapshot.sql" />
+    <Build Include="Staging\Tables\FactFinancialTransactions.sql" />
+    <Build Include="Staging\Tables\FactMonthlyGLSnapshot.sql" />
+    <Build Include="Staging\Tables\DimCity.sql" />
+    <Build Include="Staging\Tables\DimCountry.sql" />
     <Build Include="Staging\Tables\DimGeoZone.sql" />
     <Build Include="Staging\Tables\DimGovernmentLocalArea.sql" />
-    <Build Include="Staging\Tables\DimMobileOperator.sql" />
+    <Build Include="Staging\Tables\DimRegion.sql" />
     <Build Include="Staging\Tables\DimOrganization.sql" />
-    <Build Include="Staging\Tables\DimOrganizationSubscriptionStatus.sql" />
     <Build Include="Staging\Tables\DimOrganizationUnitLevel1.sql" />
     <Build Include="Staging\Tables\DimOrganizationUnitLevel2.sql" />
     <Build Include="Staging\Tables\DimOrganizationUnitLevel3.sql" />
     <Build Include="Staging\Tables\DimOrganizationUnitLevel4.sql" />
     <Build Include="Staging\Tables\DimOrganizationUnitLevel5.sql" />
-    <Build Include="Staging\Tables\DimOrganizationVerificationStatus.sql" />
     <Build Include="Staging\Tables\DimPagaAccount.sql" />
-    <Build Include="Staging\Tables\DimPagaAccountStatus.sql" />
-    <Build Include="Staging\Tables\DimProcessStatus.sql" />
-    <Build Include="Staging\Tables\DimProcessType.sql" />
-    <Build Include="Staging\Tables\DimRegion.sql" />
-    <Build Include="Staging\Tables\DimStatusCancellationApprovalStatus.sql" />
     <Build Include="Staging\Tables\DimTime.sql" />
     <Build Include="Staging\Tables\DimUser.sql" />
     <Build Include="Security\Staging.sql" />

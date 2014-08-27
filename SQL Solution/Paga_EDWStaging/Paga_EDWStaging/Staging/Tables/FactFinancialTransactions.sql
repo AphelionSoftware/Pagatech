@@ -1,5 +1,4 @@
 ﻿CREATE TABLE [Staging].[FactFinancialTransactions] (
-    [FactFinancialTransactionsID]   INT             NULL,
     [CreditAmount]                  DECIMAL (18, 2) NULL,
     [DebitAmount]                   DECIMAL (18, 2) NULL,
     [DimCityID]                     INT             NULL,
@@ -15,10 +14,8 @@
     [DimTransactionDateID]          INT             NULL,
     [DimTransactionTimeID]          INT             NULL,
     [DimUserID]                     INT             NULL,
+    [FactFinancialTransactionID]    INT             NOT NULL,
     [OriginalTransactionID]         INT             NULL,
-    [RelatedTransactionID]          INT             NULL,
-    [RunID]                         INT             NOT NULL
+    [RelatedTransactionID]          INT             NULL
 );
-
-
 

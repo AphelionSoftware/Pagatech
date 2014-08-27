@@ -40,10 +40,7 @@
     [ProcessFee]                      DECIMAL (18, 2) NULL,
     [ReferenceNumber]                 VARCHAR (255)   NULL,
     [RequestedProcessChannel]         VARCHAR (255)   NULL,
-    [RunID]                           INT             NOT NULL,
     [SenderPhoneNumber]               VARCHAR (255)   NULL,
     [WithdrawalCode]                  VARCHAR (255)   NULL
 );
-
-
 

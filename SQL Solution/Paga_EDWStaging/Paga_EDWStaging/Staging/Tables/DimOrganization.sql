@@ -18,5 +18,3 @@
     [WebsiteURL]                          VARCHAR (100)  NULL
 );
 
-
-

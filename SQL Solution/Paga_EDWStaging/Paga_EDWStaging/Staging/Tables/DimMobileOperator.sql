@@ -8,5 +8,3 @@
     [SourceKeyHash]       BIGINT        NOT NULL
 );
 
-
-

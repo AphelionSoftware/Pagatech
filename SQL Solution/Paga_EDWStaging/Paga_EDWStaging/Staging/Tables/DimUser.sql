@@ -16,5 +16,3 @@
     [SourceKeyHash]               BIGINT        NOT NULL
 );
 
-
-
