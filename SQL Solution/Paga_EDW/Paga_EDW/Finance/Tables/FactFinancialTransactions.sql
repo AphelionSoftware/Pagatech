@@ -36,10 +36,6 @@
 );
 
 
-
-
-
-
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCreatedDateID', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransactions', @level2type = N'COLUMN', @level2name = N'DimCreatedDateID';
 

@@ -20,10 +20,6 @@
 );
 
 
-
-
-
-
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimDateID', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeTransactions', @level2type = N'COLUMN', @level2name = N'DimDateID';
 

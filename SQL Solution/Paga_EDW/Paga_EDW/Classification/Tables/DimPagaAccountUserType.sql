@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Shared].[DimPagaAccountUserType] (
+﻿CREATE TABLE [Classification].[DimPagaAccountUserType] (
     [DimPagaAccountUserTypeID] INT            NOT NULL,
     [SourceKey]                VARCHAR (255)  NOT NULL,
     [Name]                     VARCHAR (255)  NOT NULL,

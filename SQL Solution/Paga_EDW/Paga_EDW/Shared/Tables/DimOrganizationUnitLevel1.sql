@@ -16,10 +16,6 @@
 );
 
 
-
-
-
-
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitLevel1_SourceKey]
     ON [Shared].[DimOrganizationUnitLevel1]([SourceKey] ASC);

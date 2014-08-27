@@ -21,18 +21,12 @@
     [sys_CreatedBy]               VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]               DATETIME        DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimUserID] PRIMARY KEY CLUSTERED ([DimUserID] ASC),
-    CONSTRAINT [fk_DimUser_DimPagaAccountUserTypeID] FOREIGN KEY ([DimPagaAccountUserTypeID]) REFERENCES [Shared].[DimPagaAccountUserType] ([DimPagaAccountUserTypeID]),
+    CONSTRAINT [fk_DimUser_DimPagaAccountUserTypeID] FOREIGN KEY ([DimPagaAccountUserTypeID]) REFERENCES [Classification].[DimPagaAccountUserType] ([DimPagaAccountUserTypeID]),
     CONSTRAINT [uc_DimUser_DateOfBirthID] UNIQUE NONCLUSTERED ([DateOfBirthID] ASC),
     CONSTRAINT [uc_DimUser_DimOrganizationUnitLevel5ID] UNIQUE NONCLUSTERED ([DimOrganizationUnitLevel5ID] ASC),
     CONSTRAINT [uc_DimUser_DimPagaAccountID] UNIQUE NONCLUSTERED ([DimPagaAccountID] ASC),
     CONSTRAINT [uc_DimUser_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
 );
-
-
-
-
-
-
 
 
 GO

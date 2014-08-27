@@ -15,31 +15,3 @@
     CONSTRAINT [pk_DimTimeID] PRIMARY KEY CLUSTERED ([DimTimeID] ASC)
 );
 
-
-
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-
-
