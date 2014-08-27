@@ -1,4 +1,5 @@
-﻿    
+﻿
+    
 
 CREATE VIEW [OLAP].[FactProcessTransaction]
 AS
@@ -45,7 +46,6 @@ SELECT
 	,[FactProcessTransaction].[ProcessFee] 
 	,[FactProcessTransaction].[ReferenceNumber] 
 	,[FactProcessTransaction].[RequestedProcessChannel] 
-	,[FactProcessTransaction].[RunID] 
 	,[FactProcessTransaction].[SenderPhoneNumber] 
 	,[FactProcessTransaction].[WithdrawalCode] 
 
@@ -83,15 +83,15 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'SenderPhoneNum
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTransaction', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'RunID';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Activity', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'RunID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'RunID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'RunID';
+
+
+
+GO
+
 
 
 GO

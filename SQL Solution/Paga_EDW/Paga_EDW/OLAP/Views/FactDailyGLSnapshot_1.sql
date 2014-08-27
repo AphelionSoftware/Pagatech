@@ -1,4 +1,5 @@
-﻿    
+﻿
+    
 
 CREATE VIEW [OLAP].[FactDailyGLSnapshot]
 AS
@@ -17,19 +18,19 @@ SELECT
 	,[FactDailyGLSnapshot].[DimOrganizationUnitLevel5ID] 
 	,[FactDailyGLSnapshot].[MovementDirection] 
 	,[FactDailyGLSnapshot].[OpeningBalance] 
-	,[FactDailyGLSnapshot].[RunID] 
+
 
 FROM [Finance].[FactDailyGLSnapshot] [FactDailyGLSnapshot]
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactDailyGLSnapshot', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactDailyGLSnapshot', @level2type = N'COLUMN', @level2name = N'RunID';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactDailyGLSnapshot', @level2type = N'COLUMN', @level2name = N'RunID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'RunID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactDailyGLSnapshot', @level2type = N'COLUMN', @level2name = N'RunID';
+
+
+
+GO
+
 
 
 GO

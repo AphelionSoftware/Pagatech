@@ -12,11 +12,15 @@
     [CreditTransactionCount]        DECIMAL (18, 2) NULL,
     [OpeningBalance]                DECIMAL (18, 2) NULL,
     [ClosingBalance]                DECIMAL (18, 2) NULL,
-    [RunID]                         INT             NOT NULL,
     CONSTRAINT [pk_FactDailyGLSnapshotID] PRIMARY KEY CLUSTERED ([FactDailyGLSnapshotID] ASC),
     CONSTRAINT [fk_FactDailyGLSnapshot_DimAsOfDateID] FOREIGN KEY ([DimAsOfDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
+    CONSTRAINT [fk_FactDailyGLSnapshot_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Location].[DimCity] ([DimCityID]),
+    CONSTRAINT [fk_FactDailyGLSnapshot_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Finance].[DimFinancialAccount] ([DimFinancialAccountID]),
+    CONSTRAINT [fk_FactDailyGLSnapshot_DimFinancialTransactionTypeID] FOREIGN KEY ([DimFinancialTransactionTypeID]) REFERENCES [Classification].[DimFinancialTransactionType] ([DimFinancialTransactionTypeID]),
     CONSTRAINT [fk_FactDailyGLSnapshot_DimOrganizationUnitLevel5ID] FOREIGN KEY ([DimOrganizationUnitLevel5ID]) REFERENCES [Shared].[DimOrganizationUnitLevel5] ([DimOrganizationUnitLevel5ID])
 );
+
+
 
 
 

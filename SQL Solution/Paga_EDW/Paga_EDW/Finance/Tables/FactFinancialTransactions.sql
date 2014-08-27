@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[FactFinancialTransactions] (
-    [FactFinancialTransactionsID]   INT             NOT NULL,
+    [FactFinancialTransactionID]    INT             NOT NULL,
     [DimCreatedDateID]              INT             NULL,
     [DimCreatedTimeID]              INT             NULL,
     [DimFinancialTransactionTypeID] INT             NULL,
@@ -17,18 +17,25 @@
     [CreditAmount]                  DECIMAL (18, 2) NULL,
     [OriginalTransactionID]         INT             NULL,
     [RelatedTransactionID]          INT             NULL,
-    [RunID]                         INT             NOT NULL,
-    CONSTRAINT [pk_FactFinancialTransactionsID] PRIMARY KEY CLUSTERED ([FactFinancialTransactionsID] ASC),
+    CONSTRAINT [pk_FactFinancialTransactionsID] PRIMARY KEY CLUSTERED ([FactFinancialTransactionID] ASC),
+    CONSTRAINT [fk_FactFinancialTransactions_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Location].[DimCity] ([DimCityID]),
     CONSTRAINT [fk_FactFinancialTransactions_DimCreatedDateID] FOREIGN KEY ([DimCreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactFinancialTransactions_DimCreatedTimeID] FOREIGN KEY ([DimCreatedTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactFinancialTransactions_DimEffectiveDateID] FOREIGN KEY ([DimEffectiveDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactFinancialTransactions_DimEffectiveTimeID] FOREIGN KEY ([DimEffectiveTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
+    CONSTRAINT [fk_FactFinancialTransactions_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Finance].[DimFinancialAccount] ([DimFinancialAccountID]),
+    CONSTRAINT [fk_FactFinancialTransactions_DimFinancialTransactionTypeID] FOREIGN KEY ([DimFinancialTransactionTypeID]) REFERENCES [Classification].[DimFinancialTransactionType] ([DimFinancialTransactionTypeID]),
     CONSTRAINT [fk_FactFinancialTransactions_DimOrganizationUnitLevel5ID] FOREIGN KEY ([DimOrganizationUnitLevel5ID]) REFERENCES [Shared].[DimOrganizationUnitLevel5] ([DimOrganizationUnitLevel5ID]),
     CONSTRAINT [fk_FactFinancialTransactions_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
+    CONSTRAINT [fk_FactFinancialTransactions_DimProcessTypeID] FOREIGN KEY ([DimProcessTypeID]) REFERENCES [Classification].[DimProcessType] ([DimProcessTypeID]),
     CONSTRAINT [fk_FactFinancialTransactions_DimTransactionDateID] FOREIGN KEY ([DimTransactionDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactFinancialTransactions_DimTransactionTimeID] FOREIGN KEY ([DimTransactionTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
-    CONSTRAINT [fk_FactFinancialTransactions_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID])
+    CONSTRAINT [fk_FactFinancialTransactions_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
+    CONSTRAINT [fk_FactFinancialTransactions_OriginalTransactionID] FOREIGN KEY ([OriginalTransactionID]) REFERENCES [Finance].[FactFinancialTransactions] ([FactFinancialTransactionID]),
+    CONSTRAINT [fk_FactFinancialTransactions_RelatedTransactionID] FOREIGN KEY ([RelatedTransactionID]) REFERENCES [Finance].[FactFinancialTransactions] ([FactFinancialTransactionID])
 );
+
+
 
 
 

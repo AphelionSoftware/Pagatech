@@ -1,4 +1,5 @@
-﻿    
+﻿
+    
 
 CREATE VIEW [OLAP].[FactAirtimeStockMovement]
 AS
@@ -11,19 +12,19 @@ SELECT
 	,[FactAirtimeStockMovement].[DimOrganizationUnitLevel5ID] 
 	,[FactAirtimeStockMovement].[DimPagaAccountID] 
 	,[FactAirtimeStockMovement].[MovementAmount] 
-	,[FactAirtimeStockMovement].[RunID] 
+
 
 FROM [Airtime].[FactAirtimeStockMovement] [FactAirtimeStockMovement]
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactAirtimeStockMovement', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'RunID';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'RunID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'RunID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'RunID';
+
+
+
+GO
+
 
 
 GO

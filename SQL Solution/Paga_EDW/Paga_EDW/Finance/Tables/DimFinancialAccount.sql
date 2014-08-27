@@ -7,7 +7,7 @@
     [DimBankAccountID]             INT             NOT NULL,
     [DimCurrencyID]                INT             NOT NULL,
     [DimFinancialAccountTypeID]    INT             NOT NULL,
-    [DimAccountHolderID]           INT             NOT NULL,
+    [DimAccountHolderUserID]       INT             NOT NULL,
     [DimHoldingFinancialAccountID] INT             NOT NULL,
     [AccountNumber]                VARCHAR (20)    NULL,
     [RestrictedBalance]            DECIMAL (18, 2) NULL,
@@ -20,7 +20,8 @@
     [sys_CreatedBy]                VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]                DATETIME        DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimFinancialAccountID] PRIMARY KEY CLUSTERED ([DimFinancialAccountID] ASC),
-    CONSTRAINT [uc_DimFinancialAccount_DimAccountHolderID] UNIQUE NONCLUSTERED ([DimAccountHolderID] ASC),
+    CONSTRAINT [fk_DimFinancialAccount_DimAccountHolderUserID] FOREIGN KEY ([DimAccountHolderUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
+    CONSTRAINT [uc_DimFinancialAccount_DimAccountHolderID] UNIQUE NONCLUSTERED ([DimAccountHolderUserID] ASC),
     CONSTRAINT [uc_DimFinancialAccount_DimBankAccountID] UNIQUE NONCLUSTERED ([DimBankAccountID] ASC),
     CONSTRAINT [uc_DimFinancialAccount_DimCOALevel4ID] UNIQUE NONCLUSTERED ([DimCOALevel4ID] ASC),
     CONSTRAINT [uc_DimFinancialAccount_DimCurrencyID] UNIQUE NONCLUSTERED ([DimCurrencyID] ASC),
@@ -28,6 +29,8 @@
     CONSTRAINT [uc_DimFinancialAccount_DimHoldingFinancialAccountID] UNIQUE NONCLUSTERED ([DimHoldingFinancialAccountID] ASC),
     CONSTRAINT [uc_DimFinancialAccount_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
 );
+
+
 
 
 
@@ -66,7 +69,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimHoldingFina
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimAccountHolderID', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount', @level2type = N'COLUMN', @level2name = N'DimAccountHolderID';
+
 
 
 GO
@@ -95,4 +98,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount', @level2type = N'COLUMN', @level2name = N'SourceKey';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimAccountHolderID', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount', @level2type = N'COLUMN', @level2name = N'DimAccountHolderUserID';
 

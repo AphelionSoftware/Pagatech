@@ -1,4 +1,5 @@
-﻿    
+﻿
+    
 
 CREATE VIEW [OLAP].[FactFinancialTransactions]
 AS
@@ -22,19 +23,19 @@ SELECT
 	,[FactFinancialTransactions].[DimUserID] 
 	,[FactFinancialTransactions].[OriginalTransactionID] 
 	,[FactFinancialTransactions].[RelatedTransactionID] 
-	,[FactFinancialTransactions].[RunID] 
+
 
 FROM [Finance].[FactFinancialTransactions] [FactFinancialTransactions]
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactFinancialTransactions', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTransactions', @level2type = N'COLUMN', @level2name = N'RunID';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTransactions', @level2type = N'COLUMN', @level2name = N'RunID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'RunID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTransactions', @level2type = N'COLUMN', @level2name = N'RunID';
+
+
+
+GO
+
 
 
 GO
