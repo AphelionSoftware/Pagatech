@@ -15,9 +15,6 @@
     [DimFinancialTransactionTypeID] INT             NULL,
     [DimOrganizationUnitLevel5ID]   INT             NULL,
     [MovementDirection]             DECIMAL (18, 2) NULL,
-    [OpeningBalance]                DECIMAL (18, 2) NULL,
-    [RunID]                         INT             NOT NULL
+    [OpeningBalance]                DECIMAL (18, 2) NULL
 );
-
-
 

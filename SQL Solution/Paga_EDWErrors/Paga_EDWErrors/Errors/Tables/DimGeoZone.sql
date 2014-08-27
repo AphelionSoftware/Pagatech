@@ -13,5 +13,3 @@
     [Symbol]        VARCHAR (3)   NULL
 );
 
-
-

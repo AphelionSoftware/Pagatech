@@ -9,9 +9,6 @@
     [DimDateID]                        INT             NULL,
     [DimMobileOperatorID]              INT             NULL,
     [DimOrganizationUnitLevel5ID]      INT             NULL,
-    [DimPagaAccountID]                 INT             NULL,
-    [RunID]                            INT             NOT NULL
+    [DimPagaAccountID]                 INT             NULL
 );
-
-
 

@@ -9,9 +9,6 @@
     [DimMobileOperatorID]         INT             NULL,
     [DimOrganizationUnitLevel5ID] INT             NULL,
     [DimPagaAccountID]            INT             NULL,
-    [MovementAmount]              DECIMAL (18, 2) NULL,
-    [RunID]                       INT             NOT NULL
+    [MovementAmount]              DECIMAL (18, 2) NULL
 );
-
-
 

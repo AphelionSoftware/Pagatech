@@ -12,9 +12,6 @@
     [DimFinancialTransactionTypeID] INT             NULL,
     [DimOrganizationUnitLevel5ID]   INT             NULL,
     [DimPagaAccountID]              INT             NULL,
-    [DimTimeID]                     INT             NULL,
-    [RunID]                         INT             NOT NULL
+    [DimTimeID]                     INT             NULL
 );
-
-
 
