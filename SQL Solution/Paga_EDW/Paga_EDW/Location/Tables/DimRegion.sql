@@ -3,6 +3,7 @@
     [SourceKey]      VARCHAR (255) NOT NULL,
     [Name]           VARCHAR (255) NOT NULL,
     [Code]           VARCHAR (50)  NOT NULL,
+    [DimGeoZoneID]   INT           NOT NULL,
     [SourceKeyHash]  BIGINT        NOT NULL,
     [DeltaHash]      BIGINT        NOT NULL,
     [sys_ModifiedBy] VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
@@ -10,13 +11,14 @@
     [sys_CreatedBy]  VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]  DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimRegionID] PRIMARY KEY CLUSTERED ([DimRegionID] ASC),
-    CONSTRAINT [uc_DimRegion_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
+    CONSTRAINT [fk_DimRegion_DimGeoZoneID] FOREIGN KEY ([DimGeoZoneID]) REFERENCES [Location].[DimGeoZone] ([DimGeoZoneID])
 );
 
 
+
+
 GO
-CREATE UNIQUE NONCLUSTERED INDEX [ix_DimRegion_SourceKey]
-    ON [Location].[DimRegion]([SourceKey] ASC);
+
 
 
 GO

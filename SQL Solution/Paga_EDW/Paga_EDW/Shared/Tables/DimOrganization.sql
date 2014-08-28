@@ -3,16 +3,17 @@
     [SourceKey]                           VARCHAR (255)  NOT NULL,
     [Name]                                VARCHAR (255)  NOT NULL,
     [Code]                                VARCHAR (50)   NOT NULL,
-    [Description]                         VARCHAR (1000) NULL,
+    [DimBusinessTypeID]                   INT            NOT NULL,
+    [DimOrganizationSubscriptionStatusID] INT            NOT NULL,
+    [DimOrganizationVerificationStatusID] INT            NOT NULL,
     [DimPagaAccountID]                    INT            NOT NULL,
+    [Description]                         VARCHAR (1000) NULL,
     [ReferenceNumber]                     VARCHAR (30)   NULL,
     [TaxIDNumber]                         VARCHAR (30)   NOT NULL,
     [VATCertificationNumber]              VARCHAR (30)   NULL,
-    [DimBusinessTypeID]                   INT            NOT NULL,
     [RcName]                              VARCHAR (50)   NULL,
     [WebsiteURL]                          VARCHAR (100)  NULL,
-    [DimOrganizationVerificationStatusID] INT            NOT NULL,
-    [DimOrganizationSubscriptionStatusID] INT            NOT NULL,
+    [OrganizationCode]                    VARCHAR (10)   NULL,
     [DisplayName]                         VARCHAR (100)  NULL,
     [SourceKeyHash]                       BIGINT         NOT NULL,
     [DeltaHash]                           BIGINT         NOT NULL,
@@ -21,12 +22,15 @@
     [sys_CreatedBy]                       VARCHAR (255)  DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]                       DATETIME       DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationID] PRIMARY KEY CLUSTERED ([DimOrganizationID] ASC),
-    CONSTRAINT [uc_DimOrganization_DimBusinessTypeID] UNIQUE NONCLUSTERED ([DimBusinessTypeID] ASC),
-    CONSTRAINT [uc_DimOrganization_DimOrganizationSubscriptionStatusID] UNIQUE NONCLUSTERED ([DimOrganizationSubscriptionStatusID] ASC),
-    CONSTRAINT [uc_DimOrganization_DimOrganizationVerificationStatusID] UNIQUE NONCLUSTERED ([DimOrganizationVerificationStatusID] ASC),
-    CONSTRAINT [uc_DimOrganization_DimPagaAccountID] UNIQUE NONCLUSTERED ([DimPagaAccountID] ASC),
-    CONSTRAINT [uc_DimOrganization_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
+    CONSTRAINT [fk_DimOrganization_DimBusinessTypeID] FOREIGN KEY ([DimBusinessTypeID]) REFERENCES [Classification].[DimBusinessType] ([DimBusinessTypeID]),
+    CONSTRAINT [fk_DimOrganization_DimOrganizationSubscriptionStatusID] FOREIGN KEY ([DimOrganizationSubscriptionStatusID]) REFERENCES [Classification].[DimOrganizationSubscriptionStatus] ([DimOrganizationSubscriptionStatusID]),
+    CONSTRAINT [fk_DimOrganization_DimOrganizationVerificationStatusID] FOREIGN KEY ([DimOrganizationVerificationStatusID]) REFERENCES [Classification].[DimOrganizationVerificationStatus] ([DimOrganizationVerificationStatusID]),
+    CONSTRAINT [fk_DimOrganization_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
+
+
 
 
 GO
@@ -43,7 +47,7 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'Code', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'Code';
+
 
 
 GO
@@ -100,4 +104,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'OrganizationCode', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'OrganizationCode';
 

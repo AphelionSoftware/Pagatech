@@ -3,6 +3,8 @@
     [SourceKey]                VARCHAR (255) NOT NULL,
     [Name]                     VARCHAR (255) NOT NULL,
     [Code]                     VARCHAR (50)  NOT NULL,
+    [DimRegionID]              INT           NOT NULL,
+    [LocalGovernmentAreaCode]  VARCHAR (5)   NULL,
     [SourceKeyHash]            BIGINT        NOT NULL,
     [DeltaHash]                BIGINT        NOT NULL,
     [sys_ModifiedBy]           VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
@@ -10,13 +12,14 @@
     [sys_CreatedBy]            VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]            DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimGovernmentLocalAreaID] PRIMARY KEY CLUSTERED ([DimGovernmentLocalAreaID] ASC),
-    CONSTRAINT [uc_DimGovernmentLocalArea_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
+    CONSTRAINT [fk_DimGovernmentLocalArea_DimRegionID] FOREIGN KEY ([DimRegionID]) REFERENCES [Location].[DimRegion] ([DimRegionID])
 );
 
 
+
+
 GO
-CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGovernmentLocalArea_SourceKey]
-    ON [Location].[DimGovernmentLocalArea]([SourceKey] ASC);
+
 
 
 GO

@@ -17,7 +17,7 @@
     [DimProcessStatusID]              INT             NULL,
     [DimBillerAccountUserID]          INT             NULL,
     [DimOrganizationID]               INT             NULL,
-    [DimOriginalPayerPagaAccountIDID] INT             NULL,
+    [DimOriginalPayerPagaAccountID]   INT             NULL,
     [DimTransferDateID]               INT             NULL,
     [DimTransferTimeID]               INT             NULL,
     [DimApprovedByUserID]             INT             NULL,
@@ -58,7 +58,7 @@
     CONSTRAINT [fk_FactProcessTransaction_DimOnBehalffUserID] FOREIGN KEY ([DimOnBehalffUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTransaction_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
     CONSTRAINT [fk_FactProcessTransaction_DimOrganizationUnitLevel5ID] FOREIGN KEY ([DimOrganizationUnitLevel5ID]) REFERENCES [Shared].[DimOrganizationUnitLevel5] ([DimOrganizationUnitLevel5ID]),
-    CONSTRAINT [fk_FactProcessTransaction_DimOriginalPayerPagaAccountIDID] FOREIGN KEY ([DimOriginalPayerPagaAccountIDID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
+    CONSTRAINT [fk_FactProcessTransaction_DimOriginalPayerPagaAccountID] FOREIGN KEY ([DimOriginalPayerPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactProcessTransaction_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactProcessTransaction_DimProcessStatusID] FOREIGN KEY ([DimProcessStatusID]) REFERENCES [Classification].[DimProcessStatus] ([DimProcessStatusID]),
     CONSTRAINT [fk_FactProcessTransaction_DimProcessTypeID] FOREIGN KEY ([DimProcessTypeID]) REFERENCES [Classification].[DimProcessType] ([DimProcessTypeID]),
@@ -70,6 +70,8 @@
     CONSTRAINT [fk_FactProcessTransaction_DimVerifiedByUserID] FOREIGN KEY ([DimVerifiedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTransaction_OriginalProcessID] FOREIGN KEY ([OriginalProcessID]) REFERENCES [Activity].[FactProcessTransaction] ([FactProcessTransactionID])
 );
+
+
 
 
 GO
@@ -141,7 +143,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizatio
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOriginalPayerPagaAccountIDID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'DimOriginalPayerPagaAccountIDID';
+
 
 
 GO
@@ -238,4 +240,8 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ProcessAmount'
 
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'AgentCommissionAmount', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'AgentCommissionAmount';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOriginalPayerPagaAccountID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'DimOriginalPayerPagaAccountID';
 

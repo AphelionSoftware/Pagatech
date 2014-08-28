@@ -3,6 +3,10 @@
     [SourceKey]                   VARCHAR (255) NOT NULL,
     [Name]                        VARCHAR (255) NOT NULL,
     [Code]                        VARCHAR (50)  NOT NULL,
+    [DimOrganizationID]           INT           NOT NULL,
+    [DimOrganizationUnitLevel4ID] INT           NOT NULL,
+    [DimOrganizationUnitTypeID]   INT           NOT NULL,
+    [IdentificationNumber]        VARCHAR (20)  NULL,
     [SourceKeyHash]               BIGINT        NOT NULL,
     [DeltaHash]                   BIGINT        NOT NULL,
     [sys_ModifiedBy]              VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
@@ -10,8 +14,14 @@
     [sys_CreatedBy]               VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]               DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationUnitLevel5ID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitLevel5ID] ASC),
-    CONSTRAINT [uc_DimOrganizationUnitLevel5_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
+    CONSTRAINT [fk_DimOrganizationUnitLevel5_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
+    CONSTRAINT [fk_DimOrganizationUnitLevel5_DimOrganizationUnitLevel4ID] FOREIGN KEY ([DimOrganizationUnitLevel4ID]) REFERENCES [Shared].[DimOrganizationUnitLevel4] ([DimOrganizationUnitLevel4ID]),
+    CONSTRAINT [fk_DimOrganizationUnitLevel5_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID])
 );
+
+
+
+
 
 
 GO
@@ -37,4 +47,16 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel5', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationUnitTypeID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel5', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitTypeID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationUnitLevel4ID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel5', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel4ID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel5', @level2type = N'COLUMN', @level2name = N'DimOrganizationID';
 

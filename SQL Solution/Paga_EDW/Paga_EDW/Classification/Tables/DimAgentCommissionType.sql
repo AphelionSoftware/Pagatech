@@ -9,9 +9,10 @@
     [sys_ModifiedOn]           DATETIME      DEFAULT (getdate()) NOT NULL,
     [sys_CreatedBy]            VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]            DATETIME      DEFAULT (getdate()) NOT NULL,
-    CONSTRAINT [pk_DimAgentCommissionTypeID] PRIMARY KEY CLUSTERED ([DimAgentCommissionTypeID] ASC),
-    CONSTRAINT [uc_DimAgentCommissionType_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
+    CONSTRAINT [pk_DimAgentCommissionTypeID] PRIMARY KEY CLUSTERED ([DimAgentCommissionTypeID] ASC)
 );
+
+
 
 
 GO

@@ -12,10 +12,10 @@
     [sys_CreatedBy]       VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]       DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimMobileOperatorID] PRIMARY KEY CLUSTERED ([DimMobileOperatorID] ASC),
-    CONSTRAINT [fk_DimMobileOperator_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
-    CONSTRAINT [uc_DimMobileOperator_DimOrganizationID] UNIQUE NONCLUSTERED ([DimOrganizationID] ASC),
-    CONSTRAINT [uc_DimMobileOperator_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
+    CONSTRAINT [fk_DimMobileOperator_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID])
 );
+
+
 
 
 GO

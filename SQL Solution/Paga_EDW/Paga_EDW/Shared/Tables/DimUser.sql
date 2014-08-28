@@ -3,14 +3,14 @@
     [SourceKey]                   VARCHAR (255)   NOT NULL,
     [Name]                        VARCHAR (255)   NOT NULL,
     [Code]                        VARCHAR (50)    NOT NULL,
-    [DimPagaAccountID]            INT             NOT NULL,
-    [DimPagaAccountUserTypeID]    INT             NOT NULL,
+    [DateOfBirthID]               INT             NOT NULL,
     [DimOrganizationUnitLevel5ID] INT             NOT NULL,
+    [DimPagaAccountID]            INT             NOT NULL,
+    [DimRoleID]                   INT             NOT NULL,
     [FirstName]                   VARCHAR (255)   NULL,
     [MiddleName]                  VARCHAR (255)   NULL,
     [LastName]                    VARCHAR (255)   NULL,
     [Sex]                         CHAR (1)        NULL,
-    [DateOfBirthID]               INT             NOT NULL,
     [PhoneNumber]                 VARBINARY (256) NULL,
     [Email]                       VARCHAR (100)   NULL,
     [IsEnabled]                   BIT             NULL,
@@ -21,12 +21,15 @@
     [sys_CreatedBy]               VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]               DATETIME        DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimUserID] PRIMARY KEY CLUSTERED ([DimUserID] ASC),
-    CONSTRAINT [fk_DimUser_DimPagaAccountUserTypeID] FOREIGN KEY ([DimPagaAccountUserTypeID]) REFERENCES [Classification].[DimPagaAccountUserType] ([DimPagaAccountUserTypeID]),
-    CONSTRAINT [uc_DimUser_DateOfBirthID] UNIQUE NONCLUSTERED ([DateOfBirthID] ASC),
-    CONSTRAINT [uc_DimUser_DimOrganizationUnitLevel5ID] UNIQUE NONCLUSTERED ([DimOrganizationUnitLevel5ID] ASC),
-    CONSTRAINT [uc_DimUser_DimPagaAccountID] UNIQUE NONCLUSTERED ([DimPagaAccountID] ASC),
-    CONSTRAINT [uc_DimUser_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
+    CONSTRAINT [fk_DimUser_DateOfBirthID] FOREIGN KEY ([DateOfBirthID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
+    CONSTRAINT [fk_DimUser_DimOrganizationUnitLevel5ID] FOREIGN KEY ([DimOrganizationUnitLevel5ID]) REFERENCES [Shared].[DimOrganizationUnitLevel5] ([DimOrganizationUnitLevel5ID]),
+    CONSTRAINT [fk_DimUser_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
+    CONSTRAINT [fk_DimUser_DimRoleID] FOREIGN KEY ([DimRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID])
 );
+
+
+
+
 
 
 GO
@@ -51,7 +54,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccount
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccountUserTypeID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimPagaAccountUserTypeID';
+
 
 
 GO
@@ -96,4 +99,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimRoleID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimRoleID';
 

@@ -12,9 +12,10 @@
     [sys_CreatedBy]  VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]  DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimCOALevel2ID] PRIMARY KEY CLUSTERED ([DimCOALevel2ID] ASC),
-    CONSTRAINT [uc_DimCOALevel2_DimCOALevel1ID] UNIQUE NONCLUSTERED ([DimCOALevel1ID] ASC),
-    CONSTRAINT [uc_DimCOALevel2_SourceKey] UNIQUE NONCLUSTERED ([SourceKey] ASC)
+    CONSTRAINT [fk_DimCOALevel2_DimCOALevel1ID] FOREIGN KEY ([DimCOALevel1ID]) REFERENCES [Finance].[DimCOALevel1] ([DimCOALevel1ID])
 );
+
+
 
 
 GO
