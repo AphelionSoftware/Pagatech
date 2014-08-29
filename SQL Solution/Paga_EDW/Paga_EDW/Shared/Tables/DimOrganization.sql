@@ -6,7 +6,7 @@
     [DimBusinessTypeID]                   INT            NOT NULL,
     [DimOrganizationSubscriptionStatusID] INT            NOT NULL,
     [DimOrganizationVerificationStatusID] INT            NOT NULL,
-    [DimPagaAccountID]                    INT            NOT NULL,
+    [DimMerchantPagaAccountID]                    INT            NOT NULL,
     [Description]                         VARCHAR (1000) NULL,
     [ReferenceNumber]                     VARCHAR (30)   NULL,
     [TaxIDNumber]                         VARCHAR (30)   NOT NULL,
@@ -25,7 +25,7 @@
     CONSTRAINT [fk_DimOrganization_DimBusinessTypeID] FOREIGN KEY ([DimBusinessTypeID]) REFERENCES [Classification].[DimBusinessType] ([DimBusinessTypeID]),
     CONSTRAINT [fk_DimOrganization_DimOrganizationSubscriptionStatusID] FOREIGN KEY ([DimOrganizationSubscriptionStatusID]) REFERENCES [Classification].[DimOrganizationSubscriptionStatus] ([DimOrganizationSubscriptionStatusID]),
     CONSTRAINT [fk_DimOrganization_DimOrganizationVerificationStatusID] FOREIGN KEY ([DimOrganizationVerificationStatusID]) REFERENCES [Classification].[DimOrganizationVerificationStatus] ([DimOrganizationVerificationStatusID]),
-    CONSTRAINT [fk_DimOrganization_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
+    CONSTRAINT [fk_DimOrganization_DimMerchantPagaAccountID] FOREIGN KEY ([DimMerchantPagaAccountID]) REFERENCES [Shared].dimmerchantpagaaccount (DimMerchantPagaAccountID)
 );
 
 
@@ -59,7 +59,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'Description', 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccountID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'DimPagaAccountID';
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccountID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = 'DimMerchantPagaAccountID';
 
 
 GO

@@ -6,7 +6,7 @@
     [DimOrganizationID]           INT           NOT NULL,
     [DimOrganizationUnitLevel2ID] INT           NOT NULL,
     [DimOrganizationUnitTypeID]   INT           NOT NULL,
-	[DimOrganizationUnitUserID]   INT           NOT NULL,
+	[DimDealerID]   INT           NOT NULL,
     [IdentificationNumber]        VARCHAR (20)  NULL,
     [SourceKeyHash]               BIGINT        NOT NULL,
     [DeltaHash]                   BIGINT        NOT NULL,
@@ -18,7 +18,7 @@
     CONSTRAINT [fk_DimOrganizationUnitLevel3_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel3_DimOrganizationUnitLevel2ID] FOREIGN KEY ([DimOrganizationUnitLevel2ID]) REFERENCES [Shared].[DimOrganizationUnitLevel2] ([DimOrganizationUnitLevel2ID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel3_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID]),
-	CONSTRAINT [fk_DimOrganizationUnitLevel3_DimOrganizationUnitUserID] FOREIGN KEY ([DimOrganizationUnitUserID]) REFERENCES [Shared].[DimUser] ([DimUserID])
+	CONSTRAINT [fk_DimOrganizationUnitLevel3_DimDealerID] FOREIGN KEY ([DimDealerID]) REFERENCES [Shared].[DimDealer] ([DimDealerID])
 );
 
 
