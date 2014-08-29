@@ -5,6 +5,7 @@
     [Code]                        VARCHAR (50)  NOT NULL,
     [DimOrganizationID]           INT           NOT NULL,
     [DimOrganizationUnitTypeID]   INT           NOT NULL,
+	[DimOrganizationUnitUserID]   INT           NOT NULL,
     [IdentificationNumber]        VARCHAR (20)  NULL,
     [SourceKeyHash]               BIGINT        NOT NULL,
     [DeltaHash]                   BIGINT        NOT NULL,
@@ -14,7 +15,8 @@
     [sys_CreatedOn]               DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationUnitLevel1ID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitLevel1ID] ASC),
     CONSTRAINT [fk_DimOrganizationUnitLevel1_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
-    CONSTRAINT [fk_DimOrganizationUnitLevel1_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID])
+    CONSTRAINT [fk_DimOrganizationUnitLevel1_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID]),
+	CONSTRAINT [fk_DimOrganizationUnitLevel1_DimOrganizationUnitUserID] FOREIGN KEY ([DimOrganizationUnitUserID]) REFERENCES [Shared].[DimUser] ([DimUserID])
 );
 
 

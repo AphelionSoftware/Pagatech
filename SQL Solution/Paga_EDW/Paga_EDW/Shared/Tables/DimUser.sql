@@ -4,7 +4,6 @@
     [Name]                        VARCHAR (255)   NOT NULL,
     [Code]                        VARCHAR (50)    NOT NULL,
     [DateOfBirthID]               INT             NOT NULL,
-    [DimOrganizationUnitLevel5ID] INT             NOT NULL,
     [DimPagaAccountID]            INT             NOT NULL,
     [DimRoleID]                   INT             NOT NULL,
     [FirstName]                   VARCHAR (255)   NULL,
@@ -22,7 +21,6 @@
     [sys_CreatedOn]               DATETIME        DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimUserID] PRIMARY KEY CLUSTERED ([DimUserID] ASC),
     CONSTRAINT [fk_DimUser_DateOfBirthID] FOREIGN KEY ([DateOfBirthID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
-    CONSTRAINT [fk_DimUser_DimOrganizationUnitLevel5ID] FOREIGN KEY ([DimOrganizationUnitLevel5ID]) REFERENCES [Shared].[DimOrganizationUnitLevel5] ([DimOrganizationUnitLevel5ID]),
     CONSTRAINT [fk_DimUser_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_DimUser_DimRoleID] FOREIGN KEY ([DimRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID])
 );
@@ -58,7 +56,7 @@ GO
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationUnitLevel5ID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel5ID';
+
 
 
 GO

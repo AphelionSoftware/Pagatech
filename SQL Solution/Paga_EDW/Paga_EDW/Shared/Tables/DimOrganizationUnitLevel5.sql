@@ -6,6 +6,7 @@
     [DimOrganizationID]           INT           NOT NULL,
     [DimOrganizationUnitLevel4ID] INT           NOT NULL,
     [DimOrganizationUnitTypeID]   INT           NOT NULL,
+	[DimOrganizationUnitUserID]	  INT           NOT NULL,
     [IdentificationNumber]        VARCHAR (20)  NULL,
     [SourceKeyHash]               BIGINT        NOT NULL,
     [DeltaHash]                   BIGINT        NOT NULL,
@@ -16,7 +17,8 @@
     CONSTRAINT [pk_DimOrganizationUnitLevel5ID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitLevel5ID] ASC),
     CONSTRAINT [fk_DimOrganizationUnitLevel5_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel5_DimOrganizationUnitLevel4ID] FOREIGN KEY ([DimOrganizationUnitLevel4ID]) REFERENCES [Shared].[DimOrganizationUnitLevel4] ([DimOrganizationUnitLevel4ID]),
-    CONSTRAINT [fk_DimOrganizationUnitLevel5_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID])
+    CONSTRAINT [fk_DimOrganizationUnitLevel5_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID]),
+	CONSTRAINT [fk_DimOrganizationUnitLevel5_DimOrganizationUnitUserID] FOREIGN KEY ([DimOrganizationUnitUserID]) REFERENCES [Shared].[DimUser] ([DimUserID])
 );
 
 
