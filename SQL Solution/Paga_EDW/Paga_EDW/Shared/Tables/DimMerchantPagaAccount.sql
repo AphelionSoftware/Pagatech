@@ -34,3 +34,16 @@ CREATE UNIQUE NONCLUSTERED INDEX [ix_DimMerchantPagaAccount_SourceKey]
     ON [Shared].[DimMerchantPagaAccount]([SourceKey] ASC);
 
 
+
+
+EXEC sys.sp_updateextendedproperty 
+@name=N'ExcludeFromOLAP',
+@value=N'1' , 
+@level0type=N'SCHEMA',
+@level0name=N'Shared', 
+@level1type=N'TABLE',
+@level1name=N'DimMerchantPagaAccount',
+@level2type=N'COLUMN',
+@level2name=N'RegistrationDateID'
+
+GO

@@ -32,3 +32,14 @@ GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimDealer_SourceKey]
     ON [Shared].[DimDealer]([SourceKey] ASC);
 
+	EXEC sys.sp_updateextendedproperty 
+@name=N'ExcludeFromOLAP',
+@value=N'1' , 
+@level0type=N'SCHEMA',
+@level0name=N'Shared', 
+@level1type=N'TABLE',
+@level1name=N'DimDealer',
+@level2type=N'COLUMN',
+@level2name=N'DateOfBirthID'
+
+GO
