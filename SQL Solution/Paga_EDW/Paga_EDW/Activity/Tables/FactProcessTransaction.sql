@@ -9,7 +9,6 @@
     [DimReceivingUserID]              INT             NULL,
     [DimOnBehalffUserID]              INT             NULL,
     [DimChannelID]                    INT             NULL,
-    [DimOrganizationUnitLevel5ID]     INT             NULL,
     [DimStartedDateID]                INT             NULL,
     [DimStartedTimeID]                INT             NULL,
     [DimCompletedDateID]              INT             NULL,
@@ -57,7 +56,6 @@
     CONSTRAINT [fk_FactProcessTransaction_DimInitiatingUserID] FOREIGN KEY ([DimInitiatingUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTransaction_DimOnBehalffUserID] FOREIGN KEY ([DimOnBehalffUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTransaction_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
-    CONSTRAINT [fk_FactProcessTransaction_DimOrganizationUnitLevel5ID] FOREIGN KEY ([DimOrganizationUnitLevel5ID]) REFERENCES [Shared].[DimOrganizationUnitLevel5] ([DimOrganizationUnitLevel5ID]),
     CONSTRAINT [fk_FactProcessTransaction_DimOriginalPayerPagaAccountID] FOREIGN KEY ([DimOriginalPayerPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactProcessTransaction_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactProcessTransaction_DimProcessStatusID] FOREIGN KEY ([DimProcessStatusID]) REFERENCES [Classification].[DimProcessStatus] ([DimProcessStatusID]),
@@ -111,7 +109,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimChannelID',
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationUnitLevel5ID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel5ID';
+
 
 
 GO

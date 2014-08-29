@@ -4,7 +4,6 @@
     [DimPagaAccountID]            INT             NULL,
     [DimProcessTypeID]            INT             NULL,
     [DimChannelID]                INT             NULL,
-    [DimOrganizationUnitLevel5ID] INT             NULL,
     [DimAsOfDateID]               INT             NULL,
     [DimOrganizationID]           INT             NULL,
     [DimCityID]                   INT             NULL,
@@ -21,7 +20,6 @@
     CONSTRAINT [fk_FactUserMonthlySnapshot_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Location].[DimCity] ([DimCityID]),
     CONSTRAINT [fk_FactUserMonthlySnapshot_DimCreatedDateID] FOREIGN KEY ([DimCreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactUserMonthlySnapshot_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
-    CONSTRAINT [fk_FactUserMonthlySnapshot_DimOrganizationUnitLevel5ID] FOREIGN KEY ([DimOrganizationUnitLevel5ID]) REFERENCES [Shared].[DimOrganizationUnitLevel5] ([DimOrganizationUnitLevel5ID]),
     CONSTRAINT [fk_FactUserMonthlySnapshot_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactUserMonthlySnapshot_DimProcessTypeID] FOREIGN KEY ([DimProcessTypeID]) REFERENCES [Classification].[DimProcessType] ([DimProcessTypeID])
 );
@@ -68,7 +66,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimAsOfDateID'
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationUnitLevel5ID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel5ID';
+
 
 
 GO

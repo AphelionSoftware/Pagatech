@@ -7,7 +7,6 @@
     [DimPagaAccountID]              INT             NULL,
     [DimUserID]                     INT             NULL,
     [DimProcessTypeID]              INT             NULL,
-    [DimOrganizationUnitLevel5ID]   INT             NULL,
     [DimEffectiveDateID]            INT             NULL,
     [DimEffectiveTimeID]            INT             NULL,
     [DimTransactionDateID]          INT             NULL,
@@ -25,7 +24,6 @@
     CONSTRAINT [fk_FactFinancialTransaction_DimEffectiveTimeID] FOREIGN KEY ([DimEffectiveTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimFinancialAccountLevel2ID] FOREIGN KEY ([DimFinancialAccountLevel2ID]) REFERENCES [Finance].[DimFinancialAccountLevel2] ([DimFinancialAccountLevel2ID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimFinancialTransactionTypeID] FOREIGN KEY ([DimFinancialTransactionTypeID]) REFERENCES [Classification].[DimFinancialTransactionType] ([DimFinancialTransactionTypeID]),
-    CONSTRAINT [fk_FactFinancialTransaction_DimOrganizationUnitLevel5ID] FOREIGN KEY ([DimOrganizationUnitLevel5ID]) REFERENCES [Shared].[DimOrganizationUnitLevel5] ([DimOrganizationUnitLevel5ID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimProcessTypeID] FOREIGN KEY ([DimProcessTypeID]) REFERENCES [Classification].[DimProcessType] ([DimProcessTypeID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimTransactionDateID] FOREIGN KEY ([DimTransactionDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
@@ -65,7 +63,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimEffectiveDa
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationUnitLevel5ID', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel5ID';
+
 
 
 GO

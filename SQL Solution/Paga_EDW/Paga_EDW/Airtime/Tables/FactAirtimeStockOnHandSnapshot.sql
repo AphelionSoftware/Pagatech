@@ -3,14 +3,12 @@
     [DimDateID]                        INT             NULL,
     [DimMobileOperatorID]              INT             NULL,
     [DimPagaAccountID]                 INT             NULL,
-    [DimOrganizationUnitLevel5ID]      INT             NULL,
     [DimCityID]                        INT             NULL,
     [AccountBalance]                   DECIMAL (18, 2) NULL,
     CONSTRAINT [pk_FactAirtimeStockOnHandSnapshotID] PRIMARY KEY CLUSTERED ([FactAirtimeStockOnHandSnapshotID] ASC),
     CONSTRAINT [fk_FactAirtimeStockOnHandSnapshot_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Location].[DimCity] ([DimCityID]),
     CONSTRAINT [fk_FactAirtimeStockOnHandSnapshot_DimDateID] FOREIGN KEY ([DimDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactAirtimeStockOnHandSnapshot_DimMobileOperatorID] FOREIGN KEY ([DimMobileOperatorID]) REFERENCES [Airtime].[DimMobileOperator] ([DimMobileOperatorID]),
-    CONSTRAINT [fk_FactAirtimeStockOnHandSnapshot_DimOrganizationUnitLevel5ID] FOREIGN KEY ([DimOrganizationUnitLevel5ID]) REFERENCES [Shared].[DimOrganizationUnitLevel5] ([DimOrganizationUnitLevel5ID]),
     CONSTRAINT [fk_FactAirtimeStockOnHandSnapshot_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
 
@@ -28,7 +26,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccount
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationUnitLevel5ID', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeStockOnHandSnapshot', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel5ID';
+
 
 
 GO

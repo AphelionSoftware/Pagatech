@@ -5,7 +5,6 @@
     [DimFinancialTransactionTypeID] INT             NULL,
     [DimFinancialAccountLevel2ID]   INT             NULL,
     [DimPagaAccountID]              INT             NULL,
-    [DimOrganizationUnitLevel5ID]   INT             NULL,
     [DimCityID]                     INT             NULL,
     [DebitAmount]                   DECIMAL (18, 2) NULL,
     [CreditAmount]                  DECIMAL (18, 2) NULL,
@@ -14,7 +13,6 @@
     CONSTRAINT [fk_FactAirtimeTransaction_DimDateID] FOREIGN KEY ([DimDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactAirtimeTransaction_DimFinancialAccountLevel2ID] FOREIGN KEY ([DimFinancialAccountLevel2ID]) REFERENCES [Finance].[DimFinancialAccountLevel2] ([DimFinancialAccountLevel2ID]),
     CONSTRAINT [fk_FactAirtimeTransaction_DimFinancialTransactionTypeID] FOREIGN KEY ([DimFinancialTransactionTypeID]) REFERENCES [Classification].[DimFinancialTransactionType] ([DimFinancialTransactionTypeID]),
-    CONSTRAINT [fk_FactAirtimeTransaction_DimOrganizationUnitLevel5ID] FOREIGN KEY ([DimOrganizationUnitLevel5ID]) REFERENCES [Shared].[DimOrganizationUnitLevel5] ([DimOrganizationUnitLevel5ID]),
     CONSTRAINT [fk_FactAirtimeTransaction_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactAirtimeTransaction_DimTimeID] FOREIGN KEY ([DimTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID])
 );
@@ -25,7 +23,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCityID', @l
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationUnitLevel5ID', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeTransaction', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel5ID';
+
 
 
 GO
