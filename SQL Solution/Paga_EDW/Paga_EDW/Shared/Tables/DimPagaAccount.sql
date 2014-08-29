@@ -5,7 +5,6 @@
     [Code]                     VARCHAR (50)  NOT NULL,
     [DimPagaAccountStatusID]   INT           NOT NULL,
     [DimPagaAccountUserTypeID] INT           NOT NULL,
-    [DimAccountOwnerUserID]    INT           NOT NULL,
     [DimUserID]                INT           NOT NULL,
     [RegistrationDateID]       INT           NOT NULL,
     [PagaAccountNumber]        VARCHAR (12)  NULL,
@@ -21,7 +20,6 @@
     [sys_CreatedBy]            VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]            DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimPagaAccountID] PRIMARY KEY CLUSTERED ([DimPagaAccountID] ASC),
-    CONSTRAINT [fk_DimPagaAccount_DimAccountOwnerUserID] FOREIGN KEY ([DimAccountOwnerUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_DimPagaAccount_DimPagaAccountStatusID] FOREIGN KEY ([DimPagaAccountStatusID]) REFERENCES [Classification].[DimPagaAccountStatus] ([DimPagaAccountStatusID]),
     CONSTRAINT [fk_DimPagaAccount_DimPagaAccountUserTypeID] FOREIGN KEY ([DimPagaAccountUserTypeID]) REFERENCES [Classification].[DimPagaAccountUserType] ([DimPagaAccountUserTypeID]),
     CONSTRAINT [fk_DimPagaAccount_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
@@ -83,9 +81,6 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccount
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccountStatusID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'DimPagaAccountStatusID';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimAccountOwnerUserID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'DimAccountOwnerUserID';
 
 
 GO

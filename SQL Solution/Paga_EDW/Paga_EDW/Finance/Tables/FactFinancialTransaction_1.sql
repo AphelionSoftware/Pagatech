@@ -3,7 +3,7 @@
     [DimCreatedDateID]              INT             NULL,
     [DimCreatedTimeID]              INT             NULL,
     [DimFinancialTransactionTypeID] INT             NULL,
-    [DimFinancialAccountLevel2ID]   INT             NULL,
+    [DimFinancialAccountID]   INT             NULL,
     [DimPagaAccountID]              INT             NULL,
     [DimUserID]                     INT             NULL,
     [DimProcessTypeID]              INT             NULL,
@@ -22,7 +22,7 @@
     CONSTRAINT [fk_FactFinancialTransaction_DimCreatedTimeID] FOREIGN KEY ([DimCreatedTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimEffectiveDateID] FOREIGN KEY ([DimEffectiveDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimEffectiveTimeID] FOREIGN KEY ([DimEffectiveTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
-    CONSTRAINT [fk_FactFinancialTransaction_DimFinancialAccountLevel2ID] FOREIGN KEY ([DimFinancialAccountLevel2ID]) REFERENCES [Finance].[DimFinancialAccountLevel2] ([DimFinancialAccountLevel2ID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Finance].[DimFinancialAccount] ([DimFinancialAccountID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimFinancialTransactionTypeID] FOREIGN KEY ([DimFinancialTransactionTypeID]) REFERENCES [Classification].[DimFinancialTransactionType] ([DimFinancialTransactionTypeID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimProcessTypeID] FOREIGN KEY ([DimProcessTypeID]) REFERENCES [Classification].[DimProcessType] ([DimProcessTypeID]),
@@ -79,7 +79,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccount
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimFinancialAccountLevel2ID', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction', @level2type = N'COLUMN', @level2name = N'DimFinancialAccountLevel2ID';
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimFinancialAccountID', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction', @level2type = N'COLUMN', @level2name = N'DimFinancialAccountID';
 
 
 GO
