@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Paga_Errors</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{2ca871ba-67b9-448b-b914-194e8d61f809}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Paga_Errors</RootNamespace>
+    <AssemblyName>Paga_Errors</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Errors\" />
+    <Folder Include="Errors\Tables\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Errors\Tables\Activity_DimChannel.sql" />
+    <Build Include="Errors\Tables\Activity_FactProcessTransaction.sql" />
+    <Build Include="Errors\Tables\Activity_FactUserMonthlySnapshot.sql" />
+    <Build Include="Errors\Tables\Airtime_DimMobileOperator.sql" />
+    <Build Include="Errors\Tables\Airtime_FactAirtimeStockMovement.sql" />
+    <Build Include="Errors\Tables\Airtime_FactAirtimeStockOnHandSnapshot.sql" />
+    <Build Include="Errors\Tables\Airtime_FactAirtimeTransaction.sql" />
+    <Build Include="Errors\Tables\Classification_DimAgentCommissionType.sql" />
+    <Build Include="Errors\Tables\Classification_DimBusinessType.sql" />
+    <Build Include="Errors\Tables\Classification_DimFinancialTransactionSubType.sql" />
+    <Build Include="Errors\Tables\Classification_DimFinancialTransactionType.sql" />
+    <Build Include="Errors\Tables\Classification_DimOrganizationSubscriptionStatus.sql" />
+    <Build Include="Errors\Tables\Classification_DimOrganizationUnitType.sql" />
+    <Build Include="Errors\Tables\Classification_DimOrganizationVerificationStatus.sql" />
+    <Build Include="Errors\Tables\Classification_DimPagaAccountStatus.sql" />
+    <Build Include="Errors\Tables\Classification_DimPagaAccountUserType.sql" />
+    <Build Include="Errors\Tables\Classification_DimProcessStatus.sql" />
+    <Build Include="Errors\Tables\Classification_DimProcessType.sql" />
+    <Build Include="Errors\Tables\Finance_DimBank.sql" />
+    <Build Include="Errors\Tables\Finance_DimBankAccount.sql" />
+    <Build Include="Errors\Tables\Finance_DimChartOfAccounts.sql" />
+    <Build Include="Errors\Tables\Finance_DimCurrency.sql" />
+    <Build Include="Errors\Tables\Finance_DimFinancialAccount.sql" />
+    <Build Include="Errors\Tables\Finance_DimFinancialAccountType.sql" />
+    <Build Include="Errors\Tables\Finance_DimFinancialHoldingAccount.sql" />
+    <Build Include="Errors\Tables\Finance_DimGLCode.sql" />
+    <Build Include="Errors\Tables\Finance_DimGLCodeGroup.sql" />
+    <Build Include="Errors\Tables\Finance_DimGLHeading.sql" />
+    <Build Include="Errors\Tables\Finance_FactDailyGLSnapshot.sql" />
+    <Build Include="Errors\Tables\Finance_FactFinancialTransaction.sql" />
+    <Build Include="Errors\Tables\Finance_FactMonthlyGLSnapshot.sql" />
+    <Build Include="Errors\Tables\Location_DimCity.sql" />
+    <Build Include="Errors\Tables\Location_DimCountry.sql" />
+    <Build Include="Errors\Tables\Location_DimGeoZone.sql" />
+    <Build Include="Errors\Tables\Location_DimGovernmentLocalArea.sql" />
+    <Build Include="Errors\Tables\Location_DimRegion.sql" />
+    <Build Include="Errors\Tables\Shared_DimDate.sql" />
+    <Build Include="Errors\Tables\Shared_DimDealer.sql" />
+    <Build Include="Errors\Tables\Shared_DimMerchantPagaAccount.sql" />
+    <Build Include="Errors\Tables\Shared_DimOrganization.sql" />
+    <Build Include="Errors\Tables\Shared_DimOrganizationUnitLevel1.sql" />
+    <Build Include="Errors\Tables\Shared_DimOrganizationUnitLevel2.sql" />
+    <Build Include="Errors\Tables\Shared_DimOrganizationUnitLevel3.sql" />
+    <Build Include="Errors\Tables\Shared_DimOrganizationUnitLevel4.sql" />
+    <Build Include="Errors\Tables\Shared_DimOrganizationUnitLevel5.sql" />
+    <Build Include="Errors\Tables\Shared_DimPagaAccount.sql" />
+    <Build Include="Errors\Tables\Shared_DimRole.sql" />
+    <Build Include="Errors\Tables\Shared_DimTime.sql" />
+    <Build Include="Errors\Tables\Shared_DimUser.sql" />
+    <Build Include="Security\Errors.sql" />
+  </ItemGroup>
+</Project>
