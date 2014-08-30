@@ -93,10 +93,11 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'BankingStatus', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'BankingStatus';
+GO
 
-EXEC sys.sp_updateextendedproperty 
+EXECUTE sp_addextendedproperty
 @name=N'ExcludeFromOLAP',
-@value=N'1' , 
+@value=N'true' , 
 @level0type=N'SCHEMA',
 @level0name=N'Shared', 
 @level1type=N'TABLE',

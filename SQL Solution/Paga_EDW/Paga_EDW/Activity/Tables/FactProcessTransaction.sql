@@ -23,8 +23,8 @@
     [DimVerifiedByUserID]             INT             NULL,
     [DimCancellationApprovedByUserID] INT             NULL,
     [DimCityID]                       INT             NULL,
-    [OriginalProcessID]               INT             NULL,
-    [DependentProcessID]              INT             NULL,
+    [OriginalFactProcessTransactionID]               INT             NULL,
+    [DependentFactProcessTransactionID]              INT             NULL,
     [RequestedProcessChannel]         VARCHAR (255)   NULL,
     [CustomerPhoneNumber]             VARCHAR (255)   NULL,
     [SenderPhoneNumber]               VARCHAR (255)   NULL,
@@ -42,7 +42,7 @@
     [ProcessAmount]                   DECIMAL (18, 2) NULL,
     [AgentCommissionAmount]           DECIMAL (18, 2) NULL,
     CONSTRAINT [pk_FactProcessTransactionID] PRIMARY KEY CLUSTERED ([FactProcessTransactionID] ASC),
-    CONSTRAINT [fk_FactProcessTransaction_DependentProcessID] FOREIGN KEY ([DependentProcessID]) REFERENCES [Activity].[FactProcessTransaction] ([FactProcessTransactionID]),
+    CONSTRAINT [fk_FactProcessTransaction_DependentProcessID] FOREIGN KEY ([DependentFactProcessTransactionID]) REFERENCES [Activity].[FactProcessTransaction] ([FactProcessTransactionID]),
     CONSTRAINT [fk_FactProcessTransaction_DimAgentCommissionTypeID] FOREIGN KEY ([DimAgentCommissionTypeID]) REFERENCES [Classification].[DimAgentCommissionType] ([DimAgentCommissionTypeID]),
     CONSTRAINT [fk_FactProcessTransaction_DimApprovedByUserID] FOREIGN KEY ([DimApprovedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTransaction_DimBillerAccountUserID] FOREIGN KEY ([DimBillerAccountUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
@@ -66,7 +66,7 @@
     CONSTRAINT [fk_FactProcessTransaction_DimTransferDateID] FOREIGN KEY ([DimTransferDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactProcessTransaction_DimTransferTimeID] FOREIGN KEY ([DimTransferTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactProcessTransaction_DimVerifiedByUserID] FOREIGN KEY ([DimVerifiedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
-    CONSTRAINT [fk_FactProcessTransaction_OriginalProcessID] FOREIGN KEY ([OriginalProcessID]) REFERENCES [Activity].[FactProcessTransaction] ([FactProcessTransactionID])
+    CONSTRAINT [fk_FactProcessTransaction_OriginalProcessID] FOREIGN KEY ([OriginalFactProcessTransactionID]) REFERENCES [Activity].[FactProcessTransaction] ([FactProcessTransactionID])
 );
 
 
@@ -169,11 +169,11 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCityID', @l
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'OriginalProcessID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'OriginalProcessID';
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'OriginalProcessID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = 'OriginalFactProcessTransactionID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DependentProcessID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'DependentProcessID';
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DependentProcessID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = 'DependentFactProcessTransactionID';
 
 
 GO

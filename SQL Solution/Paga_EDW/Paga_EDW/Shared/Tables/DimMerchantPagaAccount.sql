@@ -33,12 +33,11 @@ GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimMerchantPagaAccount_SourceKey]
     ON [Shared].[DimMerchantPagaAccount]([SourceKey] ASC);
 
+GO
 
-
-
-EXEC sys.sp_updateextendedproperty 
+EXECUTE sp_addextendedproperty
 @name=N'ExcludeFromOLAP',
-@value=N'1' , 
+@value=N'true' , 
 @level0type=N'SCHEMA',
 @level0name=N'Shared', 
 @level1type=N'TABLE',
