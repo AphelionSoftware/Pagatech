@@ -1,4 +1,5 @@
 ﻿CREATE TABLE [Staging].[Activity_FactProcessTransaction] (
+    [DimCreatedDateID]                     INT             NULL,
     [DimCreatedTimeID]                     INT             NULL,
     [PagaAccountSourceKey]                 INT             NULL,
     [ProcessTypeSourceKey]                 INT             NULL,
@@ -23,6 +24,7 @@
     [CitySourceKey]                        INT             NULL,
     [OriginalProcessTransactionSourceKey]  INT             NULL,
     [DependentProcessTransactionSourceKey] INT             NULL,
+    [ProcessTransactionSourceKey]          INT             NOT NULL,
     [RequestedProcessChannel]              VARCHAR (255)   NULL,
     [CustomerPhoneNumber]                  VARCHAR (255)   NULL,
     [SenderPhoneNumber]                    VARCHAR (255)   NULL,
@@ -40,4 +42,6 @@
     [ProcessAmount]                        DECIMAL (18, 2) NULL,
     [AgentCommissionAmount]                DECIMAL (18, 2) NULL
 );
+
+
 

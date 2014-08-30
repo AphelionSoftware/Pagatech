@@ -1,4 +1,5 @@
 ﻿CREATE TABLE [Staging].[Activity_FactUserMonthlySnapshot] (
+    [DimCreatedDateID]         INT             NULL,
     [PagaAccountSourceKey]     INT             NULL,
     [ProcessTypeSourceKey]     INT             NULL,
     [ChannelSourceKey]         INT             NULL,
@@ -13,4 +14,6 @@
     [ByMeForOther_SentTxCount] DECIMAL (18, 2) NULL,
     [ReceivedTxCount]          DECIMAL (18, 2) NULL
 );
+
+
 

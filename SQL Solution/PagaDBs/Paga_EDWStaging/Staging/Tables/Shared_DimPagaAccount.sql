@@ -1,4 +1,5 @@
 ﻿CREATE TABLE [Staging].[Shared_DimPagaAccount] (
+    [SourceKey]                    VARCHAR (255) NOT NULL,
     [Name]                         VARCHAR (255) NOT NULL,
     [Code]                         VARCHAR (50)  NOT NULL,
     [PagaAccountStatusSourceKey]   INT           NOT NULL,
@@ -12,4 +13,6 @@
     [IsActive]                     BIT           NULL,
     [IsEnabled]                    BIT           NULL
 );
+
+
 

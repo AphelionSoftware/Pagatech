@@ -1,4 +1,5 @@
 ﻿CREATE TABLE [Staging].[Shared_DimOrganization] (
+    [SourceKey]                               VARCHAR (255)  NOT NULL,
     [Name]                                    VARCHAR (255)  NOT NULL,
     [Code]                                    VARCHAR (50)   NOT NULL,
     [BusinessTypeSourceKey]                   INT            NOT NULL,
@@ -14,4 +15,6 @@
     [OrganizationCode]                        VARCHAR (10)   NULL,
     [DisplayName]                             VARCHAR (100)  NULL
 );
+
+
 

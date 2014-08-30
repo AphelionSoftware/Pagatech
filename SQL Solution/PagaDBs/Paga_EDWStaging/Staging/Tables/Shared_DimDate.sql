@@ -1,4 +1,5 @@
 ﻿CREATE TABLE [Staging].[Shared_DimDate] (
+    [FullDate]                DATETIME     NULL,
     [FullDateUK]              CHAR (10)    NULL,
     [FullDateUSA]             CHAR (10)    NULL,
     [DayOfMonth]              VARCHAR (2)  NULL,
@@ -51,4 +52,6 @@
     [FiscalFirstDayOfYear]    DATE         NULL,
     [FiscalLastDayOfYear]     DATE         NULL
 );
+
+
 

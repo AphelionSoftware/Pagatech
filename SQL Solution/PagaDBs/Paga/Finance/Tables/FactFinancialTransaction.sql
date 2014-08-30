@@ -12,6 +12,7 @@
     [DimTransactionDateID]          INT             NULL,
     [DimTransactionTimeID]          INT             NULL,
     [DimCityID]                     INT             NULL,
+    [FinancialTransactionSourceKey] INT             NOT NULL,
     [OriginalTransactionID]         INT             NULL,
     [RelatedTransactionID]          INT             NULL,
     [DebitAmount]                   DECIMAL (18, 2) NULL,
@@ -32,6 +33,8 @@
     CONSTRAINT [fk_FactFinancialTransaction_OriginalTransactionID] FOREIGN KEY ([OriginalTransactionID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTransactionID]),
     CONSTRAINT [fk_FactFinancialTransaction_RelatedTransactionID] FOREIGN KEY ([RelatedTransactionID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTransactionID])
 );
+
+
 
 
 GO

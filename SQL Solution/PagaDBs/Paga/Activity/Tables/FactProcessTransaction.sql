@@ -25,6 +25,7 @@
     [DimCityID]                         INT             NULL,
     [OriginalFactProcessTransactionID]  INT             NULL,
     [DependentFactProcessTransactionID] INT             NULL,
+    [ProcessTransactionSourceKey]       INT             NOT NULL,
     [RequestedProcessChannel]           VARCHAR (255)   NULL,
     [CustomerPhoneNumber]               VARCHAR (255)   NULL,
     [SenderPhoneNumber]                 VARCHAR (255)   NULL,
@@ -68,6 +69,8 @@
     CONSTRAINT [fk_FactProcessTransaction_DimVerifiedByUserID] FOREIGN KEY ([DimVerifiedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTransaction_OriginalProcessID] FOREIGN KEY ([OriginalFactProcessTransactionID]) REFERENCES [Activity].[FactProcessTransaction] ([FactProcessTransactionID])
 );
+
+
 
 
 GO
