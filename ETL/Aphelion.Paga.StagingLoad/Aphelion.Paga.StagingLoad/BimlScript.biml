@@ -1,0 +1,80 @@
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+  <Connections>
+    <Connection Name="__sql2012.Aphelion.DB.LoadQueue" ConnectionString="Data Source=.\sql2012;Initial Catalog=Aphelion.DB.LoadQueue;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
+    <Connection Name="__sql2012.Paga_Staging" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
+    <Connection Name="__sql2012.PagaOpsDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=PagaOpsDB;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
+  </Connections>
+  <Packages>
+    <Package Name="101_Classification_DimBusinessType" ConstraintMode="Linear" PackageSubpath="Staging_ETL" >
+      <Variables>
+        <Variable Name="CurrentVersion" DataType="Object"></Variable>
+        <Variable Name="LastSyncVersion" DataType="Object"></Variable>
+        <Variable Name="KeyColumn" DataType="Object"></Variable>
+      </Variables>
+      <Tasks>
+        <ExecuteSQL
+                    ConnectionName="__sql2012.Aphelion.DB.LoadQueue"
+                    Name="EST_GetCurrentVersion"
+                    ResultSet="Full">
+          <DirectInput>SELECT CurrentVersion FROM [ChangeTracking].[Load_History]</DirectInput>
+          <Results>
+            <Result
+                Name="0"
+                VariableName="User.CurrentVersion"/>
+          </Results>
+        </ExecuteSQL>
+        <ExecuteSQL
+                    ConnectionName="__sql2012.Aphelion.DB.LoadQueue"
+                    Name="EST_GetLastSyncVersion"
+                    ResultSet="Full">
+          <DirectInput>SELECT LastSyncVersion FROM [ChangeTracking].[Load_History]</DirectInput>
+          <Results>
+            <Result
+                Name="0"
+                VariableName="User.LastSyncVersion"/>
+          </Results>
+        </ExecuteSQL>
+        <ExecuteSQL
+            ConnectionName="__sql2012.PagaOpsDB"
+            Name="EST_GetKeyColumn"
+            ResultSet="Full">
+          <DirectInput>
+            SET NOCOUNT ON;
+
+            SELECT
+            ccu.COLUMN_NAME AS KeyColumn
+            FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS tc
+            INNER JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE AS ccu ON
+            tc.TABLE_SCHEMA = ccu.TABLE_SCHEMA
+            AND tc.TABLE_NAME = ccu.TABLE_NAME
+            AND tc.CONSTRAINT_NAME = ccu.CONSTRAINT_NAME
+            WHERE
+            tc.TABLE_NAME = 'AgentCommissionType'
+            AND tc.TABLE_SCHEMA = 'dbo'
+            AND tc.CONSTRAINT_TYPE = 'PRIMARY KEY'
+          </DirectInput>
+          <Results>
+            <Result
+                Name="0"
+                VariableName="User.LastSyncVersion"/>
+          </Results>
+        </ExecuteSQL>
+        <Dataflow Name="DFT_LoadBusinessType">
+          <Transformations>
+            <OleDbSource Name="OLEDB_GetBusinessType" ConnectionName="__sql2012.PagaOpsDB">
+              <DirectInput>
+                SELECT * FROM <#=table.Name#>
+              </DirectInput>
+            </OleDbSource>
+            <OleDbDestination Name="OLEDB_InsertBusinessType" ConnectionName="__sql2012.Paga_Staging" KeepIdentity="true">
+              <ExternalTableOutput Table="Staging.Classification_DimBusinessType"/>
+            </OleDbDestination>
+          </Transformations>
+        </Dataflow>
+      </Tasks>
+      
+
+    </Package>
+  </Packages>
+</Biml>
+
