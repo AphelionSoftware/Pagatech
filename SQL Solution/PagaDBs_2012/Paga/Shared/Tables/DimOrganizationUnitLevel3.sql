@@ -3,7 +3,6 @@
     [SourceKey]                   VARCHAR (255) NOT NULL,
     [Name]                        VARCHAR (255) NOT NULL,
     [Code]                        VARCHAR (50)  NOT NULL,
-    [DimOrganizationID]           INT           NOT NULL,
     [DimOrganizationUnitLevel2ID] INT           NOT NULL,
     [DimOrganizationUnitTypeID]   INT           NOT NULL,
     [DimDealerID]                 INT           NOT NULL,
@@ -16,7 +15,6 @@
     [sys_CreatedOn]               DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationUnitLevel3ID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitLevel3ID] ASC),
     CONSTRAINT [fk_DimOrganizationUnitLevel3_DimDealerID] FOREIGN KEY ([DimDealerID]) REFERENCES [Shared].[DimDealer] ([DimDealerID]),
-    CONSTRAINT [fk_DimOrganizationUnitLevel3_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel3_DimOrganizationUnitLevel2ID] FOREIGN KEY ([DimOrganizationUnitLevel2ID]) REFERENCES [Shared].[DimOrganizationUnitLevel2] ([DimOrganizationUnitLevel2ID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel3_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID])
 );
@@ -40,7 +38,7 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel3', @level2type = N'COLUMN', @level2name = N'DimOrganizationID';
+
 
 
 GO

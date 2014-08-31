@@ -22,7 +22,6 @@
     [DimApprovedByUserID]               INT             NULL,
     [DimVerifiedByUserID]               INT             NULL,
     [DimCancellationApprovedByUserID]   INT             NULL,
-    [DimCityID]                         INT             NULL,
     [OriginalFactProcessTransactionID]  INT             NULL,
     [DependentFactProcessTransactionID] INT             NULL,
     [ProcessTransactionSourceKey]       INT             NOT NULL,
@@ -49,7 +48,6 @@
     CONSTRAINT [fk_FactProcessTransaction_DimBillerAccountUserID] FOREIGN KEY ([DimBillerAccountUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTransaction_DimCancellationApprovedByUserID] FOREIGN KEY ([DimCancellationApprovedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTransaction_DimChannelID] FOREIGN KEY ([DimChannelID]) REFERENCES [Activity].[DimChannel] ([DimChannelID]),
-    CONSTRAINT [fk_FactProcessTransaction_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Location].[DimCity] ([DimCityID]),
     CONSTRAINT [fk_FactProcessTransaction_DimCompletedDateID] FOREIGN KEY ([DimCompletedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactProcessTransaction_DimCompletedTimeID] FOREIGN KEY ([DimCompletedTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactProcessTransaction_DimCreatedDateID] FOREIGN KEY ([DimCreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
@@ -160,7 +158,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCancellatio
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCityID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'DimCityID';
+
 
 
 GO

@@ -11,14 +11,13 @@
     [DimEffectiveTimeID]            INT             NULL,
     [DimTransactionDateID]          INT             NULL,
     [DimTransactionTimeID]          INT             NULL,
-    [DimCityID]                     INT             NULL,
     [FinancialTransactionSourceKey] INT             NOT NULL,
     [OriginalTransactionID]         INT             NULL,
     [RelatedTransactionID]          INT             NULL,
     [DebitAmount]                   DECIMAL (18, 2) NULL,
     [CreditAmount]                  DECIMAL (18, 2) NULL,
+    [MovementAmount] AS [CreditAmount] - [DebitAmount], 
     CONSTRAINT [pk_FactFinancialTransactionID] PRIMARY KEY CLUSTERED ([FactFinancialTransactionID] ASC),
-    CONSTRAINT [fk_FactFinancialTransaction_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Location].[DimCity] ([DimCityID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimCreatedDateID] FOREIGN KEY ([DimCreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimCreatedTimeID] FOREIGN KEY ([DimCreatedTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimEffectiveDateID] FOREIGN KEY ([DimEffectiveDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
@@ -80,7 +79,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimTransaction
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCityID', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction', @level2type = N'COLUMN', @level2name = N'DimCityID';
+
 
 
 GO
