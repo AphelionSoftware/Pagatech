@@ -1,9 +1,22 @@
+
+
 <Biml xmlns="http://schemas.varigence.com/biml.xsd">
   <Connections>
     <Connection Name="__sql2012.Aphelion.DB.LoadQueue" ConnectionString="Data Source=.\sql2012;Initial Catalog=Aphelion.DB.LoadQueue;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
     <Connection Name="__sql2012.Paga_Staging" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
     <Connection Name="__sql2012.PagaOpsDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=PagaOpsDB;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
   </Connections>
+  
+  <PackageProjects>
+    <PackageProject Name="Aphelion.Paga.StagingLoad">
+      <Parameters>
+        <Parameter Name="strSchemaName" DataType="String">dbo</Parameter>
+        <Parameter Name="strTableName" DataType="String">BusinessType</Parameter>
+      </Parameters>
+     
+    </PackageProject>
+  </PackageProjects>
+  
   <Packages>
     <Package Name="101_Classification_DimBusinessType" ConstraintMode="Linear" PackageSubpath="Staging_ETL" >
       <Variables>
@@ -63,7 +76,7 @@
           <Transformations>
             <OleDbSource Name="OLEDB_GetBusinessType" ConnectionName="__sql2012.PagaOpsDB">
               <DirectInput>
-                SELECT * FROM <#=table.Name#>
+                SELECT * FROM dbo.BusinessType
               </DirectInput>
             </OleDbSource>
             <OleDbDestination Name="OLEDB_InsertBusinessType" ConnectionName="__sql2012.Paga_Staging" KeepIdentity="true">

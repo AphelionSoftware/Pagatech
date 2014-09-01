@@ -33,6 +33,18 @@
           <SSIS:Package SSIS:Name="001_GetChangeTrackingVersions.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="002_Build_CT_Filter.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="101_Classification_DimBusinessType.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Classification_DimAgentCommissionType.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Classification_DimBusinessType.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Classification_DimFinancialTransactionSubType.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Classification_DimFinancialTransactionType.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Classification_DimOrganizationSubscriptionStatus.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Classification_DimOrganizationUnitType.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Classification_DimOrganizationVerificationStatus.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Classification_DimPagaAccountStatus.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Classification_DimPagaAccountUserType.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Classification_DimProcessStatus.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Classification_DimProcessType.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Extract Classification_DimProcessTypeGroup.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="__sql2012.Aphelion.DB.LoadQueue.conmgr" />
@@ -286,10 +298,10 @@
                 <SSIS:Property SSIS:Name="Name">002_Build_CT_Filter</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C3023A48-928B-4938-867B-8D7A6364EA8D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{91BFBD4D-464C-4FF8-862A-4228E1503284}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -306,13 +318,13 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">[dbo]</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Classification</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
                 <SSIS:Parameter SSIS:Name="TableName">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{2A2768ED-BB3A-42F8-8635-11DC92B4C399}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{B3635479-3DD4-4B7A-97A6-D32FB840B9EF}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -320,7 +332,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">[User]</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">DimAgentCommissionType</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -520,6 +532,210 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Classification_DimAgentCommissionType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{C8949798-9BC2-430E-B197-5B805861C06C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Extract Classification_DimAgentCommissionType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D9F75A62-9480-47B6-B3A6-FD8DCE493150}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Classification_DimBusinessType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{545B5BF0-24CB-4188-92E3-A89EC6256762}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Extract Classification_DimBusinessType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{BE7E39FE-600F-412F-A39C-1356E5729D42}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Classification_DimFinancialTransactionSubType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{4D5A4E5E-66A5-43D3-AF43-5A7D21C5EC62}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Extract Classification_DimFinancialTransactionSubType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2E6EE226-E175-4067-972D-8874BE9D66E5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Classification_DimFinancialTransactionType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{3917177E-F3A5-44C6-BD89-BF493AEC29CD}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Extract Classification_DimFinancialTransactionType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D634B246-A664-4474-9070-7B54320B8CF7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Classification_DimOrganizationSubscriptionStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{E3F82974-871A-4369-B98F-12A7224E0E3E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Extract Classification_DimOrganizationSubscriptionStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{816F08B7-E4B0-467C-BD4F-B17EF029F667}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Classification_DimOrganizationUnitType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{13D9F086-A224-43D0-A22F-474A95AF3AED}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Extract Classification_DimOrganizationUnitType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A0BEC692-857D-4692-8D0B-2FC35B789497}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Classification_DimOrganizationVerificationStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{5927F938-15DD-498F-8979-A0A60F8DB94E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Extract Classification_DimOrganizationVerificationStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{84B97E18-03D4-4829-BD8D-15BA81F895B6}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Classification_DimPagaAccountStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{963AFA61-CEBD-43DB-95F5-64D447B7AD57}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Extract Classification_DimPagaAccountStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{AA0C5F2E-00B6-41D0-BA53-847D09BD75C2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Classification_DimPagaAccountUserType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{D39F4247-D07E-4FA2-99FE-178E64C13AC5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Extract Classification_DimPagaAccountUserType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FF55138B-42A4-4E3A-B9EF-DE96E7BDE341}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Classification_DimProcessStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{18AFE79F-FB0B-466D-8B8A-2660DB50B798}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Extract Classification_DimProcessStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DEDEDA7D-9C69-4FC4-A530-E01531935119}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Classification_DimProcessType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{3DF79A2E-0BDE-47C7-9847-F72BF7A4F3E3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Extract Classification_DimProcessType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{8C58B98E-0178-4AE6-8AAE-5B4DF0E5250D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Extract Classification_DimProcessTypeGroup.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{41047786-F4D2-479B-B2C8-D541549774EF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Extract Classification_DimProcessTypeGroup</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E07059DB-4EF8-430E-8D3C-A29BD3CE41B0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
       </SSIS:Project>
@@ -527,8 +743,8 @@
   </DeploymentModelSpecificContent>
   <Miscellaneous>
     <ProjectItem>
-      <Name>BimlScript.biml</Name>
-      <FullPath>BimlScript.biml</FullPath>
+      <Name>BimlScript2.biml</Name>
+      <FullPath>BimlScript2.biml</FullPath>
     </ProjectItem>
   </Miscellaneous>
   <Configurations>
