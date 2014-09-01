@@ -12,6 +12,10 @@
 );
 
 
+
+
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimAgentCommissionType_SourceKey]
     ON [Classification].[DimAgentCommissionType]([SourceKey] ASC);
@@ -22,6 +26,8 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	[AgentCommissionTypeId] AS SourceKey,
 	[AgentCommissionTypeId] AS Name
 FROM PagaOpsDB.dbo.AgentCommissionType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimAgentCommissionType';
+
+
 
 
 GO
@@ -38,4 +44,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimAgentCommissionType', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CT_Filter', @value = N'AND change_log.AgentCommissionTypeID = base_query.AgentCommissionTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimAgentCommissionType';
 

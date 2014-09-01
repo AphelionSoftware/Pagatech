@@ -12,6 +12,10 @@
 );
 
 
+
+
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimBusinessType_SourceKey]
     ON [Classification].[DimBusinessType]([SourceKey] ASC);
@@ -31,4 +35,17 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimBusinessType', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CT_Filter', @value = N'AND change_log.BusinessTypeID = base_query.BusinessTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimBusinessType';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
+	BusinessTypeId AS SourceKey, 
+	BusinessTypeId AS Name
+FROM dbo.BusinessType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimBusinessType';
+
+
 

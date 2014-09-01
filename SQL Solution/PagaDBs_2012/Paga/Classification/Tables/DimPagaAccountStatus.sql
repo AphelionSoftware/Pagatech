@@ -12,6 +12,8 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimPagaAccountStatus_SourceKey]
     ON [Classification].[DimPagaAccountStatus]([SourceKey] ASC);
@@ -31,4 +33,15 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountStatus', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CT_Filter', @value = N'AND change_log.PagaAccountStatusID = base_query.PagaAccountStatusID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountStatus';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
+	PagaAccountStatusID AS SourceKey, 
+	Description AS Name
+FROM dbo.PagaAccountStatus', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountStatus';
 

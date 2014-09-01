@@ -12,6 +12,8 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimProcessStatus_SourceKey]
     ON [Classification].[DimProcessStatus]([SourceKey] ASC);
@@ -27,6 +29,35 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessStatus', @level2type = N'COLUMN', @level2name = N'SourceKeyHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessStatus', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+EXEC sys.sp_addextendedproperty 
+@name=N'BaseQuery', 
+@value=N'SELECT
+	ProcessStatusID AS SourceKey, 
+	ProcessStatusID AS Name
+FROM dbo.ProcessStatus' , 
+@level0type=N'SCHEMA',
+@level0name=N'Classification', 
+@level1type=N'TABLE',
+@level1name=N'DimProcessStatus'
+GO
+
+EXEC sys.sp_addextendedproperty 
+@name=N'CT_Filter', 
+@value=N'AND change_log.ProcessStatusID = base_query.ProcessStatusID' , 
+@level0type=N'SCHEMA',
+@level0name=N'Classification', 
+@level1type=N'TABLE',
+@level1name=N'DimProcessStatus'
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
+	ProcessStatusID AS SourceKey, 
+	ProcessStatusID AS Name
+FROM dbo.ProcessStatus', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessStatus';
 
 
 GO

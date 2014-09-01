@@ -1,16 +1,19 @@
 ﻿CREATE TABLE [Classification].[DimFinancialTransactionSubType] (
-    [DimFinancialTransactionSubTypeID] INT            NOT NULL,
-    [SourceKey]                        VARCHAR (255)  NOT NULL,
-    [Name]                             VARCHAR (255)  NOT NULL,
-    [Description]                      VARCHAR (1000) NULL,
-    [SourceKeyHash]                    BIGINT         NOT NULL,
-    [DeltaHash]                        BIGINT         NOT NULL,
-    [sys_ModifiedBy]                   VARCHAR (255)  DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn]                   DATETIME       DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]                    VARCHAR (255)  DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]                    DATETIME       DEFAULT (getdate()) NOT NULL,
+    [DimFinancialTransactionSubTypeID] INT           NOT NULL,
+    [SourceKey]                        VARCHAR (255) NOT NULL,
+    [Name]                             VARCHAR (255) NOT NULL,
+    [SourceKeyHash]                    BIGINT        NOT NULL,
+    [DeltaHash]                        BIGINT        NOT NULL,
+    [sys_ModifiedBy]                   VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]                   DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]                    VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]                    DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimFinancialTransactionSubTypeID] PRIMARY KEY CLUSTERED ([DimFinancialTransactionSubTypeID] ASC)
 );
+
+
+
+
 
 
 GO
@@ -27,7 +30,7 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'Description', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionSubType', @level2type = N'COLUMN', @level2name = N'Description';
+
 
 
 GO
@@ -36,4 +39,18 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionSubType', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CT_Filter', @value = N'AND change_log.FinancialTransactionSubTypeID = base_query.FinancialTransactionSubTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionSubType';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
+	FinancialTransactionSubTypeID AS SourceKey, 
+	Description AS Name,
+	Description AS Description
+FROM dbo.FinancialTransactionSubType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionSubType';
+
+
 
