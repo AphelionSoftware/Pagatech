@@ -2,10 +2,16 @@
 <#@ import namespace="System.Data" #>
 <#@ import namespace="Varigence.Hadron.CoreLowerer.SchemaManagement" #>
  
-<# var DestConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
+<# var DestConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
 <# var DestSchema = DestConnection.ImportDB("", "", ImportOptions.ExcludeViews); #>
 <# var DestTables = DestConnection.GenerateTableNodes(); #>
-<# var tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = 'Classification' AND TABLE_NAME = 'DimAgentCommissionType' ").Rows.OfType<System.Data.DataRow>().Select(r => r[0].ToString()); #>    
+<# var tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = 'Staging' AND TABLE_NAME = 'DimAgentCommissionType' ").Rows.OfType<System.Data.DataRow>().Select(r => r[0].ToString()); #>    
+
+<# var MetaDataConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
+<# var MetaDataSchema = DestConnection.ImportDB("", "", ImportOptions.ExcludeViews); #>
+<# var MetaDataTables = DestConnection.GenerateTableNodes(); #>
+<# var MetaDataToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT OBJECT_NAME(major_id) AS TableName, value AS BaseQuery FROM sys.extended_properties WHERE name = 'BaseQuery' ").Rows.OfType<System.Data.DataRow>().Select(r => r[0].ToString()); #>
+
 
   <Biml xmlns="http://schemas.varigence.com/biml.xsd">
     <Connections>
@@ -18,10 +24,13 @@
     <Packages>
       
       
-        <# foreach (var table in DestSchema.TableNodes.Where(item => tableNamesToImport.Contains(item.Name)).OrderBy(item => item.Name)) { #>
+        <# foreach (var table in DestSchema.TableNodes.Where(item => tableNamesToImport.Contains(item.Name)).OrderBy(item => item.Name)) {
+        var BaseQuery = DestSchema.TableNodes.Where(item => tableNamesToImport.Contains(item.Name)).First();
+        #>
         
-          
+         
           <Package Name="Extract <#=table.Name#>" ConstraintMode="Linear" AutoCreateConfigurationsType="None">
+            
             <Parameters>
                <Parameter Name="WHERE_Clause" DataType="String">Where 1 = 1</Parameter>
             </Parameters>
@@ -30,11 +39,8 @@
               <Variable Name="CurrentVersion" DataType="Object"></Variable>
               <Variable Name="LastSyncVersion" DataType="Object"></Variable>
               <Variable Name="KeyColumn" DataType="Object"></Variable>
-              <Variable Name="BaseQuery" DataType="String">SELECT
-	                          [AgentCommissionTypeId] AS SourceKey,
-	                          [AgentCommissionTypeId] AS Name
-                          FROM dbo.AgentCommissionType</Variable>
-              <Variable Name="FullSourceQuery" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]</Variable>
+              <Variable Name="BaseQuery" DataType="String"><#=BaseQuery.BaseQuery#></Variable>
+              
             </Variables>
             
             <Tasks>
@@ -99,10 +105,10 @@
               
             <Dataflow Name="DFT_Load_<#=table.SchemaName#>.<#=table.Name#>">
               <Transformations>
-                <OleDbSource Name="OLEDB_GetBusinessType" ConnectionName="__sql2012.PagaOpsDB">
+                <OleDbSource Name="OLEDB_Get" ConnectionName="__sql2012.PagaOpsDB">
                   <VariableInput VariableName="User.BaseQuery"></VariableInput>
                 </OleDbSource>
-                <OleDbDestination Name="OLEDB_InsertBusinessType" ConnectionName="__sql2012.Paga_Staging" KeepIdentity="true">
+                <OleDbDestination Name="OLEDB_Insert" ConnectionName="__sql2012.Paga_Staging" KeepIdentity="true">
                   <ExternalTableOutput Table="Staging.<#=table.SchemaName#>_<#=table.Name#>"/>
                 </OleDbDestination>
               </Transformations>

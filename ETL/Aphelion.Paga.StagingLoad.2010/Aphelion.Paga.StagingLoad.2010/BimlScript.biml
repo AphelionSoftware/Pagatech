@@ -1,0 +1,52 @@
+<#@ template language="C#" hostspecific="true"#>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="Varigence.Hadron.CoreLowerer.SchemaManagement" #>
+
+<# var DestConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
+<# var MetaDataConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
+
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+	<Connections>
+		<Connection Name="__sql2012.Aphelion.DB.LoadQueue" ConnectionString="Data Source=.\sql2012;Initial Catalog=Aphelion.DB.LoadQueue;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
+		<Connection Name="__sql2012.Paga_Staging" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
+		<Connection Name="__sql2012.PagaOpsDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=PagaOpsDB;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
+		<Connection Name="__sql2012.Paga" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
+	</Connections>
+	
+	
+		<Packages>
+		<#
+			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT (rn+100) AS PackagePrefix, TABLE_NAME FROM (	SELECT ROW_NUMBER() OVER (ORDER BY TABLE_SCHEMA, TABLE_NAME) AS rn, TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = 'Staging' AND TABLE_NAME = 'Classification_DimAgentCommissionType') x;");
+			
+			
+			 foreach (DataRow row in tableNamesToImport.Rows)
+                { 
+        #>
+     
+		<Package Name="<#=row[0]#>_<#=row[1]#>" ConstraintMode="Linear" AutoCreateConfigurationsType="None">
+			<#
+				var GetMetaData = "SELECT extprop.name, extprop.value FROM (SELECT major_id FROM sys.extended_properties WHERE name ='StagingTableName' AND value = '" +row[1] +"') AS x CROSS APPLY (SELECT name, value FROM sys.extended_properties AS y WHERE	x.major_id = y.major_id	AND (y.name = 'BaseQuery' OR y.name = 'KeyColumn')) as extProp";
+				DataTable BaseQuery  = ExternalDataAccess.GetDataTable(MetaDataConnection.ConnectionString, GetMetaData);
+				var BaseQueryRow = BaseQuery.Select("name = 'BaseQuery'");
+				string BaseQueryText = BaseQueryRow[0].ToString();
+				
+			#>
+            
+				<Parameters>
+				   <Parameter Name="WHERE_Clause" DataType="String">Where 1 = 1</Parameter>
+				</Parameters>
+            
+				<Variables>
+				  <Variable Name="CurrentVersion" DataType="Object"></Variable>
+				  <Variable Name="LastSyncVersion" DataType="Object"></Variable>
+				  <Variable Name="KeyColumn" DataType="Object"><#=GetMetaData#></Variable>
+				  <Variable Name="BaseQuery" DataType="String"><#=BaseQueryText#></Variable>
+              </Variables>
+		</Package>
+		<# } #>
+	</Packages>
+  
+        
+         
+       
+</Biml>
