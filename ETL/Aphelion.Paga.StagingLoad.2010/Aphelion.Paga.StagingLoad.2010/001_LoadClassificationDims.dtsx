@@ -7,13 +7,13 @@
   DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
   DTS:DTSID="{0374E9E0-F6B6-46CB-9C7F-AA6A907946B9}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadClassificationDims"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{410107BA-283E-47EC-9B67-7184793F93D7}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{C3387AEE-EA83-4099-BE97-8EF3539DD08F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -84,6 +84,25 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{F3A1E2CD-33A6-4CA1-B15E-80209741C9AE}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;&#xA;&#xA;SELECT 'Load'+TABLE_NAME as PackageName &#xA;, &#xA;' WHERE  1 BETWEEN  &quot; +  (DT_WSTR, 255) @[User::LastSyncVersion] + &quot; AND &quot; + (DT_WSTR, 255)@[User::CurrentVersion]  +&quot;'&#xA;&#xA;As srcParm1&#xA;FROM INFORMATION_SCHEMA.TABLES&#xA;WHERE TABLE_TYPE = 'BASE TABLE'  /*AND TABLE_NAME LIKE 'Classification_%'*/&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strPackageQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">
+
+SELECT 'Load'+TABLE_NAME as PackageName 
+, 
+' WHERE  1 BETWEEN  0 AND 0'
+
+As srcParm1
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE'  /*AND TABLE_NAME LIKE 'Classification_%'*/</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{E47B8CA1-8739-45B7-8B76-C1CFCBF2E997}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
@@ -135,6 +154,7 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
       DTS:refId="Package\DFT_GetTablesToLoad"
       DTS:CreationName="SSIS.Pipeline.3"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{B14A7AF5-1B55-477D-963E-28CED7E284F7}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
@@ -197,7 +217,7 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
                 <connection
                   refId="Package\DFT_GetTablesToLoad\OLEDB_GetTablesToLoad.Connections[OleDbConnection]"
                   connectionManagerID="{D3A5600D-C73B-4003-A16E-ACC08F23C506}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[__sql2012 StagingDB]"
+                  connectionManagerRefId="Project.ConnectionManagers[StagingDB]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -295,6 +315,27 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\EPT_ExecInParallel"
+      DTS:CreationName="SSIS.ExecutePackageTask.3"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{0F3A5B34-5982-490B-8905-0BFF8F13072D}"
+      DTS:ExecutableType="SSIS.ExecutePackageTask.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EPT_ExecInParallel"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>010_RunInParallel.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>parmInnerQuery</ParameterName>
+            <BindedVariableOrParameterName>User::strPackageQuery</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\EST_GetVersionNumbers"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
@@ -341,6 +382,7 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
       DTS:refId="Package\FLC_LoadEachDimension"
       DTS:CreationName="STOCK:FOREACHLOOP"
       DTS:Description="Foreach Loop Container"
+      DTS:Disabled="True"
       DTS:DTSID="{4D1AD361-BC3A-416D-968C-6B27E117E8F4}"
       DTS:ExecutableType="STOCK:FOREACHLOOP"
       DTS:LocaleID="-1"
@@ -478,6 +520,14 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\DFT_GetTablesToLoad" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{BF9C6209-5032-409F-B91F-5D79F74049A9}"
+      DTS:From="Package\EST_GetVersionNumbers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\EPT_ExecInParallel" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -492,17 +542,29 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="185,42"
+          Size="184.8,41.6"
           Id="Package\DFT_GetTablesToLoad"
           TopLeft="23.5,220.5" />
         <NodeLayout
-          Size="172,42"
-          Id="Package\FLC_LoadEachDimension\EST_GetKeyColumn"
-          TopLeft="23.5,5.5" />
+          Size="196,41.6"
+          Id="Package\EST_GetVersionNumbers"
+          TopLeft="18,118.5" />
         <NodeLayout
-          Size="208,42"
+          Size="195.2,41.6"
+          Id="Package\EST_SetVersionNumbers"
+          TopLeft="18.5,16.5" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\FLC_LoadEachDimension\EPT_TablePackage"
+          TopLeft="27,187" />
+        <NodeLayout
+          Size="208,41.6"
           Id="Package\FLC_LoadEachDimension\EST_GetChangeTableName"
           TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\FLC_LoadEachDimension\EST_GetKeyColumn"
+          TopLeft="23.5,5.5" />
         <EdgeLayout
           Id="Package\FLC_LoadEachDimension.PrecedenceConstraints[Constraint]"
           TopLeft="109.5,47.5">
@@ -525,10 +587,6 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="168,42"
-          Id="Package\FLC_LoadEachDimension\EPT_TablePackage"
-          TopLeft="27,187" />
         <EdgeLayout
           Id="Package\FLC_LoadEachDimension.PrecedenceConstraints[Constraint 1]"
           TopLeft="110.25,149.5">
@@ -554,8 +612,8 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="289,292"
-          Size="289,335"
+          PanelSize="288.8,292"
+          Size="288.8,335.2"
           Id="Package\FLC_LoadEachDimension"
           TopLeft="5.50000000000006,322.5" />
         <EdgeLayout
@@ -592,21 +650,6 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="195,42"
-          Id="Package\EST_SetVersionNumbers"
-          TopLeft="18.5,16.5" />
-        <AnnotationLayout
-          Text="The SETVersionNumbers task should run at the very beginning of the load. It runs against the operational DB and writes to the LoadQueue DB.&#xD;&#xA;It assumes that both databases reside on the same server. The version numbers set in this step will be used for &#xD;&#xA;all subsequent loads. It is currently disabled so that it doesn't interfere with testing."
-          ParentId="Package"
-          FontInfo="{assembly:Null}"
-          Size="782,72"
-          Id="d63dff49-fdc4-4c30-b05a-142b284a4e18"
-          TopLeft="230.5,5.5" />
-        <NodeLayout
-          Size="196,42"
-          Id="Package\EST_GetVersionNumbers"
-          TopLeft="18,118.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="116,58.5">
@@ -651,6 +694,51 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="The SETVersionNumbers task should run at the very beginning of the load. It runs against the operational DB and writes to the LoadQueue DB.&#xA;It assumes that both databases reside on the same server. The version numbers set in this step will be used for &#xA;all subsequent loads. It is currently disabled so that it doesn't interfere with testing."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="782.4,72"
+          Id="d63dff49-fdc4-4c30-b05a-142b284a4e18"
+          TopLeft="230.5,5.5" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\EPT_ExecInParallel"
+          TopLeft="300.34286227129,222.211766173023" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="147.333333333333,160.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="237.009528937956,62.1117661730229"
+              Start="0,0"
+              End="237.009528937956,54.6117661730229">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1464640376611" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.1464640376611"
+                    Point2="0,25.1464640376611"
+                    Point3="4,25.1464640376611" />
+                  <mssgle:LineSegment
+                    End="233.009528937956,25.1464640376611" />
+                  <mssgle:CubicBezierSegment
+                    Point1="233.009528937956,25.1464640376611"
+                    Point2="237.009528937956,25.1464640376611"
+                    Point3="237.009528937956,29.1464640376611" />
+                  <mssgle:LineSegment
+                    End="237.009528937956,54.6117661730229" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -660,13 +748,13 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="199,42"
-          Id="Package\DFT_GetTablesToLoad\OLEDB_GetTablesToLoad"
-          TopLeft="164,20" />
-        <NodeLayout
-          Size="164,42"
+          Size="164,41.6"
           Id="Package\DFT_GetTablesToLoad\RD_TablesToLoad"
           TopLeft="269,126" />
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\DFT_GetTablesToLoad\OLEDB_GetTablesToLoad"
+          TopLeft="164,20" />
         <EdgeLayout
           Id="Package\DFT_GetTablesToLoad.Paths[OLE DB Source Output]"
           TopLeft="263.5,62">

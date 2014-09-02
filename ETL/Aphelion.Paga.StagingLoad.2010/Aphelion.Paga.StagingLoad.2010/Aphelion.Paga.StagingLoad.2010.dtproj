@@ -31,16 +31,17 @@
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="001_LoadClassificationDims.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="101_DummyTablePackage.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="010_RunInParallel.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
-          <SSIS:ConnectionManager SSIS:Name="__sql2012.MetadataDB.conmgr" />
-          <SSIS:ConnectionManager SSIS:Name="__sql2012.SourceDB.conmgr" />
-          <SSIS:ConnectionManager SSIS:Name="__sql2012.StagingDB.conmgr" />
-          <SSIS:ConnectionManager SSIS:Name="__sql2012.Aphelion.DB.LoadQueue.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="MetadataDB.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="SourceDB.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="StagingDB.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="Aphelion.DB.LoadQueue.conmgr" />
         </SSIS:ConnectionManagers>
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 MetadataDB.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.MetadataDB.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -55,7 +56,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 MetadataDB.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.MetadataDB.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -70,7 +71,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 MetadataDB.Password">
+            <SSIS:Parameter SSIS:Name="CM.MetadataDB.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -84,7 +85,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 MetadataDB.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.MetadataDB.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -99,7 +100,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 MetadataDB.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.MetadataDB.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -114,7 +115,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 MetadataDB.UserName">
+            <SSIS:Parameter SSIS:Name="CM.MetadataDB.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -128,7 +129,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 SourceDB.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.SourceDB.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -143,7 +144,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 SourceDB.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.SourceDB.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -158,7 +159,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 SourceDB.Password">
+            <SSIS:Parameter SSIS:Name="CM.SourceDB.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -172,7 +173,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 SourceDB.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.SourceDB.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -187,7 +188,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 SourceDB.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.SourceDB.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -202,7 +203,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 SourceDB.UserName">
+            <SSIS:Parameter SSIS:Name="CM.SourceDB.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -216,7 +217,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 StagingDB.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.StagingDB.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -231,7 +232,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 StagingDB.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.StagingDB.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -246,7 +247,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 StagingDB.Password">
+            <SSIS:Parameter SSIS:Name="CM.StagingDB.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -260,7 +261,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 StagingDB.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.StagingDB.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -275,7 +276,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 StagingDB.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.StagingDB.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -290,7 +291,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012 StagingDB.UserName">
+            <SSIS:Parameter SSIS:Name="CM.StagingDB.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -304,7 +305,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012.Aphelion.DB.LoadQueue.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.Aphelion DB LoadQueue.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -319,7 +320,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012.Aphelion.DB.LoadQueue.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.Aphelion DB LoadQueue.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -334,7 +335,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012.Aphelion.DB.LoadQueue.Password">
+            <SSIS:Parameter SSIS:Name="CM.Aphelion DB LoadQueue.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -348,7 +349,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012.Aphelion.DB.LoadQueue.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.Aphelion DB LoadQueue.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -363,7 +364,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012.Aphelion.DB.LoadQueue.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.Aphelion DB LoadQueue.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -378,7 +379,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.__sql2012.Aphelion.DB.LoadQueue.UserName">
+            <SSIS:Parameter SSIS:Name="CM.Aphelion DB LoadQueue.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -400,10 +401,10 @@
                 <SSIS:Property SSIS:Name="Name">001_LoadClassificationDims</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">11</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">13</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{410107BA-283E-47EC-9B67-7184793F93D7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0EA8072A-8559-444E-BA35-5D05B7393163}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -417,19 +418,19 @@
                 <SSIS:Property SSIS:Name="Name">101_DummyTablePackage</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{0D84CC06-2050-456F-AA3F-DDCBACC40FF0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4FB97D6D-3447-4C66-945A-9ABA87DCDF99}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="WHERE_Clause">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{46E83C98-BC85-4AFD-B28D-4896C70C0193}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{2E5E1EAF-2B1F-4120-A6B8-70401D47E9BE}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -439,6 +440,38 @@
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Value">
                     </SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="010_RunInParallel.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{C9B631EF-A150-4049-8F64-5A9F7BC82C73}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">RunInParallel</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">28</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{99DCA6E3-121B-47B5-A88E-7546CD5C8BCA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="parmInnerQuery">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{8E2836A3-38AE-48B9-8A46-24CC88FB0D18}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strParm2 , '' as strParm3 , 0 as intParm1 , 0 as intParm2 , 0 as intParm3 , 0 as dblParm1 , 0 as dblParm2 , 0 as dblParm3</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
