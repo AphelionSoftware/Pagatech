@@ -1,7 +1,7 @@
 SELECT
 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName,
-	BaseQuery,
-	WhereClause = 'WHERE EXISTS
+	strParm1 = BaseQuery,
+	strParm2 = 'WHERE EXISTS
 	(
 		SELECT 
 		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log
@@ -9,8 +9,8 @@ SELECT
 			change_log.SYS_CHANGE_VERSION > 0
 			AND change_log.SYS_CHANGE_VERSION <= 0,
 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +'
-	);',
-	SourceTable
+	);'
+
 FROM
 (
 	SELECT
