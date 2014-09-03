@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="9/3/2014 11:48:00 AM"
+  DTS:CreationDate="9/3/2014 11:56:10 AM"
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
   DTS:CreatorName="Administrator"
-  DTS:DTSID="{DC82FEEB-8FA0-4F37-AE5D-99B6331140EB}"
+  DTS:DTSID="{F719688E-DD74-47FB-9A60-86C25D88128C}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="101_DummyTablePackage"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{546DFEAE-0611-4B25-837A-07092BFD16BC}"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{AE825A3E-2F7B-4986-B421-6A0BCF79BD35}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -20,7 +20,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{996FAE84-8CC9-45A1-9B04-697F841A4500}"
+      DTS:DTSID="{BBEC6E5C-73ED-414A-A2D3-C9991619041C}"
       DTS:ObjectName="strParam1">
       <DTS:Property
         DTS:DataType="8"
@@ -29,36 +29,17 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{43C18FCC-6407-4631-8E4D-F13842B8BB45}"
+      DTS:DTSID="{50E01FC5-D20D-48B0-A89E-846342F725F9}"
       DTS:ObjectName="strParam2">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">WHERE EXISTS
-																	(
-																		SELECT 
-																		FROM CHANGETABLE(CHANGES ,AgentCommissionTypeID) AS change_log
-																		WHERE 
-																			change_log.SYS_CHANGE_VERSION &gt; 0
-																			AND change_log.SYS_CHANGE_VERSION &lt;= 6
-																			AND change_log.AgentCommissionTypeID= base_query.AgentCommissionTypeID
-																	);</DTS:Property>
+        DTS:Name="ParameterValue">WHERE 1 = 1;</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{CE063DD3-88A1-412F-8793-F2DB802C34CA}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[$Package::strParam1]"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue
-        DTS:DataType="8">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{93550EDE-8C0E-45FE-B1A9-F7AB891C1F1D}"
+      DTS:DTSID="{66D7C696-B29C-49E5-A263-51235E120208}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="CurrentVersion">
@@ -67,7 +48,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{4BA03491-E49A-4B03-AEEB-262DA0EFF529}"
+      DTS:DTSID="{45C330C7-5A85-4AF0-AF24-68F6F3A9D7FE}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LastSyncVersion">
@@ -76,40 +57,21 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{7A0D5CE0-BBAD-455D-B434-E3FEE136D582}"
+      DTS:DTSID="{CCD4A537-1903-4466-B263-DE0F79AFE432}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[$Package::strParam3]"
+      DTS:Expression="@[$Package::strParam1] +&quot; &quot; + @[$Package::strParam2]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="str_SourceTableName">
+      DTS:ObjectName="SourceDataQuery">
       <DTS:VariableValue
-        DTS:DataType="8">dbo.AgentCommissionType</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{9F918E02-3767-429C-8A61-26481A935EE6}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[$Package::strParam2]"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="str_WHERE_Clause">
-      <DTS:VariableValue
-        DTS:DataType="8">WHERE EXISTS
-																	(
-																		SELECT 
-																		FROM CHANGETABLE(CHANGES ,AgentCommissionTypeID) AS change_log
-																		WHERE 
-																			change_log.SYS_CHANGE_VERSION &gt; 0
-																			AND change_log.SYS_CHANGE_VERSION &lt;= 6
-																			AND change_log.AgentCommissionTypeID= base_query.AgentCommissionTypeID
-																	);</DTS:VariableValue>
+        DTS:DataType="8">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType WHERE 1 = 1;</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\DFT_Load Classification_DimAgentCommissionType"
       DTS:CreationName="SSIS.Pipeline.3"
-      DTS:DTSID="{FC6D5EBA-55AE-4BF5-A562-E14CCABB44CD}"
+      DTS:DTSID="{4333CD45-17B4-4428-A5B2-1B72A3797169}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
       DTS:ObjectName="DFT_Load Classification_DimAgentCommissionType"
@@ -149,7 +111,7 @@
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable">User::BaseQuery</property>
+                  name="SqlCommandVariable">User::SourceDataQuery</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -459,19 +421,6 @@
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -12,8 +12,8 @@
   DTS:ObjectName="RunInParallel"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{EA1D2048-F28F-4D16-B66D-4EAC71A5C00B}">
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{56D1FD11-8D83-437B-B059-674B9F734902}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -24,7 +24,7 @@
       DTS:ObjectName="parmInnerQuery">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strParm2 , '' as strParm3 , 0 as intParm1 , 0 as intParm2 , 0 as intParm3 , 0 as dblParm1 , 0 as dblParm2 , 0 as dblParm3</DTS:Property>
+        DTS:Name="ParameterValue">SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -41,15 +41,15 @@
       DTS:CreationName=""
       DTS:DTSID="{B0485B64-7559-4E89-8A65-EDAB54598293}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;select * from ( select PackageName&#xA;,  strParm1&#xA;/*,  strParm2&#xA;,  strParm3&#xA;, intParm1&#xA;, intParm2&#xA;, intParm3&#xA;, dblParm1&#xA;, dblParm2&#xA;, dblParm3&#xA;, */&#xA;,(Row_Number() over (order by PackageName)) % 8 as Stream&#xA;&#xA;FROM &#xA;(&#xA;&quot;&#xA;+  &#xA; @[$Package::parmInnerQuery] &#xA;+&#xA;&quot;&#xA;  ) src ) OuterSrc WHERE Stream =  &quot;"
+      DTS:Expression="&quot;select * from ( select PackageName&#xA;,  strParm1&#xA;,  strParm2&#xA;/*,  strParm3&#xA;, intParm1&#xA;, intParm2&#xA;, intParm3&#xA;, dblParm1&#xA;, dblParm2&#xA;, dblParm3&#xA;, */&#xA;,(Row_Number() over (order by PackageName)) % 8 as Stream&#xA;&#xA;FROM &#xA;(&#xA;&quot;&#xA;+  &#xA; @[$Package::parmInnerQuery] &#xA;+&#xA;&quot;&#xA;  ) src ) OuterSrc WHERE Stream =  &quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SQLStatementBase">
       <DTS:VariableValue
         DTS:DataType="8">select * from ( select PackageName
 ,  strParm1
-/*,  strParm2
-,  strParm3
+,  strParm2
+/*,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -61,8 +61,18 @@
 
 FROM 
 (
-select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strParm2 , '' as strParm3 , 0 as intParm1 , 0 as intParm2 , 0 as intParm3 , 0 as dblParm1 , 0 as dblParm2 , 0 as dblParm3
+SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
   ) src ) OuterSrc WHERE Stream =  </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E5A66F45-E3CB-4458-97AA-F43BDCA3B731}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strParm2">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -113,8 +123,8 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName
 ,  strParm1
-/*,  strParm2
-,  strParm3
+,  strParm2
+/*,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -126,7 +136,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
 
 FROM 
 (
-select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strParm2 , '' as strParm3 , 0 as intParm1 , 0 as intParm2 , 0 as intParm3 , 0 as dblParm1 , 0 as dblParm2 , 0 as dblParm3
+SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
   ) src ) OuterSrc WHERE Stream =  0</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -159,7 +169,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream0_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -216,8 +226,12 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
+                    <ParameterName>strParam1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                  <ParameterAssignment>
+                    <ParameterName>strParam2</ParameterName>
+                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -297,8 +311,8 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName
 ,  strParm1
-/*,  strParm2
-,  strParm3
+,  strParm2
+/*,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -310,7 +324,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
 
 FROM 
 (
-select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strParm2 , '' as strParm3 , 0 as intParm1 , 0 as intParm2 , 0 as intParm3 , 0 as dblParm1 , 0 as dblParm2 , 0 as dblParm3
+SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
   ) src ) OuterSrc WHERE Stream =  1</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -343,7 +357,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream1_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -400,8 +414,12 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
+                    <ParameterName>strParam1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                  <ParameterAssignment>
+                    <ParameterName>strParam2</ParameterName>
+                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -481,8 +499,8 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName
 ,  strParm1
-/*,  strParm2
-,  strParm3
+,  strParm2
+/*,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -494,7 +512,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
 
 FROM 
 (
-select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strParm2 , '' as strParm3 , 0 as intParm1 , 0 as intParm2 , 0 as intParm3 , 0 as dblParm1 , 0 as dblParm2 , 0 as dblParm3
+SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
   ) src ) OuterSrc WHERE Stream =  2</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -527,7 +545,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream02_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -584,8 +602,12 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
+                    <ParameterName>strParam1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                  <ParameterAssignment>
+                    <ParameterName>strParam2</ParameterName>
+                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -665,8 +687,8 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName
 ,  strParm1
-/*,  strParm2
-,  strParm3
+,  strParm2
+/*,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -678,7 +700,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
 
 FROM 
 (
-select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strParm2 , '' as strParm3 , 0 as intParm1 , 0 as intParm2 , 0 as intParm3 , 0 as dblParm1 , 0 as dblParm2 , 0 as dblParm3
+SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
   ) src ) OuterSrc WHERE Stream =  3</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -768,8 +790,12 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
+                    <ParameterName>strParam1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                  <ParameterAssignment>
+                    <ParameterName>strParam2</ParameterName>
+                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -849,8 +875,8 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName
 ,  strParm1
-/*,  strParm2
-,  strParm3
+,  strParm2
+/*,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -862,7 +888,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
 
 FROM 
 (
-select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strParm2 , '' as strParm3 , 0 as intParm1 , 0 as intParm2 , 0 as intParm3 , 0 as dblParm1 , 0 as dblParm2 , 0 as dblParm3
+SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
   ) src ) OuterSrc WHERE Stream =  4</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -895,7 +921,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream4_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -952,8 +978,12 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
+                    <ParameterName>strParam1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                  <ParameterAssignment>
+                    <ParameterName>strParam2</ParameterName>
+                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -1033,8 +1063,8 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName
 ,  strParm1
-/*,  strParm2
-,  strParm3
+,  strParm2
+/*,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -1046,7 +1076,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
 
 FROM 
 (
-select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strParm2 , '' as strParm3 , 0 as intParm1 , 0 as intParm2 , 0 as intParm3 , 0 as dblParm1 , 0 as dblParm2 , 0 as dblParm3
+SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
   ) src ) OuterSrc WHERE Stream =  5</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -1079,7 +1109,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream05_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1136,8 +1166,12 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
+                    <ParameterName>strParam1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                  <ParameterAssignment>
+                    <ParameterName>strParam2</ParameterName>
+                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -1217,8 +1251,8 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName
 ,  strParm1
-/*,  strParm2
-,  strParm3
+,  strParm2
+/*,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -1230,7 +1264,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
 
 FROM 
 (
-select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strParm2 , '' as strParm3 , 0 as intParm1 , 0 as intParm2 , 0 as intParm3 , 0 as dblParm1 , 0 as dblParm2 , 0 as dblParm3
+SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
   ) src ) OuterSrc WHERE Stream =  6</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -1263,7 +1297,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream06_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1320,8 +1354,12 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
+                    <ParameterName>strParam1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                  <ParameterAssignment>
+                    <ParameterName>strParam2</ParameterName>
+                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -1401,8 +1439,8 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName
 ,  strParm1
-/*,  strParm2
-,  strParm3
+,  strParm2
+/*,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -1414,7 +1452,7 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
 
 FROM 
 (
-select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strParm2 , '' as strParm3 , 0 as intParm1 , 0 as intParm2 , 0 as intParm3 , 0 as dblParm1 , 0 as dblParm2 , 0 as dblParm3
+SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
   ) src ) OuterSrc WHERE Stream =  7</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -1504,8 +1542,12 @@ select '101_DummyTablePackage.dtsx' AS PackageName , '' as strParm1 , '' as strP
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
+                    <ParameterName>strParam1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                  <ParameterAssignment>
+                    <ParameterName>strParam2</ParameterName>
+                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>

@@ -7,41 +7,16 @@
   DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
   DTS:DTSID="{0374E9E0-F6B6-46CB-9C7F-AA6A907946B9}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadClassificationDims"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{C3387AEE-EA83-4099-BE97-8EF3539DD08F}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{AE00EA69-9307-4C78-B7CC-D3F5E92420EB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{20AB4968-DCA6-463D-872B-03F8A4726F4D}"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="ChangeTableName">
-      <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{3C3739FE-1214-4836-ADCC-019808B39FE2}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;extProp.name, extprop.value FROM (SELECT major_id FROM sys.extended_properties WHERE name ='StagingTableName' AND value = '&quot; + @[User::TableName] +&quot;') AS x CROSS APPLY (SELECT name, value &#xA;FROM sys.extended_properties AS y &#xA;WHERE&#x9;x.major_id = y.major_id&#x9;&#xA;AND y.name = 'ChangeTable') as extProp&quot;"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="ChangeTableQuery">
-      <DTS:VariableValue
-        DTS:DataType="8">SELECT
-	extProp.name, extprop.value FROM (SELECT major_id FROM sys.extended_properties WHERE name ='StagingTableName' AND value = '') AS x CROSS APPLY (SELECT name, value 
-FROM sys.extended_properties AS y 
-WHERE	x.major_id = y.major_id	
-AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
-    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{FBFA9AA7-C770-43E2-9577-AD765A00D1C0}"
@@ -50,28 +25,6 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
       DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue
         DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{7BBD0B4B-6182-4447-8406-5A0CDECAFEB1}"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="KeyColumnName">
-      <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{862E5C93-6F2A-4AEF-A6CC-DC135744F9D5}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;extProp.name, extprop.value FROM (SELECT major_id FROM sys.extended_properties WHERE name ='StagingTableName' AND value = '&quot; + @[User::TableName] +&quot;') AS x CROSS APPLY (SELECT name, value FROM sys.extended_properties AS y WHERE&#x9;x.major_id = y.major_id&#x9;AND y.name = 'KeyColumn') as extProp&quot;"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="KeyColumnQuery">
-      <DTS:VariableValue
-        DTS:DataType="8">SELECT
-	extProp.name, extprop.value FROM (SELECT major_id FROM sys.extended_properties WHERE name ='StagingTableName' AND value = '') AS x CROSS APPLY (SELECT name, value FROM sys.extended_properties AS y WHERE	x.major_id = y.major_id	AND y.name = 'KeyColumn') as extProp</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -86,67 +39,65 @@ AND y.name = 'ChangeTable') as extProp</DTS:VariableValue>
       DTS:CreationName=""
       DTS:DTSID="{F3A1E2CD-33A6-4CA1-B15E-80209741C9AE}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;&#xA;&#xA;SELECT 'Load'+TABLE_NAME as PackageName &#xA;, &#xA;' WHERE  1 BETWEEN  &quot; +  (DT_WSTR, 255) @[User::LastSyncVersion] + &quot; AND &quot; + (DT_WSTR, 255)@[User::CurrentVersion]  +&quot;'&#xA;&#xA;As srcParm1&#xA;FROM INFORMATION_SCHEMA.TABLES&#xA;WHERE TABLE_TYPE = 'BASE TABLE'  /*AND TABLE_NAME LIKE 'Classification_%'*/&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName,&#xA;&#x9;strParm1 = BaseQuery,&#xA;&#x9;strParm2 = 'WHERE EXISTS&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;change_log.SYS_CHANGE_VERSION &gt; &quot; +(DT_STR, 20, 1252) @[User::LastSyncVersion] +&quot;&#xA;&#x9;&#x9;&#x9;AND change_log.SYS_CHANGE_VERSION &lt;= &quot; +(DT_STR, 20, 1252) @[User::CurrentVersion] +&quot;,&#xA;&#x9;&#x9;&#x9;AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +'&#xA;&#x9;);'&#xA;&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix,&#xA;&#x9;&#x9;x.StagingTableName, &#xA;&#x9;&#x9;CONVERT(VARCHAR(4000), MAX(CASE &#xA;&#x9;&#x9;&#x9;WHEN extprop.name = 'BaseQuery'&#xA;&#x9;&#x9;&#x9;THEN extprop.value&#xA;&#x9;&#x9;END)) AS BaseQuery,&#xA;&#x9;&#x9;CONVERT(VARCHAR(255), MAX(CASE &#xA;&#x9;&#x9;&#x9;WHEN extprop.name = 'KeyColumn'&#xA;&#x9;&#x9;&#x9;THEN extprop.value&#xA;&#x9;&#x9;END)) AS KeyColumn,&#xA;&#x9;&#x9;MAX(CASE &#xA;&#x9;&#x9;&#x9;WHEN extprop.name = 'SourceTable'&#xA;&#x9;&#x9;&#x9;THEN extprop.value&#xA;&#x9;&#x9;END) AS SourceTable&#xA;&#x9;FROM &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;&#x9;StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name,&#xA;&#x9;&#x9;&#x9;ep.major_id&#xA;&#x9;&#x9;FROM sys.extended_properties AS ep&#xA;&#x9;&#x9;INNER JOIN sys.tables AS t ON&#xA;&#x9;&#x9;&#x9;ep.major_id = t.object_id&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;SCHEMA_NAME(t.schema_id) = 'Classification'&#xA;&#x9;) AS x &#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;name, &#xA;&#x9;&#x9;&#x9;value &#xA;&#x9;&#x9;FROM sys.extended_properties AS y &#xA;&#x9;&#x9;WHERE&#x9;x.major_id = y.major_id&#x9;&#xA;&#x9;&#x9;AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery')&#xA;&#x9;) as extProp&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;x.StagingTableName&#xA;) AS base&#xA;--WHERE base.StagingTableName = 'Classification_DimAgentCommissionType'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strPackageQuery">
       <DTS:VariableValue
-        DTS:DataType="8">
+        DTS:DataType="8">SELECT
+	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName,
+	strParm1 = BaseQuery,
+	strParm2 = 'WHERE EXISTS
+	(
+		SELECT 
+		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log
+		WHERE 
+			change_log.SYS_CHANGE_VERSION &gt; 0
+			AND change_log.SYS_CHANGE_VERSION &lt;= 0,
+			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +'
+	);'
 
-SELECT 'Load'+TABLE_NAME as PackageName 
-, 
-' WHERE  1 BETWEEN  0 AND 0'
-
-As srcParm1
-FROM INFORMATION_SCHEMA.TABLES
-WHERE TABLE_TYPE = 'BASE TABLE'  /*AND TABLE_NAME LIKE 'Classification_%'*/</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{E47B8CA1-8739-45B7-8B76-C1CFCBF2E997}"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="TableName">
-      <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{6385A895-53AC-474C-BAA9-33F3D4DEAAD9}"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="TableNameList">
-      <DTS:VariableValue
-        DTS:DataSubType="ManagedSerializable"
-        DTS:DataType="13">
-        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-          <SOAP-ENV:Body>
-            <xsd:anyType
-              id="ref-1"></xsd:anyType>
-          </SOAP-ENV:Body>
-        </SOAP-ENV:Envelope>
-      </DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{D8CF607A-9C7E-41DF-91BC-FC9944DCFCAD}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;WHERE EXISTS&#xA;(&#xA;&#x9;SELECT &quot; + @[User::KeyColumnName] +&quot;&#xA;&#x9;FROM CHANGETABLE(CHANGES &quot; + @[User::ChangeTableName] +&quot;,0) AS change_log&#xA;&#x9;WHERE &#xA;&#x9;&#x9;change_log.SYS_CHANGE_VERSION &gt; &quot;+ (DT_STR, 20,1252) @[User::LastSyncVersion] +&quot;&#xA;&#x9;&#x9;AND change_log.SYS_CHANGE_VERSION &lt;= &quot;+ (DT_STR, 20,1252) @[User::CurrentVersion] +&quot;,&#xA;&#x9;&#x9;AND change_log.&quot; + @[User::KeyColumnName] +&quot;= base_query.&quot; + @[User::KeyColumnName] +&quot;&#xA;);&quot;"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="WHERE_Clause">
-      <DTS:VariableValue
-        DTS:DataType="8">WHERE EXISTS
+FROM
 (
-	SELECT 
-	FROM CHANGETABLE(CHANGES ,0) AS change_log
-	WHERE 
-		change_log.SYS_CHANGE_VERSION &gt; 0
-		AND change_log.SYS_CHANGE_VERSION &lt;= 0,
-		AND change_log.= base_query.
-);</DTS:VariableValue>
+	SELECT
+		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix,
+		x.StagingTableName, 
+		CONVERT(VARCHAR(4000), MAX(CASE 
+			WHEN extprop.name = 'BaseQuery'
+			THEN extprop.value
+		END)) AS BaseQuery,
+		CONVERT(VARCHAR(255), MAX(CASE 
+			WHEN extprop.name = 'KeyColumn'
+			THEN extprop.value
+		END)) AS KeyColumn,
+		MAX(CASE 
+			WHEN extprop.name = 'SourceTable'
+			THEN extprop.value
+		END) AS SourceTable
+	FROM 
+	(
+		SELECT DISTINCT
+			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name,
+			ep.major_id
+		FROM sys.extended_properties AS ep
+		INNER JOIN sys.tables AS t ON
+			ep.major_id = t.object_id
+		WHERE 
+			SCHEMA_NAME(t.schema_id) = 'Classification'
+	) AS x 
+	CROSS APPLY
+	(
+		SELECT 
+			name, 
+			value 
+		FROM sys.extended_properties AS y 
+		WHERE	x.major_id = y.major_id	
+		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery')
+	) as extProp
+	GROUP BY
+		x.StagingTableName
+) AS base
+--WHERE base.StagingTableName = 'Classification_DimAgentCommissionType'</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -542,27 +493,31 @@ WHERE TABLE_TYPE = 'BASE TABLE'  /*AND TABLE_NAME LIKE 'Classification_%'*/</DTS
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="184.8,41.6"
+          Size="185,42"
           Id="Package\DFT_GetTablesToLoad"
           TopLeft="23.5,220.5" />
         <NodeLayout
-          Size="196,41.6"
+          Size="168,42"
+          Id="Package\EPT_ExecInParallel"
+          TopLeft="300.34286227129,222.211766173023" />
+        <NodeLayout
+          Size="196,42"
           Id="Package\EST_GetVersionNumbers"
           TopLeft="18,118.5" />
         <NodeLayout
-          Size="195.2,41.6"
+          Size="195,42"
           Id="Package\EST_SetVersionNumbers"
           TopLeft="18.5,16.5" />
         <NodeLayout
-          Size="168,41.6"
+          Size="168,42"
           Id="Package\FLC_LoadEachDimension\EPT_TablePackage"
           TopLeft="27,187" />
         <NodeLayout
-          Size="208,41.6"
+          Size="208,42"
           Id="Package\FLC_LoadEachDimension\EST_GetChangeTableName"
           TopLeft="5.50000000000001,107.5" />
         <NodeLayout
-          Size="172,41.6"
+          Size="172,42"
           Id="Package\FLC_LoadEachDimension\EST_GetKeyColumn"
           TopLeft="23.5,5.5" />
         <EdgeLayout
@@ -612,8 +567,8 @@ WHERE TABLE_TYPE = 'BASE TABLE'  /*AND TABLE_NAME LIKE 'Classification_%'*/</DTS
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="288.8,292"
-          Size="288.8,335.2"
+          PanelSize="289,292"
+          Size="289,335"
           Id="Package\FLC_LoadEachDimension"
           TopLeft="5.50000000000006,322.5" />
         <EdgeLayout
@@ -694,43 +649,32 @@ WHERE TABLE_TYPE = 'BASE TABLE'  /*AND TABLE_NAME LIKE 'Classification_%'*/</DTS
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <AnnotationLayout
-          Text="The SETVersionNumbers task should run at the very beginning of the load. It runs against the operational DB and writes to the LoadQueue DB.&#xA;It assumes that both databases reside on the same server. The version numbers set in this step will be used for &#xA;all subsequent loads. It is currently disabled so that it doesn't interfere with testing."
-          ParentId="Package"
-          FontInfo="{assembly:Null}"
-          Size="782.4,72"
-          Id="d63dff49-fdc4-4c30-b05a-142b284a4e18"
-          TopLeft="230.5,5.5" />
-        <NodeLayout
-          Size="168,41.6"
-          Id="Package\EPT_ExecInParallel"
-          TopLeft="300.34286227129,222.211766173023" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="147.333333333333,160.1">
+          TopLeft="147.333333333333,160.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="237.009528937956,62.1117661730229"
+              EndConnector="237.009528937957,61.711766173023"
               Start="0,0"
-              End="237.009528937956,54.6117661730229">
+              End="237.009528937957,54.211766173023">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.1464640376611" />
+                    End="0,20.9845207178231" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.1464640376611"
-                    Point2="0,25.1464640376611"
-                    Point3="4,25.1464640376611" />
+                    Point1="0,20.9845207178231"
+                    Point2="0,24.9845207178231"
+                    Point3="4,24.9845207178231" />
                   <mssgle:LineSegment
-                    End="233.009528937956,25.1464640376611" />
+                    End="233.009528937957,24.9845207178231" />
                   <mssgle:CubicBezierSegment
-                    Point1="233.009528937956,25.1464640376611"
-                    Point2="237.009528937956,25.1464640376611"
-                    Point3="237.009528937956,29.1464640376611" />
+                    Point1="233.009528937957,24.9845207178231"
+                    Point2="237.009528937957,24.9845207178231"
+                    Point3="237.009528937957,28.9845207178231" />
                   <mssgle:LineSegment
-                    End="237.009528937956,54.6117661730229" />
+                    End="237.009528937957,54.211766173023" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -739,6 +683,13 @@ WHERE TABLE_TYPE = 'BASE TABLE'  /*AND TABLE_NAME LIKE 'Classification_%'*/</DTS
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="The SETVersionNumbers task should run at the very beginning of the load. It runs against the operational DB and writes to the LoadQueue DB.&#xA;It assumes that both databases reside on the same server. The version numbers set in this step will be used for &#xA;all subsequent loads. It is currently disabled so that it doesn't interfere with testing."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="782,72"
+          Id="d63dff49-fdc4-4c30-b05a-142b284a4e18"
+          TopLeft="230.5,5.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -746,7 +697,7 @@ WHERE TABLE_TYPE = 'BASE TABLE'  /*AND TABLE_NAME LIKE 'Classification_%'*/</DTS
     design-time-name="Package\DFT_GetTablesToLoad">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="164,41.6"
           Id="Package\DFT_GetTablesToLoad\RD_TablesToLoad"
@@ -786,7 +737,9 @@ WHERE TABLE_TYPE = 'BASE TABLE'  /*AND TABLE_NAME LIKE 'Classification_%'*/</DTS
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

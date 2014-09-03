@@ -21,7 +21,7 @@
 	
 	<Packages>
 		<#
-			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT (rn+100) AS PackagePrefix, TABLE_NAME, TABLE_SCHEMA FROM (	SELECT ROW_NUMBER() OVER (ORDER BY TABLE_SCHEMA, TABLE_NAME) AS rn, TABLE_NAME, TABLE_SCHEMA FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = 'Staging' AND TABLE_NAME = 'Classification_DimAgentCommissionType') AS x;");
+			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT (rn+100) AS PackagePrefix, TABLE_NAME, TABLE_SCHEMA FROM (	SELECT ROW_NUMBER() OVER (ORDER BY TABLE_SCHEMA, TABLE_NAME) AS rn, TABLE_NAME, TABLE_SCHEMA FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = 'Staging' AND TABLE_NAME LIKE 'Classification_%') AS x;");
 	 	    
 			foreach (DataRow row in tableNamesToImport.Rows)
                 { 
@@ -37,29 +37,20 @@
             
 				<Parameters>
 				    <Parameter Name="strParam1" DataType="String">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</Parameter>
-					<Parameter Name="strParam2" DataType="String">WHERE EXISTS
-																	(
-																		SELECT 
-																		FROM CHANGETABLE(CHANGES ,AgentCommissionTypeID) AS change_log
-																		WHERE 
-																			change_log.SYS_CHANGE_VERSION > 0
-																			AND change_log.SYS_CHANGE_VERSION &lt;= 6
-																			AND change_log.AgentCommissionTypeID= base_query.AgentCommissionTypeID
-																	);</Parameter>
+					<Parameter Name="strParam2" DataType="String">WHERE 1 = 1;</Parameter>
 					</Parameters>
             
 				<Variables>
 				  <Variable Name="CurrentVersion" DataType="Int32">0</Variable>
 				  <Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
-				  <Variable Name="BaseQuery" DataType="String" EvaluateAsExpression="true">@[$Package::strParam1]</Variable>
-				  <Variable Name ="str_WHERE_Clause" DataType="String" EvaluateAsExpression="true">@[$Package::strParam2]</Variable> 
+				  <Variable Name="SourceDataQuery" DataType="String" EvaluateAsExpression="true">@[$Package::strParam1] +" " + @[$Package::strParam2]</Variable>
 				 
               </Variables>
 			 <Tasks>
 					<Dataflow Name="DFT_Load <#=row[1]#>">
 					  <Transformations>
 						<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
-						  <VariableInput VariableName="User.BaseQuery"></VariableInput>
+						  <VariableInput VariableName="User.SourceDataQuery"></VariableInput>
 						</OleDbSource>
 						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="StagingDB" KeepIdentity="true">
 						  <ExternalTableOutput Table="<#=DestTableName#>"/>
