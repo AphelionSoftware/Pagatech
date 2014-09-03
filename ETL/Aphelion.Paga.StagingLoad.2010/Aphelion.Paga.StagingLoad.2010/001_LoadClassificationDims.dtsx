@@ -12,8 +12,8 @@
   DTS:ObjectName="001_LoadClassificationDims"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{AE00EA69-9307-4C78-B7CC-D3F5E92420EB}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{9EECDC8C-2FE5-4921-9EB6-C9557AB9447B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -98,6 +98,53 @@ FROM
 		x.StagingTableName
 ) AS base
 --WHERE base.StagingTableName = 'Classification_DimAgentCommissionType'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4AE5D49F-0066-4A4D-AF8B-44EB9E910D05}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName,&#xA;&#x9;strParm1 = BaseQuery,&#xA;&#x9;strParm2 = ''&#xA;&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix,&#xA;&#x9;&#x9;x.StagingTableName, &#xA;&#x9;&#x9;CONVERT(VARCHAR(4000), MAX(CASE &#xA;&#x9;&#x9;&#x9;WHEN extprop.name = 'BaseQuery'&#xA;&#x9;&#x9;&#x9;THEN extprop.value&#xA;&#x9;&#x9;END)) AS BaseQuery&#xA;&#x9;FROM &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;&#x9;StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name,&#xA;&#x9;&#x9;&#x9;ep.major_id&#xA;&#x9;&#x9;FROM sys.extended_properties AS ep&#xA;&#x9;&#x9;INNER JOIN sys.tables AS t ON&#xA;&#x9;&#x9;&#x9;ep.major_id = t.object_id&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;SCHEMA_NAME(t.schema_id) = 'Classification'&#xA;&#x9;) AS x &#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;name, &#xA;&#x9;&#x9;&#x9;value &#xA;&#x9;&#x9;FROM sys.extended_properties AS y &#xA;&#x9;&#x9;WHERE&#x9;x.major_id = y.major_id&#x9;&#xA;&#x9;&#x9;AND y.name = 'BaseQuery'&#xA;&#x9;) as extProp&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;x.StagingTableName&#xA;) AS base&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strPackageQuery_LoadAll">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT
+	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName,
+	strParm1 = BaseQuery,
+	strParm2 = ''
+
+FROM
+(
+	SELECT
+		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix,
+		x.StagingTableName, 
+		CONVERT(VARCHAR(4000), MAX(CASE 
+			WHEN extprop.name = 'BaseQuery'
+			THEN extprop.value
+		END)) AS BaseQuery
+	FROM 
+	(
+		SELECT DISTINCT
+			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name,
+			ep.major_id
+		FROM sys.extended_properties AS ep
+		INNER JOIN sys.tables AS t ON
+			ep.major_id = t.object_id
+		WHERE 
+			SCHEMA_NAME(t.schema_id) = 'Classification'
+	) AS x 
+	CROSS APPLY
+	(
+		SELECT 
+			name, 
+			value 
+		FROM sys.extended_properties AS y 
+		WHERE	x.major_id = y.major_id	
+		AND y.name = 'BaseQuery'
+	) as extProp
+	GROUP BY
+		x.StagingTableName
+) AS base</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -282,6 +329,28 @@ FROM
           <ParameterAssignment>
             <ParameterName>parmInnerQuery</ParameterName>
             <BindedVariableOrParameterName>User::strPackageQuery</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EPT_ExecInParallel_LoadAll"
+      DTS:CreationName="SSIS.ExecutePackageTask.3"
+      DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{ffa4dce5-b90d-4ec0-8a04-797df2899a97}"
+      DTS:ExecutableType="SSIS.ExecutePackageTask.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EPT_ExecInParallel_LoadAll"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>010_RunInParallel.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>parmInnerQuery</ParameterName>
+            <BindedVariableOrParameterName>User::strPackageQuery_LoadAll</BindedVariableOrParameterName>
           </ParameterAssignment>
         </ExecutePackageTask>
       </DTS:ObjectData>
@@ -690,6 +759,10 @@ FROM
           Size="782,72"
           Id="d63dff49-fdc4-4c30-b05a-142b284a4e18"
           TopLeft="230.5,5.5" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\EPT_ExecInParallel_LoadAll"
+          TopLeft="658,236" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
