@@ -21,7 +21,7 @@
 	
 	<Packages>
 		<#
-			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT (rn+100) AS PackagePrefix, TABLE_NAME, TABLE_SCHEMA FROM (	SELECT ROW_NUMBER() OVER (ORDER BY TABLE_SCHEMA, TABLE_NAME) AS rn, TABLE_NAME, TABLE_SCHEMA FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = 'Staging' AND TABLE_NAME LIKE 'Classification_%') AS x;");
+			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT (rn+100) AS PackagePrefix, TABLE_NAME, TABLE_SCHEMA FROM (	SELECT ROW_NUMBER() OVER (ORDER BY TABLE_SCHEMA, TABLE_NAME) AS rn, TABLE_NAME, TABLE_SCHEMA FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = 'Staging' AND TABLE_NAME = 'Classification_DimAgentCommissionType') AS x;");
 	 	    
 			foreach (DataRow row in tableNamesToImport.Rows)
                 { 
@@ -46,15 +46,14 @@
 																			AND change_log.SYS_CHANGE_VERSION &lt;= 6
 																			AND change_log.AgentCommissionTypeID= base_query.AgentCommissionTypeID
 																	);</Parameter>
-					<Parameter Name="strParam3" DataType="String">dbo.AgentCommissionType</Parameter>
-				</Parameters>
+					</Parameters>
             
 				<Variables>
 				  <Variable Name="CurrentVersion" DataType="Int32">0</Variable>
 				  <Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
 				  <Variable Name="BaseQuery" DataType="String" EvaluateAsExpression="true">@[$Package::strParam1]</Variable>
 				  <Variable Name ="str_WHERE_Clause" DataType="String" EvaluateAsExpression="true">@[$Package::strParam2]</Variable> 
-				  <Variable Name ="str_SourceTableName" DataType="String" EvaluateAsExpression="true">@[$Package::strParam3]</Variable> 
+				 
               </Variables>
 			 <Tasks>
 					<Dataflow Name="DFT_Load <#=row[1]#>">

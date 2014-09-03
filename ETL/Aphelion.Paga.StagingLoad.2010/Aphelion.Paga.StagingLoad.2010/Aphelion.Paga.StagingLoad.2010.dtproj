@@ -414,23 +414,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="101_DummyTablePackage.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{DB66CE14-A14B-4E07-8EE5-AE04602A0636}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{DC82FEEB-8FA0-4F37-AE5D-99B6331140EB}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">101_DummyTablePackage</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{4FB97D6D-3447-4C66-945A-9ABA87DCDF99}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{546DFEAE-0611-4B25-837A-07092BFD16BC}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="strParam1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{2E5E1EAF-2B1F-4120-A6B8-70401D47E9BE}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{996FAE84-8CC9-45A1-9B04-697F841A4500}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -438,8 +438,29 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
+                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="strParam2">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{43C18FCC-6407-4631-8E4D-F13842B8BB45}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE EXISTS
+																	(
+																		SELECT 
+																		FROM CHANGETABLE(CHANGES ,AgentCommissionTypeID) AS change_log
+																		WHERE 
+																			change_log.SYS_CHANGE_VERSION &gt; 0
+																			AND change_log.SYS_CHANGE_VERSION &lt;= 6
+																			AND change_log.AgentCommissionTypeID= base_query.AgentCommissionTypeID
+																	);</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -451,10 +472,10 @@
                 <SSIS:Property SSIS:Name="Name">RunInParallel</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">28</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">32</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{99DCA6E3-121B-47B5-A88E-7546CD5C8BCA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{EA1D2048-F28F-4D16-B66D-4EAC71A5C00B}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -482,7 +503,12 @@
       </SSIS:Project>
     </Manifest>
   </DeploymentModelSpecificContent>
-  <Miscellaneous />
+  <Miscellaneous>
+    <ProjectItem>
+      <Name>WorkingVariables.biml</Name>
+      <FullPath>WorkingVariables.biml</FullPath>
+    </ProjectItem>
+  </Miscellaneous>
   <Configurations>
     <Configuration>
       <Name>Development</Name>

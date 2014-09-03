@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="09/03/2014 11:35:41" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{71B4AB43-A8EB-4E51-A324-DC1D5F370593}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="104_Classification_DimFinancialTransactionType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{8E10843C-D082-454D-82D1-A2F875ECE02D}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{2BCFCE80-3322-4044-84B0-A2DEA060095F}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimFinancialTransactionType" DTS:refId="Package\DFT_Load Classification_DimFinancialTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+          <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{0D553C95-FED5-47C0-B5CB-49DD94B17264}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="SourceKey" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="Name" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]" length="50" lineageId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]" length="50" lineageId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Error].Columns[SourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Error].Columns[Name]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::BaseQuery</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{D3A5600D-C73B-4003-A16E-ACC08F23C506}:external" connectionManagerRefId="Project.ConnectionManagers[StagingDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="Description" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Description]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="Name" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Output].Columns[Name]" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[Name]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Outputs[Error]" synchronousInputId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Staging.Classification_DimFinancialTransactionType</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">true</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+            </component>
+          </components>
+          <paths>
+            <path endId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]" name="OLEDB_GetData_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Classification_DimFinancialTransactionType.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]" startId="Package\DFT_Load Classification_DimFinancialTransactionType\OLEDB_GetData.Outputs[Output]">
+            </path>
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{38725678-CC61-4E0B-A0FB-62B7620D94C9}" DTS:ObjectName="strParam1" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{1C70CAD2-2E85-4B4E-A5CE-A1A1CA898EF9}" DTS:ObjectName="strParam2" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">WHERE EXISTS
+																	(
+																		SELECT 
+																		FROM CHANGETABLE(CHANGES ,AgentCommissionTypeID) AS change_log
+																		WHERE 
+																			change_log.SYS_CHANGE_VERSION &gt; 0
+																			AND change_log.SYS_CHANGE_VERSION &lt;= 6
+																			AND change_log.AgentCommissionTypeID= base_query.AgentCommissionTypeID
+																	);</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{F6FB6E30-4769-4F28-B46F-FC6A1C7ED661}" DTS:ObjectName="strParam3" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">dbo.AgentCommissionType</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6B2C60A3-A45B-4727-BDFC-AE07463636B2}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BC7FB371-7831-4DAD-90F2-0563001DB429}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+      <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8129D355-37D3-447A-A6B4-4BC5D394FD5F}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::strParam1]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1E1C51F8-1010-4C75-BF0C-0234EE7097D1}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::strParam2]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="str_WHERE_Clause">
+      <DTS:VariableValue DTS:DataType="8">WHERE EXISTS
+																	(
+																		SELECT 
+																		FROM CHANGETABLE(CHANGES ,AgentCommissionTypeID) AS change_log
+																		WHERE 
+																			change_log.SYS_CHANGE_VERSION &gt; 0
+																			AND change_log.SYS_CHANGE_VERSION &lt;= 6
+																			AND change_log.AgentCommissionTypeID= base_query.AgentCommissionTypeID
+																	);</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5E7B0298-D170-431D-9614-C2C219E07A10}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::strParam3]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="str_SourceTableName">
+      <DTS:VariableValue DTS:DataType="8">dbo.AgentCommissionType</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>
