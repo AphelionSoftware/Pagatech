@@ -3,28 +3,35 @@
 <#@ import namespace="Varigence.Hadron.CoreLowerer.SchemaManagement" #>
 
 <# var DestConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
-<# var MetaDataConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
+<# var MetaDataConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_EDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
 
+	
 <Biml xmlns="http://schemas.varigence.com/biml.xsd">
 	<Connections>
-		<Connection Name="__sql2012.Aphelion.DB.LoadQueue" ConnectionString="Data Source=.\sql2012;Initial Catalog=Aphelion.DB.LoadQueue;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
-		<Connection Name="__sql2012.Paga_Staging" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
-		<Connection Name="__sql2012.PagaOpsDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=PagaOpsDB;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
-		<Connection Name="__sql2012.Paga" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga;Provider=SQLNCLI10.1;Integrated Security=SSPI;Auto Translate=False;" />
+	 <Connection Name="__sql2012.Aphelion.DB.LoadQueue" ConnectionString="Data Source=.\sql2012;Initial Catalog=Aphelion.DB.LoadQueue;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="__sql2012.StagingDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="__sql2012.SourceDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=PagaOpsDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="__sql2012.MetadataDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
 	</Connections>
-	
-	
+	<PackageProjects>
+		<PackageProject Name="Aphelion.Paga.StagingLoad.2010">
+      
+		</PackageProject>
+	 </PackageProjects>
+
 		<Packages>
 		<#
-			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT (rn+100) AS PackagePrefix, TABLE_NAME FROM (	SELECT ROW_NUMBER() OVER (ORDER BY TABLE_SCHEMA, TABLE_NAME) AS rn, TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = 'Staging' AND TABLE_NAME = 'Classification_DimAgentCommissionType') x;");
+			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT (rn+100) AS PackagePrefix, TABLE_NAME, TABLE_SCHEMA FROM (	SELECT ROW_NUMBER() OVER (ORDER BY TABLE_SCHEMA, TABLE_NAME) AS rn, TABLE_NAME, TABLE_SCHEMA FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = 'Staging' AND TABLE_NAME LIKE 'Classification_%') AS x;");
 			
 			
 			 foreach (DataRow row in tableNamesToImport.Rows)
                 { 
         #>
-     
+		
 		<Package Name="<#=row[0]#>_<#=row[1]#>" ConstraintMode="Linear" AutoCreateConfigurationsType="None">
+
 			<#
+				var DestTableName = String.Format("{0}.{1}",row[2], row[1]);
 				var GetMetaData = "SELECT extprop.name, extprop.value FROM (SELECT major_id FROM sys.extended_properties WHERE name ='StagingTableName' AND value = '" +row[1].ToString() +"') AS x CROSS APPLY (SELECT name, value FROM sys.extended_properties AS y WHERE	x.major_id = y.major_id	AND (y.name = 'BaseQuery' OR y.name = 'KeyColumn')) as extProp ORDER BY name";
 				DataTable BaseQuery  = ExternalDataAccess.GetDataTable(MetaDataConnection.ConnectionString, GetMetaData);
 				var BaseQueryRow = BaseQuery.Select();
@@ -34,7 +41,8 @@
 			#>
             
 				<Parameters>
-				   <Parameter Name="WHERE_Clause" DataType="String">Where 1 = 1</Parameter>
+				    <Parameter Name="WHERE_Clause" DataType="String">Where 1 = 1</Parameter>
+					<Parameter Name="SourceTableName" DataType="String">dbo.AgentCommissionType</Parameter>
 				</Parameters>
             
 				<Variables>
@@ -42,10 +50,28 @@
 				  <Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
 				  <Variable Name="KeyColumn" DataType="String"><#=KeyColumnText#></Variable>
 				  <Variable Name="BaseQuery" DataType="String"><#=BaseQueryText#></Variable>
+				  <Variable Name ="str_WHERE_Clause" DataType="String" EvaluateAsExpression="true">@[$Package::WHERE_Clause]</Variable> 
+				  <Variable Name ="str_SourceTableName" DataType="String" EvaluateAsExpression="true">@[$Package::SourceTableName]</Variable> 
               </Variables>
+			 <Tasks>
+					<Dataflow Name="DFT_Load <#=row[1]#>">
+					  <Transformations>
+						<OleDbSource Name="OLEDB_GetData" ConnectionName="__sql2012.SourceDB">
+						  <VariableInput VariableName="User.BaseQuery"></VariableInput>
+						</OleDbSource>
+						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="__sql2012.StagingDB" KeepIdentity="true">
+						  <ExternalTableOutput Table="<#=DestTableName#>"/>
+						</OleDbDestination>
+					  </Transformations>
+					</Dataflow>
+				</Tasks>
+				
+		
 		</Package>
+		
 		<# } #>
 	</Packages>
+	
   
         
          
