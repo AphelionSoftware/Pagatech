@@ -14,6 +14,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimPagaAccountUserType_SourceKey]
     ON [Classification].[DimPagaAccountUserType]([SourceKey] ASC);
@@ -50,20 +52,24 @@ FROM dbo.PagaAccountUserType' ,
 @level1name=N'DimPagaAccountUserType'
 GO
 
-EXEC sys.sp_addextendedproperty 
-@name=N'CT_Filter', 
-@value=N'AND change_log.PagaAccountUserTypeID = base_query.PagaAccountUserTypeID' , 
-@level0type=N'SCHEMA',
-@level0name=N'Classification', 
-@level1type=N'TABLE',
-@level1name=N'DimPagaAccountUserType'
+
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	PagaAccountUserTypeID AS SourceKey, 
-	Description AS Name
+	 CONVERT(VARCHAR(255),Description) AS Name
 FROM dbo.PagaAccountUserType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountUserType';
+
+
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountUserType', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.PagaAccountUserType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountUserType';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'PagaAccountUserTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountUserType';
 

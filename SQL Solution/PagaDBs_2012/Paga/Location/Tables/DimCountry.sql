@@ -15,6 +15,8 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimCountry_SourceKey]
     ON [Location].[DimCountry]([SourceKey] ASC);
@@ -46,4 +48,20 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCountry', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.Country', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCountry';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCountry';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'CountryID', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCountry';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT CountryID AS SourceKey, Name AS Name FROM dbo.Country', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCountry';
 

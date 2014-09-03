@@ -14,6 +14,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimProcessStatus_SourceKey]
     ON [Classification].[DimProcessStatus]([SourceKey] ASC);
@@ -46,20 +48,24 @@ FROM dbo.ProcessStatus' ,
 @level1name=N'DimProcessStatus'
 GO
 
-EXEC sys.sp_addextendedproperty 
-@name=N'CT_Filter', 
-@value=N'AND change_log.ProcessStatusID = base_query.ProcessStatusID' , 
-@level0type=N'SCHEMA',
-@level0name=N'Classification', 
-@level1type=N'TABLE',
-@level1name=N'DimProcessStatus'
+
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	ProcessStatusID AS SourceKey, 
-	ProcessStatusID AS Name
+	 CONVERT(VARCHAR(255),ProcessStatusID) AS Name
 FROM dbo.ProcessStatus', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessStatus';
+
+
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessStatus', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.ProcessStatus', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessStatus';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'ProcessStatusID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessStatus';
 

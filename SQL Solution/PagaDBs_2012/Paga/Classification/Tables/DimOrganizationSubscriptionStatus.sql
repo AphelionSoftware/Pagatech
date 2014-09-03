@@ -14,6 +14,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationSubscriptionStatus_SourceKey]
     ON [Classification].[DimOrganizationSubscriptionStatus]([SourceKey] ASC);
@@ -36,12 +38,22 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'CT_Filter', @value = N'AND change_log.OrganizationSubscriptionStatusId = base_query.OrganizationSubscriptionStatusId', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationSubscriptionStatus';
+
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	OrganizationSubscriptionStatusId AS SourceKey, 
-	Description AS Name
+	 CONVERT(VARCHAR(255),Description) AS Name
 FROM dbo.OrganizationSubscriptionStatus', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationSubscriptionStatus';
+
+
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.OrganizationSubscriptionStatus', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationSubscriptionStatus';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'OrganizationSubscriptionStatusId', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationSubscriptionStatus';
 

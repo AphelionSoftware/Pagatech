@@ -16,6 +16,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialTransactionType_SourceKey]
     ON [Classification].[DimFinancialTransactionType]([SourceKey] ASC);
@@ -42,15 +44,24 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'CT_Filter', @value = N'AND change_log.FinancialTransactionTypeID = base_query.FinancialTransactionTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionType';
+
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	FinancialTransactionTypeID AS SourceKey, 
-	Description AS Name,
-	Description AS Description
+	 CONVERT(VARCHAR(255),Description) AS Name
 FROM dbo.FinancialTransactionType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionType';
 
 
+
+
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialTransactionType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionType';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialTransactionTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionType';
 

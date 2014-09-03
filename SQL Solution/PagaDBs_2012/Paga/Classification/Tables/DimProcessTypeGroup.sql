@@ -14,13 +14,25 @@
 
 
 
+
+
 GO
-EXECUTE sp_addextendedproperty @name = N'CT_Filter', @value = N'AND change_log.ProcessTypeGroupID = base_query.ProcessTypeGroupID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessTypeGroup';
+
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	ProcessTypeGroupID AS SourceKey, 
-	Description AS Name
+	 CONVERT(VARCHAR(255),Description) AS Name
 FROM dbo.ProcessTypeGroup', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessTypeGroup';
+
+
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.ProcessTypeGroup', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessTypeGroup';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'ProcessTypeGroupID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessTypeGroup';
 

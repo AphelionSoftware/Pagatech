@@ -16,6 +16,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationVerificationStatus_SourceKey]
     ON [Classification].[DimOrganizationVerificationStatus]([SourceKey] ASC);
@@ -38,14 +40,24 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'CT_Filter', @value = N'AND change_log.OrganizationVerificationStatusID = base_query.OrganizationVerificationStatusID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationVerificationStatus';
+
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	OrganizationVerificationStatusID AS SourceKey, 
-	Description AS Name
+	 CONVERT(VARCHAR(255),Description) AS Name
 FROM dbo.OrganizationVerificationStatus', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationVerificationStatus';
 
 
+
+
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.OrganizationVerificationStatus', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationVerificationStatus';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'OrganizationVerificationStatusID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationVerificationStatus';
 
