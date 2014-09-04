@@ -3,7 +3,7 @@
     [SourceKey]                 VARCHAR (255)  NOT NULL,
     [Name]                      VARCHAR (255)  NOT NULL,
     [Code]                      VARCHAR (50)   NOT NULL,
-    [Description]               VARCHAR (1000) NULL,
+    [TextDesciption]            VARCHAR (1000) NULL,
     [DimGLCodeID]               INT            NOT NULL,
     [SourceKeyHash]             BIGINT         NOT NULL,
     [DeltaHash]                 BIGINT         NOT NULL,
@@ -14,6 +14,8 @@
     CONSTRAINT [pk_DimFinancialAccountType] PRIMARY KEY CLUSTERED ([DimFinancialAccountTypeID] ASC),
     CONSTRAINT [FK_DimFinancialAccountType_DimGLCode] FOREIGN KEY ([DimGLCodeID]) REFERENCES [Finance].[DimGLCode] ([DimGLCodeID])
 );
+
+
 
 
 GO

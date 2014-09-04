@@ -5,7 +5,7 @@
     [Code]                         VARCHAR (50)    NOT NULL,
     [DimBankID]                    INT             NOT NULL,
     [BankAccountLinkStatusType]    VARCHAR (255)   NOT NULL,
-    [Description]                  VARCHAR (1000)  NULL,
+    [TextDesciption]               VARCHAR (1000)  NULL,
     [AccountHolderName]            VARCHAR (255)   NULL,
     [BranchName]                   VARCHAR (255)   NULL,
     [KYC_Rating]                   VARCHAR (30)    NULL,
@@ -27,6 +27,8 @@
     CONSTRAINT [pk_DimBankAccountID] PRIMARY KEY CLUSTERED ([DimBankAccountID] ASC),
     CONSTRAINT [fk_DimBankAccount_DimBankID] FOREIGN KEY ([DimBankID]) REFERENCES [Finance].[DimBank] ([DimBankID])
 );
+
+
 
 
 GO
@@ -55,7 +57,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'BankAccountLin
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'Description', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBankAccount', @level2type = N'COLUMN', @level2name = N'Description';
+
 
 
 GO
@@ -112,4 +114,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBankAccount', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'Description', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBankAccount', @level2type = N'COLUMN', @level2name = N'TextDesciption';
 

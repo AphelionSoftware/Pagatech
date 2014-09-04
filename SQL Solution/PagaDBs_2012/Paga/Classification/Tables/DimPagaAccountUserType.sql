@@ -16,6 +16,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimPagaAccountUserType_SourceKey]
     ON [Classification].[DimPagaAccountUserType]([SourceKey] ASC);
@@ -41,10 +43,17 @@ GO
 
 
 
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
+		COALESCE(base_query.SourceKey,change_log.change_log_SourceKey) AS SourceKey,
+		base_query.name,
+		change_log.change_operation
+	FROM 
+	(SELECT
 	PagaAccountUserTypeID AS SourceKey, 
 	 CONVERT(VARCHAR(255),Description) AS Name
-FROM dbo.PagaAccountUserType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountUserType';
+FROM dbo.PagaAccountUserType) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountUserType';
+
+
 
 
 

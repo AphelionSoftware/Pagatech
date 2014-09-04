@@ -1,4 +1,4 @@
-CREATE TABLE [Classification].[DimAgentCommissionType] (
+﻿CREATE TABLE [Classification].[DimAgentCommissionType] (
     [DimAgentCommissionTypeID] INT           NOT NULL,
     [SourceKey]                VARCHAR (255) NOT NULL,
     [Name]                     VARCHAR (255) NOT NULL,
@@ -18,13 +18,22 @@ CREATE TABLE [Classification].[DimAgentCommissionType] (
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimAgentCommissionType_SourceKey]
     ON [Classification].[DimAgentCommissionType]([SourceKey] ASC);
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT AgentCommissionTypeId AS SourceKey, CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name FROM dbo.AgentCommissionType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimAgentCommissionType';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
+		COALESCE(base_query.SourceKey,change_log.change_log_SourceKey) AS SourceKey,
+		base_query.name,
+		change_log.change_operation
+	FROM 
+	(SELECT AgentCommissionTypeId AS SourceKey, CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name FROM dbo.AgentCommissionType) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimAgentCommissionType';
+
+
 
 
 

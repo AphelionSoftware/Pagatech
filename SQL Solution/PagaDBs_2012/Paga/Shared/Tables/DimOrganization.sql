@@ -7,7 +7,7 @@
     [DimOrganizationSubscriptionStatusID] INT            NOT NULL,
     [DimOrganizationVerificationStatusID] INT            NOT NULL,
     [DimMerchantPagaAccountID]            INT            NOT NULL,
-    [Description]                         VARCHAR (1000) NULL,
+    [TextDesciption]                      VARCHAR (1000) NULL,
     [ReferenceNumber]                     VARCHAR (30)   NULL,
     [TaxIDNumber]                         VARCHAR (30)   NOT NULL,
     [VATCertificationNumber]              VARCHAR (30)   NULL,
@@ -27,6 +27,8 @@
     CONSTRAINT [fk_DimOrganization_DimOrganizationSubscriptionStatusID] FOREIGN KEY ([DimOrganizationSubscriptionStatusID]) REFERENCES [Classification].[DimOrganizationSubscriptionStatus] ([DimOrganizationSubscriptionStatusID]),
     CONSTRAINT [fk_DimOrganization_DimOrganizationVerificationStatusID] FOREIGN KEY ([DimOrganizationVerificationStatusID]) REFERENCES [Classification].[DimOrganizationVerificationStatus] ([DimOrganizationVerificationStatusID])
 );
+
+
 
 
 GO
@@ -63,7 +65,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccount
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'Description', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'Description';
+
 
 
 GO
@@ -100,4 +102,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'Description', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'TextDesciption';
 
