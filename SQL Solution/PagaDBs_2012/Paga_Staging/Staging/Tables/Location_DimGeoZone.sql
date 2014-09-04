@@ -2,7 +2,9 @@
     [SourceKey]        VARCHAR (255) NOT NULL,
     [Name]             VARCHAR (255) NOT NULL,
     [Code]             VARCHAR (50)  NOT NULL,
-    [CountrySourceKey] INT           NOT NULL,
+    [CountrySourceKey] VARCHAR (255) NOT NULL,
     [Symbol]           VARCHAR (3)   NULL
 );
+
+
 

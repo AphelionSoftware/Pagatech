@@ -3,7 +3,7 @@
     [Name]          VARCHAR (255)   NOT NULL,
     [Code]          VARCHAR (50)    NOT NULL,
     [DateOfBirthID] INT             NOT NULL,
-    [RoleSourceKey] INT             NOT NULL,
+    [RoleSourceKey] VARCHAR (255)   NOT NULL,
     [FirstName]     VARCHAR (255)   NULL,
     [MiddleName]    VARCHAR (255)   NULL,
     [LastName]      VARCHAR (255)   NULL,
@@ -12,4 +12,6 @@
     [Email]         VARCHAR (100)   NULL,
     [IsEnabled]     BIT             NULL
 );
+
+
 

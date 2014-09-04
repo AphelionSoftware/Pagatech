@@ -38,22 +38,9 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountUserType', @level2type = N'COLUMN', @level2name = N'DeltaHash';
-
-EXEC sys.sp_addextendedproperty 
-@name=N'BaseQuery', 
-@value=N'SELECT
-	PagaAccountUserTypeID AS SourceKey, 
-	Description AS Name
-FROM dbo.PagaAccountUserType' , 
-@level0type=N'SCHEMA',
-@level0name=N'Classification', 
-@level1type=N'TABLE',
-@level1name=N'DimPagaAccountUserType'
-GO
 
 
-GO
+
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	PagaAccountUserTypeID AS SourceKey, 
 	 CONVERT(VARCHAR(255),Description) AS Name

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>Paga</Name>
+    <Name>Paga_EDW</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{59d9092c-20e6-4184-97b4-047e59e658d4}</ProjectGuid>
@@ -25,6 +25,8 @@
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
     <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <TargetDatabase>Paga_EDW</TargetDatabase>
+    <ValidateCasingOnIdentifiers>False</ValidateCasingOnIdentifiers>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -133,27 +135,6 @@
     <Build Include="Security\OLAP.sql" />
     <Build Include="Security\Shared.sql" />
     <Build Include="ExtendedProperties.sql" />
-    <Build Include="OLAP\Views\FactUserMonthlySnapshot.sql" />
-    <Build Include="OLAP\Views\FactProcessTransaction.sql" />
-    <Build Include="OLAP\Views\FactMonthlyGLSnapshot.sql" />
-    <Build Include="OLAP\Views\FactFinancialTransaction.sql" />
-    <Build Include="OLAP\Views\FactDailyGLSnapshot.sql" />
-    <Build Include="OLAP\Views\FactAirtimeTransaction.sql" />
-    <Build Include="OLAP\Views\FactAirtimeStockOnHandSnapshot.sql" />
-    <Build Include="OLAP\Views\FactAirtimeStockMovement.sql" />
-    <Build Include="OLAP\Views\DimUser.sql" />
-    <Build Include="OLAP\Views\DimTime.sql" />
-    <Build Include="OLAP\Views\DimProcessType.sql" />
-    <Build Include="OLAP\Views\DimProcessStatus.sql" />
-    <Build Include="OLAP\Views\DimPagaAccount.sql" />
-    <Build Include="OLAP\Views\DimOrganization.sql" />
-    <Build Include="OLAP\Views\DimMobileOperator.sql" />
-    <Build Include="OLAP\Views\DimFinancialTransactionType.sql" />
-    <Build Include="OLAP\Views\DimFinancialAccount.sql" />
-    <Build Include="OLAP\Views\DimDate.sql" />
-    <Build Include="OLAP\Views\DimCity.sql" />
-    <Build Include="OLAP\Views\DimChannel.sql" />
-    <Build Include="OLAP\Views\DimAgentCommissionType.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Paga.refactorlog" />

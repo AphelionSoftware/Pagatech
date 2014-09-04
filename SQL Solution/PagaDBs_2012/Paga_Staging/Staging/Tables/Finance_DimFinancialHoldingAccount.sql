@@ -2,12 +2,14 @@
     [SourceKey]                     VARCHAR (255)   NOT NULL,
     [Name]                          VARCHAR (255)   NOT NULL,
     [Code]                          VARCHAR (50)    NOT NULL,
-    [BankAccountSourceKey]          INT             NOT NULL,
-    [CurrencySourceKey]             INT             NOT NULL,
-    [FinancialAccountTypeSourceKey] INT             NOT NULL,
+    [BankAccountSourceKey]          VARCHAR (255)   NOT NULL,
+    [CurrencySourceKey]             VARCHAR (255)   NOT NULL,
+    [FinancialAccountTypeSourceKey] VARCHAR (255)   NOT NULL,
     [AccountNumber]                 VARCHAR (20)    NULL,
     [RestrictedBalance]             DECIMAL (18, 2) NULL,
     [OpeningBalance]                DECIMAL (18, 2) NULL,
     [TotalBalance]                  DECIMAL (18, 2) NULL
 );
+
+
 
