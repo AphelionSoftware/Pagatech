@@ -12,8 +12,8 @@
   DTS:ObjectName="001_LoadSpecficSchema"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="47"
-  DTS:VersionGUID="{91FE5228-9F3B-4EFF-A6B0-AA055C4F0CC0}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{99821672-8944-4B7D-9F14-C5D5691686BC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -25,7 +25,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="11"
-        DTS:Name="ParameterValue">0</DTS:Property>
+        DTS:Name="ParameterValue">-1</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -65,7 +65,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="strJoinType">
       <DTS:VariableValue
-        DTS:DataType="8">RIGHT JOIN</DTS:VariableValue>
+        DTS:DataType="8">LEFT JOIN</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -78,7 +78,7 @@
       <DTS:VariableValue
         DTS:DataType="8">SELECT
 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName,
-	strParm1 = RIGHT JOIN
+	strParm1 = LEFT JOIN
 (
 	SELECT ' +base.KeyColumn +' as change_log_SourceKey, SYS_CHANGE_OPERATION AS change_operation
 	FROM CHANGETABLE(CHANGES ' +base.SourceTable +',0) AS change_log

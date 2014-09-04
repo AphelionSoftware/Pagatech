@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/04/2014 16:52:46" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{079A3C97-0587-4C5F-BEEE-F18A7C963F3F}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="105_Classification_DimOrganizationSubscriptionStatus" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{6DBEB664-F45C-4E5D-858F-1D32E6CD7C5B}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/04/2014 20:18:53" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{7C949FC5-6AB9-40CC-9B03-C3854A472B36}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="105_Classification_DimOrganizationSubscriptionStatus" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{DCB4CFF4-B4DE-409C-ACBC-3B18B6CF7FE1}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{B91B2872-D822-469C-B863-BB15A9053749}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimOrganizationSubscriptionStatus" DTS:refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{F0B701AC-8946-43D5-BBFC-AC7E9B72CF1A}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimOrganizationSubscriptionStatus" DTS:refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -13,21 +13,17 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="SourceKey" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]">
+                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="change_log_SourceKey" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[change_log_SourceKey]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="name" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[name]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="wstr" length="1" name="change_operation" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]" length="50" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
                     </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[change_log_SourceKey]" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[change_log_SourceKey]" name="change_log_SourceKey" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[change_log_SourceKey]" truncationRowDisposition="FailComponent">
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[name]" length="255" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[name]" name="name" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[name]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="wstr" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]" length="1" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[change_operation]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -37,11 +33,9 @@
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[SourceKey]">
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[SourceKey]">
                     </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[Name]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[change_log_SourceKey]" name="change_log_SourceKey" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[change_log_SourceKey]">
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[name]" name="name" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[name]">
                     </outputColumn>
                     <outputColumn dataType="wstr" length="1" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[change_operation]">
                     </outputColumn>
@@ -80,11 +74,15 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
+                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
                     </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[Name]" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[Name]">
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="name" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[name]" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[name]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="wstr" cachedLength="1" cachedName="change_operation" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[change_operation]" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[change_operation]" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[change_operation]">
                     </inputColumn>
                   </inputColumns>
                 </input>
@@ -127,7 +125,7 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{5093DE5E-8070-416F-94B2-56BFD25FAE18}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{91DA654F-D0A1-4196-B877-5C29FD21119C}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">LEFT JOIN
 																(
 																	SELECT OrganizationUnitTypeID as change_log_SourceKey, SYS_CHANGE_OPERATION AS change_operation
@@ -138,23 +136,33 @@
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D3E53BB0-9E02-44C1-BF93-306142535E52}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{496CC42B-16A0-4247-A8A7-811F9F7B494F}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{41F04590-EC35-40DC-8AA4-0F70D54F2748}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5563F1FF-76D2-44AB-8849-58074A72EE1D}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CFA69AA5-E9CE-411A-B459-5C347D0D7828}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">SELECT base_query.*, change_log.change_log_SourceKey, change_log.change_operation FROM (SELECT
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1C7FF616-46C2-4630-83D5-DF1F9B4D1233}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT 
+		COALESCE(base_query.SourceKey,change_log.change_log_SourceKey) AS SourceKey,
+		base_query.name,
+		change_log.change_operation
+	FROM 
+	(SELECT
 	OrganizationSubscriptionStatusId AS SourceKey, 
 	 CONVERT(VARCHAR(255),Description) AS Name
-FROM dbo.OrganizationSubscriptionStatus) AS base_query</DTS:VariableValue>
+FROM dbo.OrganizationSubscriptionStatus) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{32CBD743-2111-48C1-A001-659AFE09081A}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT base_query.*, change_log.change_log_SourceKey, change_log.change_operation FROM (SELECT
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{089A6270-945A-4FB5-90F6-1F4D9804F68A}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT 
+		COALESCE(base_query.SourceKey,change_log.change_log_SourceKey) AS SourceKey,
+		base_query.name,
+		change_log.change_operation
+	FROM 
+	(SELECT
 	OrganizationSubscriptionStatusId AS SourceKey, 
 	 CONVERT(VARCHAR(255),Description) AS Name
-FROM dbo.OrganizationSubscriptionStatus) AS base_query LEFT JOIN
+FROM dbo.OrganizationSubscriptionStatus) as base_query LEFT JOIN
 																(
 																	SELECT OrganizationUnitTypeID as change_log_SourceKey, SYS_CHANGE_OPERATION AS change_operation
 																	FROM CHANGETABLE(CHANGES dbo.OrganizationUnitType,0) AS change_log
