@@ -32,7 +32,11 @@
 			<#
 				var DestTableName = String.Format("{0}.{1}",row[2], row[1]);
 				var GetBaseQuery = "SELECT " +
-										"'SELECT * FROM (' + CONVERT(VARCHAR(max),value) +') AS base_query' AS BaseQuery " +
+										"'SELECT " +
+											"base_query.*, "+
+											"change_log.change_log_SourceKey, "+
+											"change_log.change_operation "+
+										"FROM (' + CONVERT(VARCHAR(max),value) +') AS base_query' AS BaseQuery " +
 									"FROM " +
 									"( " +
 										"SELECT " + 
@@ -46,15 +50,20 @@
 										"table_list.object_id = ext_prop.major_id " +
 									"WHERE " + 
 										"table_list.StagingTableName = '" +row[1].ToString() +"' " +
-										"AND ext_prop.name = 'BaseQuery' " +
-													";";
+										"AND ext_prop.name = 'BaseQuery'; ";
+													
 				DataTable BaseQuery  = ExternalDataAccess.GetDataTable(MetaDataConnection.ConnectionString, GetBaseQuery);
 				string BaseQueryText = BaseQuery.Rows[0]["BaseQuery"].ToString() +" ";
 				
 			#>
             
 				<Parameters>
-				    <Parameter Name="strParm1" DataType="String">WHERE 1 = 1</Parameter>
+				    <Parameter Name="strParm1" DataType="String">LEFT JOIN
+																(
+																	SELECT OrganizationUnitTypeID as change_log_SourceKey, SYS_CHANGE_OPERATION AS change_operation
+																	FROM CHANGETABLE(CHANGES dbo.OrganizationUnitType,0) AS change_log
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</Parameter>
 				</Parameters>
             
 				<Variables>
