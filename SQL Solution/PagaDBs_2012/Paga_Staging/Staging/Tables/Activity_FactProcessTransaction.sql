@@ -39,8 +39,11 @@
     [WithdrawalCode]                       VARCHAR (255)   NULL,
     [ProcessFee]                           DECIMAL (18, 2) NULL,
     [ProcessAmount]                        DECIMAL (18, 2) NULL,
-    [AgentCommissionAmount]                DECIMAL (18, 2) NULL
+    [AgentCommissionAmount]                DECIMAL (18, 2) NULL,
+    [change_operation]                     CHAR (1)        NULL
 );
+
+
 
 
 

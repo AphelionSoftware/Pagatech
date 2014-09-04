@@ -13,8 +13,11 @@
     [RcName]                                  VARCHAR (50)   NULL,
     [WebsiteURL]                              VARCHAR (100)  NULL,
     [OrganizationCode]                        VARCHAR (10)   NULL,
-    [DisplayName]                             VARCHAR (100)  NULL
+    [DisplayName]                             VARCHAR (100)  NULL,
+    [change_operation]                        CHAR (1)       NULL
 );
+
+
 
 
 

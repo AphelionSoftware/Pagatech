@@ -16,8 +16,11 @@
     [DurationLimit]                DECIMAL (18, 2) NULL,
     [DurationLimitSeconds]         INT             NULL,
     [IsEnabled]                    BIT             NULL,
-    [AccountLinkIdentifier]        VARCHAR (30)    NULL
+    [AccountLinkIdentifier]        VARCHAR (30)    NULL,
+    [change_operation]             CHAR (1)        NULL
 );
+
+
 
 
 

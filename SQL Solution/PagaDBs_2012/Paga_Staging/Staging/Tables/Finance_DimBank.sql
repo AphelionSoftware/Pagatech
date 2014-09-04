@@ -5,8 +5,11 @@
     [BankAccountLinkType]   VARCHAR (255) NOT NULL,
     [OrganizationSourceKey] VARCHAR (255) NOT NULL,
     [SupportsDebit]         BIT           NULL,
-    [SupportsCredit]        BIT           NULL
+    [SupportsCredit]        BIT           NULL,
+    [change_operation]      CHAR (1)      NULL
 );
+
+
 
 
 

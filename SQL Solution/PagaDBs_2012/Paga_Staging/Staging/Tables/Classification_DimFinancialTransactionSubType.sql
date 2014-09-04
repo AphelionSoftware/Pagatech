@@ -1,7 +1,10 @@
 ﻿CREATE TABLE [Staging].[Classification_DimFinancialTransactionSubType] (
-    [SourceKey] VARCHAR (255) NOT NULL,
-    [Name]      VARCHAR (255) NOT NULL
+    [SourceKey]        VARCHAR (255) NOT NULL,
+    [Name]             VARCHAR (255) NOT NULL,
+    [change_operation] CHAR (1)      NULL
 );
+
+
 
 
 

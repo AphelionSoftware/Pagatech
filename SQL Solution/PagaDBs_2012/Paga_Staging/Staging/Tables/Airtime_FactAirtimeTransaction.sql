@@ -6,8 +6,11 @@
     [PagaAccountSourceKey]              VARCHAR (255)   NULL,
     [CitySourceKey]                     VARCHAR (255)   NULL,
     [DebitAmount]                       DECIMAL (18, 2) NULL,
-    [CreditAmount]                      DECIMAL (18, 2) NULL
+    [CreditAmount]                      DECIMAL (18, 2) NULL,
+    [change_operation]                  CHAR (1)        NULL
 );
+
+
 
 
 

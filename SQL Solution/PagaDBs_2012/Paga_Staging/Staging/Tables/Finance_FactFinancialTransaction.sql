@@ -15,8 +15,11 @@
     [RelatedTransactionID]              INT             NULL,
     [DebitAmount]                       DECIMAL (18, 2) NULL,
     [CreditAmount]                      DECIMAL (18, 2) NULL,
-    [MovementAmount]                    DECIMAL (19, 2) NULL
+    [MovementAmount]                    DECIMAL (19, 2) NULL,
+    [change_operation]                  CHAR (1)        NULL
 );
+
+
 
 
 

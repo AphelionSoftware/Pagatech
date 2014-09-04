@@ -12,8 +12,11 @@
     [ForMeByMe_SentTxCount]    DECIMAL (18, 2) NULL,
     [ForMeByOther_SentTxCount] DECIMAL (18, 2) NULL,
     [ByMeForOther_SentTxCount] DECIMAL (18, 2) NULL,
-    [ReceivedTxCount]          DECIMAL (18, 2) NULL
+    [ReceivedTxCount]          DECIMAL (18, 2) NULL,
+    [change_operation]         CHAR (1)        NULL
 );
+
+
 
 
 

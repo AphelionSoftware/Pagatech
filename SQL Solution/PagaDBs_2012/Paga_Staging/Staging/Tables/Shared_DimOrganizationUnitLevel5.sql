@@ -5,8 +5,11 @@
     [OrganizationUnitLevel4SourceKey] VARCHAR (255) NOT NULL,
     [OrganizationUnitTypeSourceKey]   VARCHAR (255) NOT NULL,
     [DealerSourceKey]                 VARCHAR (255) NOT NULL,
-    [IdentificationNumber]            VARCHAR (20)  NULL
+    [IdentificationNumber]            VARCHAR (20)  NULL,
+    [change_operation]                CHAR (1)      NULL
 );
+
+
 
 
 

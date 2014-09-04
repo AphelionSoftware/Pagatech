@@ -50,6 +50,9 @@
     [FiscalFirstDayOfQuarter] DATE         NULL,
     [FiscalLastDayOfQuarter]  DATE         NULL,
     [FiscalFirstDayOfYear]    DATE         NULL,
-    [FiscalLastDayOfYear]     DATE         NULL
+    [FiscalLastDayOfYear]     DATE         NULL,
+    [change_operation]        CHAR (1)     NULL
 );
+
+
 

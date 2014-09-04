@@ -11,8 +11,11 @@
     [BankingStatus]                VARCHAR (50)  NOT NULL,
     [hasOnlineAccount]             BIT           NULL,
     [IsActive]                     BIT           NULL,
-    [IsEnabled]                    BIT           NULL
+    [IsEnabled]                    BIT           NULL,
+    [change_operation]             CHAR (1)      NULL
 );
+
+
 
 
 

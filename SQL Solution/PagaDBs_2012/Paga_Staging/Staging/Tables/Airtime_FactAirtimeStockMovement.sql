@@ -3,8 +3,11 @@
     [MobileOperatorSourceKey] VARCHAR (255)   NULL,
     [PagaAccountSourceKey]    VARCHAR (255)   NULL,
     [CitySourceKey]           VARCHAR (255)   NULL,
-    [MovementAmount]          DECIMAL (18, 2) NULL
+    [MovementAmount]          DECIMAL (18, 2) NULL,
+    [change_operation]        CHAR (1)        NULL
 );
+
+
 
 
 

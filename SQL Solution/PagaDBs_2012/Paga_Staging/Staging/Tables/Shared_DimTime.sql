@@ -6,6 +6,9 @@
     [TimeInSecond]          INT           NOT NULL,
     [HourlyBucket]          VARCHAR (15)  NOT NULL,
     [DayTimeBucketGroupKey] INT           NOT NULL,
-    [DayTimeBucket]         VARCHAR (100) NOT NULL
+    [DayTimeBucket]         VARCHAR (100) NOT NULL,
+    [change_operation]      CHAR (1)      NULL
 );
+
+
 

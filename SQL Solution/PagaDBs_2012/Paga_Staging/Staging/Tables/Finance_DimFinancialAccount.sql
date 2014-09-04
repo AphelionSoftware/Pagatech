@@ -8,8 +8,11 @@
     [AccountNumber]                    VARCHAR (20)    NULL,
     [RestrictedBalance]                DECIMAL (18, 2) NULL,
     [OpeningBalance]                   DECIMAL (18, 2) NULL,
-    [TotalBalance]                     DECIMAL (18, 2) NULL
+    [TotalBalance]                     DECIMAL (18, 2) NULL,
+    [change_operation]                 CHAR (1)        NULL
 );
+
+
 
 
 

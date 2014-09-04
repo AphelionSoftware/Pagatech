@@ -5,8 +5,11 @@
     [GLCodeGroupSourceKey] VARCHAR (255)  NOT NULL,
     [GLCode]               VARCHAR (255)  NULL,
     [Description]          VARCHAR (1000) NULL,
-    [IsNormalDebit]        BIT            NULL
+    [IsNormalDebit]        BIT            NULL,
+    [change_operation]     CHAR (1)       NULL
 );
+
+
 
 
 
