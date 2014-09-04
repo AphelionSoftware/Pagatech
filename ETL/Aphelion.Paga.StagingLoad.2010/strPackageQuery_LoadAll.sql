@@ -14,12 +14,10 @@ FROM
 		END)) AS BaseQuery
 	FROM 
 	(
-		SELECT DISTINCT
+		SELECT 
 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name,
-			ep.major_id
-		FROM sys.extended_properties AS ep
-		INNER JOIN sys.tables AS t ON
-			ep.major_id = t.object_id
+			t.object_id 
+		FROM sys.tables AS t 
 		WHERE 
 			SCHEMA_NAME(t.schema_id) = 'Classification'
 	) AS x 
@@ -29,7 +27,7 @@ FROM
 			name, 
 			value 
 		FROM sys.extended_properties AS y 
-		WHERE	x.major_id = y.major_id	
+		WHERE	x.object_id = y.major_id	
 		AND y.name = 'BaseQuery'
 	) as extProp
 	GROUP BY

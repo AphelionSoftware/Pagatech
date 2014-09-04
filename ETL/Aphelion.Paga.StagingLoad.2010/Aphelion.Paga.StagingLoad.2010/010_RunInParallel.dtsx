@@ -12,8 +12,8 @@
   DTS:ObjectName="RunInParallel"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{ACFB1990-C63A-433F-ADB7-2BCD01C962F0}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{F7C82590-D27D-4822-8C7E-9FB28ED7D32A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -24,7 +24,8 @@
       DTS:ObjectName="parmInnerQuery">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base</DTS:Property>
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -41,15 +42,15 @@
       DTS:CreationName=""
       DTS:DTSID="{B0485B64-7559-4E89-8A65-EDAB54598293}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;select * from ( select PackageName +'.dtsx' AS PackageName&#xA;,  strParm1&#xA;,  strParm2&#xA;/*,  strParm3&#xA;, intParm1&#xA;, intParm2&#xA;, intParm3&#xA;, dblParm1&#xA;, dblParm2&#xA;, dblParm3&#xA;, */&#xA;,(Row_Number() over (order by PackageName)) % 8 as Stream&#xA;&#xA;FROM &#xA;(&#xA;&quot;&#xA;+  &#xA; @[$Package::parmInnerQuery] &#xA;+&#xA;&quot;&#xA;  ) src ) OuterSrc WHERE Stream =  &quot;"
+      DTS:Expression="&quot;select * from ( select PackageName +'.dtsx' AS PackageName&#xA;,  strParm1&#xA;/*,  strParm2&#xA;,  strParm3&#xA;, intParm1&#xA;, intParm2&#xA;, intParm3&#xA;, dblParm1&#xA;, dblParm2&#xA;, dblParm3&#xA;, */&#xA;,(Row_Number() over (order by PackageName)) % 8 as Stream&#xA;&#xA;FROM &#xA;(&#xA;&quot;&#xA;+  &#xA; @[$Package::parmInnerQuery] &#xA;+&#xA;&quot;&#xA;  ) src ) OuterSrc WHERE Stream =  &quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SQLStatementBase">
       <DTS:VariableValue
         DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
 ,  strParm1
-,  strParm2
-/*,  strParm3
+/*,  strParm2
+,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -61,18 +62,8 @@
 
 FROM 
 (
-SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
+
   ) src ) OuterSrc WHERE Stream =  </DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{E5A66F45-E3CB-4458-97AA-F43BDCA3B731}"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="strParm2">
-      <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -123,8 +114,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
 ,  strParm1
-,  strParm2
-/*,  strParm3
+/*,  strParm2
+,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -136,7 +127,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
 
 FROM 
 (
-SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
+
   ) src ) OuterSrc WHERE Stream =  0</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -169,7 +160,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream0_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -226,12 +217,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParam1</ParameterName>
+                    <ParameterName>strParm1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                  <ParameterAssignment>
-                    <ParameterName>strParam2</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -311,8 +298,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
 ,  strParm1
-,  strParm2
-/*,  strParm3
+/*,  strParm2
+,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -324,7 +311,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
 
 FROM 
 (
-SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
+
   ) src ) OuterSrc WHERE Stream =  1</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -357,7 +344,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream1_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -414,12 +401,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParam1</ParameterName>
+                    <ParameterName>strParm1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                  <ParameterAssignment>
-                    <ParameterName>strParam2</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -499,8 +482,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
 ,  strParm1
-,  strParm2
-/*,  strParm3
+/*,  strParm2
+,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -512,7 +495,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
 
 FROM 
 (
-SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
+
   ) src ) OuterSrc WHERE Stream =  2</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -545,7 +528,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream02_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -602,12 +585,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParam1</ParameterName>
+                    <ParameterName>strParm1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                  <ParameterAssignment>
-                    <ParameterName>strParam2</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -687,8 +666,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
 ,  strParm1
-,  strParm2
-/*,  strParm3
+/*,  strParm2
+,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -700,7 +679,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
 
 FROM 
 (
-SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
+
   ) src ) OuterSrc WHERE Stream =  3</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -733,7 +712,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream03_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -790,12 +769,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParam1</ParameterName>
+                    <ParameterName>strParm1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                  <ParameterAssignment>
-                    <ParameterName>strParam2</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -875,8 +850,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
 ,  strParm1
-,  strParm2
-/*,  strParm3
+/*,  strParm2
+,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -888,7 +863,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
 
 FROM 
 (
-SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
+
   ) src ) OuterSrc WHERE Stream =  4</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -921,7 +896,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream4_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -978,12 +953,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParam1</ParameterName>
+                    <ParameterName>strParm1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                  <ParameterAssignment>
-                    <ParameterName>strParam2</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -1063,8 +1034,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
 ,  strParm1
-,  strParm2
-/*,  strParm3
+/*,  strParm2
+,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -1076,7 +1047,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
 
 FROM 
 (
-SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
+
   ) src ) OuterSrc WHERE Stream =  5</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -1109,7 +1080,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream05_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1166,12 +1137,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParam1</ParameterName>
+                    <ParameterName>strParm1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                  <ParameterAssignment>
-                    <ParameterName>strParam2</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -1251,8 +1218,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
 ,  strParm1
-,  strParm2
-/*,  strParm3
+/*,  strParm2
+,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -1264,7 +1231,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
 
 FROM 
 (
-SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
+
   ) src ) OuterSrc WHERE Stream =  6</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -1297,7 +1264,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream06_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1354,12 +1321,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParam1</ParameterName>
+                    <ParameterName>strParm1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                  <ParameterAssignment>
-                    <ParameterName>strParam2</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -1439,8 +1402,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
 ,  strParm1
-,  strParm2
-/*,  strParm3
+/*,  strParm2
+,  strParm3
 , intParm1
 , intParm2
 , intParm3
@@ -1452,7 +1415,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
 
 FROM 
 (
-SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base
+
   ) src ) OuterSrc WHERE Stream =  7</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
@@ -1485,7 +1448,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream07_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1542,12 +1505,8 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>101_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParam1</ParameterName>
+                    <ParameterName>strParm1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                  <ParameterAssignment>
-                    <ParameterName>strParam2</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm2</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -1596,7 +1555,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
         <NodeLayout
           Size="192,42"
           Id="Package\SEQ_Stream00\EST_Stream0_Workload"
-          TopLeft="22,5.5" />
+          TopLeft="5.50000000000001,5.5" />
         <NodeLayout
           Size="159,42"
           Id="Package\SEQ_Stream00\FLC_Stream00\EPT_Package_01"
@@ -1604,36 +1563,24 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
         <ContainerLayout
           HeaderHeight="43.924528301886795"
           IsExpanded="True"
-          PanelSize="169,102"
-          Size="169,146"
+          PanelSize="170,102"
+          Size="170,146"
           Id="Package\SEQ_Stream00\FLC_Stream00"
-          TopLeft="5.50000000000004,109.5" />
+          TopLeft="15.5,107.5" />
         <EdgeLayout
           Id="Package\SEQ_Stream00.PrecedenceConstraints[Constraint]"
-          TopLeft="118,47.5">
+          TopLeft="101,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-28,62"
+              EndConnector="0,60"
               Start="0,0"
-              End="-28,54.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27"
-                    Point2="0,31"
-                    Point3="-4,31" />
-                  <mssgle:LineSegment
-                    End="-24,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-24,31"
-                    Point2="-28,31"
-                    Point3="-28,35" />
-                  <mssgle:LineSegment
-                    End="-28,54.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1645,10 +1592,10 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
         <ContainerLayout
           HeaderHeight="43.924528301886795"
           IsExpanded="True"
-          PanelSize="219,310"
-          Size="219,354"
+          PanelSize="203,308"
+          Size="203,352"
           Id="Package\SEQ_Stream00"
-          TopLeft="85.5,6.5" />
+          TopLeft="5.5,7.5" />
         <NodeLayout
           Size="136,44"
           Id="Package\SEQ_Stream01\EST_Stream1_Workload"
@@ -1692,7 +1639,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           PanelSize="170,312"
           Size="170,356"
           Id="Package\SEQ_Stream01"
-          TopLeft="326.5,5.49999999999989" />
+          TopLeft="269,5.49999999999989" />
         <NodeLayout
           Size="136,44"
           Id="Package\SEQ_Stream02\EST_Stream02_Workload"
@@ -1736,7 +1683,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           PanelSize="170,312"
           Size="170,356"
           Id="Package\SEQ_Stream02"
-          TopLeft="557.5,5.49999999999989" />
+          TopLeft="500,5.49999999999989" />
         <NodeLayout
           Size="136,44"
           Id="Package\SEQ_Stream03\EST_Stream03_Workload"
@@ -1780,7 +1727,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           PanelSize="170,312"
           Size="170,356"
           Id="Package\SEQ_Stream03"
-          TopLeft="788.5,5.49999999999989" />
+          TopLeft="731,5.49999999999989" />
         <NodeLayout
           Size="136,44"
           Id="Package\SEQ_Stream04\EST_Stream4_Workload"
@@ -1824,95 +1771,7 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           PanelSize="170,312"
           Size="170,356"
           Id="Package\SEQ_Stream04"
-          TopLeft="90.5,385.5" />
-        <NodeLayout
-          Size="136,44"
-          Id="Package\SEQ_Stream06\EST_Stream06_Workload"
-          TopLeft="17,5.5" />
-        <NodeLayout
-          Size="148,44"
-          Id="Package\SEQ_Stream06\FLC_Stream06\EPT_Package_06"
-          TopLeft="5.5,5.5" />
-        <ContainerLayout
-          HeaderHeight="43.924528301886795"
-          IsExpanded="True"
-          PanelSize="159,104"
-          Size="159,148"
-          Id="Package\SEQ_Stream06\FLC_Stream06"
-          TopLeft="5.50000000000004,109.5" />
-        <EdgeLayout
-          Id="Package\SEQ_Stream06.PrecedenceConstraints[Constraint]"
-          TopLeft="85,49.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43.924528301886795"
-          IsExpanded="True"
-          PanelSize="170,312"
-          Size="170,356"
-          Id="Package\SEQ_Stream06"
-          TopLeft="567.214285714286,385.5" />
-        <NodeLayout
-          Size="136,44"
-          Id="Package\SEQ_Stream07\EST_Stream07_Workload"
-          TopLeft="17,5.5" />
-        <NodeLayout
-          Size="148,44"
-          Id="Package\SEQ_Stream07\FLC_Stream07\EPT_Package_07"
-          TopLeft="5.5,5.5" />
-        <ContainerLayout
-          HeaderHeight="43.924528301886795"
-          IsExpanded="True"
-          PanelSize="159,104"
-          Size="159,148"
-          Id="Package\SEQ_Stream07\FLC_Stream07"
-          TopLeft="5.50000000000004,109.5" />
-        <EdgeLayout
-          Id="Package\SEQ_Stream07.PrecedenceConstraints[Constraint]"
-          TopLeft="85,49.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43.924528301886795"
-          IsExpanded="True"
-          PanelSize="170,312"
-          Size="170,356"
-          Id="Package\SEQ_Stream07"
-          TopLeft="801.071428571429,385.5" />
+          TopLeft="33.6666666666666,407.166666666667" />
         <NodeLayout
           Size="136,44"
           Id="Package\SEQ_Stream05\EST_Stream05_Workload"
@@ -1956,7 +1815,95 @@ SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTabl
           PanelSize="170,312"
           Size="170,356"
           Id="Package\SEQ_Stream05"
-          TopLeft="327.5,385.5" />
+          TopLeft="264.666666666666,407.166666666667" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\SEQ_Stream06\EST_Stream06_Workload"
+          TopLeft="17,5.5" />
+        <NodeLayout
+          Size="148,44"
+          Id="Package\SEQ_Stream06\FLC_Stream06\EPT_Package_06"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="159,104"
+          Size="159,148"
+          Id="Package\SEQ_Stream06\FLC_Stream06"
+          TopLeft="5.50000000000004,109.5" />
+        <EdgeLayout
+          Id="Package\SEQ_Stream06.PrecedenceConstraints[Constraint]"
+          TopLeft="85,49.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="170,312"
+          Size="170,356"
+          Id="Package\SEQ_Stream06"
+          TopLeft="495.666666666667,407.166666666667" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\SEQ_Stream07\EST_Stream07_Workload"
+          TopLeft="17,5.5" />
+        <NodeLayout
+          Size="148,44"
+          Id="Package\SEQ_Stream07\FLC_Stream07\EPT_Package_07"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="159,104"
+          Size="159,148"
+          Id="Package\SEQ_Stream07\FLC_Stream07"
+          TopLeft="5.50000000000004,109.5" />
+        <EdgeLayout
+          Id="Package\SEQ_Stream07.PrecedenceConstraints[Constraint]"
+          TopLeft="85,49.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="170,312"
+          Size="170,356"
+          Id="Package\SEQ_Stream07"
+          TopLeft="726.666666666666,407.166666666667" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

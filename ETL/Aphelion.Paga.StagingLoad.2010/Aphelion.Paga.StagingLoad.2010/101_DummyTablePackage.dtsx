@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="9/3/2014 11:56:10 AM"
+  DTS:CreationDate="9/4/2014 11:25:15 AM"
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
   DTS:CreatorName="Administrator"
-  DTS:DTSID="{F719688E-DD74-47FB-9A60-86C25D88128C}"
+  DTS:DTSID="{FC7B1877-C237-4A5C-9185-5F6C6FF84511}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="101_DummyTablePackage"
   DTS:ProtectionLevel="0"
   DTS:VersionBuild="1"
-  DTS:VersionGUID="{AE825A3E-2F7B-4986-B421-6A0BCF79BD35}"
+  DTS:VersionGUID="{EDC440FD-80D8-40D1-9240-7941C15ECA79}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -20,26 +20,26 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{BBEC6E5C-73ED-414A-A2D3-C9991619041C}"
-      DTS:ObjectName="strParam1">
+      DTS:DTSID="{53EE53CB-9FAD-46C1-A157-B0483AC0C91A}"
+      DTS:ObjectName="strParm1">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="8"
-      DTS:DTSID="{50E01FC5-D20D-48B0-A89E-846342F725F9}"
-      DTS:ObjectName="strParam2">
-      <DTS:Property
-        DTS:DataType="8"
-        DTS:Name="ParameterValue">WHERE 1 = 1;</DTS:Property>
+        DTS:Name="ParameterValue">WHERE 1 = 1</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{66D7C696-B29C-49E5-A263-51235E120208}"
+      DTS:DTSID="{990DC510-B3CE-4F20-84AE-9E79D1D1A2E6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT * FROM (SELECT AgentCommissionTypeId AS SourceKey, CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name FROM dbo.AgentCommissionType) AS base_query</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{268D61F1-0FD1-47F8-ABE7-AA2D9D1450AE}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="CurrentVersion">
@@ -48,30 +48,30 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{45C330C7-5A85-4AF0-AF24-68F6F3A9D7FE}"
+      DTS:DTSID="{58D9CBB1-8F44-4083-BFF2-140B8437366B}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT * FROM (SELECT AgentCommissionTypeId AS SourceKey, CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name FROM dbo.AgentCommissionType) AS base_query WHERE 1 = 1;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6C904735-9A9C-43BE-AB50-8B1640510DA4}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue
         DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{CCD4A537-1903-4466-B263-DE0F79AFE432}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[$Package::strParam1] +&quot; &quot; + @[$Package::strParam2]"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="SourceDataQuery">
-      <DTS:VariableValue
-        DTS:DataType="8">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType WHERE 1 = 1;</DTS:VariableValue>
-    </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\DFT_Load Classification_DimAgentCommissionType"
       DTS:CreationName="SSIS.Pipeline.3"
-      DTS:DTSID="{4333CD45-17B4-4428-A5B2-1B72A3797169}"
+      DTS:DTSID="{640AB11C-627C-4B5F-A187-5A222A3212D3}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
       DTS:ObjectName="DFT_Load Classification_DimAgentCommissionType"
@@ -111,7 +111,7 @@
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable">User::SourceDataQuery</property>
+                  name="SqlCommandVariable">User::FullQueryText</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -161,7 +161,7 @@
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]"
-                      length="50"
+                      length="255"
                       lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].Columns[Name]"
                       name="Name"
                       truncationRowDisposition="FailComponent" />
@@ -178,7 +178,7 @@
                       refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="255"
                       name="Name" />
                   </externalMetadataColumns>
                 </output>
@@ -198,7 +198,7 @@
                       refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Error].Columns[Name]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="255"
                       lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Error].Columns[Name]"
                       name="Name" />
                     <outputColumn
@@ -300,7 +300,7 @@
                       refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[Name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="255"
                       cachedName="Name"
                       externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
                       lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].Columns[Name]" />
@@ -378,51 +378,5 @@
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\DFT_Load Classification_DimAgentCommissionType">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="199,42"
-          Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging"
-          TopLeft="5.50000000000001,107.5" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData"
-          TopLeft="27.5,5.5" />
-        <EdgeLayout
-          Id="Package\DFT_Load Classification_DimAgentCommissionType.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]"
-          TopLeft="105,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

@@ -29,9 +29,8 @@
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="001_LoadClassificationDims.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="101_DummyTablePackage.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="010_RunInParallel.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="101_DummyTablePackage.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="101_Classification_DimAgentCommissionType.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="102_Classification_DimBusinessType.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="103_Classification_DimFinancialTransactionSubType.dtsx" SSIS:EntryPoint="1" />
@@ -44,6 +43,7 @@
           <SSIS:Package SSIS:Name="110_Classification_DimProcessStatus.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="111_Classification_DimProcessType.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="112_Classification_DimProcessTypeGroup.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="001_LoadSpecficSchema.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="MetadataDB.conmgr" />
@@ -407,79 +407,16 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="001_LoadClassificationDims.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{0374E9E0-F6B6-46CB-9C7F-AA6A907946B9}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">001_LoadClassificationDims</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">25</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{15171D3B-F298-4764-8A98-36B8C7749574}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="101_DummyTablePackage.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{F719688E-DD74-47FB-9A60-86C25D88128C}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">101_DummyTablePackage</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AE825A3E-2F7B-4986-B421-6A0BCF79BD35}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{BBEC6E5C-73ED-414A-A2D3-C9991619041C}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{50E01FC5-D20D-48B0-A89E-846342F725F9}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="010_RunInParallel.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{C9B631EF-A150-4049-8F64-5A9F7BC82C73}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">RunInParallel</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">47</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">68</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1D627592-84FB-4A86-945D-C768F740B503}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F7C82590-D27D-4822-8C7E-9FB28ED7D32A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -496,7 +433,40 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName, 	strParm1 = BaseQuery, 	strParm2 = 'WHERE EXISTS 	( 		SELECT  		FROM CHANGETABLE(CHANGES ,' +base.keycolumn +') AS change_log 		WHERE  			change_log.SYS_CHANGE_VERSION &gt; 0 			AND change_log.SYS_CHANGE_VERSION &lt;= 0, 			AND change_log.' +base.keycolumn +'= base_query.' +base.keycolumn +' 	);'  FROM ( 	SELECT 		ROW_NUMBER() OVER ( ORDER BY x.StagingTableName) AS prefix, 		x.StagingTableName,  		CONVERT(VARCHAR(4000), MAX(CASE  			WHEN extprop.name = 'BaseQuery' 			THEN extprop.value 		END)) AS BaseQuery, 		CONVERT(VARCHAR(255), MAX(CASE  			WHEN extprop.name = 'KeyColumn' 			THEN extprop.value 		END)) AS KeyColumn, 		MAX(CASE  			WHEN extprop.name = 'SourceTable' 			THEN extprop.value 		END) AS SourceTable 	FROM  	( 		SELECT DISTINCT 			StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, 			ep.major_id 		FROM sys.extended_properties AS ep 		INNER JOIN sys.tables AS t ON 			ep.major_id = t.object_id 		WHERE  			SCHEMA_NAME(t.schema_id) = 'Classification' 	) AS x  	CROSS APPLY 	( 		SELECT  			name,  			value  		FROM sys.extended_properties AS y  		WHERE	x.major_id = y.major_id	 		AND (y.name = 'KeyColumn' OR y.name = 'SourceTable' OR y.name = 'BaseQuery') 	) as extProp 	GROUP BY 		x.StagingTableName ) AS base</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="101_DummyTablePackage.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{FC7B1877-C237-4A5C-9185-5F6C6FF84511}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">101_DummyTablePackage</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{EDC440FD-80D8-40D1-9240-7941C15ECA79}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{53EE53CB-9FAD-46C1-A157-B0483AC0C91A}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -504,23 +474,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="101_Classification_DimAgentCommissionType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{AFB05F48-44A2-43C5-A85E-69C0798D0C07}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{41CDB694-77FD-4F79-8065-C8970C57357A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">101_Classification_DimAgentCommissionType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C7CAE234-7816-46A0-94FC-472C8C6AB126}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{406B8A38-04BC-4A88-891A-1E6C50F57360}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{6A0EA4AC-A33A-4C9F-AF6F-3063408FB59E}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{C8FFCE16-55D7-4972-AF5B-522869AA51CB}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -528,21 +498,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{7C0B2364-B7AF-489E-8666-3436CA8C65A2}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -550,23 +506,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="102_Classification_DimBusinessType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B1340233-2328-44EF-BB4E-757C2B304E56}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{521EB919-3A80-4D08-9049-ACCF922E4005}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">102_Classification_DimBusinessType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{5B8931A6-070E-4B00-BD2F-E7A4B987EF02}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DE108BFA-F4F6-49AA-9C4D-7DBC2EAF0AB2}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{86061912-69A4-4CDF-8193-286F020D3002}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{F0F897C4-A534-47E4-9648-5A50C8D65E20}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -574,21 +530,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{DECD36F6-D4BA-4292-ADE9-420952D71BFC}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -596,23 +538,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="103_Classification_DimFinancialTransactionSubType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{6A3F11FC-C3A1-4BF2-BB03-A8F197672FCB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{396BFC64-CCE3-4E81-AD46-3060CD4E30F8}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">103_Classification_DimFinancialTransactionSubType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{D5807D68-324C-4E7E-83E5-0EEA3B02ED71}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{375871FC-0448-4E1A-917A-8FE7011FA73A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{02B96C63-45EF-430C-99D4-4AFAE23593CD}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{E6FD512E-F8C6-4A9F-A7D8-7CBDB15EEA95}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -620,21 +562,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{B1F103B8-E6B1-497B-8C5F-FA35BFF8C619}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -642,23 +570,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="104_Classification_DimFinancialTransactionType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{638355D2-37B6-42A3-8862-2E748B36C591}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{2D01FCE3-79BC-40D2-B811-AC4959C634EF}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">104_Classification_DimFinancialTransactionType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{ECDD78B8-DAED-46C1-93FC-88F5C80F05ED}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{58E0E776-B569-4F75-91DE-893964F97F5B}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{902BB8A8-9C6F-4E4A-90EF-1E33BABB534F}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{A156D37B-4186-4EFC-B477-17B7426A1E4A}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -666,21 +594,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{DAA1381C-BBB5-4587-8BAA-E42948B33406}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -688,23 +602,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="105_Classification_DimOrganizationSubscriptionStatus.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B212C76E-E044-4900-8136-5D0A90902427}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{3FEB8D7D-A91D-4B7A-A9A0-68FC62BFB2B8}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">105_Classification_DimOrganizationSubscriptionStatus</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{21DBF17C-EA93-4E8F-A99B-D7DE4DBB31FA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9C92570D-0D56-42AE-A433-964ED070F6AC}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{1ECCB321-847E-4083-9216-2DBED827CD21}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{8737B0D4-F549-4E7F-98DC-E6357F37FD19}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -712,21 +626,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{B7B8EA5D-00B5-4C97-A2B3-F9991FFDBB1D}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -734,23 +634,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="106_Classification_DimOrganizationUnitType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{9F239913-F2DF-4ECA-AEAD-292F4E3B7150}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{0E415417-E8FC-49EF-A5EF-8F38E9600B4E}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">106_Classification_DimOrganizationUnitType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{0F2CF8A5-985C-44AC-9371-B5739E73CC0B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{11598C8B-8794-482B-9855-7D228CF15E76}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{A40EAC4C-9C1A-43B7-8E80-C993FAA729BE}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{904227F0-7569-46D8-9B65-8EE4864A07BF}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -758,21 +658,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{BAA212CF-3E5C-442D-896D-A2314F7D88AA}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -780,23 +666,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="107_Classification_DimOrganizationVerificationStatus.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{D09D2FC3-2686-40F1-9655-4CB1E47B3353}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{58F34950-3551-40FF-8486-80F5F79A3CA4}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">107_Classification_DimOrganizationVerificationStatus</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{17C424C8-AF2B-4D64-BB2A-4A59F88A0CAC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{62534F4B-171C-44A2-97BF-64BC883F5E18}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{845E7BA1-A6CA-45E9-A4AF-E68C18C1F1B9}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{56919866-6C85-4276-A3D5-35EB35B89208}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -804,21 +690,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{0E8BAA3B-8E97-4A1F-867B-E3DAC141869F}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -826,23 +698,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="108_Classification_DimPagaAccountStatus.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{8AEEAE76-36C5-46BD-95C6-D52FE9296695}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{28065BEE-4F85-4AF2-9FF4-5DF816C964A6}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">108_Classification_DimPagaAccountStatus</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{F3211EAE-B21A-47B2-8DDE-E0EB426A4DA4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{7AB8567B-C0F3-47D8-94F7-A7709FF14982}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{4407B3A6-B114-440F-B53A-49F95E6233E0}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{D4F46FAB-D748-469D-9E55-8B747B9D816E}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -850,21 +722,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, CONVERT(VARCHAR(255),[AgentCommissionTypeId]) AS Name FROM dbo.AgentCommissionType</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{FA9DEFF7-EDDC-4D0D-9AD7-3FDC19E0E7D5}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -872,23 +730,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="109_Classification_DimPagaAccountUserType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{109C95AF-2DF0-4397-A7E8-69A99426077C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{8C060C86-63AE-4FEE-820E-DF170E28FF3D}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">109_Classification_DimPagaAccountUserType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{BE740C7C-16DB-4685-B462-04BDF66B5F73}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{33C3D4FA-BB81-4F4F-8B35-0BC12B4EF5BE}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{3C29E667-B2DE-451E-9703-2C61724BFFC4}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{69BA883A-6704-4E83-9660-0B4FDC76AAD0}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -896,21 +754,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{8E2AE773-17E3-4396-B438-4345BD60A012}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -918,23 +762,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="110_Classification_DimProcessStatus.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{9AF605C0-D605-4339-8D81-C3CD2DB5EF99}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{AE0F5882-5D24-4159-BAD7-DFC0939A9A85}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">110_Classification_DimProcessStatus</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{D1ACB757-FBD7-4246-9B7E-7ABEA36F4E2F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{C93EAB93-7FB8-4B0F-9A62-6D7930C94308}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{DDA51C9C-75F4-42D0-BC02-655B39562C68}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{80C6AD04-BF53-4D18-A401-3706E53ACE48}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -942,21 +786,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{DA15A57F-2643-4AEB-AEE2-CAA5FFE13606}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -964,23 +794,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="111_Classification_DimProcessType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{46E12EC2-5586-4598-AB76-61BB4F775823}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{507CEBD4-E56A-4DC0-A51B-F78832391D1E}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">111_Classification_DimProcessType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{BA521273-81DD-40EF-BAA8-5E128B51F8BE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{1D7700E8-C23B-4F19-AD6C-27FF67CC1BDB}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{FA52163A-07EE-4AC3-802E-A90C3C82BB66}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{C3B0FE06-BCB5-4B4F-A584-1B5F0DBEDC37}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -988,21 +818,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{9816456A-192A-455D-83EA-32D623BD05CB}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1010,23 +826,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="112_Classification_DimProcessTypeGroup.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{366C79F6-8E7B-4088-873C-38150B0249AD}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{7B09EB79-AD00-4217-8ADB-5E09E72D3D26}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">112_Classification_DimProcessTypeGroup</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{82EB4417-A8B5-4237-81F0-4A823E26D10B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F1D722CE-43FD-41B7-8ADD-88FF23601CA3}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParam1">
+                <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{69A9D6CE-41A0-43F2-87BB-49CEAA47DD36}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{7A9A2A96-4C9C-43E9-B2A7-75A9A048F427}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1034,13 +850,45 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SELECT [AgentCommissionTypeId] AS SourceKey, [AgentCommissionTypeId] AS Name FROM dbo.AgentCommissionType</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="strParam2">
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="001_LoadSpecficSchema.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{70839F64-1553-41E9-9356-E423F2F24B7B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">001_LoadSpecficSchema</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">45</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B6620237-63F8-4D10-B497-DA313D36BCEE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="LoadAll">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{57CEE94B-686F-4CE4-9281-ED54899DB4DA}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{DB6C1855-462B-4985-A236-E796E1D39563}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="SchemaName">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{35E89B58-6666-4348-B056-B14385E848E7}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1048,7 +896,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">WHERE 1 = 1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Classification</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>

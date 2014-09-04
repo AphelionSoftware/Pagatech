@@ -31,26 +31,44 @@
 
 			<#
 				var DestTableName = String.Format("{0}.{1}",row[2], row[1]);
-				
+				var GetBaseQuery = "SELECT " +
+										"'SELECT * FROM (' + CONVERT(VARCHAR(max),value) +') AS base_query' AS BaseQuery " +
+									"FROM " +
+									"( " +
+										"SELECT " + 
+											"StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, " +
+											"t.object_id " + 
+										"FROM sys.tables AS t " + 
+										"WHERE " + 
+											"SCHEMA_NAME(t.schema_id) = 'Classification' " +
+									") table_list " +
+									"INNER JOIN sys.extended_properties AS ext_prop ON " +
+										"table_list.object_id = ext_prop.major_id " +
+									"WHERE " + 
+										"table_list.StagingTableName = '" +row[1].ToString() +"' " +
+										"AND ext_prop.name = 'BaseQuery' " +
+													";";
+				DataTable BaseQuery  = ExternalDataAccess.GetDataTable(MetaDataConnection.ConnectionString, GetBaseQuery);
+				string BaseQueryText = BaseQuery.Rows[0]["BaseQuery"].ToString() +" ";
 				
 			#>
             
 				<Parameters>
-				    <Parameter Name="strParam1" DataType="String">SELECT [AgentCommissionTypeId] AS SourceKey, CONVERT(VARCHAR(255),[AgentCommissionTypeId]) AS Name FROM dbo.AgentCommissionType</Parameter>
-					<Parameter Name="strParam2" DataType="String">WHERE 1 = 1;</Parameter>
-					</Parameters>
+				    <Parameter Name="strParm1" DataType="String">WHERE 1 = 1</Parameter>
+				</Parameters>
             
 				<Variables>
 				  <Variable Name="CurrentVersion" DataType="Int32">0</Variable>
 				  <Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
-				  <Variable Name="SourceDataQuery" DataType="String" EvaluateAsExpression="true">@[$Package::strParam1] +" " + @[$Package::strParam2]</Variable>
-				 
+				  <Variable Name="BaseQuery" DataType="String"><#=BaseQueryText#></Variable>
+				  <Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]+ " " +@[$Package::strParm1] +";"</Variable>
               </Variables>
+				
 			 <Tasks>
 					<Dataflow Name="DFT_Load <#=row[1]#>">
 					  <Transformations>
 						<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
-						  <VariableInput VariableName="User.SourceDataQuery"></VariableInput>
+						  <VariableInput VariableName="User.FullQueryText"></VariableInput>
 						</OleDbSource>
 						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="StagingDB" KeepIdentity="true">
 						  <ExternalTableOutput Table="<#=DestTableName#>"/>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/03/2014 15:10:17" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{BB29136A-3A9B-48B7-904C-CBB928866E4B}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="111_Classification_DimProcessType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{E47BFF4A-FBFC-434B-B330-3098CA23F63A}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/04/2014 11:37:12" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{507CEBD4-E56A-4DC0-A51B-F78832391D1E}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="111_Classification_DimProcessType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{1D7700E8-C23B-4F19-AD6C-27FF67CC1BDB}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{C43AB17F-C6CB-4F5F-ABC1-EEFFD1ACA10F}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimProcessType" DTS:refId="Package\DFT_Load Classification_DimProcessType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{477719AA-EFB1-4419-BF15-B7D7417C7BEC}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimProcessType" DTS:refId="Package\DFT_Load Classification_DimProcessType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -15,13 +15,25 @@
                   <externalMetadataColumns isUsed="True">
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="SourceKey" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="Name" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ProcessTypeGroupSourceKey" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].ExternalColumns[ProcessTypeGroupSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="DescriptionText" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].ExternalColumns[DescriptionText]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="ProcessTypeID" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].ExternalColumns[ProcessTypeID]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]" length="50" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
                     </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]" length="50" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].ExternalColumns[ProcessTypeGroupSourceKey]" length="255" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[ProcessTypeGroupSourceKey]" name="ProcessTypeGroupSourceKey" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[ProcessTypeGroupSourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].ExternalColumns[DescriptionText]" length="1000" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[DescriptionText]" name="DescriptionText" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[DescriptionText]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].ExternalColumns[ProcessTypeID]" length="50" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[ProcessTypeID]" name="ProcessTypeID" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[ProcessTypeID]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                   </outputColumns>
                 </output>
@@ -31,7 +43,13 @@
                   <outputColumns>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[SourceKey]">
                     </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[Name]">
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[Name]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[ProcessTypeGroupSourceKey]" name="ProcessTypeGroupSourceKey" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[ProcessTypeGroupSourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1000" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[DescriptionText]" name="DescriptionText" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[DescriptionText]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[ProcessTypeID]" name="ProcessTypeID" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[ProcessTypeID]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -48,7 +66,7 @@
                 </property>
                 <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
                 </property>
-                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::SourceDataQuery</property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
                 <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
                 <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
                 <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
@@ -68,15 +86,19 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="ProcessTypeGroupSourceKey" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[ProcessTypeGroupSourceKey]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ProcessTypeGroupSourceKey" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[ProcessTypeGroupSourceKey]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="Description" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Description]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="DescriptionText" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DescriptionText]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
                     </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[Name]" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[Name]">
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="Name" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[Name]" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[Name]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ProcessTypeGroupSourceKey" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[ProcessTypeGroupSourceKey]" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[ProcessTypeGroupSourceKey]" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[ProcessTypeGroupSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="DescriptionText" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DescriptionText]" lineageId="Package\DFT_Load Classification_DimProcessType\OLEDB_GetData.Outputs[Output].Columns[DescriptionText]" refId="Package\DFT_Load Classification_DimProcessType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[DescriptionText]">
                     </inputColumn>
                   </inputColumns>
                 </input>
@@ -119,23 +141,55 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{49FAE6E0-B669-4969-9C29-90BE8DFF24B7}" DTS:ObjectName="strParam1" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">SELECT [AgentCommissionTypeId] AS SourceKey, CONVERT(VARCHAR(255),[AgentCommissionTypeId]) AS Name FROM dbo.AgentCommissionType</DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{BE77D8EC-3B66-4EBD-B5E1-D7B4CEA7CF9D}" DTS:ObjectName="strParam2" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">WHERE 1 = 1;</DTS:Property>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{C3B0FE06-BCB5-4B4F-A584-1B5F0DBEDC37}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">WHERE 1 = 1</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8D1BEFE4-9AA3-40B4-96DF-D141DCEBE236}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{78BDE14C-307A-40CB-8CE9-5F29F7373AEA}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6428F70E-FD09-490A-8965-E4DDCF16BF31}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BBA385DF-AE30-43D5-95D5-3BC4ACA63437}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F6BEE058-4798-4B2A-AD88-1D3EF6A3D4D5}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::strParam1] +&quot; &quot; + @[$Package::strParam2]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="SourceDataQuery">
-      <DTS:VariableValue DTS:DataType="8">SELECT [AgentCommissionTypeId] AS SourceKey, CONVERT(VARCHAR(255),[AgentCommissionTypeId]) AS Name FROM dbo.AgentCommissionType WHERE 1 = 1;</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BE4A7654-D5C4-444A-806D-053ED211405A}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT * FROM (SELECT
+	SourceKey,
+	Name= SourceKey,
+	ProcessTypeGroupSourceKey = COALESCE(ProcessTypeGroupSourceKey,'UNKNOWN'),
+	DescriptionText,
+	ProcessTypeID = SourceKey
+FROM
+(
+	SELECT
+		pt.ProcessTypeID AS SourceKey, 
+		CONVERT(VARCHAR(255),pt.Description) AS Name,
+		CONVERT(VARCHAR(255), ptg.ProcessTypeGroupId) AS ProcessTypeGroupSourceKey,
+		CONVERT(VARCHAR(1000),pt.description) AS DescriptionText
+	FROM dbo.ProcessType AS pt
+	LEFT JOIN dbo.ProcessTypeProcessTypeGroup AS ptg ON
+		pt.ProcessTypeID = ptg.ProcessTypeID
+) AS bq) AS base_query</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2ACDFF2B-8645-4567-B58C-F320A7B308BF}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT * FROM (SELECT
+	SourceKey,
+	Name= SourceKey,
+	ProcessTypeGroupSourceKey = COALESCE(ProcessTypeGroupSourceKey,'UNKNOWN'),
+	DescriptionText,
+	ProcessTypeID = SourceKey
+FROM
+(
+	SELECT
+		pt.ProcessTypeID AS SourceKey, 
+		CONVERT(VARCHAR(255),pt.Description) AS Name,
+		CONVERT(VARCHAR(255), ptg.ProcessTypeGroupId) AS ProcessTypeGroupSourceKey,
+		CONVERT(VARCHAR(1000),pt.description) AS DescriptionText
+	FROM dbo.ProcessType AS pt
+	LEFT JOIN dbo.ProcessTypeProcessTypeGroup AS ptg ON
+		pt.ProcessTypeID = ptg.ProcessTypeID
+) AS bq) AS base_query WHERE 1 = 1;</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>

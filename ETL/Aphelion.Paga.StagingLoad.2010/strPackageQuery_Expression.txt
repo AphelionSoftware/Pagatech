@@ -1,12 +1,12 @@
-SELECT
+"SELECT
 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName,
 	strParm1 = 'WHERE EXISTS
 	(
 		SELECT ' +base.KeyColumn +'
 		FROM CHANGETABLE(CHANGES ' +base.SourceTable +',0) AS change_log
 		WHERE 
-			change_log.SYS_CHANGE_VERSION > 6
-			AND change_log.SYS_CHANGE_VERSION <= 6
+			change_log.SYS_CHANGE_VERSION >  " +(DT_STR, 20,1252) @[User::LastSyncVersion] +"
+			AND change_log.SYS_CHANGE_VERSION <= " +(DT_STR, 20,1252) @[User::CurrentVersion] +"
 			AND change_log.' +base.KeyColumn +'= base_query.SourceKey 
 	);'
 FROM
@@ -33,4 +33,4 @@ FROM
 	GROUP BY
 		prefix, 
 		StagingTableName
-) AS base
+) AS base"
