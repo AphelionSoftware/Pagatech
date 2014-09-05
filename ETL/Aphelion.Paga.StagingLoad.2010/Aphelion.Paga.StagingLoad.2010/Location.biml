@@ -1,2 +1,109 @@
+<#@ template language="C#" hostspecific="true"#>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="Varigence.Hadron.CoreLowerer.SchemaManagement" #>
+
+<# var DestConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
+<# var MetaDataConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_EDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
+
+	
 <Biml xmlns="http://schemas.varigence.com/biml.xsd">
+	<Connections>
+	 <Connection Name="Aphelion.DB.LoadQueue" ConnectionString="Data Source=.\sql2012;Initial Catalog=Aphelion.DB.LoadQueue;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="StagingDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="SourceDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=PagaOpsDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="MetadataDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	</Connections>
+	<PackageProjects>
+		<PackageProject Name="Aphelion.Paga.StagingLoad.2010">
+      
+		</PackageProject>
+	 </PackageProjects>
+	
+	<Packages>
+		<#
+			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, 
+								"SELECT "+
+									"(rn+200) AS PackagePrefix, "+
+									"TABLE_NAME, "+
+									"TABLE_SCHEMA " +
+								"FROM "+
+								"(	"+
+									"SELECT "+
+										"ROW_NUMBER() OVER (ORDER BY TABLE_SCHEMA, TABLE_NAME) AS rn, "+
+										"TABLE_NAME, "+
+										"TABLE_SCHEMA "+
+										"FROM INFORMATION_SCHEMA.TABLES "+
+										"WHERE "+
+											"TABLE_TYPE = 'BASE TABLE' "+
+											"AND TABLE_SCHEMA = 'Staging' "+
+											"AND TABLE_NAME LIKE 'Location%' "+
+								") AS x;");
+	 	    
+			foreach (DataRow row in tableNamesToImport.Rows)
+                { 
+        #>
+		
+		<Package Name="<#=row[0]#>_<#=row[1]#>" ConstraintMode="Linear" AutoCreateConfigurationsType="None">
+
+			<#
+				var DestTableName = String.Format("{0}.{1}",row[2], row[1]);
+				var GetBaseQuery = "SELECT "+
+										"CONVERT(VARCHAR(max), ext_prop.value) AS base_query "+
+									"FROM "+
+									"( "+
+										"SELECT  "+
+											"StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, "+
+											"t.object_id "+ 
+										"FROM sys.tables AS t "+
+										"WHERE  "+
+											"SCHEMA_NAME(t.schema_id) = 'Classification' "+
+									") table_list "+
+									"INNER JOIN sys.extended_properties AS ext_prop ON "+
+										"table_list.object_id = ext_prop.major_id "+
+									"WHERE  "+
+										"ext_prop.name = 'BaseQuery'" +
+										"AND StagingTableName = '" + row[1].ToString() +"';";
+													
+				DataTable BaseQuery  = ExternalDataAccess.GetDataTable(MetaDataConnection.ConnectionString, GetBaseQuery);
+				string BaseQueryText = BaseQuery.Rows[0]["base_query"].ToString() +" ";
+				
+			#>
+            
+				<Parameters>
+				    <Parameter Name="strParm1" DataType="String">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey
+</Parameter>
+				</Parameters>
+            
+				<Variables>
+				  <Variable Name="CurrentVersion" DataType="Int32">0</Variable>
+				  <Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
+				  <Variable Name="BaseQuery" DataType="String"><#=BaseQueryText#></Variable>
+				  <Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]+ " " +@[$Package::strParm1] +";"</Variable>
+              </Variables>
+				
+			 <Tasks>
+					<Dataflow Name="DFT_Load <#=row[1]#>">
+					  <Transformations>
+						<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
+						  <VariableInput VariableName="User.FullQueryText"></VariableInput>
+						</OleDbSource>
+						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="StagingDB" KeepIdentity="true">
+						  <ExternalTableOutput Table="<#=DestTableName#>"/>
+						</OleDbDestination>
+					  </Transformations>
+					</Dataflow>
+				</Tasks>
+				
+		
+		</Package>
+		
+		<# } #>
+	</Packages>
+		
 </Biml>
