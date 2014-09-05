@@ -3,8 +3,6 @@
     [SourceKey]      VARCHAR (255) NOT NULL,
     [Name]           VARCHAR (255) NOT NULL,
     [Code]           VARCHAR (50)  NOT NULL,
-    [Country]        VARCHAR (255) NULL,
-    [ISOCode]        CHAR (3)      NULL,
     [SourceKeyHash]  BIGINT        NOT NULL,
     [DeltaHash]      BIGINT        NOT NULL,
     [sys_ModifiedBy] VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
@@ -35,11 +33,11 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'Country', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCountry', @level2type = N'COLUMN', @level2name = N'Country';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ISOCode', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCountry', @level2type = N'COLUMN', @level2name = N'ISOCode';
+
 
 
 GO

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Errors].[Location_DimGovernmentLocalArea] (
+﻿CREATE TABLE [Errors].[Location_DimLocalGovernmentArea] (
     [QueueID]                 INT           NOT NULL,
     [SSISErrorCode]           INT           NOT NULL,
     [SSISErrorColumn]         INT           NOT NULL,
