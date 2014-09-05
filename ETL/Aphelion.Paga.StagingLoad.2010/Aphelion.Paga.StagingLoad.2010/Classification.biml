@@ -21,7 +21,23 @@
 	
 	<Packages>
 		<#
-			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT (rn+100) AS PackagePrefix, TABLE_NAME, TABLE_SCHEMA FROM (	SELECT ROW_NUMBER() OVER (ORDER BY TABLE_SCHEMA, TABLE_NAME) AS rn, TABLE_NAME, TABLE_SCHEMA FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = 'Staging' AND TABLE_NAME LIKE 'Classification_%') AS x;");
+			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, 
+								"SELECT "+
+									"(rn+100) AS PackagePrefix, "+
+									"TABLE_NAME, "+
+									"TABLE_SCHEMA " +
+								"FROM "+
+								"(	"+
+									"SELECT "+
+										"ROW_NUMBER() OVER (ORDER BY TABLE_SCHEMA, TABLE_NAME) AS rn, "+
+										"TABLE_NAME, "+
+										"TABLE_SCHEMA "+
+										"FROM INFORMATION_SCHEMA.TABLES "+
+										"WHERE "+
+											"TABLE_TYPE = 'BASE TABLE' "+
+											"AND TABLE_SCHEMA = 'Staging' "+
+											"AND TABLE_NAME LIKE 'Classification%' "+
+								") AS x;");
 	 	    
 			foreach (DataRow row in tableNamesToImport.Rows)
                 { 
@@ -56,10 +72,12 @@
 				<Parameters>
 				    <Parameter Name="strParm1" DataType="String">LEFT JOIN
 																(
-																	SELECT OrganizationUnitTypeID as change_log_SourceKey, SYS_CHANGE_OPERATION AS change_operation
-																	FROM CHANGETABLE(CHANGES dbo.OrganizationUnitType,0) AS change_log
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
 																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</Parameter>
+																	base_query.SourceKey = change_log.change_log_SourceKey
+</Parameter>
 				</Parameters>
             
 				<Variables>

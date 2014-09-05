@@ -12,8 +12,8 @@
   DTS:ObjectName="001_LoadSpecficSchema"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="48"
-  DTS:VersionGUID="{99821672-8944-4B7D-9F14-C5D5691686BC}">
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{F01C42D8-D89A-4B22-97D3-F03890D5FFE2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -25,7 +25,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="11"
-        DTS:Name="ParameterValue">-1</DTS:Property>
+        DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -60,34 +60,35 @@
       DTS:CreationName=""
       DTS:DTSID="{DC7FB7D2-BF7F-4B19-9216-A37C074AB32E}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[$Package::LoadAll]  ? &quot;LEFT JOIN&quot; : &quot;RIGHT JOIN&quot;"
+      DTS:Expression="@[$Package::LoadAll]  ? &quot; &quot; :  @[User::strWhereClause]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="strJoinType">
+      DTS:ObjectName="strLoadAll">
       <DTS:VariableValue
-        DTS:DataType="8">LEFT JOIN</DTS:VariableValue>
+        DTS:DataType="8">WHERE 	change_log.SYS_CHANGE_VERSION &gt;  0 AND change_log.SYS_CHANGE_VERSION &lt;= 0</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{F3A1E2CD-33A6-4CA1-B15E-80209741C9AE}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName,&#xA;&#x9;strParm1 = &quot; +@[User::strJoinType] +&quot;&#xA;(&#xA;&#x9;SELECT ' +base.KeyColumn +' as change_log_SourceKey, SYS_CHANGE_OPERATION AS change_operation&#xA;&#x9;FROM CHANGETABLE(CHANGES ' +base.SourceTable +',0) AS change_log&#xA;) AS change_log ON&#xA;&#x9;base_query.SourceKey = change_log.change_log_SourceKey&#xA;WHERE &#xA;&#x9;&#x9;change_log.SYS_CHANGE_VERSION &gt;  &quot; +(DT_STR, 20,1252) @[User::LastSyncVersion] +&quot;&#xA;&#x9;&#x9;AND change_log.SYS_CHANGE_VERSION &lt;= &quot; +(DT_STR, 20,1252) @[User::CurrentVersion] +&quot;&#xA;&#x9;&#x9;AND change_log.' +base.KeyColumn +'= base_query.SourceKey;' &#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;prefix,&#xA;&#x9;&#x9;StagingTableName,&#xA;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,&#xA;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER ( ORDER BY t.TABLE_SCHEMA, t.TABLE_NAME) AS prefix,&#xA;&#x9;&#x9;&#x9;StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,&#xA;&#x9;&#x9;&#x9;major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')&#xA;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;t.TABLE_SCHEMA = 'Classification'&#xA;&#x9;) AS table_list&#xA;&#x9;INNER JOIN sys.extended_properties as ext_prop ON &#xA;&#x9;&#x9;table_list.major_id = ext_prop.major_id&#xA;&#x9;WHERE &#xA;&#x9;&#x9;ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable'&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;prefix, &#xA;&#x9;&#x9;StagingTableName&#xA;) AS base&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName,&#xA;&#x9;strParm1 = &#xA;&#x9;'LEFT JOIN&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;' +base.KeyColumn +' as change_log_SourceKey, &#xA;&#x9;&#x9;&#x9;&#x9;SYS_CHANGE_OPERATION AS change_operation,&#xA;&#x9;&#x9;&#x9;&#x9;SYS_CHANGE_VERSION &#xA;&#x9;&#x9;&#x9;FROM CHANGETABLE (CHANGES ' +base.SourceTable +',0) AS change_log&#xA;&#x9;&#x9;) AS change_log ON&#xA;&#x9;&#x9;&#x9;base_query.SourceKey = change_log.change_log_SourceKey &#xA;&quot; + @[User::strLoadAll] +&quot;'&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;prefix,&#xA;&#x9;&#x9;StagingTableName,&#xA;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,&#xA;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER ( ORDER BY t.TABLE_SCHEMA, t.TABLE_NAME) AS prefix,&#xA;&#x9;&#x9;&#x9;StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,&#xA;&#x9;&#x9;&#x9;major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  &#xA;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;t.TABLE_SCHEMA = '&quot;+@[$Package::SchemaName] +&quot;'&#xA;&#x9;) AS table_list&#xA;&#x9;INNER JOIN sys.extended_properties as ext_prop ON &#xA;&#x9;&#x9;table_list.major_id = ext_prop.major_id&#xA;&#x9;WHERE &#xA;&#x9;&#x9;ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable'&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;prefix, &#xA;&#x9;&#x9;StagingTableName&#xA;) AS base&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strPackageQuery">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
 	PackageName = CONVERT(VARCHAR,(base.prefix+100)) +'_' + base.StagingTableName,
-	strParm1 = LEFT JOIN
-(
-	SELECT ' +base.KeyColumn +' as change_log_SourceKey, SYS_CHANGE_OPERATION AS change_operation
-	FROM CHANGETABLE(CHANGES ' +base.SourceTable +',0) AS change_log
-) AS change_log ON
-	base_query.SourceKey = change_log.change_log_SourceKey
-WHERE 
-		change_log.SYS_CHANGE_VERSION &gt;  0
-		AND change_log.SYS_CHANGE_VERSION &lt;= 0
-		AND change_log.' +base.KeyColumn +'= base_query.SourceKey;' 
+	strParm1 = 
+	'LEFT JOIN
+		(
+			SELECT 
+				' +base.KeyColumn +' as change_log_SourceKey, 
+				SYS_CHANGE_OPERATION AS change_operation,
+				SYS_CHANGE_VERSION 
+			FROM CHANGETABLE (CHANGES ' +base.SourceTable +',0) AS change_log
+		) AS change_log ON
+			base_query.SourceKey = change_log.change_log_SourceKey 
+WHERE 	change_log.SYS_CHANGE_VERSION &gt;  0 AND change_log.SYS_CHANGE_VERSION &lt;= 0'
 FROM
 (
 	SELECT
@@ -100,7 +101,7 @@ FROM
 		SELECT 
 			ROW_NUMBER() OVER ( ORDER BY t.TABLE_SCHEMA, t.TABLE_NAME) AS prefix,
 			StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,
-			major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')
+			major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  
 		FROM INFORMATION_SCHEMA.TABLES AS t
 		WHERE 
 			t.TABLE_SCHEMA = 'Classification'
@@ -113,6 +114,17 @@ FROM
 		prefix, 
 		StagingTableName
 ) AS base</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{11266445-D56E-4700-9509-D4B8E871C56E}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;WHERE &#x9;change_log.SYS_CHANGE_VERSION &gt;  &quot; +(DT_STR, 20,1252) @[User::LastSyncVersion] +&quot; AND change_log.SYS_CHANGE_VERSION &lt;= &quot; +(DT_STR, 20,1252) @[User::CurrentVersion]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strWhereClause">
+      <DTS:VariableValue
+        DTS:DataType="8">WHERE 	change_log.SYS_CHANGE_VERSION &gt;  0 AND change_log.SYS_CHANGE_VERSION &lt;= 0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
