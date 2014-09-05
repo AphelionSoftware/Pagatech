@@ -17,6 +17,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea', @level2type = N'COLUMN', @level2name = N'SourceKey';
 
@@ -54,5 +56,7 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	change_operation = CONVERT(CHAR(1),change_log.change_operation)
 FROM 
 
-(SELECT LocalGovernmentAreaId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, CONVERT(VARCHAR(255),LgaCode) as Code, RegionId AS RegionSourceKey FROM dbo.LocalGovernmentArea) as base_query', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea';
+(SELECT LocalGovernmentAreaId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, CONVERT(VARCHAR(50),LgaCode) as Code, RegionId AS RegionSourceKey FROM dbo.LocalGovernmentArea) as base_query', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea';
+
+
 
