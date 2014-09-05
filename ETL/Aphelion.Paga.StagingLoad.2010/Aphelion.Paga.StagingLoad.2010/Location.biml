@@ -36,7 +36,7 @@
 										"WHERE "+
 											"TABLE_TYPE = 'BASE TABLE' "+
 											"AND TABLE_SCHEMA = 'Staging' "+
-											"AND TABLE_NAME LIKE 'Location%' "+
+											"AND TABLE_NAME LIKE 'Location_%' "+
 								") AS x;");
 	 	    
 			foreach (DataRow row in tableNamesToImport.Rows)
@@ -56,7 +56,7 @@
 											"t.object_id "+ 
 										"FROM sys.tables AS t "+
 										"WHERE  "+
-											"SCHEMA_NAME(t.schema_id) = 'Classification' "+
+											"SCHEMA_NAME(t.schema_id) = 'Location' "+
 									") table_list "+
 									"INNER JOIN sys.extended_properties AS ext_prop ON "+
 										"table_list.object_id = ext_prop.major_id "+
