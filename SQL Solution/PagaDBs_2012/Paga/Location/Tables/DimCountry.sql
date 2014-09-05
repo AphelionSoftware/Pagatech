@@ -15,6 +15,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimCountry_SourceKey]
     ON [Location].[DimCountry]([SourceKey] ASC);
@@ -61,5 +63,13 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'CountryID', @lev
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT CountryID AS SourceKey, Name AS Name FROM dbo.Country', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCountry';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
+	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	base_query.name,
+	change_operation = CONVERT(CHAR(1),change_log.change_operation)
+FROM 
+
+(SELECT CountryId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name FROM dbo.Country) as base_query', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCountry';
+
+
 

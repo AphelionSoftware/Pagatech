@@ -15,6 +15,8 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGeoZone_SourceKey]
     ON [Location].[DimGeoZone]([SourceKey] ASC);
@@ -46,4 +48,23 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimGeoZone', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.GeoZone', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimGeoZone';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'GeoZoneId', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimGeoZone';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
+	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	base_query.name,
+	base_query.code,
+	change_operation = CONVERT(CHAR(1),change_log.change_operation)
+FROM 
+
+(SELECT GeoZoneId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, Symbol AS Code FROM dbo.GeoZone) as base_query', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimGeoZone';
 
