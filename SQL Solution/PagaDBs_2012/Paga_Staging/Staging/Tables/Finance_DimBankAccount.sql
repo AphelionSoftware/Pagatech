@@ -5,7 +5,6 @@
     [BankAccountLinkStatusComment] VARCHAR (1000)  NULL,
     [BankAccountLinkStatusType]    VARCHAR (255)   NOT NULL,
     [BranchName]                   VARCHAR (255)   NULL,
-    [Code]                         VARCHAR (50)    NOT NULL,
     [DurationLimit]                DECIMAL (18, 2) NULL,
     [DurationLimitSeconds]         INT             NULL,
     [KYC_Rating]                   VARCHAR (30)    NULL,
@@ -17,6 +16,8 @@
     [DimBankSourceKey]             VARCHAR (255)   NOT NULL,
     [change_operation]             CHAR (1)        DEFAULT ((1)) NOT NULL
 );
+
+
 
 
 

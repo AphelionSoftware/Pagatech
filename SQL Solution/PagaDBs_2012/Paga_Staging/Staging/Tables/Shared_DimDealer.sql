@@ -1,5 +1,4 @@
 ﻿CREATE TABLE [Staging].[Shared_DimDealer] (
-    [Code]             VARCHAR (50)  NOT NULL,
     [Email]            VARCHAR (100) NULL,
     [FirstName]        VARCHAR (255) NULL,
     [LastName]         VARCHAR (255) NULL,
@@ -11,6 +10,8 @@
     [DimRoleSourceKey] VARCHAR (255) NOT NULL,
     [change_operation] CHAR (1)      DEFAULT ((1)) NOT NULL
 );
+
+
 
 
 
