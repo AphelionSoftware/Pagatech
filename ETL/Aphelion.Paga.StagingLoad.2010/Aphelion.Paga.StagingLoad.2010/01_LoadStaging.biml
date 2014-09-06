@@ -35,7 +35,9 @@
 										"FROM INFORMATION_SCHEMA.TABLES "+
 										"WHERE "+
 											"TABLE_TYPE = 'BASE TABLE' "+
-											"AND TABLE_SCHEMA = 'Staging' 
+											"AND TABLE_SCHEMA = 'Staging' " +
+											"AND (TABLE_NAME LIKE 'Classification_%' OR TABLE_NAME LIKE 'Location_%')" +
+								
 								") AS x;");
 	 	    
 			foreach (DataRow row in tableNamesToImport.Rows)
@@ -45,7 +47,11 @@
 		<Package Name="<#=row[0]#>_<#=row[1]#>" ConstraintMode="Linear" AutoCreateConfigurationsType="None">
 
 			<#
-				var DestTableName = String.Format("{0}.{1}",row[2], row[1]);
+				string StagingTableName = row[1].ToString();
+				
+				char[] splitchar = { '_' };
+				string[] strSchemaName = StagingTableName.Split(splitchar);
+				
 				var GetBaseQuery = "SELECT "+
 										"CONVERT(VARCHAR(max), ext_prop.value) AS base_query "+
 									"FROM "+
@@ -55,13 +61,13 @@
 											"t.object_id "+ 
 										"FROM sys.tables AS t "+
 										"WHERE  "+
-											"SCHEMA_NAME(t.schema_id) = 'Location' "+
+											"SCHEMA_NAME(t.schema_id) = '" + strSchemaName[0] +"' " +
 									") table_list "+
 									"INNER JOIN sys.extended_properties AS ext_prop ON "+
 										"table_list.object_id = ext_prop.major_id "+
 									"WHERE  "+
 										"ext_prop.name = 'BaseQuery'" +
-										"AND StagingTableName = '" + row[1].ToString() +"';";
+										"AND StagingTableName = '" + StagingTableName +"';";
 													
 				DataTable BaseQuery  = ExternalDataAccess.GetDataTable(MetaDataConnection.ConnectionString, GetBaseQuery);
 				string BaseQueryText = BaseQuery.Rows[0]["base_query"].ToString() +" ";
@@ -93,7 +99,7 @@
 						  <VariableInput VariableName="User.FullQueryText"></VariableInput>
 						</OleDbSource>
 						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="StagingDB" KeepIdentity="true">
-						  <ExternalTableOutput Table="<#=DestTableName#>"/>
+						  <ExternalTableOutput Table="<#=String.Format("{0}.{1}",row[2], row[1])#>"/>
 						</OleDbDestination>
 					  </Transformations>
 					</Dataflow>
