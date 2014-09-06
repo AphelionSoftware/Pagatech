@@ -12,8 +12,8 @@
   DTS:ObjectName="001_LoadSpecficSchema"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="70"
-  DTS:VersionGUID="{552A83CA-23BC-4EA4-BD4D-20386E315ED9}">
+  DTS:VersionBuild="71"
+  DTS:VersionGUID="{4E7B39C3-67BB-4071-A280-C1378D838468}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -35,17 +35,17 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">100</DTS:Property>
+        DTS:Name="ParameterValue">1000</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
       DTS:DTSID="{35E89B58-6666-4348-B056-B14385E848E7}"
-      DTS:ObjectName="SchemaName"
+      DTS:ObjectName="SchemaFilter"
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">Classification</DTS:Property>
+        DTS:Name="ParameterValue">t.TABLE_SCHEMA = 'Classification' OR t.TABLE_SCHEMA = 'Location'</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -83,13 +83,13 @@
       DTS:CreationName=""
       DTS:DTSID="{F3A1E2CD-33A6-4CA1-B15E-80209741C9AE}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(VARCHAR,(base.prefix+ &quot;+ @[$Package::PackagePrefix] +&quot;  )) +'_' + base.StagingTableName,&#xA;&#x9;strParm1 = &#xA;&#x9;'LEFT JOIN&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;' +base.KeyColumn +' as change_log_SourceKey, &#xA;&#x9;&#x9;&#x9;&#x9;SYS_CHANGE_OPERATION AS change_operation,&#xA;&#x9;&#x9;&#x9;&#x9;SYS_CHANGE_VERSION &#xA;&#x9;&#x9;&#x9;FROM CHANGETABLE (CHANGES ' +base.SourceTable +',0) AS change_log&#xA;&#x9;&#x9;) AS change_log ON&#xA;&#x9;&#x9;&#x9;base_query.SourceKey = change_log.change_log_SourceKey &#xA;&quot; + @[User::strLoadAll] +&quot;'&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;prefix,&#xA;&#x9;&#x9;StagingTableName,&#xA;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,&#xA;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER ( ORDER BY t.TABLE_SCHEMA, t.TABLE_NAME) AS prefix,&#xA;&#x9;&#x9;&#x9;StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,&#xA;&#x9;&#x9;&#x9;major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  &#xA;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;t.TABLE_SCHEMA = '&quot;+@[$Package::SchemaName] +&quot;'&#xA;&#x9;) AS table_list&#xA;&#x9;INNER JOIN sys.extended_properties as ext_prop ON &#xA;&#x9;&#x9;table_list.major_id = ext_prop.major_id&#xA;&#x9;WHERE &#xA;&#x9;&#x9;ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable'&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;prefix, &#xA;&#x9;&#x9;StagingTableName&#xA;) AS base&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(VARCHAR,(base.prefix+ &quot;+ @[$Package::PackagePrefix] +&quot;  )) +'_' + base.StagingTableName,&#xA;&#x9;strParm1 = &#xA;&#x9;'LEFT JOIN&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;' +base.KeyColumn +' as change_log_SourceKey, &#xA;&#x9;&#x9;&#x9;&#x9;SYS_CHANGE_OPERATION AS change_operation,&#xA;&#x9;&#x9;&#x9;&#x9;SYS_CHANGE_VERSION &#xA;&#x9;&#x9;&#x9;FROM CHANGETABLE (CHANGES ' +base.SourceTable +',0) AS change_log&#xA;&#x9;&#x9;) AS change_log ON&#xA;&#x9;&#x9;&#x9;base_query.SourceKey = change_log.change_log_SourceKey &#xA;&quot; + @[User::strLoadAll] +&quot;'&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;prefix,&#xA;&#x9;&#x9;StagingTableName,&#xA;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,&#xA;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER ( ORDER BY t.TABLE_SCHEMA, t.TABLE_NAME) AS prefix,&#xA;&#x9;&#x9;&#x9;StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,&#xA;&#x9;&#x9;&#x9;major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  &#xA;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&quot;+@[$Package::SchemaFilter] +&quot;&#xA;&#x9;) AS table_list&#xA;&#x9;INNER JOIN sys.extended_properties as ext_prop ON &#xA;&#x9;&#x9;table_list.major_id = ext_prop.major_id&#xA;&#x9;WHERE &#xA;&#x9;&#x9;ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable'&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;prefix, &#xA;&#x9;&#x9;StagingTableName&#xA;) AS base&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strPackageQuery">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
-	PackageName = CONVERT(VARCHAR,(base.prefix+ 100  )) +'_' + base.StagingTableName,
+	PackageName = CONVERT(VARCHAR,(base.prefix+ 1000  )) +'_' + base.StagingTableName,
 	strParm1 = 
 	'LEFT JOIN
 		(
@@ -116,7 +116,7 @@ FROM
 			major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  
 		FROM INFORMATION_SCHEMA.TABLES AS t
 		WHERE 
-			t.TABLE_SCHEMA = 'Classification'
+			t.TABLE_SCHEMA = 'Classification' OR t.TABLE_SCHEMA = 'Location'
 	) AS table_list
 	INNER JOIN sys.extended_properties as ext_prop ON 
 		table_list.major_id = ext_prop.major_id
