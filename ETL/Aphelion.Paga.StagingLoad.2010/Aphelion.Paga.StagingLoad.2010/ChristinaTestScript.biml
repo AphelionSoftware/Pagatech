@@ -23,7 +23,7 @@
 		<#
 			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, 
 								"SELECT "+
-									"(rn+200) AS PackagePrefix, "+
+									"(rn+1300) AS PackagePrefix, "+
 									"TABLE_NAME, "+
 									"TABLE_SCHEMA " +
 								"FROM "+
@@ -35,8 +35,8 @@
 										"FROM INFORMATION_SCHEMA.TABLES "+
 										"WHERE "+
 											"TABLE_TYPE = 'BASE TABLE' "+
-											"AND TABLE_SCHEMA = 'Staging' "+
-											"AND TABLE_NAME LIKE 'Location_%' "+
+											"AND TABLE_SCHEMA = 'Staging' " +
+											"TABLE_NAME LIKE 'Organization%_" +
 								") AS x;");
 	 	    
 			foreach (DataRow row in tableNamesToImport.Rows)
