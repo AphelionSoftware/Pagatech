@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/05/2014 19:29:16" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{60FC091E-FEF2-4AB6-92F3-8AE3D5DC118F}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="205_Location_DimRegion" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{2D9990BF-2853-4AE7-ACC1-7F3E780C34D4}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/06/2014 12:09:41" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{FD7912AF-BE62-4348-818E-7AD03AFCA656}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="205_Location_DimRegion" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{B8FF0DB8-640E-4638-8149-728B89A34A46}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{9DC69FA7-ED81-418B-BF87-FB89F2D0A993}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Location_DimRegion" DTS:refId="Package\DFT_Load Location_DimRegion" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{21B90238-024D-4C96-AEC9-EC8A250DE47E}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Location_DimRegion" DTS:refId="Package\DFT_Load Location_DimRegion" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -17,7 +17,7 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="name" refId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].ExternalColumns[name]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="GeoZoneSourceKey" refId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].ExternalColumns[GeoZoneSourceKey]">
+                    <externalMetadataColumn dataType="i4" name="DimGeoZoneSourceKey" refId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].ExternalColumns[DimGeoZoneSourceKey]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]">
                     </externalMetadataColumn>
@@ -27,7 +27,7 @@
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].ExternalColumns[name]" length="255" lineageId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].Columns[name]" name="name" refId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].Columns[name]" truncationRowDisposition="FailComponent">
                     </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].ExternalColumns[GeoZoneSourceKey]" lineageId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].Columns[GeoZoneSourceKey]" name="GeoZoneSourceKey" refId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].Columns[GeoZoneSourceKey]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].ExternalColumns[DimGeoZoneSourceKey]" lineageId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].Columns[DimGeoZoneSourceKey]" name="DimGeoZoneSourceKey" refId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].Columns[DimGeoZoneSourceKey]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]" length="1" lineageId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].Columns[change_operation]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -41,7 +41,7 @@
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Error].Columns[name]" name="name" refId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Error].Columns[name]">
                     </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Error].Columns[GeoZoneSourceKey]" name="GeoZoneSourceKey" refId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Error].Columns[GeoZoneSourceKey]">
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Error].Columns[DimGeoZoneSourceKey]" name="DimGeoZoneSourceKey" refId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Error].Columns[DimGeoZoneSourceKey]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Error].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Error].Columns[change_operation]">
                     </outputColumn>
@@ -76,11 +76,11 @@
               <inputs>
                 <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="GeoZoneSourceKey" refId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[GeoZoneSourceKey]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimGeoZoneSourceKey" refId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimGeoZoneSourceKey]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[change_operation]">
                     </externalMetadataColumn>
@@ -90,7 +90,7 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="name" externalMetadataColumnId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].Columns[name]" refId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[name]">
                     </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="GeoZoneSourceKey" externalMetadataColumnId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[GeoZoneSourceKey]" lineageId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].Columns[GeoZoneSourceKey]" refId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[GeoZoneSourceKey]">
+                    <inputColumn cachedDataType="i4" cachedName="DimGeoZoneSourceKey" externalMetadataColumnId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimGeoZoneSourceKey]" lineageId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].Columns[DimGeoZoneSourceKey]" refId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[DimGeoZoneSourceKey]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="change_operation" externalMetadataColumnId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[change_operation]" lineageId="Package\DFT_Load Location_DimRegion\OLEDB_GetData.Outputs[Output].Columns[change_operation]" refId="Package\DFT_Load Location_DimRegion\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[change_operation]">
                     </inputColumn>
@@ -135,7 +135,7 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{A9659157-E4E8-464D-9BE9-3FF6B9F5966D}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{F71593E0-66DE-4A56-B897-7C28C76C9791}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">LEFT JOIN
 																(
 																	SELECT 
@@ -147,31 +147,31 @@
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{52B02320-BA5A-4E30-8519-EACB48BEEAA1}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1301DFEA-C6E0-4362-A6B1-F4CCDEA0EAA3}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{60793981-259D-42C6-8C37-C4DC0F1A90D0}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AB8FE5C1-3814-426B-B2F0-AD9FB9A5ECEA}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CD7EFFA4-0F86-4DC1-8914-3052B5CEDD2E}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{51C8B4B7-96D4-486D-B0EA-AD3AF068A013}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT 
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
 	base_query.name,
-	GeoZoneSourceKey = COALESCE(base_query.GeoZoneSourceKey, -1),
-	change_operation = CONVERT(CHAR(1),change_log.change_operation)
+	DimGeoZoneSourceKey = COALESCE(base_query.DimGeoZoneSourceKey, -1),
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
 FROM 
 
-(SELECT RegionId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, GeoZoneId AS GeoZoneSourceKey FROM dbo.Region) as base_query</DTS:VariableValue>
+(SELECT RegionId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, GeoZoneId AS DimGeoZoneSourceKey FROM dbo.Region) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F4E348BA-76EB-436C-A926-934BCACB1897}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{363F1C18-925C-4B81-A351-58D2305BEB13}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">SELECT 
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
 	base_query.name,
-	GeoZoneSourceKey = COALESCE(base_query.GeoZoneSourceKey, -1),
-	change_operation = CONVERT(CHAR(1),change_log.change_operation)
+	DimGeoZoneSourceKey = COALESCE(base_query.DimGeoZoneSourceKey, -1),
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
 FROM 
 
-(SELECT RegionId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, GeoZoneId AS GeoZoneSourceKey FROM dbo.Region) as base_query LEFT JOIN
+(SELECT RegionId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, GeoZoneId AS DimGeoZoneSourceKey FROM dbo.Region) as base_query LEFT JOIN
 																(
 																	SELECT 
 																		NULL AS change_log_SourceKey,

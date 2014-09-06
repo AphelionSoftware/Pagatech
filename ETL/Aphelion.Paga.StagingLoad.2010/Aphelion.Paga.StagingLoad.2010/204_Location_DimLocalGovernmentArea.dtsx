@@ -1,30 +1,152 @@
-﻿<?xml version="1.0"?>
-<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:refId="Package"
-  DTS:CreationDate="9/5/2014 7:29:16 PM"
-  DTS:CreationName="SSIS.Package.3"
-  DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
-  DTS:CreatorName="Administrator"
-  DTS:DTSID="{0993FDC7-9562-49FF-9653-9024479A5BDF}"
-  DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="11.0.3436.0"
-  DTS:LocaleID="1033"
-  DTS:ObjectName="204_Location_DimLocalGovernmentArea"
-  DTS:ProtectionLevel="0"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{72885AAB-0807-4B17-B890-8A3BE8D2DD8F}"
-  DTS:VersionMajor="0">
-  <DTS:Property
-    DTS:Name="PackageFormatVersion">6</DTS:Property>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="09/06/2014 12:09:41" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{899B203D-7626-4518-8343-F1A5614E478D}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="204_Location_DimLocalGovernmentArea" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{D8BEB3D3-3F03-4242-B21D-A6FB7EBAE356}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{9278EF79-F4EE-4682-8156-6BEA5E45FCB8}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Location_DimLocalGovernmentArea" DTS:refId="Package\DFT_Load Location_DimLocalGovernmentArea" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+          <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{0D553C95-FED5-47C0-B5CB-49DD94B17264}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="name" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="code" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[code]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimRegionSourceKey" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[DimRegionSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[name]" length="255" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[name]" name="name" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[name]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[code]" length="50" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[code]" name="code" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[code]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[DimRegionSourceKey]" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[DimRegionSourceKey]" name="DimRegionSourceKey" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[DimRegionSourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]" length="1" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[change_operation]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[SourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[name]" name="name" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[name]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[code]" name="code" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[code]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[DimRegionSourceKey]" name="DimRegionSourceKey" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[DimRegionSourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[change_operation]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{D3A5600D-C73B-4003-A16E-ACC08F23C506}:external" connectionManagerRefId="Project.ConnectionManagers[StagingDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="Code" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Code]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimRegionSourceKey" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimRegionSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="name" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[name]" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[name]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="code" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Code]" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[code]" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[code]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimRegionSourceKey" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimRegionSourceKey]" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[DimRegionSourceKey]" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[DimRegionSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="change_operation" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[change_operation]" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[change_operation]" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[change_operation]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Outputs[Error]" synchronousInputId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Staging.Location_DimLocalGovernmentArea</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">true</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+            </component>
+          </components>
+          <paths>
+            <path endId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]" name="OLEDB_GetData_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Location_DimLocalGovernmentArea.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]" startId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output]">
+            </path>
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="8"
-      DTS:DTSID="{BEC2C00D-48B5-4D45-B25C-CBDC321865B5}"
-      DTS:ObjectName="strParm1">
-      <DTS:Property
-        DTS:DataType="8"
-        DTS:Name="ParameterValue">LEFT JOIN
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{FD759966-B1B6-4EFC-822A-841CEE39EC50}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">LEFT JOIN
 																(
 																	SELECT 
 																		NULL AS change_log_SourceKey,
@@ -33,51 +155,35 @@
 																	base_query.SourceKey = change_log.change_log_SourceKey</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{63007E91-C2E9-4229-8FE0-197E29CDA850}"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue
-        DTS:DataType="8">SELECT 
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{48042BF2-8F8F-4170-881A-7112CAF8CC05}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{49C85516-24B5-41CF-AA38-8D08EEB2DB14}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+      <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{33BD4F91-1565-4DA6-ABE9-EE8AE6C72CD3}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT 
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
 	base_query.name,
 	base_query.code,
-	base_query.RegionSourceKey,
-	change_operation = CONVERT(CHAR(1),change_log.change_operation)
+	base_query.DimRegionSourceKey,
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
 FROM 
 
-(SELECT LocalGovernmentAreaId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, CONVERT(VARCHAR(50),LgaCode) as Code, RegionId AS RegionSourceKey FROM dbo.LocalGovernmentArea) as base_query</DTS:VariableValue>
+(SELECT LocalGovernmentAreaId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, CONVERT(VARCHAR(50),LgaCode) as Code, RegionId AS DimRegionSourceKey FROM dbo.LocalGovernmentArea) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{03EF0630-2315-4CB1-9807-1428647F5F40}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="CurrentVersion">
-      <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{9D959960-6009-4784-85E2-5C4E611993C7}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue
-        DTS:DataType="8">SELECT 
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6E50536B-D827-471D-A7BD-C580401D7253}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT 
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
 	base_query.name,
 	base_query.code,
-	base_query.RegionSourceKey,
-	change_operation = CONVERT(CHAR(1),change_log.change_operation)
+	base_query.DimRegionSourceKey,
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
 FROM 
 
-(SELECT LocalGovernmentAreaId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, CONVERT(VARCHAR(50),LgaCode) as Code, RegionId AS RegionSourceKey FROM dbo.LocalGovernmentArea) as base_query LEFT JOIN
+(SELECT LocalGovernmentAreaId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, CONVERT(VARCHAR(50),LgaCode) as Code, RegionId AS DimRegionSourceKey FROM dbo.LocalGovernmentArea) as base_query LEFT JOIN
 																(
 																	SELECT 
 																		NULL AS change_log_SourceKey,
@@ -85,483 +191,5 @@ FROM
 																) AS change_log ON
 																	base_query.SourceKey = change_log.change_log_SourceKey;</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{E2625C5A-9543-4507-9DD3-A26430291C22}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="LastSyncVersion">
-      <DTS:VariableValue
-        DTS:DataType="3">6</DTS:VariableValue>
-    </DTS:Variable>
   </DTS:Variables>
-  <DTS:Executables>
-    <DTS:Executable
-      DTS:refId="Package\DFT_Load Location_DimLocalGovernmentArea"
-      DTS:CreationName="SSIS.Pipeline.3"
-      DTS:DTSID="{DCE5BBBF-46AD-4E1A-9047-1B8F234ED905}"
-      DTS:ExecutableType="SSIS.Pipeline.3"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="DFT_Load Location_DimLocalGovernmentArea"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          BLOBTempStoragePath=""
-          bufferTempStoragePath=""
-          version="1">
-          <components>
-            <component
-              refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData"
-              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              name="OLEDB_GetData"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable">User::FullQueryText</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Connections[OleDbConnection]"
-                  connectionManagerID="{0D553C95-FED5-47C0-B5CB-49DD94B17264}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SourceDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output]"
-                  name="Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[SourceKey]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[SourceKey]"
-                      name="SourceKey"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[name]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[name]"
-                      length="255"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[name]"
-                      name="name"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[code]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[code]"
-                      length="50"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[code]"
-                      name="code"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[RegionSourceKey]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[RegionSourceKey]"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[RegionSourceKey]"
-                      name="RegionSourceKey"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[change_operation]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]"
-                      length="1"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[change_operation]"
-                      name="change_operation"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]"
-                      dataType="i4"
-                      name="SourceKey" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="name" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[code]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="code" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[RegionSourceKey]"
-                      dataType="i4"
-                      name="RegionSourceKey" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      name="change_operation" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error]"
-                  isErrorOut="true"
-                  name="Error">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[SourceKey]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[SourceKey]"
-                      name="SourceKey" />
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[name]"
-                      name="name" />
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[code]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[code]"
-                      name="code" />
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[RegionSourceKey]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[RegionSourceKey]"
-                      name="RegionSourceKey" />
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[change_operation]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[change_operation]"
-                      name="change_operation" />
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging"
-              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              name="OLEDB_InsertIntoStaging"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">Staging.Location_DimLocalGovernmentArea</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">true</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Connections[OleDbConnection]"
-                  connectionManagerID="{D3A5600D-C73B-4003-A16E-ACC08F23C506}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[StagingDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLEDB_GetData_Output_OLEDB_InsertIntoStaging">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]"
-                      cachedDataType="i4"
-                      cachedName="SourceKey"
-                      externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" />
-                    <inputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[name]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="255"
-                      cachedName="name"
-                      externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[name]" />
-                    <inputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[RegionSourceKey]"
-                      cachedDataType="i4"
-                      cachedName="RegionSourceKey"
-                      externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[RegionSourceKey]"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[RegionSourceKey]" />
-                    <inputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[change_operation]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1"
-                      cachedName="change_operation"
-                      externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[change_operation]"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[change_operation]" />
-                    <inputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[code]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="code"
-                      externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Code]"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[code]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="SourceKey" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="Name" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[RegionSourceKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="RegionSourceKey" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[change_operation]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      name="change_operation" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Code]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="Code" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Outputs[Error]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Error"
-                  synchronousInputId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\DFT_Load Location_DimLocalGovernmentArea.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]"
-              endId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]"
-              name="OLEDB_GetData_Output_OLEDB_InsertIntoStaging"
-              startId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-  </DTS:Executables>
-  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
-<!--If you manually edit this section and make a mistake, you can delete it. -->
-<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
-<Objects
-  Version="sql11">
-  <!--Each node below will contain properties that do not affect runtime behavior.-->
-  <Package
-    design-time-name="Package">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="297,42"
-          Id="Package\DFT_Load Location_DimLocalGovernmentArea"
-          TopLeft="5.5,5.5" />
-      </GraphLayout>
-    </LayoutInfo>
-  </Package>
-  <TaskHost
-    design-time-name="Package\DFT_Load Location_DimLocalGovernmentArea">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="199,42"
-          Id="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging"
-          TopLeft="5.50000000000001,107.5" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData"
-          TopLeft="27.5,5.5" />
-        <EdgeLayout
-          Id="Package\DFT_Load Location_DimLocalGovernmentArea.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]"
-          TopLeft="105,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

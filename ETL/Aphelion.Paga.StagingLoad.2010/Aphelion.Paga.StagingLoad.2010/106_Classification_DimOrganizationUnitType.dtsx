@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/05/2014 13:58:14" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{A4A83BB6-482B-464B-8844-1C21D163B3E8}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="106_Classification_DimOrganizationUnitType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{D8D162A3-77DA-4B9B-BAB3-E4139173941C}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/06/2014 12:14:59" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{E76C2034-9EFA-4A16-A5CD-C64122EBFD0A}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="106_Classification_DimOrganizationUnitType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{6DEBF913-1D0D-404C-890C-8A40619E1A97}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{3B4C9FB6-64A7-4186-B6AA-8321B08EACDA}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimOrganizationUnitType" DTS:refId="Package\DFT_Load Classification_DimOrganizationUnitType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{9A24DE08-20C1-4343-AF61-10A4EBBCDE51}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimOrganizationUnitType" DTS:refId="Package\DFT_Load Classification_DimOrganizationUnitType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -70,9 +70,11 @@
               <inputs>
                 <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Classification_DimOrganizationUnitType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load Classification_DimOrganizationUnitType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]">
+                    <externalMetadataColumn dataType="i4" name="DimOrganizationUnitTypeID" refId="Package\DFT_Load Classification_DimOrganizationUnitType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimOrganizationUnitTypeID]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Classification_DimOrganizationUnitType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load Classification_DimOrganizationUnitType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load Classification_DimOrganizationUnitType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[change_operation]">
                     </externalMetadataColumn>
@@ -125,7 +127,7 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{E005D568-75B4-4A48-A651-0460A481646A}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{D84005EE-8805-48CC-AF0F-B8F730178C69}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">LEFT JOIN
 																(
 																	SELECT 
@@ -137,39 +139,39 @@
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4D75D835-B0F6-405B-8374-03E605C58EF9}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6F780401-B5D9-45D2-9AC9-0FF1971AB3AA}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A0CCA8A9-2D65-4B09-8643-AF69F507B9DC}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5A921B24-226D-440C-83EF-EEF83D5C64C5}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AD076EE7-2F78-48F3-A9D9-3556AFFE9884}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{84F0918E-1838-423D-A660-E2955D9236C2}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT DISTINCT
-	CONVERT(VARCHAR(255),COALESCE(base_query.name,'Deleted')) AS SourceKey,
-	CONVERT(VARCHAR(255),COALESCE(base_query.name,'Deleted')) AS name,
-	CONVERT( CHAR(1), change_log.change_operation) AS change_operation
-FROM
-(
-	SELECT 
-		OrganizationUnitTypeID AS SourceKey,
-		description as name,
-		OrganizationID
-     FROM [PagaOpsDB].[dbo].[OrganizationUnitType]
-) AS base_query</DTS:VariableValue>
+			CONVERT(VARCHAR(255),COALESCE(base_query.name,'Deleted')) AS SourceKey,
+			CONVERT(VARCHAR(255),COALESCE(base_query.name,'Deleted')) AS name,
+			change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
+		FROM
+		(
+			SELECT 
+				OrganizationUnitTypeID AS SourceKey,
+				description as name,
+				OrganizationID
+			 FROM [PagaOpsDB].[dbo].[OrganizationUnitType]
+		) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{074E0A07-F238-4CB0-A5EE-86C30B021EE4}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{9447844F-815E-4431-8182-39BCA8AE7555}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">SELECT DISTINCT
-	CONVERT(VARCHAR(255),COALESCE(base_query.name,'Deleted')) AS SourceKey,
-	CONVERT(VARCHAR(255),COALESCE(base_query.name,'Deleted')) AS name,
-	CONVERT( CHAR(1), change_log.change_operation) AS change_operation
-FROM
-(
-	SELECT 
-		OrganizationUnitTypeID AS SourceKey,
-		description as name,
-		OrganizationID
-     FROM [PagaOpsDB].[dbo].[OrganizationUnitType]
-) AS base_query LEFT JOIN
+			CONVERT(VARCHAR(255),COALESCE(base_query.name,'Deleted')) AS SourceKey,
+			CONVERT(VARCHAR(255),COALESCE(base_query.name,'Deleted')) AS name,
+			change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
+		FROM
+		(
+			SELECT 
+				OrganizationUnitTypeID AS SourceKey,
+				description as name,
+				OrganizationID
+			 FROM [PagaOpsDB].[dbo].[OrganizationUnitType]
+		) AS base_query LEFT JOIN
 																(
 																	SELECT 
 																		NULL AS change_log_SourceKey,

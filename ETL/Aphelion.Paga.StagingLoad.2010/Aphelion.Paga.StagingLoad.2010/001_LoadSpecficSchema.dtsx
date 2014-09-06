@@ -12,8 +12,8 @@
   DTS:ObjectName="001_LoadSpecficSchema"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{B395057C-A9D5-48A5-BBDD-9FF007C0E1B2}">
+  DTS:VersionBuild="70"
+  DTS:VersionGUID="{552A83CA-23BC-4EA4-BD4D-20386E315ED9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -25,7 +25,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="11"
-        DTS:Name="ParameterValue">0</DTS:Property>
+        DTS:Name="ParameterValue">-1</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -35,7 +35,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">200</DTS:Property>
+        DTS:Name="ParameterValue">100</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -45,7 +45,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">Location</DTS:Property>
+        DTS:Name="ParameterValue">Classification</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -76,7 +76,8 @@
       DTS:Namespace="User"
       DTS:ObjectName="strLoadAll">
       <DTS:VariableValue
-        DTS:DataType="8">WHERE 	change_log.SYS_CHANGE_VERSION &gt;  0 AND change_log.SYS_CHANGE_VERSION &lt;= 0</DTS:VariableValue>
+        DTS:DataType="8"
+        xml:space="preserve"> </DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -88,7 +89,7 @@
       DTS:ObjectName="strPackageQuery">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
-	PackageName = CONVERT(VARCHAR,(base.prefix+ 200  )) +'_' + base.StagingTableName,
+	PackageName = CONVERT(VARCHAR,(base.prefix+ 100  )) +'_' + base.StagingTableName,
 	strParm1 = 
 	'LEFT JOIN
 		(
@@ -99,7 +100,7 @@
 			FROM CHANGETABLE (CHANGES ' +base.SourceTable +',0) AS change_log
 		) AS change_log ON
 			base_query.SourceKey = change_log.change_log_SourceKey 
-WHERE 	change_log.SYS_CHANGE_VERSION &gt;  0 AND change_log.SYS_CHANGE_VERSION &lt;= 0'
+ '
 FROM
 (
 	SELECT
@@ -115,7 +116,7 @@ FROM
 			major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  
 		FROM INFORMATION_SCHEMA.TABLES AS t
 		WHERE 
-			t.TABLE_SCHEMA = 'Location'
+			t.TABLE_SCHEMA = 'Classification'
 	) AS table_list
 	INNER JOIN sys.extended_properties as ext_prop ON 
 		table_list.major_id = ext_prop.major_id

@@ -32,6 +32,11 @@
           <SSIS:Package SSIS:Name="001_LoadSpecficSchema.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="100_DummyTablePackage.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="010_RunInParallel.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="201_Location_DimCity.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="202_Location_DimCountry.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="203_Location_DimGeoZone.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="204_Location_DimLocalGovernmentArea.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="205_Location_DimRegion.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="101_Classification_DimAgentCommissionType.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="102_Classification_DimBusinessType.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="103_Classification_DimFinancialTransactionSubType.dtsx" SSIS:EntryPoint="1" />
@@ -44,11 +49,6 @@
           <SSIS:Package SSIS:Name="110_Classification_DimProcessStatus.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="111_Classification_DimProcessType.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="112_Classification_DimProcessTypeGroup.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="201_Location_DimCity.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="202_Location_DimCountry.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="203_Location_DimGeoZone.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="204_Location_DimLocalGovernmentArea.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="205_Location_DimRegion.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="MetadataDB.conmgr" />
@@ -418,10 +418,10 @@
                 <SSIS:Property SSIS:Name="Name">001_LoadSpecficSchema</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">68</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">70</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B395057C-A9D5-48A5-BBDD-9FF007C0E1B2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{552A83CA-23BC-4EA4-BD4D-20386E315ED9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -438,7 +438,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -452,7 +452,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">200</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">100</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -466,7 +466,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Location</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Classification</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -542,472 +542,16 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="101_Classification_DimAgentCommissionType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{29273396-0DFB-4FC8-ABC1-EAF22E0712FE}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">101_Classification_DimAgentCommissionType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{4EC30AF6-F3AF-47A4-911C-EBFC28592D87}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{3EC30072-C74D-4472-8DC4-F2B984B72F65}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="102_Classification_DimBusinessType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{6BDCAD5D-0203-4CF9-88A1-8BC37A7688B1}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">102_Classification_DimBusinessType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A4D2146E-7CC7-4B87-A7DF-82F0A0F9EC5D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{9B13959F-3F7A-4819-92D4-4EB71692908D}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="103_Classification_DimFinancialTransactionSubType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{0DFC31E2-27BF-4C05-A80E-2B28B215B85A}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">103_Classification_DimFinancialTransactionSubType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B6DCDEB4-7A62-44F5-91BC-7974CB3D45BE}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{3C46582F-D0B0-45D3-910B-47D3F246C727}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="104_Classification_DimFinancialTransactionType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{8C094ABD-5325-4264-A8AE-9C7ED68CAA9A}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">104_Classification_DimFinancialTransactionType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E3D5CC2E-723F-4CFC-9778-2526B52CD7C2}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{02CA3F93-D317-48AB-8AB2-8EAF81C75BC2}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="105_Classification_DimOrganizationSubscriptionStatus.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{5702603D-8C3A-4098-9A68-745E1B5F7A94}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">105_Classification_DimOrganizationSubscriptionStatus</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AA4D769B-6297-482C-B585-A720B8190295}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{C1AEFCF3-3509-4B10-A4F7-F3D448B7FD71}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="106_Classification_DimOrganizationUnitType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{A4A83BB6-482B-464B-8844-1C21D163B3E8}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">106_Classification_DimOrganizationUnitType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{D8D162A3-77DA-4B9B-BAB3-E4139173941C}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{E005D568-75B4-4A48-A651-0460A481646A}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="107_Classification_DimOrganizationVerificationStatus.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{EA18A1E0-545C-400F-B4A4-CFF3060EAAD8}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">107_Classification_DimOrganizationVerificationStatus</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{5FD0EDB7-F5D6-40FC-88FD-120A0C2649B9}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{3499C041-82B7-458F-AD6C-8BF0422A2EFF}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="108_Classification_DimPagaAccountStatus.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{A4EC47F6-10F8-464D-A383-7B2D6FCAC238}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">108_Classification_DimPagaAccountStatus</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{D1DC15FD-AA65-494C-9ADF-6EC5FCDABF66}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{732B1C16-52F6-4DBF-AAD3-402383D0AD1C}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="109_Classification_DimPagaAccountUserType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{208A9DC5-7B4B-4DB3-BFB4-03FD80739600}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">109_Classification_DimPagaAccountUserType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C4A12D43-A4FC-4CCD-A6CE-7A13BC2F7E65}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{77A4F18F-DE17-415C-8790-2ED8DE111572}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="110_Classification_DimProcessStatus.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{1243D61B-4777-4617-8B91-24D2D2E81FCB}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">110_Classification_DimProcessStatus</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1BF25A63-31DC-47F5-9A73-687FB3246980}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{31A21342-D893-4309-AF4A-149E57FBD755}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="111_Classification_DimProcessType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{C2193997-B3E2-4D02-B564-8DCDCC7B0B2A}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">111_Classification_DimProcessType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C4E5D2F8-BE2E-40F7-9854-675A8E70D399}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{C32570C5-97C8-4BCB-A316-2E221A90673D}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="112_Classification_DimProcessTypeGroup.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{77419AF6-80B3-4185-A127-72EC8F564FB6}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">112_Classification_DimProcessTypeGroup</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{02A991EB-5E24-4245-8C1A-83D5FE195D1D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{51E569AF-30DB-4D8B-A412-0ED653069DC8}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="201_Location_DimCity.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{9F0CAE57-6152-4FD9-8EE3-CDF1F953FD24}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{6E69B1CE-A5C5-4C38-8B45-B0460A30FE65}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">201_Location_DimCity</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{EB69D2AC-2DC7-4BEE-9A7D-C91AA51C564A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2E61BA0E-8A0E-4663-B035-EA2BDCEDCEA9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1016,7 +560,7 @@
               <SSIS:Parameters>
                 <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{C368401F-00D1-487F-AA5F-409E10F1A954}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{9973992A-AC22-4A32-B56F-48A3AAEF2789}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1038,14 +582,14 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="202_Location_DimCountry.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{F5C1AD99-9A20-4052-AEEC-82236FA306D3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{99AC6266-A14D-416A-8B42-89F42022C612}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">202_Location_DimCountry</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C31158DE-8A67-48A3-A6E2-2C0B34E1AC4F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0F869D35-C334-42BE-AF22-48EDF1D75486}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1054,7 +598,7 @@
               <SSIS:Parameters>
                 <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{59FBF2E3-D619-45B6-BD66-BF8A4E7FDD9A}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{BE5C96F4-6F95-48FA-9A51-0DA5694C9992}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1076,14 +620,14 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="203_Location_DimGeoZone.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{0754057C-C001-42B3-AAB8-D40C12438F7E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{A67EE98D-F9A7-4FA9-BA56-457D49A5E526}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">203_Location_DimGeoZone</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B93ABC61-4237-4F7E-AC29-E838FAD53DD0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{85457040-522E-4BEE-B18A-4000167EA106}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1092,7 +636,7 @@
               <SSIS:Parameters>
                 <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{3CB1A897-517E-4D79-B096-E2B26B7C6279}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{45C17602-19D0-4D98-9323-A62220607021}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1114,14 +658,14 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="204_Location_DimLocalGovernmentArea.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{0993FDC7-9562-49FF-9653-9024479A5BDF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{899B203D-7626-4518-8343-F1A5614E478D}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">204_Location_DimLocalGovernmentArea</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{72885AAB-0807-4B17-B890-8A3BE8D2DD8F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D8BEB3D3-3F03-4242-B21D-A6FB7EBAE356}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1130,7 +674,7 @@
               <SSIS:Parameters>
                 <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{BEC2C00D-48B5-4D45-B25C-CBDC321865B5}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{FD759966-B1B6-4EFC-822A-841CEE39EC50}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1152,14 +696,14 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="205_Location_DimRegion.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{60FC091E-FEF2-4AB6-92F3-8AE3D5DC118F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{FD7912AF-BE62-4348-818E-7AD03AFCA656}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">205_Location_DimRegion</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2D9990BF-2853-4AE7-ACC1-7F3E780C34D4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B8FF0DB8-640E-4638-8149-728B89A34A46}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1168,7 +712,463 @@
               <SSIS:Parameters>
                 <SSIS:Parameter SSIS:Name="strParm1">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{A9659157-E4E8-464D-9BE9-3FF6B9F5966D}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{F71593E0-66DE-4A56-B897-7C28C76C9791}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="101_Classification_DimAgentCommissionType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{8216F473-075B-4B0D-894B-2BB5CFB90755}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">101_Classification_DimAgentCommissionType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2C1E2ED3-1E04-401D-AD3A-1E6F3E940EAB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{2CE1CC1A-6804-4D8F-A4F2-C6A654AD18D2}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="102_Classification_DimBusinessType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{A57F4AC0-2E85-4847-8960-1717837EC585}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">102_Classification_DimBusinessType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A3273AAF-17FF-417A-859F-E5DFF9A06B3D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{C14FB4B7-1D6A-47C9-B747-E976C1BC9E91}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="103_Classification_DimFinancialTransactionSubType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{88133EC2-77CF-4F56-8FDD-4EE0F2ADC4E3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">103_Classification_DimFinancialTransactionSubType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{CE398432-4025-4081-A49D-B5382B872C36}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{70DBDA4F-D0DC-442F-99A6-FF5BA3EA17CC}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="104_Classification_DimFinancialTransactionType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{C95C6866-7735-409A-AD3C-0FE63E292B05}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">104_Classification_DimFinancialTransactionType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{60467773-4EDD-4D25-8DE3-D523359F6142}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{5627C47D-41F8-4F70-9CE0-B5E2CFE51E04}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="105_Classification_DimOrganizationSubscriptionStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{442FD08C-86E0-4891-9EE0-E27D9FA453CB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">105_Classification_DimOrganizationSubscriptionStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DAFA576C-E4B4-4F58-AA42-2B87153F0EFC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{3802E59E-CD20-4D9F-9BBB-0C56A00BAA15}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="106_Classification_DimOrganizationUnitType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{DB0D18F7-F8EA-4303-90A1-FCAB9338F347}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">106_Classification_DimOrganizationUnitType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5DCA357A-07F5-48B5-B85C-049FCE881E3D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{0E9081D0-7321-4C3C-B9A3-573216334E0A}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="107_Classification_DimOrganizationVerificationStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{F5644194-66AD-4C33-8489-11F8ECB9B731}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">107_Classification_DimOrganizationVerificationStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D1B09B4C-3B47-4E8F-AE30-A58107982F45}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{EB9C7064-8517-4DD4-8745-B0756194A1F7}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="108_Classification_DimPagaAccountStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{AE01E215-EEC4-471C-9E03-5D57E56A7387}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">108_Classification_DimPagaAccountStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F25A483F-83FD-4640-BB51-DAC6E418BA5C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{B7D1DB56-C4BA-405F-8F08-B710D8DAAC7D}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="109_Classification_DimPagaAccountUserType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{1BA60DB3-1171-4B2E-B9E7-FF7E5986B1A4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">109_Classification_DimPagaAccountUserType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4B41D52E-203E-4C8B-9008-BE25828A104F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{3219B653-ED48-441A-B534-11335F9FF102}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="110_Classification_DimProcessStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{C0EA7697-C04D-42EE-88D4-948A74EEED9A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">110_Classification_DimProcessStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{73350DF7-3A2C-4A2B-8BC1-BA3C8466210B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{2983E375-345E-40AE-9514-794570D3EC75}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="111_Classification_DimProcessType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{46F5CFEC-245A-45E9-8C22-62FEFEE09F24}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">111_Classification_DimProcessType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{1BD1567D-C906-4379-AE59-0424F7AE2D25}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{6766F590-12BD-47D8-A69E-EAE7941C281D}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LEFT JOIN
+																(
+																	SELECT 
+																		NULL AS change_log_SourceKey,
+																		NULL AS change_operation
+																) AS change_log ON
+																	base_query.SourceKey = change_log.change_log_SourceKey</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="112_Classification_DimProcessTypeGroup.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{08C13A46-DF9A-4C65-BC23-ED9F03FA2AE8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">112_Classification_DimProcessTypeGroup</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{549EAEE7-A41B-4988-A4B6-A327FFA17DB7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="strParm1">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{38B8507B-58E9-4351-ADDE-CBCA4BA03FC2}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1197,6 +1197,10 @@
     <ProjectItem>
       <Name>Location.biml</Name>
       <FullPath>Location.biml</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Classification.biml</Name>
+      <FullPath>Classification.biml</FullPath>
     </ProjectItem>
   </Miscellaneous>
   <Configurations>
