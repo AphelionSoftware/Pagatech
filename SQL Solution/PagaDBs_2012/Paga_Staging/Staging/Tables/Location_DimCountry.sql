@@ -1,9 +1,12 @@
 ﻿CREATE TABLE [Staging].[Location_DimCountry] (
-    [SourceKey]        VARCHAR (255) NOT NULL,
+    [DimCountryID]     INT           NULL,
+    [Code]             VARCHAR (50)  NOT NULL,
     [Name]             VARCHAR (255) NOT NULL,
-    [Code]             VARCHAR (50)  NULL,
-    [change_operation] CHAR (1)      NULL
+    [SourceKey]        VARCHAR (255) NOT NULL,
+    [change_operation] CHAR (1)      DEFAULT ((1)) NOT NULL
 );
+
+
 
 
 

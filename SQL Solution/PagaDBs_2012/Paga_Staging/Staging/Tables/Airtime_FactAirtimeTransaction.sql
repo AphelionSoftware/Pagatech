@@ -1,14 +1,17 @@
 ﻿CREATE TABLE [Staging].[Airtime_FactAirtimeTransaction] (
-    [DimDateID]                         INT             NULL,
-    [DimTimeID]                         INT             NULL,
-    [FinancialTransactionTypeSourceKey] VARCHAR (255)   NULL,
-    [FinancialAccountSourceKey]         VARCHAR (255)   NULL,
-    [PagaAccountSourceKey]              VARCHAR (255)   NULL,
-    [CitySourceKey]                     VARCHAR (255)   NULL,
-    [DebitAmount]                       DECIMAL (18, 2) NULL,
-    [CreditAmount]                      DECIMAL (18, 2) NULL,
-    [change_operation]                  CHAR (1)        NULL
+    [CreditAmount]                         DECIMAL (18, 2) NULL,
+    [DebitAmount]                          DECIMAL (18, 2) NULL,
+    [SourceKey]                            INT             NOT NULL,
+    [DimDateID]                            INT             NULL,
+    [DimTimeID]                            INT             NULL,
+    [DimCitySourceKey]                     VARCHAR (255)   NULL,
+    [DimFinancialAccountSourceKey]         VARCHAR (255)   NULL,
+    [DimFinancialTransactionTypeSourceKey] VARCHAR (255)   NULL,
+    [DimPagaAccountSourceKey]              VARCHAR (255)   NULL,
+    [change_operation]                     CHAR (1)        DEFAULT ((1)) NOT NULL
 );
+
+
 
 
 

@@ -1,13 +1,15 @@
 ﻿CREATE TABLE [Staging].[Shared_DimOrganizationUnitLevel3] (
-    [SourceKey]                       VARCHAR (255) NOT NULL,
-    [Name]                            VARCHAR (255) NOT NULL,
-    [Code]                            VARCHAR (50)  NOT NULL,
-    [OrganizationUnitLevel2SourceKey] VARCHAR (255) NOT NULL,
-    [OrganizationUnitTypeSourceKey]   VARCHAR (255) NOT NULL,
-    [DealerSourceKey]                 VARCHAR (255) NOT NULL,
-    [IdentificationNumber]            VARCHAR (20)  NULL,
-    [change_operation]                CHAR (1)      NULL
+    [Code]                               VARCHAR (50)  NOT NULL,
+    [IdentificationNumber]               VARCHAR (20)  NULL,
+    [Name]                               VARCHAR (255) NOT NULL,
+    [SourceKey]                          VARCHAR (255) NOT NULL,
+    [DimDealerSourceKey]                 VARCHAR (255) NOT NULL,
+    [DimOrganizationUnitLevel2SourceKey] VARCHAR (255) NOT NULL,
+    [DimOrganizationUnitTypeSourceKey]   VARCHAR (255) NOT NULL,
+    [change_operation]                   CHAR (1)      DEFAULT ((1)) NOT NULL
 );
+
+
 
 
 
