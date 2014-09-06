@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [Activity].[FactProcessTransaction] (
     [FactProcessTransactionID]          INT             NOT NULL,
-    [DimCreatedDateID]                  INT             NULL,
+    [SourceKey]       INT             NOT NULL,
+	[DimCreatedDateID]                  INT             NULL,
     [DimCreatedTimeID]                  INT             NULL,
     [DimPagaAccountID]                  INT             NULL,
     [DimProcessTypeID]                  INT             NULL,
@@ -24,7 +25,7 @@
     [DimCancellationApprovedByUserID]   INT             NULL,
     [OriginalFactProcessTransactionID]  INT             NULL,
     [DependentFactProcessTransactionID] INT             NULL,
-    [ProcessTransactionSourceKey]       INT             NOT NULL,
+   
     [RequestedProcessChannel]           VARCHAR (255)   NULL,
     [CustomerPhoneNumber]               VARCHAR (255)   NULL,
     [SenderPhoneNumber]                 VARCHAR (255)   NULL,

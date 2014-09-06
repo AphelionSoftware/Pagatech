@@ -1,5 +1,6 @@
 ﻿CREATE TABLE [Airtime].[FactAirtimeTransaction] (
     [FactAirtimeTransactionID]      INT             NOT NULL,
+	[SourceKey]	INT NOT NULL,
     [DimDateID]                     INT             NULL,
     [DimTimeID]                     INT             NULL,
     [DimFinancialTransactionTypeID] INT             NULL,

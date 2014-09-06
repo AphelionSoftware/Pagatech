@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [Finance].[FactFinancialTransaction] (
     [FactFinancialTransactionID]    INT             NOT NULL,
-    [DimCreatedDateID]              INT             NULL,
+    [SourceKey] INT             NOT NULL,
+	[DimCreatedDateID]              INT             NULL,
     [DimCreatedTimeID]              INT             NULL,
     [DimFinancialTransactionTypeID] INT             NULL,
     [DimFinancialAccountID]         INT             NULL,
@@ -11,7 +12,6 @@
     [DimEffectiveTimeID]            INT             NULL,
     [DimTransactionDateID]          INT             NULL,
     [DimTransactionTimeID]          INT             NULL,
-    [FinancialTransactionSourceKey] INT             NOT NULL,
     [OriginalTransactionID]         INT             NULL,
     [RelatedTransactionID]          INT             NULL,
     [DebitAmount]                   DECIMAL (18, 2) NULL,
