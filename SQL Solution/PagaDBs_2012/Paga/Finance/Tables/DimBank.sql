@@ -2,7 +2,6 @@
     [DimBankID]           INT           NOT NULL,
     [SourceKey]           VARCHAR (255) NOT NULL,
     [Name]                VARCHAR (255) NOT NULL,
-    [Code]                VARCHAR (50)  NOT NULL,
     [BankAccountLinkType] VARCHAR (255) NOT NULL,
     [DimOrganizationID]   INT           NOT NULL,
     [SupportsDebit]       BIT           NULL,
@@ -32,7 +31,7 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBank', @level2type = N'COLUMN', @level2name = N'Code';
+
 
 
 GO

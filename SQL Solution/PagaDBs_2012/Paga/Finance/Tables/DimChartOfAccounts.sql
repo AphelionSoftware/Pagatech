@@ -2,7 +2,6 @@
     [DimChartOfAccountsID]       INT           NOT NULL,
     [SourceKey]            VARCHAR (255) NOT NULL,
     [Name]                 VARCHAR (255) NOT NULL,
-    [Code]                 VARCHAR (50)  NOT NULL,
     [GLCodeRange]          VARCHAR (255) NULL,
     [SourceKeyHash]        BIGINT        NOT NULL,
     [DeltaHash]            BIGINT        NOT NULL,

@@ -2,7 +2,6 @@
     [DimDealerID]    INT             NOT NULL,
     [SourceKey]      VARCHAR (255)   NOT NULL,
     [Name]           VARCHAR (255)   NOT NULL,
-    [Code]           VARCHAR (50)    NOT NULL,
     [DateOfBirthID]  INT             NOT NULL,
     [DimRoleID]      INT             NOT NULL,
     [FirstName]      VARCHAR (255)   NULL,

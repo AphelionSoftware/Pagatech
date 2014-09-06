@@ -2,7 +2,6 @@
     [DimGLCodeID]      INT            NOT NULL,
     [SourceKey]        VARCHAR (255)  NOT NULL,
     [Name]             VARCHAR (255)  NOT NULL,
-    [Code]             VARCHAR (50)   NOT NULL,
     [DimGLCodeGroupID] INT            NOT NULL,
     [GLCode]           VARCHAR (255)  NULL,
     [TextDesciption]   VARCHAR (1000) NULL,
@@ -34,7 +33,7 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode', @level2type = N'COLUMN', @level2name = N'Code';
+
 
 
 GO
