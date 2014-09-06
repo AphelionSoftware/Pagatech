@@ -15,3 +15,9 @@
     CONSTRAINT [pk_DimTimeID] PRIMARY KEY CLUSTERED ([DimTimeID] ASC)
 );
 
+
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromStaging', @value = N'true', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimTime';
+
