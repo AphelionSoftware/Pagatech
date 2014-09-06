@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="204_Location_DimLocalGovernmentArea"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{DDD46140-F2E3-412A-8A95-C05A3FFBD660}"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{72885AAB-0807-4B17-B890-8A3BE8D2DD8F}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -404,6 +404,14 @@ FROM
                       cachedName="change_operation"
                       externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[change_operation]"
                       lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[change_operation]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="code"
+                      externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Code]"
+                      lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[code]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -431,6 +439,12 @@ FROM
                       dataType="str"
                       length="1"
                       name="change_operation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Code" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -533,6 +547,19 @@ FROM
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

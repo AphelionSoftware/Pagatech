@@ -19,6 +19,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea', @level2type = N'COLUMN', @level2name = N'SourceKey';
 
@@ -44,7 +46,9 @@ EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.LocalGover
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'DimLocalGovernmentAreaId', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea';
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'LocalGovernmentAreaId', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea';
+
+
 
 
 GO

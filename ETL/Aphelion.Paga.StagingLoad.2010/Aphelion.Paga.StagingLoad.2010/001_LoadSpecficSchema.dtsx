@@ -12,8 +12,8 @@
   DTS:ObjectName="001_LoadSpecficSchema"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="67"
-  DTS:VersionGUID="{577C86CB-C3D9-407C-9DFF-15F9A2BE0EF4}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{B395057C-A9D5-48A5-BBDD-9FF007C0E1B2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -25,7 +25,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="11"
-        DTS:Name="ParameterValue">-1</DTS:Property>
+        DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -76,8 +76,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="strLoadAll">
       <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"> </DTS:VariableValue>
+        DTS:DataType="8">WHERE 	change_log.SYS_CHANGE_VERSION &gt;  0 AND change_log.SYS_CHANGE_VERSION &lt;= 0</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -100,7 +99,7 @@
 			FROM CHANGETABLE (CHANGES ' +base.SourceTable +',0) AS change_log
 		) AS change_log ON
 			base_query.SourceKey = change_log.change_log_SourceKey 
- '
+WHERE 	change_log.SYS_CHANGE_VERSION &gt;  0 AND change_log.SYS_CHANGE_VERSION &lt;= 0'
 FROM
 (
 	SELECT
