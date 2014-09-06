@@ -20,6 +20,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitType_SourceKey]
     ON [Classification].[DimOrganizationUnitType]([SourceKey] ASC);
@@ -46,18 +48,21 @@ GO
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT DISTINCT
-	CONVERT(VARCHAR(255),COALESCE(base_query.name,''Deleted'')) AS SourceKey,
-	CONVERT(VARCHAR(255),COALESCE(base_query.name,''Deleted'')) AS name,
-	CONVERT( CHAR(1), change_log.change_operation) AS change_operation
-FROM
-(
-	SELECT 
-		OrganizationUnitTypeID AS SourceKey,
-		description as name,
-		OrganizationID
-     FROM [PagaOpsDB].[dbo].[OrganizationUnitType]
-) AS base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitType';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'
+		SELECT DISTINCT
+			CONVERT(VARCHAR(255),COALESCE(base_query.name,''Deleted'')) AS SourceKey,
+			CONVERT(VARCHAR(255),COALESCE(base_query.name,''Deleted'')) AS name,
+			change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
+		FROM
+		(
+			SELECT 
+				OrganizationUnitTypeID AS SourceKey,
+				description as name,
+				OrganizationID
+			 FROM [PagaOpsDB].[dbo].[OrganizationUnitType]
+		) AS base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitType';
+
+
 
 
 

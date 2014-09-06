@@ -13,33 +13,40 @@
     CONSTRAINT [pk_DimProcessTypeID] PRIMARY KEY CLUSTERED ([DimProcessTypeID] ASC),
     CONSTRAINT [fk_DimProcessType_DimProcessTypeGroup] FOREIGN KEY ([DimProcessTypeGroupID]) REFERENCES [Classification].[DimProcessTypeGroup] ([DimProcessTypeGroupID])
 );
+
+
+
+
 GO
 
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
-		SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-		Name= base_query.SourceKey,
-		ProcessTypeGroupSourceKey = COALESCE(base_query.ProcessTypeGroupSourceKey,''UNKNOWN''),
-		base_query.DescriptionText,
-		change_operation = CONVERT(CHAR(1),change_log.change_operation)
+	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	base_query.name,
+	DimProcessTypeGroupSourceKey,
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 FROM 
 (
 	SELECT
 		SourceKey,
 		Name= SourceKey,
-		ProcessTypeGroupSourceKey = COALESCE(ProcessTypeGroupSourceKey,''UNKNOWN''),
+		DimProcessTypeGroupSourceKey = COALESCE(DimProcessTypeGroupSourceKey,''Unknown''),
 		DescriptionText
-	FROM
-	(
+		FROM
+		(
 		SELECT
 			pt.ProcessTypeID AS SourceKey, 
 			CONVERT(VARCHAR(255),pt.Description) AS Name,
-			CONVERT(VARCHAR(255), ptg.ProcessTypeGroupId) AS ProcessTypeGroupSourceKey,
+			CONVERT(VARCHAR(255), ptg.ProcessTypeGroupId) AS DimProcessTypeGroupSourceKey,
 			CONVERT(VARCHAR(1000),pt.description) AS DescriptionText
 		FROM dbo.ProcessType AS pt
-	LEFT JOIN dbo.ProcessTypeProcessTypeGroup AS ptg ON
+		LEFT JOIN dbo.ProcessTypeProcessTypeGroup AS ptg ON
 		pt.ProcessTypeID = ptg.ProcessTypeID
 	) AS bq
 ) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessType';
+
+
+
+
 GO
 
 EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'ProcessTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessType';
