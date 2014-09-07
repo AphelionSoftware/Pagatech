@@ -9,15 +9,18 @@
     [AccountLinkIdentifier]        VARCHAR (30)    NULL,
     [BankAccountLinkStatusComment] VARCHAR (1000)  NULL,
     [BankAccountLinkStatusType]    VARCHAR (255)   NOT NULL,
-    [BankSourceKey]                INT             NOT NULL,
     [BranchName]                   VARCHAR (255)   NULL,
-    [Code]                         VARCHAR (50)    NOT NULL,
-    [Description]                  VARCHAR (1000)  NULL,
+    [change_operation]             CHAR (1)        NOT NULL,
+    [DimBankSourceKey]             VARCHAR (255)   NOT NULL,
     [DurationLimit]                DECIMAL (18, 2) NULL,
     [DurationLimitSeconds]         INT             NULL,
     [KYC_Rating]                   VARCHAR (30)    NULL,
     [MobilePhoneNumber]            VARCHAR (30)    NULL,
     [Name]                         VARCHAR (255)   NOT NULL,
+    [SourceKey]                    VARCHAR (255)   NOT NULL,
+    [TextDesciption]               VARCHAR (1000)  NULL,
     [TransactionLimit]             DECIMAL (18, 2) NULL
 );
+
+
 
