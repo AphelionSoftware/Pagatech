@@ -27,16 +27,23 @@
     [DependentFactProcessTransactionSourceKey] INT             NULL,
     [DimAgentCommissionTypeSourceKey]          VARCHAR (255)   NULL,
     [DimApprovedByUserSourceKey]               VARCHAR (255)   NULL,
+    [DimBillerAccountUserSourceKey]            VARCHAR (255)   NULL,
+    [DimCancellationApprovedByUserSourceKey]   VARCHAR (255)   NULL,
     [DimChannelSourceKey]                      VARCHAR (255)   NULL,
     [DimInitiatingUserSourceKey]               VARCHAR (255)   NULL,
+    [DimOnBehalffUserSourceKey]                VARCHAR (255)   NULL,
     [DimOrganizationSourceKey]                 VARCHAR (255)   NULL,
     [DimOriginalPayerPagaAccountSourceKey]     VARCHAR (255)   NULL,
+    [DimPagaAccountSourceKey]                  VARCHAR (255)   NULL,
     [DimProcessStatusSourceKey]                VARCHAR (255)   NULL,
     [DimProcessTypeSourceKey]                  VARCHAR (255)   NULL,
     [DimReceivingUserSourceKey]                VARCHAR (255)   NULL,
+    [DimVerifiedByUserSourceKey]               VARCHAR (255)   NULL,
     [OriginalFactProcessTransactionSourceKey]  INT             NULL,
     [change_operation]                         CHAR (1)        DEFAULT ((1)) NOT NULL
 );
+
+
 
 
 

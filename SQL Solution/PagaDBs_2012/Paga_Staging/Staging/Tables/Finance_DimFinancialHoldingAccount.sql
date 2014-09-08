@@ -8,8 +8,11 @@
     [DimBankAccountSourceKey]          VARCHAR (255)   NOT NULL,
     [DimCurrencySourceKey]             VARCHAR (255)   NOT NULL,
     [DimFinancialAccountTypeSourceKey] VARCHAR (255)   NOT NULL,
+    [DimPagaAccountSourceKey]          VARCHAR (255)   NOT NULL,
     [change_operation]                 CHAR (1)        DEFAULT ((1)) NOT NULL
 );
+
+
 
 
 
