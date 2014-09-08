@@ -5,7 +5,7 @@
     [RcName]                                     VARCHAR (50)   NULL,
     [ReferenceNumber]                            VARCHAR (30)   NULL,
     [SourceKey]                                  VARCHAR (255)  NOT NULL,
-    [TaxIDNumber]                                VARCHAR (30)   NOT NULL,
+    [TaxIDNumber]                                VARCHAR (30)   NULL,
     [TextDesciption]                             VARCHAR (1000) NULL,
     [VATCertificationNumber]                     VARCHAR (30)   NULL,
     [WebsiteURL]                                 VARCHAR (100)  NULL,
@@ -15,6 +15,8 @@
     [DimOrganizationVerificationStatusSourceKey] VARCHAR (255)  NOT NULL,
     [change_operation]                           CHAR (1)       DEFAULT ((1)) NOT NULL
 );
+
+
 
 
 

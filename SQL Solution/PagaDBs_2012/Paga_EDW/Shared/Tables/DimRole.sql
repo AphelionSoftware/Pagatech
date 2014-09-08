@@ -13,6 +13,8 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimRole_SourceKey]
     ON [Shared].[DimRole]([SourceKey] ASC);
@@ -28,11 +30,13 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'	SELECT
 	(
 		SELECT 
 			SourceKey = fa.roleId,
-			fa.Name,
+			Name = CONVERT(VARCHAR(255), fa.Name),
 			TextDescription = fa.Description
 		FROM dbo.[Role] AS fa
 
 	) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimRole';
+
+
 
 
 GO

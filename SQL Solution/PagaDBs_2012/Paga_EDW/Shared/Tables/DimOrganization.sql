@@ -28,6 +28,8 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganization_SourceKey]
     ON [Shared].[DimOrganization]([SourceKey] ASC);
@@ -54,21 +56,23 @@ FROM
 (
 	SELECT 
 		SourceKey = o.OrganizationId,
-		o.DisplayName, 
-		o.Name, 
+		DisplayName = CONVERT(VARCHAR(100),o.DisplayName), 
+		Name = CONVERT(VARCHAR(255),o.Name), 
 		OrganizationCode = o.Code, 
 		o.RcName, 
 		o.ReferenceNumber, 
 		o.TaxIDNumber, 
-		TextDesciption = o.Description, 
+		TextDesciption = CONVERT(VARCHAR(1000), o.Description),
 		o.VATCertificationNumber, 
 		o.WebsiteURL, 
-		DimBusinessTypeSourceKey = o.BusinessTypeId, 
+		DimBusinessTypeSourceKey = COALESCE(o.BusinessTypeId, ''UNKNOWN''), 
 		DimMerchantPagaAccountSourceKey = o.PagaAccountId, 
 		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId, 
 		DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId
 		FROM dbo.Organization AS o
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+
+
 
 
 GO

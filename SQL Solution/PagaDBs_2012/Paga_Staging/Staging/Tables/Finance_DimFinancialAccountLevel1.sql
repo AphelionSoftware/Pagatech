@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Finance_DimFinancialHoldingAccount] (
+﻿CREATE TABLE [Staging].[Finance_DimFinancialAccountLevel1] (
     [AccountNumber]                    VARCHAR (20)    NULL,
     [Name]                             VARCHAR (255)   NOT NULL,
     [OpeningBalance]                   DECIMAL (18, 2) NULL,
@@ -11,14 +11,4 @@
     [DimPagaAccountSourceKey]          VARCHAR (255)   NOT NULL,
     [change_operation]                 CHAR (1)        DEFAULT ((1)) NOT NULL
 );
-
-
-
-
-
-
-
-
-
-
 

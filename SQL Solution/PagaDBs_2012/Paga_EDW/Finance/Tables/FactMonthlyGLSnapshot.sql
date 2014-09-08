@@ -14,9 +14,11 @@
     CONSTRAINT [pk_FactMonthlyGLSnapshotID] PRIMARY KEY CLUSTERED ([FactMonthlyGLSnapshotID] ASC),
     CONSTRAINT [fk_FactMonthlyGLSnapshot_DimAsOfDateID] FOREIGN KEY ([DimAsOfDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactMonthlyGLSnapshot_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Location].[DimCity] ([DimCityID]),
-    CONSTRAINT [fk_FactMonthlyGLSnapshot_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Finance].[DimFinancialAccount] ([DimFinancialAccountID]),
+    CONSTRAINT [fk_FactMonthlyGLSnapshot_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Finance].[DimFinancialAccountLevel2] ([DimFinancialAccountLevel2ID]),
     CONSTRAINT [fk_FactMonthlyGLSnapshot_DimFinancialTransactionTypeID] FOREIGN KEY ([DimFinancialTransactionTypeID]) REFERENCES [Classification].[DimFinancialTransactionType] ([DimFinancialTransactionTypeID])
 );
+
+
 
 
 GO

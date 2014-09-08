@@ -17,6 +17,8 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGLCode_SourceKey]
     ON [Finance].[DimGLCode]([SourceKey] ASC);
@@ -25,7 +27,7 @@ CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGLCode_SourceKey]
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-	base_query.DimGLSubGroupSourceKey,
+	base_query.DimGLCodeSubGroupSourceKey, 
 	base_query.name,
 	base_query.TextDescription,
 	base_query.GLCode,
@@ -35,13 +37,15 @@ FROM
 (
 	SELECT
 		SourceKey = AccountCodeId,
-		DimGLSubGroupID = AccountCodeGroupId,
+		DimGLCodeSubGroupSourceKey = AccountCodeGroupId,
 		Name,
-		TextDescription = [Description],
+		TextDescription = CONVERT(VARCHAR(1000),[Description]),
 		GLCode = Code,
 		IsNormalDebit
 	FROM dbo.AccountCode
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode';
+
+
 
 
 GO
