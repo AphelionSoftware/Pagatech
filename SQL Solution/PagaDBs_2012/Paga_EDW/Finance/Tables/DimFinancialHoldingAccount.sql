@@ -3,6 +3,7 @@
     [SourceKey]                    VARCHAR (255)   NOT NULL,
     [Name]                         VARCHAR (255)   NOT NULL,
     [DimBankAccountID]             INT             NOT NULL,
+	[DimPagaAccountID]			   INT			   NOT NULL,
     [DimCurrencyID]                INT             NOT NULL,
     [DimFinancialAccountTypeID]    INT             NOT NULL,
     [AccountNumber]                VARCHAR (20)    NULL,
@@ -18,7 +19,8 @@
     CONSTRAINT [pk_DimFinancialHoldingAccountID] PRIMARY KEY CLUSTERED ([DimFinancialHoldingAccountID] ASC),
     CONSTRAINT [fk_DimFinancialHoldingAccount_DimBankAccountID] FOREIGN KEY ([DimBankAccountID]) REFERENCES [Finance].[DimBankAccount] ([DimBankAccountID]),
     CONSTRAINT [fk_DimFinancialHoldingAccount_DimCurrencyID] FOREIGN KEY ([DimCurrencyID]) REFERENCES [Finance].[DimCurrency] ([DimCurrencyID]),
-    CONSTRAINT [fk_DimFinancialHoldingAccount_DimFinancialAccountTypeID] FOREIGN KEY ([DimFinancialAccountTypeID]) REFERENCES [Finance].[DimFinancialAccountType] ([DimFinancialAccountTypeID])
+    CONSTRAINT [fk_DimFinancialHoldingAccount_DimFinancialAccountTypeID] FOREIGN KEY ([DimFinancialAccountTypeID]) REFERENCES [Finance].[DimFinancialAccountType] ([DimFinancialAccountTypeID]),
+	CONSTRAINT [fk_DimFinancialHoldingAccount_DimPagaAccountID] FOREIGN KEY (DimPagaAccountID) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
 
 
