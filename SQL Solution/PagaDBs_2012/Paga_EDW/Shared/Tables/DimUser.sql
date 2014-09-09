@@ -4,6 +4,7 @@
     [Name]           VARCHAR (255)   NOT NULL,
     [DateOfBirthID]  INT             NULL,
     [DimRoleID]      INT             NOT NULL,
+	[DimPagaAccountID] INT NULL,
     [FirstName]      VARCHAR (255)   NULL,
     [MiddleName]     VARCHAR (255)   NULL,
     [LastName]       VARCHAR (255)   NULL,
@@ -11,6 +12,7 @@
     [PhoneNumber]    VARBINARY (256) NULL,
     [Email]          VARCHAR (100)   NULL,
     [IsEnabled]      BIT             NULL,
+	[CreatedDateID]	 INT	NOT NULL,
     [SourceKeyHash]  BIGINT          NOT NULL,
     [DeltaHash]      BIGINT          NOT NULL,
     [sys_ModifiedBy] VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
@@ -19,6 +21,8 @@
     [sys_CreatedOn]  DATETIME        DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimUserID] PRIMARY KEY CLUSTERED ([DimUserID] ASC),
     CONSTRAINT [fk_DimUser_DateOfBirthID] FOREIGN KEY ([DateOfBirthID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
+	CONSTRAINT [fk_DimUser_CreatedDateID] FOREIGN KEY ([CreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
+	CONSTRAINT [fk_DimUser_DimPagaAccountID] FOREIGN KEY (DimPagaAccountID) REFERENCES [Shared].DimPagaAccount (DimPagaAccountID),
     CONSTRAINT [fk_DimUser_DimRoleID] FOREIGN KEY ([DimRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID])
 );
 

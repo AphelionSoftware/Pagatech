@@ -7,7 +7,9 @@
     [RegistrationDateID]              INT           NOT NULL,
     [DimPagaAccountStatusSourceKey]   VARCHAR (255) NOT NULL,
     [DimPagaAccountUserTypeSourceKey] VARCHAR (255) NOT NULL,
-    [DimUserSourceKey]                VARCHAR (255) NOT NULL,
+	HasOnlineAccount	BIT	NOT NULL,
+	IsActive BIT NOT NULL,
+	IsEnabled BIT NOT NULL,
     [change_operation]                CHAR (1)      DEFAULT ((1)) NOT NULL
 );
 
