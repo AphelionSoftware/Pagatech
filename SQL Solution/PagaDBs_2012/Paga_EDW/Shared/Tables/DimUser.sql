@@ -7,7 +7,7 @@
     [FirstName]      VARCHAR (255)   NULL,
     [MiddleName]     VARCHAR (255)   NULL,
     [LastName]       VARCHAR (255)   NULL,
-    [Sex]            CHAR (1)        NULL,
+    [Sex]            VARCHAR(50)        NULL,
     [PhoneNumber]    VARBINARY (256) NULL,
     [Email]          VARCHAR (100)   NULL,
     [IsEnabled]      BIT             NULL,
@@ -39,7 +39,7 @@ EXECUTE sp_addextendedproperty @name = N'ExcludeFromOLAP', @value = N'true', @le
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.User', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.[User]', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
 
 
 GO
@@ -49,7 +49,7 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'UserId', @level0
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-	Name = 
+	Name = CONVERT(VARCHAR(255),
 		CASE 
 			WHEN (FirstName IS NULL AND LastName IS NULL) THEN 
 				CASE
@@ -60,7 +60,8 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 			WHEN (FirstName IS NULL AND LastName IS NOT NULL) THEN LastName
 			WHEN (LastName IS NULL AND FirstName IS NOT NULL) THEN FirstName
 			WHEN (LastName IS NOT NULL AND FirstName IS NOT NULL) THEN FirstName + '' '' + LastName
-		END,
+		END
+		),
 	UserType,
 	OrgName,
 	DateOfBirthID = COALESCE(DateOfBirthID, -1), 
@@ -72,7 +73,7 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	PhoneNumber, 
 	Email, 
 	IsEnabled,
-	DateCreatedID,
+	CreatedDateID,
 	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 	
 FROM
@@ -80,14 +81,14 @@ FROM
 	SELECT 
 		SourceKey = u.UserId,
 		ouu.OrgName,
-		FirstName = CASE WHEN LEN(u.FirstName) = 0 THEN NULL ELSE u.FirstName END,
-		MiddleName = CASE WHEN LEN(u.MiddleName) = 0 THEN NULL ELSE u.MiddleName END,
-		LastName = CASE WHEN LEN(u.LastName) = 0 THEN NULL ELSE u.LastName END,
+		FirstName = CASE WHEN LEN(u.FirstName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255), u.FirstName) END,
+		MiddleName = CASE WHEN LEN(u.MiddleName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.MiddleName) END,
+		LastName = CASE WHEN LEN(u.LastName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.LastName) END,
 		Sex = u.GenderId,
 		u.PhoneNumber,
-		u.Email,
+		Email = CONVERT(VARCHAR(100),u.Email),
 		DateofBirthID = CONVERT(INT,CONVERT(VARCHAR(8),u.dateOfBirth,112)),
-		DateCreatedID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)),
+		CreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)),
 		UserType = COALESCE(u.Namespace, r.namespace),
 		DimRoleSourceKey = COALESCE(r.RoleID,	-1),
 		u.IsEnabled
