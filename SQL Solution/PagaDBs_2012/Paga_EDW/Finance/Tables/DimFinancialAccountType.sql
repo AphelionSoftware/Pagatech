@@ -15,6 +15,8 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialAccountType_SourceKey]
     ON [Finance].[DimFinancialAccountType]([SourceKey] ASC);

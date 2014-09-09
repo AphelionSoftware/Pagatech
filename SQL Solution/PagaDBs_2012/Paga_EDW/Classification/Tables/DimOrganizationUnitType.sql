@@ -12,6 +12,8 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitType_SourceKey]
     ON [Classification].[DimOrganizationUnitType]([SourceKey] ASC);
@@ -28,8 +30,10 @@ FROM
 	     OrganizationUnitTypeID AS SourceKey,
 	     description as name,
 	     OrganizationID
-                FROM [PagaOpsDB].[dbo].[OrganizationUnitType]
+                FROM [dbo].[OrganizationUnitType]
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitType';
+
+
 
 
 GO
