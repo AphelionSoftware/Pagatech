@@ -19,35 +19,9 @@
 );
 
 
-
-
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitLevel4_SourceKey]
     ON [Shared].[DimOrganizationUnitLevel4]([SourceKey] ASC);
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4', @level2type = N'COLUMN', @level2name = N'SourceKey';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4', @level2type = N'COLUMN', @level2name = N'Name';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationUnitLevel3ID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel3ID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationUnitTypeID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitTypeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4', @level2type = N'COLUMN', @level2name = N'SourceKeyHash';
 
 
 GO
@@ -55,7 +29,31 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level
 
 
 GO
+EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4', @level2type = N'COLUMN', @level2name = N'SourceKeyHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationUnitTypeID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitTypeID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationUnitLevel3ID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel3ID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4', @level2type = N'COLUMN', @level2name = N'Name';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4', @level2type = N'COLUMN', @level2name = N'SourceKey';
+
+
+GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.OrganizationUnit', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4';
 
 
 GO
@@ -64,12 +62,13 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'OrganizationUnit
 
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SET NOCOUNT ON;
-DECLARE @OrgLevel AS INT = 4;
+DECLARE @OrgLevel AS INT = 4
+
 DECLARE @OrgUnit AS Table
 (
 	[SourceKey] [varchar](255) ,
 	[Name] [varchar](255) ,
-	[DimOrganizationSourceKey] [int],
+	[DimOrganizationUnitLevel3SourceKey] [int],
 	[DimOrganizationUnitTypeSourceKey] [int],
 	[DimDealerSourceKey] [int],
 	[IdentificationNumber] [varchar](20) 
@@ -109,7 +108,7 @@ WITH cte AS
 	(
 		SourceKey,
 		Name,
-		DimOrganizationSourceKey,
+		DimOrganizationUnitLevel3SourceKey,
 		DimOrganizationUnitTypeSourceKey,
 		DimDealerSourceKey,
 		IdentificationNumber
@@ -118,7 +117,7 @@ WITH cte AS
 	SELECT
 		SourceKey = cte.OrganizationUnitId,
 		Name = CONVERT(VARCHAR(255),cte.UnitName),
-		DimOrganizationSourceKey = cte.OrganizationId,
+		DimOrganizationUnitLevel3SourceKey = cte.ParentOrganizationUnitId,
 		DimOrganizationTypeSourceKey = COALESCE(cte.OrganizationUnitTypeId, -1),
 		DimDealerSourceyKey = u.DealerID,
 		IdentificationNumber
@@ -140,7 +139,7 @@ WITH cte AS
 	SELECT 
 		SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
 		base_query.Name,
-		base_query.DimOrganizationSourceKey,
+		base_query.DimOrganizationUnitLevel3SourceKey,
 		base_query.DimOrganizationUnitTypeSourceKey,
 		base_query.DimDealerSourceKey,
 		base_query.IdentificationNumber,

@@ -8,11 +8,3 @@
     [change_operation]                   CHAR (1)      DEFAULT ((1)) NOT NULL
 );
 
-
-
-
-
-
-
-
-
