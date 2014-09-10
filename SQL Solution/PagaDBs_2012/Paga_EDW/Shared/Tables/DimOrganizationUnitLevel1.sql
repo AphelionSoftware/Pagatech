@@ -19,6 +19,8 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitLevel1_SourceKey]
     ON [Shared].[DimOrganizationUnitLevel1]([SourceKey] ASC);
@@ -50,4 +52,98 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel1', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.OrganizationUnit', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel1';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'OrganizationUnitId', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel1';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SET NOCOUNT ON;
+DECLARE @OrgLevel AS INT = 1;
+DECLARE @OrgUnit AS Table
+(
+	[SourceKey] [varchar](255) ,
+	[Name] [varchar](255) ,
+	[DimOrganizationSourceKey] [int],
+	[DimOrganizationUnitTypeSourceKey] [int],
+	[DimDealerSourceKey] [int],
+	[IdentificationNumber] [varchar](20) 
+);
+
+WITH cte AS
+(
+
+	SELECT 
+		o.OrganizationId,
+		ou.OrganizationUnitId,
+		UnitName = COALESCE(ou.Name, o.name),
+		IdentificationNumber,
+		OrganizationUnitTypeId,
+		ParentOrganizationUnitId,
+		1 AS OrgLevel
+	FROM [dbo].Organization AS o
+	INNER JOIN dbo.OrganizationUnit AS ou ON
+		ou.OrganizationId = o.OrganizationId
+	WHERE ISNULL(ParentOrganizationUnitId,0) = 0
+	UNION ALL
+	SELECT 
+		st.OrganizationId,
+		ou1.OrganizationUnitId,
+		UnitName = ou1.Name,
+		ou1.IdentificationNumber,
+		ou1.OrganizationUnitTypeId,
+		ou1.ParentOrganizationUnitId,
+		st.OrgLevel + 1 AS OrgLevel
+	FROM [dbo].OrganizationUnit AS ou1
+	INNER JOIN cte AS ST ON 
+		ou1.ParentOrganizationUnitId = ST.OrganizationUnitId
+	WHERE ou1.ParentOrganizationUnitId IS NOT NULL
+)
+
+	INSERT INTO @OrgUnit
+	(
+		SourceKey,
+		Name,
+		DimOrganizationSourceKey,
+		DimOrganizationUnitTypeSourceKey,
+		DimDealerSourceKey,
+		IdentificationNumber
+	)
+
+	SELECT
+		SourceKey = cte.OrganizationUnitId,
+		Name = CONVERT(VARCHAR(255),cte.UnitName),
+		DimOrganizationSourceKey = cte.OrganizationId,
+		DimOrganizationTypeSourceKey = COALESCE(cte.OrganizationUnitTypeId, -1),
+		DimDealerSourceyKey = u.DealerID,
+		IdentificationNumber
+	FROM cte
+	CROSS APPLY
+	(
+		SELECT 
+			u.userid AS DealerID 
+		FROM dbo.[user] AS u
+		INNER JOIN dbo.OrganizationUnitUser AS ouu ON 
+			ouu.UserId = u.UserId
+		WHERE 
+			ouu.OrganizationUnitId = cte.OrganizationUnitId
+	) AS u 
+	WHERE 
+		cte.OrgLevel = @OrgLevel
+	
+	
+	SELECT 
+		SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+		base_query.Name,
+		base_query.DimOrganizationSourceKey,
+		base_query.DimOrganizationUnitTypeSourceKey,
+		base_query.DimDealerSourceKey,
+		base_query.IdentificationNumber,
+		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
+	FROM @OrgUnit AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel1';
 
