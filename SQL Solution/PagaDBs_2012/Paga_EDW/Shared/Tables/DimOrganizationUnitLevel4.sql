@@ -4,7 +4,7 @@
     [Name]                        VARCHAR (255) NOT NULL,
     [DimOrganizationUnitLevel3ID] INT           NOT NULL,
     [DimOrganizationUnitTypeID]   INT           NOT NULL,
-    [DimDealerID]                 INT           NOT NULL,
+    [DimUserID]                 INT           NOT NULL,
     [IdentificationNumber]        VARCHAR (20)  NULL,
     [SourceKeyHash]               BIGINT        NOT NULL,
     [DeltaHash]                   BIGINT        NOT NULL,
@@ -13,7 +13,7 @@
     [sys_CreatedBy]               VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]               DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationUnitLevel4ID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitLevel4ID] ASC),
-    CONSTRAINT [fk_DimOrganizationUnitLevel4_DimDealerID] FOREIGN KEY ([DimDealerID]) REFERENCES [Shared].[DimDealer] ([DimDealerID]),
+    CONSTRAINT [fk_DimOrganizationUnitLevel4_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID] FOREIGN KEY ([DimOrganizationUnitLevel3ID]) REFERENCES [Shared].[DimOrganizationUnitLevel3] ([DimOrganizationUnitLevel3ID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID])
 );
@@ -70,7 +70,7 @@ DECLARE @OrgUnit AS Table
 	[Name] [varchar](255) ,
 	[DimOrganizationUnitLevel3SourceKey] [int],
 	[DimOrganizationUnitTypeSourceKey] [int],
-	[DimDealerSourceKey] [int],
+	[DimUserSourceKey] [int],
 	[IdentificationNumber] [varchar](20) 
 );
 
@@ -110,7 +110,7 @@ WITH cte AS
 		Name,
 		DimOrganizationUnitLevel3SourceKey,
 		DimOrganizationUnitTypeSourceKey,
-		DimDealerSourceKey,
+		DimUserSourceKey,
 		IdentificationNumber
 	)
 
@@ -119,7 +119,7 @@ WITH cte AS
 		Name = CONVERT(VARCHAR(255),cte.UnitName),
 		DimOrganizationUnitLevel3SourceKey = cte.ParentOrganizationUnitId,
 		DimOrganizationTypeSourceKey = COALESCE(cte.OrganizationUnitTypeId, -1),
-		DimDealerSourceyKey = u.DealerID,
+		DimUserSourceyKey = u.DealerID,
 		IdentificationNumber
 	FROM cte
 	CROSS APPLY
@@ -141,7 +141,7 @@ WITH cte AS
 		base_query.Name,
 		base_query.DimOrganizationUnitLevel3SourceKey,
 		base_query.DimOrganizationUnitTypeSourceKey,
-		base_query.DimDealerSourceKey,
+		base_query.DimUserSourceKey,
 		base_query.IdentificationNumber,
 		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 	FROM @OrgUnit AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4';

@@ -22,7 +22,6 @@
     [sys_CreatedOn]                       DATETIME       DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationID] PRIMARY KEY CLUSTERED ([DimOrganizationID] ASC),
     CONSTRAINT [fk_DimOrganization_DimBusinessTypeID] FOREIGN KEY ([DimBusinessTypeID]) REFERENCES [Classification].[DimBusinessType] ([DimBusinessTypeID]),
-    CONSTRAINT [fk_DimOrganization_DimMerchantPagaAccountID] FOREIGN KEY ([DimMerchantPagaAccountID]) REFERENCES [Shared].[DimMerchantPagaAccount] ([DimMerchantPagaAccountID]),
     CONSTRAINT [fk_DimOrganization_DimOrganizationSubscriptionStatusID] FOREIGN KEY ([DimOrganizationSubscriptionStatusID]) REFERENCES [Classification].[DimOrganizationSubscriptionStatus] ([DimOrganizationSubscriptionStatusID]),
     CONSTRAINT [fk_DimOrganization_DimOrganizationVerificationStatusID] FOREIGN KEY ([DimOrganizationVerificationStatusID]) REFERENCES [Classification].[DimOrganizationVerificationStatus] ([DimOrganizationVerificationStatusID])
 );
