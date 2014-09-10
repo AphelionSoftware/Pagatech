@@ -2,7 +2,6 @@
     [SourceKey]        VARCHAR (255)   NOT NULL,
     [Name]             VARCHAR (255)   NOT NULL,
     [DateOfBirthID]    INT             NULL,
-    [DimRoleSourceKey] INT             NOT NULL,
 	DimPagaAccountSourceKey INT NULL,
     [FirstName]        VARCHAR (255)   NULL,
     [MiddleName]       VARCHAR (255)   NULL,

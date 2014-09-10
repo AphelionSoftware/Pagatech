@@ -6,10 +6,21 @@
     [SourceKey]                       VARCHAR (255) NOT NULL,
     [RegistrationDateID]              INT           NOT NULL,
     [DimPagaAccountStatusSourceKey]   VARCHAR (255) NOT NULL,
-    [DimPagaAccountUserTypeSourceKey] VARCHAR (255) NOT NULL,
 	HasOnlineAccount	BIT	NOT NULL,
 	IsActive BIT NOT NULL,
 	IsEnabled BIT NOT NULL,
+	[affiliate] BIT SPARSE, 
+	[agent] BIT SPARSE, 
+	[bank] BIT SPARSE, 
+	[business] BIT SPARSE, 
+	[card_processor] BIT SPARSE, 
+	[cash_collector] BIT SPARSE, 
+	[customer] BIT SPARSE, 
+	[merchant] BIT SPARSE, 
+	[mobile_operator] BIT SPARSE, 
+	[paga] BIT SPARSE, 
+	[remittance_processor] BIT SPARSE, 
+	[service_aggregator] BIT SPARSE, 
     [change_operation]                CHAR (1)      DEFAULT ((1)) NOT NULL
 );
 

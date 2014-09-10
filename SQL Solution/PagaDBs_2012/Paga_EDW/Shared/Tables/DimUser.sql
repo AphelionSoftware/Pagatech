@@ -3,7 +3,6 @@
     [SourceKey]      VARCHAR (255)   NOT NULL,
     [Name]           VARCHAR (255)   NOT NULL,
     [DateOfBirthID]  INT             NULL,
-    [DimRoleID]      INT             NOT NULL,
 	[DimPagaAccountID] INT NULL,
     [FirstName]      VARCHAR (255)   NULL,
     [MiddleName]     VARCHAR (255)   NULL,
@@ -22,8 +21,7 @@
     CONSTRAINT [pk_DimUserID] PRIMARY KEY CLUSTERED ([DimUserID] ASC),
     CONSTRAINT [fk_DimUser_DateOfBirthID] FOREIGN KEY ([DateOfBirthID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
 	CONSTRAINT [fk_DimUser_CreatedDateID] FOREIGN KEY ([CreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
-	CONSTRAINT [fk_DimUser_DimPagaAccountID] FOREIGN KEY (DimPagaAccountID) REFERENCES [Shared].DimPagaAccount (DimPagaAccountID),
-    CONSTRAINT [fk_DimUser_DimRoleID] FOREIGN KEY ([DimRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID])
+	CONSTRAINT [fk_DimUser_DimPagaAccountID] FOREIGN KEY (DimPagaAccountID) REFERENCES [Shared].DimPagaAccount (DimPagaAccountID)
 );
 
 

@@ -3,7 +3,6 @@
     [SourceKey]                VARCHAR (255) NOT NULL,
     [Name]                     VARCHAR (255) NOT NULL,
     [DimPagaAccountStatusID]   INT           NOT NULL,
-    [DimPagaAccountUserTypeID] INT           NOT NULL,
     [RegistrationDateID]       INT           NOT NULL,
     [PagaAccountNumber]        VARCHAR (12)  NULL,
     [ExternalAccountNumber]    VARCHAR (12)  NULL,
@@ -11,6 +10,18 @@
     [hasOnlineAccount]         BIT           NULL,
     [IsActive]                 BIT           NULL,
     [IsEnabled]                BIT           NULL,
+	[affiliate] BIT SPARSE, 
+	[agent] BIT SPARSE, 
+	[bank] BIT SPARSE, 
+	[business] BIT SPARSE, 
+	[card_processor] BIT SPARSE, 
+	[cash_collector] BIT SPARSE, 
+	[customer] BIT SPARSE, 
+	[merchant] BIT SPARSE, 
+	[mobile_operator] BIT SPARSE, 
+	[paga] BIT SPARSE, 
+	[remittance_processor] BIT SPARSE, 
+	[service_aggregator] BIT SPARSE, 
     [SourceKeyHash]            BIGINT        NOT NULL,
     [DeltaHash]                BIGINT        NOT NULL,
     [sys_ModifiedBy]           VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
@@ -18,9 +29,8 @@
     [sys_CreatedBy]            VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]            DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimPagaAccountID] PRIMARY KEY CLUSTERED ([DimPagaAccountID] ASC),
-    CONSTRAINT [fk_DimPagaAccount_DimPagaAccountStatusID] FOREIGN KEY ([DimPagaAccountStatusID]) REFERENCES [Classification].[DimPagaAccountStatus] ([DimPagaAccountStatusID]),
-    CONSTRAINT [fk_DimPagaAccount_DimPagaAccountUserTypeID] FOREIGN KEY ([DimPagaAccountUserTypeID]) REFERENCES [Classification].[DimPagaAccountUserType] ([DimPagaAccountUserTypeID]),
-    CONSTRAINT [fk_DimPagaAccount_RegistrationDateID] FOREIGN KEY ([RegistrationDateID]) REFERENCES [Shared].[DimDate] ([DimDateID])
+    CONSTRAINT [fk_DimPagaAccount_DimPagaAccountStatusID] FOREIGN KEY ([DimPagaAccountStatusID]) REFERENCES [Classification].[DimPagaAccountStatus] ([DimPagaAccountStatusID])
+   
 );
 
 
@@ -46,7 +56,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccount
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccountUserTypeID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'DimPagaAccountUserTypeID';
+
 
 
 GO
