@@ -5,10 +5,12 @@
     [DimBusinessTypeID]                   INT            NOT NULL,
     [DimOrganizationSubscriptionStatusID] INT            NOT NULL,
     [DimOrganizationVerificationStatusID] INT            NOT NULL,
-    [DimMerchantPagaAccountID]            INT            NOT NULL,
+    [DimPagaAccountID]            INT            NOT NULL,
+	[DimMerchantCategoryID] INT NOT NULL,
+	[DimProcessChannelID] INT NOT NULL,
     [TextDesciption]                      VARCHAR (1000) NULL,
     [ReferenceNumber]                     VARCHAR (30)   NULL,
-    [TaxIDNumber]                         VARCHAR (30)   NOT NULL,
+    [TaxIDNumber]                         VARCHAR (30)   NULL,
     [VATCertificationNumber]              VARCHAR (30)   NULL,
     [RcName]                              VARCHAR (50)   NULL,
     [WebsiteURL]                          VARCHAR (100)  NULL,
@@ -104,10 +106,6 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizatio
 
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationVerificationStatusID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'DimOrganizationVerificationStatusID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccountID', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'DimMerchantPagaAccountID';
 
 
 GO
