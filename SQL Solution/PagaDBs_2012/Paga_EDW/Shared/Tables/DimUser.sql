@@ -1,30 +1,34 @@
 ﻿CREATE TABLE [Shared].[DimUser] (
-    [DimUserID]      INT             NOT NULL,
-    [SourceKey]      VARCHAR (255)   NOT NULL,
-    [Name]           VARCHAR (255)   NOT NULL,
-    [DateOfBirthID]  INT             NULL,
-	[DimPagaAccountID] INT NULL,
-	[DimOrganizationUnitLevel4ID] INT NULL,
-    [FirstName]      VARCHAR (255)   NULL,
-    [MiddleName]     VARCHAR (255)   NULL,
-    [LastName]       VARCHAR (255)   NULL,
-    [Sex]            VARCHAR(50)        NULL,
-    [PhoneNumber]    VARBINARY (256) NULL,
-    [Email]          VARCHAR (100)   NULL,
-    [IsEnabled]      BIT             NULL,
-	[CreatedDateID]	 INT	NOT NULL,
-    [SourceKeyHash]  BIGINT          NOT NULL,
-    [DeltaHash]      BIGINT          NOT NULL,
-    [sys_ModifiedBy] VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn] DATETIME        DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]  VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]  DATETIME        DEFAULT (getdate()) NOT NULL,
+    [DimUserID]                   INT             NOT NULL,
+    [SourceKey]                   VARCHAR (255)   NOT NULL,
+    [Name]                        VARCHAR (255)   NOT NULL,
+    [DateOfBirthID]               INT             NULL,
+    [DimPagaAccountID]            INT             NULL,
+    [DimOrganizationUnitLevel4ID] INT             NULL,
+    [FirstName]                   VARCHAR (255)   NULL,
+    [MiddleName]                  VARCHAR (255)   NULL,
+    [LastName]                    VARCHAR (255)   NULL,
+    [Sex]                         VARCHAR (50)    NULL,
+    [PhoneNumber]                 VARBINARY (256) NULL,
+    [Email]                       VARCHAR (100)   NULL,
+    [IsEnabled]                   BIT             NULL,
+    [CreatedDateID]               INT             NOT NULL,
+    [SourceKeyHash]               BIGINT          NOT NULL,
+    [DeltaHash]                   BIGINT          NOT NULL,
+    [sys_ModifiedBy]              VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]              DATETIME        DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]               VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]               DATETIME        DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimUserID] PRIMARY KEY CLUSTERED ([DimUserID] ASC),
+    CONSTRAINT [fk_DimUser_CreatedDateID] FOREIGN KEY ([CreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_DimUser_DateOfBirthID] FOREIGN KEY ([DateOfBirthID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
-	CONSTRAINT [fk_DimUser_CreatedDateID] FOREIGN KEY ([CreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
-	CONSTRAINT [fk_DimUser_DimPagaAccountID] FOREIGN KEY (DimPagaAccountID) REFERENCES [Shared].DimPagaAccount (DimPagaAccountID),
-	CONSTRAINT [fk_DimUser_DimOrganizationUnitLevel4ID] FOREIGN KEY (DimOrganizationUnitLevel4ID) REFERENCES [Shared].DimOrganizationUnitLevel4 (DimOrganizationUnitLevel4ID)
+    CONSTRAINT [fk_DimUser_DimOrganizationUnitLevel4ID] FOREIGN KEY ([DimOrganizationUnitLevel4ID]) REFERENCES [Shared].[DimOrganizationUnitLevel4] ([DimOrganizationUnitLevel4ID]),
+    CONSTRAINT [fk_DimUser_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
+
+
 
 
 
@@ -53,6 +57,7 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'UserId', @level0
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I''),
 	Name = CONVERT(VARCHAR(255),
 		CASE 
 			WHEN (FirstName IS NULL AND LastName IS NULL) THEN 
@@ -66,10 +71,10 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 			WHEN (LastName IS NOT NULL AND FirstName IS NOT NULL) THEN FirstName + '' '' + LastName
 		END
 		),
-	UserType,
-	OrgName,
+	UserType= COALESCE(UserType, ''unknown''),
 	DateOfBirthID = COALESCE(DateOfBirthID, -1), 
-	DimRoleSourceKey, 
+	DimPagaAccountSourceKey,
+	DimOrganizationUnitLevel4SourceKey,
 	FirstName, 
 	MiddleName, 
 	LastName, 
@@ -77,9 +82,7 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	PhoneNumber, 
 	Email, 
 	IsEnabled,
-	CreatedDateID,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
-	
+	CreatedDateID
 FROM
 (
 	SELECT 
@@ -93,36 +96,31 @@ FROM
 		Email = CONVERT(VARCHAR(100),u.Email),
 		DateofBirthID = CONVERT(INT,CONVERT(VARCHAR(8),u.dateOfBirth,112)),
 		CreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)),
-		UserType = COALESCE(u.Namespace, r.namespace),
-		DimRoleSourceKey = COALESCE(r.RoleID,	-1),
+		UserType = u.Namespace,
+		DimPagaAccountSourceKey,
+		DimOrganizationUnitLevel4SourceKey = ouu.OrganizationUnitId,
 		u.IsEnabled
 	FROM dbo.[USER] as u 
-	LEFT JOIN dbo.userrole as ur ON
-		ur.UserId = u.UserId
-	LEFT JOIN dbo.Role AS r ON
-		r.RoleId = ur.RoleId
 	LEFT JOIN 	
 	(
 		SELECT 
-			pa.PagaAccountId,
-			pa.PagaAccountNumber,
-			pa.PagaAccountStatusId,
-			pa.RegistrationDate,
 			pau.UserId,
-			pau.PagaAccountUserTypeId,
-			pan.NatureId
+			MAX(pa.PagaAccountId) AS DimPagaAccountSourceKey
+			
 		FROM [dbo].[PagaAccount] AS pa
 		LEFT JOIN dbo.PagaAccountUser AS pau ON
 			pa.PagaAccountId = pau.PagaAccountId
-		LEFT JOIN dbo.PagaAccountNature AS pan ON
-			pa.PagaAccountId = pan.PagaAccountId
+			AND pau.PagaAccountUserTypeId = ''PRIMARY''
+		GROUP BY
+			pau.userID
 	) AS pa ON
 		pa.UserId = u.UserId
 	LEFT JOIN 
 	(
 		SELECT
 			OrgName = o.Name,
-			ouu1.UserId
+			ouu1.UserId,
+			ou.OrganizationUnitId
 		FROM dbo.OrganizationUnitUser AS ouu1
 		INNER JOIN dbo.organizationUnit AS ou ON 
 			ouu1.OrganizationUnitId = ou.OrganizationUnitId
@@ -132,5 +130,15 @@ FROM
 		u.UserId = ouu.userId
 ) AS base_query
 
-', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+	LEFT JOIN
+		(
+			SELECT 
+				NULL AS change_log_SourceKey,
+				NULL AS change_operation
+		) AS change_log ON
+			base_query.SourceKey = change_log.change_log_SourceKey', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+
+
+
+
 

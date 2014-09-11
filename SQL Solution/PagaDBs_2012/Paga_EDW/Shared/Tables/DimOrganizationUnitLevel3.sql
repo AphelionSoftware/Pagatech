@@ -17,6 +17,8 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitLevel3_SourceKey]
     ON [Shared].[DimOrganizationUnitLevel3]([SourceKey] ASC);
@@ -80,7 +82,7 @@ WITH cte AS
 		UnitName = COALESCE(ou.Name, o.name),
 		IdentificationNumber,
 		OrganizationUnitTypeId,
-		ParentOrganizationUnitId,
+		ParentOrganizationUnitId = o.OrganizationId,
 		1 AS OrgLevel
 	FROM [dbo].Organization AS o
 	INNER JOIN dbo.OrganizationUnit AS ou ON
@@ -118,7 +120,7 @@ WITH cte AS
 		IdentificationNumber
 	FROM cte
 	WHERE 
-		cte.OrgLevel = @OrgLevel
+		cte.OrgLevel  BETWEEN 1 AND @OrgLevel
 	
 	
 	SELECT 
@@ -129,4 +131,6 @@ WITH cte AS
 		base_query.IdentificationNumber,
 		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 	FROM @OrgUnit AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel3';
+
+
 

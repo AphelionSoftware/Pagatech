@@ -5,9 +5,9 @@
     [DimBusinessTypeID]                   INT            NOT NULL,
     [DimOrganizationSubscriptionStatusID] INT            NOT NULL,
     [DimOrganizationVerificationStatusID] INT            NOT NULL,
-    [DimPagaAccountID]            INT            NOT NULL,
-	[DimMerchantCategoryID] INT NOT NULL,
-	[DimProcessChannelID] INT NOT NULL,
+    [DimPagaAccountID]                    INT            NOT NULL,
+    [DimMerchantCategoryID]               INT            NOT NULL,
+    [DimProcessChannelID]                 INT            NOT NULL,
     [TextDesciption]                      VARCHAR (1000) NULL,
     [ReferenceNumber]                     VARCHAR (30)   NULL,
     [TaxIDNumber]                         VARCHAR (30)   NULL,
@@ -31,6 +31,10 @@
 
 
 
+
+
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganization_SourceKey]
     ON [Shared].[DimOrganization]([SourceKey] ASC);
@@ -49,9 +53,11 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	VATCertificationNumber, 
 	WebsiteURL, 
 	DimBusinessTypeSourceKey, 
-	DimMerchantPagaAccountSourceKey, 
+	DimPagaAccountSourceKey, 
 	DimOrganizationSubscriptionStatusSourceKey, 
 	DimOrganizationVerificationStatusSourceKey,
+	DimMerchantCategorySourceKey,
+	DimProcessChannelSourceKey,
 	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 FROM 
 (
@@ -67,11 +73,21 @@ FROM
 		o.VATCertificationNumber, 
 		o.WebsiteURL, 
 		DimBusinessTypeSourceKey = COALESCE(o.BusinessTypeId, ''UNKNOWN''), 
-		DimMerchantPagaAccountSourceKey = o.PagaAccountId, 
+		DimPagaAccountSourceKey = o.PagaAccountId, 
 		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId, 
-		DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId
-		FROM dbo.Organization AS o
+		DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId,
+		DimMerchantCategorySourceKey = CONVERT(VARCHAR(50), omc.MerchantCategoryId),
+		DimProcessChannelSourceKey = CONVERT(VARCHAR(50), ompc.ProcessChannelId)
+	FROM dbo.Organization AS o
+	INNER JOIN dbo.OrganizationMerchantCategory AS omc ON
+		o.OrganizationId = omc.OrganizationId
+	INNER JOIN dbo.OrganizationMerchantProcessChannel AS ompc ON
+		o.OrganizationId = ompc.OrganizationId
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+
+
+
+
 
 
 
