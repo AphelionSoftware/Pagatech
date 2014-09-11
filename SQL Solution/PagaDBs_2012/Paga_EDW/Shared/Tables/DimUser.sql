@@ -128,17 +128,4 @@ FROM
 			ON ou.OrganizationId = o.OrganizationId
 	) AS ouu ON 
 		u.UserId = ouu.userId
-) AS base_query
-
-	LEFT JOIN
-		(
-			SELECT 
-				NULL AS change_log_SourceKey,
-				NULL AS change_operation
-		) AS change_log ON
-			base_query.SourceKey = change_log.change_log_SourceKey', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
-
-
-
-
-
+) AS base_query'

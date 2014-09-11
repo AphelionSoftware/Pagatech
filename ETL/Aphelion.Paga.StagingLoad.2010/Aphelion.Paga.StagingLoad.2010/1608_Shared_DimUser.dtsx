@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/11/2014 11:31:31" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="TWIST" DTS:CreatorName="Christina" DTS:DTSID="{DF525982-AF8F-46CE-BFAF-0E3BDD524DBE}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1608_Shared_DimUser" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{B0E9880D-A211-4396-AA39-A0405AD995B7}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/11/2014 15:24:54" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{2CEAF52F-EEBA-41EC-B921-C5B4A701F85A}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1608_Shared_DimUser" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{0E3630EC-2E4F-4843-A422-F2714545F371}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{EFF96478-8387-4A70-BF38-C5A8635742C8}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimUser" DTS:refId="Package\DFT_Load Shared_DimUser" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{083B5587-6039-46E2-AFAD-B29C1C0A092E}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimUser" DTS:refId="Package\DFT_Load Shared_DimUser" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -15,15 +15,17 @@
                   <externalMetadataColumns isUsed="True">
                     <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="100" name="UserType" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[UserType]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="wstr" length="200" name="OrgName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[OrgName]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="DateOfBirthID" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[DateOfBirthID]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimRoleSourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[DimRoleSourceKey]">
+                    <externalMetadataColumn dataType="i4" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[DimPagaAccountSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimOrganizationUnitLevel4SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[DimOrganizationUnitLevel4SourceKey]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="FirstName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[FirstName]">
                     </externalMetadataColumn>
@@ -41,21 +43,21 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="CreatedDateID" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[CreatedDateID]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]">
-                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]" length="1" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[change_operation]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[UserType]" length="100" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[UserType]" name="UserType" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[UserType]" truncationRowDisposition="FailComponent">
                     </outputColumn>
-                    <outputColumn dataType="wstr" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[OrgName]" length="200" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[OrgName]" name="OrgName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[OrgName]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[DateOfBirthID]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[DateOfBirthID]" name="DateOfBirthID" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[DateOfBirthID]" truncationRowDisposition="FailComponent">
                     </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[DimRoleSourceKey]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[DimRoleSourceKey]" name="DimRoleSourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[DimRoleSourceKey]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[DimPagaAccountSourceKey]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[DimPagaAccountSourceKey]" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[DimPagaAccountSourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[DimOrganizationUnitLevel4SourceKey]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[DimOrganizationUnitLevel4SourceKey]" name="DimOrganizationUnitLevel4SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[DimOrganizationUnitLevel4SourceKey]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[FirstName]" length="255" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[FirstName]" name="FirstName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[FirstName]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -73,8 +75,6 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[CreatedDateID]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[CreatedDateID]" name="CreatedDateID" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[CreatedDateID]" truncationRowDisposition="FailComponent">
                     </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]" length="1" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[change_operation]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error]">
@@ -83,15 +83,17 @@
                   <outputColumns>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[SourceKey]">
                     </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[change_operation]">
+                    </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[Name]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="100" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[UserType]" name="UserType" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[UserType]">
                     </outputColumn>
-                    <outputColumn dataType="wstr" length="200" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[OrgName]" name="OrgName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[OrgName]">
-                    </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[DateOfBirthID]" name="DateOfBirthID" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[DateOfBirthID]">
                     </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[DimRoleSourceKey]" name="DimRoleSourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[DimRoleSourceKey]">
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[DimPagaAccountSourceKey]" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[DimPagaAccountSourceKey]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[DimOrganizationUnitLevel4SourceKey]" name="DimOrganizationUnitLevel4SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[DimOrganizationUnitLevel4SourceKey]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[FirstName]" name="FirstName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[FirstName]">
                     </outputColumn>
@@ -108,8 +110,6 @@
                     <outputColumn dataType="bool" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[IsEnabled]" name="IsEnabled" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[IsEnabled]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[CreatedDateID]" name="CreatedDateID" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[CreatedDateID]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[change_operation]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -150,6 +150,8 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimPagaAccountSourceKey]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimOrganizationUnitLevel4SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimOrganizationUnitLevel4SourceKey]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="FirstName" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[FirstName]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="MiddleName" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[MiddleName]">
@@ -173,6 +175,10 @@
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[Name]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[Name]">
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="DateOfBirthID" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DateOfBirthID]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[DateOfBirthID]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[DateOfBirthID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimPagaAccountSourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimPagaAccountSourceKey]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[DimPagaAccountSourceKey]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[DimPagaAccountSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimOrganizationUnitLevel4SourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimOrganizationUnitLevel4SourceKey]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[DimOrganizationUnitLevel4SourceKey]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[DimOrganizationUnitLevel4SourceKey]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="FirstName" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[FirstName]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData.Outputs[Output].Columns[FirstName]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[FirstName]">
                     </inputColumn>
@@ -231,7 +237,7 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{DFF9D291-8FD5-40CD-ACBF-659E808D134C}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{7C07157B-A431-49ED-A88B-C78B145333B4}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">LEFT JOIN
 																		(
 																			SELECT 
@@ -243,15 +249,16 @@
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D40C4AF3-2C7A-45B8-9189-62875ADDB100}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{61F7FB89-6280-4B7F-927E-756A3CDBF8E3}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D73643B6-9B23-4B20-B857-E97E732EB1FB}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DCB7E975-C05C-40CE-8777-FDAB178E1619}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B80E0E2F-B2BD-4D3B-9426-A85EA15FEC60}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8B902001-7AAB-4ACE-8AD5-A3C6786940E7}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I'),
 	Name = CONVERT(VARCHAR(255),
 		CASE 
 			WHEN (FirstName IS NULL AND LastName IS NULL) THEN 
@@ -265,10 +272,10 @@
 			WHEN (LastName IS NOT NULL AND FirstName IS NOT NULL) THEN FirstName + ' ' + LastName
 		END
 		),
-	UserType,
-	OrgName,
+	UserType= COALESCE(UserType, 'unknown'),
 	DateOfBirthID = COALESCE(DateOfBirthID, -1), 
-	DimRoleSourceKey, 
+	DimPagaAccountSourceKey,
+	DimOrganizationUnitLevel4SourceKey,
 	FirstName, 
 	MiddleName, 
 	LastName, 
@@ -276,9 +283,7 @@
 	PhoneNumber, 
 	Email, 
 	IsEnabled,
-	CreatedDateID,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
-	
+	CreatedDateID
 FROM
 (
 	SELECT 
@@ -292,36 +297,31 @@ FROM
 		Email = CONVERT(VARCHAR(100),u.Email),
 		DateofBirthID = CONVERT(INT,CONVERT(VARCHAR(8),u.dateOfBirth,112)),
 		CreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)),
-		UserType = COALESCE(u.Namespace, r.namespace),
-		DimRoleSourceKey = COALESCE(r.RoleID,	-1),
+		UserType = u.Namespace,
+		DimPagaAccountSourceKey,
+		DimOrganizationUnitLevel4SourceKey = ouu.OrganizationUnitId,
 		u.IsEnabled
 	FROM dbo.[USER] as u 
-	LEFT JOIN dbo.userrole as ur ON
-		ur.UserId = u.UserId
-	LEFT JOIN dbo.Role AS r ON
-		r.RoleId = ur.RoleId
 	LEFT JOIN 	
 	(
 		SELECT 
-			pa.PagaAccountId,
-			pa.PagaAccountNumber,
-			pa.PagaAccountStatusId,
-			pa.RegistrationDate,
 			pau.UserId,
-			pau.PagaAccountUserTypeId,
-			pan.NatureId
+			MAX(pa.PagaAccountId) AS DimPagaAccountSourceKey
+			
 		FROM [dbo].[PagaAccount] AS pa
 		LEFT JOIN dbo.PagaAccountUser AS pau ON
 			pa.PagaAccountId = pau.PagaAccountId
-		LEFT JOIN dbo.PagaAccountNature AS pan ON
-			pa.PagaAccountId = pan.PagaAccountId
+			AND pau.PagaAccountUserTypeId = 'PRIMARY'
+		GROUP BY
+			pau.userID
 	) AS pa ON
 		pa.UserId = u.UserId
 	LEFT JOIN 
 	(
 		SELECT
 			OrgName = o.Name,
-			ouu1.UserId
+			ouu1.UserId,
+			ou.OrganizationUnitId
 		FROM dbo.OrganizationUnitUser AS ouu1
 		INNER JOIN dbo.organizationUnit AS ou ON 
 			ouu1.OrganizationUnitId = ou.OrganizationUnitId
@@ -331,9 +331,10 @@ FROM
 		u.UserId = ouu.userId
 ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0625261F-63EA-4470-A8CF-702B374AD5F1}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DE18D3DC-1C24-433E-82A5-21193E3AD577}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">SELECT
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I'),
 	Name = CONVERT(VARCHAR(255),
 		CASE 
 			WHEN (FirstName IS NULL AND LastName IS NULL) THEN 
@@ -347,10 +348,10 @@ FROM
 			WHEN (LastName IS NOT NULL AND FirstName IS NOT NULL) THEN FirstName + ' ' + LastName
 		END
 		),
-	UserType,
-	OrgName,
+	UserType= COALESCE(UserType, 'unknown'),
 	DateOfBirthID = COALESCE(DateOfBirthID, -1), 
-	DimRoleSourceKey, 
+	DimPagaAccountSourceKey,
+	DimOrganizationUnitLevel4SourceKey,
 	FirstName, 
 	MiddleName, 
 	LastName, 
@@ -358,9 +359,7 @@ FROM
 	PhoneNumber, 
 	Email, 
 	IsEnabled,
-	CreatedDateID,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
-	
+	CreatedDateID
 FROM
 (
 	SELECT 
@@ -374,36 +373,31 @@ FROM
 		Email = CONVERT(VARCHAR(100),u.Email),
 		DateofBirthID = CONVERT(INT,CONVERT(VARCHAR(8),u.dateOfBirth,112)),
 		CreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)),
-		UserType = COALESCE(u.Namespace, r.namespace),
-		DimRoleSourceKey = COALESCE(r.RoleID,	-1),
+		UserType = u.Namespace,
+		DimPagaAccountSourceKey,
+		DimOrganizationUnitLevel4SourceKey = ouu.OrganizationUnitId,
 		u.IsEnabled
 	FROM dbo.[USER] as u 
-	LEFT JOIN dbo.userrole as ur ON
-		ur.UserId = u.UserId
-	LEFT JOIN dbo.Role AS r ON
-		r.RoleId = ur.RoleId
 	LEFT JOIN 	
 	(
 		SELECT 
-			pa.PagaAccountId,
-			pa.PagaAccountNumber,
-			pa.PagaAccountStatusId,
-			pa.RegistrationDate,
 			pau.UserId,
-			pau.PagaAccountUserTypeId,
-			pan.NatureId
+			MAX(pa.PagaAccountId) AS DimPagaAccountSourceKey
+			
 		FROM [dbo].[PagaAccount] AS pa
 		LEFT JOIN dbo.PagaAccountUser AS pau ON
 			pa.PagaAccountId = pau.PagaAccountId
-		LEFT JOIN dbo.PagaAccountNature AS pan ON
-			pa.PagaAccountId = pan.PagaAccountId
+			AND pau.PagaAccountUserTypeId = 'PRIMARY'
+		GROUP BY
+			pau.userID
 	) AS pa ON
 		pa.UserId = u.UserId
 	LEFT JOIN 
 	(
 		SELECT
 			OrgName = o.Name,
-			ouu1.UserId
+			ouu1.UserId,
+			ou.OrganizationUnitId
 		FROM dbo.OrganizationUnitUser AS ouu1
 		INNER JOIN dbo.organizationUnit AS ou ON 
 			ouu1.OrganizationUnitId = ou.OrganizationUnitId
