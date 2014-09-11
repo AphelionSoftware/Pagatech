@@ -4,6 +4,7 @@
     [Name]           VARCHAR (255)   NOT NULL,
     [DateOfBirthID]  INT             NULL,
 	[DimPagaAccountID] INT NULL,
+	[DimOrganizationUnitLevel4ID] INT NULL,
     [FirstName]      VARCHAR (255)   NULL,
     [MiddleName]     VARCHAR (255)   NULL,
     [LastName]       VARCHAR (255)   NULL,
