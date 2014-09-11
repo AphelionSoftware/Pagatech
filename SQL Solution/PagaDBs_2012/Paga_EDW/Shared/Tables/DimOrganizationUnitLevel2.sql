@@ -4,7 +4,6 @@
     [Name]                        VARCHAR (255) NOT NULL,
     [DimOrganizationUnitLevel1ID] INT           NOT NULL,
     [DimOrganizationUnitTypeID]   INT           NOT NULL,
-    [DimUserID]                 INT           NOT NULL,
     [IdentificationNumber]        VARCHAR (20)  NULL,
     [SourceKeyHash]               BIGINT        NOT NULL,
     [DeltaHash]                   BIGINT        NOT NULL,
@@ -13,7 +12,6 @@
     [sys_CreatedBy]               VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]               DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationUnitLevel2ID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitLevel2ID] ASC),
-    CONSTRAINT [fk_DimOrganizationUnitLevel2_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID] FOREIGN KEY ([DimOrganizationUnitLevel1ID]) REFERENCES [Shared].[DimOrganizationUnitLevel1] ([DimOrganizationUnitLevel1ID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID])
 );
@@ -70,7 +68,6 @@ DECLARE @OrgUnit AS Table
 	[Name] [varchar](255) ,
 	[DimOrganizationUnitLevel1SourceKey] [int],
 	[DimOrganizationUnitTypeSourceKey] [int],
-	[DimUserSourceKey] [int],
 	[IdentificationNumber] [varchar](20) 
 );
 
@@ -110,7 +107,6 @@ WITH cte AS
 		Name,
 		DimOrganizationUnitLevel1SourceKey,
 		DimOrganizationUnitTypeSourceKey,
-		DimUserSourceKey,
 		IdentificationNumber
 	)
 
@@ -119,19 +115,8 @@ WITH cte AS
 		Name = CONVERT(VARCHAR(255),cte.UnitName),
 		DimOrganizationUnitLevel1SourceKey = cte.ParentOrganizationUnitId,
 		DimOrganizationTypeSourceKey = COALESCE(cte.OrganizationUnitTypeId, -1),
-		DimUserSourceyKey = u.DealerID,
 		IdentificationNumber
 	FROM cte
-	CROSS APPLY
-	(
-		SELECT 
-			u.userid AS DealerID 
-		FROM dbo.[user] AS u
-		INNER JOIN dbo.OrganizationUnitUser AS ouu ON 
-			ouu.UserId = u.UserId
-		WHERE 
-			ouu.OrganizationUnitId = cte.OrganizationUnitId
-	) AS u 
 	WHERE 
 		cte.OrgLevel = @OrgLevel
 	
@@ -141,7 +126,6 @@ WITH cte AS
 		base_query.Name,
 		base_query.DimOrganizationUnitLevel1SourceKey,
 		base_query.DimOrganizationUnitTypeSourceKey,
-		base_query.DimUserSourceKey,
 		base_query.IdentificationNumber,
 		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 	FROM @OrgUnit AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel2';
