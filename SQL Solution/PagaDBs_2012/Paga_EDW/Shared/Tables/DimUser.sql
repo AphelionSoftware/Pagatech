@@ -22,7 +22,8 @@
     CONSTRAINT [pk_DimUserID] PRIMARY KEY CLUSTERED ([DimUserID] ASC),
     CONSTRAINT [fk_DimUser_DateOfBirthID] FOREIGN KEY ([DateOfBirthID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
 	CONSTRAINT [fk_DimUser_CreatedDateID] FOREIGN KEY ([CreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
-	CONSTRAINT [fk_DimUser_DimPagaAccountID] FOREIGN KEY (DimPagaAccountID) REFERENCES [Shared].DimPagaAccount (DimPagaAccountID)
+	CONSTRAINT [fk_DimUser_DimPagaAccountID] FOREIGN KEY (DimPagaAccountID) REFERENCES [Shared].DimPagaAccount (DimPagaAccountID),
+	CONSTRAINT [fk_DimUser_DimOrganizationUnitLevel4ID] FOREIGN KEY (DimOrganizationUnitLevel4ID) REFERENCES [Shared].DimOrganizationUnitLevel4 (DimOrganizationUnitLevel4ID)
 );
 
 
