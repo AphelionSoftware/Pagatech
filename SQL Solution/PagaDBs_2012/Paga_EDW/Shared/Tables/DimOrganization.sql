@@ -7,7 +7,7 @@
     [DimOrganizationVerificationStatusID] INT            NOT NULL,
     [DimPagaAccountID]                    INT            NOT NULL,
     [DimMerchantCategoryID]               INT            NOT NULL,
-    [DimProcessChannelID]                 INT            NOT NULL,
+    [DimChannelID]                 INT            NOT NULL,
     [TextDesciption]                      VARCHAR (1000) NULL,
     [ReferenceNumber]                     VARCHAR (30)   NULL,
     [TaxIDNumber]                         VARCHAR (30)   NULL,
@@ -25,6 +25,7 @@
     CONSTRAINT [pk_DimOrganizationID] PRIMARY KEY CLUSTERED ([DimOrganizationID] ASC),
     CONSTRAINT [fk_DimOrganization_DimBusinessTypeID] FOREIGN KEY ([DimBusinessTypeID]) REFERENCES [Classification].[DimBusinessType] ([DimBusinessTypeID]),
     CONSTRAINT [fk_DimOrganization_DimOrganizationSubscriptionStatusID] FOREIGN KEY ([DimOrganizationSubscriptionStatusID]) REFERENCES [Classification].[DimOrganizationSubscriptionStatus] ([DimOrganizationSubscriptionStatusID]),
+	CONSTRAINT [fk_DimOrganization_DimChannelID] FOREIGN KEY (DimChannelID) REFERENCES Activity.[DimChannel] ([DimChannelID]),
     CONSTRAINT [fk_DimOrganization_DimOrganizationVerificationStatusID] FOREIGN KEY ([DimOrganizationVerificationStatusID]) REFERENCES [Classification].[DimOrganizationVerificationStatus] ([DimOrganizationVerificationStatusID])
 );
 
