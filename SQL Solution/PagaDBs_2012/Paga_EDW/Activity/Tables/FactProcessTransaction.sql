@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [Activity].[FactProcessTransaction] (
     [FactProcessTransactionID]          INT             NOT NULL,
     [SourceKey]                         INT             NOT NULL,
-    [DimCreatedDateID]                  INT             NOT NULL,
-    [DimCreatedTimeID]                  INT             NOT NULL,
+    [DimCreatedDateID]                  INT             NULL,
+    [DimCreatedTimeID]                  INT             NULL,
     [DimPagaAccountID]                  INT             NULL,
     [DimProcessTypeID]                  INT             NULL,
     [DimAgentCommissionTypeID]          INT             NULL,
@@ -16,7 +16,10 @@
     [DimCompletedTimeID]                INT             NULL,
     [DimProcessStatusID]                INT             NULL,
     [DimBillerAccountUserID]            INT             NULL,
+    [DimOrganizationID]                 INT             NULL,
     [DimOriginalPayerPagaAccountID]     INT             NULL,
+    [DimTransferDateID]                 INT             NULL,
+    [DimTransferTimeID]                 INT             NULL,
     [DimApprovedByUserID]               INT             NULL,
     [DimVerifiedByUserID]               INT             NULL,
     [DimCancellationApprovedByUserID]   INT             NULL,
@@ -64,6 +67,8 @@
     CONSTRAINT [fk_FactProcessTransaction_DimVerifiedByUserID] FOREIGN KEY ([DimVerifiedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTransaction_OriginalProcessID] FOREIGN KEY ([OriginalFactProcessTransactionID]) REFERENCES [Activity].[FactProcessTransaction] ([FactProcessTransactionID])
 );
+
+
 
 
 GO
@@ -228,4 +233,16 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ProcessAmount'
 
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'AgentCommissionAmount', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'AgentCommissionAmount';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimTransferTimeID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'DimTransferTimeID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimTransferDateID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'DimTransferDateID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'DimOrganizationID';
 
