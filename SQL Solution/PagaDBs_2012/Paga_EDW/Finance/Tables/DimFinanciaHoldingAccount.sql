@@ -1,11 +1,7 @@
-﻿CREATE TABLE [Finance].[DimFinancialAccountLevel1] (
-    [DimFinancialAccountLevel1] INT             NOT NULL,
+﻿CREATE TABLE [Finance].[DimFinancialHoldingAccount] (
+    [DimFinancialHoldingAccountID] INT             NOT NULL,
     [SourceKey]                 VARCHAR (255)   NOT NULL,
     [Name]                      VARCHAR (255)   NOT NULL,
-    [DimBankAccountID]          INT             NOT NULL,
-    [DimPagaAccountID]          INT             NOT NULL,
-    [DimCurrencyID]             INT             NOT NULL,
-    [DimFinancialAccountTypeID] INT             NOT NULL,
     [AccountNumber]             VARCHAR (20)    NULL,
     [RestrictedBalance]         DECIMAL (18, 2) NULL,
     [OpeningBalance]            DECIMAL (18, 2) NULL,
@@ -16,29 +12,25 @@
     [sys_ModifiedOn]            DATETIME        DEFAULT (getdate()) NOT NULL,
     [sys_CreatedBy]             VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]             DATETIME        DEFAULT (getdate()) NOT NULL,
-    CONSTRAINT [pk_DimFinancialHoldingAccountID] PRIMARY KEY CLUSTERED ([DimFinancialAccountLevel1] ASC),
-    CONSTRAINT [fk_DimFinancialHoldingAccount_DimBankAccountID] FOREIGN KEY ([DimBankAccountID]) REFERENCES [Finance].[DimBankAccount] ([DimBankAccountID]),
-    CONSTRAINT [fk_DimFinancialHoldingAccount_DimCurrencyID] FOREIGN KEY ([DimCurrencyID]) REFERENCES [Finance].[DimCurrency] ([DimCurrencyID]),
-    CONSTRAINT [fk_DimFinancialHoldingAccount_DimFinancialAccountTypeID] FOREIGN KEY ([DimFinancialAccountTypeID]) REFERENCES [Finance].[DimFinancialAccountType] ([DimFinancialAccountTypeID]),
-    CONSTRAINT [fk_DimFinancialHoldingAccount_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
+    CONSTRAINT [pk_DimFinancialHoldingAccountID] PRIMARY KEY CLUSTERED ([DimFinancialHoldingAccountID] ASC)
 );
 
 
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialHoldingAccount_SourceKey]
-    ON [Finance].[DimFinancialAccountLevel1]([SourceKey] ASC);
+    ON [Finance].[DimFinancialHoldingAccount]([SourceKey] ASC);
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialAccount', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountLevel1';
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialAccount', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialHoldingAccount';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountLevel1';
+EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialHoldingAccount';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialAccountId', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountLevel1';
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialAccountId', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialHoldingAccount';
 
 
 GO
@@ -88,5 +80,5 @@ FROM
 		) 
 		OR fa.HoldingFinancialAccountId IS NULL
 		
-) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountLevel1';
+) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialHoldingAccount';
 

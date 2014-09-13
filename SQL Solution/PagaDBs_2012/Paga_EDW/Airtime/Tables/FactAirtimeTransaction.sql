@@ -12,7 +12,7 @@
     CONSTRAINT [pk_FactAirtimeTransactionID] PRIMARY KEY CLUSTERED ([FactAirtimeTransactionID] ASC),
     CONSTRAINT [fk_FactAirtimeTransaction_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Location].[DimCity] ([DimCityID]),
     CONSTRAINT [fk_FactAirtimeTransaction_DimDateID] FOREIGN KEY ([DimDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
-    CONSTRAINT [fk_FactAirtimeTransaction_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Finance].[DimFinancialAccountLevel2] ([DimFinancialAccountLevel2ID]),
+    CONSTRAINT [fk_FactAirtimeTransaction_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Finance].[DimFinancialAccount] ([DimFinancialAccountID]),
     CONSTRAINT [fk_FactAirtimeTransaction_DimFinancialTransactionTypeID] FOREIGN KEY ([DimFinancialTransactionTypeID]) REFERENCES [Classification].[DimFinancialTransactionType] ([DimFinancialTransactionTypeID]),
     CONSTRAINT [fk_FactAirtimeTransaction_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactAirtimeTransaction_DimTimeID] FOREIGN KEY ([DimTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID])

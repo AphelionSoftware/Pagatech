@@ -14,7 +14,7 @@
     CONSTRAINT [pk_FactDailyGLSnapshotID] PRIMARY KEY CLUSTERED ([FactDailyGLSnapshotID] ASC),
     CONSTRAINT [fk_FactDailyGLSnapshot_DimAsOfDateID] FOREIGN KEY ([DimAsOfDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactDailyGLSnapshot_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Location].[DimCity] ([DimCityID]),
-    CONSTRAINT [fk_FactDailyGLSnapshot_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Finance].[DimFinancialAccountLevel2] ([DimFinancialAccountLevel2ID]),
+    CONSTRAINT [fk_FactDailyGLSnapshot_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Finance].[DimFinancialAccount] ([DimFinancialAccountID]),
     CONSTRAINT [fk_FactDailyGLSnapshot_DimFinancialTransactionTypeID] FOREIGN KEY ([DimFinancialTransactionTypeID]) REFERENCES [Classification].[DimFinancialTransactionType] ([DimFinancialTransactionTypeID])
 );
 
