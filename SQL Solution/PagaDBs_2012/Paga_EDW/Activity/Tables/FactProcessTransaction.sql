@@ -16,7 +16,7 @@
     [DimCompletedTimeID]                INT             NULL,
     [DimProcessStatusID]                INT             NULL,
     [DimBillerAccountUserID]            INT             NULL,
-    [DimOrganizationID]                 INT             NULL,
+    [DimOrganizationUnitLevel4ID]                 INT             NULL,
     [DimOriginalPayerPagaAccountID]     INT             NULL,
     [DimTransferDateID]                 INT             NULL,
     [DimTransferTimeID]                 INT             NULL,
@@ -54,7 +54,7 @@
     CONSTRAINT [fk_FactProcessTransaction_DimCreatedTimeID] FOREIGN KEY ([DimCreatedTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactProcessTransaction_DimInitiatingUserID] FOREIGN KEY ([DimInitiatingUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTransaction_DimOnBehalffUserID] FOREIGN KEY ([DimOnBehalffUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
-    CONSTRAINT [fk_FactProcessTransaction_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
+    CONSTRAINT [fk_FactProcessTransaction_DimOrganizationID] FOREIGN KEY ([DimOrganizationUnitLevel4ID]) REFERENCES shared.[DimOrganizationUnitLevel4] ([DimOrganizationUnitLevel4ID]),
     CONSTRAINT [fk_FactProcessTransaction_DimOriginalPayerPagaAccountID] FOREIGN KEY ([DimOriginalPayerPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactProcessTransaction_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactProcessTransaction_DimProcessStatusID] FOREIGN KEY ([DimProcessStatusID]) REFERENCES [Classification].[DimProcessStatus] ([DimProcessStatusID]),
@@ -244,5 +244,5 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimTransferDat
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = N'DimOrganizationID';
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTransaction', @level2type = N'COLUMN', @level2name = 'DimOrganizationUnitLevel4ID';
 

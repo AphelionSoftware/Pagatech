@@ -6,6 +6,7 @@
     [DimFinancialTransactionTypeID]      INT             NULL,
     [DimFinancialAccountID]              INT             NULL,
     [DimPagaAccountID]                   INT             NULL,
+	[DimOrganizationUnitLevel4ID]		INT				NULL,
     [DimUserID]                          INT             NULL,
     [DimProcessTypeID]                   INT             NULL,
     [DimEffectiveDateID]                 INT             NULL,
@@ -30,7 +31,8 @@
     CONSTRAINT [fk_FactFinancialTransaction_DimTransactionTimeID] FOREIGN KEY ([DimTransactionTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactFinancialTransaction_OriginalTransactionID] FOREIGN KEY ([OriginalFactFinancialTransactionID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTransactionID]),
-    CONSTRAINT [fk_FactFinancialTransaction_RelatedTransactionID] FOREIGN KEY ([RelatedFactFinancialTransactionID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTransactionID])
+    CONSTRAINT [fk_FactFinancialTransaction_RelatedTransactionID] FOREIGN KEY ([RelatedFactFinancialTransactionID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTransactionID]),
+	CONSTRAINT [fk_FactFinancialTransaction_DimOrganizationUnitLevel4ID] FOREIGN KEY ([DimOrganizationUnitLevel4ID]) REFERENCES Shared.DimOrganizationUnitLevel4 (DimOrganizationUnitLevel4ID)
 );
 
 
