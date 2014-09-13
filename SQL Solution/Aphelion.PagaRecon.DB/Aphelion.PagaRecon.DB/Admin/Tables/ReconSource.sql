@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Admin].[ReconSource] (
-    [ID]                INT           NOT NULL,
+    [ID]                INT           IDENTITY (1, 1) NOT NULL,
     [Code]              VARCHAR (50)  NOT NULL,
     [Name]              VARCHAR (255) NULL,
     [ReconSourceTypeID] INT           NOT NULL,
@@ -11,4 +11,6 @@
     CONSTRAINT [FK_ReconSource_ReconSourceType] FOREIGN KEY ([ReconSourceTypeID]) REFERENCES [Admin].[ReconSourceType] ([ID]),
     CONSTRAINT [UQ_ReconSource_Code] UNIQUE NONCLUSTERED ([Code] ASC)
 );
+
+
 

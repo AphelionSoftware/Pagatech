@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Import].[FileDefinition] (
-    [ID]             INT           NOT NULL,
+    [ID]             INT           IDENTITY (1, 1) NOT NULL,
     [Code]           VARCHAR (50)  NOT NULL,
     [Name]           VARCHAR (255) NULL,
     [FileTypeID]     INT           NOT NULL,
@@ -11,4 +11,6 @@
     CONSTRAINT [FK_FileDefinition_FileType] FOREIGN KEY ([FileTypeID]) REFERENCES [Import].[FileType] ([ID]),
     CONSTRAINT [UQ_FileDefinition_Code] UNIQUE NONCLUSTERED ([Code] ASC)
 );
+
+
 

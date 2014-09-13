@@ -25,17 +25,107 @@ class Program {
 }*/
 namespace Aphelion.FileImport
 {
+    public enum FileType { CSV, Excel2003, Excel2007 }
+
     public class FileReader
     {
+        public BackgroundWorker backWorker;
         public string sFileName { get; set; }
-        public DataTable dtResults { get; }
+        public string sDelimiter = ",";
+        public DataTable dtResults { get; set; }
 
         public int iStartRow = 0;
         public int iNumRows = 0;
-
-        public FileReader()
+        public FileType ftImport;
+        public FileReader(FileType pFT)
         {
-            
+            ftImport = pFT;
         }
+        public FileReader(FileType pFT, string pFileName)
+            : this(pFT)
+        {
+            sFileName = pFileName;
+        }
+        public FileReader(FileType pFT, string pFileName, BackgroundWorker pBack)
+            : this(pFT, pFileName)
+        {
+            backWorker = pBack;
+        }
+
+        public void ImportFile()
+        {
+            if (sFileName == null)
+            {
+                throw new Exception("FileName not set");
+            }
+            if (backWorker != null)
+            {
+                backWorker.ReportProgress(0, new ProgressReport(string.Format("Importing file {0}", sFileName)));
+            }
+
+            this.dtResults = new DataTable("FileImport");
+            if (this.ftImport == FileType.CSV)
+            {
+                ImportCSV();
+            }
+
+        }
+
+        public void ImportCSV() {
+
+            if (backWorker != null)
+            {
+                backWorker.ReportProgress(0, new ProgressReport(string.Format("Importing CSV {0}\n Skipping {1} rows to a max of {2} rows", sFileName, iStartRow, iNumRows)));
+            }
+
+            using (var csvReader = new TextFieldParser(sFileName))
+            {
+                csvReader.SetDelimiters(new string[] { sDelimiter });
+                string[] fields;
+                int iRow = 0;
+                while (iRow++ < iStartRow && !csvReader.EndOfData)
+                {
+                    string s = csvReader.ReadLine();
+                    if (iRow % 1000 == 0)
+                    {
+                        if (backWorker != null)
+                        {
+                            backWorker.ReportProgress(0, new ProgressReport(string.Format("Skipping row {0} of {1}", iStartRow, iRow)));
+                        }
+                    }
+                }
+                iRow = 0;
+                if (csvReader.EndOfData)
+                {
+                    throw new Exception("Start row past end of file!");
+                }
+                fields = csvReader.ReadFields();
+                for (int iLoop = 0; iLoop < fields.Length; iLoop++)
+                {
+                    DataColumn dc = new DataColumn(iLoop.ToString());
+                    this.dtResults.Columns.Add(dc);
+                }
+                while (!csvReader.EndOfData && (iNumRows == 0 || iNumRows < iRow++))
+                {
+                    fields = csvReader.ReadFields();
+                    dtResults.Rows.Add(fields);
+                    if (iRow % 1000 == 0)
+                    {
+                        if (backWorker != null)
+                        {
+                            backWorker.ReportProgress(0, new ProgressReport(string.Format("Importing row {0} ", iRow)));
+                        }
+                    }
+                }
+
+                if (backWorker != null)
+                {
+                    backWorker.ReportProgress(0, new ProgressReport(string.Format("Imported rows {0} ", iRow)));
+                }
+            }
+        }
+
+
+        public void ImportExcel() { }
     }
 }
