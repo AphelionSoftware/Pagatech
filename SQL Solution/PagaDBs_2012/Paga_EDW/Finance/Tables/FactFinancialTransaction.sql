@@ -1,4 +1,4 @@
-CREATE TABLE [Finance].[FactFinancialTransaction] (
+﻿CREATE TABLE [Finance].[FactFinancialTransaction] (
     [FactFinancialTransactionID]         INT             NOT NULL,
     [SourceKey]                          INT             NOT NULL,
     [DimCreatedDateID]                   INT             NULL,
@@ -32,6 +32,8 @@ CREATE TABLE [Finance].[FactFinancialTransaction] (
     CONSTRAINT [fk_FactFinancialTransaction_OriginalTransactionID] FOREIGN KEY ([OriginalFactFinancialTransactionID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTransactionID]),
     CONSTRAINT [fk_FactFinancialTransaction_RelatedTransactionID] FOREIGN KEY ([RelatedFactFinancialTransactionID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTransactionID])
 );
+
+
 
 
 
