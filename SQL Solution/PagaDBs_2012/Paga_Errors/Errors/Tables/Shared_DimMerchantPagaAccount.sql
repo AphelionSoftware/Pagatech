@@ -8,9 +8,14 @@
     [change_operation]              CHAR (1)      NOT NULL,
     [DimPagaAccountStatusSourceKey] INT           NOT NULL,
     [ExternalAccountNumber]         VARCHAR (12)  NULL,
+    [hasOnlineAccount]              BIT           NULL,
+    [IsActive]                      BIT           NULL,
+    [IsEnabled]                     BIT           NULL,
     [Name]                          VARCHAR (255) NOT NULL,
     [PagaAccountNumber]             VARCHAR (12)  NULL,
     [RegistrationDateID]            INT           NOT NULL,
     [SourceKey]                     VARCHAR (255) NOT NULL
 );
+
+
 
