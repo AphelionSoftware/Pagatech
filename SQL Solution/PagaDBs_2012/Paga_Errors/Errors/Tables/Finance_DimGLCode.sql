@@ -10,8 +10,10 @@
     [IsNormalDebit]              BIT            NULL,
     [Name]                       VARCHAR (255)  NOT NULL,
     [SourceKey]                  VARCHAR (255)  NOT NULL,
-    [TextDescription]            VARCHAR (1000) NULL
+    [TextDesciption]             VARCHAR (1000) NULL
 );
+
+
 
 
 

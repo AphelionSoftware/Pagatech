@@ -6,7 +6,10 @@
     [ErrorType]                VARCHAR (255) NOT NULL,
     [change_operation]         CHAR (1)      NOT NULL,
     [DimOrganizationSourceKey] VARCHAR (255) NOT NULL,
+    [IsActive]                 BIT           NULL,
     [Name]                     VARCHAR (255) NOT NULL,
     [SourceKey]                VARCHAR (255) NOT NULL
 );
+
+
 

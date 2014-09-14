@@ -14,6 +14,7 @@
     [DimBankSourceKey]             VARCHAR (255)   NOT NULL,
     [DurationLimit]                DECIMAL (18, 2) NULL,
     [DurationLimitSeconds]         INT             NULL,
+    [IsEnabled]                    BIT             NULL,
     [KYC_Rating]                   VARCHAR (30)    NULL,
     [MobilePhoneNumber]            VARCHAR (30)    NULL,
     [Name]                         VARCHAR (255)   NOT NULL,
@@ -21,4 +22,6 @@
     [TextDesciption]               VARCHAR (1000)  NULL,
     [TransactionLimit]             DECIMAL (18, 2) NULL
 );
+
+
 
