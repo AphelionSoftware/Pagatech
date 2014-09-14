@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Errors].[Activity_FactProcessTransaction] (
+﻿CREATE TABLE [Errors].[Activity_FactProcessTx] (
     [QueueID]                                  INT             NOT NULL,
     [SSISErrorCode]                            INT             NOT NULL,
     [SSISErrorColumn]                          INT             NOT NULL,
@@ -10,7 +10,7 @@
     [change_operation]                         CHAR (1)        NOT NULL,
     [CustomerBillerAccount]                    VARCHAR (255)   NULL,
     [CustomerPhoneNumber]                      VARCHAR (255)   NULL,
-    [DependentFactProcessTransactionSourceKey] INT             NULL,
+    [DependentFactProcessTxSourceKey] INT             NULL,
     [DepositNumber]                            VARCHAR (255)   NULL,
     [DimAgentCommissionTypeSourceKey]          VARCHAR (255)   NULL,
     [DimApprovedByUserSourceKey]               VARCHAR (255)   NULL,
@@ -37,7 +37,7 @@
     [LinkedPhoneNumber]                        VARCHAR (255)   NULL,
     [MerchantConfirmationCode]                 VARCHAR (255)   NULL,
     [MerchantCustomerAccountNumber]            VARCHAR (255)   NULL,
-    [OriginalFactProcessTransactionSourceKey]  INT             NULL,
+    [OriginalFactProcessTxSourceKey]  INT             NULL,
     [PaymentSource]                            VARCHAR (255)   NULL,
     [ProcessAmount]                            DECIMAL (18, 2) NULL,
     [ProcessFee]                               DECIMAL (18, 2) NULL,

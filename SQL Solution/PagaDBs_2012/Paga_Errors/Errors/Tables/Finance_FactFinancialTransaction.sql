@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Errors].[Finance_FactFinancialTransaction] (
+﻿CREATE TABLE [Errors].[Finance_FactFinancialTxHeader] (
     [QueueID]                                   INT             NOT NULL,
     [SSISErrorCode]                             INT             NOT NULL,
     [SSISErrorColumn]                           INT             NOT NULL,
@@ -18,8 +18,8 @@
     [DimTransactionDateID]                      INT             NULL,
     [DimTransactionTimeID]                      INT             NULL,
     [DimUserSourceKey]                          VARCHAR (255)   NULL,
-    [OriginalFactFinancialTransactionSourceKey] INT             NULL,
-    [RelatedFactFinancialTransactionSourceKey]  INT             NULL,
+    [OriginalFactFinancialTxHeaderSourceKey] INT             NULL,
+    [RelatedFactFinancialTxHeaderSourceKey]  INT             NULL,
     [SourceKey]                                 INT             NOT NULL
 );
 

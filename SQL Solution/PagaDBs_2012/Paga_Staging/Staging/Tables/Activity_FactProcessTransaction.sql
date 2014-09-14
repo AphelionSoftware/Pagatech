@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Activity_FactProcessTransaction] (
+﻿CREATE TABLE [Staging].[Activity_FactProcessTx] (
     [AgentCommissionAmount]                    DECIMAL (18, 2) NULL,
     [ATMReferenceNumber]                       VARCHAR (255)   NULL,
     [CardProcessorName]                        VARCHAR (255)   NULL,
@@ -24,7 +24,7 @@
     [DimStartedTimeID]                         INT             NULL,
     [DimTransferDateID]                        INT             NULL,
     [DimTransferTimeID]                        INT             NULL,
-    [DependentFactProcessTransactionSourceKey] INT             NULL,
+    [DependentFactProcessTxSourceKey] INT             NULL,
     [DimAgentCommissionTypeSourceKey]          VARCHAR (255)   NULL,
     [DimApprovedByUserSourceKey]               VARCHAR (255)   NULL,
     [DimBillerAccountUserSourceKey]            VARCHAR (255)   NULL,
@@ -39,7 +39,7 @@
     [DimProcessTypeSourceKey]                  VARCHAR (255)   NULL,
     [DimReceivingUserSourceKey]                VARCHAR (255)   NULL,
     [DimVerifiedByUserSourceKey]               VARCHAR (255)   NULL,
-    [OriginalFactProcessTransactionSourceKey]  INT             NULL,
+    [OriginalFactProcessTxSourceKey]  INT             NULL,
     [change_operation]                         CHAR (1)        DEFAULT ((1)) NOT NULL
 );
 

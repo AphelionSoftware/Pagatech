@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Finance_FactFinancialTransaction] (
+﻿CREATE TABLE [Staging].[Finance_FactFinancialTxHeader] (
     [CreditAmount]                              DECIMAL (18, 2) NULL,
     [DebitAmount]                               DECIMAL (18, 2) NULL,
     [SourceKey]                                 INT             NOT NULL,
@@ -14,8 +14,8 @@
     [DimPagaAccountSourceKey]                   VARCHAR (255)   NULL,
     [DimProcessTypeSourceKey]                   VARCHAR (255)   NULL,
     [DimUserSourceKey]                          VARCHAR (255)   NULL,
-    [OriginalFactFinancialTransactionSourceKey] INT             NULL,
-    [RelatedFactFinancialTransactionSourceKey]  INT             NULL,
+    [OriginalFactFinancialTxHeaderSourceKey] INT             NULL,
+    [RelatedFactFinancialTxHeaderSourceKey]  INT             NULL,
     [change_operation]                          CHAR (1)        DEFAULT ((1)) NOT NULL
 );
 
