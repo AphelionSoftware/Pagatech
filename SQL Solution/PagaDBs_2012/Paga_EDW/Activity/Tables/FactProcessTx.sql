@@ -1,51 +1,48 @@
 ﻿CREATE TABLE [Activity].[FactProcessTx] (
-    [FactProcessTxID]          INT             NOT NULL,
-    [SourceKey]                         INT             NOT NULL,
-    [DimCreatedDateID]                  INT             NOT NULL,
-    [DimCreatedTimeID]                  INT             NOT NULL,
-    [DimPagaAccountID]                  INT             NULL,
-    [DimProcessTypeID]                  INT             NULL,
-    [DimAgentCommissionTypeID]          INT             NULL,
-    [DimInitiatingUserID]               INT             NULL,
-    [DimReceivingUserID]                INT             NULL,
-    [DimOnBehalffUserID]                INT             NULL,
-    [DimChannelID]                      INT             NULL,
-    [DimStartedDateID]                  INT             NULL,
-    [DimStartedTimeID]                  INT             NULL,
-    [DimCompletedDateID]                INT             NULL,
-    [DimCompletedTimeID]                INT             NULL,
-    [DimProcessStatusID]                INT             NULL,
-    [DimBillerAccountUserID]            INT             NULL,
-    [DimOrganizationUnitLevel4ID]                 INT             NULL,
-    [DimOriginalPayerPagaAccountID]     INT             NULL,
-    [DimTransferDateID]                 INT             NULL,
-    [DimTransferTimeID]                 INT             NULL,
-    [DimApprovedByUserID]               INT             NULL,
-    [DimVerifiedByUserID]               INT             NULL,
-    [DimCancellationApprovedByUserID]   INT             NULL,
-    [OriginalFactProcessTxID]  INT             NULL,
-    [DependentFactProcessTxID] INT             NULL,
-    [RequestedProcessChannel]           VARCHAR (255)   NULL,
-    [CustomerPhoneNumber]               VARCHAR (255)   NULL,
-    [SenderPhoneNumber]                 VARCHAR (255)   NULL,
-    [LinkedPhoneNumber]                 VARCHAR (255)   NULL,
-    [ReferenceNumber]                   VARCHAR (255)   NULL,
-    [ATMReferenceNumber]                VARCHAR (255)   NULL,
-    [DepositNumber]                     VARCHAR (255)   NULL,
-    [MerchantCustomerAccountNumber]     VARCHAR (255)   NULL,
-    [MerchantConfirmationCode]          VARCHAR (255)   NULL,
-    [CardProcessorName]                 VARCHAR (255)   NULL,
-    [PaymentSource]                     VARCHAR (255)   NULL,
-    [CustomerBillerAccount]             VARCHAR (255)   NULL,
-    [WithdrawalCode]                    VARCHAR (255)   NULL,
-    [ProcessFee]                        DECIMAL (18, 2) NULL,
-    [ProcessAmount]                     DECIMAL (18, 2) NULL,
-    [AgentCommissionAmount]             DECIMAL (18, 2) NULL,
+    [FactProcessTxID] INT NOT NULL,
+	[SourceKey] [int] NOT NULL,
+	[DimCreatedDateID] INT NOT NULL,
+	[DimCreatedTimeID] INT NOT NULL,
+	[DimStartedDateID] INT NOT NULL,
+	[DimStartedTimeID] INT NOT NULL,
+	[DimCompletedDateID] INT NULL,
+	[DimCompletedTimeID] INT NULL,
+	[DimInitiatingUserID] [int] NULL,
+	[DimOnBehalffUserID] [int] NULL,
+	[DimReceivingUserID] [int] NULL,
+	[DimOrganizationUnitLevel4ID] INT NULL,
+	[DimChannelID] INT NOT NULL,
+	[DimProcessStatusID] INT NOT NULL,
+	[DimProcessTypeID] INT NOT NULL,
+	[DimAgentCommissionTypeID]INT SPARSE NULL,
+	[ProcessAmount] [decimal](18, 2) NULL,
+	[ProcessFee] [decimal](18, 2) NULL,
+	[AgentCommissionAmount] [decimal](18, 2) SPARSE NULL,
+	[ProcessCode] [varchar](36) NOT NULL,
+	[WithdrawalCode] [varchar](200) SPARSE NULL,
+	[ATMReferenceNumber] [varchar](200) SPARSE NULL,
+	[CardProcessorName] [varchar](200) SPARSE NULL,
+	[CustomerBillerAccount] [varchar](200)SPARSE NULL,
+	[CustomerPhoneNumber] [varchar](200) SPARSE NULL,
+	[DepositNumber] [varchar](200) SPARSE NULL,
+	[LinkedPhoneNumber] [varchar](200) SPARSE NULL,
+	[MerchantConfirmationCode] [varchar](200) SPARSE NULL,
+	[MerchantCustomerAccountNumber] [varchar](200) SPARSE  NULL,
+	[PaymentSource] [varchar](200) SPARSE NULL,
+	[ReferenceNumber] [varchar](200) SPARSE NULL,
+	[SenderPhoneNumber] [varchar](200) SPARSE NULL,
+	[DependentFactProcessTxID] INT SPARSE NULL,
+	[OriginalFactProcessTxID] INT SPARSE NULL,
+	[DimPagaAccountID] INT SPARSE NULL,
+	[VerificationStatus] [varchar](200) SPARSE NULL,
+	[DimApprovedByUserID] INT SPARSE NULL,
+	[DimVerifiedByUserID] INT SPARSE NULL,
+	[DimCancellationApprovedByUserID] INT SPARSE NULL,
+	[IntegrationReferenceNumber] [varchar](200)SPARSE  NULL,
     CONSTRAINT [pk_FactProcessTxID] PRIMARY KEY CLUSTERED ([FactProcessTxID] ASC),
     CONSTRAINT [fk_FactProcessTx_DependentProcessID] FOREIGN KEY ([DependentFactProcessTxID]) REFERENCES [Activity].[FactProcessTx] ([FactProcessTxID]),
     CONSTRAINT [fk_FactProcessTx_DimAgentCommissionTypeID] FOREIGN KEY ([DimAgentCommissionTypeID]) REFERENCES [Classification].[DimAgentCommissionType] ([DimAgentCommissionTypeID]),
     CONSTRAINT [fk_FactProcessTx_DimApprovedByUserID] FOREIGN KEY ([DimApprovedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
-    CONSTRAINT [fk_FactProcessTx_DimBillerAccountUserID] FOREIGN KEY ([DimBillerAccountUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTx_DimCancellationApprovedByUserID] FOREIGN KEY ([DimCancellationApprovedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTx_DimChannelID] FOREIGN KEY ([DimChannelID]) REFERENCES [Activity].[DimChannel] ([DimChannelID]),
     CONSTRAINT [fk_FactProcessTx_DimCompletedDateID] FOREIGN KEY ([DimCompletedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
@@ -55,15 +52,12 @@
     CONSTRAINT [fk_FactProcessTx_DimInitiatingUserID] FOREIGN KEY ([DimInitiatingUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTx_DimOnBehalffUserID] FOREIGN KEY ([DimOnBehalffUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTx_DimOrganizationID] FOREIGN KEY ([DimOrganizationUnitLevel4ID]) REFERENCES shared.[DimOrganizationUnitLevel4] ([DimOrganizationUnitLevel4ID]),
-    CONSTRAINT [fk_FactProcessTx_DimOriginalPayerPagaAccountID] FOREIGN KEY ([DimOriginalPayerPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactProcessTx_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactProcessTx_DimProcessStatusID] FOREIGN KEY ([DimProcessStatusID]) REFERENCES [Classification].[DimProcessStatus] ([DimProcessStatusID]),
     CONSTRAINT [fk_FactProcessTx_DimProcessTypeID] FOREIGN KEY ([DimProcessTypeID]) REFERENCES [Classification].[DimProcessType] ([DimProcessTypeID]),
     CONSTRAINT [fk_FactProcessTx_DimReceivingUserID] FOREIGN KEY ([DimReceivingUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTx_DimStartedDateID] FOREIGN KEY ([DimStartedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactProcessTx_DimStartedTimeID] FOREIGN KEY ([DimStartedTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
-    CONSTRAINT [fk_FactProcessTx_DimTransferDateID] FOREIGN KEY ([DimTransferDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
-    CONSTRAINT [fk_FactProcessTx_DimTransferTimeID] FOREIGN KEY ([DimTransferTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactProcessTx_DimVerifiedByUserID] FOREIGN KEY ([DimVerifiedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTx_OriginalProcessID] FOREIGN KEY ([OriginalFactProcessTxID]) REFERENCES [Activity].[FactProcessTx] ([FactProcessTxID])
 );
@@ -72,177 +66,3 @@
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCreatedDateID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimCreatedDateID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCreatedTimeID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimCreatedTimeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccountID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimPagaAccountID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimProcessTypeID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimProcessTypeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimAgentCommissionTypeID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimAgentCommissionTypeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimInitiatingUserID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimInitiatingUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimReceivingUserID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimReceivingUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOnBehalffUserID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimOnBehalffUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimChannelID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimChannelID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimStartedDateID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimStartedDateID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimStartedTimeID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimStartedTimeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCompletedDateID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimCompletedDateID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCompletedTimeID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimCompletedTimeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimProcessStatusID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimProcessStatusID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimBillerAccountUserID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimBillerAccountUserID';
-
-
-GO
-
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOriginalPayerPagaAccountID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimOriginalPayerPagaAccountID';
-
-
-GO
-
-
-
-GO
-
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimApprovedByUserID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimApprovedByUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimVerifiedByUserID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimVerifiedByUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCancellationApprovedByUserID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimCancellationApprovedByUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'OriginalProcessID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'OriginalFactProcessTxID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DependentProcessID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DependentFactProcessTxID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'RequestedProcessChannel', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'RequestedProcessChannel';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'CustomerPhoneNumber', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'CustomerPhoneNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'SenderPhoneNumber', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'SenderPhoneNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'LinkedPhoneNumber', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'LinkedPhoneNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ReferenceNumber', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'ReferenceNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ATMReferenceNumber', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'ATMReferenceNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DepositNumber', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DepositNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'MerchantCustomerAccountNumber', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'MerchantCustomerAccountNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'MerchantConfirmationCode', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'MerchantConfirmationCode';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'CardProcessorName', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'CardProcessorName';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'PaymentSource', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'PaymentSource';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'CustomerBillerAccount', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'CustomerBillerAccount';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'WithdrawalCode', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'WithdrawalCode';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ProcessFee', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'ProcessFee';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ProcessAmount', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'ProcessAmount';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'AgentCommissionAmount', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'AgentCommissionAmount';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimTransferTimeID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimTransferTimeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimTransferDateID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimTransferDateID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = 'DimOrganizationUnitLevel4ID';
-
