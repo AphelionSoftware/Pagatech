@@ -120,4 +120,5 @@ FROM
 		WHERE
 			ouu.UserId = ft.UserId
 	) AS orgUnit
+
 ) AS base_query
