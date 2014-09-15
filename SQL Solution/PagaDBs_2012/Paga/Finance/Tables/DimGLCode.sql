@@ -2,7 +2,6 @@
     [DimGLCodeID]      INT            NOT NULL,
     [SourceKey]        VARCHAR (255)  NOT NULL,
     [Name]             VARCHAR (255)  NOT NULL,
-    [Code]             VARCHAR (50)   NOT NULL,
     [DimGLCodeGroupID] INT            NOT NULL,
     [GLCode]           VARCHAR (255)  NULL,
     [TextDesciption]   VARCHAR (1000) NULL,
@@ -16,6 +15,8 @@
     CONSTRAINT [pk_DimGLCodeID] PRIMARY KEY CLUSTERED ([DimGLCodeID] ASC),
     CONSTRAINT [fk_DimGLCode_DimGLCodeGroupID] FOREIGN KEY ([DimGLCodeGroupID]) REFERENCES [Finance].[DimGLCodeGroup] ([DimGLCodeGroupID])
 );
+
+
 
 
 
@@ -34,7 +35,7 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode', @level2type = N'COLUMN', @level2name = N'Code';
+
 
 
 GO
@@ -63,4 +64,16 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level
 
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'Description', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode', @level2type = N'COLUMN', @level2name = N'TextDesciption';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode';
 

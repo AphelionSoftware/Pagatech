@@ -11,7 +11,7 @@
 	 <Connection Name="Aphelion.DB.LoadQueue" ConnectionString="Data Source=.\sql2012;Initial Catalog=Aphelion.DB.LoadQueue;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
 	 <Connection Name="StagingDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
 	 <Connection Name="SourceDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=PagaOpsDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
-	 <Connection Name="MetadataDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="MetadataDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_EDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
 	</Connections>
 	<PackageProjects>
 		<PackageProject Name="Aphelion.Paga.StagingLoad.2010">
@@ -21,92 +21,130 @@
 	
 	<Packages>
 		<#
-			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, 
-								"SELECT "+
-									"(rn+1000) AS PackagePrefix, "+
-									"TABLE_NAME, "+
-									"TABLE_SCHEMA " +
-								"FROM "+
-								"(	"+
-									"SELECT "+
-										"ROW_NUMBER() OVER (ORDER BY TABLE_SCHEMA, TABLE_NAME) AS rn, "+
-										"TABLE_NAME, "+
-										"TABLE_SCHEMA "+
-										"FROM INFORMATION_SCHEMA.TABLES "+
-										"WHERE "+
-											"TABLE_TYPE = 'BASE TABLE' "+
-											"AND TABLE_SCHEMA = 'Staging' " +
-											"AND (TABLE_NAME LIKE 'Classification_%' OR TABLE_NAME LIKE 'Location_%')" +
-								
-								") AS x;");
+			string PackageListQuery = "SELECT "+
+											"PackageName = CONVERT(CHAR(4),(prefix.package_grp + list.rn)) +'_' + StagingTableName, "+
+											"list.TABLE_SCHEMA, "+
+											"list.TABLE_NAME, "+
+											"list.BaseQuery "+
+										"FROM "+
+										"(  "+
+											"SELECT  "+
+												"ROW_NUMBER()OVER(PARTITION BY TABLE_SCHEMA ORDER BY TABLE_NAME) AS rn, "+
+												"StagingTableName = (TABLE_SCHEMA +'_' +TABLE_NAME), "+
+												"pl.TABLE_SCHEMA,  "+
+												"pl.TABLE_NAME,  "+
+												"BaseQuery = pl.bq  "+
+											"FROM  "+
+											"(  "+
+												"SELECT  "+
+													"package_list.TABLE_SCHEMA,  "+
+													"package_list.TABLE_NAME,  "+
+													"CONVERT(CHAR(1),MAX(packageType)) AS pt,  "+
+													"CONVERT(VARCHAR(MAX),MAX(BaseQuery)) AS bq  "+
+												"FROM  "+
+												"(  "+
+													"SELECT  "+
+														"table_list.StagingTableName,  "+
+														"table_list.TABLE_SCHEMA,  "+
+														"table_list.TABLE_NAME, "+ 
+														"CASE  "+
+																"WHEN ext_prop.name =  'PackageType'  "+
+																"THEN CONVERT(CHAR(1),ext_prop.value)  "+
+														"END as PackageType,  "+
+														"CASE	 "+
+																"WHEN ext_prop.name =  'BaseQuery'  "+
+																"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
+														"END as BaseQuery  "+
+													"FROM  "+
+													"(  "+
+														"SELECT   "+
+															"StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name,  "+
+															"TABLE_SCHEMA = SCHEMA_NAME(t.schema_id),  "+
+															"TABLE_NAME = t.name,  "+
+															"t.object_id  "+
+														"FROM sys.tables AS t  "+
+													") table_list  "+
+													"INNER JOIN sys.extended_properties AS ext_prop ON   "+
+														"table_list.object_id = ext_prop.major_id  "+
+													"WHERE  "+ 
+														"ext_prop.name = 'PackageType' OR ext_prop.name = 'BaseQuery'  "+
+												") AS package_list  "+
+												"GROUP BY  "+
+													"package_list.TABLE_SCHEMA,  "+
+													"package_list.TABLE_NAME  "+
+												") as pl  "+
+											"WHERE   "+
+												"pl.bq IS NOT NULL  "+
+												"AND LEN(pl.bq) > 0 "+
+										") AS list "+
+										"INNER JOIN "+
+										"("+
+											"SELECT "+
+												"(tsg.seed *100) + 1000 AS package_grp, "+
+												"tsg.TABLE_SCHEMA "+
+											"FROM "+
+												"( "+
+												"SELECT "+
+													"ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed, "+
+													"ts.TABLE_SCHEMA "+
+												"FROM "+
+												"( "+
+													"SELECT DISTINCT  "+
+														"t.TABLE_SCHEMA "+
+													"FROM INFORMATION_SCHEMA.TABLES AS t "+
+													"WHERE "+
+														"t.TABLE_TYPE = 'BASE TABLE' "+
+												") as ts "+
+											") AS tsg "+
+										") as prefix ON "+
+											"list.TABLE_SCHEMA = prefix.TABLE_SCHEMA ";
+					
+							
+			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(MetaDataConnection.ConnectionString, PackageListQuery); 
 	 	    
 			foreach (DataRow row in tableNamesToImport.Rows)
                 { 
-        #>
-		
-		<Package Name="<#=row[0]#>_<#=row[1]#>" ConstraintMode="Linear" AutoCreateConfigurationsType="None">
-
-			<#
-				string StagingTableName = row[1].ToString();
-				
-				char[] splitchar = { '_' };
-				string[] strSchemaName = StagingTableName.Split(splitchar);
-				
-				var GetBaseQuery = "SELECT "+
-										"CONVERT(VARCHAR(max), ext_prop.value) AS base_query "+
-									"FROM "+
-									"( "+
-										"SELECT  "+
-											"StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name, "+
-											"t.object_id "+ 
-										"FROM sys.tables AS t "+
-										"WHERE  "+
-											"SCHEMA_NAME(t.schema_id) = '" + strSchemaName[0] +"' " +
-									") table_list "+
-									"INNER JOIN sys.extended_properties AS ext_prop ON "+
-										"table_list.object_id = ext_prop.major_id "+
-									"WHERE  "+
-										"ext_prop.name = 'BaseQuery'" +
-										"AND StagingTableName = '" + StagingTableName +"';";
-													
-				DataTable BaseQuery  = ExternalDataAccess.GetDataTable(MetaDataConnection.ConnectionString, GetBaseQuery);
-				string BaseQueryText = BaseQuery.Rows[0]["base_query"].ToString() +" ";
-				
-			#>
+				string PackageName = row[0].ToString();
+				string TableSchema = row[1].ToString();
+				string TableName = row[2].ToString();
+				string BaseQuery = row[3].ToString();
+		#>	
+				<Package Name="<#=PackageName#>" ConstraintMode="Linear" AutoCreateConfigurationsType="None">
+           
+						<Parameters>
+							<Parameter Name="strParm1" DataType="String">LEFT JOIN
+																		(
+																			SELECT 
+																				NULL AS change_log_SourceKey,
+																				NULL AS change_operation
+																		) AS change_log ON
+																			base_query.SourceKey = change_log.change_log_SourceKey
+							</Parameter>
+						</Parameters>
             
-				<Parameters>
-				    <Parameter Name="strParm1" DataType="String">LEFT JOIN
-																(
-																	SELECT 
-																		NULL AS change_log_SourceKey,
-																		NULL AS change_operation
-																) AS change_log ON
-																	base_query.SourceKey = change_log.change_log_SourceKey
-</Parameter>
-				</Parameters>
-            
-				<Variables>
-				  <Variable Name="CurrentVersion" DataType="Int32">0</Variable>
-				  <Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
-				  <Variable Name="BaseQuery" DataType="String"><#=BaseQueryText#></Variable>
-				  <Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]+ " " +@[$Package::strParm1] +";"</Variable>
-              </Variables>
+						<Variables>
+						  <Variable Name="CurrentVersion" DataType="Int32">0</Variable>
+						  <Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
+						  <Variable Name="BaseQuery" DataType="String"><#=BaseQuery#></Variable>
+						  <Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]+ " " +@[$Package::strParm1] +";"</Variable>
+					  </Variables>
 				
-			 <Tasks>
-					<Dataflow Name="DFT_Load <#=row[1]#>">
-					  <Transformations>
-						<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
-						  <VariableInput VariableName="User.FullQueryText"></VariableInput>
-						</OleDbSource>
-						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="StagingDB" KeepIdentity="true">
-						  <ExternalTableOutput Table="<#=String.Format("{0}.{1}",row[2], row[1])#>"/>
-						</OleDbDestination>
-					  </Transformations>
-					</Dataflow>
-				</Tasks>
+					 <Tasks>
+							<Dataflow Name="DFT_Load <#=String.Format("{0}_{1}",TableSchema, TableName)#>">
+							  <Transformations>
+								<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
+								  <VariableInput VariableName="User.FullQueryText"></VariableInput>
+								</OleDbSource>
+								<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="StagingDB" KeepIdentity="true">
+								  <ExternalTableOutput Table="<#=String.Format("{0}.{1}_{2}","Staging",TableSchema, TableName)#>"/>
+								</OleDbDestination>
+							  </Transformations>
+							</Dataflow>
+						</Tasks>
 				
 		
-		</Package>
+				</Package>
+				
 		
 		<# } #>
 	</Packages>

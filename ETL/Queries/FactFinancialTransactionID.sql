@@ -1,0 +1,1 @@
+UPDATE dbo.FinancialTransaction SET __Reverses = 

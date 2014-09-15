@@ -1,22 +1,22 @@
 ﻿CREATE TABLE [Finance].[FactFinancialTransaction] (
-    [FactFinancialTransactionID]    INT             NOT NULL,
-    [SourceKey] INT             NOT NULL,
-	[DimCreatedDateID]              INT             NULL,
-    [DimCreatedTimeID]              INT             NULL,
-    [DimFinancialTransactionTypeID] INT             NULL,
-    [DimFinancialAccountID]         INT             NULL,
-    [DimPagaAccountID]              INT             NULL,
-    [DimUserID]                     INT             NULL,
-    [DimProcessTypeID]              INT             NULL,
-    [DimEffectiveDateID]            INT             NULL,
-    [DimEffectiveTimeID]            INT             NULL,
-    [DimTransactionDateID]          INT             NULL,
-    [DimTransactionTimeID]          INT             NULL,
-    [OriginalFactFinancialTransactionID]         INT             NULL,
-    [RelatedFactFinancialTransactionID]          INT             NULL,
-    [DebitAmount]                   DECIMAL (18, 2) NULL,
-    [CreditAmount]                  DECIMAL (18, 2) NULL,
-    [MovementAmount] AS [CreditAmount] - [DebitAmount], 
+    [FactFinancialTransactionID]         INT             NOT NULL,
+    [SourceKey]                          INT             NOT NULL,
+    [DimCreatedDateID]                   INT             NULL,
+    [DimCreatedTimeID]                   INT             NULL,
+    [DimFinancialTransactionTypeID]      INT             NULL,
+    [DimFinancialAccountID]              INT             NULL,
+    [DimPagaAccountID]                   INT             NULL,
+    [DimUserID]                          INT             NULL,
+    [DimProcessTypeID]                   INT             NULL,
+    [DimEffectiveDateID]                 INT             NULL,
+    [DimEffectiveTimeID]                 INT             NULL,
+    [DimTransactionDateID]               INT             NULL,
+    [DimTransactionTimeID]               INT             NULL,
+    [OriginalFactFinancialTransactionID] INT             NULL,
+    [RelatedFactFinancialTransactionID]  INT             NULL,
+    [DebitAmount]                        DECIMAL (18, 2) NULL,
+    [CreditAmount]                       DECIMAL (18, 2) NULL,
+    [MovementAmount]                     AS              ([CreditAmount]-[DebitAmount]),
     CONSTRAINT [pk_FactFinancialTransactionID] PRIMARY KEY CLUSTERED ([FactFinancialTransactionID] ASC),
     CONSTRAINT [fk_FactFinancialTransaction_DimCreatedDateID] FOREIGN KEY ([DimCreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimCreatedTimeID] FOREIGN KEY ([DimCreatedTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
@@ -32,6 +32,8 @@
     CONSTRAINT [fk_FactFinancialTransaction_OriginalTransactionID] FOREIGN KEY ([OriginalFactFinancialTransactionID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTransactionID]),
     CONSTRAINT [fk_FactFinancialTransaction_RelatedTransactionID] FOREIGN KEY ([RelatedFactFinancialTransactionID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTransactionID])
 );
+
+
 
 
 GO
@@ -88,4 +90,16 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'OriginalTransa
 
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'RelatedTransactionID', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction', @level2type = N'COLUMN', @level2name = 'RelatedFactFinancialTransactionID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
 

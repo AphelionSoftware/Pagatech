@@ -2,7 +2,6 @@
     [DimFinancialAccountTypeID] INT            NOT NULL,
     [SourceKey]                 VARCHAR (255)  NOT NULL,
     [Name]                      VARCHAR (255)  NOT NULL,
-    [Code]                      VARCHAR (50)   NOT NULL,
     [TextDesciption]            VARCHAR (1000) NULL,
     [DimGLCodeID]               INT            NOT NULL,
     [SourceKeyHash]             BIGINT         NOT NULL,
@@ -18,7 +17,21 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialAccountType_SourceKey]
     ON [Finance].[DimFinancialAccountType]([SourceKey] ASC);
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountType';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountType';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountType';
 

@@ -1,9 +1,10 @@
-﻿CREATE TABLE [Staging].[Classification_DimFinancialTransactionType] (
-    [DimFinancialTransactionTypeID] INT           NULL,
-    [Name]                          VARCHAR (255) NOT NULL,
-    [SourceKey]                     VARCHAR (255) NOT NULL,
-    [change_operation]              CHAR (1)      DEFAULT ((1)) NOT NULL
+﻿CREATE TABLE [Staging].[Classification_DimFinancialTxType] (
+    [Name]             VARCHAR (255) NOT NULL,
+    [SourceKey]        VARCHAR (255) NOT NULL,
+    [change_operation] CHAR (1)      DEFAULT ((1)) NOT NULL
 );
+
+
 
 
 

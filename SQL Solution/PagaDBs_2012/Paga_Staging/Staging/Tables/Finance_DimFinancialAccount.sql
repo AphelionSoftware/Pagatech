@@ -1,6 +1,5 @@
 ﻿CREATE TABLE [Staging].[Finance_DimFinancialAccount] (
     [AccountNumber]                       VARCHAR (20)    NULL,
-    [Code]                                VARCHAR (50)    NOT NULL,
     [Name]                                VARCHAR (255)   NOT NULL,
     [OpeningBalance]                      DECIMAL (18, 2) NULL,
     [RestrictedBalance]                   DECIMAL (18, 2) NULL,
@@ -8,13 +7,9 @@
     [TotalBalance]                        DECIMAL (18, 2) NULL,
     [DimBankAccountSourceKey]             VARCHAR (255)   NOT NULL,
     [DimCurrencySourceKey]                VARCHAR (255)   NOT NULL,
+    [DimFinancialAccountTypeSourceKey]    VARCHAR (255)   NOT NULL,
     [DimFinancialHoldingAccountSourceKey] VARCHAR (255)   NULL,
+    [DimPagaAccountSourceKey]             VARCHAR (255)   NOT NULL,
     [change_operation]                    CHAR (1)        DEFAULT ((1)) NOT NULL
 );
-
-
-
-
-
-
 

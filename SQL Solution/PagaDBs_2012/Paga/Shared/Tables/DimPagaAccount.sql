@@ -2,7 +2,6 @@
     [DimPagaAccountID]         INT           NOT NULL,
     [SourceKey]                VARCHAR (255) NOT NULL,
     [Name]                     VARCHAR (255) NOT NULL,
-    [Code]                     VARCHAR (50)  NOT NULL,
     [DimPagaAccountStatusID]   INT           NOT NULL,
     [DimPagaAccountUserTypeID] INT           NOT NULL,
     [DimUserID]                INT           NOT NULL,
@@ -41,7 +40,7 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'Code';
+
 
 
 GO
