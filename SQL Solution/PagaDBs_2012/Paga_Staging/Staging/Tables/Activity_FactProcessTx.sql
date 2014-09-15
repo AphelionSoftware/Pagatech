@@ -31,8 +31,6 @@
     [DimChannelSourceKey]                    VARCHAR (255)   NOT NULL,
     [DimInitiatingUserSourceKey]             VARCHAR (255)   NULL,
     [DimOnBehalffUserSourceKey]              VARCHAR (255)   NULL,
-    [DimOrganizationUnitLevel4SourceKey]     VARCHAR (255)   NULL,
-    [DimPagaAccountSourceKey]                VARCHAR (255)   NULL,
     [DimProcessStatusSourceKey]              VARCHAR (255)   NOT NULL,
     [DimProcessTypeSourceKey]                VARCHAR (255)   NOT NULL,
     [DimReceivingUserSourceKey]              VARCHAR (255)   NULL,
