@@ -11,7 +11,7 @@ SELECT
 	,[FactAirtimeTransaction].[DimCityID] 
 	,[FactAirtimeTransaction].[DimDateID] 
 	,[FactAirtimeTransaction].[DimFinancialAccountID] 
-	,[FactAirtimeTransaction].[DimFinancialTransactionTypeID] 
+	,[FactAirtimeTransaction].[DimFinancialTxTypeID] 
 	,[FactAirtimeTransaction].[DimPagaAccountID] 
 	,[FactAirtimeTransaction].[DimTimeID] 
 
@@ -49,19 +49,19 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccount
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactAirtimeTransaction', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTransaction', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeID';
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactAirtimeTransaction', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTransaction', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTransaction', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeID';
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTransaction', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimFinancialTransactionTypeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTransaction', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeID';
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimFinancialTxTypeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTransaction', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimFinancialTransactionTypeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTransaction', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeID';
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimFinancialTxTypeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTransaction', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeID';
 
 
 GO

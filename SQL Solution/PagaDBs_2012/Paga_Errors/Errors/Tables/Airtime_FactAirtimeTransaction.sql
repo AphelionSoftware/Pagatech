@@ -10,7 +10,7 @@
     [DimCitySourceKey]                     VARCHAR (255)   NULL,
     [DimDateID]                            INT             NULL,
     [DimFinancialAccountSourceKey]         VARCHAR (255)   NULL,
-    [DimFinancialTransactionTypeSourceKey] VARCHAR (255)   NULL,
+    [DimFinancialTxTypeSourceKey] VARCHAR (255)   NULL,
     [DimPagaAccountSourceKey]              VARCHAR (255)   NULL,
     [DimTimeID]                            INT             NULL,
     [SourceKey]                            INT             NOT NULL

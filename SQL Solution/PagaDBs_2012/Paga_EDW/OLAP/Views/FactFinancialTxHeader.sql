@@ -10,8 +10,8 @@ SELECT
 	,[FactFinancialTxHeader_7515198397873413912].[DimCurrencyID] AS [FactFinancialTxHeaderDimCurrencyID]
 	,[FactFinancialTxHeader_7515198397873413912].[DimEffectiveDateID] AS [FactFinancialTxHeaderDimEffectiveDateID]
 	,[FactFinancialTxHeader_7515198397873413912].[DimEffectiveTimeID] AS [FactFinancialTxHeaderDimEffectiveTimeID]
-	,[FactFinancialTxHeader_7515198397873413912].[DimFinancialTransactionSubTypeID] AS [FactFinancialTxHeaderDimFinancialTransactionSubTypeID]
-	,[FactFinancialTxHeader_7515198397873413912].[DimFinancialTransactionTypeID] AS [FactFinancialTxHeaderDimFinancialTransactionTypeID]
+	,[FactFinancialTxHeader_7515198397873413912].[DimFinancialTxSubTypeID] AS [FactFinancialTxHeaderDimFinancialTxSubTypeID]
+	,[FactFinancialTxHeader_7515198397873413912].[DimFinancialTxTypeID] AS [FactFinancialTxHeaderDimFinancialTxTypeID]
 	,[FactFinancialTxHeader_7515198397873413912].[DimOrganizationUnitLevel4ID] AS [FactFinancialTxHeaderDimOrganizationUnitLevel4ID]
 	,[FactFinancialTxHeader_7515198397873413912].[DimTransactionDateID] AS [FactFinancialTxHeaderDimTransactionDateID]
 	,[FactFinancialTxHeader_7515198397873413912].[DimTransactionTimeID] AS [FactFinancialTxHeaderDimTransactionTimeID]
@@ -94,10 +94,10 @@ SELECT
 	,[DimCurrency_1684517319826807121].[Name] AS [DimCurrencyName]
 	,[DimCurrency_1684517319826807121].[SourceKey] AS [DimCurrencySourceKey]
 	,[DimCurrency_1684517319826807121].[Symbol] AS [DimCurrencySymbol]
-	,[DimFinancialTransactionSubType_5410226734378344365].[Name] AS [DimFinancialTransactionSubTypeName]
-	,[DimFinancialTransactionSubType_5410226734378344365].[SourceKey] AS [DimFinancialTransactionSubTypeSourceKey]
-	,[DimFinancialTransactionType_7372893661651337083].[Name] AS [DimFinancialTransactionTypeName]
-	,[DimFinancialTransactionType_7372893661651337083].[SourceKey] AS [DimFinancialTransactionTypeSourceKey]
+	,[DimFinancialTxSubType_5410226734378344365].[Name] AS [DimFinancialTxSubTypeName]
+	,[DimFinancialTxSubType_5410226734378344365].[SourceKey] AS [DimFinancialTxSubTypeSourceKey]
+	,[DimFinancialTxType_7372893661651337083].[Name] AS [DimFinancialTxTypeName]
+	,[DimFinancialTxType_7372893661651337083].[SourceKey] AS [DimFinancialTxTypeSourceKey]
 	,[DimOrganizationUnitLevel4_8507064514487154255].[DimOrganizationUnitLevel3ID] AS [DimOrganizationUnitLevel4DimOrganizationUnitLevel3ID]
 	,[DimOrganizationUnitLevel4_8507064514487154255].[DimOrganizationUnitTypeID] AS [DimOrganizationUnitLevel4DimOrganizationUnitTypeID]
 	,[DimOrganizationUnitLevel4_8507064514487154255].[IdentificationNumber] AS [DimOrganizationUnitLevel4IdentificationNumber]
@@ -219,14 +219,14 @@ FROM [Finance].[FactFinancialTxHeader] AS [FactFinancialTxHeader_751519839787341
     
         ON  [FactFinancialTxHeader_7515198397873413912].[DimEffectiveTimeID] = [DimTime_8992419067520864668].[DimTimeID]
 
-    LEFT JOIN [Classification].[DimFinancialTransactionSubType] AS [DimFinancialTransactionSubType_5410226734378344365] 
+    LEFT JOIN [Classification].[DimFinancialTxSubType] AS [DimFinancialTxSubType_5410226734378344365] 
     
-    ON  [FactFinancialTxHeader_7515198397873413912].[DimFinancialTransactionSubTypeID] = [DimFinancialTransactionSubType_5410226734378344365].[DimFinancialTransactionSubTypeID]
+    ON  [FactFinancialTxHeader_7515198397873413912].[DimFinancialTxSubTypeID] = [DimFinancialTxSubType_5410226734378344365].[DimFinancialTxSubTypeID]
         
 
-    JOIN [Classification].[DimFinancialTransactionType] AS [DimFinancialTransactionType_7372893661651337083] 
+    JOIN [Classification].[DimFinancialTxType] AS [DimFinancialTxType_7372893661651337083] 
     
-        ON  [FactFinancialTxHeader_7515198397873413912].[DimFinancialTransactionTypeID] = [DimFinancialTransactionType_7372893661651337083].[DimFinancialTransactionTypeID]
+        ON  [FactFinancialTxHeader_7515198397873413912].[DimFinancialTxTypeID] = [DimFinancialTxType_7372893661651337083].[DimFinancialTxTypeID]
 
     LEFT JOIN [Shared].[DimOrganizationUnitLevel4] AS [DimOrganizationUnitLevel4_8507064514487154255] 
     
@@ -2312,83 +2312,83 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizatio
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimFinancialTransactionType', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeSourceKey';
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimFinancialTxType', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeSourceKey';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeSourceKey';
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeSourceKey';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'SourceKey', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeSourceKey';
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'SourceKey', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeSourceKey';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeSourceKey';
+EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeSourceKey';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeSourceKey';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeSourceKey';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimFinancialTransactionType', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeName';
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimFinancialTxType', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeName';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeName';
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeName';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Name', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeName';
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Name', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeName';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeName';
+EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeName';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeName';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeName';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimFinancialTransactionSubType', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionSubTypeSourceKey';
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimFinancialTxSubType', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxSubTypeSourceKey';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionSubTypeSourceKey';
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxSubTypeSourceKey';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'SourceKey', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionSubTypeSourceKey';
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'SourceKey', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxSubTypeSourceKey';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionSubTypeSourceKey';
+EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxSubTypeSourceKey';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionSubTypeSourceKey';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxSubTypeSourceKey';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimFinancialTransactionSubType', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionSubTypeName';
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimFinancialTxSubType', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxSubTypeName';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionSubTypeName';
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxSubTypeName';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Name', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionSubTypeName';
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Name', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxSubTypeName';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionSubTypeName';
+EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxSubTypeName';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionSubTypeName';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxSubTypeName';
 
 
 GO
@@ -3740,39 +3740,39 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'0', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactFinancialTxHeader', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTransactionTypeID';
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactFinancialTxHeader', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTxTypeID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTransactionTypeID';
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTxTypeID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimFinancialTransactionTypeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTransactionTypeID';
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimFinancialTxTypeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTxTypeID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'0', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTransactionTypeID';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'0', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTxTypeID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimFinancialTransactionTypeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTransactionTypeID';
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimFinancialTxTypeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTxTypeID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactFinancialTxHeader', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTransactionSubTypeID';
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactFinancialTxHeader', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTxSubTypeID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTransactionSubTypeID';
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTxSubTypeID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimFinancialTransactionSubTypeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTransactionSubTypeID';
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimFinancialTxSubTypeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTxSubTypeID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'0', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTransactionSubTypeID';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'0', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderDimFinancialTxSubTypeID';
 
 
 GO

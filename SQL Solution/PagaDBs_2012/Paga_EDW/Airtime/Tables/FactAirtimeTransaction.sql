@@ -3,7 +3,7 @@
     [SourceKey]                     INT             NOT NULL,
     [DimDateID]                     INT             NULL,
     [DimTimeID]                     INT             NULL,
-    [DimFinancialTransactionTypeID] INT             NULL,
+    [DimFinancialTxTypeID] INT             NULL,
     [DimFinancialAccountID]         INT             NULL,
     [DimPagaAccountID]              INT             NULL,
     [DimCityID]                     INT             NULL,
@@ -13,7 +13,7 @@
     CONSTRAINT [fk_FactAirtimeTransaction_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Location].[DimCity] ([DimCityID]),
     CONSTRAINT [fk_FactAirtimeTransaction_DimDateID] FOREIGN KEY ([DimDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactAirtimeTransaction_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Finance].[DimFinancialAccount] ([DimFinancialAccountID]),
-    CONSTRAINT [fk_FactAirtimeTransaction_DimFinancialTransactionTypeID] FOREIGN KEY ([DimFinancialTransactionTypeID]) REFERENCES [Classification].[DimFinancialTransactionType] ([DimFinancialTransactionTypeID]),
+    CONSTRAINT [fk_FactAirtimeTransaction_DimFinancialTxTypeID] FOREIGN KEY ([DimFinancialTxTypeID]) REFERENCES [Classification].[DimFinancialTxType] ([DimFinancialTxTypeID]),
     CONSTRAINT [fk_FactAirtimeTransaction_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactAirtimeTransaction_DimTimeID] FOREIGN KEY ([DimTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID])
 );
@@ -36,7 +36,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimTimeID', @l
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimFinancialTransactionTypeID', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeTransaction', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeID';
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimFinancialTxTypeID', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeTransaction', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeID';
 
 
 GO

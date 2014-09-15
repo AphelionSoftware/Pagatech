@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Finance].[FactDailyGLSnapshot] (
     [FactDailyGLSnapshotID]         INT             NOT NULL,
-    [DimFinancialTransactionTypeID] INT             NULL,
+    [DimFinancialTxTypeID] INT             NULL,
     [DimFinancialAccountID]         INT             NULL,
     [DimAsOfDateID]                 INT             NULL,
     [DimCityID]                     INT             NULL,
@@ -15,7 +15,7 @@
     CONSTRAINT [fk_FactDailyGLSnapshot_DimAsOfDateID] FOREIGN KEY ([DimAsOfDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactDailyGLSnapshot_DimCityID] FOREIGN KEY ([DimCityID]) REFERENCES [Location].[DimCity] ([DimCityID]),
     CONSTRAINT [fk_FactDailyGLSnapshot_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Finance].[DimFinancialAccount] ([DimFinancialAccountID]),
-    CONSTRAINT [fk_FactDailyGLSnapshot_DimFinancialTransactionTypeID] FOREIGN KEY ([DimFinancialTransactionTypeID]) REFERENCES [Classification].[DimFinancialTransactionType] ([DimFinancialTransactionTypeID])
+    CONSTRAINT [fk_FactDailyGLSnapshot_DimFinancialTxTypeID] FOREIGN KEY ([DimFinancialTxTypeID]) REFERENCES [Classification].[DimFinancialTxType] ([DimFinancialTxTypeID])
 );
 
 
@@ -40,7 +40,7 @@ EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'', @level0type
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimFinancialTransactionTypeID', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactDailyGLSnapshot', @level2type = N'COLUMN', @level2name = N'DimFinancialTransactionTypeID';
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimFinancialTxTypeID', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactDailyGLSnapshot', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeID';
 
 
 GO

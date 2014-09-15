@@ -13,7 +13,7 @@
     [DimAsOfDateID]                        INT             NULL,
     [DimCitySourceKey]                     VARCHAR (255)   NULL,
     [DimFinancialAccountSourceKey]         VARCHAR (255)   NULL,
-    [DimFinancialTransactionTypeSourceKey] VARCHAR (255)   NULL,
+    [DimFinancialTxTypeSourceKey] VARCHAR (255)   NULL,
     [MovementDirection]                    DECIMAL (18, 2) NULL,
     [OpeningBalance]                       DECIMAL (18, 2) NULL
 );

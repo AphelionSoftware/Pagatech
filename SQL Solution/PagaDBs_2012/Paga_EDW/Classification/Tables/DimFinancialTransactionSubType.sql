@@ -1,5 +1,5 @@
-﻿CREATE TABLE [Classification].[DimFinancialTransactionSubType] (
-    [DimFinancialTransactionSubTypeID] INT           NOT NULL,
+﻿CREATE TABLE [Classification].[DimFinancialTxSubType] (
+    [DimFinancialTxSubTypeID] INT           NOT NULL,
     [SourceKey]                        VARCHAR (255) NOT NULL,
     [Name]                             VARCHAR (255) NOT NULL,
     [SourceKeyHash]                    BIGINT        NOT NULL,
@@ -8,13 +8,13 @@
     [sys_ModifiedOn]                   DATETIME      DEFAULT (getdate()) NOT NULL,
     [sys_CreatedBy]                    VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]                    DATETIME      DEFAULT (getdate()) NOT NULL,
-    CONSTRAINT [pk_DimFinancialTransactionSubTypeID] PRIMARY KEY CLUSTERED ([DimFinancialTransactionSubTypeID] ASC)
+    CONSTRAINT [pk_DimFinancialTxSubTypeID] PRIMARY KEY CLUSTERED ([DimFinancialTxSubTypeID] ASC)
 );
 
 
 GO
-CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialTransactionSubType_SourceKey]
-    ON [Classification].[DimFinancialTransactionSubType]([SourceKey] ASC);
+CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialTxSubType_SourceKey]
+    ON [Classification].[DimFinancialTxSubType]([SourceKey] ASC);
 
 
 GO
@@ -26,35 +26,35 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 		
 
 	(SELECT
-	FinancialTransactionSubTypeID AS SourceKey, 
+	FinancialTxSubTypeID AS SourceKey, 
 	 CONVERT(VARCHAR(255),Description) AS Name
-FROM dbo.FinancialTransactionSubType) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionSubType';
+FROM dbo.FinancialTxSubType) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialTransactionSubTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionSubType';
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialTxSubTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionSubType';
+EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialTransactionSubType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionSubType';
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialTxSubType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionSubType', @level2type = N'COLUMN', @level2name = N'SourceKey';
+EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType', @level2type = N'COLUMN', @level2name = N'SourceKey';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionSubType', @level2type = N'COLUMN', @level2name = N'Name';
+EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType', @level2type = N'COLUMN', @level2name = N'Name';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionSubType', @level2type = N'COLUMN', @level2name = N'SourceKeyHash';
+EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType', @level2type = N'COLUMN', @level2name = N'SourceKeyHash';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTransactionSubType', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType', @level2type = N'COLUMN', @level2name = N'DeltaHash';
 
