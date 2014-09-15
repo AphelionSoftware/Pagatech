@@ -18,7 +18,8 @@ CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialTxSubType_SourceKey]
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--DimFinancialTxSubType
+SELECT 
 			SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
 			base_query.name,
 			change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
@@ -26,9 +27,9 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 		
 
 	(SELECT
-	FinancialTxSubTypeID AS SourceKey, 
+	FinancialTransactionSubTypeID AS SourceKey, 
 	 CONVERT(VARCHAR(255),Description) AS Name
-FROM dbo.FinancialTxSubType) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType';
+FROM dbo.FinancialTransactionSubType) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType';
 
 
 GO

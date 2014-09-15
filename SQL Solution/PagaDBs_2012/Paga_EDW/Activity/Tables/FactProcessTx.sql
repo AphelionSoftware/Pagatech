@@ -61,101 +61,95 @@ CREATE TABLE [Activity].[FactProcessTx] (
     CONSTRAINT [fk_FactProcessTx_DimVerifiedByUserID] FOREIGN KEY ([DimVerifiedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactProcessTx_OriginalProcessID] FOREIGN KEY ([OriginalFactProcessTxID]) REFERENCES [Activity].[FactProcessTx] ([FactProcessTxID])
 );
-
-
-
-
-
-
 GO
-EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.Process', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx';
 
 
-GO
-EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'ProcessId', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--FactProcessTx
+EXEC sys.sp_addextendedproperty @name=N'BaseQuery', @value=N'--FactProcessTx
 SELECT	
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I''),
-	base_query.AgentCommissionAmount, 
-	base_query.ATMReferenceNumber, 
-	base_query.CardProcessorName, 
-	base_query.CustomerBillerAccount, 
-	base_query.CustomerPhoneNumber, 
-	base_query.DepositNumber, 
-	base_query.IntegrationReferenceNumber, 
-	base_query.LinkedPhoneNumber, 
-	base_query.MerchantConfirmationCode, 
-	base_query.MerchantCustomerAccountNumber, 
-	base_query.PaymentSource, 
-	base_query.ProcessAmount, 
+	SourceKey=COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	change_operation=COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I''),
+	AgentCommissionAmount, 
+	ATMReferenceNumber, 
+	CardProcessorName, 
+	CustomerBillerAccount, 
+	CustomerPhoneNumber, 
+	DepositNumber, 
+	IntegrationReferenceNumber, 
+	LinkedPhoneNumber, 
+	MerchantConfirmationCode, 
+	MerchantCustomerAccountNumber, 
+	PaymentSource, 
+	ProcessAmount=Amount, 
 	base_query.ProcessCode, 
-	base_query.ProcessFee, 
+	ProcessFee=Fee, 
 	base_query.ReferenceNumber, 
 	base_query.SenderPhoneNumber, 
 	base_query.VerificationStatus, 
 	base_query.WithdrawalCode, 
-	base_query.DimCompletedDateID, 
-	base_query.DimCompletedTimeID, 
-	base_query.DimCreatedDateID, 
-	base_query.DimCreatedTimeID, 
-	base_query.DimStartedDateID, 
-	base_query.DimStartedTimeID, 
-	base_query.DependentFactProcessTxSourceKey, 
-	base_query.DimAgentCommissionTypeSourceKey, 
-	base_query.DimApprovedByUserSourceKey, 
-	base_query.DimCancellationApprovedByUserSourceKey, 
-	base_query.DimChannelSourceKey,
-	base_query.DimInitiatingUserSourceKey, 
-	base_query.DimOnBehalffUserSourceKey, 
-	base_query.DimProcessStatusSourceKey, 
-	base_query.DimProcessTypeSourceKey, 
-	base_query.DimReceivingUserSourceKey, 
-	base_query.DimVerifiedByUserSourceKey, 
-	base_query.OriginalFactProcessTxSourceKey
+	DimCompletedDateID=CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)), 
+	DimCompletedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),'':'','''')),
+	DimCreatedDateID=CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)),  
+	DimCreatedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),'':'','''')),
+	DimStartedDateID=CONVERT(INT,CONVERT(VARCHAR(8),StartedTimestamp,112)),  
+	DimStartedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), StartedTimestamp, 114),'':'','''')),
+	DependentFactProcessTxSourceKey, 
+	DimAgentCommissionTypeSourceKey=AgentCommissionTypeId, 
+	DimApprovedByUserSourceKey, 
+	DimCancellationApprovedByUserSourceKey, 
+	DimChannelSourceKey=ProcessChannelId, 
+	DimInitiatingUserSourceKey=UserId,
+	DimOnBehalffUserSourceKey=ForUserId, 
+	DimProcessStatusSourceKey=ProcessStatusId, 
+	DimProcessTypeSourceKey=ProcessTypeId, 
+	DimReceivingUserSourceKey =ToUserId,
+	DimVerifiedByUserSourceKey,
+	OriginalFactProcessTxSourceKey
 FROM
 (
 	SELECT
-		SourceKey = p.ProcessId, 
-		DimCompletedDateID = p.CompletedTimestamp, 
-		DimCompletedTimeID = p.CompletedTimestamp, 
-		DimCreatedDateID = p.CreatedDate, 
-		DimCreatedTimeID = p.CreatedDate,
-		DimStartedDateID = p.StartedTimestamp, 
-		DimStartedTimeID = p.StartedTimestamp, 
-		DimInitiatingUserSourceKey = p.UserId,
-		DimOnBehalffUserSourceKey = p.ForUserId, 
-		DimReceivingUserSourceKey =p.ToUserId,
-		DimChannelSourceKey = p.ProcessChannelId, 
-		DimProcessStatusSourceKey = p.ProcessStatusId, 
-		DimProcessTypeSourceKey = p.ProcessTypeId, 
-		DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId,
-		p.ProcessCode, 
-		ProcessAmount = p.Amount, 
-		ProcessFee = p.Fee, 
-		AgentCommissionAmount = p.AgentCommissionAmount, 
-		pd_pivot.*
+		SourceKey=p.ProcessId,p.*,pd_pivot.*
 	FROM dbo.Process AS p
 	CROSS APPLY
 	(
 		SELECT
-			WithdrawalCode = MAX(CASE WHEN pd.Name = ''WithdrawalCode'' THEN pd.value END),
-			ATMReferenceNumber = MAX(CASE WHEN pd.Name = ''ATMReferenceNumber'' THEN pd.value END),
-			CardProcessorName= MAX(CASE WHEN pd.Name = ''CardProcessorName'' THEN pd.value END), 
-			CustomerBillerAccount= MAX(CASE WHEN pd.Name = ''CustomerBillerAccount'' THEN pd.value END), 
-			CustomerPhoneNumber= MAX(CASE WHEN pd.Name = ''CustomerPhoneNumber'' THEN pd.value END), 
-			DepositNumber= MAX(CASE WHEN pd.Name = ''DepositNumber'' THEN pd.value END), 
-			LinkedPhoneNumber= MAX(CASE WHEN pd.Name = ''LinkedPhoneNumber'' THEN pd.value END), 
-			MerchantConfirmationCode= MAX(CASE WHEN pd.Name = ''MerchantConfirmationCode'' THEN pd.value END), 
-			MerchantCustomerAccountNumber= MAX(CASE WHEN pd.Name = ''MerchantCustomerAccountNumber'' THEN pd.value END), 
-			PaymentSource= MAX(CASE WHEN pd.Name = ''PaymentSource'' THEN pd.value END), 
-			ReferenceNumber= MAX(CASE WHEN pd.Name = ''ReferenceNumber'' THEN pd.value END), 
-			RequestedProcessChannel= MAX(CASE WHEN pd.Name = ''RequestedProcessChannel'' THEN pd.value END), 
-			SenderPhoneNumber= MAX(CASE WHEN pd.Name = ''SenderPhoneNumber'' THEN pd.value END),
-			DependentFactProcessTxSourceKey = MAX(CASE WHEN pd.Name = ''dependentProcessId'' THEN pd.value END),
-			OriginalFactProcessTxSourceKey = MAX(CASE WHEN pd.Name = ''originalProcessId'' THEN pd.value END),
-			VerificationStatus = MAX(CASE WHEN', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx';
+			WithdrawalCode=MAX(CASE WHEN pd.Name=''WithdrawalCode'' THEN pd.value END),
+			ATMReferenceNumber=MAX(CASE WHEN pd.Name=''ATMReferenceNumber'' THEN pd.value END),
+			CardProcessorName=MAX(CASE WHEN pd.Name=''CardProcessorName'' THEN pd.value END), 
+			CustomerBillerAccount=MAX(CASE WHEN pd.Name=''CustomerBillerAccount'' THEN pd.value END), 
+			CustomerPhoneNumber=MAX(CASE WHEN pd.Name=''CustomerPhoneNumber'' THEN pd.value END), 
+			DepositNumber=MAX(CASE WHEN pd.Name=''DepositNumber'' THEN pd.value END), 
+			LinkedPhoneNumber=MAX(CASE WHEN pd.Name=''LinkedPhoneNumber'' THEN pd.value END), 
+			MerchantConfirmationCode=MAX(CASE WHEN pd.Name=''MerchantConfirmationCode'' THEN pd.value END), 
+			MerchantCustomerAccountNumber=MAX(CASE WHEN pd.Name=''MerchantCustomerAccountNumber'' THEN pd.value END), 
+			PaymentSource=MAX(CASE WHEN pd.Name=''PaymentSource'' THEN pd.value END), 
+			ReferenceNumber=MAX(CASE WHEN pd.Name=''ReferenceNumber'' THEN pd.value END), 
+			RequestedProcessChannel=MAX(CASE WHEN pd.Name=''RequestedProcessChannel'' THEN pd.value END), 
+			SenderPhoneNumber=MAX(CASE WHEN pd.Name=''SenderPhoneNumber'' THEN pd.value END),
+			DependentFactProcessTxSourceKey=MAX(CASE WHEN pd.Name=''dependentProcessId'' THEN pd.value END),
+			OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd.Name=''originalProcessId'' THEN pd.value END),
+			VerificationStatus=MAX(CASE WHEN pd.Name=''verificationStatus'' THEN pd.value END),
+			DimVerifiedByUserSourceKey=MAX(CASE WHEN pd.Name=''verifiedByUserId'' THEN pd.value END),
+			IntegrationReferenceNumber= MAX(CASE WHEN pd.Name=''integrationTransactionId'' THEN pd.value END),
+			DimApprovedByUserSourceKey= MAX(CASE WHEN pd.Name=''approvedByUserId'' THEN pd.value END),
+			DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd.Name=''cancelledByUserId'' THEN pd.value END)
+		FROM dbo.ProcessData AS pd
+		WHERE 
+			pd.ProcessId=p.ProcessId
+	) AS pd_pivot
+) AS base_query
+
+	' , @level0type=N'SCHEMA',@level0name=N'Activity', @level1type=N'TABLE',@level1name=N'FactProcessTx'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'KeyColumn', @value=N'ProcessId' , @level0type=N'SCHEMA',@level0name=N'Activity', @level1type=N'TABLE',@level1name=N'FactProcessTx'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'SourceTable', @value=N'dbo.Process' , @level0type=N'SCHEMA',@level0name=N'Activity', @level1type=N'TABLE',@level1name=N'FactProcessTx'
+GO
+
+
+
+
+
 
