@@ -35,8 +35,6 @@ SELECT
 	,[FactProcessTx].[DimCreatedTimeID] 
 	,[FactProcessTx].[DimInitiatingUserID] 
 	,[FactProcessTx].[DimOnBehalffUserID] 
-	,[FactProcessTx].[DimOrganizationUnitLevel4ID] 
-	,[FactProcessTx].[DimPagaAccountID] 
 	,[FactProcessTx].[DimProcessStatusID] 
 	,[FactProcessTx].[DimProcessTypeID] 
 	,[FactProcessTx].[DimReceivingUserID] 
@@ -59,15 +57,15 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'OriginalFactProc
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimVerifiedByUserID';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Activity', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimVerifiedByUserID';
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimVerifiedByUserID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimVerifiedByUserID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimVerifiedByUserID';
 
 
 GO
@@ -128,30 +126,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Activity', @leve
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimProcessStatusID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimProcessStatusID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimPagaAccountID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Activity', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimPagaAccountID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimPagaAccountID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimPagaAccountID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel4ID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Activity', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel4ID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimOrganizationUnitLevel4ID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessTx', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel4ID';
 
 
 GO

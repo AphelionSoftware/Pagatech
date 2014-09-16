@@ -26,6 +26,7 @@ SELECT
 	,[DimPagaAccount_5305964252872341138].[IsServiceAggregator] AS [DimPagaAccountIsServiceAggregator]
 	,[DimPagaAccount_5305964252872341138].[Name] AS [DimPagaAccountName]
 	,[DimPagaAccount_5305964252872341138].[PagaAccountNumber] AS [DimPagaAccountPagaAccountNumber]
+	,[DimPagaAccount_5305964252872341138].[RegistrationDateID] AS [DimPagaAccountRegistrationDateID]
 	,[DimPagaAccount_5305964252872341138].[SourceKey] AS [DimPagaAccountSourceKey]
 	,[DimPagaAccountStatus_1073944112317181929].[Name] AS [DimPagaAccountStatusName]
 	,[DimPagaAccountStatus_1073944112317181929].[SourceKey] AS [DimPagaAccountStatusSourceKey]
@@ -92,6 +93,26 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @lev
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'0', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'DimPagaAccountSourceKey';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimPagaAccount', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'DimPagaAccountRegistrationDateID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'DimPagaAccountRegistrationDateID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'RegistrationDateID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'DimPagaAccountRegistrationDateID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'0', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'DimPagaAccountRegistrationDateID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'RegistrationDateID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'DimPagaAccountRegistrationDateID';
 
 
 GO

@@ -13,6 +13,10 @@ SELECT
 
 FROM [Airtime].[FactAirtimeStockMovement] [FactAirtimeStockMovement]
 GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactAirtimeStockMovement', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'DimPagaAccountID';
+
+
+GO
 EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'DimPagaAccountID';
 
 
@@ -22,10 +26,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimPagaAccountID
 
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccountID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'DimPagaAccountID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactAirtimeStockMovement', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'DimPagaAccountID';
 
 
 GO
