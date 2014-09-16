@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="09/16/2014 15:40:55" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{4C4B1FA8-4B12-40C5-8D9C-3470D771B051}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2000_EDWLoad_Activity_DimChannel" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{C5BFDE97-52B2-4AF4-A611-61B2EACC234D}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{F8D11B36-1DA6-4B6F-857C-D620191DAAD7}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Errors_DimChannel" DTS:refId="Package\SQL_Truncate_Errors_DimChannel" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Activity_DimChannel]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{A1ADE82B-06B2-4065-ADC5-33A4CAC89169}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Activity_DimChannel" DTS:refId="Package\DFT_Load_Activity_DimChannel" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+          <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLE_SRC_Staging_Activity_DimChannel" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].ExternalColumns[TextDesciption]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].ExternalColumns[SourceKey]" length="255" lineageId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].ExternalColumns[TextDesciption]" length="1000" lineageId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].Columns[TextDesciption]" name="TextDesciption" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].Columns[TextDesciption]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].ExternalColumns[change_operation]" length="1" lineageId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Output].Columns[change_operation]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error].Columns[Name]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error].Columns[SourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1000" lineageId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error].Columns[TextDesciption]" name="TextDesciption" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error].Columns[TextDesciption]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error].Columns[change_operation]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Activity_DimChannel\OLE_SRC_Staging_Activity_DimChannel.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+					SELECT *
+					FROM [Staging].[Activity_DimChannel]
+				  </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">2</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F3F6C430-DEDD-4835-9C69-2842200A681A}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EE2193AC-1811-46AE-ACFF-ED1EDA95F56E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{13B8EED7-AE68-4554-984F-DB22DCB8B8FF}" DTS:EvaluateAsExpression="True" DTS:Expression="@[System::PackageName]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+      <DTS:VariableValue DTS:DataType="8">2000_EDWLoad_Activity_DimChannel</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>
