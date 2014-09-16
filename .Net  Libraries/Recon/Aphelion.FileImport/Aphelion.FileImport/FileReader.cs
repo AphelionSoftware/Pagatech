@@ -28,15 +28,23 @@ namespace Aphelion.FileImport
     public enum FileType { CSV, Excel2003, Excel2007 }
 
     public class FileReader
-    {
-        public BackgroundWorker backWorker;
+    { 
+        public BackgroundWorker backWorker { get; set; }
         public string sFileName { get; set; }
         public string sDelimiter = ",";
         public DataTable dtResults { get; set; }
-
+        public bool HasHeader = true;
         public int iStartRow = 0;
         public int iNumRows = 0;
-        public FileType ftImport;
+        /// <summary>
+        /// Not used for CSV
+        /// </summary>
+        public int iStartColumn = 0;
+        /// <summary>
+        /// Not used for CSV
+        /// </summary>
+        public int iNumColumns = 0;
+        public FileType ftImport { get; set; }
         public FileReader(FileType pFT)
         {
             ftImport = pFT;
@@ -68,6 +76,10 @@ namespace Aphelion.FileImport
             {
                 ImportCSV();
             }
+            else
+            {
+                throw new Exception("FileType not implemented yet");
+            }
 
         }
 
@@ -82,7 +94,7 @@ namespace Aphelion.FileImport
             {
                 csvReader.SetDelimiters(new string[] { sDelimiter });
                 string[] fields;
-                int iRow = 0;
+                int iRow = 1;//1 Based to make number match excel
                 while (iRow++ < iStartRow && !csvReader.EndOfData)
                 {
                     string s = csvReader.ReadLine();
@@ -94,7 +106,6 @@ namespace Aphelion.FileImport
                         }
                     }
                 }
-                iRow = 0;
                 if (csvReader.EndOfData)
                 {
                     throw new Exception("Start row past end of file!");
@@ -105,7 +116,13 @@ namespace Aphelion.FileImport
                     DataColumn dc = new DataColumn(iLoop.ToString());
                     this.dtResults.Columns.Add(dc);
                 }
-                while (!csvReader.EndOfData && (iNumRows == 0 || iNumRows < iRow++))
+                if (!HasHeader)
+                {
+                    dtResults.Rows.Add(fields);
+                }
+
+                iRow = 0;
+                while (!csvReader.EndOfData && (iNumRows == 0 || iRow++ < iNumRows))
                 {
                     fields = csvReader.ReadFields();
                     dtResults.Rows.Add(fields);

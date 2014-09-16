@@ -7,18 +7,21 @@ using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.ComponentModel;
+using System.Collections;
+using System.Collections.Generic;
+
 
 namespace Aphelion.FileImport
 {
     public class DataTableImport
     {
-        public BackgroundWorker backWorker;
-        public DataTable dtSource;
-        public string sSchema;
-        public string sTable;
-
+        public BackgroundWorker backWorker { get; set; }
+        public DataTable dtSource{ get;  set;}
+        public string sSchema { get; set; }
+        public string sTable { get; set; }
+        public Dictionary<int, string> dctColMap { get; set; }
       
-        private SqlConnection conn;
+        //private SqlConnection conn;
         public string sConnection;
         
         public DataTableImport(string pConnection, string pSchema, string pTable)
@@ -46,8 +49,9 @@ namespace Aphelion.FileImport
             bulkCopy.BatchSize = 20000;
             string sDest = string.Format("[{0}].[{1}]", this.sSchema, this.sTable).Replace("[[","[").Replace("]]","]");
             bulkCopy.DestinationTableName = sDest;
-            for (int iLoop = 0;iLoop < dtSource.Columns.Count; iLoop++){
-                SqlBulkCopyColumnMapping cMap = new SqlBulkCopyColumnMapping(iLoop, System.Convert.ToInt32(dtSource.Columns[iLoop].ColumnName));
+            //for (int iLoop = 0;iLoop < dtSource.Columns.Count; iLoop++){
+            foreach(var col in dctColMap){
+                SqlBulkCopyColumnMapping cMap = new SqlBulkCopyColumnMapping(col.Key, col.Value);
                 bulkCopy.ColumnMappings.Add(cMap);
             }
 

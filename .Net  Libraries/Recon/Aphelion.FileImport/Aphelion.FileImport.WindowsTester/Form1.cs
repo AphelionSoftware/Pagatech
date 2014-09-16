@@ -16,6 +16,7 @@ namespace Aphelion.FileImport.WindowsTester
         private FileType ft = new FileType();
         private FileReader fr;
         private DataTable dtResults;
+        public ImportSection isFile;
         private bool Parse = false;
         public Form1()
         {
@@ -24,18 +25,23 @@ namespace Aphelion.FileImport.WindowsTester
 
         private void btnImportToDT_Click(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.Save();
             Parse = false;
             ImportFile();
         }
 
         private void ImportFile()
         {
+            SetupFileType();
+            backgroundWorkerImportDT.RunWorkerAsync();
+        }
+
+        private void SetupFileType()
+        {
             if (lstViewFileType.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Select a filetype.");
-                return;
-            }
+            } else 
             if (lstViewFileType.SelectedItems[0].Name == "CSV")
             {
                 ft = FileType.CSV;
@@ -48,7 +54,6 @@ namespace Aphelion.FileImport.WindowsTester
             {
                 ft = FileType.Excel2007;
             }
-            backgroundWorkerImportDT.RunWorkerAsync();
         }
 
         private void backgroundWorkerImportDT_DoWork(object sender, DoWorkEventArgs e)
@@ -65,6 +70,7 @@ namespace Aphelion.FileImport.WindowsTester
 
         private void btnImport_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Save();
             Parse = true;
             ImportFile();
             
@@ -93,6 +99,19 @@ namespace Aphelion.FileImport.WindowsTester
             {
                 backgroundWorkerParse.RunWorkerAsync();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+            SetupFileType();
+            backgroundWorkerSection.RunWorkerAsync();
+        }
+
+        private void backgroundWorkerSection_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.isFile = new ImportSection(this.txtConn.Text, this.txtSectionCode.Text, this.ft, this.txtFileName.Text);
+            this.isFile.ImportFileToStaging();
         }
     }
 }
