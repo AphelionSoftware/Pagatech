@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Aphelion.FileImport;
 
-namespace Aphelion.FileImport.WindowsTester
+namespace Aphelion.Recon.WindowsTester
 {
     public partial class Form1 : Form
     {
@@ -112,6 +112,11 @@ namespace Aphelion.FileImport.WindowsTester
         {
             this.isFile = new ImportSection(this.txtConn.Text, this.txtSectionCode.Text, this.ft, this.txtFileName.Text);
             this.isFile.ImportFileToStaging();
+        }
+
+        private void btnCompare_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

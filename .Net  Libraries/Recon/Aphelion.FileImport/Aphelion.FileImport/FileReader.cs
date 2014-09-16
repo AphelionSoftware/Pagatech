@@ -23,7 +23,7 @@ class Program {
         }
     }
 }*/
-namespace Aphelion.FileImport
+namespace Aphelion.Recon
 {
     public enum FileType { CSV, Excel2003, Excel2007 }
 

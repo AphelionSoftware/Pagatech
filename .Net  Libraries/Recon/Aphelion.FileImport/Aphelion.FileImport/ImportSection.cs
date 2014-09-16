@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Data;
-namespace Aphelion.FileImport
+namespace Aphelion.Recon
 {
     public class ImportSection
     {
