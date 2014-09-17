@@ -70,10 +70,7 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'RegistrationDa
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'ExcludeFromOLAP', @value = N'true', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'RegistrationDateID';
 
-
-GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'PagaAccountNumber', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'PagaAccountNumber';
 
 

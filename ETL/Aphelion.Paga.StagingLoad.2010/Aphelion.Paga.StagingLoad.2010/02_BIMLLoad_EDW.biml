@@ -1,12 +1,18 @@
 <# var SourceConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
 <# var DestConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_EDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
 <# var ErrorConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_Errors;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
+	
 <# var DestSchema = DestConnection.ImportDB("", "", ImportOptions.ExcludeViews); #>
 <# var DestTables = DestConnection.GenerateTableNodes(); #>
+	
 <# var ErrorSchema = ErrorConnection.ImportDB("", "", ImportOptions.ExcludeViews); #>
 <# var ErrorTables = ErrorConnection.GenerateTableNodes(); #>
-<# var tableNamesToImport = ExternalDataAccess.GetDataTable(SourceConnection.ConnectionString, "SELECT RIGHT( TABLE_NAME, len(table_name) - CHARINDEX('_', TABLE_NAME) ) AS TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' ").Rows.OfType<System.Data.DataRow>().Select(r => r[0].ToString()); #>  
+
+<# var tableNamesToImport = ExternalDataAccess.GetDataTable(SourceConnection.ConnectionString, "SELECT RIGHT( TABLE_NAME, len(table_name) - CHARINDEX('_', TABLE_NAME) ) AS TABLE_NAME " +
+																								"FROM INFORMATION_SCHEMA.TABLES " +
+																								"WHERE TABLE_TYPE = 'BASE TABLE' ").Rows.OfType<System.Data.DataRow>().Select(r => r[0].ToString()); #>  
 <# var strLookup = ""; #>
+
 <Biml xmlns="http://schemas.varigence.com/biml.xsd">
   <Connections>
     <Connection Name="Paga_Staging" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;" CreateInProject="true"/>
@@ -15,78 +21,74 @@
   </Connections>
 	<PackageProjects>
     <PackageProject Name="Aphelion.Paga.StagingLoad.2010">
-      <Parameters>
-      </Parameters>
-		<Packages>
-		<# foreach (var table in DestSchema.TableNodes.Where(item => tableNamesToImport.Contains(item.Name)).OrderBy(item => item.Name)) {   #>
-        <Package PackageName="2000_EDWLoad_<#=table.SchemaName#>.<#=table.Name#>" />
-		<# } #>
-      </Packages>
+	 
     </PackageProject>
   </PackageProjects>
 
   <Packages>
   <!--only generate for destination tables that have a corresponding staging table-->
-	  <!-- These are both pretty big bugs - FrameworkDetails_INdicatorLocation contains FrameworkDetails. An equality still needs to eb debugged-->
-  <# foreach (var table in DestSchema.TableNodes.Where(item => tableNamesToImport.Contains(item.Name)).OrderBy(item => item.Name)) { 
+
+	<# foreach (var table in DestSchema.TableNodes.Where(item => tableNamesToImport.Contains(item.Name)).OrderBy(item => item.Name)) { 
 	var errTable = ErrorSchema.TableNodes.Where(item => tableNamesToImport.Contains(item.Name.Split('_')[1])).First();
-	
-  #>
-    <Package Name="2000_EDWLoad_<#=table.SchemaName#>.<#=table.Name#>" ConstraintMode="Parallel" ProtectionLevel="EncryptSensitiveWithUserKey"  MaxErrorCount="2000"  DelayValidation="true">
+
+	#>
+	<Package Name="2000_EDWLoad_<#=table.SchemaName#>_<#=table.Name#>" ConstraintMode="Parallel" ProtectionLevel="EncryptSensitiveWithUserKey"  MaxErrorCount="2000"  DelayValidation="true">
+	<#String PackageName = "2000_EDWLoad_" +table.SchemaName +"_" + table.Name; #>
 	<Variables>
 		<Variable Name="intQueueID" DataType="Int32" >0</Variable>
 		<Variable Name="intErrorCount" DataType="Int32" >0</Variable>
-		<Variable Name="strPackageName" DataType="String" EvaluateAsExpression="true">@[System::PackageName]</Variable>
+		<Variable Name="strPackageName" DataType="String"><#=PackageName#></Variable>
  		
 	</Variables>
-      <Tasks>
-		  <!-- This needs to go-->
+    <Tasks>
+		 <!-- This needs to go -->
 		  <ExecuteSQL Name="SQL_Truncate_<#=errTable.SchemaName#>_<#=table.Name#>" ConnectionName="Paga_Errors">
           <DirectInput>TRUNCATE TABLE [<#=errTable.SchemaName#>].[<#=table.SchemaName#>_<#=table.Name#>]
 		  </DirectInput>
         </ExecuteSQL>
 		  <!--- Initial data flow to load data into DW tables-->
-        <Dataflow Name="DFT_Load <#=table.SchemaName#>.<#=table.Name#>"  MaxErrorCount="2000">
-		<PrecedenceConstraints>
+        <Dataflow Name="DFT_Load_<#=table.SchemaName#>_<#=table.Name#>"  MaxErrorCount="2000">
+			<PrecedenceConstraints>
 			<Inputs>
 				<Input OutputPathName="SQL_Truncate_<#=errTable.SchemaName#>_<#=table.Name#>.Output"> </Input>
 			</Inputs>
 			</PrecedenceConstraints>
-          <Transformations>
-            <OleDbSource Name="OLE_SRC_Staging_<#=table.Name#>" ConnectionName="Paga_Staging">
-              <DirectInput>
-                SELECT *
-                FROM [Staging].[<#=table.SchemaName#>_<#=table.Name#>]
-              </DirectInput>
-            </OleDbSource>
-			  <# strLookup ="OLE_SRC_Staging_" + table.Name + ".Output";#> 
-            <# DataTable FKColumns = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT DISTINCT C.name AS ForeignKeyColumn, '[' + FS.name + '].[' + FT.name + ']' AS ForeignTable, FC.name AS ForeignTableColumn, /*FT.name + 'SourceKey' AS SourceLookupColumn*/LEFT(C.Name, len(C.name)-2) + 'SourceKey' AS SourceLookupColumn, CAST(C.is_nullable AS VARCHAR) AS IsNullable FROM sys.foreign_key_columns AS FK JOIN sys.tables AS T ON FK.parent_object_id = T.object_id JOIN sys.columns AS C ON FK.parent_object_id = C.object_id AND FK.parent_column_id = C.column_id JOIN sys.tables AS FT ON FK.referenced_object_id = FT.object_id JOIN sys.columns AS FC ON FK.referenced_object_id = FC.object_id AND FK.referenced_column_id = FC.column_id JOIN sys.schemas AS FS ON FT.schema_id = FS.schema_id WHERE C.name NOT IN ('Active','AgeBandMin_ID','AgeBandMax_ID','ParentLocation_ID','ParentOrganization_ID','ProjectParentID', 'isSiteCreated') AND FT.Name NOT IN ('DimDate', 'DimTime') AND T.name = '"+ table.Name + "'"); #>
-            <# string IsNullable ="" ;
-               foreach (DataRow FKColumn in FKColumns.Rows) { 
-					IsNullable = "" + FKColumn["IsNullable"];
-               if(IsNullable=="1") { #>
-            <Lookup Name="LKP_<#=FKColumn["ForeignKeyColumn"]#>" OleDbConnectionName="Paga_EDW" NoMatchBehavior="IgnoreFailure">
-			<InputPath OutputPathName="<#=strLookup#>" />
-              <DirectInput>SELECT SourceKey, <#=FKColumn["ForeignTableColumn"]#> FROM <#=FKColumn["ForeignTable"]#></DirectInput>
-              <Inputs>
-                <Column SourceColumn="<#=FKColumn["SourceLookupColumn"]#>" TargetColumn="SourceKey" />
-              </Inputs>
-              <Outputs>
-                <Column SourceColumn="<#=FKColumn["ForeignTableColumn"]#>" TargetColumn="<#=FKColumn["ForeignKeyColumn"]#>" />
-              </Outputs>
-            </Lookup>
-              <# } else
-                 { #>
-            <Lookup Name="LKP_<#=FKColumn["ForeignKeyColumn"]#>" OleDbConnectionName="Paga_EDW" NoMatchBehavior="RedirectRowsToErrorOutput">
-			<InputPath OutputPathName="<#=strLookup#>" />
-              <DirectInput>SELECT SourceKey, <#=FKColumn["ForeignTableColumn"]#> FROM <#=FKColumn["ForeignTable"]#></DirectInput>
-              <Inputs>
-                <Column SourceColumn="<#=FKColumn["SourceLookupColumn"]#>" TargetColumn="SourceKey" />
-              </Inputs>
-              <Outputs>
-                <Column SourceColumn="<#=FKColumn["ForeignTableColumn"]#>" TargetColumn="<#=FKColumn["ForeignKeyColumn"]#>" />
-              </Outputs>
-            </Lookup>
+		 <Transformations>
+				<OleDbSource Name="OLE_SRC_Staging_<#=table.SchemaName#>_<#=table.Name#>" ConnectionName="Paga_Staging">
+				  <DirectInput>
+					SELECT *
+					FROM [Staging].[<#=table.SchemaName#>_<#=table.Name#>]
+				  </DirectInput>
+				</OleDbSource>
+				<# strLookup ="OLE_SRC_Staging_" + table.SchemaName +"_" + table.Name + ".Output";#> 
+					
+				<# DataTable FKColumns = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, "SELECT DISTINCT C.name AS ForeignKeyColumn, '[' + FS.name + '].[' + FT.name + ']' AS ForeignTable, FC.name AS ForeignTableColumn, /*FT.name + 'SourceKey' AS SourceLookupColumn*/LEFT(C.Name, len(C.name)-2) + 'SourceKey' AS SourceLookupColumn, CAST(C.is_nullable AS VARCHAR) AS IsNullable FROM sys.foreign_key_columns AS FK JOIN sys.tables AS T ON FK.parent_object_id = T.object_id JOIN sys.columns AS C ON FK.parent_object_id = C.object_id AND FK.parent_column_id = C.column_id JOIN sys.tables AS FT ON FK.referenced_object_id = FT.object_id JOIN sys.columns AS FC ON FK.referenced_object_id = FC.object_id AND FK.referenced_column_id = FC.column_id JOIN sys.schemas AS FS ON FT.schema_id = FS.schema_id WHERE C.name NOT IN ('Active','AgeBandMin_ID','AgeBandMax_ID','ParentLocation_ID','ParentOrganization_ID','ProjectParentID', 'isSiteCreated') AND FT.Name NOT IN ('DimDate', 'DimTime') AND T.name = '"+ table.Name + "'"); #>
+				<# string IsNullable ="" ;
+					foreach (DataRow FKColumn in FKColumns.Rows) { 
+						IsNullable = "" + FKColumn["IsNullable"];
+						if(IsNullable=="1") { #>
+				<Lookup Name="LKP_<#=FKColumn["ForeignKeyColumn"]#>" OleDbConnectionName="Paga_EDW" NoMatchBehavior="IgnoreFailure">
+				<InputPath OutputPathName="<#=strLookup#>" />
+				  <DirectInput>SELECT SourceKey, <#=FKColumn["ForeignTableColumn"]#> FROM <#=FKColumn["ForeignTable"]#></DirectInput>
+				  <Inputs>
+					<Column SourceColumn="<#=FKColumn["SourceLookupColumn"]#>" TargetColumn="SourceKey" />
+				  </Inputs>
+				  <Outputs>
+					<Column SourceColumn="<#=FKColumn["ForeignTableColumn"]#>" TargetColumn="<#=FKColumn["ForeignKeyColumn"]#>" />
+				  </Outputs>
+				</Lookup>
+				  <# } else
+					 { #>
+				<Lookup Name="LKP_<#=FKColumn["ForeignKeyColumn"]#>" OleDbConnectionName="Paga_EDW" NoMatchBehavior="RedirectRowsToErrorOutput">
+				<InputPath OutputPathName="<#=strLookup#>" />
+				  <DirectInput>SELECT SourceKey, <#=FKColumn["ForeignTableColumn"]#> FROM <#=FKColumn["ForeignTable"]#></DirectInput>
+				  <Inputs>
+					<Column SourceColumn="<#=FKColumn["SourceLookupColumn"]#>" TargetColumn="SourceKey" />
+				  </Inputs>
+				  <Outputs>
+					<Column SourceColumn="<#=FKColumn["ForeignTableColumn"]#>" TargetColumn="<#=FKColumn["ForeignKeyColumn"]#>" />
+				  </Outputs>
+				</Lookup>
 				  <DerivedColumns Name="DC_AddErrorDetails_<#=FKColumn["ForeignKeyColumn"]#>">
 				<InputPath OutputPathName="LKP_<#=FKColumn["ForeignKeyColumn"]#>.Error" />
               	<Columns>
@@ -98,63 +100,62 @@
 			<RowCount Name="RC_CountErrors_<#=FKColumn["ForeignKeyColumn"]#>" VariableName="User.intErrorCount">
 				 <InputPath OutputPathName="DC_AddErrorDetails_<#=FKColumn["ForeignKeyColumn"]#>.Output" />
             </RowCount>
-				  
 			<OleDbDestination Name="OLE_DST_Error_<#=table.SchemaName#>_<#=table.Name#>_<#=FKColumn["ForeignKeyColumn"]#>" ConnectionName="Paga_Errors" MaximumInsertCommitSize="200"  TableLock="false">
 				  <InputPath OutputPathName="RC_CountErrors_<#=FKColumn["ForeignKeyColumn"]#>.Output" />
 				<ExternalTableOutput Table="[<#=errTable.SchemaName#>].[<#=table.SchemaName#>_<#=table.Name#>]" />
             </OleDbDestination>
-              <# } #>
+				<# } #>
 				  <# 
 					strLookup = "LKP_" + FKColumn["ForeignKeyColumn"] + ".Match";
 					  #>
 				  <!-- end lookup for each-->
             <# } #>
-				<!-- Why are we using a foreach ? -->
-            <# var PrimaryKey = table.Keys[0].Columns[0] ;#>
 				
-            <OleDbDestination Name="OLE_DST_<#=table.SchemaName#>_<#=table.Name#>" ConnectionName="Paga_EDW">
-              <InputPath OutputPathName="<#=strLookup#>" />
+				
+			<# 
+        var PrimaryKey = table.Keys[0].Columns[0] ;
+        string Schema_Table = table.SchemaName +"_" +table.Name;
+      #>
+
+
+      <OleDbDestination Name="OLE_DST_<#=Schema_Table#>" ConnectionName="Paga_EDW">
+        <InputPath OutputPathName="<#=strLookup#>" />
               <ExternalTableOutput Table="<#=table.SchemaQualifiedName#>" />
 			  <ErrorHandling ErrorRowDisposition="RedirectRow" TruncationRowDisposition="RedirectRow" />
             </OleDbDestination>
-            <OleDbDestination Name="OLE_DST_Singleton_<#=table.SchemaName#>_<#=table.Name#>" ConnectionName="Paga_EDW" MaximumInsertCommitSize="1">
-              <InputPath OutputPathName="OLE_DST_<#=table.SchemaName#>_<#=table.Name#>.Error" />
+
+		
+            <OleDbDestination Name="OLE_DST_Singleton_<#=Schema_Table#>" ConnectionName="Paga_EDW" MaximumInsertCommitSize="1">
+              <InputPath OutputPathName="OLE_DST_<#=Schema_Table#>.Error" />
               <ExternalTableOutput Table="<#=table.SchemaQualifiedName#>" />
 			  <ErrorHandling ErrorRowDisposition="RedirectRow" TruncationRowDisposition="RedirectRow" />
             </OleDbDestination>
 
-			<DerivedColumns Name="DC_AddErrorDetails">
-			<InputPath OutputPathName="OLE_DST_Singleton_<#=table.SchemaName#>_<#=table.Name#>.Error" />
-              	<Columns>
-					<Column Name="PackageName" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)@[System::PackageName]</Column>
-					<Column Name="QueueID" DataType="Int32" >@[User::intQueueID]</Column>
-					<Column Name="ErrorType" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)("Insert")</Column>
-				</Columns>
-			</DerivedColumns>
-				
-				
-			<RowCount Name="RC_CountErrors" VariableName="User.intErrorCount">
-                        <InputPath OutputPathName="DC_AddErrorDetails.Output" />
-            </RowCount>
+        <DerivedColumns Name="DC_AddErrorDetails">
+          <InputPath OutputPathName="OLE_DST_Singleton_<#=Schema_Table#>.Error" />
+          <Columns>
+            <Column Name="PackageName" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)@[System::PackageName]</Column>
+            <Column Name="QueueID" DataType="Int32" >@[User::intQueueID]</Column>
+            <Column Name="ErrorType" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)("Insert")</Column>
+          </Columns>
+        </DerivedColumns>
+        <RowCount Name="RC_CountErrors" VariableName="User.intErrorCount">
+          <InputPath OutputPathName="DC_AddErrorDetails.Output" />
+        </RowCount>
 
-
-			<OleDbDestination Name="OLE_DST_Error_<#=table.SchemaName#>_<#=table.Name#>" ConnectionName="Paga_Errors" MaximumInsertCommitSize="200" TableLock="false">
+        <OleDbDestination Name="OLE_DST_Error_<#=Schema_Table#>" ConnectionName="Paga_Errors" MaximumInsertCommitSize="200" TableLock="false">
               <InputPath OutputPathName="RC_CountErrors.Output" />
               <ExternalTableOutput Table="[<#=errTable.SchemaName#>].[<#=table.SchemaName#>_<#=table.Name#>]" />
             </OleDbDestination>
-            
-            
-          </Transformations>
+       
+			
+        </Transformations>
         </Dataflow>
-
-
-		    
-		  
-		  
       </Tasks>
     </Package>
   <# } #>
   </Packages>
+	
 </Biml>
 <#@ import namespace="System.Data" #>
 <#@ import namespace="Varigence.Hadron.CoreLowerer.SchemaManagement" #>

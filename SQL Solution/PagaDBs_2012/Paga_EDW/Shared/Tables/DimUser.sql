@@ -45,10 +45,7 @@ GO
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'ExcludeFromOLAP', @value = N'true', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DateOfBirthID';
 
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.[User]', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
 
 

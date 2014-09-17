@@ -94,10 +94,10 @@ SELECT
 	,[DimCurrency_1684517319826807121].[Name] AS [DimCurrencyName]
 	,[DimCurrency_1684517319826807121].[SourceKey] AS [DimCurrencySourceKey]
 	,[DimCurrency_1684517319826807121].[Symbol] AS [DimCurrencySymbol]
-	,[DimFinancialTxSubType_5410226734378344365].[Name] AS [DimFinancialTxSubTypeName]
-	,[DimFinancialTxSubType_5410226734378344365].[SourceKey] AS [DimFinancialTxSubTypeSourceKey]
-	,[DimFinancialTxType_7372893661651337083].[Name] AS [DimFinancialTxTypeName]
-	,[DimFinancialTxType_7372893661651337083].[SourceKey] AS [DimFinancialTxTypeSourceKey]
+	,[DimFinancialTxSubType_4839284188148451003].[Name] AS [DimFinancialTxSubTypeName]
+	,[DimFinancialTxSubType_4839284188148451003].[SourceKey] AS [DimFinancialTxSubTypeSourceKey]
+	,[DimFinancialTxType_6938066203558696239].[Name] AS [DimFinancialTxTypeName]
+	,[DimFinancialTxType_6938066203558696239].[SourceKey] AS [DimFinancialTxTypeSourceKey]
 	,[DimOrganizationUnitLevel4_8507064514487154255].[DimOrganizationUnitLevel3ID] AS [DimOrganizationUnitLevel4DimOrganizationUnitLevel3ID]
 	,[DimOrganizationUnitLevel4_8507064514487154255].[DimOrganizationUnitTypeID] AS [DimOrganizationUnitLevel4DimOrganizationUnitTypeID]
 	,[DimOrganizationUnitLevel4_8507064514487154255].[IdentificationNumber] AS [DimOrganizationUnitLevel4IdentificationNumber]
@@ -154,7 +154,6 @@ SELECT
 	,[FactProcessTx_2155424918854536773].[DepositNumber] AS [FactProcessTxDepositNumber]
 	,[FactProcessTx_2155424918854536773].[DimAgentCommissionTypeID] AS [FactProcessTxDimAgentCommissionTypeID]
 	,[FactProcessTx_2155424918854536773].[DimApprovedByUserID] AS [FactProcessTxDimApprovedByUserID]
-	,[FactProcessTx_2155424918854536773].[DimBillerAccountUserID] AS [FactProcessTxDimBillerAccountUserID]
 	,[FactProcessTx_2155424918854536773].[DimCancellationApprovedByUserID] AS [FactProcessTxDimCancellationApprovedByUserID]
 	,[FactProcessTx_2155424918854536773].[DimChannelID] AS [FactProcessTxDimChannelID]
 	,[FactProcessTx_2155424918854536773].[DimCompletedDateID] AS [FactProcessTxDimCompletedDateID]
@@ -163,28 +162,25 @@ SELECT
 	,[FactProcessTx_2155424918854536773].[DimCreatedTimeID] AS [FactProcessTxDimCreatedTimeID]
 	,[FactProcessTx_2155424918854536773].[DimInitiatingUserID] AS [FactProcessTxDimInitiatingUserID]
 	,[FactProcessTx_2155424918854536773].[DimOnBehalffUserID] AS [FactProcessTxDimOnBehalffUserID]
-	,[FactProcessTx_2155424918854536773].[DimOrganizationUnitLevel4ID] AS [FactProcessTxDimOrganizationUnitLevel4ID]
-	,[FactProcessTx_2155424918854536773].[DimOriginalPayerPagaAccountID] AS [FactProcessTxDimOriginalPayerPagaAccountID]
-	,[FactProcessTx_2155424918854536773].[DimPagaAccountID] AS [FactProcessTxDimPagaAccountID]
 	,[FactProcessTx_2155424918854536773].[DimProcessStatusID] AS [FactProcessTxDimProcessStatusID]
 	,[FactProcessTx_2155424918854536773].[DimProcessTypeID] AS [FactProcessTxDimProcessTypeID]
 	,[FactProcessTx_2155424918854536773].[DimReceivingUserID] AS [FactProcessTxDimReceivingUserID]
 	,[FactProcessTx_2155424918854536773].[DimStartedDateID] AS [FactProcessTxDimStartedDateID]
 	,[FactProcessTx_2155424918854536773].[DimStartedTimeID] AS [FactProcessTxDimStartedTimeID]
-	,[FactProcessTx_2155424918854536773].[DimTransferDateID] AS [FactProcessTxDimTransferDateID]
-	,[FactProcessTx_2155424918854536773].[DimTransferTimeID] AS [FactProcessTxDimTransferTimeID]
 	,[FactProcessTx_2155424918854536773].[DimVerifiedByUserID] AS [FactProcessTxDimVerifiedByUserID]
+	,[FactProcessTx_2155424918854536773].[IntegrationReferenceNumber] AS [FactProcessTxIntegrationReferenceNumber]
 	,[FactProcessTx_2155424918854536773].[LinkedPhoneNumber] AS [FactProcessTxLinkedPhoneNumber]
 	,[FactProcessTx_2155424918854536773].[MerchantConfirmationCode] AS [FactProcessTxMerchantConfirmationCode]
 	,[FactProcessTx_2155424918854536773].[MerchantCustomerAccountNumber] AS [FactProcessTxMerchantCustomerAccountNumber]
 	,[FactProcessTx_2155424918854536773].[OriginalFactProcessTxID] AS [FactProcessTxOriginalFactProcessTxID]
 	,[FactProcessTx_2155424918854536773].[PaymentSource] AS [FactProcessTxPaymentSource]
 	,[FactProcessTx_2155424918854536773].[ProcessAmount] AS [FactProcessTxProcessAmount]
+	,[FactProcessTx_2155424918854536773].[ProcessCode] AS [FactProcessTxProcessCode]
 	,[FactProcessTx_2155424918854536773].[ProcessFee] AS [FactProcessTxProcessFee]
 	,[FactProcessTx_2155424918854536773].[ReferenceNumber] AS [FactProcessTxReferenceNumber]
-	,[FactProcessTx_2155424918854536773].[RequestedProcessChannel] AS [FactProcessTxRequestedProcessChannel]
 	,[FactProcessTx_2155424918854536773].[SenderPhoneNumber] AS [FactProcessTxSenderPhoneNumber]
 	,[FactProcessTx_2155424918854536773].[SourceKey] AS [FactProcessTxSourceKey]
+	,[FactProcessTx_2155424918854536773].[VerificationStatus] AS [FactProcessTxVerificationStatus]
 	,[FactProcessTx_2155424918854536773].[WithdrawalCode] AS [FactProcessTxWithdrawalCode]
 	,[DimAgentCommissionType_8263617827253097558].[Name] AS [DimAgentCommissionTypeName]
 	,[DimAgentCommissionType_8263617827253097558].[SourceKey] AS [DimAgentCommissionTypeSourceKey]
@@ -219,14 +215,14 @@ FROM [Finance].[FactFinancialTxHeader] AS [FactFinancialTxHeader_751519839787341
     
         ON  [FactFinancialTxHeader_7515198397873413912].[DimEffectiveTimeID] = [DimTime_8992419067520864668].[DimTimeID]
 
-    LEFT JOIN [Classification].[DimFinancialTxSubType] AS [DimFinancialTxSubType_5410226734378344365] 
+    LEFT JOIN [Classification].[DimFinancialTxSubType] AS [DimFinancialTxSubType_4839284188148451003] 
     
-    ON  [FactFinancialTxHeader_7515198397873413912].[DimFinancialTxSubTypeID] = [DimFinancialTxSubType_5410226734378344365].[DimFinancialTxSubTypeID]
+    ON  [FactFinancialTxHeader_7515198397873413912].[DimFinancialTxSubTypeID] = [DimFinancialTxSubType_4839284188148451003].[DimFinancialTxSubTypeID]
         
 
-    JOIN [Classification].[DimFinancialTxType] AS [DimFinancialTxType_7372893661651337083] 
+    JOIN [Classification].[DimFinancialTxType] AS [DimFinancialTxType_6938066203558696239] 
     
-        ON  [FactFinancialTxHeader_7515198397873413912].[DimFinancialTxTypeID] = [DimFinancialTxType_7372893661651337083].[DimFinancialTxTypeID]
+        ON  [FactFinancialTxHeader_7515198397873413912].[DimFinancialTxTypeID] = [DimFinancialTxType_6938066203558696239].[DimFinancialTxTypeID]
 
     LEFT JOIN [Shared].[DimOrganizationUnitLevel4] AS [DimOrganizationUnitLevel4_8507064514487154255] 
     
@@ -296,10 +292,9 @@ FROM [Finance].[FactFinancialTxHeader] AS [FactFinancialTxHeader_751519839787341
     ON  [FactProcessTx_2155424918854536773].[DimAgentCommissionTypeID] = [DimAgentCommissionType_8263617827253097558].[DimAgentCommissionTypeID]
         
 
-    LEFT JOIN [Activity].[DimChannel] AS [DimChannel_6606059545958450768] 
+    JOIN [Activity].[DimChannel] AS [DimChannel_6606059545958450768] 
     
-    ON  [FactProcessTx_2155424918854536773].[DimChannelID] = [DimChannel_6606059545958450768].[DimChannelID]
-        
+        ON  [FactProcessTx_2155424918854536773].[DimChannelID] = [DimChannel_6606059545958450768].[DimChannelID]
 
     LEFT JOIN [Shared].[DimDate] AS [DimDate_365877824494014649] 
     
@@ -372,39 +367,25 @@ FROM [Finance].[FactFinancialTxHeader] AS [FactFinancialTxHeader_751519839787341
     ON  [FactProcessTx_2155424918854536773].[DimOrganizationUnitLevel4ID] = [DimOrganizationUnitLevel4_2249503125025837116].[DimOrganizationUnitLevel4ID]
         
 
-    LEFT JOIN [Classification].[DimProcessStatus] AS [DimProcessStatus_5084204647735337864] 
+    JOIN [Classification].[DimProcessStatus] AS [DimProcessStatus_5084204647735337864] 
     
-    ON  [FactProcessTx_2155424918854536773].[DimProcessStatusID] = [DimProcessStatus_5084204647735337864].[DimProcessStatusID]
-        
+        ON  [FactProcessTx_2155424918854536773].[DimProcessStatusID] = [DimProcessStatus_5084204647735337864].[DimProcessStatusID]
 
-    LEFT JOIN [Classification].[DimProcessType] AS [DimProcessType_7917521546185980192] 
+    JOIN [Classification].[DimProcessType] AS [DimProcessType_7917521546185980192] 
     
     JOIN [Classification].[DimProcessTypeGroup] AS [DimProcessTypeGroup_8270232722657846277] 
     
         ON  [DimProcessType_7917521546185980192].[DimProcessTypeGroupID] = [DimProcessTypeGroup_8270232722657846277].[DimProcessTypeGroupID]
 
-    ON  [FactProcessTx_2155424918854536773].[DimProcessTypeID] = [DimProcessType_7917521546185980192].[DimProcessTypeID]
-        
+        ON  [FactProcessTx_2155424918854536773].[DimProcessTypeID] = [DimProcessType_7917521546185980192].[DimProcessTypeID]
 
-    LEFT JOIN [Shared].[DimDate] AS [DimDate_7222610539715082645] 
+    JOIN [Shared].[DimDate] AS [DimDate_7222610539715082645] 
     
-    ON  [FactProcessTx_2155424918854536773].[DimStartedDateID] = [DimDate_7222610539715082645].[DimDateID]
-        
+        ON  [FactProcessTx_2155424918854536773].[DimStartedDateID] = [DimDate_7222610539715082645].[DimDateID]
 
-    LEFT JOIN [Shared].[DimTime] AS [DimTime_8881099390814573581] 
+    JOIN [Shared].[DimTime] AS [DimTime_8881099390814573581] 
     
-    ON  [FactProcessTx_2155424918854536773].[DimStartedTimeID] = [DimTime_8881099390814573581].[DimTimeID]
-        
-
-    LEFT JOIN [Shared].[DimDate] AS [DimDate_3237129096920630681] 
-    
-    ON  [FactProcessTx_2155424918854536773].[DimTransferDateID] = [DimDate_3237129096920630681].[DimDateID]
-        
-
-    LEFT JOIN [Shared].[DimTime] AS [DimTime_4889470840774403469] 
-    
-    ON  [FactProcessTx_2155424918854536773].[DimTransferTimeID] = [DimTime_4889470840774403469].[DimTimeID]
-        
+        ON  [FactProcessTx_2155424918854536773].[DimStartedTimeID] = [DimTime_8881099390814573581].[DimTimeID]
 
         ON  [FactFinancialTxHeader_7515198397873413912].[FactProcessTxID] = [FactProcessTx_2155424918854536773].[FactProcessTxID]
 GO
@@ -564,6 +545,10 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0
 
 
 GO
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimAgentCommissionTypeName';
+
+
+GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimAgentCommissionType', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimAgentCommissionTypeName';
 
 
@@ -577,10 +562,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Name', @level0ty
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimAgentCommissionTypeName';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimAgentCommissionTypeName';
 
 
 GO
@@ -600,7 +581,19 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'WithdrawalCode', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxWithdrawalCode';
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxVerificationStatus';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxVerificationStatus';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'VerificationStatus', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxVerificationStatus';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxVerificationStatus';
 
 
 GO
@@ -636,30 +629,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'SenderPhoneNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxSenderPhoneNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxRequestedProcessChannel';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxRequestedProcessChannel';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'RequestedProcessChannel', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxRequestedProcessChannel';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxRequestedProcessChannel';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'RequestedProcessChannel', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxRequestedProcessChannel';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxReferenceNumber';
 
 
@@ -673,10 +642,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'ReferenceNumber'
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxReferenceNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ReferenceNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxReferenceNumber';
 
 
 GO
@@ -696,7 +661,19 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ProcessFee', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxProcessFee';
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxProcessCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxProcessCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'ProcessCode', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxProcessCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxProcessCode';
 
 
 GO
@@ -716,10 +693,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ProcessAmount', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxProcessAmount';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxPaymentSource';
 
 
@@ -733,10 +706,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'PaymentSource', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxPaymentSource';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'PaymentSource', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxPaymentSource';
 
 
 GO
@@ -756,10 +725,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'OriginalProcessID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxOriginalFactProcessTxID';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxMerchantCustomerAccountNumber';
 
 
@@ -773,10 +738,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MerchantCustomer
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxMerchantCustomerAccountNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'MerchantCustomerAccountNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxMerchantCustomerAccountNumber';
 
 
 GO
@@ -796,10 +757,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'MerchantConfirmationCode', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxMerchantConfirmationCode';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxLinkedPhoneNumber';
 
 
@@ -816,7 +773,19 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'LinkedPhoneNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxLinkedPhoneNumber';
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxIntegrationReferenceNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxIntegrationReferenceNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IntegrationReferenceNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxIntegrationReferenceNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxIntegrationReferenceNumber';
 
 
 GO
@@ -836,50 +805,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimVerifiedByUserID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimVerifiedByUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimTransferTimeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimTransferTimeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimTransferTimeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimTransferTimeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimTransferTimeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimTransferTimeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimTransferTimeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimTransferDateID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimTransferDateID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimTransferDateID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimTransferDateID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimTransferDateID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimTransferDateID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimTransferDateID';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimStartedTimeID';
 
 
@@ -893,10 +818,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimStartedTimeID
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimStartedTimeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimStartedTimeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimStartedTimeID';
 
 
 GO
@@ -916,10 +837,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimStartedDateID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimStartedDateID';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimReceivingUserID';
 
 
@@ -933,10 +850,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimReceivingUser
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimReceivingUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimReceivingUserID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimReceivingUserID';
 
 
 GO
@@ -956,10 +869,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimProcessTypeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimProcessTypeID';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimProcessStatusID';
 
 
@@ -973,10 +882,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimProcessStatus
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimProcessStatusID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimProcessStatusID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimProcessStatusID';
 
 
 GO
@@ -996,30 +901,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccountID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimPagaAccountID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimOriginalPayerPagaAccountID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimOriginalPayerPagaAccountID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimOriginalPayerPagaAccountID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimOriginalPayerPagaAccountID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimOriginalPayerPagaAccountID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOriginalPayerPagaAccountID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimOriginalPayerPagaAccountID';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimOrganizationUnitLevel4ID';
 
 
@@ -1033,10 +914,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimOrganizationU
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimOrganizationUnitLevel4ID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimOrganizationUnitLevel4ID';
 
 
 GO
@@ -1056,10 +933,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOnBehalffUserID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimOnBehalffUserID';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimInitiatingUserID';
 
 
@@ -1073,10 +946,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimInitiatingUse
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimInitiatingUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimInitiatingUserID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimInitiatingUserID';
 
 
 GO
@@ -1096,10 +965,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCreatedTimeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimCreatedTimeID';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimCreatedDateID';
 
 
@@ -1113,10 +978,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimCreatedDateID
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimCreatedDateID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCreatedDateID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimCreatedDateID';
 
 
 GO
@@ -1136,10 +997,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCompletedTimeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimCompletedTimeID';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimCompletedDateID';
 
 
@@ -1153,10 +1010,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimCompletedDate
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimCompletedDateID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCompletedDateID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimCompletedDateID';
 
 
 GO
@@ -1176,14 +1029,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimChannelID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimChannelID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimCancellationApprovedByUserID';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimCancellationApprovedByUserID';
 
 
@@ -1196,27 +1041,7 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCancellationApprovedByUserID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimCancellationApprovedByUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimBillerAccountUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimBillerAccountUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimBillerAccountUserID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimBillerAccountUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimBillerAccountUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimBillerAccountUserID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimBillerAccountUserID';
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimCancellationApprovedByUserID';
 
 
 GO
@@ -1236,10 +1061,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimApprovedByUserID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimApprovedByUserID';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimAgentCommissionTypeID';
 
 
@@ -1253,10 +1074,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimAgentCommissi
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimAgentCommissionTypeID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimAgentCommissionTypeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDimAgentCommissionTypeID';
 
 
 GO
@@ -1276,10 +1093,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DepositNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDepositNumber';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDependentFactProcessTxID';
 
 
@@ -1293,10 +1106,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DependentFactPro
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDependentFactProcessTxID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DependentProcessID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxDependentFactProcessTxID';
 
 
 GO
@@ -1316,10 +1125,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'CustomerPhoneNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxCustomerPhoneNumber';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxCustomerBillerAccount';
 
 
@@ -1333,10 +1138,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'CustomerBillerAc
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxCustomerBillerAccount';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'CustomerBillerAccount', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxCustomerBillerAccount';
 
 
 GO
@@ -1356,10 +1157,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'CardProcessorName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxCardProcessorName';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxATMReferenceNumber';
 
 
@@ -1376,10 +1173,6 @@ EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ATMReferenceNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxATMReferenceNumber';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessTx', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxAgentCommissionAmount';
 
 
@@ -1393,10 +1186,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'AgentCommissionA
 
 GO
 EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxAgentCommissionAmount';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'AgentCommissionAmount', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxAgentCommissionAmount';
 
 
 GO

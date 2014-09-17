@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/15/2014 11:17:49" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{BFA0ECC5-86CF-4E9B-A3F7-86B3A08915CD}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1512_Finance_FactFinancialTxHeader" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{B6AA699C-37D2-4C4F-AEAF-CFB4535A105F}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/15/2014 14:28:04" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{9D87B188-852A-43A0-8DC4-F5936DB1AEF4}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1512_Finance_FactFinancialTxHeader" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{6A66CFBA-8D1B-44E1-B6A9-E67153856FA8}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{D6A53BDC-6F0B-41B4-9EE2-F393FC24DCF4}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_FactFinancialTxHeader" DTS:refId="Package\DFT_Load Finance_FactFinancialTxHeader" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{2AAAB158-C32B-47D2-B277-5C6253F28DF3}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_FactFinancialTxHeader" DTS:refId="Package\DFT_Load Finance_FactFinancialTxHeader" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -45,7 +45,7 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="DimCurrencySourceKey" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].ExternalColumns[DimCurrencySourceKey]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="100" name="TextDescription" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].ExternalColumns[TextDescription]">
+                    <externalMetadataColumn dataType="wstr" length="200" name="TextDescription" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].ExternalColumns[TextDescription]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="numeric" name="Amount" precision="18" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].ExternalColumns[Amount]" scale="2">
                     </externalMetadataColumn>
@@ -95,7 +95,7 @@
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].ExternalColumns[DimCurrencySourceKey]" length="50" lineageId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].Columns[DimCurrencySourceKey]" name="DimCurrencySourceKey" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].Columns[DimCurrencySourceKey]" truncationRowDisposition="FailComponent">
                     </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].ExternalColumns[TextDescription]" length="100" lineageId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].Columns[TextDescription]" name="TextDescription" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].Columns[TextDescription]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="wstr" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].ExternalColumns[TextDescription]" length="200" lineageId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].Columns[TextDescription]" name="TextDescription" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].Columns[TextDescription]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="numeric" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].ExternalColumns[Amount]" lineageId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].Columns[Amount]" name="Amount" precision="18" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].Columns[Amount]" scale="2" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -149,7 +149,7 @@
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Error].Columns[DimCurrencySourceKey]" name="DimCurrencySourceKey" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Error].Columns[DimCurrencySourceKey]">
                     </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="100" lineageId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Error].Columns[TextDescription]" name="TextDescription" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Error].Columns[TextDescription]">
+                    <outputColumn dataType="wstr" length="200" lineageId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Error].Columns[TextDescription]" name="TextDescription" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Error].Columns[TextDescription]">
                     </outputColumn>
                     <outputColumn dataType="numeric" lineageId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Error].Columns[Amount]" name="Amount" precision="18" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Error].Columns[Amount]" scale="2">
                     </outputColumn>
@@ -278,7 +278,7 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="DimCurrencySourceKey" externalMetadataColumnId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimCurrencySourceKey]" lineageId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].Columns[DimCurrencySourceKey]" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[DimCurrencySourceKey]">
                     </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="100" cachedName="TextDescription" externalMetadataColumnId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[TextDescription]" lineageId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].Columns[TextDescription]" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[TextDescription]">
+                    <inputColumn cachedDataType="wstr" cachedLength="200" cachedName="TextDescription" externalMetadataColumnId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[TextDescription]" lineageId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].Columns[TextDescription]" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[TextDescription]">
                     </inputColumn>
                     <inputColumn cachedDataType="numeric" cachedName="Amount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Amount]" lineageId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_GetData.Outputs[Output].Columns[Amount]" refId="Package\DFT_Load Finance_FactFinancialTxHeader\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[Amount]">
                     </inputColumn>
@@ -335,7 +335,7 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{C27E2435-0114-4FC0-B69E-33A198BBF0C5}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{10CD0739-7AE3-4E73-9C12-0D9144786A6C}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">LEFT JOIN
 																		(
 																			SELECT 
@@ -347,15 +347,14 @@
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{73BFAEBC-BDAF-4A73-B25B-B782B307FA3D}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7D4E6D26-205A-4E89-92B8-3DEADA6CFBD8}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F99ECF8C-64EA-477E-A4F5-D49FB4FA52F9}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{886E5783-7DCB-4794-97B9-661841345559}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A3CE5076-78BD-4D77-B0F7-1F9356BC7EA3}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">--FinancialTxHeader
-DECLARE @reversals AS TABLE
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5E5B3D83-6FEB-4DB8-8034-FE1E07D69933}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">DECLARE @reversals AS TABLE
 (
 	TxID  INT,
 	EffDate  DATETIME,
@@ -440,11 +439,11 @@ FROM
 		DimFinancialTxSubTypeSourceKey = FinancialTransactionSubTypeId, 
 		DimOrganizationUnitLevel4SourceKey = orgUnit.OrganizationUnitId, 
 		DimUserSourceKey = UserId, 
-		FactProcessTxSourceKey = COALESCE(ProcessId, -1), 
+		FactProcessTxSourceKey = ProcessId, 
 		RelatedFactFinancialTxHeaderSourceKey = r2.relatedTxID, 
 		OriginalFactFinancialTxHeaderSourceKey = r2.OrigTxID, 
 		DimCurrencySourceKey = CurrencyId, 
-		TextDescription = CONVERT(VARCHAR(100),[Description]), 
+		TextDescription = [Description], 
 		Amount, 
 		ExchangeRate, 
 		ExternalReferenceNumber,
@@ -479,9 +478,8 @@ FROM
 	) AS orgUnit
 ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{9FF6CE2A-9D11-4D30-86EA-F7A1547B20C4}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">--FinancialTxHeader
-DECLARE @reversals AS TABLE
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EDF53479-2081-4594-BBB9-89FFAC6EA273}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">DECLARE @reversals AS TABLE
 (
 	TxID  INT,
 	EffDate  DATETIME,
@@ -566,11 +564,11 @@ FROM
 		DimFinancialTxSubTypeSourceKey = FinancialTransactionSubTypeId, 
 		DimOrganizationUnitLevel4SourceKey = orgUnit.OrganizationUnitId, 
 		DimUserSourceKey = UserId, 
-		FactProcessTxSourceKey = COALESCE(ProcessId, -1), 
+		FactProcessTxSourceKey = ProcessId, 
 		RelatedFactFinancialTxHeaderSourceKey = r2.relatedTxID, 
 		OriginalFactFinancialTxHeaderSourceKey = r2.OrigTxID, 
 		DimCurrencySourceKey = CurrencyId, 
-		TextDescription = CONVERT(VARCHAR(100),[Description]), 
+		TextDescription = [Description], 
 		Amount, 
 		ExchangeRate, 
 		ExternalReferenceNumber,

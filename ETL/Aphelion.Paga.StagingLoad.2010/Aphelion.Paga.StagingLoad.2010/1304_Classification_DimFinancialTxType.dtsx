@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/15/2014 11:17:49" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{DAEB0380-AB33-4279-9E43-B22ED797ED10}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1304_Classification_DimFinancialTxType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{A00B64DD-BA92-4EBB-9DFD-277AC2B22CF8}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/15/2014 14:28:03" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{771894B7-25E9-4FBE-B055-0BED50CF9897}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1304_Classification_DimFinancialTxType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{CDCC9FF8-F3A5-4540-BE76-98B77E210FD6}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{BDE5D494-CFAD-4E13-9EEA-B6F8B1215D79}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimFinancialTxType" DTS:refId="Package\DFT_Load Classification_DimFinancialTxType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{68C7CC7D-83F3-4C42-9D99-A0D3F36F4734}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimFinancialTxType" DTS:refId="Package\DFT_Load Classification_DimFinancialTxType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -125,7 +125,7 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{9587B8C1-3912-46E3-AE91-0CA8ED9CB43C}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{EDF2E610-11DD-4BEA-8397-893E376C99ED}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">LEFT JOIN
 																		(
 																			SELECT 
@@ -137,13 +137,13 @@
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{06B3C33F-1D7A-4BAA-B44F-C80AD218194C}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6488A5AE-1BB2-4246-868D-DD79C7D95C56}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{166EF460-1408-41EC-954A-BF9509C32851}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F1182B41-9A98-48C8-AB62-DC0653427982}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5B6B4CA5-0EFF-46D7-81AB-DBDBAE401721}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3567CEE4-52A2-44EF-8404-4EE6563BCFE4}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">--DimFinancialTxType
 SELECT 
 			SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
@@ -157,7 +157,7 @@ SELECT
 	 CONVERT(VARCHAR(255),Description) AS Name
 FROM dbo.FinancialTransactionType) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{802A2A38-4948-4761-8E14-22456985DBD8}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1684FBE7-696C-434A-8C08-9BA427A0FDD0}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">--DimFinancialTxType
 SELECT 
 			SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),

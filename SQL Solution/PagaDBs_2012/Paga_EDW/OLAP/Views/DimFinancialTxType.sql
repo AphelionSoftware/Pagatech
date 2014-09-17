@@ -4,10 +4,10 @@ CREATE VIEW [OLAP].[DimFinancialTxType]
 AS
 
 SELECT 
-	[DimFinancialTxType_2464802176757215255].[DimFinancialTxTypeID] AS [DimFinancialTxTypeID]
-	,[DimFinancialTxType_2464802176757215255].[Name] AS [DimFinancialTxTypeName]
-	,[DimFinancialTxType_2464802176757215255].[SourceKey] AS [DimFinancialTxTypeSourceKey]
-FROM [Classification].[DimFinancialTxType] AS [DimFinancialTxType_2464802176757215255]
+	[DimFinancialTxType_5509620861014332099].[DimFinancialTxTypeID] AS [DimFinancialTxTypeID]
+	,[DimFinancialTxType_5509620861014332099].[Name] AS [DimFinancialTxTypeName]
+	,[DimFinancialTxType_5509620861014332099].[SourceKey] AS [DimFinancialTxTypeSourceKey]
+FROM [Classification].[DimFinancialTxType] AS [DimFinancialTxType_5509620861014332099]
 GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimFinancialTxType', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimFinancialTxType', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeSourceKey';
 
