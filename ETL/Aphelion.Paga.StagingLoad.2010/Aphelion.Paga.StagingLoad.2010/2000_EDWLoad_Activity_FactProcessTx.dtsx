@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/16/2014 16:37:24" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{CB43B41B-C4B2-42E0-924F-0D34CD4125D5}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2000_EDWLoad_Activity_FactProcessTx" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{23311920-0900-4789-A95C-B0D94640E59B}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/17/2014 09:01:15" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="TWIST" DTS:CreatorName="Christina" DTS:DelayValidation="True" DTS:DTSID="{C0F19B6F-0DF5-4B81-B5F9-F4CD69BCA534}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2000_EDWLoad_Activity_FactProcessTx" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{DDF99D9C-5745-45CC-9C40-A56A3E1F880D}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{F3B807B8-A5B2-44E6-8966-18D826FB870B}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Errors_FactProcessTx" DTS:refId="Package\SQL_Truncate_Errors_FactProcessTx" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{878A4ECB-02FD-4505-9EFD-AA57EBE611F8}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Errors_FactProcessTx" DTS:refId="Package\SQL_Truncate_Errors_FactProcessTx" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Activity_FactProcessTx]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{6C977641-6D9D-419F-A536-DE92F2B2CC27}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Activity_FactProcessTx" DTS:refId="Package\DFT_Load_Activity_FactProcessTx" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{F0A658C5-9363-4728-B9C2-B30C1272E1CA}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Activity_FactProcessTx" DTS:refId="Package\DFT_Load_Activity_FactProcessTx" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -1467,6 +1467,276 @@
                 <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">1</property>
               </properties>
             </component>
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails" refId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails" usesDispositions="true">
+              <inputs>
+                <input name="OLE_DST_Singleton_Activity_FactProcessTx_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Activity_FactProcessTx_Error_DC_AddErrorDetails]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Output]" synchronousInputId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Activity_FactProcessTx_Error_DC_AddErrorDetails]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Error]" synchronousInputId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Activity_FactProcessTx_Error_DC_AddErrorDetails]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+            </component>
+            <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors" refId="Package\DFT_Load_Activity_FactProcessTx\RC_CountErrors">
+              <inputs>
+                <input hasSideEffects="true" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\DFT_Load_Activity_FactProcessTx\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load_Activity_FactProcessTx\RC_CountErrors.Outputs[Output]" synchronousInputId="Package\DFT_Load_Activity_FactProcessTx\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Activity_FactProcessTx" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{62A1B24F-A693-4E26-AE0F-0898101FEDF7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[QueueID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[SSISErrorCode]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[SSISErrorColumn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[PackageName]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[ErrorType]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="AgentCommissionAmount" precision="18" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[AgentCommissionAmount]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="ATMReferenceNumber" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[ATMReferenceNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="CardProcessorName" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[CardProcessorName]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="CustomerBillerAccount" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[CustomerBillerAccount]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="CustomerPhoneNumber" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[CustomerPhoneNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DependentFactProcessTxSourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DependentFactProcessTxSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="DepositNumber" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DepositNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimAgentCommissionTypeSourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimAgentCommissionTypeSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimApprovedByUserSourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimApprovedByUserSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimCancellationApprovedByUserSourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimCancellationApprovedByUserSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimChannelSourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimChannelSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCompletedDateID" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimCompletedDateID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCompletedTimeID" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimCompletedTimeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCreatedDateID" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimCreatedDateID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCreatedTimeID" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimCreatedTimeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimInitiatingUserSourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimInitiatingUserSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimOnBehalffUserSourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimOnBehalffUserSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimProcessStatusSourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimProcessStatusSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimProcessTypeSourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimProcessTypeSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimReceivingUserSourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimReceivingUserSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimStartedDateID" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimStartedDateID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimStartedTimeID" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimStartedTimeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimVerifiedByUserSourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimVerifiedByUserSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="IntegrationReferenceNumber" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[IntegrationReferenceNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="LinkedPhoneNumber" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[LinkedPhoneNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="MerchantConfirmationCode" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[MerchantConfirmationCode]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="MerchantCustomerAccountNumber" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[MerchantCustomerAccountNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="OriginalFactProcessTxSourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[OriginalFactProcessTxSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="PaymentSource" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[PaymentSource]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="ProcessAmount" precision="18" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[ProcessAmount]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="36" name="ProcessCode" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[ProcessCode]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="ProcessFee" precision="18" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[ProcessFee]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="ReferenceNumber" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[ReferenceNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="SenderPhoneNumber" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[SenderPhoneNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="VerificationStatus" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[VerificationStatus]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="WithdrawalCode" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[WithdrawalCode]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[PackageName]" lineageId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[PackageName]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[QueueID]" lineageId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[QueueID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[ErrorType]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="numeric" cachedName="AgentCommissionAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[AgentCommissionAmount]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[AgentCommissionAmount]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[AgentCommissionAmount]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="ATMReferenceNumber" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[ATMReferenceNumber]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[ATMReferenceNumber]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[ATMReferenceNumber]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="CardProcessorName" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[CardProcessorName]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[CardProcessorName]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[CardProcessorName]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="CustomerBillerAccount" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[CustomerBillerAccount]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[CustomerBillerAccount]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[CustomerBillerAccount]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="CustomerPhoneNumber" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[CustomerPhoneNumber]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[CustomerPhoneNumber]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[CustomerPhoneNumber]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="DepositNumber" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DepositNumber]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DepositNumber]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DepositNumber]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="IntegrationReferenceNumber" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[IntegrationReferenceNumber]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[IntegrationReferenceNumber]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[IntegrationReferenceNumber]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="LinkedPhoneNumber" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[LinkedPhoneNumber]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[LinkedPhoneNumber]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[LinkedPhoneNumber]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="MerchantConfirmationCode" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[MerchantConfirmationCode]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[MerchantConfirmationCode]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[MerchantConfirmationCode]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="MerchantCustomerAccountNumber" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[MerchantCustomerAccountNumber]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[MerchantCustomerAccountNumber]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[MerchantCustomerAccountNumber]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="PaymentSource" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[PaymentSource]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[PaymentSource]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[PaymentSource]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="numeric" cachedName="ProcessAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[ProcessAmount]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[ProcessAmount]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[ProcessAmount]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="36" cachedName="ProcessCode" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[ProcessCode]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[ProcessCode]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[ProcessCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="numeric" cachedName="ProcessFee" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[ProcessFee]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[ProcessFee]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[ProcessFee]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="ReferenceNumber" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[ReferenceNumber]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[ReferenceNumber]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[ReferenceNumber]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="SenderPhoneNumber" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[SenderPhoneNumber]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[SenderPhoneNumber]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[SenderPhoneNumber]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="VerificationStatus" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[VerificationStatus]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[VerificationStatus]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[VerificationStatus]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="WithdrawalCode" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[WithdrawalCode]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[WithdrawalCode]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[WithdrawalCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimCompletedDateID" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimCompletedDateID]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimCompletedDateID]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimCompletedDateID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimCompletedTimeID" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimCompletedTimeID]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimCompletedTimeID]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimCompletedTimeID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimCreatedDateID" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimCreatedDateID]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimCreatedDateID]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimCreatedDateID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimCreatedTimeID" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimCreatedTimeID]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimCreatedTimeID]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimCreatedTimeID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimStartedDateID" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimStartedDateID]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimStartedDateID]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimStartedDateID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimStartedTimeID" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimStartedTimeID]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimStartedTimeID]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimStartedTimeID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DependentFactProcessTxSourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DependentFactProcessTxSourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DependentFactProcessTxSourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DependentFactProcessTxSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimAgentCommissionTypeSourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimAgentCommissionTypeSourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimAgentCommissionTypeSourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimAgentCommissionTypeSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimApprovedByUserSourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimApprovedByUserSourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimApprovedByUserSourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimApprovedByUserSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimCancellationApprovedByUserSourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimCancellationApprovedByUserSourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimCancellationApprovedByUserSourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimCancellationApprovedByUserSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimChannelSourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimChannelSourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimChannelSourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimChannelSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimInitiatingUserSourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimInitiatingUserSourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimInitiatingUserSourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimInitiatingUserSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimOnBehalffUserSourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimOnBehalffUserSourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimOnBehalffUserSourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimOnBehalffUserSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimProcessStatusSourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimProcessStatusSourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimProcessStatusSourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimProcessStatusSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimProcessTypeSourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimProcessTypeSourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimProcessTypeSourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimProcessTypeSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimReceivingUserSourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimReceivingUserSourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimReceivingUserSourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimReceivingUserSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimVerifiedByUserSourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[DimVerifiedByUserSourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[DimVerifiedByUserSourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[DimVerifiedByUserSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="OriginalFactProcessTxSourceKey" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[OriginalFactProcessTxSourceKey]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[OriginalFactProcessTxSourceKey]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[OriginalFactProcessTxSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="change_operation" externalMetadataColumnId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].ExternalColumns[change_operation]" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_SRC_Staging_Activity_FactProcessTx.Outputs[Output].Columns[change_operation]" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx].Columns[change_operation]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Outputs[Error]" synchronousInputId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Activity_FactProcessTx]</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+              </properties>
+            </component>
             <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails_DimProcessTypeID" refId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails_DimProcessTypeID" usesDispositions="true">
               <inputs>
                 <input name="LKP_DimProcessTypeID_Error_DC_AddErrorDetails_DimProcessTypeID" refId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails_DimProcessTypeID.Inputs[LKP_DimProcessTypeID_Error_DC_AddErrorDetails_DimProcessTypeID]">
@@ -2325,24 +2595,30 @@
             </path>
             <path endId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Singleton_Activity_FactProcessTx.Inputs[OLE_DST_Activity_FactProcessTx_Error_OLE_DST_Singleton_Activity_FactProcessTx]" name="OLE_DST_Activity_FactProcessTx_Error_OLE_DST_Singleton_Activity_FactProcessTx" refId="Package\DFT_Load_Activity_FactProcessTx.Paths[OLE_DST_Activity_FactProcessTx_Error_OLE_DST_Singleton_Activity_FactProcessTx]" startId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Activity_FactProcessTx.Outputs[Error]">
             </path>
+            <path endId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Activity_FactProcessTx_Error_DC_AddErrorDetails]" name="OLE_DST_Singleton_Activity_FactProcessTx_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Activity_FactProcessTx.Paths[OLE_DST_Singleton_Activity_FactProcessTx_Error_DC_AddErrorDetails]" startId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Singleton_Activity_FactProcessTx.Outputs[Error]">
+            </path>
+            <path endId="Package\DFT_Load_Activity_FactProcessTx\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\DFT_Load_Activity_FactProcessTx.Paths[DC_AddErrorDetails_Output_RC_CountErrors]" startId="Package\DFT_Load_Activity_FactProcessTx\DC_AddErrorDetails.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Activity_FactProcessTx\OLE_DST_Error_Activity_FactProcessTx.Inputs[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx]" name="RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx" refId="Package\DFT_Load_Activity_FactProcessTx.Paths[RC_CountErrors_Output_OLE_DST_Error_Activity_FactProcessTx]" startId="Package\DFT_Load_Activity_FactProcessTx\RC_CountErrors.Outputs[Output]">
+            </path>
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{3721D738-C86B-4341-8A72-532EDF8CF624}" DTS:From="Package\SQL_Truncate_Errors_FactProcessTx" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Errors_FactProcessTx_To_DFT_Load_Activity_FactProcessTx" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Errors_FactProcessTx_To_DFT_Load_Activity_FactProcessTx]" DTS:To="Package\DFT_Load_Activity_FactProcessTx">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{9807380B-18C6-49A9-A1B8-01A3C3E77015}" DTS:From="Package\SQL_Truncate_Errors_FactProcessTx" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Errors_FactProcessTx_To_DFT_Load_Activity_FactProcessTx" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Errors_FactProcessTx_To_DFT_Load_Activity_FactProcessTx]" DTS:To="Package\DFT_Load_Activity_FactProcessTx">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{46EFC1BC-8AAA-47BD-B6FD-1D52E8876429}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E4F36F8B-6D4C-48A9-9C4D-25DB7B2713FF}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6A7A8CD5-1BE7-45A1-A370-115CF52583D3}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{57016EA3-F129-45A5-8CAE-B70EC39B2612}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{27A170EA-2AC3-4C1E-9B31-6965220573BF}" DTS:EvaluateAsExpression="True" DTS:Expression="@[System::PackageName]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FE9DA452-F32B-44AF-AB04-D2B958C51DD5}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2000_EDWLoad_Activity_FactProcessTx</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

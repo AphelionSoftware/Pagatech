@@ -10,8 +10,7 @@
 
 <# var tableNamesToImport = ExternalDataAccess.GetDataTable(SourceConnection.ConnectionString, "SELECT RIGHT( TABLE_NAME, len(table_name) - CHARINDEX('_', TABLE_NAME) ) AS TABLE_NAME " +
 																								"FROM INFORMATION_SCHEMA.TABLES " +
-																								"WHERE TABLE_TYPE = 'BASE TABLE' " +
-																								"AND TABLE_NAME ='Activity_FactProcessTx'").Rows.OfType<System.Data.DataRow>().Select(r => r[0].ToString()); #>  
+																								"WHERE TABLE_TYPE = 'BASE TABLE' ").Rows.OfType<System.Data.DataRow>().Select(r => r[0].ToString()); #>  
 <# var strLookup = ""; #>
 
 <Biml xmlns="http://schemas.varigence.com/biml.xsd">
@@ -113,29 +112,42 @@
             <# } #>
 				
 				
-			<# var PrimaryKey = table.Keys[0].Columns[0] ;#>
-				
-		 <OleDbDestination Name="OLE_DST_<#=table.SchemaName#>_<#=table.Name#>" ConnectionName="Paga_EDW">
-              <InputPath OutputPathName="<#=strLookup#>" />
+			<# 
+        var PrimaryKey = table.Keys[0].Columns[0] ;
+        string Schema_Table = table.SchemaName +"_" +table.Name;
+      #>
+
+
+      <OleDbDestination Name="OLE_DST_<#=Schema_Table#>" ConnectionName="Paga_EDW">
+        <InputPath OutputPathName="<#=strLookup#>" />
               <ExternalTableOutput Table="<#=table.SchemaQualifiedName#>" />
 			  <ErrorHandling ErrorRowDisposition="RedirectRow" TruncationRowDisposition="RedirectRow" />
             </OleDbDestination>
 
 		
-            <OleDbDestination Name="OLE_DST_Singleton_<#=table.SchemaName#>_<#=table.Name#>" ConnectionName="Paga_EDW" MaximumInsertCommitSize="1">
-              <InputPath OutputPathName="OLE_DST_<#=table.SchemaName#>_<#=table.Name#>.Error" />
+            <OleDbDestination Name="OLE_DST_Singleton_<#=Schema_Table#>" ConnectionName="Paga_EDW" MaximumInsertCommitSize="1">
+              <InputPath OutputPathName="OLE_DST_<#=Schema_Table#>.Error" />
               <ExternalTableOutput Table="<#=table.SchemaQualifiedName#>" />
 			  <ErrorHandling ErrorRowDisposition="RedirectRow" TruncationRowDisposition="RedirectRow" />
             </OleDbDestination>
-			
-				<DerivedColumns Name="DC_AddErrorDetails">
-			<InputPath OutputPathName="OLE_DST_Singleton_<#=table.SchemaName#>_<#=table.Name#>.Error" />
-              	<Columns>
-			
-					<Column Name="QueueID" DataType="Int32" >@[User::intQueueID]</Column>
-					
-				</Columns>
-			</DerivedColumns>
+
+        <DerivedColumns Name="DC_AddErrorDetails">
+          <InputPath OutputPathName="OLE_DST_Singleton_<#=Schema_Table#>.Error" />
+          <Columns>
+            <Column Name="PackageName" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)@[System::PackageName]</Column>
+            <Column Name="QueueID" DataType="Int32" >@[User::intQueueID]</Column>
+            <Column Name="ErrorType" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)("Insert")</Column>
+          </Columns>
+        </DerivedColumns>
+        <RowCount Name="RC_CountErrors" VariableName="User.intErrorCount">
+          <InputPath OutputPathName="DC_AddErrorDetails.Output" />
+        </RowCount>
+
+        <OleDbDestination Name="OLE_DST_Error_<#=Schema_Table#>" ConnectionName="Paga_Errors" MaximumInsertCommitSize="200" TableLock="false">
+              <InputPath OutputPathName="RC_CountErrors.Output" />
+              <ExternalTableOutput Table="[<#=errTable.SchemaName#>].[<#=table.SchemaName#>_<#=table.Name#>]" />
+            </OleDbDestination>
+       
 			
         </Transformations>
         </Dataflow>
