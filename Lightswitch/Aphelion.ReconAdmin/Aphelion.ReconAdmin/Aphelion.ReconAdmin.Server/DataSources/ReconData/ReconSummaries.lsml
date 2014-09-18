@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="ReconSummary">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="ID"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="ReconProcessID"
+        PropertyType=":Int32">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ReconStart"
+        PropertyType=":DateTime">
+        <EntityProperty.Attributes>
+          <Required />
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ReconEnd"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ReconStatusID"
+        PropertyType=":Int32">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="SourceCount"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="DestCount"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="SourceTotal"
+        PropertyType=":Decimal?">
+        <EntityProperty.Attributes>
+          <DecimalConstraint
+            Precision="20"
+            Scale="2" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="DestTotal"
+        PropertyType=":Decimal?">
+        <EntityProperty.Attributes>
+          <DecimalConstraint
+            Precision="20"
+            Scale="2" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ReconDate"
+        PropertyType=":Date">
+        <EntityProperty.Attributes>
+          <Required />
+          <DateTimeConstraint
+            Precision="0"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="sys_CreatedBy"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="sys_CreatedOn"
+        PropertyType=":DateTime">
+        <EntityProperty.Attributes>
+          <Required />
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="sys_ModifiedBy"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="sys_ModifiedOn"
+        PropertyType=":DateTime">
+        <EntityProperty.Attributes>
+          <Required />
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="ImportedFiles"
+        Association="FK_ImportedFile_ReconSummary"
+        FromEnd="ReconSummary"
+        ToEnd="ImportedFile" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_ImportedFile_ReconSummary">
+    <AssociationEnd
+      Name="ReconSummary"
+      Multiplicity="One"
+      EntityType="ReconSummary">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ImportedFile"
+      Multiplicity="Many"
+      EntityType="ImportedFile" />
+  </Association>
+  <EntityContainer
+    Name="ReconData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="ReconSummaries"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="ReconSummary" />
+    <AssociationSet
+      Name="FK_ImportedFile_ReconSummary"
+      Association="FK_ImportedFile_ReconSummary">
+      <AssociationSetEnd
+        Name="ReconSummary"
+        EntitySet="ReconSummaries" />
+      <AssociationSetEnd
+        Name="ImportedFile"
+        EntitySet="ImportedFiles" />
+    </AssociationSet>
+    <QueryOperation
+      Name="ReconSummaries_Single"
+      ReturnType="ReconSummary">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="ID" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="ID" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="ReconSummaries" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="ID"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'ID' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="ReconSummaries_SingleOrDefault"
+      ReturnType="ReconSummary">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="ID" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="ID" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="ReconSummaries" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="ID"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'ID' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="ReconDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="ReconSummaries">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="Recon"
+          Table="ReconSummary" />
+        <SsdlProperty
+          Name="ID"
+          Nullable="False"
+          Type="int"
+          Property="ReconSummary/Properties[ID]" />
+        <SsdlProperty
+          Name="ReconProcessID"
+          Nullable="False"
+          Type="int"
+          Property="ReconSummary/Properties[ReconProcessID]" />
+        <SsdlProperty
+          Name="ReconStart"
+          Nullable="False"
+          Type="datetime"
+          Property="ReconSummary/Properties[ReconStart]" />
+        <SsdlProperty
+          Name="ReconEnd"
+          Nullable="True"
+          Type="datetime"
+          Property="ReconSummary/Properties[ReconEnd]" />
+        <SsdlProperty
+          Name="ReconStatusID"
+          Nullable="False"
+          Type="int"
+          Property="ReconSummary/Properties[ReconStatusID]" />
+        <SsdlProperty
+          Name="SourceCount"
+          Nullable="True"
+          Type="int"
+          Property="ReconSummary/Properties[SourceCount]" />
+        <SsdlProperty
+          Name="DestCount"
+          Nullable="True"
+          Type="int"
+          Property="ReconSummary/Properties[DestCount]" />
+        <SsdlProperty
+          Name="SourceTotal"
+          Nullable="True"
+          Precision="20"
+          Scale="2"
+          Type="decimal"
+          Property="ReconSummary/Properties[SourceTotal]" />
+        <SsdlProperty
+          Name="DestTotal"
+          Nullable="True"
+          Precision="20"
+          Scale="2"
+          Type="decimal"
+          Property="ReconSummary/Properties[DestTotal]" />
+        <SsdlProperty
+          Name="ReconDate"
+          Nullable="False"
+          Type="date"
+          Property="ReconSummary/Properties[ReconDate]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="sys_CreatedBy"
+          Nullable="False"
+          Type="varchar"
+          Property="ReconSummary/Properties[sys_CreatedBy]" />
+        <SsdlProperty
+          Name="sys_CreatedOn"
+          Nullable="False"
+          Type="datetime"
+          Property="ReconSummary/Properties[sys_CreatedOn]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="sys_ModifiedBy"
+          Nullable="False"
+          Type="varchar"
+          Property="ReconSummary/Properties[sys_ModifiedBy]" />
+        <SsdlProperty
+          Name="sys_ModifiedOn"
+          Nullable="False"
+          Type="datetime"
+          Property="ReconSummary/Properties[sys_ModifiedOn]" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ImportedFile_ReconSummary">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ImportedFile_ReconSummary" />
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ImportedFile_ReconSummary]/Members[ReconSummary]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ImportedFile_ReconSummary]/Members[ImportedFile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ReconSummaryID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Aphelion.Recon.WindowsTester.Properties {
+namespace Aphelion.FileImport.WindowsTester.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -57,6 +57,54 @@ namespace Aphelion.Recon.WindowsTester.Properties {
             }
             set {
                 this["txtSectionCode_Text"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("14")]
+        public string txtStartRow_Text {
+            get {
+                return ((string)(this["txtStartRow_Text"]));
+            }
+            set {
+                this["txtStartRow_Text"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Staging")]
+        public string txtSchema_Text {
+            get {
+                return ((string)(this["txtSchema_Text"]));
+            }
+            set {
+                this["txtSchema_Text"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SkyeImportDetails")]
+        public string txtTable_Text {
+            get {
+                return ((string)(this["txtTable_Text"]));
+            }
+            set {
+                this["txtTable_Text"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SkyeImportDetail")]
+        public string txtSectionCodeDest_Text {
+            get {
+                return ((string)(this["txtSectionCodeDest_Text"]));
+            }
+            set {
+                this["txtSectionCodeDest_Text"] = value;
             }
         }
     }

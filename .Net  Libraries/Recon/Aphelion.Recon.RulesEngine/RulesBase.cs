@@ -11,24 +11,26 @@ using System.Linq.Dynamic;
 
 namespace Aphelion.Recon.RulesEngine
 {
-    public abstract class RulesBase
+    public class RulesBase
     {
 
-        public  Dictionary<string, string> dictMatchFields { get; set; }
-         
-        public  Dictionary<string, int> dictSrcKeys { get; private set; }
-        public  Dictionary<string, int> dictDestKeys { get; private set; }
+        public Dictionary<string, string> dictMatchFields { get; set; }
+
+        public Dictionary<string, int> dictSrcKeys { get; private set; }
+        public Dictionary<string, int> dictDestKeys { get; private set; }
 
 
-        public List<Aggregation> lstAggregates { get; set; }
+        public List<Aggregation> lstSourceAggregates { get; set; }
+        public List<Aggregation> lstDestinationAggregates { get; set; }
 
         public DataTable dtMatched { get; private set; }
         public DataTable dtMatchedBalanced { get; private set; }
-        public DataTable dtMatchedUnbalanced    { get; private set; }
-        public DataTable dtSourceUnmatched      { get; private set; }
+        public DataTable dtMatchedUnbalanced { get; private set; }
+        public DataTable dtSourceUnmatched { get; private set; }
         public DataTable dtDestinationUnmatched { get; private set; }
         DataTable _dtSource;
-        public DataTable dtSource {
+        public DataTable dtSource
+        {
             get
             {
                 return _dtSource;
@@ -39,14 +41,15 @@ namespace Aphelion.Recon.RulesEngine
                 _dtSource.Columns.Add("Hash", (typeof(Int64)));
                 DataColumn[] dcSource = new DataColumn[1];
                 dcSource[0] = dtSource.Columns["Hash"];
-                _dtSource.PrimaryKey = dcSource;
+                //_dtSource.PrimaryKey = dcSource;
 
             }
         }
 
 
         DataTable _dtDestination;
-        public DataTable dtDestination {
+        public DataTable dtDestination
+        {
             get
             {
                 return _dtDestination;
@@ -57,7 +60,7 @@ namespace Aphelion.Recon.RulesEngine
                 _dtDestination.Columns.Add("Hash", (typeof(Int64)));
                 DataColumn[] dcDestination = new DataColumn[1];
                 dcDestination[0] = dtDestination.Columns["Hash"];
-                _dtDestination.PrimaryKey = dcDestination;
+                //_dtDestination.PrimaryKey = dcDestination;
             }
         }
         public DataTable dtDestinationSynonyms { get; set; }
@@ -102,13 +105,14 @@ namespace Aphelion.Recon.RulesEngine
                 }
             }
         }
-        
+
         #region Keys
         /// <summary>
         /// This is a very expensive way to add, as it rescans the DataTable. Convenience only for single field keys
         /// </summary>
         /// <param name="sKey">Single key to add</param>
-        public void AddSourceKey(string sKey) {
+        public void AddSourceKey(string sKey)
+        {
             lstKeyFieldsSource.Add(sKey);
             foreach (DataRow drSource in dtSource.Rows)
             {
@@ -121,8 +125,9 @@ namespace Aphelion.Recon.RulesEngine
 
             }
         }
-        
-        public void AddSourceKey(List<string> lstKey) {
+
+        public void AddSourceKey(List<string> lstKey)
+        {
             lstKeyFieldsSource = lstKey;
             foreach (DataRow drSource in dtSource.Rows)
             {
@@ -138,7 +143,8 @@ namespace Aphelion.Recon.RulesEngine
         /// This is a very expensive way to add, as it rescans the DataTable. Convenience only for single field keys
         /// </summary>
         /// <param name="sKey">Single key to add</param>
-        public void AddDestKey(string sKey) {
+        public void AddDestKey(string sKey)
+        {
             lstKeyFieldsDestination.Add(sKey);
             foreach (DataRow drDestination in dtDestination.Rows)
             {
@@ -151,8 +157,9 @@ namespace Aphelion.Recon.RulesEngine
 
             }
         }
-        
-        public void AddDestKey(List<string> lstKey) {
+
+        public void AddDestKey(List<string> lstKey)
+        {
             lstKeyFieldsDestination = lstKey;
             foreach (DataRow drDestination in dtDestination.Rows)
             {
@@ -165,7 +172,7 @@ namespace Aphelion.Recon.RulesEngine
 
             }
         }
-#endregion
+        #endregion
 
         public void SetupDataSets()
         {
@@ -204,9 +211,10 @@ namespace Aphelion.Recon.RulesEngine
         /// <summary>
         /// This is a base implementation of compare lines. It doesn't encompass synonyms
         /// </summary>
-        public void CompareLines(){
-            
-            
+        public void CompareLines()
+        {
+
+
             foreach (DataRow drSrc in dtSource.Rows)
             {
                 #region SourceChecking
@@ -287,38 +295,90 @@ namespace Aphelion.Recon.RulesEngine
             }
         }
 
-        public void CompareRollup() {
+        public void CompareRollup()
+        {
+            decimal decSource = 0;
+            decimal decDestination = 0;
+
+            decSource = Rollup(lstSourceAggregates, ref this._dtSource);
+            decDestination = Rollup(lstDestinationAggregates, ref this._dtDestination);
+        }
+        /// <summary>
+        /// Currently, as it's a loop, it will add up values. 
+        /// Useful for opening / closing balance, using the NEGSUM to subtract
+        /// Or for debit/credit columns
+        /// Average will only sum
+        /// And other combinations will yield unexpected results
+        /// </summary>
+        /// <param name="lstAggregates"></param>
+        /// <param name="dtTable"></param>
+        /// <returns></returns>
+        private decimal Rollup(List<Aggregation> lstAggregates, ref DataTable dtTable){
+            decimal decNum = 0;
+            decimal decDenom = 0;
+            decimal result = 0;
             foreach (Aggregation agg in lstAggregates)
             {
-                decimal decSource;
-                decimal decDestination;
+                //Currently, as it's a loop, it will add up values. 
+                //Useful for opening / closing balance, using the NEGSUM to subtract
+                //Or for debit/credit columns
+                //Average will only sum
+                //And other combinations will yield unexpected results
                 switch (agg.aggregationType)
                 {
                     case AggregationType.Sum:
-                        var results = (from myRow in dtSource.AsEnumerable()
-                                       select (System.Convert.ToDecimal(agg.sourceFieldName))).Sum()
+
+                    case AggregationType.NegSum:
+                        result = (from myRow in dtTable.AsEnumerable()
+                                          select System.Convert.ToDecimal(myRow[agg.FieldName])).Sum();
+                        if (agg.aggregationType == AggregationType.NegSum) {
+                            decNum  += result * -1;
+                        } else {
+                            decNum += result;
+                        }
                     ;
-
-
                         break;
                     case AggregationType.Average:
-
+                        result = (from myRow in dtTable.AsEnumerable()
+                                          select System.Convert.ToDecimal(myRow[agg.FieldName])).Sum();
+                        decNum  += result * -1;
+                        
+                        decDenom = (from myRow in dtTable.AsEnumerable()
+                                  select System.Convert.ToDecimal(myRow[agg.FieldName])).Count();
+                        
                         break;
                     case AggregationType.Count:
-
+                        decDenom = (from myRow in dtTable.AsEnumerable()
+                                    select System.Convert.ToDecimal(myRow[agg.FieldName])).Count();
+                        
                         break;
                     case AggregationType.DistinctCount:
-
+                        decDenom = (from myRow in dtTable.AsEnumerable()
+                                    select System.Convert.ToDecimal(myRow[agg.FieldName])).Distinct().Count();
+                        
                         break;
                     case AggregationType.Max:
-
+                        result = (from myRow in dtTable.AsEnumerable()
+                                    select System.Convert.ToDecimal(myRow[agg.FieldName])).Max();
+                        if (result > decNum)
+                        {
+                            decNum = result;
+                        }
                         break;
                     case AggregationType.Min:
-
+                        result = (from myRow in dtTable.AsEnumerable()
+                                    select System.Convert.ToDecimal(myRow[agg.FieldName])).Min();
+                        if (result > decNum)
+                        {
+                            decNum = result;
+                        }
                         break;
                 }
             }
+            if (decDenom == 0) { decDenom = 1; }
+
+        return decNum / decDenom;
         }
-         
+
     }
 }

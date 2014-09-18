@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Aphelion.FileImport;
+using Aphelion.Recon;
 
 namespace Aphelion.Recon.WindowsTester
 {
@@ -25,7 +25,8 @@ namespace Aphelion.Recon.WindowsTester
 
         private void btnImportToDT_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Save();
+            
+            //Properties.Settings.Default.Save();
             Parse = false;
             ImportFile();
         }
@@ -70,7 +71,7 @@ namespace Aphelion.Recon.WindowsTester
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default.Save();
             Parse = true;
             ImportFile();
             
@@ -103,7 +104,7 @@ namespace Aphelion.Recon.WindowsTester
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default.Save();
             SetupFileType();
             backgroundWorkerSection.RunWorkerAsync();
         }
@@ -116,7 +117,17 @@ namespace Aphelion.Recon.WindowsTester
 
         private void btnCompare_Click(object sender, EventArgs e)
         {
-
+            TableLoader tlSrc = new TableLoader(this.txtConn.Text, this.txtReconProcessStepCode.Text, LegType.Source);
+            tlSrc.LoadDataSet();
+            TableLoader tlDest = new TableLoader(this.txtConn.Text, this.txtReconProcessStepCode.Text, LegType.Destination);
+            tlDest.LoadDataSet();
+            RulesEngine.RulesBase rb = new RulesEngine.RulesBase();
+            rb.dtSource = tlSrc.dtResult;
+            rb.dtDestination = tlDest.dtResult;
+            rb.lstSourceAggregates = tlSrc.lstAggregations;
+            rb.lstDestinationAggregates = tlDest.lstAggregations;
+            rb.SetupDataSets();
+            rb.CompareRollup();
         }
     }
 }

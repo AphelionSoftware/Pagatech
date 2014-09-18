@@ -8,20 +8,18 @@ namespace Aphelion.Recon.RulesEngine
 {
     public enum  AggregationType 
     {
-        Sum, Count, Average, Max, Min, DistinctCount
+        Sum, NegSum, Count, Average, Max, Min, DistinctCount, Detail
     }
 
     public struct Aggregation
     {
         public AggregationType aggregationType;
-        public string sourceFieldName;
-        public string destinationFieldName;
+        public string FieldName;
 
-        public Aggregation(AggregationType pAggregationType, string pSourceFieldName, string pDestinationFieldName)
+        public Aggregation(AggregationType pAggregationType, string pFieldName)
         {
             this.aggregationType = pAggregationType;
-            this.sourceFieldName = pSourceFieldName;
-            this.destinationFieldName = pDestinationFieldName;
+            this.FieldName = pFieldName;
         }
     }
 }

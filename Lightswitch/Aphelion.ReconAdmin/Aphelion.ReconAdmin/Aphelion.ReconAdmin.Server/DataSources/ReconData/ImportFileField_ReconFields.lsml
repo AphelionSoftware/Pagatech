@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="ImportFileField_ReconField">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="ID"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="sys_CreatedBy"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="sys_CreatedOn"
+        PropertyType=":DateTime">
+        <EntityProperty.Attributes>
+          <Required />
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="sys_ModifiedBy"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="sys_ModifiedOn"
+        PropertyType=":DateTime">
+        <EntityProperty.Attributes>
+          <Required />
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="FileField"
+        Association="FK_ImportFileField_ReconField_FileField"
+        FromEnd="ImportFileField_ReconField"
+        ToEnd="FileField" />
+      <NavigationProperty
+        Name="ReconField"
+        Association="FK_ImportFileField_ReconField_ReconField"
+        FromEnd="ImportFileField_ReconField"
+        ToEnd="ReconField" />
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="ReconData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="ImportFileField_ReconFields"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="ImportFileField_ReconField" />
+    <QueryOperation
+      Name="ImportFileField_ReconFields_Single"
+      ReturnType="ImportFileField_ReconField">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="ID" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="ID" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="ImportFileField_ReconFields" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="ID"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'ID' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="ImportFileField_ReconFields_SingleOrDefault"
+      ReturnType="ImportFileField_ReconField">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="ID" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="ID" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="ImportFileField_ReconFields" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="ID"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'ID' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="ReconDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="ImportFileField_ReconFields">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="Admin"
+          Table="ImportFileField_ReconField" />
+        <SsdlProperty
+          Name="ID"
+          Nullable="False"
+          Type="int"
+          Property="ImportFileField_ReconField/Properties[ID]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="sys_CreatedBy"
+          Nullable="False"
+          Type="varchar"
+          Property="ImportFileField_ReconField/Properties[sys_CreatedBy]" />
+        <SsdlProperty
+          Name="sys_CreatedOn"
+          Nullable="False"
+          Type="datetime"
+          Property="ImportFileField_ReconField/Properties[sys_CreatedOn]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="sys_ModifiedBy"
+          Nullable="False"
+          Type="varchar"
+          Property="ImportFileField_ReconField/Properties[sys_ModifiedBy]" />
+        <SsdlProperty
+          Name="sys_ModifiedOn"
+          Nullable="False"
+          Type="datetime"
+          Property="ImportFileField_ReconField/Properties[sys_ModifiedOn]" />
+        <SsdlForeignKeyProperty
+          Name="FileFieldID"
+          Nullable="False"
+          Type="int"
+          PropertyName="FileFieldID" />
+        <SsdlForeignKeyProperty
+          Name="ReconFieldID"
+          Nullable="False"
+          Type="int"
+          PropertyName="ReconFieldID" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+  </DataService>
+</ServiceApplication>
