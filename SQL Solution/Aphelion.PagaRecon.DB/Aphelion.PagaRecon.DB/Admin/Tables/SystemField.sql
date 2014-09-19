@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Admin].[SystemField] (
-    [ID]             INT           NOT NULL,
+    [ID]             INT           IDENTITY (1, 1) NOT NULL,
     [TableSchema]    VARCHAR (255) NOT NULL,
     [TableName]      VARCHAR (255) NOT NULL,
     [ColumnName]     VARCHAR (255) NOT NULL,
@@ -12,4 +12,6 @@
     CONSTRAINT [FK_SystemField_FieldType] FOREIGN KEY ([FieldTypeID]) REFERENCES [Admin].[FieldType] ([ID]),
     CONSTRAINT [UQ_SystemField_Code] UNIQUE NONCLUSTERED ([TableSchema] ASC, [TableName] ASC, [ColumnName] ASC)
 );
+
+
 

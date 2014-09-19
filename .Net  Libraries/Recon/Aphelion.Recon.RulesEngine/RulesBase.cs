@@ -295,13 +295,14 @@ namespace Aphelion.Recon.RulesEngine
             }
         }
 
-        public void CompareRollup()
+        public decimal CompareRollup()
         {
             decimal decSource = 0;
             decimal decDestination = 0;
 
             decSource = Rollup(lstSourceAggregates, ref this._dtSource);
             decDestination = Rollup(lstDestinationAggregates, ref this._dtDestination);
+            return decDestination - decSource;
         }
         /// <summary>
         /// Currently, as it's a loop, it will add up values. 

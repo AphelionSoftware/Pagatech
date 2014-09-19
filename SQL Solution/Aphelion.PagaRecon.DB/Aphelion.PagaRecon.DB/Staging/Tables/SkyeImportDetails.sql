@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Staging].[SkyeImportDetails] (
-    [ID]                     INT           NOT NULL,
+    [ID]                     INT           IDENTITY (1, 1) NOT NULL,
     [TransactionDate]        VARCHAR (255) NULL,
     [ValueDate]              VARCHAR (255) NULL,
     [TransactionReferenceNo] VARCHAR (255) NULL,
@@ -13,4 +13,6 @@
     [sys_ModifiedOn]         DATETIME      CONSTRAINT [DF_SkyeImportDetails_sys_ModifiedOn] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_FileDefinition] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+
+
 

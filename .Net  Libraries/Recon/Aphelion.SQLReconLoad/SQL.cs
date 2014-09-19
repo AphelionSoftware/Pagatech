@@ -8,6 +8,43 @@ namespace Aphelion.Recon
 {
     public static class SQL
     {
+
+        public const string constSQLGetReconDetail = @"
+SELECT [RD].[ID]
+      ,[RD].[ReconSummaryID]
+      ,[RD].[ReconItemStatusID]
+      ,[RD].[Value]
+      ,[RD].[SourceKey]
+      ,[RD].[MatchedReconDetailID]
+      ,[RD].[FileDetailID]
+  FROM [Recon].[ReconDetail] RD
+  JOIN [Recon].[ReconSummary] RS
+  ON RD.ReconSummaryID = RD.ID
+  JOIN [Admin].[ReconProcessStep] RPS
+    ON RS.ReconProcessStepID = RPS.ID
+	  WHERE RPS.Code = '{0}'
+	  AND [RS].[ReconDate] = {1}
+";
+
+        public const string constSQLGetReconSummary = @"
+SELECT [RS].[ID]
+      ,[RS].[ReconProcessStepID]
+      ,[RS].[ReconStart]
+      ,[RS].[ReconEnd]
+      ,[RS].[ReconStatusID]
+      ,[RS].[SourceCount]
+      ,[RS].[DestCount]
+      ,[RS].[SourceTotal]
+      ,[RS].[DestTotal]
+      ,[RS].[ReconDate]
+      FROM [Recon].[ReconSummary] RS
+	  
+	  JOIN [Admin].[ReconProcessStep] RPS
+	  ON RS.ReconProcessStepID = RPS.ID
+	  WHERE RPS.Code = '{0}'
+	  AND [RS].[ReconDate] = {1}
+"
+
         /// <summary>
         /// 0: is Process Step code
         /// 1: is source or destination

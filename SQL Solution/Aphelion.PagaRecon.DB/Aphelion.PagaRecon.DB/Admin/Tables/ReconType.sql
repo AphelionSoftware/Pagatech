@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Admin].[ReconType] (
-    [ID]             INT           NOT NULL,
+    [ID]             INT           IDENTITY (1, 1) NOT NULL,
     [Code]           VARCHAR (50)  NOT NULL,
     [Name]           VARCHAR (255) NULL,
     [sys_CreatedBy]  VARCHAR (255) CONSTRAINT [DF_ReconType_sys_CreatedBy] DEFAULT (user_name()) NOT NULL,
@@ -9,4 +9,6 @@
     CONSTRAINT [PK_ReconType] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [UQ_ReconType_Code] UNIQUE NONCLUSTERED ([Code] ASC)
 );
+
+
 
