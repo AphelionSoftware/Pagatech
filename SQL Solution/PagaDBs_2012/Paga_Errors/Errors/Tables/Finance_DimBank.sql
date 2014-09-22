@@ -13,5 +13,3 @@
     [SupportsDebit]            BIT           NULL
 );
 
-
-

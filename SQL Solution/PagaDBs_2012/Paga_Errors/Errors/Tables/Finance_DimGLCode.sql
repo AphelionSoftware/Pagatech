@@ -13,7 +13,3 @@
     [TextDesciption]             VARCHAR (1000) NULL
 );
 
-
-
-
-

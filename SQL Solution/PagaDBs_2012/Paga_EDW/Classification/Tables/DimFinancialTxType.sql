@@ -2,6 +2,7 @@
     [DimFinancialTxTypeID] INT           NOT NULL,
     [SourceKey]                     VARCHAR (255) NOT NULL,
     [Name]                          VARCHAR (255) NOT NULL,
+	[FinancialTxCategory]			VARCHAR(255) NOT NULL,
     [SourceKeyHash]                 BIGINT        NOT NULL,
     [DeltaHash]                     BIGINT        NOT NULL,
     [sys_ModifiedBy]                VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,

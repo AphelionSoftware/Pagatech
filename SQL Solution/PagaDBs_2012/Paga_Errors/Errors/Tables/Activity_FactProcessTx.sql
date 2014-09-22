@@ -44,5 +44,3 @@
     [WithdrawalCode]                         VARCHAR (200)   NULL
 );
 
-
-

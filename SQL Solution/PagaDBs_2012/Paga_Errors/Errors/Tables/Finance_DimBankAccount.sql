@@ -23,5 +23,3 @@
     [TransactionLimit]             DECIMAL (18, 2) NULL
 );
 
-
-
