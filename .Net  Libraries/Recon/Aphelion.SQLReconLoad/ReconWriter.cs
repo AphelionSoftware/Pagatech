@@ -54,7 +54,10 @@ namespace Aphelion.Recon
 
         private void PopulateDetailsFromSource()
         {
+            foreach (DataRow dr in dtSource.Rows)
+            {
 
+            }
         }
     }
 }
