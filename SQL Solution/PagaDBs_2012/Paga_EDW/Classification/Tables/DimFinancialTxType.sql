@@ -1,16 +1,18 @@
 ﻿CREATE TABLE [Classification].[DimFinancialTxType] (
     [DimFinancialTxTypeID] INT           NOT NULL,
-    [SourceKey]                     VARCHAR (255) NOT NULL,
-    [Name]                          VARCHAR (255) NOT NULL,
-	[FinancialTxCategory]			VARCHAR(255) NOT NULL,
-    [SourceKeyHash]                 BIGINT        NOT NULL,
-    [DeltaHash]                     BIGINT        NOT NULL,
-    [sys_ModifiedBy]                VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn]                DATETIME      DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]                 VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]                 DATETIME      DEFAULT (getdate()) NOT NULL,
+    [SourceKey]            VARCHAR (255) NOT NULL,
+    [Name]                 VARCHAR (255) NOT NULL,
+    [FinancialTxCategory]  VARCHAR (255) NOT NULL,
+    [SourceKeyHash]        BIGINT        NOT NULL,
+    [DeltaHash]            BIGINT        NOT NULL,
+    [sys_ModifiedBy]       VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]       DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]        VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]        DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimFinancialTxTypeID] PRIMARY KEY CLUSTERED ([DimFinancialTxTypeID] ASC)
 );
+
+
 
 
 GO
@@ -20,17 +22,32 @@ CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialTxType_SourceKey]
 
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--DimFinancialTxType
-SELECT 
-			SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-			base_query.name,
-			change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
-		FROM 
-	
 
-	(SELECT
-	FinancialTransactionTypeID AS SourceKey, 
-	 CONVERT(VARCHAR(255),Description) AS Name
-FROM dbo.FinancialTransactionType) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxType';
+SELECT 
+	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	base_query.name,
+	base_query.FinancialTxCategory,
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
+FROM 
+(
+	SELECT
+		FinancialTransactionTypeID AS SourceKey, 
+		CONVERT(VARCHAR(255),Description) AS Name,
+		CONVERT(VARCHAR(255),FinancialTransactionTypeGroupId) AS FinancialTxCategory
+	FROM dbo.FinancialTransactionType AS ftt
+	OUTER APPLY
+	(
+		SELECT TOP 1 
+			x.FinancialTransactionTypeGroupId
+		FROM [dbo].[FinancialTransactionTypeTransactionTypeGroup] as x
+		WHERE 
+			x.FinancialTransactionTypeId = ftt.FinancialTransactionTypeId
+		ORDER BY 
+			x.UpdatedDate DESC
+	) AS ftg
+) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxType';
+
+
 
 
 GO
