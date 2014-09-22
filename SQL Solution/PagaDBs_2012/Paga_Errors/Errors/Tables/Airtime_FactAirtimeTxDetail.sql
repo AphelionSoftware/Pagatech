@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Errors].[Airtime_FactAirtimeTx] (
+﻿CREATE TABLE [Errors].[Airtime_FactAirtimeTxDetail] (
     [QueueID]                      INT             NOT NULL,
     [SSISErrorCode]                INT             NOT NULL,
     [SSISErrorColumn]              INT             NOT NULL,
@@ -7,12 +7,12 @@
     [change_operation]             CHAR (1)        NOT NULL,
     [CreditAmount]                 DECIMAL (18, 2) NULL,
     [DebitAmount]                  DECIMAL (18, 2) NULL,
-    [DimCitySourceKey]             VARCHAR (255)   NULL,
-    [DimDateID]                    INT             NULL,
+    [DimCreatedDateID]             INT             NOT NULL,
+    [DimCreatedTimeID]             INT             NOT NULL,
     [DimFinancialAccountSourceKey] VARCHAR (255)   NULL,
-    [DimFinancialTxTypeSourceKey]  VARCHAR (255)   NULL,
     [DimPagaAccountSourceKey]      VARCHAR (255)   NULL,
-    [DimTimeID]                    INT             NULL,
-    [SourceKey]                    INT             NOT NULL
+    [FactAirtimeTxHeaderSourceKey] INT             NOT NULL,
+    [SourceKey]                    INT             NOT NULL,
+    [TextDescription]              VARCHAR (200)   NOT NULL
 );
 
