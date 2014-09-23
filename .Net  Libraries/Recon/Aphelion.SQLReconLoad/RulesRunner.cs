@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aphelion.Recon.RulesEngine
+namespace Aphelion.Recon
 {
     public class RulesRunner
     {

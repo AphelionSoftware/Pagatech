@@ -13,7 +13,10 @@ namespace Aphelion.Recon.RulesEngine
 {
     public class RulesBase
     {
-
+        public decimal decSourceTotal { get; private set; }
+        public decimal decDestinationTotal { get; private set; }
+        public int intSourceCount { get; private set; }
+        public int intDestinationCount { get; private set; }
         public Dictionary<string, string> dictMatchFields { get; set; }
 
         public Dictionary<string, int> dictSrcKeys { get; private set; }
@@ -39,10 +42,11 @@ namespace Aphelion.Recon.RulesEngine
             {
                 _dtSource = value;
                 _dtSource.Columns.Add("Hash", (typeof(Int64)));
-                DataColumn[] dcSource = new DataColumn[1];
-                dcSource[0] = dtSource.Columns["Hash"];
+                //DataColumn[] dcSource = new DataColumn[1];
+                //dcSource[0] = dtSource.Columns["Hash"];
                 //_dtSource.PrimaryKey = dcSource;
-
+                _dtSource.Columns.Add("SourceKey", (typeof(string)));
+                
             }
         }
 
@@ -58,9 +62,11 @@ namespace Aphelion.Recon.RulesEngine
             {
                 _dtDestination = value;
                 _dtDestination.Columns.Add("Hash", (typeof(Int64)));
-                DataColumn[] dcDestination = new DataColumn[1];
-                dcDestination[0] = dtDestination.Columns["Hash"];
+                //DataColumn[] dcDestination = new DataColumn[1];
+                //dcDestination[0] = dtDestination.Columns["Hash"];
                 //_dtDestination.PrimaryKey = dcDestination;
+                _dtDestination.Columns.Add("SourceKey", (typeof(string)));
+                
             }
         }
         public DataTable dtDestinationSynonyms { get; set; }
@@ -80,6 +86,8 @@ namespace Aphelion.Recon.RulesEngine
                     {
                         hshValue += drSource[sCol];
                     }
+
+                    drSource.SetField("SourceKey", hshValue);
                     drSource.SetField("Hash", Hashing.HashFNV1a_64(hshValue));
 
 
@@ -102,6 +110,8 @@ namespace Aphelion.Recon.RulesEngine
                         hshValue += drDestination[sCol];
                     }
                     drDestination.SetField("Hash", Hashing.HashFNV1a_64(hshValue));
+                    drDestination.SetField("SourceKey", hshValue);
+
                 }
             }
         }
@@ -122,8 +132,11 @@ namespace Aphelion.Recon.RulesEngine
                     hshValue += drSource[sCol];
                 }
                 drSource.SetField("Hash", Hashing.HashFNV1a_64(hshValue));
-
             }
+            DataColumn[] dcSource = new DataColumn[1];
+            dcSource[0] = dtSource.Columns["Hash"];
+            _dtSource.PrimaryKey = dcSource;
+            
         }
 
         public void AddSourceKey(List<string> lstKey)
@@ -138,6 +151,10 @@ namespace Aphelion.Recon.RulesEngine
                 }
                 drSource.SetField("Hash", Hashing.HashFNV1a_64(hshValue));
             }
+            DataColumn[] dcSource = new DataColumn[1];
+            dcSource[0] = dtSource.Columns["Hash"];
+            _dtSource.PrimaryKey = dcSource;
+                
         }
         /// <summary>
         /// This is a very expensive way to add, as it rescans the DataTable. Convenience only for single field keys
@@ -154,8 +171,11 @@ namespace Aphelion.Recon.RulesEngine
                     hshValue += drDestination[sCol];
                 }
                 drDestination.SetField("Hash", Hashing.HashFNV1a_64(hshValue));
-
             }
+            DataColumn[] dcDestination = new DataColumn[1];
+            dcDestination[0] = dtDestination.Columns["Hash"];
+            _dtDestination.PrimaryKey = dcDestination;
+            
         }
 
         public void AddDestKey(List<string> lstKey)
@@ -169,8 +189,11 @@ namespace Aphelion.Recon.RulesEngine
                     hshValue += drDestination[sCol];
                 }
                 drDestination.SetField("Hash", Hashing.HashFNV1a_64(hshValue));
-
             }
+            DataColumn[] dcDestination = new DataColumn[1];
+            dcDestination[0] = dtDestination.Columns["Hash"];
+            _dtDestination.PrimaryKey = dcDestination;
+            
         }
         #endregion
 
@@ -189,7 +212,9 @@ namespace Aphelion.Recon.RulesEngine
             }
 
             dtMatchedBalanced = dtMatched.Clone();
-            dtMatchedUnbalanced = dtMatched.Clone();
+            dtMatchedBalanced.Columns.Add("SrcValue");
+            dtMatchedBalanced.Columns.Add("DestValue");
+            dtMatchedUnbalanced = dtMatchedBalanced.Clone();
 
             dtSourceUnmatched = dtSource.Clone();
             dtDestinationUnmatched = dtDestination.Clone();
@@ -240,9 +265,12 @@ namespace Aphelion.Recon.RulesEngine
                     //If we have a list of fields to check
                     if (dictMatchFields != null)
                     {
+                        //We do a check for every single pair.
+                        //So if there are multiple pairs, instead of adding up the values to a single recon detail row
+                        //We have a row in recon detail for each row
                         foreach (KeyValuePair<string, string> item in dictMatchFields)
                         {
-                            object[] BalancedValues = new object[drSrc.ItemArray.Length + drDest.ItemArray.Length];
+                            object[] BalancedValues = new object[drSrc.ItemArray.Length + drDest.ItemArray.Length + 2]; //+2 to include SrcValue and DestValue
                             for (int i = 0; i < drSrc.ItemArray.Length; i++)
                             {
                                 BalancedValues[i] = drSrc.ItemArray[i];
@@ -251,7 +279,8 @@ namespace Aphelion.Recon.RulesEngine
                             {
                                 BalancedValues[i + drSrc.ItemArray.Length] = drDest.ItemArray[i];
                             }
-                            //if (drSrc.ItemArray[] 
+                            BalancedValues[drDest.ItemArray.Length + drSrc.ItemArray.Length] = drSrc.ItemArray[dictSrcKeys[item.Key]];
+                            BalancedValues[drDest.ItemArray.Length + drSrc.ItemArray.Length + 1] = drDest.ItemArray[dictDestKeys[item.Value]];
                             if (
                                 drSrc.ItemArray[dictSrcKeys[item.Key]]
                                 ==
@@ -297,12 +326,14 @@ namespace Aphelion.Recon.RulesEngine
 
         public decimal CompareRollup()
         {
-            decimal decSource = 0;
-            decimal decDestination = 0;
+            //decimal decSource = 0;
+            //decimal decDestination = 0;
 
-            decSource = Rollup(lstSourceAggregates, ref this._dtSource);
-            decDestination = Rollup(lstDestinationAggregates, ref this._dtDestination);
-            return decDestination - decSource;
+            this.decSourceTotal = Rollup(lstSourceAggregates, ref this._dtSource);
+            this.decDestinationTotal = Rollup(lstDestinationAggregates, ref this._dtDestination);
+            this.intSourceCount = this._dtSource.Rows.Count;
+            this.intDestinationCount= this._dtSource.Rows.Count;
+            return decDestinationTotal - decSourceTotal;
         }
         /// <summary>
         /// Currently, as it's a loop, it will add up values. 

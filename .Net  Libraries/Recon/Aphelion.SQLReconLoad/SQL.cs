@@ -8,6 +8,72 @@ namespace Aphelion.Recon
 {
     public static class SQL
     {
+        /// <summary>
+        /// Fields:
+        /// 0 is ID
+        /// 1 is Name
+        /// 2 is Code
+        /// </summary>
+        public const string constSQLGetItemStatuses = @"
+select ID
+		, Name
+        , Code
+FROM admin.ReconItemStatus RS
+";      
+        
+        /// <summary>
+        /// Fields:
+        /// 0 is ID
+        /// 1 is Name
+        /// 2 is Code
+        /// </summary>
+        public const string constSQLGetStatuses = @"
+select ID
+		, Name
+        , Code
+FROM admin.ReconStatus RS
+";
+        /// <summary>
+        /// Fields:
+        /// 0 is ID
+        /// 1 is Name
+        /// 1 is Code
+        /// </summary>
+        public const string constSQLGetReconTypes = @"
+select ID
+		, Name
+        , Code
+FROM admin.ReconType
+";
+
+        /// <summary>
+        /// 0 is Status code
+        /// Fields:
+        /// 0 is ID
+        /// 1 is Name
+        /// </summary>
+        public const string constSQLGetStatus = @"
+select ID
+		, Name
+FROM admin.ReconStatus RS
+WHERE code = '{0}'
+";
+        /// <summary>
+        /// 0 is Process step code
+        /// Fields:
+        /// 0 is ID
+        /// 1 is Name
+        /// 2 is ReconProcessID
+        /// 3 is ReconStepID
+        /// </summary>
+        public const string constSQLGetProcessStep = @"
+select ID
+		, Name
+		, ReconProcessID
+		, ReconTypeID
+FROM admin.ReconProcessStep RPS
+WHERE code = '{0}'
+";
 
         public const string constSQLGetReconDetail = @"
 SELECT [RD].[ID]
@@ -43,7 +109,7 @@ SELECT [RS].[ID]
 	  ON RS.ReconProcessStepID = RPS.ID
 	  WHERE RPS.Code = '{0}'
 	  AND [RS].[ReconDate] = {1}
-"
+";
 
         /// <summary>
         /// 0: is Process Step code
