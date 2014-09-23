@@ -7,10 +7,10 @@
     [change_operation]                           CHAR (1)       NOT NULL,
     [DimBusinessTypeSourceKey]                   VARCHAR (255)  NOT NULL,
     [DimChannelSourceKey]                        VARCHAR (255)  NOT NULL,
-    [DimMerchantCategoryID]                      INT            NOT NULL,
+    [DimMerchantCategorySourceKey]               VARCHAR (255)  NOT NULL,
     [DimOrganizationSubscriptionStatusSourceKey] VARCHAR (255)  NOT NULL,
     [DimOrganizationVerificationStatusSourceKey] VARCHAR (255)  NOT NULL,
-    [DimPagaAccountID]                           INT            NOT NULL,
+    [DimPagaAccountSourceKey]                    INT            NOT NULL,
     [DisplayName]                                VARCHAR (100)  NULL,
     [Name]                                       VARCHAR (255)  NOT NULL,
     [OrganizationCode]                           VARCHAR (10)   NULL,
@@ -22,4 +22,6 @@
     [VATCertificationNumber]                     VARCHAR (30)   NULL,
     [WebsiteURL]                                 VARCHAR (100)  NULL
 );
+
+
 
