@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[DimGLCodeGroup] (
-    [DimGLCodeGroupID]     INT           NOT NULL,
+    [DimGLCodeGroupID]     INT    IDENTITY(1,1)       NOT NULL,
     [SourceKey]            VARCHAR (255) NOT NULL,
     [Name]                 VARCHAR (255) NOT NULL,
     [DimChartofAccountsID] INT           NOT NULL,

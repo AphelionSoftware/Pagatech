@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Airtime].[DimMobileOperator] (
-    [DimMobileOperatorID] INT           NOT NULL,
+    [DimMobileOperatorID] INT   IDENTITY(1,1)        NOT NULL,
     [SourceKey]           VARCHAR (255) NOT NULL,
     [Name]                VARCHAR (255) NOT NULL,
     [DimOrganizationID]   INT           NOT NULL,

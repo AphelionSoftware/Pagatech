@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Location].[DimLocalGovernmentArea] (
-    [DimLocalGovernmentAreaID] INT           NOT NULL,
+    [DimLocalGovernmentAreaID] INT    IDENTITY(1,1)       NOT NULL,
     [SourceKey]                VARCHAR (255) NOT NULL,
     [Name]                     VARCHAR (255) NOT NULL,
     [Code]                     VARCHAR (50)  NOT NULL,

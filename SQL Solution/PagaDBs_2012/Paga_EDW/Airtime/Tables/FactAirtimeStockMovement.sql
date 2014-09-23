@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Airtime].[FactAirtimeStockMovement] (
-    [FactAirtimeStockMovementID] INT             NOT NULL,
+    [FactAirtimeStockMovementID] INT    IDENTITY(1,1)         NOT NULL,
     [DimDateID]                  INT             NULL,
     [DimMobileOperatorID]        INT             NULL,
     [DimPagaAccountID]           INT             NULL,

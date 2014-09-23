@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Shared].[DimPagaAccount] (
-    [DimPagaAccountID]       INT           NOT NULL,
+    [DimPagaAccountID]       INT   IDENTITY(1,1)        NOT NULL,
     [SourceKey]              VARCHAR (255) NOT NULL,
     [Name]                   VARCHAR (255) NOT NULL,
     [DimPagaAccountStatusID] INT           NOT NULL,

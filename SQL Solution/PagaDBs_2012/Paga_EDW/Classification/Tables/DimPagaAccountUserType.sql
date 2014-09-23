@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Classification].[DimPagaAccountUserType] (
-    [DimPagaAccountUserTypeID] INT           NOT NULL,
+    [DimPagaAccountUserTypeID] INT   IDENTITY(1,1)        NOT NULL,
     [SourceKey]                VARCHAR (255) NOT NULL,
     [Name]                     VARCHAR (255) NOT NULL,
     [SourceKeyHash]            BIGINT        NOT NULL,

@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[FactFinancialTxDetail] (
-    [FactFinancialTxDetailID] INT             NOT NULL,
+    [FactFinancialTxDetailID] INT    IDENTITY(1,1)         NOT NULL,
     [SourceKey]               INT             NOT NULL,
     [FactFinancialTxHeaderID] INT             NOT NULL,
     [DimCreatedDateID]        INT             NOT NULL,

@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Classification].[DimProcessType] (
-    [DimProcessTypeID]      INT            NOT NULL,
+    [DimProcessTypeID]      INT    IDENTITY(1,1)        NOT NULL,
     [SourceKey]             VARCHAR (255)  NOT NULL,
     [Name]                  VARCHAR (255)  NOT NULL,
     [DimProcessTypeGroupID] INT            NOT NULL,

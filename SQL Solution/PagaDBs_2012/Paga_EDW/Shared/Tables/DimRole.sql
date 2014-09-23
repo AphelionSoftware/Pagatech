@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Shared].[DimRole] (
-    [DimRoleID]      INT            NOT NULL,
+    [DimRoleID]      INT    IDENTITY(1,1)        NOT NULL,
     [SourceKey]      VARCHAR (255)  NOT NULL,
     [Name]           VARCHAR (255)  NOT NULL,
     [TextDesciption] VARCHAR (1000) NULL,

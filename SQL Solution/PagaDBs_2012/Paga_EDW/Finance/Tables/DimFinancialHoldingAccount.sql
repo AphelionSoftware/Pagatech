@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[DimFinancialHoldingAccount] (
-    [DimFinancialHoldingAccountID] INT             NOT NULL,
+    [DimFinancialHoldingAccountID] INT   IDENTITY(1,1)          NOT NULL,
     [SourceKey]                    VARCHAR (255)   NOT NULL,
     [Name]                         VARCHAR (255)   NOT NULL,
     [AccountNumber]                VARCHAR (20)    NULL,

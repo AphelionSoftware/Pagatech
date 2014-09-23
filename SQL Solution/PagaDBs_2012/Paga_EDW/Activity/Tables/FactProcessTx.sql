@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Activity].[FactProcessTx] (
-    [FactProcessTxID]                 INT                    NOT NULL,
+    [FactProcessTxID]                 INT     IDENTITY(1,1)               NOT NULL,
     [SourceKey]                       INT                    NOT NULL,
     [DimCreatedDateID]                INT                    NOT NULL,
     [DimCreatedTimeID]                INT                    NOT NULL,

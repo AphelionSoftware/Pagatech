@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Classification].[DimFinancialTxType] (
-    [DimFinancialTxTypeID] INT           NOT NULL,
+    [DimFinancialTxTypeID] INT   IDENTITY(1,1)        NOT NULL,
     [SourceKey]            VARCHAR (255) NOT NULL,
     [Name]                 VARCHAR (255) NOT NULL,
     [FinancialTxCategory]  VARCHAR (255) NOT NULL,

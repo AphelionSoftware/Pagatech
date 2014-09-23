@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Airtime].[FactAirtimeTxDetail] (
-    [FactAirtimeTxDetailID] INT             NOT NULL,
+    [FactAirtimeTxDetailID] INT     IDENTITY(1,1)        NOT NULL,
     [SourceKey]             INT             NOT NULL,
     [FactAirtimeTxHeaderID] INT             NOT NULL,
     [DimCreatedDateID]      INT             NOT NULL,

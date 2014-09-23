@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Activity].[FactUserMonthlySnapshot] (
-    [FactUserMonthlySnapshotID] INT             NOT NULL,
+    [FactUserMonthlySnapshotID] INT       IDENTITY(1,1)      NOT NULL,
     [DimCreatedDateID]          INT             NULL,
     [DimPagaAccountID]          INT             NULL,
     [DimProcessTypeID]          INT             NULL,

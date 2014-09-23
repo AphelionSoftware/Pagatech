@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Location].[DimRegion] (
-    [DimRegionID]    INT           NOT NULL,
+    [DimRegionID]    INT     IDENTITY(1,1)      NOT NULL,
     [SourceKey]      VARCHAR (255) NOT NULL,
     [Name]           VARCHAR (255) NOT NULL,
     [DimGeoZoneID]   INT           NOT NULL,

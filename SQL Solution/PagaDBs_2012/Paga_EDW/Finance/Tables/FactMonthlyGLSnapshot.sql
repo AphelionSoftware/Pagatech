@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[FactMonthlyGLSnapshot] (
-    [FactMonthlyGLSnapshotID]       INT             NOT NULL,
+    [FactMonthlyGLSnapshotID]       INT     IDENTITY(1,1)        NOT NULL,
     [DimFinancialTxTypeID] INT             NULL,
     [DimFinancialAccountID]         INT             NULL,
     [DimAsOfDateID]                 INT             NULL,

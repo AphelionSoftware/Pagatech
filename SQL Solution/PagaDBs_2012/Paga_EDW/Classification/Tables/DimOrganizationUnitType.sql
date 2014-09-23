@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Classification].[DimOrganizationUnitType] (
-    [DimOrganizationUnitTypeID] INT           NOT NULL,
+    [DimOrganizationUnitTypeID] INT     IDENTITY(1,1)      NOT NULL,
     [SourceKey]                 VARCHAR (255) NOT NULL,
     [Name]                      VARCHAR (255) NOT NULL,
     [SourceKeyHash]             BIGINT        NOT NULL,
