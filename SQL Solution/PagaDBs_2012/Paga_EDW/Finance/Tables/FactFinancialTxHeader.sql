@@ -49,6 +49,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'DECLARE @reversals AS TABLE
 (
@@ -57,8 +59,6 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'DECLARE @reversa
 	OrigTxID  INT,
 	RelatedTxID  INT
 );
-
-
 WITH reversals AS
 (
 
@@ -80,7 +80,6 @@ WITH reversals AS
 	INNER JOIN reversals AS r
 		ON ft2.Reverses = R.FinancialTransactionId
 )
-
 INSERT INTO @reversals
 (
 	TxID,
@@ -94,8 +93,6 @@ SELECT
 	reversals.OrigTxID,
 	reversals.relatedTxID
 FROM reversals;
-
-
 SELECT 
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
 	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I''),
@@ -110,8 +107,8 @@ SELECT
 	DimOrganizationUnitLevel4SourceKey, 
 	DimUserSourceKey, 
 	FactProcessTxSourceKey, 
-	RelatedFactFinancialTxHeaderSourceKey, 
-	OriginalFactFinancialTxHeaderSourceKey, 
+	RelatedFactAirtimeTxHeaderSourceKey, 
+	OriginalFactAirtimeTxHeaderSourceKey, 
 	DimCurrencySourceKey, 
 	TextDescription, 
 	Amount, 
@@ -135,11 +132,11 @@ FROM
 		DimFinancialTxSubTypeSourceKey = FinancialTransactionSubTypeId, 
 		DimOrganizationUnitLevel4SourceKey = orgUnit.OrganizationUnitId, 
 		DimUserSourceKey = UserId, 
-		FactProcessTxSourceKey = ProcessId, 
-		RelatedFactFinancialTxHeaderSourceKey = r2.relatedTxID, 
-		OriginalFactFinancialTxHeaderSourceKey = r2.OrigTxID, 
+		FactProcessTxSourceKey = COALESCE(ProcessId, -1), 
+		RelatedFactAirtimeTxHeaderSourceKey = r2.relatedTxID, 
+		OriginalFactAirtimeTxHeaderSourceKey = r2.OrigTxID, 
 		DimCurrencySourceKey = CurrencyId, 
-		TextDescription = [Description], 
+		TextDescription = CONVERT(VARCHAR(100),[Description]), 
 		Amount, 
 		ExchangeRate, 
 		ExternalReferenceNumber,
@@ -148,12 +145,6 @@ FROM
 		ReferenceNumber, 
 		ShortCode
 	FROM dbo.financialTransaction AS ft
-	/*
-	yes, I could have used Joins here, but thinking about pulling the next
-	two sets of data using functions makes more sense to me, and it keeps the 
-	code better segregated IMHO.  I''m also able to completely lock down the columns
-	that are available to the main select, preventing a careless error.
-	*/
 	CROSS APPLY 
 	(
 		SELECT 
@@ -173,6 +164,8 @@ FROM
 			ouu.UserId = ft.UserId
 	) AS orgUnit
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader';
+
+
 
 
 

@@ -7,7 +7,7 @@
     [DimOrganizationVerificationStatusID] INT            NOT NULL,
     [DimPagaAccountID]                    INT            NOT NULL,
     [DimMerchantCategoryID]               INT            NOT NULL,
-    [DimChannelID]                 INT            NOT NULL,
+    [DimChannelID]                        INT            NOT NULL,
     [TextDesciption]                      VARCHAR (1000) NULL,
     [ReferenceNumber]                     VARCHAR (30)   NULL,
     [TaxIDNumber]                         VARCHAR (30)   NULL,
@@ -24,10 +24,12 @@
     [sys_CreatedOn]                       DATETIME       DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationID] PRIMARY KEY CLUSTERED ([DimOrganizationID] ASC),
     CONSTRAINT [fk_DimOrganization_DimBusinessTypeID] FOREIGN KEY ([DimBusinessTypeID]) REFERENCES [Classification].[DimBusinessType] ([DimBusinessTypeID]),
+    CONSTRAINT [fk_DimOrganization_DimChannelID] FOREIGN KEY ([DimChannelID]) REFERENCES [Activity].[DimChannel] ([DimChannelID]),
     CONSTRAINT [fk_DimOrganization_DimOrganizationSubscriptionStatusID] FOREIGN KEY ([DimOrganizationSubscriptionStatusID]) REFERENCES [Classification].[DimOrganizationSubscriptionStatus] ([DimOrganizationSubscriptionStatusID]),
-	CONSTRAINT [fk_DimOrganization_DimChannelID] FOREIGN KEY (DimChannelID) REFERENCES Activity.[DimChannel] ([DimChannelID]),
     CONSTRAINT [fk_DimOrganization_DimOrganizationVerificationStatusID] FOREIGN KEY ([DimOrganizationVerificationStatusID]) REFERENCES [Classification].[DimOrganizationVerificationStatus] ([DimOrganizationVerificationStatusID])
 );
+
+
 
 
 
@@ -44,6 +46,7 @@ CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganization_SourceKey]
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I''),
 	DisplayName, 
 	Name, 
 	OrganizationCode, 
@@ -58,8 +61,8 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	DimOrganizationSubscriptionStatusSourceKey, 
 	DimOrganizationVerificationStatusSourceKey,
 	DimMerchantCategorySourceKey,
-	DimProcessChannelSourceKey,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
+	DimChannelSourceKey
+	
 FROM 
 (
 	SELECT 
@@ -77,14 +80,16 @@ FROM
 		DimPagaAccountSourceKey = o.PagaAccountId, 
 		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId, 
 		DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId,
-		DimMerchantCategorySourceKey = CONVERT(VARCHAR(50), omc.MerchantCategoryId),
-		DimProcessChannelSourceKey = CONVERT(VARCHAR(50), ompc.ProcessChannelId)
+		DimMerchantCategorySourceKey = CONVERT(VARCHAR(50), COALESCE(omc.MerchantCategoryId, ''UNKNOWN'')),
+		DimChannelSourceKey = CONVERT(VARCHAR(50), ompc.ProcessChannelId)
 	FROM dbo.Organization AS o
 	INNER JOIN dbo.OrganizationMerchantCategory AS omc ON
 		o.OrganizationId = omc.OrganizationId
 	INNER JOIN dbo.OrganizationMerchantProcessChannel AS ompc ON
 		o.OrganizationId = ompc.OrganizationId
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+
+
 
 
 

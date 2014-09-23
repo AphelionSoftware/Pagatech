@@ -1,15 +1,17 @@
 ﻿CREATE TABLE [Classification].[DimFinancialTxSubType] (
     [DimFinancialTxSubTypeID] INT           NOT NULL,
-    [SourceKey]                        VARCHAR (255) NOT NULL,
-    [Name]                             VARCHAR (255) NOT NULL,
-    [SourceKeyHash]                    BIGINT        NOT NULL,
-    [DeltaHash]                        BIGINT        NOT NULL,
-    [sys_ModifiedBy]                   VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn]                   DATETIME      DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]                    VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]                    DATETIME      DEFAULT (getdate()) NOT NULL,
+    [SourceKey]               VARCHAR (255) NOT NULL,
+    [Name]                    VARCHAR (255) NOT NULL,
+    [SourceKeyHash]           BIGINT        NOT NULL,
+    [DeltaHash]               BIGINT        NOT NULL,
+    [sys_ModifiedBy]          VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]          DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]           VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]           DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimFinancialTxSubTypeID] PRIMARY KEY CLUSTERED ([DimFinancialTxSubTypeID] ASC)
 );
+
+
 
 
 GO
@@ -33,7 +35,9 @@ FROM dbo.FinancialTransactionSubType) as base_query', @level0type = N'SCHEMA', @
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialTxSubTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType';
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialTransactionSubTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType';
+
+
 
 
 GO
@@ -41,7 +45,9 @@ EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0typ
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialTxSubType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType';
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialTransactionSubType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxSubType';
+
+
 
 
 GO

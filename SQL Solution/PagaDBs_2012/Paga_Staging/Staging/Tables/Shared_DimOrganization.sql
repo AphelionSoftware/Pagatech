@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Staging].[Shared_DimOrganization] (
-    [DimMerchantCategoryID]                      INT            NOT NULL,
+    [DimMerchantCategorySourceKey]                      VARCHAR(255)            NOT NULL,
     [DimPagaAccountID]                           INT            NOT NULL,
     [DisplayName]                                VARCHAR (100)  NULL,
     [Name]                                       VARCHAR (255)  NOT NULL,

@@ -15,25 +15,26 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialTxType_SourceKey]
     ON [Classification].[DimFinancialTxType]([SourceKey] ASC);
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--DimFinancialTxType
-
-SELECT 
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I''),
 	base_query.name,
-	base_query.FinancialTxCategory,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
+	base_query.FinancialTxCategory
+	
 FROM 
 (
 	SELECT
 		FinancialTransactionTypeID AS SourceKey, 
 		CONVERT(VARCHAR(255),Description) AS Name,
-		CONVERT(VARCHAR(255),FinancialTransactionTypeGroupId) AS FinancialTxCategory
+		CONVERT(VARCHAR(255),COALESCE(FinancialTransactionTypeGroupId,''UNKNOWN'')) AS FinancialTxCategory
 	FROM dbo.FinancialTransactionType AS ftt
 	OUTER APPLY
 	(
@@ -50,8 +51,12 @@ FROM
 
 
 
+
+
 GO
-EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialTxTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxType';
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialTransactionTypeID', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxType';
+
+
 
 
 GO
@@ -59,7 +64,9 @@ EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0typ
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialTxType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxType';
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialTransactionType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimFinancialTxType';
+
+
 
 
 GO
