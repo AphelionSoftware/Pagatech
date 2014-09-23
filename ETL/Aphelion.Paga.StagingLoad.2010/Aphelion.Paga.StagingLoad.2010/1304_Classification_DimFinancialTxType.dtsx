@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/15/2014 14:28:03" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{771894B7-25E9-4FBE-B055-0BED50CF9897}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1304_Classification_DimFinancialTxType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{CDCC9FF8-F3A5-4540-BE76-98B77E210FD6}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/23/2014 13:32:58" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{0B28D0DF-5F6B-4277-BB8E-9A1DC906DA05}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1304_Classification_DimFinancialTxType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{8EBD06D9-A8F4-40C5-A77F-B2AF256E376B}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{68C7CC7D-83F3-4C42-9D99-A0D3F36F4734}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimFinancialTxType" DTS:refId="Package\DFT_Load Classification_DimFinancialTxType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{353F9F0D-56E2-48D2-AB6E-8C65ACA76925}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimFinancialTxType" DTS:refId="Package\DFT_Load Classification_DimFinancialTxType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -15,17 +15,21 @@
                   <externalMetadataColumns isUsed="True">
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="SourceKey" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="name" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].ExternalColumns[name]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="FinancialTxCategory" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].ExternalColumns[FinancialTxCategory]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]" length="50" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]" length="1" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[change_operation]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].ExternalColumns[name]" length="255" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[name]" name="name" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[name]" truncationRowDisposition="FailComponent">
                     </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].ExternalColumns[change_operation]" length="1" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[change_operation]" truncationRowDisposition="FailComponent">
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].ExternalColumns[FinancialTxCategory]" length="255" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[FinancialTxCategory]" name="FinancialTxCategory" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[FinancialTxCategory]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                   </outputColumns>
                 </output>
@@ -35,9 +39,11 @@
                   <outputColumns>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Error].Columns[SourceKey]">
                     </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Error].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Error].Columns[change_operation]">
+                    </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Error].Columns[name]" name="name" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Error].Columns[name]">
                     </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Error].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Error].Columns[change_operation]">
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Error].Columns[FinancialTxCategory]" name="FinancialTxCategory" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Error].Columns[FinancialTxCategory]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -70,6 +76,8 @@
               <inputs>
                 <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]">
                   <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="FinancialTxCategory" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[FinancialTxCategory]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]">
@@ -80,9 +88,11 @@
                   <inputColumns>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
                     </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="change_operation" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[change_operation]" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[change_operation]" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[change_operation]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="name" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[name]" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[name]">
                     </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="change_operation" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[change_operation]" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[change_operation]" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[change_operation]">
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="FinancialTxCategory" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[FinancialTxCategory]" lineageId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_GetData.Outputs[Output].Columns[FinancialTxCategory]" refId="Package\DFT_Load Classification_DimFinancialTxType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[FinancialTxCategory]">
                     </inputColumn>
                   </inputColumns>
                 </input>
@@ -125,7 +135,7 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{EDF2E610-11DD-4BEA-8397-893E376C99ED}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{A75BDC42-6CC6-49DB-8B8E-E05826AAD3F5}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">LEFT JOIN
 																		(
 																			SELECT 
@@ -137,39 +147,63 @@
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6488A5AE-1BB2-4246-868D-DD79C7D95C56}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{09E13297-D4B5-475E-AC75-6726118EEC2A}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F1182B41-9A98-48C8-AB62-DC0653427982}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DDFCE3A0-206F-428C-8B99-FBD7FC6F8A2E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3567CEE4-52A2-44EF-8404-4EE6563BCFE4}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">--DimFinancialTxType
-SELECT 
-			SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-			base_query.name,
-			change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
-		FROM 
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CB9A8F2A-12D8-4CB1-B0F3-C9603D3C0AFF}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT 
+	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I'),
+	base_query.name,
+	base_query.FinancialTxCategory
 	
-
-	(SELECT
-	FinancialTransactionTypeID AS SourceKey, 
-	 CONVERT(VARCHAR(255),Description) AS Name
-FROM dbo.FinancialTransactionType) as base_query</DTS:VariableValue>
+FROM 
+(
+	SELECT
+		FinancialTransactionTypeID AS SourceKey, 
+		CONVERT(VARCHAR(255),Description) AS Name,
+		CONVERT(VARCHAR(255),COALESCE(FinancialTransactionTypeGroupId,'UNKNOWN')) AS FinancialTxCategory
+	FROM dbo.FinancialTransactionType AS ftt
+	OUTER APPLY
+	(
+		SELECT TOP 1 
+			x.FinancialTransactionTypeGroupId
+		FROM [dbo].[FinancialTransactionTypeTransactionTypeGroup] as x
+		WHERE 
+			x.FinancialTransactionTypeId = ftt.FinancialTransactionTypeId
+		ORDER BY 
+			x.UpdatedDate DESC
+	) AS ftg
+) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1684FBE7-696C-434A-8C08-9BA427A0FDD0}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">--DimFinancialTxType
-SELECT 
-			SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-			base_query.name,
-			change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
-		FROM 
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2D723BBC-8068-413B-85E9-CE7127EB988B}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT 
+	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I'),
+	base_query.name,
+	base_query.FinancialTxCategory
 	
-
-	(SELECT
-	FinancialTransactionTypeID AS SourceKey, 
-	 CONVERT(VARCHAR(255),Description) AS Name
-FROM dbo.FinancialTransactionType) as base_query LEFT JOIN
+FROM 
+(
+	SELECT
+		FinancialTransactionTypeID AS SourceKey, 
+		CONVERT(VARCHAR(255),Description) AS Name,
+		CONVERT(VARCHAR(255),COALESCE(FinancialTransactionTypeGroupId,'UNKNOWN')) AS FinancialTxCategory
+	FROM dbo.FinancialTransactionType AS ftt
+	OUTER APPLY
+	(
+		SELECT TOP 1 
+			x.FinancialTransactionTypeGroupId
+		FROM [dbo].[FinancialTransactionTypeTransactionTypeGroup] as x
+		WHERE 
+			x.FinancialTransactionTypeId = ftt.FinancialTransactionTypeId
+		ORDER BY 
+			x.UpdatedDate DESC
+	) AS ftg
+) as base_query LEFT JOIN
 																		(
 																			SELECT 
 																				NULL AS change_log_SourceKey,

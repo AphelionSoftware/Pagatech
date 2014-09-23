@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="1102_Activity_FactProcessTx"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{8C2C7694-4F4B-4102-9B74-7E77069D4671}"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{71674955-8D20-413E-A4AE-28A4B5FA44FD}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -41,7 +41,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="BaseQuery">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT	 	SourceKey=COALESCE(base_query.SourceKey,change_log.change_log_SourceKey), 	change_operation=COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I'), 	AgentCommissionAmount,  	ATMReferenceNumber,  	CardProcessorName,  	CustomerBillerAccount,  	CustomerPhoneNumber,  	DepositNumber,  	IntegrationReferenceNumber,  	LinkedPhoneNumber,  	MerchantConfirmationCode,  	MerchantCustomerAccountNumber,  	PaymentSource,  	ProcessAmount=Amount,  	base_query.ProcessCode,  	ProcessFee=Fee,  	base_query.ReferenceNumber,  	base_query.SenderPhoneNumber,  	base_query.VerificationStatus,  	base_query.WithdrawalCode,  	DimCompletedDateID=CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)),  	DimCompletedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),':','')), 	DimCreatedDateID=CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)),   	DimCreatedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),':','')), 	DimStartedDateID=CONVERT(INT,CONVERT(VARCHAR(8),StartedTimestamp,112)),   	DimStartedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), StartedTimestamp, 114),':','')), 	DependentFactProcessTxSourceKey,  	DimAgentCommissionTypeSourceKey=AgentCommissionTypeId,  	DimApprovedByUserSourceKey,  	DimCancellationApprovedByUserSourceKey,  	DimChannelSourceKey=ProcessChannelId,  	DimInitiatingUserSourceKey=UserId, 	DimOnBehalffUserSourceKey=ForUserId,  	DimProcessStatusSourceKey=ProcessStatusId,  	DimProcessTypeSourceKey=ProcessTypeId,  	DimReceivingUserSourceKey =ToUserId, 	DimVerifiedByUserSourceKey, 	OriginalFactProcessTxSourceKey FROM ( 	SELECT 		SourceKey=p.ProcessId,p.*,pd_pivot.* 	FROM dbo.Process AS p 	CROSS APPLY 	( 		SELECT 			WithdrawalCode=MAX(CASE WHEN pd.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),CONVERT(VARCHAR(200),pd.value)) END), 			ATMReferenceNumber=MAX(CASE WHEN pd.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd.value) END), 			CardProcessorName=MAX(CASE WHEN pd.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd.value) END),  			CustomerBillerAccount=MAX(CASE WHEN pd.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd.value) END),  			CustomerPhoneNumber=MAX(CASE WHEN pd.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			DepositNumber=MAX(CASE WHEN pd.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			LinkedPhoneNumber=MAX(CASE WHEN pd.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			MerchantConfirmationCode=MAX(CASE WHEN pd.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd.value) END),  			MerchantCustomerAccountNumber=MAX(CASE WHEN pd.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			PaymentSource=MAX(CASE WHEN pd.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd.value) END),  			ReferenceNumber=MAX(CASE WHEN pd.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			RequestedProcessChannel=MAX(CASE WHEN pd.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd.value) END),  			SenderPhoneNumber=MAX(CASE WHEN pd.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END), 			DependentFactProcessTxSourceKey=MAX(CASE WHEN pd.Name='dependentProcessId' THEN CONVERT(INT,pd.value) END), 			OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd.Name='originalProcessId' THEN CONVERT(INT,pd.value) END), 			VerificationStatus=MAX(CASE WHEN pd.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd.value) END), 			DimVerifiedByUserSourceKey=MAX(CASE WHEN pd.Name='verifiedByUserId' THEN CONVERT(VARCHAR(200),pd.value) END), 			IntegrationReferenceNumber= MAX(CASE WHEN pd.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd.value) END), 			DimApprovedByUserSourceKey= MAX(CASE WHEN pd.Name='approvedByUserId' THEN CONVERT(VARCHAR(200),pd.value) END), 			DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd.Name='cancelledByUserId' THEN CONVERT(VARCHAR(200),pd.value) END) 		FROM dbo.ProcessData AS pd 		WHERE  			pd.ProcessId=p.ProcessId 	) AS pd_pivot ) AS base_query</DTS:VariableValue>
+        DTS:DataType="8">SELECT	 	SourceKey=COALESCE(base_query.SourceKey,change_log.change_log_SourceKey), 	change_operation=COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I'), 	AgentCommissionAmount,  	ATMReferenceNumber,  	CardProcessorName,  	CustomerBillerAccount,  	CustomerPhoneNumber,  	DepositNumber,  	IntegrationReferenceNumber,  	LinkedPhoneNumber,  	MerchantConfirmationCode,  	MerchantCustomerAccountNumber,  	PaymentSource,  	ProcessAmount=Amount,  	base_query.ProcessCode,  	ProcessFee=Fee,  	base_query.ReferenceNumber,  	base_query.SenderPhoneNumber,  	base_query.VerificationStatus,  	base_query.WithdrawalCode,  	DimCompletedDateID=CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)),  	DimCompletedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),':','')), 	DimCreatedDateID=CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)),   	DimCreatedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),':','')), 	DimStartedDateID=CONVERT(INT,CONVERT(VARCHAR(8),StartedTimestamp,112)),   	DimStartedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), StartedTimestamp, 114),':','')), 	DependentFactProcessTxSourceKey,  	DimAgentCommissionTypeSourceKey=AgentCommissionTypeId,  	DimApprovedByUserSourceKey,  	DimCancellationApprovedByUserSourceKey,  	DimChannelSourceKey=ProcessChannelId,  	DimInitiatingUserSourceKey=UserId, 	DimOnBehalffUserSourceKey=ForUserId,  	DimProcessStatusSourceKey=ProcessStatusId,  	DimProcessTypeSourceKey=ProcessTypeId,  	DimReceivingUserSourceKey =ToUserId, 	DimVerifiedByUserSourceKey, 	OriginalFactProcessTxSourceKey FROM ( 	SELECT 		SourceKey=p.ProcessId,p.*,pd_pivot.* 	FROM dbo.Process AS p 	CROSS APPLY 	( 		SELECT 			WithdrawalCode=MAX(CASE WHEN pd.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd.value) END), 			ATMReferenceNumber=MAX(CASE WHEN pd.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd.value) END), 			CardProcessorName=MAX(CASE WHEN pd.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd.value) END),  			CustomerBillerAccount=MAX(CASE WHEN pd.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd.value) END),  			CustomerPhoneNumber=MAX(CASE WHEN pd.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			DepositNumber=MAX(CASE WHEN pd.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			LinkedPhoneNumber=MAX(CASE WHEN pd.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			MerchantConfirmationCode=MAX(CASE WHEN pd.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd.value) END),  			MerchantCustomerAccountNumber=MAX(CASE WHEN pd.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			PaymentSource=MAX(CASE WHEN pd.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd.value) END),  			ReferenceNumber=MAX(CASE WHEN pd.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			RequestedProcessChannel=MAX(CASE WHEN pd.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd.value) END),  			SenderPhoneNumber=MAX(CASE WHEN pd.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END), 			DependentFactProcessTxSourceKey=MAX(CASE WHEN pd.Name='dependentProcessId' THEN CONVERT(INT,pd.value) END), 			OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd.Name='originalProcessId' THEN CONVERT(INT,pd.value) END), 			VerificationStatus=MAX(CASE WHEN pd.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd.value) END), 			DimVerifiedByUserSourceKey=MAX(CASE WHEN pd.Name='verifiedByUserId' THEN CONVERT(INT,pd.value) END), 			IntegrationReferenceNumber= MAX(CASE WHEN pd.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd.value) END), 			DimApprovedByUserSourceKey= MAX(CASE WHEN pd.Name='approvedByUserId' THEN CONVERT(INT,pd.value) END), 			DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd.Name='cancelledByUserId' THEN CONVERT(INT,pd.value) END) 		FROM dbo.ProcessData AS pd 		WHERE  			pd.ProcessId=p.ProcessId 	) AS pd_pivot ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -61,7 +61,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FullQueryText">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT	 	SourceKey=COALESCE(base_query.SourceKey,change_log.change_log_SourceKey), 	change_operation=COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I'), 	AgentCommissionAmount,  	ATMReferenceNumber,  	CardProcessorName,  	CustomerBillerAccount,  	CustomerPhoneNumber,  	DepositNumber,  	IntegrationReferenceNumber,  	LinkedPhoneNumber,  	MerchantConfirmationCode,  	MerchantCustomerAccountNumber,  	PaymentSource,  	ProcessAmount=Amount,  	base_query.ProcessCode,  	ProcessFee=Fee,  	base_query.ReferenceNumber,  	base_query.SenderPhoneNumber,  	base_query.VerificationStatus,  	base_query.WithdrawalCode,  	DimCompletedDateID=CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)),  	DimCompletedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),':','')), 	DimCreatedDateID=CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)),   	DimCreatedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),':','')), 	DimStartedDateID=CONVERT(INT,CONVERT(VARCHAR(8),StartedTimestamp,112)),   	DimStartedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), StartedTimestamp, 114),':','')), 	DependentFactProcessTxSourceKey,  	DimAgentCommissionTypeSourceKey=AgentCommissionTypeId,  	DimApprovedByUserSourceKey,  	DimCancellationApprovedByUserSourceKey,  	DimChannelSourceKey=ProcessChannelId,  	DimInitiatingUserSourceKey=UserId, 	DimOnBehalffUserSourceKey=ForUserId,  	DimProcessStatusSourceKey=ProcessStatusId,  	DimProcessTypeSourceKey=ProcessTypeId,  	DimReceivingUserSourceKey =ToUserId, 	DimVerifiedByUserSourceKey, 	OriginalFactProcessTxSourceKey FROM ( 	SELECT 		SourceKey=p.ProcessId,p.*,pd_pivot.* 	FROM dbo.Process AS p 	CROSS APPLY 	( 		SELECT 			WithdrawalCode=MAX(CASE WHEN pd.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),CONVERT(VARCHAR(200),pd.value)) END), 			ATMReferenceNumber=MAX(CASE WHEN pd.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd.value) END), 			CardProcessorName=MAX(CASE WHEN pd.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd.value) END),  			CustomerBillerAccount=MAX(CASE WHEN pd.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd.value) END),  			CustomerPhoneNumber=MAX(CASE WHEN pd.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			DepositNumber=MAX(CASE WHEN pd.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			LinkedPhoneNumber=MAX(CASE WHEN pd.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			MerchantConfirmationCode=MAX(CASE WHEN pd.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd.value) END),  			MerchantCustomerAccountNumber=MAX(CASE WHEN pd.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			PaymentSource=MAX(CASE WHEN pd.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd.value) END),  			ReferenceNumber=MAX(CASE WHEN pd.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			RequestedProcessChannel=MAX(CASE WHEN pd.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd.value) END),  			SenderPhoneNumber=MAX(CASE WHEN pd.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END), 			DependentFactProcessTxSourceKey=MAX(CASE WHEN pd.Name='dependentProcessId' THEN CONVERT(INT,pd.value) END), 			OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd.Name='originalProcessId' THEN CONVERT(INT,pd.value) END), 			VerificationStatus=MAX(CASE WHEN pd.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd.value) END), 			DimVerifiedByUserSourceKey=MAX(CASE WHEN pd.Name='verifiedByUserId' THEN CONVERT(VARCHAR(200),pd.value) END), 			IntegrationReferenceNumber= MAX(CASE WHEN pd.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd.value) END), 			DimApprovedByUserSourceKey= MAX(CASE WHEN pd.Name='approvedByUserId' THEN CONVERT(VARCHAR(200),pd.value) END), 			DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd.Name='cancelledByUserId' THEN CONVERT(VARCHAR(200),pd.value) END) 		FROM dbo.ProcessData AS pd 		WHERE  			pd.ProcessId=p.ProcessId 	) AS pd_pivot ) AS base_query LEFT JOIN
+        DTS:DataType="8">SELECT	 	SourceKey=COALESCE(base_query.SourceKey,change_log.change_log_SourceKey), 	change_operation=COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I'), 	AgentCommissionAmount,  	ATMReferenceNumber,  	CardProcessorName,  	CustomerBillerAccount,  	CustomerPhoneNumber,  	DepositNumber,  	IntegrationReferenceNumber,  	LinkedPhoneNumber,  	MerchantConfirmationCode,  	MerchantCustomerAccountNumber,  	PaymentSource,  	ProcessAmount=Amount,  	base_query.ProcessCode,  	ProcessFee=Fee,  	base_query.ReferenceNumber,  	base_query.SenderPhoneNumber,  	base_query.VerificationStatus,  	base_query.WithdrawalCode,  	DimCompletedDateID=CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)),  	DimCompletedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),':','')), 	DimCreatedDateID=CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)),   	DimCreatedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),':','')), 	DimStartedDateID=CONVERT(INT,CONVERT(VARCHAR(8),StartedTimestamp,112)),   	DimStartedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), StartedTimestamp, 114),':','')), 	DependentFactProcessTxSourceKey,  	DimAgentCommissionTypeSourceKey=AgentCommissionTypeId,  	DimApprovedByUserSourceKey,  	DimCancellationApprovedByUserSourceKey,  	DimChannelSourceKey=ProcessChannelId,  	DimInitiatingUserSourceKey=UserId, 	DimOnBehalffUserSourceKey=ForUserId,  	DimProcessStatusSourceKey=ProcessStatusId,  	DimProcessTypeSourceKey=ProcessTypeId,  	DimReceivingUserSourceKey =ToUserId, 	DimVerifiedByUserSourceKey, 	OriginalFactProcessTxSourceKey FROM ( 	SELECT 		SourceKey=p.ProcessId,p.*,pd_pivot.* 	FROM dbo.Process AS p 	CROSS APPLY 	( 		SELECT 			WithdrawalCode=MAX(CASE WHEN pd.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd.value) END), 			ATMReferenceNumber=MAX(CASE WHEN pd.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd.value) END), 			CardProcessorName=MAX(CASE WHEN pd.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd.value) END),  			CustomerBillerAccount=MAX(CASE WHEN pd.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd.value) END),  			CustomerPhoneNumber=MAX(CASE WHEN pd.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			DepositNumber=MAX(CASE WHEN pd.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			LinkedPhoneNumber=MAX(CASE WHEN pd.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			MerchantConfirmationCode=MAX(CASE WHEN pd.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd.value) END),  			MerchantCustomerAccountNumber=MAX(CASE WHEN pd.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			PaymentSource=MAX(CASE WHEN pd.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd.value) END),  			ReferenceNumber=MAX(CASE WHEN pd.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd.value) END),  			RequestedProcessChannel=MAX(CASE WHEN pd.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd.value) END),  			SenderPhoneNumber=MAX(CASE WHEN pd.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END), 			DependentFactProcessTxSourceKey=MAX(CASE WHEN pd.Name='dependentProcessId' THEN CONVERT(INT,pd.value) END), 			OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd.Name='originalProcessId' THEN CONVERT(INT,pd.value) END), 			VerificationStatus=MAX(CASE WHEN pd.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd.value) END), 			DimVerifiedByUserSourceKey=MAX(CASE WHEN pd.Name='verifiedByUserId' THEN CONVERT(INT,pd.value) END), 			IntegrationReferenceNumber= MAX(CASE WHEN pd.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd.value) END), 			DimApprovedByUserSourceKey= MAX(CASE WHEN pd.Name='approvedByUserId' THEN CONVERT(INT,pd.value) END), 			DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd.Name='cancelledByUserId' THEN CONVERT(INT,pd.value) END) 		FROM dbo.ProcessData AS pd 		WHERE  			pd.ProcessId=p.ProcessId 	) AS pd_pivot ) AS base_query LEFT JOIN
 																		(
 																			SELECT 
 																				NULL AS change_log_SourceKey,
@@ -449,23 +449,19 @@
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].Columns[DimApprovedByUserSourceKey]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].ExternalColumns[DimApprovedByUserSourceKey]"
-                      length="200"
                       lineageId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].Columns[DimApprovedByUserSourceKey]"
                       name="DimApprovedByUserSourceKey"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].Columns[DimCancellationApprovedByUserSourceKey]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].ExternalColumns[DimCancellationApprovedByUserSourceKey]"
-                      length="200"
                       lineageId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].Columns[DimCancellationApprovedByUserSourceKey]"
                       name="DimCancellationApprovedByUserSourceKey"
                       truncationRowDisposition="FailComponent" />
@@ -531,12 +527,10 @@
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].Columns[DimVerifiedByUserSourceKey]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].ExternalColumns[DimVerifiedByUserSourceKey]"
-                      length="200"
                       lineageId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].Columns[DimVerifiedByUserSourceKey]"
                       name="DimVerifiedByUserSourceKey"
                       truncationRowDisposition="FailComponent" />
@@ -706,15 +700,11 @@
                       name="DimAgentCommissionTypeSourceKey" />
                     <externalMetadataColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].ExternalColumns[DimApprovedByUserSourceKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
+                      dataType="i4"
                       name="DimApprovedByUserSourceKey" />
                     <externalMetadataColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].ExternalColumns[DimCancellationApprovedByUserSourceKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
+                      dataType="i4"
                       name="DimCancellationApprovedByUserSourceKey" />
                     <externalMetadataColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].ExternalColumns[DimChannelSourceKey]"
@@ -748,9 +738,7 @@
                       name="DimReceivingUserSourceKey" />
                     <externalMetadataColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].ExternalColumns[DimVerifiedByUserSourceKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
+                      dataType="i4"
                       name="DimVerifiedByUserSourceKey" />
                     <externalMetadataColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].ExternalColumns[OriginalFactProcessTxSourceKey]"
@@ -945,16 +933,12 @@
                       name="DimAgentCommissionTypeSourceKey" />
                     <outputColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Error].Columns[DimApprovedByUserSourceKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
+                      dataType="i4"
                       lineageId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Error].Columns[DimApprovedByUserSourceKey]"
                       name="DimApprovedByUserSourceKey" />
                     <outputColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Error].Columns[DimCancellationApprovedByUserSourceKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
+                      dataType="i4"
                       lineageId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Error].Columns[DimCancellationApprovedByUserSourceKey]"
                       name="DimCancellationApprovedByUserSourceKey" />
                     <outputColumn
@@ -995,9 +979,7 @@
                       name="DimReceivingUserSourceKey" />
                     <outputColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Error].Columns[DimVerifiedByUserSourceKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
+                      dataType="i4"
                       lineageId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Error].Columns[DimVerifiedByUserSourceKey]"
                       name="DimVerifiedByUserSourceKey" />
                     <outputColumn
@@ -1302,17 +1284,13 @@
                       lineageId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].Columns[DimAgentCommissionTypeSourceKey]" />
                     <inputColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[DimApprovedByUserSourceKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="200"
+                      cachedDataType="i4"
                       cachedName="DimApprovedByUserSourceKey"
                       externalMetadataColumnId="Package\DFT_Load Activity_FactProcessTx\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimApprovedByUserSourceKey]"
                       lineageId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].Columns[DimApprovedByUserSourceKey]" />
                     <inputColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[DimCancellationApprovedByUserSourceKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="200"
+                      cachedDataType="i4"
                       cachedName="DimCancellationApprovedByUserSourceKey"
                       externalMetadataColumnId="Package\DFT_Load Activity_FactProcessTx\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimCancellationApprovedByUserSourceKey]"
                       lineageId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].Columns[DimCancellationApprovedByUserSourceKey]" />
@@ -1360,9 +1338,7 @@
                       lineageId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].Columns[DimReceivingUserSourceKey]" />
                     <inputColumn
                       refId="Package\DFT_Load Activity_FactProcessTx\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[DimVerifiedByUserSourceKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="200"
+                      cachedDataType="i4"
                       cachedName="DimVerifiedByUserSourceKey"
                       externalMetadataColumnId="Package\DFT_Load Activity_FactProcessTx\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimVerifiedByUserSourceKey]"
                       lineageId="Package\DFT_Load Activity_FactProcessTx\OLEDB_GetData.Outputs[Output].Columns[DimVerifiedByUserSourceKey]" />

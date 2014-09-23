@@ -12,8 +12,8 @@
   DTS:ObjectName="001_LoadSpecficSchema"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="94"
-  DTS:VersionGUID="{EC1909AD-A87B-4701-8C88-FE1018E681DA}">
+  DTS:VersionBuild="102"
+  DTS:VersionGUID="{F2146323-9611-43B9-A520-300906576734}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -35,7 +35,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">WHERE t.TABLE_SCHEMA = 'Activity'</DTS:Property>
+        DTS:Name="ParameterValue">/*WHERE TABLE_SCHEMA = 'Classification'*/</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -120,7 +120,7 @@ FROM
 				t.TABLE_SCHEMA,
 				major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  
 			FROM INFORMATION_SCHEMA.TABLES AS t
-				WHERE t.TABLE_SCHEMA = 'Activity'
+				/*WHERE TABLE_SCHEMA = 'Classification'*/
 		) AS table_list
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
