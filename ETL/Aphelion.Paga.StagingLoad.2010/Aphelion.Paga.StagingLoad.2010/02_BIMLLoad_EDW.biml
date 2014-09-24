@@ -32,7 +32,7 @@
 	var errTable = ErrorSchema.TableNodes.Where(item => tableNamesToImport.Contains(item.Name.Split('_')[1])).First();
 
 	#>
-	<Package Name="2000_EDWLoad_<#=table.SchemaName#>_<#=table.Name#>" ConstraintMode="Parallel" ProtectionLevel="EncryptSensitiveWithUserKey"  MaxErrorCount="2000"  DelayValidation="true">
+	<Package Name="2000_EDWLoad_<#=table.SchemaName#>_<#=table.Name#>" ConstraintMode="Parallel" ProtectionLevel="DontSaveSensitive"  MaxErrorCount="2000"  DelayValidation="true">
 	<#String PackageName = "2000_EDWLoad_" +table.SchemaName +"_" + table.Name; #>
 	<Variables>
 		<Variable Name="intQueueID" DataType="Int32" >0</Variable>
