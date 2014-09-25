@@ -1,0 +1,840 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="09/24/2014 15:38:57" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{655C7828-E885-4E2B-B6AB-ED94A33323D9}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2801_EDW_Load_Airtime_FactAirtimeTxDetail" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{75CBA903-F403-4044-9729-059235DFC54D}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{4B937F2E-9581-4AFE-947F-2CC1FE6261F1}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Airtime_FactAirtimeTxDetail" DTS:refId="Package\SQL_Truncate_Error_Airtime_FactAirtimeTxDetail" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Airtime_FactAirtimeTxDetail]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{9290BD6A-6EB6-4214-B198-322252F960AE}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Airtime_FactAirtimeTxDetail" DTS:refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+          <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLE_SRC_Staging_Airtime_FactAirtimeTxDetail" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="numeric" name="CreditAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[CreditAmount]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="DebitAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[DebitAmount]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="TextDescription" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[TextDescription]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCreatedDateID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[DimCreatedDateID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCreatedTimeID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[DimCreatedTimeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimFinancialAccountSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[DimFinancialAccountSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimPagaAccountSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[DimPagaAccountSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="FactAirtimeTxHeaderSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[FactAirtimeTxHeaderSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="numeric" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[CreditAmount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[CreditAmount]" name="CreditAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[CreditAmount]" scale="2" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="numeric" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[DebitAmount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DebitAmount]" name="DebitAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DebitAmount]" scale="2" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[TextDescription]" length="200" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[TextDescription]" name="TextDescription" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[TextDescription]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[DimCreatedDateID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimCreatedDateID]" name="DimCreatedDateID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimCreatedDateID]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[DimCreatedTimeID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimCreatedTimeID]" name="DimCreatedTimeID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimCreatedTimeID]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[DimFinancialAccountSourceKey]" length="255" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimFinancialAccountSourceKey]" name="DimFinancialAccountSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimFinancialAccountSourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[DimPagaAccountSourceKey]" length="255" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimPagaAccountSourceKey]" name="DimPagaAccountSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimPagaAccountSourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[FactAirtimeTxHeaderSourceKey]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[FactAirtimeTxHeaderSourceKey]" name="FactAirtimeTxHeaderSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[FactAirtimeTxHeaderSourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].ExternalColumns[change_operation]" length="1" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[change_operation]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="numeric" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[CreditAmount]" name="CreditAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[CreditAmount]" scale="2">
+                    </outputColumn>
+                    <outputColumn dataType="numeric" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[DebitAmount]" name="DebitAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[DebitAmount]" scale="2">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[SourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="200" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[TextDescription]" name="TextDescription" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[TextDescription]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[DimCreatedDateID]" name="DimCreatedDateID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[DimCreatedDateID]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[DimCreatedTimeID]" name="DimCreatedTimeID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[DimCreatedTimeID]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[DimFinancialAccountSourceKey]" name="DimFinancialAccountSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[DimFinancialAccountSourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[DimPagaAccountSourceKey]" name="DimPagaAccountSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[DimPagaAccountSourceKey]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[FactAirtimeTxHeaderSourceKey]" name="FactAirtimeTxHeaderSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[FactAirtimeTxHeaderSourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[change_operation]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+					SELECT *
+					FROM [Staging].[Airtime_FactAirtimeTxDetail]
+				  </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">2</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}" contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5" name="LKP_DimFinancialAccountID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID" usesDispositions="true" version="6">
+              <connections>
+                <connection connectionManagerID="{89527442-0535-4045-8E32-5693BB8999E6}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="Connection manager used to access lookup data." name="OleDbConnection" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input name="OLE_SRC_Staging_Airtime_FactAirtimeTxDetail_Output_LKP_DimFinancialAccountID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Inputs[OLE_SRC_Staging_Airtime_FactAirtimeTxDetail_Output_LKP_DimFinancialAccountID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimFinancialAccountSourceKey" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimFinancialAccountSourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Inputs[OLE_SRC_Staging_Airtime_FactAirtimeTxDetail_Output_LKP_DimFinancialAccountID].Columns[DimFinancialAccountSourceKey]">
+                      <properties>
+                        <property dataType="System.String" description="Specifies the column in the reference table that a column joins." name="JoinToReferenceColumn">SourceKey</property>
+                        <property dataType="System.Null" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">
+                        </property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output errorOrTruncationOperation="Lookup" errorRowDisposition="IgnoreFailure" exclusionGroup="1" name="Match" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Outputs[Match]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Inputs[OLE_SRC_Staging_Airtime_FactAirtimeTxDetail_Output_LKP_DimFinancialAccountID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="CopyColumn" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Outputs[Match].Columns[DimFinancialAccountID]" name="DimFinancialAccountID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Outputs[Match].Columns[DimFinancialAccountID]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">DimFinancialAccountID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;" exclusionGroup="1" name="NoMatch" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Outputs[NoMatch]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Inputs[OLE_SRC_Staging_Airtime_FactAirtimeTxDetail_Output_LKP_DimFinancialAccountID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Outputs[Error]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Inputs[OLE_SRC_Staging_Airtime_FactAirtimeTxDetail_Output_LKP_DimFinancialAccountID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.String" description="Specifies the SQL statement that generates the lookup table." expressionType="Notify" name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SourceKey, DimFinancialAccountID FROM [Finance].[DimFinancialAccount]</property>
+                <property dataType="System.String" description="Specifies a SQL statement that uses parameters to generate the lookup table." expressionType="Notify" name="SqlCommandParam" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT SourceKey, DimFinancialAccountID FROM [Finance].[DimFinancialAccount]) [refTable] where [refTable].[SourceKey] = ?</property>
+                <property dataType="System.Int32" description="Specifies the type of connection used to access the reference dataset." name="ConnectionType" typeConverter="LookupConnectionType">0</property>
+                <property dataType="System.Int32" description="Specifies the cache type of the lookup table." name="CacheType" typeConverter="CacheType">0</property>
+                <property dataType="System.Int32" description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set." name="NoMatchBehavior" typeConverter="LookupNoMatchBehavior">0</property>
+                <property dataType="System.Int32" description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset." name="NoMatchCachePercentage">0</property>
+                <property dataType="System.Int32" description="Maximum Memory Usage for Reference Cache on a 32 bit platform." name="MaxMemoryUsage">25</property>
+                <property dataType="System.Int64" description="Maximum Memory Usage for Reference Cache on a 64 bit platform." name="MaxMemoryUsage64">25</property>
+                <property dataType="System.String" description="Indicates whether to reference metadata in an XML format." name="ReferenceMetadataXml">&lt;referenceMetadata&gt;
+  &lt;referenceColumns&gt;
+    &lt;referenceColumn name="SourceKey" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252" /&gt;
+    &lt;referenceColumn name="DimFinancialAccountID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+  &lt;/referenceColumns&gt;
+&lt;/referenceMetadata&gt;</property>
+                <property containsID="true" dataType="System.String" description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons." name="ParameterMap">#{Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimFinancialAccountSourceKey]};</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used." name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+            </component>
+            <component componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}" contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5" name="LKP_DimPagaAccountID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID" usesDispositions="true" version="6">
+              <connections>
+                <connection connectionManagerID="{89527442-0535-4045-8E32-5693BB8999E6}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="Connection manager used to access lookup data." name="OleDbConnection" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input name="LKP_DimFinancialAccountID_Match_LKP_DimPagaAccountID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Inputs[LKP_DimFinancialAccountID_Match_LKP_DimPagaAccountID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimPagaAccountSourceKey" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimPagaAccountSourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Inputs[LKP_DimFinancialAccountID_Match_LKP_DimPagaAccountID].Columns[DimPagaAccountSourceKey]">
+                      <properties>
+                        <property dataType="System.String" description="Specifies the column in the reference table that a column joins." name="JoinToReferenceColumn">SourceKey</property>
+                        <property dataType="System.Null" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">
+                        </property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output errorOrTruncationOperation="Lookup" errorRowDisposition="IgnoreFailure" exclusionGroup="1" name="Match" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Outputs[Match]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Inputs[LKP_DimFinancialAccountID_Match_LKP_DimPagaAccountID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="CopyColumn" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Outputs[Match].Columns[DimPagaAccountID]" name="DimPagaAccountID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Outputs[Match].Columns[DimPagaAccountID]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">DimPagaAccountID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;" exclusionGroup="1" name="NoMatch" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Outputs[NoMatch]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Inputs[LKP_DimFinancialAccountID_Match_LKP_DimPagaAccountID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Outputs[Error]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Inputs[LKP_DimFinancialAccountID_Match_LKP_DimPagaAccountID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.String" description="Specifies the SQL statement that generates the lookup table." expressionType="Notify" name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SourceKey, DimPagaAccountID FROM [Shared].[DimPagaAccount]</property>
+                <property dataType="System.String" description="Specifies a SQL statement that uses parameters to generate the lookup table." expressionType="Notify" name="SqlCommandParam" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT SourceKey, DimPagaAccountID FROM [Shared].[DimPagaAccount]) [refTable] where [refTable].[SourceKey] = ?</property>
+                <property dataType="System.Int32" description="Specifies the type of connection used to access the reference dataset." name="ConnectionType" typeConverter="LookupConnectionType">0</property>
+                <property dataType="System.Int32" description="Specifies the cache type of the lookup table." name="CacheType" typeConverter="CacheType">0</property>
+                <property dataType="System.Int32" description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set." name="NoMatchBehavior" typeConverter="LookupNoMatchBehavior">0</property>
+                <property dataType="System.Int32" description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset." name="NoMatchCachePercentage">0</property>
+                <property dataType="System.Int32" description="Maximum Memory Usage for Reference Cache on a 32 bit platform." name="MaxMemoryUsage">25</property>
+                <property dataType="System.Int64" description="Maximum Memory Usage for Reference Cache on a 64 bit platform." name="MaxMemoryUsage64">25</property>
+                <property dataType="System.String" description="Indicates whether to reference metadata in an XML format." name="ReferenceMetadataXml">&lt;referenceMetadata&gt;
+  &lt;referenceColumns&gt;
+    &lt;referenceColumn name="SourceKey" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252" /&gt;
+    &lt;referenceColumn name="DimPagaAccountID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+  &lt;/referenceColumns&gt;
+&lt;/referenceMetadata&gt;</property>
+                <property containsID="true" dataType="System.String" description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons." name="ParameterMap">#{Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimPagaAccountSourceKey]};</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used." name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+            </component>
+            <component componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}" contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5" name="LKP_FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID" usesDispositions="true" version="6">
+              <connections>
+                <connection connectionManagerID="{89527442-0535-4045-8E32-5693BB8999E6}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="Connection manager used to access lookup data." name="OleDbConnection" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input name="LKP_DimPagaAccountID_Match_LKP_FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Inputs[LKP_DimPagaAccountID_Match_LKP_FactAirtimeTxHeaderID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="FactAirtimeTxHeaderSourceKey" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[FactAirtimeTxHeaderSourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Inputs[LKP_DimPagaAccountID_Match_LKP_FactAirtimeTxHeaderID].Columns[FactAirtimeTxHeaderSourceKey]">
+                      <properties>
+                        <property dataType="System.String" description="Specifies the column in the reference table that a column joins." name="JoinToReferenceColumn">SourceKey</property>
+                        <property dataType="System.Null" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">
+                        </property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output errorOrTruncationOperation="Lookup" errorRowDisposition="RedirectRow" exclusionGroup="1" name="Match" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[Match]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Inputs[LKP_DimPagaAccountID_Match_LKP_FactAirtimeTxHeaderID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="CopyColumn" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[Match].Columns[FactAirtimeTxHeaderID]" name="FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[Match].Columns[FactAirtimeTxHeaderID]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">FactAirtimeTxHeaderID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;" exclusionGroup="1" name="NoMatch" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[NoMatch]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Inputs[LKP_DimPagaAccountID_Match_LKP_FactAirtimeTxHeaderID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[Error]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Inputs[LKP_DimPagaAccountID_Match_LKP_FactAirtimeTxHeaderID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.String" description="Specifies the SQL statement that generates the lookup table." expressionType="Notify" name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SourceKey, FactAirtimeTxHeaderID FROM [Airtime].[FactAirtimeTxHeader]</property>
+                <property dataType="System.String" description="Specifies a SQL statement that uses parameters to generate the lookup table." expressionType="Notify" name="SqlCommandParam" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT SourceKey, FactAirtimeTxHeaderID FROM [Airtime].[FactAirtimeTxHeader]) [refTable] where [refTable].[SourceKey] = ?</property>
+                <property dataType="System.Int32" description="Specifies the type of connection used to access the reference dataset." name="ConnectionType" typeConverter="LookupConnectionType">0</property>
+                <property dataType="System.Int32" description="Specifies the cache type of the lookup table." name="CacheType" typeConverter="CacheType">0</property>
+                <property dataType="System.Int32" description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set." name="NoMatchBehavior" typeConverter="LookupNoMatchBehavior">0</property>
+                <property dataType="System.Int32" description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset." name="NoMatchCachePercentage">0</property>
+                <property dataType="System.Int32" description="Maximum Memory Usage for Reference Cache on a 32 bit platform." name="MaxMemoryUsage">25</property>
+                <property dataType="System.Int64" description="Maximum Memory Usage for Reference Cache on a 64 bit platform." name="MaxMemoryUsage64">25</property>
+                <property dataType="System.String" description="Indicates whether to reference metadata in an XML format." name="ReferenceMetadataXml">&lt;referenceMetadata&gt;
+  &lt;referenceColumns&gt;
+    &lt;referenceColumn name="SourceKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+    &lt;referenceColumn name="FactAirtimeTxHeaderID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+  &lt;/referenceColumns&gt;
+&lt;/referenceMetadata&gt;</property>
+                <property containsID="true" dataType="System.String" description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons." name="ParameterMap">#{Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[FactAirtimeTxHeaderSourceKey]};</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used." name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Airtime_FactAirtimeTxDetail" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{89527442-0535-4045-8E32-5693BB8999E6}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="FactAirtimeTxDetailID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[FactAirtimeTxDetailID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[FactAirtimeTxHeaderID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCreatedDateID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[DimCreatedDateID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCreatedTimeID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[DimCreatedTimeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimFinancialAccountID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[DimFinancialAccountID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimPagaAccountID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[DimPagaAccountID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="TextDescription" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[TextDescription]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="DebitAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[DebitAmount]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="CreditAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[CreditAmount]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="MovementAmount" precision="19" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[MovementAmount]" scale="2">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="FactAirtimeTxHeaderID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[FactAirtimeTxHeaderID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[Match].Columns[FactAirtimeTxHeaderID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].Columns[FactAirtimeTxHeaderID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimPagaAccountID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[DimPagaAccountID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Outputs[Match].Columns[DimPagaAccountID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].Columns[DimPagaAccountID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimFinancialAccountID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[DimFinancialAccountID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Outputs[Match].Columns[DimFinancialAccountID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].Columns[DimFinancialAccountID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="numeric" cachedName="CreditAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[CreditAmount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[CreditAmount]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].Columns[CreditAmount]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="numeric" cachedName="DebitAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[DebitAmount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DebitAmount]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].Columns[DebitAmount]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="TextDescription" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[TextDescription]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[TextDescription]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].Columns[TextDescription]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimCreatedDateID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[DimCreatedDateID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimCreatedDateID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].Columns[DimCreatedDateID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimCreatedTimeID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].ExternalColumns[DimCreatedTimeID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimCreatedTimeID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail].Columns[DimCreatedTimeID]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Outputs[Error]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Airtime.FactAirtimeTxDetail</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Singleton_Airtime_FactAirtimeTxDetail" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{89527442-0535-4045-8E32-5693BB8999E6}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="FactAirtimeTxDetailID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[FactAirtimeTxDetailID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[FactAirtimeTxHeaderID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCreatedDateID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[DimCreatedDateID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCreatedTimeID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[DimCreatedTimeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimFinancialAccountID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[DimFinancialAccountID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimPagaAccountID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[DimPagaAccountID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="TextDescription" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[TextDescription]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="DebitAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[DebitAmount]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="CreditAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[CreditAmount]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="MovementAmount" precision="19" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[MovementAmount]" scale="2">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="FactAirtimeTxHeaderID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[FactAirtimeTxHeaderID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[Match].Columns[FactAirtimeTxHeaderID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].Columns[FactAirtimeTxHeaderID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimPagaAccountID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[DimPagaAccountID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Outputs[Match].Columns[DimPagaAccountID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].Columns[DimPagaAccountID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimFinancialAccountID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[DimFinancialAccountID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Outputs[Match].Columns[DimFinancialAccountID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].Columns[DimFinancialAccountID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="numeric" cachedName="CreditAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[CreditAmount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[CreditAmount]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].Columns[CreditAmount]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="numeric" cachedName="DebitAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[DebitAmount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DebitAmount]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].Columns[DebitAmount]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="TextDescription" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[TextDescription]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[TextDescription]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].Columns[TextDescription]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimCreatedDateID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[DimCreatedDateID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimCreatedDateID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].Columns[DimCreatedDateID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimCreatedTimeID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].ExternalColumns[DimCreatedTimeID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimCreatedTimeID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail].Columns[DimCreatedTimeID]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Outputs[Error]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Airtime.FactAirtimeTxDetail</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">1</property>
+              </properties>
+            </component>
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails" usesDispositions="true">
+              <inputs>
+                <input name="OLE_DST_Singleton_Airtime_FactAirtimeTxDetail_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeTxDetail_Error_DC_AddErrorDetails]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Output]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeTxDetail_Error_DC_AddErrorDetails]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Error]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeTxDetail_Error_DC_AddErrorDetails]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+            </component>
+            <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\RC_CountErrors">
+              <inputs>
+                <input hasSideEffects="true" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\RC_CountErrors.Outputs[Output]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Airtime_FactAirtimeTxDetail" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{62A1B24F-A693-4E26-AE0F-0898101FEDF7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[QueueID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[SSISErrorCode]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[SSISErrorColumn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[PackageName]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[ErrorType]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="CreditAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[CreditAmount]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="DebitAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[DebitAmount]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCreatedDateID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[DimCreatedDateID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCreatedTimeID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[DimCreatedTimeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimFinancialAccountSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[DimFinancialAccountSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimPagaAccountSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[DimPagaAccountSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="FactAirtimeTxHeaderSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[FactAirtimeTxHeaderSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="TextDescription" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[TextDescription]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[PackageName]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[PackageName]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[QueueID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[QueueID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[ErrorType]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="numeric" cachedName="CreditAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[CreditAmount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[CreditAmount]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[CreditAmount]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="numeric" cachedName="DebitAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[DebitAmount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DebitAmount]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[DebitAmount]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="TextDescription" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[TextDescription]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[TextDescription]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[TextDescription]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimCreatedDateID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[DimCreatedDateID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimCreatedDateID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[DimCreatedDateID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimCreatedTimeID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[DimCreatedTimeID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimCreatedTimeID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[DimCreatedTimeID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimFinancialAccountSourceKey" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[DimFinancialAccountSourceKey]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimFinancialAccountSourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[DimFinancialAccountSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimPagaAccountSourceKey" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[DimPagaAccountSourceKey]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimPagaAccountSourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[DimPagaAccountSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="FactAirtimeTxHeaderSourceKey" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[FactAirtimeTxHeaderSourceKey]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[FactAirtimeTxHeaderSourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[FactAirtimeTxHeaderSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="change_operation" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].ExternalColumns[change_operation]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[change_operation]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail].Columns[change_operation]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Outputs[Error]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Airtime_FactAirtimeTxDetail]</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+              </properties>
+            </component>
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails_FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID" usesDispositions="true">
+              <inputs>
+                <input name="LKP_FactAirtimeTxHeaderID_Error_DC_AddErrorDetails_FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Inputs[LKP_FactAirtimeTxHeaderID_Error_DC_AddErrorDetails_FactAirtimeTxHeaderID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Output]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Inputs[LKP_FactAirtimeTxHeaderID_Error_DC_AddErrorDetails_FactAirtimeTxHeaderID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Failed Lookup FactAirtimeTxHeaderID")</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Failed Lookup FactAirtimeTxHeaderID")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Error]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Inputs[LKP_FactAirtimeTxHeaderID_Error_DC_AddErrorDetails_FactAirtimeTxHeaderID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+            </component>
+            <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors_FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\RC_CountErrors_FactAirtimeTxHeaderID">
+              <inputs>
+                <input hasSideEffects="true" name="DC_AddErrorDetails_FactAirtimeTxHeaderID_Output_RC_CountErrors_FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\RC_CountErrors_FactAirtimeTxHeaderID.Inputs[DC_AddErrorDetails_FactAirtimeTxHeaderID_Output_RC_CountErrors_FactAirtimeTxHeaderID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\RC_CountErrors_FactAirtimeTxHeaderID.Outputs[Output]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\RC_CountErrors_FactAirtimeTxHeaderID.Inputs[DC_AddErrorDetails_FactAirtimeTxHeaderID_Output_RC_CountErrors_FactAirtimeTxHeaderID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{62A1B24F-A693-4E26-AE0F-0898101FEDF7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[QueueID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[SSISErrorCode]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[SSISErrorColumn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[PackageName]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[ErrorType]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="CreditAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[CreditAmount]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="numeric" name="DebitAmount" precision="18" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[DebitAmount]" scale="2">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCreatedDateID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[DimCreatedDateID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimCreatedTimeID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[DimCreatedTimeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimFinancialAccountSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[DimFinancialAccountSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimPagaAccountSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[DimPagaAccountSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="FactAirtimeTxHeaderSourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[FactAirtimeTxHeaderSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="200" name="TextDescription" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[TextDescription]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[PackageName]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Output].Columns[PackageName]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[PackageName]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[QueueID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Output].Columns[QueueID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[QueueID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[ErrorType]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="numeric" cachedName="CreditAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[CreditAmount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[CreditAmount]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[CreditAmount]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="numeric" cachedName="DebitAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[DebitAmount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DebitAmount]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[DebitAmount]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="200" cachedName="TextDescription" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[TextDescription]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[TextDescription]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[TextDescription]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimCreatedDateID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[DimCreatedDateID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimCreatedDateID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[DimCreatedDateID]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimCreatedTimeID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[DimCreatedTimeID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimCreatedTimeID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[DimCreatedTimeID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimFinancialAccountSourceKey" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[DimFinancialAccountSourceKey]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimFinancialAccountSourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[DimFinancialAccountSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimPagaAccountSourceKey" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[DimPagaAccountSourceKey]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[DimPagaAccountSourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[DimPagaAccountSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="FactAirtimeTxHeaderSourceKey" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[FactAirtimeTxHeaderSourceKey]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[FactAirtimeTxHeaderSourceKey]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[FactAirtimeTxHeaderSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="change_operation" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].ExternalColumns[change_operation]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output].Columns[change_operation]" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID].Columns[change_operation]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Outputs[Error]" synchronousInputId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Airtime_FactAirtimeTxDetail]</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+              </properties>
+            </component>
+          </components>
+          <paths>
+            <path endId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Inputs[OLE_SRC_Staging_Airtime_FactAirtimeTxDetail_Output_LKP_DimFinancialAccountID]" name="OLE_SRC_Staging_Airtime_FactAirtimeTxDetail_Output_LKP_DimFinancialAccountID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail.Paths[OLE_SRC_Staging_Airtime_FactAirtimeTxDetail_Output_LKP_DimFinancialAccountID]" startId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_SRC_Staging_Airtime_FactAirtimeTxDetail.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Inputs[LKP_DimFinancialAccountID_Match_LKP_DimPagaAccountID]" name="LKP_DimFinancialAccountID_Match_LKP_DimPagaAccountID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail.Paths[LKP_DimFinancialAccountID_Match_LKP_DimPagaAccountID]" startId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimFinancialAccountID.Outputs[Match]">
+            </path>
+            <path endId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Inputs[LKP_DimPagaAccountID_Match_LKP_FactAirtimeTxHeaderID]" name="LKP_DimPagaAccountID_Match_LKP_FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail.Paths[LKP_DimPagaAccountID_Match_LKP_FactAirtimeTxHeaderID]" startId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_DimPagaAccountID.Outputs[Match]">
+            </path>
+            <path endId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Inputs[LKP_FactAirtimeTxHeaderID_Error_DC_AddErrorDetails_FactAirtimeTxHeaderID]" name="LKP_FactAirtimeTxHeaderID_Error_DC_AddErrorDetails_FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail.Paths[LKP_FactAirtimeTxHeaderID_Error_DC_AddErrorDetails_FactAirtimeTxHeaderID]" startId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[Error]">
+            </path>
+            <path endId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\RC_CountErrors_FactAirtimeTxHeaderID.Inputs[DC_AddErrorDetails_FactAirtimeTxHeaderID_Output_RC_CountErrors_FactAirtimeTxHeaderID]" name="DC_AddErrorDetails_FactAirtimeTxHeaderID_Output_RC_CountErrors_FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail.Paths[DC_AddErrorDetails_FactAirtimeTxHeaderID_Output_RC_CountErrors_FactAirtimeTxHeaderID]" startId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails_FactAirtimeTxHeaderID.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID.Inputs[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID]" name="RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail.Paths[RC_CountErrors_FactAirtimeTxHeaderID_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail_FactAirtimeTxHeaderID]" startId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\RC_CountErrors_FactAirtimeTxHeaderID.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Inputs[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail]" name="LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail.Paths[LKP_FactAirtimeTxHeaderID_Match_OLE_DST_Airtime_FactAirtimeTxDetail]" startId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\LKP_FactAirtimeTxHeaderID.Outputs[Match]">
+            </path>
+            <path endId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Inputs[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail]" name="OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail.Paths[OLE_DST_Airtime_FactAirtimeTxDetail_Error_OLE_DST_Singleton_Airtime_FactAirtimeTxDetail]" startId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Airtime_FactAirtimeTxDetail.Outputs[Error]">
+            </path>
+            <path endId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeTxDetail_Error_DC_AddErrorDetails]" name="OLE_DST_Singleton_Airtime_FactAirtimeTxDetail_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail.Paths[OLE_DST_Singleton_Airtime_FactAirtimeTxDetail_Error_DC_AddErrorDetails]" startId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Singleton_Airtime_FactAirtimeTxDetail.Outputs[Error]">
+            </path>
+            <path endId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail.Paths[DC_AddErrorDetails_Output_RC_CountErrors]" startId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\DC_AddErrorDetails.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\OLE_DST_Error_Airtime_FactAirtimeTxDetail.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail]" name="RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail" refId="Package\DFT_Load_Airtime_FactAirtimeTxDetail.Paths[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxDetail]" startId="Package\DFT_Load_Airtime_FactAirtimeTxDetail\RC_CountErrors.Outputs[Output]">
+            </path>
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{8C0DD2CC-74D3-49E9-AB39-9E3D61FFA1A7}" DTS:From="Package\SQL_Truncate_Error_Airtime_FactAirtimeTxDetail" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Airtime_FactAirtimeTxDetail_To_DFT_Load_Airtime_FactAirtimeTxDetail" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Airtime_FactAirtimeTxDetail_To_DFT_Load_Airtime_FactAirtimeTxDetail]" DTS:To="Package\DFT_Load_Airtime_FactAirtimeTxDetail">
+    </DTS:PrecedenceConstraint>
+  </DTS:PrecedenceConstraints>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BB7EA76F-0817-4E48-8103-BFCE424DDF75}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{113E2502-9113-4123-90B0-D96F3CC57D50}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{335CD7BB-A8F2-4704-ABEB-348C69E4C323}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+      <DTS:VariableValue DTS:DataType="8">2801_EDW_Load_Airtime_FactAirtimeTxDetail</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>
