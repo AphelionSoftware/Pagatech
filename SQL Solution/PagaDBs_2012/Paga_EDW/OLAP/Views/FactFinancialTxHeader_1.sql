@@ -140,10 +140,37 @@ SELECT
 	,[DimChannel_5765008702733879604].[Name] AS [DimChannelName]
 	,[DimChannel_5765008702733879604].[SourceKey] AS [DimChannelSourceKey]
 	,[DimChannel_5765008702733879604].[TextDesciption] AS [DimChannelTextDesciption]
+	,[DimMerchantCategory_3724966535615853444].[Name] AS [DimMerchantCategoryName]
+	,[DimMerchantCategory_3724966535615853444].[SourceKey] AS [DimMerchantCategorySourceKey]
 	,[DimOrganizationSubscriptionStatus_889771292917963984].[Name] AS [DimOrganizationSubscriptionStatusName]
 	,[DimOrganizationSubscriptionStatus_889771292917963984].[SourceKey] AS [DimOrganizationSubscriptionStatusSourceKey]
 	,[DimOrganizationVerificationStatus_5302628643283387452].[Name] AS [DimOrganizationVerificationStatusName]
 	,[DimOrganizationVerificationStatus_5302628643283387452].[SourceKey] AS [DimOrganizationVerificationStatusSourceKey]
+	,[DimPagaAccount_1227259165507783498].[BankingStatus] AS [DimPagaAccountBankingStatus]
+	,[DimPagaAccount_1227259165507783498].[CreatedDateID] AS [DimPagaAccountCreatedDateID]
+	,[DimPagaAccount_1227259165507783498].[DimPagaAccountStatusID] AS [DimPagaAccountStatusID]
+	,[DimPagaAccount_1227259165507783498].[ExternalAccountNumber] AS [DimPagaAccountExternalAccountNumber]
+	,[DimPagaAccount_1227259165507783498].[hasOnlineAccount] AS [DimPagaAccounthasOnlineAccount]
+	,[DimPagaAccount_1227259165507783498].[IsActive] AS [DimPagaAccountIsActive]
+	,[DimPagaAccount_1227259165507783498].[IsAffiliate] AS [DimPagaAccountIsAffiliate]
+	,[DimPagaAccount_1227259165507783498].[IsAgent] AS [DimPagaAccountIsAgent]
+	,[DimPagaAccount_1227259165507783498].[IsBank] AS [DimPagaAccountIsBank]
+	,[DimPagaAccount_1227259165507783498].[IsBusiness] AS [DimPagaAccountIsBusiness]
+	,[DimPagaAccount_1227259165507783498].[IsCardProcessor] AS [DimPagaAccountIsCardProcessor]
+	,[DimPagaAccount_1227259165507783498].[IsCashCollector] AS [DimPagaAccountIsCashCollector]
+	,[DimPagaAccount_1227259165507783498].[IsCustomer] AS [DimPagaAccountIsCustomer]
+	,[DimPagaAccount_1227259165507783498].[IsEnabled] AS [DimPagaAccountIsEnabled]
+	,[DimPagaAccount_1227259165507783498].[IsMerchant] AS [DimPagaAccountIsMerchant]
+	,[DimPagaAccount_1227259165507783498].[IsMobileOperator] AS [DimPagaAccountIsMobileOperator]
+	,[DimPagaAccount_1227259165507783498].[IsPaga] AS [DimPagaAccountIsPaga]
+	,[DimPagaAccount_1227259165507783498].[IsRemittanceProcessor] AS [DimPagaAccountIsRemittanceProcessor]
+	,[DimPagaAccount_1227259165507783498].[IsServiceAggregator] AS [DimPagaAccountIsServiceAggregator]
+	,[DimPagaAccount_1227259165507783498].[Name] AS [DimPagaAccountName]
+	,[DimPagaAccount_1227259165507783498].[PagaAccountNumber] AS [DimPagaAccountPagaAccountNumber]
+	,[DimPagaAccount_1227259165507783498].[RegistrationDateID] AS [DimPagaAccountRegistrationDateID]
+	,[DimPagaAccount_1227259165507783498].[SourceKey] AS [DimPagaAccountSourceKey]
+	,[DimPagaAccountStatus_7140694849402520097].[Name] AS [DimPagaAccountStatusName]
+	,[DimPagaAccountStatus_7140694849402520097].[SourceKey] AS [DimPagaAccountStatusSourceKey]
 	,[DimOrganizationUnitType_926020212398837421].[Name] AS [DimOrganizationUnitTypeName]
 	,[DimOrganizationUnitType_926020212398837421].[SourceKey] AS [DimOrganizationUnitTypeSourceKey]
 	,[DimUser_5087606633587196461].[CreatedDateID] AS [DimUserCreatedDateID]
@@ -159,31 +186,6 @@ SELECT
 	,[DimUser_5087606633587196461].[PhoneNumber] AS [DimUserPhoneNumber]
 	,[DimUser_5087606633587196461].[Sex] AS [DimUserSex]
 	,[DimUser_5087606633587196461].[SourceKey] AS [DimUserSourceKey]
-	,[DimPagaAccount_4512684687473794082].[BankingStatus] AS [DimPagaAccountBankingStatus]
-	,[DimPagaAccount_4512684687473794082].[CreatedDateID] AS [DimPagaAccountCreatedDateID]
-	,[DimPagaAccount_4512684687473794082].[DimPagaAccountStatusID] AS [DimPagaAccountStatusID]
-	,[DimPagaAccount_4512684687473794082].[ExternalAccountNumber] AS [DimPagaAccountExternalAccountNumber]
-	,[DimPagaAccount_4512684687473794082].[hasOnlineAccount] AS [DimPagaAccounthasOnlineAccount]
-	,[DimPagaAccount_4512684687473794082].[IsActive] AS [DimPagaAccountIsActive]
-	,[DimPagaAccount_4512684687473794082].[IsAffiliate] AS [DimPagaAccountIsAffiliate]
-	,[DimPagaAccount_4512684687473794082].[IsAgent] AS [DimPagaAccountIsAgent]
-	,[DimPagaAccount_4512684687473794082].[IsBank] AS [DimPagaAccountIsBank]
-	,[DimPagaAccount_4512684687473794082].[IsBusiness] AS [DimPagaAccountIsBusiness]
-	,[DimPagaAccount_4512684687473794082].[IsCardProcessor] AS [DimPagaAccountIsCardProcessor]
-	,[DimPagaAccount_4512684687473794082].[IsCashCollector] AS [DimPagaAccountIsCashCollector]
-	,[DimPagaAccount_4512684687473794082].[IsCustomer] AS [DimPagaAccountIsCustomer]
-	,[DimPagaAccount_4512684687473794082].[IsEnabled] AS [DimPagaAccountIsEnabled]
-	,[DimPagaAccount_4512684687473794082].[IsMerchant] AS [DimPagaAccountIsMerchant]
-	,[DimPagaAccount_4512684687473794082].[IsMobileOperator] AS [DimPagaAccountIsMobileOperator]
-	,[DimPagaAccount_4512684687473794082].[IsPaga] AS [DimPagaAccountIsPaga]
-	,[DimPagaAccount_4512684687473794082].[IsRemittanceProcessor] AS [DimPagaAccountIsRemittanceProcessor]
-	,[DimPagaAccount_4512684687473794082].[IsServiceAggregator] AS [DimPagaAccountIsServiceAggregator]
-	,[DimPagaAccount_4512684687473794082].[Name] AS [DimPagaAccountName]
-	,[DimPagaAccount_4512684687473794082].[PagaAccountNumber] AS [DimPagaAccountPagaAccountNumber]
-	,[DimPagaAccount_4512684687473794082].[RegistrationDateID] AS [DimPagaAccountRegistrationDateID]
-	,[DimPagaAccount_4512684687473794082].[SourceKey] AS [DimPagaAccountSourceKey]
-	,[DimPagaAccountStatus_7452431639649066059].[Name] AS [DimPagaAccountStatusName]
-	,[DimPagaAccountStatus_7452431639649066059].[SourceKey] AS [DimPagaAccountStatusSourceKey]
 	,[FactProcessTx_2155424918854536773].[AgentCommissionAmount] AS [FactProcessTxAgentCommissionAmount]
 	,[FactProcessTx_2155424918854536773].[ATMReferenceNumber] AS [FactProcessTxATMReferenceNumber]
 	,[FactProcessTx_2155424918854536773].[CardProcessorName] AS [FactProcessTxCardProcessorName]
@@ -281,6 +283,10 @@ FROM [Finance].[FactFinancialTxHeader] AS [FactFinancialTxHeader_751519839787341
     
         ON  [DimOrganization_5325699364756882905].[DimChannelID] = [DimChannel_5765008702733879604].[DimChannelID]
 
+    JOIN [Classification].[DimMerchantCategory] AS [DimMerchantCategory_3724966535615853444] 
+    
+        ON  [DimOrganization_5325699364756882905].[DimMerchantCategoryID] = [DimMerchantCategory_3724966535615853444].[DimMerchantCategoryID]
+
     JOIN [Classification].[DimOrganizationSubscriptionStatus] AS [DimOrganizationSubscriptionStatus_889771292917963984] 
     
         ON  [DimOrganization_5325699364756882905].[DimOrganizationSubscriptionStatusID] = [DimOrganizationSubscriptionStatus_889771292917963984].[DimOrganizationSubscriptionStatusID]
@@ -288,6 +294,14 @@ FROM [Finance].[FactFinancialTxHeader] AS [FactFinancialTxHeader_751519839787341
     JOIN [Classification].[DimOrganizationVerificationStatus] AS [DimOrganizationVerificationStatus_5302628643283387452] 
     
         ON  [DimOrganization_5325699364756882905].[DimOrganizationVerificationStatusID] = [DimOrganizationVerificationStatus_5302628643283387452].[DimOrganizationVerificationStatusID]
+
+    JOIN [Shared].[DimPagaAccount] AS [DimPagaAccount_1227259165507783498] 
+    
+    JOIN [Classification].[DimPagaAccountStatus] AS [DimPagaAccountStatus_7140694849402520097] 
+    
+        ON  [DimPagaAccount_1227259165507783498].[DimPagaAccountStatusID] = [DimPagaAccountStatus_7140694849402520097].[DimPagaAccountStatusID]
+
+        ON  [DimOrganization_5325699364756882905].[DimPagaAccountID] = [DimPagaAccount_1227259165507783498].[DimPagaAccountID]
 
         ON  [DimOrganizationUnitLevel1_321263415194416456].[DimOrganizationID] = [DimOrganization_5325699364756882905].[DimOrganizationID]
 
@@ -353,6 +367,10 @@ FROM [Finance].[FactFinancialTxHeader] AS [FactFinancialTxHeader_751519839787341
     
         ON  [DimOrganization_6909454691673734420].[DimChannelID] = [DimChannel_5620644154320001031].[DimChannelID]
 
+    JOIN [Classification].[DimMerchantCategory] AS [DimMerchantCategory_8250709279158695] 
+    
+        ON  [DimOrganization_6909454691673734420].[DimMerchantCategoryID] = [DimMerchantCategory_8250709279158695].[DimMerchantCategoryID]
+
     JOIN [Classification].[DimOrganizationSubscriptionStatus] AS [DimOrganizationSubscriptionStatus_7918796684033604757] 
     
         ON  [DimOrganization_6909454691673734420].[DimOrganizationSubscriptionStatusID] = [DimOrganizationSubscriptionStatus_7918796684033604757].[DimOrganizationSubscriptionStatusID]
@@ -360,6 +378,10 @@ FROM [Finance].[FactFinancialTxHeader] AS [FactFinancialTxHeader_751519839787341
     JOIN [Classification].[DimOrganizationVerificationStatus] AS [DimOrganizationVerificationStatus_7428858698565691663] 
     
         ON  [DimOrganization_6909454691673734420].[DimOrganizationVerificationStatusID] = [DimOrganizationVerificationStatus_7428858698565691663].[DimOrganizationVerificationStatusID]
+
+    JOIN [Shared].[DimPagaAccount] AS [DimPagaAccount_3292518999294506719] 
+    
+        ON  [DimOrganization_6909454691673734420].[DimPagaAccountID] = [DimPagaAccount_3292518999294506719].[DimPagaAccountID]
 
         ON  [DimOrganizationUnitLevel1_1221682024612570107].[DimOrganizationID] = [DimOrganization_6909454691673734420].[DimOrganizationID]
 
@@ -1595,7 +1617,9 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @lev
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'3', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountStatusSourceKey';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'7', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountStatusSourceKey';
+
+
 
 
 GO
@@ -1615,7 +1639,9 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'3', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountStatusName';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'7', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountStatusName';
+
+
 
 
 GO
@@ -1635,7 +1661,9 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @lev
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountSourceKey';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountSourceKey';
+
+
 
 
 GO
@@ -1651,7 +1679,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'RegistrationDate
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountRegistrationDateID';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountRegistrationDateID';
+
+
 
 
 GO
@@ -1671,7 +1701,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'PagaAccountNumbe
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountPagaAccountNumber';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountPagaAccountNumber';
+
+
 
 
 GO
@@ -1695,7 +1727,9 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountName';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountName';
+
+
 
 
 GO
@@ -1711,7 +1745,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsServiceAggrega
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsServiceAggregator';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsServiceAggregator';
+
+
 
 
 GO
@@ -1727,7 +1763,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsRemittanceProc
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsRemittanceProcessor';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsRemittanceProcessor';
+
+
 
 
 GO
@@ -1743,7 +1781,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsPaga', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsPaga';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsPaga';
+
+
 
 
 GO
@@ -1759,7 +1799,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsMobileOperator
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsMobileOperator';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsMobileOperator';
+
+
 
 
 GO
@@ -1775,7 +1817,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsMerchant', @le
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsMerchant';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsMerchant';
+
+
 
 
 GO
@@ -1791,7 +1835,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsEnabled', @lev
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsEnabled';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsEnabled';
+
+
 
 
 GO
@@ -1811,7 +1857,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsCustomer', @le
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsCustomer';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsCustomer';
+
+
 
 
 GO
@@ -1827,7 +1875,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsCashCollector'
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsCashCollector';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsCashCollector';
+
+
 
 
 GO
@@ -1843,7 +1893,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsCardProcessor'
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsCardProcessor';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsCardProcessor';
+
+
 
 
 GO
@@ -1859,7 +1911,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsBusiness', @le
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsBusiness';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsBusiness';
+
+
 
 
 GO
@@ -1875,7 +1929,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsBank', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsBank';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsBank';
+
+
 
 
 GO
@@ -1891,7 +1947,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsAgent', @level
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsAgent';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsAgent';
+
+
 
 
 GO
@@ -1907,7 +1965,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsAffiliate', @l
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsAffiliate';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsAffiliate';
+
+
 
 
 GO
@@ -1923,7 +1983,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsActive', @leve
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsActive';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountIsActive';
+
+
 
 
 GO
@@ -1943,7 +2005,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'hasOnlineAccount
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccounthasOnlineAccount';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccounthasOnlineAccount';
+
+
 
 
 GO
@@ -1963,7 +2027,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'ExternalAccountN
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountExternalAccountNumber';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountExternalAccountNumber';
+
+
 
 
 GO
@@ -1983,7 +2049,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimPagaAccountSt
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountStatusID';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountStatusID';
+
+
 
 
 GO
@@ -2003,7 +2071,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'CreatedDateID', 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountCreatedDateID';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountCreatedDateID';
+
+
 
 
 GO
@@ -2019,7 +2089,9 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'BankingStatus', 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'2', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountBankingStatus';
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimPagaAccountBankingStatus';
+
+
 
 
 GO
@@ -4732,4 +4804,36 @@ EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Amount', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactFinancialTxHeaderAmount';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimMerchantCategory', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimMerchantCategorySourceKey';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimMerchantCategorySourceKey';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'SourceKey', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimMerchantCategorySourceKey';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimMerchantCategorySourceKey';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimMerchantCategory', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimMerchantCategoryName';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Finance', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimMerchantCategoryName';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Name', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimMerchantCategoryName';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'6', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimMerchantCategoryName';
 
