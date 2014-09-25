@@ -22,6 +22,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialTransactionItem', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxDetail';
 
@@ -71,4 +73,8 @@ FROM
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'10', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxDetail';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2800', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxDetail';
 

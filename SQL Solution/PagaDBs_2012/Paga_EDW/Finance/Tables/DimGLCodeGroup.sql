@@ -17,6 +17,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGLCodeGroup_SourceKey]
     ON [Finance].[DimGLCodeGroup]([SourceKey] ASC);
@@ -124,4 +126,8 @@ WITH cte AS
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCodeGroup';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2100', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCodeGroup';
 

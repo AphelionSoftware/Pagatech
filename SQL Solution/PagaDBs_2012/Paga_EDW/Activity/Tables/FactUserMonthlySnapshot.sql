@@ -27,6 +27,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot';
 
@@ -89,4 +91,8 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ReceivedTxCoun
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'5', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2900', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot';
 

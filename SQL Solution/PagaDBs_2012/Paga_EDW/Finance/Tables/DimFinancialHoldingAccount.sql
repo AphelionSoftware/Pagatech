@@ -18,6 +18,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialHoldingAccount_SourceKey]
     ON [Finance].[DimFinancialHoldingAccount]([SourceKey] ASC);
@@ -60,4 +62,8 @@ FROM
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialHoldingAccount';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2000', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialHoldingAccount';
 

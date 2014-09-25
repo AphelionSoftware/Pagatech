@@ -21,6 +21,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitLevel3_SourceKey]
     ON [Shared].[DimOrganizationUnitLevel3]([SourceKey] ASC);
@@ -139,4 +141,8 @@ WITH cte AS
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'5', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel3';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2400', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel3';
 

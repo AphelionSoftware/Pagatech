@@ -1,4 +1,4 @@
-CREATE TABLE [Activity].[FactProcessTx] (
+﻿CREATE TABLE [Activity].[FactProcessTx] (
     [FactProcessTxID]                 INT                    IDENTITY (1, 1) NOT NULL,
     [SourceKey]                       INT                    NOT NULL,
     [DimCreatedDateID]                INT                    NOT NULL,
@@ -63,6 +63,8 @@ CREATE TABLE [Activity].[FactProcessTx] (
 
 
 
+
+
 GO
 
 
@@ -82,4 +84,8 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'SourceTable', @value=N'dbo.Process' , @level0type=N'SCHEMA',@level0name=N'Activity', @level1type=N'TABLE',@level1name=N'FactProcessTx'
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'8', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2700', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx';
 

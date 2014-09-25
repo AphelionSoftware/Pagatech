@@ -17,6 +17,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
@@ -58,4 +60,8 @@ EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.ProcessTyp
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessType';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2100', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessType';
 

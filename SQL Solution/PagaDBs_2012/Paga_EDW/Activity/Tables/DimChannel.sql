@@ -17,6 +17,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimChannel_SourceKey]
     ON [Activity].[DimChannel]([SourceKey] ASC);
@@ -72,4 +74,8 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'ProcessChannelID
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'DimChannel';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2000', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'DimChannel';
 

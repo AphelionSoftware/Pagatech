@@ -42,6 +42,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganization_SourceKey]
     ON [Shared].[DimOrganization]([SourceKey] ASC);
@@ -176,4 +178,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'2', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2110', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
 

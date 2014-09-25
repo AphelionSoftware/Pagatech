@@ -17,6 +17,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGeoZone_SourceKey]
     ON [Location].[DimGeoZone]([SourceKey] ASC);
@@ -72,4 +74,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimGeoZone';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2100', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimGeoZone';
 

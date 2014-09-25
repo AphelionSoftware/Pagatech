@@ -1,4 +1,4 @@
-CREATE TABLE [Finance].[FactFinancialTxHeader] (
+﻿CREATE TABLE [Finance].[FactFinancialTxHeader] (
     [FactFinancialTxHeaderID]         INT             IDENTITY (1, 1) NOT NULL,
     [SourceKey]                       INT             NOT NULL,
     [DimCreatedDateID]                INT             NOT NULL,
@@ -39,6 +39,8 @@ CREATE TABLE [Finance].[FactFinancialTxHeader] (
     CONSTRAINT [fk_FactFinancialTxHeader_OriginalTransactionID] FOREIGN KEY ([OriginalFactFinancialTxHeaderID]) REFERENCES [Finance].[FactFinancialTxHeader] ([FactFinancialTxHeaderID]),
     CONSTRAINT [fk_FactFinancialTxHeader_RelatedTransactionID] FOREIGN KEY ([RelatedFactFinancialTxHeaderID]) REFERENCES [Finance].[FactFinancialTxHeader] ([FactFinancialTxHeaderID])
 );
+
+
 
 
 
@@ -241,4 +243,8 @@ GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCreatedDateID', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimCreatedDateID';
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'9', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2700', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader';
 

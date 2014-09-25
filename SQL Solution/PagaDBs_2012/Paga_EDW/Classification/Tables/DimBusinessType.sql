@@ -14,6 +14,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimBusinessType_SourceKey]
     ON [Classification].[DimBusinessType]([SourceKey] ASC);
@@ -60,4 +62,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimBusinessType';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2000', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimBusinessType';
 

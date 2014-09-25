@@ -17,6 +17,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimCity_SourceKey]
     ON [Location].[DimCity]([SourceKey] ASC);
@@ -68,4 +70,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'4', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCity';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2400', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCity';
 

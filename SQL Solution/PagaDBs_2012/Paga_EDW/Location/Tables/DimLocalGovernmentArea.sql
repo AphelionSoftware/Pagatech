@@ -17,6 +17,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
@@ -63,4 +65,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'3', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2300', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea';
 
