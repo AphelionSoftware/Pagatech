@@ -71,5 +71,5 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'ProcessChannelID
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'DimChannel';
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'DimChannel';
 

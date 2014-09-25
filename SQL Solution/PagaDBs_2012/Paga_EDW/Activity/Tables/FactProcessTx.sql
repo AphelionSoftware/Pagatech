@@ -81,5 +81,5 @@ GO
 
 EXEC sys.sp_addextendedproperty @name=N'SourceTable', @value=N'dbo.Process' , @level0type=N'SCHEMA',@level0name=N'Activity', @level1type=N'TABLE',@level1name=N'FactProcessTx'
 GO
-EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'8', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx';
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'8', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx';
 

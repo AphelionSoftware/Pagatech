@@ -70,5 +70,5 @@ FROM
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'10', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxDetail';
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'10', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxDetail';
 
