@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:56" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{B71AF860-2326-47BF-AFD1-A5B57C7EEF07}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2402_EDW_Load_Location_DimCity" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{9C53E861-7A67-4A8F-8ED6-9BF2BB315D75}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:40" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{2A49491C-4CB6-42E4-9BE2-068A2B4C4663}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2402_EDW_Load_Location_DimCity" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{81F60251-F6D3-4838-B606-B64E666979C4}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{8798AEDE-712D-43FB-9FC9-2C22DE2823F7}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Location_DimCity" DTS:refId="Package\SQL_Truncate_Error_Location_DimCity" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{44207E07-AFB5-4BAF-A02A-C056D60323E5}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Location_DimCity" DTS:refId="Package\SQL_Truncate_Error_Location_DimCity" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Location_DimCity]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Location_DimCity]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{50A9F91B-1BE6-4C13-94CD-5EF596452236}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Location_DimCity" DTS:refId="Package\DFT_Load_Location_DimCity" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{CA229659-1BF2-4A84-A6C0-F54BFFA02BED}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Location_DimCity" DTS:refId="Package\DFT_Load_Location_DimCity" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -297,6 +297,12 @@
                 <input name="OLE_DST_Singleton_Location_DimCity_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Location_DimCity_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Location_DimCity\OLE_DST_Singleton_Location_DimCity.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Location_DimCity_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Location_DimCity\OLE_DST_Singleton_Location_DimCity.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Location_DimCity_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -320,6 +326,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Location_DimCity\OLE_DST_Singleton_Location_DimCity.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Location_DimCity.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Location_DimCity\OLE_DST_Singleton_Location_DimCity.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Location_DimCity.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -389,6 +407,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCity].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCity].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCity].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCity].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCity].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCity].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCity].ExternalColumns[Name]" lineageId="Package\DFT_Load_Location_DimCity\OLE_SRC_Staging_Location_DimCity.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCity].Columns[Name]">
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="PostalCode" externalMetadataColumnId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCity].ExternalColumns[PostalCode]" lineageId="Package\DFT_Load_Location_DimCity\OLE_SRC_Staging_Location_DimCity.Outputs[Output].Columns[PostalCode]" refId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCity].Columns[PostalCode]">
@@ -435,6 +457,12 @@
                 <input name="LKP_DimLocalGovernmentAreaID_Error_DC_AddErrorDetails_DimLocalGovernmentAreaID" refId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails_DimLocalGovernmentAreaID.Inputs[LKP_DimLocalGovernmentAreaID_Error_DC_AddErrorDetails_DimLocalGovernmentAreaID]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Location_DimCity\LKP_DimLocalGovernmentAreaID.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails_DimLocalGovernmentAreaID.Inputs[LKP_DimLocalGovernmentAreaID_Error_DC_AddErrorDetails_DimLocalGovernmentAreaID].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Location_DimCity\LKP_DimLocalGovernmentAreaID.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails_DimLocalGovernmentAreaID.Inputs[LKP_DimLocalGovernmentAreaID_Error_DC_AddErrorDetails_DimLocalGovernmentAreaID].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -458,6 +486,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Failed Lookup DimLocalGovernmentAreaID")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Failed Lookup DimLocalGovernmentAreaID")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails_DimLocalGovernmentAreaID.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails_DimLocalGovernmentAreaID.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Location_DimCity\LKP_DimLocalGovernmentAreaID.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails_DimLocalGovernmentAreaID.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails_DimLocalGovernmentAreaID.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Location_DimCity\LKP_DimLocalGovernmentAreaID.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -527,6 +567,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID.Inputs[RC_CountErrors_DimLocalGovernmentAreaID_Output_OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails_DimLocalGovernmentAreaID.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID.Inputs[RC_CountErrors_DimLocalGovernmentAreaID_Output_OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID.Inputs[RC_CountErrors_DimLocalGovernmentAreaID_Output_OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails_DimLocalGovernmentAreaID.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID.Inputs[RC_CountErrors_DimLocalGovernmentAreaID_Output_OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID.Inputs[RC_CountErrors_DimLocalGovernmentAreaID_Output_OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Location_DimCity\DC_AddErrorDetails_DimLocalGovernmentAreaID.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID.Inputs[RC_CountErrors_DimLocalGovernmentAreaID_Output_OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID.Inputs[RC_CountErrors_DimLocalGovernmentAreaID_Output_OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID].ExternalColumns[Name]" lineageId="Package\DFT_Load_Location_DimCity\OLE_SRC_Staging_Location_DimCity.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID.Inputs[RC_CountErrors_DimLocalGovernmentAreaID_Output_OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID].Columns[Name]">
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="PostalCode" externalMetadataColumnId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID.Inputs[RC_CountErrors_DimLocalGovernmentAreaID_Output_OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID].ExternalColumns[PostalCode]" lineageId="Package\DFT_Load_Location_DimCity\OLE_SRC_Staging_Location_DimCity.Outputs[Output].Columns[PostalCode]" refId="Package\DFT_Load_Location_DimCity\OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID.Inputs[RC_CountErrors_DimLocalGovernmentAreaID_Output_OLE_DST_Error_Location_DimCity_DimLocalGovernmentAreaID].Columns[PostalCode]">
@@ -594,18 +638,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{C88E304F-1877-4B50-ABE8-6B91E2A51792}" DTS:From="Package\SQL_Truncate_Error_Location_DimCity" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Location_DimCity_To_DFT_Load_Location_DimCity" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Location_DimCity_To_DFT_Load_Location_DimCity]" DTS:To="Package\DFT_Load_Location_DimCity">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{60AED5F0-5BE9-4339-92CD-8D4E0B86A2BC}" DTS:From="Package\SQL_Truncate_Error_Location_DimCity" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Location_DimCity_To_DFT_Load_Location_DimCity" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Location_DimCity_To_DFT_Load_Location_DimCity]" DTS:To="Package\DFT_Load_Location_DimCity">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{42A17E76-3782-4FCD-8EC9-4008B4CFAA53}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A93E8F10-4DC0-4793-AF78-D197FB08907E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{57D9CB97-34F1-4BA8-AFA5-0C089F7EA297}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F87C748F-F47D-4D6E-9C40-0AC42C01DBF4}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6B5B11D1-37D0-473D-9896-3D8AC1A9F03A}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FCA5128B-85EB-4CDD-A391-60105F41679B}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2402_EDW_Load_Location_DimCity</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

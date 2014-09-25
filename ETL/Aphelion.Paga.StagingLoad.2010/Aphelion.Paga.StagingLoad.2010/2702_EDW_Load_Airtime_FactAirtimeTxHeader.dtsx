@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:57" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{34917E1D-C8B1-4305-B990-B076E871B542}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2702_EDW_Load_Airtime_FactAirtimeTxHeader" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{2E60B7DC-4E36-4B7C-82E6-52DBD58F3B17}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:41" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{E2139290-7838-4807-845D-F719C07E84B1}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2702_EDW_Load_Airtime_FactAirtimeTxHeader" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{E648A9F8-7749-47E0-9228-C8B469F2525F}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{7F90B9E5-0A80-4846-9C0D-706C2E7BE9F7}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Airtime_FactAirtimeTxHeader" DTS:refId="Package\SQL_Truncate_Error_Airtime_FactAirtimeTxHeader" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{975434D4-2214-45DB-A181-B922BE51FB35}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Airtime_FactAirtimeTxHeader" DTS:refId="Package\SQL_Truncate_Error_Airtime_FactAirtimeTxHeader" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Airtime_FactAirtimeTxHeader]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Airtime_FactAirtimeTxHeader]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{8E9D2017-768D-45C7-A8DD-F031E366F293}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Airtime_FactAirtimeTxHeader" DTS:refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{B8A60F05-5541-4F96-A1FA-E3A09DDF4705}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Airtime_FactAirtimeTxHeader" DTS:refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -1008,6 +1008,12 @@
                 <input name="OLE_DST_Singleton_Airtime_FactAirtimeTxHeader_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeTxHeader_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Singleton_Airtime_FactAirtimeTxHeader.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeTxHeader_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Singleton_Airtime_FactAirtimeTxHeader.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeTxHeader_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -1031,6 +1037,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Singleton_Airtime_FactAirtimeTxHeader.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Airtime_FactAirtimeTxHeader.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Singleton_Airtime_FactAirtimeTxHeader.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Airtime_FactAirtimeTxHeader.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1138,6 +1156,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedDataType="numeric" cachedName="Amount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader].ExternalColumns[Amount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_SRC_Staging_Airtime_FactAirtimeTxHeader.Outputs[Output].Columns[Amount]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader].Columns[Amount]">
                     </inputColumn>
                     <inputColumn cachedDataType="numeric" cachedName="ExchangeRate" cachedPrecision="16" cachedScale="4" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader].ExternalColumns[ExchangeRate]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_SRC_Staging_Airtime_FactAirtimeTxHeader.Outputs[Output].Columns[ExchangeRate]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader].Columns[ExchangeRate]">
@@ -1222,6 +1244,12 @@
                 <input name="LKP_FactProcessTxID_Error_DC_AddErrorDetails_FactProcessTxID" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_FactProcessTxID.Inputs[LKP_FactProcessTxID_Error_DC_AddErrorDetails_FactProcessTxID]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\LKP_FactProcessTxID.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_FactProcessTxID.Inputs[LKP_FactProcessTxID_Error_DC_AddErrorDetails_FactProcessTxID].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\LKP_FactProcessTxID.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_FactProcessTxID.Inputs[LKP_FactProcessTxID_Error_DC_AddErrorDetails_FactProcessTxID].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -1245,6 +1273,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Failed Lookup FactProcessTxID")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Failed Lookup FactProcessTxID")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_FactProcessTxID.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_FactProcessTxID.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Airtime_FactAirtimeTxHeader\LKP_FactProcessTxID.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_FactProcessTxID.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_FactProcessTxID.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Airtime_FactAirtimeTxHeader\LKP_FactProcessTxID.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1352,6 +1392,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID.Inputs[RC_CountErrors_FactProcessTxID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_FactProcessTxID.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID.Inputs[RC_CountErrors_FactProcessTxID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID.Inputs[RC_CountErrors_FactProcessTxID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_FactProcessTxID.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID.Inputs[RC_CountErrors_FactProcessTxID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID.Inputs[RC_CountErrors_FactProcessTxID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_FactProcessTxID.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID.Inputs[RC_CountErrors_FactProcessTxID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedDataType="numeric" cachedName="Amount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID.Inputs[RC_CountErrors_FactProcessTxID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID].ExternalColumns[Amount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_SRC_Staging_Airtime_FactAirtimeTxHeader.Outputs[Output].Columns[Amount]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID.Inputs[RC_CountErrors_FactProcessTxID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID].Columns[Amount]">
                     </inputColumn>
                     <inputColumn cachedDataType="numeric" cachedName="ExchangeRate" cachedPrecision="16" cachedScale="4" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID.Inputs[RC_CountErrors_FactProcessTxID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID].ExternalColumns[ExchangeRate]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_SRC_Staging_Airtime_FactAirtimeTxHeader.Outputs[Output].Columns[ExchangeRate]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID.Inputs[RC_CountErrors_FactProcessTxID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_FactProcessTxID].Columns[ExchangeRate]">
@@ -1436,6 +1480,12 @@
                 <input name="LKP_DimFinancialTxTypeID_Error_DC_AddErrorDetails_DimFinancialTxTypeID" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_DimFinancialTxTypeID.Inputs[LKP_DimFinancialTxTypeID_Error_DC_AddErrorDetails_DimFinancialTxTypeID]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\LKP_DimFinancialTxTypeID.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_DimFinancialTxTypeID.Inputs[LKP_DimFinancialTxTypeID_Error_DC_AddErrorDetails_DimFinancialTxTypeID].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\LKP_DimFinancialTxTypeID.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_DimFinancialTxTypeID.Inputs[LKP_DimFinancialTxTypeID_Error_DC_AddErrorDetails_DimFinancialTxTypeID].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -1459,6 +1509,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Failed Lookup DimFinancialTxTypeID")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Failed Lookup DimFinancialTxTypeID")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_DimFinancialTxTypeID.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_DimFinancialTxTypeID.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Airtime_FactAirtimeTxHeader\LKP_DimFinancialTxTypeID.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_DimFinancialTxTypeID.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_DimFinancialTxTypeID.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Airtime_FactAirtimeTxHeader\LKP_DimFinancialTxTypeID.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1565,6 +1627,10 @@
                     <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID.Inputs[RC_CountErrors_DimFinancialTxTypeID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID].ExternalColumns[QueueID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_DimFinancialTxTypeID.Outputs[Output].Columns[QueueID]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID.Inputs[RC_CountErrors_DimFinancialTxTypeID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID].Columns[QueueID]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID.Inputs[RC_CountErrors_DimFinancialTxTypeID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_DimFinancialTxTypeID.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID.Inputs[RC_CountErrors_DimFinancialTxTypeID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID].Columns[ErrorType]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID.Inputs[RC_CountErrors_DimFinancialTxTypeID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_DimFinancialTxTypeID.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID.Inputs[RC_CountErrors_DimFinancialTxTypeID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID.Inputs[RC_CountErrors_DimFinancialTxTypeID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\DC_AddErrorDetails_DimFinancialTxTypeID.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID.Inputs[RC_CountErrors_DimFinancialTxTypeID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID].Columns[SSISErrorColumn]">
                     </inputColumn>
                     <inputColumn cachedDataType="numeric" cachedName="Amount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID.Inputs[RC_CountErrors_DimFinancialTxTypeID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID].ExternalColumns[Amount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_SRC_Staging_Airtime_FactAirtimeTxHeader.Outputs[Output].Columns[Amount]" refId="Package\DFT_Load_Airtime_FactAirtimeTxHeader\OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID.Inputs[RC_CountErrors_DimFinancialTxTypeID_Output_OLE_DST_Error_Airtime_FactAirtimeTxHeader_DimFinancialTxTypeID].Columns[Amount]">
                     </inputColumn>
@@ -1691,18 +1757,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{8A83AE38-719A-416E-A25C-9708A8DC0CFA}" DTS:From="Package\SQL_Truncate_Error_Airtime_FactAirtimeTxHeader" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Airtime_FactAirtimeTxHeader_To_DFT_Load_Airtime_FactAirtimeTxHeader" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Airtime_FactAirtimeTxHeader_To_DFT_Load_Airtime_FactAirtimeTxHeader]" DTS:To="Package\DFT_Load_Airtime_FactAirtimeTxHeader">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{318950B8-37D6-4C05-B94F-B13850283D70}" DTS:From="Package\SQL_Truncate_Error_Airtime_FactAirtimeTxHeader" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Airtime_FactAirtimeTxHeader_To_DFT_Load_Airtime_FactAirtimeTxHeader" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Airtime_FactAirtimeTxHeader_To_DFT_Load_Airtime_FactAirtimeTxHeader]" DTS:To="Package\DFT_Load_Airtime_FactAirtimeTxHeader">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B8497DFC-4A9B-43C5-B4AB-CFA4FC77070A}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{04C12576-85EF-4537-807C-7CC5BA1BE9DA}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{50D24B77-51DE-4D02-9448-807A600336B0}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{ABBFF4A3-B321-4E3D-83DE-4BA6803A026E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{97594FAB-24EE-46F4-90AC-D01B2EF30582}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C2723B18-CC2E-4F7A-8CA2-340B2332D69D}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2702_EDW_Load_Airtime_FactAirtimeTxHeader</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

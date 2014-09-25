@@ -74,6 +74,8 @@
           <SSIS:Package SSIS:Name="1706_Shared_DimPagaAccount.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="1707_Shared_DimRole.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="1708_Shared_DimUser.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="001_LoadStaging.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Execute_EDW_Load.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2001_EDW_Load_Activity_DimChannel.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2002_EDW_Load_Classification_DimAgentCommissionType.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2003_EDW_Load_Classification_DimBusinessType.dtsx" SSIS:EntryPoint="1" />
@@ -122,7 +124,6 @@
           <SSIS:Package SSIS:Name="2903_EDW_Load_Airtime_FactAirtimeStockOnHandSnapshot.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2904_EDW_Load_Finance_FactDailyGLSnapshot.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2905_EDW_Load_Finance_FactMonthlyGLSnapshot.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="001_LoadStaging.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="MetadataDB.conmgr" />
@@ -2456,822 +2457,6 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2001_EDW_Load_Activity_DimChannel.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B00715F1-3CC6-4D11-9E76-FE480F80C652}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2001_EDW_Load_Activity_DimChannel</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{59A8E25B-BA9F-4E81-994D-EF049A3BFFF1}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2002_EDW_Load_Classification_DimAgentCommissionType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{8B5CF93F-A86C-4902-9B58-A520B3D14909}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2002_EDW_Load_Classification_DimAgentCommissionType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{F411CBBC-AB6F-4D97-A6AC-1096CE0CCF28}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2003_EDW_Load_Classification_DimBusinessType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{50109243-E82A-45C2-B39A-F390A1D97FCB}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2003_EDW_Load_Classification_DimBusinessType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A4AF377C-F804-4A12-9891-0EFCC2C44BC6}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2004_EDW_Load_Classification_DimFinancialTxSubType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{3156A328-F2C6-43BD-8E21-238EE0AB92DD}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2004_EDW_Load_Classification_DimFinancialTxSubType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B9962ACD-CC28-4D8E-8E42-27C85A2AA181}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2005_EDW_Load_Classification_DimFinancialTxType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{E68C66A4-0F4B-487B-BA26-11E5B55F4593}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2005_EDW_Load_Classification_DimFinancialTxType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7BBE8F07-7301-4B46-9AD6-E7792DBE65E8}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2006_EDW_Load_Classification_DimMerchantCategory.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{2C0269AC-D8BF-4898-BC96-75A9C752FB0B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2006_EDW_Load_Classification_DimMerchantCategory</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A1704825-06EB-45B1-AEF8-566AE7B8C418}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2007_EDW_Load_Classification_DimOrganizationSubscriptionStatus.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B816EBFD-0B00-4515-9056-138A010C1DBA}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2007_EDW_Load_Classification_DimOrganizationSubscriptionStatus</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{07D23531-D29E-4947-B766-3252F20C0EB7}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2008_EDW_Load_Classification_DimOrganizationUnitType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{31E95E3C-6909-4835-A52D-D9DAC863C8FE}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2008_EDW_Load_Classification_DimOrganizationUnitType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{F7D28B60-E057-4F62-8B17-38E38A8492AB}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2009_EDW_Load_Classification_DimOrganizationVerificationStatus.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{D0593EA9-EBBB-4671-8781-D177FFF4E9C4}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2009_EDW_Load_Classification_DimOrganizationVerificationStatus</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{5689C4E9-28C7-4D3F-8F49-A783B50687FB}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2010_EDW_Load_Classification_DimPagaAccountStatus.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{5292AAC4-FBFD-4210-AC36-3E62640BCF8B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2010_EDW_Load_Classification_DimPagaAccountStatus</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{5E7A6784-6B20-498A-BC39-E265500B0213}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2011_EDW_Load_Classification_DimPagaAccountUserType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{78E8757E-7D31-47FC-B5D5-03E1D34B9858}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2011_EDW_Load_Classification_DimPagaAccountUserType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{3EA9A552-91D6-4474-B57C-75804B8F8BE8}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2012_EDW_Load_Classification_DimProcessStatus.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{7157FCEE-9F72-4E2F-9CFF-874FB6071235}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2012_EDW_Load_Classification_DimProcessStatus</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6EC3499B-98E8-486F-8F18-922753948C1B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2013_EDW_Load_Classification_DimProcessTypeGroup.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{FA6BEAE5-1C4B-4967-BD7E-0C44B9642F7E}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2013_EDW_Load_Classification_DimProcessTypeGroup</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{F20428B4-958E-45FE-9E7E-9FCCB2F28DD2}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2014_EDW_Load_Finance_DimChartOfAccounts.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{D0D5D621-3DBB-4CAF-943D-C69D9D9ECDB2}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2014_EDW_Load_Finance_DimChartOfAccounts</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{914EF936-71F9-483C-89C3-51709BCCAB22}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2015_EDW_Load_Finance_DimCurrency.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{E860EEE8-A76A-4E3F-924A-FAC4A6FE2374}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2015_EDW_Load_Finance_DimCurrency</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{FFBCF9D8-7171-453B-80F6-07C33892BB2A}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2016_EDW_Load_Finance_DimFinancialHoldingAccount.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{EEE56107-0C35-40A8-B6F5-CF9259CE4F39}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2016_EDW_Load_Finance_DimFinancialHoldingAccount</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{D2EA49D1-42EC-48DC-B4D9-F35F214D62C6}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2017_EDW_Load_Location_DimCountry.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{1A757493-8064-47AF-8650-9E1BD55F701F}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2017_EDW_Load_Location_DimCountry</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{607EEE9D-62AE-454D-8D8C-B2BD6EA8A62D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2018_EDW_Load_Shared_DimRole.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{6CF508B7-2D33-4384-BE9F-8660E9082123}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2018_EDW_Load_Shared_DimRole</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{EB0AC5FF-1570-461C-99F1-4A9B90F18C98}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2101_EDW_Load_Classification_DimProcessType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{0C303453-A7D1-4614-B982-12A13C838092}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2101_EDW_Load_Classification_DimProcessType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{62D4D5AD-032A-47E3-9C68-4D445B9740E7}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2102_EDW_Load_Finance_DimGLCodeGroup.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{F7F2D249-FC32-402E-BC1C-0421C0CE5AA2}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2102_EDW_Load_Finance_DimGLCodeGroup</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{84108EEC-26DE-4920-A3A2-968BDA0DBEDD}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2103_EDW_Load_Location_DimGeoZone.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{D4AA7C78-1828-4D60-A494-4C81C72FBAFD}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2103_EDW_Load_Location_DimGeoZone</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{52E805E0-BE62-4268-B80C-CA92A6345188}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2104_EDW_Load_Shared_DimOrganization.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{104A888F-1D6A-4B27-ABFA-7CF7AF7828EF}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2104_EDW_Load_Shared_DimOrganization</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{BADDA1C5-9063-4B2A-8409-FD25E0E364EA}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2105_EDW_Load_Shared_DimPagaAccount.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B8110374-558E-488C-BEA9-7FBF374ACA8B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2105_EDW_Load_Shared_DimPagaAccount</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C18ADD1B-DE8E-4997-9530-90F275AA386E}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2201_EDW_Load_Airtime_DimMobileOperator.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{98818247-9748-45B5-B580-781EA8572C61}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2201_EDW_Load_Airtime_DimMobileOperator</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A6EB6306-22FB-49D0-B461-7CD53123D703}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2202_EDW_Load_Finance_DimBank.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{76BA0E04-D497-49F8-A31B-7F82F84A8791}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2202_EDW_Load_Finance_DimBank</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{55C21238-644C-4E29-B53A-2A8BD8406C4E}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2203_EDW_Load_Finance_DimGLCodeSubGroup.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{7D1989B1-0A38-4885-8F01-549C4B559561}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2203_EDW_Load_Finance_DimGLCodeSubGroup</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A9C4740F-4745-4CAE-A290-8E9D400FD178}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2204_EDW_Load_Location_DimRegion.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{1D61F64A-2E80-4388-8B99-62FCA2120492}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2204_EDW_Load_Location_DimRegion</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C5949991-CAE8-4926-A03C-97CBB9215A79}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2205_EDW_Load_Shared_DimOrganizationUnitLevel1.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{445AF136-A206-4ED7-8D6C-28814E1AB599}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2205_EDW_Load_Shared_DimOrganizationUnitLevel1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{93DE76B5-CA8D-4DAF-9A38-26535177996F}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2301_EDW_Load_Finance_DimBankAccount.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{E3AAB501-53F3-468F-AB4F-ABB42CE78750}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2301_EDW_Load_Finance_DimBankAccount</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E01493B0-7122-49C6-99DE-D85974AE714F}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2302_EDW_Load_Finance_DimGLCode.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B7759072-635A-478F-995E-7EF2FE973622}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2302_EDW_Load_Finance_DimGLCode</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1FFD0AB1-E76D-424D-8AE2-DCBD45C91BB0}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2303_EDW_Load_Location_DimLocalGovernmentArea.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{91E8FA17-77C0-4C32-B24B-A04399E7BBB9}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2303_EDW_Load_Location_DimLocalGovernmentArea</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B1787857-6960-462B-B76C-9CE7CAD1B4F2}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2304_EDW_Load_Shared_DimOrganizationUnitLevel2.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{6B8D7376-E26E-480B-80B8-77131F8F9E4B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2304_EDW_Load_Shared_DimOrganizationUnitLevel2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{DC67A6B4-2E12-411C-BCE4-228E44012B31}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2401_EDW_Load_Finance_DimFinancialAccountType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{936DF84D-F23E-430E-B086-E503E693661B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2401_EDW_Load_Finance_DimFinancialAccountType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AE8F7ED6-975F-46CD-BDF7-827A4B2904F8}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2402_EDW_Load_Location_DimCity.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B71AF860-2326-47BF-AFD1-A5B57C7EEF07}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2402_EDW_Load_Location_DimCity</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9C53E861-7A67-4A8F-8ED6-9BF2BB315D75}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2403_EDW_Load_Shared_DimOrganizationUnitLevel3.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{EF248FF8-6F6E-4CEB-B27D-97F95E70FA89}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2403_EDW_Load_Shared_DimOrganizationUnitLevel3</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{32B5DE85-DD31-45EF-B261-4927D9704E31}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2501_EDW_Load_Finance_DimFinancialAccount.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{06BC8D2A-B980-49E4-81E0-55B99D88A80A}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2501_EDW_Load_Finance_DimFinancialAccount</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{BC3E8DB5-DB51-4201-B3E6-CE6C089DF522}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2502_EDW_Load_Shared_DimOrganizationUnitLevel4.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{1D29E44E-F873-419A-B8F0-237D032060FF}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2502_EDW_Load_Shared_DimOrganizationUnitLevel4</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{581355E1-84E8-4359-91D3-4C5B2222417E}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2601_EDW_Load_Shared_DimUser.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{22F96975-95B5-4C87-AE9E-A54C2BC09FDC}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2601_EDW_Load_Shared_DimUser</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{5FA00087-7401-4268-B7D9-FDD32E2B58D7}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2701_EDW_Load_Activity_FactProcessTx.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{ED0F7F90-54B7-4B3D-8F3B-BE602C72FCCA}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2701_EDW_Load_Activity_FactProcessTx</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{846125FE-DE10-42E4-957F-1BE33BD2F0BA}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2702_EDW_Load_Airtime_FactAirtimeTxHeader.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{34917E1D-C8B1-4305-B990-B076E871B542}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2702_EDW_Load_Airtime_FactAirtimeTxHeader</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2E60B7DC-4E36-4B7C-82E6-52DBD58F3B17}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2703_EDW_Load_Finance_FactFinancialTxHeader.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{4E3BF680-FA6A-4AFA-9E11-308D61C2AD8B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2703_EDW_Load_Finance_FactFinancialTxHeader</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{4DCB00AB-A97F-4CFC-BE2F-5992F7BBA616}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2801_EDW_Load_Airtime_FactAirtimeTxDetail.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{655C7828-E885-4E2B-B6AB-ED94A33323D9}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2801_EDW_Load_Airtime_FactAirtimeTxDetail</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{75CBA903-F403-4044-9729-059235DFC54D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2802_EDW_Load_Finance_FactFinancialTxDetail.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{9C638FB9-B5D7-498F-A1DE-69F006F7BFBD}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2802_EDW_Load_Finance_FactFinancialTxDetail</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{DC30BD89-C462-47E1-80C6-E1D9993AB913}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2901_EDW_Load_Activity_FactUserMonthlySnapshot.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{87000098-8657-474A-9070-1D7EE35F7A80}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2901_EDW_Load_Activity_FactUserMonthlySnapshot</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A9A3525E-7375-4B5C-9200-EA9C11E2089C}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2902_EDW_Load_Airtime_FactAirtimeStockMovement.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{95B91EF3-06EB-4009-B8DF-879F80D3A13E}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2902_EDW_Load_Airtime_FactAirtimeStockMovement</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{D20D8E19-6972-4895-8FBE-FF5B0F556450}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2903_EDW_Load_Airtime_FactAirtimeStockOnHandSnapshot.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{8A67AB89-4ADA-4064-8FFA-E992B6ECA16D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2903_EDW_Load_Airtime_FactAirtimeStockOnHandSnapshot</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{404EDA52-1720-487C-8798-24025D3E8734}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2904_EDW_Load_Finance_FactDailyGLSnapshot.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{452BC939-8449-4D6B-8F35-F9AE73A3B342}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2904_EDW_Load_Finance_FactDailyGLSnapshot</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{27EBE90D-5D19-485E-B116-A4F13F078FF7}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2905_EDW_Load_Finance_FactMonthlyGLSnapshot.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{1982DDF2-8E17-49D3-AC1F-19D04DB6B54E}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2905_EDW_Load_Finance_FactMonthlyGLSnapshot</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{734A6638-303E-4CEE-AE80-44164E5F256E}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="001_LoadStaging.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{7328B571-6827-4FCD-8A0C-1128174D7DB4}</SSIS:Property>
@@ -3318,6 +2503,839 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Execute_EDW_Load.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{B071D934-E487-4540-BC4A-044A48CC5DC0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Execute_EDW_Load</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{61E19D4B-E4B2-463E-9C9F-284DA846844D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2001_EDW_Load_Activity_DimChannel.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{98E98834-2D5E-4FBA-B0B7-FFBE03CCC777}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2001_EDW_Load_Activity_DimChannel</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2053279C-29E0-4152-82A3-1D75189C63AA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2002_EDW_Load_Classification_DimAgentCommissionType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{083C0D5B-4615-4E9E-BAE7-2763AE5E85AD}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2002_EDW_Load_Classification_DimAgentCommissionType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2AA3FA3F-C4B3-4422-B3F9-A55816499EAD}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2003_EDW_Load_Classification_DimBusinessType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{5729D701-FB6E-4C9A-A161-1E70BA63C78B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2003_EDW_Load_Classification_DimBusinessType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4B4BA9C9-B625-405C-8166-2C40264ED17D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2004_EDW_Load_Classification_DimFinancialTxSubType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{8C1FD8AC-D0BC-49F4-9F3F-930383FC56E1}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2004_EDW_Load_Classification_DimFinancialTxSubType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DD44C8A8-49C6-40F7-A65E-9054C1A28EC0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2005_EDW_Load_Classification_DimFinancialTxType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{665BA341-2194-4AD9-AD68-88DCE1E41A57}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2005_EDW_Load_Classification_DimFinancialTxType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9370821B-A706-4524-9DB4-7ECE92343F3B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2006_EDW_Load_Classification_DimMerchantCategory.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{D73AB1D9-2BA9-4298-9264-DE73CDBF3F8E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2006_EDW_Load_Classification_DimMerchantCategory</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{85F0F3CC-A0F7-4468-A0C7-641810E214BC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2007_EDW_Load_Classification_DimOrganizationSubscriptionStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{8AEFD642-734D-4B8B-9995-20A4F0EC17CB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2007_EDW_Load_Classification_DimOrganizationSubscriptionStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{ED1233A9-6338-473A-9BA8-3CD6AE3290A3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2008_EDW_Load_Classification_DimOrganizationUnitType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{DF963DD6-E60F-4494-B941-5A1B015F2A4B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2008_EDW_Load_Classification_DimOrganizationUnitType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9BCCE74A-A00B-48FB-9FCA-2ECA375EBE30}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2009_EDW_Load_Classification_DimOrganizationVerificationStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{AF887E22-A654-4462-A5E0-5F8B3C876CC7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2009_EDW_Load_Classification_DimOrganizationVerificationStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{43068107-5D8F-40B0-A8A6-25DAE667B149}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2010_EDW_Load_Classification_DimPagaAccountStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{E7224B23-1951-49C7-83CA-1C2EBEA2B4F9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2010_EDW_Load_Classification_DimPagaAccountStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2E65010E-CD70-4C0D-86B4-E364559C926A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2011_EDW_Load_Classification_DimPagaAccountUserType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{A7E0092C-98BB-4631-9948-1EA8FA3C33B0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2011_EDW_Load_Classification_DimPagaAccountUserType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{120A5784-9336-40F7-9B1B-52B7120DAAC1}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2012_EDW_Load_Classification_DimProcessStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{ED244666-DCDB-48E2-8CDE-4A146D8F019B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2012_EDW_Load_Classification_DimProcessStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A20D2578-5A3D-4ADD-A495-31DC12C31B4F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2013_EDW_Load_Classification_DimProcessTypeGroup.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{82AA1267-1C90-4A12-B56A-1D166CCA2D29}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2013_EDW_Load_Classification_DimProcessTypeGroup</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4A3FCA72-262C-4E66-AEE5-0130B056CF11}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2014_EDW_Load_Finance_DimChartOfAccounts.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{ABEF270D-59B2-45A0-B3A7-F18B25E288F4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2014_EDW_Load_Finance_DimChartOfAccounts</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{98F7D440-17D7-40DB-95B8-5E7051D2F83F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2015_EDW_Load_Finance_DimCurrency.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{3A0AC2A0-7EF9-40BA-A7FB-64E954EA6200}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2015_EDW_Load_Finance_DimCurrency</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{1A566CD3-55EB-4748-AED6-BFEAAEDCD299}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2016_EDW_Load_Finance_DimFinancialHoldingAccount.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{34E7F1EB-C92C-4727-8E62-BD8B339AE429}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2016_EDW_Load_Finance_DimFinancialHoldingAccount</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FDC26473-A430-44AC-9EBE-DBC5F7FE6611}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2017_EDW_Load_Location_DimCountry.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{375819F4-7B2B-4820-9715-5D457050A1DF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2017_EDW_Load_Location_DimCountry</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DF877513-16DE-4F91-9580-3591DED9AB0F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2018_EDW_Load_Shared_DimRole.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{B7CCD1B7-C1E7-4598-AC83-F0866E2ECFB2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2018_EDW_Load_Shared_DimRole</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A848B380-E6DB-44BF-861F-EBB452153509}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2101_EDW_Load_Classification_DimProcessType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{13E7D9DD-364A-4218-9048-9FFCA18D1BD6}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2101_EDW_Load_Classification_DimProcessType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{76360282-5767-40DA-B3A8-5D17EB13D2BA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2102_EDW_Load_Finance_DimGLCodeGroup.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{EDA7FA11-7E4C-43AC-95A5-041864A8320C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2102_EDW_Load_Finance_DimGLCodeGroup</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{49EEE790-7EF4-4419-9AD1-BF8C263864C8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2103_EDW_Load_Location_DimGeoZone.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{BDBB6668-B9B3-4B97-BE9F-7C96684CD70D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2103_EDW_Load_Location_DimGeoZone</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9CAFD7E4-014A-4C00-97E5-B8C6FC92B0F4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2104_EDW_Load_Shared_DimOrganization.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{A70AD8F1-7999-49CD-B978-3B715FB22C0C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2104_EDW_Load_Shared_DimOrganization</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{3CE65B45-4129-4A7D-8AFB-DF9F70A9273E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2105_EDW_Load_Shared_DimPagaAccount.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{3CC1F992-61FA-4EB6-AECD-31223A676DA7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2105_EDW_Load_Shared_DimPagaAccount</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9AD35F1C-0D01-4CF9-98AB-B38B81978A61}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2201_EDW_Load_Airtime_DimMobileOperator.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{E6C53CD9-E38D-4354-B9FF-CBFF4B05F789}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2201_EDW_Load_Airtime_DimMobileOperator</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2DB429EC-38AA-41E0-98C3-9F5C2BEF82CD}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2202_EDW_Load_Finance_DimBank.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{B686F9EB-DA46-49DC-BE29-1CD1D4747C3F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2202_EDW_Load_Finance_DimBank</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0B2718C1-DBB9-426B-B4DC-3F329ABAF341}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2203_EDW_Load_Finance_DimGLCodeSubGroup.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{F8F7EDF0-EDB7-4596-886B-DF57A0C10B58}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2203_EDW_Load_Finance_DimGLCodeSubGroup</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{CFD44224-E9B7-44CC-B6B3-4BEBA3650046}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2204_EDW_Load_Location_DimRegion.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{4393743C-4D04-4668-8AB1-508E076F0330}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2204_EDW_Load_Location_DimRegion</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{54699304-0487-4BCA-B35F-411A26569134}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2205_EDW_Load_Shared_DimOrganizationUnitLevel1.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{7EC6F22F-680E-4268-A296-DFEEA3E50DB0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2205_EDW_Load_Shared_DimOrganizationUnitLevel1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D5D1FD1D-E493-4303-809E-FA25CF83691D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2301_EDW_Load_Finance_DimBankAccount.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{67A5D393-25F1-4652-A27E-571D8D4A2C42}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2301_EDW_Load_Finance_DimBankAccount</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DC195231-DB9B-4814-A68B-49B64687FE6B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2302_EDW_Load_Finance_DimGLCode.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{40BBC1B5-3BE1-4ACD-8A18-14160F3E6FC1}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2302_EDW_Load_Finance_DimGLCode</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D021F769-C8A3-4618-B0FF-B40031C9D5CE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2303_EDW_Load_Location_DimLocalGovernmentArea.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{2ABC055C-D467-4549-9AB7-FE522D35FF49}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2303_EDW_Load_Location_DimLocalGovernmentArea</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{3BDA2514-A1BD-49B8-89A3-7FCD824386FC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2304_EDW_Load_Shared_DimOrganizationUnitLevel2.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{FC7D9CF7-B8FB-463E-B543-0B03238E72FA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2304_EDW_Load_Shared_DimOrganizationUnitLevel2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DF5A6D6B-2C51-4A3A-9029-9E3DD62F4283}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2401_EDW_Load_Finance_DimFinancialAccountType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{D4BBAF38-9083-448B-97EF-558B95072B9E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2401_EDW_Load_Finance_DimFinancialAccountType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4E769822-C60F-4544-9BB6-66F37C9CE916}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2402_EDW_Load_Location_DimCity.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{2A49491C-4CB6-42E4-9BE2-068A2B4C4663}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2402_EDW_Load_Location_DimCity</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{81F60251-F6D3-4838-B606-B64E666979C4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2403_EDW_Load_Shared_DimOrganizationUnitLevel3.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{B43E0A64-7C83-48A3-B885-85D940C0AEAA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2403_EDW_Load_Shared_DimOrganizationUnitLevel3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D95BBE35-7028-4994-9413-8B4153FFC394}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2501_EDW_Load_Finance_DimFinancialAccount.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{DD857E07-900B-4FE1-9E8E-CE536EE9AA78}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2501_EDW_Load_Finance_DimFinancialAccount</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{40A2F41A-1E1D-4136-A401-34CF7FB7B441}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2502_EDW_Load_Shared_DimOrganizationUnitLevel4.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{485E6D27-3B40-4BAD-AC6F-703AC746532B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2502_EDW_Load_Shared_DimOrganizationUnitLevel4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F0EB3E4B-AE99-41AE-8DBA-3B13C4E891B0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2601_EDW_Load_Shared_DimUser.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{18B64D39-7822-4F88-B252-D63B869A705C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2601_EDW_Load_Shared_DimUser</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0873AD69-6A88-4A3B-9955-6D321B166A6D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2701_EDW_Load_Activity_FactProcessTx.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{A6BDD180-9A1A-4B09-A286-52A27AC320C8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2701_EDW_Load_Activity_FactProcessTx</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{09D608FE-DA6B-4977-A40C-C10D6F8EA879}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2702_EDW_Load_Airtime_FactAirtimeTxHeader.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{E2139290-7838-4807-845D-F719C07E84B1}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2702_EDW_Load_Airtime_FactAirtimeTxHeader</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E648A9F8-7749-47E0-9228-C8B469F2525F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2703_EDW_Load_Finance_FactFinancialTxHeader.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{715C2C09-F951-435B-A669-1052F6722EFC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2703_EDW_Load_Finance_FactFinancialTxHeader</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{90FF9931-9B2B-49EC-9634-172FCB3B49EA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2801_EDW_Load_Airtime_FactAirtimeTxDetail.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{3EDEA926-E81F-4BA1-9B6F-86455402999C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2801_EDW_Load_Airtime_FactAirtimeTxDetail</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D2A7D69D-FF16-485E-A471-0510DC434BC8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2802_EDW_Load_Finance_FactFinancialTxDetail.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{A35D44CC-1282-42C2-B1DB-832F5E00F23D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2802_EDW_Load_Finance_FactFinancialTxDetail</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DC9427FE-1145-4325-B18E-ADC3B691DD8D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2901_EDW_Load_Activity_FactUserMonthlySnapshot.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{5F75B611-2DEE-4D88-BC4D-EC4BD4262244}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2901_EDW_Load_Activity_FactUserMonthlySnapshot</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2E116CB4-5D94-4078-8379-A1CBE8719B9E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2902_EDW_Load_Airtime_FactAirtimeStockMovement.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{9CFF9E29-7682-4E89-BCF1-FF29DB8583F2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2902_EDW_Load_Airtime_FactAirtimeStockMovement</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{782EE4A2-2A22-4F6B-BC90-7A95C0746AFB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2903_EDW_Load_Airtime_FactAirtimeStockOnHandSnapshot.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{C01BF01E-BA0F-4399-80FD-E43C535571A8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2903_EDW_Load_Airtime_FactAirtimeStockOnHandSnapshot</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{AC6925F1-7877-4E54-90F7-6CC0246950A1}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2904_EDW_Load_Finance_FactDailyGLSnapshot.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{DF93C456-90C6-4C0B-847F-A7FB5D5FD1A4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2904_EDW_Load_Finance_FactDailyGLSnapshot</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{82D822CC-2111-4444-9FF4-B1302166FB1A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2905_EDW_Load_Finance_FactMonthlyGLSnapshot.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{71F1D568-97C9-4F1A-842B-05F1EC463A40}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2905_EDW_Load_Finance_FactMonthlyGLSnapshot</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{BE7B63C2-09C2-4644-BDDD-E3C39AF5365B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
       </SSIS:Project>
@@ -3331,6 +3349,10 @@
     <ProjectItem>
       <Name>02_BIMLLoad_EDW.biml</Name>
       <FullPath>02_BIMLLoad_EDW.biml</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>CreateLinearEDWLoad.biml</Name>
+      <FullPath>CreateLinearEDWLoad.biml</FullPath>
     </ProjectItem>
   </Miscellaneous>
   <Configurations>

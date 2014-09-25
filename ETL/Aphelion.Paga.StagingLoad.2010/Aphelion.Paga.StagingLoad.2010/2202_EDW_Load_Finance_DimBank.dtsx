@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:55" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{76BA0E04-D497-49F8-A31B-7F82F84A8791}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2202_EDW_Load_Finance_DimBank" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{55C21238-644C-4E29-B53A-2A8BD8406C4E}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:39" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{B686F9EB-DA46-49DC-BE29-1CD1D4747C3F}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2202_EDW_Load_Finance_DimBank" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{0B2718C1-DBB9-426B-B4DC-3F329ABAF341}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{34CCD909-E2A0-4570-ABAD-F062BF8B1ABF}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimBank" DTS:refId="Package\SQL_Truncate_Error_Finance_DimBank" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{348B4D25-867D-4782-9F9A-2D4A838BE33A}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimBank" DTS:refId="Package\SQL_Truncate_Error_Finance_DimBank" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Finance_DimBank]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Finance_DimBank]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{7BF3E30E-DD2E-4DA2-8DC0-73229E559AF2}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimBank" DTS:refId="Package\DFT_Load_Finance_DimBank" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{764792BC-6299-4733-91A9-61899BA258CB}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimBank" DTS:refId="Package\DFT_Load_Finance_DimBank" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -325,6 +325,12 @@
                 <input name="OLE_DST_Singleton_Finance_DimBank_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimBank_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Finance_DimBank\OLE_DST_Singleton_Finance_DimBank.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimBank_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Finance_DimBank\OLE_DST_Singleton_Finance_DimBank.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimBank_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -348,6 +354,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimBank\OLE_DST_Singleton_Finance_DimBank.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_DimBank.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimBank\OLE_DST_Singleton_Finance_DimBank.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_DimBank.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -421,6 +439,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimBank].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimBank].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimBank].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimBank].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimBank].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimBank].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="BankAccountLinkType" externalMetadataColumnId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimBank].ExternalColumns[BankAccountLinkType]" lineageId="Package\DFT_Load_Finance_DimBank\OLE_SRC_Staging_Finance_DimBank.Outputs[Output].Columns[BankAccountLinkType]" refId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimBank].Columns[BankAccountLinkType]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimBank].ExternalColumns[Name]" lineageId="Package\DFT_Load_Finance_DimBank\OLE_SRC_Staging_Finance_DimBank.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimBank].Columns[Name]">
@@ -471,6 +493,12 @@
                 <input name="LKP_DimOrganizationID_Error_DC_AddErrorDetails_DimOrganizationID" refId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails_DimOrganizationID.Inputs[LKP_DimOrganizationID_Error_DC_AddErrorDetails_DimOrganizationID]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Finance_DimBank\LKP_DimOrganizationID.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails_DimOrganizationID.Inputs[LKP_DimOrganizationID_Error_DC_AddErrorDetails_DimOrganizationID].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Finance_DimBank\LKP_DimOrganizationID.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails_DimOrganizationID.Inputs[LKP_DimOrganizationID_Error_DC_AddErrorDetails_DimOrganizationID].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -494,6 +522,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Failed Lookup DimOrganizationID")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Failed Lookup DimOrganizationID")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails_DimOrganizationID.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails_DimOrganizationID.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimBank\LKP_DimOrganizationID.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails_DimOrganizationID.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails_DimOrganizationID.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimBank\LKP_DimOrganizationID.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -567,6 +607,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank_DimOrganizationID.Inputs[RC_CountErrors_DimOrganizationID_Output_OLE_DST_Error_Finance_DimBank_DimOrganizationID].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails_DimOrganizationID.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank_DimOrganizationID.Inputs[RC_CountErrors_DimOrganizationID_Output_OLE_DST_Error_Finance_DimBank_DimOrganizationID].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank_DimOrganizationID.Inputs[RC_CountErrors_DimOrganizationID_Output_OLE_DST_Error_Finance_DimBank_DimOrganizationID].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails_DimOrganizationID.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank_DimOrganizationID.Inputs[RC_CountErrors_DimOrganizationID_Output_OLE_DST_Error_Finance_DimBank_DimOrganizationID].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank_DimOrganizationID.Inputs[RC_CountErrors_DimOrganizationID_Output_OLE_DST_Error_Finance_DimBank_DimOrganizationID].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Finance_DimBank\DC_AddErrorDetails_DimOrganizationID.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank_DimOrganizationID.Inputs[RC_CountErrors_DimOrganizationID_Output_OLE_DST_Error_Finance_DimBank_DimOrganizationID].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="BankAccountLinkType" externalMetadataColumnId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank_DimOrganizationID.Inputs[RC_CountErrors_DimOrganizationID_Output_OLE_DST_Error_Finance_DimBank_DimOrganizationID].ExternalColumns[BankAccountLinkType]" lineageId="Package\DFT_Load_Finance_DimBank\OLE_SRC_Staging_Finance_DimBank.Outputs[Output].Columns[BankAccountLinkType]" refId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank_DimOrganizationID.Inputs[RC_CountErrors_DimOrganizationID_Output_OLE_DST_Error_Finance_DimBank_DimOrganizationID].Columns[BankAccountLinkType]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank_DimOrganizationID.Inputs[RC_CountErrors_DimOrganizationID_Output_OLE_DST_Error_Finance_DimBank_DimOrganizationID].ExternalColumns[Name]" lineageId="Package\DFT_Load_Finance_DimBank\OLE_SRC_Staging_Finance_DimBank.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Finance_DimBank\OLE_DST_Error_Finance_DimBank_DimOrganizationID.Inputs[RC_CountErrors_DimOrganizationID_Output_OLE_DST_Error_Finance_DimBank_DimOrganizationID].Columns[Name]">
@@ -638,18 +682,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{9D6F7F56-B0BE-49D7-807B-499B893036FA}" DTS:From="Package\SQL_Truncate_Error_Finance_DimBank" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimBank_To_DFT_Load_Finance_DimBank" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimBank_To_DFT_Load_Finance_DimBank]" DTS:To="Package\DFT_Load_Finance_DimBank">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{5A7DA7CD-116D-4749-93F2-284E7823B064}" DTS:From="Package\SQL_Truncate_Error_Finance_DimBank" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimBank_To_DFT_Load_Finance_DimBank" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimBank_To_DFT_Load_Finance_DimBank]" DTS:To="Package\DFT_Load_Finance_DimBank">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A7D740EA-A87E-4AFD-8082-D114C30838B1}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{79311ABE-6C90-4A68-840F-515AB9AF39E6}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8A101FCA-BBD6-485B-8C2B-795DC13E803B}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4D53CAB2-C5CE-42DA-A202-4F0661F2E95D}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{23A01531-8475-4939-8A3F-20696F66FD7C}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1EA82049-CCBD-44ED-843F-E52FC375655E}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2202_EDW_Load_Finance_DimBank</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

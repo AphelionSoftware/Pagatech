@@ -1,0 +1,93 @@
+
+<# var DestConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_EDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
+
+
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+
+	<PackageProjects>
+    <PackageProject Name="Aphelion.Paga.StagingLoad.2010">
+	 
+    </PackageProject>
+  </PackageProjects>
+
+  <Packages>
+
+	
+	<Package Name="Execute_EDW_Load" ConstraintMode="Linear" ProtectionLevel="DontSaveSensitive"  MaxErrorCount="2000"  DelayValidation="true">
+		<Tasks>
+			<# string PackageListQuery ="SELECT "+ 
+									"PackageName = CONVERT(CHAR(4),(list.load_group + list.rn)) +'_EDW_Load_' + list.TABLE_SCHEMA +'_' + list.TABLE_NAME, "+ 
+									"list.TABLE_SCHEMA, "+
+									"list.TABLE_NAME, "+
+									"ErrorTable = TABLE_SCHEMA + '_' + TABLE_NAME "+
+								"FROM "+
+								"(  "+
+									"SELECT  "+
+										"ROW_NUMBER()OVER(PARTITION BY pl.load_group ORDER BY TABLE_SCHEMA, TABLE_NAME) AS rn, "+
+										"StagingTableName = (TABLE_SCHEMA +'_' +TABLE_NAME), "+
+										"pl.TABLE_SCHEMA, "+  
+										"pl.TABLE_NAME, "+ 
+										"pl.load_group "+ 
+									"FROM "+ 
+									"( "+ 
+										"SELECT  "+
+											"package_list.TABLE_SCHEMA,  "+
+											"package_list.TABLE_NAME, "+ 
+											"CONVERT(VARCHAR(MAX),MAX(LoadGroup)) AS load_group "+ 
+										"FROM "+ 
+										"(  "+
+											"SELECT "+  
+												"table_list.StagingTableName, "+ 
+												"table_list.TABLE_SCHEMA, "+ 
+												"table_list.TABLE_NAME, "+ 
+												"CASE "+	 
+													"WHEN ext_prop.name =  'LoadGroup'  "+
+													"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
+												"END as LoadGroup  "+
+											"FROM  "+
+											"(  "+
+												"SELECT  "+ 
+													"StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name,  "+
+													"TABLE_SCHEMA = SCHEMA_NAME(t.schema_id), "+ 
+													"TABLE_NAME = t.name,  "+
+													"t.object_id  "+
+												"FROM sys.tables AS t "+ 
+											") table_list  "+
+											"INNER JOIN sys.extended_properties AS ext_prop ON   "+
+												"table_list.object_id = ext_prop.major_id  "+
+											"WHERE   "+
+												"ext_prop.name = 'LoadGroup' "+
+										") AS package_list  "+
+										"GROUP BY  "+
+											"package_list.TABLE_SCHEMA,  "+
+											"package_list.TABLE_NAME  "+
+										") as pl  "+
+									"WHERE   "+
+										"LEN(pl.load_group) > 0 "+
+								") AS list"; 
+	  
+			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, PackageListQuery); 
+			foreach (DataRow row in tableNamesToImport.Rows)
+                { 
+				string PackageName = row[0].ToString();
+				string TableSchema = row[1].ToString();
+				string TableName = row[2].ToString();
+				string errTable = row[3].ToString();
+				
+#>	
+				
+					<ExecutePackage Name="EPT_Run_<#=PackageName#>" DelayValidation="true">
+						<ExternalProjectPackage Package="<#=PackageName#>.dtsx"></ExternalProjectPackage>
+                    
+					</ExecutePackage>
+				
+			
+	<# } #>		
+	</Tasks>
+	</Package>	
+
+	</Packages>
+	
+</Biml>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="Varigence.Hadron.CoreLowerer.SchemaManagement" #>

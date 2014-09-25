@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:56" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{7D1989B1-0A38-4885-8F01-549C4B559561}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2203_EDW_Load_Finance_DimGLCodeSubGroup" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{A9C4740F-4745-4CAE-A290-8E9D400FD178}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:39" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{F8F7EDF0-EDB7-4596-886B-DF57A0C10B58}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2203_EDW_Load_Finance_DimGLCodeSubGroup" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{CFD44224-E9B7-44CC-B6B3-4BEBA3650046}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{AE7D471D-97E6-428A-AB17-B1F4D3D3D4E7}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimGLCodeSubGroup" DTS:refId="Package\SQL_Truncate_Error_Finance_DimGLCodeSubGroup" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{02870FC8-A080-46BE-941E-0785E0A3E9EF}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimGLCodeSubGroup" DTS:refId="Package\SQL_Truncate_Error_Finance_DimGLCodeSubGroup" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Finance_DimGLCodeSubGroup]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Finance_DimGLCodeSubGroup]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{BCE5869A-16FD-42B5-BE25-B047E6CA6DD6}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimGLCodeSubGroup" DTS:refId="Package\DFT_Load_Finance_DimGLCodeSubGroup" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{5E22AE63-C9E9-44D8-A993-901AC0450E2C}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimGLCodeSubGroup" DTS:refId="Package\DFT_Load_Finance_DimGLCodeSubGroup" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -297,6 +297,12 @@
                 <input name="OLE_DST_Singleton_Finance_DimGLCodeSubGroup_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimGLCodeSubGroup_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Singleton_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimGLCodeSubGroup_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Singleton_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimGLCodeSubGroup_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -320,6 +326,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Singleton_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_DimGLCodeSubGroup.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Singleton_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_DimGLCodeSubGroup.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -389,6 +407,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="GLCodeRange" externalMetadataColumnId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup].ExternalColumns[GLCodeRange]" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_SRC_Staging_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[GLCodeRange]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup].Columns[GLCodeRange]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup].ExternalColumns[Name]" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_SRC_Staging_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup].Columns[Name]">
@@ -435,6 +457,12 @@
                 <input name="LKP_DimGLCodeGroupID_Error_DC_AddErrorDetails_DimGLCodeGroupID" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails_DimGLCodeGroupID.Inputs[LKP_DimGLCodeGroupID_Error_DC_AddErrorDetails_DimGLCodeGroupID]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\LKP_DimGLCodeGroupID.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails_DimGLCodeGroupID.Inputs[LKP_DimGLCodeGroupID_Error_DC_AddErrorDetails_DimGLCodeGroupID].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\LKP_DimGLCodeGroupID.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails_DimGLCodeGroupID.Inputs[LKP_DimGLCodeGroupID_Error_DC_AddErrorDetails_DimGLCodeGroupID].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -458,6 +486,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Failed Lookup DimGLCodeGroupID")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Failed Lookup DimGLCodeGroupID")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails_DimGLCodeGroupID.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails_DimGLCodeGroupID.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimGLCodeSubGroup\LKP_DimGLCodeGroupID.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails_DimGLCodeGroupID.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails_DimGLCodeGroupID.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimGLCodeSubGroup\LKP_DimGLCodeGroupID.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -527,6 +567,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID.Inputs[RC_CountErrors_DimGLCodeGroupID_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails_DimGLCodeGroupID.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID.Inputs[RC_CountErrors_DimGLCodeGroupID_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID.Inputs[RC_CountErrors_DimGLCodeGroupID_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails_DimGLCodeGroupID.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID.Inputs[RC_CountErrors_DimGLCodeGroupID_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID.Inputs[RC_CountErrors_DimGLCodeGroupID_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\DC_AddErrorDetails_DimGLCodeGroupID.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID.Inputs[RC_CountErrors_DimGLCodeGroupID_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="GLCodeRange" externalMetadataColumnId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID.Inputs[RC_CountErrors_DimGLCodeGroupID_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID].ExternalColumns[GLCodeRange]" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_SRC_Staging_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[GLCodeRange]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID.Inputs[RC_CountErrors_DimGLCodeGroupID_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID].Columns[GLCodeRange]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID.Inputs[RC_CountErrors_DimGLCodeGroupID_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID].ExternalColumns[Name]" lineageId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_SRC_Staging_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Finance_DimGLCodeSubGroup\OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID.Inputs[RC_CountErrors_DimGLCodeGroupID_Output_OLE_DST_Error_Finance_DimGLCodeSubGroup_DimGLCodeGroupID].Columns[Name]">
@@ -594,18 +638,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{E9DB3E03-6FA6-4B4C-A001-B4FCA45EECAF}" DTS:From="Package\SQL_Truncate_Error_Finance_DimGLCodeSubGroup" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimGLCodeSubGroup_To_DFT_Load_Finance_DimGLCodeSubGroup" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimGLCodeSubGroup_To_DFT_Load_Finance_DimGLCodeSubGroup]" DTS:To="Package\DFT_Load_Finance_DimGLCodeSubGroup">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{CAEC6C57-9B20-4B13-894F-A75C2221BA6E}" DTS:From="Package\SQL_Truncate_Error_Finance_DimGLCodeSubGroup" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimGLCodeSubGroup_To_DFT_Load_Finance_DimGLCodeSubGroup" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimGLCodeSubGroup_To_DFT_Load_Finance_DimGLCodeSubGroup]" DTS:To="Package\DFT_Load_Finance_DimGLCodeSubGroup">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8B5B946B-BF7B-4853-9F87-C615FA4F41A3}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A9953E52-B8C6-454C-8F3F-FAB771B6207C}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C79DB315-5C62-4C5D-AF78-079541784D71}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4E952617-3113-47C1-9A37-0A49453419E0}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{02BE00E2-DBA1-445B-96F8-E0CC27A5A910}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BF764154-4974-4B2A-B819-82009771ADEF}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2203_EDW_Load_Finance_DimGLCodeSubGroup</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

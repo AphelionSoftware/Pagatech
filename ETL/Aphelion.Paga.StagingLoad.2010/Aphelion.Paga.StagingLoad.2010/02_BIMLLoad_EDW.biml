@@ -93,7 +93,7 @@
    <Tasks>
 		<!-- This needs to go -->
 		<ExecuteSQL Name="SQL_Truncate_Error_<#=errTable#>" ConnectionName="Paga_Errors">
-          <DirectInput>TRUNCATE TABLE Error.[<#=errTable#>]
+          <DirectInput>TRUNCATE TABLE [Errors].[<#=errTable#>]
 		  </DirectInput>
         </ExecuteSQL>
 		<Dataflow Name="DFT_Load_<#=TableSchema#>_<#=TableName#>"  MaxErrorCount="2000">
@@ -168,6 +168,8 @@
 								<Column Name="PackageName" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)@[System::PackageName]</Column>
 								<Column Name="QueueID" DataType="Int32" >@[User::intQueueID]</Column>
 								<Column Name="ErrorType" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)("Failed Lookup <#=FKColumn["ForeignKeyColumn"]#>")</Column>
+								<Column Name="SSISErrorCode" DataType="Int32" >ErrorCode</Column>
+								<Column Name="SSISErrorColumn" DataType="Int32" >ErrorColumn</Column>
 							</Columns>
 						</DerivedColumns>
 						<RowCount Name="RC_CountErrors_<#=FKColumn["ForeignKeyColumn"]#>" VariableName="User.intErrorCount">
@@ -206,6 +208,8 @@
 					<Column Name="PackageName" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)@[System::PackageName]</Column>
 					<Column Name="QueueID" DataType="Int32" >@[User::intQueueID]</Column>
 					<Column Name="ErrorType" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)("Insert")</Column>
+					<Column Name="SSISErrorCode" DataType="Int32" >OLE_DST_Singleton_<#=Schema_Table#>.ErrorCode</Column>
+					<Column Name="SSISErrorColumn" DataType="Int32" >OLE_DST_Singleton_<#=Schema_Table#>.ErrorColumn</Column>
 				  </Columns>
 				</DerivedColumns>
 				<RowCount Name="RC_CountErrors" VariableName="User.intErrorCount">

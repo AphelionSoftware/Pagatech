@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:54" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{50109243-E82A-45C2-B39A-F390A1D97FCB}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2003_EDW_Load_Classification_DimBusinessType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{A4AF377C-F804-4A12-9891-0EFCC2C44BC6}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:37" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{5729D701-FB6E-4C9A-A161-1E70BA63C78B}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2003_EDW_Load_Classification_DimBusinessType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{4B4BA9C9-B625-405C-8166-2C40264ED17D}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{97CFAD7E-E78A-4878-BB4D-F18677AC3BD6}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimBusinessType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimBusinessType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{E5953169-FF9A-4CE5-BE11-8E892FA10639}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimBusinessType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimBusinessType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Classification_DimBusinessType]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimBusinessType]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{FFB26155-0FCF-4C84-92D9-54FFE05C2EEE}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimBusinessType" DTS:refId="Package\DFT_Load_Classification_DimBusinessType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{A93E12C4-E8C4-41B3-A561-08D056982E40}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimBusinessType" DTS:refId="Package\DFT_Load_Classification_DimBusinessType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -202,6 +202,12 @@
                 <input name="OLE_DST_Singleton_Classification_DimBusinessType_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Classification_DimBusinessType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimBusinessType_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Singleton_Classification_DimBusinessType.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Classification_DimBusinessType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimBusinessType_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Singleton_Classification_DimBusinessType.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Classification_DimBusinessType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimBusinessType_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -225,6 +231,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimBusinessType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Classification_DimBusinessType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Singleton_Classification_DimBusinessType.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimBusinessType.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimBusinessType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Classification_DimBusinessType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Singleton_Classification_DimBusinessType.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimBusinessType.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -290,6 +308,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Error_Classification_DimBusinessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimBusinessType].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Classification_DimBusinessType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Error_Classification_DimBusinessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimBusinessType].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Error_Classification_DimBusinessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimBusinessType].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Classification_DimBusinessType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Error_Classification_DimBusinessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimBusinessType].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Error_Classification_DimBusinessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimBusinessType].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Classification_DimBusinessType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Error_Classification_DimBusinessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimBusinessType].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Error_Classification_DimBusinessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimBusinessType].ExternalColumns[Name]" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Error_Classification_DimBusinessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimBusinessType].Columns[Name]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Error_Classification_DimBusinessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimBusinessType].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Error_Classification_DimBusinessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimBusinessType].Columns[SourceKey]">
@@ -345,18 +367,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{FF219880-9F10-400C-9DB1-77C43FDE2C59}" DTS:From="Package\SQL_Truncate_Error_Classification_DimBusinessType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimBusinessType_To_DFT_Load_Classification_DimBusinessType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimBusinessType_To_DFT_Load_Classification_DimBusinessType]" DTS:To="Package\DFT_Load_Classification_DimBusinessType">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{BE2B8ECF-D520-4906-A146-1B4179B097BD}" DTS:From="Package\SQL_Truncate_Error_Classification_DimBusinessType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimBusinessType_To_DFT_Load_Classification_DimBusinessType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimBusinessType_To_DFT_Load_Classification_DimBusinessType]" DTS:To="Package\DFT_Load_Classification_DimBusinessType">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C417BFA8-25A8-49F2-B2CA-05C38B93A72E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AA51769F-845B-410E-BAFB-055A8115653D}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AA36ACD2-95F6-4F23-9850-1C0CA10331C7}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3C809A55-FD29-41E6-BEF9-BDABFFA4FF91}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E4543BF2-38F1-43A3-B98B-71253F296108}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{97B98DF1-E5F5-4D0A-A219-75D0F536029F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2003_EDW_Load_Classification_DimBusinessType</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:58" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{95B91EF3-06EB-4009-B8DF-879F80D3A13E}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2902_EDW_Load_Airtime_FactAirtimeStockMovement" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{D20D8E19-6972-4895-8FBE-FF5B0F556450}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:42" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{9CFF9E29-7682-4E89-BCF1-FF29DB8583F2}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2902_EDW_Load_Airtime_FactAirtimeStockMovement" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{782EE4A2-2A22-4F6B-BC90-7A95C0746AFB}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{5D36623D-E174-47AE-B2FB-2425D8D2D53B}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Airtime_FactAirtimeStockMovement" DTS:refId="Package\SQL_Truncate_Error_Airtime_FactAirtimeStockMovement" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{A98A8B74-3CE9-45C1-8792-AEA62ED67D0B}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Airtime_FactAirtimeStockMovement" DTS:refId="Package\SQL_Truncate_Error_Airtime_FactAirtimeStockMovement" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Airtime_FactAirtimeStockMovement]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Airtime_FactAirtimeStockMovement]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{D2999430-3AE5-4756-B624-E70A8632900B}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Airtime_FactAirtimeStockMovement" DTS:refId="Package\DFT_Load_Airtime_FactAirtimeStockMovement" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{39A4445B-26C9-4B7C-8CDD-B20BADF9451D}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Airtime_FactAirtimeStockMovement" DTS:refId="Package\DFT_Load_Airtime_FactAirtimeStockMovement" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -421,6 +421,12 @@
                 <input name="OLE_DST_Singleton_Airtime_FactAirtimeStockMovement_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeStockMovement_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Singleton_Airtime_FactAirtimeStockMovement.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeStockMovement_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Singleton_Airtime_FactAirtimeStockMovement.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeStockMovement_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -444,6 +450,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Singleton_Airtime_FactAirtimeStockMovement.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Airtime_FactAirtimeStockMovement.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Singleton_Airtime_FactAirtimeStockMovement.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Airtime_FactAirtimeStockMovement.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -515,6 +533,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Error_Airtime_FactAirtimeStockMovement.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockMovement].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Error_Airtime_FactAirtimeStockMovement.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockMovement].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Error_Airtime_FactAirtimeStockMovement.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockMovement].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Error_Airtime_FactAirtimeStockMovement.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockMovement].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Error_Airtime_FactAirtimeStockMovement.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockMovement].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Error_Airtime_FactAirtimeStockMovement.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockMovement].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedDataType="numeric" cachedName="MovementAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Error_Airtime_FactAirtimeStockMovement.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockMovement].ExternalColumns[MovementAmount]" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_SRC_Staging_Airtime_FactAirtimeStockMovement.Outputs[Output].Columns[MovementAmount]" refId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Error_Airtime_FactAirtimeStockMovement.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockMovement].Columns[MovementAmount]">
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="DimDateID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Error_Airtime_FactAirtimeStockMovement.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockMovement].ExternalColumns[DimDateID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_SRC_Staging_Airtime_FactAirtimeStockMovement.Outputs[Output].Columns[DimDateID]" refId="Package\DFT_Load_Airtime_FactAirtimeStockMovement\OLE_DST_Error_Airtime_FactAirtimeStockMovement.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockMovement].Columns[DimDateID]">
@@ -582,18 +604,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{3678303A-AA92-4E59-B067-393C16263172}" DTS:From="Package\SQL_Truncate_Error_Airtime_FactAirtimeStockMovement" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Airtime_FactAirtimeStockMovement_To_DFT_Load_Airtime_FactAirtimeStockMovement" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Airtime_FactAirtimeStockMovement_To_DFT_Load_Airtime_FactAirtimeStockMovement]" DTS:To="Package\DFT_Load_Airtime_FactAirtimeStockMovement">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{A440EF6D-067B-461B-A0E2-7F139D6D8980}" DTS:From="Package\SQL_Truncate_Error_Airtime_FactAirtimeStockMovement" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Airtime_FactAirtimeStockMovement_To_DFT_Load_Airtime_FactAirtimeStockMovement" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Airtime_FactAirtimeStockMovement_To_DFT_Load_Airtime_FactAirtimeStockMovement]" DTS:To="Package\DFT_Load_Airtime_FactAirtimeStockMovement">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{92F53F6F-BC71-4778-B429-CD1F5F9BE1F6}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{10F789F2-D5BF-4987-9E7B-5027B11D1FB5}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D7CB5325-44E2-4020-8C1A-3F54169C9760}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4173F95C-152F-40CF-BDCB-FA27BD462195}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{76EAA911-7FBE-4BEF-A787-B162018DD11F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{59B85F7C-768B-4934-BBA5-5FBB8099568E}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2902_EDW_Load_Airtime_FactAirtimeStockMovement</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

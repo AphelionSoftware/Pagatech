@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:58" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{8A67AB89-4ADA-4064-8FFA-E992B6ECA16D}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2903_EDW_Load_Airtime_FactAirtimeStockOnHandSnapshot" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{404EDA52-1720-487C-8798-24025D3E8734}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:42" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{C01BF01E-BA0F-4399-80FD-E43C535571A8}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2903_EDW_Load_Airtime_FactAirtimeStockOnHandSnapshot" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{AC6925F1-7877-4E54-90F7-6CC0246950A1}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{6D8DC17B-4B10-4CF5-9220-54502E7DCC58}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Airtime_FactAirtimeStockOnHandSnapshot" DTS:refId="Package\SQL_Truncate_Error_Airtime_FactAirtimeStockOnHandSnapshot" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{EB138639-BFB5-47C0-AC44-15AF9E44A9E9}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Airtime_FactAirtimeStockOnHandSnapshot" DTS:refId="Package\SQL_Truncate_Error_Airtime_FactAirtimeStockOnHandSnapshot" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Airtime_FactAirtimeStockOnHandSnapshot]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Airtime_FactAirtimeStockOnHandSnapshot]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{CE0CAF76-2E04-4868-8E84-A39BC4CAAEBA}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot" DTS:refId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{57DCF2A8-C8DD-487F-BC51-3FE2E723EAB5}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot" DTS:refId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -421,6 +421,12 @@
                 <input name="OLE_DST_Singleton_Airtime_FactAirtimeStockOnHandSnapshot_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeStockOnHandSnapshot_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Singleton_Airtime_FactAirtimeStockOnHandSnapshot.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeStockOnHandSnapshot_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Singleton_Airtime_FactAirtimeStockOnHandSnapshot.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Airtime_FactAirtimeStockOnHandSnapshot_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -444,6 +450,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Singleton_Airtime_FactAirtimeStockOnHandSnapshot.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Airtime_FactAirtimeStockOnHandSnapshot.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Singleton_Airtime_FactAirtimeStockOnHandSnapshot.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Airtime_FactAirtimeStockOnHandSnapshot.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -515,6 +533,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedDataType="numeric" cachedName="AccountBalance" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot].ExternalColumns[AccountBalance]" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_SRC_Staging_Airtime_FactAirtimeStockOnHandSnapshot.Outputs[Output].Columns[AccountBalance]" refId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot].Columns[AccountBalance]">
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="DimDateID" externalMetadataColumnId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot].ExternalColumns[DimDateID]" lineageId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_SRC_Staging_Airtime_FactAirtimeStockOnHandSnapshot.Outputs[Output].Columns[DimDateID]" refId="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot\OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Airtime_FactAirtimeStockOnHandSnapshot].Columns[DimDateID]">
@@ -582,18 +604,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{234C7ACF-DA73-4407-90F4-65FF86860DD8}" DTS:From="Package\SQL_Truncate_Error_Airtime_FactAirtimeStockOnHandSnapshot" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Airtime_FactAirtimeStockOnHandSnapshot_To_DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Airtime_FactAirtimeStockOnHandSnapshot_To_DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot]" DTS:To="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{A08AB39F-9CAC-40E5-92FE-BDB783472FED}" DTS:From="Package\SQL_Truncate_Error_Airtime_FactAirtimeStockOnHandSnapshot" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Airtime_FactAirtimeStockOnHandSnapshot_To_DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Airtime_FactAirtimeStockOnHandSnapshot_To_DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot]" DTS:To="Package\DFT_Load_Airtime_FactAirtimeStockOnHandSnapshot">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1C5A4FAB-A3A7-4462-B46C-BB5042CFE063}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B3DA6A1B-A658-4C46-AF0D-C7F9001126A0}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2E78445F-B997-4299-BC29-3FDFA61FA361}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{93FF27C5-2138-4F4A-8A1C-BD989656C639}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1229C629-CEEF-4B7A-B981-E32A9E756774}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FDBFF343-ED47-4A19-8D64-4BB8F0E3047C}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2903_EDW_Load_Airtime_FactAirtimeStockOnHandSnapshot</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

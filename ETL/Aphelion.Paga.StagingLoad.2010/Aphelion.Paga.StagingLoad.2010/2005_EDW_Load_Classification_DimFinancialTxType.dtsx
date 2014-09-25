@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:54" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{E68C66A4-0F4B-487B-BA26-11E5B55F4593}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2005_EDW_Load_Classification_DimFinancialTxType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{7BBE8F07-7301-4B46-9AD6-E7792DBE65E8}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:37" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{665BA341-2194-4AD9-AD68-88DCE1E41A57}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2005_EDW_Load_Classification_DimFinancialTxType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{9370821B-A706-4524-9DB4-7ECE92343F3B}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{5DEB2960-8DCB-47AC-92C6-472F4EC2460D}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimFinancialTxType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimFinancialTxType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{6FD36D56-598A-4F59-B8CA-1E5684DD7AC5}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimFinancialTxType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimFinancialTxType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Classification_DimFinancialTxType]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimFinancialTxType]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{9AA89DE7-F9E2-4E91-A43A-5001F8051E12}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimFinancialTxType" DTS:refId="Package\DFT_Load_Classification_DimFinancialTxType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{BB7855EB-2C22-4076-A001-6D10975D3FDC}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimFinancialTxType" DTS:refId="Package\DFT_Load_Classification_DimFinancialTxType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -216,6 +216,12 @@
                 <input name="OLE_DST_Singleton_Classification_DimFinancialTxType_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Classification_DimFinancialTxType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimFinancialTxType_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Singleton_Classification_DimFinancialTxType.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Classification_DimFinancialTxType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimFinancialTxType_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Singleton_Classification_DimFinancialTxType.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Classification_DimFinancialTxType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimFinancialTxType_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -239,6 +245,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimFinancialTxType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Classification_DimFinancialTxType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Singleton_Classification_DimFinancialTxType.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimFinancialTxType.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimFinancialTxType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Classification_DimFinancialTxType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Singleton_Classification_DimFinancialTxType.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimFinancialTxType.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -306,6 +324,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Error_Classification_DimFinancialTxType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimFinancialTxType].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Classification_DimFinancialTxType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Error_Classification_DimFinancialTxType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimFinancialTxType].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Error_Classification_DimFinancialTxType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimFinancialTxType].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Classification_DimFinancialTxType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Error_Classification_DimFinancialTxType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimFinancialTxType].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Error_Classification_DimFinancialTxType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimFinancialTxType].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Classification_DimFinancialTxType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Error_Classification_DimFinancialTxType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimFinancialTxType].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="FinancialTxCategory" externalMetadataColumnId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Error_Classification_DimFinancialTxType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimFinancialTxType].ExternalColumns[FinancialTxCategory]" lineageId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_SRC_Staging_Classification_DimFinancialTxType.Outputs[Output].Columns[FinancialTxCategory]" refId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Error_Classification_DimFinancialTxType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimFinancialTxType].Columns[FinancialTxCategory]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Error_Classification_DimFinancialTxType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimFinancialTxType].ExternalColumns[Name]" lineageId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_SRC_Staging_Classification_DimFinancialTxType.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Classification_DimFinancialTxType\OLE_DST_Error_Classification_DimFinancialTxType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimFinancialTxType].Columns[Name]">
@@ -363,18 +385,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{73AF3AC2-3D3E-4876-81AE-D6DF3012BCEE}" DTS:From="Package\SQL_Truncate_Error_Classification_DimFinancialTxType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimFinancialTxType_To_DFT_Load_Classification_DimFinancialTxType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimFinancialTxType_To_DFT_Load_Classification_DimFinancialTxType]" DTS:To="Package\DFT_Load_Classification_DimFinancialTxType">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{8BE72A19-6656-4C7E-8A8B-A07B4705D659}" DTS:From="Package\SQL_Truncate_Error_Classification_DimFinancialTxType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimFinancialTxType_To_DFT_Load_Classification_DimFinancialTxType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimFinancialTxType_To_DFT_Load_Classification_DimFinancialTxType]" DTS:To="Package\DFT_Load_Classification_DimFinancialTxType">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{29753DBD-D4D1-4750-89BE-25F418C30FD2}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{640F046F-4834-4BC3-A9E4-572C05AF8D3E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7BA674C0-57C3-47FF-A3B3-981B955AA17B}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A376560A-9449-4154-8D0C-B4E34349D242}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4B593D10-CB0D-4A19-93DD-BDA8F068BB51}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F2B26218-BABB-48B1-8ACE-F04641A0F26F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2005_EDW_Load_Classification_DimFinancialTxType</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

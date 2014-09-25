@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:54" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{8B5CF93F-A86C-4902-9B58-A520B3D14909}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2002_EDW_Load_Classification_DimAgentCommissionType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{F411CBBC-AB6F-4D97-A6AC-1096CE0CCF28}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:37" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{083C0D5B-4615-4E9E-BAE7-2763AE5E85AD}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2002_EDW_Load_Classification_DimAgentCommissionType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{2AA3FA3F-C4B3-4422-B3F9-A55816499EAD}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{1E7D1A44-365B-4CCC-8788-70E2C8D9FE13}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimAgentCommissionType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimAgentCommissionType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{82E6AA8D-77C4-4967-B4F3-986DAC3150EB}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimAgentCommissionType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimAgentCommissionType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Classification_DimAgentCommissionType]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimAgentCommissionType]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{83F032EC-7C8A-4282-B14D-E9930A334984}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimAgentCommissionType" DTS:refId="Package\DFT_Load_Classification_DimAgentCommissionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{814B1DC0-DC9C-4A0E-A6D5-27617D944AEA}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimAgentCommissionType" DTS:refId="Package\DFT_Load_Classification_DimAgentCommissionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -202,6 +202,12 @@
                 <input name="OLE_DST_Singleton_Classification_DimAgentCommissionType_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Classification_DimAgentCommissionType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimAgentCommissionType_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Singleton_Classification_DimAgentCommissionType.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Classification_DimAgentCommissionType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimAgentCommissionType_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Singleton_Classification_DimAgentCommissionType.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Classification_DimAgentCommissionType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimAgentCommissionType_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -225,6 +231,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimAgentCommissionType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Classification_DimAgentCommissionType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Singleton_Classification_DimAgentCommissionType.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimAgentCommissionType.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimAgentCommissionType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Classification_DimAgentCommissionType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Singleton_Classification_DimAgentCommissionType.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimAgentCommissionType.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -290,6 +308,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Error_Classification_DimAgentCommissionType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimAgentCommissionType].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Classification_DimAgentCommissionType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Error_Classification_DimAgentCommissionType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimAgentCommissionType].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Error_Classification_DimAgentCommissionType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimAgentCommissionType].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Classification_DimAgentCommissionType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Error_Classification_DimAgentCommissionType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimAgentCommissionType].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Error_Classification_DimAgentCommissionType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimAgentCommissionType].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Classification_DimAgentCommissionType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Error_Classification_DimAgentCommissionType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimAgentCommissionType].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Error_Classification_DimAgentCommissionType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimAgentCommissionType].ExternalColumns[Name]" lineageId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_SRC_Staging_Classification_DimAgentCommissionType.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Error_Classification_DimAgentCommissionType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimAgentCommissionType].Columns[Name]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Error_Classification_DimAgentCommissionType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimAgentCommissionType].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_SRC_Staging_Classification_DimAgentCommissionType.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Classification_DimAgentCommissionType\OLE_DST_Error_Classification_DimAgentCommissionType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimAgentCommissionType].Columns[SourceKey]">
@@ -345,18 +367,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{8AD0F555-7A89-45D8-B990-E288FEFA24F4}" DTS:From="Package\SQL_Truncate_Error_Classification_DimAgentCommissionType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimAgentCommissionType_To_DFT_Load_Classification_DimAgentCommissionType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimAgentCommissionType_To_DFT_Load_Classification_DimAgentCommissionType]" DTS:To="Package\DFT_Load_Classification_DimAgentCommissionType">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{5D0C0900-96DF-45B0-AF3A-99DA93422160}" DTS:From="Package\SQL_Truncate_Error_Classification_DimAgentCommissionType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimAgentCommissionType_To_DFT_Load_Classification_DimAgentCommissionType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimAgentCommissionType_To_DFT_Load_Classification_DimAgentCommissionType]" DTS:To="Package\DFT_Load_Classification_DimAgentCommissionType">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{ABF71059-B994-4A80-948A-94DD208D35BE}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3AEA52B2-7A16-405A-BBCA-8D70D4B8B870}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1145617B-7E2A-4C9F-A419-984AF1C9D3A0}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D5ECB57D-0D9B-4D14-A154-5E7B494E4E05}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EE06D07D-D24E-4C2A-8308-DD04B4172124}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{90346B02-AB88-4E1F-8F85-D0C7D2358B90}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2002_EDW_Load_Classification_DimAgentCommissionType</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

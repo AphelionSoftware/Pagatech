@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:55" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{5292AAC4-FBFD-4210-AC36-3E62640BCF8B}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2010_EDW_Load_Classification_DimPagaAccountStatus" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{5E7A6784-6B20-498A-BC39-E265500B0213}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:38" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{E7224B23-1951-49C7-83CA-1C2EBEA2B4F9}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2010_EDW_Load_Classification_DimPagaAccountStatus" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{2E65010E-CD70-4C0D-86B4-E364559C926A}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{5B7C9BB4-06EA-4BD6-A2CC-7EF165E25209}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimPagaAccountStatus" DTS:refId="Package\SQL_Truncate_Error_Classification_DimPagaAccountStatus" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{46A119D9-5A13-400B-AB97-25B03CED0359}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimPagaAccountStatus" DTS:refId="Package\SQL_Truncate_Error_Classification_DimPagaAccountStatus" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Classification_DimPagaAccountStatus]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimPagaAccountStatus]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{2677D47D-71E0-4406-8015-F1973283E1AC}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimPagaAccountStatus" DTS:refId="Package\DFT_Load_Classification_DimPagaAccountStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{AE699C08-5AD2-4BA6-B115-91D39A35FA10}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimPagaAccountStatus" DTS:refId="Package\DFT_Load_Classification_DimPagaAccountStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -202,6 +202,12 @@
                 <input name="OLE_DST_Singleton_Classification_DimPagaAccountStatus_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Classification_DimPagaAccountStatus\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountStatus_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Singleton_Classification_DimPagaAccountStatus.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Classification_DimPagaAccountStatus\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountStatus_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Singleton_Classification_DimPagaAccountStatus.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Classification_DimPagaAccountStatus\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountStatus_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -225,6 +231,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimPagaAccountStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Classification_DimPagaAccountStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Singleton_Classification_DimPagaAccountStatus.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimPagaAccountStatus.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimPagaAccountStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Classification_DimPagaAccountStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Singleton_Classification_DimPagaAccountStatus.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimPagaAccountStatus.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -290,6 +308,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Error_Classification_DimPagaAccountStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountStatus].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Classification_DimPagaAccountStatus\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Error_Classification_DimPagaAccountStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountStatus].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Error_Classification_DimPagaAccountStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountStatus].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Classification_DimPagaAccountStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Error_Classification_DimPagaAccountStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountStatus].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Error_Classification_DimPagaAccountStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountStatus].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Classification_DimPagaAccountStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Error_Classification_DimPagaAccountStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountStatus].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Error_Classification_DimPagaAccountStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountStatus].ExternalColumns[Name]" lineageId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_SRC_Staging_Classification_DimPagaAccountStatus.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Error_Classification_DimPagaAccountStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountStatus].Columns[Name]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Error_Classification_DimPagaAccountStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountStatus].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_SRC_Staging_Classification_DimPagaAccountStatus.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Classification_DimPagaAccountStatus\OLE_DST_Error_Classification_DimPagaAccountStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountStatus].Columns[SourceKey]">
@@ -345,18 +367,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{348A89A9-87E5-41F1-BE29-3EE72C21B65A}" DTS:From="Package\SQL_Truncate_Error_Classification_DimPagaAccountStatus" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimPagaAccountStatus_To_DFT_Load_Classification_DimPagaAccountStatus" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimPagaAccountStatus_To_DFT_Load_Classification_DimPagaAccountStatus]" DTS:To="Package\DFT_Load_Classification_DimPagaAccountStatus">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{B0AA7D12-0CF4-4430-B47D-4D86B3BC6278}" DTS:From="Package\SQL_Truncate_Error_Classification_DimPagaAccountStatus" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimPagaAccountStatus_To_DFT_Load_Classification_DimPagaAccountStatus" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimPagaAccountStatus_To_DFT_Load_Classification_DimPagaAccountStatus]" DTS:To="Package\DFT_Load_Classification_DimPagaAccountStatus">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C7CB2DD1-860F-4705-9FF1-CD35B62FE2A4}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1B813FEA-DD61-4E94-A1DE-8929DEC06A55}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B834812A-D234-49D3-8AC9-7559247549BD}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{616D0A7B-8966-44AD-8038-4D223AC56447}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{06AF51FA-7017-47E1-8E9F-0A7666F8CEED}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8AD65325-76D5-43C1-8F14-A20FADF29085}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2010_EDW_Load_Classification_DimPagaAccountStatus</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

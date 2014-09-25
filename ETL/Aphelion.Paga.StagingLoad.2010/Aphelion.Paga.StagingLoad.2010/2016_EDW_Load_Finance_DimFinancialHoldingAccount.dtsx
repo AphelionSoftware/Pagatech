@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:55" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{EEE56107-0C35-40A8-B6F5-CF9259CE4F39}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2016_EDW_Load_Finance_DimFinancialHoldingAccount" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{D2EA49D1-42EC-48DC-B4D9-F35F214D62C6}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:38" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{34E7F1EB-C92C-4727-8E62-BD8B339AE429}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2016_EDW_Load_Finance_DimFinancialHoldingAccount" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{FDC26473-A430-44AC-9EBE-DBC5F7FE6611}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{73A5D3ED-072A-4419-8AF4-57C69F4E523D}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimFinancialHoldingAccount" DTS:refId="Package\SQL_Truncate_Error_Finance_DimFinancialHoldingAccount" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{34FF8217-4C34-4AF7-BAB5-7856AC439AF6}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimFinancialHoldingAccount" DTS:refId="Package\SQL_Truncate_Error_Finance_DimFinancialHoldingAccount" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Finance_DimFinancialHoldingAccount]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Finance_DimFinancialHoldingAccount]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{91C4CA53-500E-4FAB-8590-28D6574D0490}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimFinancialHoldingAccount" DTS:refId="Package\DFT_Load_Finance_DimFinancialHoldingAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{DB215F2F-5BF5-4096-A987-6DABC88BB288}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimFinancialHoldingAccount" DTS:refId="Package\DFT_Load_Finance_DimFinancialHoldingAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -258,6 +258,12 @@
                 <input name="OLE_DST_Singleton_Finance_DimFinancialHoldingAccount_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimFinancialHoldingAccount_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Singleton_Finance_DimFinancialHoldingAccount.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimFinancialHoldingAccount_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Singleton_Finance_DimFinancialHoldingAccount.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimFinancialHoldingAccount_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -281,6 +287,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Singleton_Finance_DimFinancialHoldingAccount.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_DimFinancialHoldingAccount.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Singleton_Finance_DimFinancialHoldingAccount.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_DimFinancialHoldingAccount.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -354,6 +372,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Error_Finance_DimFinancialHoldingAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialHoldingAccount].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Error_Finance_DimFinancialHoldingAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialHoldingAccount].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Error_Finance_DimFinancialHoldingAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialHoldingAccount].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Error_Finance_DimFinancialHoldingAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialHoldingAccount].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Error_Finance_DimFinancialHoldingAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialHoldingAccount].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Error_Finance_DimFinancialHoldingAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialHoldingAccount].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="20" cachedName="AccountNumber" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Error_Finance_DimFinancialHoldingAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialHoldingAccount].ExternalColumns[AccountNumber]" lineageId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_SRC_Staging_Finance_DimFinancialHoldingAccount.Outputs[Output].Columns[AccountNumber]" refId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Error_Finance_DimFinancialHoldingAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialHoldingAccount].Columns[AccountNumber]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Error_Finance_DimFinancialHoldingAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialHoldingAccount].ExternalColumns[Name]" lineageId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_SRC_Staging_Finance_DimFinancialHoldingAccount.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Finance_DimFinancialHoldingAccount\OLE_DST_Error_Finance_DimFinancialHoldingAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialHoldingAccount].Columns[Name]">
@@ -417,18 +439,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{58304669-E5CE-4175-9F9C-59F90DB88D5E}" DTS:From="Package\SQL_Truncate_Error_Finance_DimFinancialHoldingAccount" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimFinancialHoldingAccount_To_DFT_Load_Finance_DimFinancialHoldingAccount" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimFinancialHoldingAccount_To_DFT_Load_Finance_DimFinancialHoldingAccount]" DTS:To="Package\DFT_Load_Finance_DimFinancialHoldingAccount">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{275DF69F-348E-4117-ACAD-5CE8C30DB7EA}" DTS:From="Package\SQL_Truncate_Error_Finance_DimFinancialHoldingAccount" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimFinancialHoldingAccount_To_DFT_Load_Finance_DimFinancialHoldingAccount" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimFinancialHoldingAccount_To_DFT_Load_Finance_DimFinancialHoldingAccount]" DTS:To="Package\DFT_Load_Finance_DimFinancialHoldingAccount">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{690FFF2E-0ECA-47B4-9062-39C75E08FE65}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A5A7F40E-662A-4173-979C-1708FFC38249}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{10474DE7-0C11-4DD8-B29E-DA3E1B295090}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A7CA7A67-D60E-4A25-9297-7551D25824D1}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2F39791A-4FD0-4110-A53F-54BD30C93020}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FC538583-1B80-4B13-857C-526F443F37DC}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2016_EDW_Load_Finance_DimFinancialHoldingAccount</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

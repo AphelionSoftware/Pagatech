@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:57" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{1D29E44E-F873-419A-B8F0-237D032060FF}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2502_EDW_Load_Shared_DimOrganizationUnitLevel4" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{581355E1-84E8-4359-91D3-4C5B2222417E}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:40" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{485E6D27-3B40-4BAD-AC6F-703AC746532B}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2502_EDW_Load_Shared_DimOrganizationUnitLevel4" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{F0EB3E4B-AE99-41AE-8DBA-3B13C4E891B0}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{12CE050D-B787-4DDA-BE69-A62A121ECFD5}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Shared_DimOrganizationUnitLevel4" DTS:refId="Package\SQL_Truncate_Error_Shared_DimOrganizationUnitLevel4" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{D68A6961-041A-4375-9102-414B353FC219}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Shared_DimOrganizationUnitLevel4" DTS:refId="Package\SQL_Truncate_Error_Shared_DimOrganizationUnitLevel4" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Shared_DimOrganizationUnitLevel4]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Shared_DimOrganizationUnitLevel4]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{EFD26CF7-AA25-425F-A4E1-07EBC820BA46}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Shared_DimOrganizationUnitLevel4" DTS:refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{B9DAD640-086C-4831-8C9D-D17D652BF310}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Shared_DimOrganizationUnitLevel4" DTS:refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -378,6 +378,12 @@
                 <input name="OLE_DST_Singleton_Shared_DimOrganizationUnitLevel4_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimOrganizationUnitLevel4_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel4.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimOrganizationUnitLevel4_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel4.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimOrganizationUnitLevel4_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -401,6 +407,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel4.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Shared_DimOrganizationUnitLevel4.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel4.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Shared_DimOrganizationUnitLevel4.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -472,6 +490,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="20" cachedName="IdentificationNumber" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4].ExternalColumns[IdentificationNumber]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel4.Outputs[Output].Columns[IdentificationNumber]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4].Columns[IdentificationNumber]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4].ExternalColumns[Name]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel4.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4].Columns[Name]">
@@ -520,6 +542,12 @@
                 <input name="LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\LKP_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\LKP_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -543,6 +571,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Failed Lookup DimOrganizationUnitTypeID")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Failed Lookup DimOrganizationUnitTypeID")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Shared_DimOrganizationUnitLevel4\LKP_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Shared_DimOrganizationUnitLevel4\LKP_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -614,6 +654,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="20" cachedName="IdentificationNumber" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID].ExternalColumns[IdentificationNumber]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel4.Outputs[Output].Columns[IdentificationNumber]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID].Columns[IdentificationNumber]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID].ExternalColumns[Name]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel4.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID].Columns[Name]">
@@ -662,6 +706,12 @@
                 <input name="LKP_DimOrganizationUnitLevel3ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel3ID" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitLevel3ID.Inputs[LKP_DimOrganizationUnitLevel3ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel3ID]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\LKP_DimOrganizationUnitLevel3ID.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitLevel3ID.Inputs[LKP_DimOrganizationUnitLevel3ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel3ID].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\LKP_DimOrganizationUnitLevel3ID.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitLevel3ID.Inputs[LKP_DimOrganizationUnitLevel3ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel3ID].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -685,6 +735,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Failed Lookup DimOrganizationUnitLevel3ID")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Failed Lookup DimOrganizationUnitLevel3ID")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitLevel3ID.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitLevel3ID.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Shared_DimOrganizationUnitLevel4\LKP_DimOrganizationUnitLevel3ID.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitLevel3ID.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitLevel3ID.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Shared_DimOrganizationUnitLevel4\LKP_DimOrganizationUnitLevel3ID.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -755,6 +817,10 @@
                     <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel3ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID].ExternalColumns[QueueID]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitLevel3ID.Outputs[Output].Columns[QueueID]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel3ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID].Columns[QueueID]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel3ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitLevel3ID.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel3ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID].Columns[ErrorType]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel3ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitLevel3ID.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel3ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel3ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\DC_AddErrorDetails_DimOrganizationUnitLevel3ID.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel3ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID].Columns[SSISErrorColumn]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="20" cachedName="IdentificationNumber" externalMetadataColumnId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel3ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID].ExternalColumns[IdentificationNumber]" lineageId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel4.Outputs[Output].Columns[IdentificationNumber]" refId="Package\DFT_Load_Shared_DimOrganizationUnitLevel4\OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel3ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID].Columns[IdentificationNumber]">
                     </inputColumn>
@@ -833,18 +899,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{A66C073C-711B-4B53-AAFD-B3ECBF264A77}" DTS:From="Package\SQL_Truncate_Error_Shared_DimOrganizationUnitLevel4" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Shared_DimOrganizationUnitLevel4_To_DFT_Load_Shared_DimOrganizationUnitLevel4" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Shared_DimOrganizationUnitLevel4_To_DFT_Load_Shared_DimOrganizationUnitLevel4]" DTS:To="Package\DFT_Load_Shared_DimOrganizationUnitLevel4">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{C4700D0F-FCA6-43EE-8453-6100013E8E9A}" DTS:From="Package\SQL_Truncate_Error_Shared_DimOrganizationUnitLevel4" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Shared_DimOrganizationUnitLevel4_To_DFT_Load_Shared_DimOrganizationUnitLevel4" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Shared_DimOrganizationUnitLevel4_To_DFT_Load_Shared_DimOrganizationUnitLevel4]" DTS:To="Package\DFT_Load_Shared_DimOrganizationUnitLevel4">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0A8F7794-2F16-4BBD-9511-FBCFCBC26DFB}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{78787035-C1BC-4ED3-B0E7-49155F58B09D}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{64BC0534-5A31-4D02-A761-7E5AD7A14497}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A48C84EF-0ED0-4B16-A6B4-BB5459E77654}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{61A7E207-BDCE-4680-B975-8F0D19E09916}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FC93D8FE-93E8-4358-96BD-003352821DD1}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2502_EDW_Load_Shared_DimOrganizationUnitLevel4</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

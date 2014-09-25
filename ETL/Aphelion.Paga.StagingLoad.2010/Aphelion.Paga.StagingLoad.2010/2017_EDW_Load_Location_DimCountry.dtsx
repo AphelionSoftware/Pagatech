@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:55" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{1A757493-8064-47AF-8650-9E1BD55F701F}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2017_EDW_Load_Location_DimCountry" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{607EEE9D-62AE-454D-8D8C-B2BD6EA8A62D}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:38" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{375819F4-7B2B-4820-9715-5D457050A1DF}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2017_EDW_Load_Location_DimCountry" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{DF877513-16DE-4F91-9580-3591DED9AB0F}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{20485CF4-BEA6-415B-8CDC-60AA5CC99E2D}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Location_DimCountry" DTS:refId="Package\SQL_Truncate_Error_Location_DimCountry" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{23C44416-2CE0-44F5-9274-2D3E0FA479E1}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Location_DimCountry" DTS:refId="Package\SQL_Truncate_Error_Location_DimCountry" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Location_DimCountry]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Location_DimCountry]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{C0AF36D0-152C-4FC9-888E-2C80904678FD}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Location_DimCountry" DTS:refId="Package\DFT_Load_Location_DimCountry" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{353BB61E-E2E1-46C7-BE88-D9EA3445C339}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Location_DimCountry" DTS:refId="Package\DFT_Load_Location_DimCountry" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -216,6 +216,12 @@
                 <input name="OLE_DST_Singleton_Location_DimCountry_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Location_DimCountry\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Location_DimCountry_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Location_DimCountry\OLE_DST_Singleton_Location_DimCountry.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Location_DimCountry\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Location_DimCountry_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Location_DimCountry\OLE_DST_Singleton_Location_DimCountry.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Location_DimCountry\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Location_DimCountry_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -239,6 +245,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Location_DimCountry\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Location_DimCountry\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Location_DimCountry\OLE_DST_Singleton_Location_DimCountry.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Location_DimCountry.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Location_DimCountry\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Location_DimCountry\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Location_DimCountry\OLE_DST_Singleton_Location_DimCountry.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Location_DimCountry.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -306,6 +324,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Location_DimCountry\OLE_DST_Error_Location_DimCountry.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCountry].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Location_DimCountry\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Location_DimCountry\OLE_DST_Error_Location_DimCountry.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCountry].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Location_DimCountry\OLE_DST_Error_Location_DimCountry.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCountry].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Location_DimCountry\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Location_DimCountry\OLE_DST_Error_Location_DimCountry.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCountry].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Location_DimCountry\OLE_DST_Error_Location_DimCountry.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCountry].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Location_DimCountry\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Location_DimCountry\OLE_DST_Error_Location_DimCountry.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCountry].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="Code" externalMetadataColumnId="Package\DFT_Load_Location_DimCountry\OLE_DST_Error_Location_DimCountry.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCountry].ExternalColumns[Code]" lineageId="Package\DFT_Load_Location_DimCountry\OLE_SRC_Staging_Location_DimCountry.Outputs[Output].Columns[Code]" refId="Package\DFT_Load_Location_DimCountry\OLE_DST_Error_Location_DimCountry.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCountry].Columns[Code]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Location_DimCountry\OLE_DST_Error_Location_DimCountry.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCountry].ExternalColumns[Name]" lineageId="Package\DFT_Load_Location_DimCountry\OLE_SRC_Staging_Location_DimCountry.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Location_DimCountry\OLE_DST_Error_Location_DimCountry.Inputs[RC_CountErrors_Output_OLE_DST_Error_Location_DimCountry].Columns[Name]">
@@ -363,18 +385,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{27436271-11B9-4FFE-91B9-BCBBBC69D0F8}" DTS:From="Package\SQL_Truncate_Error_Location_DimCountry" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Location_DimCountry_To_DFT_Load_Location_DimCountry" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Location_DimCountry_To_DFT_Load_Location_DimCountry]" DTS:To="Package\DFT_Load_Location_DimCountry">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{9DA2ED79-59A4-4C3E-A50D-DB3455700FAB}" DTS:From="Package\SQL_Truncate_Error_Location_DimCountry" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Location_DimCountry_To_DFT_Load_Location_DimCountry" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Location_DimCountry_To_DFT_Load_Location_DimCountry]" DTS:To="Package\DFT_Load_Location_DimCountry">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{11E93F49-1374-4ADF-9A18-7260777C49FA}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{ABA243C5-0462-4D80-8305-46839EE03171}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{09945473-B637-4042-BE9D-7A51B734F050}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D5BC355C-2AAE-412F-9946-7B1542005BAD}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{99714443-BD7B-43FD-BC62-702E9C108819}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DB15E302-A5F8-4ED0-BD6B-07AEA04AF265}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2017_EDW_Load_Location_DimCountry</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:55" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{D0593EA9-EBBB-4671-8781-D177FFF4E9C4}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2009_EDW_Load_Classification_DimOrganizationVerificationStatus" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{5689C4E9-28C7-4D3F-8F49-A783B50687FB}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:37" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{AF887E22-A654-4462-A5E0-5F8B3C876CC7}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2009_EDW_Load_Classification_DimOrganizationVerificationStatus" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{43068107-5D8F-40B0-A8A6-25DAE667B149}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{358CD442-0372-401F-AB06-F2BFB1C04D5F}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus" DTS:refId="Package\SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{1776F26F-DB57-48B1-918F-C77B6A059ABB}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus" DTS:refId="Package\SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Classification_DimOrganizationVerificationStatus]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimOrganizationVerificationStatus]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{D74F007F-FEA7-4133-A835-0E7E0993E54D}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimOrganizationVerificationStatus" DTS:refId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{F2FF87C2-D59F-4698-91EC-3D2AB75865C0}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimOrganizationVerificationStatus" DTS:refId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -202,6 +202,12 @@
                 <input name="OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -225,6 +231,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -290,6 +308,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[Name]" lineageId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].Columns[Name]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].Columns[SourceKey]">
@@ -345,18 +367,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{59EA6BB7-3444-4F70-94B7-0CDD5A898F72}" DTS:From="Package\SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus_To_DFT_Load_Classification_DimOrganizationVerificationStatus" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus_To_DFT_Load_Classification_DimOrganizationVerificationStatus]" DTS:To="Package\DFT_Load_Classification_DimOrganizationVerificationStatus">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{2514E4B9-090D-4E98-8895-C8DB865E757E}" DTS:From="Package\SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus_To_DFT_Load_Classification_DimOrganizationVerificationStatus" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus_To_DFT_Load_Classification_DimOrganizationVerificationStatus]" DTS:To="Package\DFT_Load_Classification_DimOrganizationVerificationStatus">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{746915C2-120A-4342-B833-12B86CEA58DF}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{67145828-A43A-4FD6-83B5-6A0C203694AC}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{09B9BFCB-60D6-430D-911B-B94AB5F91588}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B914445B-83EF-4966-8B26-2B4AE59724B1}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B2B30D32-1636-41C0-AB32-2B5D7E0ED600}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2733A0D3-9C23-4AEE-B1B7-5D19EB2CCEC5}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2009_EDW_Load_Classification_DimOrganizationVerificationStatus</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

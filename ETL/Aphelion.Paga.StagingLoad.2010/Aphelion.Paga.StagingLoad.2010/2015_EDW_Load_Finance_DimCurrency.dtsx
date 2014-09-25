@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:55" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{E860EEE8-A76A-4E3F-924A-FAC4A6FE2374}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2015_EDW_Load_Finance_DimCurrency" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{FFBCF9D8-7171-453B-80F6-07C33892BB2A}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:38" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{3A0AC2A0-7EF9-40BA-A7FB-64E954EA6200}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2015_EDW_Load_Finance_DimCurrency" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{1A566CD3-55EB-4748-AED6-BFEAAEDCD299}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{73300BDA-1764-4367-9BD8-13BFEFB843D0}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimCurrency" DTS:refId="Package\SQL_Truncate_Error_Finance_DimCurrency" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{E573DEDC-D3AF-4529-B3E1-AEB71BA85EF6}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimCurrency" DTS:refId="Package\SQL_Truncate_Error_Finance_DimCurrency" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Finance_DimCurrency]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Finance_DimCurrency]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{F0C5106B-6F9B-4356-A33F-3ADAF854DBB2}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimCurrency" DTS:refId="Package\DFT_Load_Finance_DimCurrency" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{FEE5DE89-B41B-4812-BFBE-6CFD3920D09C}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimCurrency" DTS:refId="Package\DFT_Load_Finance_DimCurrency" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -230,6 +230,12 @@
                 <input name="OLE_DST_Singleton_Finance_DimCurrency_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Finance_DimCurrency\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimCurrency_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Finance_DimCurrency\OLE_DST_Singleton_Finance_DimCurrency.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Finance_DimCurrency\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimCurrency_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Finance_DimCurrency\OLE_DST_Singleton_Finance_DimCurrency.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Finance_DimCurrency\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimCurrency_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -253,6 +259,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimCurrency\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Finance_DimCurrency\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimCurrency\OLE_DST_Singleton_Finance_DimCurrency.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_DimCurrency.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimCurrency\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Finance_DimCurrency\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimCurrency\OLE_DST_Singleton_Finance_DimCurrency.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_DimCurrency.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -322,6 +340,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Finance_DimCurrency\OLE_DST_Error_Finance_DimCurrency.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimCurrency].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Finance_DimCurrency\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Finance_DimCurrency\OLE_DST_Error_Finance_DimCurrency.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimCurrency].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Finance_DimCurrency\OLE_DST_Error_Finance_DimCurrency.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimCurrency].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Finance_DimCurrency\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Finance_DimCurrency\OLE_DST_Error_Finance_DimCurrency.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimCurrency].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Finance_DimCurrency\OLE_DST_Error_Finance_DimCurrency.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimCurrency].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Finance_DimCurrency\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Finance_DimCurrency\OLE_DST_Error_Finance_DimCurrency.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimCurrency].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="3" cachedName="ISOCode" externalMetadataColumnId="Package\DFT_Load_Finance_DimCurrency\OLE_DST_Error_Finance_DimCurrency.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimCurrency].ExternalColumns[ISOCode]" lineageId="Package\DFT_Load_Finance_DimCurrency\OLE_SRC_Staging_Finance_DimCurrency.Outputs[Output].Columns[ISOCode]" refId="Package\DFT_Load_Finance_DimCurrency\OLE_DST_Error_Finance_DimCurrency.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimCurrency].Columns[ISOCode]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Finance_DimCurrency\OLE_DST_Error_Finance_DimCurrency.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimCurrency].ExternalColumns[Name]" lineageId="Package\DFT_Load_Finance_DimCurrency\OLE_SRC_Staging_Finance_DimCurrency.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Finance_DimCurrency\OLE_DST_Error_Finance_DimCurrency.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimCurrency].Columns[Name]">
@@ -381,18 +403,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{9C1B9358-FFCE-451D-AC17-9FA36F3F1620}" DTS:From="Package\SQL_Truncate_Error_Finance_DimCurrency" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimCurrency_To_DFT_Load_Finance_DimCurrency" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimCurrency_To_DFT_Load_Finance_DimCurrency]" DTS:To="Package\DFT_Load_Finance_DimCurrency">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{41655057-A623-4D28-AA1F-D1EBB77BA696}" DTS:From="Package\SQL_Truncate_Error_Finance_DimCurrency" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimCurrency_To_DFT_Load_Finance_DimCurrency" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimCurrency_To_DFT_Load_Finance_DimCurrency]" DTS:To="Package\DFT_Load_Finance_DimCurrency">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{11B4E240-7500-4463-8A6A-4DFD0FC86146}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A9BD237C-8640-4BE7-ABB3-3BF17ACC900D}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2C170D17-82F7-4A44-9DA5-F01CB98013AA}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{230EBD72-0633-4376-9C8D-BACB44248B51}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F2D27B49-6C31-40F1-9ED8-8B7CBCD381D9}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{83DCC4C1-05F2-499F-BE17-882DC0A637D1}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2015_EDW_Load_Finance_DimCurrency</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

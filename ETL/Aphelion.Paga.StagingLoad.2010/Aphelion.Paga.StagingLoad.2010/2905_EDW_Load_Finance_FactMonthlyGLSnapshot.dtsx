@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="09/24/2014 15:38:58" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{1982DDF2-8E17-49D3-AC1F-19D04DB6B54E}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2905_EDW_Load_Finance_FactMonthlyGLSnapshot" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{734A6638-303E-4CEE-AE80-44164E5F256E}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="09/25/2014 11:17:42" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{71F1D568-97C9-4F1A-842B-05F1EC463A40}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2905_EDW_Load_Finance_FactMonthlyGLSnapshot" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{BE7B63C2-09C2-4644-BDDD-E3C39AF5365B}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{5A38245D-877B-40B9-8F5B-BCE22DE19505}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_FactMonthlyGLSnapshot" DTS:refId="Package\SQL_Truncate_Error_Finance_FactMonthlyGLSnapshot" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{28218B68-0F63-4EB2-88CA-CB0AE7335AC9}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_FactMonthlyGLSnapshot" DTS:refId="Package\SQL_Truncate_Error_Finance_FactMonthlyGLSnapshot" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE Error.[Finance_FactMonthlyGLSnapshot]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Finance_FactMonthlyGLSnapshot]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{3ED35633-9EE1-4050-B098-E430C31B188D}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_FactMonthlyGLSnapshot" DTS:refId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{1467E957-7F98-4C78-95DA-8C8A38BDB4C9}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_FactMonthlyGLSnapshot" DTS:refId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -505,6 +505,12 @@
                 <input name="OLE_DST_Singleton_Finance_FactMonthlyGLSnapshot_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_FactMonthlyGLSnapshot_Error_DC_AddErrorDetails]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Singleton_Finance_FactMonthlyGLSnapshot.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_FactMonthlyGLSnapshot_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Singleton_Finance_FactMonthlyGLSnapshot.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_FactMonthlyGLSnapshot_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
                 </input>
               </inputs>
               <outputs>
@@ -528,6 +534,18 @@
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Singleton_Finance_FactMonthlyGLSnapshot.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_FactMonthlyGLSnapshot.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Singleton_Finance_FactMonthlyGLSnapshot.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_FactMonthlyGLSnapshot.ErrorColumn</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -611,6 +629,10 @@
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Error_Finance_FactMonthlyGLSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactMonthlyGLSnapshot].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Error_Finance_FactMonthlyGLSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactMonthlyGLSnapshot].Columns[ErrorType]">
                     </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Error_Finance_FactMonthlyGLSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactMonthlyGLSnapshot].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Error_Finance_FactMonthlyGLSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactMonthlyGLSnapshot].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Error_Finance_FactMonthlyGLSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactMonthlyGLSnapshot].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Error_Finance_FactMonthlyGLSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactMonthlyGLSnapshot].Columns[SSISErrorColumn]">
+                    </inputColumn>
                     <inputColumn cachedDataType="numeric" cachedName="AggregatedCreditAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Error_Finance_FactMonthlyGLSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactMonthlyGLSnapshot].ExternalColumns[AggregatedCreditAmount]" lineageId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_SRC_Staging_Finance_FactMonthlyGLSnapshot.Outputs[Output].Columns[AggregatedCreditAmount]" refId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Error_Finance_FactMonthlyGLSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactMonthlyGLSnapshot].Columns[AggregatedCreditAmount]">
                     </inputColumn>
                     <inputColumn cachedDataType="numeric" cachedName="AggregatedDebitAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Error_Finance_FactMonthlyGLSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactMonthlyGLSnapshot].ExternalColumns[AggregatedDebitAmount]" lineageId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_SRC_Staging_Finance_FactMonthlyGLSnapshot.Outputs[Output].Columns[AggregatedDebitAmount]" refId="Package\DFT_Load_Finance_FactMonthlyGLSnapshot\OLE_DST_Error_Finance_FactMonthlyGLSnapshot.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactMonthlyGLSnapshot].Columns[AggregatedDebitAmount]">
@@ -690,18 +712,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{2056826D-D9A7-46F2-990C-CB780EB056B3}" DTS:From="Package\SQL_Truncate_Error_Finance_FactMonthlyGLSnapshot" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_FactMonthlyGLSnapshot_To_DFT_Load_Finance_FactMonthlyGLSnapshot" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_FactMonthlyGLSnapshot_To_DFT_Load_Finance_FactMonthlyGLSnapshot]" DTS:To="Package\DFT_Load_Finance_FactMonthlyGLSnapshot">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{267953AF-10FB-41FD-8FC9-8301EADE688D}" DTS:From="Package\SQL_Truncate_Error_Finance_FactMonthlyGLSnapshot" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_FactMonthlyGLSnapshot_To_DFT_Load_Finance_FactMonthlyGLSnapshot" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_FactMonthlyGLSnapshot_To_DFT_Load_Finance_FactMonthlyGLSnapshot]" DTS:To="Package\DFT_Load_Finance_FactMonthlyGLSnapshot">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{784D8A03-493D-4C91-9994-8EFAF0ABDBC5}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C3141260-42F2-4DA7-A1D8-FD309700D064}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B2C8E756-3A97-429A-91DE-B0B5D8C23DB1}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{51218753-F4C5-47EB-BBB7-218A0DE8E5EB}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{00ABC993-E27D-4BDE-A42D-305F99E9D282}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{14AABE0E-92DF-4FDF-88D6-F246F5362A5D}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2905_EDW_Load_Finance_FactMonthlyGLSnapshot</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
