@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Shared].[DimUser] (
-    [DimUserID]                   INT   IDENTITY(1,1)          NOT NULL,
+    [DimUserID]                   INT             IDENTITY (1, 1) NOT NULL,
     [SourceKey]                   VARCHAR (255)   NOT NULL,
     [Name]                        VARCHAR (255)   NOT NULL,
     [DateOfBirthID]               INT             NULL,
@@ -25,6 +25,8 @@
     CONSTRAINT [fk_DimUser_DimOrganizationUnitLevel4ID] FOREIGN KEY ([DimOrganizationUnitLevel4ID]) REFERENCES [Shared].[DimOrganizationUnitLevel4] ([DimOrganizationUnitLevel4ID]),
     CONSTRAINT [fk_DimUser_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
 
 
 
@@ -205,4 +207,8 @@ FROM
 ) AS base_query
 
 ', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'7', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
 

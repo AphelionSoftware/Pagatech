@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="09/25/2014 16:07:28" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{F45CA878-0318-4EB0-9419-5174A4AFA516}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="20101_EDW_Load_Classification_DimProcessType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{C944BFAE-800C-485D-BEB5-100EA4E7DE76}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{41DE04CB-5D76-4328-86D8-5359FDCAEA4F}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimProcessType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimProcessType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimProcessType]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{28288BE8-E719-4B07-AED2-A45C29AD53AC}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimProcessType" DTS:refId="Package\DFT_Load_Classification_DimProcessType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+          <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLE_SRC_Staging_Classification_DimProcessType" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="DescriptionText" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].ExternalColumns[DescriptionText]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimProcessTypeGroupSourceKey" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].ExternalColumns[DimProcessTypeGroupSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].ExternalColumns[DescriptionText]" length="1000" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[DescriptionText]" name="DescriptionText" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[DescriptionText]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].ExternalColumns[SourceKey]" length="255" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].ExternalColumns[DimProcessTypeGroupSourceKey]" length="255" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[DimProcessTypeGroupSourceKey]" name="DimProcessTypeGroupSourceKey" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[DimProcessTypeGroupSourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].ExternalColumns[change_operation]" length="1" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[change_operation]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" length="1000" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[DescriptionText]" name="DescriptionText" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[DescriptionText]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[Name]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[SourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[DimProcessTypeGroupSourceKey]" name="DimProcessTypeGroupSourceKey" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[DimProcessTypeGroupSourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[change_operation]" name="change_operation" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[change_operation]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+					SELECT *
+					FROM [Staging].[Classification_DimProcessType]
+				  </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">2</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}" contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5" name="LKP_DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID" usesDispositions="true" version="6">
+              <connections>
+                <connection connectionManagerID="{89527442-0535-4045-8E32-5693BB8999E6}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="Connection manager used to access lookup data." name="OleDbConnection" refId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input name="OLE_SRC_Staging_Classification_DimProcessType_Output_LKP_DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Inputs[OLE_SRC_Staging_Classification_DimProcessType_Output_LKP_DimProcessTypeGroupID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimProcessTypeGroupSourceKey" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[DimProcessTypeGroupSourceKey]" refId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Inputs[OLE_SRC_Staging_Classification_DimProcessType_Output_LKP_DimProcessTypeGroupID].Columns[DimProcessTypeGroupSourceKey]">
+                      <properties>
+                        <property dataType="System.String" description="Specifies the column in the reference table that a column joins." name="JoinToReferenceColumn">SourceKey</property>
+                        <property dataType="System.Null" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">
+                        </property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output errorOrTruncationOperation="Lookup" errorRowDisposition="RedirectRow" exclusionGroup="1" name="Match" refId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Match]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Inputs[OLE_SRC_Staging_Classification_DimProcessType_Output_LKP_DimProcessTypeGroupID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="CopyColumn" lineageId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Match].Columns[DimProcessTypeGroupID]" name="DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Match].Columns[DimProcessTypeGroupID]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">DimProcessTypeGroupID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;" exclusionGroup="1" name="NoMatch" refId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[NoMatch]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Inputs[OLE_SRC_Staging_Classification_DimProcessType_Output_LKP_DimProcessTypeGroupID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Error]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Inputs[OLE_SRC_Staging_Classification_DimProcessType_Output_LKP_DimProcessTypeGroupID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.String" description="Specifies the SQL statement that generates the lookup table." expressionType="Notify" name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SourceKey, DimProcessTypeGroupID FROM [Classification].[DimProcessTypeGroup]</property>
+                <property dataType="System.String" description="Specifies a SQL statement that uses parameters to generate the lookup table." expressionType="Notify" name="SqlCommandParam" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT SourceKey, DimProcessTypeGroupID FROM [Classification].[DimProcessTypeGroup]) [refTable] where [refTable].[SourceKey] = ?</property>
+                <property dataType="System.Int32" description="Specifies the type of connection used to access the reference dataset." name="ConnectionType" typeConverter="LookupConnectionType">0</property>
+                <property dataType="System.Int32" description="Specifies the cache type of the lookup table." name="CacheType" typeConverter="CacheType">0</property>
+                <property dataType="System.Int32" description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set." name="NoMatchBehavior" typeConverter="LookupNoMatchBehavior">0</property>
+                <property dataType="System.Int32" description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset." name="NoMatchCachePercentage">0</property>
+                <property dataType="System.Int32" description="Maximum Memory Usage for Reference Cache on a 32 bit platform." name="MaxMemoryUsage">25</property>
+                <property dataType="System.Int64" description="Maximum Memory Usage for Reference Cache on a 64 bit platform." name="MaxMemoryUsage64">25</property>
+                <property dataType="System.String" description="Indicates whether to reference metadata in an XML format." name="ReferenceMetadataXml">&lt;referenceMetadata&gt;
+  &lt;referenceColumns&gt;
+    &lt;referenceColumn name="SourceKey" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252" /&gt;
+    &lt;referenceColumn name="DimProcessTypeGroupID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+  &lt;/referenceColumns&gt;
+&lt;/referenceMetadata&gt;</property>
+                <property containsID="true" dataType="System.String" description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons." name="ParameterMap">#{Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[DimProcessTypeGroupSourceKey]};</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used." name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Classification_DimProcessType" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{89527442-0535-4045-8E32-5693BB8999E6}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="DimProcessTypeID" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[DimProcessTypeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[DimProcessTypeGroupID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="DescriptionText" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[DescriptionText]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[SourceKeyHash]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[DeltaHash]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[sys_ModifiedBy]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[sys_ModifiedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[sys_CreatedBy]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="DimProcessTypeGroupID" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[DimProcessTypeGroupID]" lineageId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Match].Columns[DimProcessTypeGroupID]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].Columns[DimProcessTypeGroupID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="DescriptionText" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[DescriptionText]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[DescriptionText]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].Columns[DescriptionText]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[Name]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].Columns[Name]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType].Columns[SourceKey]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Outputs[Error]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Classification.DimProcessType</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Singleton_Classification_DimProcessType" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{89527442-0535-4045-8E32-5693BB8999E6}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="DimProcessTypeID" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[DimProcessTypeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[DimProcessTypeGroupID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="DescriptionText" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[DescriptionText]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[SourceKeyHash]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[DeltaHash]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[sys_ModifiedBy]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[sys_ModifiedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[sys_CreatedBy]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="DimProcessTypeGroupID" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[DimProcessTypeGroupID]" lineageId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Match].Columns[DimProcessTypeGroupID]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].Columns[DimProcessTypeGroupID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="DescriptionText" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[DescriptionText]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[DescriptionText]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].Columns[DescriptionText]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[Name]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].Columns[Name]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType].Columns[SourceKey]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Outputs[Error]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Classification.DimProcessType</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">1</property>
+              </properties>
+            </component>
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails" usesDispositions="true">
+              <inputs>
+                <input name="OLE_DST_Singleton_Classification_DimProcessType_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimProcessType_Error_DC_AddErrorDetails]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimProcessType_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimProcessType_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimProcessType_Error_DC_AddErrorDetails]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimProcessType.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimProcessType.ErrorColumn</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Error]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimProcessType_Error_DC_AddErrorDetails]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+            </component>
+            <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors" refId="Package\DFT_Load_Classification_DimProcessType\RC_CountErrors">
+              <inputs>
+                <input hasSideEffects="true" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\DFT_Load_Classification_DimProcessType\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load_Classification_DimProcessType\RC_CountErrors.Outputs[Output]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Classification_DimProcessType" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{62A1B24F-A693-4E26-AE0F-0898101FEDF7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[QueueID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[SSISErrorCode]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[SSISErrorColumn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[PackageName]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[ErrorType]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="DescriptionText" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[DescriptionText]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimProcessTypeGroupSourceKey" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[DimProcessTypeGroupSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[PackageName]" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].Columns[PackageName]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[QueueID]" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].Columns[QueueID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].Columns[ErrorType]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].Columns[SSISErrorColumn]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="DescriptionText" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[DescriptionText]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[DescriptionText]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].Columns[DescriptionText]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[Name]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].Columns[Name]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimProcessTypeGroupSourceKey" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[DimProcessTypeGroupSourceKey]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[DimProcessTypeGroupSourceKey]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].Columns[DimProcessTypeGroupSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="change_operation" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].ExternalColumns[change_operation]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[change_operation]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType].Columns[change_operation]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Outputs[Error]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Classification_DimProcessType]</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+              </properties>
+            </component>
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails_DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID" usesDispositions="true">
+              <inputs>
+                <input name="LKP_DimProcessTypeGroupID_Error_DC_AddErrorDetails_DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Inputs[LKP_DimProcessTypeGroupID_Error_DC_AddErrorDetails_DimProcessTypeGroupID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Inputs[LKP_DimProcessTypeGroupID_Error_DC_AddErrorDetails_DimProcessTypeGroupID].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Inputs[LKP_DimProcessTypeGroupID_Error_DC_AddErrorDetails_DimProcessTypeGroupID].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Inputs[LKP_DimProcessTypeGroupID_Error_DC_AddErrorDetails_DimProcessTypeGroupID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Failed Lookup DimProcessTypeGroupID")</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Failed Lookup DimProcessTypeGroupID")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorColumn</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Error]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Inputs[LKP_DimProcessTypeGroupID_Error_DC_AddErrorDetails_DimProcessTypeGroupID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+            </component>
+            <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors_DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType\RC_CountErrors_DimProcessTypeGroupID">
+              <inputs>
+                <input hasSideEffects="true" name="DC_AddErrorDetails_DimProcessTypeGroupID_Output_RC_CountErrors_DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType\RC_CountErrors_DimProcessTypeGroupID.Inputs[DC_AddErrorDetails_DimProcessTypeGroupID_Output_RC_CountErrors_DimProcessTypeGroupID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load_Classification_DimProcessType\RC_CountErrors_DimProcessTypeGroupID.Outputs[Output]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\RC_CountErrors_DimProcessTypeGroupID.Inputs[DC_AddErrorDetails_DimProcessTypeGroupID_Output_RC_CountErrors_DimProcessTypeGroupID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{62A1B24F-A693-4E26-AE0F-0898101FEDF7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[QueueID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[SSISErrorCode]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[SSISErrorColumn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[PackageName]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[ErrorType]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="change_operation" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[change_operation]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="DescriptionText" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[DescriptionText]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimProcessTypeGroupSourceKey" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[DimProcessTypeGroupSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[PackageName]" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[PackageName]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].Columns[PackageName]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[QueueID]" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[QueueID]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].Columns[QueueID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].Columns[ErrorType]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].Columns[SSISErrorColumn]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="DescriptionText" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[DescriptionText]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[DescriptionText]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].Columns[DescriptionText]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[Name]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].Columns[Name]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimProcessTypeGroupSourceKey" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[DimProcessTypeGroupSourceKey]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[DimProcessTypeGroupSourceKey]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].Columns[DimProcessTypeGroupSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="change_operation" externalMetadataColumnId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].ExternalColumns[change_operation]" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output].Columns[change_operation]" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID].Columns[change_operation]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Outputs[Error]" synchronousInputId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Classification_DimProcessType]</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+              </properties>
+            </component>
+          </components>
+          <paths>
+            <path endId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Inputs[OLE_SRC_Staging_Classification_DimProcessType_Output_LKP_DimProcessTypeGroupID]" name="OLE_SRC_Staging_Classification_DimProcessType_Output_LKP_DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType.Paths[OLE_SRC_Staging_Classification_DimProcessType_Output_LKP_DimProcessTypeGroupID]" startId="Package\DFT_Load_Classification_DimProcessType\OLE_SRC_Staging_Classification_DimProcessType.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Inputs[LKP_DimProcessTypeGroupID_Error_DC_AddErrorDetails_DimProcessTypeGroupID]" name="LKP_DimProcessTypeGroupID_Error_DC_AddErrorDetails_DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType.Paths[LKP_DimProcessTypeGroupID_Error_DC_AddErrorDetails_DimProcessTypeGroupID]" startId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Error]">
+            </path>
+            <path endId="Package\DFT_Load_Classification_DimProcessType\RC_CountErrors_DimProcessTypeGroupID.Inputs[DC_AddErrorDetails_DimProcessTypeGroupID_Output_RC_CountErrors_DimProcessTypeGroupID]" name="DC_AddErrorDetails_DimProcessTypeGroupID_Output_RC_CountErrors_DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType.Paths[DC_AddErrorDetails_DimProcessTypeGroupID_Output_RC_CountErrors_DimProcessTypeGroupID]" startId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails_DimProcessTypeGroupID.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID.Inputs[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID]" name="RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID" refId="Package\DFT_Load_Classification_DimProcessType.Paths[RC_CountErrors_DimProcessTypeGroupID_Output_OLE_DST_Error_Classification_DimProcessType_DimProcessTypeGroupID]" startId="Package\DFT_Load_Classification_DimProcessType\RC_CountErrors_DimProcessTypeGroupID.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Inputs[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType]" name="LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType" refId="Package\DFT_Load_Classification_DimProcessType.Paths[LKP_DimProcessTypeGroupID_Match_OLE_DST_Classification_DimProcessType]" startId="Package\DFT_Load_Classification_DimProcessType\LKP_DimProcessTypeGroupID.Outputs[Match]">
+            </path>
+            <path endId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Inputs[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType]" name="OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType" refId="Package\DFT_Load_Classification_DimProcessType.Paths[OLE_DST_Classification_DimProcessType_Error_OLE_DST_Singleton_Classification_DimProcessType]" startId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Classification_DimProcessType.Outputs[Error]">
+            </path>
+            <path endId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimProcessType_Error_DC_AddErrorDetails]" name="OLE_DST_Singleton_Classification_DimProcessType_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Classification_DimProcessType.Paths[OLE_DST_Singleton_Classification_DimProcessType_Error_DC_AddErrorDetails]" startId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Singleton_Classification_DimProcessType.Outputs[Error]">
+            </path>
+            <path endId="Package\DFT_Load_Classification_DimProcessType\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\DFT_Load_Classification_DimProcessType.Paths[DC_AddErrorDetails_Output_RC_CountErrors]" startId="Package\DFT_Load_Classification_DimProcessType\DC_AddErrorDetails.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Classification_DimProcessType\OLE_DST_Error_Classification_DimProcessType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType]" name="RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType" refId="Package\DFT_Load_Classification_DimProcessType.Paths[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessType]" startId="Package\DFT_Load_Classification_DimProcessType\RC_CountErrors.Outputs[Output]">
+            </path>
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{8DA31E34-BAFE-4E7A-8D82-56CC61D82E4F}" DTS:From="Package\SQL_Truncate_Error_Classification_DimProcessType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimProcessType_To_DFT_Load_Classification_DimProcessType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimProcessType_To_DFT_Load_Classification_DimProcessType]" DTS:To="Package\DFT_Load_Classification_DimProcessType">
+    </DTS:PrecedenceConstraint>
+  </DTS:PrecedenceConstraints>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AE2B0AF0-BA9B-4133-AC27-A3668CD5F6C2}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F9F5552F-BFC8-45FF-B8FA-F79C6D1D5C58}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AFEC9244-34ED-48A6-B311-1C4B4639FF42}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+      <DTS:VariableValue DTS:DataType="8">20101_EDW_Load_Classification_DimProcessType</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>

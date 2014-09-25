@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Shared].[DimOrganizationUnitLevel4] (
-    [DimOrganizationUnitLevel4ID] INT      IDENTITY(1,1)     NOT NULL,
+    [DimOrganizationUnitLevel4ID] INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]                   VARCHAR (255) NOT NULL,
     [Name]                        VARCHAR (255) NOT NULL,
     [DimOrganizationUnitLevel3ID] INT           NOT NULL,
@@ -15,6 +15,8 @@
     CONSTRAINT [fk_DimOrganizationUnitLevel4_DimOrganizationUnitLevel3ID] FOREIGN KEY ([DimOrganizationUnitLevel3ID]) REFERENCES [Shared].[DimOrganizationUnitLevel3] ([DimOrganizationUnitLevel3ID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel4_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID])
 );
+
+
 
 
 
@@ -133,4 +135,8 @@ WITH cte AS
 	FROM @OrgUnit AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4';
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'6', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4';
 

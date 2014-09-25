@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Airtime].[FactAirtimeTxDetail] (
-    [FactAirtimeTxDetailID] INT     IDENTITY(1,1)        NOT NULL,
+    [FactAirtimeTxDetailID] INT             IDENTITY (1, 1) NOT NULL,
     [SourceKey]             INT             NOT NULL,
     [FactAirtimeTxHeaderID] INT             NOT NULL,
     [DimCreatedDateID]      INT             NOT NULL,
@@ -17,6 +17,8 @@
     CONSTRAINT [fk_FactAirtimeTxDetail_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactAirtimeTxDetail_FactAirtimeTxHeaderID] FOREIGN KEY ([FactAirtimeTxHeaderID]) REFERENCES [Airtime].[FactAirtimeTxHeader] ([FactAirtimeTxHeaderID])
 );
+
+
 
 
 GO
@@ -73,4 +75,8 @@ FROM
 				fti.FinancialTransactionId = ft0.FinancialTransactionId
 		)
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeTxDetail';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'10', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeTxDetail';
 

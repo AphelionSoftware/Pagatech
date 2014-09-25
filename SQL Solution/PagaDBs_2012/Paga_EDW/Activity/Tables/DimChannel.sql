@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Activity].[DimChannel] (
-    [DimChannelID]   INT    IDENTITY(1,1)        NOT NULL,
+    [DimChannelID]   INT            IDENTITY (1, 1) NOT NULL,
     [SourceKey]      VARCHAR (255)  NOT NULL,
     [Name]           VARCHAR (255)  NOT NULL,
     [TextDesciption] VARCHAR (1000) NULL,
@@ -11,6 +11,8 @@
     [sys_CreatedOn]  DATETIME       DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimChannelID] PRIMARY KEY CLUSTERED ([DimChannelID] ASC)
 );
+
+
 
 
 
@@ -66,4 +68,8 @@ EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.ProcessCha
 
 GO
 EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'ProcessChannelID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'DimChannel';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'DimChannel';
 

@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[DimGLCode] (
-    [DimGLCodeID]         INT     IDENTITY(1,1)       NOT NULL,
+    [DimGLCodeID]         INT            IDENTITY (1, 1) NOT NULL,
     [SourceKey]           VARCHAR (255)  NOT NULL,
     [Name]                VARCHAR (255)  NOT NULL,
     [DimGLCodeSubGroupID] INT            NOT NULL,
@@ -15,6 +15,8 @@
     CONSTRAINT [pk_DimGLCodeID] PRIMARY KEY CLUSTERED ([DimGLCodeID] ASC),
     CONSTRAINT [fk_DimGLCode_DimGLCodeSubGroupID] FOREIGN KEY ([DimGLCodeSubGroupID]) REFERENCES [Finance].[DimGLCodeSubGroup] ([DimGLCodeSubGroupID])
 );
+
+
 
 
 GO
@@ -86,4 +88,8 @@ FROM
 		IsNormalDebit
 	FROM dbo.AccountCode
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'3', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode';
 

@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Location].[DimCity] (
-    [DimCityID]                INT      IDENTITY(1,1)     NOT NULL,
+    [DimCityID]                INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]                VARCHAR (255) NOT NULL,
     [Name]                     VARCHAR (255) NOT NULL,
     [DimLocalGovernmentAreaID] INT           NOT NULL,
@@ -13,6 +13,8 @@
     CONSTRAINT [pk_DimCityID] PRIMARY KEY CLUSTERED ([DimCityID] ASC),
     CONSTRAINT [FK_DimCity_DimLocalGovernmentArea] FOREIGN KEY ([DimLocalGovernmentAreaID]) REFERENCES [Location].[DimLocalGovernmentArea] ([DimLocalGovernmentAreaID])
 );
+
+
 
 
 GO
@@ -62,4 +64,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCity', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'4', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCity';
 

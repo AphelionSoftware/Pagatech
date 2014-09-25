@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[DimChartOfAccounts] (
-    [DimChartOfAccountsID] INT  IDENTITY(1,1)         NOT NULL,
+    [DimChartOfAccountsID] INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]            VARCHAR (255) NOT NULL,
     [Name]                 VARCHAR (255) NOT NULL,
     [GLCodeRange]          VARCHAR (255) NULL,
@@ -11,6 +11,8 @@
     [sys_CreatedOn]        DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimGLHeadingID] PRIMARY KEY CLUSTERED ([DimChartOfAccountsID] ASC)
 );
+
+
 
 
 GO
@@ -87,4 +89,8 @@ WITH cte AS
 		base_query.GLCodeRange,
 		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 	FROM @COA AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimChartOfAccounts';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimChartOfAccounts';
 

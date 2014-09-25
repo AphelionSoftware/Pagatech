@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[DimBankAccount] (
-    [DimBankAccountID]             INT       IDENTITY(1,1)      NOT NULL,
+    [DimBankAccountID]             INT             IDENTITY (1, 1) NOT NULL,
     [SourceKey]                    VARCHAR (255)   NOT NULL,
     [Name]                         VARCHAR (255)   NOT NULL,
     [DimBankID]                    INT             NOT NULL,
@@ -26,6 +26,8 @@
     CONSTRAINT [pk_DimBankAccountID] PRIMARY KEY CLUSTERED ([DimBankAccountID] ASC),
     CONSTRAINT [fk_DimBankAccount_DimBankID] FOREIGN KEY ([DimBankID]) REFERENCES [Finance].[DimBank] ([DimBankID])
 );
+
+
 
 
 GO
@@ -157,4 +159,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBankAccount', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'4', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBankAccount';
 

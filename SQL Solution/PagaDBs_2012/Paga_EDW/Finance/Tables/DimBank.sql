@@ -1,12 +1,12 @@
 ﻿CREATE TABLE [Finance].[DimBank] (
-    [DimBankID]           INT     IDENTITY(1,1)      NOT NULL,
+    [DimBankID]           INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]           VARCHAR (255) NOT NULL,
     [Name]                VARCHAR (255) NOT NULL,
     [BankAccountLinkType] VARCHAR (255) NOT NULL,
     [DimOrganizationID]   INT           NOT NULL,
     [SupportsDebit]       BIT           NULL,
     [SupportsCredit]      BIT           NULL,
-    [SourceKeyHash]  BIGINT         NULL,
+    [SourceKeyHash]       BIGINT        NULL,
     [DeltaHash]           BIGINT        NULL,
     [sys_ModifiedBy]      VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_ModifiedOn]      DATETIME      DEFAULT (getdate()) NOT NULL,
@@ -15,6 +15,8 @@
     CONSTRAINT [pk_DimBankID] PRIMARY KEY CLUSTERED ([DimBankID] ASC),
     CONSTRAINT [fk_DimBank_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID])
 );
+
+
 
 
 GO
@@ -82,4 +84,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBank', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'3', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBank';
 

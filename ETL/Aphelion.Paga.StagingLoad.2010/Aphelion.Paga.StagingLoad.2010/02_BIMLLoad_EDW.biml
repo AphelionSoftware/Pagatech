@@ -25,7 +25,7 @@
   <Packages>
 
 	<# string PackageListQuery ="SELECT "+ 
-									"PackageName = CONVERT(CHAR(4),(list.load_group + list.rn)) +'_EDW_Load_' + list.TABLE_SCHEMA +'_' + list.TABLE_NAME, "+ 
+									"PackageName = CONVERT(VARCHAR(5),CONVERT(INT,list.load_group) *100 + 20000 +list.rn) +'_EDW_Load_' + list.TABLE_SCHEMA +'_' + list.TABLE_NAME,  "+ 
 									"list.TABLE_SCHEMA, "+
 									"list.TABLE_NAME, "+
 									"ErrorTable = TABLE_SCHEMA + '_' + TABLE_NAME "+
@@ -50,7 +50,7 @@
 												"table_list.TABLE_SCHEMA, "+ 
 												"table_list.TABLE_NAME, "+ 
 												"CASE "+	 
-													"WHEN ext_prop.name =  'LoadGroup'  "+
+													"WHEN ext_prop.name =  'RelationshipDepth'  "+
 													"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
 												"END as LoadGroup  "+
 											"FROM  "+
@@ -65,7 +65,7 @@
 											"INNER JOIN sys.extended_properties AS ext_prop ON   "+
 												"table_list.object_id = ext_prop.major_id  "+
 											"WHERE   "+
-												"ext_prop.name = 'LoadGroup' "+
+												"ext_prop.name = 'RelationshipDepth' "+
 										") AS package_list  "+
 										"GROUP BY  "+
 											"package_list.TABLE_SCHEMA,  "+

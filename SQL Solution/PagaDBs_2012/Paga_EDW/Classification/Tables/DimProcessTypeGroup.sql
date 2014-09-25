@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Classification].[DimProcessTypeGroup] (
-    [DimProcessTypeGroupID] INT   IDENTITY(1,1)        NOT NULL,
+    [DimProcessTypeGroupID] INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]             VARCHAR (255) NOT NULL,
     [Name]                  VARCHAR (255) NOT NULL,
     [SourceKeyHash]         BIGINT        NULL,
@@ -10,6 +10,8 @@
     [sys_CreatedOn]         DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimProcessTypeGroupID] PRIMARY KEY CLUSTERED ([DimProcessTypeGroupID] ASC)
 );
+
+
 
 
 GO
@@ -34,4 +36,8 @@ EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0typ
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.ProcessTypeGroup', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessTypeGroup';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessTypeGroup';
 

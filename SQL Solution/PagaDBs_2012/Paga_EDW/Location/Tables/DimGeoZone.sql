@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Location].[DimGeoZone] (
-    [DimGeoZoneID]   INT    IDENTITY(1,1)       NOT NULL,
+    [DimGeoZoneID]   INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]      VARCHAR (255) NOT NULL,
     [Name]           VARCHAR (255) NOT NULL,
     [Code]           VARCHAR (50)  NOT NULL,
@@ -13,6 +13,8 @@
     CONSTRAINT [pk_DimGeoZoneID] PRIMARY KEY CLUSTERED ([DimGeoZoneID] ASC),
     CONSTRAINT [fk_DimGeoZone_DimCountryID] FOREIGN KEY ([DimCountryID]) REFERENCES [Location].[DimCountry] ([DimCountryID])
 );
+
+
 
 
 GO
@@ -66,4 +68,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimGeoZone', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimGeoZone';
 

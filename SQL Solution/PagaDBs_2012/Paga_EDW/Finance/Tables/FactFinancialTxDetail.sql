@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[FactFinancialTxDetail] (
-    [FactFinancialTxDetailID] INT    IDENTITY(1,1)         NOT NULL,
+    [FactFinancialTxDetailID] INT             IDENTITY (1, 1) NOT NULL,
     [SourceKey]               INT             NOT NULL,
     [FactFinancialTxHeaderID] INT             NOT NULL,
     [DimCreatedDateID]        INT             NOT NULL,
@@ -17,6 +17,8 @@
     CONSTRAINT [fk_FactFinancialTxDetail_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactFinancialTxDetail_FactFinancialTxHeaderID] FOREIGN KEY ([FactFinancialTxHeaderID]) REFERENCES [Finance].[FactFinancialTxHeader] ([FactFinancialTxHeaderID])
 );
+
+
 
 
 
@@ -65,4 +67,8 @@ FROM
 	) AS paga_acct ON
 		paga_acct.FinancialAccountId = fti.FinancialAccountId
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxDetail';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'10', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxDetail';
 

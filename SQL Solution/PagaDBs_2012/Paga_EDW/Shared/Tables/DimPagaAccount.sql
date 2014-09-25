@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Shared].[DimPagaAccount] (
-    [DimPagaAccountID]       INT   IDENTITY(1,1)        NOT NULL,
+    [DimPagaAccountID]       INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]              VARCHAR (255) NOT NULL,
     [Name]                   VARCHAR (255) NOT NULL,
     [DimPagaAccountStatusID] INT           NOT NULL,
@@ -11,18 +11,18 @@
     [hasOnlineAccount]       BIT           NULL,
     [IsActive]               BIT           NULL,
     [IsEnabled]              BIT           NULL,
-    [IsAffiliate]              BIT SPARSE    NULL,
-    [IsAgent]                  BIT SPARSE    NULL,
-    [IsBank]                   BIT SPARSE    NULL,
-    [IsBusiness]               BIT SPARSE    NULL,
-    [IsCardProcessor]         BIT SPARSE    NULL,
-    [IsCashCollector]         BIT SPARSE    NULL,
-    [IsCustomer]               BIT SPARSE    NULL,
-    [IsMerchant]               BIT SPARSE    NULL,
-    [IsMobileOperator]        BIT SPARSE    NULL,
-    [IsPaga]                   BIT SPARSE    NULL,
-    [IsRemittanceProcessor]   BIT SPARSE    NULL,
-    [IsServiceAggregator]     BIT SPARSE    NULL,
+    [IsAffiliate]            BIT SPARSE    NULL,
+    [IsAgent]                BIT SPARSE    NULL,
+    [IsBank]                 BIT SPARSE    NULL,
+    [IsBusiness]             BIT SPARSE    NULL,
+    [IsCardProcessor]        BIT SPARSE    NULL,
+    [IsCashCollector]        BIT SPARSE    NULL,
+    [IsCustomer]             BIT SPARSE    NULL,
+    [IsMerchant]             BIT SPARSE    NULL,
+    [IsMobileOperator]       BIT SPARSE    NULL,
+    [IsPaga]                 BIT SPARSE    NULL,
+    [IsRemittanceProcessor]  BIT SPARSE    NULL,
+    [IsServiceAggregator]    BIT SPARSE    NULL,
     [SourceKeyHash]          BIGINT        NULL,
     [DeltaHash]              BIGINT        NULL,
     [sys_ModifiedBy]         VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
@@ -32,6 +32,8 @@
     CONSTRAINT [pk_DimPagaAccountID] PRIMARY KEY CLUSTERED ([DimPagaAccountID] ASC),
     CONSTRAINT [fk_DimPagaAccount_DimPagaAccountStatusID] FOREIGN KEY ([DimPagaAccountStatusID]) REFERENCES [Classification].[DimPagaAccountStatus] ([DimPagaAccountStatusID])
 );
+
+
 
 
 
@@ -188,4 +190,8 @@ FROM
 			pa1.PagaAccountId = pa2.PagaAccountId
 ) AS base_query
 	', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount';
 

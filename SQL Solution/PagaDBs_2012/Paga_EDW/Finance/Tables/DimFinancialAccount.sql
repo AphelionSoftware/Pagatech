@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[DimFinancialAccount] (
-    [DimFinancialAccountID]        INT     IDENTITY(1,1)        NOT NULL,
+    [DimFinancialAccountID]        INT             IDENTITY (1, 1) NOT NULL,
     [SourceKey]                    VARCHAR (255)   NOT NULL,
     [Name]                         VARCHAR (255)   NOT NULL,
     [DimFinancialHoldingAccountID] INT             NULL,
@@ -24,6 +24,8 @@
     CONSTRAINT [fk_DimFinancialAccount_DimFinancialHoldingAccount] FOREIGN KEY ([DimFinancialHoldingAccountID]) REFERENCES [Finance].[DimFinancialHoldingAccount] ([DimFinancialHoldingAccountID]),
     CONSTRAINT [fk_DimFinancialAccount_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
 
 
 GO
@@ -125,4 +127,8 @@ FROM
 ) AS base_query
 
 ', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'5', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount';
 

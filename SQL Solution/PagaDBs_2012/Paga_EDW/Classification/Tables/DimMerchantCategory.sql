@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Classification].[DimMerchantCategory] (
-    [DimMerchantCategoryID] INT      IDENTITY(1,1)     NOT NULL,
+    [DimMerchantCategoryID] INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]             VARCHAR (255) NOT NULL,
     [Name]                  VARCHAR (255) NOT NULL,
     [SourceKeyHash]         BIGINT        NULL,
@@ -10,6 +10,8 @@
     [sys_CreatedOn]         DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimMerchantCategoryID] PRIMARY KEY CLUSTERED ([DimMerchantCategoryID] ASC)
 );
+
+
 
 
 
@@ -38,4 +40,8 @@ FROM
 		CONVERT(VARCHAR(255),Description) AS Name
 	FROM dbo.MerchantCategory
 ) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimMerchantCategory';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimMerchantCategory';
 

@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Airtime].[DimMobileOperator] (
-    [DimMobileOperatorID] INT   IDENTITY(1,1)        NOT NULL,
+    [DimMobileOperatorID] INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]           VARCHAR (255) NOT NULL,
     [Name]                VARCHAR (255) NOT NULL,
     [DimOrganizationID]   INT           NOT NULL,
@@ -13,6 +13,8 @@
     CONSTRAINT [pk_DimMobileOperatorID] PRIMARY KEY CLUSTERED ([DimMobileOperatorID] ASC),
     CONSTRAINT [fk_DimMobileOperator_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID])
 );
+
+
 
 
 GO
@@ -72,4 +74,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'DimMobileOperator', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'3', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'DimMobileOperator';
 

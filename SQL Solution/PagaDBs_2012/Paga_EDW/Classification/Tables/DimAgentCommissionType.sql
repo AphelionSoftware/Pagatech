@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Classification].[DimAgentCommissionType] (
-    [DimAgentCommissionTypeID] INT      IDENTITY(1,1)     NOT NULL,
+    [DimAgentCommissionTypeID] INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]                VARCHAR (255) NOT NULL,
     [Name]                     VARCHAR (255) NOT NULL,
     [SourceKeyHash]            BIGINT        NULL,
@@ -10,6 +10,8 @@
     [sys_CreatedOn]            DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimAgentCommissionTypeID] PRIMARY KEY CLUSTERED ([DimAgentCommissionTypeID] ASC)
 );
+
+
 
 
 GO
@@ -54,4 +56,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimAgentCommissionType', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimAgentCommissionType';
 

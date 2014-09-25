@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Airtime].[FactAirtimeStockOnHandSnapshot] (
-    [FactAirtimeStockOnHandSnapshotID] INT     IDENTITY(1,1)        NOT NULL,
+    [FactAirtimeStockOnHandSnapshotID] INT             IDENTITY (1, 1) NOT NULL,
     [DimDateID]                        INT             NULL,
     [DimMobileOperatorID]              INT             NULL,
     [DimPagaAccountID]                 INT             NULL,
@@ -11,6 +11,8 @@
     CONSTRAINT [fk_FactAirtimeStockOnHandSnapshot_DimMobileOperatorID] FOREIGN KEY ([DimMobileOperatorID]) REFERENCES [Airtime].[DimMobileOperator] ([DimMobileOperatorID]),
     CONSTRAINT [fk_FactAirtimeStockOnHandSnapshot_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
 
 
 GO
@@ -35,4 +37,8 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCityID', @l
 
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'AccountBalance', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeStockOnHandSnapshot', @level2type = N'COLUMN', @level2name = N'AccountBalance';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'5', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeStockOnHandSnapshot';
 

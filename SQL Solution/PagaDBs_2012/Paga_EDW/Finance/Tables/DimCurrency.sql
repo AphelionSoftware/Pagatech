@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[DimCurrency] (
-    [DimCurrencyID]  INT    IDENTITY(1,1)       NOT NULL,
+    [DimCurrencyID]  INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]      VARCHAR (255) NOT NULL,
     [Name]           VARCHAR (255) NOT NULL,
     [ISOCode]        CHAR (3)      NULL,
@@ -12,6 +12,8 @@
     [sys_CreatedOn]  DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimCurrencyID] PRIMARY KEY CLUSTERED ([DimCurrencyID] ASC)
 );
+
+
 
 
 GO
@@ -67,4 +69,8 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimCurrency', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimCurrency';
 

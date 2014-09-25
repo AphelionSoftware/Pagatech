@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Activity].[FactUserMonthlySnapshot] (
-    [FactUserMonthlySnapshotID] INT       IDENTITY(1,1)      NOT NULL,
+    [FactUserMonthlySnapshotID] INT             IDENTITY (1, 1) NOT NULL,
     [DimCreatedDateID]          INT             NULL,
     [DimPagaAccountID]          INT             NULL,
     [DimProcessTypeID]          INT             NULL,
@@ -23,6 +23,8 @@
     CONSTRAINT [fk_FactUserMonthlySnapshot_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID]),
     CONSTRAINT [fk_FactUserMonthlySnapshot_DimProcessTypeID] FOREIGN KEY ([DimProcessTypeID]) REFERENCES [Classification].[DimProcessType] ([DimProcessTypeID])
 );
+
+
 
 
 GO
@@ -83,4 +85,8 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ByMeForOther_S
 
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ReceivedTxCount', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'ReceivedTxCount';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'5', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot';
 

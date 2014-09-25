@@ -1,5 +1,5 @@
-﻿CREATE TABLE [Activity].[FactProcessTx] (
-    [FactProcessTxID]                 INT     IDENTITY(1,1)               NOT NULL,
+CREATE TABLE [Activity].[FactProcessTx] (
+    [FactProcessTxID]                 INT                    IDENTITY (1, 1) NOT NULL,
     [SourceKey]                       INT                    NOT NULL,
     [DimCreatedDateID]                INT                    NOT NULL,
     [DimCreatedTimeID]                INT                    NOT NULL,
@@ -61,12 +61,15 @@
 
 
 
+
+
 GO
 
 
 
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--FactProcessTx Query must be added manually to SSIS Package
-SELECT 1', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx';
+
+
 
 
 
@@ -78,9 +81,5 @@ GO
 
 EXEC sys.sp_addextendedproperty @name=N'SourceTable', @value=N'dbo.Process' , @level0type=N'SCHEMA',@level0name=N'Activity', @level1type=N'TABLE',@level1name=N'FactProcessTx'
 GO
-
-
-
-
-
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'8', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx';
 

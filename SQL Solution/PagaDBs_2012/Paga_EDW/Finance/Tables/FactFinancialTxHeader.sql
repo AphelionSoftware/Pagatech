@@ -1,5 +1,5 @@
-﻿CREATE TABLE [Finance].[FactFinancialTxHeader] (
-    [FactFinancialTxHeaderID]         INT     IDENTITY(1,1)        NOT NULL,
+CREATE TABLE [Finance].[FactFinancialTxHeader] (
+    [FactFinancialTxHeaderID]         INT             IDENTITY (1, 1) NOT NULL,
     [SourceKey]                       INT             NOT NULL,
     [DimCreatedDateID]                INT             NOT NULL,
     [DimCreatedTimeID]                INT             NOT NULL,
@@ -39,6 +39,8 @@
     CONSTRAINT [fk_FactFinancialTxHeader_OriginalTransactionID] FOREIGN KEY ([OriginalFactFinancialTxHeaderID]) REFERENCES [Finance].[FactFinancialTxHeader] ([FactFinancialTxHeaderID]),
     CONSTRAINT [fk_FactFinancialTxHeader_RelatedTransactionID] FOREIGN KEY ([RelatedFactFinancialTxHeaderID]) REFERENCES [Finance].[FactFinancialTxHeader] ([FactFinancialTxHeaderID])
 );
+
+
 
 
 
@@ -238,3 +240,5 @@ GO
 
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCreatedDateID', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimCreatedDateID';
 GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'9', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader';
+

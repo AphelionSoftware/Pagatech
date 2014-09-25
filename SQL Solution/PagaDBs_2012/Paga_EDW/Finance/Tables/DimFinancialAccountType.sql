@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[DimFinancialAccountType] (
-    [DimFinancialAccountTypeID] INT    IDENTITY(1,1)        NOT NULL,
+    [DimFinancialAccountTypeID] INT            IDENTITY (1, 1) NOT NULL,
     [SourceKey]                 VARCHAR (255)  NOT NULL,
     [Name]                      VARCHAR (255)  NOT NULL,
     [TextDesciption]            VARCHAR (1000) NULL,
@@ -13,6 +13,8 @@
     CONSTRAINT [pk_DimFinancialAccountType] PRIMARY KEY CLUSTERED ([DimFinancialAccountTypeID] ASC),
     CONSTRAINT [FK_DimFinancialAccountType_DimGLCode] FOREIGN KEY ([DimGLCodeID]) REFERENCES [Finance].[DimGLCode] ([DimGLCodeID])
 );
+
+
 
 
 
@@ -52,4 +54,8 @@ EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0typ
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialAccountType', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountType';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'4', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountType';
 

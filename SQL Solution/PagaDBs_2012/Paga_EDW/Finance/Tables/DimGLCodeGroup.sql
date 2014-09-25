@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[DimGLCodeGroup] (
-    [DimGLCodeGroupID]     INT    IDENTITY(1,1)       NOT NULL,
+    [DimGLCodeGroupID]     INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]            VARCHAR (255) NOT NULL,
     [Name]                 VARCHAR (255) NOT NULL,
     [DimChartofAccountsID] INT           NOT NULL,
@@ -13,6 +13,8 @@
     CONSTRAINT [pk_DimGLCodeGroupID] PRIMARY KEY CLUSTERED ([DimGLCodeGroupID] ASC),
     CONSTRAINT [fk_DimGLCodeGroup_DimChartofAccountsID] FOREIGN KEY ([DimChartofAccountsID]) REFERENCES [Finance].[DimChartOfAccounts] ([DimChartOfAccountsID])
 );
+
+
 
 
 GO
@@ -118,4 +120,8 @@ WITH cte AS
 		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 	FROM @COA AS base_query
 	', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCodeGroup';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCodeGroup';
 

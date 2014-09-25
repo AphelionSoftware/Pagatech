@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Airtime].[FactAirtimeStockMovement] (
-    [FactAirtimeStockMovementID] INT    IDENTITY(1,1)         NOT NULL,
+    [FactAirtimeStockMovementID] INT             IDENTITY (1, 1) NOT NULL,
     [DimDateID]                  INT             NULL,
     [DimMobileOperatorID]        INT             NULL,
     [DimPagaAccountID]           INT             NULL,
@@ -11,6 +11,8 @@
     CONSTRAINT [fk_FactAirtimeStockMovement_DimMobileOperatorID] FOREIGN KEY ([DimMobileOperatorID]) REFERENCES [Airtime].[DimMobileOperator] ([DimMobileOperatorID]),
     CONSTRAINT [fk_FactAirtimeStockMovement_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
 
 
 GO
@@ -35,4 +37,8 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCityID', @l
 
 GO
 EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'MovementAmount', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'MovementAmount';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'5', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeStockMovement';
 

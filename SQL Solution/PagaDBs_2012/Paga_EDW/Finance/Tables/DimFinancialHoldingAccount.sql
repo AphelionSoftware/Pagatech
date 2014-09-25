@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Finance].[DimFinancialHoldingAccount] (
-    [DimFinancialHoldingAccountID] INT   IDENTITY(1,1)          NOT NULL,
+    [DimFinancialHoldingAccountID] INT             IDENTITY (1, 1) NOT NULL,
     [SourceKey]                    VARCHAR (255)   NOT NULL,
     [Name]                         VARCHAR (255)   NOT NULL,
     [AccountNumber]                VARCHAR (20)    NULL,
@@ -14,6 +14,8 @@
     [sys_CreatedOn]                DATETIME        DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimFinancialHoldingAccountID] PRIMARY KEY CLUSTERED ([DimFinancialHoldingAccountID] ASC)
 );
+
+
 
 
 GO
@@ -54,4 +56,8 @@ FROM
 	WHERE 
 		fa.HoldingFinancialAccountId IS NULL
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialHoldingAccount';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialHoldingAccount';
 
