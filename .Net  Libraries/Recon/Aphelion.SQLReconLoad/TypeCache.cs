@@ -18,16 +18,16 @@ namespace Aphelion.Recon
 
         public int getReconTypeID(string pReconTypeCode)
         {
-            return System.Convert.ToInt32(dtReconType.Select(string.Format("Code == '{0}'", pReconTypeCode)).First()[0]);
+            return System.Convert.ToInt32(dtReconType.Select(string.Format("Code = '{0}'", pReconTypeCode)).First()[0]);
         }
 
         public int getReconStatusID(string pReconStatusCode)
         {
-            return System.Convert.ToInt32(dtReconStatus.Select(string.Format("Code == '{0}'", pReconStatusCode)).First()[0]);
+            return System.Convert.ToInt32(dtReconStatus.Select(string.Format("Code = '{0}'", pReconStatusCode)).First()[0]);
         }
         public int getReconItemStatusID(string pReconItemStatusCode)
         {
-            return System.Convert.ToInt32(dtReconItemStatus.Select(string.Format("Code == '{0}'", pReconItemStatusCode)).First()[0]);
+            return System.Convert.ToInt32(dtReconItemStatus.Select(string.Format("Code = '{0}'", pReconItemStatusCode)).First()[0]);
         }
 
 

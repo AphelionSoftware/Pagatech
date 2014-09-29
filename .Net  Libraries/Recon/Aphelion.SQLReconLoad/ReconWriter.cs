@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using Aphelion.Recon.RulesEngine;
 
@@ -11,7 +12,29 @@ namespace Aphelion.Recon
 {
     public class ReconWriter
     {
-        public ReconType rtCompare;
+        public ReconType rtCompare { get; set; }
+        public string strReconTypeCode
+        {
+            get
+            {
+                return rtCompare.ToString();
+            }
+            set {
+            switch (value.ToUpper()) {
+                case "SUMMARY":
+                    rtCompare = ReconType.SUMMARY;
+                    break;
+                case "PREVDAY":
+                    rtCompare = ReconType.PREVDAY;
+                    break;
+                case "DETAIL":
+                    rtCompare = ReconType.DETAIL;
+                    break;
+
+        }
+            }
+        }
+
         public RulesBase rbCompare { get; private set; }
         public DataTable dtSummary { get; private set; }
         public DataTable dtDetail { get; private set; }
@@ -32,7 +55,14 @@ namespace Aphelion.Recon
                 {
                     sqlConn.Open();
                     SqlCommand comm = new SqlCommand(string.Format(SQL.constSQLGetProcessStep, this._strReconProcessStep), sqlConn);
-                    intReconProcessStepID = System.Convert.ToInt32(comm.ExecuteScalar().ToString());
+                    //intReconProcessStepID = System.Convert.ToInt32(comm.ExecuteScalar().ToString());
+                    SqlDataReader reader = comm.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        intReconProcessStepID = reader.GetInt32(0);
+                        this.strReconTypeCode = reader.GetString(4);
+                    }
                     sqlConn.Close();
                 }
             }
@@ -62,8 +92,10 @@ namespace Aphelion.Recon
         {
             this.strConn = pConn;
             this.rbCompare = pRB;
+            sqlConn = new SqlConnection(this.strConn);
+            this.dtReconDate = System.DateTime.Now;
         }
-        private void SetupDataTables()
+        public void SetupDataTables()
         {
             sqlConn.Open();
             SqlCommand comm = new SqlCommand();
@@ -71,25 +103,27 @@ namespace Aphelion.Recon
 
             this.dtSummary = new DataTable("ReconSummary");
             comm.Connection = sqlConn;
-            comm.CommandText = string.Format(SQL.constSQLGetReconSummary, this.strConn);
+            comm.CommandText = string.Format(SQL.constSQLGetReconSummary, this._strReconProcessStep, this.dtReconDate);
             da = new SqlDataAdapter(comm);
             da.Fill(dtSummary);
        
             this.dtDetail = new DataTable("ReconDetail");
             comm.Connection = sqlConn;
-            comm.CommandText = string.Format(SQL.constSQLGetReconDetail, this.strConn);
+            comm.CommandText = string.Format(SQL.constSQLGetReconDetail, this._strReconProcessStep, this.dtReconDate);
             da = new SqlDataAdapter(comm);
             da.Fill(dtDetail);
             
 
         }
 
-        private void PopulateDetailsFromSource()
+        public void PopulateDetailsFromSource()
         {
             #region summary
             DataRow drSummary;
+            bool boolInsert = false;
             if (dtSummary.Rows.Count == 0)
             {
+                boolInsert = true;
                 drSummary =  dtSummary.Rows.Add();
                 if ( dtReconDate == null)
                 {
@@ -119,6 +153,27 @@ namespace Aphelion.Recon
                 drSummary["ReconStatusID"] = TypeCache.GetTypeCache().getReconStatusID("ISSUES");
             }
             dtSummary.AcceptChanges();
+            if (boolInsert)
+            {
+                SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConn);
+                bulkCopy.BatchSize = 20000;
+                bulkCopy.DestinationTableName = "Recon." + dtSummary.TableName;
+                for (int i = 0; i < dtSummary.Columns.Count; i++ )
+                {
+                    SqlBulkCopyColumnMapping cMap = new SqlBulkCopyColumnMapping(i, i);
+                    bulkCopy.ColumnMappings.Add(cMap);
+                } 
+                bulkCopy.WriteToServer(dtSummary);
+  
+            }
+            else
+            {
+                ///TODO: Support updates of same day recons
+                SqlDataAdapter da = new SqlDataAdapter(string.Format(SQL.constSQLGetReconSummary, this._strReconProcessStep, this.dtReconDate), sqlConn);
+                new SqlCommandBuilder(da);
+                da.Update(dtSummary);
+                dtSummary.AcceptChanges();
+            }
             #endregion
 
             if (rtCompare == ReconType.SUMMARY)
@@ -165,16 +220,37 @@ namespace Aphelion.Recon
             drSource["Value"] = rbCompare.decSourceTotal;
             if (rbCompare.decSourceTotal == rbCompare.decDestinationTotal)
             {
-                drSource["ReconItemStatusID"] = TypeCache.GetTypeCache().getReconItemStatusID("MATCH");
+                drSource["ReconItemStatusID"] = TypeCache.GetTypeCache(this.strConn).getReconItemStatusID("MATCH");
             }
             else
             {
                 drSource["ReconItemStatusID"] = TypeCache.GetTypeCache().getReconStatusID("UNBAL");
             }
             drSource["SourceKey"] = rbCompare.dtSource.TableName;
+            SqlDataAdapter da = new SqlDataAdapter(string.Format(SQL.constSQLGetEmptyReconDetail), sqlConn);
+            new SqlCommandBuilder(da);
+
+            // Add changed rows to a new DataTable. This
+            // DataTable will be used by the DataAdapter.
+            DataTable dtChanges = dtDetail.GetChanges();
+
+
+            // Add the event handler. 
+            da.RowUpdated +=
+                new SqlRowUpdatedEventHandler(OnRowUpdated);
+
+            //adapter.Update(dataChanges);
+            da.Update(dtDetail);
+            dtDetail.Merge(dtChanges);
+
+            
             dtDetail.AcceptChanges();
 
+            
             DataRow drDestination = dtDetail.Rows.Add();
+            drDestination["MatchedReconDetailID"] = dtDetail.Rows[0]["ID"];
+
+
             drDestination["ReconSummaryID"] = drSummary["ID"];
             drDestination["Value"] = rbCompare.decDestinationTotal;
             if (rbCompare.decDestinationTotal == rbCompare.decDestinationTotal)
@@ -187,7 +263,25 @@ namespace Aphelion.Recon
             }
             drDestination["SourceKey"] = rbCompare.dtDestination.TableName;
 
+            //SqlDataAdapter da = new SqlDataAdapter(string.Format(SQL.constSQLGetEmptyReconSummary), sqlConn);
+            da = new SqlDataAdapter(string.Format(SQL.constSQLGetEmptyReconDetail), sqlConn);
+            new SqlCommandBuilder(da);
+            da.Update(dtDetail);
+            
             dtDetail.AcceptChanges();
+            
         }
+
+        protected static void OnRowUpdated(
+    object sender, SqlRowUpdatedEventArgs e)
+        {
+            // If this is an insert, then skip this row.
+            if (e.StatementType == StatementType.Insert)
+            {
+                e.Status = UpdateStatus.SkipCurrentRow;
+            }
+        }
+
+
     }
 }

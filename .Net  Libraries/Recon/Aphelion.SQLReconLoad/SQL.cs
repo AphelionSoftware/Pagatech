@@ -64,17 +64,37 @@ WHERE code = '{0}'
         /// 0 is ID
         /// 1 is Name
         /// 2 is ReconProcessID
-        /// 3 is ReconStepID
+        /// 3 is ReconTypeID
+        /// 4 is ReconTypeCode
         /// </summary>
         public const string constSQLGetProcessStep = @"
-select ID
-		, Name
+select RPS.ID
+		, RPS.Name
 		, ReconProcessID
 		, ReconTypeID
+		, RT.Code ReconTypeCode
 FROM admin.ReconProcessStep RPS
-WHERE code = '{0}'
+inner join Admin.ReconType RT
+ON RPS.ReconTypeID = RT.ID
+WHERE RPS.code = '{0}'
 ";
-
+        /// <summary>
+        /// </summary>
+        public const string constSQLGetEmptyReconDetail = @"
+SELECT [RD].[ID]
+      ,[RD].[ReconSummaryID]
+      ,[RD].[ReconItemStatusID]
+      ,[RD].[Value]
+      ,[RD].[SourceKey]
+      ,[RD].[MatchedReconDetailID]
+      ,[RD].[FileDetailID]
+  FROM [Recon].[ReconDetail] RD
+WHERE 1 = 0
+";
+        /// <summary>
+        /// 0 is ReconProcessStep code
+        /// 1 is ReconSummary Date
+        /// </summary>
         public const string constSQLGetReconDetail = @"
 SELECT [RD].[ID]
       ,[RD].[ReconSummaryID]
@@ -89,9 +109,30 @@ SELECT [RD].[ID]
   JOIN [Admin].[ReconProcessStep] RPS
     ON RS.ReconProcessStepID = RPS.ID
 	  WHERE RPS.Code = '{0}'
-	  AND [RS].[ReconDate] = {1}
+	  AND [RS].[ReconDate] = '{1}'
 ";
 
+        /// <summary>
+        /// 0 is ReconProcessStep code
+        /// 1 is ReconSummary Date
+        /// </summary>
+        public const string constSQLGetEmptyReconSummary = @"
+SELECT [RS].[ID]
+      ,[RS].[ReconProcessStepID]
+      ,[RS].[ReconStart]
+      ,[RS].[ReconEnd]
+      ,[RS].[ReconStatusID]
+      ,[RS].[SourceCount]
+      ,[RS].[DestCount]
+      ,[RS].[SourceTotal]
+      ,[RS].[DestTotal]
+      ,[RS].[ReconDate]
+      FROM [Recon].[ReconSummary] RS
+	  WHERE 1 = 0
+";/// <summary>
+        /// 0 is ReconProcessStep code
+        /// 1 is ReconSummary Date
+        /// </summary>
         public const string constSQLGetReconSummary = @"
 SELECT [RS].[ID]
       ,[RS].[ReconProcessStepID]
@@ -108,7 +149,7 @@ SELECT [RS].[ID]
 	  JOIN [Admin].[ReconProcessStep] RPS
 	  ON RS.ReconProcessStepID = RPS.ID
 	  WHERE RPS.Code = '{0}'
-	  AND [RS].[ReconDate] = {1}
+	  AND [RS].[ReconDate] = '{1}'
 ";
 
         /// <summary>

@@ -87,6 +87,7 @@ namespace Aphelion.Recon
             comm.CommandText = sSelect;
             SqlDataAdapter da = new SqlDataAdapter(comm);
             dtResult = new DataTable();
+            dtResult.TableName = sSchema + "." + sTable;
             da.Fill(dtResult);
         }
     }

@@ -128,6 +128,10 @@ namespace Aphelion.Recon.WindowsTester
             rb.lstDestinationAggregates = tlDest.lstAggregations;
             rb.SetupDataSets();
             rb.CompareRollup();
+            ReconWriter rw = new ReconWriter(this.txtConn.Text, rb);
+            rw.strReconProcessStep = this.txtReconProcessStepCode.Text;
+            rw.SetupDataTables();
+            rw.PopulateDetailsFromSource();
         }
     }
 }
