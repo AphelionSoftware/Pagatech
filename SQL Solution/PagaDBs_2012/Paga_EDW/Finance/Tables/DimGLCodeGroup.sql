@@ -19,6 +19,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGLCodeGroup_SourceKey]
     ON [Finance].[DimGLCodeGroup]([SourceKey] ASC);
@@ -81,7 +83,7 @@ WITH cte AS
 		Description,
 		ParentAccountCodeGroupId,
 		1 AS COA_Level
-	FROM [PagaOpsDB].[dbo].[AccountCodeGroup]
+	FROM [dbo].[AccountCodeGroup]
 	WHERE 
 		ParentAccountCodeGroupId IS NULL
 	UNION ALL
@@ -122,6 +124,8 @@ WITH cte AS
 		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 	FROM @COA AS base_query
 	', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCodeGroup';
+
+
 
 
 GO
