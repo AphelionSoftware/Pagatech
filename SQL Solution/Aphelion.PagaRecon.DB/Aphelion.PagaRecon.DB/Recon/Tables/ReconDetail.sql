@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Recon].[ReconDetail] (
-    [ID]                   INT             NOT NULL,
+    [ID]                   INT             IDENTITY (1, 1) NOT NULL,
     [ReconSummaryID]       INT             NOT NULL,
     [ReconItemStatusID]    INT             NOT NULL,
     [Value]                DECIMAL (20, 2) NOT NULL,
@@ -12,6 +12,8 @@
     [sys_ModifiedOn]       DATETIME        CONSTRAINT [DF_ReconDetail_sys_ModifiedOn] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_ReconDetail] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+
+
 
 
 

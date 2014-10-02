@@ -10,8 +10,11 @@
     [sys_ModifiedOn] DATETIME      CONSTRAINT [DF_FileDefinition_sys_ModifiedOn] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_FileDefinition] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [FK_FileDefinition_FileType] FOREIGN KEY ([FileTypeID]) REFERENCES [Import].[FileType] ([ID]),
+    CONSTRAINT [FK_FileDefinition_ReconSource] FOREIGN KEY ([ReconSourceID]) REFERENCES [Admin].[ReconSource] ([ID]),
     CONSTRAINT [UQ_FileDefinition_Code] UNIQUE NONCLUSTERED ([Code] ASC)
 );
+
+
 
 
 

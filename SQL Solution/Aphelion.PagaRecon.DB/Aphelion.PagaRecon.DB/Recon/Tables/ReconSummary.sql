@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Recon].[ReconSummary] (
-    [ID]                 INT             NOT NULL,
+    [ID]                 INT             IDENTITY (1, 1) NOT NULL,
     [ReconProcessStepID] INT             NOT NULL,
     [ReconStart]         DATETIME        NOT NULL,
     [ReconEnd]           DATETIME        NULL,
@@ -17,6 +17,8 @@
     CONSTRAINT [FK_ReconSummary_ReconProcessStep] FOREIGN KEY ([ReconProcessStepID]) REFERENCES [Admin].[ReconProcessStep] ([ID]),
     CONSTRAINT [FK_ReconSummary_ReconStatus] FOREIGN KEY ([ReconStatusID]) REFERENCES [Admin].[ReconStatus] ([ID])
 );
+
+
 
 
 
