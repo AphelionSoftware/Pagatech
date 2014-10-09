@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping CdmEntityContainer="PagaReconData" StorageEntityContainer="PagaReconDataStore">
+    <EntitySetMapping Name="FileDefinitions">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.FileDefinition)">
+        <MappingFragment StoreEntitySet="FileDefinitions">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="FileTypeID" ColumnName="FileTypeID" />
+          <ScalarProperty Name="ReconSourceID" ColumnName="ReconSourceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileFields">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.FileField)">
+        <MappingFragment StoreEntitySet="FileFields">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="FileSectionID" ColumnName="FileSectionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileSections">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.FileSection)">
+        <MappingFragment StoreEntitySet="FileSections">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StagingTableSchema" ColumnName="StagingTableSchema" />
+          <ScalarProperty Name="StagingTableName" ColumnName="StagingTableName" />
+          <ScalarProperty Name="StartRow" ColumnName="StartRow" />
+          <ScalarProperty Name="StartColumn" ColumnName="StartColumn" />
+          <ScalarProperty Name="NumRows" ColumnName="NumRows" />
+          <ScalarProperty Name="NumColumns" ColumnName="NumColumns" />
+          <ScalarProperty Name="Pivot" ColumnName="Pivot" />
+          <ScalarProperty Name="HeaderRow" ColumnName="HeaderRow" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="FileDefinitionID" ColumnName="FileDefinitionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.FileType)">
+        <MappingFragment StoreEntitySet="FileTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImportedFiles">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ImportedFile)">
+        <MappingFragment StoreEntitySet="ImportedFiles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FileDefinitionID" ColumnName="FileDefinitionID" />
+          <ScalarProperty Name="ReconSummaryID" ColumnName="ReconSummaryID" />
+          <ScalarProperty Name="UploadedFileName" ColumnName="UploadedFileName" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReconDetails">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ReconDetail)">
+        <MappingFragment StoreEntitySet="ReconDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ReconSummaryID" ColumnName="ReconSummaryID" />
+          <ScalarProperty Name="ReconItemStatusID" ColumnName="ReconItemStatusID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="SourceKey" ColumnName="SourceKey" />
+          <ScalarProperty Name="MatchedReconDetailID" ColumnName="MatchedReconDetailID" />
+          <ScalarProperty Name="FileDetailID" ColumnName="FileDetailID" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReconItemStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ReconItemStatu)">
+        <MappingFragment StoreEntitySet="ReconItemStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReconProcesses">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ReconProcess)">
+        <MappingFragment StoreEntitySet="ReconProcesses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReconProcessSteps">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ReconProcessStep)">
+        <MappingFragment StoreEntitySet="ReconProcessSteps">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="SourceFileSectionID" ColumnName="SourceFileSectionID" />
+          <ScalarProperty Name="TargetFileSectionID" ColumnName="TargetFileSectionID" />
+          <ScalarProperty Name="ReconProcessID" ColumnName="ReconProcessID" />
+          <ScalarProperty Name="ReconTypeID" ColumnName="ReconTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReconSources">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ReconSource)">
+        <MappingFragment StoreEntitySet="ReconSources">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="ReconSourceTypeID" ColumnName="ReconSourceTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReconSourceTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ReconSourceType)">
+        <MappingFragment StoreEntitySet="ReconSourceTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReconStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ReconStatu)">
+        <MappingFragment StoreEntitySet="ReconStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReconSummaries">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ReconSummary)">
+        <MappingFragment StoreEntitySet="ReconSummaries">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ReconStart" ColumnName="ReconStart" />
+          <ScalarProperty Name="ReconEnd" ColumnName="ReconEnd" />
+          <ScalarProperty Name="SourceCount" ColumnName="SourceCount" />
+          <ScalarProperty Name="DestCount" ColumnName="DestCount" />
+          <ScalarProperty Name="SourceTotal" ColumnName="SourceTotal" />
+          <ScalarProperty Name="DestTotal" ColumnName="DestTotal" />
+          <ScalarProperty Name="ReconDate" ColumnName="ReconDate" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="ReconProcessStepID" ColumnName="ReconProcessStepID" />
+          <ScalarProperty Name="ReconStatusID" ColumnName="ReconStatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReconTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ReconType)">
+        <MappingFragment StoreEntitySet="ReconTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SkyeImportDetails">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.SkyeImportDetail)">
+        <MappingFragment StoreEntitySet="SkyeImportDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+          <ScalarProperty Name="TransactionReferenceNo" ColumnName="TransactionReferenceNo" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SkyeImportHeaders">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.SkyeImportHeader)">
+        <MappingFragment StoreEntitySet="SkyeImportHeaders">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="AccountCurrency" ColumnName="AccountCurrency" />
+          <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+          <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemFields">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.SystemField)">
+        <MappingFragment StoreEntitySet="SystemFields">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TableSchema" ColumnName="TableSchema" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+          <ScalarProperty Name="FieldTypeID" ColumnName="FieldTypeID" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

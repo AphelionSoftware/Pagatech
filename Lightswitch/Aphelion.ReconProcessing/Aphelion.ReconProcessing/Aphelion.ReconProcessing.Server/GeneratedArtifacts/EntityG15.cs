@@ -17,32 +17,32 @@ namespace LightSwitchApplication
     /// No Modeled Description Available
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-    public sealed partial class ReconSummary : global::Microsoft.LightSwitch.Framework.Base.EntityObject<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass>
+    public sealed partial class SkyeImportDetail : global::Microsoft.LightSwitch.Framework.Base.EntityObject<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass>
     {
         #region Constructors
     
         /// <summary>
-        /// Initializes a new instance of the ReconSummary entity.
+        /// Initializes a new instance of the SkyeImportDetail entity.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public ReconSummary()
+        public SkyeImportDetail()
             : this(null)
         {
         }
     
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public ReconSummary(global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.ReconSummary> entitySet)
+        public SkyeImportDetail(global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.SkyeImportDetail> entitySet)
             : base(entitySet)
         {
-            global::LightSwitchApplication.ReconSummary.DetailsClass.Initialize(this);
+            global::LightSwitchApplication.SkyeImportDetail.DetailsClass.Initialize(this);
         }
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSummary_Created();
+        partial void SkyeImportDetail_Created();
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSummary_AllowSaveWithErrors(ref bool result);
+        partial void SkyeImportDetail_AllowSaveWithErrors(ref bool result);
     
         #endregion
     
@@ -87,7 +87,7 @@ namespace LightSwitchApplication
         {
             get
             {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ID);
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.ID);
             }
         }
         
@@ -103,168 +103,168 @@ namespace LightSwitchApplication
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.DateTime ReconStart
+        public string TransactionDate
         {
             get
             {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconStart);
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.TransactionDate);
             }
             set
             {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconStart, value);
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.SetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.TransactionDate, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStart_IsReadOnly(ref bool result);
+        partial void TransactionDate_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStart_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void TransactionDate_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStart_Changed();
+        partial void TransactionDate_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Nullable<global::System.DateTime> ReconEnd
+        public string ValueDate
         {
             get
             {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconEnd);
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.ValueDate);
             }
             set
             {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconEnd, value);
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.SetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.ValueDate, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconEnd_IsReadOnly(ref bool result);
+        partial void ValueDate_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconEnd_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void ValueDate_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconEnd_Changed();
+        partial void ValueDate_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Nullable<int> SourceCount
+        public string TransactionReferenceNo
         {
             get
             {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.SourceCount);
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.TransactionReferenceNo);
             }
             set
             {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.SourceCount, value);
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.SetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.TransactionReferenceNo, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SourceCount_IsReadOnly(ref bool result);
+        partial void TransactionReferenceNo_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SourceCount_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void TransactionReferenceNo_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SourceCount_Changed();
+        partial void TransactionReferenceNo_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Nullable<int> DestCount
+        public string Description
         {
             get
             {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.DestCount);
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.Description);
             }
             set
             {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.DestCount, value);
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.SetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.Description, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void DestCount_IsReadOnly(ref bool result);
+        partial void Description_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void DestCount_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void Description_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void DestCount_Changed();
+        partial void Description_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Nullable<decimal> SourceTotal
+        public string Debit
         {
             get
             {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.SourceTotal);
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.Debit);
             }
             set
             {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.SourceTotal, value);
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.SetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.Debit, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SourceTotal_IsReadOnly(ref bool result);
+        partial void Debit_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SourceTotal_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void Debit_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SourceTotal_Changed();
+        partial void Debit_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Nullable<decimal> DestTotal
+        public string Credit
         {
             get
             {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.DestTotal);
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.Credit);
             }
             set
             {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.DestTotal, value);
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.SetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.Credit, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void DestTotal_IsReadOnly(ref bool result);
+        partial void Credit_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void DestTotal_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void Credit_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void DestTotal_Changed();
+        partial void Credit_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.DateTime ReconDate
+        public string Balance
         {
             get
             {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconDate);
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.Balance);
             }
             set
             {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconDate, value);
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.SetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.Balance, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconDate_IsReadOnly(ref bool result);
+        partial void Balance_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconDate_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void Balance_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconDate_Changed();
+        partial void Balance_Changed();
 
         /// <summary>
         /// No Modeled Description Available
@@ -275,11 +275,11 @@ namespace LightSwitchApplication
         {
             get
             {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.sys_CreatedBy);
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.sys_CreatedBy);
             }
             set
             {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.sys_CreatedBy, value);
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.SetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.sys_CreatedBy, value);
             }
         }
         
@@ -299,11 +299,11 @@ namespace LightSwitchApplication
         {
             get
             {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.sys_CreatedOn);
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.sys_CreatedOn);
             }
             set
             {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.sys_CreatedOn, value);
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.SetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.sys_CreatedOn, value);
             }
         }
         
@@ -323,11 +323,11 @@ namespace LightSwitchApplication
         {
             get
             {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.sys_ModifiedBy);
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.sys_ModifiedBy);
             }
             set
             {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.sys_ModifiedBy, value);
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.SetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.sys_ModifiedBy, value);
             }
         }
         
@@ -347,11 +347,11 @@ namespace LightSwitchApplication
         {
             get
             {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.sys_ModifiedOn);
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.sys_ModifiedOn);
             }
             set
             {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.sys_ModifiedOn, value);
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.SetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.sys_ModifiedOn, value);
             }
         }
         
@@ -362,77 +362,6 @@ namespace LightSwitchApplication
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void sys_ModifiedOn_Changed();
 
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::Microsoft.LightSwitch.Framework.EntityCollection<global::LightSwitchApplication.ImportedFile> ImportedFiles
-        {
-            get
-            {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ImportedFiles);
-            }
-        }
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public Microsoft.LightSwitch.IDataServiceQueryable<global::LightSwitchApplication.ImportedFile> ImportedFilesQuery
-        {
-            get
-            {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetQuery(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ImportedFiles);
-            }
-        }
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::LightSwitchApplication.ReconProcessStep ReconProcessStep
-        {
-            get
-            {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconProcessStep);
-            }
-            set
-            {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconProcessStep, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessStep_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessStep_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessStep_Changed();
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::LightSwitchApplication.ReconStatu ReconStatu
-        {
-            get
-            {
-                return global::LightSwitchApplication.ReconSummary.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconStatu);
-            }
-            set
-            {
-                global::LightSwitchApplication.ReconSummary.DetailsClass.SetValue(this, global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconStatu, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatu_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatu_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatu_Changed();
-
         #endregion
     
         #region Details Class
@@ -442,37 +371,37 @@ namespace LightSwitchApplication
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public sealed class DetailsClass : global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<
-                global::LightSwitchApplication.ReconSummary,
-                global::LightSwitchApplication.ReconSummary.DetailsClass,
-                global::LightSwitchApplication.ReconSummary.DetailsClass.IImplementation,
-                global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySet,
-                global::Microsoft.LightSwitch.Details.Framework.EntityCommandSet<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass>,
-                global::Microsoft.LightSwitch.Details.Framework.EntityMethodSet<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass>>
+                global::LightSwitchApplication.SkyeImportDetail,
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass,
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.IImplementation,
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySet,
+                global::Microsoft.LightSwitch.Details.Framework.EntityCommandSet<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass>,
+                global::Microsoft.LightSwitch.Details.Framework.EntityMethodSet<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass>>
         {
     
             static DetailsClass()
             {
-                var initializeEntry = global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ID;
+                var initializeEntry = global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.ID;
             }
     
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass>.Entry
-                __ReconSummaryEntry = new global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass>.Entry(
-                    global::LightSwitchApplication.ReconSummary.DetailsClass.__ReconSummary_CreateNew,
-                    global::LightSwitchApplication.ReconSummary.DetailsClass.__ReconSummary_Created,
-                    global::LightSwitchApplication.ReconSummary.DetailsClass.__ReconSummary_AllowSaveWithErrors);
-            private static global::LightSwitchApplication.ReconSummary __ReconSummary_CreateNew(global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.ReconSummary> es)
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass>.Entry
+                __SkyeImportDetailEntry = new global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass>.Entry(
+                    global::LightSwitchApplication.SkyeImportDetail.DetailsClass.__SkyeImportDetail_CreateNew,
+                    global::LightSwitchApplication.SkyeImportDetail.DetailsClass.__SkyeImportDetail_Created,
+                    global::LightSwitchApplication.SkyeImportDetail.DetailsClass.__SkyeImportDetail_AllowSaveWithErrors);
+            private static global::LightSwitchApplication.SkyeImportDetail __SkyeImportDetail_CreateNew(global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.SkyeImportDetail> es)
             {
-                return new global::LightSwitchApplication.ReconSummary(es);
+                return new global::LightSwitchApplication.SkyeImportDetail(es);
             }
-            private static void __ReconSummary_Created(global::LightSwitchApplication.ReconSummary e)
+            private static void __SkyeImportDetail_Created(global::LightSwitchApplication.SkyeImportDetail e)
             {
-                e.ReconSummary_Created();
+                e.SkyeImportDetail_Created();
             }
-            private static bool __ReconSummary_AllowSaveWithErrors(global::LightSwitchApplication.ReconSummary e)
+            private static bool __SkyeImportDetail_AllowSaveWithErrors(global::LightSwitchApplication.SkyeImportDetail e)
             {
                 bool result = false;
-                e.ReconSummary_AllowSaveWithErrors(ref result);
+                e.SkyeImportDetail_AllowSaveWithErrors(ref result);
                 return result;
             }
     
@@ -480,7 +409,7 @@ namespace LightSwitchApplication
             {
             }
     
-            public new global::Microsoft.LightSwitch.Details.Framework.EntityCommandSet<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass> Commands
+            public new global::Microsoft.LightSwitch.Details.Framework.EntityCommandSet<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass> Commands
             {
                 get
                 {
@@ -488,7 +417,7 @@ namespace LightSwitchApplication
                 }
             }
     
-            public new global::Microsoft.LightSwitch.Details.Framework.EntityMethodSet<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass> Methods
+            public new global::Microsoft.LightSwitch.Details.Framework.EntityMethodSet<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass> Methods
             {
                 get
                 {
@@ -496,7 +425,7 @@ namespace LightSwitchApplication
                 }
             }
     
-            public new global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySet Properties
+            public new global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySet Properties
             {
                 get
                 {
@@ -508,130 +437,106 @@ namespace LightSwitchApplication
             [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public sealed class PropertySet : global::Microsoft.LightSwitch.Details.Framework.Base.EntityPropertySet<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass>
+            public sealed class PropertySet : global::Microsoft.LightSwitch.Details.Framework.Base.EntityPropertySet<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass>
             {
     
                 public PropertySet() : base()
                 {
                 }
     
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, int> ID
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, int> ID
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ID) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, int>;
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.ID) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, int>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime> ReconStart
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string> TransactionDate
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconStart) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>;
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.TransactionDate) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<global::System.DateTime>> ReconEnd
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string> ValueDate
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconEnd) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<global::System.DateTime>>;
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.ValueDate) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<int>> SourceCount
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string> TransactionReferenceNo
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.SourceCount) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<int>>;
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.TransactionReferenceNo) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<int>> DestCount
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string> Description
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.DestCount) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<int>>;
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.Description) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<decimal>> SourceTotal
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string> Debit
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.SourceTotal) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<decimal>>;
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.Debit) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<decimal>> DestTotal
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string> Credit
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.DestTotal) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<decimal>>;
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.Credit) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime> ReconDate
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string> Balance
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconDate) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>;
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.Balance) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, string> sys_CreatedBy
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string> sys_CreatedBy
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.sys_CreatedBy) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.sys_CreatedBy) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime> sys_CreatedOn
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime> sys_CreatedOn
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.sys_CreatedOn) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>;
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.sys_CreatedOn) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, string> sys_ModifiedBy
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string> sys_ModifiedBy
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.sys_ModifiedBy) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.sys_ModifiedBy) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime> sys_ModifiedOn
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime> sys_ModifiedOn
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.sys_ModifiedOn) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ImportedFile> ImportedFiles
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ImportedFiles) as global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ImportedFile>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ReconProcessStep> ReconProcessStep
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconProcessStep) as global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ReconProcessStep>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ReconStatu> ReconStatu
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconStatu) as global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ReconStatu>;
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.sys_ModifiedOn) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime>;
                     }
                 }
                 
@@ -642,20 +547,17 @@ namespace LightSwitchApplication
             public interface IImplementation : global::Microsoft.LightSwitch.Internal.IEntityImplementation
             {
                 new int ID { get; }
-                new global::System.DateTime ReconStart { get; set; }
-                new global::System.Nullable<global::System.DateTime> ReconEnd { get; set; }
-                new global::System.Nullable<int> SourceCount { get; set; }
-                new global::System.Nullable<int> DestCount { get; set; }
-                new global::System.Nullable<decimal> SourceTotal { get; set; }
-                new global::System.Nullable<decimal> DestTotal { get; set; }
-                new global::System.DateTime ReconDate { get; set; }
+                new string TransactionDate { get; set; }
+                new string ValueDate { get; set; }
+                new string TransactionReferenceNo { get; set; }
+                new string Description { get; set; }
+                new string Debit { get; set; }
+                new string Credit { get; set; }
+                new string Balance { get; set; }
                 new string sys_CreatedBy { get; set; }
                 new global::System.DateTime sys_CreatedOn { get; set; }
                 new string sys_ModifiedBy { get; set; }
                 new global::System.DateTime sys_ModifiedOn { get; set; }
-                new global::System.Collections.IEnumerable ImportedFiles { get; }
-                new global::Microsoft.LightSwitch.Internal.IEntityImplementation ReconProcessStep { get; set; }
-                new global::Microsoft.LightSwitch.Internal.IEntityImplementation ReconStatu { get; set; }
             }
             #pragma warning restore 109
     
@@ -666,605 +568,482 @@ namespace LightSwitchApplication
             {
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, int>.Entry
-                    ID = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, int>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, int>.Entry
+                    ID = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, int>.Entry(
                         "ID",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ID_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ID_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ID_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ID_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ID_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ID_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ID_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ID_GetImplementationValue,
                         null,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ID_OnValueChanged);
-                private static void _ID_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, int>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ID_OnValueChanged);
+                private static void _ID_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, int>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
                 {
                     c(d, ref d._ID, sf);
                 }
-                private static bool _ID_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
+                private static bool _ID_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     bool result = false;
                     e.ID_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _ID_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _ID_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
                     e.ID_Validate(r);
                 }
-                private static int _ID_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
+                private static int _ID_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
                 {
                     return d.ImplementationEntity.ID;
                 }
-                private static void _ID_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
+                private static void _ID_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     e.ID_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Entry
-                    ReconStart = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Entry(
-                        "ReconStart",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStart_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStart_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStart_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStart_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStart_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStart_OnValueChanged);
-                private static void _ReconStart_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry
+                    TransactionDate = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry(
+                        "TransactionDate",
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._TransactionDate_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._TransactionDate_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._TransactionDate_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._TransactionDate_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._TransactionDate_SetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._TransactionDate_OnValueChanged);
+                private static void _TransactionDate_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
                 {
-                    c(d, ref d._ReconStart, sf);
+                    c(d, ref d._TransactionDate, sf);
                 }
-                private static bool _ReconStart_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
+                private static bool _TransactionDate_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     bool result = false;
-                    e.ReconStart_IsReadOnly(ref result);
+                    e.TransactionDate_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _ReconStart_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _TransactionDate_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.ReconStart_Validate(r);
+                    e.TransactionDate_Validate(r);
                 }
-                private static global::System.DateTime _ReconStart_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
+                private static string _TransactionDate_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
                 {
-                    return d.ImplementationEntity.ReconStart;
+                    return d.ImplementationEntity.TransactionDate;
                 }
-                private static void _ReconStart_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, global::System.DateTime v)
+                private static void _TransactionDate_SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.ReconStart = global::LightSwitchApplication.ReconSummary.DetailsClass.ClearDateTimeKind(v);
+                    d.ImplementationEntity.TransactionDate = v;
                 }
-                private static void _ReconStart_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
+                private static void _TransactionDate_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
                 {
-                    e.ReconStart_Changed();
+                    e.TransactionDate_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<global::System.DateTime>>.Entry
-                    ReconEnd = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<global::System.DateTime>>.Entry(
-                        "ReconEnd",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconEnd_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconEnd_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconEnd_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconEnd_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconEnd_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconEnd_OnValueChanged);
-                private static void _ReconEnd_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<global::System.DateTime>>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry
+                    ValueDate = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry(
+                        "ValueDate",
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ValueDate_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ValueDate_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ValueDate_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ValueDate_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ValueDate_SetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ValueDate_OnValueChanged);
+                private static void _ValueDate_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
                 {
-                    c(d, ref d._ReconEnd, sf);
+                    c(d, ref d._ValueDate, sf);
                 }
-                private static bool _ReconEnd_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
+                private static bool _ValueDate_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     bool result = false;
-                    e.ReconEnd_IsReadOnly(ref result);
+                    e.ValueDate_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _ReconEnd_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _ValueDate_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.ReconEnd_Validate(r);
+                    e.ValueDate_Validate(r);
                 }
-                private static global::System.Nullable<global::System.DateTime> _ReconEnd_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
+                private static string _ValueDate_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
                 {
-                    return d.ImplementationEntity.ReconEnd;
+                    return d.ImplementationEntity.ValueDate;
                 }
-                private static void _ReconEnd_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, global::System.Nullable<global::System.DateTime> v)
+                private static void _ValueDate_SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.ReconEnd = global::LightSwitchApplication.ReconSummary.DetailsClass.ClearDateTimeKind(v);
+                    d.ImplementationEntity.ValueDate = v;
                 }
-                private static void _ReconEnd_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
+                private static void _ValueDate_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
                 {
-                    e.ReconEnd_Changed();
+                    e.ValueDate_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<int>>.Entry
-                    SourceCount = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<int>>.Entry(
-                        "SourceCount",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._SourceCount_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._SourceCount_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._SourceCount_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._SourceCount_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._SourceCount_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._SourceCount_OnValueChanged);
-                private static void _SourceCount_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<int>>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry
+                    TransactionReferenceNo = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry(
+                        "TransactionReferenceNo",
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._TransactionReferenceNo_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._TransactionReferenceNo_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._TransactionReferenceNo_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._TransactionReferenceNo_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._TransactionReferenceNo_SetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._TransactionReferenceNo_OnValueChanged);
+                private static void _TransactionReferenceNo_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
                 {
-                    c(d, ref d._SourceCount, sf);
+                    c(d, ref d._TransactionReferenceNo, sf);
                 }
-                private static bool _SourceCount_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
+                private static bool _TransactionReferenceNo_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     bool result = false;
-                    e.SourceCount_IsReadOnly(ref result);
+                    e.TransactionReferenceNo_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _SourceCount_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _TransactionReferenceNo_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.SourceCount_Validate(r);
+                    e.TransactionReferenceNo_Validate(r);
                 }
-                private static global::System.Nullable<int> _SourceCount_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
+                private static string _TransactionReferenceNo_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
                 {
-                    return d.ImplementationEntity.SourceCount;
+                    return d.ImplementationEntity.TransactionReferenceNo;
                 }
-                private static void _SourceCount_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, global::System.Nullable<int> v)
+                private static void _TransactionReferenceNo_SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.SourceCount = v;
+                    d.ImplementationEntity.TransactionReferenceNo = v;
                 }
-                private static void _SourceCount_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
+                private static void _TransactionReferenceNo_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
                 {
-                    e.SourceCount_Changed();
+                    e.TransactionReferenceNo_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<int>>.Entry
-                    DestCount = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<int>>.Entry(
-                        "DestCount",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._DestCount_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._DestCount_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._DestCount_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._DestCount_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._DestCount_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._DestCount_OnValueChanged);
-                private static void _DestCount_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<int>>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry
+                    Description = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry(
+                        "Description",
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Description_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Description_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Description_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Description_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Description_SetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Description_OnValueChanged);
+                private static void _Description_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
                 {
-                    c(d, ref d._DestCount, sf);
+                    c(d, ref d._Description, sf);
                 }
-                private static bool _DestCount_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
+                private static bool _Description_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     bool result = false;
-                    e.DestCount_IsReadOnly(ref result);
+                    e.Description_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _DestCount_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _Description_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.DestCount_Validate(r);
+                    e.Description_Validate(r);
                 }
-                private static global::System.Nullable<int> _DestCount_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
+                private static string _Description_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
                 {
-                    return d.ImplementationEntity.DestCount;
+                    return d.ImplementationEntity.Description;
                 }
-                private static void _DestCount_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, global::System.Nullable<int> v)
+                private static void _Description_SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.DestCount = v;
+                    d.ImplementationEntity.Description = v;
                 }
-                private static void _DestCount_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
+                private static void _Description_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
                 {
-                    e.DestCount_Changed();
+                    e.Description_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<decimal>>.Entry
-                    SourceTotal = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<decimal>>.Entry(
-                        "SourceTotal",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._SourceTotal_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._SourceTotal_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._SourceTotal_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._SourceTotal_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._SourceTotal_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._SourceTotal_OnValueChanged);
-                private static void _SourceTotal_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<decimal>>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry
+                    Debit = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry(
+                        "Debit",
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Debit_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Debit_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Debit_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Debit_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Debit_SetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Debit_OnValueChanged);
+                private static void _Debit_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
                 {
-                    c(d, ref d._SourceTotal, sf);
+                    c(d, ref d._Debit, sf);
                 }
-                private static bool _SourceTotal_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
+                private static bool _Debit_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     bool result = false;
-                    e.SourceTotal_IsReadOnly(ref result);
+                    e.Debit_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _SourceTotal_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _Debit_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.SourceTotal_Validate(r);
+                    e.Debit_Validate(r);
                 }
-                private static global::System.Nullable<decimal> _SourceTotal_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
+                private static string _Debit_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
                 {
-                    return d.ImplementationEntity.SourceTotal;
+                    return d.ImplementationEntity.Debit;
                 }
-                private static void _SourceTotal_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, global::System.Nullable<decimal> v)
+                private static void _Debit_SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.SourceTotal = v;
+                    d.ImplementationEntity.Debit = v;
                 }
-                private static void _SourceTotal_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
+                private static void _Debit_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
                 {
-                    e.SourceTotal_Changed();
+                    e.Debit_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<decimal>>.Entry
-                    DestTotal = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<decimal>>.Entry(
-                        "DestTotal",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._DestTotal_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._DestTotal_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._DestTotal_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._DestTotal_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._DestTotal_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._DestTotal_OnValueChanged);
-                private static void _DestTotal_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<decimal>>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry
+                    Credit = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry(
+                        "Credit",
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Credit_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Credit_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Credit_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Credit_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Credit_SetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Credit_OnValueChanged);
+                private static void _Credit_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
                 {
-                    c(d, ref d._DestTotal, sf);
+                    c(d, ref d._Credit, sf);
                 }
-                private static bool _DestTotal_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
+                private static bool _Credit_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     bool result = false;
-                    e.DestTotal_IsReadOnly(ref result);
+                    e.Credit_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _DestTotal_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _Credit_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.DestTotal_Validate(r);
+                    e.Credit_Validate(r);
                 }
-                private static global::System.Nullable<decimal> _DestTotal_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
+                private static string _Credit_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
                 {
-                    return d.ImplementationEntity.DestTotal;
+                    return d.ImplementationEntity.Credit;
                 }
-                private static void _DestTotal_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, global::System.Nullable<decimal> v)
+                private static void _Credit_SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.DestTotal = v;
+                    d.ImplementationEntity.Credit = v;
                 }
-                private static void _DestTotal_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
+                private static void _Credit_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
                 {
-                    e.DestTotal_Changed();
+                    e.Credit_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Entry
-                    ReconDate = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Entry(
-                        "ReconDate",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconDate_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconDate_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconDate_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconDate_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconDate_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconDate_OnValueChanged);
-                private static void _ReconDate_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry
+                    Balance = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry(
+                        "Balance",
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Balance_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Balance_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Balance_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Balance_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Balance_SetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._Balance_OnValueChanged);
+                private static void _Balance_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
                 {
-                    c(d, ref d._ReconDate, sf);
+                    c(d, ref d._Balance, sf);
                 }
-                private static bool _ReconDate_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
+                private static bool _Balance_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     bool result = false;
-                    e.ReconDate_IsReadOnly(ref result);
+                    e.Balance_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _ReconDate_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _Balance_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.ReconDate_Validate(r);
+                    e.Balance_Validate(r);
                 }
-                private static global::System.DateTime _ReconDate_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
+                private static string _Balance_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
                 {
-                    return d.ImplementationEntity.ReconDate;
+                    return d.ImplementationEntity.Balance;
                 }
-                private static void _ReconDate_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, global::System.DateTime v)
+                private static void _Balance_SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.ReconDate = global::LightSwitchApplication.ReconSummary.DetailsClass.TruncateDate(v);
+                    d.ImplementationEntity.Balance = v;
                 }
-                private static void _ReconDate_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
+                private static void _Balance_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
                 {
-                    e.ReconDate_Changed();
+                    e.Balance_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, string>.Entry
-                    sys_CreatedBy = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, string>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry
+                    sys_CreatedBy = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry(
                         "sys_CreatedBy",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_CreatedBy_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_CreatedBy_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_CreatedBy_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_CreatedBy_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_CreatedBy_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_CreatedBy_OnValueChanged);
-                private static void _sys_CreatedBy_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, string>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_CreatedBy_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_CreatedBy_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_CreatedBy_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_CreatedBy_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_CreatedBy_SetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_CreatedBy_OnValueChanged);
+                private static void _sys_CreatedBy_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
                 {
                     c(d, ref d._sys_CreatedBy, sf);
                 }
-                private static bool _sys_CreatedBy_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
+                private static bool _sys_CreatedBy_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     bool result = false;
                     e.sys_CreatedBy_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _sys_CreatedBy_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _sys_CreatedBy_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
                     e.sys_CreatedBy_Validate(r);
                 }
-                private static string _sys_CreatedBy_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
+                private static string _sys_CreatedBy_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
                 {
                     return d.ImplementationEntity.sys_CreatedBy;
                 }
-                private static void _sys_CreatedBy_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, string v)
+                private static void _sys_CreatedBy_SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, string v)
                 {
                     d.ImplementationEntity.sys_CreatedBy = v;
                 }
-                private static void _sys_CreatedBy_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
+                private static void _sys_CreatedBy_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     e.sys_CreatedBy_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Entry
-                    sys_CreatedOn = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime>.Entry
+                    sys_CreatedOn = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime>.Entry(
                         "sys_CreatedOn",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_CreatedOn_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_CreatedOn_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_CreatedOn_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_CreatedOn_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_CreatedOn_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_CreatedOn_OnValueChanged);
-                private static void _sys_CreatedOn_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_CreatedOn_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_CreatedOn_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_CreatedOn_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_CreatedOn_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_CreatedOn_SetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_CreatedOn_OnValueChanged);
+                private static void _sys_CreatedOn_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
                 {
                     c(d, ref d._sys_CreatedOn, sf);
                 }
-                private static bool _sys_CreatedOn_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
+                private static bool _sys_CreatedOn_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     bool result = false;
                     e.sys_CreatedOn_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _sys_CreatedOn_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _sys_CreatedOn_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
                     e.sys_CreatedOn_Validate(r);
                 }
-                private static global::System.DateTime _sys_CreatedOn_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
+                private static global::System.DateTime _sys_CreatedOn_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
                 {
                     return d.ImplementationEntity.sys_CreatedOn;
                 }
-                private static void _sys_CreatedOn_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, global::System.DateTime v)
+                private static void _sys_CreatedOn_SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, global::System.DateTime v)
                 {
-                    d.ImplementationEntity.sys_CreatedOn = global::LightSwitchApplication.ReconSummary.DetailsClass.ClearDateTimeKind(v);
+                    d.ImplementationEntity.sys_CreatedOn = global::LightSwitchApplication.SkyeImportDetail.DetailsClass.ClearDateTimeKind(v);
                 }
-                private static void _sys_CreatedOn_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
+                private static void _sys_CreatedOn_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     e.sys_CreatedOn_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, string>.Entry
-                    sys_ModifiedBy = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, string>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry
+                    sys_ModifiedBy = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Entry(
                         "sys_ModifiedBy",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_ModifiedBy_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_ModifiedBy_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_ModifiedBy_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_ModifiedBy_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_ModifiedBy_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_ModifiedBy_OnValueChanged);
-                private static void _sys_ModifiedBy_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, string>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_ModifiedBy_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_ModifiedBy_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_ModifiedBy_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_ModifiedBy_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_ModifiedBy_SetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_ModifiedBy_OnValueChanged);
+                private static void _sys_ModifiedBy_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
                 {
                     c(d, ref d._sys_ModifiedBy, sf);
                 }
-                private static bool _sys_ModifiedBy_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
+                private static bool _sys_ModifiedBy_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     bool result = false;
                     e.sys_ModifiedBy_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _sys_ModifiedBy_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _sys_ModifiedBy_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
                     e.sys_ModifiedBy_Validate(r);
                 }
-                private static string _sys_ModifiedBy_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
+                private static string _sys_ModifiedBy_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
                 {
                     return d.ImplementationEntity.sys_ModifiedBy;
                 }
-                private static void _sys_ModifiedBy_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, string v)
+                private static void _sys_ModifiedBy_SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, string v)
                 {
                     d.ImplementationEntity.sys_ModifiedBy = v;
                 }
-                private static void _sys_ModifiedBy_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
+                private static void _sys_ModifiedBy_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     e.sys_ModifiedBy_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Entry
-                    sys_ModifiedOn = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime>.Entry
+                    sys_ModifiedOn = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime>.Entry(
                         "sys_ModifiedOn",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_ModifiedOn_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_ModifiedOn_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_ModifiedOn_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_ModifiedOn_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_ModifiedOn_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._sys_ModifiedOn_OnValueChanged);
-                private static void _sys_ModifiedOn_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_ModifiedOn_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_ModifiedOn_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_ModifiedOn_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_ModifiedOn_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_ModifiedOn_SetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._sys_ModifiedOn_OnValueChanged);
+                private static void _sys_ModifiedOn_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
                 {
                     c(d, ref d._sys_ModifiedOn, sf);
                 }
-                private static bool _sys_ModifiedOn_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
+                private static bool _sys_ModifiedOn_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     bool result = false;
                     e.sys_ModifiedOn_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _sys_ModifiedOn_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _sys_ModifiedOn_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
                     e.sys_ModifiedOn_Validate(r);
                 }
-                private static global::System.DateTime _sys_ModifiedOn_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
+                private static global::System.DateTime _sys_ModifiedOn_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
                 {
                     return d.ImplementationEntity.sys_ModifiedOn;
                 }
-                private static void _sys_ModifiedOn_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, global::System.DateTime v)
+                private static void _sys_ModifiedOn_SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, global::System.DateTime v)
                 {
-                    d.ImplementationEntity.sys_ModifiedOn = global::LightSwitchApplication.ReconSummary.DetailsClass.ClearDateTimeKind(v);
+                    d.ImplementationEntity.sys_ModifiedOn = global::LightSwitchApplication.SkyeImportDetail.DetailsClass.ClearDateTimeKind(v);
                 }
-                private static void _sys_ModifiedOn_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
+                private static void _sys_ModifiedOn_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
                 {
                     e.sys_ModifiedOn_Changed();
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ImportedFile>.Entry
-                    ImportedFiles = new global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ImportedFile>.Entry(
-                        "ImportedFiles",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ImportedFiles_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ImportedFiles_GetReferencedEntities,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ImportedFiles_GetEntityCollection);
-                private static void _ImportedFiles_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ImportedFile>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
-                {
-                    c(d, ref d._ImportedFiles, sf);
-                }
-                private static global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.ImportedFile> _ImportedFiles_GetReferencedEntities(global::LightSwitchApplication.ReconSummary.DetailsClass d)
-                {
-                    return d.GetReferencedEntities<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass>(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ImportedFiles, ref d._ImportedFiles);
-                }
-                private static global::System.Collections.IEnumerable _ImportedFiles_GetEntityCollection(global::LightSwitchApplication.ReconSummary.DetailsClass d)
-                {
-                    return d.ImplementationEntity.ImportedFiles;
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Entry
-                    ReconProcessStep = new global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Entry(
-                        "ReconProcessStep",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconProcessStep_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconProcessStep_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconProcessStep_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconProcessStep_GetCoreImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconProcessStep_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconProcessStep_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconProcessStep_Refresh,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconProcessStep_OnValueChanged);
-                private static void _ReconProcessStep_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
-                {
-                    c(d, ref d._ReconProcessStep, sf);
-                }
-                private static bool _ReconProcessStep_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
-                {
-                    bool result = false;
-                    e.ReconProcessStep_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _ReconProcessStep_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.ReconProcessStep_Validate(r);
-                }
-                private static global::Microsoft.LightSwitch.Internal.IEntityImplementation _ReconProcessStep_GetCoreImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
-                {
-                    return d.ImplementationEntity.ReconProcessStep;
-                }
-                private static global::LightSwitchApplication.ReconProcessStep _ReconProcessStep_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
-                {
-                    return d.GetImplementationValue<global::LightSwitchApplication.ReconProcessStep, global::LightSwitchApplication.ReconProcessStep.DetailsClass>(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconProcessStep, ref d._ReconProcessStep);
-                }
-                private static void _ReconProcessStep_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, global::LightSwitchApplication.ReconProcessStep v)
-                {
-                    d.SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconProcessStep, ref d._ReconProcessStep, (i, ev) => i.ReconProcessStep = ev, v);
-                }
-                private static void _ReconProcessStep_Refresh(global::LightSwitchApplication.ReconSummary.DetailsClass d)
-                {
-                    d.RefreshNavigationProperty(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconProcessStep, ref d._ReconProcessStep);
-                }
-                private static void _ReconProcessStep_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
-                {
-                    e.ReconProcessStep_Changed();
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ReconStatu>.Entry
-                    ReconStatu = new global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ReconStatu>.Entry(
-                        "ReconStatu",
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStatu_Stub,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStatu_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStatu_Validate,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStatu_GetCoreImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStatu_GetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStatu_SetImplementationValue,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStatu_Refresh,
-                        global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties._ReconStatu_OnValueChanged);
-                private static void _ReconStatu_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconSummary.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ReconStatu>.Data> c, global::LightSwitchApplication.ReconSummary.DetailsClass d, object sf)
-                {
-                    c(d, ref d._ReconStatu, sf);
-                }
-                private static bool _ReconStatu_ComputeIsReadOnly(global::LightSwitchApplication.ReconSummary e)
-                {
-                    bool result = false;
-                    e.ReconStatu_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _ReconStatu_Validate(global::LightSwitchApplication.ReconSummary e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.ReconStatu_Validate(r);
-                }
-                private static global::Microsoft.LightSwitch.Internal.IEntityImplementation _ReconStatu_GetCoreImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
-                {
-                    return d.ImplementationEntity.ReconStatu;
-                }
-                private static global::LightSwitchApplication.ReconStatu _ReconStatu_GetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d)
-                {
-                    return d.GetImplementationValue<global::LightSwitchApplication.ReconStatu, global::LightSwitchApplication.ReconStatu.DetailsClass>(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconStatu, ref d._ReconStatu);
-                }
-                private static void _ReconStatu_SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass d, global::LightSwitchApplication.ReconStatu v)
-                {
-                    d.SetImplementationValue(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconStatu, ref d._ReconStatu, (i, ev) => i.ReconStatu = ev, v);
-                }
-                private static void _ReconStatu_Refresh(global::LightSwitchApplication.ReconSummary.DetailsClass d)
-                {
-                    d.RefreshNavigationProperty(global::LightSwitchApplication.ReconSummary.DetailsClass.PropertySetProperties.ReconStatu, ref d._ReconStatu);
-                }
-                private static void _ReconStatu_OnValueChanged(global::LightSwitchApplication.ReconSummary e)
-                {
-                    e.ReconStatu_Changed();
                 }
     
             }
     
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, int>.Data _ID;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, int>.Data _ID;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Data _ReconStart;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data _TransactionDate;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<global::System.DateTime>>.Data _ReconEnd;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data _ValueDate;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<int>>.Data _SourceCount;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data _TransactionReferenceNo;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<int>>.Data _DestCount;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data _Description;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<decimal>>.Data _SourceTotal;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data _Debit;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.Nullable<decimal>>.Data _DestTotal;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data _Credit;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Data _ReconDate;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data _Balance;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, string>.Data _sys_CreatedBy;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data _sys_CreatedBy;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Data _sys_CreatedOn;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime>.Data _sys_CreatedOn;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, string>.Data _sys_ModifiedBy;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, string>.Data _sys_ModifiedBy;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::System.DateTime>.Data _sys_ModifiedOn;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ImportedFile>.Data _ImportedFiles;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Data _ReconProcessStep;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass, global::LightSwitchApplication.ReconStatu>.Data _ReconStatu;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime>.Data _sys_ModifiedOn;
             
         }
     

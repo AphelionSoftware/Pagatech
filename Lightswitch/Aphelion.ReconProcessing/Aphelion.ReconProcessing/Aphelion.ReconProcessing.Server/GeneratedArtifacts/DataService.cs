@@ -60,294 +60,6 @@ namespace LightSwitchApplication
         #region Server Interceptions Points
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconItemStatus_CanInsert(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconItemStatus_CanUpdate(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconItemStatus_CanDelete(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconItemStatus_CanRead(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconItemStatus_Inserting(global::LightSwitchApplication.ReconItemStatu entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconItemStatus_Inserted(global::LightSwitchApplication.ReconItemStatu entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconItemStatus_Updating(global::LightSwitchApplication.ReconItemStatu entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconItemStatus_Updated(global::LightSwitchApplication.ReconItemStatu entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconItemStatus_Deleting(global::LightSwitchApplication.ReconItemStatu entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconItemStatus_Deleted(global::LightSwitchApplication.ReconItemStatu entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconItemStatus_Validate(global::LightSwitchApplication.ReconItemStatu entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconItemStatus_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconItemStatu, bool>> filter);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcesses_CanInsert(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcesses_CanUpdate(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcesses_CanDelete(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcesses_CanRead(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcesses_Inserting(global::LightSwitchApplication.ReconProcess entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcesses_Inserted(global::LightSwitchApplication.ReconProcess entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcesses_Updating(global::LightSwitchApplication.ReconProcess entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcesses_Updated(global::LightSwitchApplication.ReconProcess entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcesses_Deleting(global::LightSwitchApplication.ReconProcess entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcesses_Deleted(global::LightSwitchApplication.ReconProcess entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcesses_Validate(global::LightSwitchApplication.ReconProcess entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcesses_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconProcess, bool>> filter);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessSteps_CanInsert(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessSteps_CanUpdate(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessSteps_CanDelete(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessSteps_CanRead(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessSteps_Inserting(global::LightSwitchApplication.ReconProcessStep entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessSteps_Inserted(global::LightSwitchApplication.ReconProcessStep entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessSteps_Updating(global::LightSwitchApplication.ReconProcessStep entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessSteps_Updated(global::LightSwitchApplication.ReconProcessStep entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessSteps_Deleting(global::LightSwitchApplication.ReconProcessStep entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessSteps_Deleted(global::LightSwitchApplication.ReconProcessStep entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessSteps_Validate(global::LightSwitchApplication.ReconProcessStep entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconProcessSteps_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconProcessStep, bool>> filter);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSources_CanInsert(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSources_CanUpdate(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSources_CanDelete(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSources_CanRead(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSources_Inserting(global::LightSwitchApplication.ReconSource entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSources_Inserted(global::LightSwitchApplication.ReconSource entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSources_Updating(global::LightSwitchApplication.ReconSource entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSources_Updated(global::LightSwitchApplication.ReconSource entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSources_Deleting(global::LightSwitchApplication.ReconSource entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSources_Deleted(global::LightSwitchApplication.ReconSource entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSources_Validate(global::LightSwitchApplication.ReconSource entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSources_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSource, bool>> filter);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSourceTypes_CanInsert(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSourceTypes_CanUpdate(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSourceTypes_CanDelete(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSourceTypes_CanRead(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSourceTypes_Inserting(global::LightSwitchApplication.ReconSourceType entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSourceTypes_Inserted(global::LightSwitchApplication.ReconSourceType entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSourceTypes_Updating(global::LightSwitchApplication.ReconSourceType entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSourceTypes_Updated(global::LightSwitchApplication.ReconSourceType entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSourceTypes_Deleting(global::LightSwitchApplication.ReconSourceType entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSourceTypes_Deleted(global::LightSwitchApplication.ReconSourceType entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSourceTypes_Validate(global::LightSwitchApplication.ReconSourceType entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSourceTypes_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSourceType, bool>> filter);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatus_CanInsert(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatus_CanUpdate(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatus_CanDelete(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatus_CanRead(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatus_Inserting(global::LightSwitchApplication.ReconStatu entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatus_Inserted(global::LightSwitchApplication.ReconStatu entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatus_Updating(global::LightSwitchApplication.ReconStatu entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatus_Updated(global::LightSwitchApplication.ReconStatu entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatus_Deleting(global::LightSwitchApplication.ReconStatu entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatus_Deleted(global::LightSwitchApplication.ReconStatu entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatus_Validate(global::LightSwitchApplication.ReconStatu entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconStatus_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconStatu, bool>> filter);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconTypes_CanInsert(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconTypes_CanUpdate(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconTypes_CanDelete(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconTypes_CanRead(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconTypes_Inserting(global::LightSwitchApplication.ReconType entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconTypes_Inserted(global::LightSwitchApplication.ReconType entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconTypes_Updating(global::LightSwitchApplication.ReconType entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconTypes_Updated(global::LightSwitchApplication.ReconType entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconTypes_Deleting(global::LightSwitchApplication.ReconType entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconTypes_Deleted(global::LightSwitchApplication.ReconType entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconTypes_Validate(global::LightSwitchApplication.ReconType entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconTypes_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconType, bool>> filter);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SystemFields_CanInsert(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SystemFields_CanUpdate(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SystemFields_CanDelete(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SystemFields_CanRead(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SystemFields_Inserting(global::LightSwitchApplication.SystemField entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SystemFields_Inserted(global::LightSwitchApplication.SystemField entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SystemFields_Updating(global::LightSwitchApplication.SystemField entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SystemFields_Updated(global::LightSwitchApplication.SystemField entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SystemFields_Deleting(global::LightSwitchApplication.SystemField entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SystemFields_Deleted(global::LightSwitchApplication.SystemField entity);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SystemFields_Validate(global::LightSwitchApplication.SystemField entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SystemFields_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.SystemField, bool>> filter);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void FileDefinitions_CanInsert(ref bool result);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -564,6 +276,222 @@ namespace LightSwitchApplication
         partial void ReconDetails_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconDetail, bool>> filter);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconItemStatus_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconItemStatus_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconItemStatus_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconItemStatus_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconItemStatus_Inserting(global::LightSwitchApplication.ReconItemStatu entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconItemStatus_Inserted(global::LightSwitchApplication.ReconItemStatu entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconItemStatus_Updating(global::LightSwitchApplication.ReconItemStatu entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconItemStatus_Updated(global::LightSwitchApplication.ReconItemStatu entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconItemStatus_Deleting(global::LightSwitchApplication.ReconItemStatu entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconItemStatus_Deleted(global::LightSwitchApplication.ReconItemStatu entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconItemStatus_Validate(global::LightSwitchApplication.ReconItemStatu entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconItemStatus_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconItemStatu, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcesses_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcesses_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcesses_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcesses_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcesses_Inserting(global::LightSwitchApplication.ReconProcess entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcesses_Inserted(global::LightSwitchApplication.ReconProcess entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcesses_Updating(global::LightSwitchApplication.ReconProcess entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcesses_Updated(global::LightSwitchApplication.ReconProcess entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcesses_Deleting(global::LightSwitchApplication.ReconProcess entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcesses_Deleted(global::LightSwitchApplication.ReconProcess entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcesses_Validate(global::LightSwitchApplication.ReconProcess entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcesses_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconProcess, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcessSteps_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcessSteps_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcessSteps_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcessSteps_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcessSteps_Inserting(global::LightSwitchApplication.ReconProcessStep entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcessSteps_Inserted(global::LightSwitchApplication.ReconProcessStep entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcessSteps_Updating(global::LightSwitchApplication.ReconProcessStep entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcessSteps_Updated(global::LightSwitchApplication.ReconProcessStep entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcessSteps_Deleting(global::LightSwitchApplication.ReconProcessStep entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcessSteps_Deleted(global::LightSwitchApplication.ReconProcessStep entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcessSteps_Validate(global::LightSwitchApplication.ReconProcessStep entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconProcessSteps_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconProcessStep, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSources_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSources_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSources_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSources_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSources_Inserting(global::LightSwitchApplication.ReconSource entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSources_Inserted(global::LightSwitchApplication.ReconSource entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSources_Updating(global::LightSwitchApplication.ReconSource entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSources_Updated(global::LightSwitchApplication.ReconSource entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSources_Deleting(global::LightSwitchApplication.ReconSource entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSources_Deleted(global::LightSwitchApplication.ReconSource entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSources_Validate(global::LightSwitchApplication.ReconSource entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSources_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSource, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSourceTypes_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSourceTypes_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSourceTypes_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSourceTypes_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSourceTypes_Inserting(global::LightSwitchApplication.ReconSourceType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSourceTypes_Inserted(global::LightSwitchApplication.ReconSourceType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSourceTypes_Updating(global::LightSwitchApplication.ReconSourceType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSourceTypes_Updated(global::LightSwitchApplication.ReconSourceType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSourceTypes_Deleting(global::LightSwitchApplication.ReconSourceType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSourceTypes_Deleted(global::LightSwitchApplication.ReconSourceType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSourceTypes_Validate(global::LightSwitchApplication.ReconSourceType entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconSourceTypes_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSourceType, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconStatus_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconStatus_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconStatus_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconStatus_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconStatus_Inserting(global::LightSwitchApplication.ReconStatu entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconStatus_Inserted(global::LightSwitchApplication.ReconStatu entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconStatus_Updating(global::LightSwitchApplication.ReconStatu entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconStatus_Updated(global::LightSwitchApplication.ReconStatu entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconStatus_Deleting(global::LightSwitchApplication.ReconStatu entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconStatus_Deleted(global::LightSwitchApplication.ReconStatu entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconStatus_Validate(global::LightSwitchApplication.ReconStatu entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconStatus_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconStatu, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void ReconSummaries_CanInsert(ref bool result);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -598,6 +526,42 @@ namespace LightSwitchApplication
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void ReconSummaries_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSummary, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconTypes_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconTypes_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconTypes_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconTypes_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconTypes_Inserting(global::LightSwitchApplication.ReconType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconTypes_Inserted(global::LightSwitchApplication.ReconType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconTypes_Updating(global::LightSwitchApplication.ReconType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconTypes_Updated(global::LightSwitchApplication.ReconType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconTypes_Deleting(global::LightSwitchApplication.ReconType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconTypes_Deleted(global::LightSwitchApplication.ReconType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconTypes_Validate(global::LightSwitchApplication.ReconType entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconTypes_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconType, bool>> filter);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void SkyeImportDetails_CanInsert(ref bool result);
@@ -672,6 +636,42 @@ namespace LightSwitchApplication
         partial void SkyeImportHeaders_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.SkyeImportHeader, bool>> filter);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SystemFields_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SystemFields_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SystemFields_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SystemFields_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SystemFields_Inserting(global::LightSwitchApplication.SystemField entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SystemFields_Inserted(global::LightSwitchApplication.SystemField entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SystemFields_Updating(global::LightSwitchApplication.SystemField entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SystemFields_Updated(global::LightSwitchApplication.SystemField entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SystemFields_Deleting(global::LightSwitchApplication.SystemField entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SystemFields_Deleted(global::LightSwitchApplication.SystemField entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SystemFields_Validate(global::LightSwitchApplication.SystemField entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SystemFields_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.SystemField, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void SaveChanges_CanExecute(ref bool result);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -723,614 +723,6 @@ namespace LightSwitchApplication
             [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
             static DetailsClass()
             {
-            }
-            
-            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconItemStatu>
-                __ReconItemStatusEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconItemStatu>(
-                    "ReconItemStatus",
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_CanInsert,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_CanUpdate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_CanDelete,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_CanRead,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Inserting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Inserted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Updating,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Updated,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Deleting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Deleted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Validate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Filter);
-            private static bool __ReconItemStatus_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconItemStatus_CanInsert(ref result);
-                return result;
-            }
-            private static bool __ReconItemStatus_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconItemStatus_CanUpdate(ref result);
-                return result;
-            }
-            private static bool __ReconItemStatus_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconItemStatus_CanDelete(ref result);
-                return result;
-            }
-            private static bool __ReconItemStatus_CanRead(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconItemStatus_CanRead(ref result);
-                return result;
-            }
-            private static void __ReconItemStatus_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e)
-            {
-                d.ReconItemStatus_Inserting(e);
-            }
-            private static void __ReconItemStatus_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e)
-            {
-                d.ReconItemStatus_Inserted(e);
-            }
-            private static void __ReconItemStatus_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e)
-            {
-                d.ReconItemStatus_Updating(e);
-            }
-            private static void __ReconItemStatus_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e)
-            {
-                d.ReconItemStatus_Updated(e);
-            }
-            private static void __ReconItemStatus_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e)
-            {
-                d.ReconItemStatus_Deleting(e);
-            }
-            private static void __ReconItemStatus_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e)
-            {
-                d.ReconItemStatus_Deleted(e);
-            }
-            private static void __ReconItemStatus_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
-            {
-                d.ReconItemStatus_Validate(e, r);
-            }
-            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconItemStatu, bool>> __ReconItemStatus_Filter(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconItemStatu, bool>> filter = null;
-                d.ReconItemStatus_Filter(ref filter);
-                return filter;
-            }
-            
-            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconProcess>
-                __ReconProcessesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconProcess>(
-                    "ReconProcesses",
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_CanInsert,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_CanUpdate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_CanDelete,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_CanRead,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Inserting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Inserted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Updating,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Updated,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Deleting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Deleted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Validate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Filter);
-            private static bool __ReconProcesses_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconProcesses_CanInsert(ref result);
-                return result;
-            }
-            private static bool __ReconProcesses_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconProcesses_CanUpdate(ref result);
-                return result;
-            }
-            private static bool __ReconProcesses_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconProcesses_CanDelete(ref result);
-                return result;
-            }
-            private static bool __ReconProcesses_CanRead(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconProcesses_CanRead(ref result);
-                return result;
-            }
-            private static void __ReconProcesses_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e)
-            {
-                d.ReconProcesses_Inserting(e);
-            }
-            private static void __ReconProcesses_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e)
-            {
-                d.ReconProcesses_Inserted(e);
-            }
-            private static void __ReconProcesses_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e)
-            {
-                d.ReconProcesses_Updating(e);
-            }
-            private static void __ReconProcesses_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e)
-            {
-                d.ReconProcesses_Updated(e);
-            }
-            private static void __ReconProcesses_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e)
-            {
-                d.ReconProcesses_Deleting(e);
-            }
-            private static void __ReconProcesses_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e)
-            {
-                d.ReconProcesses_Deleted(e);
-            }
-            private static void __ReconProcesses_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
-            {
-                d.ReconProcesses_Validate(e, r);
-            }
-            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconProcess, bool>> __ReconProcesses_Filter(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconProcess, bool>> filter = null;
-                d.ReconProcesses_Filter(ref filter);
-                return filter;
-            }
-            
-            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconProcessStep>
-                __ReconProcessStepsEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconProcessStep>(
-                    "ReconProcessSteps",
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_CanInsert,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_CanUpdate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_CanDelete,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_CanRead,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Inserting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Inserted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Updating,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Updated,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Deleting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Deleted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Validate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Filter);
-            private static bool __ReconProcessSteps_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconProcessSteps_CanInsert(ref result);
-                return result;
-            }
-            private static bool __ReconProcessSteps_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconProcessSteps_CanUpdate(ref result);
-                return result;
-            }
-            private static bool __ReconProcessSteps_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconProcessSteps_CanDelete(ref result);
-                return result;
-            }
-            private static bool __ReconProcessSteps_CanRead(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconProcessSteps_CanRead(ref result);
-                return result;
-            }
-            private static void __ReconProcessSteps_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e)
-            {
-                d.ReconProcessSteps_Inserting(e);
-            }
-            private static void __ReconProcessSteps_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e)
-            {
-                d.ReconProcessSteps_Inserted(e);
-            }
-            private static void __ReconProcessSteps_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e)
-            {
-                d.ReconProcessSteps_Updating(e);
-            }
-            private static void __ReconProcessSteps_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e)
-            {
-                d.ReconProcessSteps_Updated(e);
-            }
-            private static void __ReconProcessSteps_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e)
-            {
-                d.ReconProcessSteps_Deleting(e);
-            }
-            private static void __ReconProcessSteps_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e)
-            {
-                d.ReconProcessSteps_Deleted(e);
-            }
-            private static void __ReconProcessSteps_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
-            {
-                d.ReconProcessSteps_Validate(e, r);
-            }
-            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconProcessStep, bool>> __ReconProcessSteps_Filter(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconProcessStep, bool>> filter = null;
-                d.ReconProcessSteps_Filter(ref filter);
-                return filter;
-            }
-            
-            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconSource>
-                __ReconSourcesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconSource>(
-                    "ReconSources",
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_CanInsert,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_CanUpdate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_CanDelete,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_CanRead,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Inserting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Inserted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Updating,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Updated,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Deleting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Deleted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Validate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Filter);
-            private static bool __ReconSources_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconSources_CanInsert(ref result);
-                return result;
-            }
-            private static bool __ReconSources_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconSources_CanUpdate(ref result);
-                return result;
-            }
-            private static bool __ReconSources_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconSources_CanDelete(ref result);
-                return result;
-            }
-            private static bool __ReconSources_CanRead(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconSources_CanRead(ref result);
-                return result;
-            }
-            private static void __ReconSources_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e)
-            {
-                d.ReconSources_Inserting(e);
-            }
-            private static void __ReconSources_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e)
-            {
-                d.ReconSources_Inserted(e);
-            }
-            private static void __ReconSources_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e)
-            {
-                d.ReconSources_Updating(e);
-            }
-            private static void __ReconSources_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e)
-            {
-                d.ReconSources_Updated(e);
-            }
-            private static void __ReconSources_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e)
-            {
-                d.ReconSources_Deleting(e);
-            }
-            private static void __ReconSources_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e)
-            {
-                d.ReconSources_Deleted(e);
-            }
-            private static void __ReconSources_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
-            {
-                d.ReconSources_Validate(e, r);
-            }
-            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSource, bool>> __ReconSources_Filter(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSource, bool>> filter = null;
-                d.ReconSources_Filter(ref filter);
-                return filter;
-            }
-            
-            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconSourceType>
-                __ReconSourceTypesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconSourceType>(
-                    "ReconSourceTypes",
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_CanInsert,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_CanUpdate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_CanDelete,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_CanRead,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Inserting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Inserted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Updating,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Updated,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Deleting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Deleted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Validate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Filter);
-            private static bool __ReconSourceTypes_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconSourceTypes_CanInsert(ref result);
-                return result;
-            }
-            private static bool __ReconSourceTypes_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconSourceTypes_CanUpdate(ref result);
-                return result;
-            }
-            private static bool __ReconSourceTypes_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconSourceTypes_CanDelete(ref result);
-                return result;
-            }
-            private static bool __ReconSourceTypes_CanRead(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconSourceTypes_CanRead(ref result);
-                return result;
-            }
-            private static void __ReconSourceTypes_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e)
-            {
-                d.ReconSourceTypes_Inserting(e);
-            }
-            private static void __ReconSourceTypes_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e)
-            {
-                d.ReconSourceTypes_Inserted(e);
-            }
-            private static void __ReconSourceTypes_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e)
-            {
-                d.ReconSourceTypes_Updating(e);
-            }
-            private static void __ReconSourceTypes_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e)
-            {
-                d.ReconSourceTypes_Updated(e);
-            }
-            private static void __ReconSourceTypes_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e)
-            {
-                d.ReconSourceTypes_Deleting(e);
-            }
-            private static void __ReconSourceTypes_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e)
-            {
-                d.ReconSourceTypes_Deleted(e);
-            }
-            private static void __ReconSourceTypes_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
-            {
-                d.ReconSourceTypes_Validate(e, r);
-            }
-            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSourceType, bool>> __ReconSourceTypes_Filter(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSourceType, bool>> filter = null;
-                d.ReconSourceTypes_Filter(ref filter);
-                return filter;
-            }
-            
-            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconStatu>
-                __ReconStatusEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconStatu>(
-                    "ReconStatus",
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_CanInsert,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_CanUpdate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_CanDelete,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_CanRead,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Inserting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Inserted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Updating,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Updated,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Deleting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Deleted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Validate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Filter);
-            private static bool __ReconStatus_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconStatus_CanInsert(ref result);
-                return result;
-            }
-            private static bool __ReconStatus_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconStatus_CanUpdate(ref result);
-                return result;
-            }
-            private static bool __ReconStatus_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconStatus_CanDelete(ref result);
-                return result;
-            }
-            private static bool __ReconStatus_CanRead(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconStatus_CanRead(ref result);
-                return result;
-            }
-            private static void __ReconStatus_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e)
-            {
-                d.ReconStatus_Inserting(e);
-            }
-            private static void __ReconStatus_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e)
-            {
-                d.ReconStatus_Inserted(e);
-            }
-            private static void __ReconStatus_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e)
-            {
-                d.ReconStatus_Updating(e);
-            }
-            private static void __ReconStatus_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e)
-            {
-                d.ReconStatus_Updated(e);
-            }
-            private static void __ReconStatus_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e)
-            {
-                d.ReconStatus_Deleting(e);
-            }
-            private static void __ReconStatus_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e)
-            {
-                d.ReconStatus_Deleted(e);
-            }
-            private static void __ReconStatus_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
-            {
-                d.ReconStatus_Validate(e, r);
-            }
-            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconStatu, bool>> __ReconStatus_Filter(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconStatu, bool>> filter = null;
-                d.ReconStatus_Filter(ref filter);
-                return filter;
-            }
-            
-            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconType>
-                __ReconTypesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconType>(
-                    "ReconTypes",
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_CanInsert,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_CanUpdate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_CanDelete,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_CanRead,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Inserting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Inserted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Updating,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Updated,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Deleting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Deleted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Validate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Filter);
-            private static bool __ReconTypes_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconTypes_CanInsert(ref result);
-                return result;
-            }
-            private static bool __ReconTypes_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconTypes_CanUpdate(ref result);
-                return result;
-            }
-            private static bool __ReconTypes_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconTypes_CanDelete(ref result);
-                return result;
-            }
-            private static bool __ReconTypes_CanRead(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.ReconTypes_CanRead(ref result);
-                return result;
-            }
-            private static void __ReconTypes_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e)
-            {
-                d.ReconTypes_Inserting(e);
-            }
-            private static void __ReconTypes_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e)
-            {
-                d.ReconTypes_Inserted(e);
-            }
-            private static void __ReconTypes_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e)
-            {
-                d.ReconTypes_Updating(e);
-            }
-            private static void __ReconTypes_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e)
-            {
-                d.ReconTypes_Updated(e);
-            }
-            private static void __ReconTypes_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e)
-            {
-                d.ReconTypes_Deleting(e);
-            }
-            private static void __ReconTypes_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e)
-            {
-                d.ReconTypes_Deleted(e);
-            }
-            private static void __ReconTypes_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
-            {
-                d.ReconTypes_Validate(e, r);
-            }
-            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconType, bool>> __ReconTypes_Filter(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconType, bool>> filter = null;
-                d.ReconTypes_Filter(ref filter);
-                return filter;
-            }
-            
-            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.SystemField>
-                __SystemFieldsEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.SystemField>(
-                    "SystemFields",
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_CanInsert,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_CanUpdate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_CanDelete,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_CanRead,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Inserting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Inserted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Updating,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Updated,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Deleting,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Deleted,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Validate,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Filter);
-            private static bool __SystemFields_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.SystemFields_CanInsert(ref result);
-                return result;
-            }
-            private static bool __SystemFields_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.SystemFields_CanUpdate(ref result);
-                return result;
-            }
-            private static bool __SystemFields_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.SystemFields_CanDelete(ref result);
-                return result;
-            }
-            private static bool __SystemFields_CanRead(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                bool result = true;
-                d.SystemFields_CanRead(ref result);
-                return result;
-            }
-            private static void __SystemFields_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e)
-            {
-                d.SystemFields_Inserting(e);
-            }
-            private static void __SystemFields_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e)
-            {
-                d.SystemFields_Inserted(e);
-            }
-            private static void __SystemFields_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e)
-            {
-                d.SystemFields_Updating(e);
-            }
-            private static void __SystemFields_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e)
-            {
-                d.SystemFields_Updated(e);
-            }
-            private static void __SystemFields_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e)
-            {
-                d.SystemFields_Deleting(e);
-            }
-            private static void __SystemFields_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e)
-            {
-                d.SystemFields_Deleted(e);
-            }
-            private static void __SystemFields_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
-            {
-                d.SystemFields_Validate(e, r);
-            }
-            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.SystemField, bool>> __SystemFields_Filter(global::LightSwitchApplication.PagaReconDataService d)
-            {
-                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.SystemField, bool>> filter = null;
-                d.SystemFields_Filter(ref filter);
-                return filter;
             }
             
             [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
@@ -1791,6 +1183,462 @@ namespace LightSwitchApplication
             
             [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconItemStatu>
+                __ReconItemStatusEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconItemStatu>(
+                    "ReconItemStatus",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconItemStatus_Filter);
+            private static bool __ReconItemStatus_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconItemStatus_CanInsert(ref result);
+                return result;
+            }
+            private static bool __ReconItemStatus_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconItemStatus_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __ReconItemStatus_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconItemStatus_CanDelete(ref result);
+                return result;
+            }
+            private static bool __ReconItemStatus_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconItemStatus_CanRead(ref result);
+                return result;
+            }
+            private static void __ReconItemStatus_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e)
+            {
+                d.ReconItemStatus_Inserting(e);
+            }
+            private static void __ReconItemStatus_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e)
+            {
+                d.ReconItemStatus_Inserted(e);
+            }
+            private static void __ReconItemStatus_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e)
+            {
+                d.ReconItemStatus_Updating(e);
+            }
+            private static void __ReconItemStatus_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e)
+            {
+                d.ReconItemStatus_Updated(e);
+            }
+            private static void __ReconItemStatus_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e)
+            {
+                d.ReconItemStatus_Deleting(e);
+            }
+            private static void __ReconItemStatus_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e)
+            {
+                d.ReconItemStatus_Deleted(e);
+            }
+            private static void __ReconItemStatus_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconItemStatu e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.ReconItemStatus_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconItemStatu, bool>> __ReconItemStatus_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconItemStatu, bool>> filter = null;
+                d.ReconItemStatus_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconProcess>
+                __ReconProcessesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconProcess>(
+                    "ReconProcesses",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcesses_Filter);
+            private static bool __ReconProcesses_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconProcesses_CanInsert(ref result);
+                return result;
+            }
+            private static bool __ReconProcesses_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconProcesses_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __ReconProcesses_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconProcesses_CanDelete(ref result);
+                return result;
+            }
+            private static bool __ReconProcesses_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconProcesses_CanRead(ref result);
+                return result;
+            }
+            private static void __ReconProcesses_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e)
+            {
+                d.ReconProcesses_Inserting(e);
+            }
+            private static void __ReconProcesses_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e)
+            {
+                d.ReconProcesses_Inserted(e);
+            }
+            private static void __ReconProcesses_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e)
+            {
+                d.ReconProcesses_Updating(e);
+            }
+            private static void __ReconProcesses_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e)
+            {
+                d.ReconProcesses_Updated(e);
+            }
+            private static void __ReconProcesses_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e)
+            {
+                d.ReconProcesses_Deleting(e);
+            }
+            private static void __ReconProcesses_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e)
+            {
+                d.ReconProcesses_Deleted(e);
+            }
+            private static void __ReconProcesses_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcess e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.ReconProcesses_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconProcess, bool>> __ReconProcesses_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconProcess, bool>> filter = null;
+                d.ReconProcesses_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconProcessStep>
+                __ReconProcessStepsEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconProcessStep>(
+                    "ReconProcessSteps",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconProcessSteps_Filter);
+            private static bool __ReconProcessSteps_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconProcessSteps_CanInsert(ref result);
+                return result;
+            }
+            private static bool __ReconProcessSteps_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconProcessSteps_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __ReconProcessSteps_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconProcessSteps_CanDelete(ref result);
+                return result;
+            }
+            private static bool __ReconProcessSteps_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconProcessSteps_CanRead(ref result);
+                return result;
+            }
+            private static void __ReconProcessSteps_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e)
+            {
+                d.ReconProcessSteps_Inserting(e);
+            }
+            private static void __ReconProcessSteps_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e)
+            {
+                d.ReconProcessSteps_Inserted(e);
+            }
+            private static void __ReconProcessSteps_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e)
+            {
+                d.ReconProcessSteps_Updating(e);
+            }
+            private static void __ReconProcessSteps_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e)
+            {
+                d.ReconProcessSteps_Updated(e);
+            }
+            private static void __ReconProcessSteps_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e)
+            {
+                d.ReconProcessSteps_Deleting(e);
+            }
+            private static void __ReconProcessSteps_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e)
+            {
+                d.ReconProcessSteps_Deleted(e);
+            }
+            private static void __ReconProcessSteps_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconProcessStep e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.ReconProcessSteps_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconProcessStep, bool>> __ReconProcessSteps_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconProcessStep, bool>> filter = null;
+                d.ReconProcessSteps_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconSource>
+                __ReconSourcesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconSource>(
+                    "ReconSources",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSources_Filter);
+            private static bool __ReconSources_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconSources_CanInsert(ref result);
+                return result;
+            }
+            private static bool __ReconSources_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconSources_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __ReconSources_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconSources_CanDelete(ref result);
+                return result;
+            }
+            private static bool __ReconSources_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconSources_CanRead(ref result);
+                return result;
+            }
+            private static void __ReconSources_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e)
+            {
+                d.ReconSources_Inserting(e);
+            }
+            private static void __ReconSources_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e)
+            {
+                d.ReconSources_Inserted(e);
+            }
+            private static void __ReconSources_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e)
+            {
+                d.ReconSources_Updating(e);
+            }
+            private static void __ReconSources_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e)
+            {
+                d.ReconSources_Updated(e);
+            }
+            private static void __ReconSources_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e)
+            {
+                d.ReconSources_Deleting(e);
+            }
+            private static void __ReconSources_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e)
+            {
+                d.ReconSources_Deleted(e);
+            }
+            private static void __ReconSources_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSource e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.ReconSources_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSource, bool>> __ReconSources_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSource, bool>> filter = null;
+                d.ReconSources_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconSourceType>
+                __ReconSourceTypesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconSourceType>(
+                    "ReconSourceTypes",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconSourceTypes_Filter);
+            private static bool __ReconSourceTypes_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconSourceTypes_CanInsert(ref result);
+                return result;
+            }
+            private static bool __ReconSourceTypes_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconSourceTypes_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __ReconSourceTypes_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconSourceTypes_CanDelete(ref result);
+                return result;
+            }
+            private static bool __ReconSourceTypes_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconSourceTypes_CanRead(ref result);
+                return result;
+            }
+            private static void __ReconSourceTypes_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e)
+            {
+                d.ReconSourceTypes_Inserting(e);
+            }
+            private static void __ReconSourceTypes_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e)
+            {
+                d.ReconSourceTypes_Inserted(e);
+            }
+            private static void __ReconSourceTypes_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e)
+            {
+                d.ReconSourceTypes_Updating(e);
+            }
+            private static void __ReconSourceTypes_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e)
+            {
+                d.ReconSourceTypes_Updated(e);
+            }
+            private static void __ReconSourceTypes_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e)
+            {
+                d.ReconSourceTypes_Deleting(e);
+            }
+            private static void __ReconSourceTypes_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e)
+            {
+                d.ReconSourceTypes_Deleted(e);
+            }
+            private static void __ReconSourceTypes_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconSourceType e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.ReconSourceTypes_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSourceType, bool>> __ReconSourceTypes_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSourceType, bool>> filter = null;
+                d.ReconSourceTypes_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconStatu>
+                __ReconStatusEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconStatu>(
+                    "ReconStatus",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconStatus_Filter);
+            private static bool __ReconStatus_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconStatus_CanInsert(ref result);
+                return result;
+            }
+            private static bool __ReconStatus_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconStatus_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __ReconStatus_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconStatus_CanDelete(ref result);
+                return result;
+            }
+            private static bool __ReconStatus_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconStatus_CanRead(ref result);
+                return result;
+            }
+            private static void __ReconStatus_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e)
+            {
+                d.ReconStatus_Inserting(e);
+            }
+            private static void __ReconStatus_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e)
+            {
+                d.ReconStatus_Inserted(e);
+            }
+            private static void __ReconStatus_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e)
+            {
+                d.ReconStatus_Updating(e);
+            }
+            private static void __ReconStatus_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e)
+            {
+                d.ReconStatus_Updated(e);
+            }
+            private static void __ReconStatus_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e)
+            {
+                d.ReconStatus_Deleting(e);
+            }
+            private static void __ReconStatus_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e)
+            {
+                d.ReconStatus_Deleted(e);
+            }
+            private static void __ReconStatus_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconStatu e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.ReconStatus_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconStatu, bool>> __ReconStatus_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconStatu, bool>> filter = null;
+                d.ReconStatus_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconSummary>
                 __ReconSummariesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconSummary>(
                     "ReconSummaries",
@@ -1862,6 +1710,82 @@ namespace LightSwitchApplication
             {
                 global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconSummary, bool>> filter = null;
                 d.ReconSummaries_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconType>
+                __ReconTypesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconType>(
+                    "ReconTypes",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconTypes_Filter);
+            private static bool __ReconTypes_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconTypes_CanInsert(ref result);
+                return result;
+            }
+            private static bool __ReconTypes_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconTypes_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __ReconTypes_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconTypes_CanDelete(ref result);
+                return result;
+            }
+            private static bool __ReconTypes_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconTypes_CanRead(ref result);
+                return result;
+            }
+            private static void __ReconTypes_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e)
+            {
+                d.ReconTypes_Inserting(e);
+            }
+            private static void __ReconTypes_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e)
+            {
+                d.ReconTypes_Inserted(e);
+            }
+            private static void __ReconTypes_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e)
+            {
+                d.ReconTypes_Updating(e);
+            }
+            private static void __ReconTypes_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e)
+            {
+                d.ReconTypes_Updated(e);
+            }
+            private static void __ReconTypes_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e)
+            {
+                d.ReconTypes_Deleting(e);
+            }
+            private static void __ReconTypes_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e)
+            {
+                d.ReconTypes_Deleted(e);
+            }
+            private static void __ReconTypes_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconType e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.ReconTypes_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconType, bool>> __ReconTypes_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconType, bool>> filter = null;
+                d.ReconTypes_Filter(ref filter);
                 return filter;
             }
             
@@ -2014,6 +1938,82 @@ namespace LightSwitchApplication
             {
                 global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.SkyeImportHeader, bool>> filter = null;
                 d.SkyeImportHeaders_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.SystemField>
+                __SystemFieldsEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.SystemField>(
+                    "SystemFields",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__SystemFields_Filter);
+            private static bool __SystemFields_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.SystemFields_CanInsert(ref result);
+                return result;
+            }
+            private static bool __SystemFields_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.SystemFields_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __SystemFields_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.SystemFields_CanDelete(ref result);
+                return result;
+            }
+            private static bool __SystemFields_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.SystemFields_CanRead(ref result);
+                return result;
+            }
+            private static void __SystemFields_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e)
+            {
+                d.SystemFields_Inserting(e);
+            }
+            private static void __SystemFields_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e)
+            {
+                d.SystemFields_Inserted(e);
+            }
+            private static void __SystemFields_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e)
+            {
+                d.SystemFields_Updating(e);
+            }
+            private static void __SystemFields_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e)
+            {
+                d.SystemFields_Updated(e);
+            }
+            private static void __SystemFields_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e)
+            {
+                d.SystemFields_Deleting(e);
+            }
+            private static void __SystemFields_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e)
+            {
+                d.SystemFields_Deleted(e);
+            }
+            private static void __SystemFields_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.SystemField e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.SystemFields_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.SystemField, bool>> __SystemFields_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.SystemField, bool>> filter = null;
+                d.SystemFields_Filter(ref filter);
                 return filter;
             }
             

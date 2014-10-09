@@ -41,13 +41,13 @@
         thisObject.ActualDate = new Date();
         // MGS 2013/09/32
         /// Setting data version to 0 by default doesn't work! For demo purposes needs to be 1 as that is what the reports show
-        myapp.activeDataWorkspace.MeerkatData.DataVersions_SingleOrDefault(1).execute().then(function (results) {
-        //myapp.activeDataWorkspace.MeerkatData.DataVersions_SingleOrDefault(0).execute().then(function (results) {
+        myapp.activeDataWorkspace.PagaReconData.DataVersions_SingleOrDefault(1).execute().then(function (results) {
+        //myapp.activeDataWorkspace.PagaReconData.DataVersions_SingleOrDefault(0).execute().then(function (results) {
             var dataVersion = results.results[0];
             thisObject.setDataVersion(dataVersion);
         });
 
-        myapp.activeDataWorkspace.MeerkatData.ActiveTypes.filter("Code eq 'Active'").execute().then(function (x) {
+        myapp.activeDataWorkspace.PagaReconData.ActiveTypes.filter("Code eq 'Active'").execute().then(function (x) {
             //thisObject.setActiveType(x.results[x]);
             // MGS 2013/09/32
             //x.results[x] will always be undefined. Instead we want the single result that should return, position 0
@@ -101,25 +101,21 @@
             thisObject.sys_CreatedOn = "1999/01/01";
             thisObject.sys_ModifiedBy = "NA";
             thisObject.sys_ModifiedOn = "1999/01/01";
-            thisObject.IndicatorValueGroup = "92348bc8-685e-4cd6-b22d-d6b950ac7b53";
-            thisObject.MilestoneValueGroup = "92348bc8-685e-4cd6-b22d-d6b950ac7b53";
-            thisObject.GroupVersion = 1;
-
+            
             var activeTypeDropDown = screen.findContentItem("ActiveType");
 
             if (activeTypeDropDown !== undefined) {
                 activeTypeDropDown.isVisible = false;
-            }
 
-            screen.details.dataWorkspace.MeerkatData.ActiveTypes.filter("Code eq 'Active'").execute().then(function (x) {
-                thisObject.setActiveType(x.results[0]);
-            }, function (x) {
-                msls.showMessageBox(x, {
-                    title: "Default value for ActiveType failed"
+                screen.details.dataWorkspace.PagaReconData.ActiveTypes.filter("Code eq 'Active'").execute().then(function (x) {
+                    thisObject.setActiveType(x.results[0]);
+                }, function (x) {
+                    msls.showMessageBox(x, {
+                        title: "Default value for ActiveType failed"
+                    });
                 });
-            });
 
-
+            }
             return;
         } else {
             if (screen.pageTitle !== undefined) {
@@ -129,7 +125,7 @@
             }
 
             var newDataWorkspace = new myapp.DataWorkspace();
-            newDataWorkspace.MeerkatData[pluralName(name)].filter(primaryKeyColumn + " eq " + primaryKey).execute().then(function (result) {
+            newDataWorkspace.PagaReconData[pluralName(name)].filter(primaryKeyColumn + " eq " + primaryKey).execute().then(function (result) {
 
                 var serverValue = result.results[0];
                 if (serverValue !== undefined) {

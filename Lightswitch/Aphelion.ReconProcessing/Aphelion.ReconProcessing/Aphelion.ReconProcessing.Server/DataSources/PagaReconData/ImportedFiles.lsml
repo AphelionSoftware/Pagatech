@@ -23,6 +23,25 @@
           <NotSearchable />
         </KeyProperty.Attributes>
       </KeyProperty>
+      <NavigationProperty
+        Name="FileDefinition"
+        Association="FK_ImportedFile_FileDefinition"
+        FromEnd="ImportedFile"
+        ToEnd="FileDefinition" />
+      <NavigationProperty
+        Name="ReconSummary"
+        Association="FK_ImportedFile_ReconSummary"
+        FromEnd="ImportedFile"
+        ToEnd="ReconSummary" />
+      <EntityProperty
+        Name="UploadedFileName"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="800" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
       <EntityProperty
         Name="FileName"
         PropertyType=":String">
@@ -73,25 +92,6 @@
             Precision="3"
             PreserveSeconds="True" />
           <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <NavigationProperty
-        Name="FileDefinition"
-        Association="FK_ImportedFile_FileDefinition"
-        FromEnd="ImportedFile"
-        ToEnd="FileDefinition" />
-      <NavigationProperty
-        Name="ReconSummary"
-        Association="FK_ImportedFile_ReconSummary"
-        FromEnd="ImportedFile"
-        ToEnd="ReconSummary" />
-      <EntityProperty
-        Name="UploadedFileName"
-        PropertyType=":String?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="800" />
-          <AnsiConstraint />
         </EntityProperty.Attributes>
       </EntityProperty>
     </EntityType.Properties>

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Data;
 //using System.Data.DataSetExtensions;
-using System.Linq;
 using System.Linq.Dynamic;
 
 namespace Aphelion.Recon.RulesEngine
@@ -229,8 +228,6 @@ namespace Aphelion.Recon.RulesEngine
                     dictDestKeys.Add(kvp.Value, dtDestination.Columns.IndexOf(kvp.Value));
                 }
             }
-
-
         }
 
         /// <summary>
@@ -238,8 +235,6 @@ namespace Aphelion.Recon.RulesEngine
         /// </summary>
         public void CompareLines()
         {
-
-
             foreach (DataRow drSrc in dtSource.Rows)
             {
                 #region SourceChecking

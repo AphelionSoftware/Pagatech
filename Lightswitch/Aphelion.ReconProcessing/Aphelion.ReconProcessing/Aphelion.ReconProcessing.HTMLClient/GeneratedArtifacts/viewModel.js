@@ -8,113 +8,6 @@
         $toODataString = msls._toODataString,
         $defineShowScreen = msls._defineShowScreen;
 
-    function BrowseSkyeImportHeaders(parameters, dataWorkspace) {
-        /// <summary>
-        /// Represents the BrowseSkyeImportHeaders screen.
-        /// </summary>
-        /// <param name="parameters" type="Array">
-        /// An array of screen parameter values.
-        /// </param>
-        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
-        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
-        /// </param>
-        /// <field name="SkyeImportHeaders" type="msls.VisualCollection" elementType="msls.application.SkyeImportHeader">
-        /// Gets the skyeImportHeaders for this screen.
-        /// </field>
-        /// <field name="details" type="msls.application.BrowseSkyeImportHeaders.Details">
-        /// Gets the details for this screen.
-        /// </field>
-        if (!dataWorkspace) {
-            dataWorkspace = new lightSwitchApplication.DataWorkspace();
-        }
-        $Screen.call(this, dataWorkspace, "BrowseSkyeImportHeaders", parameters);
-    }
-
-    function BrowseSkyeImportDetails(parameters, dataWorkspace) {
-        /// <summary>
-        /// Represents the BrowseSkyeImportDetails screen.
-        /// </summary>
-        /// <param name="parameters" type="Array">
-        /// An array of screen parameter values.
-        /// </param>
-        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
-        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
-        /// </param>
-        /// <field name="SkyeImportDetails" type="msls.VisualCollection" elementType="msls.application.SkyeImportDetail">
-        /// Gets the skyeImportDetails for this screen.
-        /// </field>
-        /// <field name="details" type="msls.application.BrowseSkyeImportDetails.Details">
-        /// Gets the details for this screen.
-        /// </field>
-        if (!dataWorkspace) {
-            dataWorkspace = new lightSwitchApplication.DataWorkspace();
-        }
-        $Screen.call(this, dataWorkspace, "BrowseSkyeImportDetails", parameters);
-    }
-
-    function Home(parameters, dataWorkspace) {
-        /// <summary>
-        /// Represents the Home screen.
-        /// </summary>
-        /// <param name="parameters" type="Array">
-        /// An array of screen parameter values.
-        /// </param>
-        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
-        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
-        /// </param>
-        /// <field name="details" type="msls.application.Home.Details">
-        /// Gets the details for this screen.
-        /// </field>
-        if (!dataWorkspace) {
-            dataWorkspace = new lightSwitchApplication.DataWorkspace();
-        }
-        $Screen.call(this, dataWorkspace, "Home", parameters);
-    }
-
-    function ImportFile(parameters, dataWorkspace) {
-        /// <summary>
-        /// Represents the ImportFile screen.
-        /// </summary>
-        /// <param name="parameters" type="Array">
-        /// An array of screen parameter values.
-        /// </param>
-        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
-        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
-        /// </param>
-        /// <field name="ImportedFile" type="msls.application.ImportedFile">
-        /// Gets or sets the importedFile for this screen.
-        /// </field>
-        /// <field name="details" type="msls.application.ImportFile.Details">
-        /// Gets the details for this screen.
-        /// </field>
-        if (!dataWorkspace) {
-            dataWorkspace = new lightSwitchApplication.DataWorkspace();
-        }
-        $Screen.call(this, dataWorkspace, "ImportFile", parameters);
-    }
-
-    function ViewImportedFile(parameters, dataWorkspace) {
-        /// <summary>
-        /// Represents the ViewImportedFile screen.
-        /// </summary>
-        /// <param name="parameters" type="Array">
-        /// An array of screen parameter values.
-        /// </param>
-        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
-        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
-        /// </param>
-        /// <field name="ImportedFile" type="msls.application.ImportedFile">
-        /// Gets or sets the importedFile for this screen.
-        /// </field>
-        /// <field name="details" type="msls.application.ViewImportedFile.Details">
-        /// Gets the details for this screen.
-        /// </field>
-        if (!dataWorkspace) {
-            dataWorkspace = new lightSwitchApplication.DataWorkspace();
-        }
-        $Screen.call(this, dataWorkspace, "ViewImportedFile", parameters);
-    }
-
     function BrowseAllImportedFiles(parameters, dataWorkspace) {
         /// <summary>
         /// Represents the BrowseAllImportedFiles screen.
@@ -162,6 +55,72 @@
         $Screen.call(this, dataWorkspace, "BrowseImportedFilesUnreconciled", parameters);
     }
 
+    function ImportFile(parameters, dataWorkspace) {
+        /// <summary>
+        /// Represents the ImportFile screen.
+        /// </summary>
+        /// <param name="parameters" type="Array">
+        /// An array of screen parameter values.
+        /// </param>
+        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
+        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
+        /// </param>
+        /// <field name="ImportedFile" type="msls.application.ImportedFile">
+        /// Gets or sets the importedFile for this screen.
+        /// </field>
+        /// <field name="details" type="msls.application.ImportFile.Details">
+        /// Gets the details for this screen.
+        /// </field>
+        if (!dataWorkspace) {
+            dataWorkspace = new lightSwitchApplication.DataWorkspace();
+        }
+        $Screen.call(this, dataWorkspace, "ImportFile", parameters);
+    }
+
+    function ViewImportedFile(parameters, dataWorkspace) {
+        /// <summary>
+        /// Represents the ViewImportedFile screen.
+        /// </summary>
+        /// <param name="parameters" type="Array">
+        /// An array of screen parameter values.
+        /// </param>
+        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
+        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
+        /// </param>
+        /// <field name="ImportedFile" type="msls.application.ImportedFile">
+        /// Gets or sets the importedFile for this screen.
+        /// </field>
+        /// <field name="details" type="msls.application.ViewImportedFile.Details">
+        /// Gets the details for this screen.
+        /// </field>
+        if (!dataWorkspace) {
+            dataWorkspace = new lightSwitchApplication.DataWorkspace();
+        }
+        $Screen.call(this, dataWorkspace, "ViewImportedFile", parameters);
+    }
+
+    function BrowseReconProcesses(parameters, dataWorkspace) {
+        /// <summary>
+        /// Represents the BrowseReconProcesses screen.
+        /// </summary>
+        /// <param name="parameters" type="Array">
+        /// An array of screen parameter values.
+        /// </param>
+        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
+        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
+        /// </param>
+        /// <field name="ReconProcesses" type="msls.VisualCollection" elementType="msls.application.ReconProcess">
+        /// Gets the reconProcesses for this screen.
+        /// </field>
+        /// <field name="details" type="msls.application.BrowseReconProcesses.Details">
+        /// Gets the details for this screen.
+        /// </field>
+        if (!dataWorkspace) {
+            dataWorkspace = new lightSwitchApplication.DataWorkspace();
+        }
+        $Screen.call(this, dataWorkspace, "BrowseReconProcesses", parameters);
+    }
+
     function ViewReconProcess(parameters, dataWorkspace) {
         /// <summary>
         /// Represents the ViewReconProcess screen.
@@ -187,9 +146,9 @@
         $Screen.call(this, dataWorkspace, "ViewReconProcess", parameters);
     }
 
-    function BrowseReconProcesses(parameters, dataWorkspace) {
+    function BrowseSkyeImportDetails(parameters, dataWorkspace) {
         /// <summary>
-        /// Represents the BrowseReconProcesses screen.
+        /// Represents the BrowseSkyeImportDetails screen.
         /// </summary>
         /// <param name="parameters" type="Array">
         /// An array of screen parameter values.
@@ -197,53 +156,60 @@
         /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
         /// An existing data workspace for this screen to use. By default, a new data workspace is created.
         /// </param>
-        /// <field name="ReconProcesses" type="msls.VisualCollection" elementType="msls.application.ReconProcess">
-        /// Gets the reconProcesses for this screen.
+        /// <field name="SkyeImportDetails" type="msls.VisualCollection" elementType="msls.application.SkyeImportDetail">
+        /// Gets the skyeImportDetails for this screen.
         /// </field>
-        /// <field name="details" type="msls.application.BrowseReconProcesses.Details">
+        /// <field name="details" type="msls.application.BrowseSkyeImportDetails.Details">
         /// Gets the details for this screen.
         /// </field>
         if (!dataWorkspace) {
             dataWorkspace = new lightSwitchApplication.DataWorkspace();
         }
-        $Screen.call(this, dataWorkspace, "BrowseReconProcesses", parameters);
+        $Screen.call(this, dataWorkspace, "BrowseSkyeImportDetails", parameters);
+    }
+
+    function BrowseSkyeImportHeaders(parameters, dataWorkspace) {
+        /// <summary>
+        /// Represents the BrowseSkyeImportHeaders screen.
+        /// </summary>
+        /// <param name="parameters" type="Array">
+        /// An array of screen parameter values.
+        /// </param>
+        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
+        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
+        /// </param>
+        /// <field name="SkyeImportHeaders" type="msls.VisualCollection" elementType="msls.application.SkyeImportHeader">
+        /// Gets the skyeImportHeaders for this screen.
+        /// </field>
+        /// <field name="details" type="msls.application.BrowseSkyeImportHeaders.Details">
+        /// Gets the details for this screen.
+        /// </field>
+        if (!dataWorkspace) {
+            dataWorkspace = new lightSwitchApplication.DataWorkspace();
+        }
+        $Screen.call(this, dataWorkspace, "BrowseSkyeImportHeaders", parameters);
+    }
+
+    function Home(parameters, dataWorkspace) {
+        /// <summary>
+        /// Represents the Home screen.
+        /// </summary>
+        /// <param name="parameters" type="Array">
+        /// An array of screen parameter values.
+        /// </param>
+        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
+        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
+        /// </param>
+        /// <field name="details" type="msls.application.Home.Details">
+        /// Gets the details for this screen.
+        /// </field>
+        if (!dataWorkspace) {
+            dataWorkspace = new lightSwitchApplication.DataWorkspace();
+        }
+        $Screen.call(this, dataWorkspace, "Home", parameters);
     }
 
     msls._addToNamespace("msls.application", {
-
-        BrowseSkyeImportHeaders: $defineScreen(BrowseSkyeImportHeaders, [
-            {
-                name: "SkyeImportHeaders", kind: "collection", elementType: lightSwitchApplication.SkyeImportHeader,
-                createQuery: function () {
-                    return this.dataWorkspace.PagaReconData.SkyeImportHeaders;
-                }
-            }
-        ], [
-        ]),
-
-        BrowseSkyeImportDetails: $defineScreen(BrowseSkyeImportDetails, [
-            {
-                name: "SkyeImportDetails", kind: "collection", elementType: lightSwitchApplication.SkyeImportDetail,
-                createQuery: function () {
-                    return this.dataWorkspace.PagaReconData.SkyeImportDetails;
-                }
-            }
-        ], [
-        ]),
-
-        Home: $defineScreen(Home, [
-        ], [
-        ]),
-
-        ImportFile: $defineScreen(ImportFile, [
-            { name: "ImportedFile", kind: "local", type: lightSwitchApplication.ImportedFile }
-        ], [
-        ]),
-
-        ViewImportedFile: $defineScreen(ViewImportedFile, [
-            { name: "ImportedFile", kind: "local", type: lightSwitchApplication.ImportedFile }
-        ], [
-        ]),
 
         BrowseAllImportedFiles: $defineScreen(BrowseAllImportedFiles, [
             {
@@ -266,6 +232,26 @@
         ], [
         ]),
 
+        ImportFile: $defineScreen(ImportFile, [
+            { name: "ImportedFile", kind: "local", type: lightSwitchApplication.ImportedFile }
+        ], [
+        ]),
+
+        ViewImportedFile: $defineScreen(ViewImportedFile, [
+            { name: "ImportedFile", kind: "local", type: lightSwitchApplication.ImportedFile }
+        ], [
+        ]),
+
+        BrowseReconProcesses: $defineScreen(BrowseReconProcesses, [
+            {
+                name: "ReconProcesses", kind: "collection", elementType: lightSwitchApplication.ReconProcess,
+                createQuery: function () {
+                    return this.dataWorkspace.PagaReconData.ReconProcesses;
+                }
+            }
+        ], [
+        ]),
+
         ViewReconProcess: $defineScreen(ViewReconProcess, [
             { name: "ReconProcess", kind: "local", type: lightSwitchApplication.ReconProcess },
             {
@@ -284,50 +270,52 @@
             { name: "ProcessRecon" }
         ]),
 
-        BrowseReconProcesses: $defineScreen(BrowseReconProcesses, [
+        BrowseSkyeImportDetails: $defineScreen(BrowseSkyeImportDetails, [
             {
-                name: "ReconProcesses", kind: "collection", elementType: lightSwitchApplication.ReconProcess,
+                name: "SkyeImportDetails", kind: "collection", elementType: lightSwitchApplication.SkyeImportDetail,
                 createQuery: function () {
-                    return this.dataWorkspace.PagaReconData.ReconProcesses;
+                    return this.dataWorkspace.PagaReconData.SkyeImportDetails;
                 }
             }
         ], [
         ]),
 
-        showBrowseSkyeImportHeaders: $defineShowScreen(function showBrowseSkyeImportHeaders(options) {
+        BrowseSkyeImportHeaders: $defineScreen(BrowseSkyeImportHeaders, [
+            {
+                name: "SkyeImportHeaders", kind: "collection", elementType: lightSwitchApplication.SkyeImportHeader,
+                createQuery: function () {
+                    return this.dataWorkspace.PagaReconData.SkyeImportHeaders;
+                }
+            }
+        ], [
+        ]),
+
+        Home: $defineScreen(Home, [
+        ], [
+        ]),
+
+        showBrowseAllImportedFiles: $defineShowScreen(function showBrowseAllImportedFiles(options) {
             /// <summary>
-            /// Asynchronously navigates forward to the BrowseSkyeImportHeaders screen.
+            /// Asynchronously navigates forward to the BrowseAllImportedFiles screen.
             /// </summary>
             /// <param name="options" optional="true">
             /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
             /// </param>
             /// <returns type="WinJS.Promise" />
             var parameters = Array.prototype.slice.call(arguments, 0, 0);
-            return lightSwitchApplication.showScreen("BrowseSkyeImportHeaders", parameters, options);
+            return lightSwitchApplication.showScreen("BrowseAllImportedFiles", parameters, options);
         }),
 
-        showBrowseSkyeImportDetails: $defineShowScreen(function showBrowseSkyeImportDetails(options) {
+        showBrowseImportedFilesUnreconciled: $defineShowScreen(function showBrowseImportedFilesUnreconciled(options) {
             /// <summary>
-            /// Asynchronously navigates forward to the BrowseSkyeImportDetails screen.
+            /// Asynchronously navigates forward to the BrowseImportedFilesUnreconciled screen.
             /// </summary>
             /// <param name="options" optional="true">
             /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
             /// </param>
             /// <returns type="WinJS.Promise" />
             var parameters = Array.prototype.slice.call(arguments, 0, 0);
-            return lightSwitchApplication.showScreen("BrowseSkyeImportDetails", parameters, options);
-        }),
-
-        showHome: $defineShowScreen(function showHome(options) {
-            /// <summary>
-            /// Asynchronously navigates forward to the Home screen.
-            /// </summary>
-            /// <param name="options" optional="true">
-            /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
-            /// </param>
-            /// <returns type="WinJS.Promise" />
-            var parameters = Array.prototype.slice.call(arguments, 0, 0);
-            return lightSwitchApplication.showScreen("Home", parameters, options);
+            return lightSwitchApplication.showScreen("BrowseImportedFilesUnreconciled", parameters, options);
         }),
 
         showImportFile: $defineShowScreen(function showImportFile(ImportedFile, options) {
@@ -354,28 +342,16 @@
             return lightSwitchApplication.showScreen("ViewImportedFile", parameters, options);
         }),
 
-        showBrowseAllImportedFiles: $defineShowScreen(function showBrowseAllImportedFiles(options) {
+        showBrowseReconProcesses: $defineShowScreen(function showBrowseReconProcesses(options) {
             /// <summary>
-            /// Asynchronously navigates forward to the BrowseAllImportedFiles screen.
+            /// Asynchronously navigates forward to the BrowseReconProcesses screen.
             /// </summary>
             /// <param name="options" optional="true">
             /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
             /// </param>
             /// <returns type="WinJS.Promise" />
             var parameters = Array.prototype.slice.call(arguments, 0, 0);
-            return lightSwitchApplication.showScreen("BrowseAllImportedFiles", parameters, options);
-        }),
-
-        showBrowseImportedFilesUnreconciled: $defineShowScreen(function showBrowseImportedFilesUnreconciled(options) {
-            /// <summary>
-            /// Asynchronously navigates forward to the BrowseImportedFilesUnreconciled screen.
-            /// </summary>
-            /// <param name="options" optional="true">
-            /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
-            /// </param>
-            /// <returns type="WinJS.Promise" />
-            var parameters = Array.prototype.slice.call(arguments, 0, 0);
-            return lightSwitchApplication.showScreen("BrowseImportedFilesUnreconciled", parameters, options);
+            return lightSwitchApplication.showScreen("BrowseReconProcesses", parameters, options);
         }),
 
         showViewReconProcess: $defineShowScreen(function showViewReconProcess(ReconProcess, options) {
@@ -390,16 +366,40 @@
             return lightSwitchApplication.showScreen("ViewReconProcess", parameters, options);
         }),
 
-        showBrowseReconProcesses: $defineShowScreen(function showBrowseReconProcesses(options) {
+        showBrowseSkyeImportDetails: $defineShowScreen(function showBrowseSkyeImportDetails(options) {
             /// <summary>
-            /// Asynchronously navigates forward to the BrowseReconProcesses screen.
+            /// Asynchronously navigates forward to the BrowseSkyeImportDetails screen.
             /// </summary>
             /// <param name="options" optional="true">
             /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
             /// </param>
             /// <returns type="WinJS.Promise" />
             var parameters = Array.prototype.slice.call(arguments, 0, 0);
-            return lightSwitchApplication.showScreen("BrowseReconProcesses", parameters, options);
+            return lightSwitchApplication.showScreen("BrowseSkyeImportDetails", parameters, options);
+        }),
+
+        showBrowseSkyeImportHeaders: $defineShowScreen(function showBrowseSkyeImportHeaders(options) {
+            /// <summary>
+            /// Asynchronously navigates forward to the BrowseSkyeImportHeaders screen.
+            /// </summary>
+            /// <param name="options" optional="true">
+            /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
+            /// </param>
+            /// <returns type="WinJS.Promise" />
+            var parameters = Array.prototype.slice.call(arguments, 0, 0);
+            return lightSwitchApplication.showScreen("BrowseSkyeImportHeaders", parameters, options);
+        }),
+
+        showHome: $defineShowScreen(function showHome(options) {
+            /// <summary>
+            /// Asynchronously navigates forward to the Home screen.
+            /// </summary>
+            /// <param name="options" optional="true">
+            /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
+            /// </param>
+            /// <returns type="WinJS.Promise" />
+            var parameters = Array.prototype.slice.call(arguments, 0, 0);
+            return lightSwitchApplication.showScreen("Home", parameters, options);
         })
 
     });

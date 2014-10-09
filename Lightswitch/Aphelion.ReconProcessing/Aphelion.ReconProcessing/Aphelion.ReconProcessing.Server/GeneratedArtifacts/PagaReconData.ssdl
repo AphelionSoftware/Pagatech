@@ -1,31 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="PagaReconDataStore" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="PagaReconDataStore">
-    <EntitySet Name="ReconItemStatus" EntityType="PagaReconDataStore.ReconItemStatu" store:Type="Tables" Schema="Admin" Table="ReconItemStatus" />
-    <EntitySet Name="ReconProcesses" EntityType="PagaReconDataStore.ReconProcess" store:Type="Tables" Schema="Admin" Table="ReconProcess" />
-    <EntitySet Name="ReconProcessSteps" EntityType="PagaReconDataStore.ReconProcessStep" store:Type="Tables" Schema="Admin" Table="ReconProcessStep" />
-    <EntitySet Name="ReconSources" EntityType="PagaReconDataStore.ReconSource" store:Type="Tables" Schema="Admin" Table="ReconSource" />
-    <EntitySet Name="ReconSourceTypes" EntityType="PagaReconDataStore.ReconSourceType" store:Type="Tables" Schema="Admin" Table="ReconSourceType" />
-    <EntitySet Name="ReconStatus" EntityType="PagaReconDataStore.ReconStatu" store:Type="Tables" Schema="Admin" Table="ReconStatus" />
-    <EntitySet Name="ReconTypes" EntityType="PagaReconDataStore.ReconType" store:Type="Tables" Schema="Admin" Table="ReconType" />
-    <EntitySet Name="SystemFields" EntityType="PagaReconDataStore.SystemField" store:Type="Tables" Schema="Admin" Table="SystemField" />
     <EntitySet Name="FileDefinitions" EntityType="PagaReconDataStore.FileDefinition" store:Type="Tables" Schema="Import" Table="FileDefinition" />
     <EntitySet Name="FileFields" EntityType="PagaReconDataStore.FileField" store:Type="Tables" Schema="Import" Table="FileField" />
     <EntitySet Name="FileSections" EntityType="PagaReconDataStore.FileSection" store:Type="Tables" Schema="Import" Table="FileSection" />
     <EntitySet Name="FileTypes" EntityType="PagaReconDataStore.FileType" store:Type="Tables" Schema="Import" Table="FileType" />
     <EntitySet Name="ImportedFiles" EntityType="PagaReconDataStore.ImportedFile" store:Type="Tables" Schema="Recon" Table="ImportedFile" />
     <EntitySet Name="ReconDetails" EntityType="PagaReconDataStore.ReconDetail" store:Type="Tables" Schema="Recon" Table="ReconDetail" />
+    <EntitySet Name="ReconItemStatus" EntityType="PagaReconDataStore.ReconItemStatu" store:Type="Tables" Schema="Admin" Table="ReconItemStatus" />
+    <EntitySet Name="ReconProcesses" EntityType="PagaReconDataStore.ReconProcess" store:Type="Tables" Schema="Admin" Table="ReconProcess" />
+    <EntitySet Name="ReconProcessSteps" EntityType="PagaReconDataStore.ReconProcessStep" store:Type="Tables" Schema="Admin" Table="ReconProcessStep" />
+    <EntitySet Name="ReconSources" EntityType="PagaReconDataStore.ReconSource" store:Type="Tables" Schema="Admin" Table="ReconSource" />
+    <EntitySet Name="ReconSourceTypes" EntityType="PagaReconDataStore.ReconSourceType" store:Type="Tables" Schema="Admin" Table="ReconSourceType" />
+    <EntitySet Name="ReconStatus" EntityType="PagaReconDataStore.ReconStatu" store:Type="Tables" Schema="Admin" Table="ReconStatus" />
     <EntitySet Name="ReconSummaries" EntityType="PagaReconDataStore.ReconSummary" store:Type="Tables" Schema="Recon" Table="ReconSummary" />
+    <EntitySet Name="ReconTypes" EntityType="PagaReconDataStore.ReconType" store:Type="Tables" Schema="Admin" Table="ReconType" />
     <EntitySet Name="SkyeImportDetails" EntityType="PagaReconDataStore.SkyeImportDetail" store:Type="Tables" Schema="Staging" Table="SkyeImportDetails" />
     <EntitySet Name="SkyeImportHeaders" EntityType="PagaReconDataStore.SkyeImportHeader" store:Type="Tables" Schema="Staging" Table="SkyeImportHeader" />
-    <AssociationSet Name="FK_FileDefinition_FileType" Association="PagaReconDataStore.FK_FileDefinition_FileType">
-      <End Role="FileType" EntitySet="FileTypes" />
-      <End Role="FileDefinition" EntitySet="FileDefinitions" />
-    </AssociationSet>
-    <AssociationSet Name="FK_FileField_FileSection" Association="PagaReconDataStore.FK_FileField_FileSection">
-      <End Role="FileSection" EntitySet="FileSections" />
-      <End Role="FileField" EntitySet="FileFields" />
-    </AssociationSet>
+    <EntitySet Name="SystemFields" EntityType="PagaReconDataStore.SystemField" store:Type="Tables" Schema="Admin" Table="SystemField" />
     <AssociationSet Name="FK_FileSection_FileDefinition" Association="PagaReconDataStore.FK_FileSection_FileDefinition">
       <End Role="FileDefinition" EntitySet="FileDefinitions" />
       <End Role="FileSection" EntitySet="FileSections" />
@@ -34,9 +26,9 @@
       <End Role="FileDefinition" EntitySet="FileDefinitions" />
       <End Role="ImportedFile" EntitySet="ImportedFiles" />
     </AssociationSet>
-    <AssociationSet Name="FK_ImportedFile_ReconSummary" Association="PagaReconDataStore.FK_ImportedFile_ReconSummary">
-      <End Role="ReconSummary" EntitySet="ReconSummaries" />
-      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+    <AssociationSet Name="FK_FileField_FileSection" Association="PagaReconDataStore.FK_FileField_FileSection">
+      <End Role="FileSection" EntitySet="FileSections" />
+      <End Role="FileField" EntitySet="FileFields" />
     </AssociationSet>
     <AssociationSet Name="FK_ReconProcessStep_FileSection" Association="PagaReconDataStore.FK_ReconProcessStep_FileSection">
       <End Role="FileSection" EntitySet="FileSections" />
@@ -46,31 +38,130 @@
       <End Role="FileSection" EntitySet="FileSections" />
       <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
     </AssociationSet>
+    <AssociationSet Name="FK_FileDefinition_FileType" Association="PagaReconDataStore.FK_FileDefinition_FileType">
+      <End Role="FileType" EntitySet="FileTypes" />
+      <End Role="FileDefinition" EntitySet="FileDefinitions" />
+    </AssociationSet>
     <AssociationSet Name="FK_ReconProcessStep_ReconProcess" Association="PagaReconDataStore.FK_ReconProcessStep_ReconProcess">
       <End Role="ReconProcess" EntitySet="ReconProcesses" />
       <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
     </AssociationSet>
-    <AssociationSet Name="FK_ReconProcessStep_ReconType" Association="PagaReconDataStore.FK_ReconProcessStep_ReconType">
-      <End Role="ReconType" EntitySet="ReconTypes" />
-      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReconSource_ReconSourceType" Association="PagaReconDataStore.FK_ReconSource_ReconSourceType">
-      <End Role="ReconSourceType" EntitySet="ReconSourceTypes" />
-      <End Role="ReconSource" EntitySet="ReconSources" />
-    </AssociationSet>
     <AssociationSet Name="FK_ReconSummary_ReconProcessStep" Association="PagaReconDataStore.FK_ReconSummary_ReconProcessStep">
       <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
-      <End Role="ReconSummary" EntitySet="ReconSummaries" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReconSummary_ReconStatus" Association="PagaReconDataStore.FK_ReconSummary_ReconStatus">
-      <End Role="ReconStatus" EntitySet="ReconStatus" />
       <End Role="ReconSummary" EntitySet="ReconSummaries" />
     </AssociationSet>
     <AssociationSet Name="FK_FileDefinition_ReconSource" Association="PagaReconDataStore.FK_FileDefinition_ReconSource">
       <End Role="ReconSource" EntitySet="ReconSources" />
       <End Role="FileDefinition" EntitySet="FileDefinitions" />
     </AssociationSet>
+    <AssociationSet Name="FK_ReconSource_ReconSourceType" Association="PagaReconDataStore.FK_ReconSource_ReconSourceType">
+      <End Role="ReconSourceType" EntitySet="ReconSourceTypes" />
+      <End Role="ReconSource" EntitySet="ReconSources" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconSummary_ReconStatus" Association="PagaReconDataStore.FK_ReconSummary_ReconStatus">
+      <End Role="ReconStatus" EntitySet="ReconStatus" />
+      <End Role="ReconSummary" EntitySet="ReconSummaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImportedFile_ReconSummary" Association="PagaReconDataStore.FK_ImportedFile_ReconSummary">
+      <End Role="ReconSummary" EntitySet="ReconSummaries" />
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconProcessStep_ReconType" Association="PagaReconDataStore.FK_ReconProcessStep_ReconType">
+      <End Role="ReconType" EntitySet="ReconTypes" />
+      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="FileDefinition">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="FileTypeID" Type="int" Nullable="false" />
+    <Property Name="ReconSourceID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FileField">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ColumnName" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="Position" Type="int" Nullable="false" />
+    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="FileSectionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FileSection">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="StagingTableSchema" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="StagingTableName" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="StartRow" Type="int" Nullable="false" />
+    <Property Name="StartColumn" Type="int" Nullable="false" />
+    <Property Name="NumRows" Type="int" />
+    <Property Name="NumColumns" Type="int" />
+    <Property Name="Pivot" Type="bit" Nullable="false" />
+    <Property Name="HeaderRow" Type="bit" Nullable="false" />
+    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="FileDefinitionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FileType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Extension" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ImportedFile">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UploadedFileName" Type="varchar" MaxLength="800" />
+    <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="800" />
+    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="FileDefinitionID" Type="int" Nullable="false" />
+    <Property Name="ReconSummaryID" Type="int" />
+  </EntityType>
+  <EntityType Name="ReconDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ReconSummaryID" Type="int" Nullable="false" />
+    <Property Name="ReconItemStatusID" Type="int" Nullable="false" />
+    <Property Name="Value" Type="decimal" Nullable="false" Precision="20" Scale="2" />
+    <Property Name="SourceKey" Type="nvarchar" Nullable="false" />
+    <Property Name="MatchedReconDetailID" Type="int" />
+    <Property Name="FileDetailID" Type="int" />
+    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="ReconItemStatu">
     <Key>
       <PropertyRef Name="ID" />
@@ -149,123 +240,6 @@
     <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
   </EntityType>
-  <EntityType Name="ReconType">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Name" Type="varchar" MaxLength="255" />
-    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
-    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="SystemField">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="TableSchema" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="TableName" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="ColumnName" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="FieldTypeID" Type="int" Nullable="false" />
-    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
-    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="FileDefinition">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Name" Type="varchar" MaxLength="255" />
-    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
-    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
-    <Property Name="FileTypeID" Type="int" Nullable="false" />
-    <Property Name="ReconSourceID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="FileField">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="ColumnName" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="Position" Type="int" Nullable="false" />
-    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
-    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
-    <Property Name="FileSectionID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="FileSection">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Name" Type="varchar" MaxLength="255" />
-    <Property Name="StagingTableSchema" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="StagingTableName" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="StartRow" Type="int" Nullable="false" />
-    <Property Name="StartColumn" Type="int" Nullable="false" />
-    <Property Name="NumRows" Type="int" />
-    <Property Name="NumColumns" Type="int" />
-    <Property Name="Pivot" Type="bit" Nullable="false" />
-    <Property Name="HeaderRow" Type="bit" Nullable="false" />
-    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
-    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
-    <Property Name="FileDefinitionID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="FileType">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Extension" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Name" Type="varchar" MaxLength="255" />
-    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
-    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ImportedFile">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="800" />
-    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
-    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
-    <Property Name="UploadedFileName" Type="varchar" MaxLength="800" />
-    <Property Name="FileDefinitionID" Type="int" Nullable="false" />
-    <Property Name="ReconSummaryID" Type="int" />
-  </EntityType>
-  <EntityType Name="ReconDetail">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="ReconSummaryID" Type="int" Nullable="false" />
-    <Property Name="ReconItemStatusID" Type="int" Nullable="false" />
-    <Property Name="Value" Type="decimal" Nullable="false" Precision="20" Scale="2" />
-    <Property Name="SourceKey" Type="nvarchar" Nullable="false" />
-    <Property Name="MatchedReconDetailID" Type="int" />
-    <Property Name="FileDetailID" Type="int" />
-    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
-    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
-  </EntityType>
   <EntityType Name="ReconSummary">
     <Key>
       <PropertyRef Name="ID" />
@@ -284,6 +258,18 @@
     <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
     <Property Name="ReconProcessStepID" Type="int" Nullable="false" />
     <Property Name="ReconStatusID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReconType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="SkyeImportDetail">
     <Key>
@@ -317,34 +303,20 @@
     <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
   </EntityType>
-  <Association Name="FK_FileDefinition_FileType">
-    <End Role="FileType" Type="PagaReconDataStore.FileType" Multiplicity="1">
-      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
-    </End>
-    <End Role="FileDefinition" Type="PagaReconDataStore.FileDefinition" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="FileType">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="FileDefinition">
-        <PropertyRef Name="FileTypeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_FileField_FileSection">
-    <End Role="FileSection" Type="PagaReconDataStore.FileSection" Multiplicity="1">
-      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
-    </End>
-    <End Role="FileField" Type="PagaReconDataStore.FileField" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="FileSection">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="FileField">
-        <PropertyRef Name="FileSectionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="SystemField">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TableSchema" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="TableName" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ColumnName" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="FieldTypeID" Type="int" Nullable="false" />
+    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
+  </EntityType>
   <Association Name="FK_FileSection_FileDefinition">
     <End Role="FileDefinition" Type="PagaReconDataStore.FileDefinition" Multiplicity="1">
       <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
@@ -373,17 +345,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ImportedFile_ReconSummary">
-    <End Role="ReconSummary" Type="PagaReconDataStore.ReconSummary" Multiplicity="0..1">
+  <Association Name="FK_FileField_FileSection">
+    <End Role="FileSection" Type="PagaReconDataStore.FileSection" Multiplicity="1">
       <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
     </End>
-    <End Role="ImportedFile" Type="PagaReconDataStore.ImportedFile" Multiplicity="*" />
+    <End Role="FileField" Type="PagaReconDataStore.FileField" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ReconSummary">
+      <Principal Role="FileSection">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="ImportedFile">
-        <PropertyRef Name="ReconSummaryID" />
+      <Dependent Role="FileField">
+        <PropertyRef Name="FileSectionID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -415,6 +387,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_FileDefinition_FileType">
+    <End Role="FileType" Type="PagaReconDataStore.FileType" Multiplicity="1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="FileDefinition" Type="PagaReconDataStore.FileDefinition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FileDefinition">
+        <PropertyRef Name="FileTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ReconProcessStep_ReconProcess">
     <End Role="ReconProcess" Type="PagaReconDataStore.ReconProcess" Multiplicity="1">
       <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
@@ -426,34 +412,6 @@
       </Principal>
       <Dependent Role="ReconProcessStep">
         <PropertyRef Name="ReconProcessID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReconProcessStep_ReconType">
-    <End Role="ReconType" Type="PagaReconDataStore.ReconType" Multiplicity="1">
-      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
-    </End>
-    <End Role="ReconProcessStep" Type="PagaReconDataStore.ReconProcessStep" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ReconType">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ReconProcessStep">
-        <PropertyRef Name="ReconTypeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReconSource_ReconSourceType">
-    <End Role="ReconSourceType" Type="PagaReconDataStore.ReconSourceType" Multiplicity="1">
-      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
-    </End>
-    <End Role="ReconSource" Type="PagaReconDataStore.ReconSource" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ReconSourceType">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ReconSource">
-        <PropertyRef Name="ReconSourceTypeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -471,6 +429,34 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_FileDefinition_ReconSource">
+    <End Role="ReconSource" Type="PagaReconDataStore.ReconSource" Multiplicity="1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="FileDefinition" Type="PagaReconDataStore.FileDefinition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReconSource">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FileDefinition">
+        <PropertyRef Name="ReconSourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconSource_ReconSourceType">
+    <End Role="ReconSourceType" Type="PagaReconDataStore.ReconSourceType" Multiplicity="1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ReconSource" Type="PagaReconDataStore.ReconSource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReconSourceType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconSource">
+        <PropertyRef Name="ReconSourceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ReconSummary_ReconStatus">
     <End Role="ReconStatus" Type="PagaReconDataStore.ReconStatu" Multiplicity="1">
       <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
@@ -485,17 +471,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_FileDefinition_ReconSource">
-    <End Role="ReconSource" Type="PagaReconDataStore.ReconSource" Multiplicity="1">
+  <Association Name="FK_ImportedFile_ReconSummary">
+    <End Role="ReconSummary" Type="PagaReconDataStore.ReconSummary" Multiplicity="0..1">
       <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
     </End>
-    <End Role="FileDefinition" Type="PagaReconDataStore.FileDefinition" Multiplicity="*" />
+    <End Role="ImportedFile" Type="PagaReconDataStore.ImportedFile" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ReconSource">
+      <Principal Role="ReconSummary">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="FileDefinition">
-        <PropertyRef Name="ReconSourceID" />
+      <Dependent Role="ImportedFile">
+        <PropertyRef Name="ReconSummaryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconProcessStep_ReconType">
+    <End Role="ReconType" Type="PagaReconDataStore.ReconType" Multiplicity="1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ReconProcessStep" Type="PagaReconDataStore.ReconProcessStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReconType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconProcessStep">
+        <PropertyRef Name="ReconTypeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
