@@ -1993,56 +1993,29 @@ namespace LightSwitchApplication.Implementation
         /// <summary>
         /// Create a new ImportedFile object.
         /// </summary>
-        /// <param name="id">Initial value of the ID property.</param>
         /// <param name="fileDefinitionID">Initial value of the FileDefinitionID property.</param>
         /// <param name="fileName">Initial value of the FileName property.</param>
         /// <param name="sys_CreatedBy">Initial value of the sys_CreatedBy property.</param>
         /// <param name="sys_CreatedOn">Initial value of the sys_CreatedOn property.</param>
         /// <param name="sys_ModifiedBy">Initial value of the sys_ModifiedBy property.</param>
         /// <param name="sys_ModifiedOn">Initial value of the sys_ModifiedOn property.</param>
-        public static ImportedFile CreateImportedFile(global::System.Int32 id, global::System.Int32 fileDefinitionID, global::System.String fileName, global::System.String sys_CreatedBy, global::System.DateTime sys_CreatedOn, global::System.String sys_ModifiedBy, global::System.DateTime sys_ModifiedOn)
+        /// <param name="id">Initial value of the ID property.</param>
+        public static ImportedFile CreateImportedFile(global::System.Int32 fileDefinitionID, global::System.String fileName, global::System.String sys_CreatedBy, global::System.DateTime sys_CreatedOn, global::System.String sys_ModifiedBy, global::System.DateTime sys_ModifiedOn, global::System.Int32 id)
         {
             ImportedFile importedFile = new ImportedFile();
-            importedFile.ID = id;
             importedFile.FileDefinitionID = fileDefinitionID;
             importedFile.FileName = fileName;
             importedFile.sys_CreatedBy = sys_CreatedBy;
             importedFile.sys_CreatedOn = sys_CreatedOn;
             importedFile.sys_ModifiedBy = sys_ModifiedBy;
             importedFile.sys_ModifiedOn = sys_ModifiedOn;
+            importedFile.ID = id;
             return importedFile;
         }
 
         #endregion
 
         #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = value;
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2235,6 +2208,33 @@ namespace LightSwitchApplication.Implementation
         private global::System.DateTime _sys_ModifiedOn;
         partial void Onsys_ModifiedOnChanging(global::System.DateTime value);
         partial void Onsys_ModifiedOnChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = value;
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
 
         #endregion
 

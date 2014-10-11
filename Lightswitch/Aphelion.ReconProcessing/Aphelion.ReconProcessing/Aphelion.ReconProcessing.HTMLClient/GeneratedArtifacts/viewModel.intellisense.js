@@ -391,14 +391,6 @@
             data: lightSwitchApplication.ImportedFile,
             value: lightSwitchApplication.ImportedFile
         },
-        ID: {
-            _$class: msls.ContentItem,
-            _$name: "ID",
-            _$parentName: "left",
-            screen: lightSwitchApplication.ViewImportedFile,
-            data: lightSwitchApplication.ImportedFile,
-            value: Number
-        },
         right: {
             _$class: msls.ContentItem,
             _$name: "right",
@@ -457,11 +449,6 @@
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
         /// </field>
         left_postRender: [$element, function () { return new lightSwitchApplication.ViewImportedFile().findContentItem("left"); }],
-        /// <field>
-        /// Called after the ID content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        ID_postRender: [$element, function () { return new lightSwitchApplication.ViewImportedFile().findContentItem("ID"); }],
         /// <field>
         /// Called after the right content item has been rendered.
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
