@@ -75,7 +75,6 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="FileDefinitionID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="ReconSummaryID" Type="Edm.Int32" ConcurrencyMode="Fixed" />
     <Property Name="UploadedFileName" Type="Edm.String" MaxLength="800" Unicode="false" ConcurrencyMode="Fixed" />
@@ -84,6 +83,7 @@
     <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
     <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
     <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="FileDefinition" Relationship="LightSwitchApplication.FK_ImportedFile_FileDefinition" ToRole="FileDefinition" FromRole="ImportedFile" />
     <NavigationProperty Name="ReconSummary" Relationship="LightSwitchApplication.FK_ImportedFile_ReconSummary" ToRole="ReconSummary" FromRole="ImportedFile" />
   </EntityType>

@@ -3197,14 +3197,6 @@
           "properties":
           [
             {
-              "__isKeyProperty": 1,
-              "id": "ImportedFile/Properties[ID]",
-              "name": "ID",
-              "propertyType": { "__id": ":Int32" },
-              ":@Required": { },
-              ":@NotSearchable": { }
-            },
-            {
               "id": "ImportedFile/Properties[FileDefinition]",
               "name": "FileDefinition",
               "association": { "__id": "FK_ImportedFile_FileDefinition" },
@@ -3289,6 +3281,16 @@
                 "precision": 3,
                 "preserveSeconds": true
               },
+              ":@NotSearchable": { }
+            },
+            {
+              "__isKeyProperty": 1,
+              "id": "ImportedFile/Properties[ID]",
+              "name": "ID",
+              "isReadOnly": true,
+              "propertyType": { "__id": ":Int32" },
+              ":@Hidden": { },
+              ":@Required": { },
               ":@NotSearchable": { }
             }
           ]
@@ -7337,6 +7339,16 @@
                                 ]
                               },
                               {
+                                "displayName": "File Name",
+                                "name": "FileName",
+                                "kind": "Value",
+                                "view": { "__id": ":TextBox" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ImportedFile/Properties[FileName]" }
+                                }
+                              },
+                              {
                                 "displayName": "Upload",
                                 "name": "Uploader",
                                 "kind": "ScreenContent",
@@ -7482,19 +7494,6 @@
                             "name": "left",
                             "kind": "Group",
                             "view": { "__id": ":RowsLayout" },
-                            "childContentItems":
-                            [
-                              {
-                                "displayName": "ID",
-                                "name": "ID",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "ImportedFile/Properties[ID]" }
-                                }
-                              }
-                            ],
                             "propertySources":
                             [
                               {

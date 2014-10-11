@@ -213,9 +213,6 @@ window.myapp = msls.application;
         /// <param name="entitySet" type="msls.EntitySet" optional="true">
         /// The entity set that should contain this importedFile.
         /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this importedFile.
-        /// </field>
         /// <field name="FileDefinition" type="msls.application.FileDefinition">
         /// Gets or sets the fileDefinition for this importedFile.
         /// </field>
@@ -239,6 +236,9 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="sys_ModifiedOn" type="Date">
         /// Gets or sets the sys_ModifiedOn for this importedFile.
+        /// </field>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this importedFile.
         /// </field>
         /// <field name="details" type="msls.application.ImportedFile.Details">
         /// Gets the details for this importedFile.
@@ -894,7 +894,6 @@ window.myapp = msls.application;
         ]),
 
         ImportedFile: $defineEntity(ImportedFile, [
-            { name: "ID", type: Number },
             { name: "FileDefinition", kind: "reference", type: FileDefinition },
             { name: "ReconSummary", kind: "reference", type: ReconSummary },
             { name: "UploadedFileName", type: String },
@@ -902,7 +901,8 @@ window.myapp = msls.application;
             { name: "sys_CreatedBy", type: String },
             { name: "sys_CreatedOn", type: Date },
             { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date }
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "ID", type: Number, isReadOnly: true }
         ]),
 
         ReconDetail: $defineEntity(ReconDetail, [
