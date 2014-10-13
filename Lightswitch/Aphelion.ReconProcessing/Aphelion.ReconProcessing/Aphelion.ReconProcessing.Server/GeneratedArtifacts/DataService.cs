@@ -672,6 +672,42 @@ namespace LightSwitchApplication
         partial void SystemFields_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.SystemField, bool>> filter);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void GlobalSettings_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void GlobalSettings_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void GlobalSettings_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void GlobalSettings_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void GlobalSettings_Inserting(global::LightSwitchApplication.GlobalSetting entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void GlobalSettings_Inserted(global::LightSwitchApplication.GlobalSetting entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void GlobalSettings_Updating(global::LightSwitchApplication.GlobalSetting entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void GlobalSettings_Updated(global::LightSwitchApplication.GlobalSetting entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void GlobalSettings_Deleting(global::LightSwitchApplication.GlobalSetting entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void GlobalSettings_Deleted(global::LightSwitchApplication.GlobalSetting entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void GlobalSettings_Validate(global::LightSwitchApplication.GlobalSetting entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void GlobalSettings_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.GlobalSetting, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void SaveChanges_CanExecute(ref bool result);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2014,6 +2050,82 @@ namespace LightSwitchApplication
             {
                 global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.SystemField, bool>> filter = null;
                 d.SystemFields_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.GlobalSetting>
+                __GlobalSettingsEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.GlobalSetting>(
+                    "GlobalSettings",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__GlobalSettings_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__GlobalSettings_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__GlobalSettings_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__GlobalSettings_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__GlobalSettings_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__GlobalSettings_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__GlobalSettings_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__GlobalSettings_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__GlobalSettings_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__GlobalSettings_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__GlobalSettings_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__GlobalSettings_Filter);
+            private static bool __GlobalSettings_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.GlobalSettings_CanInsert(ref result);
+                return result;
+            }
+            private static bool __GlobalSettings_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.GlobalSettings_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __GlobalSettings_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.GlobalSettings_CanDelete(ref result);
+                return result;
+            }
+            private static bool __GlobalSettings_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.GlobalSettings_CanRead(ref result);
+                return result;
+            }
+            private static void __GlobalSettings_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.GlobalSetting e)
+            {
+                d.GlobalSettings_Inserting(e);
+            }
+            private static void __GlobalSettings_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.GlobalSetting e)
+            {
+                d.GlobalSettings_Inserted(e);
+            }
+            private static void __GlobalSettings_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.GlobalSetting e)
+            {
+                d.GlobalSettings_Updating(e);
+            }
+            private static void __GlobalSettings_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.GlobalSetting e)
+            {
+                d.GlobalSettings_Updated(e);
+            }
+            private static void __GlobalSettings_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.GlobalSetting e)
+            {
+                d.GlobalSettings_Deleting(e);
+            }
+            private static void __GlobalSettings_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.GlobalSetting e)
+            {
+                d.GlobalSettings_Deleted(e);
+            }
+            private static void __GlobalSettings_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.GlobalSetting e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.GlobalSettings_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.GlobalSetting, bool>> __GlobalSettings_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.GlobalSetting, bool>> filter = null;
+                d.GlobalSettings_Filter(ref filter);
                 return filter;
             }
             

@@ -363,6 +363,19 @@ namespace LightSwitchApplication
             }
         }
         
+        /// <summary>
+        /// Gets the GlobalSettings entity set.  The entity set provides members to access entities of a specific type.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.GlobalSetting> GlobalSettings
+        {
+            get
+            {
+                return global::LightSwitchApplication.PagaReconData.DetailsClass.GetValue(this, global::LightSwitchApplication.PagaReconData.DetailsClass.PropertySetProperties.GlobalSettings);
+            }
+        }
+        
         #endregion
     
         #region Queries
@@ -752,6 +765,28 @@ namespace LightSwitchApplication
             return this.Details.Methods.SystemFields_SingleOrDefault.CreateInvocation(ID).Execute();
         }
         
+        /// <summary>
+        /// Returns the entity whose identity is specified by the parameter(s).
+        /// </summary>
+        /// <param name="GlobalSettings_ID">
+        /// The value of the 'GlobalSettings_ID' key property of the entity to retrieve.
+        /// </param>
+        public global::LightSwitchApplication.GlobalSetting GlobalSettings_Single(global::System.Nullable<int> GlobalSettings_ID)
+        {
+            return this.Details.Methods.GlobalSettings_Single.CreateInvocation(GlobalSettings_ID).Execute();
+        }
+        
+        /// <summary>
+        /// Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists.
+        /// </summary>
+        /// <param name="GlobalSettings_ID">
+        /// The value of the 'GlobalSettings_ID' key property of the entity to retrieve.
+        /// </param>
+        public global::LightSwitchApplication.GlobalSetting GlobalSettings_SingleOrDefault(global::System.Nullable<int> GlobalSettings_ID)
+        {
+            return this.Details.Methods.GlobalSettings_SingleOrDefault.CreateInvocation(GlobalSettings_ID).Execute();
+        }
+        
         #endregion
     
         #region Details Class
@@ -1080,6 +1115,22 @@ namespace LightSwitchApplication
                     }
                 }
                 
+                public global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting> GlobalSettings_Single
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.PagaReconData.DetailsClass.MethodSetProperties.GlobalSettings_Single) as global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>;
+                    }
+                }
+                
+                public global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting> GlobalSettings_SingleOrDefault
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.PagaReconData.DetailsClass.MethodSetProperties.GlobalSettings_SingleOrDefault) as global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>;
+                    }
+                }
+                
             }
     
             [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
@@ -1226,6 +1277,14 @@ namespace LightSwitchApplication
                     get
                     {
                         return base.GetItem(global::LightSwitchApplication.PagaReconData.DetailsClass.PropertySetProperties.SystemFields) as global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.SystemField>;
+                    }
+                }
+                
+                public global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting> GlobalSettings
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.PagaReconData.DetailsClass.PropertySetProperties.GlobalSettings) as global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>;
                     }
                 }
                 
@@ -1587,6 +1646,26 @@ namespace LightSwitchApplication
                     c(d, ref d._SystemFields_SingleOrDefault, sf);
                 }
     
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>.Entry
+                    GlobalSettings_Single = new global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>.Entry(
+                        "GlobalSettings_Single",
+                        global::LightSwitchApplication.PagaReconData.DetailsClass.MethodSetProperties._GlobalSettings_Single_Stub);
+                private static void _GlobalSettings_Single_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.PagaReconData.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>.Data> c, global::LightSwitchApplication.PagaReconData.DetailsClass d, object sf)
+                {
+                    c(d, ref d._GlobalSettings_Single, sf);
+                }
+    
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>.Entry
+                    GlobalSettings_SingleOrDefault = new global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>.Entry(
+                        "GlobalSettings_SingleOrDefault",
+                        global::LightSwitchApplication.PagaReconData.DetailsClass.MethodSetProperties._GlobalSettings_SingleOrDefault_Stub);
+                private static void _GlobalSettings_SingleOrDefault_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.PagaReconData.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>.Data> c, global::LightSwitchApplication.PagaReconData.DetailsClass d, object sf)
+                {
+                    c(d, ref d._GlobalSettings_SingleOrDefault, sf);
+                }
+    
             }
     
             [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
@@ -1765,6 +1844,16 @@ namespace LightSwitchApplication
                     c(d, ref d._SystemFields, sf);
                 }
      
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>.Entry
+                    GlobalSettings = new global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>.Entry(
+                        "GlobalSettings",
+                        global::LightSwitchApplication.PagaReconData.DetailsClass.PropertySetProperties._GlobalSettings_Stub);
+                private static void _GlobalSettings_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.PagaReconData.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>.Data> c, global::LightSwitchApplication.PagaReconData.DetailsClass d, object sf)
+                {
+                    c(d, ref d._GlobalSettings, sf);
+                }
+     
             }
     
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -1817,6 +1906,9 @@ namespace LightSwitchApplication
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.SystemField>.Data _SystemFields;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>.Data _GlobalSettings;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.FileDefinition>.Data _FileDefinitions_Single;
@@ -1922,6 +2014,12 @@ namespace LightSwitchApplication
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.SystemField>.Data _SystemFields_SingleOrDefault;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>.Data _GlobalSettings_Single;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.GlobalSetting>.Data _GlobalSettings_SingleOrDefault;
             
         }
     

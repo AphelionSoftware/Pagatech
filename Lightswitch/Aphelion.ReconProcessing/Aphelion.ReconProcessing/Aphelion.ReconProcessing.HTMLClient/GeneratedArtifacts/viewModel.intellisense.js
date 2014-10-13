@@ -283,13 +283,13 @@
             data: lightSwitchApplication.ImportedFile,
             value: String
         },
-        Uploader: {
+        FileContents: {
             _$class: msls.ContentItem,
-            _$name: "Uploader",
+            _$name: "FileContents",
             _$parentName: "left",
             screen: lightSwitchApplication.ImportFile,
             data: lightSwitchApplication.ImportedFile,
-            value: lightSwitchApplication.ImportedFile
+            value: String
         },
         right: {
             _$class: msls.ContentItem,
@@ -349,10 +349,10 @@
         /// </field>
         FileName_postRender: [$element, function () { return new lightSwitchApplication.ImportFile().findContentItem("FileName"); }],
         /// <field>
-        /// Called to render the Uploader content item.
+        /// Called to render the FileContents content item.
         /// <br/>render(HTMLElement element, msls.ContentItem contentItem)
         /// </field>
-        Uploader_render: [$element, function () { return new lightSwitchApplication.ImportFile().findContentItem("Uploader"); }],
+        FileContents_render: [$element, function () { return new lightSwitchApplication.ImportFile().findContentItem("FileContents"); }],
         /// <field>
         /// Called after the right content item has been rendered.
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
@@ -434,6 +434,16 @@
         /// <br/>beforeApplyChanges(msls.application.ViewImportedFile screen)
         /// </field>
         beforeApplyChanges: [lightSwitchApplication.ViewImportedFile],
+        /// <field>
+        /// Called to determine if the Reconcile method can be executed.
+        /// <br/>canExecute(msls.application.ViewImportedFile screen)
+        /// </field>
+        Reconcile_canExecute: [lightSwitchApplication.ViewImportedFile],
+        /// <field>
+        /// Called to execute the Reconcile method.
+        /// <br/>execute(msls.application.ViewImportedFile screen)
+        /// </field>
+        Reconcile_execute: [lightSwitchApplication.ViewImportedFile],
         /// <field>
         /// Called after the Details content item has been rendered.
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)

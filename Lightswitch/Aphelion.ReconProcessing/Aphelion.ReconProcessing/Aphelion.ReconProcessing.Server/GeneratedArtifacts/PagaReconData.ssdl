@@ -18,6 +18,7 @@
     <EntitySet Name="SkyeImportDetails" EntityType="PagaReconDataStore.SkyeImportDetail" store:Type="Tables" Schema="Staging" Table="SkyeImportDetails" />
     <EntitySet Name="SkyeImportHeaders" EntityType="PagaReconDataStore.SkyeImportHeader" store:Type="Tables" Schema="Staging" Table="SkyeImportHeader" />
     <EntitySet Name="SystemFields" EntityType="PagaReconDataStore.SystemField" store:Type="Tables" Schema="Admin" Table="SystemField" />
+    <EntitySet Name="GlobalSettings" EntityType="PagaReconDataStore.GlobalSetting" store:Type="Tables" Schema="Settings" Table="GlobalSettings" />
     <AssociationSet Name="FK_FileSection_FileDefinition" Association="PagaReconDataStore.FK_FileSection_FileDefinition">
       <End Role="FileDefinition" EntitySet="FileDefinitions" />
       <End Role="FileSection" EntitySet="FileSections" />
@@ -136,13 +137,14 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="UploadedFileName" Type="varchar" MaxLength="800" />
     <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="800" />
+    <Property Name="UploadedFileName" Type="varchar" MaxLength="800" />
     <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
     <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
     <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FileContents" Type="varbinary(max)" />
     <Property Name="FileDefinitionID" Type="int" Nullable="false" />
     <Property Name="ReconSummaryID" Type="int" />
   </EntityType>
@@ -312,6 +314,20 @@
     <Property Name="TableName" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="ColumnName" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="FieldTypeID" Type="int" Nullable="false" />
+    <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GlobalSetting">
+    <Key>
+      <PropertyRef Name="GlobalSettings_ID" />
+    </Key>
+    <Property Name="GlobalSettings_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="Value" Type="varchar" Nullable="false" />
+    <Property Name="Active" Type="int" Nullable="false" />
     <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
     <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />

@@ -213,6 +213,9 @@ window.myapp = msls.application;
         /// <param name="entitySet" type="msls.EntitySet" optional="true">
         /// The entity set that should contain this importedFile.
         /// </param>
+        /// <field name="FileName" type="String">
+        /// Gets or sets the fileName for this importedFile.
+        /// </field>
         /// <field name="FileDefinition" type="msls.application.FileDefinition">
         /// Gets or sets the fileDefinition for this importedFile.
         /// </field>
@@ -221,9 +224,6 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="UploadedFileName" type="String">
         /// Gets or sets the uploadedFileName for this importedFile.
-        /// </field>
-        /// <field name="FileName" type="String">
-        /// Gets or sets the fileName for this importedFile.
         /// </field>
         /// <field name="sys_CreatedBy" type="String">
         /// Gets or sets the sys_CreatedBy for this importedFile.
@@ -239,6 +239,9 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="ID" type="Number">
         /// Gets or sets the iD for this importedFile.
+        /// </field>
+        /// <field name="FileContents" type="String">
+        /// Gets or sets the fileContents for this importedFile.
         /// </field>
         /// <field name="details" type="msls.application.ImportedFile.Details">
         /// Gets the details for this importedFile.
@@ -756,6 +759,46 @@ window.myapp = msls.application;
         $Entity.call(this, entitySet);
     }
 
+    function GlobalSetting(entitySet) {
+        /// <summary>
+        /// Represents the GlobalSetting entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this globalSetting.
+        /// </param>
+        /// <field name="GlobalSettings_ID" type="Number">
+        /// Gets or sets the globalSettings_ID for this globalSetting.
+        /// </field>
+        /// <field name="Code" type="String">
+        /// Gets or sets the code for this globalSetting.
+        /// </field>
+        /// <field name="Name" type="String">
+        /// Gets or sets the name for this globalSetting.
+        /// </field>
+        /// <field name="Value" type="String">
+        /// Gets or sets the value for this globalSetting.
+        /// </field>
+        /// <field name="Active" type="Number">
+        /// Gets or sets the active for this globalSetting.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this globalSetting.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this globalSetting.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this globalSetting.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this globalSetting.
+        /// </field>
+        /// <field name="details" type="msls.application.GlobalSetting.Details">
+        /// Gets the details for this globalSetting.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
     function PagaReconData(dataWorkspace) {
         /// <summary>
         /// Represents the PagaReconData data service.
@@ -813,6 +856,9 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="SystemFields" type="msls.EntitySet">
         /// Gets the SystemFields entity set.
+        /// </field>
+        /// <field name="GlobalSettings" type="msls.EntitySet">
+        /// Gets the GlobalSettings entity set.
         /// </field>
         /// <field name="details" type="msls.application.PagaReconData.Details">
         /// Gets the details for this data service.
@@ -894,15 +940,16 @@ window.myapp = msls.application;
         ]),
 
         ImportedFile: $defineEntity(ImportedFile, [
+            { name: "FileName", type: String },
             { name: "FileDefinition", kind: "reference", type: FileDefinition },
             { name: "ReconSummary", kind: "reference", type: ReconSummary },
             { name: "UploadedFileName", type: String },
-            { name: "FileName", type: String },
             { name: "sys_CreatedBy", type: String },
             { name: "sys_CreatedOn", type: Date },
             { name: "sys_ModifiedBy", type: String },
             { name: "sys_ModifiedOn", type: Date },
-            { name: "ID", type: Number, isReadOnly: true }
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "FileContents", type: String }
         ]),
 
         ReconDetail: $defineEntity(ReconDetail, [
@@ -1059,6 +1106,18 @@ window.myapp = msls.application;
             { name: "sys_ModifiedOn", type: Date }
         ]),
 
+        GlobalSetting: $defineEntity(GlobalSetting, [
+            { name: "GlobalSettings_ID", type: Number, isReadOnly: true },
+            { name: "Code", type: String },
+            { name: "Name", type: String },
+            { name: "Value", type: String },
+            { name: "Active", type: Number },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date }
+        ]),
+
         PagaReconData: $defineDataService(PagaReconData, lightSwitchApplication.rootUri + "/PagaReconData.svc", [
             { name: "FileDefinitions", elementType: FileDefinition },
             { name: "FileFields", elementType: FileField },
@@ -1076,7 +1135,8 @@ window.myapp = msls.application;
             { name: "ReconTypes", elementType: ReconType },
             { name: "SkyeImportDetails", elementType: SkyeImportDetail },
             { name: "SkyeImportHeaders", elementType: SkyeImportHeader },
-            { name: "SystemFields", elementType: SystemField }
+            { name: "SystemFields", elementType: SystemField },
+            { name: "GlobalSettings", elementType: GlobalSetting }
         ], [
             {
                 name: "FileDefinitions_SingleOrDefault", value: function (ID) {
@@ -1203,6 +1263,13 @@ window.myapp = msls.application;
                 name: "SystemFields_SingleOrDefault", value: function (ID) {
                     return new $DataServiceQuery({ _entitySet: this.SystemFields },
                         lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/SystemFields(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
+                name: "GlobalSettings_SingleOrDefault", value: function (GlobalSettings_ID) {
+                    return new $DataServiceQuery({ _entitySet: this.GlobalSettings },
+                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/GlobalSettings(" + "GlobalSettings_ID=" + $toODataString(GlobalSettings_ID, "Int32?") + ")"
                     );
                 }
             }

@@ -138,4 +138,12 @@
         created: [lightSwitchApplication.SystemField]
     });
 
+    msls._addEntryPoints(lightSwitchApplication.GlobalSetting, {
+        /// <field>
+        /// Called when a new globalSetting is created.
+        /// <br/>created(msls.application.GlobalSetting entity)
+        /// </field>
+        created: [lightSwitchApplication.GlobalSetting]
+    });
+
 }(msls.application));

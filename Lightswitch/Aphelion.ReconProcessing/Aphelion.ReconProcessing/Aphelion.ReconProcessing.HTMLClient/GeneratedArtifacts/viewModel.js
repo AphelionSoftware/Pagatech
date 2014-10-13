@@ -240,6 +240,7 @@
         ViewImportedFile: $defineScreen(ViewImportedFile, [
             { name: "ImportedFile", kind: "local", type: lightSwitchApplication.ImportedFile }
         ], [
+            { name: "Reconcile" }
         ]),
 
         BrowseReconProcesses: $defineScreen(BrowseReconProcesses, [

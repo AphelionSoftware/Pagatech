@@ -86,12 +86,18 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="Uploader"
-                  Kind="ScreenContent">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Upload" />
-                  </ContentItem.Attributes>
+                  Name="FileContents"
+                  Kind="Value"
+                  DataType=":Binary?"
+                  View="Microsoft.LightSwitch.MobileWeb:ValueCustomControl">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="ImportedFile/Properties[FileContents]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
