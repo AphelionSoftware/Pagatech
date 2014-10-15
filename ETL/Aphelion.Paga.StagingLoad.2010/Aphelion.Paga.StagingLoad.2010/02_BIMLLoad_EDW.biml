@@ -25,7 +25,7 @@
   <Packages>
 
 	<# string PackageListQuery ="SELECT "+ 
-									"PackageName = CONVERT(VARCHAR(5),CONVERT(INT,list.load_group) *100 + 20000 +list.rn) +'_EDW_Load_' + list.TABLE_SCHEMA +'_' + list.TABLE_NAME,  "+ 
+									"PackageName = CONVERT(VARCHAR(5),CONVERT(INT,list.load_group)*10 +list.rn) +'_EDW_Load_' + list.TABLE_SCHEMA +'_' + list.TABLE_NAME,   "+ 
 									"list.TABLE_SCHEMA, "+
 									"list.TABLE_NAME, "+
 									"ErrorTable = TABLE_SCHEMA + '_' + TABLE_NAME "+
@@ -50,7 +50,7 @@
 												"table_list.TABLE_SCHEMA, "+ 
 												"table_list.TABLE_NAME, "+ 
 												"CASE "+	 
-													"WHEN ext_prop.name =  'RelationshipDepth'  "+
+													"WHEN ext_prop.name =  'LoadGroup'  "+
 													"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
 												"END as LoadGroup  "+
 											"FROM  "+
@@ -65,7 +65,7 @@
 											"INNER JOIN sys.extended_properties AS ext_prop ON   "+
 												"table_list.object_id = ext_prop.major_id  "+
 											"WHERE   "+
-												"ext_prop.name = 'RelationshipDepth' "+
+												"ext_prop.name = 'LoadGroup' "+
 										") AS package_list  "+
 										"GROUP BY  "+
 											"package_list.TABLE_SCHEMA,  "+
@@ -83,7 +83,7 @@
 				string TableName = row[2].ToString();
 				string errTable = row[3].ToString();
 #>	
-	<Package Name="<#=PackageName#>" ConstraintMode="Parallel" ProtectionLevel="DontSaveSensitive"  MaxErrorCount="2000"  DelayValidation="true">
+	<Package Name="<#=PackageName#>" ConstraintMode="Parallel" ProtectionLevel="EncryptSensitiveWithUserKey"  MaxErrorCount="2000"  DelayValidation="true">
 	
 	<Variables>
 		<Variable Name="intQueueID" DataType="Int32" >0</Variable>

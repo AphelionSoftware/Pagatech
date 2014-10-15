@@ -23,6 +23,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitLevel2_SourceKey]
     ON [Shared].[DimOrganizationUnitLevel2]([SourceKey] ASC);
@@ -73,8 +75,8 @@ DECLARE @OrgUnit AS Table
 	[SourceKey] [varchar](255) ,
 	[Name] [varchar](255) ,
 	[DimOrganizationUnitLevel1SourceKey] [int],
-	[DimOrganizationUnitTypeSourceKey] [int],
-	[IdentificationNumber] [varchar](20) 
+	[DimOrganizationUnitTypeSourceKey] [varchar](50),
+	[IdentificationNumber] [varchar](20)
 );
 
 WITH cte AS
@@ -85,25 +87,29 @@ WITH cte AS
 		ou.OrganizationUnitId,
 		UnitName = COALESCE(ou.Name, o.name),
 		IdentificationNumber,
-		OrganizationUnitTypeId,
-		ParentOrganizationUnitId = o.OrganizationId,
+		ot.[Description],
+		ParentOrganizationUnitId = ou.[OrganizationUnitId],
 		1 AS OrgLevel
 	FROM [dbo].Organization AS o
 	INNER JOIN dbo.OrganizationUnit AS ou ON
 		ou.OrganizationId = o.OrganizationId
-	WHERE ISNULL(ParentOrganizationUnitId,0) = 0
+	LEFT JOIN dbo.OrganizationUnitType AS ot ON
+		ou.OrganizationUnitTypeId = ot.OrganizationUnitTypeId
+	WHERE ou.ParentOrganizationUnitId IS NULL
 	UNION ALL
 	SELECT 
 		st.OrganizationId,
 		ou1.OrganizationUnitId,
 		UnitName = ou1.Name,
 		ou1.IdentificationNumber,
-		ou1.OrganizationUnitTypeId,
+		ot1.[Description],
 		ou1.ParentOrganizationUnitId,
 		st.OrgLevel + 1 AS OrgLevel
 	FROM [dbo].OrganizationUnit AS ou1
 	INNER JOIN cte AS ST ON 
 		ou1.ParentOrganizationUnitId = ST.OrganizationUnitId
+	INNER JOIN dbo.OrganizationUnitType AS ot1 ON
+		ou1.OrganizationUnitTypeId = ot1.OrganizationUnitTypeId
 	WHERE ou1.ParentOrganizationUnitId IS NOT NULL
 )
 
@@ -120,21 +126,24 @@ WITH cte AS
 		SourceKey = cte.OrganizationUnitId,
 		Name = CONVERT(VARCHAR(255),cte.UnitName),
 		DimOrganizationUnitLevel1SourceKey = cte.ParentOrganizationUnitId,
-		DimOrganizationTypeSourceKey = COALESCE(cte.OrganizationUnitTypeId, -1),
+		DimOrganizationTypeSourceKey = COALESCE(cte.[Description], ''UNKNOWN''),
 		IdentificationNumber
 	FROM cte
 	WHERE 
-		cte.OrgLevel BETWEEN 1 AND  @OrgLevel
+		cte.OrgLevel BETWEEN 1 AND @OrgLevel
 	
 	
 	SELECT 
 		SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I''),
 		base_query.Name,
 		base_query.DimOrganizationUnitLevel1SourceKey,
 		base_query.DimOrganizationUnitTypeSourceKey,
-		base_query.IdentificationNumber,
-		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
+		base_query.IdentificationNumber
+		
 	FROM @OrgUnit AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel2';
+
+
 
 
 

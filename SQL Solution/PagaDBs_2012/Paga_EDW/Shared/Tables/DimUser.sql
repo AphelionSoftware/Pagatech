@@ -39,6 +39,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimUser_SourceKey]
     ON [Shared].[DimUser]([SourceKey] ASC);
@@ -150,8 +152,8 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 		END
 		),
 	UserType= COALESCE(UserType, ''unknown''),
-	DateOfBirthID = COALESCE(DateOfBirthID, -1), 
-	DimPagaAccountSourceKey,
+	DateOfBirthID = COALESCE(DateOfBirthID, 18991231), 
+	DimPagaAccountSourceKey = COALESCE(DimPagaAccountSourceKey,-1),
 	DimOrganizationUnitLevel4SourceKey,
 	FirstName, 
 	MiddleName, 
@@ -209,6 +211,8 @@ FROM
 ) AS base_query
 
 ', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+
+
 
 
 GO

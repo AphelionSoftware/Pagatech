@@ -11,9 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:ProtectionLevel="0"
-  DTS:VersionBuild="103"
-  DTS:VersionGUID="{98A7CEC8-A975-4B9D-B4F3-717926F760D4}">
+  DTS:VersionBuild="111"
+  DTS:VersionGUID="{B9E3F971-1280-43DE-ABF7-C7D53E4F6E81}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -35,7 +34,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">/*WHERE TABLE_SCHEMA = 'Classification'*/</DTS:Property>
+        DTS:Name="ParameterValue">WHERE TABLE_SCHEMA = 'Shared'</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -120,7 +119,7 @@ FROM
 				t.TABLE_SCHEMA,
 				major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  
 			FROM INFORMATION_SCHEMA.TABLES AS t
-				/*WHERE TABLE_SCHEMA = 'Classification'*/
+				WHERE TABLE_SCHEMA = 'Shared'
 		) AS table_list
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
@@ -193,6 +192,7 @@ INNER JOIN
       DTS:refId="Package\EST_GetVersionNumbers"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{2A6AB7CD-5852-4673-918D-CA5DB6CFA8BF}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
@@ -218,6 +218,7 @@ INNER JOIN
       DTS:refId="Package\EST_SetVersionNumbers"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{6C835384-409A-4C2C-B13D-64781F3EA4F9}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
@@ -324,7 +325,7 @@ INNER JOIN
           FontInfo="{assembly:Null}"
           Size="782,72"
           Id="d63dff49-fdc4-4c30-b05a-142b284a4e18"
-          TopLeft="251.5,95.5" />
+          TopLeft="249.5,92.5" />
         <AnnotationLayout
           Text="Be sure to set Load All Parameter to True or False before running."
           ParentId="Package"

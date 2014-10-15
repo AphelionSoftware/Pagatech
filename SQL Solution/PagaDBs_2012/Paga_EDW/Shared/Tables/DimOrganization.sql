@@ -44,9 +44,13 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganization_SourceKey]
-    ON [Shared].[DimOrganization]([SourceKey] ASC);
+    ON [Shared].[DimOrganization]([SourceKey] ASC, [DimChannelID] ASC, [DimMerchantCategoryID] ASC);
+
+
 
 
 GO
@@ -87,13 +91,15 @@ FROM
 		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId, 
 		DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId,
 		DimMerchantCategorySourceKey = CONVERT(VARCHAR(50), COALESCE(omc.MerchantCategoryId, ''UNKNOWN'')),
-		DimChannelSourceKey = CONVERT(VARCHAR(50), ompc.ProcessChannelId)
+		DimChannelSourceKey = CONVERT(VARCHAR(50), COALESCE(ompc.ProcessChannelId, ''UNKNOWN''))
 	FROM dbo.Organization AS o
-	INNER JOIN dbo.OrganizationMerchantCategory AS omc ON
+	LEFT JOIN dbo.OrganizationMerchantCategory AS omc ON
 		o.OrganizationId = omc.OrganizationId
-	INNER JOIN dbo.OrganizationMerchantProcessChannel AS ompc ON
+	LEFT JOIN dbo.OrganizationMerchantProcessChannel AS ompc ON
 		o.OrganizationId = ompc.OrganizationId
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+
+
 
 
 
