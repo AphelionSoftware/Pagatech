@@ -53,8 +53,10 @@ namespace LightSwitchApplication
                     SaveFile(FileStream, fs);
                     fs.Close();
                 }
+                entity.UploadedFileName = filePath;
 
             }
+
 
         }
         #region SaveFile

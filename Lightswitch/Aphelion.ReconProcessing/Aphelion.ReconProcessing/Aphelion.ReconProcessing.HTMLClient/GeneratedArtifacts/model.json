@@ -7453,6 +7453,31 @@
                             "value": "msls-search"
                           }
                         ]
+                      },
+                      {
+                        "displayName": "Import",
+                        "name": "AddImportedFile",
+                        "kind": "Command",
+                        "view": { "__id": ":CommandBarButton" },
+                        "propertySources":
+                        [
+                          {
+                            "property": { "__id": ":RootControl/Properties[Tap]" },
+                            "source":
+                            {
+                              "target": { "__id": "!module/Methods[showImportFile]" },
+                              ":@AssociatedCollection": { "collection": { "__id": "BrowseImportedFilesUnreconciled/Properties[ImportedFilesUnreconciled]" } },
+                              ":@CreateNewEntity":
+                              {
+                                "targetParameter": { "__id": "!module/Methods[showImportFile]/Parameters[ImportedFile]" }
+                              }
+                            }
+                          },
+                          {
+                            "property": { "__id": ":RootCommand/Properties[Icon]" },
+                            "value": "msls-add"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -7849,6 +7874,12 @@
                                 "value": 400
                               }
                             ]
+                          },
+                          {
+                            "displayName": "Results",
+                            "name": "Results",
+                            "kind": "ScreenContent",
+                            "view": { "__id": ":ScreenCustomControl" }
                           }
                         ]
                       }

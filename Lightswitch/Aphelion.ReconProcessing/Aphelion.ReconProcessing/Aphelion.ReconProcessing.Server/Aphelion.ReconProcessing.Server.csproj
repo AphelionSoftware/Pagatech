@@ -72,6 +72,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations">
       <ProjectCritical>True</ProjectCritical>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <ProjectCritical>True</ProjectCritical>
     </Reference>
@@ -209,6 +210,9 @@
   <ItemGroup>
     <Compile Include="api\FileImportController.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="DataSources\PagaReconData\ImportedFile.lsml.cs">
+      <DependentUpon>ImportedFiles.lsml</DependentUpon>
+    </Compile>
     <Compile Include="DataSources\PagaReconData\_PagaReconDataService.lsml.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

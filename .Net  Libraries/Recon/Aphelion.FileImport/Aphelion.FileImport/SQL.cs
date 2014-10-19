@@ -54,6 +54,35 @@ SELECT [ColumnName]
 	JOIN [Import].[FileSection] FS
 	ON FF.FileSectionID = FS.ID
 	WHERE FS.Code = '{0}'";
+
+        /// <summary>
+        /// 0: Imported File ID
+        /// Fields:
+        /// 0: Uploaded filename
+        /// 1: FileDefinitionID
+        /// 2: ReconsummaryID
+        /// 3: File Extension
+        /// 4: FileTypeCode
+        /// 5: SectionCode
+        /// 6: FileSectionID
+        /// </summary>
+        public const string constGetFileDefinition = @"SELECT  
+        RIF.[UploadedFileName]
+      ,RIF.[FileDefinitionID]
+      ,RIF.[ReconSummaryID]
+	  ,FT.Extension
+	  ,FT.Code FileTypeCode
+	  ,FS.Code SectionCode
+	  ,FS.ID FileSectionID
+  FROM [Recon].[ImportedFile] RIF
+  INNER JOIN Import.FileDefinition FD
+	ON RIF.FileDefinitionID = FD.ID
+  INNER JOIN Import.FileType FT
+	ON FD.FileTypeID = FT.ID
+  INNER JOIN Import.FileSection FS
+	ON RIF.FileDefinitionID = FS.FileDefinitionID
+WHERE RIF.ID = '{0}'";
+
     }
 
 }

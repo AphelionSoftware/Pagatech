@@ -34,6 +34,14 @@ namespace Aphelion.Recon
         {
 
         }
+
+        /*public ImportSection (string pConnection, int iFileID)
+        {
+            this.sConnection = pConnection;
+            this.GetFileDefinitionProperties(iFileID);
+
+        }*/
+
         public ImportSection(string pConnection, string sSectionCode,FileReader pFr, DataTableImport pDTI)
             :this(pConnection, sSectionCode)
         {

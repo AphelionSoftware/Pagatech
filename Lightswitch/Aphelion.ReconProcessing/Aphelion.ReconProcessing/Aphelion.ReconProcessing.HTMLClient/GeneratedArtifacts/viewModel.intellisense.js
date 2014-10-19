@@ -467,6 +467,14 @@
             data: lightSwitchApplication.ImportedFile,
             value: lightSwitchApplication.ReconSummary
         },
+        Results: {
+            _$class: msls.ContentItem,
+            _$name: "Results",
+            _$parentName: "columns",
+            screen: lightSwitchApplication.ViewImportedFile,
+            data: lightSwitchApplication.ImportedFile,
+            value: lightSwitchApplication.ImportedFile
+        },
         Popups: {
             _$class: msls.ContentItem,
             _$name: "Popups",
@@ -525,7 +533,12 @@
         /// Called after the ReconSummary content item has been rendered.
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
         /// </field>
-        ReconSummary_postRender: [$element, function () { return new lightSwitchApplication.ViewImportedFile().findContentItem("ReconSummary"); }]
+        ReconSummary_postRender: [$element, function () { return new lightSwitchApplication.ViewImportedFile().findContentItem("ReconSummary"); }],
+        /// <field>
+        /// Called to render the Results content item.
+        /// <br/>render(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        Results_render: [$element, function () { return new lightSwitchApplication.ViewImportedFile().findContentItem("Results"); }]
     });
 
     lightSwitchApplication.BrowseReconProcesses.prototype._$contentItems = {

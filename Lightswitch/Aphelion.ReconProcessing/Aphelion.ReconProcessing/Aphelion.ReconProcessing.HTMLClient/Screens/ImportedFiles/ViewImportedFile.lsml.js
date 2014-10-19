@@ -10,29 +10,32 @@ myapp.ViewImportedFile.Details_postRender = function (element, contentItem) {
 
 
 myapp.ViewImportedFile.Reconcile_execute = function (screen) {
-    /*$.getJSON("/api/TodaysReportingPeriod", function (data) {
-        myapp.activeDataWorkspace.MeerkatData.ReportingPeriods_SingleOrDefault(data).execute().then(function (reportingPeriod) {
-            screen.MaxReportingRangeID = reportingPeriod.results[0].EndDateID;
-            screen.ReportingPeriodsFiltered.load().then(function () {
-                screen.MilestoneValue.setReportingPeriod(reportingPeriod.results[0]);
-                //screen.PreviousDataVersion = screen.DataVersionSorted.selectedItem.DataVersion_ID;
-            });
-        });
-    });*/
+    //$('LoadingStatus')[0].innerText = "Starting import";
 
-    /*
-    $.ajax({
- dataType: "xml",
- data: d,
- success: postSave,
- url: saveURL,
- type: "PUT",
- beforeSend: diagnoser.credManager.getAuthSetterCurrent()
- });*/
 
-    $.ajax({
-        data: 4,
-        url: "/api/FileImportController",
+    var url = "/api/FileImport/" + screen.ImportedFile.ID;
+    $.getJSON(url, function (data) {
+
+        var y = data;
+    }
+    );
+
+
+
+    /*$.ajax({
+        url: "/api/FileImport/4",
         type: "PUT"
     });
+    $.ajax({
+        dataType: "int",
+        data: 4,
+        url: "/api/FileImport/4",
+        type: "PUT"
+    });
+    */
+};
+myapp.ViewImportedFile.Results_render = function (element, contentItem) {
+    div = $("<div class='LoadingStatus' id='LoadingStatus' style='font-size:20px'>Not started</div>");
+    $(div).appendTo($(element));
+
 };
