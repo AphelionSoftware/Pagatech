@@ -2152,7 +2152,7 @@
       ]
     },
     {
-      "homeScreen": { "__id": "BrowseAllImportedFiles" },
+      "homeScreen": { "__id": "BrowseImportedFilesUnreconciled" },
       "id": "!module",
       "name": "LightSwitchApplication.Aphelion.ReconProcessing.HTMLClient",
       "logo": "/Content/Images/logo.png",
@@ -2162,6 +2162,7 @@
       "theme": { "__id": ":HTMLTheme" },
       ":@ModuleNamespace": { "namespace": "LightSwitchApplication" },
       ":@Partial": { "isPrimary": true },
+      ":@HomeScreen": { "value": { "__id": "BrowseImportedFilesUnreconciled" } },
       "globalItems":
       [
         {
@@ -2179,6 +2180,12 @@
         {
           "id": "LightSwitchServiceApplicationGroup",
           "name": "LightSwitchServiceApplicationGroup"
+        },
+        {
+          "id": "GlobalSetting*",
+          "name": "GlobalSetting*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "GlobalSetting" }
         },
         {
           "id": "CollectionView$GlobalSetting",
@@ -2231,12 +2238,6 @@
               "propertyType": { "__id": "GlobalSetting" }
             }
           ]
-        },
-        {
-          "id": "GlobalSetting*",
-          "name": "GlobalSetting*",
-          "kind": "Enumerable",
-          "elementType": { "__id": "GlobalSetting" }
         },
         {
           "id": "FileDefinition*",
@@ -5894,6 +5895,15 @@
               "entityType": { "__id": "FileType" }
             },
             {
+              "id": "PagaReconData/Members[GlobalSettings]",
+              "name": "GlobalSettings",
+              "canDelete": true,
+              "canInsert": true,
+              "canUpdate": true,
+              "elementType": { "__id": "GlobalSetting" },
+              "entityType": { "__id": "GlobalSetting" }
+            },
+            {
               "id": "PagaReconData/Members[ImportedFiles]",
               "name": "ImportedFiles",
               "canDelete": true,
@@ -6009,15 +6019,6 @@
               "canUpdate": true,
               "elementType": { "__id": "SystemField" },
               "entityType": { "__id": "SystemField" }
-            },
-            {
-              "id": "PagaReconData/Members[GlobalSettings]",
-              "name": "GlobalSettings",
-              "canDelete": true,
-              "canInsert": true,
-              "canUpdate": true,
-              "elementType": { "__id": "GlobalSetting" },
-              "entityType": { "__id": "GlobalSetting" }
             }
           ],
           "queryOperations":
@@ -6175,6 +6176,44 @@
               ]
             },
             {
+              "id": "PagaReconData/Members[GlobalSettings_Single]",
+              "name": "GlobalSettings_Single",
+              "elementType": { "__id": "GlobalSetting" },
+              "query": { "__id": "PagaReconData/Members[GlobalSettings_Single]" },
+              "returnType": { "__id": "GlobalSetting" },
+              "source":
+              {
+                "member": { "__id": "PagaReconData/Members[GlobalSettings]" }
+              },
+              "parameters":
+              [
+                {
+                  "id": "PagaReconData/Members[GlobalSettings_Single]/Parameters[GlobalSettings_ID]",
+                  "name": "GlobalSettings_ID",
+                  "parameterType": { "__id": ":Int32?" }
+                }
+              ]
+            },
+            {
+              "id": "PagaReconData/Members[GlobalSettings_SingleOrDefault]",
+              "name": "GlobalSettings_SingleOrDefault",
+              "elementType": { "__id": "GlobalSetting" },
+              "query": { "__id": "PagaReconData/Members[GlobalSettings_SingleOrDefault]" },
+              "returnType": { "__id": "GlobalSetting" },
+              "source":
+              {
+                "member": { "__id": "PagaReconData/Members[GlobalSettings]" }
+              },
+              "parameters":
+              [
+                {
+                  "id": "PagaReconData/Members[GlobalSettings_SingleOrDefault]/Parameters[GlobalSettings_ID]",
+                  "name": "GlobalSettings_ID",
+                  "parameterType": { "__id": ":Int32?" }
+                }
+              ]
+            },
+            {
               "id": "PagaReconData/Members[ImportedFiles_Single]",
               "name": "ImportedFiles_Single",
               "elementType": { "__id": "ImportedFile" },
@@ -6227,6 +6266,7 @@
                 {
                   "id": "PagaReconData/Members[ImportedFilesUnreconciled]/Parameters[ReconSourcce]",
                   "name": "ReconSourcce",
+                  "isOptional": true,
                   "parameterType": { "__id": ":Int32?" }
                 }
               ]
@@ -6686,44 +6726,6 @@
                   "parameterType": { "__id": ":Int32?" }
                 }
               ]
-            },
-            {
-              "id": "PagaReconData/Members[GlobalSettings_Single]",
-              "name": "GlobalSettings_Single",
-              "elementType": { "__id": "GlobalSetting" },
-              "query": { "__id": "PagaReconData/Members[GlobalSettings_Single]" },
-              "returnType": { "__id": "GlobalSetting" },
-              "source":
-              {
-                "member": { "__id": "PagaReconData/Members[GlobalSettings]" }
-              },
-              "parameters":
-              [
-                {
-                  "id": "PagaReconData/Members[GlobalSettings_Single]/Parameters[GlobalSettings_ID]",
-                  "name": "GlobalSettings_ID",
-                  "parameterType": { "__id": ":Int32?" }
-                }
-              ]
-            },
-            {
-              "id": "PagaReconData/Members[GlobalSettings_SingleOrDefault]",
-              "name": "GlobalSettings_SingleOrDefault",
-              "elementType": { "__id": "GlobalSetting" },
-              "query": { "__id": "PagaReconData/Members[GlobalSettings_SingleOrDefault]" },
-              "returnType": { "__id": "GlobalSetting" },
-              "source":
-              {
-                "member": { "__id": "PagaReconData/Members[GlobalSettings]" }
-              },
-              "parameters":
-              [
-                {
-                  "id": "PagaReconData/Members[GlobalSettings_SingleOrDefault]/Parameters[GlobalSettings_ID]",
-                  "name": "GlobalSettings_ID",
-                  "parameterType": { "__id": ":Int32?" }
-                }
-              ]
             }
           ]
         },
@@ -6887,6 +6889,128 @@
           ]
         },
         {
+          "__isEntityType": 1,
+          ":@SummaryProperty": { "property": { "__id": "GlobalSetting/Properties[Code]" } },
+          "id": "GlobalSetting",
+          "name": "GlobalSetting",
+          "methods":
+          [
+            {
+              "id": "GlobalSetting/Methods[deleteEntity]",
+              "name": "deleteEntity"
+            },
+            {
+              "id": "GlobalSetting/Methods[edit]",
+              "name": "edit"
+            },
+            {
+              "id": "GlobalSetting/Methods[view]",
+              "name": "view"
+            }
+          ],
+          "properties":
+          [
+            {
+              "__isKeyProperty": 1,
+              "id": "GlobalSetting/Properties[GlobalSettings_ID]",
+              "name": "GlobalSettings_ID",
+              "isReadOnly": true,
+              "propertyType": { "__id": ":Int32" },
+              ":@Hidden": { },
+              ":@Required": { },
+              ":@NotSearchable": { }
+            },
+            {
+              "id": "GlobalSetting/Properties[Code]",
+              "name": "Code",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 50
+              },
+              ":@AnsiConstraint": { }
+            },
+            {
+              "id": "GlobalSetting/Properties[Name]",
+              "name": "Name",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 255
+              },
+              ":@AnsiConstraint": { }
+            },
+            {
+              "id": "GlobalSetting/Properties[Value]",
+              "name": "Value",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 8000
+              },
+              ":@AnsiConstraint": { }
+            },
+            {
+              "id": "GlobalSetting/Properties[Active]",
+              "name": "Active",
+              "propertyType": { "__id": ":Int32" },
+              ":@Required": { },
+              ":@NotSearchable": { }
+            },
+            {
+              "id": "GlobalSetting/Properties[sys_CreatedBy]",
+              "name": "sys_CreatedBy",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 255
+              },
+              ":@AnsiConstraint": { }
+            },
+            {
+              "id": "GlobalSetting/Properties[sys_CreatedOn]",
+              "name": "sys_CreatedOn",
+              "propertyType": { "__id": ":DateTime" },
+              ":@Required": { },
+              ":@DateTimeConstraint":
+              {
+                "kind": "Unspecified",
+                "precision": 3,
+                "preserveSeconds": true
+              },
+              ":@NotSearchable": { }
+            },
+            {
+              "id": "GlobalSetting/Properties[sys_ModifiedBy]",
+              "name": "sys_ModifiedBy",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 255
+              },
+              ":@AnsiConstraint": { }
+            },
+            {
+              "id": "GlobalSetting/Properties[sys_ModifiedOn]",
+              "name": "sys_ModifiedOn",
+              "propertyType": { "__id": ":DateTime" },
+              ":@Required": { },
+              ":@DateTimeConstraint":
+              {
+                "kind": "Unspecified",
+                "precision": 3,
+                "preserveSeconds": true
+              },
+              ":@NotSearchable": { }
+            }
+          ]
+        },
+        {
           "displayName": "ImportedFiles",
           "id": "BrowseAllImportedFiles",
           "name": "BrowseAllImportedFiles",
@@ -6939,6 +7063,29 @@
                               [
                               ]
                             },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "File Name",
+                                "name": "FileName",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ImportedFile/Properties[FileName]" }
+                                }
+                              },
+                              {
+                                "displayName": "Modified On",
+                                "name": "sys_ModifiedOn",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ImportedFile/Properties[sys_ModifiedOn]" }
+                                }
+                              }
+                            ],
                             "propertySources":
                             [
                               {
@@ -7159,6 +7306,29 @@
                               [
                               ]
                             },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "File Name",
+                                "name": "FileName",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ImportedFile/Properties[FileName]" }
+                                }
+                              },
+                              {
+                                "displayName": "Modified On",
+                                "name": "sys_ModifiedOn",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ImportedFile/Properties[sys_ModifiedOn]" }
+                                }
+                              }
+                            ],
                             "propertySources":
                             [
                               {
@@ -7736,7 +7906,7 @@
                           },
                           {
                             "property": { "__id": ":RootCommand/Properties[Icon]" },
-                            "value": "msls-gear"
+                            "value": "msls-move"
                           }
                         ]
                       }
@@ -8964,128 +9134,6 @@
                   "parameterType": { "__id": ":String" }
                 }
               ]
-            }
-          ]
-        },
-        {
-          "__isEntityType": 1,
-          ":@SummaryProperty": { "property": { "__id": "GlobalSetting/Properties[Code]" } },
-          "id": "GlobalSetting",
-          "name": "GlobalSetting",
-          "methods":
-          [
-            {
-              "id": "GlobalSetting/Methods[deleteEntity]",
-              "name": "deleteEntity"
-            },
-            {
-              "id": "GlobalSetting/Methods[view]",
-              "name": "view"
-            },
-            {
-              "id": "GlobalSetting/Methods[edit]",
-              "name": "edit"
-            }
-          ],
-          "properties":
-          [
-            {
-              "__isKeyProperty": 1,
-              "id": "GlobalSetting/Properties[GlobalSettings_ID]",
-              "name": "GlobalSettings_ID",
-              "isReadOnly": true,
-              "propertyType": { "__id": ":Int32" },
-              ":@Hidden": { },
-              ":@Required": { },
-              ":@NotSearchable": { }
-            },
-            {
-              "id": "GlobalSetting/Properties[Code]",
-              "name": "Code",
-              "propertyType": { "__id": ":String" },
-              ":@Required": { },
-              ":@MaxLength":
-              {
-                "value": 50
-              },
-              ":@AnsiConstraint": { }
-            },
-            {
-              "id": "GlobalSetting/Properties[Name]",
-              "name": "Name",
-              "propertyType": { "__id": ":String" },
-              ":@Required": { },
-              ":@MaxLength":
-              {
-                "value": 255
-              },
-              ":@AnsiConstraint": { }
-            },
-            {
-              "id": "GlobalSetting/Properties[Value]",
-              "name": "Value",
-              "propertyType": { "__id": ":String" },
-              ":@Required": { },
-              ":@MaxLength":
-              {
-                "value": 8000
-              },
-              ":@AnsiConstraint": { }
-            },
-            {
-              "id": "GlobalSetting/Properties[Active]",
-              "name": "Active",
-              "propertyType": { "__id": ":Int32" },
-              ":@Required": { },
-              ":@NotSearchable": { }
-            },
-            {
-              "id": "GlobalSetting/Properties[sys_CreatedBy]",
-              "name": "sys_CreatedBy",
-              "propertyType": { "__id": ":String" },
-              ":@Required": { },
-              ":@MaxLength":
-              {
-                "value": 255
-              },
-              ":@AnsiConstraint": { }
-            },
-            {
-              "id": "GlobalSetting/Properties[sys_CreatedOn]",
-              "name": "sys_CreatedOn",
-              "propertyType": { "__id": ":DateTime" },
-              ":@Required": { },
-              ":@DateTimeConstraint":
-              {
-                "kind": "Unspecified",
-                "precision": 3,
-                "preserveSeconds": true
-              },
-              ":@NotSearchable": { }
-            },
-            {
-              "id": "GlobalSetting/Properties[sys_ModifiedBy]",
-              "name": "sys_ModifiedBy",
-              "propertyType": { "__id": ":String" },
-              ":@Required": { },
-              ":@MaxLength":
-              {
-                "value": 255
-              },
-              ":@AnsiConstraint": { }
-            },
-            {
-              "id": "GlobalSetting/Properties[sys_ModifiedOn]",
-              "name": "sys_ModifiedOn",
-              "propertyType": { "__id": ":DateTime" },
-              ":@Required": { },
-              ":@DateTimeConstraint":
-              {
-                "kind": "Unspecified",
-                "precision": 3,
-                "preserveSeconds": true
-              },
-              ":@NotSearchable": { }
             }
           ]
         }

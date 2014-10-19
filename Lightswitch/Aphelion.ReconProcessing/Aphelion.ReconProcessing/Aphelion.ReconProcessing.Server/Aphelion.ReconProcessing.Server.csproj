@@ -60,6 +60,9 @@
     <Reference Include="Microsoft.LightSwitch.Extensions.Server">
       <HintPath>..\_Pvt_Extensions\Microsoft.LightSwitch.Extensions\Server\Reference\Microsoft.LightSwitch.Extensions.Server.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <ProjectCritical>True</ProjectCritical>
     </Reference>
@@ -78,8 +81,21 @@
     <Reference Include="System.Data.Entity">
       <ProjectCritical>True</ProjectCritical>
     </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.1.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization">
       <ProjectCritical>True</ProjectCritical>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.1.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.1.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml">
       <ProjectCritical>True</ProjectCritical>
@@ -191,7 +207,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="api\FileImportController.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="DataSources\PagaReconData\_PagaReconDataService.lsml.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +221,7 @@
     </LightSwitchModel>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <LightSwitchModel Include="DataSources\PagaReconData\ReconItemStatus.lsml" />
     <LightSwitchModel Include="DataSources\PagaReconData\ReconProcesses.lsml" />
@@ -239,7 +261,24 @@
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\.Net  Libraries\Recon\Aphelion.FileImport\Aphelion.FileImport\Aphelion.FileImport.csproj">
+      <Project>{fff9e045-4151-4255-910f-cafc9e7d3005}</Project>
+      <Name>Aphelion.FileImport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\.Net  Libraries\Recon\Aphelion.Recon.RulesEngine\Aphelion.Recon.RulesEngine.csproj">
+      <Project>{aef64609-951c-4afa-8fea-4ea7d9d29912}</Project>
+      <Name>Aphelion.Recon.RulesEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\.Net  Libraries\Recon\Aphelion.SQLReconLoad\Aphelion.SQLReconLoad.csproj">
+      <Project>{174034a9-9019-41b7-ac82-fd2e33ddba36}</Project>
+      <Name>Aphelion.SQLReconLoad</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Controllers\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

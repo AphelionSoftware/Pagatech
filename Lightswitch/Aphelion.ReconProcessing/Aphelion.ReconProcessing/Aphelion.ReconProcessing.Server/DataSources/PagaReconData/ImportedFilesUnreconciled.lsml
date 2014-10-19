@@ -15,43 +15,20 @@
       <QueryOperation.FilterExpression>
         <QueryFilterExpressionTree>
           <BinaryExpression
-            NodeType="And">
+            NodeType="Equal">
             <BinaryExpression.Left>
-              <BinaryExpression
-                NodeType="LessThan">
-                <BinaryExpression.Left>
-                  <ChainExpression>
-                    <MemberExpression
-                      Member="ReconSummary" />
-                    <MemberExpression
-                      Member="ID" />
-                  </ChainExpression>
-                </BinaryExpression.Left>
-                <BinaryExpression.Right>
-                  <ConstantExpression
-                    Value="1"
-                    ResultType=":Int32" />
-                </BinaryExpression.Right>
-              </BinaryExpression>
+              <ChainExpression>
+                <MemberExpression
+                  Member="FileDefinition" />
+                <MemberExpression
+                  Member="ReconSource" />
+                <MemberExpression
+                  Member="ID" />
+              </ChainExpression>
             </BinaryExpression.Left>
             <BinaryExpression.Right>
-              <BinaryExpression
-                NodeType="Equal">
-                <BinaryExpression.Left>
-                  <ChainExpression>
-                    <MemberExpression
-                      Member="FileDefinition" />
-                    <MemberExpression
-                      Member="ReconSource" />
-                    <MemberExpression
-                      Member="ID" />
-                  </ChainExpression>
-                </BinaryExpression.Left>
-                <BinaryExpression.Right>
-                  <ParameterExpression
-                    Parameter="ReconSourcce" />
-                </BinaryExpression.Right>
-              </BinaryExpression>
+              <ParameterExpression
+                Parameter="ReconSourcce" />
             </BinaryExpression.Right>
           </BinaryExpression>
         </QueryFilterExpressionTree>
@@ -64,6 +41,7 @@
       </QueryOperation.Source>
       <QueryOperationParameter
         Name="ReconSourcce"
+        IsOptional="True"
         ParameterType=":Int32?" />
     </QueryOperation>
   </EntityContainer>

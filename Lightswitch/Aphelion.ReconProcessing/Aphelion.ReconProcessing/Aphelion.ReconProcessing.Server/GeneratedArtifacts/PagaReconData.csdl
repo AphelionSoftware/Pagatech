@@ -71,6 +71,20 @@
     <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
     <NavigationProperty Name="FileDefinitions" Relationship="LightSwitchApplication.FK_FileDefinition_FileType" ToRole="FileDefinition" FromRole="FileType" />
   </EntityType>
+  <EntityType Name="GlobalSetting">
+    <Key>
+      <PropertyRef Name="GlobalSettings_ID" />
+    </Key>
+    <Property Name="GlobalSettings_ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="8000" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Active" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+  </EntityType>
   <EntityType Name="ImportedFile">
     <Key>
       <PropertyRef Name="ID" />
@@ -273,20 +287,6 @@
     <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
     <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
   </EntityType>
-  <EntityType Name="GlobalSetting">
-    <Key>
-      <PropertyRef Name="GlobalSettings_ID" />
-    </Key>
-    <Property Name="GlobalSettings_ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="8000" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="Active" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-  </EntityType>
   <Association Name="FK_FileSection_FileDefinition">
     <End Role="FileDefinition" Type="LightSwitchApplication.FileDefinition" Multiplicity="1" />
     <End Role="FileSection" Type="LightSwitchApplication.FileSection" Multiplicity="*" />
@@ -448,6 +448,7 @@
     <EntitySet Name="FileFields" EntityType="LightSwitchApplication.FileField" />
     <EntitySet Name="FileSections" EntityType="LightSwitchApplication.FileSection" />
     <EntitySet Name="FileTypes" EntityType="LightSwitchApplication.FileType" />
+    <EntitySet Name="GlobalSettings" EntityType="LightSwitchApplication.GlobalSetting" />
     <EntitySet Name="ImportedFiles" EntityType="LightSwitchApplication.ImportedFile" />
     <EntitySet Name="ReconDetails" EntityType="LightSwitchApplication.ReconDetail" />
     <EntitySet Name="ReconItemStatus" EntityType="LightSwitchApplication.ReconItemStatu" />
@@ -461,7 +462,6 @@
     <EntitySet Name="SkyeImportDetails" EntityType="LightSwitchApplication.SkyeImportDetail" />
     <EntitySet Name="SkyeImportHeaders" EntityType="LightSwitchApplication.SkyeImportHeader" />
     <EntitySet Name="SystemFields" EntityType="LightSwitchApplication.SystemField" />
-    <EntitySet Name="GlobalSettings" EntityType="LightSwitchApplication.GlobalSetting" />
     <AssociationSet Name="FK_FileSection_FileDefinition" Association="LightSwitchApplication.FK_FileSection_FileDefinition">
       <End Role="FileDefinition" EntitySet="FileDefinitions" />
       <End Role="FileSection" EntitySet="FileSections" />

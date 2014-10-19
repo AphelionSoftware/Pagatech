@@ -41,6 +41,22 @@
             data: lightSwitchApplication.ImportedFile,
             value: lightSwitchApplication.ImportedFile
         },
+        FileName: {
+            _$class: msls.ContentItem,
+            _$name: "FileName",
+            _$parentName: "rows",
+            screen: lightSwitchApplication.BrowseAllImportedFiles,
+            data: lightSwitchApplication.ImportedFile,
+            value: String
+        },
+        sys_ModifiedOn: {
+            _$class: msls.ContentItem,
+            _$name: "sys_ModifiedOn",
+            _$parentName: "rows",
+            screen: lightSwitchApplication.BrowseAllImportedFiles,
+            data: lightSwitchApplication.ImportedFile,
+            value: Date
+        },
         Popups: {
             _$class: msls.ContentItem,
             _$name: "Popups",
@@ -74,7 +90,17 @@
         /// Called after the rows content item has been rendered.
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
         /// </field>
-        rows_postRender: [$element, function () { return new lightSwitchApplication.BrowseAllImportedFiles().findContentItem("rows"); }]
+        rows_postRender: [$element, function () { return new lightSwitchApplication.BrowseAllImportedFiles().findContentItem("rows"); }],
+        /// <field>
+        /// Called after the FileName content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        FileName_postRender: [$element, function () { return new lightSwitchApplication.BrowseAllImportedFiles().findContentItem("FileName"); }],
+        /// <field>
+        /// Called after the sys_ModifiedOn content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        sys_ModifiedOn_postRender: [$element, function () { return new lightSwitchApplication.BrowseAllImportedFiles().findContentItem("sys_ModifiedOn"); }]
     });
 
     lightSwitchApplication.BrowseImportedFilesUnreconciled.prototype._$contentItems = {
@@ -113,6 +139,22 @@
             screen: lightSwitchApplication.BrowseImportedFilesUnreconciled,
             data: lightSwitchApplication.ImportedFile,
             value: lightSwitchApplication.ImportedFile
+        },
+        FileName: {
+            _$class: msls.ContentItem,
+            _$name: "FileName",
+            _$parentName: "rows",
+            screen: lightSwitchApplication.BrowseImportedFilesUnreconciled,
+            data: lightSwitchApplication.ImportedFile,
+            value: String
+        },
+        sys_ModifiedOn: {
+            _$class: msls.ContentItem,
+            _$name: "sys_ModifiedOn",
+            _$parentName: "rows",
+            screen: lightSwitchApplication.BrowseImportedFilesUnreconciled,
+            data: lightSwitchApplication.ImportedFile,
+            value: Date
         },
         ImportedFileReconSourcce: {
             _$class: msls.ContentItem,
@@ -196,6 +238,16 @@
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
         /// </field>
         rows_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesUnreconciled().findContentItem("rows"); }],
+        /// <field>
+        /// Called after the FileName content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        FileName_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesUnreconciled().findContentItem("FileName"); }],
+        /// <field>
+        /// Called after the sys_ModifiedOn content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        sys_ModifiedOn_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesUnreconciled().findContentItem("sys_ModifiedOn"); }],
         /// <field>
         /// Called after the ImportedFileReconSourcce content item has been rendered.
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)

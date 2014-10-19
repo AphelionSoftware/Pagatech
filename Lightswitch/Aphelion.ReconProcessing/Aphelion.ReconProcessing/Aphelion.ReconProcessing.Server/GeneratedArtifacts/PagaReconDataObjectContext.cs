@@ -147,6 +147,22 @@ namespace LightSwitchApplication.Implementation
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<GlobalSetting> GlobalSettings
+        {
+            get
+            {
+                if ((_GlobalSettings == null))
+                {
+                    _GlobalSettings = base.CreateObjectSet<GlobalSetting>("GlobalSettings");
+                }
+                return _GlobalSettings;
+            }
+        }
+        private ObjectSet<GlobalSetting> _GlobalSettings;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<ImportedFile> ImportedFiles
         {
             get
@@ -351,22 +367,6 @@ namespace LightSwitchApplication.Implementation
             }
         }
         private ObjectSet<SystemField> _SystemFields;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<GlobalSetting> GlobalSettings
-        {
-            get
-            {
-                if ((_GlobalSettings == null))
-                {
-                    _GlobalSettings = base.CreateObjectSet<GlobalSetting>("GlobalSettings");
-                }
-                return _GlobalSettings;
-            }
-        }
-        private ObjectSet<GlobalSetting> _GlobalSettings;
 
         #endregion
 
@@ -402,6 +402,14 @@ namespace LightSwitchApplication.Implementation
         public void AddToFileTypes(FileType fileType)
         {
             base.AddObject("FileTypes", fileType);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the GlobalSettings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToGlobalSettings(GlobalSetting globalSetting)
+        {
+            base.AddObject("GlobalSettings", globalSetting);
         }
     
         /// <summary>
@@ -506,14 +514,6 @@ namespace LightSwitchApplication.Implementation
         public void AddToSystemFields(SystemField systemField)
         {
             base.AddObject("SystemFields", systemField);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the GlobalSettings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToGlobalSettings(GlobalSetting globalSetting)
-        {
-            base.AddObject("GlobalSettings", globalSetting);
         }
 
         #endregion
