@@ -27,6 +27,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitLevel1_SourceKey]
     ON [Shared].[DimOrganizationUnitLevel1]([SourceKey] ASC);
@@ -77,8 +79,7 @@ DECLARE @OrgUnit AS Table
 	[Name] [varchar](255) ,
 	[DimOrganizationSourceKey] [int],
 	[DimOrganizationUnitTypeSourceKey] [varchar](50),
-	[IdentificationNumber] [varchar](20) ,
-	[ParentUnit] [int]
+	[IdentificationNumber] [varchar](20) 
 );
 
 WITH cte AS
@@ -121,8 +122,7 @@ WITH cte AS
 		Name,
 		DimOrganizationSourceKey,
 		DimOrganizationUnitTypeSourceKey,
-		IdentificationNumber,
-		ParentUnit
+		IdentificationNumber
 	)
 
 	SELECT
@@ -130,8 +130,7 @@ WITH cte AS
 		Name = CONVERT(VARCHAR(255),cte.UnitName),
 		DimOrganizationSourceKey = cte.OrganizationId,
 		DimOrganizationTypeSourceKey = COALESCE(cte.[Description], ''UNKNOWN''),
-		IdentificationNumber,
-		ParentOrganizationUnitId
+		IdentificationNumber
 	FROM cte
 	WHERE 
 		cte.OrgLevel = @OrgLevel
@@ -145,6 +144,8 @@ WITH cte AS
 		base_query.IdentificationNumber,
 		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 	FROM @OrgUnit AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel1';
+
+
 
 
 

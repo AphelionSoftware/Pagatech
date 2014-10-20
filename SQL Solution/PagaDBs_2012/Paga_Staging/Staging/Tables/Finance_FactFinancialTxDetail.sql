@@ -11,3 +11,20 @@
     [change_operation]               CHAR (1)        DEFAULT ((1)) NOT NULL
 );
 
+
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [NonClusteredIndex-20141016-110007]
+    ON [Staging].[Finance_FactFinancialTxDetail]([Loaded] ASC, [SourceKey] ASC) WHERE ([Loaded]=(0));
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [ix_FactFinancialTxDetail_SourceKey]
+    ON [Staging].[Finance_FactFinancialTxDetail]([SourceKey] ASC);
+
+
+GO
+CREATE UNIQUE CLUSTERED INDEX [ClusteredIndex-20141003-101636]
+    ON [Staging].[Finance_FactFinancialTxDetail]([SourceKey] ASC);
+

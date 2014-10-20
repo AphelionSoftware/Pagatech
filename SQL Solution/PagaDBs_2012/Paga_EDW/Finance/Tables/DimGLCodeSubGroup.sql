@@ -21,6 +21,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGLCodeSubGroup_SourceKey]
     ON [Finance].[DimGLCodeSubGroup]([SourceKey] ASC);
@@ -77,7 +79,7 @@ WITH cte AS
 		AccountCodeGroupStart,
 		AccountCodeGroupEnd,
 		Description,
-		ParentAccountCodeGroupId,
+		ParentAccountCodeGroupId =AccountCodeGroupId,
 		1 AS COA_Level
 	FROM [dbo].[AccountCodeGroup]
 	WHERE 
@@ -110,7 +112,7 @@ WITH cte AS
 		GLCodeRange = CONVERT(VARCHAR(50), (AccountCodeGroupStart + '' - '' + AccountCodeGroupEnd)),
 		ParentAccountCodeGroupId
 	FROM cte
-	WHERE COA_Level = 4
+	WHERE COA_Level BETWEEN 0 AND 4
 
 	SELECT 
 		SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
@@ -120,6 +122,8 @@ WITH cte AS
 		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 	FROM @COA AS base_query
 ', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCodeSubGroup';
+
+
 
 
 

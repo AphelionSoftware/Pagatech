@@ -55,6 +55,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'DECLARE @reversals AS TABLE
 (
@@ -247,4 +249,14 @@ EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'9', @level0type 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2700', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader';
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [ix_FactFinancialTxHeader_SourceKey]
+    ON [Finance].[FactFinancialTxHeader]([SourceKey] ASC, [FactFinancialTxHeaderID] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_FactFinancialTxHeader_RelatedFactFinancialTxHeaderID]
+    ON [Finance].[FactFinancialTxHeader]([RelatedFactFinancialTxHeaderID] ASC);
 

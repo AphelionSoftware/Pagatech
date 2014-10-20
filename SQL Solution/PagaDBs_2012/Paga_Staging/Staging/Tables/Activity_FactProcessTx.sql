@@ -55,3 +55,10 @@
 
 
 
+
+
+
+GO
+CREATE UNIQUE CLUSTERED INDEX [ClusteredIndex-20141003-103941]
+    ON [Staging].[Activity_FactProcessTx]([SourceKey] ASC);
+

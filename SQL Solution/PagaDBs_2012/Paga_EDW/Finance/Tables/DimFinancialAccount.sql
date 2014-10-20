@@ -30,9 +30,13 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialAccount_SourceKey]
-    ON [Finance].[DimFinancialAccount]([SourceKey] ASC);
+    ON [Finance].[DimFinancialAccount]([SourceKey] ASC, [DimFinancialAccountID] ASC);
+
+
 
 
 GO
@@ -58,7 +62,7 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'WITH cte AS
 		fa.OpeningBalance,
 		fa.RestrictedBalance,
 		fa.TotalBalance,
-		DimBankAccountSourceKey =  COALESCE(fa.BankAccountId, -1),
+		DimBankAccountSourceKey =  COALESCE(fa.BankAccountId, ''UNKNOWN''),
 		DimCurrencySourceKey =  COALESCE(fa.CurrencyId, ''UNKNOWN''),
 		DimFinancialAccountTypeSourceKey = fa.FinancialAccountTypeId,
 		DimHoldingFinancialAccountSourceKey = fa.FinancialAccountId,
@@ -75,7 +79,7 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'WITH cte AS
 		fa1.OpeningBalance,
 		fa1.RestrictedBalance,
 		fa1.TotalBalance,
-		DimBankAccountSourceKey =  COALESCE(fa1.BankAccountId, -1),
+		DimBankAccountSourceKey =  COALESCE(fa1.BankAccountId, ''UNKNOWN''),
 		DimCurrencySourceKey =  COALESCE(fa1.CurrencyId, ''UNKNOWN''),
 		DimFinancialAccountTypeSourceKey = fa1.FinancialAccountTypeId,		
 		DimHoldingFinancialAccountSourceKey = fa1.HoldingFinancialAccountId,
@@ -110,10 +114,10 @@ FROM
 		cte.OpeningBalance,
 		cte.RestrictedBalance,
 		cte.TotalBalance,
-		DimBankAccountSourceKey =  COALESCE(cte.dimBankAccountSourceKey, -1),
+		DimBankAccountSourceKey =  COALESCE(cte.dimBankAccountSourceKey,''UNKNOWN''),
 		DimCurrencySourceKey =  COALESCE(cte.DimCurrencySourceKey, ''UNKNOWN''),
 		DimFinancialAccountTypeSourceKey = cte.DimFinancialAccountTypeSourceKey,
-		DimPagaAccountSourceKey = COALESCE(paga_acct.PagaAccountId,-1),
+		DimPagaAccountSourceKey = COALESCE(paga_acct.PagaAccountId,''UNKNOWN''),
 		cte.DimHoldingFinancialAccountSourceKey
 	FROM cte 
 	OUTER APPLY
@@ -129,6 +133,8 @@ FROM
 ) AS base_query
 
 ', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount';
+
+
 
 
 GO

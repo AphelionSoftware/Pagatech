@@ -40,9 +40,13 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimPagaAccount_SourceKey]
-    ON [Shared].[DimPagaAccount]([SourceKey] ASC);
+    ON [Shared].[DimPagaAccount]([SourceKey] ASC, [DimPagaAccountID] ASC);
+
+
 
 
 GO

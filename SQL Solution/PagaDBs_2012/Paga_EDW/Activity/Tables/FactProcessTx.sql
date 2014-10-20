@@ -65,6 +65,8 @@
 
 
 
+
+
 GO
 
 
@@ -88,4 +90,9 @@ EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'8', @level0type 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2700', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactProcessTx';
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [NonClusteredIndex-20141013-195551]
+    ON [Activity].[FactProcessTx]([SourceKey] ASC, [FactProcessTxID] ASC);
 
