@@ -1,28 +1,30 @@
 ﻿CREATE TABLE [Finance].[FactFinancialTxHeader] (
-    [FactFinancialTxHeaderID]         INT             IDENTITY (1, 1) NOT NULL,
-    [SourceKey]                       INT             NOT NULL,
-    [DimCreatedDateID]                INT             NOT NULL,
-    [DimCreatedTimeID]                INT             NOT NULL,
-    [DimTransactionDateID]            INT             NOT NULL,
-    [DimTransactionTimeID]            INT             NOT NULL,
-    [DimEffectiveDateID]              INT             NOT NULL,
-    [DimEffectiveTimeID]              INT             NOT NULL,
-    [DimFinancialTxTypeID]            INT             NOT NULL,
-    [DimFinancialTxSubTypeID]         INT             NULL,
-    [FactProcessTxID]                 INT             NOT NULL,
-    [DimUserID]                       INT             NULL,
-    [DimOrganizationUnitLevel4ID]     INT             NULL,
-    [OriginalFactFinancialTxHeaderID] INT             NULL,
-    [RelatedFactFinancialTxHeaderID]  INT             NULL,
-    [DimCurrencyID]                   INT             NULL,
-    [TextDescription]                 VARCHAR (100)   NOT NULL,
-    [ExternalReferenceNumber]         VARCHAR (100)   NULL,
-    [ReferenceNumber]                 VARCHAR (50)    NULL,
-    [ShortCode]                       VARCHAR (10)    NOT NULL,
-    [Fee]                             DECIMAL (18, 2) NULL,
-    [Amount]                          DECIMAL (18, 2) NULL,
-    [ExchangeRate]                    DECIMAL (16, 4) NULL,
-    [ForeignCurrencyAmount]           DECIMAL (18, 2) NULL,
+    [FactFinancialTxHeaderID]          INT             IDENTITY (1, 1) NOT NULL,
+    [SourceKey]                        INT             NOT NULL,
+    [DimCreatedDateID]                 INT             NOT NULL,
+    [DimCreatedTimeID]                 INT             NOT NULL,
+    [DimTransactionDateID]             INT             NOT NULL,
+    [DimTransactionTimeID]             INT             NOT NULL,
+    [DimEffectiveDateID]               INT             NOT NULL,
+    [DimEffectiveTimeID]               INT             NOT NULL,
+    [DimFinancialTxTypeID]             INT             NOT NULL,
+    [DimFinancialTxSubTypeID]          INT             NULL,
+    [FactProcessTxID]                  INT             NOT NULL,
+    [DimUserID]                        INT             NULL,
+    [DimOrganizationUnitLevel4ID]      INT             NULL,
+    [OriginalFactFinancialTxHeaderID]  INT             NULL,
+    [RelatedFactFinancialTxHeaderID]   INT             NULL,
+    [DimCurrencyID]                    INT             NULL,
+    [TextDescription]                  VARCHAR (100)   NOT NULL,
+    [ExternalReferenceNumber]          VARCHAR (100)   NULL,
+    [ReferenceNumber]                  VARCHAR (50)    NULL,
+    [ShortCode]                        VARCHAR (10)    NOT NULL,
+    [Fee]                              DECIMAL (18, 2) NULL,
+    [Amount]                           DECIMAL (18, 2) NULL,
+    [ExchangeRate]                     DECIMAL (16, 4) NULL,
+    [ForeignCurrencyAmount]            DECIMAL (18, 2) NULL,
+    [Void]                             BIT             NULL,
+    [CancelledFactFinancialTxHeaderID] INT             NULL,
     CONSTRAINT [pk_FactFinancialTxHeaderID] PRIMARY KEY CLUSTERED ([FactFinancialTxHeaderID] ASC),
     CONSTRAINT [fk_FactFinancialTxHeader_DimCreatedDateID] FOREIGN KEY ([DimCreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_FactFinancialTxHeader_DimCreatedTimeID] FOREIGN KEY ([DimCreatedTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
@@ -57,6 +59,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'DECLARE @reversals AS TABLE
 (
@@ -72,7 +76,7 @@ WITH reversals AS
 		ft1.FinancialTransactionId,
 		ft1.TransactionDate AS EffDate,
 		ft1.FinancialTransactionId AS OrigTxID,
-		ft1.Reverses AS RelatedTxID
+		ft1.__Reverses AS RelatedTxID
 	FROM dbo.FinancialTransaction AS ft1
 	WHERE
 		ft1.Reverses IS NULL
@@ -81,7 +85,7 @@ WITH reversals AS
 		ft2.FinancialTransactionId,
 		R.EffDate,
 		R.OrigTxID,
-		ft2.Reverses AS RelatedTxID
+		ft2.__Reverses AS RelatedTxID
 	FROM dbo.FinancialTransaction AS ft2
 	INNER JOIN reversals AS r
 		ON ft2.Reverses = R.FinancialTransactionId
@@ -170,6 +174,8 @@ FROM
 			ouu.UserId = ft.UserId
 	) AS orgUnit
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader';
+
+
 
 
 

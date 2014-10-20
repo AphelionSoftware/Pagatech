@@ -14,9 +14,10 @@
 
 
 
+
+
 GO
-CREATE UNIQUE NONCLUSTERED INDEX [NonClusteredIndex-20141016-110007]
-    ON [Staging].[Finance_FactFinancialTxDetail]([Loaded] ASC, [SourceKey] ASC) WHERE ([Loaded]=(0));
+
 
 
 GO
@@ -27,4 +28,14 @@ CREATE UNIQUE NONCLUSTERED INDEX [ix_FactFinancialTxDetail_SourceKey]
 GO
 CREATE UNIQUE CLUSTERED INDEX [ClusteredIndex-20141003-101636]
     ON [Staging].[Finance_FactFinancialTxDetail]([SourceKey] ASC);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [ix_FinancialTxDetail_PagaAccount]
+    ON [Staging].[Finance_FactFinancialTxDetail]([DimPagaAccountSourceKey] ASC, [SourceKey] ASC);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [ix_FinancialTxDetail_FinancialAccount]
+    ON [Staging].[Finance_FactFinancialTxDetail]([DimFinancialAccountSourceKey] ASC, [SourceKey] ASC);
 

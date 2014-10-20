@@ -48,6 +48,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganization_SourceKey]
     ON [Shared].[DimOrganization]([SourceKey] ASC, [DimChannelID] ASC, [DimMerchantCategoryID] ASC);
@@ -100,6 +102,8 @@ FROM
 	LEFT JOIN dbo.OrganizationMerchantProcessChannel AS ompc ON
 		o.OrganizationId = ompc.OrganizationId
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+
+
 
 
 
