@@ -28,68 +28,6 @@ SELECT
 	,[FactAirtimeTxHeader_6775545701600586158].[ShortCode] AS [FactAirtimeTxHeaderShortCode]
 	,[FactAirtimeTxHeader_6775545701600586158].[SourceKey] AS [FactAirtimeTxHeaderSourceKey]
 	,[FactAirtimeTxHeader_6775545701600586158].[TextDescription] AS [FactAirtimeTxHeaderTextDescription]
-	,[DimDate_6492183467505435519].[DayName] AS [DimDateDayName]
-	,[DimDate_6492183467505435519].[DayOfMonth] AS [DimDateDayOfMonth]
-	,[DimDate_6492183467505435519].[DayOfQuarter] AS [DimDateDayOfQuarter]
-	,[DimDate_6492183467505435519].[DayOfWeekInMonth] AS [DimDateDayOfWeekInMonth]
-	,[DimDate_6492183467505435519].[DayOfWeekInYear] AS [DimDateDayOfWeekInYear]
-	,[DimDate_6492183467505435519].[DayOfWeekUK] AS [DimDateDayOfWeekUK]
-	,[DimDate_6492183467505435519].[DayOfWeekUSA] AS [DimDateDayOfWeekUSA]
-	,[DimDate_6492183467505435519].[DayOfYear] AS [DimDateDayOfYear]
-	,[DimDate_6492183467505435519].[DaySuffix] AS [DimDateDaySuffix]
-	,[DimDate_6492183467505435519].[DimDateID] AS [DimDateID]
-	,[DimDate_6492183467505435519].[FirstDayOfMonth] AS [DimDateFirstDayOfMonth]
-	,[DimDate_6492183467505435519].[FirstDayOfQuarter] AS [DimDateFirstDayOfQuarter]
-	,[DimDate_6492183467505435519].[FirstDayOfYear] AS [DimDateFirstDayOfYear]
-	,[DimDate_6492183467505435519].[FiscalDayOfYear] AS [DimDateFiscalDayOfYear]
-	,[DimDate_6492183467505435519].[FiscalFirstDayOfMonth] AS [DimDateFiscalFirstDayOfMonth]
-	,[DimDate_6492183467505435519].[FiscalFirstDayOfQuarter] AS [DimDateFiscalFirstDayOfQuarter]
-	,[DimDate_6492183467505435519].[FiscalFirstDayOfYear] AS [DimDateFiscalFirstDayOfYear]
-	,[DimDate_6492183467505435519].[FiscalLastDayOfMonth] AS [DimDateFiscalLastDayOfMonth]
-	,[DimDate_6492183467505435519].[FiscalLastDayOfQuarter] AS [DimDateFiscalLastDayOfQuarter]
-	,[DimDate_6492183467505435519].[FiscalLastDayOfYear] AS [DimDateFiscalLastDayOfYear]
-	,[DimDate_6492183467505435519].[FiscalMMYYYY] AS [DimDateFiscalMMYYYY]
-	,[DimDate_6492183467505435519].[FiscalMonth] AS [DimDateFiscalMonth]
-	,[DimDate_6492183467505435519].[FiscalMonthYear] AS [DimDateFiscalMonthYear]
-	,[DimDate_6492183467505435519].[FiscalQuarter] AS [DimDateFiscalQuarter]
-	,[DimDate_6492183467505435519].[FiscalQuarterName] AS [DimDateFiscalQuarterName]
-	,[DimDate_6492183467505435519].[FiscalWeekOfYear] AS [DimDateFiscalWeekOfYear]
-	,[DimDate_6492183467505435519].[FiscalYear] AS [DimDateFiscalYear]
-	,[DimDate_6492183467505435519].[FiscalYearName] AS [DimDateFiscalYearName]
-	,[DimDate_6492183467505435519].[FullDate] AS [DimDateFullDate]
-	,[DimDate_6492183467505435519].[FullDateUK] AS [DimDateFullDateUK]
-	,[DimDate_6492183467505435519].[FullDateUSA] AS [DimDateFullDateUSA]
-	,[DimDate_6492183467505435519].[HolidayNG] AS [DimDateHolidayNG]
-	,[DimDate_6492183467505435519].[HolidayUK] AS [DimDateHolidayUK]
-	,[DimDate_6492183467505435519].[HolidayUSA] AS [DimDateHolidayUSA]
-	,[DimDate_6492183467505435519].[IsHolidayNG] AS [DimDateIsHolidayNG]
-	,[DimDate_6492183467505435519].[IsHolidayUK] AS [DimDateIsHolidayUK]
-	,[DimDate_6492183467505435519].[IsHolidayUSA] AS [DimDateIsHolidayUSA]
-	,[DimDate_6492183467505435519].[IsWeekday] AS [DimDateIsWeekday]
-	,[DimDate_6492183467505435519].[LastDayOfMonth] AS [DimDateLastDayOfMonth]
-	,[DimDate_6492183467505435519].[LastDayOfQuarter] AS [DimDateLastDayOfQuarter]
-	,[DimDate_6492183467505435519].[LastDayOfYear] AS [DimDateLastDayOfYear]
-	,[DimDate_6492183467505435519].[MMYYYY] AS [DimDateMMYYYY]
-	,[DimDate_6492183467505435519].[Month] AS [DimDateMonth]
-	,[DimDate_6492183467505435519].[MonthName] AS [DimDateMonthName]
-	,[DimDate_6492183467505435519].[MonthOfQuarter] AS [DimDateMonthOfQuarter]
-	,[DimDate_6492183467505435519].[MonthYear] AS [DimDateMonthYear]
-	,[DimDate_6492183467505435519].[Quarter] AS [DimDateQuarter]
-	,[DimDate_6492183467505435519].[QuarterName] AS [DimDateQuarterName]
-	,[DimDate_6492183467505435519].[WeekOfMonth] AS [DimDateWeekOfMonth]
-	,[DimDate_6492183467505435519].[WeekOfQuarter] AS [DimDateWeekOfQuarter]
-	,[DimDate_6492183467505435519].[WeekOfYear] AS [DimDateWeekOfYear]
-	,[DimDate_6492183467505435519].[Year] AS [DimDateYear]
-	,[DimDate_6492183467505435519].[YearName] AS [DimDateYearName]
-	,[DimTime_568158098061455379].[DayTimeBucket] AS [DimTimeDayTimeBucket]
-	,[DimTime_568158098061455379].[DayTimeBucketGroupKey] AS [DimTimeDayTimeBucketGroupKey]
-	,[DimTime_568158098061455379].[DimTimeID] AS [DimTimeID]
-	,[DimTime_568158098061455379].[FullTime] AS [DimTimeFullTime]
-	,[DimTime_568158098061455379].[HourlyBucket] AS [DimTimeHourlyBucket]
-	,[DimTime_568158098061455379].[HourNumber] AS [DimTimeHourNumber]
-	,[DimTime_568158098061455379].[MinuteNumber] AS [DimTimeMinuteNumber]
-	,[DimTime_568158098061455379].[SecondNumber] AS [DimTimeSecondNumber]
-	,[DimTime_568158098061455379].[TimeInSecond] AS [DimTimeTimeInSecond]
 	,[DimCurrency_4634268615095996103].[ISOCode] AS [DimCurrencyISOCode]
 	,[DimCurrency_4634268615095996103].[Name] AS [DimCurrencyName]
 	,[DimCurrency_4634268615095996103].[SourceKey] AS [DimCurrencySourceKey]
@@ -235,26 +173,10 @@ SELECT
 	,[DimProcessTypeGroup_4303359284168953259].[SourceKey] AS [DimProcessTypeGroupSourceKey]
 FROM [Airtime].[FactAirtimeTxHeader] AS [FactAirtimeTxHeader_6775545701600586158]
 
-    JOIN [Shared].[DimDate] AS [DimDate_6492183467505435519] 
-    
-        ON  [FactAirtimeTxHeader_6775545701600586158].[DimCreatedDateID] = [DimDate_6492183467505435519].[DimDateID]
-
-    JOIN [Shared].[DimTime] AS [DimTime_568158098061455379] 
-    
-        ON  [FactAirtimeTxHeader_6775545701600586158].[DimCreatedTimeID] = [DimTime_568158098061455379].[DimTimeID]
-
     LEFT JOIN [Finance].[DimCurrency] AS [DimCurrency_4634268615095996103] 
     
     ON  [FactAirtimeTxHeader_6775545701600586158].[DimCurrencyID] = [DimCurrency_4634268615095996103].[DimCurrencyID]
         
-
-    JOIN [Shared].[DimDate] AS [DimDate_3725561880149230640] 
-    
-        ON  [FactAirtimeTxHeader_6775545701600586158].[DimEffectiveDateID] = [DimDate_3725561880149230640].[DimDateID]
-
-    JOIN [Shared].[DimTime] AS [DimTime_770078962688764786] 
-    
-        ON  [FactAirtimeTxHeader_6775545701600586158].[DimEffectiveTimeID] = [DimTime_770078962688764786].[DimTimeID]
 
     LEFT JOIN [Classification].[DimFinancialTxSubType] AS [DimFinancialTxSubType_2231754890401264373] 
     
@@ -330,25 +252,8 @@ FROM [Airtime].[FactAirtimeTxHeader] AS [FactAirtimeTxHeader_6775545701600586158
     ON  [FactAirtimeTxHeader_6775545701600586158].[DimOrganizationUnitLevel4ID] = [DimOrganizationUnitLevel4_4937489994670192663].[DimOrganizationUnitLevel4ID]
         
 
-    JOIN [Shared].[DimDate] AS [DimDate_1401233814545029041] 
-    
-        ON  [FactAirtimeTxHeader_6775545701600586158].[DimTransactionDateID] = [DimDate_1401233814545029041].[DimDateID]
-
-    JOIN [Shared].[DimTime] AS [DimTime_6953748124057588117] 
-    
-        ON  [FactAirtimeTxHeader_6775545701600586158].[DimTransactionTimeID] = [DimTime_6953748124057588117].[DimTimeID]
-
     LEFT JOIN [Shared].[DimUser] AS [DimUser_34513551534482989] 
     
-    JOIN [Shared].[DimDate] AS [DimDate_4658889482809409808] 
-    
-        ON  [DimUser_34513551534482989].[CreatedDateID] = [DimDate_4658889482809409808].[DimDateID]
-
-    LEFT JOIN [Shared].[DimDate] AS [DimDate_959352450395477966] 
-    
-    ON  [DimUser_34513551534482989].[DateOfBirthID] = [DimDate_959352450395477966].[DimDateID]
-        
-
     LEFT JOIN [Shared].[DimOrganizationUnitLevel4] AS [DimOrganizationUnitLevel4_7949188258461032606] 
     
     JOIN [Shared].[DimOrganizationUnitLevel3] AS [DimOrganizationUnitLevel3_1496752679249243951] 
@@ -431,15 +336,6 @@ FROM [Airtime].[FactAirtimeTxHeader] AS [FactAirtimeTxHeader_6775545701600586158
 
     LEFT JOIN [Shared].[DimUser] AS [DimUser_5038550800128331544] 
     
-    JOIN [Shared].[DimDate] AS [DimDate_260914766763994017] 
-    
-        ON  [DimUser_5038550800128331544].[CreatedDateID] = [DimDate_260914766763994017].[DimDateID]
-
-    LEFT JOIN [Shared].[DimDate] AS [DimDate_7877298442451305831] 
-    
-    ON  [DimUser_5038550800128331544].[DateOfBirthID] = [DimDate_7877298442451305831].[DimDateID]
-        
-
     LEFT JOIN [Shared].[DimOrganizationUnitLevel4] AS [DimOrganizationUnitLevel4_928054258248934991] 
     
     JOIN [Shared].[DimOrganizationUnitLevel3] AS [DimOrganizationUnitLevel3_7307211607271297212] 
@@ -491,15 +387,6 @@ FROM [Airtime].[FactAirtimeTxHeader] AS [FactAirtimeTxHeader_6775545701600586158
 
     LEFT JOIN [Shared].[DimUser] AS [DimUser_4743804449567080437] 
     
-    JOIN [Shared].[DimDate] AS [DimDate_2793203323431465544] 
-    
-        ON  [DimUser_4743804449567080437].[CreatedDateID] = [DimDate_2793203323431465544].[DimDateID]
-
-    LEFT JOIN [Shared].[DimDate] AS [DimDate_1218768837349999686] 
-    
-    ON  [DimUser_4743804449567080437].[DateOfBirthID] = [DimDate_1218768837349999686].[DimDateID]
-        
-
     LEFT JOIN [Shared].[DimOrganizationUnitLevel4] AS [DimOrganizationUnitLevel4_2211293810469767414] 
     
     JOIN [Shared].[DimOrganizationUnitLevel3] AS [DimOrganizationUnitLevel3_7864255312421201127] 
@@ -553,35 +440,8 @@ FROM [Airtime].[FactAirtimeTxHeader] AS [FactAirtimeTxHeader_6775545701600586158
     
         ON  [FactProcessTx_5263212493767213787].[DimChannelID] = [DimChannel_6460871672155903418].[DimChannelID]
 
-    LEFT JOIN [Shared].[DimDate] AS [DimDate_737055018276846643] 
-    
-    ON  [FactProcessTx_5263212493767213787].[DimCompletedDateID] = [DimDate_737055018276846643].[DimDateID]
-        
-
-    LEFT JOIN [Shared].[DimTime] AS [DimTime_8996667967686094879] 
-    
-    ON  [FactProcessTx_5263212493767213787].[DimCompletedTimeID] = [DimTime_8996667967686094879].[DimTimeID]
-        
-
-    JOIN [Shared].[DimDate] AS [DimDate_9213446523303687874] 
-    
-        ON  [FactProcessTx_5263212493767213787].[DimCreatedDateID] = [DimDate_9213446523303687874].[DimDateID]
-
-    JOIN [Shared].[DimTime] AS [DimTime_5963089107952589568] 
-    
-        ON  [FactProcessTx_5263212493767213787].[DimCreatedTimeID] = [DimTime_5963089107952589568].[DimTimeID]
-
     LEFT JOIN [Shared].[DimUser] AS [DimUser_4478212065021833270] 
     
-    JOIN [Shared].[DimDate] AS [DimDate_7674496523611847215] 
-    
-        ON  [DimUser_4478212065021833270].[CreatedDateID] = [DimDate_7674496523611847215].[DimDateID]
-
-    LEFT JOIN [Shared].[DimDate] AS [DimDate_5813253004391153883] 
-    
-    ON  [DimUser_4478212065021833270].[DateOfBirthID] = [DimDate_5813253004391153883].[DimDateID]
-        
-
     LEFT JOIN [Shared].[DimOrganizationUnitLevel4] AS [DimOrganizationUnitLevel4_806168322773854235] 
     
     JOIN [Shared].[DimOrganizationUnitLevel3] AS [DimOrganizationUnitLevel3_8996214192919434278] 
@@ -633,15 +493,6 @@ FROM [Airtime].[FactAirtimeTxHeader] AS [FactAirtimeTxHeader_6775545701600586158
 
     LEFT JOIN [Shared].[DimUser] AS [DimUser_3255779230394657435] 
     
-    JOIN [Shared].[DimDate] AS [DimDate_7181376216361303074] 
-    
-        ON  [DimUser_3255779230394657435].[CreatedDateID] = [DimDate_7181376216361303074].[DimDateID]
-
-    LEFT JOIN [Shared].[DimDate] AS [DimDate_1898469305789189120] 
-    
-    ON  [DimUser_3255779230394657435].[DateOfBirthID] = [DimDate_1898469305789189120].[DimDateID]
-        
-
     LEFT JOIN [Shared].[DimOrganizationUnitLevel4] AS [DimOrganizationUnitLevel4_8339219384591190748] 
     
     JOIN [Shared].[DimOrganizationUnitLevel3] AS [DimOrganizationUnitLevel3_3965424240992625279] 
@@ -705,15 +556,6 @@ FROM [Airtime].[FactAirtimeTxHeader] AS [FactAirtimeTxHeader_6775545701600586158
 
     LEFT JOIN [Shared].[DimUser] AS [DimUser_598778366576537018] 
     
-    JOIN [Shared].[DimDate] AS [DimDate_8740795189060035963] 
-    
-        ON  [DimUser_598778366576537018].[CreatedDateID] = [DimDate_8740795189060035963].[DimDateID]
-
-    LEFT JOIN [Shared].[DimDate] AS [DimDate_2446344878677829863] 
-    
-    ON  [DimUser_598778366576537018].[DateOfBirthID] = [DimDate_2446344878677829863].[DimDateID]
-        
-
     LEFT JOIN [Shared].[DimOrganizationUnitLevel4] AS [DimOrganizationUnitLevel4_4593778254620764769] 
     
     JOIN [Shared].[DimOrganizationUnitLevel3] AS [DimOrganizationUnitLevel3_610907285151922510] 
@@ -763,25 +605,8 @@ FROM [Airtime].[FactAirtimeTxHeader] AS [FactAirtimeTxHeader_6775545701600586158
     ON  [FactProcessTx_5263212493767213787].[DimReceivingUserID] = [DimUser_598778366576537018].[DimUserID]
         
 
-    JOIN [Shared].[DimDate] AS [DimDate_5313001881072405593] 
-    
-        ON  [FactProcessTx_5263212493767213787].[DimStartedDateID] = [DimDate_5313001881072405593].[DimDateID]
-
-    JOIN [Shared].[DimTime] AS [DimTime_8555065240725361083] 
-    
-        ON  [FactProcessTx_5263212493767213787].[DimStartedTimeID] = [DimTime_8555065240725361083].[DimTimeID]
-
     LEFT JOIN [Shared].[DimUser] AS [DimUser_324419619734507131] 
     
-    JOIN [Shared].[DimDate] AS [DimDate_574681283284046936] 
-    
-        ON  [DimUser_324419619734507131].[CreatedDateID] = [DimDate_574681283284046936].[DimDateID]
-
-    LEFT JOIN [Shared].[DimDate] AS [DimDate_5368951882183838262] 
-    
-    ON  [DimUser_324419619734507131].[DateOfBirthID] = [DimDate_5368951882183838262].[DimDateID]
-        
-
     LEFT JOIN [Shared].[DimOrganizationUnitLevel4] AS [DimOrganizationUnitLevel4_8407640271567853562] 
     
     JOIN [Shared].[DimOrganizationUnitLevel3] AS [DimOrganizationUnitLevel3_8544634914902601047] 
@@ -3395,995 +3220,995 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ISOCode', @lev
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimTime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeTimeInSecond';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeTimeInSecond';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'TimeInSecond', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeTimeInSecond';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeTimeInSecond';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimTime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeSecondNumber';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeSecondNumber';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'SecondNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeSecondNumber';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeSecondNumber';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimTime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeMinuteNumber';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeMinuteNumber';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MinuteNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeMinuteNumber';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeMinuteNumber';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimTime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeHourNumber';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeHourNumber';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'HourNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeHourNumber';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeHourNumber';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimTime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeHourlyBucket';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeHourlyBucket';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'HourlyBucket', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeHourlyBucket';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeHourlyBucket';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimTime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeFullTime';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeFullTime';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FullTime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeFullTime';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeFullTime';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimTime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeID';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeID';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimTimeID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeID';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeID';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimTime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeDayTimeBucketGroupKey';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeDayTimeBucketGroupKey';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayTimeBucketGroupKey', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeDayTimeBucketGroupKey';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeDayTimeBucketGroupKey';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimTime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeDayTimeBucket';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeDayTimeBucket';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayTimeBucket', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeDayTimeBucket';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimTimeDayTimeBucket';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateYearName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateYearName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'YearName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateYearName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateYearName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Year', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'WeekOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'WeekOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'WeekOfMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateQuarterName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateQuarterName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'QuarterName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateQuarterName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateQuarterName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Quarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonthYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonthYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MonthYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonthYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonthYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonthOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonthOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MonthOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonthOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonthOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonthName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonthName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MonthName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonthName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonthName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Month', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMMYYYY';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMMYYYY';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MMYYYY', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMMYYYY';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateMMYYYY';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'LastDayOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'LastDayOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'LastDayOfMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsWeekday';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsWeekday';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsWeekday', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsWeekday';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsWeekday';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsHolidayUSA', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsHolidayUK', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayNG';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayNG';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsHolidayNG', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayNG';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayNG';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'HolidayUSA', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'HolidayUK', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateHolidayNG';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateHolidayNG';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'HolidayNG', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateHolidayNG';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateHolidayNG';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FullDateUSA', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FullDateUK', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFullDate';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFullDate';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FullDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFullDate';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFullDate';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYearName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYearName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalYearName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYearName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYearName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalWeekOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalWeekOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalWeekOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalWeekOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalWeekOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarterName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarterName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalQuarterName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarterName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarterName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonthYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonthYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalMonthYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonthYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonthYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMMYYYY';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMMYYYY';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalMMYYYY', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMMYYYY';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMMYYYY';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalLastDayOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalLastDayOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalLastDayOfMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalFirstDayOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalFirstDayOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalFirstDayOfMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalDayOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFiscalDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FirstDayOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FirstDayOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FirstDayOfMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateID';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateID';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimDateID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateID';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateID';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDaySuffix';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDaySuffix';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DaySuffix', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDaySuffix';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDaySuffix';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfWeekUSA', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfWeekUK', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfWeekInYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfWeekInMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'DimDateDayName';
+
 
 
 GO

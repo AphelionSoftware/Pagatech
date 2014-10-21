@@ -18,59 +18,6 @@ SELECT
 	,[DimUser_6169299845028427303].[PhoneNumber] AS [DimUserPhoneNumber]
 	,[DimUser_6169299845028427303].[Sex] AS [DimUserSex]
 	,[DimUser_6169299845028427303].[SourceKey] AS [DimUserSourceKey]
-	,[DimDate_485837232448371198].[DayName] AS [DimDateDayName]
-	,[DimDate_485837232448371198].[DayOfMonth] AS [DimDateDayOfMonth]
-	,[DimDate_485837232448371198].[DayOfQuarter] AS [DimDateDayOfQuarter]
-	,[DimDate_485837232448371198].[DayOfWeekInMonth] AS [DimDateDayOfWeekInMonth]
-	,[DimDate_485837232448371198].[DayOfWeekInYear] AS [DimDateDayOfWeekInYear]
-	,[DimDate_485837232448371198].[DayOfWeekUK] AS [DimDateDayOfWeekUK]
-	,[DimDate_485837232448371198].[DayOfWeekUSA] AS [DimDateDayOfWeekUSA]
-	,[DimDate_485837232448371198].[DayOfYear] AS [DimDateDayOfYear]
-	,[DimDate_485837232448371198].[DaySuffix] AS [DimDateDaySuffix]
-	,[DimDate_485837232448371198].[DimDateID] AS [DimDateID]
-	,[DimDate_485837232448371198].[FirstDayOfMonth] AS [DimDateFirstDayOfMonth]
-	,[DimDate_485837232448371198].[FirstDayOfQuarter] AS [DimDateFirstDayOfQuarter]
-	,[DimDate_485837232448371198].[FirstDayOfYear] AS [DimDateFirstDayOfYear]
-	,[DimDate_485837232448371198].[FiscalDayOfYear] AS [DimDateFiscalDayOfYear]
-	,[DimDate_485837232448371198].[FiscalFirstDayOfMonth] AS [DimDateFiscalFirstDayOfMonth]
-	,[DimDate_485837232448371198].[FiscalFirstDayOfQuarter] AS [DimDateFiscalFirstDayOfQuarter]
-	,[DimDate_485837232448371198].[FiscalFirstDayOfYear] AS [DimDateFiscalFirstDayOfYear]
-	,[DimDate_485837232448371198].[FiscalLastDayOfMonth] AS [DimDateFiscalLastDayOfMonth]
-	,[DimDate_485837232448371198].[FiscalLastDayOfQuarter] AS [DimDateFiscalLastDayOfQuarter]
-	,[DimDate_485837232448371198].[FiscalLastDayOfYear] AS [DimDateFiscalLastDayOfYear]
-	,[DimDate_485837232448371198].[FiscalMMYYYY] AS [DimDateFiscalMMYYYY]
-	,[DimDate_485837232448371198].[FiscalMonth] AS [DimDateFiscalMonth]
-	,[DimDate_485837232448371198].[FiscalMonthYear] AS [DimDateFiscalMonthYear]
-	,[DimDate_485837232448371198].[FiscalQuarter] AS [DimDateFiscalQuarter]
-	,[DimDate_485837232448371198].[FiscalQuarterName] AS [DimDateFiscalQuarterName]
-	,[DimDate_485837232448371198].[FiscalWeekOfYear] AS [DimDateFiscalWeekOfYear]
-	,[DimDate_485837232448371198].[FiscalYear] AS [DimDateFiscalYear]
-	,[DimDate_485837232448371198].[FiscalYearName] AS [DimDateFiscalYearName]
-	,[DimDate_485837232448371198].[FullDate] AS [DimDateFullDate]
-	,[DimDate_485837232448371198].[FullDateUK] AS [DimDateFullDateUK]
-	,[DimDate_485837232448371198].[FullDateUSA] AS [DimDateFullDateUSA]
-	,[DimDate_485837232448371198].[HolidayNG] AS [DimDateHolidayNG]
-	,[DimDate_485837232448371198].[HolidayUK] AS [DimDateHolidayUK]
-	,[DimDate_485837232448371198].[HolidayUSA] AS [DimDateHolidayUSA]
-	,[DimDate_485837232448371198].[IsHolidayNG] AS [DimDateIsHolidayNG]
-	,[DimDate_485837232448371198].[IsHolidayUK] AS [DimDateIsHolidayUK]
-	,[DimDate_485837232448371198].[IsHolidayUSA] AS [DimDateIsHolidayUSA]
-	,[DimDate_485837232448371198].[IsWeekday] AS [DimDateIsWeekday]
-	,[DimDate_485837232448371198].[LastDayOfMonth] AS [DimDateLastDayOfMonth]
-	,[DimDate_485837232448371198].[LastDayOfQuarter] AS [DimDateLastDayOfQuarter]
-	,[DimDate_485837232448371198].[LastDayOfYear] AS [DimDateLastDayOfYear]
-	,[DimDate_485837232448371198].[MMYYYY] AS [DimDateMMYYYY]
-	,[DimDate_485837232448371198].[Month] AS [DimDateMonth]
-	,[DimDate_485837232448371198].[MonthName] AS [DimDateMonthName]
-	,[DimDate_485837232448371198].[MonthOfQuarter] AS [DimDateMonthOfQuarter]
-	,[DimDate_485837232448371198].[MonthYear] AS [DimDateMonthYear]
-	,[DimDate_485837232448371198].[Quarter] AS [DimDateQuarter]
-	,[DimDate_485837232448371198].[QuarterName] AS [DimDateQuarterName]
-	,[DimDate_485837232448371198].[WeekOfMonth] AS [DimDateWeekOfMonth]
-	,[DimDate_485837232448371198].[WeekOfQuarter] AS [DimDateWeekOfQuarter]
-	,[DimDate_485837232448371198].[WeekOfYear] AS [DimDateWeekOfYear]
-	,[DimDate_485837232448371198].[Year] AS [DimDateYear]
-	,[DimDate_485837232448371198].[YearName] AS [DimDateYearName]
 	,[DimOrganizationUnitLevel4_8936358083781369240].[DimOrganizationUnitLevel3ID] AS [DimOrganizationUnitLevel4DimOrganizationUnitLevel3ID]
 	,[DimOrganizationUnitLevel4_8936358083781369240].[DimOrganizationUnitTypeID] AS [DimOrganizationUnitLevel4DimOrganizationUnitTypeID]
 	,[DimOrganizationUnitLevel4_8936358083781369240].[IdentificationNumber] AS [DimOrganizationUnitLevel4IdentificationNumber]
@@ -146,15 +93,6 @@ SELECT
 	,[DimOrganizationUnitType_5767352596454279124].[Name] AS [DimOrganizationUnitTypeName]
 	,[DimOrganizationUnitType_5767352596454279124].[SourceKey] AS [DimOrganizationUnitTypeSourceKey]
 FROM [Shared].[DimUser] AS [DimUser_6169299845028427303]
-
-    JOIN [Shared].[DimDate] AS [DimDate_485837232448371198] 
-    
-        ON  [DimUser_6169299845028427303].[CreatedDateID] = [DimDate_485837232448371198].[DimDateID]
-
-    LEFT JOIN [Shared].[DimDate] AS [DimDate_9016152657103967812] 
-    
-    ON  [DimUser_6169299845028427303].[DateOfBirthID] = [DimDate_9016152657103967812].[DimDateID]
-        
 
     LEFT JOIN [Shared].[DimOrganizationUnitLevel4] AS [DimOrganizationUnitLevel4_8936358083781369240] 
     
@@ -1639,851 +1577,851 @@ EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizatio
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateYearName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateYearName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'YearName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateYearName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateYearName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Year', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'WeekOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'WeekOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'WeekOfMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateWeekOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateQuarterName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateQuarterName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'QuarterName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateQuarterName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateQuarterName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Quarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonthYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonthYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MonthYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonthYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonthYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonthOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonthOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MonthOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonthOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonthOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonthName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonthName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MonthName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonthName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonthName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Month', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMMYYYY';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMMYYYY';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MMYYYY', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMMYYYY';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateMMYYYY';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'LastDayOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'LastDayOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'LastDayOfMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateLastDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsWeekday';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsWeekday';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsWeekday', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsWeekday';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsWeekday';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsHolidayUSA', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsHolidayUK', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayNG';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayNG';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IsHolidayNG', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayNG';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateIsHolidayNG';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'HolidayUSA', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'HolidayUK', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateHolidayUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateHolidayNG';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateHolidayNG';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'HolidayNG', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateHolidayNG';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateHolidayNG';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FullDateUSA', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FullDateUK', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFullDateUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFullDate';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFullDate';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FullDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFullDate';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFullDate';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYearName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYearName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalYearName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYearName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYearName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalWeekOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalWeekOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalWeekOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalWeekOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalWeekOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarterName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarterName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalQuarterName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarterName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarterName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonthYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonthYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalMonthYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonthYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonthYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMMYYYY';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMMYYYY';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalMMYYYY', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMMYYYY';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalMMYYYY';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalLastDayOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalLastDayOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalLastDayOfMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalLastDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalFirstDayOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalFirstDayOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalFirstDayOfMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalFirstDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FiscalDayOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFiscalDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FirstDayOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FirstDayOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'FirstDayOfMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateFirstDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateID';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateID';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimDateID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateID';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateID';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDaySuffix';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDaySuffix';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DaySuffix', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDaySuffix';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDaySuffix';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfWeekUSA', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUSA';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUSA';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfWeekUK', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUK';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekUK';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfWeekInYear', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInYear';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInYear';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfWeekInMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfWeekInMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfQuarter', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfQuarter';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfQuarter';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayOfMonth', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfMonth';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayOfMonth';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'DimDate', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayName';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DayName', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayName';
 
 
+
 GO
-EXECUTE sp_addextendedproperty @name = N'HierarchyLevel', @value = N'1', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'DimUser', @level2type = N'COLUMN', @level2name = N'DimDateDayName';
+
 
 
 GO
