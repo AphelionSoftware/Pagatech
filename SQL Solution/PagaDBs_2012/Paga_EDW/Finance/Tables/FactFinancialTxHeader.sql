@@ -61,6 +61,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'DECLARE @reversals AS TABLE
 (
@@ -265,4 +267,65 @@ CREATE UNIQUE NONCLUSTERED INDEX [ix_FactFinancialTxHeader_SourceKey]
 GO
 CREATE NONCLUSTERED INDEX [ix_FactFinancialTxHeader_RelatedFactFinancialTxHeaderID]
     ON [Finance].[FactFinancialTxHeader]([RelatedFactFinancialTxHeaderID] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [NonClusteredIndex-20141023-131407]
+    ON [Finance].[FactFinancialTxHeader]([DimTransactionDateID] ASC, [Void] ASC) WHERE ([Void]=(0));
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'RelatedFactFinancialTxHeaderID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'OriginalFactFinancialTxHeaderID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'FactProcessTxID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimUserID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimTransactionTimeID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimTransactionDateID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'true', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimOrganizationUnitLevel4ID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxTypeID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimFinancialTxSubTypeID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimEffectiveTimeID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimEffectiveDateID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimCurrencyID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimCreatedTimeID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxHeader', @level2type = N'COLUMN', @level2name = N'DimCreatedDateID';
 

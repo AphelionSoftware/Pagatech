@@ -23,6 +23,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialTransactionItem', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeTxDetail';
 
@@ -85,4 +87,12 @@ EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'10', @level0type
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2800', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeTxDetail';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeTxDetail', @level2type = N'COLUMN', @level2name = N'DimCreatedTimeID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeTxDetail', @level2type = N'COLUMN', @level2name = N'DimCreatedDateID';
 

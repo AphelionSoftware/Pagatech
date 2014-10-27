@@ -24,6 +24,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialTransactionItem', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxDetail';
 
@@ -77,4 +79,9 @@ EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'10', @level0type
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2800', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTxDetail';
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [ix_FactFinancialTxDetail_HeaderID]
+    ON [Finance].[FactFinancialTxDetail]([FactFinancialTxHeaderID] ASC, [FactFinancialTxDetailID] ASC);
 

@@ -41,6 +41,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimUser_SourceKey]
     ON [Shared].[DimUser]([SourceKey] ASC);
@@ -221,4 +223,9 @@ EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'7', @level0type 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2600', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [ix_DimUser_DimPagaAccountID]
+    ON [Shared].[DimUser]([DimPagaAccountID] ASC, [DimUserID] ASC);
 
