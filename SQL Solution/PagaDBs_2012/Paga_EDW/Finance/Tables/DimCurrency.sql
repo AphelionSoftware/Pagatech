@@ -18,6 +18,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimCurrency_SourceKey]
     ON [Finance].[DimCurrency]([SourceKey] ASC);
@@ -58,11 +60,11 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ISOCode', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimCurrency', @level2type = N'COLUMN', @level2name = N'ISOCode';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'Symbol', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimCurrency', @level2type = N'COLUMN', @level2name = N'Symbol';
+
 
 
 GO

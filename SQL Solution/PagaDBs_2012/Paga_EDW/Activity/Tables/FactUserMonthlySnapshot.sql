@@ -29,64 +29,66 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCreatedDateID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'DimCreatedDateID';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccountID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'DimPagaAccountID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimProcessTypeID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'DimProcessTypeID';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimChannelID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'DimChannelID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimAsOfDateID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'DimAsOfDateID';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimOrganizationID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'DimOrganizationID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCityID', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'DimCityID';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ProcessFee', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'ProcessFee';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ProcessAmount', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'ProcessAmount';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'AgentCommissionAmount', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'AgentCommissionAmount';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ForMeByMe_SentTxCount', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'ForMeByMe_SentTxCount';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ForMeByOther_SentTxCount', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'ForMeByOther_SentTxCount';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ByMeForOther_SentTxCount', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'ByMeForOther_SentTxCount';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'ReceivedTxCount', @level0type = N'SCHEMA', @level0name = N'Activity', @level1type = N'TABLE', @level1name = N'FactUserMonthlySnapshot', @level2type = N'COLUMN', @level2name = N'ReceivedTxCount';
+
+
+
+GO
+
+
+
+GO
+
+
+
+GO
+
+
+
+GO
+
+
+
+GO
+
+
+
+GO
+
 
 
 GO

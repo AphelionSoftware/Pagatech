@@ -17,28 +17,30 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeStockMovement';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimDateID', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'DimDateID';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimMobileOperatorID', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'DimMobileOperatorID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimPagaAccountID', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'DimPagaAccountID';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'DimCityID', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'DimCityID';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'DisplayName', @value = N'MovementAmount', @level0type = N'SCHEMA', @level0name = N'Airtime', @level1type = N'TABLE', @level1name = N'FactAirtimeStockMovement', @level2type = N'COLUMN', @level2name = N'MovementAmount';
+
+
+
+GO
+
+
+
+GO
+
 
 
 GO

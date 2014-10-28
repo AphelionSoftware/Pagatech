@@ -19,6 +19,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
 	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
@@ -32,7 +34,9 @@ FROM
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'LocalGovernmentAreaId', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea';
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'DimLocalGovernmentAreaId', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea';
+
+
 
 
 GO
