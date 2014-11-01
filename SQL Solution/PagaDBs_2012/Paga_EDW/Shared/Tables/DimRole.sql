@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [Shared].[DimRole] (
     [DimRoleID]      INT            IDENTITY (1, 1) NOT NULL,
     [SourceKey]      VARCHAR (255)  NOT NULL,
+    [RoleGroupName]  VARCHAR (255)  NOT NULL,
     [Name]           VARCHAR (255)  NOT NULL,
     [TextDesciption] VARCHAR (1000) NULL,
     [SourceKeyHash]  BIGINT         NULL,
@@ -23,9 +24,10 @@
 
 
 
+
+
 GO
-CREATE UNIQUE NONCLUSTERED INDEX [ix_DimRole_SourceKey]
-    ON [Shared].[DimRole]([SourceKey] ASC);
+
 
 
 GO
@@ -42,11 +44,14 @@ FROM
 	(
 		SELECT 
 			SourceKey = fa.roleId,
+			RoleGroupName = UPPER(CONVERT(VARCHAR(255),fa.[Namespace])),
 			Name = CONVERT(VARCHAR(255), fa.Name),
 			TextDescription = CONVERT(VARCHAR(1000), fa.Description)
 		FROM dbo.[Role] AS fa
 
 	) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimRole';
+
+
 
 
 

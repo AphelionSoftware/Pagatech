@@ -504,3 +504,7 @@ EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Airtime', @level
 GO
 EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Amount', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader', @level2type = N'COLUMN', @level2name = N'FactAirtimeTxHeaderAmount';
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'ExcludeFromView', @value = N'True', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactAirtimeTxHeader';
+

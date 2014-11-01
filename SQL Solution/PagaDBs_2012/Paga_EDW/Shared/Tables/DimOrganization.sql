@@ -32,6 +32,8 @@
 );
 
 
+
+
 GO
 
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganization_SourceKey]
@@ -127,6 +129,8 @@ FROM
 	LEFT JOIN dbo.OrganizationMerchantProcessChannel AS ompc ON
 		o.OrganizationId = ompc.OrganizationId
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+
+
 GO
 
 EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'OrganizationId', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
