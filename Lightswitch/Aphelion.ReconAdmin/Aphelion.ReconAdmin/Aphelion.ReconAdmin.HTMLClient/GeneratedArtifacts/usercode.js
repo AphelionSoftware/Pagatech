@@ -14,6 +14,9 @@ document.writeln("<script type=\"text/javascript\" src=\"UserCode/ReconStatu.lsm
 document.writeln("<script type=\"text/javascript\" src=\"UserCode/ReconSummary.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"UserCode/ReconType.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"UserCode/SystemField.lsml.js\"></script>");
+document.writeln("<script type=\"text/javascript\" src=\"Screens/Fields/AddEditFileField.lsml.js\"></script>");
+document.writeln("<script type=\"text/javascript\" src=\"Screens/Fields/AddEditReconField.lsml.js\"></script>");
+document.writeln("<script type=\"text/javascript\" src=\"Screens/Fields/AddEditSystemField.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"Screens/Fields/ViewFileField.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"Screens/Fields/ViewReconField.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"Screens/Fields/ViewSystemField.lsml.js\"></script>");
