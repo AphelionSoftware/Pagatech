@@ -53,394 +53,6 @@ window.myapp = msls.application;
         $Entity.call(this, entitySet);
     }
 
-    function ImportFileField_ReconField(entitySet) {
-        /// <summary>
-        /// Represents the ImportFileField_ReconField entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this importFileField_ReconField.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this importFileField_ReconField.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this importFileField_ReconField.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this importFileField_ReconField.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this importFileField_ReconField.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this importFileField_ReconField.
-        /// </field>
-        /// <field name="FileField" type="msls.application.FileField">
-        /// Gets or sets the fileField for this importFileField_ReconField.
-        /// </field>
-        /// <field name="ReconField" type="msls.application.ReconField">
-        /// Gets or sets the reconField for this importFileField_ReconField.
-        /// </field>
-        /// <field name="details" type="msls.application.ImportFileField_ReconField.Details">
-        /// Gets the details for this importFileField_ReconField.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function ReconField(entitySet) {
-        /// <summary>
-        /// Represents the ReconField entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this reconField.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this reconField.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this reconField.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this reconField.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this reconField.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this reconField.
-        /// </field>
-        /// <field name="ImportFileField_ReconFields" type="msls.EntityCollection" elementType="msls.application.ImportFileField_ReconField">
-        /// Gets the importFileField_ReconFields for this reconField.
-        /// </field>
-        /// <field name="FieldType" type="msls.application.FieldType">
-        /// Gets or sets the fieldType for this reconField.
-        /// </field>
-        /// <field name="FileField" type="msls.application.FileField">
-        /// Gets or sets the fileField for this reconField.
-        /// </field>
-        /// <field name="SystemField" type="msls.application.SystemField">
-        /// Gets or sets the systemField for this reconField.
-        /// </field>
-        /// <field name="ReconProcessStep" type="msls.application.ReconProcessStep">
-        /// Gets or sets the reconProcessStep for this reconField.
-        /// </field>
-        /// <field name="details" type="msls.application.ReconField.Details">
-        /// Gets the details for this reconField.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function ReconItemStatu(entitySet) {
-        /// <summary>
-        /// Represents the ReconItemStatu entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this reconItemStatu.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this reconItemStatu.
-        /// </field>
-        /// <field name="Code" type="String">
-        /// Gets or sets the code for this reconItemStatu.
-        /// </field>
-        /// <field name="Name" type="String">
-        /// Gets or sets the name for this reconItemStatu.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this reconItemStatu.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this reconItemStatu.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this reconItemStatu.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this reconItemStatu.
-        /// </field>
-        /// <field name="details" type="msls.application.ReconItemStatu.Details">
-        /// Gets the details for this reconItemStatu.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function ReconProcess(entitySet) {
-        /// <summary>
-        /// Represents the ReconProcess entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this reconProcess.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this reconProcess.
-        /// </field>
-        /// <field name="Code" type="String">
-        /// Gets or sets the code for this reconProcess.
-        /// </field>
-        /// <field name="Name" type="String">
-        /// Gets or sets the name for this reconProcess.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this reconProcess.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this reconProcess.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this reconProcess.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this reconProcess.
-        /// </field>
-        /// <field name="ReconProcessSteps" type="msls.EntityCollection" elementType="msls.application.ReconProcessStep">
-        /// Gets the reconProcessSteps for this reconProcess.
-        /// </field>
-        /// <field name="details" type="msls.application.ReconProcess.Details">
-        /// Gets the details for this reconProcess.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function ReconProcessStep(entitySet) {
-        /// <summary>
-        /// Represents the ReconProcessStep entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this reconProcessStep.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this reconProcessStep.
-        /// </field>
-        /// <field name="Code" type="String">
-        /// Gets or sets the code for this reconProcessStep.
-        /// </field>
-        /// <field name="Name" type="String">
-        /// Gets or sets the name for this reconProcessStep.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this reconProcessStep.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this reconProcessStep.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this reconProcessStep.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this reconProcessStep.
-        /// </field>
-        /// <field name="FileSection" type="msls.application.FileSection">
-        /// Gets or sets the fileSection for this reconProcessStep.
-        /// </field>
-        /// <field name="FileSection1" type="msls.application.FileSection">
-        /// Gets or sets the fileSection1 for this reconProcessStep.
-        /// </field>
-        /// <field name="ReconProcess" type="msls.application.ReconProcess">
-        /// Gets or sets the reconProcess for this reconProcessStep.
-        /// </field>
-        /// <field name="ReconType" type="msls.application.ReconType">
-        /// Gets or sets the reconType for this reconProcessStep.
-        /// </field>
-        /// <field name="Order" type="Number">
-        /// Gets or sets the order for this reconProcessStep.
-        /// </field>
-        /// <field name="ReconFields" type="msls.EntityCollection" elementType="msls.application.ReconField">
-        /// Gets the reconFields for this reconProcessStep.
-        /// </field>
-        /// <field name="details" type="msls.application.ReconProcessStep.Details">
-        /// Gets the details for this reconProcessStep.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function ReconSource(entitySet) {
-        /// <summary>
-        /// Represents the ReconSource entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this reconSource.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this reconSource.
-        /// </field>
-        /// <field name="Code" type="String">
-        /// Gets or sets the code for this reconSource.
-        /// </field>
-        /// <field name="Name" type="String">
-        /// Gets or sets the name for this reconSource.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this reconSource.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this reconSource.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this reconSource.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this reconSource.
-        /// </field>
-        /// <field name="ReconSourceType" type="msls.application.ReconSourceType">
-        /// Gets or sets the reconSourceType for this reconSource.
-        /// </field>
-        /// <field name="details" type="msls.application.ReconSource.Details">
-        /// Gets the details for this reconSource.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function ReconSourceType(entitySet) {
-        /// <summary>
-        /// Represents the ReconSourceType entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this reconSourceType.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this reconSourceType.
-        /// </field>
-        /// <field name="Code" type="String">
-        /// Gets or sets the code for this reconSourceType.
-        /// </field>
-        /// <field name="Name" type="String">
-        /// Gets or sets the name for this reconSourceType.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this reconSourceType.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this reconSourceType.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this reconSourceType.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this reconSourceType.
-        /// </field>
-        /// <field name="ReconSources" type="msls.EntityCollection" elementType="msls.application.ReconSource">
-        /// Gets the reconSources for this reconSourceType.
-        /// </field>
-        /// <field name="details" type="msls.application.ReconSourceType.Details">
-        /// Gets the details for this reconSourceType.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function ReconStatu(entitySet) {
-        /// <summary>
-        /// Represents the ReconStatu entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this reconStatu.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this reconStatu.
-        /// </field>
-        /// <field name="Code" type="String">
-        /// Gets or sets the code for this reconStatu.
-        /// </field>
-        /// <field name="Name" type="String">
-        /// Gets or sets the name for this reconStatu.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this reconStatu.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this reconStatu.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this reconStatu.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this reconStatu.
-        /// </field>
-        /// <field name="details" type="msls.application.ReconStatu.Details">
-        /// Gets the details for this reconStatu.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function ReconType(entitySet) {
-        /// <summary>
-        /// Represents the ReconType entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this reconType.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this reconType.
-        /// </field>
-        /// <field name="Code" type="String">
-        /// Gets or sets the code for this reconType.
-        /// </field>
-        /// <field name="Name" type="String">
-        /// Gets or sets the name for this reconType.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this reconType.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this reconType.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this reconType.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this reconType.
-        /// </field>
-        /// <field name="ReconProcessSteps" type="msls.EntityCollection" elementType="msls.application.ReconProcessStep">
-        /// Gets the reconProcessSteps for this reconType.
-        /// </field>
-        /// <field name="details" type="msls.application.ReconType.Details">
-        /// Gets the details for this reconType.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function SystemField(entitySet) {
-        /// <summary>
-        /// Represents the SystemField entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this systemField.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this systemField.
-        /// </field>
-        /// <field name="TableSchema" type="String">
-        /// Gets or sets the tableSchema for this systemField.
-        /// </field>
-        /// <field name="TableName" type="String">
-        /// Gets or sets the tableName for this systemField.
-        /// </field>
-        /// <field name="ColumnName" type="String">
-        /// Gets or sets the columnName for this systemField.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this systemField.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this systemField.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this systemField.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this systemField.
-        /// </field>
-        /// <field name="ReconFields" type="msls.EntityCollection" elementType="msls.application.ReconField">
-        /// Gets the reconFields for this systemField.
-        /// </field>
-        /// <field name="FieldType" type="msls.application.FieldType">
-        /// Gets or sets the fieldType for this systemField.
-        /// </field>
-        /// <field name="details" type="msls.application.SystemField.Details">
-        /// Gets the details for this systemField.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
     function FileDefinition(entitySet) {
         /// <summary>
         /// Represents the FileDefinition entity type.
@@ -456,9 +68,6 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="Name" type="String">
         /// Gets or sets the name for this fileDefinition.
-        /// </field>
-        /// <field name="ReconSourceID" type="Number">
-        /// Gets or sets the reconSourceID for this fileDefinition.
         /// </field>
         /// <field name="sys_CreatedBy" type="String">
         /// Gets or sets the sys_CreatedBy for this fileDefinition.
@@ -480,6 +89,9 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="ImportedFiles" type="msls.EntityCollection" elementType="msls.application.ImportedFile">
         /// Gets the importedFiles for this fileDefinition.
+        /// </field>
+        /// <field name="ReconSource" type="msls.application.ReconSource">
+        /// Gets or sets the reconSource for this fileDefinition.
         /// </field>
         /// <field name="details" type="msls.application.FileDefinition.Details">
         /// Gets the details for this fileDefinition.
@@ -671,8 +283,45 @@ window.myapp = msls.application;
         /// <field name="ReconSummary" type="msls.application.ReconSummary">
         /// Gets or sets the reconSummary for this importedFile.
         /// </field>
+        /// <field name="UploadedFileName" type="String">
+        /// Gets or sets the uploadedFileName for this importedFile.
+        /// </field>
         /// <field name="details" type="msls.application.ImportedFile.Details">
         /// Gets the details for this importedFile.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
+    function ImportFileField_ReconField(entitySet) {
+        /// <summary>
+        /// Represents the ImportFileField_ReconField entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this importFileField_ReconField.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this importFileField_ReconField.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this importFileField_ReconField.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this importFileField_ReconField.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this importFileField_ReconField.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this importFileField_ReconField.
+        /// </field>
+        /// <field name="FileField" type="msls.application.FileField">
+        /// Gets or sets the fileField for this importFileField_ReconField.
+        /// </field>
+        /// <field name="ReconField" type="msls.application.ReconField">
+        /// Gets or sets the reconField for this importFileField_ReconField.
+        /// </field>
+        /// <field name="details" type="msls.application.ImportFileField_ReconField.Details">
+        /// Gets the details for this importFileField_ReconField.
         /// </field>
         $Entity.call(this, entitySet);
     }
@@ -723,6 +372,289 @@ window.myapp = msls.application;
         $Entity.call(this, entitySet);
     }
 
+    function ReconField(entitySet) {
+        /// <summary>
+        /// Represents the ReconField entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this reconField.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this reconField.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this reconField.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this reconField.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this reconField.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this reconField.
+        /// </field>
+        /// <field name="ImportFileField_ReconFields" type="msls.EntityCollection" elementType="msls.application.ImportFileField_ReconField">
+        /// Gets the importFileField_ReconFields for this reconField.
+        /// </field>
+        /// <field name="FieldType" type="msls.application.FieldType">
+        /// Gets or sets the fieldType for this reconField.
+        /// </field>
+        /// <field name="FileField" type="msls.application.FileField">
+        /// Gets or sets the fileField for this reconField.
+        /// </field>
+        /// <field name="SystemField" type="msls.application.SystemField">
+        /// Gets or sets the systemField for this reconField.
+        /// </field>
+        /// <field name="ReconProcessStep" type="msls.application.ReconProcessStep">
+        /// Gets or sets the reconProcessStep for this reconField.
+        /// </field>
+        /// <field name="details" type="msls.application.ReconField.Details">
+        /// Gets the details for this reconField.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
+    function ReconItemStatu(entitySet) {
+        /// <summary>
+        /// Represents the ReconItemStatu entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this reconItemStatu.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this reconItemStatu.
+        /// </field>
+        /// <field name="Code" type="String">
+        /// Gets or sets the code for this reconItemStatu.
+        /// </field>
+        /// <field name="Name" type="String">
+        /// Gets or sets the name for this reconItemStatu.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this reconItemStatu.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this reconItemStatu.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this reconItemStatu.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this reconItemStatu.
+        /// </field>
+        /// <field name="details" type="msls.application.ReconItemStatu.Details">
+        /// Gets the details for this reconItemStatu.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
+    function ReconProcess(entitySet) {
+        /// <summary>
+        /// Represents the ReconProcess entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this reconProcess.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this reconProcess.
+        /// </field>
+        /// <field name="Code" type="String">
+        /// Gets or sets the code for this reconProcess.
+        /// </field>
+        /// <field name="Name" type="String">
+        /// Gets or sets the name for this reconProcess.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this reconProcess.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this reconProcess.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this reconProcess.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this reconProcess.
+        /// </field>
+        /// <field name="ReconProcessSteps" type="msls.EntityCollection" elementType="msls.application.ReconProcessStep">
+        /// Gets the reconProcessSteps for this reconProcess.
+        /// </field>
+        /// <field name="details" type="msls.application.ReconProcess.Details">
+        /// Gets the details for this reconProcess.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
+    function ReconProcessStep(entitySet) {
+        /// <summary>
+        /// Represents the ReconProcessStep entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this reconProcessStep.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this reconProcessStep.
+        /// </field>
+        /// <field name="Code" type="String">
+        /// Gets or sets the code for this reconProcessStep.
+        /// </field>
+        /// <field name="Name" type="String">
+        /// Gets or sets the name for this reconProcessStep.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this reconProcessStep.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this reconProcessStep.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this reconProcessStep.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this reconProcessStep.
+        /// </field>
+        /// <field name="FileSection" type="msls.application.FileSection">
+        /// Gets or sets the fileSection for this reconProcessStep.
+        /// </field>
+        /// <field name="FileSection1" type="msls.application.FileSection">
+        /// Gets or sets the fileSection1 for this reconProcessStep.
+        /// </field>
+        /// <field name="ReconProcess" type="msls.application.ReconProcess">
+        /// Gets or sets the reconProcess for this reconProcessStep.
+        /// </field>
+        /// <field name="ReconType" type="msls.application.ReconType">
+        /// Gets or sets the reconType for this reconProcessStep.
+        /// </field>
+        /// <field name="Order" type="Number">
+        /// Gets or sets the order for this reconProcessStep.
+        /// </field>
+        /// <field name="ReconFields" type="msls.EntityCollection" elementType="msls.application.ReconField">
+        /// Gets the reconFields for this reconProcessStep.
+        /// </field>
+        /// <field name="ReconSummaries" type="msls.EntityCollection" elementType="msls.application.ReconSummary">
+        /// Gets the reconSummaries for this reconProcessStep.
+        /// </field>
+        /// <field name="details" type="msls.application.ReconProcessStep.Details">
+        /// Gets the details for this reconProcessStep.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
+    function ReconSource(entitySet) {
+        /// <summary>
+        /// Represents the ReconSource entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this reconSource.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this reconSource.
+        /// </field>
+        /// <field name="Code" type="String">
+        /// Gets or sets the code for this reconSource.
+        /// </field>
+        /// <field name="Name" type="String">
+        /// Gets or sets the name for this reconSource.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this reconSource.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this reconSource.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this reconSource.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this reconSource.
+        /// </field>
+        /// <field name="ReconSourceType" type="msls.application.ReconSourceType">
+        /// Gets or sets the reconSourceType for this reconSource.
+        /// </field>
+        /// <field name="FileDefinitions" type="msls.EntityCollection" elementType="msls.application.FileDefinition">
+        /// Gets the fileDefinitions for this reconSource.
+        /// </field>
+        /// <field name="details" type="msls.application.ReconSource.Details">
+        /// Gets the details for this reconSource.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
+    function ReconSourceType(entitySet) {
+        /// <summary>
+        /// Represents the ReconSourceType entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this reconSourceType.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this reconSourceType.
+        /// </field>
+        /// <field name="Code" type="String">
+        /// Gets or sets the code for this reconSourceType.
+        /// </field>
+        /// <field name="Name" type="String">
+        /// Gets or sets the name for this reconSourceType.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this reconSourceType.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this reconSourceType.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this reconSourceType.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this reconSourceType.
+        /// </field>
+        /// <field name="ReconSources" type="msls.EntityCollection" elementType="msls.application.ReconSource">
+        /// Gets the reconSources for this reconSourceType.
+        /// </field>
+        /// <field name="details" type="msls.application.ReconSourceType.Details">
+        /// Gets the details for this reconSourceType.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
+    function ReconStatu(entitySet) {
+        /// <summary>
+        /// Represents the ReconStatu entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this reconStatu.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this reconStatu.
+        /// </field>
+        /// <field name="Code" type="String">
+        /// Gets or sets the code for this reconStatu.
+        /// </field>
+        /// <field name="Name" type="String">
+        /// Gets or sets the name for this reconStatu.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this reconStatu.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this reconStatu.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this reconStatu.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this reconStatu.
+        /// </field>
+        /// <field name="ReconSummaries" type="msls.EntityCollection" elementType="msls.application.ReconSummary">
+        /// Gets the reconSummaries for this reconStatu.
+        /// </field>
+        /// <field name="details" type="msls.application.ReconStatu.Details">
+        /// Gets the details for this reconStatu.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
     function ReconSummary(entitySet) {
         /// <summary>
         /// Represents the ReconSummary entity type.
@@ -733,17 +665,11 @@ window.myapp = msls.application;
         /// <field name="ID" type="Number">
         /// Gets or sets the iD for this reconSummary.
         /// </field>
-        /// <field name="ReconProcessID" type="Number">
-        /// Gets or sets the reconProcessID for this reconSummary.
-        /// </field>
         /// <field name="ReconStart" type="Date">
         /// Gets or sets the reconStart for this reconSummary.
         /// </field>
         /// <field name="ReconEnd" type="Date">
         /// Gets or sets the reconEnd for this reconSummary.
-        /// </field>
-        /// <field name="ReconStatusID" type="Number">
-        /// Gets or sets the reconStatusID for this reconSummary.
         /// </field>
         /// <field name="SourceCount" type="Number">
         /// Gets or sets the sourceCount for this reconSummary.
@@ -775,8 +701,94 @@ window.myapp = msls.application;
         /// <field name="ImportedFiles" type="msls.EntityCollection" elementType="msls.application.ImportedFile">
         /// Gets the importedFiles for this reconSummary.
         /// </field>
+        /// <field name="ReconProcessStep" type="msls.application.ReconProcessStep">
+        /// Gets or sets the reconProcessStep for this reconSummary.
+        /// </field>
+        /// <field name="ReconStatu" type="msls.application.ReconStatu">
+        /// Gets or sets the reconStatu for this reconSummary.
+        /// </field>
         /// <field name="details" type="msls.application.ReconSummary.Details">
         /// Gets the details for this reconSummary.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
+    function ReconType(entitySet) {
+        /// <summary>
+        /// Represents the ReconType entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this reconType.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this reconType.
+        /// </field>
+        /// <field name="Code" type="String">
+        /// Gets or sets the code for this reconType.
+        /// </field>
+        /// <field name="Name" type="String">
+        /// Gets or sets the name for this reconType.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this reconType.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this reconType.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this reconType.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this reconType.
+        /// </field>
+        /// <field name="ReconProcessSteps" type="msls.EntityCollection" elementType="msls.application.ReconProcessStep">
+        /// Gets the reconProcessSteps for this reconType.
+        /// </field>
+        /// <field name="details" type="msls.application.ReconType.Details">
+        /// Gets the details for this reconType.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
+    function SystemField(entitySet) {
+        /// <summary>
+        /// Represents the SystemField entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this systemField.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this systemField.
+        /// </field>
+        /// <field name="TableSchema" type="String">
+        /// Gets or sets the tableSchema for this systemField.
+        /// </field>
+        /// <field name="TableName" type="String">
+        /// Gets or sets the tableName for this systemField.
+        /// </field>
+        /// <field name="ColumnName" type="String">
+        /// Gets or sets the columnName for this systemField.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this systemField.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this systemField.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this systemField.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this systemField.
+        /// </field>
+        /// <field name="ReconFields" type="msls.EntityCollection" elementType="msls.application.ReconField">
+        /// Gets the reconFields for this systemField.
+        /// </field>
+        /// <field name="FieldType" type="msls.application.FieldType">
+        /// Gets or sets the fieldType for this systemField.
+        /// </field>
+        /// <field name="details" type="msls.application.SystemField.Details">
+        /// Gets the details for this systemField.
         /// </field>
         $Entity.call(this, entitySet);
     }
@@ -791,8 +803,26 @@ window.myapp = msls.application;
         /// <field name="FieldTypes" type="msls.EntitySet">
         /// Gets the FieldTypes entity set.
         /// </field>
+        /// <field name="FileDefinitions" type="msls.EntitySet">
+        /// Gets the FileDefinitions entity set.
+        /// </field>
+        /// <field name="FileFields" type="msls.EntitySet">
+        /// Gets the FileFields entity set.
+        /// </field>
+        /// <field name="FileSections" type="msls.EntitySet">
+        /// Gets the FileSections entity set.
+        /// </field>
+        /// <field name="FileTypes" type="msls.EntitySet">
+        /// Gets the FileTypes entity set.
+        /// </field>
+        /// <field name="ImportedFiles" type="msls.EntitySet">
+        /// Gets the ImportedFiles entity set.
+        /// </field>
         /// <field name="ImportFileField_ReconFields" type="msls.EntitySet">
         /// Gets the ImportFileField_ReconFields entity set.
+        /// </field>
+        /// <field name="ReconDetails" type="msls.EntitySet">
+        /// Gets the ReconDetails entity set.
         /// </field>
         /// <field name="ReconFields" type="msls.EntitySet">
         /// Gets the ReconFields entity set.
@@ -815,32 +845,14 @@ window.myapp = msls.application;
         /// <field name="ReconStatus" type="msls.EntitySet">
         /// Gets the ReconStatus entity set.
         /// </field>
+        /// <field name="ReconSummaries" type="msls.EntitySet">
+        /// Gets the ReconSummaries entity set.
+        /// </field>
         /// <field name="ReconTypes" type="msls.EntitySet">
         /// Gets the ReconTypes entity set.
         /// </field>
         /// <field name="SystemFields" type="msls.EntitySet">
         /// Gets the SystemFields entity set.
-        /// </field>
-        /// <field name="FileDefinitions" type="msls.EntitySet">
-        /// Gets the FileDefinitions entity set.
-        /// </field>
-        /// <field name="FileFields" type="msls.EntitySet">
-        /// Gets the FileFields entity set.
-        /// </field>
-        /// <field name="FileSections" type="msls.EntitySet">
-        /// Gets the FileSections entity set.
-        /// </field>
-        /// <field name="FileTypes" type="msls.EntitySet">
-        /// Gets the FileTypes entity set.
-        /// </field>
-        /// <field name="ImportedFiles" type="msls.EntitySet">
-        /// Gets the ImportedFiles entity set.
-        /// </field>
-        /// <field name="ReconDetails" type="msls.EntitySet">
-        /// Gets the ReconDetails entity set.
-        /// </field>
-        /// <field name="ReconSummaries" type="msls.EntitySet">
-        /// Gets the ReconSummaries entity set.
         /// </field>
         /// <field name="details" type="msls.application.ReconData.Details">
         /// Gets the details for this data service.
@@ -874,134 +886,18 @@ window.myapp = msls.application;
             { name: "SystemFields", kind: "collection", elementType: SystemField }
         ]),
 
-        ImportFileField_ReconField: $defineEntity(ImportFileField_ReconField, [
-            { name: "ID", type: Number },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "FileField", kind: "reference", type: FileField },
-            { name: "ReconField", kind: "reference", type: ReconField }
-        ]),
-
-        ReconField: $defineEntity(ReconField, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "ImportFileField_ReconFields", kind: "collection", elementType: ImportFileField_ReconField },
-            { name: "FieldType", kind: "reference", type: FieldType },
-            { name: "FileField", kind: "reference", type: FileField },
-            { name: "SystemField", kind: "reference", type: SystemField },
-            { name: "ReconProcessStep", kind: "reference", type: ReconProcessStep }
-        ]),
-
-        ReconItemStatu: $defineEntity(ReconItemStatu, [
-            { name: "ID", type: Number },
-            { name: "Code", type: String },
-            { name: "Name", type: String },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date }
-        ]),
-
-        ReconProcess: $defineEntity(ReconProcess, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "Code", type: String },
-            { name: "Name", type: String },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "ReconProcessSteps", kind: "collection", elementType: ReconProcessStep }
-        ]),
-
-        ReconProcessStep: $defineEntity(ReconProcessStep, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "Code", type: String },
-            { name: "Name", type: String },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "FileSection", kind: "reference", type: FileSection },
-            { name: "FileSection1", kind: "reference", type: FileSection },
-            { name: "ReconProcess", kind: "reference", type: ReconProcess },
-            { name: "ReconType", kind: "reference", type: ReconType },
-            { name: "Order", type: Number },
-            { name: "ReconFields", kind: "collection", elementType: ReconField }
-        ]),
-
-        ReconSource: $defineEntity(ReconSource, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "Code", type: String },
-            { name: "Name", type: String },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "ReconSourceType", kind: "reference", type: ReconSourceType }
-        ]),
-
-        ReconSourceType: $defineEntity(ReconSourceType, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "Code", type: String },
-            { name: "Name", type: String },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "ReconSources", kind: "collection", elementType: ReconSource }
-        ]),
-
-        ReconStatu: $defineEntity(ReconStatu, [
-            { name: "ID", type: Number },
-            { name: "Code", type: String },
-            { name: "Name", type: String },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date }
-        ]),
-
-        ReconType: $defineEntity(ReconType, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "Code", type: String },
-            { name: "Name", type: String },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "ReconProcessSteps", kind: "collection", elementType: ReconProcessStep }
-        ]),
-
-        SystemField: $defineEntity(SystemField, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "TableSchema", type: String },
-            { name: "TableName", type: String },
-            { name: "ColumnName", type: String },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "ReconFields", kind: "collection", elementType: ReconField },
-            { name: "FieldType", kind: "reference", type: FieldType }
-        ]),
-
         FileDefinition: $defineEntity(FileDefinition, [
             { name: "ID", type: Number, isReadOnly: true },
             { name: "Code", type: String },
             { name: "Name", type: String },
-            { name: "ReconSourceID", type: Number },
             { name: "sys_CreatedBy", type: String },
             { name: "sys_CreatedOn", type: Date },
             { name: "sys_ModifiedBy", type: String },
             { name: "sys_ModifiedOn", type: Date },
             { name: "FileType", kind: "reference", type: FileType },
             { name: "FileSections", kind: "collection", elementType: FileSection },
-            { name: "ImportedFiles", kind: "collection", elementType: ImportedFile }
+            { name: "ImportedFiles", kind: "collection", elementType: ImportedFile },
+            { name: "ReconSource", kind: "reference", type: ReconSource }
         ]),
 
         FileField: $defineEntity(FileField, [
@@ -1059,7 +955,18 @@ window.myapp = msls.application;
             { name: "sys_ModifiedBy", type: String },
             { name: "sys_ModifiedOn", type: Date },
             { name: "FileDefinition", kind: "reference", type: FileDefinition },
-            { name: "ReconSummary", kind: "reference", type: ReconSummary }
+            { name: "ReconSummary", kind: "reference", type: ReconSummary },
+            { name: "UploadedFileName", type: String }
+        ]),
+
+        ImportFileField_ReconField: $defineEntity(ImportFileField_ReconField, [
+            { name: "ID", type: Number },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "FileField", kind: "reference", type: FileField },
+            { name: "ReconField", kind: "reference", type: ReconField }
         ]),
 
         ReconDetail: $defineEntity(ReconDetail, [
@@ -1076,12 +983,95 @@ window.myapp = msls.application;
             { name: "sys_ModifiedOn", type: Date }
         ]),
 
+        ReconField: $defineEntity(ReconField, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "ImportFileField_ReconFields", kind: "collection", elementType: ImportFileField_ReconField },
+            { name: "FieldType", kind: "reference", type: FieldType },
+            { name: "FileField", kind: "reference", type: FileField },
+            { name: "SystemField", kind: "reference", type: SystemField },
+            { name: "ReconProcessStep", kind: "reference", type: ReconProcessStep }
+        ]),
+
+        ReconItemStatu: $defineEntity(ReconItemStatu, [
+            { name: "ID", type: Number },
+            { name: "Code", type: String },
+            { name: "Name", type: String },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date }
+        ]),
+
+        ReconProcess: $defineEntity(ReconProcess, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "Code", type: String },
+            { name: "Name", type: String },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "ReconProcessSteps", kind: "collection", elementType: ReconProcessStep }
+        ]),
+
+        ReconProcessStep: $defineEntity(ReconProcessStep, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "Code", type: String },
+            { name: "Name", type: String },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "FileSection", kind: "reference", type: FileSection },
+            { name: "FileSection1", kind: "reference", type: FileSection },
+            { name: "ReconProcess", kind: "reference", type: ReconProcess },
+            { name: "ReconType", kind: "reference", type: ReconType },
+            { name: "Order", type: Number },
+            { name: "ReconFields", kind: "collection", elementType: ReconField },
+            { name: "ReconSummaries", kind: "collection", elementType: ReconSummary }
+        ]),
+
+        ReconSource: $defineEntity(ReconSource, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "Code", type: String },
+            { name: "Name", type: String },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "ReconSourceType", kind: "reference", type: ReconSourceType },
+            { name: "FileDefinitions", kind: "collection", elementType: FileDefinition }
+        ]),
+
+        ReconSourceType: $defineEntity(ReconSourceType, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "Code", type: String },
+            { name: "Name", type: String },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "ReconSources", kind: "collection", elementType: ReconSource }
+        ]),
+
+        ReconStatu: $defineEntity(ReconStatu, [
+            { name: "ID", type: Number },
+            { name: "Code", type: String },
+            { name: "Name", type: String },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "ReconSummaries", kind: "collection", elementType: ReconSummary }
+        ]),
+
         ReconSummary: $defineEntity(ReconSummary, [
             { name: "ID", type: Number },
-            { name: "ReconProcessID", type: Number },
             { name: "ReconStart", type: Date },
             { name: "ReconEnd", type: Date },
-            { name: "ReconStatusID", type: Number },
             { name: "SourceCount", type: Number },
             { name: "DestCount", type: Number },
             { name: "SourceTotal", type: String },
@@ -1091,12 +1081,44 @@ window.myapp = msls.application;
             { name: "sys_CreatedOn", type: Date },
             { name: "sys_ModifiedBy", type: String },
             { name: "sys_ModifiedOn", type: Date },
-            { name: "ImportedFiles", kind: "collection", elementType: ImportedFile }
+            { name: "ImportedFiles", kind: "collection", elementType: ImportedFile },
+            { name: "ReconProcessStep", kind: "reference", type: ReconProcessStep },
+            { name: "ReconStatu", kind: "reference", type: ReconStatu }
+        ]),
+
+        ReconType: $defineEntity(ReconType, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "Code", type: String },
+            { name: "Name", type: String },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "ReconProcessSteps", kind: "collection", elementType: ReconProcessStep }
+        ]),
+
+        SystemField: $defineEntity(SystemField, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "TableSchema", type: String },
+            { name: "TableName", type: String },
+            { name: "ColumnName", type: String },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "ReconFields", kind: "collection", elementType: ReconField },
+            { name: "FieldType", kind: "reference", type: FieldType }
         ]),
 
         ReconData: $defineDataService(ReconData, lightSwitchApplication.rootUri + "/ReconData.svc", [
             { name: "FieldTypes", elementType: FieldType },
+            { name: "FileDefinitions", elementType: FileDefinition },
+            { name: "FileFields", elementType: FileField },
+            { name: "FileSections", elementType: FileSection },
+            { name: "FileTypes", elementType: FileType },
+            { name: "ImportedFiles", elementType: ImportedFile },
             { name: "ImportFileField_ReconFields", elementType: ImportFileField_ReconField },
+            { name: "ReconDetails", elementType: ReconDetail },
             { name: "ReconFields", elementType: ReconField },
             { name: "ReconItemStatus", elementType: ReconItemStatu },
             { name: "ReconProcesses", elementType: ReconProcess },
@@ -1104,15 +1126,9 @@ window.myapp = msls.application;
             { name: "ReconSources", elementType: ReconSource },
             { name: "ReconSourceTypes", elementType: ReconSourceType },
             { name: "ReconStatus", elementType: ReconStatu },
+            { name: "ReconSummaries", elementType: ReconSummary },
             { name: "ReconTypes", elementType: ReconType },
-            { name: "SystemFields", elementType: SystemField },
-            { name: "FileDefinitions", elementType: FileDefinition },
-            { name: "FileFields", elementType: FileField },
-            { name: "FileSections", elementType: FileSection },
-            { name: "FileTypes", elementType: FileType },
-            { name: "ImportedFiles", elementType: ImportedFile },
-            { name: "ReconDetails", elementType: ReconDetail },
-            { name: "ReconSummaries", elementType: ReconSummary }
+            { name: "SystemFields", elementType: SystemField }
         ], [
             {
                 name: "FieldTypes_SingleOrDefault", value: function (ID) {
@@ -1122,9 +1138,51 @@ window.myapp = msls.application;
                 }
             },
             {
+                name: "FileDefinitions_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.FileDefinitions },
+                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/FileDefinitions(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
+                name: "FileFields_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.FileFields },
+                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/FileFields(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
+                name: "FileSections_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.FileSections },
+                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/FileSections(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
+                name: "FileTypes_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.FileTypes },
+                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/FileTypes(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
+                name: "ImportedFiles_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.ImportedFiles },
+                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/ImportedFiles(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
                 name: "ImportFileField_ReconFields_SingleOrDefault", value: function (ID) {
                     return new $DataServiceQuery({ _entitySet: this.ImportFileField_ReconFields },
                         lightSwitchApplication.rootUri + "/ReconData.svc" + "/ImportFileField_ReconFields(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
+                name: "ReconDetails_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.ReconDetails },
+                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/ReconDetails(" + "ID=" + $toODataString(ID, "Int32?") + ")"
                     );
                 }
             },
@@ -1178,6 +1236,13 @@ window.myapp = msls.application;
                 }
             },
             {
+                name: "ReconSummaries_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.ReconSummaries },
+                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/ReconSummaries(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
                 name: "ReconTypes_SingleOrDefault", value: function (ID) {
                     return new $DataServiceQuery({ _entitySet: this.ReconTypes },
                         lightSwitchApplication.rootUri + "/ReconData.svc" + "/ReconTypes(" + "ID=" + $toODataString(ID, "Int32?") + ")"
@@ -1188,55 +1253,6 @@ window.myapp = msls.application;
                 name: "SystemFields_SingleOrDefault", value: function (ID) {
                     return new $DataServiceQuery({ _entitySet: this.SystemFields },
                         lightSwitchApplication.rootUri + "/ReconData.svc" + "/SystemFields(" + "ID=" + $toODataString(ID, "Int32?") + ")"
-                    );
-                }
-            },
-            {
-                name: "FileDefinitions_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.FileDefinitions },
-                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/FileDefinitions(" + "ID=" + $toODataString(ID, "Int32?") + ")"
-                    );
-                }
-            },
-            {
-                name: "FileFields_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.FileFields },
-                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/FileFields(" + "ID=" + $toODataString(ID, "Int32?") + ")"
-                    );
-                }
-            },
-            {
-                name: "FileSections_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.FileSections },
-                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/FileSections(" + "ID=" + $toODataString(ID, "Int32?") + ")"
-                    );
-                }
-            },
-            {
-                name: "FileTypes_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.FileTypes },
-                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/FileTypes(" + "ID=" + $toODataString(ID, "Int32?") + ")"
-                    );
-                }
-            },
-            {
-                name: "ImportedFiles_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.ImportedFiles },
-                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/ImportedFiles(" + "ID=" + $toODataString(ID, "Int32?") + ")"
-                    );
-                }
-            },
-            {
-                name: "ReconDetails_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.ReconDetails },
-                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/ReconDetails(" + "ID=" + $toODataString(ID, "Int32?") + ")"
-                    );
-                }
-            },
-            {
-                name: "ReconSummaries_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.ReconSummaries },
-                        lightSwitchApplication.rootUri + "/ReconData.svc" + "/ReconSummaries(" + "ID=" + $toODataString(ID, "Int32?") + ")"
                     );
                 }
             }

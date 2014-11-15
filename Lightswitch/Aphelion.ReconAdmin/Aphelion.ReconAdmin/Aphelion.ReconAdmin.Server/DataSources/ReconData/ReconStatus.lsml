@@ -84,6 +84,11 @@
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Name="ReconSummaries"
+        Association="FK_ReconSummary_ReconStatus"
+        FromEnd="ReconStatus"
+        ToEnd="ReconSummary" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -177,7 +182,32 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="FK_ReconSummary_ReconStatus"
+      Association="FK_ReconSummary_ReconStatus">
+      <AssociationSetEnd
+        Name="ReconStatus"
+        EntitySet="ReconStatus" />
+      <AssociationSetEnd
+        Name="ReconSummary"
+        EntitySet="ReconSummaries" />
+    </AssociationSet>
   </EntityContainer>
+  <Association
+    Name="FK_ReconSummary_ReconStatus">
+    <AssociationEnd
+      Name="ReconStatus"
+      Multiplicity="One"
+      EntityType="ReconStatu">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ReconSummary"
+      Multiplicity="Many"
+      EntityType="ReconSummary" />
+  </Association>
   <DataService
     Name="ReconDataDataService">
     <DataService.Attributes>
@@ -192,6 +222,7 @@
         <SsdlProperty
           Name="ID"
           Nullable="False"
+          StoreGeneratedPattern="Identity"
           Type="int"
           Property="ReconStatu/Properties[ID]" />
         <SsdlProperty
@@ -230,5 +261,26 @@
           Property="ReconStatu/Properties[sys_ModifiedOn]" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ReconSummary_ReconStatus">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ReconSummary_ReconStatus" />
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ReconSummary_ReconStatus]/Members[ReconStatus]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ReconSummary_ReconStatus]/Members[ReconSummary]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ReconStatusID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
   </DataService>
 </ServiceApplication>

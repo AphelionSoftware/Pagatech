@@ -119,6 +119,11 @@
         Association="FK_ReconField_ReconProcessStep"
         FromEnd="ReconProcessStep"
         ToEnd="ReconField" />
+      <NavigationProperty
+        Name="ReconSummaries"
+        Association="FK_ReconSummary_ReconProcessStep"
+        FromEnd="ReconProcessStep"
+        ToEnd="ReconSummary" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -222,6 +227,16 @@
         Name="ReconField"
         EntitySet="ReconFields" />
     </AssociationSet>
+    <AssociationSet
+      Name="FK_ReconSummary_ReconProcessStep"
+      Association="FK_ReconSummary_ReconProcessStep">
+      <AssociationSetEnd
+        Name="ReconProcessStep"
+        EntitySet="ReconProcessSteps" />
+      <AssociationSetEnd
+        Name="ReconSummary"
+        EntitySet="ReconSummaries" />
+    </AssociationSet>
   </EntityContainer>
   <Association
     Name="FK_ReconField_ReconProcessStep">
@@ -237,6 +252,21 @@
       Name="ReconField"
       Multiplicity="Many"
       EntityType="ReconField" />
+  </Association>
+  <Association
+    Name="FK_ReconSummary_ReconProcessStep">
+    <AssociationEnd
+      Name="ReconProcessStep"
+      Multiplicity="One"
+      EntityType="ReconProcessStep">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ReconSummary"
+      Multiplicity="Many"
+      EntityType="ReconSummary" />
   </Association>
   <DataService
     Name="ReconDataDataService">
@@ -330,6 +360,27 @@
         </SsdlAssociationSetEnd>
         <SsdlAssociationSetEnd
           End="ReconData/Members[FK_ReconField_ReconProcessStep]/Members[ReconField]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ReconProcessStepID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ReconSummary_ReconProcessStep">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ReconSummary_ReconProcessStep" />
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ReconSummary_ReconProcessStep]/Members[ReconProcessStep]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ReconSummary_ReconProcessStep]/Members[ReconSummary]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
               Name="ReconProcessStepID" />

@@ -68,9 +68,8 @@
       </EntityProperty>
       <EntityProperty
         Name="FileDetailID"
-        PropertyType=":Int32">
+        PropertyType=":Int32?">
         <EntityProperty.Attributes>
-          <Required />
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
@@ -224,6 +223,7 @@
         <SsdlProperty
           Name="ID"
           Nullable="False"
+          StoreGeneratedPattern="Identity"
           Type="int"
           Property="ReconDetail/Properties[ID]" />
         <SsdlProperty
@@ -255,7 +255,7 @@
           Property="ReconDetail/Properties[MatchedReconDetailID]" />
         <SsdlProperty
           Name="FileDetailID"
-          Nullable="False"
+          Nullable="True"
           Type="int"
           Property="ReconDetail/Properties[FileDetailID]" />
         <SsdlProperty

@@ -91,6 +91,11 @@
         Association="FK_ReconSource_ReconSourceType"
         FromEnd="ReconSource"
         ToEnd="ReconSourceType" />
+      <NavigationProperty
+        Name="FileDefinitions"
+        Association="FK_FileDefinition_ReconSource"
+        FromEnd="ReconSource"
+        ToEnd="FileDefinition" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -184,7 +189,32 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="FK_FileDefinition_ReconSource"
+      Association="FK_FileDefinition_ReconSource">
+      <AssociationSetEnd
+        Name="ReconSource"
+        EntitySet="ReconSources" />
+      <AssociationSetEnd
+        Name="FileDefinition"
+        EntitySet="FileDefinitions" />
+    </AssociationSet>
   </EntityContainer>
+  <Association
+    Name="FK_FileDefinition_ReconSource">
+    <AssociationEnd
+      Name="ReconSource"
+      Multiplicity="One"
+      EntityType="ReconSource">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="FileDefinition"
+      Multiplicity="Many"
+      EntityType="FileDefinition" />
+  </Association>
   <DataService
     Name="ReconDataDataService">
     <DataService.Attributes>
@@ -243,5 +273,26 @@
           PropertyName="ReconSourceTypeID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_FileDefinition_ReconSource">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_FileDefinition_ReconSource" />
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_FileDefinition_ReconSource]/Members[ReconSource]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_FileDefinition_ReconSource]/Members[FileDefinition]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ReconSourceID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
   </DataService>
 </ServiceApplication>
