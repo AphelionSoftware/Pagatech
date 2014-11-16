@@ -24,14 +24,6 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="ReconProcessID"
-        PropertyType=":Int32">
-        <EntityProperty.Attributes>
-          <Required />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
         Name="ReconStart"
         PropertyType=":DateTime">
         <EntityProperty.Attributes>
@@ -49,14 +41,6 @@
           <DateTimeConstraint
             Precision="3"
             PreserveSeconds="True" />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="ReconStatusID"
-        PropertyType=":Int32">
-        <EntityProperty.Attributes>
-          <Required />
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
@@ -152,13 +136,22 @@
         Association="FK_ImportedFile_ReconSummary"
         FromEnd="ReconSummary"
         ToEnd="ImportedFile" />
+      <NavigationProperty
+        Name="ReconProcessStep"
+        Association="FK_ReconSummary_ReconProcessStep"
+        FromEnd="ReconSummary"
+        ToEnd="ReconProcessStep" />
+      <NavigationProperty
+        Name="ReconStatu"
+        Association="FK_ReconSummary_ReconStatus"
+        FromEnd="ReconSummary"
+        ToEnd="ReconStatus" />
     </EntityType.Properties>
   </EntityType>
   <Association
     Name="FK_ImportedFile_ReconSummary">
     <AssociationEnd
       Name="ReconSummary"
-      Multiplicity="One"
       EntityType="ReconSummary">
       <AssociationEnd.Attributes>
         <DeleteRule />
@@ -285,13 +278,9 @@
         <SsdlProperty
           Name="ID"
           Nullable="False"
+          StoreGeneratedPattern="Identity"
           Type="int"
           Property="ReconSummary/Properties[ID]" />
-        <SsdlProperty
-          Name="ReconProcessID"
-          Nullable="False"
-          Type="int"
-          Property="ReconSummary/Properties[ReconProcessID]" />
         <SsdlProperty
           Name="ReconStart"
           Nullable="False"
@@ -302,11 +291,6 @@
           Nullable="True"
           Type="datetime"
           Property="ReconSummary/Properties[ReconEnd]" />
-        <SsdlProperty
-          Name="ReconStatusID"
-          Nullable="False"
-          Type="int"
-          Property="ReconSummary/Properties[ReconStatusID]" />
         <SsdlProperty
           Name="SourceCount"
           Nullable="True"
@@ -358,6 +342,16 @@
           Nullable="False"
           Type="datetime"
           Property="ReconSummary/Properties[sys_ModifiedOn]" />
+        <SsdlForeignKeyProperty
+          Name="ReconProcessStepID"
+          Nullable="False"
+          Type="int"
+          PropertyName="ReconProcessStepID" />
+        <SsdlForeignKeyProperty
+          Name="ReconStatusID"
+          Nullable="False"
+          Type="int"
+          PropertyName="ReconStatusID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
     <AssociationSetMapping

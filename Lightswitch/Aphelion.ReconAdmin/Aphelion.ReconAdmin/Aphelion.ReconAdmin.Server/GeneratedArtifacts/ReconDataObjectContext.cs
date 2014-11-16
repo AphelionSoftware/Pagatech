@@ -19,23 +19,26 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileDefinition_FileType", "FileType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileType), "FileDefinition", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileDefinition), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileField_FileSection", "FileSection", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileSection), "FileField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileField), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_FieldType", "FieldType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FieldType), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_SystemField_FieldType", "FieldType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FieldType), "SystemField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.SystemField), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileSection_FileDefinition", "FileDefinition", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileDefinition), "FileSection", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileSection), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ImportedFile_FileDefinition", "FileDefinition", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileDefinition), "ImportedFile", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ImportedFile), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ImportedFile_ReconSummary", "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconSummary), "ImportedFile", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ImportedFile), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ImportFileField_ReconField_FileField", "FileField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileField), "ImportFileField_ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ImportFileField_ReconField), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ImportFileField_ReconField_ReconField", "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconField), "ImportFileField_ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ImportFileField_ReconField), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_FieldType", "FieldType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FieldType), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_FileField", "FileField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileField), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_SystemField", "SystemField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.SystemField), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileField_FileSection", "FileSection", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileSection), "FileField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileField), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconProcessStep_FileSection", "FileSection", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileSection), "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconProcessStep), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconProcessStep_FileSection1", "FileSection", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileSection), "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconProcessStep), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileDefinition_FileType", "FileType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileType), "FileDefinition", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileDefinition), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ImportFileField_ReconField_ReconField", "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconField), "ImportFileField_ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ImportFileField_ReconField), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconProcessStep_ReconProcess", "ReconProcess", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconProcess), "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconProcessStep), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconProcessStep_ReconType", "ReconType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconType), "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconProcessStep), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconSource_ReconSourceType", "ReconSourceType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconSourceType), "ReconSource", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSource), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_SystemField_FieldType", "FieldType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FieldType), "SystemField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.SystemField), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_ReconProcessStep", "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconProcessStep), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconSource_ReconSourceType", "ReconSourceType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconSourceType), "ReconSource", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSource), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ImportedFile_ReconSummary", "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(LightSwitchApplication.Implementation.ReconSummary), "ImportedFile", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ImportedFile), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconProcessStep_ReconType", "ReconType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconType), "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconProcessStep), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_SystemField", "SystemField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.SystemField), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileDefinition_ReconSource", "ReconSource", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconSource), "FileDefinition", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileDefinition), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconSummary_ReconProcessStep", "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconProcessStep), "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSummary), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconSummary_ReconStatus", "ReconStatus", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconStatu), "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSummary), true)]
 
 #endregion
 
@@ -103,6 +106,86 @@ namespace LightSwitchApplication.Implementation
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<FileDefinition> FileDefinitions
+        {
+            get
+            {
+                if ((_FileDefinitions == null))
+                {
+                    _FileDefinitions = base.CreateObjectSet<FileDefinition>("FileDefinitions");
+                }
+                return _FileDefinitions;
+            }
+        }
+        private ObjectSet<FileDefinition> _FileDefinitions;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FileField> FileFields
+        {
+            get
+            {
+                if ((_FileFields == null))
+                {
+                    _FileFields = base.CreateObjectSet<FileField>("FileFields");
+                }
+                return _FileFields;
+            }
+        }
+        private ObjectSet<FileField> _FileFields;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FileSection> FileSections
+        {
+            get
+            {
+                if ((_FileSections == null))
+                {
+                    _FileSections = base.CreateObjectSet<FileSection>("FileSections");
+                }
+                return _FileSections;
+            }
+        }
+        private ObjectSet<FileSection> _FileSections;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FileType> FileTypes
+        {
+            get
+            {
+                if ((_FileTypes == null))
+                {
+                    _FileTypes = base.CreateObjectSet<FileType>("FileTypes");
+                }
+                return _FileTypes;
+            }
+        }
+        private ObjectSet<FileType> _FileTypes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ImportedFile> ImportedFiles
+        {
+            get
+            {
+                if ((_ImportedFiles == null))
+                {
+                    _ImportedFiles = base.CreateObjectSet<ImportedFile>("ImportedFiles");
+                }
+                return _ImportedFiles;
+            }
+        }
+        private ObjectSet<ImportedFile> _ImportedFiles;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<ImportFileField_ReconField> ImportFileField_ReconFields
         {
             get
@@ -115,6 +198,22 @@ namespace LightSwitchApplication.Implementation
             }
         }
         private ObjectSet<ImportFileField_ReconField> _ImportFileField_ReconFields;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ReconDetail> ReconDetails
+        {
+            get
+            {
+                if ((_ReconDetails == null))
+                {
+                    _ReconDetails = base.CreateObjectSet<ReconDetail>("ReconDetails");
+                }
+                return _ReconDetails;
+            }
+        }
+        private ObjectSet<ReconDetail> _ReconDetails;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -231,6 +330,22 @@ namespace LightSwitchApplication.Implementation
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<ReconSummary> ReconSummaries
+        {
+            get
+            {
+                if ((_ReconSummaries == null))
+                {
+                    _ReconSummaries = base.CreateObjectSet<ReconSummary>("ReconSummaries");
+                }
+                return _ReconSummaries;
+            }
+        }
+        private ObjectSet<ReconSummary> _ReconSummaries;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<ReconType> ReconTypes
         {
             get
@@ -259,118 +374,6 @@ namespace LightSwitchApplication.Implementation
             }
         }
         private ObjectSet<SystemField> _SystemFields;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<FileDefinition> FileDefinitions
-        {
-            get
-            {
-                if ((_FileDefinitions == null))
-                {
-                    _FileDefinitions = base.CreateObjectSet<FileDefinition>("FileDefinitions");
-                }
-                return _FileDefinitions;
-            }
-        }
-        private ObjectSet<FileDefinition> _FileDefinitions;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<FileField> FileFields
-        {
-            get
-            {
-                if ((_FileFields == null))
-                {
-                    _FileFields = base.CreateObjectSet<FileField>("FileFields");
-                }
-                return _FileFields;
-            }
-        }
-        private ObjectSet<FileField> _FileFields;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<FileSection> FileSections
-        {
-            get
-            {
-                if ((_FileSections == null))
-                {
-                    _FileSections = base.CreateObjectSet<FileSection>("FileSections");
-                }
-                return _FileSections;
-            }
-        }
-        private ObjectSet<FileSection> _FileSections;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<FileType> FileTypes
-        {
-            get
-            {
-                if ((_FileTypes == null))
-                {
-                    _FileTypes = base.CreateObjectSet<FileType>("FileTypes");
-                }
-                return _FileTypes;
-            }
-        }
-        private ObjectSet<FileType> _FileTypes;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ImportedFile> ImportedFiles
-        {
-            get
-            {
-                if ((_ImportedFiles == null))
-                {
-                    _ImportedFiles = base.CreateObjectSet<ImportedFile>("ImportedFiles");
-                }
-                return _ImportedFiles;
-            }
-        }
-        private ObjectSet<ImportedFile> _ImportedFiles;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ReconDetail> ReconDetails
-        {
-            get
-            {
-                if ((_ReconDetails == null))
-                {
-                    _ReconDetails = base.CreateObjectSet<ReconDetail>("ReconDetails");
-                }
-                return _ReconDetails;
-            }
-        }
-        private ObjectSet<ReconDetail> _ReconDetails;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ReconSummary> ReconSummaries
-        {
-            get
-            {
-                if ((_ReconSummaries == null))
-                {
-                    _ReconSummaries = base.CreateObjectSet<ReconSummary>("ReconSummaries");
-                }
-                return _ReconSummaries;
-            }
-        }
-        private ObjectSet<ReconSummary> _ReconSummaries;
 
         #endregion
 
@@ -385,11 +388,59 @@ namespace LightSwitchApplication.Implementation
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the FileDefinitions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFileDefinitions(FileDefinition fileDefinition)
+        {
+            base.AddObject("FileDefinitions", fileDefinition);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FileFields EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFileFields(FileField fileField)
+        {
+            base.AddObject("FileFields", fileField);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FileSections EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFileSections(FileSection fileSection)
+        {
+            base.AddObject("FileSections", fileSection);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FileTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFileTypes(FileType fileType)
+        {
+            base.AddObject("FileTypes", fileType);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ImportedFiles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToImportedFiles(ImportedFile importedFile)
+        {
+            base.AddObject("ImportedFiles", importedFile);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the ImportFileField_ReconFields EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToImportFileField_ReconFields(ImportFileField_ReconField importFileField_ReconField)
         {
             base.AddObject("ImportFileField_ReconFields", importFileField_ReconField);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ReconDetails EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToReconDetails(ReconDetail reconDetail)
+        {
+            base.AddObject("ReconDetails", reconDetail);
         }
     
         /// <summary>
@@ -449,6 +500,14 @@ namespace LightSwitchApplication.Implementation
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the ReconSummaries EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToReconSummaries(ReconSummary reconSummary)
+        {
+            base.AddObject("ReconSummaries", reconSummary);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the ReconTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToReconTypes(ReconType reconType)
@@ -462,62 +521,6 @@ namespace LightSwitchApplication.Implementation
         public void AddToSystemFields(SystemField systemField)
         {
             base.AddObject("SystemFields", systemField);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the FileDefinitions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToFileDefinitions(FileDefinition fileDefinition)
-        {
-            base.AddObject("FileDefinitions", fileDefinition);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the FileFields EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToFileFields(FileField fileField)
-        {
-            base.AddObject("FileFields", fileField);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the FileSections EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToFileSections(FileSection fileSection)
-        {
-            base.AddObject("FileSections", fileSection);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the FileTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToFileTypes(FileType fileType)
-        {
-            base.AddObject("FileTypes", fileType);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ImportedFiles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToImportedFiles(ImportedFile importedFile)
-        {
-            base.AddObject("ImportedFiles", importedFile);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ReconDetails EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToReconDetails(ReconDetail reconDetail)
-        {
-            base.AddObject("ReconDetails", reconDetail);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ReconSummaries EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToReconSummaries(ReconSummary reconSummary)
-        {
-            base.AddObject("ReconSummaries", reconSummary);
         }
 
         #endregion
@@ -802,23 +805,23 @@ namespace LightSwitchApplication.Implementation
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="code">Initial value of the Code property.</param>
-        /// <param name="reconSourceID">Initial value of the ReconSourceID property.</param>
         /// <param name="sys_CreatedBy">Initial value of the sys_CreatedBy property.</param>
         /// <param name="sys_CreatedOn">Initial value of the sys_CreatedOn property.</param>
         /// <param name="sys_ModifiedBy">Initial value of the sys_ModifiedBy property.</param>
         /// <param name="sys_ModifiedOn">Initial value of the sys_ModifiedOn property.</param>
         /// <param name="fileTypeID">Initial value of the FileTypeID property.</param>
-        public static FileDefinition CreateFileDefinition(global::System.Int32 id, global::System.String code, global::System.Int32 reconSourceID, global::System.String sys_CreatedBy, global::System.DateTime sys_CreatedOn, global::System.String sys_ModifiedBy, global::System.DateTime sys_ModifiedOn, global::System.Int32 fileTypeID)
+        /// <param name="reconSourceID">Initial value of the ReconSourceID property.</param>
+        public static FileDefinition CreateFileDefinition(global::System.Int32 id, global::System.String code, global::System.String sys_CreatedBy, global::System.DateTime sys_CreatedOn, global::System.String sys_ModifiedBy, global::System.DateTime sys_ModifiedOn, global::System.Int32 fileTypeID, global::System.Int32 reconSourceID)
         {
             FileDefinition fileDefinition = new FileDefinition();
             fileDefinition.ID = id;
             fileDefinition.Code = code;
-            fileDefinition.ReconSourceID = reconSourceID;
             fileDefinition.sys_CreatedBy = sys_CreatedBy;
             fileDefinition.sys_CreatedOn = sys_CreatedOn;
             fileDefinition.sys_ModifiedBy = sys_ModifiedBy;
             fileDefinition.sys_ModifiedOn = sys_ModifiedOn;
             fileDefinition.FileTypeID = fileTypeID;
+            fileDefinition.ReconSourceID = reconSourceID;
             return fileDefinition;
         }
 
@@ -900,30 +903,6 @@ namespace LightSwitchApplication.Implementation
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ReconSourceID
-        {
-            get
-            {
-                return _ReconSourceID;
-            }
-            set
-            {
-                OnReconSourceIDChanging(value);
-                ReportPropertyChanging("ReconSourceID");
-                _ReconSourceID = value;
-                ReportPropertyChanged("ReconSourceID");
-                OnReconSourceIDChanged();
-            }
-        }
-        private global::System.Int32 _ReconSourceID;
-        partial void OnReconSourceIDChanging(global::System.Int32 value);
-        partial void OnReconSourceIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1044,6 +1023,30 @@ namespace LightSwitchApplication.Implementation
         private global::System.Int32 _FileTypeID;
         partial void OnFileTypeIDChanging(global::System.Int32 value);
         partial void OnFileTypeIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ReconSourceID
+        {
+            get
+            {
+                return _ReconSourceID;
+            }
+            set
+            {
+                OnReconSourceIDChanging(value);
+                ReportPropertyChanging("ReconSourceID");
+                _ReconSourceID = value;
+                ReportPropertyChanged("ReconSourceID");
+                OnReconSourceIDChanged();
+            }
+        }
+        private global::System.Int32 _ReconSourceID;
+        partial void OnReconSourceIDChanging(global::System.Int32 value);
+        partial void OnReconSourceIDChanged();
 
         #endregion
 
@@ -1128,6 +1131,44 @@ namespace LightSwitchApplication.Implementation
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ImportedFile>("LightSwitchApplication.FK_ImportedFile_FileDefinition", "ImportedFile", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_FileDefinition_ReconSource", "ReconSource")]
+        public ReconSource ReconSource
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ReconSource>("LightSwitchApplication.FK_FileDefinition_ReconSource", "ReconSource").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ReconSource>("LightSwitchApplication.FK_FileDefinition_ReconSource", "ReconSource").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ReconSource> ReconSourceReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ReconSource>("LightSwitchApplication.FK_FileDefinition_ReconSource", "ReconSource");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ReconSource>("LightSwitchApplication.FK_FileDefinition_ReconSource", "ReconSource", value);
                 }
             }
         }
@@ -2293,8 +2334,7 @@ namespace LightSwitchApplication.Implementation
         /// <param name="sys_ModifiedBy">Initial value of the sys_ModifiedBy property.</param>
         /// <param name="sys_ModifiedOn">Initial value of the sys_ModifiedOn property.</param>
         /// <param name="fileDefinitionID">Initial value of the FileDefinitionID property.</param>
-        /// <param name="reconSummaryID">Initial value of the ReconSummaryID property.</param>
-        public static ImportedFile CreateImportedFile(global::System.Int32 id, global::System.String fileName, global::System.String sys_CreatedBy, global::System.DateTime sys_CreatedOn, global::System.String sys_ModifiedBy, global::System.DateTime sys_ModifiedOn, global::System.Int32 fileDefinitionID, global::System.Int32 reconSummaryID)
+        public static ImportedFile CreateImportedFile(global::System.Int32 id, global::System.String fileName, global::System.String sys_CreatedBy, global::System.DateTime sys_CreatedOn, global::System.String sys_ModifiedBy, global::System.DateTime sys_ModifiedOn, global::System.Int32 fileDefinitionID)
         {
             ImportedFile importedFile = new ImportedFile();
             importedFile.ID = id;
@@ -2304,7 +2344,6 @@ namespace LightSwitchApplication.Implementation
             importedFile.sys_ModifiedBy = sys_ModifiedBy;
             importedFile.sys_ModifiedOn = sys_ModifiedOn;
             importedFile.FileDefinitionID = fileDefinitionID;
-            importedFile.ReconSummaryID = reconSummaryID;
             return importedFile;
         }
 
@@ -2486,9 +2525,9 @@ namespace LightSwitchApplication.Implementation
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 ReconSummaryID
+        public Nullable<global::System.Int32> ReconSummaryID
         {
             get
             {
@@ -2503,9 +2542,33 @@ namespace LightSwitchApplication.Implementation
                 OnReconSummaryIDChanged();
             }
         }
-        private global::System.Int32 _ReconSummaryID;
-        partial void OnReconSummaryIDChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _ReconSummaryID;
+        partial void OnReconSummaryIDChanging(Nullable<global::System.Int32> value);
         partial void OnReconSummaryIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UploadedFileName
+        {
+            get
+            {
+                return _UploadedFileName;
+            }
+            set
+            {
+                OnUploadedFileNameChanging(value);
+                ReportPropertyChanging("UploadedFileName");
+                _UploadedFileName = value;
+                ReportPropertyChanged("UploadedFileName");
+                OnUploadedFileNameChanged();
+            }
+        }
+        private global::System.String _UploadedFileName;
+        partial void OnUploadedFileNameChanging(global::System.String value);
+        partial void OnUploadedFileNameChanged();
 
         #endregion
 
@@ -2903,12 +2966,11 @@ namespace LightSwitchApplication.Implementation
         /// <param name="reconItemStatusID">Initial value of the ReconItemStatusID property.</param>
         /// <param name="value">Initial value of the Value property.</param>
         /// <param name="sourceKey">Initial value of the SourceKey property.</param>
-        /// <param name="fileDetailID">Initial value of the FileDetailID property.</param>
         /// <param name="sys_CreatedBy">Initial value of the sys_CreatedBy property.</param>
         /// <param name="sys_CreatedOn">Initial value of the sys_CreatedOn property.</param>
         /// <param name="sys_ModifiedBy">Initial value of the sys_ModifiedBy property.</param>
         /// <param name="sys_ModifiedOn">Initial value of the sys_ModifiedOn property.</param>
-        public static ReconDetail CreateReconDetail(global::System.Int32 id, global::System.Int32 reconSummaryID, global::System.Int32 reconItemStatusID, global::System.Decimal value, global::System.String sourceKey, global::System.Int32 fileDetailID, global::System.String sys_CreatedBy, global::System.DateTime sys_CreatedOn, global::System.String sys_ModifiedBy, global::System.DateTime sys_ModifiedOn)
+        public static ReconDetail CreateReconDetail(global::System.Int32 id, global::System.Int32 reconSummaryID, global::System.Int32 reconItemStatusID, global::System.Decimal value, global::System.String sourceKey, global::System.String sys_CreatedBy, global::System.DateTime sys_CreatedOn, global::System.String sys_ModifiedBy, global::System.DateTime sys_ModifiedOn)
         {
             ReconDetail reconDetail = new ReconDetail();
             reconDetail.ID = id;
@@ -2916,7 +2978,6 @@ namespace LightSwitchApplication.Implementation
             reconDetail.ReconItemStatusID = reconItemStatusID;
             reconDetail.Value = value;
             reconDetail.SourceKey = sourceKey;
-            reconDetail.FileDetailID = fileDetailID;
             reconDetail.sys_CreatedBy = sys_CreatedBy;
             reconDetail.sys_CreatedOn = sys_CreatedOn;
             reconDetail.sys_ModifiedBy = sys_ModifiedBy;
@@ -3078,9 +3139,9 @@ namespace LightSwitchApplication.Implementation
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 FileDetailID
+        public Nullable<global::System.Int32> FileDetailID
         {
             get
             {
@@ -3095,8 +3156,8 @@ namespace LightSwitchApplication.Implementation
                 OnFileDetailIDChanged();
             }
         }
-        private global::System.Int32 _FileDetailID;
-        partial void OnFileDetailIDChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _FileDetailID;
+        partial void OnFileDetailIDChanging(Nullable<global::System.Int32> value);
         partial void OnFileDetailIDChanged();
     
         /// <summary>
@@ -4605,6 +4666,28 @@ namespace LightSwitchApplication.Implementation
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_ReconSummary_ReconProcessStep", "ReconSummary")]
+        public EntityCollection<ReconSummary> ReconSummaries
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ReconSummary>("LightSwitchApplication.FK_ReconSummary_ReconProcessStep", "ReconSummary");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ReconSummary>("LightSwitchApplication.FK_ReconSummary_ReconProcessStep", "ReconSummary", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -4881,6 +4964,28 @@ namespace LightSwitchApplication.Implementation
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ReconSourceType>("LightSwitchApplication.FK_ReconSource_ReconSourceType", "ReconSourceType", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_FileDefinition_ReconSource", "FileDefinition")]
+        public EntityCollection<FileDefinition> FileDefinitions
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<FileDefinition>("LightSwitchApplication.FK_FileDefinition_ReconSource", "FileDefinition");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<FileDefinition>("LightSwitchApplication.FK_FileDefinition_ReconSource", "FileDefinition", value);
                 }
             }
         }
@@ -5335,6 +5440,32 @@ namespace LightSwitchApplication.Implementation
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_ReconSummary_ReconStatus", "ReconSummary")]
+        public EntityCollection<ReconSummary> ReconSummaries
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ReconSummary>("LightSwitchApplication.FK_ReconSummary_ReconStatus", "ReconSummary");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ReconSummary>("LightSwitchApplication.FK_ReconSummary_ReconStatus", "ReconSummary", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -5351,26 +5482,26 @@ namespace LightSwitchApplication.Implementation
         /// Create a new ReconSummary object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="reconProcessID">Initial value of the ReconProcessID property.</param>
         /// <param name="reconStart">Initial value of the ReconStart property.</param>
-        /// <param name="reconStatusID">Initial value of the ReconStatusID property.</param>
         /// <param name="reconDate">Initial value of the ReconDate property.</param>
         /// <param name="sys_CreatedBy">Initial value of the sys_CreatedBy property.</param>
         /// <param name="sys_CreatedOn">Initial value of the sys_CreatedOn property.</param>
         /// <param name="sys_ModifiedBy">Initial value of the sys_ModifiedBy property.</param>
         /// <param name="sys_ModifiedOn">Initial value of the sys_ModifiedOn property.</param>
-        public static ReconSummary CreateReconSummary(global::System.Int32 id, global::System.Int32 reconProcessID, global::System.DateTime reconStart, global::System.Int32 reconStatusID, global::System.DateTime reconDate, global::System.String sys_CreatedBy, global::System.DateTime sys_CreatedOn, global::System.String sys_ModifiedBy, global::System.DateTime sys_ModifiedOn)
+        /// <param name="reconProcessStepID">Initial value of the ReconProcessStepID property.</param>
+        /// <param name="reconStatusID">Initial value of the ReconStatusID property.</param>
+        public static ReconSummary CreateReconSummary(global::System.Int32 id, global::System.DateTime reconStart, global::System.DateTime reconDate, global::System.String sys_CreatedBy, global::System.DateTime sys_CreatedOn, global::System.String sys_ModifiedBy, global::System.DateTime sys_ModifiedOn, global::System.Int32 reconProcessStepID, global::System.Int32 reconStatusID)
         {
             ReconSummary reconSummary = new ReconSummary();
             reconSummary.ID = id;
-            reconSummary.ReconProcessID = reconProcessID;
             reconSummary.ReconStart = reconStart;
-            reconSummary.ReconStatusID = reconStatusID;
             reconSummary.ReconDate = reconDate;
             reconSummary.sys_CreatedBy = sys_CreatedBy;
             reconSummary.sys_CreatedOn = sys_CreatedOn;
             reconSummary.sys_ModifiedBy = sys_ModifiedBy;
             reconSummary.sys_ModifiedOn = sys_ModifiedOn;
+            reconSummary.ReconProcessStepID = reconProcessStepID;
+            reconSummary.ReconStatusID = reconStatusID;
             return reconSummary;
         }
 
@@ -5404,30 +5535,6 @@ namespace LightSwitchApplication.Implementation
         private global::System.Int32 _ID;
         partial void OnIDChanging(global::System.Int32 value);
         partial void OnIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ReconProcessID
-        {
-            get
-            {
-                return _ReconProcessID;
-            }
-            set
-            {
-                OnReconProcessIDChanging(value);
-                ReportPropertyChanging("ReconProcessID");
-                _ReconProcessID = value;
-                ReportPropertyChanged("ReconProcessID");
-                OnReconProcessIDChanged();
-            }
-        }
-        private global::System.Int32 _ReconProcessID;
-        partial void OnReconProcessIDChanging(global::System.Int32 value);
-        partial void OnReconProcessIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5476,30 +5583,6 @@ namespace LightSwitchApplication.Implementation
         private Nullable<global::System.DateTime> _ReconEnd;
         partial void OnReconEndChanging(Nullable<global::System.DateTime> value);
         partial void OnReconEndChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ReconStatusID
-        {
-            get
-            {
-                return _ReconStatusID;
-            }
-            set
-            {
-                OnReconStatusIDChanging(value);
-                ReportPropertyChanging("ReconStatusID");
-                _ReconStatusID = value;
-                ReportPropertyChanged("ReconStatusID");
-                OnReconStatusIDChanged();
-            }
-        }
-        private global::System.Int32 _ReconStatusID;
-        partial void OnReconStatusIDChanging(global::System.Int32 value);
-        partial void OnReconStatusIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5716,6 +5799,54 @@ namespace LightSwitchApplication.Implementation
         private global::System.DateTime _sys_ModifiedOn;
         partial void Onsys_ModifiedOnChanging(global::System.DateTime value);
         partial void Onsys_ModifiedOnChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ReconProcessStepID
+        {
+            get
+            {
+                return _ReconProcessStepID;
+            }
+            set
+            {
+                OnReconProcessStepIDChanging(value);
+                ReportPropertyChanging("ReconProcessStepID");
+                _ReconProcessStepID = value;
+                ReportPropertyChanged("ReconProcessStepID");
+                OnReconProcessStepIDChanged();
+            }
+        }
+        private global::System.Int32 _ReconProcessStepID;
+        partial void OnReconProcessStepIDChanging(global::System.Int32 value);
+        partial void OnReconProcessStepIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ReconStatusID
+        {
+            get
+            {
+                return _ReconStatusID;
+            }
+            set
+            {
+                OnReconStatusIDChanging(value);
+                ReportPropertyChanging("ReconStatusID");
+                _ReconStatusID = value;
+                ReportPropertyChanged("ReconStatusID");
+                OnReconStatusIDChanged();
+            }
+        }
+        private global::System.Int32 _ReconStatusID;
+        partial void OnReconStatusIDChanging(global::System.Int32 value);
+        partial void OnReconStatusIDChanged();
 
         #endregion
 
@@ -5740,6 +5871,82 @@ namespace LightSwitchApplication.Implementation
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ImportedFile>("LightSwitchApplication.FK_ImportedFile_ReconSummary", "ImportedFile", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_ReconSummary_ReconProcessStep", "ReconProcessStep")]
+        public ReconProcessStep ReconProcessStep
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ReconProcessStep>("LightSwitchApplication.FK_ReconSummary_ReconProcessStep", "ReconProcessStep").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ReconProcessStep>("LightSwitchApplication.FK_ReconSummary_ReconProcessStep", "ReconProcessStep").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ReconProcessStep> ReconProcessStepReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ReconProcessStep>("LightSwitchApplication.FK_ReconSummary_ReconProcessStep", "ReconProcessStep");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ReconProcessStep>("LightSwitchApplication.FK_ReconSummary_ReconProcessStep", "ReconProcessStep", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_ReconSummary_ReconStatus", "ReconStatus")]
+        public ReconStatu ReconStatu
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ReconStatu>("LightSwitchApplication.FK_ReconSummary_ReconStatus", "ReconStatus").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ReconStatu>("LightSwitchApplication.FK_ReconSummary_ReconStatus", "ReconStatus").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ReconStatu> ReconStatuReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ReconStatu>("LightSwitchApplication.FK_ReconSummary_ReconStatus", "ReconStatus");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ReconStatu>("LightSwitchApplication.FK_ReconSummary_ReconStatus", "ReconStatus", value);
                 }
             }
         }

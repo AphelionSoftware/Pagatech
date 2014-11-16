@@ -45,14 +45,6 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="ReconSourceID"
-        PropertyType=":Int32">
-        <EntityProperty.Attributes>
-          <Required />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
         Name="sys_CreatedBy"
         PropertyType=":String">
         <EntityProperty.Attributes>
@@ -109,6 +101,11 @@
         Association="FK_ImportedFile_FileDefinition"
         FromEnd="FileDefinition"
         ToEnd="ImportedFile" />
+      <NavigationProperty
+        Name="ReconSource"
+        Association="FK_FileDefinition_ReconSource"
+        FromEnd="FileDefinition"
+        ToEnd="ReconSource" />
     </EntityType.Properties>
   </EntityType>
   <Association
@@ -283,11 +280,6 @@
           Type="varchar"
           Property="FileDefinition/Properties[Name]" />
         <SsdlProperty
-          Name="ReconSourceID"
-          Nullable="False"
-          Type="int"
-          Property="FileDefinition/Properties[ReconSourceID]" />
-        <SsdlProperty
           MaxLength="255"
           Name="sys_CreatedBy"
           Nullable="False"
@@ -314,6 +306,11 @@
           Nullable="False"
           Type="int"
           PropertyName="FileTypeID" />
+        <SsdlForeignKeyProperty
+          Name="ReconSourceID"
+          Nullable="False"
+          Type="int"
+          PropertyName="ReconSourceID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
     <AssociationSetMapping

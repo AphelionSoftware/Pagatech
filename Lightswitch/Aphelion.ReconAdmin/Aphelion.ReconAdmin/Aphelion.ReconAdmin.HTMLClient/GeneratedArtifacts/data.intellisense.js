@@ -10,12 +10,60 @@
         created: [lightSwitchApplication.FieldType]
     });
 
+    msls._addEntryPoints(lightSwitchApplication.FileDefinition, {
+        /// <field>
+        /// Called when a new fileDefinition is created.
+        /// <br/>created(msls.application.FileDefinition entity)
+        /// </field>
+        created: [lightSwitchApplication.FileDefinition]
+    });
+
+    msls._addEntryPoints(lightSwitchApplication.FileField, {
+        /// <field>
+        /// Called when a new fileField is created.
+        /// <br/>created(msls.application.FileField entity)
+        /// </field>
+        created: [lightSwitchApplication.FileField]
+    });
+
+    msls._addEntryPoints(lightSwitchApplication.FileSection, {
+        /// <field>
+        /// Called when a new fileSection is created.
+        /// <br/>created(msls.application.FileSection entity)
+        /// </field>
+        created: [lightSwitchApplication.FileSection]
+    });
+
+    msls._addEntryPoints(lightSwitchApplication.FileType, {
+        /// <field>
+        /// Called when a new fileType is created.
+        /// <br/>created(msls.application.FileType entity)
+        /// </field>
+        created: [lightSwitchApplication.FileType]
+    });
+
+    msls._addEntryPoints(lightSwitchApplication.ImportedFile, {
+        /// <field>
+        /// Called when a new importedFile is created.
+        /// <br/>created(msls.application.ImportedFile entity)
+        /// </field>
+        created: [lightSwitchApplication.ImportedFile]
+    });
+
     msls._addEntryPoints(lightSwitchApplication.ImportFileField_ReconField, {
         /// <field>
         /// Called when a new importFileField_ReconField is created.
         /// <br/>created(msls.application.ImportFileField_ReconField entity)
         /// </field>
         created: [lightSwitchApplication.ImportFileField_ReconField]
+    });
+
+    msls._addEntryPoints(lightSwitchApplication.ReconDetail, {
+        /// <field>
+        /// Called when a new reconDetail is created.
+        /// <br/>created(msls.application.ReconDetail entity)
+        /// </field>
+        created: [lightSwitchApplication.ReconDetail]
     });
 
     msls._addEntryPoints(lightSwitchApplication.ReconField, {
@@ -74,6 +122,14 @@
         created: [lightSwitchApplication.ReconStatu]
     });
 
+    msls._addEntryPoints(lightSwitchApplication.ReconSummary, {
+        /// <field>
+        /// Called when a new reconSummary is created.
+        /// <br/>created(msls.application.ReconSummary entity)
+        /// </field>
+        created: [lightSwitchApplication.ReconSummary]
+    });
+
     msls._addEntryPoints(lightSwitchApplication.ReconType, {
         /// <field>
         /// Called when a new reconType is created.
@@ -88,62 +144,6 @@
         /// <br/>created(msls.application.SystemField entity)
         /// </field>
         created: [lightSwitchApplication.SystemField]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.FileDefinition, {
-        /// <field>
-        /// Called when a new fileDefinition is created.
-        /// <br/>created(msls.application.FileDefinition entity)
-        /// </field>
-        created: [lightSwitchApplication.FileDefinition]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.FileField, {
-        /// <field>
-        /// Called when a new fileField is created.
-        /// <br/>created(msls.application.FileField entity)
-        /// </field>
-        created: [lightSwitchApplication.FileField]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.FileSection, {
-        /// <field>
-        /// Called when a new fileSection is created.
-        /// <br/>created(msls.application.FileSection entity)
-        /// </field>
-        created: [lightSwitchApplication.FileSection]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.FileType, {
-        /// <field>
-        /// Called when a new fileType is created.
-        /// <br/>created(msls.application.FileType entity)
-        /// </field>
-        created: [lightSwitchApplication.FileType]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.ImportedFile, {
-        /// <field>
-        /// Called when a new importedFile is created.
-        /// <br/>created(msls.application.ImportedFile entity)
-        /// </field>
-        created: [lightSwitchApplication.ImportedFile]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.ReconDetail, {
-        /// <field>
-        /// Called when a new reconDetail is created.
-        /// <br/>created(msls.application.ReconDetail entity)
-        /// </field>
-        created: [lightSwitchApplication.ReconDetail]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.ReconSummary, {
-        /// <field>
-        /// Called when a new reconSummary is created.
-        /// <br/>created(msls.application.ReconSummary entity)
-        /// </field>
-        created: [lightSwitchApplication.ReconSummary]
     });
 
 }(msls.application));
