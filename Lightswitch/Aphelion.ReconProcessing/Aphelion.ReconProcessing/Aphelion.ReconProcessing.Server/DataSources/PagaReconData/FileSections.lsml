@@ -82,16 +82,18 @@
       </EntityProperty>
       <EntityProperty
         Name="NumRows"
-        PropertyType=":Int32?">
+        PropertyType=":Int32">
         <EntityProperty.Attributes>
           <NotSearchable />
+          <Required />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
         Name="NumColumns"
-        PropertyType=":Int32?">
+        PropertyType=":Int32">
         <EntityProperty.Attributes>
           <NotSearchable />
+          <Required />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
@@ -172,6 +174,11 @@
         Association="FK_ReconProcessStep_FileSection1"
         FromEnd="FileSection"
         ToEnd="ReconProcessStep" />
+      <NavigationProperty
+        Name="Synonyms"
+        Association="FK_Synonym_FileSection"
+        FromEnd="FileSection"
+        ToEnd="Synonym" />
     </EntityType.Properties>
   </EntityType>
   <Association
@@ -340,7 +347,32 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="FK_Synonym_FileSection"
+      Association="FK_Synonym_FileSection">
+      <AssociationSetEnd
+        Name="FileSection"
+        EntitySet="FileSections" />
+      <AssociationSetEnd
+        Name="Synonym"
+        EntitySet="Synonyms" />
+    </AssociationSet>
   </EntityContainer>
+  <Association
+    Name="FK_Synonym_FileSection">
+    <AssociationEnd
+      Name="FileSection"
+      Multiplicity="One"
+      EntityType="FileSection">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Synonym"
+      Multiplicity="Many"
+      EntityType="Synonym" />
+  </Association>
   <DataService
     Name="PagaReconDataDataService">
     <DataService.Attributes>
@@ -394,12 +426,12 @@
           Property="FileSection/Properties[StartColumn]" />
         <SsdlProperty
           Name="NumRows"
-          Nullable="True"
+          Nullable="False"
           Type="int"
           Property="FileSection/Properties[NumRows]" />
         <SsdlProperty
           Name="NumColumns"
-          Nullable="True"
+          Nullable="False"
           Type="int"
           Property="FileSection/Properties[NumColumns]" />
         <SsdlProperty
@@ -500,6 +532,27 @@
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
               Name="TargetFileSectionID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Synonym_FileSection">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Synonym_FileSection" />
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_Synonym_FileSection]/Members[FileSection]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_Synonym_FileSection]/Members[Synonym]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="FileSectionID" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
       </AssociationSetMapping.Attributes>

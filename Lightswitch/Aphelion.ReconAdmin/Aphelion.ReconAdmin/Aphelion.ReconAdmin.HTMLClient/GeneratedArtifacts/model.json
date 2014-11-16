@@ -3745,14 +3745,16 @@
             {
               "id": "FileSection/Properties[NumRows]",
               "name": "NumRows",
-              "propertyType": { "__id": ":Int32?" },
-              ":@NotSearchable": { }
+              "propertyType": { "__id": ":Int32" },
+              ":@NotSearchable": { },
+              ":@Required": { }
             },
             {
               "id": "FileSection/Properties[NumColumns]",
               "name": "NumColumns",
-              "propertyType": { "__id": ":Int32?" },
-              ":@NotSearchable": { }
+              "propertyType": { "__id": ":Int32" },
+              ":@NotSearchable": { },
+              ":@Required": { }
             },
             {
               "id": "FileSection/Properties[Pivot]",
@@ -4113,6 +4115,51 @@
                 "value": 800
               },
               ":@AnsiConstraint": { }
+            },
+            {
+              "id": "ImportedFile/Properties[FileContents]",
+              "name": "FileContents",
+              "propertyType": { "__id": ":Binary?" },
+              ":@MaxLength":
+              {
+              },
+              ":@NotSearchable": { }
+            },
+            {
+              "id": "ImportedFile/Properties[ReconProcessSteps]",
+              "name": "ReconProcessSteps",
+              "association": { "__id": "FK_ReconProcessStep_ImportedFile" },
+              "elementType": { "__id": "ReconProcessStep" },
+              "fromEnd": { "__id": "FK_ReconProcessStep_ImportedFile/Ends[ImportedFile]" },
+              "propertyType": { "__id": "ReconProcessStep*" },
+              "toEnd": { "__id": "FK_ReconProcessStep_ImportedFile/Ends[ReconProcessStep]" }
+            },
+            {
+              "id": "ImportedFile/Properties[ReconProcessSteps1]",
+              "name": "ReconProcessSteps1",
+              "association": { "__id": "FK_ReconProcessStep_ImportedFile1" },
+              "elementType": { "__id": "ReconProcessStep" },
+              "fromEnd": { "__id": "FK_ReconProcessStep_ImportedFile1/Ends[ImportedFile]" },
+              "propertyType": { "__id": "ReconProcessStep*" },
+              "toEnd": { "__id": "FK_ReconProcessStep_ImportedFile1/Ends[ReconProcessStep]" }
+            },
+            {
+              "id": "ImportedFile/Properties[ReconSummaries]",
+              "name": "ReconSummaries",
+              "association": { "__id": "FK_ReconSummary_ImportedFile" },
+              "elementType": { "__id": "ReconSummary" },
+              "fromEnd": { "__id": "FK_ReconSummary_ImportedFile/Ends[ImportedFile]" },
+              "propertyType": { "__id": "ReconSummary*" },
+              "toEnd": { "__id": "FK_ReconSummary_ImportedFile/Ends[ReconSummary]" }
+            },
+            {
+              "id": "ImportedFile/Properties[ReconSummaries1]",
+              "name": "ReconSummaries1",
+              "association": { "__id": "FK_ReconSummary_ImportedFile1" },
+              "elementType": { "__id": "ReconSummary" },
+              "fromEnd": { "__id": "FK_ReconSummary_ImportedFile1/Ends[ImportedFile]" },
+              "propertyType": { "__id": "ReconSummary*" },
+              "toEnd": { "__id": "FK_ReconSummary_ImportedFile1/Ends[ReconSummary]" }
             }
           ]
         },
@@ -4899,6 +4946,24 @@
               "fromEnd": { "__id": "FK_ReconSummary_ReconProcessStep/Ends[ReconProcessStep]" },
               "propertyType": { "__id": "ReconSummary*" },
               "toEnd": { "__id": "FK_ReconSummary_ReconProcessStep/Ends[ReconSummary]" }
+            },
+            {
+              "id": "ReconProcessStep/Properties[ImportedFile]",
+              "name": "ImportedFile",
+              "association": { "__id": "FK_ReconProcessStep_ImportedFile" },
+              "elementType": { "__id": "ImportedFile" },
+              "fromEnd": { "__id": "FK_ReconProcessStep_ImportedFile/Ends[ReconProcessStep]" },
+              "propertyType": { "__id": "ImportedFile" },
+              "toEnd": { "__id": "FK_ReconProcessStep_ImportedFile/Ends[ImportedFile]" }
+            },
+            {
+              "id": "ReconProcessStep/Properties[ImportedFile1]",
+              "name": "ImportedFile1",
+              "association": { "__id": "FK_ReconProcessStep_ImportedFile1" },
+              "elementType": { "__id": "ImportedFile" },
+              "fromEnd": { "__id": "FK_ReconProcessStep_ImportedFile1/Ends[ReconProcessStep]" },
+              "propertyType": { "__id": "ImportedFile" },
+              "toEnd": { "__id": "FK_ReconProcessStep_ImportedFile1/Ends[ImportedFile]" }
             }
           ]
         },
@@ -5453,6 +5518,24 @@
               "fromEnd": { "__id": "FK_ReconSummary_ReconStatus/Ends[ReconSummary]" },
               "propertyType": { "__id": "ReconStatu" },
               "toEnd": { "__id": "FK_ReconSummary_ReconStatus/Ends[ReconStatus]" }
+            },
+            {
+              "id": "ReconSummary/Properties[ImportedFile]",
+              "name": "ImportedFile",
+              "association": { "__id": "FK_ReconSummary_ImportedFile" },
+              "elementType": { "__id": "ImportedFile" },
+              "fromEnd": { "__id": "FK_ReconSummary_ImportedFile/Ends[ReconSummary]" },
+              "propertyType": { "__id": "ImportedFile" },
+              "toEnd": { "__id": "FK_ReconSummary_ImportedFile/Ends[ImportedFile]" }
+            },
+            {
+              "id": "ReconSummary/Properties[ImportedFile1]",
+              "name": "ImportedFile1",
+              "association": { "__id": "FK_ReconSummary_ImportedFile1" },
+              "elementType": { "__id": "ImportedFile" },
+              "fromEnd": { "__id": "FK_ReconSummary_ImportedFile1/Ends[ReconSummary]" },
+              "propertyType": { "__id": "ImportedFile" },
+              "toEnd": { "__id": "FK_ReconSummary_ImportedFile1/Ends[ImportedFile]" }
             }
           ]
         },
@@ -6447,6 +6530,86 @@
                 {
                   "properties": [ "ReconStatusID" ],
                   "id": "ReconData/Members[FK_ReconSummary_ReconStatus]/Members[ReconSummary]",
+                  "name": "ReconSummary",
+                  "entitySet": { "__id": "ReconData/Members[ReconSummaries]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ReconProcessStep_ImportedFile]",
+              "name": "FK_ReconProcessStep_ImportedFile",
+              "association": { "__id": "FK_ReconProcessStep_ImportedFile" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ReconProcessStep_ImportedFile]/Members[ImportedFile]",
+                  "name": "ImportedFile",
+                  "entitySet": { "__id": "ReconData/Members[ImportedFiles]" }
+                },
+                {
+                  "properties": [ "CurrentSourceImportedFileID" ],
+                  "id": "ReconData/Members[FK_ReconProcessStep_ImportedFile]/Members[ReconProcessStep]",
+                  "name": "ReconProcessStep",
+                  "entitySet": { "__id": "ReconData/Members[ReconProcessSteps]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ReconProcessStep_ImportedFile1]",
+              "name": "FK_ReconProcessStep_ImportedFile1",
+              "association": { "__id": "FK_ReconProcessStep_ImportedFile1" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ReconProcessStep_ImportedFile1]/Members[ImportedFile]",
+                  "name": "ImportedFile",
+                  "entitySet": { "__id": "ReconData/Members[ImportedFiles]" }
+                },
+                {
+                  "properties": [ "CurrentTargetImportedFileID" ],
+                  "id": "ReconData/Members[FK_ReconProcessStep_ImportedFile1]/Members[ReconProcessStep]",
+                  "name": "ReconProcessStep",
+                  "entitySet": { "__id": "ReconData/Members[ReconProcessSteps]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ReconSummary_ImportedFile]",
+              "name": "FK_ReconSummary_ImportedFile",
+              "association": { "__id": "FK_ReconSummary_ImportedFile" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ReconSummary_ImportedFile]/Members[ImportedFile]",
+                  "name": "ImportedFile",
+                  "entitySet": { "__id": "ReconData/Members[ImportedFiles]" }
+                },
+                {
+                  "properties": [ "SourceImportFileID" ],
+                  "id": "ReconData/Members[FK_ReconSummary_ImportedFile]/Members[ReconSummary]",
+                  "name": "ReconSummary",
+                  "entitySet": { "__id": "ReconData/Members[ReconSummaries]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ReconSummary_ImportedFile1]",
+              "name": "FK_ReconSummary_ImportedFile1",
+              "association": { "__id": "FK_ReconSummary_ImportedFile1" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ReconSummary_ImportedFile1]/Members[ImportedFile]",
+                  "name": "ImportedFile",
+                  "entitySet": { "__id": "ReconData/Members[ImportedFiles]" }
+                },
+                {
+                  "properties": [ "DestImportFileID" ],
+                  "id": "ReconData/Members[FK_ReconSummary_ImportedFile1]/Members[ReconSummary]",
                   "name": "ReconSummary",
                   "entitySet": { "__id": "ReconData/Members[ReconSummaries]" }
                 }
@@ -17363,6 +17526,86 @@
             },
             {
               "id": "FK_ReconSummary_ReconStatus/Ends[ReconSummary]",
+              "name": "ReconSummary",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconSummary" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconProcessStep_ImportedFile",
+          "name": "FK_ReconProcessStep_ImportedFile",
+          "ends":
+          [
+            {
+              "id": "FK_ReconProcessStep_ImportedFile/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconProcessStep_ImportedFile/Ends[ReconProcessStep]",
+              "name": "ReconProcessStep",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconProcessStep" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconProcessStep_ImportedFile1",
+          "name": "FK_ReconProcessStep_ImportedFile1",
+          "ends":
+          [
+            {
+              "id": "FK_ReconProcessStep_ImportedFile1/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconProcessStep_ImportedFile1/Ends[ReconProcessStep]",
+              "name": "ReconProcessStep",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconProcessStep" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconSummary_ImportedFile",
+          "name": "FK_ReconSummary_ImportedFile",
+          "ends":
+          [
+            {
+              "id": "FK_ReconSummary_ImportedFile/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconSummary_ImportedFile/Ends[ReconSummary]",
+              "name": "ReconSummary",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconSummary" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconSummary_ImportedFile1",
+          "name": "FK_ReconSummary_ImportedFile1",
+          "ends":
+          [
+            {
+              "id": "FK_ReconSummary_ImportedFile1/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconSummary_ImportedFile1/Ends[ReconSummary]",
               "name": "ReconSummary",
               "multiplicity": "Many",
               "entityType": { "__id": "ReconSummary" }

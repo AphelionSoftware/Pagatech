@@ -39,6 +39,10 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileDefinition_ReconSource", "ReconSource", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconSource), "FileDefinition", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileDefinition), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconSummary_ReconProcessStep", "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconProcessStep), "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSummary), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconSummary_ReconStatus", "ReconStatus", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconStatu), "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSummary), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconProcessStep_ImportedFile", "ImportedFile", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(LightSwitchApplication.Implementation.ImportedFile), "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconProcessStep), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconProcessStep_ImportedFile1", "ImportedFile", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(LightSwitchApplication.Implementation.ImportedFile), "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconProcessStep), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconSummary_ImportedFile", "ImportedFile", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(LightSwitchApplication.Implementation.ImportedFile), "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSummary), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconSummary_ImportedFile1", "ImportedFile", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(LightSwitchApplication.Implementation.ImportedFile), "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSummary), true)]
 
 #endregion
 
@@ -1521,6 +1525,8 @@ namespace LightSwitchApplication.Implementation
         /// <param name="stagingTableName">Initial value of the StagingTableName property.</param>
         /// <param name="startRow">Initial value of the StartRow property.</param>
         /// <param name="startColumn">Initial value of the StartColumn property.</param>
+        /// <param name="numRows">Initial value of the NumRows property.</param>
+        /// <param name="numColumns">Initial value of the NumColumns property.</param>
         /// <param name="pivot">Initial value of the Pivot property.</param>
         /// <param name="headerRow">Initial value of the HeaderRow property.</param>
         /// <param name="sys_CreatedBy">Initial value of the sys_CreatedBy property.</param>
@@ -1528,7 +1534,7 @@ namespace LightSwitchApplication.Implementation
         /// <param name="sys_ModifiedBy">Initial value of the sys_ModifiedBy property.</param>
         /// <param name="sys_ModifiedOn">Initial value of the sys_ModifiedOn property.</param>
         /// <param name="fileDefinitionID">Initial value of the FileDefinitionID property.</param>
-        public static FileSection CreateFileSection(global::System.Int32 id, global::System.String code, global::System.String stagingTableSchema, global::System.String stagingTableName, global::System.Int32 startRow, global::System.Int32 startColumn, global::System.Boolean pivot, global::System.Boolean headerRow, global::System.String sys_CreatedBy, global::System.DateTime sys_CreatedOn, global::System.String sys_ModifiedBy, global::System.DateTime sys_ModifiedOn, global::System.Int32 fileDefinitionID)
+        public static FileSection CreateFileSection(global::System.Int32 id, global::System.String code, global::System.String stagingTableSchema, global::System.String stagingTableName, global::System.Int32 startRow, global::System.Int32 startColumn, global::System.Int32 numRows, global::System.Int32 numColumns, global::System.Boolean pivot, global::System.Boolean headerRow, global::System.String sys_CreatedBy, global::System.DateTime sys_CreatedOn, global::System.String sys_ModifiedBy, global::System.DateTime sys_ModifiedOn, global::System.Int32 fileDefinitionID)
         {
             FileSection fileSection = new FileSection();
             fileSection.ID = id;
@@ -1537,6 +1543,8 @@ namespace LightSwitchApplication.Implementation
             fileSection.StagingTableName = stagingTableName;
             fileSection.StartRow = startRow;
             fileSection.StartColumn = startColumn;
+            fileSection.NumRows = numRows;
+            fileSection.NumColumns = numColumns;
             fileSection.Pivot = pivot;
             fileSection.HeaderRow = headerRow;
             fileSection.sys_CreatedBy = sys_CreatedBy;
@@ -1725,9 +1733,9 @@ namespace LightSwitchApplication.Implementation
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> NumRows
+        public global::System.Int32 NumRows
         {
             get
             {
@@ -1742,16 +1750,16 @@ namespace LightSwitchApplication.Implementation
                 OnNumRowsChanged();
             }
         }
-        private Nullable<global::System.Int32> _NumRows;
-        partial void OnNumRowsChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _NumRows;
+        partial void OnNumRowsChanging(global::System.Int32 value);
         partial void OnNumRowsChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> NumColumns
+        public global::System.Int32 NumColumns
         {
             get
             {
@@ -1766,8 +1774,8 @@ namespace LightSwitchApplication.Implementation
                 OnNumColumnsChanged();
             }
         }
-        private Nullable<global::System.Int32> _NumColumns;
-        partial void OnNumColumnsChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _NumColumns;
+        partial void OnNumColumnsChanging(global::System.Int32 value);
         partial void OnNumColumnsChanged();
     
         /// <summary>
@@ -2569,6 +2577,30 @@ namespace LightSwitchApplication.Implementation
         private global::System.String _UploadedFileName;
         partial void OnUploadedFileNameChanging(global::System.String value);
         partial void OnUploadedFileNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] FileContents
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_FileContents);
+            }
+            set
+            {
+                OnFileContentsChanging(value);
+                ReportPropertyChanging("FileContents");
+                _FileContents = value;
+                ReportPropertyChanged("FileContents");
+                OnFileContentsChanged();
+            }
+        }
+        private global::System.Byte[] _FileContents;
+        partial void OnFileContentsChanging(global::System.Byte[] value);
+        partial void OnFileContentsChanged();
 
         #endregion
 
@@ -2647,6 +2679,94 @@ namespace LightSwitchApplication.Implementation
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ReconSummary>("LightSwitchApplication.FK_ImportedFile_ReconSummary", "ReconSummary", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_ReconProcessStep_ImportedFile", "ReconProcessStep")]
+        public EntityCollection<ReconProcessStep> ReconProcessSteps
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ReconProcessStep>("LightSwitchApplication.FK_ReconProcessStep_ImportedFile", "ReconProcessStep");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ReconProcessStep>("LightSwitchApplication.FK_ReconProcessStep_ImportedFile", "ReconProcessStep", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_ReconProcessStep_ImportedFile1", "ReconProcessStep")]
+        public EntityCollection<ReconProcessStep> ReconProcessSteps1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ReconProcessStep>("LightSwitchApplication.FK_ReconProcessStep_ImportedFile1", "ReconProcessStep");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ReconProcessStep>("LightSwitchApplication.FK_ReconProcessStep_ImportedFile1", "ReconProcessStep", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_ReconSummary_ImportedFile", "ReconSummary")]
+        public EntityCollection<ReconSummary> ReconSummaries
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ReconSummary>("LightSwitchApplication.FK_ReconSummary_ImportedFile", "ReconSummary");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ReconSummary>("LightSwitchApplication.FK_ReconSummary_ImportedFile", "ReconSummary", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_ReconSummary_ImportedFile1", "ReconSummary")]
+        public EntityCollection<ReconSummary> ReconSummaries1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ReconSummary>("LightSwitchApplication.FK_ReconSummary_ImportedFile1", "ReconSummary");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ReconSummary>("LightSwitchApplication.FK_ReconSummary_ImportedFile1", "ReconSummary", value);
                 }
             }
         }
@@ -4487,6 +4607,54 @@ namespace LightSwitchApplication.Implementation
         private global::System.Int32 _Order;
         partial void OnOrderChanging(global::System.Int32 value);
         partial void OnOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CurrentSourceImportedFileID
+        {
+            get
+            {
+                return _CurrentSourceImportedFileID;
+            }
+            set
+            {
+                OnCurrentSourceImportedFileIDChanging(value);
+                ReportPropertyChanging("CurrentSourceImportedFileID");
+                _CurrentSourceImportedFileID = value;
+                ReportPropertyChanged("CurrentSourceImportedFileID");
+                OnCurrentSourceImportedFileIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CurrentSourceImportedFileID;
+        partial void OnCurrentSourceImportedFileIDChanging(Nullable<global::System.Int32> value);
+        partial void OnCurrentSourceImportedFileIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CurrentTargetImportedFileID
+        {
+            get
+            {
+                return _CurrentTargetImportedFileID;
+            }
+            set
+            {
+                OnCurrentTargetImportedFileIDChanging(value);
+                ReportPropertyChanging("CurrentTargetImportedFileID");
+                _CurrentTargetImportedFileID = value;
+                ReportPropertyChanged("CurrentTargetImportedFileID");
+                OnCurrentTargetImportedFileIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CurrentTargetImportedFileID;
+        partial void OnCurrentTargetImportedFileIDChanging(Nullable<global::System.Int32> value);
+        partial void OnCurrentTargetImportedFileIDChanged();
 
         #endregion
 
@@ -4685,6 +4853,82 @@ namespace LightSwitchApplication.Implementation
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ReconSummary>("LightSwitchApplication.FK_ReconSummary_ReconProcessStep", "ReconSummary", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_ReconProcessStep_ImportedFile", "ImportedFile")]
+        public ImportedFile ImportedFile
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconProcessStep_ImportedFile", "ImportedFile").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconProcessStep_ImportedFile", "ImportedFile").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ImportedFile> ImportedFileReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconProcessStep_ImportedFile", "ImportedFile");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconProcessStep_ImportedFile", "ImportedFile", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_ReconProcessStep_ImportedFile1", "ImportedFile")]
+        public ImportedFile ImportedFile1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconProcessStep_ImportedFile1", "ImportedFile").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconProcessStep_ImportedFile1", "ImportedFile").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ImportedFile> ImportedFile1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconProcessStep_ImportedFile1", "ImportedFile");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconProcessStep_ImportedFile1", "ImportedFile", value);
                 }
             }
         }
@@ -5847,6 +6091,54 @@ namespace LightSwitchApplication.Implementation
         private global::System.Int32 _ReconStatusID;
         partial void OnReconStatusIDChanging(global::System.Int32 value);
         partial void OnReconStatusIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SourceImportFileID
+        {
+            get
+            {
+                return _SourceImportFileID;
+            }
+            set
+            {
+                OnSourceImportFileIDChanging(value);
+                ReportPropertyChanging("SourceImportFileID");
+                _SourceImportFileID = value;
+                ReportPropertyChanged("SourceImportFileID");
+                OnSourceImportFileIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SourceImportFileID;
+        partial void OnSourceImportFileIDChanging(Nullable<global::System.Int32> value);
+        partial void OnSourceImportFileIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> DestImportFileID
+        {
+            get
+            {
+                return _DestImportFileID;
+            }
+            set
+            {
+                OnDestImportFileIDChanging(value);
+                ReportPropertyChanging("DestImportFileID");
+                _DestImportFileID = value;
+                ReportPropertyChanged("DestImportFileID");
+                OnDestImportFileIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _DestImportFileID;
+        partial void OnDestImportFileIDChanging(Nullable<global::System.Int32> value);
+        partial void OnDestImportFileIDChanged();
 
         #endregion
 
@@ -5947,6 +6239,82 @@ namespace LightSwitchApplication.Implementation
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ReconStatu>("LightSwitchApplication.FK_ReconSummary_ReconStatus", "ReconStatus", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_ReconSummary_ImportedFile", "ImportedFile")]
+        public ImportedFile ImportedFile
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconSummary_ImportedFile", "ImportedFile").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconSummary_ImportedFile", "ImportedFile").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ImportedFile> ImportedFileReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconSummary_ImportedFile", "ImportedFile");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconSummary_ImportedFile", "ImportedFile", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LightSwitchApplication", "FK_ReconSummary_ImportedFile1", "ImportedFile")]
+        public ImportedFile ImportedFile1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconSummary_ImportedFile1", "ImportedFile").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconSummary_ImportedFile1", "ImportedFile").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ImportedFile> ImportedFile1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconSummary_ImportedFile1", "ImportedFile");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ImportedFile>("LightSwitchApplication.FK_ReconSummary_ImportedFile1", "ImportedFile", value);
                 }
             }
         }

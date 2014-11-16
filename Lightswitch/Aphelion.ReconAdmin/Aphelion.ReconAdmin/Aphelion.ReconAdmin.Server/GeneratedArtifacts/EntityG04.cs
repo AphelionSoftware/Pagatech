@@ -247,7 +247,7 @@ namespace LightSwitchApplication
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Nullable<int> NumRows
+        public int NumRows
         {
             get
             {
@@ -271,7 +271,7 @@ namespace LightSwitchApplication
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Nullable<int> NumColumns
+        public int NumColumns
         {
             get
             {
@@ -665,19 +665,19 @@ namespace LightSwitchApplication
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, global::System.Nullable<int>> NumRows
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int> NumRows
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties.NumRows) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, global::System.Nullable<int>>;
+                        return base.GetItem(global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties.NumRows) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, global::System.Nullable<int>> NumColumns
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int> NumColumns
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties.NumColumns) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, global::System.Nullable<int>>;
+                        return base.GetItem(global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties.NumColumns) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int>;
                     }
                 }
                 
@@ -774,8 +774,8 @@ namespace LightSwitchApplication
                 new string StagingTableName { get; set; }
                 new int StartRow { get; set; }
                 new int StartColumn { get; set; }
-                new global::System.Nullable<int> NumRows { get; set; }
-                new global::System.Nullable<int> NumColumns { get; set; }
+                new int NumRows { get; set; }
+                new int NumColumns { get; set; }
                 new bool Pivot { get; set; }
                 new bool HeaderRow { get; set; }
                 new string sys_CreatedBy { get; set; }
@@ -1051,8 +1051,8 @@ namespace LightSwitchApplication
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, global::System.Nullable<int>>.Entry
-                    NumRows = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, global::System.Nullable<int>>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int>.Entry
+                    NumRows = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int>.Entry(
                         "NumRows",
                         global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties._NumRows_Stub,
                         global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties._NumRows_ComputeIsReadOnly,
@@ -1060,7 +1060,7 @@ namespace LightSwitchApplication
                         global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties._NumRows_GetImplementationValue,
                         global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties._NumRows_SetImplementationValue,
                         global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties._NumRows_OnValueChanged);
-                private static void _NumRows_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileSection.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, global::System.Nullable<int>>.Data> c, global::LightSwitchApplication.FileSection.DetailsClass d, object sf)
+                private static void _NumRows_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileSection.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int>.Data> c, global::LightSwitchApplication.FileSection.DetailsClass d, object sf)
                 {
                     c(d, ref d._NumRows, sf);
                 }
@@ -1074,11 +1074,11 @@ namespace LightSwitchApplication
                 {
                     e.NumRows_Validate(r);
                 }
-                private static global::System.Nullable<int> _NumRows_GetImplementationValue(global::LightSwitchApplication.FileSection.DetailsClass d)
+                private static int _NumRows_GetImplementationValue(global::LightSwitchApplication.FileSection.DetailsClass d)
                 {
                     return d.ImplementationEntity.NumRows;
                 }
-                private static void _NumRows_SetImplementationValue(global::LightSwitchApplication.FileSection.DetailsClass d, global::System.Nullable<int> v)
+                private static void _NumRows_SetImplementationValue(global::LightSwitchApplication.FileSection.DetailsClass d, int v)
                 {
                     d.ImplementationEntity.NumRows = v;
                 }
@@ -1088,8 +1088,8 @@ namespace LightSwitchApplication
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, global::System.Nullable<int>>.Entry
-                    NumColumns = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, global::System.Nullable<int>>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int>.Entry
+                    NumColumns = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int>.Entry(
                         "NumColumns",
                         global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties._NumColumns_Stub,
                         global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties._NumColumns_ComputeIsReadOnly,
@@ -1097,7 +1097,7 @@ namespace LightSwitchApplication
                         global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties._NumColumns_GetImplementationValue,
                         global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties._NumColumns_SetImplementationValue,
                         global::LightSwitchApplication.FileSection.DetailsClass.PropertySetProperties._NumColumns_OnValueChanged);
-                private static void _NumColumns_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileSection.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, global::System.Nullable<int>>.Data> c, global::LightSwitchApplication.FileSection.DetailsClass d, object sf)
+                private static void _NumColumns_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileSection.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int>.Data> c, global::LightSwitchApplication.FileSection.DetailsClass d, object sf)
                 {
                     c(d, ref d._NumColumns, sf);
                 }
@@ -1111,11 +1111,11 @@ namespace LightSwitchApplication
                 {
                     e.NumColumns_Validate(r);
                 }
-                private static global::System.Nullable<int> _NumColumns_GetImplementationValue(global::LightSwitchApplication.FileSection.DetailsClass d)
+                private static int _NumColumns_GetImplementationValue(global::LightSwitchApplication.FileSection.DetailsClass d)
                 {
                     return d.ImplementationEntity.NumColumns;
                 }
-                private static void _NumColumns_SetImplementationValue(global::LightSwitchApplication.FileSection.DetailsClass d, global::System.Nullable<int> v)
+                private static void _NumColumns_SetImplementationValue(global::LightSwitchApplication.FileSection.DetailsClass d, int v)
                 {
                     d.ImplementationEntity.NumColumns = v;
                 }
@@ -1477,10 +1477,10 @@ namespace LightSwitchApplication
             private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int>.Data _StartColumn;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, global::System.Nullable<int>>.Data _NumRows;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int>.Data _NumRows;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, global::System.Nullable<int>>.Data _NumColumns;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, int>.Data _NumColumns;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass, bool>.Data _Pivot;

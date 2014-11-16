@@ -153,6 +153,11 @@
         Association="FK_ReconSummary_ImportedFile1"
         FromEnd="ReconSummary"
         ToEnd="ImportedFile" />
+      <NavigationProperty
+        Name="ImportedFiles1"
+        Association="FK_ImportedFile_ReconSummary1"
+        FromEnd="ReconSummary"
+        ToEnd="ImportedFile" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -256,7 +261,31 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="FK_ImportedFile_ReconSummary1"
+      Association="FK_ImportedFile_ReconSummary1">
+      <AssociationSetEnd
+        Name="ReconSummary"
+        EntitySet="ReconSummaries" />
+      <AssociationSetEnd
+        Name="ImportedFile"
+        EntitySet="ImportedFiles" />
+    </AssociationSet>
   </EntityContainer>
+  <Association
+    Name="FK_ImportedFile_ReconSummary1">
+    <AssociationEnd
+      Name="ReconSummary"
+      EntityType="ReconSummary">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ImportedFile"
+      Multiplicity="Many"
+      EntityType="ImportedFile" />
+  </Association>
   <DataService
     Name="PagaReconDataDataService">
     <DataService.Attributes>
@@ -357,5 +386,26 @@
           PropertyName="ReconStatusID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ImportedFile_ReconSummary1">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ImportedFile_ReconSummary" />
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ImportedFile_ReconSummary1]/Members[ReconSummary]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ImportedFile_ReconSummary1]/Members[ImportedFile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ReconSummaryID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
   </DataService>
 </ServiceApplication>

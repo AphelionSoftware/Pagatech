@@ -59,8 +59,8 @@
     <Property Name="StagingTableName" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
     <Property Name="StartRow" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="StartColumn" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
-    <Property Name="NumRows" Type="Edm.Int32" ConcurrencyMode="Fixed" />
-    <Property Name="NumColumns" Type="Edm.Int32" ConcurrencyMode="Fixed" />
+    <Property Name="NumRows" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="NumColumns" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="Pivot" Type="Edm.Boolean" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="HeaderRow" Type="Edm.Boolean" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
@@ -100,8 +100,13 @@
     <Property Name="FileDefinitionID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="ReconSummaryID" Type="Edm.Int32" ConcurrencyMode="Fixed" />
     <Property Name="UploadedFileName" Type="Edm.String" MaxLength="800" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="FileContents" Type="Edm.Binary" MaxLength="Max" />
     <NavigationProperty Name="FileDefinition" Relationship="LightSwitchApplication.FK_ImportedFile_FileDefinition" ToRole="FileDefinition" FromRole="ImportedFile" />
     <NavigationProperty Name="ReconSummary" Relationship="LightSwitchApplication.FK_ImportedFile_ReconSummary" ToRole="ReconSummary" FromRole="ImportedFile" />
+    <NavigationProperty Name="ReconProcessSteps" Relationship="LightSwitchApplication.FK_ReconProcessStep_ImportedFile" ToRole="ReconProcessStep" FromRole="ImportedFile" />
+    <NavigationProperty Name="ReconProcessSteps1" Relationship="LightSwitchApplication.FK_ReconProcessStep_ImportedFile1" ToRole="ReconProcessStep" FromRole="ImportedFile" />
+    <NavigationProperty Name="ReconSummaries" Relationship="LightSwitchApplication.FK_ReconSummary_ImportedFile" ToRole="ReconSummary" FromRole="ImportedFile" />
+    <NavigationProperty Name="ReconSummaries1" Relationship="LightSwitchApplication.FK_ReconSummary_ImportedFile1" ToRole="ReconSummary" FromRole="ImportedFile" />
   </EntityType>
   <EntityType Name="ImportFileField_ReconField">
     <Key>
@@ -193,12 +198,16 @@
     <Property Name="ReconProcessID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="ReconTypeID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="Order" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="CurrentSourceImportedFileID" Type="Edm.Int32" ConcurrencyMode="Fixed" />
+    <Property Name="CurrentTargetImportedFileID" Type="Edm.Int32" ConcurrencyMode="Fixed" />
     <NavigationProperty Name="FileSection" Relationship="LightSwitchApplication.FK_ReconProcessStep_FileSection" ToRole="FileSection" FromRole="ReconProcessStep" />
     <NavigationProperty Name="FileSection1" Relationship="LightSwitchApplication.FK_ReconProcessStep_FileSection1" ToRole="FileSection" FromRole="ReconProcessStep" />
     <NavigationProperty Name="ReconProcess" Relationship="LightSwitchApplication.FK_ReconProcessStep_ReconProcess" ToRole="ReconProcess" FromRole="ReconProcessStep" />
     <NavigationProperty Name="ReconType" Relationship="LightSwitchApplication.FK_ReconProcessStep_ReconType" ToRole="ReconType" FromRole="ReconProcessStep" />
     <NavigationProperty Name="ReconFields" Relationship="LightSwitchApplication.FK_ReconField_ReconProcessStep" ToRole="ReconField" FromRole="ReconProcessStep" />
     <NavigationProperty Name="ReconSummaries" Relationship="LightSwitchApplication.FK_ReconSummary_ReconProcessStep" ToRole="ReconSummary" FromRole="ReconProcessStep" />
+    <NavigationProperty Name="ImportedFile" Relationship="LightSwitchApplication.FK_ReconProcessStep_ImportedFile" ToRole="ImportedFile" FromRole="ReconProcessStep" />
+    <NavigationProperty Name="ImportedFile1" Relationship="LightSwitchApplication.FK_ReconProcessStep_ImportedFile1" ToRole="ImportedFile" FromRole="ReconProcessStep" />
   </EntityType>
   <EntityType Name="ReconSource">
     <Key>
@@ -259,9 +268,13 @@
     <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
     <Property Name="ReconProcessStepID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
     <Property Name="ReconStatusID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="SourceImportFileID" Type="Edm.Int32" ConcurrencyMode="Fixed" />
+    <Property Name="DestImportFileID" Type="Edm.Int32" ConcurrencyMode="Fixed" />
     <NavigationProperty Name="ImportedFiles" Relationship="LightSwitchApplication.FK_ImportedFile_ReconSummary" ToRole="ImportedFile" FromRole="ReconSummary" />
     <NavigationProperty Name="ReconProcessStep" Relationship="LightSwitchApplication.FK_ReconSummary_ReconProcessStep" ToRole="ReconProcessStep" FromRole="ReconSummary" />
     <NavigationProperty Name="ReconStatu" Relationship="LightSwitchApplication.FK_ReconSummary_ReconStatus" ToRole="ReconStatus" FromRole="ReconSummary" />
+    <NavigationProperty Name="ImportedFile" Relationship="LightSwitchApplication.FK_ReconSummary_ImportedFile" ToRole="ImportedFile" FromRole="ReconSummary" />
+    <NavigationProperty Name="ImportedFile1" Relationship="LightSwitchApplication.FK_ReconSummary_ImportedFile1" ToRole="ImportedFile" FromRole="ReconSummary" />
   </EntityType>
   <EntityType Name="ReconType">
     <Key>
@@ -532,6 +545,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ReconProcessStep_ImportedFile">
+    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
+    <End Role="ReconProcessStep" Type="LightSwitchApplication.ReconProcessStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconProcessStep">
+        <PropertyRef Name="CurrentSourceImportedFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconProcessStep_ImportedFile1">
+    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
+    <End Role="ReconProcessStep" Type="LightSwitchApplication.ReconProcessStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconProcessStep">
+        <PropertyRef Name="CurrentTargetImportedFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconSummary_ImportedFile">
+    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
+    <End Role="ReconSummary" Type="LightSwitchApplication.ReconSummary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconSummary">
+        <PropertyRef Name="SourceImportFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconSummary_ImportedFile1">
+    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
+    <End Role="ReconSummary" Type="LightSwitchApplication.ReconSummary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconSummary">
+        <PropertyRef Name="DestImportFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ReconData" m:IsDefaultEntityContainer="true">
     <EntitySet Name="FieldTypes" EntityType="LightSwitchApplication.FieldType" />
     <EntitySet Name="FileDefinitions" EntityType="LightSwitchApplication.FileDefinition" />
@@ -629,6 +690,22 @@
     </AssociationSet>
     <AssociationSet Name="FK_ReconSummary_ReconStatus" Association="LightSwitchApplication.FK_ReconSummary_ReconStatus">
       <End Role="ReconStatus" EntitySet="ReconStatus" />
+      <End Role="ReconSummary" EntitySet="ReconSummaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconProcessStep_ImportedFile" Association="LightSwitchApplication.FK_ReconProcessStep_ImportedFile">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconProcessStep_ImportedFile1" Association="LightSwitchApplication.FK_ReconProcessStep_ImportedFile1">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconSummary_ImportedFile" Association="LightSwitchApplication.FK_ReconSummary_ImportedFile">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconSummary" EntitySet="ReconSummaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconSummary_ImportedFile1" Association="LightSwitchApplication.FK_ReconSummary_ImportedFile1">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
       <End Role="ReconSummary" EntitySet="ReconSummaries" />
     </AssociationSet>
   </EntityContainer>

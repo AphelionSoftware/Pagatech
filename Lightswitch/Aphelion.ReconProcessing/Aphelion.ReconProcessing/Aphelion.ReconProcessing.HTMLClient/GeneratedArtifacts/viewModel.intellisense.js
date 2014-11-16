@@ -103,6 +103,144 @@
         sys_ModifiedOn_postRender: [$element, function () { return new lightSwitchApplication.BrowseAllImportedFiles().findContentItem("sys_ModifiedOn"); }]
     });
 
+    lightSwitchApplication.BrowseImportedFilesForToday.prototype._$contentItems = {
+        Tabs: {
+            _$class: msls.ContentItem,
+            _$name: "Tabs",
+            _$parentName: "RootContentItem",
+            screen: lightSwitchApplication.BrowseImportedFilesForToday
+        },
+        ImportedFileList: {
+            _$class: msls.ContentItem,
+            _$name: "ImportedFileList",
+            _$parentName: "Tabs",
+            screen: lightSwitchApplication.BrowseImportedFilesForToday,
+            data: lightSwitchApplication.BrowseImportedFilesForToday,
+            value: lightSwitchApplication.BrowseImportedFilesForToday
+        },
+        ImportedFilesForToday: {
+            _$class: msls.ContentItem,
+            _$name: "ImportedFilesForToday",
+            _$parentName: "ImportedFileList",
+            screen: lightSwitchApplication.BrowseImportedFilesForToday,
+            data: lightSwitchApplication.BrowseImportedFilesForToday,
+            value: {
+                _$class: msls.VisualCollection,
+                screen: lightSwitchApplication.BrowseImportedFilesForToday,
+                _$entry: {
+                    elementType: lightSwitchApplication.ImportedFile
+                }
+            }
+        },
+        rows: {
+            _$class: msls.ContentItem,
+            _$name: "rows",
+            _$parentName: "ImportedFilesForToday",
+            screen: lightSwitchApplication.BrowseImportedFilesForToday,
+            data: lightSwitchApplication.ImportedFile,
+            value: lightSwitchApplication.ImportedFile
+        },
+        FileName: {
+            _$class: msls.ContentItem,
+            _$name: "FileName",
+            _$parentName: "rows",
+            screen: lightSwitchApplication.BrowseImportedFilesForToday,
+            data: lightSwitchApplication.ImportedFile,
+            value: String
+        },
+        FileDefinition: {
+            _$class: msls.ContentItem,
+            _$name: "FileDefinition",
+            _$parentName: "rows",
+            screen: lightSwitchApplication.BrowseImportedFilesForToday,
+            data: lightSwitchApplication.ImportedFile,
+            value: lightSwitchApplication.FileDefinition
+        },
+        Popups: {
+            _$class: msls.ContentItem,
+            _$name: "Popups",
+            _$parentName: "RootContentItem",
+            screen: lightSwitchApplication.BrowseImportedFilesForToday
+        },
+        Filter: {
+            _$class: msls.ContentItem,
+            _$name: "Filter",
+            _$parentName: "Popups",
+            screen: lightSwitchApplication.BrowseImportedFilesForToday,
+            data: lightSwitchApplication.BrowseImportedFilesForToday,
+            value: lightSwitchApplication.BrowseImportedFilesForToday
+        },
+        ReconSource: {
+            _$class: msls.ContentItem,
+            _$name: "ReconSource",
+            _$parentName: "Filter",
+            screen: lightSwitchApplication.BrowseImportedFilesForToday,
+            data: lightSwitchApplication.BrowseImportedFilesForToday,
+            value: lightSwitchApplication.ReconSource
+        },
+        ReconSource1: {
+            _$class: msls.ContentItem,
+            _$name: "ReconSource1",
+            _$parentName: "ReconSource",
+            screen: lightSwitchApplication.BrowseImportedFilesForToday,
+            data: lightSwitchApplication.ReconSource,
+            value: lightSwitchApplication.ReconSource
+        }
+    };
+
+    msls._addEntryPoints(lightSwitchApplication.BrowseImportedFilesForToday, {
+        /// <field>
+        /// Called when a new BrowseImportedFilesForToday screen is created.
+        /// <br/>created(msls.application.BrowseImportedFilesForToday screen)
+        /// </field>
+        created: [lightSwitchApplication.BrowseImportedFilesForToday],
+        /// <field>
+        /// Called before changes on an active BrowseImportedFilesForToday screen are applied.
+        /// <br/>beforeApplyChanges(msls.application.BrowseImportedFilesForToday screen)
+        /// </field>
+        beforeApplyChanges: [lightSwitchApplication.BrowseImportedFilesForToday],
+        /// <field>
+        /// Called after the ImportedFileList content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        ImportedFileList_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("ImportedFileList"); }],
+        /// <field>
+        /// Called after the ImportedFilesForToday content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        ImportedFilesForToday_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("ImportedFilesForToday"); }],
+        /// <field>
+        /// Called after the rows content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        rows_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("rows"); }],
+        /// <field>
+        /// Called after the FileName content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        FileName_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("FileName"); }],
+        /// <field>
+        /// Called after the FileDefinition content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        FileDefinition_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("FileDefinition"); }],
+        /// <field>
+        /// Called after the Filter content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        Filter_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("Filter"); }],
+        /// <field>
+        /// Called after the ReconSource content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        ReconSource_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("ReconSource"); }],
+        /// <field>
+        /// Called after the ReconSource1 content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        ReconSource1_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("ReconSource1"); }]
+    });
+
     lightSwitchApplication.BrowseImportedFilesUnreconciled.prototype._$contentItems = {
         Tabs: {
             _$class: msls.ContentItem,
@@ -526,6 +664,105 @@
         /// <br/>render(HTMLElement element, msls.ContentItem contentItem)
         /// </field>
         Results_render: [$element, function () { return new lightSwitchApplication.ViewImportedFile().findContentItem("Results"); }]
+    });
+
+    lightSwitchApplication.BrowseReconProcesses.prototype._$contentItems = {
+        Tabs: {
+            _$class: msls.ContentItem,
+            _$name: "Tabs",
+            _$parentName: "RootContentItem",
+            screen: lightSwitchApplication.BrowseReconProcesses
+        },
+        ReconProcessList: {
+            _$class: msls.ContentItem,
+            _$name: "ReconProcessList",
+            _$parentName: "Tabs",
+            screen: lightSwitchApplication.BrowseReconProcesses,
+            data: lightSwitchApplication.BrowseReconProcesses,
+            value: lightSwitchApplication.BrowseReconProcesses
+        },
+        ReconProcesses: {
+            _$class: msls.ContentItem,
+            _$name: "ReconProcesses",
+            _$parentName: "ReconProcessList",
+            screen: lightSwitchApplication.BrowseReconProcesses,
+            data: lightSwitchApplication.BrowseReconProcesses,
+            value: {
+                _$class: msls.VisualCollection,
+                screen: lightSwitchApplication.BrowseReconProcesses,
+                _$entry: {
+                    elementType: lightSwitchApplication.ReconProcess
+                }
+            }
+        },
+        rows: {
+            _$class: msls.ContentItem,
+            _$name: "rows",
+            _$parentName: "ReconProcesses",
+            screen: lightSwitchApplication.BrowseReconProcesses,
+            data: lightSwitchApplication.ReconProcess,
+            value: lightSwitchApplication.ReconProcess
+        },
+        Code: {
+            _$class: msls.ContentItem,
+            _$name: "Code",
+            _$parentName: "rows",
+            screen: lightSwitchApplication.BrowseReconProcesses,
+            data: lightSwitchApplication.ReconProcess,
+            value: String
+        },
+        Name: {
+            _$class: msls.ContentItem,
+            _$name: "Name",
+            _$parentName: "rows",
+            screen: lightSwitchApplication.BrowseReconProcesses,
+            data: lightSwitchApplication.ReconProcess,
+            value: String
+        },
+        Popups: {
+            _$class: msls.ContentItem,
+            _$name: "Popups",
+            _$parentName: "RootContentItem",
+            screen: lightSwitchApplication.BrowseReconProcesses
+        }
+    };
+
+    msls._addEntryPoints(lightSwitchApplication.BrowseReconProcesses, {
+        /// <field>
+        /// Called when a new BrowseReconProcesses screen is created.
+        /// <br/>created(msls.application.BrowseReconProcesses screen)
+        /// </field>
+        created: [lightSwitchApplication.BrowseReconProcesses],
+        /// <field>
+        /// Called before changes on an active BrowseReconProcesses screen are applied.
+        /// <br/>beforeApplyChanges(msls.application.BrowseReconProcesses screen)
+        /// </field>
+        beforeApplyChanges: [lightSwitchApplication.BrowseReconProcesses],
+        /// <field>
+        /// Called after the ReconProcessList content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        ReconProcessList_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconProcesses().findContentItem("ReconProcessList"); }],
+        /// <field>
+        /// Called after the ReconProcesses content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        ReconProcesses_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconProcesses().findContentItem("ReconProcesses"); }],
+        /// <field>
+        /// Called after the rows content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        rows_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconProcesses().findContentItem("rows"); }],
+        /// <field>
+        /// Called after the Code content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        Code_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconProcesses().findContentItem("Code"); }],
+        /// <field>
+        /// Called after the Name content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        Name_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconProcesses().findContentItem("Name"); }]
     });
 
     lightSwitchApplication.ViewReconProcess.prototype._$contentItems = {
@@ -1186,243 +1423,6 @@
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
         /// </field>
         ShowBrowseImportedFilesForToday_postRender: [$element, function () { return new lightSwitchApplication.Home().findContentItem("ShowBrowseImportedFilesForToday"); }]
-    });
-
-    lightSwitchApplication.BrowseImportedFilesForToday.prototype._$contentItems = {
-        Tabs: {
-            _$class: msls.ContentItem,
-            _$name: "Tabs",
-            _$parentName: "RootContentItem",
-            screen: lightSwitchApplication.BrowseImportedFilesForToday
-        },
-        ImportedFileList: {
-            _$class: msls.ContentItem,
-            _$name: "ImportedFileList",
-            _$parentName: "Tabs",
-            screen: lightSwitchApplication.BrowseImportedFilesForToday,
-            data: lightSwitchApplication.BrowseImportedFilesForToday,
-            value: lightSwitchApplication.BrowseImportedFilesForToday
-        },
-        ImportedFilesForToday: {
-            _$class: msls.ContentItem,
-            _$name: "ImportedFilesForToday",
-            _$parentName: "ImportedFileList",
-            screen: lightSwitchApplication.BrowseImportedFilesForToday,
-            data: lightSwitchApplication.BrowseImportedFilesForToday,
-            value: {
-                _$class: msls.VisualCollection,
-                screen: lightSwitchApplication.BrowseImportedFilesForToday,
-                _$entry: {
-                    elementType: lightSwitchApplication.ImportedFile
-                }
-            }
-        },
-        rows: {
-            _$class: msls.ContentItem,
-            _$name: "rows",
-            _$parentName: "ImportedFilesForToday",
-            screen: lightSwitchApplication.BrowseImportedFilesForToday,
-            data: lightSwitchApplication.ImportedFile,
-            value: lightSwitchApplication.ImportedFile
-        },
-        FileName: {
-            _$class: msls.ContentItem,
-            _$name: "FileName",
-            _$parentName: "rows",
-            screen: lightSwitchApplication.BrowseImportedFilesForToday,
-            data: lightSwitchApplication.ImportedFile,
-            value: String
-        },
-        FileDefinition: {
-            _$class: msls.ContentItem,
-            _$name: "FileDefinition",
-            _$parentName: "rows",
-            screen: lightSwitchApplication.BrowseImportedFilesForToday,
-            data: lightSwitchApplication.ImportedFile,
-            value: lightSwitchApplication.FileDefinition
-        },
-        Popups: {
-            _$class: msls.ContentItem,
-            _$name: "Popups",
-            _$parentName: "RootContentItem",
-            screen: lightSwitchApplication.BrowseImportedFilesForToday
-        },
-        Filter: {
-            _$class: msls.ContentItem,
-            _$name: "Filter",
-            _$parentName: "Popups",
-            screen: lightSwitchApplication.BrowseImportedFilesForToday,
-            data: lightSwitchApplication.BrowseImportedFilesForToday,
-            value: lightSwitchApplication.BrowseImportedFilesForToday
-        },
-        ReconSource: {
-            _$class: msls.ContentItem,
-            _$name: "ReconSource",
-            _$parentName: "Filter",
-            screen: lightSwitchApplication.BrowseImportedFilesForToday,
-            data: lightSwitchApplication.BrowseImportedFilesForToday,
-            value: lightSwitchApplication.ReconSource
-        },
-        ReconSource1: {
-            _$class: msls.ContentItem,
-            _$name: "ReconSource1",
-            _$parentName: "ReconSource",
-            screen: lightSwitchApplication.BrowseImportedFilesForToday,
-            data: lightSwitchApplication.ReconSource,
-            value: lightSwitchApplication.ReconSource
-        }
-    };
-
-    msls._addEntryPoints(lightSwitchApplication.BrowseImportedFilesForToday, {
-        /// <field>
-        /// Called when a new BrowseImportedFilesForToday screen is created.
-        /// <br/>created(msls.application.BrowseImportedFilesForToday screen)
-        /// </field>
-        created: [lightSwitchApplication.BrowseImportedFilesForToday],
-        /// <field>
-        /// Called before changes on an active BrowseImportedFilesForToday screen are applied.
-        /// <br/>beforeApplyChanges(msls.application.BrowseImportedFilesForToday screen)
-        /// </field>
-        beforeApplyChanges: [lightSwitchApplication.BrowseImportedFilesForToday],
-        /// <field>
-        /// Called after the ImportedFileList content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        ImportedFileList_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("ImportedFileList"); }],
-        /// <field>
-        /// Called after the ImportedFilesForToday content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        ImportedFilesForToday_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("ImportedFilesForToday"); }],
-        /// <field>
-        /// Called after the rows content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        rows_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("rows"); }],
-        /// <field>
-        /// Called after the FileName content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        FileName_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("FileName"); }],
-        /// <field>
-        /// Called after the FileDefinition content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        FileDefinition_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("FileDefinition"); }],
-        /// <field>
-        /// Called after the Filter content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        Filter_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("Filter"); }],
-        /// <field>
-        /// Called after the ReconSource content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        ReconSource_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("ReconSource"); }],
-        /// <field>
-        /// Called after the ReconSource1 content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        ReconSource1_postRender: [$element, function () { return new lightSwitchApplication.BrowseImportedFilesForToday().findContentItem("ReconSource1"); }]
-    });
-
-    lightSwitchApplication.BrowseReconProcesses.prototype._$contentItems = {
-        Tabs: {
-            _$class: msls.ContentItem,
-            _$name: "Tabs",
-            _$parentName: "RootContentItem",
-            screen: lightSwitchApplication.BrowseReconProcesses
-        },
-        ReconProcessList: {
-            _$class: msls.ContentItem,
-            _$name: "ReconProcessList",
-            _$parentName: "Tabs",
-            screen: lightSwitchApplication.BrowseReconProcesses,
-            data: lightSwitchApplication.BrowseReconProcesses,
-            value: lightSwitchApplication.BrowseReconProcesses
-        },
-        ReconProcesses: {
-            _$class: msls.ContentItem,
-            _$name: "ReconProcesses",
-            _$parentName: "ReconProcessList",
-            screen: lightSwitchApplication.BrowseReconProcesses,
-            data: lightSwitchApplication.BrowseReconProcesses,
-            value: {
-                _$class: msls.VisualCollection,
-                screen: lightSwitchApplication.BrowseReconProcesses,
-                _$entry: {
-                    elementType: lightSwitchApplication.ReconProcess
-                }
-            }
-        },
-        rows: {
-            _$class: msls.ContentItem,
-            _$name: "rows",
-            _$parentName: "ReconProcesses",
-            screen: lightSwitchApplication.BrowseReconProcesses,
-            data: lightSwitchApplication.ReconProcess,
-            value: lightSwitchApplication.ReconProcess
-        },
-        Code: {
-            _$class: msls.ContentItem,
-            _$name: "Code",
-            _$parentName: "rows",
-            screen: lightSwitchApplication.BrowseReconProcesses,
-            data: lightSwitchApplication.ReconProcess,
-            value: String
-        },
-        Name: {
-            _$class: msls.ContentItem,
-            _$name: "Name",
-            _$parentName: "rows",
-            screen: lightSwitchApplication.BrowseReconProcesses,
-            data: lightSwitchApplication.ReconProcess,
-            value: String
-        },
-        Popups: {
-            _$class: msls.ContentItem,
-            _$name: "Popups",
-            _$parentName: "RootContentItem",
-            screen: lightSwitchApplication.BrowseReconProcesses
-        }
-    };
-
-    msls._addEntryPoints(lightSwitchApplication.BrowseReconProcesses, {
-        /// <field>
-        /// Called when a new BrowseReconProcesses screen is created.
-        /// <br/>created(msls.application.BrowseReconProcesses screen)
-        /// </field>
-        created: [lightSwitchApplication.BrowseReconProcesses],
-        /// <field>
-        /// Called before changes on an active BrowseReconProcesses screen are applied.
-        /// <br/>beforeApplyChanges(msls.application.BrowseReconProcesses screen)
-        /// </field>
-        beforeApplyChanges: [lightSwitchApplication.BrowseReconProcesses],
-        /// <field>
-        /// Called after the ReconProcessList content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        ReconProcessList_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconProcesses().findContentItem("ReconProcessList"); }],
-        /// <field>
-        /// Called after the ReconProcesses content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        ReconProcesses_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconProcesses().findContentItem("ReconProcesses"); }],
-        /// <field>
-        /// Called after the rows content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        rows_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconProcesses().findContentItem("rows"); }],
-        /// <field>
-        /// Called after the Code content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        Code_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconProcesses().findContentItem("Code"); }],
-        /// <field>
-        /// Called after the Name content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        Name_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconProcesses().findContentItem("Name"); }]
     });
 
 }(msls.application));

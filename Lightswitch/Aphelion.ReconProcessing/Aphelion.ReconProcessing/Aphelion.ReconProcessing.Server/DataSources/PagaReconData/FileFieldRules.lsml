@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="FileField">
+    Name="FileFieldRule">
     <EntityType.Methods>
       <EntityMethod
         Name="Delete">
@@ -26,20 +26,74 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="ColumnName"
-        PropertyType=":String">
+        Name="ProcessingRule"
+        PropertyType=":String?">
         <EntityProperty.Attributes>
-          <Required />
-          <MaxLength
-            Value="255" />
+          <MaxLength />
           <AnsiConstraint />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="Position"
-        PropertyType=":Int32">
+        Name="StartPos"
+        PropertyType=":Int32?">
         <EntityProperty.Attributes>
-          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="EndPos"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FirstChar"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            IsFixedLength="True"
+            Value="1" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="LastChar"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            IsFixedLength="True"
+            Value="1" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FirstPattern"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="LastPattern"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="SplitChar"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            IsFixedLength="True"
+            Value="1" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ArrPos"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
@@ -86,20 +140,15 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Name="FileSection"
-        Association="FK_FileField_FileSection"
-        FromEnd="FileField"
-        ToEnd="FileSection" />
-      <NavigationProperty
-        Name="FileFieldRules"
+        Name="FileField"
         Association="FK_FileFieldRules_FileSection"
-        FromEnd="FileField"
-        ToEnd="FileFieldRules" />
+        FromEnd="FileFieldRules"
+        ToEnd="FileField" />
       <NavigationProperty
-        Name="ReconFields"
-        Association="FK_ReconField_FileField"
-        FromEnd="FileField"
-        ToEnd="ReconField" />
+        Name="RuleType"
+        Association="FK_FileFieldRules_RuleType"
+        FromEnd="FileFieldRules"
+        ToEnd="RuleType" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -108,14 +157,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="FileFields"
+      Name="FileFieldRules"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="FileField" />
+      EntityType="FileFieldRule" />
     <QueryOperation
-      Name="FileFields_Single"
-      ReturnType="FileField">
+      Name="FileFieldRules_Single"
+      ReturnType="FileFieldRule">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -141,7 +190,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="FileFields" />
+            Member="FileFieldRules" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -154,8 +203,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="FileFields_SingleOrDefault"
-      ReturnType="FileField">
+      Name="FileFieldRules_SingleOrDefault"
+      ReturnType="FileFieldRule">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -181,7 +230,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="FileFields" />
+            Member="FileFieldRules" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -193,155 +242,107 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
-    <AssociationSet
-      Name="FK_FileFieldRules_FileSection"
-      Association="FK_FileFieldRules_FileSection">
-      <AssociationSetEnd
-        Name="FileField"
-        EntitySet="FileFields" />
-      <AssociationSetEnd
-        Name="FileFieldRules"
-        EntitySet="FileFieldRules" />
-    </AssociationSet>
-    <AssociationSet
-      Name="FK_ReconField_FileField"
-      Association="FK_ReconField_FileField">
-      <AssociationSetEnd
-        Name="FileField"
-        EntitySet="FileFields" />
-      <AssociationSetEnd
-        Name="ReconField"
-        EntitySet="ReconFields" />
-    </AssociationSet>
   </EntityContainer>
-  <Association
-    Name="FK_FileFieldRules_FileSection">
-    <AssociationEnd
-      Name="FileField"
-      Multiplicity="One"
-      EntityType="FileField">
-      <AssociationEnd.Attributes>
-        <DeleteRule />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="FileFieldRules"
-      Multiplicity="Many"
-      EntityType="FileFieldRule" />
-  </Association>
-  <Association
-    Name="FK_ReconField_FileField">
-    <AssociationEnd
-      Name="FileField"
-      Multiplicity="One"
-      EntityType="FileField">
-      <AssociationEnd.Attributes>
-        <DeleteRule />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="ReconField"
-      Multiplicity="Many"
-      EntityType="ReconField" />
-  </Association>
   <DataService
     Name="PagaReconDataDataService">
     <DataService.Attributes>
       <Partial />
     </DataService.Attributes>
     <EntitySetMapping
-      EntitySet="FileFields">
+      EntitySet="FileFieldRules">
       <EntitySetMapping.Attributes>
         <SsdlEntitySet
           Schema="Import"
-          Table="FileField" />
+          Table="FileFieldRules" />
         <SsdlProperty
           Name="ID"
           Nullable="False"
           StoreGeneratedPattern="Identity"
           Type="int"
-          Property="FileField/Properties[ID]" />
+          Property="FileFieldRule/Properties[ID]" />
         <SsdlProperty
-          MaxLength="255"
-          Name="ColumnName"
-          Nullable="False"
-          Type="varchar"
-          Property="FileField/Properties[ColumnName]" />
+          Name="ProcessingRule"
+          Nullable="True"
+          Type="varchar(max)"
+          Property="FileFieldRule/Properties[ProcessingRule]" />
         <SsdlProperty
-          Name="Position"
-          Nullable="False"
+          Name="StartPos"
+          Nullable="True"
           Type="int"
-          Property="FileField/Properties[Position]" />
+          Property="FileFieldRule/Properties[StartPos]" />
+        <SsdlProperty
+          Name="EndPos"
+          Nullable="True"
+          Type="int"
+          Property="FileFieldRule/Properties[EndPos]" />
+        <SsdlProperty
+          MaxLength="1"
+          Name="FirstChar"
+          Nullable="True"
+          Type="nchar"
+          Property="FileFieldRule/Properties[FirstChar]" />
+        <SsdlProperty
+          MaxLength="1"
+          Name="LastChar"
+          Nullable="True"
+          Type="nchar"
+          Property="FileFieldRule/Properties[LastChar]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="FirstPattern"
+          Nullable="True"
+          Type="nvarchar"
+          Property="FileFieldRule/Properties[FirstPattern]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="LastPattern"
+          Nullable="True"
+          Type="nvarchar"
+          Property="FileFieldRule/Properties[LastPattern]" />
+        <SsdlProperty
+          MaxLength="1"
+          Name="SplitChar"
+          Nullable="True"
+          Type="nchar"
+          Property="FileFieldRule/Properties[SplitChar]" />
+        <SsdlProperty
+          Name="ArrPos"
+          Nullable="True"
+          Type="int"
+          Property="FileFieldRule/Properties[ArrPos]" />
         <SsdlProperty
           MaxLength="255"
           Name="sys_CreatedBy"
           Nullable="False"
           Type="varchar"
-          Property="FileField/Properties[sys_CreatedBy]" />
+          Property="FileFieldRule/Properties[sys_CreatedBy]" />
         <SsdlProperty
           Name="sys_CreatedOn"
           Nullable="False"
           Type="datetime"
-          Property="FileField/Properties[sys_CreatedOn]" />
+          Property="FileFieldRule/Properties[sys_CreatedOn]" />
         <SsdlProperty
           MaxLength="255"
           Name="sys_ModifiedBy"
           Nullable="False"
           Type="varchar"
-          Property="FileField/Properties[sys_ModifiedBy]" />
+          Property="FileFieldRule/Properties[sys_ModifiedBy]" />
         <SsdlProperty
           Name="sys_ModifiedOn"
           Nullable="False"
           Type="datetime"
-          Property="FileField/Properties[sys_ModifiedOn]" />
+          Property="FileFieldRule/Properties[sys_ModifiedOn]" />
         <SsdlForeignKeyProperty
-          Name="FileSectionID"
+          Name="FileFieldID"
           Nullable="False"
           Type="int"
-          PropertyName="FileSectionID" />
+          PropertyName="FileFieldID" />
+        <SsdlForeignKeyProperty
+          Name="RuleTypeID"
+          Nullable="False"
+          Type="int"
+          PropertyName="RuleTypeID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
-    <AssociationSetMapping
-      AssociationSet="FK_FileFieldRules_FileSection">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FK_FileFieldRules_FileSection" />
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_FileFieldRules_FileSection]/Members[FileField]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="ID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_FileFieldRules_FileSection]/Members[FileFieldRules]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="FileFieldID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
-    <AssociationSetMapping
-      AssociationSet="FK_ReconField_FileField">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FK_ReconField_FileField" />
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_ReconField_FileField]/Members[FileField]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="ID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_ReconField_FileField]/Members[ReconField]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="FileFieldID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
   </DataService>
 </ServiceApplication>

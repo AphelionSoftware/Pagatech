@@ -154,4 +154,52 @@
         created: [lightSwitchApplication.vwReconProcessStatu]
     });
 
+    msls._addEntryPoints(lightSwitchApplication.FieldType, {
+        /// <field>
+        /// Called when a new fieldType is created.
+        /// <br/>created(msls.application.FieldType entity)
+        /// </field>
+        created: [lightSwitchApplication.FieldType]
+    });
+
+    msls._addEntryPoints(lightSwitchApplication.ReconField, {
+        /// <field>
+        /// Called when a new reconField is created.
+        /// <br/>created(msls.application.ReconField entity)
+        /// </field>
+        created: [lightSwitchApplication.ReconField]
+    });
+
+    msls._addEntryPoints(lightSwitchApplication.RuleType, {
+        /// <field>
+        /// Called when a new ruleType is created.
+        /// <br/>created(msls.application.RuleType entity)
+        /// </field>
+        created: [lightSwitchApplication.RuleType]
+    });
+
+    msls._addEntryPoints(lightSwitchApplication.FileFieldRule, {
+        /// <field>
+        /// Called when a new fileFieldRule is created.
+        /// <br/>created(msls.application.FileFieldRule entity)
+        /// </field>
+        created: [lightSwitchApplication.FileFieldRule]
+    });
+
+    msls._addEntryPoints(lightSwitchApplication.Synonym, {
+        /// <field>
+        /// Called when a new synonym is created.
+        /// <br/>created(msls.application.Synonym entity)
+        /// </field>
+        created: [lightSwitchApplication.Synonym]
+    });
+
+    msls._addEntryPoints(lightSwitchApplication.NIBBS_DB_Detail, {
+        /// <field>
+        /// Called when a new nIBBS_DB_Detail is created.
+        /// <br/>created(msls.application.NIBBS_DB_Detail entity)
+        /// </field>
+        created: [lightSwitchApplication.NIBBS_DB_Detail]
+    });
+
 }(msls.application));

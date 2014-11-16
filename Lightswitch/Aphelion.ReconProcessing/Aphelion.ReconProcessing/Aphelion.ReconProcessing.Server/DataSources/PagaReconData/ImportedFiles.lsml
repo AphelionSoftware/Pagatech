@@ -129,6 +129,11 @@
         Association="FK_ReconProcessStep_ImportedFile1"
         FromEnd="ImportedFile"
         ToEnd="ReconProcessStep" />
+      <NavigationProperty
+        Name="ReconSummary1"
+        Association="FK_ImportedFile_ReconSummary1"
+        FromEnd="ImportedFile"
+        ToEnd="ReconSummary" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -418,6 +423,11 @@
           Nullable="False"
           Type="int"
           PropertyName="FileDefinitionID" />
+        <SsdlForeignKeyProperty
+          Name="ReconSummaryID"
+          Nullable="True"
+          Type="int"
+          PropertyName="ReconSummaryID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
     <AssociationSetMapping

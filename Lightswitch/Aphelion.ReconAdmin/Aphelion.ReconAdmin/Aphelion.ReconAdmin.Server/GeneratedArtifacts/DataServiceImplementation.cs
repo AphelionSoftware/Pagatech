@@ -701,6 +701,38 @@ namespace LightSwitchApplication.Implementation
             }
         }
         
+        global::System.Collections.IEnumerable global::LightSwitchApplication.ImportedFile.DetailsClass.IImplementation.ReconProcessSteps
+        {
+            get
+            {
+                return this.ReconProcessSteps;
+            }
+        }
+        
+        global::System.Collections.IEnumerable global::LightSwitchApplication.ImportedFile.DetailsClass.IImplementation.ReconProcessSteps1
+        {
+            get
+            {
+                return this.ReconProcessSteps1;
+            }
+        }
+        
+        global::System.Collections.IEnumerable global::LightSwitchApplication.ImportedFile.DetailsClass.IImplementation.ReconSummaries
+        {
+            get
+            {
+                return this.ReconSummaries;
+            }
+        }
+        
+        global::System.Collections.IEnumerable global::LightSwitchApplication.ImportedFile.DetailsClass.IImplementation.ReconSummaries1
+        {
+            get
+            {
+                return this.ReconSummaries1;
+            }
+        }
+        
         partial void OnFileDefinitionIDChanged()
         {
             if (this.__host != null)
@@ -1155,6 +1187,38 @@ namespace LightSwitchApplication.Implementation
             }
         }
         
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.ReconProcessStep.DetailsClass.IImplementation.ImportedFile
+        {
+            get
+            {
+                return this.ImportedFile;
+            }
+            set
+            {
+                this.ImportedFile = (global::LightSwitchApplication.Implementation.ImportedFile)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("ImportedFile");
+                }
+            }
+        }
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.ReconProcessStep.DetailsClass.IImplementation.ImportedFile1
+        {
+            get
+            {
+                return this.ImportedFile1;
+            }
+            set
+            {
+                this.ImportedFile1 = (global::LightSwitchApplication.Implementation.ImportedFile)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("ImportedFile1");
+                }
+            }
+        }
+        
         partial void OnSourceFileSectionIDChanged()
         {
             if (this.__host != null)
@@ -1184,6 +1248,22 @@ namespace LightSwitchApplication.Implementation
             if (this.__host != null)
             {
                 this.__host.RaisePropertyChanged("ReconType");
+            }
+        }
+        
+        partial void OnCurrentSourceImportedFileIDChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("ImportedFile");
+            }
+        }
+        
+        partial void OnCurrentTargetImportedFileIDChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("ImportedFile1");
             }
         }
         
@@ -1407,6 +1487,38 @@ namespace LightSwitchApplication.Implementation
             }
         }
         
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.ReconSummary.DetailsClass.IImplementation.ImportedFile
+        {
+            get
+            {
+                return this.ImportedFile;
+            }
+            set
+            {
+                this.ImportedFile = (global::LightSwitchApplication.Implementation.ImportedFile)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("ImportedFile");
+                }
+            }
+        }
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.ReconSummary.DetailsClass.IImplementation.ImportedFile1
+        {
+            get
+            {
+                return this.ImportedFile1;
+            }
+            set
+            {
+                this.ImportedFile1 = (global::LightSwitchApplication.Implementation.ImportedFile)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("ImportedFile1");
+                }
+            }
+        }
+        
         partial void OnReconProcessStepIDChanged()
         {
             if (this.__host != null)
@@ -1420,6 +1532,22 @@ namespace LightSwitchApplication.Implementation
             if (this.__host != null)
             {
                 this.__host.RaisePropertyChanged("ReconStatu");
+            }
+        }
+        
+        partial void OnSourceImportFileIDChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("ImportedFile");
+            }
+        }
+        
+        partial void OnDestImportFileIDChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("ImportedFile1");
             }
         }
         

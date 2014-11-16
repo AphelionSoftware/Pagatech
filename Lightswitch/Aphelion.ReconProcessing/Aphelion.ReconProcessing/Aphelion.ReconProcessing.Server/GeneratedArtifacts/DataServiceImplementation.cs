@@ -37,15 +37,6 @@ namespace LightSwitchApplication.Implementation
         }
     
     #region Queries
-        public global::System.Linq.IQueryable<global::LightSwitchApplication.Implementation.ImportedFile> ImportedFilesUnreconciled(global::System.Nullable<int> ReconSourcce)
-        {
-            global::System.Linq.IQueryable<global::LightSwitchApplication.Implementation.ImportedFile> query;
-            query = global::System.Linq.Queryable.Where(
-                this.GetQuery<global::LightSwitchApplication.Implementation.ImportedFile>("ImportedFiles"),
-                (i) => ((ReconSourcce.HasValue == false) || (ReconSourcce.HasValue && (i.FileDefinition.ReconSource.ID == ReconSourcce))));
-            return query;
-        }
-    
         public global::System.Linq.IQueryable<global::LightSwitchApplication.Implementation.ImportedFile> ImportedFilesForToday(global::System.Nullable<int> ReconSource, global::System.Nullable<int> FileDefinition)
         {
             global::System.Linq.IQueryable<global::LightSwitchApplication.Implementation.ImportedFile> query;
@@ -56,6 +47,15 @@ namespace LightSwitchApplication.Implementation
                     this.GetQuery<global::LightSwitchApplication.Implementation.ImportedFile>("ImportedFiles"),
                     (i) => (((i.sys_ModifiedOn >= today1) && (i.sys_ModifiedOn <= endOfDay1)) && ((FileDefinition.HasValue == false) || (FileDefinition.HasValue && (i.FileDefinition.ID == FileDefinition))))),
                 (i) => i.FileName);
+            return query;
+        }
+    
+        public global::System.Linq.IQueryable<global::LightSwitchApplication.Implementation.ImportedFile> ImportedFilesUnreconciled(global::System.Nullable<int> ReconSourcce)
+        {
+            global::System.Linq.IQueryable<global::LightSwitchApplication.Implementation.ImportedFile> query;
+            query = global::System.Linq.Queryable.Where(
+                this.GetQuery<global::LightSwitchApplication.Implementation.ImportedFile>("ImportedFiles"),
+                (i) => ((ReconSourcce.HasValue == false) || (ReconSourcce.HasValue && (i.FileDefinition.ReconSource.ID == ReconSourcce))));
             return query;
         }
     

@@ -1,3 +1,3 @@
-﻿CREATE SCHEMA [settings]
+﻿CREATE SCHEMA [Settings]
     AUTHORIZATION [dbo];
 

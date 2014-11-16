@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="ReconProcessStep">
+    Name="FieldType">
     <EntityType.Methods>
       <EntityMethod
         Name="Delete">
@@ -87,69 +87,81 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Name="FileSection"
-        Association="FK_ReconProcessStep_FileSection"
-        FromEnd="ReconProcessStep"
-        ToEnd="FileSection" />
-      <NavigationProperty
-        Name="FileSection1"
-        Association="FK_ReconProcessStep_FileSection1"
-        FromEnd="ReconProcessStep"
-        ToEnd="FileSection" />
-      <NavigationProperty
-        Name="ReconProcess"
-        Association="FK_ReconProcessStep_ReconProcess"
-        FromEnd="ReconProcessStep"
-        ToEnd="ReconProcess" />
-      <NavigationProperty
-        Name="ReconType"
-        Association="FK_ReconProcessStep_ReconType"
-        FromEnd="ReconProcessStep"
-        ToEnd="ReconType" />
-      <EntityProperty
-        Name="Order"
-        PropertyType=":Int32">
-        <EntityProperty.Attributes>
-          <Required />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <NavigationProperty
         Name="ReconFields"
-        Association="FK_ReconField_ReconProcessStep"
-        FromEnd="ReconProcessStep"
+        Association="FK_ReconField_FieldType"
+        FromEnd="FieldType"
         ToEnd="ReconField" />
       <NavigationProperty
-        Name="ReconSummaries"
-        Association="FK_ReconSummary_ReconProcessStep"
-        FromEnd="ReconProcessStep"
-        ToEnd="ReconSummary" />
-      <NavigationProperty
-        Name="ImportedFile"
-        Association="FK_ReconProcessStep_ImportedFile"
-        FromEnd="ReconProcessStep"
-        ToEnd="ImportedFile" />
-      <NavigationProperty
-        Name="ImportedFile1"
-        Association="FK_ReconProcessStep_ImportedFile1"
-        FromEnd="ReconProcessStep"
-        ToEnd="ImportedFile" />
+        Name="SystemFields"
+        Association="FK_SystemField_FieldType"
+        FromEnd="FieldType"
+        ToEnd="SystemField" />
     </EntityType.Properties>
   </EntityType>
+  <Association
+    Name="FK_ReconField_FieldType">
+    <AssociationEnd
+      Name="FieldType"
+      Multiplicity="One"
+      EntityType="FieldType">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ReconField"
+      Multiplicity="Many"
+      EntityType="ReconField" />
+  </Association>
+  <Association
+    Name="FK_SystemField_FieldType">
+    <AssociationEnd
+      Name="FieldType"
+      Multiplicity="One"
+      EntityType="FieldType">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="SystemField"
+      Multiplicity="Many"
+      EntityType="SystemField" />
+  </Association>
   <EntityContainer
-    Name="ReconData">
+    Name="PagaReconData">
     <EntityContainer.Attributes>
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="ReconProcessSteps"
+      Name="FieldTypes"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="ReconProcessStep" />
+      EntityType="FieldType" />
+    <AssociationSet
+      Name="FK_ReconField_FieldType"
+      Association="FK_ReconField_FieldType">
+      <AssociationSetEnd
+        Name="FieldType"
+        EntitySet="FieldTypes" />
+      <AssociationSetEnd
+        Name="ReconField"
+        EntitySet="ReconFields" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_SystemField_FieldType"
+      Association="FK_SystemField_FieldType">
+      <AssociationSetEnd
+        Name="FieldType"
+        EntitySet="FieldTypes" />
+      <AssociationSetEnd
+        Name="SystemField"
+        EntitySet="SystemFields" />
+    </AssociationSet>
     <QueryOperation
-      Name="ReconProcessSteps_Single"
-      ReturnType="ReconProcessStep">
+      Name="FieldTypes_Single"
+      ReturnType="FieldType">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -175,7 +187,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="ReconProcessSteps" />
+            Member="FieldTypes" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -188,8 +200,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="ReconProcessSteps_SingleOrDefault"
-      ReturnType="ReconProcessStep">
+      Name="FieldTypes_SingleOrDefault"
+      ReturnType="FieldType">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -215,7 +227,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="ReconProcessSteps" />
+            Member="FieldTypes" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -227,183 +239,98 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
-    <AssociationSet
-      Name="FK_ReconField_ReconProcessStep"
-      Association="FK_ReconField_ReconProcessStep">
-      <AssociationSetEnd
-        Name="ReconProcessStep"
-        EntitySet="ReconProcessSteps" />
-      <AssociationSetEnd
-        Name="ReconField"
-        EntitySet="ReconFields" />
-    </AssociationSet>
-    <AssociationSet
-      Name="FK_ReconSummary_ReconProcessStep"
-      Association="FK_ReconSummary_ReconProcessStep">
-      <AssociationSetEnd
-        Name="ReconProcessStep"
-        EntitySet="ReconProcessSteps" />
-      <AssociationSetEnd
-        Name="ReconSummary"
-        EntitySet="ReconSummaries" />
-    </AssociationSet>
   </EntityContainer>
-  <Association
-    Name="FK_ReconField_ReconProcessStep">
-    <AssociationEnd
-      Name="ReconProcessStep"
-      Multiplicity="One"
-      EntityType="ReconProcessStep">
-      <AssociationEnd.Attributes>
-        <DeleteRule />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="ReconField"
-      Multiplicity="Many"
-      EntityType="ReconField" />
-  </Association>
-  <Association
-    Name="FK_ReconSummary_ReconProcessStep">
-    <AssociationEnd
-      Name="ReconProcessStep"
-      Multiplicity="One"
-      EntityType="ReconProcessStep">
-      <AssociationEnd.Attributes>
-        <DeleteRule />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="ReconSummary"
-      Multiplicity="Many"
-      EntityType="ReconSummary" />
-  </Association>
   <DataService
-    Name="ReconDataDataService">
+    Name="PagaReconDataDataService">
     <DataService.Attributes>
       <Partial />
     </DataService.Attributes>
     <EntitySetMapping
-      EntitySet="ReconProcessSteps">
+      EntitySet="FieldTypes">
       <EntitySetMapping.Attributes>
         <SsdlEntitySet
           Schema="Admin"
-          Table="ReconProcessStep" />
+          Table="FieldType" />
         <SsdlProperty
           Name="ID"
           Nullable="False"
           StoreGeneratedPattern="Identity"
           Type="int"
-          Property="ReconProcessStep/Properties[ID]" />
+          Property="FieldType/Properties[ID]" />
         <SsdlProperty
           MaxLength="50"
           Name="Code"
           Nullable="False"
           Type="varchar"
-          Property="ReconProcessStep/Properties[Code]" />
-        <SsdlProperty
-          Name="Order"
-          Nullable="False"
-          Type="int"
-          Property="ReconProcessStep/Properties[Order]" />
+          Property="FieldType/Properties[Code]" />
         <SsdlProperty
           MaxLength="255"
           Name="Name"
           Nullable="True"
           Type="varchar"
-          Property="ReconProcessStep/Properties[Name]" />
+          Property="FieldType/Properties[Name]" />
         <SsdlProperty
           MaxLength="255"
           Name="sys_CreatedBy"
           Nullable="False"
           Type="varchar"
-          Property="ReconProcessStep/Properties[sys_CreatedBy]" />
+          Property="FieldType/Properties[sys_CreatedBy]" />
         <SsdlProperty
           Name="sys_CreatedOn"
           Nullable="False"
           Type="datetime"
-          Property="ReconProcessStep/Properties[sys_CreatedOn]" />
+          Property="FieldType/Properties[sys_CreatedOn]" />
         <SsdlProperty
           MaxLength="255"
           Name="sys_ModifiedBy"
           Nullable="False"
           Type="varchar"
-          Property="ReconProcessStep/Properties[sys_ModifiedBy]" />
+          Property="FieldType/Properties[sys_ModifiedBy]" />
         <SsdlProperty
           Name="sys_ModifiedOn"
           Nullable="False"
           Type="datetime"
-          Property="ReconProcessStep/Properties[sys_ModifiedOn]" />
-        <SsdlForeignKeyProperty
-          Name="SourceFileSectionID"
-          Nullable="False"
-          Type="int"
-          PropertyName="SourceFileSectionID" />
-        <SsdlForeignKeyProperty
-          Name="TargetFileSectionID"
-          Nullable="False"
-          Type="int"
-          PropertyName="TargetFileSectionID" />
-        <SsdlForeignKeyProperty
-          Name="CurrentSourceImportedFileID"
-          Nullable="True"
-          Type="int"
-          PropertyName="CurrentSourceImportedFileID" />
-        <SsdlForeignKeyProperty
-          Name="CurrentTargetImportedFileID"
-          Nullable="True"
-          Type="int"
-          PropertyName="CurrentTargetImportedFileID" />
-        <SsdlForeignKeyProperty
-          Name="ReconProcessID"
-          Nullable="False"
-          Type="int"
-          PropertyName="ReconProcessID" />
-        <SsdlForeignKeyProperty
-          Name="ReconTypeID"
-          Nullable="False"
-          Type="int"
-          PropertyName="ReconTypeID" />
+          Property="FieldType/Properties[sys_ModifiedOn]" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
     <AssociationSetMapping
-      AssociationSet="FK_ReconField_ReconProcessStep">
+      AssociationSet="FK_ReconField_FieldType">
       <AssociationSetMapping.Attributes>
         <SsdlAssociationSet
-          Name="FK_ReconField_ReconProcessStep" />
+          Name="FK_ReconField_FieldType" />
         <SsdlAssociationSetEnd
-          End="ReconData/Members[FK_ReconField_ReconProcessStep]/Members[ReconProcessStep]">
+          End="PagaReconData/Members[FK_ReconField_FieldType]/Members[FieldType]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
               Name="ID" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
         <SsdlAssociationSetEnd
-          End="ReconData/Members[FK_ReconField_ReconProcessStep]/Members[ReconField]">
+          End="PagaReconData/Members[FK_ReconField_FieldType]/Members[ReconField]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
-              Name="ReconProcessStepID" />
+              Name="FieldTypeID" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
       </AssociationSetMapping.Attributes>
     </AssociationSetMapping>
     <AssociationSetMapping
-      AssociationSet="FK_ReconSummary_ReconProcessStep">
+      AssociationSet="FK_SystemField_FieldType">
       <AssociationSetMapping.Attributes>
         <SsdlAssociationSet
-          Name="FK_ReconSummary_ReconProcessStep" />
+          Name="FK_SystemField_FieldType" />
         <SsdlAssociationSetEnd
-          End="ReconData/Members[FK_ReconSummary_ReconProcessStep]/Members[ReconProcessStep]">
+          End="PagaReconData/Members[FK_SystemField_FieldType]/Members[FieldType]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
               Name="ID" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
         <SsdlAssociationSetEnd
-          End="ReconData/Members[FK_ReconSummary_ReconProcessStep]/Members[ReconSummary]">
+          End="PagaReconData/Members[FK_SystemField_FieldType]/Members[SystemField]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
-              Name="ReconProcessStepID" />
+              Name="FieldTypeID" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
       </AssociationSetMapping.Attributes>

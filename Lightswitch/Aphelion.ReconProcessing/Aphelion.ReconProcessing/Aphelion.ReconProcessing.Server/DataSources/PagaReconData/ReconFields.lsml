@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="FileField">
+    Name="ReconField">
     <EntityType.Methods>
       <EntityMethod
         Name="Delete">
@@ -25,24 +25,6 @@
           <NotSearchable />
         </KeyProperty.Attributes>
       </KeyProperty>
-      <EntityProperty
-        Name="ColumnName"
-        PropertyType=":String">
-        <EntityProperty.Attributes>
-          <Required />
-          <MaxLength
-            Value="255" />
-          <AnsiConstraint />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Position"
-        PropertyType=":Int32">
-        <EntityProperty.Attributes>
-          <Required />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
       <EntityProperty
         Name="sys_CreatedBy"
         PropertyType=":String">
@@ -86,20 +68,25 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Name="FileSection"
-        Association="FK_FileField_FileSection"
-        FromEnd="FileField"
-        ToEnd="FileSection" />
+        Name="FieldType"
+        Association="FK_ReconField_FieldType"
+        FromEnd="ReconField"
+        ToEnd="FieldType" />
       <NavigationProperty
-        Name="FileFieldRules"
-        Association="FK_FileFieldRules_FileSection"
-        FromEnd="FileField"
-        ToEnd="FileFieldRules" />
-      <NavigationProperty
-        Name="ReconFields"
+        Name="FileField"
         Association="FK_ReconField_FileField"
-        FromEnd="FileField"
-        ToEnd="ReconField" />
+        FromEnd="ReconField"
+        ToEnd="FileField" />
+      <NavigationProperty
+        Name="ReconProcessStep"
+        Association="FK_ReconField_ReconProcessStep"
+        FromEnd="ReconField"
+        ToEnd="ReconProcessStep" />
+      <NavigationProperty
+        Name="SystemField"
+        Association="FK_ReconField_SystemField"
+        FromEnd="ReconField"
+        ToEnd="SystemField" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -108,14 +95,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="FileFields"
+      Name="ReconFields"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="FileField" />
+      EntityType="ReconField" />
     <QueryOperation
-      Name="FileFields_Single"
-      ReturnType="FileField">
+      Name="ReconFields_Single"
+      ReturnType="ReconField">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -141,7 +128,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="FileFields" />
+            Member="ReconFields" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -154,8 +141,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="FileFields_SingleOrDefault"
-      ReturnType="FileField">
+      Name="ReconFields_SingleOrDefault"
+      ReturnType="ReconField">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -181,7 +168,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="FileFields" />
+            Member="ReconFields" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -193,155 +180,67 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
-    <AssociationSet
-      Name="FK_FileFieldRules_FileSection"
-      Association="FK_FileFieldRules_FileSection">
-      <AssociationSetEnd
-        Name="FileField"
-        EntitySet="FileFields" />
-      <AssociationSetEnd
-        Name="FileFieldRules"
-        EntitySet="FileFieldRules" />
-    </AssociationSet>
-    <AssociationSet
-      Name="FK_ReconField_FileField"
-      Association="FK_ReconField_FileField">
-      <AssociationSetEnd
-        Name="FileField"
-        EntitySet="FileFields" />
-      <AssociationSetEnd
-        Name="ReconField"
-        EntitySet="ReconFields" />
-    </AssociationSet>
   </EntityContainer>
-  <Association
-    Name="FK_FileFieldRules_FileSection">
-    <AssociationEnd
-      Name="FileField"
-      Multiplicity="One"
-      EntityType="FileField">
-      <AssociationEnd.Attributes>
-        <DeleteRule />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="FileFieldRules"
-      Multiplicity="Many"
-      EntityType="FileFieldRule" />
-  </Association>
-  <Association
-    Name="FK_ReconField_FileField">
-    <AssociationEnd
-      Name="FileField"
-      Multiplicity="One"
-      EntityType="FileField">
-      <AssociationEnd.Attributes>
-        <DeleteRule />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="ReconField"
-      Multiplicity="Many"
-      EntityType="ReconField" />
-  </Association>
   <DataService
     Name="PagaReconDataDataService">
     <DataService.Attributes>
       <Partial />
     </DataService.Attributes>
     <EntitySetMapping
-      EntitySet="FileFields">
+      EntitySet="ReconFields">
       <EntitySetMapping.Attributes>
         <SsdlEntitySet
-          Schema="Import"
-          Table="FileField" />
+          Schema="Admin"
+          Table="ReconField" />
         <SsdlProperty
           Name="ID"
           Nullable="False"
           StoreGeneratedPattern="Identity"
           Type="int"
-          Property="FileField/Properties[ID]" />
-        <SsdlProperty
-          MaxLength="255"
-          Name="ColumnName"
-          Nullable="False"
-          Type="varchar"
-          Property="FileField/Properties[ColumnName]" />
-        <SsdlProperty
-          Name="Position"
-          Nullable="False"
-          Type="int"
-          Property="FileField/Properties[Position]" />
+          Property="ReconField/Properties[ID]" />
         <SsdlProperty
           MaxLength="255"
           Name="sys_CreatedBy"
           Nullable="False"
           Type="varchar"
-          Property="FileField/Properties[sys_CreatedBy]" />
+          Property="ReconField/Properties[sys_CreatedBy]" />
         <SsdlProperty
           Name="sys_CreatedOn"
           Nullable="False"
           Type="datetime"
-          Property="FileField/Properties[sys_CreatedOn]" />
+          Property="ReconField/Properties[sys_CreatedOn]" />
         <SsdlProperty
           MaxLength="255"
           Name="sys_ModifiedBy"
           Nullable="False"
           Type="varchar"
-          Property="FileField/Properties[sys_ModifiedBy]" />
+          Property="ReconField/Properties[sys_ModifiedBy]" />
         <SsdlProperty
           Name="sys_ModifiedOn"
           Nullable="False"
           Type="datetime"
-          Property="FileField/Properties[sys_ModifiedOn]" />
+          Property="ReconField/Properties[sys_ModifiedOn]" />
         <SsdlForeignKeyProperty
-          Name="FileSectionID"
+          Name="FieldTypeID"
           Nullable="False"
           Type="int"
-          PropertyName="FileSectionID" />
+          PropertyName="FieldTypeID" />
+        <SsdlForeignKeyProperty
+          Name="FileFieldID"
+          Nullable="False"
+          Type="int"
+          PropertyName="FileFieldID" />
+        <SsdlForeignKeyProperty
+          Name="ReconProcessStepID"
+          Nullable="False"
+          Type="int"
+          PropertyName="ReconProcessStepID" />
+        <SsdlForeignKeyProperty
+          Name="SystemFieldID"
+          Nullable="False"
+          Type="int"
+          PropertyName="SystemFieldID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
-    <AssociationSetMapping
-      AssociationSet="FK_FileFieldRules_FileSection">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FK_FileFieldRules_FileSection" />
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_FileFieldRules_FileSection]/Members[FileField]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="ID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_FileFieldRules_FileSection]/Members[FileFieldRules]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="FileFieldID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
-    <AssociationSetMapping
-      AssociationSet="FK_ReconField_FileField">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FK_ReconField_FileField" />
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_ReconField_FileField]/Members[FileField]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="ID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_ReconField_FileField]/Members[ReconField]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="FileFieldID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
   </DataService>
 </ServiceApplication>

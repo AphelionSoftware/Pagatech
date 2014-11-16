@@ -56,14 +56,6 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="FieldTypeID"
-        PropertyType=":Int32">
-        <EntityProperty.Attributes>
-          <Required />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
         Name="sys_CreatedBy"
         PropertyType=":String">
         <EntityProperty.Attributes>
@@ -105,6 +97,16 @@
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Name="ReconFields"
+        Association="FK_ReconField_SystemField"
+        FromEnd="SystemField"
+        ToEnd="ReconField" />
+      <NavigationProperty
+        Name="FieldType"
+        Association="FK_SystemField_FieldType"
+        FromEnd="SystemField"
+        ToEnd="FieldType" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -198,7 +200,32 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="FK_ReconField_SystemField"
+      Association="FK_ReconField_SystemField">
+      <AssociationSetEnd
+        Name="SystemField"
+        EntitySet="SystemFields" />
+      <AssociationSetEnd
+        Name="ReconField"
+        EntitySet="ReconFields" />
+    </AssociationSet>
   </EntityContainer>
+  <Association
+    Name="FK_ReconField_SystemField">
+    <AssociationEnd
+      Name="SystemField"
+      Multiplicity="One"
+      EntityType="SystemField">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ReconField"
+      Multiplicity="Many"
+      EntityType="ReconField" />
+  </Association>
   <DataService
     Name="PagaReconDataDataService">
     <DataService.Attributes>
@@ -235,11 +262,6 @@
           Type="varchar"
           Property="SystemField/Properties[ColumnName]" />
         <SsdlProperty
-          Name="FieldTypeID"
-          Nullable="False"
-          Type="int"
-          Property="SystemField/Properties[FieldTypeID]" />
-        <SsdlProperty
           MaxLength="255"
           Name="sys_CreatedBy"
           Nullable="False"
@@ -261,7 +283,33 @@
           Nullable="False"
           Type="datetime"
           Property="SystemField/Properties[sys_ModifiedOn]" />
+        <SsdlForeignKeyProperty
+          Name="FieldTypeID"
+          Nullable="False"
+          Type="int"
+          PropertyName="FieldTypeID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ReconField_SystemField">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ReconField_SystemField" />
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ReconField_SystemField]/Members[SystemField]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ReconField_SystemField]/Members[ReconField]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="SystemFieldID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
   </DataService>
 </ServiceApplication>

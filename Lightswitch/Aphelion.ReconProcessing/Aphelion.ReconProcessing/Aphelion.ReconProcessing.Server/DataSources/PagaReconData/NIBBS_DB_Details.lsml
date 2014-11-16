@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="FileField">
+    Name="NIBBS_DB_Detail">
     <EntityType.Methods>
       <EntityMethod
         Name="Delete">
@@ -26,21 +26,73 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="ColumnName"
+        Name="Narration"
         PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
           <MaxLength
-            Value="255" />
+            Value="1000" />
           <AnsiConstraint />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="Position"
-        PropertyType=":Int32">
+        Name="Posting_Date"
+        PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
-          <NotSearchable />
+          <MaxLength
+            Value="1000" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Value_Date"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="1000" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Debit"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="1000" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Credit"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="1000" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Reference"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="1000" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Balance"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="1000" />
+          <AnsiConstraint />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
@@ -85,21 +137,6 @@
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
-      <NavigationProperty
-        Name="FileSection"
-        Association="FK_FileField_FileSection"
-        FromEnd="FileField"
-        ToEnd="FileSection" />
-      <NavigationProperty
-        Name="FileFieldRules"
-        Association="FK_FileFieldRules_FileSection"
-        FromEnd="FileField"
-        ToEnd="FileFieldRules" />
-      <NavigationProperty
-        Name="ReconFields"
-        Association="FK_ReconField_FileField"
-        FromEnd="FileField"
-        ToEnd="ReconField" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -108,14 +145,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="FileFields"
+      Name="NIBBS_DB_Details"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="FileField" />
+      EntityType="NIBBS_DB_Detail" />
     <QueryOperation
-      Name="FileFields_Single"
-      ReturnType="FileField">
+      Name="NIBBS_DB_Details_Single"
+      ReturnType="NIBBS_DB_Detail">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -141,7 +178,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="FileFields" />
+            Member="NIBBS_DB_Details" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -154,8 +191,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="FileFields_SingleOrDefault"
-      ReturnType="FileField">
+      Name="NIBBS_DB_Details_SingleOrDefault"
+      ReturnType="NIBBS_DB_Detail">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -181,7 +218,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="FileFields" />
+            Member="NIBBS_DB_Details" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -193,155 +230,89 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
-    <AssociationSet
-      Name="FK_FileFieldRules_FileSection"
-      Association="FK_FileFieldRules_FileSection">
-      <AssociationSetEnd
-        Name="FileField"
-        EntitySet="FileFields" />
-      <AssociationSetEnd
-        Name="FileFieldRules"
-        EntitySet="FileFieldRules" />
-    </AssociationSet>
-    <AssociationSet
-      Name="FK_ReconField_FileField"
-      Association="FK_ReconField_FileField">
-      <AssociationSetEnd
-        Name="FileField"
-        EntitySet="FileFields" />
-      <AssociationSetEnd
-        Name="ReconField"
-        EntitySet="ReconFields" />
-    </AssociationSet>
   </EntityContainer>
-  <Association
-    Name="FK_FileFieldRules_FileSection">
-    <AssociationEnd
-      Name="FileField"
-      Multiplicity="One"
-      EntityType="FileField">
-      <AssociationEnd.Attributes>
-        <DeleteRule />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="FileFieldRules"
-      Multiplicity="Many"
-      EntityType="FileFieldRule" />
-  </Association>
-  <Association
-    Name="FK_ReconField_FileField">
-    <AssociationEnd
-      Name="FileField"
-      Multiplicity="One"
-      EntityType="FileField">
-      <AssociationEnd.Attributes>
-        <DeleteRule />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="ReconField"
-      Multiplicity="Many"
-      EntityType="ReconField" />
-  </Association>
   <DataService
     Name="PagaReconDataDataService">
     <DataService.Attributes>
       <Partial />
     </DataService.Attributes>
     <EntitySetMapping
-      EntitySet="FileFields">
+      EntitySet="NIBBS_DB_Details">
       <EntitySetMapping.Attributes>
         <SsdlEntitySet
-          Schema="Import"
-          Table="FileField" />
+          Schema="Staging"
+          Table="NIBBS_DB_Detail" />
         <SsdlProperty
           Name="ID"
           Nullable="False"
           StoreGeneratedPattern="Identity"
           Type="int"
-          Property="FileField/Properties[ID]" />
+          Property="NIBBS_DB_Detail/Properties[ID]" />
         <SsdlProperty
-          MaxLength="255"
-          Name="ColumnName"
+          MaxLength="1000"
+          Name="Narration"
           Nullable="False"
           Type="varchar"
-          Property="FileField/Properties[ColumnName]" />
+          Property="NIBBS_DB_Detail/Properties[Narration]" />
         <SsdlProperty
-          Name="Position"
+          MaxLength="1000"
+          Name="Posting_Date"
           Nullable="False"
-          Type="int"
-          Property="FileField/Properties[Position]" />
+          Type="varchar"
+          Property="NIBBS_DB_Detail/Properties[Posting_Date]" />
+        <SsdlProperty
+          MaxLength="1000"
+          Name="Value_Date"
+          Nullable="False"
+          Type="varchar"
+          Property="NIBBS_DB_Detail/Properties[Value_Date]" />
+        <SsdlProperty
+          MaxLength="1000"
+          Name="Debit"
+          Nullable="False"
+          Type="varchar"
+          Property="NIBBS_DB_Detail/Properties[Debit]" />
+        <SsdlProperty
+          MaxLength="1000"
+          Name="Credit"
+          Nullable="False"
+          Type="varchar"
+          Property="NIBBS_DB_Detail/Properties[Credit]" />
+        <SsdlProperty
+          MaxLength="1000"
+          Name="Reference"
+          Nullable="False"
+          Type="varchar"
+          Property="NIBBS_DB_Detail/Properties[Reference]" />
+        <SsdlProperty
+          MaxLength="1000"
+          Name="Balance"
+          Nullable="False"
+          Type="varchar"
+          Property="NIBBS_DB_Detail/Properties[Balance]" />
         <SsdlProperty
           MaxLength="255"
           Name="sys_CreatedBy"
           Nullable="False"
           Type="varchar"
-          Property="FileField/Properties[sys_CreatedBy]" />
+          Property="NIBBS_DB_Detail/Properties[sys_CreatedBy]" />
         <SsdlProperty
           Name="sys_CreatedOn"
           Nullable="False"
           Type="datetime"
-          Property="FileField/Properties[sys_CreatedOn]" />
+          Property="NIBBS_DB_Detail/Properties[sys_CreatedOn]" />
         <SsdlProperty
           MaxLength="255"
           Name="sys_ModifiedBy"
           Nullable="False"
           Type="varchar"
-          Property="FileField/Properties[sys_ModifiedBy]" />
+          Property="NIBBS_DB_Detail/Properties[sys_ModifiedBy]" />
         <SsdlProperty
           Name="sys_ModifiedOn"
           Nullable="False"
           Type="datetime"
-          Property="FileField/Properties[sys_ModifiedOn]" />
-        <SsdlForeignKeyProperty
-          Name="FileSectionID"
-          Nullable="False"
-          Type="int"
-          PropertyName="FileSectionID" />
+          Property="NIBBS_DB_Detail/Properties[sys_ModifiedOn]" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
-    <AssociationSetMapping
-      AssociationSet="FK_FileFieldRules_FileSection">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FK_FileFieldRules_FileSection" />
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_FileFieldRules_FileSection]/Members[FileField]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="ID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_FileFieldRules_FileSection]/Members[FileFieldRules]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="FileFieldID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
-    <AssociationSetMapping
-      AssociationSet="FK_ReconField_FileField">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FK_ReconField_FileField" />
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_ReconField_FileField]/Members[FileField]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="ID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_ReconField_FileField]/Members[ReconField]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="FileFieldID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
   </DataService>
 </ServiceApplication>

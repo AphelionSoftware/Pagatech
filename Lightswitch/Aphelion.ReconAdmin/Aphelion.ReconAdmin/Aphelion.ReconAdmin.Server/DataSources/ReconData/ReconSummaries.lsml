@@ -146,6 +146,16 @@
         Association="FK_ReconSummary_ReconStatus"
         FromEnd="ReconSummary"
         ToEnd="ReconStatus" />
+      <NavigationProperty
+        Name="ImportedFile"
+        Association="FK_ReconSummary_ImportedFile"
+        FromEnd="ReconSummary"
+        ToEnd="ImportedFile" />
+      <NavigationProperty
+        Name="ImportedFile1"
+        Association="FK_ReconSummary_ImportedFile1"
+        FromEnd="ReconSummary"
+        ToEnd="ImportedFile" />
     </EntityType.Properties>
   </EntityType>
   <Association
@@ -342,6 +352,16 @@
           Nullable="False"
           Type="datetime"
           Property="ReconSummary/Properties[sys_ModifiedOn]" />
+        <SsdlForeignKeyProperty
+          Name="SourceImportFileID"
+          Nullable="True"
+          Type="int"
+          PropertyName="SourceImportFileID" />
+        <SsdlForeignKeyProperty
+          Name="DestImportFileID"
+          Nullable="True"
+          Type="int"
+          PropertyName="DestImportFileID" />
         <SsdlForeignKeyProperty
           Name="ReconProcessStepID"
           Nullable="False"

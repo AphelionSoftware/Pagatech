@@ -394,6 +394,66 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ReconSummary_ImportedFile1">
+    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
+    <End Role="ReconSummary" Type="LightSwitchApplication.ReconSummary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconSummary">
+        <PropertyRef Name="DestImportFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SkyeImportDetails_ImportedFile">
+    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
+    <End Role="SkyeImportDetails" Type="LightSwitchApplication.SkyeImportDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SkyeImportDetails">
+        <PropertyRef Name="ImportedFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SkyeImportHeader_ImportedFile">
+    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
+    <End Role="SkyeImportHeader" Type="LightSwitchApplication.SkyeImportHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SkyeImportHeader">
+        <PropertyRef Name="ImportedFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconProcessStep_ImportedFile">
+    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
+    <End Role="ReconProcessStep" Type="LightSwitchApplication.ReconProcessStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconProcessStep">
+        <PropertyRef Name="CurrentSourceImportedFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconProcessStep_ImportedFile1">
+    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
+    <End Role="ReconProcessStep" Type="LightSwitchApplication.ReconProcessStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconProcessStep">
+        <PropertyRef Name="CurrentTargetImportedFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ReconProcessStep_ReconProcess">
     <End Role="ReconProcess" Type="LightSwitchApplication.ReconProcess" Multiplicity="1" />
     <End Role="ReconProcessStep" Type="LightSwitchApplication.ReconProcessStep" Multiplicity="*" />
@@ -402,6 +462,18 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="ReconProcessStep">
+        <PropertyRef Name="ReconProcessID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="vwReconProcessStatu_ReconProcess">
+    <End Role="ReconProcess" Type="LightSwitchApplication.ReconProcess" Multiplicity="1" />
+    <End Role="vwReconProcessStatu" Type="LightSwitchApplication.vwReconProcessStatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReconProcess">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="vwReconProcessStatu">
         <PropertyRef Name="ReconProcessID" />
       </Dependent>
     </ReferentialConstraint>
@@ -478,78 +550,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ReconSummary_ImportedFile1">
-    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
-    <End Role="ReconSummary" Type="LightSwitchApplication.ReconSummary" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ImportedFile">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ReconSummary">
-        <PropertyRef Name="DestImportFileID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SkyeImportDetails_ImportedFile">
-    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
-    <End Role="SkyeImportDetails" Type="LightSwitchApplication.SkyeImportDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ImportedFile">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="SkyeImportDetails">
-        <PropertyRef Name="ImportedFileID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SkyeImportHeader_ImportedFile">
-    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
-    <End Role="SkyeImportHeader" Type="LightSwitchApplication.SkyeImportHeader" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ImportedFile">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="SkyeImportHeader">
-        <PropertyRef Name="ImportedFileID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReconProcessStep_ImportedFile">
-    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
-    <End Role="ReconProcessStep" Type="LightSwitchApplication.ReconProcessStep" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ImportedFile">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ReconProcessStep">
-        <PropertyRef Name="CurrentSourceImportedFileID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReconProcessStep_ImportedFile1">
-    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="0..1" />
-    <End Role="ReconProcessStep" Type="LightSwitchApplication.ReconProcessStep" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ImportedFile">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ReconProcessStep">
-        <PropertyRef Name="CurrentTargetImportedFileID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="vwReconProcessStatu_ReconProcess">
-    <End Role="ReconProcess" Type="LightSwitchApplication.ReconProcess" Multiplicity="1" />
-    <End Role="vwReconProcessStatu" Type="LightSwitchApplication.vwReconProcessStatu" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ReconProcess">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="vwReconProcessStatu">
-        <PropertyRef Name="ReconProcessID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="PagaReconData" m:IsDefaultEntityContainer="true">
     <EntitySet Name="FileDefinitions" EntityType="LightSwitchApplication.FileDefinition" />
     <EntitySet Name="FileFields" EntityType="LightSwitchApplication.FileField" />
@@ -594,9 +594,33 @@
       <End Role="FileType" EntitySet="FileTypes" />
       <End Role="FileDefinition" EntitySet="FileDefinitions" />
     </AssociationSet>
+    <AssociationSet Name="FK_ReconSummary_ImportedFile1" Association="LightSwitchApplication.FK_ReconSummary_ImportedFile1">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconSummary" EntitySet="ReconSummaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SkyeImportDetails_ImportedFile" Association="LightSwitchApplication.FK_SkyeImportDetails_ImportedFile">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="SkyeImportDetails" EntitySet="SkyeImportDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SkyeImportHeader_ImportedFile" Association="LightSwitchApplication.FK_SkyeImportHeader_ImportedFile">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="SkyeImportHeader" EntitySet="SkyeImportHeaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconProcessStep_ImportedFile" Association="LightSwitchApplication.FK_ReconProcessStep_ImportedFile">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconProcessStep_ImportedFile1" Association="LightSwitchApplication.FK_ReconProcessStep_ImportedFile1">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
+    </AssociationSet>
     <AssociationSet Name="FK_ReconProcessStep_ReconProcess" Association="LightSwitchApplication.FK_ReconProcessStep_ReconProcess">
       <End Role="ReconProcess" EntitySet="ReconProcesses" />
       <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
+    </AssociationSet>
+    <AssociationSet Name="vwReconProcessStatu_ReconProcess" Association="LightSwitchApplication.vwReconProcessStatu_ReconProcess">
+      <End Role="ReconProcess" EntitySet="ReconProcesses" />
+      <End Role="vwReconProcessStatu" EntitySet="vwReconProcessStatus" />
     </AssociationSet>
     <AssociationSet Name="FK_ReconSummary_ReconProcessStep" Association="LightSwitchApplication.FK_ReconSummary_ReconProcessStep">
       <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
@@ -621,30 +645,6 @@
     <AssociationSet Name="FK_ReconProcessStep_ReconType" Association="LightSwitchApplication.FK_ReconProcessStep_ReconType">
       <End Role="ReconType" EntitySet="ReconTypes" />
       <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReconSummary_ImportedFile1" Association="LightSwitchApplication.FK_ReconSummary_ImportedFile1">
-      <End Role="ImportedFile" EntitySet="ImportedFiles" />
-      <End Role="ReconSummary" EntitySet="ReconSummaries" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SkyeImportDetails_ImportedFile" Association="LightSwitchApplication.FK_SkyeImportDetails_ImportedFile">
-      <End Role="ImportedFile" EntitySet="ImportedFiles" />
-      <End Role="SkyeImportDetails" EntitySet="SkyeImportDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SkyeImportHeader_ImportedFile" Association="LightSwitchApplication.FK_SkyeImportHeader_ImportedFile">
-      <End Role="ImportedFile" EntitySet="ImportedFiles" />
-      <End Role="SkyeImportHeader" EntitySet="SkyeImportHeaders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReconProcessStep_ImportedFile" Association="LightSwitchApplication.FK_ReconProcessStep_ImportedFile">
-      <End Role="ImportedFile" EntitySet="ImportedFiles" />
-      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReconProcessStep_ImportedFile1" Association="LightSwitchApplication.FK_ReconProcessStep_ImportedFile1">
-      <End Role="ImportedFile" EntitySet="ImportedFiles" />
-      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
-    </AssociationSet>
-    <AssociationSet Name="vwReconProcessStatu_ReconProcess" Association="LightSwitchApplication.vwReconProcessStatu_ReconProcess">
-      <End Role="ReconProcess" EntitySet="ReconProcesses" />
-      <End Role="vwReconProcessStatu" EntitySet="vwReconProcessStatus" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -129,6 +129,11 @@
         Association="FK_ReconProcessStep_ImportedFile1"
         FromEnd="ReconProcessStep"
         ToEnd="ImportedFile" />
+      <NavigationProperty
+        Name="ReconFields"
+        Association="FK_ReconField_ReconProcessStep"
+        FromEnd="ReconProcessStep"
+        ToEnd="ReconField" />
     </EntityType.Properties>
   </EntityType>
   <Association
@@ -247,7 +252,32 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="FK_ReconField_ReconProcessStep"
+      Association="FK_ReconField_ReconProcessStep">
+      <AssociationSetEnd
+        Name="ReconProcessStep"
+        EntitySet="ReconProcessSteps" />
+      <AssociationSetEnd
+        Name="ReconField"
+        EntitySet="ReconFields" />
+    </AssociationSet>
   </EntityContainer>
+  <Association
+    Name="FK_ReconField_ReconProcessStep">
+    <AssociationEnd
+      Name="ReconProcessStep"
+      Multiplicity="One"
+      EntityType="ReconProcessStep">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ReconField"
+      Multiplicity="Many"
+      EntityType="ReconField" />
+  </Association>
   <DataService
     Name="PagaReconDataDataService">
     <DataService.Attributes>
@@ -336,6 +366,27 @@
           PropertyName="ReconTypeID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ReconField_ReconProcessStep">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ReconField_ReconProcessStep" />
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ReconField_ReconProcessStep]/Members[ReconProcessStep]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ReconField_ReconProcessStep]/Members[ReconField]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ReconProcessStepID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
     <AssociationSetMapping
       AssociationSet="FK_ReconSummary_ReconProcessStep">
       <AssociationSetMapping.Attributes>

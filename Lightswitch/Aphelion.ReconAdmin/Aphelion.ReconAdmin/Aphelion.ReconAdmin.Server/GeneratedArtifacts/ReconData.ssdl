@@ -99,6 +99,22 @@
       <End Role="ReconStatus" EntitySet="ReconStatus" />
       <End Role="ReconSummary" EntitySet="ReconSummaries" />
     </AssociationSet>
+    <AssociationSet Name="FK_ReconProcessStep_ImportedFile" Association="ReconDataStore.FK_ReconProcessStep_ImportedFile">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconProcessStep_ImportedFile1" Association="ReconDataStore.FK_ReconProcessStep_ImportedFile1">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconSummary_ImportedFile" Association="ReconDataStore.FK_ReconSummary_ImportedFile">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconSummary" EntitySet="ReconSummaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconSummary_ImportedFile1" Association="ReconDataStore.FK_ReconSummary_ImportedFile1">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconSummary" EntitySet="ReconSummaries" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="FieldType">
     <Key>
@@ -150,8 +166,8 @@
     <Property Name="StagingTableName" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="StartRow" Type="int" Nullable="false" />
     <Property Name="StartColumn" Type="int" Nullable="false" />
-    <Property Name="NumRows" Type="int" />
-    <Property Name="NumColumns" Type="int" />
+    <Property Name="NumRows" Type="int" Nullable="false" />
+    <Property Name="NumColumns" Type="int" Nullable="false" />
     <Property Name="Pivot" Type="bit" Nullable="false" />
     <Property Name="HeaderRow" Type="bit" Nullable="false" />
     <Property Name="sys_CreatedBy" Type="varchar" Nullable="false" MaxLength="255" />
@@ -184,6 +200,7 @@
     <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
     <Property Name="UploadedFileName" Type="varchar" MaxLength="800" />
+    <Property Name="FileContents" Type="varbinary(max)" />
     <Property Name="FileDefinitionID" Type="int" Nullable="false" />
     <Property Name="ReconSummaryID" Type="int" />
   </EntityType>
@@ -269,6 +286,8 @@
     <Property Name="TargetFileSectionID" Type="int" Nullable="false" />
     <Property Name="ReconProcessID" Type="int" Nullable="false" />
     <Property Name="ReconTypeID" Type="int" Nullable="false" />
+    <Property Name="CurrentSourceImportedFileID" Type="int" />
+    <Property Name="CurrentTargetImportedFileID" Type="int" />
   </EntityType>
   <EntityType Name="ReconSource">
     <Key>
@@ -325,6 +344,8 @@
     <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
     <Property Name="ReconProcessStepID" Type="int" Nullable="false" />
     <Property Name="ReconStatusID" Type="int" Nullable="false" />
+    <Property Name="SourceImportFileID" Type="int" />
+    <Property Name="DestImportFileID" Type="int" />
   </EntityType>
   <EntityType Name="ReconType">
     <Key>
@@ -629,6 +650,62 @@
       </Principal>
       <Dependent Role="ReconSummary">
         <PropertyRef Name="ReconStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconProcessStep_ImportedFile">
+    <End Role="ImportedFile" Type="ReconDataStore.ImportedFile" Multiplicity="0..1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ReconProcessStep" Type="ReconDataStore.ReconProcessStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconProcessStep">
+        <PropertyRef Name="CurrentSourceImportedFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconProcessStep_ImportedFile1">
+    <End Role="ImportedFile" Type="ReconDataStore.ImportedFile" Multiplicity="0..1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ReconProcessStep" Type="ReconDataStore.ReconProcessStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconProcessStep">
+        <PropertyRef Name="CurrentTargetImportedFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconSummary_ImportedFile">
+    <End Role="ImportedFile" Type="ReconDataStore.ImportedFile" Multiplicity="0..1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ReconSummary" Type="ReconDataStore.ReconSummary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconSummary">
+        <PropertyRef Name="SourceImportFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconSummary_ImportedFile1">
+    <End Role="ImportedFile" Type="ReconDataStore.ImportedFile" Multiplicity="0..1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ReconSummary" Type="ReconDataStore.ReconSummary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconSummary">
+        <PropertyRef Name="DestImportFileID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

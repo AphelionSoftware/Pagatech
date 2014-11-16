@@ -717,6 +717,222 @@ namespace LightSwitchApplication
         partial void vwReconProcessStatus_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.vwReconProcessStatu, bool>> filter);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FieldTypes_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FieldTypes_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FieldTypes_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FieldTypes_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FieldTypes_Inserting(global::LightSwitchApplication.FieldType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FieldTypes_Inserted(global::LightSwitchApplication.FieldType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FieldTypes_Updating(global::LightSwitchApplication.FieldType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FieldTypes_Updated(global::LightSwitchApplication.FieldType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FieldTypes_Deleting(global::LightSwitchApplication.FieldType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FieldTypes_Deleted(global::LightSwitchApplication.FieldType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FieldTypes_Validate(global::LightSwitchApplication.FieldType entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FieldTypes_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.FieldType, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconFields_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconFields_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconFields_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconFields_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconFields_Inserting(global::LightSwitchApplication.ReconField entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconFields_Inserted(global::LightSwitchApplication.ReconField entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconFields_Updating(global::LightSwitchApplication.ReconField entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconFields_Updated(global::LightSwitchApplication.ReconField entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconFields_Deleting(global::LightSwitchApplication.ReconField entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconFields_Deleted(global::LightSwitchApplication.ReconField entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconFields_Validate(global::LightSwitchApplication.ReconField entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ReconFields_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconField, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void RuleTypes_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void RuleTypes_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void RuleTypes_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void RuleTypes_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void RuleTypes_Inserting(global::LightSwitchApplication.RuleType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void RuleTypes_Inserted(global::LightSwitchApplication.RuleType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void RuleTypes_Updating(global::LightSwitchApplication.RuleType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void RuleTypes_Updated(global::LightSwitchApplication.RuleType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void RuleTypes_Deleting(global::LightSwitchApplication.RuleType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void RuleTypes_Deleted(global::LightSwitchApplication.RuleType entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void RuleTypes_Validate(global::LightSwitchApplication.RuleType entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void RuleTypes_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.RuleType, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FileFieldRules_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FileFieldRules_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FileFieldRules_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FileFieldRules_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FileFieldRules_Inserting(global::LightSwitchApplication.FileFieldRule entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FileFieldRules_Inserted(global::LightSwitchApplication.FileFieldRule entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FileFieldRules_Updating(global::LightSwitchApplication.FileFieldRule entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FileFieldRules_Updated(global::LightSwitchApplication.FileFieldRule entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FileFieldRules_Deleting(global::LightSwitchApplication.FileFieldRule entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FileFieldRules_Deleted(global::LightSwitchApplication.FileFieldRule entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FileFieldRules_Validate(global::LightSwitchApplication.FileFieldRule entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void FileFieldRules_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.FileFieldRule, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Synonyms_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Synonyms_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Synonyms_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Synonyms_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Synonyms_Inserting(global::LightSwitchApplication.Synonym entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Synonyms_Inserted(global::LightSwitchApplication.Synonym entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Synonyms_Updating(global::LightSwitchApplication.Synonym entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Synonyms_Updated(global::LightSwitchApplication.Synonym entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Synonyms_Deleting(global::LightSwitchApplication.Synonym entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Synonyms_Deleted(global::LightSwitchApplication.Synonym entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Synonyms_Validate(global::LightSwitchApplication.Synonym entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Synonyms_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.Synonym, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void NIBBS_DB_Details_CanInsert(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void NIBBS_DB_Details_CanUpdate(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void NIBBS_DB_Details_CanDelete(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void NIBBS_DB_Details_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void NIBBS_DB_Details_Inserting(global::LightSwitchApplication.NIBBS_DB_Detail entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void NIBBS_DB_Details_Inserted(global::LightSwitchApplication.NIBBS_DB_Detail entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void NIBBS_DB_Details_Updating(global::LightSwitchApplication.NIBBS_DB_Detail entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void NIBBS_DB_Details_Updated(global::LightSwitchApplication.NIBBS_DB_Detail entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void NIBBS_DB_Details_Deleting(global::LightSwitchApplication.NIBBS_DB_Detail entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void NIBBS_DB_Details_Deleted(global::LightSwitchApplication.NIBBS_DB_Detail entity);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void NIBBS_DB_Details_Validate(global::LightSwitchApplication.NIBBS_DB_Detail entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void NIBBS_DB_Details_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.NIBBS_DB_Detail, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void SaveChanges_CanExecute(ref bool result);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -727,21 +943,6 @@ namespace LightSwitchApplication
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void SaveChanges_ExecuteFailed(global::System.Exception exception);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ImportedFilesUnreconciled_CanExecute(ref bool result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        partial void ImportedFilesUnreconciled_Executing(global::System.Nullable<int> ReconSourcce);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ImportedFilesUnreconciled_PreprocessQuery(global::System.Nullable<int> ReconSourcce, ref global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile> query);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        partial void ImportedFilesUnreconciled_Executed(global::System.Nullable<int> ReconSourcce, global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.ImportedFile> result);
-    
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        partial void ImportedFilesUnreconciled_ExecuteFailed(global::System.Nullable<int> ReconSourcce, global::System.Exception exception);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void ImportedFilesForToday_CanExecute(ref bool result);
@@ -757,6 +958,21 @@ namespace LightSwitchApplication
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         partial void ImportedFilesForToday_ExecuteFailed(global::System.Nullable<int> ReconSource, global::System.Nullable<int> FileDefinition, global::System.Exception exception);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ImportedFilesUnreconciled_CanExecute(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        partial void ImportedFilesUnreconciled_Executing(global::System.Nullable<int> ReconSourcce);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ImportedFilesUnreconciled_PreprocessQuery(global::System.Nullable<int> ReconSourcce, ref global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile> query);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        partial void ImportedFilesUnreconciled_Executed(global::System.Nullable<int> ReconSourcce, global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.ImportedFile> result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        partial void ImportedFilesUnreconciled_ExecuteFailed(global::System.Nullable<int> ReconSourcce, global::System.Exception exception);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void Query_Executing(global::Microsoft.LightSwitch.QueryExecutingDescriptor queryDescriptor);
@@ -2189,6 +2405,462 @@ namespace LightSwitchApplication
             
             [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.FieldType>
+                __FieldTypesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.FieldType>(
+                    "FieldTypes",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FieldTypes_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FieldTypes_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FieldTypes_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FieldTypes_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FieldTypes_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FieldTypes_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FieldTypes_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FieldTypes_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FieldTypes_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FieldTypes_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FieldTypes_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FieldTypes_Filter);
+            private static bool __FieldTypes_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.FieldTypes_CanInsert(ref result);
+                return result;
+            }
+            private static bool __FieldTypes_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.FieldTypes_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __FieldTypes_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.FieldTypes_CanDelete(ref result);
+                return result;
+            }
+            private static bool __FieldTypes_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.FieldTypes_CanRead(ref result);
+                return result;
+            }
+            private static void __FieldTypes_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FieldType e)
+            {
+                d.FieldTypes_Inserting(e);
+            }
+            private static void __FieldTypes_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FieldType e)
+            {
+                d.FieldTypes_Inserted(e);
+            }
+            private static void __FieldTypes_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FieldType e)
+            {
+                d.FieldTypes_Updating(e);
+            }
+            private static void __FieldTypes_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FieldType e)
+            {
+                d.FieldTypes_Updated(e);
+            }
+            private static void __FieldTypes_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FieldType e)
+            {
+                d.FieldTypes_Deleting(e);
+            }
+            private static void __FieldTypes_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FieldType e)
+            {
+                d.FieldTypes_Deleted(e);
+            }
+            private static void __FieldTypes_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FieldType e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.FieldTypes_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.FieldType, bool>> __FieldTypes_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.FieldType, bool>> filter = null;
+                d.FieldTypes_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconField>
+                __ReconFieldsEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ReconField>(
+                    "ReconFields",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconFields_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconFields_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconFields_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconFields_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconFields_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconFields_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconFields_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconFields_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconFields_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconFields_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconFields_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ReconFields_Filter);
+            private static bool __ReconFields_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconFields_CanInsert(ref result);
+                return result;
+            }
+            private static bool __ReconFields_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconFields_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __ReconFields_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconFields_CanDelete(ref result);
+                return result;
+            }
+            private static bool __ReconFields_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.ReconFields_CanRead(ref result);
+                return result;
+            }
+            private static void __ReconFields_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconField e)
+            {
+                d.ReconFields_Inserting(e);
+            }
+            private static void __ReconFields_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconField e)
+            {
+                d.ReconFields_Inserted(e);
+            }
+            private static void __ReconFields_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconField e)
+            {
+                d.ReconFields_Updating(e);
+            }
+            private static void __ReconFields_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconField e)
+            {
+                d.ReconFields_Updated(e);
+            }
+            private static void __ReconFields_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconField e)
+            {
+                d.ReconFields_Deleting(e);
+            }
+            private static void __ReconFields_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconField e)
+            {
+                d.ReconFields_Deleted(e);
+            }
+            private static void __ReconFields_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.ReconField e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.ReconFields_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconField, bool>> __ReconFields_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.ReconField, bool>> filter = null;
+                d.ReconFields_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.RuleType>
+                __RuleTypesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.RuleType>(
+                    "RuleTypes",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__RuleTypes_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__RuleTypes_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__RuleTypes_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__RuleTypes_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__RuleTypes_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__RuleTypes_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__RuleTypes_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__RuleTypes_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__RuleTypes_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__RuleTypes_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__RuleTypes_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__RuleTypes_Filter);
+            private static bool __RuleTypes_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.RuleTypes_CanInsert(ref result);
+                return result;
+            }
+            private static bool __RuleTypes_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.RuleTypes_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __RuleTypes_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.RuleTypes_CanDelete(ref result);
+                return result;
+            }
+            private static bool __RuleTypes_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.RuleTypes_CanRead(ref result);
+                return result;
+            }
+            private static void __RuleTypes_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.RuleType e)
+            {
+                d.RuleTypes_Inserting(e);
+            }
+            private static void __RuleTypes_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.RuleType e)
+            {
+                d.RuleTypes_Inserted(e);
+            }
+            private static void __RuleTypes_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.RuleType e)
+            {
+                d.RuleTypes_Updating(e);
+            }
+            private static void __RuleTypes_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.RuleType e)
+            {
+                d.RuleTypes_Updated(e);
+            }
+            private static void __RuleTypes_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.RuleType e)
+            {
+                d.RuleTypes_Deleting(e);
+            }
+            private static void __RuleTypes_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.RuleType e)
+            {
+                d.RuleTypes_Deleted(e);
+            }
+            private static void __RuleTypes_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.RuleType e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.RuleTypes_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.RuleType, bool>> __RuleTypes_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.RuleType, bool>> filter = null;
+                d.RuleTypes_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.FileFieldRule>
+                __FileFieldRulesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.FileFieldRule>(
+                    "FileFieldRules",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FileFieldRules_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FileFieldRules_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FileFieldRules_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FileFieldRules_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FileFieldRules_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FileFieldRules_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FileFieldRules_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FileFieldRules_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FileFieldRules_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FileFieldRules_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FileFieldRules_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__FileFieldRules_Filter);
+            private static bool __FileFieldRules_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.FileFieldRules_CanInsert(ref result);
+                return result;
+            }
+            private static bool __FileFieldRules_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.FileFieldRules_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __FileFieldRules_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.FileFieldRules_CanDelete(ref result);
+                return result;
+            }
+            private static bool __FileFieldRules_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.FileFieldRules_CanRead(ref result);
+                return result;
+            }
+            private static void __FileFieldRules_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FileFieldRule e)
+            {
+                d.FileFieldRules_Inserting(e);
+            }
+            private static void __FileFieldRules_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FileFieldRule e)
+            {
+                d.FileFieldRules_Inserted(e);
+            }
+            private static void __FileFieldRules_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FileFieldRule e)
+            {
+                d.FileFieldRules_Updating(e);
+            }
+            private static void __FileFieldRules_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FileFieldRule e)
+            {
+                d.FileFieldRules_Updated(e);
+            }
+            private static void __FileFieldRules_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FileFieldRule e)
+            {
+                d.FileFieldRules_Deleting(e);
+            }
+            private static void __FileFieldRules_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FileFieldRule e)
+            {
+                d.FileFieldRules_Deleted(e);
+            }
+            private static void __FileFieldRules_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.FileFieldRules_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.FileFieldRule, bool>> __FileFieldRules_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.FileFieldRule, bool>> filter = null;
+                d.FileFieldRules_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.Synonym>
+                __SynonymsEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.Synonym>(
+                    "Synonyms",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__Synonyms_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__Synonyms_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__Synonyms_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__Synonyms_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__Synonyms_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__Synonyms_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__Synonyms_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__Synonyms_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__Synonyms_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__Synonyms_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__Synonyms_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__Synonyms_Filter);
+            private static bool __Synonyms_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.Synonyms_CanInsert(ref result);
+                return result;
+            }
+            private static bool __Synonyms_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.Synonyms_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __Synonyms_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.Synonyms_CanDelete(ref result);
+                return result;
+            }
+            private static bool __Synonyms_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.Synonyms_CanRead(ref result);
+                return result;
+            }
+            private static void __Synonyms_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.Synonym e)
+            {
+                d.Synonyms_Inserting(e);
+            }
+            private static void __Synonyms_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.Synonym e)
+            {
+                d.Synonyms_Inserted(e);
+            }
+            private static void __Synonyms_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.Synonym e)
+            {
+                d.Synonyms_Updating(e);
+            }
+            private static void __Synonyms_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.Synonym e)
+            {
+                d.Synonyms_Updated(e);
+            }
+            private static void __Synonyms_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.Synonym e)
+            {
+                d.Synonyms_Deleting(e);
+            }
+            private static void __Synonyms_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.Synonym e)
+            {
+                d.Synonyms_Deleted(e);
+            }
+            private static void __Synonyms_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.Synonym e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.Synonyms_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.Synonym, bool>> __Synonyms_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.Synonym, bool>> filter = null;
+                d.Synonyms_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.NIBBS_DB_Detail>
+                __NIBBS_DB_DetailsEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.NIBBS_DB_Detail>(
+                    "NIBBS_DB_Details",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__NIBBS_DB_Details_CanInsert,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__NIBBS_DB_Details_CanUpdate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__NIBBS_DB_Details_CanDelete,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__NIBBS_DB_Details_CanRead,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__NIBBS_DB_Details_Inserting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__NIBBS_DB_Details_Inserted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__NIBBS_DB_Details_Updating,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__NIBBS_DB_Details_Updated,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__NIBBS_DB_Details_Deleting,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__NIBBS_DB_Details_Deleted,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__NIBBS_DB_Details_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__NIBBS_DB_Details_Filter);
+            private static bool __NIBBS_DB_Details_CanInsert(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.NIBBS_DB_Details_CanInsert(ref result);
+                return result;
+            }
+            private static bool __NIBBS_DB_Details_CanUpdate(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.NIBBS_DB_Details_CanUpdate(ref result);
+                return result;
+            }
+            private static bool __NIBBS_DB_Details_CanDelete(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.NIBBS_DB_Details_CanDelete(ref result);
+                return result;
+            }
+            private static bool __NIBBS_DB_Details_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.NIBBS_DB_Details_CanRead(ref result);
+                return result;
+            }
+            private static void __NIBBS_DB_Details_Inserting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.NIBBS_DB_Detail e)
+            {
+                d.NIBBS_DB_Details_Inserting(e);
+            }
+            private static void __NIBBS_DB_Details_Inserted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.NIBBS_DB_Detail e)
+            {
+                d.NIBBS_DB_Details_Inserted(e);
+            }
+            private static void __NIBBS_DB_Details_Updating(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.NIBBS_DB_Detail e)
+            {
+                d.NIBBS_DB_Details_Updating(e);
+            }
+            private static void __NIBBS_DB_Details_Updated(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.NIBBS_DB_Detail e)
+            {
+                d.NIBBS_DB_Details_Updated(e);
+            }
+            private static void __NIBBS_DB_Details_Deleting(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.NIBBS_DB_Detail e)
+            {
+                d.NIBBS_DB_Details_Deleting(e);
+            }
+            private static void __NIBBS_DB_Details_Deleted(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.NIBBS_DB_Detail e)
+            {
+                d.NIBBS_DB_Details_Deleted(e);
+            }
+            private static void __NIBBS_DB_Details_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.NIBBS_DB_Details_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.NIBBS_DB_Detail, bool>> __NIBBS_DB_Details_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.NIBBS_DB_Detail, bool>> filter = null;
+                d.NIBBS_DB_Details_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.OperationEntry<global::LightSwitchApplication.PagaReconDataService>
                 __SaveChangesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.OperationEntry<global::LightSwitchApplication.PagaReconDataService>(
                     "SaveChanges",
@@ -2212,40 +2884,6 @@ namespace LightSwitchApplication
             private static void __SaveChanges_Failed(global::LightSwitchApplication.PagaReconDataService d, object[] args, global::System.Exception ex)
             {
                 d.SaveChanges_ExecuteFailed(ex);
-            }
-            
-            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.QueryOperationEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ImportedFile>
-                __ImportedFilesUnreconciledEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.QueryOperationEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ImportedFile>(
-                    "ImportedFilesUnreconciled",
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesUnreconciled_CanExecute,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesUnreconciled_Executing,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesUnreconciled_Executed,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesUnreconciled_Failed,
-                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesUnreconciled_PreprocessQuery);
-            private static bool __ImportedFilesUnreconciled_CanExecute(global::LightSwitchApplication.PagaReconDataService d, bool r)
-            {
-                d.ImportedFilesUnreconciled_CanExecute(ref r);
-                return r;
-            }
-            private static void __ImportedFilesUnreconciled_Executing(global::LightSwitchApplication.PagaReconDataService d, object[] args)
-            {
-                d.ImportedFilesUnreconciled_Executing((global::System.Nullable<int>)args[0]);
-            }
-            private static void __ImportedFilesUnreconciled_Executed(global::LightSwitchApplication.PagaReconDataService d, object[] args)
-            {
-                d.ImportedFilesUnreconciled_Executed((global::System.Nullable<int>)args[0], (global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.ImportedFile>)args[1]);
-            }
-            private static void __ImportedFilesUnreconciled_Failed(global::LightSwitchApplication.PagaReconDataService d, object[] args, global::System.Exception ex)
-            {
-                d.ImportedFilesUnreconciled_ExecuteFailed((global::System.Nullable<int>)args[0], ex);
-            }
-            private static global::System.Linq.IQueryable __ImportedFilesUnreconciled_PreprocessQuery(global::LightSwitchApplication.PagaReconDataService d, object[] args)
-            {
-                global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile> query = (global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile>)args[1];
-                d.ImportedFilesUnreconciled_PreprocessQuery((global::System.Nullable<int>)args[0], ref query);
-                return query;
             }
             
             [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
@@ -2279,6 +2917,40 @@ namespace LightSwitchApplication
             {
                 global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile> query = (global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile>)args[2];
                 d.ImportedFilesForToday_PreprocessQuery((global::System.Nullable<int>)args[0], (global::System.Nullable<int>)args[1], ref query);
+                return query;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.QueryOperationEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ImportedFile>
+                __ImportedFilesUnreconciledEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.QueryOperationEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ImportedFile>(
+                    "ImportedFilesUnreconciled",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesUnreconciled_CanExecute,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesUnreconciled_Executing,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesUnreconciled_Executed,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesUnreconciled_Failed,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesUnreconciled_PreprocessQuery);
+            private static bool __ImportedFilesUnreconciled_CanExecute(global::LightSwitchApplication.PagaReconDataService d, bool r)
+            {
+                d.ImportedFilesUnreconciled_CanExecute(ref r);
+                return r;
+            }
+            private static void __ImportedFilesUnreconciled_Executing(global::LightSwitchApplication.PagaReconDataService d, object[] args)
+            {
+                d.ImportedFilesUnreconciled_Executing((global::System.Nullable<int>)args[0]);
+            }
+            private static void __ImportedFilesUnreconciled_Executed(global::LightSwitchApplication.PagaReconDataService d, object[] args)
+            {
+                d.ImportedFilesUnreconciled_Executed((global::System.Nullable<int>)args[0], (global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.ImportedFile>)args[1]);
+            }
+            private static void __ImportedFilesUnreconciled_Failed(global::LightSwitchApplication.PagaReconDataService d, object[] args, global::System.Exception ex)
+            {
+                d.ImportedFilesUnreconciled_ExecuteFailed((global::System.Nullable<int>)args[0], ex);
+            }
+            private static global::System.Linq.IQueryable __ImportedFilesUnreconciled_PreprocessQuery(global::LightSwitchApplication.PagaReconDataService d, object[] args)
+            {
+                global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile> query = (global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile>)args[1];
+                d.ImportedFilesUnreconciled_PreprocessQuery((global::System.Nullable<int>)args[0], ref query);
                 return query;
             }
     

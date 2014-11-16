@@ -94,6 +94,34 @@
           <AnsiConstraint />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <EntityProperty
+        Name="FileContents"
+        PropertyType=":Binary?">
+        <EntityProperty.Attributes>
+          <MaxLength />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="ReconProcessSteps"
+        Association="FK_ReconProcessStep_ImportedFile"
+        FromEnd="ImportedFile"
+        ToEnd="ReconProcessStep" />
+      <NavigationProperty
+        Name="ReconProcessSteps1"
+        Association="FK_ReconProcessStep_ImportedFile1"
+        FromEnd="ImportedFile"
+        ToEnd="ReconProcessStep" />
+      <NavigationProperty
+        Name="ReconSummaries"
+        Association="FK_ReconSummary_ImportedFile"
+        FromEnd="ImportedFile"
+        ToEnd="ReconSummary" />
+      <NavigationProperty
+        Name="ReconSummaries1"
+        Association="FK_ReconSummary_ImportedFile1"
+        FromEnd="ImportedFile"
+        ToEnd="ReconSummary" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -187,7 +215,103 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="FK_ReconProcessStep_ImportedFile"
+      Association="FK_ReconProcessStep_ImportedFile">
+      <AssociationSetEnd
+        Name="ImportedFile"
+        EntitySet="ImportedFiles" />
+      <AssociationSetEnd
+        Name="ReconProcessStep"
+        EntitySet="ReconProcessSteps" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_ReconProcessStep_ImportedFile1"
+      Association="FK_ReconProcessStep_ImportedFile1">
+      <AssociationSetEnd
+        Name="ImportedFile"
+        EntitySet="ImportedFiles" />
+      <AssociationSetEnd
+        Name="ReconProcessStep"
+        EntitySet="ReconProcessSteps" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_ReconSummary_ImportedFile"
+      Association="FK_ReconSummary_ImportedFile">
+      <AssociationSetEnd
+        Name="ImportedFile"
+        EntitySet="ImportedFiles" />
+      <AssociationSetEnd
+        Name="ReconSummary"
+        EntitySet="ReconSummaries" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_ReconSummary_ImportedFile1"
+      Association="FK_ReconSummary_ImportedFile1">
+      <AssociationSetEnd
+        Name="ImportedFile"
+        EntitySet="ImportedFiles" />
+      <AssociationSetEnd
+        Name="ReconSummary"
+        EntitySet="ReconSummaries" />
+    </AssociationSet>
   </EntityContainer>
+  <Association
+    Name="FK_ReconProcessStep_ImportedFile">
+    <AssociationEnd
+      Name="ImportedFile"
+      EntityType="ImportedFile">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ReconProcessStep"
+      Multiplicity="Many"
+      EntityType="ReconProcessStep" />
+  </Association>
+  <Association
+    Name="FK_ReconProcessStep_ImportedFile1">
+    <AssociationEnd
+      Name="ImportedFile"
+      EntityType="ImportedFile">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ReconProcessStep"
+      Multiplicity="Many"
+      EntityType="ReconProcessStep" />
+  </Association>
+  <Association
+    Name="FK_ReconSummary_ImportedFile">
+    <AssociationEnd
+      Name="ImportedFile"
+      EntityType="ImportedFile">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ReconSummary"
+      Multiplicity="Many"
+      EntityType="ReconSummary" />
+  </Association>
+  <Association
+    Name="FK_ReconSummary_ImportedFile1">
+    <AssociationEnd
+      Name="ImportedFile"
+      EntityType="ImportedFile">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ReconSummary"
+      Multiplicity="Many"
+      EntityType="ReconSummary" />
+  </Association>
   <DataService
     Name="ReconDataDataService">
     <DataService.Attributes>
@@ -217,6 +341,11 @@
           Nullable="True"
           Type="varchar"
           Property="ImportedFile/Properties[UploadedFileName]" />
+        <SsdlProperty
+          Name="FileContents"
+          Nullable="True"
+          Type="varbinary(max)"
+          Property="ImportedFile/Properties[FileContents]" />
         <SsdlProperty
           MaxLength="255"
           Name="sys_CreatedBy"
@@ -251,5 +380,89 @@
           PropertyName="ReconSummaryID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ReconProcessStep_ImportedFile">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ReconProcessStep_ImportedFile" />
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ReconProcessStep_ImportedFile]/Members[ImportedFile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ReconProcessStep_ImportedFile]/Members[ReconProcessStep]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="CurrentSourceImportedFileID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ReconProcessStep_ImportedFile1">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ReconProcessStep_ImportedFile1" />
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ReconProcessStep_ImportedFile1]/Members[ImportedFile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ReconProcessStep_ImportedFile1]/Members[ReconProcessStep]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="CurrentTargetImportedFileID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ReconSummary_ImportedFile">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ReconSummary_ImportedFile" />
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ReconSummary_ImportedFile]/Members[ImportedFile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ReconSummary_ImportedFile]/Members[ReconSummary]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="SourceImportFileID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ReconSummary_ImportedFile1">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ReconSummary_ImportedFile1" />
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ReconSummary_ImportedFile1]/Members[ImportedFile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ReconData/Members[FK_ReconSummary_ImportedFile1]/Members[ReconSummary]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="DestImportFileID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
   </DataService>
 </ServiceApplication>

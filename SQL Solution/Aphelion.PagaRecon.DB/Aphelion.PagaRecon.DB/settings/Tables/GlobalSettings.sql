@@ -1,4 +1,4 @@
-﻿CREATE TABLE [settings].[GlobalSettings] (
+﻿CREATE TABLE [Settings].[GlobalSettings] (
     [GlobalSettings_ID] INT            IDENTITY (1, 1) NOT NULL,
     [Code]              VARCHAR (50)   NOT NULL,
     [Name]              VARCHAR (255)  NOT NULL,
@@ -13,5 +13,5 @@
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'1', @level0type = N'SCHEMA', @level0name = N'settings', @level1type = N'TABLE', @level1name = N'GlobalSettings';
+EXECUTE sp_addextendedproperty @name = N'RelationshipDepth', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Settings', @level1type = N'TABLE', @level1name = N'GlobalSettings';
 

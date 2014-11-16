@@ -286,6 +286,21 @@ window.myapp = msls.application;
         /// <field name="UploadedFileName" type="String">
         /// Gets or sets the uploadedFileName for this importedFile.
         /// </field>
+        /// <field name="FileContents" type="String">
+        /// Gets or sets the fileContents for this importedFile.
+        /// </field>
+        /// <field name="ReconProcessSteps" type="msls.EntityCollection" elementType="msls.application.ReconProcessStep">
+        /// Gets the reconProcessSteps for this importedFile.
+        /// </field>
+        /// <field name="ReconProcessSteps1" type="msls.EntityCollection" elementType="msls.application.ReconProcessStep">
+        /// Gets the reconProcessSteps1 for this importedFile.
+        /// </field>
+        /// <field name="ReconSummaries" type="msls.EntityCollection" elementType="msls.application.ReconSummary">
+        /// Gets the reconSummaries for this importedFile.
+        /// </field>
+        /// <field name="ReconSummaries1" type="msls.EntityCollection" elementType="msls.application.ReconSummary">
+        /// Gets the reconSummaries1 for this importedFile.
+        /// </field>
         /// <field name="details" type="msls.application.ImportedFile.Details">
         /// Gets the details for this importedFile.
         /// </field>
@@ -535,6 +550,12 @@ window.myapp = msls.application;
         /// <field name="ReconSummaries" type="msls.EntityCollection" elementType="msls.application.ReconSummary">
         /// Gets the reconSummaries for this reconProcessStep.
         /// </field>
+        /// <field name="ImportedFile" type="msls.application.ImportedFile">
+        /// Gets or sets the importedFile for this reconProcessStep.
+        /// </field>
+        /// <field name="ImportedFile1" type="msls.application.ImportedFile">
+        /// Gets or sets the importedFile1 for this reconProcessStep.
+        /// </field>
         /// <field name="details" type="msls.application.ReconProcessStep.Details">
         /// Gets the details for this reconProcessStep.
         /// </field>
@@ -706,6 +727,12 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="ReconStatu" type="msls.application.ReconStatu">
         /// Gets or sets the reconStatu for this reconSummary.
+        /// </field>
+        /// <field name="ImportedFile" type="msls.application.ImportedFile">
+        /// Gets or sets the importedFile for this reconSummary.
+        /// </field>
+        /// <field name="ImportedFile1" type="msls.application.ImportedFile">
+        /// Gets or sets the importedFile1 for this reconSummary.
         /// </field>
         /// <field name="details" type="msls.application.ReconSummary.Details">
         /// Gets the details for this reconSummary.
@@ -956,7 +983,12 @@ window.myapp = msls.application;
             { name: "sys_ModifiedOn", type: Date },
             { name: "FileDefinition", kind: "reference", type: FileDefinition },
             { name: "ReconSummary", kind: "reference", type: ReconSummary },
-            { name: "UploadedFileName", type: String }
+            { name: "UploadedFileName", type: String },
+            { name: "FileContents", type: String },
+            { name: "ReconProcessSteps", kind: "collection", elementType: ReconProcessStep },
+            { name: "ReconProcessSteps1", kind: "collection", elementType: ReconProcessStep },
+            { name: "ReconSummaries", kind: "collection", elementType: ReconSummary },
+            { name: "ReconSummaries1", kind: "collection", elementType: ReconSummary }
         ]),
 
         ImportFileField_ReconField: $defineEntity(ImportFileField_ReconField, [
@@ -1031,7 +1063,9 @@ window.myapp = msls.application;
             { name: "ReconType", kind: "reference", type: ReconType },
             { name: "Order", type: Number },
             { name: "ReconFields", kind: "collection", elementType: ReconField },
-            { name: "ReconSummaries", kind: "collection", elementType: ReconSummary }
+            { name: "ReconSummaries", kind: "collection", elementType: ReconSummary },
+            { name: "ImportedFile", kind: "reference", type: ImportedFile },
+            { name: "ImportedFile1", kind: "reference", type: ImportedFile }
         ]),
 
         ReconSource: $defineEntity(ReconSource, [
@@ -1083,7 +1117,9 @@ window.myapp = msls.application;
             { name: "sys_ModifiedOn", type: Date },
             { name: "ImportedFiles", kind: "collection", elementType: ImportedFile },
             { name: "ReconProcessStep", kind: "reference", type: ReconProcessStep },
-            { name: "ReconStatu", kind: "reference", type: ReconStatu }
+            { name: "ReconStatu", kind: "reference", type: ReconStatu },
+            { name: "ImportedFile", kind: "reference", type: ImportedFile },
+            { name: "ImportedFile1", kind: "reference", type: ImportedFile }
         ]),
 
         ReconType: $defineEntity(ReconType, [
