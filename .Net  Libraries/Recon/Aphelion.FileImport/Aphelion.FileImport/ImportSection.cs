@@ -24,6 +24,7 @@ namespace Aphelion.Recon
         private string sStagingSchema;
         private string sStagingTable;
         public string sFileName;
+        public int iImportedFileID;
         public FileType ft;
         public BackgroundWorker backWorker { get; set; }
         public DataTable dtResults {get; private set;}
@@ -64,10 +65,10 @@ namespace Aphelion.Recon
             this.fileReader = new FileReader(pFT, pFileName);
         }
 
-        public ImportSection(string pConnection, string pSectionCode, FileType pFT, string pFileName)
+        public ImportSection(string pConnection, string pSectionCode, FileType pFT, string pFileName, int pImportedFileID)
             : this(pConnection, pFT, pFileName, pSectionCode)
         {
-
+            this.iImportedFileID = pImportedFileID;
             this.dti = new DataTableImport(pConnection, sStagingSchema, sStagingTable);
         }
 
@@ -82,7 +83,8 @@ namespace Aphelion.Recon
                 this.sStagingSchema = drSection.GetString(3);
                 this.sStagingTable = drSection.GetString(4);
                 this.iStartRow = drSection.GetInt32(6);
-                this.iNumRows = drSection.GetInt32(7);
+                this.iNumRows =   drSection.IsDBNull(7) ? 0 :
+                    drSection.GetInt32(7);
                 this.iStartColumn = drSection.GetInt32(8);
                 this.iNumColumn = drSection.GetInt32(9);
                 this.boolPivot = drSection.GetBoolean(10);
@@ -133,9 +135,10 @@ namespace Aphelion.Recon
 
             this.dti.BulkImport();
 
-
+            this.dti.UpdateImportedFileID(this.iImportedFileID);
         }
 
+       
 
 
     }

@@ -209,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="api\FileImportController.cs" />
+    <Compile Include="api\ReconProcessController.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="DataSources\PagaReconData\ImportedFile.lsml.cs">
       <DependentUpon>ImportedFiles.lsml</DependentUpon>
@@ -249,6 +250,10 @@
       <DependentUpon>ImportedFiles.lsml</DependentUpon>
     </LightSwitchModel>
     <LightSwitchModel Include="DataSources\PagaReconData\GlobalSettings.lsml" />
+    <LightSwitchModel Include="DataSources\PagaReconData\ImportedFilesForToday.lsml">
+      <DependentUpon>ImportedFiles.lsml</DependentUpon>
+    </LightSwitchModel>
+    <LightSwitchModel Include="DataSources\PagaReconData\vwReconProcessStatus.lsml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

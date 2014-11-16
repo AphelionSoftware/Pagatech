@@ -150,7 +150,7 @@ namespace Aphelion.Recon
 
             if (rbCompare.decSourceTotal != rbCompare.decDestinationTotal)
             {
-                drSummary["ReconStatusID"] = TypeCache.GetTypeCache().getReconStatusID("ISSUES");
+                drSummary["ReconStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconStatusID("ISSUES");
             }
             dtSummary.AcceptChanges();
             if (boolInsert)

@@ -19,6 +19,14 @@
             Name="Group"
             Kind="Group">
             <ContentItem
+              Name="ShowBrowseReconProcesses"
+              Kind="Command">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="View Recon Processes" />
+              </ContentItem.Attributes>
+            </ContentItem>
+            <ContentItem
               Name="ShowBrowseImportedFiles"
               Kind="Command">
               <ContentItem.Attributes>
@@ -38,11 +46,11 @@
               </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem
-              Name="ShowBrowseImportedFilesUnreconciled"
+              Name="ShowBrowseImportedFilesForToday"
               Kind="Command">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="View Unreconciled Imported Files " />
+                  Value="View Imported Files For Today" />
               </ContentItem.Attributes>
               <ContentItem.PropertySources>
                 <ControlPropertySource
@@ -50,7 +58,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <CallExpression
-                        Target="!module/Methods[showBrowseImportedFilesUnreconciled]" />
+                        Target="!module/Methods[showBrowseImportedFilesForToday]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ControlPropertySource>

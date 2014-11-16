@@ -86,7 +86,6 @@
         <MappingFragment StoreEntitySet="ImportedFiles">
           <ScalarProperty Name="FileName" ColumnName="FileName" />
           <ScalarProperty Name="FileDefinitionID" ColumnName="FileDefinitionID" />
-          <ScalarProperty Name="ReconSummaryID" ColumnName="ReconSummaryID" />
           <ScalarProperty Name="UploadedFileName" ColumnName="UploadedFileName" />
           <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
           <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
@@ -155,6 +154,8 @@
           <ScalarProperty Name="TargetFileSectionID" ColumnName="TargetFileSectionID" />
           <ScalarProperty Name="ReconProcessID" ColumnName="ReconProcessID" />
           <ScalarProperty Name="ReconTypeID" ColumnName="ReconTypeID" />
+          <ScalarProperty Name="CurrentSourceImportedFileID" ColumnName="CurrentSourceImportedFileID" />
+          <ScalarProperty Name="CurrentTargetImportedFileID" ColumnName="CurrentTargetImportedFileID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -213,8 +214,10 @@
           <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
           <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
           <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="SourceImportFileID" ColumnName="SourceImportFileID" />
           <ScalarProperty Name="ReconProcessStepID" ColumnName="ReconProcessStepID" />
           <ScalarProperty Name="ReconStatusID" ColumnName="ReconStatusID" />
+          <ScalarProperty Name="DestImportFileID" ColumnName="DestImportFileID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -246,6 +249,7 @@
           <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
           <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
           <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="ImportedFileID" ColumnName="ImportedFileID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -262,6 +266,7 @@
           <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
           <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
           <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="ImportedFileID" ColumnName="ImportedFileID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -277,6 +282,20 @@
           <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
           <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
           <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwReconProcessStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.vwReconProcessStatu)">
+        <MappingFragment StoreEntitySet="vwReconProcessStatus">
+          <ScalarProperty Name="SourceFileAvailable" ColumnName="SourceFileAvailable" />
+          <ScalarProperty Name="TargetFileAvailable" ColumnName="TargetFileAvailable" />
+          <ScalarProperty Name="ReconProcessID" ColumnName="ReconProcessID" />
+          <ScalarProperty Name="ReconProcessCode" ColumnName="ReconProcessCode" />
+          <ScalarProperty Name="ReconProcessStepID" ColumnName="ReconProcessStepID" />
+          <ScalarProperty Name="ReconProcessStepCode" ColumnName="ReconProcessStepCode" />
+          <ScalarProperty Name="ReconProcessName" ColumnName="ReconProcessName" />
+          <ScalarProperty Name="ReconProcessStepName" ColumnName="ReconProcessStepName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

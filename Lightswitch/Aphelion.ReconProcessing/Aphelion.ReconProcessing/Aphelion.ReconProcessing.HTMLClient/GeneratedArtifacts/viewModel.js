@@ -99,28 +99,6 @@
         $Screen.call(this, dataWorkspace, "ViewImportedFile", parameters);
     }
 
-    function BrowseReconProcesses(parameters, dataWorkspace) {
-        /// <summary>
-        /// Represents the BrowseReconProcesses screen.
-        /// </summary>
-        /// <param name="parameters" type="Array">
-        /// An array of screen parameter values.
-        /// </param>
-        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
-        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
-        /// </param>
-        /// <field name="ReconProcesses" type="msls.VisualCollection" elementType="msls.application.ReconProcess">
-        /// Gets the reconProcesses for this screen.
-        /// </field>
-        /// <field name="details" type="msls.application.BrowseReconProcesses.Details">
-        /// Gets the details for this screen.
-        /// </field>
-        if (!dataWorkspace) {
-            dataWorkspace = new lightSwitchApplication.DataWorkspace();
-        }
-        $Screen.call(this, dataWorkspace, "BrowseReconProcesses", parameters);
-    }
-
     function ViewReconProcess(parameters, dataWorkspace) {
         /// <summary>
         /// Represents the ViewReconProcess screen.
@@ -136,6 +114,18 @@
         /// </field>
         /// <field name="ReconProcessSteps" type="msls.VisualCollection" elementType="msls.application.ReconProcessStep">
         /// Gets the reconProcessSteps for this screen.
+        /// </field>
+        /// <field name="vwReconProcessStatus" type="msls.VisualCollection" elementType="msls.application.vwReconProcessStatu">
+        /// Gets the vwReconProcessStatus for this screen.
+        /// </field>
+        /// <field name="SourceImportedFilesForToday" type="msls.VisualCollection" elementType="msls.application.ImportedFile">
+        /// Gets the sourceImportedFilesForToday for this screen.
+        /// </field>
+        /// <field name="DestImportedFilesForToday" type="msls.VisualCollection" elementType="msls.application.ImportedFile">
+        /// Gets the destImportedFilesForToday for this screen.
+        /// </field>
+        /// <field name="isExecuting" type="Boolean">
+        /// Gets or sets the isExecuting for this screen.
         /// </field>
         /// <field name="details" type="msls.application.ViewReconProcess.Details">
         /// Gets the details for this screen.
@@ -209,6 +199,56 @@
         $Screen.call(this, dataWorkspace, "Home", parameters);
     }
 
+    function BrowseImportedFilesForToday(parameters, dataWorkspace) {
+        /// <summary>
+        /// Represents the BrowseImportedFilesForToday screen.
+        /// </summary>
+        /// <param name="parameters" type="Array">
+        /// An array of screen parameter values.
+        /// </param>
+        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
+        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
+        /// </param>
+        /// <field name="ImportedFilesForToday" type="msls.VisualCollection" elementType="msls.application.ImportedFile">
+        /// Gets the importedFilesForToday for this screen.
+        /// </field>
+        /// <field name="ImportedFileReconSource" type="msls.application.ReconSource">
+        /// Gets or sets the importedFileReconSource for this screen.
+        /// </field>
+        /// <field name="ReconSource" type="msls.application.ReconSource">
+        /// Gets or sets the reconSource for this screen.
+        /// </field>
+        /// <field name="details" type="msls.application.BrowseImportedFilesForToday.Details">
+        /// Gets the details for this screen.
+        /// </field>
+        if (!dataWorkspace) {
+            dataWorkspace = new lightSwitchApplication.DataWorkspace();
+        }
+        $Screen.call(this, dataWorkspace, "BrowseImportedFilesForToday", parameters);
+    }
+
+    function BrowseReconProcesses(parameters, dataWorkspace) {
+        /// <summary>
+        /// Represents the BrowseReconProcesses screen.
+        /// </summary>
+        /// <param name="parameters" type="Array">
+        /// An array of screen parameter values.
+        /// </param>
+        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
+        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
+        /// </param>
+        /// <field name="ReconProcesses" type="msls.VisualCollection" elementType="msls.application.ReconProcess">
+        /// Gets the reconProcesses for this screen.
+        /// </field>
+        /// <field name="details" type="msls.application.BrowseReconProcesses.Details">
+        /// Gets the details for this screen.
+        /// </field>
+        if (!dataWorkspace) {
+            dataWorkspace = new lightSwitchApplication.DataWorkspace();
+        }
+        $Screen.call(this, dataWorkspace, "BrowseReconProcesses", parameters);
+    }
+
     msls._addToNamespace("msls.application", {
 
         BrowseAllImportedFiles: $defineScreen(BrowseAllImportedFiles, [
@@ -243,16 +283,6 @@
             { name: "Reconcile" }
         ]),
 
-        BrowseReconProcesses: $defineScreen(BrowseReconProcesses, [
-            {
-                name: "ReconProcesses", kind: "collection", elementType: lightSwitchApplication.ReconProcess,
-                createQuery: function () {
-                    return this.dataWorkspace.PagaReconData.ReconProcesses;
-                }
-            }
-        ], [
-        ]),
-
         ViewReconProcess: $defineScreen(ViewReconProcess, [
             { name: "ReconProcess", kind: "local", type: lightSwitchApplication.ReconProcess },
             {
@@ -264,9 +294,34 @@
                     return null;
                 },
                 appendQuery: function () {
+                    return this.expand("CurrentSourceImportFile").expand("CurrentTargetImportFile");
+                }
+            },
+            {
+                name: "vwReconProcessStatus", kind: "collection", elementType: lightSwitchApplication.vwReconProcessStatu,
+                getNavigationProperty: function () {
+                    if (this.owner.ReconProcess) {
+                        return this.owner.ReconProcess.details.properties.vwReconProcessStatus;
+                    }
+                    return null;
+                },
+                appendQuery: function () {
                     return this;
                 }
-            }
+            },
+            {
+                name: "SourceImportedFilesForToday", kind: "collection", elementType: lightSwitchApplication.ImportedFile,
+                createQuery: function (ReconSource, FileDefinition) {
+                    return this.dataWorkspace.PagaReconData.ImportedFilesForToday(ReconSource, FileDefinition);
+                }
+            },
+            {
+                name: "DestImportedFilesForToday", kind: "collection", elementType: lightSwitchApplication.ImportedFile,
+                createQuery: function (ReconSource, FileDefinition) {
+                    return this.dataWorkspace.PagaReconData.ImportedFilesForToday(ReconSource, FileDefinition);
+                }
+            },
+            { name: "isExecuting", kind: "local", type: Boolean }
         ], [
             { name: "ProcessRecon" }
         ]),
@@ -292,6 +347,28 @@
         ]),
 
         Home: $defineScreen(Home, [
+        ], [
+        ]),
+
+        BrowseImportedFilesForToday: $defineScreen(BrowseImportedFilesForToday, [
+            {
+                name: "ImportedFilesForToday", kind: "collection", elementType: lightSwitchApplication.ImportedFile,
+                createQuery: function (ReconSource, FileDefinition) {
+                    return this.dataWorkspace.PagaReconData.ImportedFilesForToday(ReconSource, FileDefinition).expand("FileDefinition");
+                }
+            },
+            { name: "ImportedFileReconSource", kind: "local", type: lightSwitchApplication.ReconSource },
+            { name: "ReconSource", kind: "local", type: lightSwitchApplication.ReconSource }
+        ], [
+        ]),
+
+        BrowseReconProcesses: $defineScreen(BrowseReconProcesses, [
+            {
+                name: "ReconProcesses", kind: "collection", elementType: lightSwitchApplication.ReconProcess,
+                createQuery: function () {
+                    return this.dataWorkspace.PagaReconData.ReconProcesses;
+                }
+            }
         ], [
         ]),
 
@@ -343,18 +420,6 @@
             return lightSwitchApplication.showScreen("ViewImportedFile", parameters, options);
         }),
 
-        showBrowseReconProcesses: $defineShowScreen(function showBrowseReconProcesses(options) {
-            /// <summary>
-            /// Asynchronously navigates forward to the BrowseReconProcesses screen.
-            /// </summary>
-            /// <param name="options" optional="true">
-            /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
-            /// </param>
-            /// <returns type="WinJS.Promise" />
-            var parameters = Array.prototype.slice.call(arguments, 0, 0);
-            return lightSwitchApplication.showScreen("BrowseReconProcesses", parameters, options);
-        }),
-
         showViewReconProcess: $defineShowScreen(function showViewReconProcess(ReconProcess, options) {
             /// <summary>
             /// Asynchronously navigates forward to the ViewReconProcess screen.
@@ -401,6 +466,30 @@
             /// <returns type="WinJS.Promise" />
             var parameters = Array.prototype.slice.call(arguments, 0, 0);
             return lightSwitchApplication.showScreen("Home", parameters, options);
+        }),
+
+        showBrowseImportedFilesForToday: $defineShowScreen(function showBrowseImportedFilesForToday(options) {
+            /// <summary>
+            /// Asynchronously navigates forward to the BrowseImportedFilesForToday screen.
+            /// </summary>
+            /// <param name="options" optional="true">
+            /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
+            /// </param>
+            /// <returns type="WinJS.Promise" />
+            var parameters = Array.prototype.slice.call(arguments, 0, 0);
+            return lightSwitchApplication.showScreen("BrowseImportedFilesForToday", parameters, options);
+        }),
+
+        showBrowseReconProcesses: $defineShowScreen(function showBrowseReconProcesses(options) {
+            /// <summary>
+            /// Asynchronously navigates forward to the BrowseReconProcesses screen.
+            /// </summary>
+            /// <param name="options" optional="true">
+            /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
+            /// </param>
+            /// <returns type="WinJS.Promise" />
+            var parameters = Array.prototype.slice.call(arguments, 0, 0);
+            return lightSwitchApplication.showScreen("BrowseReconProcesses", parameters, options);
         })
 
     });

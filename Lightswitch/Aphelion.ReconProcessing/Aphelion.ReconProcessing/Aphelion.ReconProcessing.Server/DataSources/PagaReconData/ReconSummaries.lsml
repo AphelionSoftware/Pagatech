@@ -148,22 +148,13 @@
         Association="FK_ReconSummary_ReconStatus"
         FromEnd="ReconSummary"
         ToEnd="ReconStatus" />
+      <NavigationProperty
+        Name="ImportedFile1"
+        Association="FK_ReconSummary_ImportedFile1"
+        FromEnd="ReconSummary"
+        ToEnd="ImportedFile" />
     </EntityType.Properties>
   </EntityType>
-  <Association
-    Name="FK_ImportedFile_ReconSummary">
-    <AssociationEnd
-      Name="ReconSummary"
-      EntityType="ReconSummary">
-      <AssociationEnd.Attributes>
-        <DeleteRule />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="ImportedFile"
-      Multiplicity="Many"
-      EntityType="ImportedFile" />
-  </Association>
   <EntityContainer
     Name="PagaReconData">
     <EntityContainer.Attributes>
@@ -345,6 +336,16 @@
           Type="datetime"
           Property="ReconSummary/Properties[sys_ModifiedOn]" />
         <SsdlForeignKeyProperty
+          Name="SourceImportFileID"
+          Nullable="True"
+          Type="int"
+          PropertyName="SourceImportFileID" />
+        <SsdlForeignKeyProperty
+          Name="DestImportFileID"
+          Nullable="True"
+          Type="int"
+          PropertyName="DestImportFileID" />
+        <SsdlForeignKeyProperty
           Name="ReconProcessStepID"
           Nullable="False"
           Type="int"
@@ -356,26 +357,5 @@
           PropertyName="ReconStatusID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
-    <AssociationSetMapping
-      AssociationSet="FK_ImportedFile_ReconSummary">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="FK_ImportedFile_ReconSummary" />
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_ImportedFile_ReconSummary]/Members[ReconSummary]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="ID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="PagaReconData/Members[FK_ImportedFile_ReconSummary]/Members[ImportedFile]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="ReconSummaryID" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
   </DataService>
 </ServiceApplication>

@@ -295,24 +295,138 @@ namespace LightSwitchApplication
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::LightSwitchApplication.ReconSummary ReconSummary
+        public global::Microsoft.LightSwitch.Framework.EntityCollection<global::LightSwitchApplication.ReconSummary> ReconSummary
         {
             get
             {
                 return global::LightSwitchApplication.ImportedFile.DetailsClass.GetValue(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummary);
             }
-            set
+        }
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public Microsoft.LightSwitch.IDataServiceQueryable<global::LightSwitchApplication.ReconSummary> ReconSummaryQuery
+        {
+            get
             {
-                global::LightSwitchApplication.ImportedFile.DetailsClass.SetValue(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummary, value);
+                return global::LightSwitchApplication.ImportedFile.DetailsClass.GetQuery(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummary);
+            }
+        }
+
+        /// <summary>
+        /// No Modeled Description Available
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Microsoft.LightSwitch.Framework.EntityCollection<global::LightSwitchApplication.ReconSummary> ReconSummaries1
+        {
+            get
+            {
+                return global::LightSwitchApplication.ImportedFile.DetailsClass.GetValue(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummaries1);
             }
         }
         
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSummary_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSummary_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ReconSummary_Changed();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public Microsoft.LightSwitch.IDataServiceQueryable<global::LightSwitchApplication.ReconSummary> ReconSummaries1Query
+        {
+            get
+            {
+                return global::LightSwitchApplication.ImportedFile.DetailsClass.GetQuery(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummaries1);
+            }
+        }
+
+        /// <summary>
+        /// No Modeled Description Available
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Microsoft.LightSwitch.Framework.EntityCollection<global::LightSwitchApplication.SkyeImportDetail> SkyeImportDetails
+        {
+            get
+            {
+                return global::LightSwitchApplication.ImportedFile.DetailsClass.GetValue(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.SkyeImportDetails);
+            }
+        }
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public Microsoft.LightSwitch.IDataServiceQueryable<global::LightSwitchApplication.SkyeImportDetail> SkyeImportDetailsQuery
+        {
+            get
+            {
+                return global::LightSwitchApplication.ImportedFile.DetailsClass.GetQuery(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.SkyeImportDetails);
+            }
+        }
+
+        /// <summary>
+        /// No Modeled Description Available
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Microsoft.LightSwitch.Framework.EntityCollection<global::LightSwitchApplication.SkyeImportHeader> SkyeImportHeaders
+        {
+            get
+            {
+                return global::LightSwitchApplication.ImportedFile.DetailsClass.GetValue(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.SkyeImportHeaders);
+            }
+        }
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public Microsoft.LightSwitch.IDataServiceQueryable<global::LightSwitchApplication.SkyeImportHeader> SkyeImportHeadersQuery
+        {
+            get
+            {
+                return global::LightSwitchApplication.ImportedFile.DetailsClass.GetQuery(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.SkyeImportHeaders);
+            }
+        }
+
+        /// <summary>
+        /// No Modeled Description Available
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Microsoft.LightSwitch.Framework.EntityCollection<global::LightSwitchApplication.ReconProcessStep> ReconProcessSteps
+        {
+            get
+            {
+                return global::LightSwitchApplication.ImportedFile.DetailsClass.GetValue(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconProcessSteps);
+            }
+        }
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public Microsoft.LightSwitch.IDataServiceQueryable<global::LightSwitchApplication.ReconProcessStep> ReconProcessStepsQuery
+        {
+            get
+            {
+                return global::LightSwitchApplication.ImportedFile.DetailsClass.GetQuery(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconProcessSteps);
+            }
+        }
+
+        /// <summary>
+        /// No Modeled Description Available
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Microsoft.LightSwitch.Framework.EntityCollection<global::LightSwitchApplication.ReconProcessStep> ReconProcessSteps1
+        {
+            get
+            {
+                return global::LightSwitchApplication.ImportedFile.DetailsClass.GetValue(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconProcessSteps1);
+            }
+        }
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public Microsoft.LightSwitch.IDataServiceQueryable<global::LightSwitchApplication.ReconProcessStep> ReconProcessSteps1Query
+        {
+            get
+            {
+                return global::LightSwitchApplication.ImportedFile.DetailsClass.GetQuery(this, global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconProcessSteps1);
+            }
+        }
 
         #endregion
     
@@ -468,11 +582,51 @@ namespace LightSwitchApplication
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary> ReconSummary
+                public global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary> ReconSummary
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummary) as global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>;
+                        return base.GetItem(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummary) as global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>;
+                    }
+                }
+                
+                public global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary> ReconSummaries1
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummaries1) as global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>;
+                    }
+                }
+                
+                public global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.SkyeImportDetail> SkyeImportDetails
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.SkyeImportDetails) as global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.SkyeImportDetail>;
+                    }
+                }
+                
+                public global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.SkyeImportHeader> SkyeImportHeaders
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.SkyeImportHeaders) as global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.SkyeImportHeader>;
+                    }
+                }
+                
+                public global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconProcessStep> ReconProcessSteps
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconProcessSteps) as global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconProcessStep>;
+                    }
+                }
+                
+                public global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconProcessStep> ReconProcessSteps1
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconProcessSteps1) as global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconProcessStep>;
                     }
                 }
                 
@@ -491,7 +645,12 @@ namespace LightSwitchApplication
                 new int ID { get; }
                 new byte[] FileContents { get; set; }
                 new global::Microsoft.LightSwitch.Internal.IEntityImplementation FileDefinition { get; set; }
-                new global::Microsoft.LightSwitch.Internal.IEntityImplementation ReconSummary { get; set; }
+                new global::System.Collections.IEnumerable ReconSummary { get; }
+                new global::System.Collections.IEnumerable ReconSummaries1 { get; }
+                new global::System.Collections.IEnumerable SkyeImportDetails { get; }
+                new global::System.Collections.IEnumerable SkyeImportHeaders { get; }
+                new global::System.Collections.IEnumerable ReconProcessSteps { get; }
+                new global::System.Collections.IEnumerable ReconProcessSteps1 { get; }
             }
             #pragma warning restore 109
     
@@ -841,50 +1000,123 @@ namespace LightSwitchApplication
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>.Entry
-                    ReconSummary = new global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>.Entry
+                    ReconSummary = new global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>.Entry(
                         "ReconSummary",
                         global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummary_Stub,
-                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummary_ComputeIsReadOnly,
-                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummary_Validate,
-                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummary_GetCoreImplementationValue,
-                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummary_GetImplementationValue,
-                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummary_SetImplementationValue,
-                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummary_Refresh,
-                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummary_OnValueChanged);
-                private static void _ReconSummary_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ImportedFile.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>.Data> c, global::LightSwitchApplication.ImportedFile.DetailsClass d, object sf)
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummary_GetReferencedEntities,
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummary_GetEntityCollection);
+                private static void _ReconSummary_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ImportedFile.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>.Data> c, global::LightSwitchApplication.ImportedFile.DetailsClass d, object sf)
                 {
                     c(d, ref d._ReconSummary, sf);
                 }
-                private static bool _ReconSummary_ComputeIsReadOnly(global::LightSwitchApplication.ImportedFile e)
+                private static global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.ReconSummary> _ReconSummary_GetReferencedEntities(global::LightSwitchApplication.ImportedFile.DetailsClass d)
                 {
-                    bool result = false;
-                    e.ReconSummary_IsReadOnly(ref result);
-                    return result;
+                    return d.GetReferencedEntities<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass>(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummary, ref d._ReconSummary);
                 }
-                private static void _ReconSummary_Validate(global::LightSwitchApplication.ImportedFile e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.ReconSummary_Validate(r);
-                }
-                private static global::Microsoft.LightSwitch.Internal.IEntityImplementation _ReconSummary_GetCoreImplementationValue(global::LightSwitchApplication.ImportedFile.DetailsClass d)
+                private static global::System.Collections.IEnumerable _ReconSummary_GetEntityCollection(global::LightSwitchApplication.ImportedFile.DetailsClass d)
                 {
                     return d.ImplementationEntity.ReconSummary;
                 }
-                private static global::LightSwitchApplication.ReconSummary _ReconSummary_GetImplementationValue(global::LightSwitchApplication.ImportedFile.DetailsClass d)
+    
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>.Entry
+                    ReconSummaries1 = new global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>.Entry(
+                        "ReconSummaries1",
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummaries1_Stub,
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummaries1_GetReferencedEntities,
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconSummaries1_GetEntityCollection);
+                private static void _ReconSummaries1_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ImportedFile.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>.Data> c, global::LightSwitchApplication.ImportedFile.DetailsClass d, object sf)
                 {
-                    return d.GetImplementationValue<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass>(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummary, ref d._ReconSummary);
+                    c(d, ref d._ReconSummaries1, sf);
                 }
-                private static void _ReconSummary_SetImplementationValue(global::LightSwitchApplication.ImportedFile.DetailsClass d, global::LightSwitchApplication.ReconSummary v)
+                private static global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.ReconSummary> _ReconSummaries1_GetReferencedEntities(global::LightSwitchApplication.ImportedFile.DetailsClass d)
                 {
-                    d.SetImplementationValue(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummary, ref d._ReconSummary, (i, ev) => i.ReconSummary = ev, v);
+                    return d.GetReferencedEntities<global::LightSwitchApplication.ReconSummary, global::LightSwitchApplication.ReconSummary.DetailsClass>(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummaries1, ref d._ReconSummaries1);
                 }
-                private static void _ReconSummary_Refresh(global::LightSwitchApplication.ImportedFile.DetailsClass d)
+                private static global::System.Collections.IEnumerable _ReconSummaries1_GetEntityCollection(global::LightSwitchApplication.ImportedFile.DetailsClass d)
                 {
-                    d.RefreshNavigationProperty(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconSummary, ref d._ReconSummary);
+                    return d.ImplementationEntity.ReconSummaries1;
                 }
-                private static void _ReconSummary_OnValueChanged(global::LightSwitchApplication.ImportedFile e)
+    
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.SkyeImportDetail>.Entry
+                    SkyeImportDetails = new global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.SkyeImportDetail>.Entry(
+                        "SkyeImportDetails",
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._SkyeImportDetails_Stub,
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._SkyeImportDetails_GetReferencedEntities,
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._SkyeImportDetails_GetEntityCollection);
+                private static void _SkyeImportDetails_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ImportedFile.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.SkyeImportDetail>.Data> c, global::LightSwitchApplication.ImportedFile.DetailsClass d, object sf)
                 {
-                    e.ReconSummary_Changed();
+                    c(d, ref d._SkyeImportDetails, sf);
+                }
+                private static global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.SkyeImportDetail> _SkyeImportDetails_GetReferencedEntities(global::LightSwitchApplication.ImportedFile.DetailsClass d)
+                {
+                    return d.GetReferencedEntities<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass>(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.SkyeImportDetails, ref d._SkyeImportDetails);
+                }
+                private static global::System.Collections.IEnumerable _SkyeImportDetails_GetEntityCollection(global::LightSwitchApplication.ImportedFile.DetailsClass d)
+                {
+                    return d.ImplementationEntity.SkyeImportDetails;
+                }
+    
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.SkyeImportHeader>.Entry
+                    SkyeImportHeaders = new global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.SkyeImportHeader>.Entry(
+                        "SkyeImportHeaders",
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._SkyeImportHeaders_Stub,
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._SkyeImportHeaders_GetReferencedEntities,
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._SkyeImportHeaders_GetEntityCollection);
+                private static void _SkyeImportHeaders_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ImportedFile.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.SkyeImportHeader>.Data> c, global::LightSwitchApplication.ImportedFile.DetailsClass d, object sf)
+                {
+                    c(d, ref d._SkyeImportHeaders, sf);
+                }
+                private static global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.SkyeImportHeader> _SkyeImportHeaders_GetReferencedEntities(global::LightSwitchApplication.ImportedFile.DetailsClass d)
+                {
+                    return d.GetReferencedEntities<global::LightSwitchApplication.SkyeImportHeader, global::LightSwitchApplication.SkyeImportHeader.DetailsClass>(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.SkyeImportHeaders, ref d._SkyeImportHeaders);
+                }
+                private static global::System.Collections.IEnumerable _SkyeImportHeaders_GetEntityCollection(global::LightSwitchApplication.ImportedFile.DetailsClass d)
+                {
+                    return d.ImplementationEntity.SkyeImportHeaders;
+                }
+    
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Entry
+                    ReconProcessSteps = new global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Entry(
+                        "ReconProcessSteps",
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconProcessSteps_Stub,
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconProcessSteps_GetReferencedEntities,
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconProcessSteps_GetEntityCollection);
+                private static void _ReconProcessSteps_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ImportedFile.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Data> c, global::LightSwitchApplication.ImportedFile.DetailsClass d, object sf)
+                {
+                    c(d, ref d._ReconProcessSteps, sf);
+                }
+                private static global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.ReconProcessStep> _ReconProcessSteps_GetReferencedEntities(global::LightSwitchApplication.ImportedFile.DetailsClass d)
+                {
+                    return d.GetReferencedEntities<global::LightSwitchApplication.ReconProcessStep, global::LightSwitchApplication.ReconProcessStep.DetailsClass>(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconProcessSteps, ref d._ReconProcessSteps);
+                }
+                private static global::System.Collections.IEnumerable _ReconProcessSteps_GetEntityCollection(global::LightSwitchApplication.ImportedFile.DetailsClass d)
+                {
+                    return d.ImplementationEntity.ReconProcessSteps;
+                }
+    
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Entry
+                    ReconProcessSteps1 = new global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Entry(
+                        "ReconProcessSteps1",
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconProcessSteps1_Stub,
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconProcessSteps1_GetReferencedEntities,
+                        global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties._ReconProcessSteps1_GetEntityCollection);
+                private static void _ReconProcessSteps1_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ImportedFile.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Data> c, global::LightSwitchApplication.ImportedFile.DetailsClass d, object sf)
+                {
+                    c(d, ref d._ReconProcessSteps1, sf);
+                }
+                private static global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.ReconProcessStep> _ReconProcessSteps1_GetReferencedEntities(global::LightSwitchApplication.ImportedFile.DetailsClass d)
+                {
+                    return d.GetReferencedEntities<global::LightSwitchApplication.ReconProcessStep, global::LightSwitchApplication.ReconProcessStep.DetailsClass>(global::LightSwitchApplication.ImportedFile.DetailsClass.PropertySetProperties.ReconProcessSteps1, ref d._ReconProcessSteps1);
+                }
+                private static global::System.Collections.IEnumerable _ReconProcessSteps1_GetEntityCollection(global::LightSwitchApplication.ImportedFile.DetailsClass d)
+                {
+                    return d.ImplementationEntity.ReconProcessSteps1;
                 }
     
             }
@@ -917,7 +1149,22 @@ namespace LightSwitchApplication
             private global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.FileDefinition>.Data _FileDefinition;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>.Data _ReconSummary;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>.Data _ReconSummary;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconSummary>.Data _ReconSummaries1;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.SkyeImportDetail>.Data _SkyeImportDetails;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.SkyeImportHeader>.Data _SkyeImportHeaders;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Data _ReconProcessSteps;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Data _ReconProcessSteps1;
             
         }
     

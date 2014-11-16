@@ -91,6 +91,11 @@
         Association="FK_ReconProcessStep_ReconProcess"
         FromEnd="ReconProcess"
         ToEnd="ReconProcessStep" />
+      <NavigationProperty
+        Name="vwReconProcessStatus"
+        Association="vwReconProcessStatu_ReconProcess"
+        FromEnd="ReconProcess"
+        ToEnd="vwReconProcessStatu" />
     </EntityType.Properties>
   </EntityType>
   <Association
@@ -209,6 +214,16 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="vwReconProcessStatu_ReconProcesses"
+      Association="vwReconProcessStatu_ReconProcess">
+      <AssociationSetEnd
+        Name="vwReconProcessStatu"
+        EntitySet="vwReconProcessStatus" />
+      <AssociationSetEnd
+        Name="ReconProcess"
+        EntitySet="ReconProcesses" />
+    </AssociationSet>
   </EntityContainer>
   <DataService
     Name="PagaReconDataDataService">
@@ -284,5 +299,44 @@
         </SsdlAssociationSetEnd>
       </AssociationSetMapping.Attributes>
     </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="vwReconProcessStatu_ReconProcesses">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="vwReconProcessStatu_ReconProcesses" />
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[vwReconProcessStatu_ReconProcesses]/Members[vwReconProcessStatu]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ReconProcessID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[vwReconProcessStatu_ReconProcesses]/Members[ReconProcess]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
   </DataService>
+  <Association
+    Name="vwReconProcessStatu_ReconProcess">
+    <Association.Attributes>
+      <UserDefined />
+    </Association.Attributes>
+    <AssociationEnd
+      Name="vwReconProcessStatu"
+      Multiplicity="Many"
+      EntityType="vwReconProcessStatu" />
+    <AssociationEnd
+      Name="ReconProcess"
+      Multiplicity="One"
+      EntityType="ReconProcess">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
 </ServiceApplication>

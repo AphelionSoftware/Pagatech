@@ -17,6 +17,7 @@ namespace Aphelion.Recon
 
         public string strConn { get; set; }
         public string strReconProcessStepCode { get; set; }
+        public int iImportedFileID { get; set; }
         public LegType lt { get; set; }
         public DataTable dtResult { get; private set; }
         public List<Aggregation> lstAggregations { get; set;}
@@ -57,6 +58,7 @@ namespace Aphelion.Recon
                 {
                      sSchema = drFields.GetString(1);
                      sTable = drFields.GetString(2);
+                     iImportedFileID = drFields.GetInt32(4);
                 }
                 lstFields.Add(string.Format("[{0}].[{1}]", drFields.GetString(2), drFields.GetString(3)));
                 AggregationType at = AggregationType.Detail;
@@ -82,7 +84,7 @@ namespace Aphelion.Recon
                 sFieldList += string.Format(",{0}\n", sField);
             }
 
-            string sSelect = string.Format("SELECT {0} FROM [{1}].[{2}]", sFieldList, sSchema, sTable) ;
+            string sSelect = string.Format("SELECT {0} FROM [{1}].[{2}] WHERE ImportedFileID = {3}", sFieldList, sSchema, sTable, iImportedFileID.ToString()) ;
 
             comm.CommandText = sSelect;
             SqlDataAdapter da = new SqlDataAdapter(comm);

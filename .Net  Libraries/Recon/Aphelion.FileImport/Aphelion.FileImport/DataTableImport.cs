@@ -69,6 +69,19 @@ namespace Aphelion.Recon
             }
         }
 
+        /// <summary>
+        /// NB: Not multi user safe!!
+        /// </summary>
+        /// <param name="pImportedFileID"></param>
+        public void UpdateImportedFileID(int pImportedFileID)
+        {
+            SqlConnection conn = new SqlConnection(this.sConnection);
+            conn.Open();
+            SqlCommand comm = new SqlCommand(string.Format(SQL.constUpdateImportedFileID,this.sSchema, this.sTable, pImportedFileID.ToString()), conn);
+
+            comm.ExecuteNonQuery();
+            conn.Close();
+        }
 
     }
 }

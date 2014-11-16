@@ -146,4 +146,12 @@
         created: [lightSwitchApplication.SystemField]
     });
 
+    msls._addEntryPoints(lightSwitchApplication.vwReconProcessStatu, {
+        /// <field>
+        /// Called when a new vwReconProcessStatu is created.
+        /// <br/>created(msls.application.vwReconProcessStatu entity)
+        /// </field>
+        created: [lightSwitchApplication.vwReconProcessStatu]
+    });
+
 }(msls.application));

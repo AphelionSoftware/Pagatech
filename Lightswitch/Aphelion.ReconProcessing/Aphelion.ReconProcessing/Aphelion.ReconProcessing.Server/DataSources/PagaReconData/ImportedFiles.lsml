@@ -104,6 +104,31 @@
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Name="ReconSummaries1"
+        Association="FK_ReconSummary_ImportedFile1"
+        FromEnd="ImportedFile"
+        ToEnd="ReconSummary" />
+      <NavigationProperty
+        Name="SkyeImportDetails"
+        Association="FK_SkyeImportDetails_ImportedFile"
+        FromEnd="ImportedFile"
+        ToEnd="SkyeImportDetails" />
+      <NavigationProperty
+        Name="SkyeImportHeaders"
+        Association="FK_SkyeImportHeader_ImportedFile"
+        FromEnd="ImportedFile"
+        ToEnd="SkyeImportHeader" />
+      <NavigationProperty
+        Name="ReconProcessSteps"
+        Association="FK_ReconProcessStep_ImportedFile"
+        FromEnd="ImportedFile"
+        ToEnd="ReconProcessStep" />
+      <NavigationProperty
+        Name="ReconProcessSteps1"
+        Association="FK_ReconProcessStep_ImportedFile1"
+        FromEnd="ImportedFile"
+        ToEnd="ReconProcessStep" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -197,7 +222,141 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="FK_ReconSummary_ImportedFile1"
+      Association="FK_ReconSummary_ImportedFile1">
+      <AssociationSetEnd
+        Name="ImportedFile"
+        EntitySet="ImportedFiles" />
+      <AssociationSetEnd
+        Name="ReconSummary"
+        EntitySet="ReconSummaries" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_SkyeImportDetails_ImportedFile"
+      Association="FK_SkyeImportDetails_ImportedFile">
+      <AssociationSetEnd
+        Name="ImportedFile"
+        EntitySet="ImportedFiles" />
+      <AssociationSetEnd
+        Name="SkyeImportDetails"
+        EntitySet="SkyeImportDetails" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_SkyeImportHeader_ImportedFile"
+      Association="FK_SkyeImportHeader_ImportedFile">
+      <AssociationSetEnd
+        Name="ImportedFile"
+        EntitySet="ImportedFiles" />
+      <AssociationSetEnd
+        Name="SkyeImportHeader"
+        EntitySet="SkyeImportHeaders" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_ReconProcessStep_ImportedFile"
+      Association="FK_ReconProcessStep_ImportedFile">
+      <AssociationSetEnd
+        Name="ImportedFile"
+        EntitySet="ImportedFiles" />
+      <AssociationSetEnd
+        Name="ReconProcessStep"
+        EntitySet="ReconProcessSteps" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FK_ReconProcessStep_ImportedFile1"
+      Association="FK_ReconProcessStep_ImportedFile1">
+      <AssociationSetEnd
+        Name="ImportedFile"
+        EntitySet="ImportedFiles" />
+      <AssociationSetEnd
+        Name="ReconProcessStep"
+        EntitySet="ReconProcessSteps" />
+    </AssociationSet>
   </EntityContainer>
+  <Association
+    Name="FK_ImportedFile_ReconSummary">
+    <AssociationEnd
+      Name="ReconSummary"
+      Multiplicity="Many"
+      EntityType="ReconSummary" />
+    <AssociationEnd
+      Name="ImportedFile"
+      EntityType="ImportedFile">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="FK_ReconSummary_ImportedFile1">
+    <AssociationEnd
+      Name="ImportedFile"
+      EntityType="ImportedFile">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ReconSummary"
+      Multiplicity="Many"
+      EntityType="ReconSummary" />
+  </Association>
+  <Association
+    Name="FK_SkyeImportDetails_ImportedFile">
+    <AssociationEnd
+      Name="ImportedFile"
+      EntityType="ImportedFile">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="SkyeImportDetails"
+      Multiplicity="Many"
+      EntityType="SkyeImportDetail" />
+  </Association>
+  <Association
+    Name="FK_SkyeImportHeader_ImportedFile">
+    <AssociationEnd
+      Name="ImportedFile"
+      EntityType="ImportedFile">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="SkyeImportHeader"
+      Multiplicity="Many"
+      EntityType="SkyeImportHeader" />
+  </Association>
+  <Association
+    Name="FK_ReconProcessStep_ImportedFile">
+    <AssociationEnd
+      Name="ImportedFile"
+      EntityType="ImportedFile">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ReconProcessStep"
+      Multiplicity="Many"
+      EntityType="ReconProcessStep" />
+  </Association>
+  <Association
+    Name="FK_ReconProcessStep_ImportedFile1">
+    <AssociationEnd
+      Name="ImportedFile"
+      EntityType="ImportedFile">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="ReconProcessStep"
+      Multiplicity="Many"
+      EntityType="ReconProcessStep" />
+  </Association>
   <DataService
     Name="PagaReconDataDataService">
     <DataService.Attributes>
@@ -259,12 +418,133 @@
           Nullable="False"
           Type="int"
           PropertyName="FileDefinitionID" />
-        <SsdlForeignKeyProperty
-          Name="ReconSummaryID"
-          Nullable="True"
-          Type="int"
-          PropertyName="ReconSummaryID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ReconProcessStep_ImportedFile">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ReconProcessStep_ImportedFile" />
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ReconProcessStep_ImportedFile]/Members[ImportedFile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ReconProcessStep_ImportedFile]/Members[ReconProcessStep]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="CurrentSourceImportedFileID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ReconProcessStep_ImportedFile1">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ReconProcessStep_ImportedFile1" />
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ReconProcessStep_ImportedFile1]/Members[ImportedFile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ReconProcessStep_ImportedFile1]/Members[ReconProcessStep]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="CurrentTargetImportedFileID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ImportedFile_ReconSummary">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ReconSummary_ImportedFile" />
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ImportedFile_ReconSummary]/Members[ImportedFile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ImportedFile_ReconSummary]/Members[ReconSummary]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="SourceImportFileID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_ReconSummary_ImportedFile1">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_ReconSummary_ImportedFile1" />
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ReconSummary_ImportedFile1]/Members[ImportedFile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_ReconSummary_ImportedFile1]/Members[ReconSummary]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="DestImportFileID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_SkyeImportDetails_ImportedFile">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_SkyeImportDetails_ImportedFile" />
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_SkyeImportDetails_ImportedFile]/Members[ImportedFile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_SkyeImportDetails_ImportedFile]/Members[SkyeImportDetails]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ImportedFileID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_SkyeImportHeader_ImportedFile">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_SkyeImportHeader_ImportedFile" />
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_SkyeImportHeader_ImportedFile]/Members[ImportedFile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="PagaReconData/Members[FK_SkyeImportHeader_ImportedFile]/Members[SkyeImportHeader]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ImportedFileID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
   </DataService>
 </ServiceApplication>

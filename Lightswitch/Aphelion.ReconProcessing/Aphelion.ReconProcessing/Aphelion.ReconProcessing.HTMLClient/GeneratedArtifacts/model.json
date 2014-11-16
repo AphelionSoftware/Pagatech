@@ -2152,7 +2152,7 @@
       ]
     },
     {
-      "homeScreen": { "__id": "BrowseImportedFilesUnreconciled" },
+      "homeScreen": { "__id": "BrowseReconProcesses" },
       "id": "!module",
       "name": "LightSwitchApplication.Aphelion.ReconProcessing.HTMLClient",
       "logo": "/Content/Images/logo.png",
@@ -2162,7 +2162,7 @@
       "theme": { "__id": ":HTMLTheme" },
       ":@ModuleNamespace": { "namespace": "LightSwitchApplication" },
       ":@Partial": { "isPrimary": true },
-      ":@HomeScreen": { "value": { "__id": "BrowseImportedFilesUnreconciled" } },
+      ":@HomeScreen": { "value": { "__id": "BrowseReconProcesses" } },
       "globalItems":
       [
         {
@@ -2180,6 +2180,64 @@
         {
           "id": "LightSwitchServiceApplicationGroup",
           "name": "LightSwitchServiceApplicationGroup"
+        },
+        {
+          "id": "CollectionView$vwReconProcessStatu",
+          "name": "CollectionView$vwReconProcessStatu",
+          "kind": "CollectionView",
+          "elementType": { "__id": "vwReconProcessStatu" },
+          "methods":
+          [
+            {
+              "id": "CollectionView$vwReconProcessStatu/Methods[addNew]",
+              "name": "addNew",
+              "returnType": { "__id": "vwReconProcessStatu" }
+            },
+            {
+              "id": "CollectionView$vwReconProcessStatu/Methods[addAndEditNew]",
+              "name": "addAndEditNew",
+              "returnType": { "__id": "vwReconProcessStatu" }
+            },
+            {
+              "id": "CollectionView$vwReconProcessStatu/Methods[showSearch]",
+              "name": "showSearch",
+              "returnType": { "__id": "vwReconProcessStatu" }
+            },
+            {
+              "id": "CollectionView$vwReconProcessStatu/Methods[editSelected]",
+              "name": "editSelected"
+            },
+            {
+              "id": "CollectionView$vwReconProcessStatu/Methods[deleteSelected]",
+              "name": "deleteSelected"
+            },
+            {
+              "id": "CollectionView$vwReconProcessStatu/Methods[removeSelected]",
+              "name": "removeSelected"
+            },
+            {
+              "id": "CollectionView$vwReconProcessStatu/Methods[refresh]",
+              "name": "refresh"
+            },
+            {
+              "id": "CollectionView$vwReconProcessStatu/Methods[viewSelected]",
+              "name": "viewSelected"
+            }
+          ],
+          "properties":
+          [
+            {
+              "id": "CollectionView$vwReconProcessStatu/Properties[selectedItem]",
+              "name": "selectedItem",
+              "propertyType": { "__id": "vwReconProcessStatu" }
+            }
+          ]
+        },
+        {
+          "id": "vwReconProcessStatu*",
+          "name": "vwReconProcessStatu*",
+          "kind": "Enumerable",
+          "elementType": { "__id": "vwReconProcessStatu" }
         },
         {
           "id": "GlobalSetting*",
@@ -3281,7 +3339,7 @@
               "association": { "__id": "FK_ImportedFile_ReconSummary" },
               "elementType": { "__id": "ReconSummary" },
               "fromEnd": { "__id": "FK_ImportedFile_ReconSummary/Ends[ImportedFile]" },
-              "propertyType": { "__id": "ReconSummary" },
+              "propertyType": { "__id": "ReconSummary*" },
               "toEnd": { "__id": "FK_ImportedFile_ReconSummary/Ends[ReconSummary]" }
             },
             {
@@ -3360,6 +3418,51 @@
               {
               },
               ":@NotSearchable": { }
+            },
+            {
+              "id": "ImportedFile/Properties[ReconSummaries1]",
+              "name": "ReconSummaries1",
+              "association": { "__id": "FK_ReconSummary_ImportedFile1" },
+              "elementType": { "__id": "ReconSummary" },
+              "fromEnd": { "__id": "FK_ReconSummary_ImportedFile1/Ends[ImportedFile]" },
+              "propertyType": { "__id": "ReconSummary*" },
+              "toEnd": { "__id": "FK_ReconSummary_ImportedFile1/Ends[ReconSummary]" }
+            },
+            {
+              "id": "ImportedFile/Properties[SkyeImportDetails]",
+              "name": "SkyeImportDetails",
+              "association": { "__id": "FK_SkyeImportDetails_ImportedFile" },
+              "elementType": { "__id": "SkyeImportDetail" },
+              "fromEnd": { "__id": "FK_SkyeImportDetails_ImportedFile/Ends[ImportedFile]" },
+              "propertyType": { "__id": "SkyeImportDetail*" },
+              "toEnd": { "__id": "FK_SkyeImportDetails_ImportedFile/Ends[SkyeImportDetails]" }
+            },
+            {
+              "id": "ImportedFile/Properties[SkyeImportHeaders]",
+              "name": "SkyeImportHeaders",
+              "association": { "__id": "FK_SkyeImportHeader_ImportedFile" },
+              "elementType": { "__id": "SkyeImportHeader" },
+              "fromEnd": { "__id": "FK_SkyeImportHeader_ImportedFile/Ends[ImportedFile]" },
+              "propertyType": { "__id": "SkyeImportHeader*" },
+              "toEnd": { "__id": "FK_SkyeImportHeader_ImportedFile/Ends[SkyeImportHeader]" }
+            },
+            {
+              "id": "ImportedFile/Properties[ReconProcessSteps]",
+              "name": "ReconProcessSteps",
+              "association": { "__id": "FK_ReconProcessStep_ImportedFile" },
+              "elementType": { "__id": "ReconProcessStep" },
+              "fromEnd": { "__id": "FK_ReconProcessStep_ImportedFile/Ends[ImportedFile]" },
+              "propertyType": { "__id": "ReconProcessStep*" },
+              "toEnd": { "__id": "FK_ReconProcessStep_ImportedFile/Ends[ReconProcessStep]" }
+            },
+            {
+              "id": "ImportedFile/Properties[ReconProcessSteps1]",
+              "name": "ReconProcessSteps1",
+              "association": { "__id": "FK_ReconProcessStep_ImportedFile1" },
+              "elementType": { "__id": "ReconProcessStep" },
+              "fromEnd": { "__id": "FK_ReconProcessStep_ImportedFile1/Ends[ImportedFile]" },
+              "propertyType": { "__id": "ReconProcessStep*" },
+              "toEnd": { "__id": "FK_ReconProcessStep_ImportedFile1/Ends[ReconProcessStep]" }
             }
           ]
         },
@@ -3368,14 +3471,6 @@
           ":@SummaryProperty": { "property": { "__id": "ReconProcess/Properties[Code]" } },
           "id": "ReconProcess",
           "name": "ReconProcess",
-          ":@DefaultScreen":
-          {
-            "value": { "__id": "ViewReconProcess" },
-            ":@ScreenParameterMapping":
-            {
-              "screenParameter": { "__id": "ViewReconProcess/Properties[ReconProcess]" }
-            }
-          },
           "methods":
           [
             {
@@ -3480,6 +3575,15 @@
               "fromEnd": { "__id": "FK_ReconProcessStep_ReconProcess/Ends[ReconProcess]" },
               "propertyType": { "__id": "ReconProcessStep*" },
               "toEnd": { "__id": "FK_ReconProcessStep_ReconProcess/Ends[ReconProcessStep]" }
+            },
+            {
+              "id": "ReconProcess/Properties[vwReconProcessStatus]",
+              "name": "vwReconProcessStatus",
+              "association": { "__id": "vwReconProcessStatu_ReconProcess" },
+              "elementType": { "__id": "vwReconProcessStatu" },
+              "fromEnd": { "__id": "vwReconProcessStatu_ReconProcess/Ends[ReconProcess]" },
+              "propertyType": { "__id": "vwReconProcessStatu*" },
+              "toEnd": { "__id": "vwReconProcessStatu_ReconProcess/Ends[vwReconProcessStatu]" }
             }
           ]
         },
@@ -3695,8 +3799,8 @@
               ":@NotSearchable": { }
             },
             {
-              "id": "ReconProcessStep/Properties[FileSection]",
-              "name": "FileSection",
+              "id": "ReconProcessStep/Properties[SourceFileSection]",
+              "name": "SourceFileSection",
               "association": { "__id": "FK_ReconProcessStep_FileSection" },
               "elementType": { "__id": "FileSection" },
               "fromEnd": { "__id": "FK_ReconProcessStep_FileSection/Ends[ReconProcessStep]" },
@@ -3704,8 +3808,8 @@
               "toEnd": { "__id": "FK_ReconProcessStep_FileSection/Ends[FileSection]" }
             },
             {
-              "id": "ReconProcessStep/Properties[FileSection1]",
-              "name": "FileSection1",
+              "id": "ReconProcessStep/Properties[DestinationFileSection]",
+              "name": "DestinationFileSection",
               "association": { "__id": "FK_ReconProcessStep_FileSection1" },
               "elementType": { "__id": "FileSection" },
               "fromEnd": { "__id": "FK_ReconProcessStep_FileSection1/Ends[ReconProcessStep]" },
@@ -3738,6 +3842,24 @@
               "fromEnd": { "__id": "FK_ReconSummary_ReconProcessStep/Ends[ReconProcessStep]" },
               "propertyType": { "__id": "ReconSummary*" },
               "toEnd": { "__id": "FK_ReconSummary_ReconProcessStep/Ends[ReconSummary]" }
+            },
+            {
+              "id": "ReconProcessStep/Properties[CurrentSourceImportFile]",
+              "name": "CurrentSourceImportFile",
+              "association": { "__id": "FK_ReconProcessStep_ImportedFile" },
+              "elementType": { "__id": "ImportedFile" },
+              "fromEnd": { "__id": "FK_ReconProcessStep_ImportedFile/Ends[ReconProcessStep]" },
+              "propertyType": { "__id": "ImportedFile" },
+              "toEnd": { "__id": "FK_ReconProcessStep_ImportedFile/Ends[ImportedFile]" }
+            },
+            {
+              "id": "ReconProcessStep/Properties[CurrentTargetImportFile]",
+              "name": "CurrentTargetImportFile",
+              "association": { "__id": "FK_ReconProcessStep_ImportedFile1" },
+              "elementType": { "__id": "ImportedFile" },
+              "fromEnd": { "__id": "FK_ReconProcessStep_ImportedFile1/Ends[ReconProcessStep]" },
+              "propertyType": { "__id": "ImportedFile" },
+              "toEnd": { "__id": "FK_ReconProcessStep_ImportedFile1/Ends[ImportedFile]" }
             }
           ]
         },
@@ -5041,7 +5163,7 @@
               "association": { "__id": "FK_ImportedFile_ReconSummary" },
               "elementType": { "__id": "ImportedFile" },
               "fromEnd": { "__id": "FK_ImportedFile_ReconSummary/Ends[ReconSummary]" },
-              "propertyType": { "__id": "ImportedFile*" },
+              "propertyType": { "__id": "ImportedFile" },
               "toEnd": { "__id": "FK_ImportedFile_ReconSummary/Ends[ImportedFile]" }
             },
             {
@@ -5061,6 +5183,15 @@
               "fromEnd": { "__id": "FK_ReconSummary_ReconStatus/Ends[ReconSummary]" },
               "propertyType": { "__id": "ReconStatu" },
               "toEnd": { "__id": "FK_ReconSummary_ReconStatus/Ends[ReconStatus]" }
+            },
+            {
+              "id": "ReconSummary/Properties[ImportedFile1]",
+              "name": "ImportedFile1",
+              "association": { "__id": "FK_ReconSummary_ImportedFile1" },
+              "elementType": { "__id": "ImportedFile" },
+              "fromEnd": { "__id": "FK_ReconSummary_ImportedFile1/Ends[ReconSummary]" },
+              "propertyType": { "__id": "ImportedFile" },
+              "toEnd": { "__id": "FK_ReconSummary_ImportedFile1/Ends[ImportedFile]" }
             }
           ]
         },
@@ -5213,6 +5344,15 @@
                 "preserveSeconds": true
               },
               ":@NotSearchable": { }
+            },
+            {
+              "id": "SkyeImportDetail/Properties[ImportedFile]",
+              "name": "ImportedFile",
+              "association": { "__id": "FK_SkyeImportDetails_ImportedFile" },
+              "elementType": { "__id": "ImportedFile" },
+              "fromEnd": { "__id": "FK_SkyeImportDetails_ImportedFile/Ends[SkyeImportDetails]" },
+              "propertyType": { "__id": "ImportedFile" },
+              "toEnd": { "__id": "FK_SkyeImportDetails_ImportedFile/Ends[ImportedFile]" }
             }
           ]
         },
@@ -5345,6 +5485,15 @@
                 "preserveSeconds": true
               },
               ":@NotSearchable": { }
+            },
+            {
+              "id": "SkyeImportHeader/Properties[ImportedFile]",
+              "name": "ImportedFile",
+              "association": { "__id": "FK_SkyeImportHeader_ImportedFile" },
+              "elementType": { "__id": "ImportedFile" },
+              "fromEnd": { "__id": "FK_SkyeImportHeader_ImportedFile/Ends[SkyeImportHeader]" },
+              "propertyType": { "__id": "ImportedFile" },
+              "toEnd": { "__id": "FK_SkyeImportHeader_ImportedFile/Ends[ImportedFile]" }
             }
           ]
         },
@@ -5436,15 +5585,15 @@
             {
               "id": "FK_ImportedFile_ReconSummary/Ends[ReconSummary]",
               "name": "ReconSummary",
-              "multiplicity": "ZeroOrOne",
-              "entityType": { "__id": "ReconSummary" },
-              ":@DeleteRule": { "action": "Unset" }
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconSummary" }
             },
             {
               "id": "FK_ImportedFile_ReconSummary/Ends[ImportedFile]",
               "name": "ImportedFile",
-              "multiplicity": "Many",
-              "entityType": { "__id": "ImportedFile" }
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
             }
           ]
         },
@@ -5822,13 +5971,13 @@
               "ends":
               [
                 {
-                  "properties": [ "ID" ],
+                  "properties": [ "SourceImportFileID" ],
                   "id": "PagaReconData/Members[FK_ImportedFile_ReconSummary]/Members[ReconSummary]",
                   "name": "ReconSummary",
                   "entitySet": { "__id": "PagaReconData/Members[ReconSummaries]" }
                 },
                 {
-                  "properties": [ "ReconSummaryID" ],
+                  "properties": [ "ID" ],
                   "id": "PagaReconData/Members[FK_ImportedFile_ReconSummary]/Members[ImportedFile]",
                   "name": "ImportedFile",
                   "entitySet": { "__id": "PagaReconData/Members[ImportedFiles]" }
@@ -5852,6 +6001,126 @@
                   "id": "PagaReconData/Members[FK_ReconProcessStep_ReconType]/Members[ReconProcessStep]",
                   "name": "ReconProcessStep",
                   "entitySet": { "__id": "PagaReconData/Members[ReconProcessSteps]" }
+                }
+              ]
+            },
+            {
+              "id": "PagaReconData/Members[FK_ReconSummary_ImportedFile1]",
+              "name": "FK_ReconSummary_ImportedFile1",
+              "association": { "__id": "FK_ReconSummary_ImportedFile1" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "PagaReconData/Members[FK_ReconSummary_ImportedFile1]/Members[ImportedFile]",
+                  "name": "ImportedFile",
+                  "entitySet": { "__id": "PagaReconData/Members[ImportedFiles]" }
+                },
+                {
+                  "properties": [ "DestImportFileID" ],
+                  "id": "PagaReconData/Members[FK_ReconSummary_ImportedFile1]/Members[ReconSummary]",
+                  "name": "ReconSummary",
+                  "entitySet": { "__id": "PagaReconData/Members[ReconSummaries]" }
+                }
+              ]
+            },
+            {
+              "id": "PagaReconData/Members[FK_SkyeImportDetails_ImportedFile]",
+              "name": "FK_SkyeImportDetails_ImportedFile",
+              "association": { "__id": "FK_SkyeImportDetails_ImportedFile" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "PagaReconData/Members[FK_SkyeImportDetails_ImportedFile]/Members[ImportedFile]",
+                  "name": "ImportedFile",
+                  "entitySet": { "__id": "PagaReconData/Members[ImportedFiles]" }
+                },
+                {
+                  "properties": [ "ImportedFileID" ],
+                  "id": "PagaReconData/Members[FK_SkyeImportDetails_ImportedFile]/Members[SkyeImportDetails]",
+                  "name": "SkyeImportDetails",
+                  "entitySet": { "__id": "PagaReconData/Members[SkyeImportDetails]" }
+                }
+              ]
+            },
+            {
+              "id": "PagaReconData/Members[FK_SkyeImportHeader_ImportedFile]",
+              "name": "FK_SkyeImportHeader_ImportedFile",
+              "association": { "__id": "FK_SkyeImportHeader_ImportedFile" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "PagaReconData/Members[FK_SkyeImportHeader_ImportedFile]/Members[ImportedFile]",
+                  "name": "ImportedFile",
+                  "entitySet": { "__id": "PagaReconData/Members[ImportedFiles]" }
+                },
+                {
+                  "properties": [ "ImportedFileID" ],
+                  "id": "PagaReconData/Members[FK_SkyeImportHeader_ImportedFile]/Members[SkyeImportHeader]",
+                  "name": "SkyeImportHeader",
+                  "entitySet": { "__id": "PagaReconData/Members[SkyeImportHeaders]" }
+                }
+              ]
+            },
+            {
+              "id": "PagaReconData/Members[FK_ReconProcessStep_ImportedFile]",
+              "name": "FK_ReconProcessStep_ImportedFile",
+              "association": { "__id": "FK_ReconProcessStep_ImportedFile" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "PagaReconData/Members[FK_ReconProcessStep_ImportedFile]/Members[ImportedFile]",
+                  "name": "ImportedFile",
+                  "entitySet": { "__id": "PagaReconData/Members[ImportedFiles]" }
+                },
+                {
+                  "properties": [ "CurrentSourceImportedFileID" ],
+                  "id": "PagaReconData/Members[FK_ReconProcessStep_ImportedFile]/Members[ReconProcessStep]",
+                  "name": "ReconProcessStep",
+                  "entitySet": { "__id": "PagaReconData/Members[ReconProcessSteps]" }
+                }
+              ]
+            },
+            {
+              "id": "PagaReconData/Members[FK_ReconProcessStep_ImportedFile1]",
+              "name": "FK_ReconProcessStep_ImportedFile1",
+              "association": { "__id": "FK_ReconProcessStep_ImportedFile1" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "PagaReconData/Members[FK_ReconProcessStep_ImportedFile1]/Members[ImportedFile]",
+                  "name": "ImportedFile",
+                  "entitySet": { "__id": "PagaReconData/Members[ImportedFiles]" }
+                },
+                {
+                  "properties": [ "CurrentTargetImportedFileID" ],
+                  "id": "PagaReconData/Members[FK_ReconProcessStep_ImportedFile1]/Members[ReconProcessStep]",
+                  "name": "ReconProcessStep",
+                  "entitySet": { "__id": "PagaReconData/Members[ReconProcessSteps]" }
+                }
+              ]
+            },
+            {
+              "id": "PagaReconData/Members[vwReconProcessStatu_ReconProcesses]",
+              "name": "vwReconProcessStatu_ReconProcesses",
+              "association": { "__id": "vwReconProcessStatu_ReconProcess" },
+              "ends":
+              [
+                {
+                  "properties": [ "ReconProcessID" ],
+                  "id": "PagaReconData/Members[vwReconProcessStatu_ReconProcesses]/Members[vwReconProcessStatu]",
+                  "name": "vwReconProcessStatu",
+                  "entitySet": { "__id": "PagaReconData/Members[vwReconProcessStatus]" }
+                },
+                {
+                  "properties": [ "ID" ],
+                  "id": "PagaReconData/Members[vwReconProcessStatu_ReconProcesses]/Members[ReconProcess]",
+                  "name": "ReconProcess",
+                  "entitySet": { "__id": "PagaReconData/Members[ReconProcesses]" }
                 }
               ]
             }
@@ -6019,6 +6288,12 @@
               "canUpdate": true,
               "elementType": { "__id": "SystemField" },
               "entityType": { "__id": "SystemField" }
+            },
+            {
+              "id": "PagaReconData/Members[vwReconProcessStatus]",
+              "name": "vwReconProcessStatus",
+              "elementType": { "__id": "vwReconProcessStatu" },
+              "entityType": { "__id": "vwReconProcessStatu" }
             }
           ],
           "queryOperations":
@@ -6724,6 +6999,126 @@
                   "id": "PagaReconData/Members[SystemFields_SingleOrDefault]/Parameters[ID]",
                   "name": "ID",
                   "parameterType": { "__id": ":Int32?" }
+                }
+              ]
+            },
+            {
+              "id": "PagaReconData/Members[ImportedFilesForToday]",
+              "name": "ImportedFilesForToday",
+              "elementType": { "__id": "ImportedFile" },
+              "query": { "__id": "PagaReconData/Members[ImportedFilesForToday]" },
+              "returnType": { "__id": "ImportedFile*" },
+              "source":
+              {
+                "member": { "__id": "PagaReconData/Members[ImportedFiles]" }
+              },
+              "parameters":
+              [
+                {
+                  "id": "PagaReconData/Members[ImportedFilesForToday]/Parameters[ReconSource]",
+                  "name": "ReconSource",
+                  "isOptional": true,
+                  "parameterType": { "__id": ":Int32?" }
+                },
+                {
+                  "id": "PagaReconData/Members[ImportedFilesForToday]/Parameters[FileDefinition]",
+                  "name": "FileDefinition",
+                  "isOptional": true,
+                  "parameterType": { "__id": ":Int32?" }
+                }
+              ],
+              "sortCriteria":
+              [
+                {
+                  "member": { "__id": "ImportedFile/Properties[FileName]" }
+                }
+              ]
+            },
+            {
+              "id": "PagaReconData/Members[vwReconProcessStatus_Single]",
+              "name": "vwReconProcessStatus_Single",
+              "elementType": { "__id": "vwReconProcessStatu" },
+              "query": { "__id": "PagaReconData/Members[vwReconProcessStatus_Single]" },
+              "returnType": { "__id": "vwReconProcessStatu" },
+              "source":
+              {
+                "member": { "__id": "PagaReconData/Members[vwReconProcessStatus]" }
+              },
+              "parameters":
+              [
+                {
+                  "id": "PagaReconData/Members[vwReconProcessStatus_Single]/Parameters[SourceFileAvailable]",
+                  "name": "SourceFileAvailable",
+                  "parameterType": { "__id": ":String?" }
+                },
+                {
+                  "id": "PagaReconData/Members[vwReconProcessStatus_Single]/Parameters[TargetFileAvailable]",
+                  "name": "TargetFileAvailable",
+                  "parameterType": { "__id": ":String?" }
+                },
+                {
+                  "id": "PagaReconData/Members[vwReconProcessStatus_Single]/Parameters[ReconProcessID]",
+                  "name": "ReconProcessID",
+                  "parameterType": { "__id": ":Int32?" }
+                },
+                {
+                  "id": "PagaReconData/Members[vwReconProcessStatus_Single]/Parameters[ReconProcessCode]",
+                  "name": "ReconProcessCode",
+                  "parameterType": { "__id": ":String?" }
+                },
+                {
+                  "id": "PagaReconData/Members[vwReconProcessStatus_Single]/Parameters[ReconProcessStepID]",
+                  "name": "ReconProcessStepID",
+                  "parameterType": { "__id": ":Int32?" }
+                },
+                {
+                  "id": "PagaReconData/Members[vwReconProcessStatus_Single]/Parameters[ReconProcessStepCode]",
+                  "name": "ReconProcessStepCode",
+                  "parameterType": { "__id": ":String?" }
+                }
+              ]
+            },
+            {
+              "id": "PagaReconData/Members[vwReconProcessStatus_SingleOrDefault]",
+              "name": "vwReconProcessStatus_SingleOrDefault",
+              "elementType": { "__id": "vwReconProcessStatu" },
+              "query": { "__id": "PagaReconData/Members[vwReconProcessStatus_SingleOrDefault]" },
+              "returnType": { "__id": "vwReconProcessStatu" },
+              "source":
+              {
+                "member": { "__id": "PagaReconData/Members[vwReconProcessStatus]" }
+              },
+              "parameters":
+              [
+                {
+                  "id": "PagaReconData/Members[vwReconProcessStatus_SingleOrDefault]/Parameters[SourceFileAvailable]",
+                  "name": "SourceFileAvailable",
+                  "parameterType": { "__id": ":String?" }
+                },
+                {
+                  "id": "PagaReconData/Members[vwReconProcessStatus_SingleOrDefault]/Parameters[TargetFileAvailable]",
+                  "name": "TargetFileAvailable",
+                  "parameterType": { "__id": ":String?" }
+                },
+                {
+                  "id": "PagaReconData/Members[vwReconProcessStatus_SingleOrDefault]/Parameters[ReconProcessID]",
+                  "name": "ReconProcessID",
+                  "parameterType": { "__id": ":Int32?" }
+                },
+                {
+                  "id": "PagaReconData/Members[vwReconProcessStatus_SingleOrDefault]/Parameters[ReconProcessCode]",
+                  "name": "ReconProcessCode",
+                  "parameterType": { "__id": ":String?" }
+                },
+                {
+                  "id": "PagaReconData/Members[vwReconProcessStatus_SingleOrDefault]/Parameters[ReconProcessStepID]",
+                  "name": "ReconProcessStepID",
+                  "parameterType": { "__id": ":Int32?" }
+                },
+                {
+                  "id": "PagaReconData/Members[vwReconProcessStatus_SingleOrDefault]/Parameters[ReconProcessStepCode]",
+                  "name": "ReconProcessStepCode",
+                  "parameterType": { "__id": ":String?" }
                 }
               ]
             }
@@ -7843,24 +8238,6 @@
                                     }
                                   ]
                                 }
-                              },
-                              {
-                                "displayName": "Recon Summary",
-                                "name": "ReconSummary",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "links":
-                                  [
-                                    {
-                                      "member": { "__id": "ImportedFile/Properties[ReconSummary]" }
-                                    },
-                                    {
-                                      "member": { "__id": "ReconSummary/Properties[sys_CreatedBy]" }
-                                    }
-                                  ]
-                                }
                               }
                             ],
                             "propertySources":
@@ -7999,251 +8376,6 @@
               "elementType": { "__id": "ImportedFile" },
               "propertyType": { "__id": "ImportedFile" },
               ":@IsParameter": { }
-            }
-          ]
-        },
-        {
-          "displayName": "ReconProcesses",
-          "id": "BrowseReconProcesses",
-          "name": "BrowseReconProcesses",
-          "launchMode": "Single",
-          ":@SaveChangesTo":
-          {
-            "property": { "__id": "DataWorkspace/Members[PagaReconData]" }
-          },
-          "rootContentItem":
-          {
-            "displayName": "ReconProcesses",
-            "name": "RootContentItem",
-            "kind": "Screen",
-            "view": { "__id": ":Screen" },
-            "childContentItems":
-            [
-              {
-                "displayName": "Tabs",
-                "name": "Tabs",
-                "kind": "Group",
-                "view": { "__id": ":TabPages" },
-                "childContentItems":
-                [
-                  {
-                    "displayName": "Recon Process List",
-                    "name": "ReconProcessList",
-                    "kind": "Tab",
-                    "view": { "__id": ":RowsLayout" },
-                    "childContentItems":
-                    [
-                      {
-                        "displayName": "ReconProcesses",
-                        "name": "ReconProcesses",
-                        "kind": "Collection",
-                        "view": { "__id": ":TileList" },
-                        "dataSource":
-                        {
-                          "member": { "__id": "BrowseReconProcesses/Properties[ReconProcesses]" }
-                        },
-                        "childContentItems":
-                        [
-                          {
-                            "displayName": "rows",
-                            "name": "rows",
-                            "kind": "Details",
-                            "view": { "__id": ":RowsLayout" },
-                            "dataSource":
-                            {
-                              "links":
-                              [
-                              ]
-                            },
-                            "childContentItems":
-                            [
-                              {
-                                "displayName": "Code",
-                                "name": "Code",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "ReconProcess/Properties[Code]" }
-                                },
-                                "propertySources":
-                                [
-                                  {
-                                    "property": { "__id": ":RootControl/Properties[FontStyle]" },
-                                    "value": "Large"
-                                  }
-                                ]
-                              },
-                              {
-                                "displayName": "Name",
-                                "name": "Name",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "ReconProcess/Properties[Name]" }
-                                },
-                                "propertySources":
-                                [
-                                  {
-                                    "property": { "__id": ":RootControl/Properties[FontStyle]" },
-                                    "value": "Small"
-                                  }
-                                ]
-                              }
-                            ],
-                            "propertySources":
-                            [
-                              {
-                                "property": { "__id": ":RootControl/Properties[WidthSizingMode]" },
-                                "value": "FitToContent"
-                              }
-                            ]
-                          }
-                        ],
-                        "propertySources":
-                        [
-                          {
-                            "property": { "__id": ":RootCollectionControl/Properties[ItemTap]" },
-                            "source":
-                            {
-                              "target": { "__id": "!module/Methods[showViewReconProcess]" },
-                              ":@AssociatedCollection": { "collection": { "__id": "BrowseReconProcesses/Properties[ReconProcesses]" } },
-                              "arguments":
-                              [
-                                {
-                                  "parameter": { "__id": "!module/Methods[showViewReconProcess]/Parameters[ReconProcess]" },
-                                  "value":
-                                  {
-                                    "links":
-                                    [
-                                      {
-                                        "member": { "__id": "BrowseReconProcesses/Properties[ReconProcesses]" }
-                                      },
-                                      {
-                                        "member": { "__id": "CollectionView$ReconProcess/Properties[selectedItem]" }
-                                      }
-                                    ]
-                                  }
-                                }
-                              ]
-                            }
-                          }
-                        ]
-                      }
-                    ],
-                    "commandItems":
-                    [
-                      {
-                        "displayName": "Add",
-                        "name": "AddReconProcess",
-                        "kind": "Command",
-                        "view": { "__id": ":CommandBarButton" },
-                        "propertySources":
-                        [
-                          {
-                            "property": { "__id": ":RootCommand/Properties[Icon]" },
-                            "value": "msls-add"
-                          }
-                        ]
-                      },
-                      {
-                        "displayName": "Search",
-                        "name": "SearchReconProcesses",
-                        "kind": "Command",
-                        "view": { "__id": ":CommandBarButton" },
-                        "propertySources":
-                        [
-                          {
-                            "property": { "__id": ":RootControl/Properties[Tap]" },
-                            "source":
-                            {
-                              "links":
-                              [
-                                {
-                                  "member": { "__id": "BrowseReconProcesses/Properties[ReconProcesses]" }
-                                },
-                                {
-                                  "target": { "__id": "CollectionView$ReconProcess/Methods[showSearch]" }
-                                }
-                              ]
-                            }
-                          },
-                          {
-                            "property": { "__id": ":RootCommand/Properties[Icon]" },
-                            "value": "msls-search"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "propertySources":
-                [
-                  {
-                    "property": { "__id": ":RootControl/Properties[BrowseOnly]" },
-                    "value": true
-                  }
-                ]
-              },
-              {
-                "displayName": "Popups",
-                "name": "Popups",
-                "kind": "Group",
-                "view": { "__id": ":DialogPages" }
-              }
-            ]
-          },
-          "methods":
-          [
-            {
-              "id": "BrowseReconProcesses/Methods[showTab]",
-              "name": "showTab",
-              "parameters":
-              [
-                {
-                  "id": "BrowseReconProcesses/Methods[showTab]/Parameters[tabName]",
-                  "name": "tabName",
-                  "parameterType": { "__id": ":String" }
-                }
-              ]
-            },
-            {
-              "id": "BrowseReconProcesses/Methods[showDialog]",
-              "name": "showDialog",
-              "parameters":
-              [
-                {
-                  "id": "BrowseReconProcesses/Methods[showDialog]/Parameters[dialogName]",
-                  "name": "dialogName",
-                  "parameterType": { "__id": ":String" }
-                }
-              ]
-            }
-          ],
-          "properties":
-          [
-            {
-              "id": "BrowseReconProcesses/Properties[ReconProcesses]",
-              "name": "ReconProcesses",
-              "pageSize": 45,
-              "elementType": { "__id": "ReconProcess" },
-              "propertyType": { "__id": "CollectionView$ReconProcess" },
-              "query":
-              {
-                "id": "BrowseReconProcesses/Properties[ReconProcesses]/Query",
-                "name": "ReconProcessesQuery",
-                "elementType": { "__id": "ReconProcess" },
-                "returnType": { "__id": "ReconProcess*" },
-                "source":
-                {
-                  "member": { "__id": "PagaReconData/Members[ReconProcesses]" }
-                }
-              },
-              "source":
-              {
-                "target": { "__id": "BrowseReconProcesses/Properties[ReconProcesses]/Query" }
-              }
             }
           ]
         },
@@ -8437,6 +8569,110 @@
                                     "value": "Small"
                                   }
                                 ]
+                              },
+                              {
+                                "displayName": "Current Source Import File",
+                                "name": "CurrentSourceImportFile",
+                                "kind": "Details",
+                                "view": { "__id": ":DetailsModalPicker" },
+                                "choicesSource":
+                                {
+                                  "member": { "__id": "ViewReconProcess/Properties[SourceImportedFilesForToday]" }
+                                },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ReconProcessStep/Properties[CurrentSourceImportFile]" }
+                                },
+                                "childContentItems":
+                                [
+                                  {
+                                    "displayName": "Imported File",
+                                    "name": "CurrentSourceImportFileTemplate",
+                                    "kind": "Details",
+                                    "view": { "__id": ":RowsLayout" },
+                                    "dataSource":
+                                    {
+                                      "links":
+                                      [
+                                      ]
+                                    },
+                                    "childContentItems":
+                                    [
+                                      {
+                                        "displayName": "File Name",
+                                        "name": "FileName",
+                                        "kind": "Value",
+                                        "view": { "__id": ":Text" },
+                                        "dataSource":
+                                        {
+                                          "member": { "__id": "ImportedFile/Properties[FileName]" }
+                                        }
+                                      },
+                                      {
+                                        "displayName": "Uploaded File Name",
+                                        "name": "UploadedFileName",
+                                        "kind": "Value",
+                                        "view": { "__id": ":Text" },
+                                        "dataSource":
+                                        {
+                                          "member": { "__id": "ImportedFile/Properties[UploadedFileName]" }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "displayName": "Current Target Import File",
+                                "name": "CurrentTargetImportFile",
+                                "kind": "Details",
+                                "view": { "__id": ":DetailsModalPicker" },
+                                "choicesSource":
+                                {
+                                  "member": { "__id": "ViewReconProcess/Properties[DestImportedFilesForToday]" }
+                                },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ReconProcessStep/Properties[CurrentTargetImportFile]" }
+                                },
+                                "childContentItems":
+                                [
+                                  {
+                                    "displayName": "Imported File",
+                                    "name": "CurrentTargetImportFileTemplate",
+                                    "kind": "Details",
+                                    "view": { "__id": ":RowsLayout" },
+                                    "dataSource":
+                                    {
+                                      "links":
+                                      [
+                                      ]
+                                    },
+                                    "childContentItems":
+                                    [
+                                      {
+                                        "displayName": "File Name",
+                                        "name": "FileName1",
+                                        "kind": "Value",
+                                        "view": { "__id": ":Text" },
+                                        "dataSource":
+                                        {
+                                          "member": { "__id": "ImportedFile/Properties[FileName]" }
+                                        }
+                                      },
+                                      {
+                                        "displayName": "Uploaded File Name",
+                                        "name": "UploadedFileName1",
+                                        "kind": "Value",
+                                        "view": { "__id": ":Text" },
+                                        "dataSource":
+                                        {
+                                          "member": { "__id": "ImportedFile/Properties[UploadedFileName]" }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
                               }
                             ],
                             "propertySources":
@@ -8468,6 +8704,63 @@
                         ]
                       }
                     ]
+                  },
+                  {
+                    "displayName": "Process Status",
+                    "name": "ProcessStatus",
+                    "kind": "Tab",
+                    "view": { "__id": ":RowsLayout" },
+                    "childContentItems":
+                    [
+                      {
+                        "displayName": "vw Recon Process Status",
+                        "name": "vwReconProcessStatus",
+                        "kind": "Collection",
+                        "view": { "__id": ":Table" },
+                        "dataSource":
+                        {
+                          "member": { "__id": "ViewReconProcess/Properties[vwReconProcessStatus]" }
+                        },
+                        "childContentItems":
+                        [
+                          {
+                            "displayName": "vw Recon Process Statu",
+                            "name": "vwReconProcessStatusTemplate",
+                            "kind": "Details",
+                            "view": { "__id": ":TableRowLayout" },
+                            "dataSource":
+                            {
+                              "links":
+                              [
+                              ]
+                            },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "Source File Available",
+                                "name": "SourceFileAvailable",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vwReconProcessStatu/Properties[SourceFileAvailable]" }
+                                }
+                              },
+                              {
+                                "displayName": "Target File Available",
+                                "name": "TargetFileAvailable",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "vwReconProcessStatu/Properties[TargetFileAvailable]" }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ],
                 "propertySources":
@@ -8483,6 +8776,13 @@
                 "name": "Popups",
                 "kind": "Group",
                 "view": { "__id": ":DialogPages" }
+              }
+            ],
+            "propertySources":
+            [
+              {
+                "property": { "__id": ":Screen/Properties[ScreenType]" },
+                "value": "Edit"
               }
             ]
           },
@@ -8555,6 +8855,147 @@
               {
                 "target": { "__id": "ViewReconProcess/Properties[ReconProcessSteps]/Query" }
               }
+            },
+            {
+              "id": "ViewReconProcess/Properties[vwReconProcessStatus]",
+              "name": "vwReconProcessStatus",
+              "pageSize": 45,
+              "elementType": { "__id": "vwReconProcessStatu" },
+              "propertyType": { "__id": "CollectionView$vwReconProcessStatu" },
+              "query":
+              {
+                "id": "ViewReconProcess/Properties[vwReconProcessStatus]/Query",
+                "name": "vwReconProcessStatusQuery",
+                "elementType": { "__id": "vwReconProcessStatu" },
+                "returnType": { "__id": "vwReconProcessStatu*" },
+                "source":
+                {
+                  "links":
+                  [
+                    {
+                      "member": { "__id": "ViewReconProcess/Properties[ReconProcess]" }
+                    },
+                    {
+                      "member": { "__id": "ReconProcess/Properties[vwReconProcessStatus]" }
+                    }
+                  ]
+                }
+              },
+              "source":
+              {
+                "target": { "__id": "ViewReconProcess/Properties[vwReconProcessStatus]/Query" }
+              }
+            },
+            {
+              "id": "ViewReconProcess/Properties[SourceImportedFilesForToday]",
+              "name": "SourceImportedFilesForToday",
+              "pageSize": 45,
+              "elementType": { "__id": "ImportedFile" },
+              "propertyType": { "__id": "CollectionView$ImportedFile" },
+              "query":
+              {
+                "id": "ViewReconProcess/Properties[SourceImportedFilesForToday]/Query",
+                "name": "SourceImportedFilesForTodayQuery",
+                "elementType": { "__id": "ImportedFile" },
+                "returnType": { "__id": "ImportedFile*" },
+                "source":
+                {
+                  "member": { "__id": "PagaReconData/Members[ImportedFilesForToday]" }
+                }
+              },
+              "source":
+              {
+                "target": { "__id": "ViewReconProcess/Properties[SourceImportedFilesForToday]/Query" },
+                "arguments":
+                [
+                  {
+                    "parameter": { "__id": "PagaReconData/Members[ImportedFilesForToday]/Parameters[ReconSource]" }
+                  },
+                  {
+                    "parameter": { "__id": "PagaReconData/Members[ImportedFilesForToday]/Parameters[FileDefinition]" },
+                    "value":
+                    {
+                      "links":
+                      [
+                        {
+                          "member": { "__id": "ViewReconProcess/Properties[ReconProcessSteps]" }
+                        },
+                        {
+                          "member": { "__id": "CollectionView$ReconProcessStep/Properties[selectedItem]" }
+                        },
+                        {
+                          "member": { "__id": "ReconProcessStep/Properties[SourceFileSection]" }
+                        },
+                        {
+                          "member": { "__id": "FileSection/Properties[FileDefinition]" }
+                        },
+                        {
+                          "member": { "__id": "FileDefinition/Properties[ID]" }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ViewReconProcess/Properties[DestImportedFilesForToday]",
+              "name": "DestImportedFilesForToday",
+              "pageSize": 45,
+              "elementType": { "__id": "ImportedFile" },
+              "propertyType": { "__id": "CollectionView$ImportedFile" },
+              "query":
+              {
+                "id": "ViewReconProcess/Properties[DestImportedFilesForToday]/Query",
+                "name": "DestImportedFilesForTodayQuery",
+                "elementType": { "__id": "ImportedFile" },
+                "returnType": { "__id": "ImportedFile*" },
+                "source":
+                {
+                  "member": { "__id": "PagaReconData/Members[ImportedFilesForToday]" }
+                }
+              },
+              "source":
+              {
+                "target": { "__id": "ViewReconProcess/Properties[DestImportedFilesForToday]/Query" },
+                "arguments":
+                [
+                  {
+                    "parameter": { "__id": "PagaReconData/Members[ImportedFilesForToday]/Parameters[ReconSource]" }
+                  },
+                  {
+                    "parameter": { "__id": "PagaReconData/Members[ImportedFilesForToday]/Parameters[FileDefinition]" },
+                    "value":
+                    {
+                      "links":
+                      [
+                        {
+                          "member": { "__id": "ViewReconProcess/Properties[ReconProcessSteps]" }
+                        },
+                        {
+                          "member": { "__id": "CollectionView$ReconProcessStep/Properties[selectedItem]" }
+                        },
+                        {
+                          "member": { "__id": "ReconProcessStep/Properties[DestinationFileSection]" }
+                        },
+                        {
+                          "member": { "__id": "FileSection/Properties[FileDefinition]" }
+                        },
+                        {
+                          "member": { "__id": "FileDefinition/Properties[ID]" }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ViewReconProcess/Properties[isExecuting]",
+              "name": "isExecuting",
+              "elementType": { "__id": ":Boolean" },
+              "propertyType": { "__id": ":Boolean" },
+              ":@Required": { }
             }
           ]
         },
@@ -9062,6 +9503,12 @@
                     "childContentItems":
                     [
                       {
+                        "displayName": "View Recon Processes",
+                        "name": "ShowBrowseReconProcesses",
+                        "kind": "Command",
+                        "view": { "__id": ":Button" }
+                      },
+                      {
                         "displayName": "View All Imported Files",
                         "name": "ShowBrowseImportedFiles",
                         "kind": "Command",
@@ -9078,8 +9525,8 @@
                         ]
                       },
                       {
-                        "displayName": "View Unreconciled Imported Files ",
-                        "name": "ShowBrowseImportedFilesUnreconciled",
+                        "displayName": "View Imported Files For Today",
+                        "name": "ShowBrowseImportedFilesForToday",
                         "kind": "Command",
                         "view": { "__id": ":Button" },
                         "propertySources":
@@ -9088,7 +9535,7 @@
                             "property": { "__id": ":RootControl/Properties[Tap]" },
                             "source":
                             {
-                              "target": { "__id": "!module/Methods[showBrowseImportedFilesUnreconciled]" }
+                              "target": { "__id": "!module/Methods[showBrowseImportedFilesForToday]" }
                             }
                           }
                         ]
@@ -9167,6 +9614,825 @@
               ]
             }
           ]
+        },
+        {
+          "displayName": "Browse Imported Files For Today",
+          "id": "BrowseImportedFilesForToday",
+          "name": "BrowseImportedFilesForToday",
+          "launchMode": "Single",
+          ":@SaveChangesTo":
+          {
+            "property": { "__id": "DataWorkspace/Members[PagaReconData]" }
+          },
+          "rootContentItem":
+          {
+            "displayName": "Root Content Item",
+            "name": "RootContentItem",
+            "kind": "Screen",
+            "view": { "__id": ":Screen" },
+            "childContentItems":
+            [
+              {
+                "displayName": "Tabs",
+                "name": "Tabs",
+                "kind": "Group",
+                "view": { "__id": ":TabPages" },
+                "childContentItems":
+                [
+                  {
+                    "displayName": "Imported File List",
+                    "name": "ImportedFileList",
+                    "kind": "Tab",
+                    "view": { "__id": ":RowsLayout" },
+                    "childContentItems":
+                    [
+                      {
+                        "displayName": "ImportedFilesForToday",
+                        "name": "ImportedFilesForToday",
+                        "kind": "Collection",
+                        "view": { "__id": ":TileList" },
+                        "dataSource":
+                        {
+                          "member": { "__id": "BrowseImportedFilesForToday/Properties[ImportedFilesForToday]" }
+                        },
+                        "childContentItems":
+                        [
+                          {
+                            "displayName": "rows",
+                            "name": "rows",
+                            "kind": "Details",
+                            "view": { "__id": ":RowsLayout" },
+                            "dataSource":
+                            {
+                              "links":
+                              [
+                              ]
+                            },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "File Name",
+                                "name": "FileName",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ImportedFile/Properties[FileName]" }
+                                },
+                                "propertySources":
+                                [
+                                  {
+                                    "property": { "__id": ":RootControl/Properties[FontStyle]" },
+                                    "value": "Large"
+                                  }
+                                ]
+                              },
+                              {
+                                "displayName": "File Definition",
+                                "name": "FileDefinition",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "links":
+                                  [
+                                    {
+                                      "member": { "__id": "ImportedFile/Properties[FileDefinition]" }
+                                    },
+                                    {
+                                      "member": { "__id": "FileDefinition/Properties[Code]" }
+                                    }
+                                  ]
+                                },
+                                "propertySources":
+                                [
+                                  {
+                                    "property": { "__id": ":RootControl/Properties[FontStyle]" },
+                                    "value": "Small"
+                                  }
+                                ]
+                              }
+                            ],
+                            "propertySources":
+                            [
+                              {
+                                "property": { "__id": ":RootControl/Properties[WidthSizingMode]" },
+                                "value": "FitToContent"
+                              }
+                            ]
+                          }
+                        ],
+                        "propertySources":
+                        [
+                          {
+                            "property": { "__id": ":RootCollectionControl/Properties[ItemTap]" },
+                            "source":
+                            {
+                              "links":
+                              [
+                                {
+                                  "member": { "__id": "BrowseImportedFilesForToday/Properties[ImportedFilesForToday]" }
+                                },
+                                {
+                                  "target": { "__id": "CollectionView$ImportedFile/Methods[viewSelected]" }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "commandItems":
+                    [
+                      {
+                        "displayName": "Search",
+                        "name": "SearchImportedFilesForToday",
+                        "kind": "Command",
+                        "view": { "__id": ":CommandBarButton" },
+                        "propertySources":
+                        [
+                          {
+                            "property": { "__id": ":RootControl/Properties[Tap]" },
+                            "source":
+                            {
+                              "links":
+                              [
+                                {
+                                  "member": { "__id": "BrowseImportedFilesForToday/Properties[ImportedFilesForToday]" }
+                                },
+                                {
+                                  "target": { "__id": "CollectionView$ImportedFile/Methods[showSearch]" }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "property": { "__id": ":RootCommand/Properties[Icon]" },
+                            "value": "msls-search"
+                          }
+                        ]
+                      },
+                      {
+                        "displayName": "Import",
+                        "name": "AddImportedFile",
+                        "kind": "Command",
+                        "view": { "__id": ":CommandBarButton" },
+                        "propertySources":
+                        [
+                          {
+                            "property": { "__id": ":RootControl/Properties[Tap]" },
+                            "source":
+                            {
+                              "target": { "__id": "!module/Methods[showImportFile]" },
+                              ":@AssociatedCollection": { "collection": { "__id": "BrowseImportedFilesForToday/Properties[ImportedFilesForToday]" } },
+                              ":@CreateNewEntity":
+                              {
+                                "targetParameter": { "__id": "!module/Methods[showImportFile]/Parameters[ImportedFile]" }
+                              }
+                            }
+                          },
+                          {
+                            "property": { "__id": ":RootCommand/Properties[Icon]" },
+                            "value": "msls-add"
+                          }
+                        ]
+                      },
+                      {
+                        "displayName": "Filter",
+                        "name": "ShowFilter",
+                        "kind": "Command",
+                        "view": { "__id": ":CommandBarButton" },
+                        "propertySources":
+                        [
+                          {
+                            "property": { "__id": ":RootControl/Properties[Tap]" },
+                            "source":
+                            {
+                              "target": { "__id": "BrowseImportedFilesForToday/Methods[showDialog]" },
+                              "arguments":
+                              [
+                                {
+                                  "parameter": { "__id": "BrowseImportedFilesForToday/Methods[showDialog]/Parameters[dialogName]" },
+                                  "value":
+                                  {
+                                    "value": "Filter"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "property": { "__id": ":RootCommand/Properties[Icon]" },
+                            "value": "msls-filter"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "propertySources":
+                [
+                  {
+                    "property": { "__id": ":RootControl/Properties[BrowseOnly]" },
+                    "value": true
+                  }
+                ]
+              },
+              {
+                "displayName": "Popups",
+                "name": "Popups",
+                "kind": "Group",
+                "view": { "__id": ":DialogPages" },
+                "childContentItems":
+                [
+                  {
+                    "displayName": "Filter",
+                    "name": "Filter",
+                    "kind": "Popup",
+                    "view": { "__id": ":RowsLayout" },
+                    "childContentItems":
+                    [
+                      {
+                        "displayName": "Recon Source",
+                        "name": "ReconSource",
+                        "kind": "Details",
+                        "view": { "__id": ":DetailsModalPicker" },
+                        "dataSource":
+                        {
+                          "member": { "__id": "BrowseImportedFilesForToday/Properties[ReconSource]" }
+                        },
+                        "childContentItems":
+                        [
+                          {
+                            "displayName": "Recon Source",
+                            "name": "ReconSource1",
+                            "kind": "Value",
+                            "view": { "__id": ":Text" },
+                            "dataSource":
+                            {
+                              "member": { "__id": "ReconSource/Properties[Code]" }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "methods":
+          [
+            {
+              "id": "BrowseImportedFilesForToday/Methods[showTab]",
+              "name": "showTab",
+              "parameters":
+              [
+                {
+                  "id": "BrowseImportedFilesForToday/Methods[showTab]/Parameters[tabName]",
+                  "name": "tabName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            },
+            {
+              "id": "BrowseImportedFilesForToday/Methods[showDialog]",
+              "name": "showDialog",
+              "parameters":
+              [
+                {
+                  "id": "BrowseImportedFilesForToday/Methods[showDialog]/Parameters[dialogName]",
+                  "name": "dialogName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            }
+          ],
+          "properties":
+          [
+            {
+              "id": "BrowseImportedFilesForToday/Properties[ImportedFilesForToday]",
+              "name": "ImportedFilesForToday",
+              "pageSize": 45,
+              "elementType": { "__id": "ImportedFile" },
+              "propertyType": { "__id": "CollectionView$ImportedFile" },
+              "query":
+              {
+                "id": "BrowseImportedFilesForToday/Properties[ImportedFilesForToday]/Query",
+                "name": "ImportedFilesForTodayQuery",
+                "elementType": { "__id": "ImportedFile" },
+                "returnType": { "__id": "ImportedFile*" },
+                "source":
+                {
+                  "member": { "__id": "PagaReconData/Members[ImportedFilesForToday]" }
+                }
+              },
+              "source":
+              {
+                "target": { "__id": "BrowseImportedFilesForToday/Properties[ImportedFilesForToday]/Query" },
+                "arguments":
+                [
+                  {
+                    "parameter": { "__id": "PagaReconData/Members[ImportedFilesForToday]/Parameters[ReconSource]" },
+                    "value":
+                    {
+                      "links":
+                      [
+                        {
+                          "member": { "__id": "BrowseImportedFilesForToday/Properties[ReconSource]" }
+                        },
+                        {
+                          "member": { "__id": "ReconSource/Properties[ID]" }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "BrowseImportedFilesForToday/Properties[ImportedFileReconSource]",
+              "name": "ImportedFileReconSource",
+              "elementType": { "__id": "ReconSource" },
+              "propertyType": { "__id": "ReconSource" }
+            },
+            {
+              "id": "BrowseImportedFilesForToday/Properties[ReconSource]",
+              "name": "ReconSource",
+              "elementType": { "__id": "ReconSource" },
+              "propertyType": { "__id": "ReconSource" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconSummary_ImportedFile1",
+          "name": "FK_ReconSummary_ImportedFile1",
+          "ends":
+          [
+            {
+              "id": "FK_ReconSummary_ImportedFile1/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconSummary_ImportedFile1/Ends[ReconSummary]",
+              "name": "ReconSummary",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconSummary" }
+            }
+          ]
+        },
+        {
+          "id": "FK_SkyeImportDetails_ImportedFile",
+          "name": "FK_SkyeImportDetails_ImportedFile",
+          "ends":
+          [
+            {
+              "id": "FK_SkyeImportDetails_ImportedFile/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_SkyeImportDetails_ImportedFile/Ends[SkyeImportDetails]",
+              "name": "SkyeImportDetails",
+              "multiplicity": "Many",
+              "entityType": { "__id": "SkyeImportDetail" }
+            }
+          ]
+        },
+        {
+          "id": "FK_SkyeImportHeader_ImportedFile",
+          "name": "FK_SkyeImportHeader_ImportedFile",
+          "ends":
+          [
+            {
+              "id": "FK_SkyeImportHeader_ImportedFile/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_SkyeImportHeader_ImportedFile/Ends[SkyeImportHeader]",
+              "name": "SkyeImportHeader",
+              "multiplicity": "Many",
+              "entityType": { "__id": "SkyeImportHeader" }
+            }
+          ]
+        },
+        {
+          "__isEntityType": 1,
+          ":@SummaryProperty": { "property": { "__id": "vwReconProcessStatu/Properties[SourceFileAvailable]" } },
+          "id": "vwReconProcessStatu",
+          "name": "vwReconProcessStatu",
+          "methods":
+          [
+            {
+              "id": "vwReconProcessStatu/Methods[deleteEntity]",
+              "name": "deleteEntity"
+            },
+            {
+              "id": "vwReconProcessStatu/Methods[view]",
+              "name": "view"
+            },
+            {
+              "id": "vwReconProcessStatu/Methods[edit]",
+              "name": "edit"
+            }
+          ],
+          "properties":
+          [
+            {
+              "__isKeyProperty": 1,
+              "id": "vwReconProcessStatu/Properties[SourceFileAvailable]",
+              "name": "SourceFileAvailable",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 11
+              },
+              ":@AnsiConstraint": { }
+            },
+            {
+              "__isKeyProperty": 1,
+              "id": "vwReconProcessStatu/Properties[TargetFileAvailable]",
+              "name": "TargetFileAvailable",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 11
+              },
+              ":@AnsiConstraint": { }
+            },
+            {
+              "__isKeyProperty": 1,
+              "id": "vwReconProcessStatu/Properties[ReconProcessID]",
+              "name": "ReconProcessID",
+              "propertyType": { "__id": ":Int32" },
+              ":@Required": { },
+              ":@NotSearchable": { }
+            },
+            {
+              "__isKeyProperty": 1,
+              "id": "vwReconProcessStatu/Properties[ReconProcessCode]",
+              "name": "ReconProcessCode",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 50
+              },
+              ":@AnsiConstraint": { }
+            },
+            {
+              "__isKeyProperty": 1,
+              "id": "vwReconProcessStatu/Properties[ReconProcessStepID]",
+              "name": "ReconProcessStepID",
+              "propertyType": { "__id": ":Int32" },
+              ":@Required": { },
+              ":@NotSearchable": { }
+            },
+            {
+              "__isKeyProperty": 1,
+              "id": "vwReconProcessStatu/Properties[ReconProcessStepCode]",
+              "name": "ReconProcessStepCode",
+              "propertyType": { "__id": ":String" },
+              ":@Required": { },
+              ":@MaxLength":
+              {
+                "value": 50
+              },
+              ":@AnsiConstraint": { }
+            },
+            {
+              "id": "vwReconProcessStatu/Properties[ReconProcessName]",
+              "name": "ReconProcessName",
+              "propertyType": { "__id": ":String?" },
+              ":@MaxLength":
+              {
+                "value": 255
+              },
+              ":@AnsiConstraint": { }
+            },
+            {
+              "id": "vwReconProcessStatu/Properties[ReconProcessStepName]",
+              "name": "ReconProcessStepName",
+              "propertyType": { "__id": ":String?" },
+              ":@MaxLength":
+              {
+                "value": 255
+              },
+              ":@AnsiConstraint": { }
+            },
+            {
+              "id": "vwReconProcessStatu/Properties[ReconProcess]",
+              "name": "ReconProcess",
+              "association": { "__id": "vwReconProcessStatu_ReconProcess" },
+              "elementType": { "__id": "ReconProcess" },
+              "fromEnd": { "__id": "vwReconProcessStatu_ReconProcess/Ends[vwReconProcessStatu]" },
+              "propertyType": { "__id": "ReconProcess" },
+              "toEnd": { "__id": "vwReconProcessStatu_ReconProcess/Ends[ReconProcess]" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconProcessStep_ImportedFile",
+          "name": "FK_ReconProcessStep_ImportedFile",
+          "ends":
+          [
+            {
+              "id": "FK_ReconProcessStep_ImportedFile/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconProcessStep_ImportedFile/Ends[ReconProcessStep]",
+              "name": "ReconProcessStep",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconProcessStep" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconProcessStep_ImportedFile1",
+          "name": "FK_ReconProcessStep_ImportedFile1",
+          "ends":
+          [
+            {
+              "id": "FK_ReconProcessStep_ImportedFile1/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconProcessStep_ImportedFile1/Ends[ReconProcessStep]",
+              "name": "ReconProcessStep",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconProcessStep" }
+            }
+          ]
+        },
+        {
+          "id": "vwReconProcessStatu_ReconProcess",
+          "name": "vwReconProcessStatu_ReconProcess",
+          ":@UserDefined": { },
+          "ends":
+          [
+            {
+              "id": "vwReconProcessStatu_ReconProcess/Ends[vwReconProcessStatu]",
+              "name": "vwReconProcessStatu",
+              "multiplicity": "Many",
+              "entityType": { "__id": "vwReconProcessStatu" }
+            },
+            {
+              "id": "vwReconProcessStatu_ReconProcess/Ends[ReconProcess]",
+              "name": "ReconProcess",
+              "multiplicity": "One",
+              "entityType": { "__id": "ReconProcess" },
+              ":@DeleteRule": { "action": "Unset" }
+            }
+          ]
+        },
+        {
+          "displayName": "Browse Recon Processes",
+          "id": "BrowseReconProcesses",
+          "name": "BrowseReconProcesses",
+          "launchMode": "Single",
+          ":@SaveChangesTo":
+          {
+            "property": { "__id": "DataWorkspace/Members[PagaReconData]" }
+          },
+          "rootContentItem":
+          {
+            "displayName": "Root Content Item",
+            "name": "RootContentItem",
+            "kind": "Screen",
+            "view": { "__id": ":Screen" },
+            "childContentItems":
+            [
+              {
+                "displayName": "Tabs",
+                "name": "Tabs",
+                "kind": "Group",
+                "view": { "__id": ":TabPages" },
+                "childContentItems":
+                [
+                  {
+                    "displayName": "Recon Process List",
+                    "name": "ReconProcessList",
+                    "kind": "Tab",
+                    "view": { "__id": ":RowsLayout" },
+                    "childContentItems":
+                    [
+                      {
+                        "displayName": "ReconProcesses",
+                        "name": "ReconProcesses",
+                        "kind": "Collection",
+                        "view": { "__id": ":TileList" },
+                        "dataSource":
+                        {
+                          "member": { "__id": "BrowseReconProcesses/Properties[ReconProcesses]" }
+                        },
+                        "childContentItems":
+                        [
+                          {
+                            "displayName": "rows",
+                            "name": "rows",
+                            "kind": "Details",
+                            "view": { "__id": ":RowsLayout" },
+                            "dataSource":
+                            {
+                              "links":
+                              [
+                              ]
+                            },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "Code",
+                                "name": "Code",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ReconProcess/Properties[Code]" }
+                                },
+                                "propertySources":
+                                [
+                                  {
+                                    "property": { "__id": ":RootControl/Properties[FontStyle]" },
+                                    "value": "Large"
+                                  }
+                                ]
+                              },
+                              {
+                                "displayName": "Name",
+                                "name": "Name",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ReconProcess/Properties[Name]" }
+                                },
+                                "propertySources":
+                                [
+                                  {
+                                    "property": { "__id": ":RootControl/Properties[FontStyle]" },
+                                    "value": "Small"
+                                  }
+                                ]
+                              }
+                            ],
+                            "propertySources":
+                            [
+                              {
+                                "property": { "__id": ":RootControl/Properties[WidthSizingMode]" },
+                                "value": "FitToContent"
+                              }
+                            ]
+                          }
+                        ],
+                        "propertySources":
+                        [
+                          {
+                            "property": { "__id": ":RootCollectionControl/Properties[ItemTap]" },
+                            "source":
+                            {
+                              "target": { "__id": "!module/Methods[showViewReconProcess]" },
+                              ":@AssociatedCollection": { "collection": { "__id": "BrowseReconProcesses/Properties[ReconProcesses]" } },
+                              "arguments":
+                              [
+                                {
+                                  "parameter": { "__id": "!module/Methods[showViewReconProcess]/Parameters[ReconProcess]" },
+                                  "value":
+                                  {
+                                    "links":
+                                    [
+                                      {
+                                        "member": { "__id": "BrowseReconProcesses/Properties[ReconProcesses]" }
+                                      },
+                                      {
+                                        "member": { "__id": "CollectionView$ReconProcess/Properties[selectedItem]" }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "commandItems":
+                    [
+                      {
+                        "displayName": "Search",
+                        "name": "SearchReconProcesses",
+                        "kind": "Command",
+                        "view": { "__id": ":CommandBarButton" },
+                        "propertySources":
+                        [
+                          {
+                            "property": { "__id": ":RootControl/Properties[Tap]" },
+                            "source":
+                            {
+                              "links":
+                              [
+                                {
+                                  "member": { "__id": "BrowseReconProcesses/Properties[ReconProcesses]" }
+                                },
+                                {
+                                  "target": { "__id": "CollectionView$ReconProcess/Methods[showSearch]" }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "property": { "__id": ":RootCommand/Properties[Icon]" },
+                            "value": "msls-search"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "propertySources":
+                [
+                  {
+                    "property": { "__id": ":RootControl/Properties[BrowseOnly]" },
+                    "value": true
+                  }
+                ]
+              },
+              {
+                "displayName": "Popups",
+                "name": "Popups",
+                "kind": "Group",
+                "view": { "__id": ":DialogPages" }
+              }
+            ]
+          },
+          "methods":
+          [
+            {
+              "id": "BrowseReconProcesses/Methods[showTab]",
+              "name": "showTab",
+              "parameters":
+              [
+                {
+                  "id": "BrowseReconProcesses/Methods[showTab]/Parameters[tabName]",
+                  "name": "tabName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            },
+            {
+              "id": "BrowseReconProcesses/Methods[showDialog]",
+              "name": "showDialog",
+              "parameters":
+              [
+                {
+                  "id": "BrowseReconProcesses/Methods[showDialog]/Parameters[dialogName]",
+                  "name": "dialogName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            }
+          ],
+          "properties":
+          [
+            {
+              "id": "BrowseReconProcesses/Properties[ReconProcesses]",
+              "name": "ReconProcesses",
+              "pageSize": 45,
+              "elementType": { "__id": "ReconProcess" },
+              "propertyType": { "__id": "CollectionView$ReconProcess" },
+              "query":
+              {
+                "id": "BrowseReconProcesses/Properties[ReconProcesses]/Query",
+                "name": "ReconProcessesQuery",
+                "elementType": { "__id": "ReconProcess" },
+                "returnType": { "__id": "ReconProcess*" },
+                "source":
+                {
+                  "member": { "__id": "PagaReconData/Members[ReconProcesses]" }
+                }
+              },
+              "source":
+              {
+                "target": { "__id": "BrowseReconProcesses/Properties[ReconProcesses]/Query" }
+              }
+            }
+          ]
         }
       ],
       "methods":
@@ -9208,11 +10474,6 @@
           ]
         },
         {
-          "id": "!module/Methods[showBrowseReconProcesses]",
-          "name": "showBrowseReconProcesses",
-          ":@ShowScreenMethod": { "targetScreen": { "__id": "BrowseReconProcesses" } }
-        },
-        {
           "id": "!module/Methods[showViewReconProcess]",
           "name": "showViewReconProcess",
           ":@ShowScreenMethod": { "targetScreen": { "__id": "ViewReconProcess" } },
@@ -9239,6 +10500,16 @@
           "id": "!module/Methods[showHome]",
           "name": "showHome",
           ":@ShowScreenMethod": { "targetScreen": { "__id": "Home" } }
+        },
+        {
+          "id": "!module/Methods[showBrowseImportedFilesForToday]",
+          "name": "showBrowseImportedFilesForToday",
+          ":@ShowScreenMethod": { "targetScreen": { "__id": "BrowseImportedFilesForToday" } }
+        },
+        {
+          "id": "!module/Methods[showBrowseReconProcesses]",
+          "name": "showBrowseReconProcesses",
+          ":@ShowScreenMethod": { "targetScreen": { "__id": "BrowseReconProcesses" } }
         }
       ],
       "navigationItems":
@@ -9262,6 +10533,11 @@
           "id": "!module/NavigationItems[link2]",
           "name": "link2",
           "method": { "__id": "!module/Methods[showBrowseImportedFilesUnreconciled]" }
+        },
+        {
+          "id": "!module/NavigationItems[link5]",
+          "name": "link5",
+          "method": { "__id": "!module/Methods[showBrowseImportedFilesForToday]" }
         },
         {
           "id": "!module/NavigationItems[link4]",

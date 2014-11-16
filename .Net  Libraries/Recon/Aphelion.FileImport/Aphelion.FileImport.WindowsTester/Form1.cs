@@ -111,7 +111,7 @@ namespace Aphelion.Recon.WindowsTester
 
         private void backgroundWorkerSection_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.isFile = new ImportSection(this.txtConn.Text, this.txtSectionCode.Text, this.ft, this.txtFileName.Text);
+            this.isFile = new ImportSection(this.txtConn.Text, this.txtSectionCode.Text, this.ft, this.txtFileName.Text, System.Convert.ToInt32( this.txtImportedFileID.Text));
             this.isFile.ImportFileToStaging();
         }
 
