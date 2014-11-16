@@ -7,8 +7,8 @@
     [FileDefinitionID]   INT           NOT NULL,
     [StartRow]           INT           CONSTRAINT [DF__FileSecti__Start__693CA210] DEFAULT ((0)) NOT NULL,
     [StartColumn]        INT           CONSTRAINT [DF__FileSecti__Start__6A30C649] DEFAULT ((0)) NOT NULL,
-    [NumRows]            INT           NULL,
-    [NumColumns]         INT           NULL,
+    [NumRows]            INT           CONSTRAINT [DF_FileSection_NumRows] DEFAULT ((0)) NOT NULL,
+    [NumColumns]         INT           CONSTRAINT [DF_FileSection_NumColumns] DEFAULT ((0)) NOT NULL,
     [Pivot]              BIT           CONSTRAINT [DF_FileSection_Pivot] DEFAULT ((0)) NOT NULL,
     [HeaderRow]          BIT           CONSTRAINT [DF_FileSection_HeaderRow] DEFAULT ((1)) NOT NULL,
     [sys_CreatedBy]      VARCHAR (255) CONSTRAINT [DF_FileSection_sys_CreatedBy] DEFAULT (user_name()) NOT NULL,
@@ -19,6 +19,8 @@
     CONSTRAINT [FK_FileSection_FileDefinition] FOREIGN KEY ([FileDefinitionID]) REFERENCES [Import].[FileDefinition] ([ID]),
     CONSTRAINT [UQ_FileSection_Code] UNIQUE NONCLUSTERED ([Code] ASC)
 );
+
+
 
 
 
