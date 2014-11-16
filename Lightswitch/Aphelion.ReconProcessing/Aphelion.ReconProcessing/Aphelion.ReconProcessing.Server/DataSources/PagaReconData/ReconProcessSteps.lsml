@@ -95,12 +95,12 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Name="FileSection"
+        Name="SourceFileSection"
         Association="FK_ReconProcessStep_FileSection"
         FromEnd="ReconProcessStep"
         ToEnd="FileSection" />
       <NavigationProperty
-        Name="FileSection1"
+        Name="DestinationFileSection"
         Association="FK_ReconProcessStep_FileSection1"
         FromEnd="ReconProcessStep"
         ToEnd="FileSection" />
@@ -119,6 +119,16 @@
         Association="FK_ReconSummary_ReconProcessStep"
         FromEnd="ReconProcessStep"
         ToEnd="ReconSummary" />
+      <NavigationProperty
+        Name="CurrentSourceImportFile"
+        Association="FK_ReconProcessStep_ImportedFile"
+        FromEnd="ReconProcessStep"
+        ToEnd="ImportedFile" />
+      <NavigationProperty
+        Name="CurrentTargetImportFile"
+        Association="FK_ReconProcessStep_ImportedFile1"
+        FromEnd="ReconProcessStep"
+        ToEnd="ImportedFile" />
     </EntityType.Properties>
   </EntityType>
   <Association
@@ -304,6 +314,16 @@
           Nullable="False"
           Type="int"
           PropertyName="TargetFileSectionID" />
+        <SsdlForeignKeyProperty
+          Name="CurrentSourceImportedFileID"
+          Nullable="True"
+          Type="int"
+          PropertyName="CurrentSourceImportedFileID" />
+        <SsdlForeignKeyProperty
+          Name="CurrentTargetImportedFileID"
+          Nullable="True"
+          Type="int"
+          PropertyName="CurrentTargetImportedFileID" />
         <SsdlForeignKeyProperty
           Name="ReconProcessID"
           Nullable="False"

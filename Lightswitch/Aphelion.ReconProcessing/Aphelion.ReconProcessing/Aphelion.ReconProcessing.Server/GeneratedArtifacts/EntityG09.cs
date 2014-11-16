@@ -265,6 +265,29 @@ namespace LightSwitchApplication
             }
         }
 
+        /// <summary>
+        /// No Modeled Description Available
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Microsoft.LightSwitch.Framework.EntityCollection<global::LightSwitchApplication.vwReconProcessStatu> vwReconProcessStatus
+        {
+            get
+            {
+                return global::LightSwitchApplication.ReconProcess.DetailsClass.GetValue(this, global::LightSwitchApplication.ReconProcess.DetailsClass.PropertySetProperties.vwReconProcessStatus);
+            }
+        }
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public Microsoft.LightSwitch.IDataServiceQueryable<global::LightSwitchApplication.vwReconProcessStatu> vwReconProcessStatusQuery
+        {
+            get
+            {
+                return global::LightSwitchApplication.ReconProcess.DetailsClass.GetQuery(this, global::LightSwitchApplication.ReconProcess.DetailsClass.PropertySetProperties.vwReconProcessStatus);
+            }
+        }
+
         #endregion
     
         #region Details Class
@@ -411,6 +434,14 @@ namespace LightSwitchApplication
                     }
                 }
                 
+                public global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconProcess, global::LightSwitchApplication.ReconProcess.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu> vwReconProcessStatus
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.ReconProcess.DetailsClass.PropertySetProperties.vwReconProcessStatus) as global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconProcess, global::LightSwitchApplication.ReconProcess.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>;
+                    }
+                }
+                
             }
     
             #pragma warning disable 109
@@ -425,6 +456,7 @@ namespace LightSwitchApplication
                 new string sys_ModifiedBy { get; set; }
                 new global::System.DateTime sys_ModifiedOn { get; set; }
                 new global::System.Collections.IEnumerable ReconProcessSteps { get; }
+                new global::System.Collections.IEnumerable vwReconProcessStatus { get; }
             }
             #pragma warning restore 109
     
@@ -709,6 +741,26 @@ namespace LightSwitchApplication
                     return d.ImplementationEntity.ReconProcessSteps;
                 }
     
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconProcess, global::LightSwitchApplication.ReconProcess.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Entry
+                    vwReconProcessStatus = new global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconProcess, global::LightSwitchApplication.ReconProcess.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Entry(
+                        "vwReconProcessStatus",
+                        global::LightSwitchApplication.ReconProcess.DetailsClass.PropertySetProperties._vwReconProcessStatus_Stub,
+                        global::LightSwitchApplication.ReconProcess.DetailsClass.PropertySetProperties._vwReconProcessStatus_GetReferencedEntities,
+                        global::LightSwitchApplication.ReconProcess.DetailsClass.PropertySetProperties._vwReconProcessStatus_GetEntityCollection);
+                private static void _vwReconProcessStatus_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ReconProcess.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconProcess, global::LightSwitchApplication.ReconProcess.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Data> c, global::LightSwitchApplication.ReconProcess.DetailsClass d, object sf)
+                {
+                    c(d, ref d._vwReconProcessStatus, sf);
+                }
+                private static global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.vwReconProcessStatu> _vwReconProcessStatus_GetReferencedEntities(global::LightSwitchApplication.ReconProcess.DetailsClass d)
+                {
+                    return d.GetReferencedEntities<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass>(global::LightSwitchApplication.ReconProcess.DetailsClass.PropertySetProperties.vwReconProcessStatus, ref d._vwReconProcessStatus);
+                }
+                private static global::System.Collections.IEnumerable _vwReconProcessStatus_GetEntityCollection(global::LightSwitchApplication.ReconProcess.DetailsClass d)
+                {
+                    return d.ImplementationEntity.vwReconProcessStatus;
+                }
+    
             }
     
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -734,6 +786,9 @@ namespace LightSwitchApplication
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconProcess, global::LightSwitchApplication.ReconProcess.DetailsClass, global::LightSwitchApplication.ReconProcessStep>.Data _ReconProcessSteps;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ReconProcess, global::LightSwitchApplication.ReconProcess.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Data _vwReconProcessStatus;
             
         }
     

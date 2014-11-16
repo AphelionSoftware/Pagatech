@@ -19,6 +19,7 @@
     <EntitySet Name="SkyeImportDetails" EntityType="PagaReconDataStore.SkyeImportDetail" store:Type="Tables" Schema="Staging" Table="SkyeImportDetails" />
     <EntitySet Name="SkyeImportHeaders" EntityType="PagaReconDataStore.SkyeImportHeader" store:Type="Tables" Schema="Staging" Table="SkyeImportHeader" />
     <EntitySet Name="SystemFields" EntityType="PagaReconDataStore.SystemField" store:Type="Tables" Schema="Admin" Table="SystemField" />
+    <EntitySet Name="vwReconProcessStatus" EntityType="PagaReconDataStore.vwReconProcessStatu" store:Type="Tables" Schema="Import" Table="vwReconProcessStatus" />
     <AssociationSet Name="FK_FileSection_FileDefinition" Association="PagaReconDataStore.FK_FileSection_FileDefinition">
       <End Role="FileDefinition" EntitySet="FileDefinitions" />
       <End Role="FileSection" EntitySet="FileSections" />
@@ -64,11 +65,31 @@
       <End Role="ReconSummary" EntitySet="ReconSummaries" />
     </AssociationSet>
     <AssociationSet Name="FK_ImportedFile_ReconSummary" Association="PagaReconDataStore.FK_ImportedFile_ReconSummary">
-      <End Role="ReconSummary" EntitySet="ReconSummaries" />
       <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconSummary" EntitySet="ReconSummaries" />
     </AssociationSet>
     <AssociationSet Name="FK_ReconProcessStep_ReconType" Association="PagaReconDataStore.FK_ReconProcessStep_ReconType">
       <End Role="ReconType" EntitySet="ReconTypes" />
+      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconSummary_ImportedFile1" Association="PagaReconDataStore.FK_ReconSummary_ImportedFile1">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconSummary" EntitySet="ReconSummaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SkyeImportDetails_ImportedFile" Association="PagaReconDataStore.FK_SkyeImportDetails_ImportedFile">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="SkyeImportDetails" EntitySet="SkyeImportDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SkyeImportHeader_ImportedFile" Association="PagaReconDataStore.FK_SkyeImportHeader_ImportedFile">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="SkyeImportHeader" EntitySet="SkyeImportHeaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconProcessStep_ImportedFile" Association="PagaReconDataStore.FK_ReconProcessStep_ImportedFile">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconProcessStep_ImportedFile1" Association="PagaReconDataStore.FK_ReconProcessStep_ImportedFile1">
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
       <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
     </AssociationSet>
   </EntityContainer>
@@ -160,7 +181,6 @@
     <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="FileContents" Type="varbinary(max)" />
     <Property Name="FileDefinitionID" Type="int" Nullable="false" />
-    <Property Name="ReconSummaryID" Type="int" />
   </EntityType>
   <EntityType Name="ReconDetail">
     <Key>
@@ -218,6 +238,8 @@
     <Property Name="TargetFileSectionID" Type="int" Nullable="false" />
     <Property Name="ReconProcessID" Type="int" Nullable="false" />
     <Property Name="ReconTypeID" Type="int" Nullable="false" />
+    <Property Name="CurrentSourceImportedFileID" Type="int" />
+    <Property Name="CurrentTargetImportedFileID" Type="int" />
   </EntityType>
   <EntityType Name="ReconSource">
     <Key>
@@ -274,6 +296,8 @@
     <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
     <Property Name="ReconProcessStepID" Type="int" Nullable="false" />
     <Property Name="ReconStatusID" Type="int" Nullable="false" />
+    <Property Name="SourceImportFileID" Type="int" />
+    <Property Name="DestImportFileID" Type="int" />
   </EntityType>
   <EntityType Name="ReconType">
     <Key>
@@ -303,6 +327,7 @@
     <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
     <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="ImportedFileID" Type="int" />
   </EntityType>
   <EntityType Name="SkyeImportHeader">
     <Key>
@@ -318,6 +343,7 @@
     <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
     <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="ImportedFileID" Type="int" />
   </EntityType>
   <EntityType Name="SystemField">
     <Key>
@@ -332,6 +358,24 @@
     <Property Name="sys_CreatedOn" Type="datetime" Nullable="false" />
     <Property Name="sys_ModifiedBy" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="sys_ModifiedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vwReconProcessStatu">
+    <Key>
+      <PropertyRef Name="SourceFileAvailable" />
+      <PropertyRef Name="TargetFileAvailable" />
+      <PropertyRef Name="ReconProcessID" />
+      <PropertyRef Name="ReconProcessCode" />
+      <PropertyRef Name="ReconProcessStepID" />
+      <PropertyRef Name="ReconProcessStepCode" />
+    </Key>
+    <Property Name="SourceFileAvailable" Type="varchar" Nullable="false" MaxLength="11" />
+    <Property Name="TargetFileAvailable" Type="varchar" Nullable="false" MaxLength="11" />
+    <Property Name="ReconProcessID" Type="int" Nullable="false" />
+    <Property Name="ReconProcessCode" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ReconProcessStepID" Type="int" Nullable="false" />
+    <Property Name="ReconProcessStepCode" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ReconProcessName" Type="varchar" MaxLength="255" />
+    <Property Name="ReconProcessStepName" Type="varchar" MaxLength="255" />
   </EntityType>
   <Association Name="FK_FileSection_FileDefinition">
     <End Role="FileDefinition" Type="PagaReconDataStore.FileDefinition" Multiplicity="1">
@@ -488,16 +532,16 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ImportedFile_ReconSummary">
-    <End Role="ReconSummary" Type="PagaReconDataStore.ReconSummary" Multiplicity="0..1">
+    <End Role="ImportedFile" Type="PagaReconDataStore.ImportedFile" Multiplicity="0..1">
       <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
     </End>
-    <End Role="ImportedFile" Type="PagaReconDataStore.ImportedFile" Multiplicity="*" />
+    <End Role="ReconSummary" Type="PagaReconDataStore.ReconSummary" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ReconSummary">
+      <Principal Role="ImportedFile">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="ImportedFile">
-        <PropertyRef Name="ReconSummaryID" />
+      <Dependent Role="ReconSummary">
+        <PropertyRef Name="SourceImportFileID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -512,6 +556,76 @@
       </Principal>
       <Dependent Role="ReconProcessStep">
         <PropertyRef Name="ReconTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconSummary_ImportedFile1">
+    <End Role="ImportedFile" Type="PagaReconDataStore.ImportedFile" Multiplicity="0..1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ReconSummary" Type="PagaReconDataStore.ReconSummary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconSummary">
+        <PropertyRef Name="DestImportFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SkyeImportDetails_ImportedFile">
+    <End Role="ImportedFile" Type="PagaReconDataStore.ImportedFile" Multiplicity="0..1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="SkyeImportDetails" Type="PagaReconDataStore.SkyeImportDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SkyeImportDetails">
+        <PropertyRef Name="ImportedFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SkyeImportHeader_ImportedFile">
+    <End Role="ImportedFile" Type="PagaReconDataStore.ImportedFile" Multiplicity="0..1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="SkyeImportHeader" Type="PagaReconDataStore.SkyeImportHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SkyeImportHeader">
+        <PropertyRef Name="ImportedFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconProcessStep_ImportedFile">
+    <End Role="ImportedFile" Type="PagaReconDataStore.ImportedFile" Multiplicity="0..1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ReconProcessStep" Type="PagaReconDataStore.ReconProcessStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconProcessStep">
+        <PropertyRef Name="CurrentSourceImportedFileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconProcessStep_ImportedFile1">
+    <End Role="ImportedFile" Type="PagaReconDataStore.ImportedFile" Multiplicity="0..1">
+      <OnDeleteAnnotation Action="Unset" xmlns="http://schemas.microsoft.com/LightSwitch/2013/edm/annotations" />
+    </End>
+    <End Role="ReconProcessStep" Type="PagaReconDataStore.ReconProcessStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportedFile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconProcessStep">
+        <PropertyRef Name="CurrentTargetImportedFileID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

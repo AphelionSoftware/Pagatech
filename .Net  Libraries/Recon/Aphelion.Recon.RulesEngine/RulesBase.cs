@@ -357,7 +357,7 @@ namespace Aphelion.Recon.RulesEngine
 
                     case AggregationType.NegSum:
                         result = (from myRow in dtTable.AsEnumerable()
-                                          select System.Convert.ToDecimal(myRow[agg.FieldName])).Sum();
+                                  select System.Convert.ToDecimal(myRow[agg.FieldName].ToString().Replace(",", ""))).Sum();
                         if (agg.aggregationType == AggregationType.NegSum) {
                             decNum  += result * -1;
                         } else {

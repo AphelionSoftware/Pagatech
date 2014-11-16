@@ -259,8 +259,8 @@ window.myapp = msls.application;
         /// <field name="FileDefinition" type="msls.application.FileDefinition">
         /// Gets or sets the fileDefinition for this importedFile.
         /// </field>
-        /// <field name="ReconSummary" type="msls.application.ReconSummary">
-        /// Gets or sets the reconSummary for this importedFile.
+        /// <field name="ReconSummary" type="msls.EntityCollection" elementType="msls.application.ReconSummary">
+        /// Gets the reconSummary for this importedFile.
         /// </field>
         /// <field name="UploadedFileName" type="String">
         /// Gets or sets the uploadedFileName for this importedFile.
@@ -282,6 +282,21 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="FileContents" type="String">
         /// Gets or sets the fileContents for this importedFile.
+        /// </field>
+        /// <field name="ReconSummaries1" type="msls.EntityCollection" elementType="msls.application.ReconSummary">
+        /// Gets the reconSummaries1 for this importedFile.
+        /// </field>
+        /// <field name="SkyeImportDetails" type="msls.EntityCollection" elementType="msls.application.SkyeImportDetail">
+        /// Gets the skyeImportDetails for this importedFile.
+        /// </field>
+        /// <field name="SkyeImportHeaders" type="msls.EntityCollection" elementType="msls.application.SkyeImportHeader">
+        /// Gets the skyeImportHeaders for this importedFile.
+        /// </field>
+        /// <field name="ReconProcessSteps" type="msls.EntityCollection" elementType="msls.application.ReconProcessStep">
+        /// Gets the reconProcessSteps for this importedFile.
+        /// </field>
+        /// <field name="ReconProcessSteps1" type="msls.EntityCollection" elementType="msls.application.ReconProcessStep">
+        /// Gets the reconProcessSteps1 for this importedFile.
         /// </field>
         /// <field name="details" type="msls.application.ImportedFile.Details">
         /// Gets the details for this importedFile.
@@ -400,6 +415,9 @@ window.myapp = msls.application;
         /// <field name="ReconProcessSteps" type="msls.EntityCollection" elementType="msls.application.ReconProcessStep">
         /// Gets the reconProcessSteps for this reconProcess.
         /// </field>
+        /// <field name="vwReconProcessStatus" type="msls.EntityCollection" elementType="msls.application.vwReconProcessStatu">
+        /// Gets the vwReconProcessStatus for this reconProcess.
+        /// </field>
         /// <field name="details" type="msls.application.ReconProcess.Details">
         /// Gets the details for this reconProcess.
         /// </field>
@@ -437,11 +455,11 @@ window.myapp = msls.application;
         /// <field name="sys_ModifiedOn" type="Date">
         /// Gets or sets the sys_ModifiedOn for this reconProcessStep.
         /// </field>
-        /// <field name="FileSection" type="msls.application.FileSection">
-        /// Gets or sets the fileSection for this reconProcessStep.
+        /// <field name="SourceFileSection" type="msls.application.FileSection">
+        /// Gets or sets the sourceFileSection for this reconProcessStep.
         /// </field>
-        /// <field name="FileSection1" type="msls.application.FileSection">
-        /// Gets or sets the fileSection1 for this reconProcessStep.
+        /// <field name="DestinationFileSection" type="msls.application.FileSection">
+        /// Gets or sets the destinationFileSection for this reconProcessStep.
         /// </field>
         /// <field name="ReconProcess" type="msls.application.ReconProcess">
         /// Gets or sets the reconProcess for this reconProcessStep.
@@ -451,6 +469,12 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="ReconSummaries" type="msls.EntityCollection" elementType="msls.application.ReconSummary">
         /// Gets the reconSummaries for this reconProcessStep.
+        /// </field>
+        /// <field name="CurrentSourceImportFile" type="msls.application.ImportedFile">
+        /// Gets or sets the currentSourceImportFile for this reconProcessStep.
+        /// </field>
+        /// <field name="CurrentTargetImportFile" type="msls.application.ImportedFile">
+        /// Gets or sets the currentTargetImportFile for this reconProcessStep.
         /// </field>
         /// <field name="details" type="msls.application.ReconProcessStep.Details">
         /// Gets the details for this reconProcessStep.
@@ -615,14 +639,17 @@ window.myapp = msls.application;
         /// <field name="sys_ModifiedOn" type="Date">
         /// Gets or sets the sys_ModifiedOn for this reconSummary.
         /// </field>
-        /// <field name="ImportedFiles" type="msls.EntityCollection" elementType="msls.application.ImportedFile">
-        /// Gets the importedFiles for this reconSummary.
+        /// <field name="ImportedFiles" type="msls.application.ImportedFile">
+        /// Gets or sets the importedFiles for this reconSummary.
         /// </field>
         /// <field name="ReconProcessStep" type="msls.application.ReconProcessStep">
         /// Gets or sets the reconProcessStep for this reconSummary.
         /// </field>
         /// <field name="ReconStatu" type="msls.application.ReconStatu">
         /// Gets or sets the reconStatu for this reconSummary.
+        /// </field>
+        /// <field name="ImportedFile1" type="msls.application.ImportedFile">
+        /// Gets or sets the importedFile1 for this reconSummary.
         /// </field>
         /// <field name="details" type="msls.application.ReconSummary.Details">
         /// Gets the details for this reconSummary.
@@ -710,6 +737,9 @@ window.myapp = msls.application;
         /// <field name="sys_ModifiedOn" type="Date">
         /// Gets or sets the sys_ModifiedOn for this skyeImportDetail.
         /// </field>
+        /// <field name="ImportedFile" type="msls.application.ImportedFile">
+        /// Gets or sets the importedFile for this skyeImportDetail.
+        /// </field>
         /// <field name="details" type="msls.application.SkyeImportDetail.Details">
         /// Gets the details for this skyeImportDetail.
         /// </field>
@@ -753,6 +783,9 @@ window.myapp = msls.application;
         /// <field name="sys_ModifiedOn" type="Date">
         /// Gets or sets the sys_ModifiedOn for this skyeImportHeader.
         /// </field>
+        /// <field name="ImportedFile" type="msls.application.ImportedFile">
+        /// Gets or sets the importedFile for this skyeImportHeader.
+        /// </field>
         /// <field name="details" type="msls.application.SkyeImportHeader.Details">
         /// Gets the details for this skyeImportHeader.
         /// </field>
@@ -795,6 +828,46 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="details" type="msls.application.SystemField.Details">
         /// Gets the details for this systemField.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
+    function vwReconProcessStatu(entitySet) {
+        /// <summary>
+        /// Represents the vwReconProcessStatu entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this vwReconProcessStatu.
+        /// </param>
+        /// <field name="SourceFileAvailable" type="String">
+        /// Gets or sets the sourceFileAvailable for this vwReconProcessStatu.
+        /// </field>
+        /// <field name="TargetFileAvailable" type="String">
+        /// Gets or sets the targetFileAvailable for this vwReconProcessStatu.
+        /// </field>
+        /// <field name="ReconProcessID" type="Number">
+        /// Gets or sets the reconProcessID for this vwReconProcessStatu.
+        /// </field>
+        /// <field name="ReconProcessCode" type="String">
+        /// Gets or sets the reconProcessCode for this vwReconProcessStatu.
+        /// </field>
+        /// <field name="ReconProcessStepID" type="Number">
+        /// Gets or sets the reconProcessStepID for this vwReconProcessStatu.
+        /// </field>
+        /// <field name="ReconProcessStepCode" type="String">
+        /// Gets or sets the reconProcessStepCode for this vwReconProcessStatu.
+        /// </field>
+        /// <field name="ReconProcessName" type="String">
+        /// Gets or sets the reconProcessName for this vwReconProcessStatu.
+        /// </field>
+        /// <field name="ReconProcessStepName" type="String">
+        /// Gets or sets the reconProcessStepName for this vwReconProcessStatu.
+        /// </field>
+        /// <field name="ReconProcess" type="msls.application.ReconProcess">
+        /// Gets or sets the reconProcess for this vwReconProcessStatu.
+        /// </field>
+        /// <field name="details" type="msls.application.vwReconProcessStatu.Details">
+        /// Gets the details for this vwReconProcessStatu.
         /// </field>
         $Entity.call(this, entitySet);
     }
@@ -859,6 +932,9 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="SystemFields" type="msls.EntitySet">
         /// Gets the SystemFields entity set.
+        /// </field>
+        /// <field name="vwReconProcessStatus" type="msls.EntitySet">
+        /// Gets the vwReconProcessStatus entity set.
         /// </field>
         /// <field name="details" type="msls.application.PagaReconData.Details">
         /// Gets the details for this data service.
@@ -954,14 +1030,19 @@ window.myapp = msls.application;
         ImportedFile: $defineEntity(ImportedFile, [
             { name: "FileName", type: String },
             { name: "FileDefinition", kind: "reference", type: FileDefinition },
-            { name: "ReconSummary", kind: "reference", type: ReconSummary },
+            { name: "ReconSummary", kind: "collection", elementType: ReconSummary },
             { name: "UploadedFileName", type: String },
             { name: "sys_CreatedBy", type: String },
             { name: "sys_CreatedOn", type: Date },
             { name: "sys_ModifiedBy", type: String },
             { name: "sys_ModifiedOn", type: Date },
             { name: "ID", type: Number, isReadOnly: true },
-            { name: "FileContents", type: String }
+            { name: "FileContents", type: String },
+            { name: "ReconSummaries1", kind: "collection", elementType: ReconSummary },
+            { name: "SkyeImportDetails", kind: "collection", elementType: SkyeImportDetail },
+            { name: "SkyeImportHeaders", kind: "collection", elementType: SkyeImportHeader },
+            { name: "ReconProcessSteps", kind: "collection", elementType: ReconProcessStep },
+            { name: "ReconProcessSteps1", kind: "collection", elementType: ReconProcessStep }
         ]),
 
         ReconDetail: $defineEntity(ReconDetail, [
@@ -996,7 +1077,8 @@ window.myapp = msls.application;
             { name: "sys_CreatedOn", type: Date },
             { name: "sys_ModifiedBy", type: String },
             { name: "sys_ModifiedOn", type: Date },
-            { name: "ReconProcessSteps", kind: "collection", elementType: ReconProcessStep }
+            { name: "ReconProcessSteps", kind: "collection", elementType: ReconProcessStep },
+            { name: "vwReconProcessStatus", kind: "collection", elementType: vwReconProcessStatu }
         ]),
 
         ReconProcessStep: $defineEntity(ReconProcessStep, [
@@ -1008,11 +1090,13 @@ window.myapp = msls.application;
             { name: "sys_CreatedOn", type: Date },
             { name: "sys_ModifiedBy", type: String },
             { name: "sys_ModifiedOn", type: Date },
-            { name: "FileSection", kind: "reference", type: FileSection },
-            { name: "FileSection1", kind: "reference", type: FileSection },
+            { name: "SourceFileSection", kind: "reference", type: FileSection },
+            { name: "DestinationFileSection", kind: "reference", type: FileSection },
             { name: "ReconProcess", kind: "reference", type: ReconProcess },
             { name: "ReconType", kind: "reference", type: ReconType },
-            { name: "ReconSummaries", kind: "collection", elementType: ReconSummary }
+            { name: "ReconSummaries", kind: "collection", elementType: ReconSummary },
+            { name: "CurrentSourceImportFile", kind: "reference", type: ImportedFile },
+            { name: "CurrentTargetImportFile", kind: "reference", type: ImportedFile }
         ]),
 
         ReconSource: $defineEntity(ReconSource, [
@@ -1062,9 +1146,10 @@ window.myapp = msls.application;
             { name: "sys_CreatedOn", type: Date },
             { name: "sys_ModifiedBy", type: String },
             { name: "sys_ModifiedOn", type: Date },
-            { name: "ImportedFiles", kind: "collection", elementType: ImportedFile },
+            { name: "ImportedFiles", kind: "reference", type: ImportedFile },
             { name: "ReconProcessStep", kind: "reference", type: ReconProcessStep },
-            { name: "ReconStatu", kind: "reference", type: ReconStatu }
+            { name: "ReconStatu", kind: "reference", type: ReconStatu },
+            { name: "ImportedFile1", kind: "reference", type: ImportedFile }
         ]),
 
         ReconType: $defineEntity(ReconType, [
@@ -1090,7 +1175,8 @@ window.myapp = msls.application;
             { name: "sys_CreatedBy", type: String },
             { name: "sys_CreatedOn", type: Date },
             { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date }
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "ImportedFile", kind: "reference", type: ImportedFile }
         ]),
 
         SkyeImportHeader: $defineEntity(SkyeImportHeader, [
@@ -1103,7 +1189,8 @@ window.myapp = msls.application;
             { name: "sys_CreatedBy", type: String },
             { name: "sys_CreatedOn", type: Date },
             { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date }
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "ImportedFile", kind: "reference", type: ImportedFile }
         ]),
 
         SystemField: $defineEntity(SystemField, [
@@ -1116,6 +1203,18 @@ window.myapp = msls.application;
             { name: "sys_CreatedOn", type: Date },
             { name: "sys_ModifiedBy", type: String },
             { name: "sys_ModifiedOn", type: Date }
+        ]),
+
+        vwReconProcessStatu: $defineEntity(vwReconProcessStatu, [
+            { name: "SourceFileAvailable", type: String },
+            { name: "TargetFileAvailable", type: String },
+            { name: "ReconProcessID", type: Number },
+            { name: "ReconProcessCode", type: String },
+            { name: "ReconProcessStepID", type: Number },
+            { name: "ReconProcessStepCode", type: String },
+            { name: "ReconProcessName", type: String },
+            { name: "ReconProcessStepName", type: String },
+            { name: "ReconProcess", kind: "reference", type: ReconProcess }
         ]),
 
         PagaReconData: $defineDataService(PagaReconData, lightSwitchApplication.rootUri + "/PagaReconData.svc", [
@@ -1136,7 +1235,8 @@ window.myapp = msls.application;
             { name: "ReconTypes", elementType: ReconType },
             { name: "SkyeImportDetails", elementType: SkyeImportDetail },
             { name: "SkyeImportHeaders", elementType: SkyeImportHeader },
-            { name: "SystemFields", elementType: SystemField }
+            { name: "SystemFields", elementType: SystemField },
+            { name: "vwReconProcessStatus", elementType: vwReconProcessStatu }
         ], [
             {
                 name: "FileDefinitions_SingleOrDefault", value: function (ID) {
@@ -1270,6 +1370,23 @@ window.myapp = msls.application;
                 name: "SystemFields_SingleOrDefault", value: function (ID) {
                     return new $DataServiceQuery({ _entitySet: this.SystemFields },
                         lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/SystemFields(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
+                name: "ImportedFilesForToday", value: function (ReconSource, FileDefinition) {
+                    return new $DataServiceQuery({ _entitySet: this.ImportedFiles },
+                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/ImportedFilesForToday()",
+                        {
+                            ReconSource: $toODataString(ReconSource, "Int32?"),
+                            FileDefinition: $toODataString(FileDefinition, "Int32?")
+                        });
+                }
+            },
+            {
+                name: "vwReconProcessStatus_SingleOrDefault", value: function (SourceFileAvailable, TargetFileAvailable, ReconProcessID, ReconProcessCode, ReconProcessStepID, ReconProcessStepCode) {
+                    return new $DataServiceQuery({ _entitySet: this.vwReconProcessStatus },
+                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/vwReconProcessStatus(" + "SourceFileAvailable=" + $toODataString(SourceFileAvailable, "String?") + "," + "TargetFileAvailable=" + $toODataString(TargetFileAvailable, "String?") + "," + "ReconProcessID=" + $toODataString(ReconProcessID, "Int32?") + "," + "ReconProcessCode=" + $toODataString(ReconProcessCode, "String?") + "," + "ReconProcessStepID=" + $toODataString(ReconProcessStepID, "Int32?") + "," + "ReconProcessStepCode=" + $toODataString(ReconProcessStepCode, "String?") + ")"
                     );
                 }
             }

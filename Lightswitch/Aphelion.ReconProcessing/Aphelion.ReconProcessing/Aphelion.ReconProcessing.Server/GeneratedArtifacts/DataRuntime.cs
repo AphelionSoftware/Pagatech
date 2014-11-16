@@ -376,6 +376,19 @@ namespace LightSwitchApplication
             }
         }
         
+        /// <summary>
+        /// Gets the vwReconProcessStatus entity set.  The entity set provides members to access entities of a specific type.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.vwReconProcessStatu> vwReconProcessStatus
+        {
+            get
+            {
+                return global::LightSwitchApplication.PagaReconData.DetailsClass.GetValue(this, global::LightSwitchApplication.PagaReconData.DetailsClass.PropertySetProperties.vwReconProcessStatus);
+            }
+        }
+        
         #endregion
     
         #region Queries
@@ -787,6 +800,72 @@ namespace LightSwitchApplication
             return this.Details.Methods.SystemFields_SingleOrDefault.CreateInvocation(ID).Execute();
         }
         
+        /// <summary>
+        /// No Modeled Description Available
+        /// </summary>
+        /// <param name="ReconSource">
+        /// No Modeled Description Available
+        /// </param>
+        /// <param name="FileDefinition">
+        /// No Modeled Description Available
+        /// </param>
+        public global::Microsoft.LightSwitch.IDataServiceQueryable<global::LightSwitchApplication.ImportedFile> ImportedFilesForToday(global::System.Nullable<int> ReconSource, global::System.Nullable<int> FileDefinition)
+        {
+            return this.Details.Methods.ImportedFilesForToday.CreateInvocation(ReconSource, FileDefinition).Execute();
+        }
+        
+        /// <summary>
+        /// Returns the entity whose identity is specified by the parameter(s).
+        /// </summary>
+        /// <param name="SourceFileAvailable">
+        /// The value of the 'SourceFileAvailable' key property of the entity to retrieve.
+        /// </param>
+        /// <param name="TargetFileAvailable">
+        /// The value of the 'TargetFileAvailable' key property of the entity to retrieve.
+        /// </param>
+        /// <param name="ReconProcessID">
+        /// The value of the 'ReconProcessID' key property of the entity to retrieve.
+        /// </param>
+        /// <param name="ReconProcessCode">
+        /// The value of the 'ReconProcessCode' key property of the entity to retrieve.
+        /// </param>
+        /// <param name="ReconProcessStepID">
+        /// The value of the 'ReconProcessStepID' key property of the entity to retrieve.
+        /// </param>
+        /// <param name="ReconProcessStepCode">
+        /// The value of the 'ReconProcessStepCode' key property of the entity to retrieve.
+        /// </param>
+        public global::LightSwitchApplication.vwReconProcessStatu vwReconProcessStatus_Single(string SourceFileAvailable, string TargetFileAvailable, global::System.Nullable<int> ReconProcessID, string ReconProcessCode, global::System.Nullable<int> ReconProcessStepID, string ReconProcessStepCode)
+        {
+            return this.Details.Methods.vwReconProcessStatus_Single.CreateInvocation(SourceFileAvailable, TargetFileAvailable, ReconProcessID, ReconProcessCode, ReconProcessStepID, ReconProcessStepCode).Execute();
+        }
+        
+        /// <summary>
+        /// Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists.
+        /// </summary>
+        /// <param name="SourceFileAvailable">
+        /// The value of the 'SourceFileAvailable' key property of the entity to retrieve.
+        /// </param>
+        /// <param name="TargetFileAvailable">
+        /// The value of the 'TargetFileAvailable' key property of the entity to retrieve.
+        /// </param>
+        /// <param name="ReconProcessID">
+        /// The value of the 'ReconProcessID' key property of the entity to retrieve.
+        /// </param>
+        /// <param name="ReconProcessCode">
+        /// The value of the 'ReconProcessCode' key property of the entity to retrieve.
+        /// </param>
+        /// <param name="ReconProcessStepID">
+        /// The value of the 'ReconProcessStepID' key property of the entity to retrieve.
+        /// </param>
+        /// <param name="ReconProcessStepCode">
+        /// The value of the 'ReconProcessStepCode' key property of the entity to retrieve.
+        /// </param>
+        public global::LightSwitchApplication.vwReconProcessStatu vwReconProcessStatus_SingleOrDefault(string SourceFileAvailable, string TargetFileAvailable, global::System.Nullable<int> ReconProcessID, string ReconProcessCode, global::System.Nullable<int> ReconProcessStepID, string ReconProcessStepCode)
+        {
+            return this.Details.Methods.vwReconProcessStatus_SingleOrDefault.CreateInvocation(SourceFileAvailable, TargetFileAvailable, ReconProcessID, ReconProcessCode, ReconProcessStepID, ReconProcessStepCode).Execute();
+        }
+        
         #endregion
     
         #region Details Class
@@ -1131,6 +1210,30 @@ namespace LightSwitchApplication
                     }
                 }
                 
+                public global::Microsoft.LightSwitch.Details.Framework.CreateQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.ImportedFile> ImportedFilesForToday
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.PagaReconData.DetailsClass.MethodSetProperties.ImportedFilesForToday) as global::Microsoft.LightSwitch.Details.Framework.CreateQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.ImportedFile>;
+                    }
+                }
+                
+                public global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu> vwReconProcessStatus_Single
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.PagaReconData.DetailsClass.MethodSetProperties.vwReconProcessStatus_Single) as global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>;
+                    }
+                }
+                
+                public global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu> vwReconProcessStatus_SingleOrDefault
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.PagaReconData.DetailsClass.MethodSetProperties.vwReconProcessStatus_SingleOrDefault) as global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>;
+                    }
+                }
+                
             }
     
             [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
@@ -1285,6 +1388,14 @@ namespace LightSwitchApplication
                     get
                     {
                         return base.GetItem(global::LightSwitchApplication.PagaReconData.DetailsClass.PropertySetProperties.SystemFields) as global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.SystemField>;
+                    }
+                }
+                
+                public global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu> vwReconProcessStatus
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.PagaReconData.DetailsClass.PropertySetProperties.vwReconProcessStatus) as global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>;
                     }
                 }
                 
@@ -1666,6 +1777,36 @@ namespace LightSwitchApplication
                     c(d, ref d._SystemFields_SingleOrDefault, sf);
                 }
     
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.CreateQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.ImportedFile>.Entry
+                    ImportedFilesForToday = new global::Microsoft.LightSwitch.Details.Framework.CreateQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.ImportedFile>.Entry(
+                        "ImportedFilesForToday",
+                        global::LightSwitchApplication.PagaReconData.DetailsClass.MethodSetProperties._ImportedFilesForToday_Stub);
+                private static void _ImportedFilesForToday_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.PagaReconData.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.CreateQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.ImportedFile>.Data> c, global::LightSwitchApplication.PagaReconData.DetailsClass d, object sf)
+                {
+                    c(d, ref d._ImportedFilesForToday, sf);
+                }
+    
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Entry
+                    vwReconProcessStatus_Single = new global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Entry(
+                        "vwReconProcessStatus_Single",
+                        global::LightSwitchApplication.PagaReconData.DetailsClass.MethodSetProperties._vwReconProcessStatus_Single_Stub);
+                private static void _vwReconProcessStatus_Single_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.PagaReconData.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Data> c, global::LightSwitchApplication.PagaReconData.DetailsClass d, object sf)
+                {
+                    c(d, ref d._vwReconProcessStatus_Single, sf);
+                }
+    
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Entry
+                    vwReconProcessStatus_SingleOrDefault = new global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Entry(
+                        "vwReconProcessStatus_SingleOrDefault",
+                        global::LightSwitchApplication.PagaReconData.DetailsClass.MethodSetProperties._vwReconProcessStatus_SingleOrDefault_Stub);
+                private static void _vwReconProcessStatus_SingleOrDefault_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.PagaReconData.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Data> c, global::LightSwitchApplication.PagaReconData.DetailsClass d, object sf)
+                {
+                    c(d, ref d._vwReconProcessStatus_SingleOrDefault, sf);
+                }
+    
             }
     
             [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
@@ -1854,6 +1995,16 @@ namespace LightSwitchApplication
                     c(d, ref d._SystemFields, sf);
                 }
      
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Entry
+                    vwReconProcessStatus = new global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Entry(
+                        "vwReconProcessStatus",
+                        global::LightSwitchApplication.PagaReconData.DetailsClass.PropertySetProperties._vwReconProcessStatus_Stub);
+                private static void _vwReconProcessStatus_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.PagaReconData.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Data> c, global::LightSwitchApplication.PagaReconData.DetailsClass d, object sf)
+                {
+                    c(d, ref d._vwReconProcessStatus, sf);
+                }
+     
             }
     
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -1909,6 +2060,9 @@ namespace LightSwitchApplication
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.SystemField>.Data _SystemFields;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.DataServiceEntitySetProperty<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Data _vwReconProcessStatus;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.FileDefinition>.Data _FileDefinitions_Single;
@@ -2020,6 +2174,15 @@ namespace LightSwitchApplication
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.SystemField>.Data _SystemFields_SingleOrDefault;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.CreateQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.ImportedFile>.Data _ImportedFilesForToday;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Data _vwReconProcessStatus_Single;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.CreateScalarQueryMethod<global::LightSwitchApplication.PagaReconData, global::LightSwitchApplication.PagaReconData.DetailsClass, global::LightSwitchApplication.vwReconProcessStatu>.Data _vwReconProcessStatus_SingleOrDefault;
             
         }
     

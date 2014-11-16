@@ -8,6 +8,8 @@ namespace Aphelion.Recon
 {
     public static class SQL
     {
+
+        #region GetDefinitions
         /// <summary>
         /// 0: Section Code
         /// Fields
@@ -65,6 +67,7 @@ SELECT [ColumnName]
         /// 4: FileTypeCode
         /// 5: SectionCode
         /// 6: FileSectionID
+        /// 7: Imported File ID
         /// </summary>
         public const string constGetFileDefinition = @"SELECT  
         RIF.[UploadedFileName]
@@ -74,7 +77,8 @@ SELECT [ColumnName]
 	  ,FT.Code FileTypeCode
 	  ,FS.Code SectionCode
 	  ,FS.ID FileSectionID
-  FROM [Recon].[ImportedFile] RIF
+      , RIF.ID
+  FROM [Recon].[ImportedFile]  (nolock) RIF
   INNER JOIN Import.FileDefinition FD
 	ON RIF.FileDefinitionID = FD.ID
   INNER JOIN Import.FileType FT
@@ -83,6 +87,23 @@ SELECT [ColumnName]
 	ON RIF.FileDefinitionID = FS.FileDefinitionID
 WHERE RIF.ID = '{0}'";
 
-    }
 
+        #endregion
+        #region Update Definitions
+        /// <summary>
+        /// 0: Schema
+        /// 1: Table
+        /// 2: Update ID
+        /// NB: This update assumes no imports for same definition run in parallel!
+        /// </summary>
+        public const string constUpdateImportedFileID = @"
+UPDATE [{0}].[{1}]
+    SET ImportedFileID = {2}
+    WHERE ImportedFileID IS NULL
+";
+
+        #endregion
+
+    }
+   
 }

@@ -5,7 +5,7 @@
     <Partial />
   </Application.Attributes>
   <Screen
-    Name="BrowseReconProcesses">
+    Name="BrowseImportedFilesForToday">
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="PagaReconData" />
@@ -20,29 +20,29 @@
           Kind="Group"
           View="Microsoft.LightSwitch.MobileWeb:TabPages">
           <ContentItem
-            Name="ReconProcessList"
+            Name="ImportedFileList"
             Kind="Group">
             <ContentItem
-              Name="ReconProcesses"
+              Name="ImportedFilesForToday"
               Kind="Collection"
-              DataType="CollectionView$ReconProcess"
+              DataType="CollectionView$ImportedFile"
               View="Microsoft.LightSwitch.MobileWeb:TileList">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="ReconProcesses" />
+                  Value="ImportedFilesForToday" />
               </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="BrowseReconProcesses/Properties[ReconProcesses]" />
+                      Member="BrowseImportedFilesForToday/Properties[ImportedFilesForToday]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem
                 Name="rows"
                 Kind="Details"
-                DataType="ReconProcess"
+                DataType="ImportedFile"
                 View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
                 <ContentItem.Attributes>
                   <DisplayName
@@ -54,14 +54,14 @@
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  Name="Code"
+                  Name="FileName"
                   Kind="Value"
                   DataType=":String">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="ReconProcess/Properties[Code]" />
+                          Member="ImportedFile/Properties[FileName]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -79,17 +79,27 @@
                   </ContentItem.PropertySources>
                 </ContentItem>
                 <ContentItem
-                  Name="Name"
-                  Kind="Value"
-                  DataType=":String?">
+                  Name="FileDefinition"
+                  Kind="Details"
+                  DataType="FileDefinition">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="ReconProcess/Properties[Name]" />
+                          Member="ImportedFile/Properties[FileDefinition]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                  <ContentItem
+                    Name="RowTemplate2"
+                    Kind="Details"
+                    DataType="FileDefinition">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
                   <ContentItem.PropertySources>
                     <ControlPropertySource
                       Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[FontStyle]">
@@ -121,32 +131,10 @@
                   Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
                   <ScreenExpressionTree>
                     <ChainExpression>
+                      <MemberExpression
+                        Member="BrowseImportedFilesForToday/Properties[ImportedFilesForToday]" />
                       <CallExpression
-                        Target="!module/Methods[showViewReconProcess]">
-                        <CallExpression.Attributes>
-                          <AssociatedCollection
-                            Collection="BrowseReconProcesses/Properties[ReconProcesses]" />
-                        </CallExpression.Attributes>
-                        <ArgumentExpression
-                          Parameter="ReconProcess">
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="BrowseReconProcesses/Properties[ReconProcesses]" />
-                            <MemberExpression
-                              Member="selectedItem" />
-                          </ChainExpression>
-                        </ArgumentExpression>
-                      </CallExpression>
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <ConstantExpression
-                        Value="msls-edit"
-                        ResultType=":String" />
+                        Target="viewSelected" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ControlPropertySource>
@@ -154,7 +142,7 @@
             </ContentItem>
             <ContentItem.CommandItems>
               <ContentItem
-                Name="SearchReconProcesses"
+                Name="SearchImportedFilesForToday"
                 Kind="Command">
                 <ContentItem.Attributes>
                   <DisplayName
@@ -166,7 +154,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="BrowseReconProcesses/Properties[ReconProcesses]" />
+                          Member="BrowseImportedFilesForToday/Properties[ImportedFilesForToday]" />
                         <CallExpression
                           Target="showSearch" />
                       </ChainExpression>
@@ -179,6 +167,78 @@
                         <ConstantExpression
                           Value="msls-search"
                           ResultType="Microsoft.LightSwitch:String" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
+              </ContentItem>
+              <ContentItem
+                Name="AddImportedFile"
+                Kind="Command">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Import" />
+                </ContentItem.Attributes>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <CallExpression
+                          Target="!module/Methods[showImportFile]">
+                          <CallExpression.Attributes>
+                            <AssociatedCollection
+                              Collection="BrowseImportedFilesForToday/Properties[ImportedFilesForToday]" />
+                            <CreateNewEntity
+                              TargetParameter="!module/Methods[showImportFile]/Parameters[ImportedFile]" />
+                          </CallExpression.Attributes>
+                        </CallExpression>
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="msls-add"
+                          ResultType=":String" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
+              </ContentItem>
+              <ContentItem
+                Name="ShowFilter"
+                Kind="Command">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Filter" />
+                </ContentItem.Attributes>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <CallExpression
+                          Target="BrowseImportedFilesForToday/Methods[showDialog]">
+                          <ArgumentExpression
+                            Parameter="dialogName">
+                            <ConstantExpression
+                              Value="Filter"
+                              ResultType=":String" />
+                          </ArgumentExpression>
+                        </CallExpression>
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="msls-filter"
+                          ResultType=":String" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ControlPropertySource>
@@ -202,7 +262,35 @@
         <ContentItem
           Name="Popups"
           Kind="Group"
-          View="Microsoft.LightSwitch.MobileWeb:DialogPages" />
+          View="Microsoft.LightSwitch.MobileWeb:DialogPages">
+          <ContentItem
+            Name="Filter"
+            Kind="Group">
+            <ContentItem
+              Name="ReconSource"
+              Kind="Details"
+              DataType="ReconSource">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="BrowseImportedFilesForToday/Properties[ReconSource]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem
+                Name="ReconSource1"
+                Kind="Details"
+                DataType="ReconSource">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
       </ContentItem>
     </Screen.RootContentItem>
     <Screen.Methods>
@@ -231,20 +319,20 @@
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
-        Name="ReconProcesses"
+        Name="ImportedFilesForToday"
         PageSize="45"
-        PropertyType="CollectionView$ReconProcess">
+        PropertyType="CollectionView$ImportedFile">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
-            Name="ReconProcessesQuery"
-            ReturnType="ReconProcess*">
+            Name="ImportedFilesForTodayQuery"
+            ReturnType="ImportedFile*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="PagaReconData/Members[ReconProcesses]" />
+                  Member="PagaReconData/Members[ImportedFilesForToday]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -252,18 +340,34 @@
         <ScreenExpressionTree>
           <ChainExpression>
             <CallExpression
-              Target="BrowseReconProcesses/Properties[ReconProcesses]/Query" />
+              Target="BrowseImportedFilesForToday/Properties[ImportedFilesForToday]/Query">
+              <ArgumentExpression
+                Parameter="ReconSource">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="BrowseImportedFilesForToday/Properties[ReconSource]" />
+                  <MemberExpression
+                    Member="ID" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
+      <ScreenProperty
+        Name="ImportedFileReconSource"
+        PropertyType="ReconSource" />
+      <ScreenProperty
+        Name="ReconSource"
+        PropertyType="ReconSource" />
     </Screen.Properties>
   </Screen>
   <Application.Methods>
     <ApplicationMethod
-      Name="showBrowseReconProcesses">
+      Name="showBrowseImportedFilesForToday">
       <ApplicationMethod.Attributes>
         <ShowScreenMethod
-          TargetScreen="BrowseReconProcesses" />
+          TargetScreen="BrowseImportedFilesForToday" />
       </ApplicationMethod.Attributes>
     </ApplicationMethod>
   </Application.Methods>

@@ -27,6 +27,7 @@ namespace Aphelion.Recon
             SqlDataReader drFile = comm.ExecuteReader();
             string sFileName  ;
             string sSectionCode  ;
+            int iImportedFileID;
             FileType ft;
             while (drFile.Read())
             {
@@ -37,7 +38,7 @@ namespace Aphelion.Recon
                 }
                 sFileName = drFile.GetString(0);
                 sSectionCode = drFile.GetString(5);
-
+                iImportedFileID = drFile.GetInt32(7);
                 switch (drFile.GetString(4))
                 {
                     case "CSV":
@@ -54,7 +55,7 @@ namespace Aphelion.Recon
                         break;
                 }
 
-                ImportSection impSec = new ImportSection(sConnection, sSectionCode, ft, sFileName);
+                ImportSection impSec = new ImportSection(sConnection, sSectionCode, ft, sFileName, iImportedFileID);
                 impSec.ImportFileToStaging();
 
             }

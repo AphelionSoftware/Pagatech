@@ -130,6 +130,11 @@
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Name="ImportedFile"
+        Association="FK_SkyeImportDetails_ImportedFile"
+        FromEnd="SkyeImportDetails"
+        ToEnd="ImportedFile" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -305,6 +310,11 @@
           Nullable="False"
           Type="datetime"
           Property="SkyeImportDetail/Properties[sys_ModifiedOn]" />
+        <SsdlForeignKeyProperty
+          Name="ImportedFileID"
+          Nullable="True"
+          Type="int"
+          PropertyName="ImportedFileID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
   </DataService>

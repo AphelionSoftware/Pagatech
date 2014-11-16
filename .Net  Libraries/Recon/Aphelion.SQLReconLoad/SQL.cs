@@ -156,13 +156,16 @@ SELECT [RS].[ID]
         /// 0: is Process Step code
         /// 1: is source or destination
         /// Fields
-        /// 1 Is FieldTypeCode
-        /// 2 is Staging table schema
-        /// 3 is Staging table name
-        /// 4 is Column name 
+        /// 0 Is FieldTypeCode
+        /// 1 is Staging table schema
+        /// 2 is Staging table name
+        /// 3 is Column name 
+        /// 4 is ImportedFileID
         /// </summary>
         public const string constSQLGetImportFields = @"
-select FT.Code FieldTypeCode, FS.StagingTableSchema, FS.StagingTableName, FF.ColumnName from admin.ReconField RF
+select FT.Code FieldTypeCode, FS.StagingTableSchema, FS.StagingTableName, FF.ColumnName
+, RPS.Current{1}ImportedFileID
+from admin.ReconField RF
 JOIN Admin.FieldType FT
 ON RF.FieldTypeID = FT.ID
 JOIN Import.FileField FF
@@ -175,5 +178,32 @@ ON RF.reconProcessStepID = RPS.ID
 AND FS.id = RPS.{1}FileSectionID
 
 WHERE RPS.Code = '{0}'";
+
+
+
+        /// <summary>
+        /// 0 is ReconProcess ID
+        /// Fields:
+        /// 0 is ProcessStep ID
+        /// 1 is ProcessStep Name
+        /// 2 is ProcessStep Code
+        /// 3 is ReconProcessID
+        /// 4 is ReconTypeID
+        /// 5 is ReconTypeCode
+        /// </summary>
+        public const string constSQLGetStepsForProcess = @"
+select RPS.ID
+		, RPS.Name
+		, RPS.Code
+		, ReconProcessID
+		, ReconTypeID
+		, RT.Code ReconTypeCode
+FROM admin.ReconProcess RP
+inner join admin.ReconProcessStep RPS
+ON RP.ID = RPS.ReconProcessID
+inner join Admin.ReconType RT
+ON RPS.ReconTypeID = RT.ID
+WHERE RP.ID = '{0}'
+";
     }
 }

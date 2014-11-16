@@ -708,6 +708,15 @@ namespace LightSwitchApplication
         partial void SystemFields_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.SystemField, bool>> filter);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void vwReconProcessStatus_CanRead(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void vwReconProcessStatus_Validate(global::LightSwitchApplication.vwReconProcessStatu entity, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder results);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void vwReconProcessStatus_Filter(ref global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.vwReconProcessStatu, bool>> filter);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void SaveChanges_CanExecute(ref bool result);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -733,6 +742,21 @@ namespace LightSwitchApplication
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         partial void ImportedFilesUnreconciled_ExecuteFailed(global::System.Nullable<int> ReconSourcce, global::System.Exception exception);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ImportedFilesForToday_CanExecute(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        partial void ImportedFilesForToday_Executing(global::System.Nullable<int> ReconSource, global::System.Nullable<int> FileDefinition);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ImportedFilesForToday_PreprocessQuery(global::System.Nullable<int> ReconSource, global::System.Nullable<int> FileDefinition, ref global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile> query);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        partial void ImportedFilesForToday_Executed(global::System.Nullable<int> ReconSource, global::System.Nullable<int> FileDefinition, global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.ImportedFile> result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        partial void ImportedFilesForToday_ExecuteFailed(global::System.Nullable<int> ReconSource, global::System.Nullable<int> FileDefinition, global::System.Exception exception);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void Query_Executing(global::Microsoft.LightSwitch.QueryExecutingDescriptor queryDescriptor);
@@ -2131,6 +2155,40 @@ namespace LightSwitchApplication
             
             [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.vwReconProcessStatu>
+                __vwReconProcessStatusEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.EntitySetEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.vwReconProcessStatu>(
+                    "vwReconProcessStatus",
+                    null,
+                    null,
+                    null,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__vwReconProcessStatus_CanRead,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__vwReconProcessStatus_Validate,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__vwReconProcessStatus_Filter);
+            private static bool __vwReconProcessStatus_CanRead(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                bool result = true;
+                d.vwReconProcessStatus_CanRead(ref result);
+                return result;
+            }
+            private static void __vwReconProcessStatus_Validate(global::LightSwitchApplication.PagaReconDataService d, global::LightSwitchApplication.vwReconProcessStatu e, global::Microsoft.LightSwitch.EntitySetValidationResultsBuilder r)
+            {
+                d.vwReconProcessStatus_Validate(e, r);
+            }
+            private static global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.vwReconProcessStatu, bool>> __vwReconProcessStatus_Filter(global::LightSwitchApplication.PagaReconDataService d)
+            {
+                global::System.Linq.Expressions.Expression<global::System.Func<global::LightSwitchApplication.vwReconProcessStatu, bool>> filter = null;
+                d.vwReconProcessStatus_Filter(ref filter);
+                return filter;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.OperationEntry<global::LightSwitchApplication.PagaReconDataService>
                 __SaveChangesEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.OperationEntry<global::LightSwitchApplication.PagaReconDataService>(
                     "SaveChanges",
@@ -2187,6 +2245,40 @@ namespace LightSwitchApplication
             {
                 global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile> query = (global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile>)args[1];
                 d.ImportedFilesUnreconciled_PreprocessQuery((global::System.Nullable<int>)args[0], ref query);
+                return query;
+            }
+            
+            [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.QueryOperationEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ImportedFile>
+                __ImportedFilesForTodayEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.QueryOperationEntry<global::LightSwitchApplication.PagaReconDataService, global::LightSwitchApplication.ImportedFile>(
+                    "ImportedFilesForToday",
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesForToday_CanExecute,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesForToday_Executing,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesForToday_Executed,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesForToday_Failed,
+                    global::LightSwitchApplication.PagaReconDataService.DetailsClass.__ImportedFilesForToday_PreprocessQuery);
+            private static bool __ImportedFilesForToday_CanExecute(global::LightSwitchApplication.PagaReconDataService d, bool r)
+            {
+                d.ImportedFilesForToday_CanExecute(ref r);
+                return r;
+            }
+            private static void __ImportedFilesForToday_Executing(global::LightSwitchApplication.PagaReconDataService d, object[] args)
+            {
+                d.ImportedFilesForToday_Executing((global::System.Nullable<int>)args[0], (global::System.Nullable<int>)args[1]);
+            }
+            private static void __ImportedFilesForToday_Executed(global::LightSwitchApplication.PagaReconDataService d, object[] args)
+            {
+                d.ImportedFilesForToday_Executed((global::System.Nullable<int>)args[0], (global::System.Nullable<int>)args[1], (global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.ImportedFile>)args[2]);
+            }
+            private static void __ImportedFilesForToday_Failed(global::LightSwitchApplication.PagaReconDataService d, object[] args, global::System.Exception ex)
+            {
+                d.ImportedFilesForToday_ExecuteFailed((global::System.Nullable<int>)args[0], (global::System.Nullable<int>)args[1], ex);
+            }
+            private static global::System.Linq.IQueryable __ImportedFilesForToday_PreprocessQuery(global::LightSwitchApplication.PagaReconDataService d, object[] args)
+            {
+                global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile> query = (global::System.Linq.IQueryable<global::LightSwitchApplication.ImportedFile>)args[2];
+                d.ImportedFilesForToday_PreprocessQuery((global::System.Nullable<int>)args[0], (global::System.Nullable<int>)args[1], ref query);
                 return query;
             }
     

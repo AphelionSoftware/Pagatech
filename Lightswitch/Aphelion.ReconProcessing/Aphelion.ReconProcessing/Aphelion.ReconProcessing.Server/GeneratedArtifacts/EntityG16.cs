@@ -362,6 +362,30 @@ namespace LightSwitchApplication
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void sys_ModifiedOn_Changed();
 
+        /// <summary>
+        /// No Modeled Description Available
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::LightSwitchApplication.ImportedFile ImportedFile
+        {
+            get
+            {
+                return global::LightSwitchApplication.SkyeImportDetail.DetailsClass.GetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.ImportedFile);
+            }
+            set
+            {
+                global::LightSwitchApplication.SkyeImportDetail.DetailsClass.SetValue(this, global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.ImportedFile, value);
+            }
+        }
+        
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ImportedFile_IsReadOnly(ref bool result);
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ImportedFile_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void ImportedFile_Changed();
+
         #endregion
     
         #region Details Class
@@ -540,6 +564,14 @@ namespace LightSwitchApplication
                     }
                 }
                 
+                public global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::LightSwitchApplication.ImportedFile> ImportedFile
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.ImportedFile) as global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::LightSwitchApplication.ImportedFile>;
+                    }
+                }
+                
             }
     
             #pragma warning disable 109
@@ -558,6 +590,7 @@ namespace LightSwitchApplication
                 new global::System.DateTime sys_CreatedOn { get; set; }
                 new string sys_ModifiedBy { get; set; }
                 new global::System.DateTime sys_ModifiedOn { get; set; }
+                new global::Microsoft.LightSwitch.Internal.IEntityImplementation ImportedFile { get; set; }
             }
             #pragma warning restore 109
     
@@ -1007,6 +1040,53 @@ namespace LightSwitchApplication
                     e.sys_ModifiedOn_Changed();
                 }
     
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::LightSwitchApplication.ImportedFile>.Entry
+                    ImportedFile = new global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::LightSwitchApplication.ImportedFile>.Entry(
+                        "ImportedFile",
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ImportedFile_Stub,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ImportedFile_ComputeIsReadOnly,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ImportedFile_Validate,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ImportedFile_GetCoreImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ImportedFile_GetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ImportedFile_SetImplementationValue,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ImportedFile_Refresh,
+                        global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties._ImportedFile_OnValueChanged);
+                private static void _ImportedFile_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::LightSwitchApplication.ImportedFile>.Data> c, global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, object sf)
+                {
+                    c(d, ref d._ImportedFile, sf);
+                }
+                private static bool _ImportedFile_ComputeIsReadOnly(global::LightSwitchApplication.SkyeImportDetail e)
+                {
+                    bool result = false;
+                    e.ImportedFile_IsReadOnly(ref result);
+                    return result;
+                }
+                private static void _ImportedFile_Validate(global::LightSwitchApplication.SkyeImportDetail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                {
+                    e.ImportedFile_Validate(r);
+                }
+                private static global::Microsoft.LightSwitch.Internal.IEntityImplementation _ImportedFile_GetCoreImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
+                {
+                    return d.ImplementationEntity.ImportedFile;
+                }
+                private static global::LightSwitchApplication.ImportedFile _ImportedFile_GetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
+                {
+                    return d.GetImplementationValue<global::LightSwitchApplication.ImportedFile, global::LightSwitchApplication.ImportedFile.DetailsClass>(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.ImportedFile, ref d._ImportedFile);
+                }
+                private static void _ImportedFile_SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d, global::LightSwitchApplication.ImportedFile v)
+                {
+                    d.SetImplementationValue(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.ImportedFile, ref d._ImportedFile, (i, ev) => i.ImportedFile = ev, v);
+                }
+                private static void _ImportedFile_Refresh(global::LightSwitchApplication.SkyeImportDetail.DetailsClass d)
+                {
+                    d.RefreshNavigationProperty(global::LightSwitchApplication.SkyeImportDetail.DetailsClass.PropertySetProperties.ImportedFile, ref d._ImportedFile);
+                }
+                private static void _ImportedFile_OnValueChanged(global::LightSwitchApplication.SkyeImportDetail e)
+                {
+                    e.ImportedFile_Changed();
+                }
+    
             }
     
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -1044,6 +1124,9 @@ namespace LightSwitchApplication
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::System.DateTime>.Data _sys_ModifiedOn;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.SkyeImportDetail, global::LightSwitchApplication.SkyeImportDetail.DetailsClass, global::LightSwitchApplication.ImportedFile>.Data _ImportedFile;
             
         }
     

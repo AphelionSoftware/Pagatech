@@ -112,6 +112,11 @@
           <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Name="ImportedFile"
+        Association="FK_SkyeImportHeader_ImportedFile"
+        FromEnd="SkyeImportHeader"
+        ToEnd="ImportedFile" />
     </EntityType.Properties>
   </EntityType>
   <EntityContainer
@@ -275,6 +280,11 @@
           Nullable="False"
           Type="datetime"
           Property="SkyeImportHeader/Properties[sys_ModifiedOn]" />
+        <SsdlForeignKeyProperty
+          Name="ImportedFileID"
+          Nullable="True"
+          Type="int"
+          PropertyName="ImportedFileID" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
   </DataService>
