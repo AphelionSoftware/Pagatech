@@ -900,6 +900,50 @@
         $Screen.call(this, dataWorkspace, "Home", parameters);
     }
 
+    function AddEditReconSource(parameters, dataWorkspace) {
+        /// <summary>
+        /// Represents the AddEditReconSource screen.
+        /// </summary>
+        /// <param name="parameters" type="Array">
+        /// An array of screen parameter values.
+        /// </param>
+        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
+        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
+        /// </param>
+        /// <field name="ReconSource" type="msls.application.ReconSource">
+        /// Gets or sets the reconSource for this screen.
+        /// </field>
+        /// <field name="details" type="msls.application.AddEditReconSource.Details">
+        /// Gets the details for this screen.
+        /// </field>
+        if (!dataWorkspace) {
+            dataWorkspace = new lightSwitchApplication.DataWorkspace();
+        }
+        $Screen.call(this, dataWorkspace, "AddEditReconSource", parameters);
+    }
+
+    function BrowseReconSources(parameters, dataWorkspace) {
+        /// <summary>
+        /// Represents the BrowseReconSources screen.
+        /// </summary>
+        /// <param name="parameters" type="Array">
+        /// An array of screen parameter values.
+        /// </param>
+        /// <param name="dataWorkspace" type="msls.application.DataWorkspace" optional="true">
+        /// An existing data workspace for this screen to use. By default, a new data workspace is created.
+        /// </param>
+        /// <field name="ReconSources" type="msls.VisualCollection" elementType="msls.application.ReconSource">
+        /// Gets the reconSources for this screen.
+        /// </field>
+        /// <field name="details" type="msls.application.BrowseReconSources.Details">
+        /// Gets the details for this screen.
+        /// </field>
+        if (!dataWorkspace) {
+            dataWorkspace = new lightSwitchApplication.DataWorkspace();
+        }
+        $Screen.call(this, dataWorkspace, "BrowseReconSources", parameters);
+    }
+
     msls._addToNamespace("msls.application", {
 
         AddEditFileField: $defineScreen(AddEditFileField, [
@@ -1223,6 +1267,21 @@
         ]),
 
         Home: $defineScreen(Home, [
+        ], [
+        ]),
+
+        AddEditReconSource: $defineScreen(AddEditReconSource, [
+            { name: "ReconSource", kind: "local", type: lightSwitchApplication.ReconSource }
+        ], [
+        ]),
+
+        BrowseReconSources: $defineScreen(BrowseReconSources, [
+            {
+                name: "ReconSources", kind: "collection", elementType: lightSwitchApplication.ReconSource,
+                createQuery: function () {
+                    return this.dataWorkspace.ReconData.ReconSources.expand("ReconSourceType");
+                }
+            }
         ], [
         ]),
 
@@ -1704,6 +1763,30 @@
             /// <returns type="WinJS.Promise" />
             var parameters = Array.prototype.slice.call(arguments, 0, 0);
             return lightSwitchApplication.showScreen("Home", parameters, options);
+        }),
+
+        showAddEditReconSource: $defineShowScreen(function showAddEditReconSource(ReconSource, options) {
+            /// <summary>
+            /// Asynchronously navigates forward to the AddEditReconSource screen.
+            /// </summary>
+            /// <param name="options" optional="true">
+            /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
+            /// </param>
+            /// <returns type="WinJS.Promise" />
+            var parameters = Array.prototype.slice.call(arguments, 0, 1);
+            return lightSwitchApplication.showScreen("AddEditReconSource", parameters, options);
+        }),
+
+        showBrowseReconSources: $defineShowScreen(function showBrowseReconSources(options) {
+            /// <summary>
+            /// Asynchronously navigates forward to the BrowseReconSources screen.
+            /// </summary>
+            /// <param name="options" optional="true">
+            /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
+            /// </param>
+            /// <returns type="WinJS.Promise" />
+            var parameters = Array.prototype.slice.call(arguments, 0, 0);
+            return lightSwitchApplication.showScreen("BrowseReconSources", parameters, options);
         })
 
     });
