@@ -1,5 +1,6 @@
 ﻿CREATE TABLE [Staging].[NIBBS_DiamondBank_Detail] (
     [ID]             INT            IDENTITY (1, 1) NOT NULL,
+    [ImportedFileID] INT            NULL,
     [Narration]      VARCHAR (1000) NOT NULL,
     [Posting_Date]   VARCHAR (1000) NOT NULL,
     [Value_Date]     VARCHAR (1000) NOT NULL,
@@ -13,4 +14,6 @@
     [sys_ModifiedOn] DATETIME       CONSTRAINT [DF_NIBBS_DB_Detail_sys_ModifiedOn] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_NIBBS_DB_Detail] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+
+
 
