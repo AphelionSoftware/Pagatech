@@ -93,6 +93,7 @@
           <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="FileContents" ColumnName="FileContents" />
+          <ScalarProperty Name="ReconSummaryID" ColumnName="ReconSummaryID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -277,11 +278,11 @@
           <ScalarProperty Name="TableSchema" ColumnName="TableSchema" />
           <ScalarProperty Name="TableName" ColumnName="TableName" />
           <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
-          <ScalarProperty Name="FieldTypeID" ColumnName="FieldTypeID" />
           <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
           <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
           <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
           <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="FieldTypeID" ColumnName="FieldTypeID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -296,6 +297,101 @@
           <ScalarProperty Name="ReconProcessStepCode" ColumnName="ReconProcessStepCode" />
           <ScalarProperty Name="ReconProcessName" ColumnName="ReconProcessName" />
           <ScalarProperty Name="ReconProcessStepName" ColumnName="ReconProcessStepName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FieldTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.FieldType)">
+        <MappingFragment StoreEntitySet="FieldTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReconFields">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.ReconField)">
+        <MappingFragment StoreEntitySet="ReconFields">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="FieldTypeID" ColumnName="FieldTypeID" />
+          <ScalarProperty Name="FileFieldID" ColumnName="FileFieldID" />
+          <ScalarProperty Name="ReconProcessStepID" ColumnName="ReconProcessStepID" />
+          <ScalarProperty Name="SystemFieldID" ColumnName="SystemFieldID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RuleTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.RuleType)">
+        <MappingFragment StoreEntitySet="RuleTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileFieldRules">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.FileFieldRule)">
+        <MappingFragment StoreEntitySet="FileFieldRules">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProcessingRule" ColumnName="ProcessingRule" />
+          <ScalarProperty Name="StartPos" ColumnName="StartPos" />
+          <ScalarProperty Name="EndPos" ColumnName="EndPos" />
+          <ScalarProperty Name="FirstChar" ColumnName="FirstChar" />
+          <ScalarProperty Name="LastChar" ColumnName="LastChar" />
+          <ScalarProperty Name="FirstPattern" ColumnName="FirstPattern" />
+          <ScalarProperty Name="LastPattern" ColumnName="LastPattern" />
+          <ScalarProperty Name="SplitChar" ColumnName="SplitChar" />
+          <ScalarProperty Name="ArrPos" ColumnName="ArrPos" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="FileFieldID" ColumnName="FileFieldID" />
+          <ScalarProperty Name="RuleTypeID" ColumnName="RuleTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Synonyms">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Synonym)">
+        <MappingFragment StoreEntitySet="Synonyms">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SourceValue" ColumnName="SourceValue" />
+          <ScalarProperty Name="SynonymValue" ColumnName="SynonymValue" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
+          <ScalarProperty Name="FileSectionID" ColumnName="FileSectionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NIBBS_DB_Details">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.NIBBS_DB_Detail)">
+        <MappingFragment StoreEntitySet="NIBBS_DB_Details">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Narration" ColumnName="Narration" />
+          <ScalarProperty Name="Posting_Date" ColumnName="Posting_Date" />
+          <ScalarProperty Name="Value_Date" ColumnName="Value_Date" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="sys_CreatedBy" ColumnName="sys_CreatedBy" />
+          <ScalarProperty Name="sys_CreatedOn" ColumnName="sys_CreatedOn" />
+          <ScalarProperty Name="sys_ModifiedBy" ColumnName="sys_ModifiedBy" />
+          <ScalarProperty Name="sys_ModifiedOn" ColumnName="sys_ModifiedOn" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

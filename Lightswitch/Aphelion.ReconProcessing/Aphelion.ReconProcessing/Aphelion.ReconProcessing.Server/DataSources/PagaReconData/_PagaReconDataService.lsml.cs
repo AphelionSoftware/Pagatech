@@ -102,9 +102,9 @@ namespace LightSwitchApplication
                     fs.Close();
                 }
                 entity.UploadedFileName = filePath;
-                entity.sys_CreatedBy = this.strUser;
-                entity.sys_ModifiedBy = this.strUser;
-                entity.sys_CreatedOn = System.DateTime.Now; ;
+                entity.sys_CreatedBy = this.UserName;
+                entity.sys_ModifiedBy = this.UserName;
+                entity.sys_CreatedOn = System.DateTime.Now; 
                 entity.sys_ModifiedOn = System.DateTime.Now;
             }
 
