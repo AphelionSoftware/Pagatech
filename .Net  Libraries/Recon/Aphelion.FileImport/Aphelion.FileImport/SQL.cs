@@ -55,7 +55,9 @@ SELECT [ColumnName]
       FROM [Import].[FileField] FF
 	JOIN [Import].[FileSection] FS
 	ON FF.FileSectionID = FS.ID
-	WHERE FS.Code = '{0}'";
+	WHERE FS.Code = '{0}'
+    AND Position >= 0
+";
 
         /// <summary>
         /// 0: Imported File ID

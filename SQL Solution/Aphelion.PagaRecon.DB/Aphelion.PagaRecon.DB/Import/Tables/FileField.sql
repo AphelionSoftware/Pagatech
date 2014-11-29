@@ -14,7 +14,11 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [NonClusteredIndex-20140913-190400]
-    ON [Import].[FileField]([FileSectionID] ASC, [Position] ASC);
+    ON [Import].[FileField]([FileSectionID] ASC, [Position] ASC) WHERE ([Position]>=(0));
+
+
 
