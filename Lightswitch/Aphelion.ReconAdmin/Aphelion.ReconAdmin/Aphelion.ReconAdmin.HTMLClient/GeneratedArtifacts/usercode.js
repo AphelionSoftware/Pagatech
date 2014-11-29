@@ -20,10 +20,17 @@ document.writeln("<script type=\"text/javascript\" src=\"Screens/Fields/AddEditS
 document.writeln("<script type=\"text/javascript\" src=\"Screens/Fields/ViewFileField.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"Screens/Fields/ViewReconField.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"Screens/Fields/ViewSystemField.lsml.js\"></script>");
+document.writeln("<script type=\"text/javascript\" src=\"Screens/FileDefinitions/AddEditFileDefinition.lsml.js\"></script>");
+document.writeln("<script type=\"text/javascript\" src=\"Screens/FileDefinitions/AddEditFileSection.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"Screens/FileDefinitions/ViewFileDefinition.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"Screens/FileDefinitions/ViewFileSection.lsml.js\"></script>");
+document.writeln("<script type=\"text/javascript\" src=\"Screens/ReconProcesses/AddEditReconProcess.lsml.js\"></script>");
+document.writeln("<script type=\"text/javascript\" src=\"Screens/ReconProcesses/AddEditReconProcessStep.lsml.js\"></script>");
+document.writeln("<script type=\"text/javascript\" src=\"Screens/ReconProcesses/AddEditReconSource.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"Screens/ReconProcesses/ViewReconProcess.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"Screens/ReconProcesses/ViewReconProcessStep.lsml.js\"></script>");
+document.writeln("<script type=\"text/javascript\" src=\"Screens/ReconStatusSet/AddEditReconItemStatu.lsml.js\"></script>");
+document.writeln("<script type=\"text/javascript\" src=\"Screens/ReconStatusSet/AddEditReconStatus.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"Screens/ReconStatusSet/ViewReconItemStatu.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"Screens/ReconStatusSet/ViewReconStatus.lsml.js\"></script>");
 document.writeln("<script type=\"text/javascript\" src=\"Screens/TypesSet/ViewFieldTypes.lsml.js\"></script>");

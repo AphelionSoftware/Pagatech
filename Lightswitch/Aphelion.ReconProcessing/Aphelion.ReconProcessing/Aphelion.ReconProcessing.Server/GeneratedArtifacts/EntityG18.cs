@@ -17,32 +17,32 @@ namespace LightSwitchApplication
     /// No Modeled Description Available
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-    public sealed partial class FileFieldRule : global::Microsoft.LightSwitch.Framework.Base.EntityObject<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass>
+    public sealed partial class Synonym : global::Microsoft.LightSwitch.Framework.Base.EntityObject<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass>
     {
         #region Constructors
     
         /// <summary>
-        /// Initializes a new instance of the FileFieldRule entity.
+        /// Initializes a new instance of the Synonym entity.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public FileFieldRule()
+        public Synonym()
             : this(null)
         {
         }
     
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public FileFieldRule(global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.FileFieldRule> entitySet)
+        public Synonym(global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.Synonym> entitySet)
             : base(entitySet)
         {
-            global::LightSwitchApplication.FileFieldRule.DetailsClass.Initialize(this);
+            global::LightSwitchApplication.Synonym.DetailsClass.Initialize(this);
         }
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void FileFieldRule_Created();
+        partial void Synonym_Created();
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void FileFieldRule_AllowSaveWithErrors(ref bool result);
+        partial void Synonym_AllowSaveWithErrors(ref bool result);
     
         #endregion
     
@@ -87,7 +87,7 @@ namespace LightSwitchApplication
         {
             get
             {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.ID);
+                return global::LightSwitchApplication.Synonym.DetailsClass.GetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.ID);
             }
         }
         
@@ -103,216 +103,48 @@ namespace LightSwitchApplication
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string ProcessingRule
+        public string SourceValue
         {
             get
             {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.ProcessingRule);
+                return global::LightSwitchApplication.Synonym.DetailsClass.GetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.SourceValue);
             }
             set
             {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.ProcessingRule, value);
+                global::LightSwitchApplication.Synonym.DetailsClass.SetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.SourceValue, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ProcessingRule_IsReadOnly(ref bool result);
+        partial void SourceValue_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ProcessingRule_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void SourceValue_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ProcessingRule_Changed();
+        partial void SourceValue_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Nullable<int> StartPos
+        public string SynonymValue
         {
             get
             {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.StartPos);
+                return global::LightSwitchApplication.Synonym.DetailsClass.GetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.SynonymValue);
             }
             set
             {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.StartPos, value);
+                global::LightSwitchApplication.Synonym.DetailsClass.SetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.SynonymValue, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void StartPos_IsReadOnly(ref bool result);
+        partial void SynonymValue_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void StartPos_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void SynonymValue_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void StartPos_Changed();
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Nullable<int> EndPos
-        {
-            get
-            {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.EndPos);
-            }
-            set
-            {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.EndPos, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void EndPos_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void EndPos_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void EndPos_Changed();
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string FirstChar
-        {
-            get
-            {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.FirstChar);
-            }
-            set
-            {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.FirstChar, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void FirstChar_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void FirstChar_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void FirstChar_Changed();
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string LastChar
-        {
-            get
-            {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.LastChar);
-            }
-            set
-            {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.LastChar, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void LastChar_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void LastChar_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void LastChar_Changed();
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string FirstPattern
-        {
-            get
-            {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.FirstPattern);
-            }
-            set
-            {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.FirstPattern, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void FirstPattern_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void FirstPattern_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void FirstPattern_Changed();
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string LastPattern
-        {
-            get
-            {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.LastPattern);
-            }
-            set
-            {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.LastPattern, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void LastPattern_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void LastPattern_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void LastPattern_Changed();
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string SplitChar
-        {
-            get
-            {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.SplitChar);
-            }
-            set
-            {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.SplitChar, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SplitChar_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SplitChar_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void SplitChar_Changed();
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Nullable<int> ArrPos
-        {
-            get
-            {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.ArrPos);
-            }
-            set
-            {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.ArrPos, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ArrPos_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ArrPos_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ArrPos_Changed();
+        partial void SynonymValue_Changed();
 
         /// <summary>
         /// No Modeled Description Available
@@ -323,11 +155,11 @@ namespace LightSwitchApplication
         {
             get
             {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.sys_CreatedBy);
+                return global::LightSwitchApplication.Synonym.DetailsClass.GetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.sys_CreatedBy);
             }
             set
             {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.sys_CreatedBy, value);
+                global::LightSwitchApplication.Synonym.DetailsClass.SetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.sys_CreatedBy, value);
             }
         }
         
@@ -347,11 +179,11 @@ namespace LightSwitchApplication
         {
             get
             {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.sys_CreatedOn);
+                return global::LightSwitchApplication.Synonym.DetailsClass.GetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.sys_CreatedOn);
             }
             set
             {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.sys_CreatedOn, value);
+                global::LightSwitchApplication.Synonym.DetailsClass.SetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.sys_CreatedOn, value);
             }
         }
         
@@ -371,11 +203,11 @@ namespace LightSwitchApplication
         {
             get
             {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.sys_ModifiedBy);
+                return global::LightSwitchApplication.Synonym.DetailsClass.GetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.sys_ModifiedBy);
             }
             set
             {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.sys_ModifiedBy, value);
+                global::LightSwitchApplication.Synonym.DetailsClass.SetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.sys_ModifiedBy, value);
             }
         }
         
@@ -395,11 +227,11 @@ namespace LightSwitchApplication
         {
             get
             {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.sys_ModifiedOn);
+                return global::LightSwitchApplication.Synonym.DetailsClass.GetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.sys_ModifiedOn);
             }
             set
             {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.sys_ModifiedOn, value);
+                global::LightSwitchApplication.Synonym.DetailsClass.SetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.sys_ModifiedOn, value);
             }
         }
         
@@ -415,48 +247,24 @@ namespace LightSwitchApplication
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::LightSwitchApplication.FileField FileField
+        public global::LightSwitchApplication.FileSection FileSection
         {
             get
             {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.FileField);
+                return global::LightSwitchApplication.Synonym.DetailsClass.GetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.FileSection);
             }
             set
             {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.FileField, value);
+                global::LightSwitchApplication.Synonym.DetailsClass.SetValue(this, global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.FileSection, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void FileField_IsReadOnly(ref bool result);
+        partial void FileSection_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void FileField_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void FileSection_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void FileField_Changed();
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::LightSwitchApplication.RuleType RuleType
-        {
-            get
-            {
-                return global::LightSwitchApplication.FileFieldRule.DetailsClass.GetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.RuleType);
-            }
-            set
-            {
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.SetValue(this, global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.RuleType, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void RuleType_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void RuleType_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void RuleType_Changed();
+        partial void FileSection_Changed();
 
         #endregion
     
@@ -467,37 +275,37 @@ namespace LightSwitchApplication
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public sealed class DetailsClass : global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<
-                global::LightSwitchApplication.FileFieldRule,
-                global::LightSwitchApplication.FileFieldRule.DetailsClass,
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.IImplementation,
-                global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySet,
-                global::Microsoft.LightSwitch.Details.Framework.EntityCommandSet<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass>,
-                global::Microsoft.LightSwitch.Details.Framework.EntityMethodSet<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass>>
+                global::LightSwitchApplication.Synonym,
+                global::LightSwitchApplication.Synonym.DetailsClass,
+                global::LightSwitchApplication.Synonym.DetailsClass.IImplementation,
+                global::LightSwitchApplication.Synonym.DetailsClass.PropertySet,
+                global::Microsoft.LightSwitch.Details.Framework.EntityCommandSet<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass>,
+                global::Microsoft.LightSwitch.Details.Framework.EntityMethodSet<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass>>
         {
     
             static DetailsClass()
             {
-                var initializeEntry = global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.ID;
+                var initializeEntry = global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.ID;
             }
     
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass>.Entry
-                __FileFieldRuleEntry = new global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass>.Entry(
-                    global::LightSwitchApplication.FileFieldRule.DetailsClass.__FileFieldRule_CreateNew,
-                    global::LightSwitchApplication.FileFieldRule.DetailsClass.__FileFieldRule_Created,
-                    global::LightSwitchApplication.FileFieldRule.DetailsClass.__FileFieldRule_AllowSaveWithErrors);
-            private static global::LightSwitchApplication.FileFieldRule __FileFieldRule_CreateNew(global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.FileFieldRule> es)
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass>.Entry
+                __SynonymEntry = new global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass>.Entry(
+                    global::LightSwitchApplication.Synonym.DetailsClass.__Synonym_CreateNew,
+                    global::LightSwitchApplication.Synonym.DetailsClass.__Synonym_Created,
+                    global::LightSwitchApplication.Synonym.DetailsClass.__Synonym_AllowSaveWithErrors);
+            private static global::LightSwitchApplication.Synonym __Synonym_CreateNew(global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.Synonym> es)
             {
-                return new global::LightSwitchApplication.FileFieldRule(es);
+                return new global::LightSwitchApplication.Synonym(es);
             }
-            private static void __FileFieldRule_Created(global::LightSwitchApplication.FileFieldRule e)
+            private static void __Synonym_Created(global::LightSwitchApplication.Synonym e)
             {
-                e.FileFieldRule_Created();
+                e.Synonym_Created();
             }
-            private static bool __FileFieldRule_AllowSaveWithErrors(global::LightSwitchApplication.FileFieldRule e)
+            private static bool __Synonym_AllowSaveWithErrors(global::LightSwitchApplication.Synonym e)
             {
                 bool result = false;
-                e.FileFieldRule_AllowSaveWithErrors(ref result);
+                e.Synonym_AllowSaveWithErrors(ref result);
                 return result;
             }
     
@@ -505,7 +313,7 @@ namespace LightSwitchApplication
             {
             }
     
-            public new global::Microsoft.LightSwitch.Details.Framework.EntityCommandSet<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass> Commands
+            public new global::Microsoft.LightSwitch.Details.Framework.EntityCommandSet<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass> Commands
             {
                 get
                 {
@@ -513,7 +321,7 @@ namespace LightSwitchApplication
                 }
             }
     
-            public new global::Microsoft.LightSwitch.Details.Framework.EntityMethodSet<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass> Methods
+            public new global::Microsoft.LightSwitch.Details.Framework.EntityMethodSet<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass> Methods
             {
                 get
                 {
@@ -521,7 +329,7 @@ namespace LightSwitchApplication
                 }
             }
     
-            public new global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySet Properties
+            public new global::LightSwitchApplication.Synonym.DetailsClass.PropertySet Properties
             {
                 get
                 {
@@ -533,138 +341,74 @@ namespace LightSwitchApplication
             [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public sealed class PropertySet : global::Microsoft.LightSwitch.Details.Framework.Base.EntityPropertySet<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass>
+            public sealed class PropertySet : global::Microsoft.LightSwitch.Details.Framework.Base.EntityPropertySet<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass>
             {
     
                 public PropertySet() : base()
                 {
                 }
     
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, int> ID
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, int> ID
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.ID) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, int>;
+                        return base.GetItem(global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.ID) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, int>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string> ProcessingRule
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string> SourceValue
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.ProcessingRule) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.SourceValue) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>> StartPos
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string> SynonymValue
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.StartPos) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>;
+                        return base.GetItem(global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.SynonymValue) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>> EndPos
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string> sys_CreatedBy
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.EndPos) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>;
+                        return base.GetItem(global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.sys_CreatedBy) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string> FirstChar
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::System.DateTime> sys_CreatedOn
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.FirstChar) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.sys_CreatedOn) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::System.DateTime>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string> LastChar
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string> sys_ModifiedBy
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.LastChar) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.sys_ModifiedBy) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string> FirstPattern
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::System.DateTime> sys_ModifiedOn
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.FirstPattern) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.sys_ModifiedOn) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::System.DateTime>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string> LastPattern
+                public global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::LightSwitchApplication.FileSection> FileSection
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.LastPattern) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string> SplitChar
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.SplitChar) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>> ArrPos
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.ArrPos) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string> sys_CreatedBy
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.sys_CreatedBy) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.DateTime> sys_CreatedOn
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.sys_CreatedOn) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.DateTime>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string> sys_ModifiedBy
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.sys_ModifiedBy) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.DateTime> sys_ModifiedOn
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.sys_ModifiedOn) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.DateTime>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::LightSwitchApplication.FileField> FileField
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.FileField) as global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::LightSwitchApplication.FileField>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::LightSwitchApplication.RuleType> RuleType
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.RuleType) as global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::LightSwitchApplication.RuleType>;
+                        return base.GetItem(global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.FileSection) as global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::LightSwitchApplication.FileSection>;
                     }
                 }
                 
@@ -675,21 +419,13 @@ namespace LightSwitchApplication
             public interface IImplementation : global::Microsoft.LightSwitch.Internal.IEntityImplementation
             {
                 new int ID { get; }
-                new string ProcessingRule { get; set; }
-                new global::System.Nullable<int> StartPos { get; set; }
-                new global::System.Nullable<int> EndPos { get; set; }
-                new string FirstChar { get; set; }
-                new string LastChar { get; set; }
-                new string FirstPattern { get; set; }
-                new string LastPattern { get; set; }
-                new string SplitChar { get; set; }
-                new global::System.Nullable<int> ArrPos { get; set; }
+                new string SourceValue { get; set; }
+                new string SynonymValue { get; set; }
                 new string sys_CreatedBy { get; set; }
                 new global::System.DateTime sys_CreatedOn { get; set; }
                 new string sys_ModifiedBy { get; set; }
                 new global::System.DateTime sys_ModifiedOn { get; set; }
-                new global::Microsoft.LightSwitch.Internal.IEntityImplementation FileField { get; set; }
-                new global::Microsoft.LightSwitch.Internal.IEntityImplementation RuleType { get; set; }
+                new global::Microsoft.LightSwitch.Internal.IEntityImplementation FileSection { get; set; }
             }
             #pragma warning restore 109
     
@@ -700,662 +436,332 @@ namespace LightSwitchApplication
             {
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, int>.Entry
-                    ID = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, int>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, int>.Entry
+                    ID = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, int>.Entry(
                         "ID",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ID_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ID_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ID_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ID_GetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._ID_Stub,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._ID_ComputeIsReadOnly,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._ID_Validate,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._ID_GetImplementationValue,
                         null,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ID_OnValueChanged);
-                private static void _ID_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, int>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._ID_OnValueChanged);
+                private static void _ID_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.Synonym.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, int>.Data> c, global::LightSwitchApplication.Synonym.DetailsClass d, object sf)
                 {
                     c(d, ref d._ID, sf);
                 }
-                private static bool _ID_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
+                private static bool _ID_ComputeIsReadOnly(global::LightSwitchApplication.Synonym e)
                 {
                     bool result = false;
                     e.ID_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _ID_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _ID_Validate(global::LightSwitchApplication.Synonym e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
                     e.ID_Validate(r);
                 }
-                private static int _ID_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
+                private static int _ID_GetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d)
                 {
                     return d.ImplementationEntity.ID;
                 }
-                private static void _ID_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
+                private static void _ID_OnValueChanged(global::LightSwitchApplication.Synonym e)
                 {
                     e.ID_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry
-                    ProcessingRule = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry(
-                        "ProcessingRule",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ProcessingRule_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ProcessingRule_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ProcessingRule_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ProcessingRule_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ProcessingRule_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ProcessingRule_OnValueChanged);
-                private static void _ProcessingRule_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Entry
+                    SourceValue = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Entry(
+                        "SourceValue",
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._SourceValue_Stub,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._SourceValue_ComputeIsReadOnly,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._SourceValue_Validate,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._SourceValue_GetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._SourceValue_SetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._SourceValue_OnValueChanged);
+                private static void _SourceValue_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.Synonym.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Data> c, global::LightSwitchApplication.Synonym.DetailsClass d, object sf)
                 {
-                    c(d, ref d._ProcessingRule, sf);
+                    c(d, ref d._SourceValue, sf);
                 }
-                private static bool _ProcessingRule_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
+                private static bool _SourceValue_ComputeIsReadOnly(global::LightSwitchApplication.Synonym e)
                 {
                     bool result = false;
-                    e.ProcessingRule_IsReadOnly(ref result);
+                    e.SourceValue_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _ProcessingRule_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _SourceValue_Validate(global::LightSwitchApplication.Synonym e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.ProcessingRule_Validate(r);
+                    e.SourceValue_Validate(r);
                 }
-                private static string _ProcessingRule_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
+                private static string _SourceValue_GetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d)
                 {
-                    return d.ImplementationEntity.ProcessingRule;
+                    return d.ImplementationEntity.SourceValue;
                 }
-                private static void _ProcessingRule_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, string v)
+                private static void _SourceValue_SetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.ProcessingRule = v;
+                    d.ImplementationEntity.SourceValue = v;
                 }
-                private static void _ProcessingRule_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
+                private static void _SourceValue_OnValueChanged(global::LightSwitchApplication.Synonym e)
                 {
-                    e.ProcessingRule_Changed();
+                    e.SourceValue_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>.Entry
-                    StartPos = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>.Entry(
-                        "StartPos",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._StartPos_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._StartPos_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._StartPos_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._StartPos_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._StartPos_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._StartPos_OnValueChanged);
-                private static void _StartPos_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Entry
+                    SynonymValue = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Entry(
+                        "SynonymValue",
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._SynonymValue_Stub,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._SynonymValue_ComputeIsReadOnly,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._SynonymValue_Validate,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._SynonymValue_GetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._SynonymValue_SetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._SynonymValue_OnValueChanged);
+                private static void _SynonymValue_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.Synonym.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Data> c, global::LightSwitchApplication.Synonym.DetailsClass d, object sf)
                 {
-                    c(d, ref d._StartPos, sf);
+                    c(d, ref d._SynonymValue, sf);
                 }
-                private static bool _StartPos_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
+                private static bool _SynonymValue_ComputeIsReadOnly(global::LightSwitchApplication.Synonym e)
                 {
                     bool result = false;
-                    e.StartPos_IsReadOnly(ref result);
+                    e.SynonymValue_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _StartPos_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _SynonymValue_Validate(global::LightSwitchApplication.Synonym e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.StartPos_Validate(r);
+                    e.SynonymValue_Validate(r);
                 }
-                private static global::System.Nullable<int> _StartPos_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
+                private static string _SynonymValue_GetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d)
                 {
-                    return d.ImplementationEntity.StartPos;
+                    return d.ImplementationEntity.SynonymValue;
                 }
-                private static void _StartPos_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, global::System.Nullable<int> v)
+                private static void _SynonymValue_SetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.StartPos = v;
+                    d.ImplementationEntity.SynonymValue = v;
                 }
-                private static void _StartPos_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
+                private static void _SynonymValue_OnValueChanged(global::LightSwitchApplication.Synonym e)
                 {
-                    e.StartPos_Changed();
+                    e.SynonymValue_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>.Entry
-                    EndPos = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>.Entry(
-                        "EndPos",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._EndPos_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._EndPos_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._EndPos_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._EndPos_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._EndPos_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._EndPos_OnValueChanged);
-                private static void _EndPos_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
-                {
-                    c(d, ref d._EndPos, sf);
-                }
-                private static bool _EndPos_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    bool result = false;
-                    e.EndPos_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _EndPos_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.EndPos_Validate(r);
-                }
-                private static global::System.Nullable<int> _EndPos_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
-                {
-                    return d.ImplementationEntity.EndPos;
-                }
-                private static void _EndPos_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, global::System.Nullable<int> v)
-                {
-                    d.ImplementationEntity.EndPos = v;
-                }
-                private static void _EndPos_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    e.EndPos_Changed();
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry
-                    FirstChar = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry(
-                        "FirstChar",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FirstChar_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FirstChar_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FirstChar_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FirstChar_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FirstChar_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FirstChar_OnValueChanged);
-                private static void _FirstChar_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
-                {
-                    c(d, ref d._FirstChar, sf);
-                }
-                private static bool _FirstChar_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    bool result = false;
-                    e.FirstChar_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _FirstChar_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.FirstChar_Validate(r);
-                }
-                private static string _FirstChar_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
-                {
-                    return d.ImplementationEntity.FirstChar;
-                }
-                private static void _FirstChar_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, string v)
-                {
-                    d.ImplementationEntity.FirstChar = v;
-                }
-                private static void _FirstChar_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    e.FirstChar_Changed();
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry
-                    LastChar = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry(
-                        "LastChar",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._LastChar_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._LastChar_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._LastChar_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._LastChar_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._LastChar_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._LastChar_OnValueChanged);
-                private static void _LastChar_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
-                {
-                    c(d, ref d._LastChar, sf);
-                }
-                private static bool _LastChar_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    bool result = false;
-                    e.LastChar_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _LastChar_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.LastChar_Validate(r);
-                }
-                private static string _LastChar_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
-                {
-                    return d.ImplementationEntity.LastChar;
-                }
-                private static void _LastChar_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, string v)
-                {
-                    d.ImplementationEntity.LastChar = v;
-                }
-                private static void _LastChar_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    e.LastChar_Changed();
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry
-                    FirstPattern = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry(
-                        "FirstPattern",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FirstPattern_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FirstPattern_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FirstPattern_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FirstPattern_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FirstPattern_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FirstPattern_OnValueChanged);
-                private static void _FirstPattern_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
-                {
-                    c(d, ref d._FirstPattern, sf);
-                }
-                private static bool _FirstPattern_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    bool result = false;
-                    e.FirstPattern_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _FirstPattern_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.FirstPattern_Validate(r);
-                }
-                private static string _FirstPattern_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
-                {
-                    return d.ImplementationEntity.FirstPattern;
-                }
-                private static void _FirstPattern_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, string v)
-                {
-                    d.ImplementationEntity.FirstPattern = v;
-                }
-                private static void _FirstPattern_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    e.FirstPattern_Changed();
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry
-                    LastPattern = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry(
-                        "LastPattern",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._LastPattern_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._LastPattern_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._LastPattern_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._LastPattern_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._LastPattern_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._LastPattern_OnValueChanged);
-                private static void _LastPattern_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
-                {
-                    c(d, ref d._LastPattern, sf);
-                }
-                private static bool _LastPattern_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    bool result = false;
-                    e.LastPattern_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _LastPattern_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.LastPattern_Validate(r);
-                }
-                private static string _LastPattern_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
-                {
-                    return d.ImplementationEntity.LastPattern;
-                }
-                private static void _LastPattern_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, string v)
-                {
-                    d.ImplementationEntity.LastPattern = v;
-                }
-                private static void _LastPattern_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    e.LastPattern_Changed();
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry
-                    SplitChar = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry(
-                        "SplitChar",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._SplitChar_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._SplitChar_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._SplitChar_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._SplitChar_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._SplitChar_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._SplitChar_OnValueChanged);
-                private static void _SplitChar_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
-                {
-                    c(d, ref d._SplitChar, sf);
-                }
-                private static bool _SplitChar_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    bool result = false;
-                    e.SplitChar_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _SplitChar_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.SplitChar_Validate(r);
-                }
-                private static string _SplitChar_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
-                {
-                    return d.ImplementationEntity.SplitChar;
-                }
-                private static void _SplitChar_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, string v)
-                {
-                    d.ImplementationEntity.SplitChar = v;
-                }
-                private static void _SplitChar_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    e.SplitChar_Changed();
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>.Entry
-                    ArrPos = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>.Entry(
-                        "ArrPos",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ArrPos_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ArrPos_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ArrPos_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ArrPos_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ArrPos_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._ArrPos_OnValueChanged);
-                private static void _ArrPos_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
-                {
-                    c(d, ref d._ArrPos, sf);
-                }
-                private static bool _ArrPos_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    bool result = false;
-                    e.ArrPos_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _ArrPos_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.ArrPos_Validate(r);
-                }
-                private static global::System.Nullable<int> _ArrPos_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
-                {
-                    return d.ImplementationEntity.ArrPos;
-                }
-                private static void _ArrPos_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, global::System.Nullable<int> v)
-                {
-                    d.ImplementationEntity.ArrPos = v;
-                }
-                private static void _ArrPos_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    e.ArrPos_Changed();
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry
-                    sys_CreatedBy = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Entry
+                    sys_CreatedBy = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Entry(
                         "sys_CreatedBy",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_CreatedBy_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_CreatedBy_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_CreatedBy_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_CreatedBy_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_CreatedBy_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_CreatedBy_OnValueChanged);
-                private static void _sys_CreatedBy_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_CreatedBy_Stub,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_CreatedBy_ComputeIsReadOnly,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_CreatedBy_Validate,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_CreatedBy_GetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_CreatedBy_SetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_CreatedBy_OnValueChanged);
+                private static void _sys_CreatedBy_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.Synonym.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Data> c, global::LightSwitchApplication.Synonym.DetailsClass d, object sf)
                 {
                     c(d, ref d._sys_CreatedBy, sf);
                 }
-                private static bool _sys_CreatedBy_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
+                private static bool _sys_CreatedBy_ComputeIsReadOnly(global::LightSwitchApplication.Synonym e)
                 {
                     bool result = false;
                     e.sys_CreatedBy_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _sys_CreatedBy_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _sys_CreatedBy_Validate(global::LightSwitchApplication.Synonym e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
                     e.sys_CreatedBy_Validate(r);
                 }
-                private static string _sys_CreatedBy_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
+                private static string _sys_CreatedBy_GetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d)
                 {
                     return d.ImplementationEntity.sys_CreatedBy;
                 }
-                private static void _sys_CreatedBy_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, string v)
+                private static void _sys_CreatedBy_SetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d, string v)
                 {
                     d.ImplementationEntity.sys_CreatedBy = v;
                 }
-                private static void _sys_CreatedBy_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
+                private static void _sys_CreatedBy_OnValueChanged(global::LightSwitchApplication.Synonym e)
                 {
                     e.sys_CreatedBy_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.DateTime>.Entry
-                    sys_CreatedOn = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.DateTime>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::System.DateTime>.Entry
+                    sys_CreatedOn = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::System.DateTime>.Entry(
                         "sys_CreatedOn",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_CreatedOn_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_CreatedOn_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_CreatedOn_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_CreatedOn_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_CreatedOn_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_CreatedOn_OnValueChanged);
-                private static void _sys_CreatedOn_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.DateTime>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_CreatedOn_Stub,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_CreatedOn_ComputeIsReadOnly,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_CreatedOn_Validate,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_CreatedOn_GetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_CreatedOn_SetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_CreatedOn_OnValueChanged);
+                private static void _sys_CreatedOn_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.Synonym.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::System.DateTime>.Data> c, global::LightSwitchApplication.Synonym.DetailsClass d, object sf)
                 {
                     c(d, ref d._sys_CreatedOn, sf);
                 }
-                private static bool _sys_CreatedOn_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
+                private static bool _sys_CreatedOn_ComputeIsReadOnly(global::LightSwitchApplication.Synonym e)
                 {
                     bool result = false;
                     e.sys_CreatedOn_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _sys_CreatedOn_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _sys_CreatedOn_Validate(global::LightSwitchApplication.Synonym e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
                     e.sys_CreatedOn_Validate(r);
                 }
-                private static global::System.DateTime _sys_CreatedOn_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
+                private static global::System.DateTime _sys_CreatedOn_GetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d)
                 {
                     return d.ImplementationEntity.sys_CreatedOn;
                 }
-                private static void _sys_CreatedOn_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, global::System.DateTime v)
+                private static void _sys_CreatedOn_SetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d, global::System.DateTime v)
                 {
-                    d.ImplementationEntity.sys_CreatedOn = global::LightSwitchApplication.FileFieldRule.DetailsClass.ClearDateTimeKind(v);
+                    d.ImplementationEntity.sys_CreatedOn = global::LightSwitchApplication.Synonym.DetailsClass.ClearDateTimeKind(v);
                 }
-                private static void _sys_CreatedOn_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
+                private static void _sys_CreatedOn_OnValueChanged(global::LightSwitchApplication.Synonym e)
                 {
                     e.sys_CreatedOn_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry
-                    sys_ModifiedBy = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Entry
+                    sys_ModifiedBy = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Entry(
                         "sys_ModifiedBy",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_ModifiedBy_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_ModifiedBy_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_ModifiedBy_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_ModifiedBy_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_ModifiedBy_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_ModifiedBy_OnValueChanged);
-                private static void _sys_ModifiedBy_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_ModifiedBy_Stub,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_ModifiedBy_ComputeIsReadOnly,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_ModifiedBy_Validate,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_ModifiedBy_GetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_ModifiedBy_SetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_ModifiedBy_OnValueChanged);
+                private static void _sys_ModifiedBy_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.Synonym.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Data> c, global::LightSwitchApplication.Synonym.DetailsClass d, object sf)
                 {
                     c(d, ref d._sys_ModifiedBy, sf);
                 }
-                private static bool _sys_ModifiedBy_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
+                private static bool _sys_ModifiedBy_ComputeIsReadOnly(global::LightSwitchApplication.Synonym e)
                 {
                     bool result = false;
                     e.sys_ModifiedBy_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _sys_ModifiedBy_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _sys_ModifiedBy_Validate(global::LightSwitchApplication.Synonym e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
                     e.sys_ModifiedBy_Validate(r);
                 }
-                private static string _sys_ModifiedBy_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
+                private static string _sys_ModifiedBy_GetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d)
                 {
                     return d.ImplementationEntity.sys_ModifiedBy;
                 }
-                private static void _sys_ModifiedBy_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, string v)
+                private static void _sys_ModifiedBy_SetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d, string v)
                 {
                     d.ImplementationEntity.sys_ModifiedBy = v;
                 }
-                private static void _sys_ModifiedBy_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
+                private static void _sys_ModifiedBy_OnValueChanged(global::LightSwitchApplication.Synonym e)
                 {
                     e.sys_ModifiedBy_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.DateTime>.Entry
-                    sys_ModifiedOn = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.DateTime>.Entry(
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::System.DateTime>.Entry
+                    sys_ModifiedOn = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::System.DateTime>.Entry(
                         "sys_ModifiedOn",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_ModifiedOn_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_ModifiedOn_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_ModifiedOn_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_ModifiedOn_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_ModifiedOn_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._sys_ModifiedOn_OnValueChanged);
-                private static void _sys_ModifiedOn_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.DateTime>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_ModifiedOn_Stub,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_ModifiedOn_ComputeIsReadOnly,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_ModifiedOn_Validate,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_ModifiedOn_GetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_ModifiedOn_SetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._sys_ModifiedOn_OnValueChanged);
+                private static void _sys_ModifiedOn_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.Synonym.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::System.DateTime>.Data> c, global::LightSwitchApplication.Synonym.DetailsClass d, object sf)
                 {
                     c(d, ref d._sys_ModifiedOn, sf);
                 }
-                private static bool _sys_ModifiedOn_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
+                private static bool _sys_ModifiedOn_ComputeIsReadOnly(global::LightSwitchApplication.Synonym e)
                 {
                     bool result = false;
                     e.sys_ModifiedOn_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _sys_ModifiedOn_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _sys_ModifiedOn_Validate(global::LightSwitchApplication.Synonym e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
                     e.sys_ModifiedOn_Validate(r);
                 }
-                private static global::System.DateTime _sys_ModifiedOn_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
+                private static global::System.DateTime _sys_ModifiedOn_GetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d)
                 {
                     return d.ImplementationEntity.sys_ModifiedOn;
                 }
-                private static void _sys_ModifiedOn_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, global::System.DateTime v)
+                private static void _sys_ModifiedOn_SetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d, global::System.DateTime v)
                 {
-                    d.ImplementationEntity.sys_ModifiedOn = global::LightSwitchApplication.FileFieldRule.DetailsClass.ClearDateTimeKind(v);
+                    d.ImplementationEntity.sys_ModifiedOn = global::LightSwitchApplication.Synonym.DetailsClass.ClearDateTimeKind(v);
                 }
-                private static void _sys_ModifiedOn_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
+                private static void _sys_ModifiedOn_OnValueChanged(global::LightSwitchApplication.Synonym e)
                 {
                     e.sys_ModifiedOn_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::LightSwitchApplication.FileField>.Entry
-                    FileField = new global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::LightSwitchApplication.FileField>.Entry(
-                        "FileField",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FileField_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FileField_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FileField_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FileField_GetCoreImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FileField_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FileField_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FileField_Refresh,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._FileField_OnValueChanged);
-                private static void _FileField_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::LightSwitchApplication.FileField>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::LightSwitchApplication.FileSection>.Entry
+                    FileSection = new global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::LightSwitchApplication.FileSection>.Entry(
+                        "FileSection",
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._FileSection_Stub,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._FileSection_ComputeIsReadOnly,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._FileSection_Validate,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._FileSection_GetCoreImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._FileSection_GetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._FileSection_SetImplementationValue,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._FileSection_Refresh,
+                        global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties._FileSection_OnValueChanged);
+                private static void _FileSection_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.Synonym.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::LightSwitchApplication.FileSection>.Data> c, global::LightSwitchApplication.Synonym.DetailsClass d, object sf)
                 {
-                    c(d, ref d._FileField, sf);
+                    c(d, ref d._FileSection, sf);
                 }
-                private static bool _FileField_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
+                private static bool _FileSection_ComputeIsReadOnly(global::LightSwitchApplication.Synonym e)
                 {
                     bool result = false;
-                    e.FileField_IsReadOnly(ref result);
+                    e.FileSection_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _FileField_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _FileSection_Validate(global::LightSwitchApplication.Synonym e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.FileField_Validate(r);
+                    e.FileSection_Validate(r);
                 }
-                private static global::Microsoft.LightSwitch.Internal.IEntityImplementation _FileField_GetCoreImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
+                private static global::Microsoft.LightSwitch.Internal.IEntityImplementation _FileSection_GetCoreImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d)
                 {
-                    return d.ImplementationEntity.FileField;
+                    return d.ImplementationEntity.FileSection;
                 }
-                private static global::LightSwitchApplication.FileField _FileField_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
+                private static global::LightSwitchApplication.FileSection _FileSection_GetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d)
                 {
-                    return d.GetImplementationValue<global::LightSwitchApplication.FileField, global::LightSwitchApplication.FileField.DetailsClass>(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.FileField, ref d._FileField);
+                    return d.GetImplementationValue<global::LightSwitchApplication.FileSection, global::LightSwitchApplication.FileSection.DetailsClass>(global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.FileSection, ref d._FileSection);
                 }
-                private static void _FileField_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, global::LightSwitchApplication.FileField v)
+                private static void _FileSection_SetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass d, global::LightSwitchApplication.FileSection v)
                 {
-                    d.SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.FileField, ref d._FileField, (i, ev) => i.FileField = ev, v);
+                    d.SetImplementationValue(global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.FileSection, ref d._FileSection, (i, ev) => i.FileSection = ev, v);
                 }
-                private static void _FileField_Refresh(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
+                private static void _FileSection_Refresh(global::LightSwitchApplication.Synonym.DetailsClass d)
                 {
-                    d.RefreshNavigationProperty(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.FileField, ref d._FileField);
+                    d.RefreshNavigationProperty(global::LightSwitchApplication.Synonym.DetailsClass.PropertySetProperties.FileSection, ref d._FileSection);
                 }
-                private static void _FileField_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
+                private static void _FileSection_OnValueChanged(global::LightSwitchApplication.Synonym e)
                 {
-                    e.FileField_Changed();
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::LightSwitchApplication.RuleType>.Entry
-                    RuleType = new global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::LightSwitchApplication.RuleType>.Entry(
-                        "RuleType",
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._RuleType_Stub,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._RuleType_ComputeIsReadOnly,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._RuleType_Validate,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._RuleType_GetCoreImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._RuleType_GetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._RuleType_SetImplementationValue,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._RuleType_Refresh,
-                        global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties._RuleType_OnValueChanged);
-                private static void _RuleType_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.FileFieldRule.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::LightSwitchApplication.RuleType>.Data> c, global::LightSwitchApplication.FileFieldRule.DetailsClass d, object sf)
-                {
-                    c(d, ref d._RuleType, sf);
-                }
-                private static bool _RuleType_ComputeIsReadOnly(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    bool result = false;
-                    e.RuleType_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _RuleType_Validate(global::LightSwitchApplication.FileFieldRule e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.RuleType_Validate(r);
-                }
-                private static global::Microsoft.LightSwitch.Internal.IEntityImplementation _RuleType_GetCoreImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
-                {
-                    return d.ImplementationEntity.RuleType;
-                }
-                private static global::LightSwitchApplication.RuleType _RuleType_GetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
-                {
-                    return d.GetImplementationValue<global::LightSwitchApplication.RuleType, global::LightSwitchApplication.RuleType.DetailsClass>(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.RuleType, ref d._RuleType);
-                }
-                private static void _RuleType_SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass d, global::LightSwitchApplication.RuleType v)
-                {
-                    d.SetImplementationValue(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.RuleType, ref d._RuleType, (i, ev) => i.RuleType = ev, v);
-                }
-                private static void _RuleType_Refresh(global::LightSwitchApplication.FileFieldRule.DetailsClass d)
-                {
-                    d.RefreshNavigationProperty(global::LightSwitchApplication.FileFieldRule.DetailsClass.PropertySetProperties.RuleType, ref d._RuleType);
-                }
-                private static void _RuleType_OnValueChanged(global::LightSwitchApplication.FileFieldRule e)
-                {
-                    e.RuleType_Changed();
+                    e.FileSection_Changed();
                 }
     
             }
     
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, int>.Data _ID;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, int>.Data _ID;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data _ProcessingRule;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Data _SourceValue;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>.Data _StartPos;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Data _SynonymValue;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>.Data _EndPos;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Data _sys_CreatedBy;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data _FirstChar;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::System.DateTime>.Data _sys_CreatedOn;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data _LastChar;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, string>.Data _sys_ModifiedBy;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data _FirstPattern;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::System.DateTime>.Data _sys_ModifiedOn;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data _LastPattern;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data _SplitChar;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.Nullable<int>>.Data _ArrPos;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data _sys_CreatedBy;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.DateTime>.Data _sys_CreatedOn;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, string>.Data _sys_ModifiedBy;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::System.DateTime>.Data _sys_ModifiedOn;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::LightSwitchApplication.FileField>.Data _FileField;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.FileFieldRule, global::LightSwitchApplication.FileFieldRule.DetailsClass, global::LightSwitchApplication.RuleType>.Data _RuleType;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.Synonym, global::LightSwitchApplication.Synonym.DetailsClass, global::LightSwitchApplication.FileSection>.Data _FileSection;
             
         }
     

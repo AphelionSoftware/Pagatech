@@ -13,6 +13,46 @@ window.myapp = msls.application;
         $DataServiceQuery = msls.DataServiceQuery,
         $toODataString = msls._toODataString;
 
+    function FieldType(entitySet) {
+        /// <summary>
+        /// Represents the FieldType entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this fieldType.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this fieldType.
+        /// </field>
+        /// <field name="Code" type="String">
+        /// Gets or sets the code for this fieldType.
+        /// </field>
+        /// <field name="Name" type="String">
+        /// Gets or sets the name for this fieldType.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this fieldType.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this fieldType.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this fieldType.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this fieldType.
+        /// </field>
+        /// <field name="ReconFields" type="msls.EntityCollection" elementType="msls.application.ReconField">
+        /// Gets the reconFields for this fieldType.
+        /// </field>
+        /// <field name="SystemFields" type="msls.EntityCollection" elementType="msls.application.SystemField">
+        /// Gets the systemFields for this fieldType.
+        /// </field>
+        /// <field name="details" type="msls.application.FieldType.Details">
+        /// Gets the details for this fieldType.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
     function FileDefinition(entitySet) {
         /// <summary>
         /// Represents the FileDefinition entity type.
@@ -55,6 +95,67 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="details" type="msls.application.FileDefinition.Details">
         /// Gets the details for this fileDefinition.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
+    function FileFieldRule(entitySet) {
+        /// <summary>
+        /// Represents the FileFieldRule entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this fileFieldRule.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this fileFieldRule.
+        /// </field>
+        /// <field name="ProcessingRule" type="String">
+        /// Gets or sets the processingRule for this fileFieldRule.
+        /// </field>
+        /// <field name="StartPos" type="Number">
+        /// Gets or sets the startPos for this fileFieldRule.
+        /// </field>
+        /// <field name="EndPos" type="Number">
+        /// Gets or sets the endPos for this fileFieldRule.
+        /// </field>
+        /// <field name="FirstChar" type="String">
+        /// Gets or sets the firstChar for this fileFieldRule.
+        /// </field>
+        /// <field name="LastChar" type="String">
+        /// Gets or sets the lastChar for this fileFieldRule.
+        /// </field>
+        /// <field name="FirstPattern" type="String">
+        /// Gets or sets the firstPattern for this fileFieldRule.
+        /// </field>
+        /// <field name="LastPattern" type="String">
+        /// Gets or sets the lastPattern for this fileFieldRule.
+        /// </field>
+        /// <field name="SplitChar" type="String">
+        /// Gets or sets the splitChar for this fileFieldRule.
+        /// </field>
+        /// <field name="ArrPos" type="Number">
+        /// Gets or sets the arrPos for this fileFieldRule.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this fileFieldRule.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this fileFieldRule.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this fileFieldRule.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this fileFieldRule.
+        /// </field>
+        /// <field name="FileField" type="msls.application.FileField">
+        /// Gets or sets the fileField for this fileFieldRule.
+        /// </field>
+        /// <field name="RuleType" type="msls.application.RuleType">
+        /// Gets or sets the ruleType for this fileFieldRule.
+        /// </field>
+        /// <field name="details" type="msls.application.FileFieldRule.Details">
+        /// Gets the details for this fileFieldRule.
         /// </field>
         $Entity.call(this, entitySet);
     }
@@ -316,6 +417,55 @@ window.myapp = msls.application;
         $Entity.call(this, entitySet);
     }
 
+    function NIBBS_DB_Detail(entitySet) {
+        /// <summary>
+        /// Represents the NIBBS_DB_Detail entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this nIBBS_DB_Detail.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this nIBBS_DB_Detail.
+        /// </field>
+        /// <field name="Narration" type="String">
+        /// Gets or sets the narration for this nIBBS_DB_Detail.
+        /// </field>
+        /// <field name="Posting_Date" type="String">
+        /// Gets or sets the posting_Date for this nIBBS_DB_Detail.
+        /// </field>
+        /// <field name="Value_Date" type="String">
+        /// Gets or sets the value_Date for this nIBBS_DB_Detail.
+        /// </field>
+        /// <field name="Debit" type="String">
+        /// Gets or sets the debit for this nIBBS_DB_Detail.
+        /// </field>
+        /// <field name="Credit" type="String">
+        /// Gets or sets the credit for this nIBBS_DB_Detail.
+        /// </field>
+        /// <field name="Reference" type="String">
+        /// Gets or sets the reference for this nIBBS_DB_Detail.
+        /// </field>
+        /// <field name="Balance" type="String">
+        /// Gets or sets the balance for this nIBBS_DB_Detail.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this nIBBS_DB_Detail.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this nIBBS_DB_Detail.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this nIBBS_DB_Detail.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this nIBBS_DB_Detail.
+        /// </field>
+        /// <field name="details" type="msls.application.NIBBS_DB_Detail.Details">
+        /// Gets the details for this nIBBS_DB_Detail.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
     function ReconDetail(entitySet) {
         /// <summary>
         /// Represents the ReconDetail entity type.
@@ -358,6 +508,46 @@ window.myapp = msls.application;
         /// </field>
         /// <field name="details" type="msls.application.ReconDetail.Details">
         /// Gets the details for this reconDetail.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
+    function ReconField(entitySet) {
+        /// <summary>
+        /// Represents the ReconField entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this reconField.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this reconField.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this reconField.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this reconField.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this reconField.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this reconField.
+        /// </field>
+        /// <field name="FieldType" type="msls.application.FieldType">
+        /// Gets or sets the fieldType for this reconField.
+        /// </field>
+        /// <field name="FileField" type="msls.application.FileField">
+        /// Gets or sets the fileField for this reconField.
+        /// </field>
+        /// <field name="ReconProcessStep" type="msls.application.ReconProcessStep">
+        /// Gets or sets the reconProcessStep for this reconField.
+        /// </field>
+        /// <field name="SystemField" type="msls.application.SystemField">
+        /// Gets or sets the systemField for this reconField.
+        /// </field>
+        /// <field name="details" type="msls.application.ReconField.Details">
+        /// Gets the details for this reconField.
         /// </field>
         $Entity.call(this, entitySet);
     }
@@ -712,6 +902,43 @@ window.myapp = msls.application;
         $Entity.call(this, entitySet);
     }
 
+    function RuleType(entitySet) {
+        /// <summary>
+        /// Represents the RuleType entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this ruleType.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this ruleType.
+        /// </field>
+        /// <field name="Code" type="String">
+        /// Gets or sets the code for this ruleType.
+        /// </field>
+        /// <field name="Name" type="String">
+        /// Gets or sets the name for this ruleType.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this ruleType.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this ruleType.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this ruleType.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this ruleType.
+        /// </field>
+        /// <field name="FileFieldRules" type="msls.EntityCollection" elementType="msls.application.FileFieldRule">
+        /// Gets the fileFieldRules for this ruleType.
+        /// </field>
+        /// <field name="details" type="msls.application.RuleType.Details">
+        /// Gets the details for this ruleType.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
     function SkyeImportDetail(entitySet) {
         /// <summary>
         /// Represents the SkyeImportDetail entity type.
@@ -810,6 +1037,43 @@ window.myapp = msls.application;
         $Entity.call(this, entitySet);
     }
 
+    function Synonym(entitySet) {
+        /// <summary>
+        /// Represents the Synonym entity type.
+        /// </summary>
+        /// <param name="entitySet" type="msls.EntitySet" optional="true">
+        /// The entity set that should contain this synonym.
+        /// </param>
+        /// <field name="ID" type="Number">
+        /// Gets or sets the iD for this synonym.
+        /// </field>
+        /// <field name="SourceValue" type="String">
+        /// Gets or sets the sourceValue for this synonym.
+        /// </field>
+        /// <field name="SynonymValue" type="String">
+        /// Gets or sets the synonymValue for this synonym.
+        /// </field>
+        /// <field name="sys_CreatedBy" type="String">
+        /// Gets or sets the sys_CreatedBy for this synonym.
+        /// </field>
+        /// <field name="sys_CreatedOn" type="Date">
+        /// Gets or sets the sys_CreatedOn for this synonym.
+        /// </field>
+        /// <field name="sys_ModifiedBy" type="String">
+        /// Gets or sets the sys_ModifiedBy for this synonym.
+        /// </field>
+        /// <field name="sys_ModifiedOn" type="Date">
+        /// Gets or sets the sys_ModifiedOn for this synonym.
+        /// </field>
+        /// <field name="FileSection" type="msls.application.FileSection">
+        /// Gets or sets the fileSection for this synonym.
+        /// </field>
+        /// <field name="details" type="msls.application.Synonym.Details">
+        /// Gets the details for this synonym.
+        /// </field>
+        $Entity.call(this, entitySet);
+    }
+
     function SystemField(entitySet) {
         /// <summary>
         /// Represents the SystemField entity type.
@@ -893,270 +1157,6 @@ window.myapp = msls.application;
         $Entity.call(this, entitySet);
     }
 
-    function FieldType(entitySet) {
-        /// <summary>
-        /// Represents the FieldType entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this fieldType.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this fieldType.
-        /// </field>
-        /// <field name="Code" type="String">
-        /// Gets or sets the code for this fieldType.
-        /// </field>
-        /// <field name="Name" type="String">
-        /// Gets or sets the name for this fieldType.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this fieldType.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this fieldType.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this fieldType.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this fieldType.
-        /// </field>
-        /// <field name="ReconFields" type="msls.EntityCollection" elementType="msls.application.ReconField">
-        /// Gets the reconFields for this fieldType.
-        /// </field>
-        /// <field name="SystemFields" type="msls.EntityCollection" elementType="msls.application.SystemField">
-        /// Gets the systemFields for this fieldType.
-        /// </field>
-        /// <field name="details" type="msls.application.FieldType.Details">
-        /// Gets the details for this fieldType.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function ReconField(entitySet) {
-        /// <summary>
-        /// Represents the ReconField entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this reconField.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this reconField.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this reconField.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this reconField.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this reconField.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this reconField.
-        /// </field>
-        /// <field name="FieldType" type="msls.application.FieldType">
-        /// Gets or sets the fieldType for this reconField.
-        /// </field>
-        /// <field name="FileField" type="msls.application.FileField">
-        /// Gets or sets the fileField for this reconField.
-        /// </field>
-        /// <field name="ReconProcessStep" type="msls.application.ReconProcessStep">
-        /// Gets or sets the reconProcessStep for this reconField.
-        /// </field>
-        /// <field name="SystemField" type="msls.application.SystemField">
-        /// Gets or sets the systemField for this reconField.
-        /// </field>
-        /// <field name="details" type="msls.application.ReconField.Details">
-        /// Gets the details for this reconField.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function RuleType(entitySet) {
-        /// <summary>
-        /// Represents the RuleType entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this ruleType.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this ruleType.
-        /// </field>
-        /// <field name="Code" type="String">
-        /// Gets or sets the code for this ruleType.
-        /// </field>
-        /// <field name="Name" type="String">
-        /// Gets or sets the name for this ruleType.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this ruleType.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this ruleType.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this ruleType.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this ruleType.
-        /// </field>
-        /// <field name="FileFieldRules" type="msls.EntityCollection" elementType="msls.application.FileFieldRule">
-        /// Gets the fileFieldRules for this ruleType.
-        /// </field>
-        /// <field name="details" type="msls.application.RuleType.Details">
-        /// Gets the details for this ruleType.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function FileFieldRule(entitySet) {
-        /// <summary>
-        /// Represents the FileFieldRule entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this fileFieldRule.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this fileFieldRule.
-        /// </field>
-        /// <field name="ProcessingRule" type="String">
-        /// Gets or sets the processingRule for this fileFieldRule.
-        /// </field>
-        /// <field name="StartPos" type="Number">
-        /// Gets or sets the startPos for this fileFieldRule.
-        /// </field>
-        /// <field name="EndPos" type="Number">
-        /// Gets or sets the endPos for this fileFieldRule.
-        /// </field>
-        /// <field name="FirstChar" type="String">
-        /// Gets or sets the firstChar for this fileFieldRule.
-        /// </field>
-        /// <field name="LastChar" type="String">
-        /// Gets or sets the lastChar for this fileFieldRule.
-        /// </field>
-        /// <field name="FirstPattern" type="String">
-        /// Gets or sets the firstPattern for this fileFieldRule.
-        /// </field>
-        /// <field name="LastPattern" type="String">
-        /// Gets or sets the lastPattern for this fileFieldRule.
-        /// </field>
-        /// <field name="SplitChar" type="String">
-        /// Gets or sets the splitChar for this fileFieldRule.
-        /// </field>
-        /// <field name="ArrPos" type="Number">
-        /// Gets or sets the arrPos for this fileFieldRule.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this fileFieldRule.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this fileFieldRule.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this fileFieldRule.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this fileFieldRule.
-        /// </field>
-        /// <field name="FileField" type="msls.application.FileField">
-        /// Gets or sets the fileField for this fileFieldRule.
-        /// </field>
-        /// <field name="RuleType" type="msls.application.RuleType">
-        /// Gets or sets the ruleType for this fileFieldRule.
-        /// </field>
-        /// <field name="details" type="msls.application.FileFieldRule.Details">
-        /// Gets the details for this fileFieldRule.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function Synonym(entitySet) {
-        /// <summary>
-        /// Represents the Synonym entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this synonym.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this synonym.
-        /// </field>
-        /// <field name="SourceValue" type="String">
-        /// Gets or sets the sourceValue for this synonym.
-        /// </field>
-        /// <field name="SynonymValue" type="String">
-        /// Gets or sets the synonymValue for this synonym.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this synonym.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this synonym.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this synonym.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this synonym.
-        /// </field>
-        /// <field name="FileSection" type="msls.application.FileSection">
-        /// Gets or sets the fileSection for this synonym.
-        /// </field>
-        /// <field name="details" type="msls.application.Synonym.Details">
-        /// Gets the details for this synonym.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
-    function NIBBS_DB_Detail(entitySet) {
-        /// <summary>
-        /// Represents the NIBBS_DB_Detail entity type.
-        /// </summary>
-        /// <param name="entitySet" type="msls.EntitySet" optional="true">
-        /// The entity set that should contain this nIBBS_DB_Detail.
-        /// </param>
-        /// <field name="ID" type="Number">
-        /// Gets or sets the iD for this nIBBS_DB_Detail.
-        /// </field>
-        /// <field name="Narration" type="String">
-        /// Gets or sets the narration for this nIBBS_DB_Detail.
-        /// </field>
-        /// <field name="Posting_Date" type="String">
-        /// Gets or sets the posting_Date for this nIBBS_DB_Detail.
-        /// </field>
-        /// <field name="Value_Date" type="String">
-        /// Gets or sets the value_Date for this nIBBS_DB_Detail.
-        /// </field>
-        /// <field name="Debit" type="String">
-        /// Gets or sets the debit for this nIBBS_DB_Detail.
-        /// </field>
-        /// <field name="Credit" type="String">
-        /// Gets or sets the credit for this nIBBS_DB_Detail.
-        /// </field>
-        /// <field name="Reference" type="String">
-        /// Gets or sets the reference for this nIBBS_DB_Detail.
-        /// </field>
-        /// <field name="Balance" type="String">
-        /// Gets or sets the balance for this nIBBS_DB_Detail.
-        /// </field>
-        /// <field name="sys_CreatedBy" type="String">
-        /// Gets or sets the sys_CreatedBy for this nIBBS_DB_Detail.
-        /// </field>
-        /// <field name="sys_CreatedOn" type="Date">
-        /// Gets or sets the sys_CreatedOn for this nIBBS_DB_Detail.
-        /// </field>
-        /// <field name="sys_ModifiedBy" type="String">
-        /// Gets or sets the sys_ModifiedBy for this nIBBS_DB_Detail.
-        /// </field>
-        /// <field name="sys_ModifiedOn" type="Date">
-        /// Gets or sets the sys_ModifiedOn for this nIBBS_DB_Detail.
-        /// </field>
-        /// <field name="details" type="msls.application.NIBBS_DB_Detail.Details">
-        /// Gets the details for this nIBBS_DB_Detail.
-        /// </field>
-        $Entity.call(this, entitySet);
-    }
-
     function PagaReconData(dataWorkspace) {
         /// <summary>
         /// Represents the PagaReconData data service.
@@ -1164,8 +1164,14 @@ window.myapp = msls.application;
         /// <param name="dataWorkspace" type="msls.DataWorkspace">
         /// The data workspace that created this data service.
         /// </param>
+        /// <field name="FieldTypes" type="msls.EntitySet">
+        /// Gets the FieldTypes entity set.
+        /// </field>
         /// <field name="FileDefinitions" type="msls.EntitySet">
         /// Gets the FileDefinitions entity set.
+        /// </field>
+        /// <field name="FileFieldRules" type="msls.EntitySet">
+        /// Gets the FileFieldRules entity set.
         /// </field>
         /// <field name="FileFields" type="msls.EntitySet">
         /// Gets the FileFields entity set.
@@ -1182,8 +1188,14 @@ window.myapp = msls.application;
         /// <field name="ImportedFiles" type="msls.EntitySet">
         /// Gets the ImportedFiles entity set.
         /// </field>
+        /// <field name="NIBBS_DB_Details" type="msls.EntitySet">
+        /// Gets the NIBBS_DB_Details entity set.
+        /// </field>
         /// <field name="ReconDetails" type="msls.EntitySet">
         /// Gets the ReconDetails entity set.
+        /// </field>
+        /// <field name="ReconFields" type="msls.EntitySet">
+        /// Gets the ReconFields entity set.
         /// </field>
         /// <field name="ReconItemStatus" type="msls.EntitySet">
         /// Gets the ReconItemStatus entity set.
@@ -1209,35 +1221,23 @@ window.myapp = msls.application;
         /// <field name="ReconTypes" type="msls.EntitySet">
         /// Gets the ReconTypes entity set.
         /// </field>
+        /// <field name="RuleTypes" type="msls.EntitySet">
+        /// Gets the RuleTypes entity set.
+        /// </field>
         /// <field name="SkyeImportDetails" type="msls.EntitySet">
         /// Gets the SkyeImportDetails entity set.
         /// </field>
         /// <field name="SkyeImportHeaders" type="msls.EntitySet">
         /// Gets the SkyeImportHeaders entity set.
         /// </field>
+        /// <field name="Synonyms" type="msls.EntitySet">
+        /// Gets the Synonyms entity set.
+        /// </field>
         /// <field name="SystemFields" type="msls.EntitySet">
         /// Gets the SystemFields entity set.
         /// </field>
         /// <field name="vwReconProcessStatus" type="msls.EntitySet">
         /// Gets the vwReconProcessStatus entity set.
-        /// </field>
-        /// <field name="FieldTypes" type="msls.EntitySet">
-        /// Gets the FieldTypes entity set.
-        /// </field>
-        /// <field name="ReconFields" type="msls.EntitySet">
-        /// Gets the ReconFields entity set.
-        /// </field>
-        /// <field name="RuleTypes" type="msls.EntitySet">
-        /// Gets the RuleTypes entity set.
-        /// </field>
-        /// <field name="FileFieldRules" type="msls.EntitySet">
-        /// Gets the FileFieldRules entity set.
-        /// </field>
-        /// <field name="Synonyms" type="msls.EntitySet">
-        /// Gets the Synonyms entity set.
-        /// </field>
-        /// <field name="NIBBS_DB_Details" type="msls.EntitySet">
-        /// Gets the NIBBS_DB_Details entity set.
         /// </field>
         /// <field name="details" type="msls.application.PagaReconData.Details">
         /// Gets the details for this data service.
@@ -1259,6 +1259,18 @@ window.myapp = msls.application;
 
     msls._addToNamespace("msls.application", {
 
+        FieldType: $defineEntity(FieldType, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "Code", type: String },
+            { name: "Name", type: String },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "ReconFields", kind: "collection", elementType: ReconField },
+            { name: "SystemFields", kind: "collection", elementType: SystemField }
+        ]),
+
         FileDefinition: $defineEntity(FileDefinition, [
             { name: "ID", type: Number, isReadOnly: true },
             { name: "Code", type: String },
@@ -1271,6 +1283,25 @@ window.myapp = msls.application;
             { name: "FileSections", kind: "collection", elementType: FileSection },
             { name: "ImportedFiles", kind: "collection", elementType: ImportedFile },
             { name: "ReconSource", kind: "reference", type: ReconSource }
+        ]),
+
+        FileFieldRule: $defineEntity(FileFieldRule, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "ProcessingRule", type: String },
+            { name: "StartPos", type: Number },
+            { name: "EndPos", type: Number },
+            { name: "FirstChar", type: String },
+            { name: "LastChar", type: String },
+            { name: "FirstPattern", type: String },
+            { name: "LastPattern", type: String },
+            { name: "SplitChar", type: String },
+            { name: "ArrPos", type: Number },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "FileField", kind: "reference", type: FileField },
+            { name: "RuleType", kind: "reference", type: RuleType }
         ]),
 
         FileField: $defineEntity(FileField, [
@@ -1352,6 +1383,21 @@ window.myapp = msls.application;
             { name: "ReconSummary1", kind: "reference", type: ReconSummary }
         ]),
 
+        NIBBS_DB_Detail: $defineEntity(NIBBS_DB_Detail, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "Narration", type: String },
+            { name: "Posting_Date", type: String },
+            { name: "Value_Date", type: String },
+            { name: "Debit", type: String },
+            { name: "Credit", type: String },
+            { name: "Reference", type: String },
+            { name: "Balance", type: String },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date }
+        ]),
+
         ReconDetail: $defineEntity(ReconDetail, [
             { name: "ID", type: Number, isReadOnly: true },
             { name: "ReconSummaryID", type: Number },
@@ -1364,6 +1410,18 @@ window.myapp = msls.application;
             { name: "sys_CreatedOn", type: Date },
             { name: "sys_ModifiedBy", type: String },
             { name: "sys_ModifiedOn", type: Date }
+        ]),
+
+        ReconField: $defineEntity(ReconField, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "FieldType", kind: "reference", type: FieldType },
+            { name: "FileField", kind: "reference", type: FileField },
+            { name: "ReconProcessStep", kind: "reference", type: ReconProcessStep },
+            { name: "SystemField", kind: "reference", type: SystemField }
         ]),
 
         ReconItemStatu: $defineEntity(ReconItemStatu, [
@@ -1472,6 +1530,17 @@ window.myapp = msls.application;
             { name: "ReconProcessSteps", kind: "collection", elementType: ReconProcessStep }
         ]),
 
+        RuleType: $defineEntity(RuleType, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "Code", type: String },
+            { name: "Name", type: String },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "FileFieldRules", kind: "collection", elementType: FileFieldRule }
+        ]),
+
         SkyeImportDetail: $defineEntity(SkyeImportDetail, [
             { name: "ID", type: Number, isReadOnly: true },
             { name: "TransactionDate", type: String },
@@ -1502,6 +1571,17 @@ window.myapp = msls.application;
             { name: "ImportedFile", kind: "reference", type: ImportedFile }
         ]),
 
+        Synonym: $defineEntity(Synonym, [
+            { name: "ID", type: Number, isReadOnly: true },
+            { name: "SourceValue", type: String },
+            { name: "SynonymValue", type: String },
+            { name: "sys_CreatedBy", type: String },
+            { name: "sys_CreatedOn", type: Date },
+            { name: "sys_ModifiedBy", type: String },
+            { name: "sys_ModifiedOn", type: Date },
+            { name: "FileSection", kind: "reference", type: FileSection }
+        ]),
+
         SystemField: $defineEntity(SystemField, [
             { name: "ID", type: Number, isReadOnly: true },
             { name: "TableSchema", type: String },
@@ -1527,94 +1607,18 @@ window.myapp = msls.application;
             { name: "ReconProcess", kind: "reference", type: ReconProcess }
         ]),
 
-        FieldType: $defineEntity(FieldType, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "Code", type: String },
-            { name: "Name", type: String },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "ReconFields", kind: "collection", elementType: ReconField },
-            { name: "SystemFields", kind: "collection", elementType: SystemField }
-        ]),
-
-        ReconField: $defineEntity(ReconField, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "FieldType", kind: "reference", type: FieldType },
-            { name: "FileField", kind: "reference", type: FileField },
-            { name: "ReconProcessStep", kind: "reference", type: ReconProcessStep },
-            { name: "SystemField", kind: "reference", type: SystemField }
-        ]),
-
-        RuleType: $defineEntity(RuleType, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "Code", type: String },
-            { name: "Name", type: String },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "FileFieldRules", kind: "collection", elementType: FileFieldRule }
-        ]),
-
-        FileFieldRule: $defineEntity(FileFieldRule, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "ProcessingRule", type: String },
-            { name: "StartPos", type: Number },
-            { name: "EndPos", type: Number },
-            { name: "FirstChar", type: String },
-            { name: "LastChar", type: String },
-            { name: "FirstPattern", type: String },
-            { name: "LastPattern", type: String },
-            { name: "SplitChar", type: String },
-            { name: "ArrPos", type: Number },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "FileField", kind: "reference", type: FileField },
-            { name: "RuleType", kind: "reference", type: RuleType }
-        ]),
-
-        Synonym: $defineEntity(Synonym, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "SourceValue", type: String },
-            { name: "SynonymValue", type: String },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date },
-            { name: "FileSection", kind: "reference", type: FileSection }
-        ]),
-
-        NIBBS_DB_Detail: $defineEntity(NIBBS_DB_Detail, [
-            { name: "ID", type: Number, isReadOnly: true },
-            { name: "Narration", type: String },
-            { name: "Posting_Date", type: String },
-            { name: "Value_Date", type: String },
-            { name: "Debit", type: String },
-            { name: "Credit", type: String },
-            { name: "Reference", type: String },
-            { name: "Balance", type: String },
-            { name: "sys_CreatedBy", type: String },
-            { name: "sys_CreatedOn", type: Date },
-            { name: "sys_ModifiedBy", type: String },
-            { name: "sys_ModifiedOn", type: Date }
-        ]),
-
         PagaReconData: $defineDataService(PagaReconData, lightSwitchApplication.rootUri + "/PagaReconData.svc", [
+            { name: "FieldTypes", elementType: FieldType },
             { name: "FileDefinitions", elementType: FileDefinition },
+            { name: "FileFieldRules", elementType: FileFieldRule },
             { name: "FileFields", elementType: FileField },
             { name: "FileSections", elementType: FileSection },
             { name: "FileTypes", elementType: FileType },
             { name: "GlobalSettings", elementType: GlobalSetting },
             { name: "ImportedFiles", elementType: ImportedFile },
+            { name: "NIBBS_DB_Details", elementType: NIBBS_DB_Detail },
             { name: "ReconDetails", elementType: ReconDetail },
+            { name: "ReconFields", elementType: ReconField },
             { name: "ReconItemStatus", elementType: ReconItemStatu },
             { name: "ReconProcesses", elementType: ReconProcess },
             { name: "ReconProcessSteps", elementType: ReconProcessStep },
@@ -1623,21 +1627,31 @@ window.myapp = msls.application;
             { name: "ReconStatus", elementType: ReconStatu },
             { name: "ReconSummaries", elementType: ReconSummary },
             { name: "ReconTypes", elementType: ReconType },
+            { name: "RuleTypes", elementType: RuleType },
             { name: "SkyeImportDetails", elementType: SkyeImportDetail },
             { name: "SkyeImportHeaders", elementType: SkyeImportHeader },
-            { name: "SystemFields", elementType: SystemField },
-            { name: "vwReconProcessStatus", elementType: vwReconProcessStatu },
-            { name: "FieldTypes", elementType: FieldType },
-            { name: "ReconFields", elementType: ReconField },
-            { name: "RuleTypes", elementType: RuleType },
-            { name: "FileFieldRules", elementType: FileFieldRule },
             { name: "Synonyms", elementType: Synonym },
-            { name: "NIBBS_DB_Details", elementType: NIBBS_DB_Detail }
+            { name: "SystemFields", elementType: SystemField },
+            { name: "vwReconProcessStatus", elementType: vwReconProcessStatu }
         ], [
+            {
+                name: "FieldTypes_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.FieldTypes },
+                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/FieldTypes(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
             {
                 name: "FileDefinitions_SingleOrDefault", value: function (ID) {
                     return new $DataServiceQuery({ _entitySet: this.FileDefinitions },
                         lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/FileDefinitions(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
+                name: "FileFieldRules_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.FileFieldRules },
+                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/FileFieldRules(" + "ID=" + $toODataString(ID, "Int32?") + ")"
                     );
                 }
             },
@@ -1696,9 +1710,23 @@ window.myapp = msls.application;
                 }
             },
             {
+                name: "NIBBS_DB_Details_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.NIBBS_DB_Details },
+                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/NIBBS_DB_Details(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
                 name: "ReconDetails_SingleOrDefault", value: function (ID) {
                     return new $DataServiceQuery({ _entitySet: this.ReconDetails },
                         lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/ReconDetails(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
+                name: "ReconFields_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.ReconFields },
+                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/ReconFields(" + "ID=" + $toODataString(ID, "Int32?") + ")"
                     );
                 }
             },
@@ -1759,6 +1787,13 @@ window.myapp = msls.application;
                 }
             },
             {
+                name: "RuleTypes_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.RuleTypes },
+                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/RuleTypes(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
                 name: "SkyeImportDetails_SingleOrDefault", value: function (ID) {
                     return new $DataServiceQuery({ _entitySet: this.SkyeImportDetails },
                         lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/SkyeImportDetails(" + "ID=" + $toODataString(ID, "Int32?") + ")"
@@ -1773,6 +1808,13 @@ window.myapp = msls.application;
                 }
             },
             {
+                name: "Synonyms_SingleOrDefault", value: function (ID) {
+                    return new $DataServiceQuery({ _entitySet: this.Synonyms },
+                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/Synonyms(" + "ID=" + $toODataString(ID, "Int32?") + ")"
+                    );
+                }
+            },
+            {
                 name: "SystemFields_SingleOrDefault", value: function (ID) {
                     return new $DataServiceQuery({ _entitySet: this.SystemFields },
                         lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/SystemFields(" + "ID=" + $toODataString(ID, "Int32?") + ")"
@@ -1783,48 +1825,6 @@ window.myapp = msls.application;
                 name: "vwReconProcessStatus_SingleOrDefault", value: function (SourceFileAvailable, TargetFileAvailable, ReconProcessID, ReconProcessCode, ReconProcessStepID, ReconProcessStepCode) {
                     return new $DataServiceQuery({ _entitySet: this.vwReconProcessStatus },
                         lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/vwReconProcessStatus(" + "SourceFileAvailable=" + $toODataString(SourceFileAvailable, "String?") + "," + "TargetFileAvailable=" + $toODataString(TargetFileAvailable, "String?") + "," + "ReconProcessID=" + $toODataString(ReconProcessID, "Int32?") + "," + "ReconProcessCode=" + $toODataString(ReconProcessCode, "String?") + "," + "ReconProcessStepID=" + $toODataString(ReconProcessStepID, "Int32?") + "," + "ReconProcessStepCode=" + $toODataString(ReconProcessStepCode, "String?") + ")"
-                    );
-                }
-            },
-            {
-                name: "FieldTypes_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.FieldTypes },
-                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/FieldTypes(" + "ID=" + $toODataString(ID, "Int32?") + ")"
-                    );
-                }
-            },
-            {
-                name: "ReconFields_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.ReconFields },
-                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/ReconFields(" + "ID=" + $toODataString(ID, "Int32?") + ")"
-                    );
-                }
-            },
-            {
-                name: "RuleTypes_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.RuleTypes },
-                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/RuleTypes(" + "ID=" + $toODataString(ID, "Int32?") + ")"
-                    );
-                }
-            },
-            {
-                name: "FileFieldRules_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.FileFieldRules },
-                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/FileFieldRules(" + "ID=" + $toODataString(ID, "Int32?") + ")"
-                    );
-                }
-            },
-            {
-                name: "Synonyms_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.Synonyms },
-                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/Synonyms(" + "ID=" + $toODataString(ID, "Int32?") + ")"
-                    );
-                }
-            },
-            {
-                name: "NIBBS_DB_Details_SingleOrDefault", value: function (ID) {
-                    return new $DataServiceQuery({ _entitySet: this.NIBBS_DB_Details },
-                        lightSwitchApplication.rootUri + "/PagaReconData.svc" + "/NIBBS_DB_Details(" + "ID=" + $toODataString(ID, "Int32?") + ")"
                     );
                 }
             }

@@ -17,32 +17,32 @@ namespace LightSwitchApplication
     /// No Modeled Description Available
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-    public sealed partial class NIBBS_DB_Detail : global::Microsoft.LightSwitch.Framework.Base.EntityObject<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass>
+    public sealed partial class vwReconProcessStatu : global::Microsoft.LightSwitch.Framework.Base.EntityObject<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass>
     {
         #region Constructors
     
         /// <summary>
-        /// Initializes a new instance of the NIBBS_DB_Detail entity.
+        /// Initializes a new instance of the vwReconProcessStatu entity.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public NIBBS_DB_Detail()
+        public vwReconProcessStatu()
             : this(null)
         {
         }
     
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public NIBBS_DB_Detail(global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.NIBBS_DB_Detail> entitySet)
+        public vwReconProcessStatu(global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.vwReconProcessStatu> entitySet)
             : base(entitySet)
         {
-            global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.Initialize(this);
+            global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.Initialize(this);
         }
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void NIBBS_DB_Detail_Created();
+        partial void vwReconProcessStatu_Created();
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void NIBBS_DB_Detail_AllowSaveWithErrors(ref bool result);
+        partial void vwReconProcessStatu_AllowSaveWithErrors(ref bool result);
     
         #endregion
     
@@ -83,284 +83,216 @@ namespace LightSwitchApplication
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public int ID
+        public string SourceFileAvailable
         {
             get
             {
-                return global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.GetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.ID);
+                return global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.GetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.SourceFileAvailable);
+            }
+            set
+            {
+                global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.SetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.SourceFileAvailable, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ID_IsReadOnly(ref bool result);
+        partial void SourceFileAvailable_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ID_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void SourceFileAvailable_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void ID_Changed();
+        partial void SourceFileAvailable_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string Narration
+        public string TargetFileAvailable
         {
             get
             {
-                return global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.GetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Narration);
+                return global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.GetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.TargetFileAvailable);
             }
             set
             {
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.SetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Narration, value);
+                global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.SetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.TargetFileAvailable, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Narration_IsReadOnly(ref bool result);
+        partial void TargetFileAvailable_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Narration_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void TargetFileAvailable_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Narration_Changed();
+        partial void TargetFileAvailable_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string Posting_Date
+        public int ReconProcessID
         {
             get
             {
-                return global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.GetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Posting_Date);
+                return global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.GetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessID);
             }
             set
             {
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.SetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Posting_Date, value);
+                global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.SetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessID, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Posting_Date_IsReadOnly(ref bool result);
+        partial void ReconProcessID_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Posting_Date_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void ReconProcessID_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Posting_Date_Changed();
+        partial void ReconProcessID_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string Value_Date
+        public string ReconProcessCode
         {
             get
             {
-                return global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.GetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Value_Date);
+                return global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.GetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessCode);
             }
             set
             {
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.SetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Value_Date, value);
+                global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.SetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessCode, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Value_Date_IsReadOnly(ref bool result);
+        partial void ReconProcessCode_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Value_Date_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void ReconProcessCode_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Value_Date_Changed();
+        partial void ReconProcessCode_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string Debit
+        public int ReconProcessStepID
         {
             get
             {
-                return global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.GetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Debit);
+                return global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.GetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessStepID);
             }
             set
             {
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.SetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Debit, value);
+                global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.SetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessStepID, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Debit_IsReadOnly(ref bool result);
+        partial void ReconProcessStepID_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Debit_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void ReconProcessStepID_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Debit_Changed();
+        partial void ReconProcessStepID_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string Credit
+        public string ReconProcessStepCode
         {
             get
             {
-                return global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.GetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Credit);
+                return global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.GetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessStepCode);
             }
             set
             {
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.SetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Credit, value);
+                global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.SetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessStepCode, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Credit_IsReadOnly(ref bool result);
+        partial void ReconProcessStepCode_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Credit_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void ReconProcessStepCode_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Credit_Changed();
+        partial void ReconProcessStepCode_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string Reference
+        public string ReconProcessName
         {
             get
             {
-                return global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.GetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Reference);
+                return global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.GetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessName);
             }
             set
             {
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.SetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Reference, value);
+                global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.SetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessName, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Reference_IsReadOnly(ref bool result);
+        partial void ReconProcessName_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Reference_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void ReconProcessName_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Reference_Changed();
+        partial void ReconProcessName_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string Balance
+        public string ReconProcessStepName
         {
             get
             {
-                return global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.GetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Balance);
+                return global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.GetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessStepName);
             }
             set
             {
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.SetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Balance, value);
+                global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.SetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessStepName, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Balance_IsReadOnly(ref bool result);
+        partial void ReconProcessStepName_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Balance_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void ReconProcessStepName_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Balance_Changed();
+        partial void ReconProcessStepName_Changed();
 
         /// <summary>
         /// No Modeled Description Available
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string sys_CreatedBy
+        public global::LightSwitchApplication.ReconProcess ReconProcess
         {
             get
             {
-                return global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.GetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.sys_CreatedBy);
+                return global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.GetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcess);
             }
             set
             {
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.SetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.sys_CreatedBy, value);
+                global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.SetValue(this, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcess, value);
             }
         }
         
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void sys_CreatedBy_IsReadOnly(ref bool result);
+        partial void ReconProcess_IsReadOnly(ref bool result);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void sys_CreatedBy_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        partial void ReconProcess_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void sys_CreatedBy_Changed();
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.DateTime sys_CreatedOn
-        {
-            get
-            {
-                return global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.GetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.sys_CreatedOn);
-            }
-            set
-            {
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.SetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.sys_CreatedOn, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void sys_CreatedOn_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void sys_CreatedOn_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void sys_CreatedOn_Changed();
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public string sys_ModifiedBy
-        {
-            get
-            {
-                return global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.GetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.sys_ModifiedBy);
-            }
-            set
-            {
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.SetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.sys_ModifiedBy, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void sys_ModifiedBy_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void sys_ModifiedBy_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void sys_ModifiedBy_Changed();
-
-        /// <summary>
-        /// No Modeled Description Available
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.DateTime sys_ModifiedOn
-        {
-            get
-            {
-                return global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.GetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.sys_ModifiedOn);
-            }
-            set
-            {
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.SetValue(this, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.sys_ModifiedOn, value);
-            }
-        }
-        
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void sys_ModifiedOn_IsReadOnly(ref bool result);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void sys_ModifiedOn_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void sys_ModifiedOn_Changed();
+        partial void ReconProcess_Changed();
 
         #endregion
     
@@ -371,37 +303,37 @@ namespace LightSwitchApplication
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public sealed class DetailsClass : global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<
-                global::LightSwitchApplication.NIBBS_DB_Detail,
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass,
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.IImplementation,
-                global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySet,
-                global::Microsoft.LightSwitch.Details.Framework.EntityCommandSet<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass>,
-                global::Microsoft.LightSwitch.Details.Framework.EntityMethodSet<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass>>
+                global::LightSwitchApplication.vwReconProcessStatu,
+                global::LightSwitchApplication.vwReconProcessStatu.DetailsClass,
+                global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.IImplementation,
+                global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySet,
+                global::Microsoft.LightSwitch.Details.Framework.EntityCommandSet<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass>,
+                global::Microsoft.LightSwitch.Details.Framework.EntityMethodSet<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass>>
         {
     
             static DetailsClass()
             {
-                var initializeEntry = global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.ID;
+                var initializeEntry = global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.SourceFileAvailable;
             }
     
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private static readonly global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass>.Entry
-                __NIBBS_DB_DetailEntry = new global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass>.Entry(
-                    global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.__NIBBS_DB_Detail_CreateNew,
-                    global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.__NIBBS_DB_Detail_Created,
-                    global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.__NIBBS_DB_Detail_AllowSaveWithErrors);
-            private static global::LightSwitchApplication.NIBBS_DB_Detail __NIBBS_DB_Detail_CreateNew(global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.NIBBS_DB_Detail> es)
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass>.Entry
+                __vwReconProcessStatuEntry = new global::Microsoft.LightSwitch.Details.Framework.Base.EntityDetails<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass>.Entry(
+                    global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.__vwReconProcessStatu_CreateNew,
+                    global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.__vwReconProcessStatu_Created,
+                    global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.__vwReconProcessStatu_AllowSaveWithErrors);
+            private static global::LightSwitchApplication.vwReconProcessStatu __vwReconProcessStatu_CreateNew(global::Microsoft.LightSwitch.Framework.EntitySet<global::LightSwitchApplication.vwReconProcessStatu> es)
             {
-                return new global::LightSwitchApplication.NIBBS_DB_Detail(es);
+                return new global::LightSwitchApplication.vwReconProcessStatu(es);
             }
-            private static void __NIBBS_DB_Detail_Created(global::LightSwitchApplication.NIBBS_DB_Detail e)
+            private static void __vwReconProcessStatu_Created(global::LightSwitchApplication.vwReconProcessStatu e)
             {
-                e.NIBBS_DB_Detail_Created();
+                e.vwReconProcessStatu_Created();
             }
-            private static bool __NIBBS_DB_Detail_AllowSaveWithErrors(global::LightSwitchApplication.NIBBS_DB_Detail e)
+            private static bool __vwReconProcessStatu_AllowSaveWithErrors(global::LightSwitchApplication.vwReconProcessStatu e)
             {
                 bool result = false;
-                e.NIBBS_DB_Detail_AllowSaveWithErrors(ref result);
+                e.vwReconProcessStatu_AllowSaveWithErrors(ref result);
                 return result;
             }
     
@@ -409,7 +341,7 @@ namespace LightSwitchApplication
             {
             }
     
-            public new global::Microsoft.LightSwitch.Details.Framework.EntityCommandSet<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass> Commands
+            public new global::Microsoft.LightSwitch.Details.Framework.EntityCommandSet<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass> Commands
             {
                 get
                 {
@@ -417,7 +349,7 @@ namespace LightSwitchApplication
                 }
             }
     
-            public new global::Microsoft.LightSwitch.Details.Framework.EntityMethodSet<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass> Methods
+            public new global::Microsoft.LightSwitch.Details.Framework.EntityMethodSet<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass> Methods
             {
                 get
                 {
@@ -425,7 +357,7 @@ namespace LightSwitchApplication
                 }
             }
     
-            public new global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySet Properties
+            public new global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySet Properties
             {
                 get
                 {
@@ -437,106 +369,82 @@ namespace LightSwitchApplication
             [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public sealed class PropertySet : global::Microsoft.LightSwitch.Details.Framework.Base.EntityPropertySet<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass>
+            public sealed class PropertySet : global::Microsoft.LightSwitch.Details.Framework.Base.EntityPropertySet<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass>
             {
     
                 public PropertySet() : base()
                 {
                 }
     
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, int> ID
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string> SourceFileAvailable
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.ID) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, int>;
+                        return base.GetItem(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.SourceFileAvailable) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string> Narration
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string> TargetFileAvailable
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Narration) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.TargetFileAvailable) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string> Posting_Date
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, int> ReconProcessID
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Posting_Date) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessID) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, int>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string> Value_Date
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string> ReconProcessCode
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Value_Date) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessCode) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string> Debit
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, int> ReconProcessStepID
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Debit) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessStepID) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, int>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string> Credit
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string> ReconProcessStepCode
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Credit) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessStepCode) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string> Reference
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string> ReconProcessName
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Reference) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessName) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string> Balance
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string> ReconProcessStepName
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.Balance) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>;
+                        return base.GetItem(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcessStepName) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>;
                     }
                 }
                 
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string> sys_CreatedBy
+                public global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::LightSwitchApplication.ReconProcess> ReconProcess
                 {
                     get
                     {
-                        return base.GetItem(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.sys_CreatedBy) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::System.DateTime> sys_CreatedOn
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.sys_CreatedOn) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::System.DateTime>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string> sys_ModifiedBy
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.sys_ModifiedBy) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>;
-                    }
-                }
-                
-                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::System.DateTime> sys_ModifiedOn
-                {
-                    get
-                    {
-                        return base.GetItem(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties.sys_ModifiedOn) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::System.DateTime>;
+                        return base.GetItem(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcess) as global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::LightSwitchApplication.ReconProcess>;
                     }
                 }
                 
@@ -546,18 +454,15 @@ namespace LightSwitchApplication
             [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
             public interface IImplementation : global::Microsoft.LightSwitch.Internal.IEntityImplementation
             {
-                new int ID { get; }
-                new string Narration { get; set; }
-                new string Posting_Date { get; set; }
-                new string Value_Date { get; set; }
-                new string Debit { get; set; }
-                new string Credit { get; set; }
-                new string Reference { get; set; }
-                new string Balance { get; set; }
-                new string sys_CreatedBy { get; set; }
-                new global::System.DateTime sys_CreatedOn { get; set; }
-                new string sys_ModifiedBy { get; set; }
-                new global::System.DateTime sys_ModifiedOn { get; set; }
+                new string SourceFileAvailable { get; set; }
+                new string TargetFileAvailable { get; set; }
+                new int ReconProcessID { get; set; }
+                new string ReconProcessCode { get; set; }
+                new int ReconProcessStepID { get; set; }
+                new string ReconProcessStepCode { get; set; }
+                new string ReconProcessName { get; set; }
+                new string ReconProcessStepName { get; set; }
+                new global::Microsoft.LightSwitch.Internal.IEntityImplementation ReconProcess { get; set; }
             }
             #pragma warning restore 109
     
@@ -568,482 +473,376 @@ namespace LightSwitchApplication
             {
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, int>.Entry
-                    ID = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, int>.Entry(
-                        "ID",
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._ID_Stub,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._ID_ComputeIsReadOnly,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._ID_Validate,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._ID_GetImplementationValue,
-                        null,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._ID_OnValueChanged);
-                private static void _ID_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, int>.Data> c, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Entry
+                    SourceFileAvailable = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Entry(
+                        "SourceFileAvailable",
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._SourceFileAvailable_Stub,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._SourceFileAvailable_ComputeIsReadOnly,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._SourceFileAvailable_Validate,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._SourceFileAvailable_GetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._SourceFileAvailable_SetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._SourceFileAvailable_OnValueChanged);
+                private static void _SourceFileAvailable_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Data> c, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, object sf)
                 {
-                    c(d, ref d._ID, sf);
+                    c(d, ref d._SourceFileAvailable, sf);
                 }
-                private static bool _ID_ComputeIsReadOnly(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static bool _SourceFileAvailable_ComputeIsReadOnly(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
                     bool result = false;
-                    e.ID_IsReadOnly(ref result);
+                    e.SourceFileAvailable_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _ID_Validate(global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _SourceFileAvailable_Validate(global::LightSwitchApplication.vwReconProcessStatu e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.ID_Validate(r);
+                    e.SourceFileAvailable_Validate(r);
                 }
-                private static int _ID_GetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d)
+                private static string _SourceFileAvailable_GetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d)
                 {
-                    return d.ImplementationEntity.ID;
+                    return d.ImplementationEntity.SourceFileAvailable;
                 }
-                private static void _ID_OnValueChanged(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static void _SourceFileAvailable_SetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, string v)
                 {
-                    e.ID_Changed();
+                    d.ImplementationEntity.SourceFileAvailable = v;
+                }
+                private static void _SourceFileAvailable_OnValueChanged(global::LightSwitchApplication.vwReconProcessStatu e)
+                {
+                    e.SourceFileAvailable_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry
-                    Narration = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry(
-                        "Narration",
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Narration_Stub,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Narration_ComputeIsReadOnly,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Narration_Validate,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Narration_GetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Narration_SetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Narration_OnValueChanged);
-                private static void _Narration_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data> c, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Entry
+                    TargetFileAvailable = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Entry(
+                        "TargetFileAvailable",
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._TargetFileAvailable_Stub,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._TargetFileAvailable_ComputeIsReadOnly,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._TargetFileAvailable_Validate,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._TargetFileAvailable_GetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._TargetFileAvailable_SetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._TargetFileAvailable_OnValueChanged);
+                private static void _TargetFileAvailable_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Data> c, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, object sf)
                 {
-                    c(d, ref d._Narration, sf);
+                    c(d, ref d._TargetFileAvailable, sf);
                 }
-                private static bool _Narration_ComputeIsReadOnly(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static bool _TargetFileAvailable_ComputeIsReadOnly(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
                     bool result = false;
-                    e.Narration_IsReadOnly(ref result);
+                    e.TargetFileAvailable_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _Narration_Validate(global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _TargetFileAvailable_Validate(global::LightSwitchApplication.vwReconProcessStatu e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.Narration_Validate(r);
+                    e.TargetFileAvailable_Validate(r);
                 }
-                private static string _Narration_GetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d)
+                private static string _TargetFileAvailable_GetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d)
                 {
-                    return d.ImplementationEntity.Narration;
+                    return d.ImplementationEntity.TargetFileAvailable;
                 }
-                private static void _Narration_SetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, string v)
+                private static void _TargetFileAvailable_SetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.Narration = v;
+                    d.ImplementationEntity.TargetFileAvailable = v;
                 }
-                private static void _Narration_OnValueChanged(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static void _TargetFileAvailable_OnValueChanged(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
-                    e.Narration_Changed();
+                    e.TargetFileAvailable_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry
-                    Posting_Date = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry(
-                        "Posting_Date",
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Posting_Date_Stub,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Posting_Date_ComputeIsReadOnly,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Posting_Date_Validate,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Posting_Date_GetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Posting_Date_SetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Posting_Date_OnValueChanged);
-                private static void _Posting_Date_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data> c, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, int>.Entry
+                    ReconProcessID = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, int>.Entry(
+                        "ReconProcessID",
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessID_Stub,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessID_ComputeIsReadOnly,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessID_Validate,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessID_GetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessID_SetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessID_OnValueChanged);
+                private static void _ReconProcessID_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, int>.Data> c, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, object sf)
                 {
-                    c(d, ref d._Posting_Date, sf);
+                    c(d, ref d._ReconProcessID, sf);
                 }
-                private static bool _Posting_Date_ComputeIsReadOnly(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static bool _ReconProcessID_ComputeIsReadOnly(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
                     bool result = false;
-                    e.Posting_Date_IsReadOnly(ref result);
+                    e.ReconProcessID_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _Posting_Date_Validate(global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _ReconProcessID_Validate(global::LightSwitchApplication.vwReconProcessStatu e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.Posting_Date_Validate(r);
+                    e.ReconProcessID_Validate(r);
                 }
-                private static string _Posting_Date_GetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d)
+                private static int _ReconProcessID_GetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d)
                 {
-                    return d.ImplementationEntity.Posting_Date;
+                    return d.ImplementationEntity.ReconProcessID;
                 }
-                private static void _Posting_Date_SetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, string v)
+                private static void _ReconProcessID_SetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, int v)
                 {
-                    d.ImplementationEntity.Posting_Date = v;
+                    d.ImplementationEntity.ReconProcessID = v;
                 }
-                private static void _Posting_Date_OnValueChanged(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static void _ReconProcessID_OnValueChanged(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
-                    e.Posting_Date_Changed();
+                    e.ReconProcessID_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry
-                    Value_Date = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry(
-                        "Value_Date",
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Value_Date_Stub,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Value_Date_ComputeIsReadOnly,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Value_Date_Validate,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Value_Date_GetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Value_Date_SetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Value_Date_OnValueChanged);
-                private static void _Value_Date_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data> c, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Entry
+                    ReconProcessCode = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Entry(
+                        "ReconProcessCode",
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessCode_Stub,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessCode_ComputeIsReadOnly,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessCode_Validate,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessCode_GetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessCode_SetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessCode_OnValueChanged);
+                private static void _ReconProcessCode_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Data> c, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, object sf)
                 {
-                    c(d, ref d._Value_Date, sf);
+                    c(d, ref d._ReconProcessCode, sf);
                 }
-                private static bool _Value_Date_ComputeIsReadOnly(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static bool _ReconProcessCode_ComputeIsReadOnly(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
                     bool result = false;
-                    e.Value_Date_IsReadOnly(ref result);
+                    e.ReconProcessCode_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _Value_Date_Validate(global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _ReconProcessCode_Validate(global::LightSwitchApplication.vwReconProcessStatu e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.Value_Date_Validate(r);
+                    e.ReconProcessCode_Validate(r);
                 }
-                private static string _Value_Date_GetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d)
+                private static string _ReconProcessCode_GetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d)
                 {
-                    return d.ImplementationEntity.Value_Date;
+                    return d.ImplementationEntity.ReconProcessCode;
                 }
-                private static void _Value_Date_SetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, string v)
+                private static void _ReconProcessCode_SetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.Value_Date = v;
+                    d.ImplementationEntity.ReconProcessCode = v;
                 }
-                private static void _Value_Date_OnValueChanged(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static void _ReconProcessCode_OnValueChanged(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
-                    e.Value_Date_Changed();
+                    e.ReconProcessCode_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry
-                    Debit = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry(
-                        "Debit",
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Debit_Stub,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Debit_ComputeIsReadOnly,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Debit_Validate,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Debit_GetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Debit_SetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Debit_OnValueChanged);
-                private static void _Debit_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data> c, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, int>.Entry
+                    ReconProcessStepID = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, int>.Entry(
+                        "ReconProcessStepID",
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepID_Stub,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepID_ComputeIsReadOnly,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepID_Validate,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepID_GetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepID_SetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepID_OnValueChanged);
+                private static void _ReconProcessStepID_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, int>.Data> c, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, object sf)
                 {
-                    c(d, ref d._Debit, sf);
+                    c(d, ref d._ReconProcessStepID, sf);
                 }
-                private static bool _Debit_ComputeIsReadOnly(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static bool _ReconProcessStepID_ComputeIsReadOnly(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
                     bool result = false;
-                    e.Debit_IsReadOnly(ref result);
+                    e.ReconProcessStepID_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _Debit_Validate(global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _ReconProcessStepID_Validate(global::LightSwitchApplication.vwReconProcessStatu e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.Debit_Validate(r);
+                    e.ReconProcessStepID_Validate(r);
                 }
-                private static string _Debit_GetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d)
+                private static int _ReconProcessStepID_GetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d)
                 {
-                    return d.ImplementationEntity.Debit;
+                    return d.ImplementationEntity.ReconProcessStepID;
                 }
-                private static void _Debit_SetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, string v)
+                private static void _ReconProcessStepID_SetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, int v)
                 {
-                    d.ImplementationEntity.Debit = v;
+                    d.ImplementationEntity.ReconProcessStepID = v;
                 }
-                private static void _Debit_OnValueChanged(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static void _ReconProcessStepID_OnValueChanged(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
-                    e.Debit_Changed();
+                    e.ReconProcessStepID_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry
-                    Credit = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry(
-                        "Credit",
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Credit_Stub,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Credit_ComputeIsReadOnly,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Credit_Validate,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Credit_GetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Credit_SetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Credit_OnValueChanged);
-                private static void _Credit_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data> c, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Entry
+                    ReconProcessStepCode = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Entry(
+                        "ReconProcessStepCode",
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepCode_Stub,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepCode_ComputeIsReadOnly,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepCode_Validate,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepCode_GetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepCode_SetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepCode_OnValueChanged);
+                private static void _ReconProcessStepCode_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Data> c, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, object sf)
                 {
-                    c(d, ref d._Credit, sf);
+                    c(d, ref d._ReconProcessStepCode, sf);
                 }
-                private static bool _Credit_ComputeIsReadOnly(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static bool _ReconProcessStepCode_ComputeIsReadOnly(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
                     bool result = false;
-                    e.Credit_IsReadOnly(ref result);
+                    e.ReconProcessStepCode_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _Credit_Validate(global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _ReconProcessStepCode_Validate(global::LightSwitchApplication.vwReconProcessStatu e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.Credit_Validate(r);
+                    e.ReconProcessStepCode_Validate(r);
                 }
-                private static string _Credit_GetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d)
+                private static string _ReconProcessStepCode_GetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d)
                 {
-                    return d.ImplementationEntity.Credit;
+                    return d.ImplementationEntity.ReconProcessStepCode;
                 }
-                private static void _Credit_SetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, string v)
+                private static void _ReconProcessStepCode_SetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.Credit = v;
+                    d.ImplementationEntity.ReconProcessStepCode = v;
                 }
-                private static void _Credit_OnValueChanged(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static void _ReconProcessStepCode_OnValueChanged(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
-                    e.Credit_Changed();
+                    e.ReconProcessStepCode_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry
-                    Reference = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry(
-                        "Reference",
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Reference_Stub,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Reference_ComputeIsReadOnly,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Reference_Validate,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Reference_GetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Reference_SetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Reference_OnValueChanged);
-                private static void _Reference_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data> c, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Entry
+                    ReconProcessName = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Entry(
+                        "ReconProcessName",
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessName_Stub,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessName_ComputeIsReadOnly,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessName_Validate,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessName_GetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessName_SetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessName_OnValueChanged);
+                private static void _ReconProcessName_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Data> c, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, object sf)
                 {
-                    c(d, ref d._Reference, sf);
+                    c(d, ref d._ReconProcessName, sf);
                 }
-                private static bool _Reference_ComputeIsReadOnly(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static bool _ReconProcessName_ComputeIsReadOnly(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
                     bool result = false;
-                    e.Reference_IsReadOnly(ref result);
+                    e.ReconProcessName_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _Reference_Validate(global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _ReconProcessName_Validate(global::LightSwitchApplication.vwReconProcessStatu e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.Reference_Validate(r);
+                    e.ReconProcessName_Validate(r);
                 }
-                private static string _Reference_GetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d)
+                private static string _ReconProcessName_GetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d)
                 {
-                    return d.ImplementationEntity.Reference;
+                    return d.ImplementationEntity.ReconProcessName;
                 }
-                private static void _Reference_SetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, string v)
+                private static void _ReconProcessName_SetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.Reference = v;
+                    d.ImplementationEntity.ReconProcessName = v;
                 }
-                private static void _Reference_OnValueChanged(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static void _ReconProcessName_OnValueChanged(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
-                    e.Reference_Changed();
+                    e.ReconProcessName_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry
-                    Balance = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry(
-                        "Balance",
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Balance_Stub,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Balance_ComputeIsReadOnly,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Balance_Validate,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Balance_GetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Balance_SetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._Balance_OnValueChanged);
-                private static void _Balance_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data> c, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Entry
+                    ReconProcessStepName = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Entry(
+                        "ReconProcessStepName",
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepName_Stub,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepName_ComputeIsReadOnly,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepName_Validate,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepName_GetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepName_SetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcessStepName_OnValueChanged);
+                private static void _ReconProcessStepName_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Data> c, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, object sf)
                 {
-                    c(d, ref d._Balance, sf);
+                    c(d, ref d._ReconProcessStepName, sf);
                 }
-                private static bool _Balance_ComputeIsReadOnly(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static bool _ReconProcessStepName_ComputeIsReadOnly(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
                     bool result = false;
-                    e.Balance_IsReadOnly(ref result);
+                    e.ReconProcessStepName_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _Balance_Validate(global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _ReconProcessStepName_Validate(global::LightSwitchApplication.vwReconProcessStatu e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.Balance_Validate(r);
+                    e.ReconProcessStepName_Validate(r);
                 }
-                private static string _Balance_GetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d)
+                private static string _ReconProcessStepName_GetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d)
                 {
-                    return d.ImplementationEntity.Balance;
+                    return d.ImplementationEntity.ReconProcessStepName;
                 }
-                private static void _Balance_SetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, string v)
+                private static void _ReconProcessStepName_SetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, string v)
                 {
-                    d.ImplementationEntity.Balance = v;
+                    d.ImplementationEntity.ReconProcessStepName = v;
                 }
-                private static void _Balance_OnValueChanged(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static void _ReconProcessStepName_OnValueChanged(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
-                    e.Balance_Changed();
+                    e.ReconProcessStepName_Changed();
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry
-                    sys_CreatedBy = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry(
-                        "sys_CreatedBy",
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_CreatedBy_Stub,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_CreatedBy_ComputeIsReadOnly,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_CreatedBy_Validate,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_CreatedBy_GetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_CreatedBy_SetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_CreatedBy_OnValueChanged);
-                private static void _sys_CreatedBy_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data> c, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, object sf)
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::LightSwitchApplication.ReconProcess>.Entry
+                    ReconProcess = new global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::LightSwitchApplication.ReconProcess>.Entry(
+                        "ReconProcess",
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcess_Stub,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcess_ComputeIsReadOnly,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcess_Validate,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcess_GetCoreImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcess_GetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcess_SetImplementationValue,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcess_Refresh,
+                        global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties._ReconProcess_OnValueChanged);
+                private static void _ReconProcess_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::LightSwitchApplication.ReconProcess>.Data> c, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, object sf)
                 {
-                    c(d, ref d._sys_CreatedBy, sf);
+                    c(d, ref d._ReconProcess, sf);
                 }
-                private static bool _sys_CreatedBy_ComputeIsReadOnly(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static bool _ReconProcess_ComputeIsReadOnly(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
                     bool result = false;
-                    e.sys_CreatedBy_IsReadOnly(ref result);
+                    e.ReconProcess_IsReadOnly(ref result);
                     return result;
                 }
-                private static void _sys_CreatedBy_Validate(global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                private static void _ReconProcess_Validate(global::LightSwitchApplication.vwReconProcessStatu e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
                 {
-                    e.sys_CreatedBy_Validate(r);
+                    e.ReconProcess_Validate(r);
                 }
-                private static string _sys_CreatedBy_GetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d)
+                private static global::Microsoft.LightSwitch.Internal.IEntityImplementation _ReconProcess_GetCoreImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d)
                 {
-                    return d.ImplementationEntity.sys_CreatedBy;
+                    return d.ImplementationEntity.ReconProcess;
                 }
-                private static void _sys_CreatedBy_SetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, string v)
+                private static global::LightSwitchApplication.ReconProcess _ReconProcess_GetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d)
                 {
-                    d.ImplementationEntity.sys_CreatedBy = v;
+                    return d.GetImplementationValue<global::LightSwitchApplication.ReconProcess, global::LightSwitchApplication.ReconProcess.DetailsClass>(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcess, ref d._ReconProcess);
                 }
-                private static void _sys_CreatedBy_OnValueChanged(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static void _ReconProcess_SetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d, global::LightSwitchApplication.ReconProcess v)
                 {
-                    e.sys_CreatedBy_Changed();
+                    d.SetImplementationValue(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcess, ref d._ReconProcess, (i, ev) => i.ReconProcess = ev, v);
                 }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::System.DateTime>.Entry
-                    sys_CreatedOn = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::System.DateTime>.Entry(
-                        "sys_CreatedOn",
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_CreatedOn_Stub,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_CreatedOn_ComputeIsReadOnly,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_CreatedOn_Validate,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_CreatedOn_GetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_CreatedOn_SetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_CreatedOn_OnValueChanged);
-                private static void _sys_CreatedOn_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::System.DateTime>.Data> c, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, object sf)
+                private static void _ReconProcess_Refresh(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass d)
                 {
-                    c(d, ref d._sys_CreatedOn, sf);
+                    d.RefreshNavigationProperty(global::LightSwitchApplication.vwReconProcessStatu.DetailsClass.PropertySetProperties.ReconProcess, ref d._ReconProcess);
                 }
-                private static bool _sys_CreatedOn_ComputeIsReadOnly(global::LightSwitchApplication.NIBBS_DB_Detail e)
+                private static void _ReconProcess_OnValueChanged(global::LightSwitchApplication.vwReconProcessStatu e)
                 {
-                    bool result = false;
-                    e.sys_CreatedOn_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _sys_CreatedOn_Validate(global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.sys_CreatedOn_Validate(r);
-                }
-                private static global::System.DateTime _sys_CreatedOn_GetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d)
-                {
-                    return d.ImplementationEntity.sys_CreatedOn;
-                }
-                private static void _sys_CreatedOn_SetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, global::System.DateTime v)
-                {
-                    d.ImplementationEntity.sys_CreatedOn = global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.ClearDateTimeKind(v);
-                }
-                private static void _sys_CreatedOn_OnValueChanged(global::LightSwitchApplication.NIBBS_DB_Detail e)
-                {
-                    e.sys_CreatedOn_Changed();
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry
-                    sys_ModifiedBy = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Entry(
-                        "sys_ModifiedBy",
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_ModifiedBy_Stub,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_ModifiedBy_ComputeIsReadOnly,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_ModifiedBy_Validate,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_ModifiedBy_GetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_ModifiedBy_SetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_ModifiedBy_OnValueChanged);
-                private static void _sys_ModifiedBy_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data> c, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, object sf)
-                {
-                    c(d, ref d._sys_ModifiedBy, sf);
-                }
-                private static bool _sys_ModifiedBy_ComputeIsReadOnly(global::LightSwitchApplication.NIBBS_DB_Detail e)
-                {
-                    bool result = false;
-                    e.sys_ModifiedBy_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _sys_ModifiedBy_Validate(global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.sys_ModifiedBy_Validate(r);
-                }
-                private static string _sys_ModifiedBy_GetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d)
-                {
-                    return d.ImplementationEntity.sys_ModifiedBy;
-                }
-                private static void _sys_ModifiedBy_SetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, string v)
-                {
-                    d.ImplementationEntity.sys_ModifiedBy = v;
-                }
-                private static void _sys_ModifiedBy_OnValueChanged(global::LightSwitchApplication.NIBBS_DB_Detail e)
-                {
-                    e.sys_ModifiedBy_Changed();
-                }
-    
-                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::System.DateTime>.Entry
-                    sys_ModifiedOn = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::System.DateTime>.Entry(
-                        "sys_ModifiedOn",
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_ModifiedOn_Stub,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_ModifiedOn_ComputeIsReadOnly,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_ModifiedOn_Validate,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_ModifiedOn_GetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_ModifiedOn_SetImplementationValue,
-                        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.PropertySetProperties._sys_ModifiedOn_OnValueChanged);
-                private static void _sys_ModifiedOn_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::System.DateTime>.Data> c, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, object sf)
-                {
-                    c(d, ref d._sys_ModifiedOn, sf);
-                }
-                private static bool _sys_ModifiedOn_ComputeIsReadOnly(global::LightSwitchApplication.NIBBS_DB_Detail e)
-                {
-                    bool result = false;
-                    e.sys_ModifiedOn_IsReadOnly(ref result);
-                    return result;
-                }
-                private static void _sys_ModifiedOn_Validate(global::LightSwitchApplication.NIBBS_DB_Detail e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
-                {
-                    e.sys_ModifiedOn_Validate(r);
-                }
-                private static global::System.DateTime _sys_ModifiedOn_GetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d)
-                {
-                    return d.ImplementationEntity.sys_ModifiedOn;
-                }
-                private static void _sys_ModifiedOn_SetImplementationValue(global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass d, global::System.DateTime v)
-                {
-                    d.ImplementationEntity.sys_ModifiedOn = global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.ClearDateTimeKind(v);
-                }
-                private static void _sys_ModifiedOn_OnValueChanged(global::LightSwitchApplication.NIBBS_DB_Detail e)
-                {
-                    e.sys_ModifiedOn_Changed();
+                    e.ReconProcess_Changed();
                 }
     
             }
     
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, int>.Data _ID;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Data _SourceFileAvailable;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data _Narration;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Data _TargetFileAvailable;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data _Posting_Date;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, int>.Data _ReconProcessID;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data _Value_Date;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Data _ReconProcessCode;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data _Debit;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, int>.Data _ReconProcessStepID;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data _Credit;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Data _ReconProcessStepCode;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data _Reference;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Data _ReconProcessName;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data _Balance;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, string>.Data _ReconProcessStepName;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data _sys_CreatedBy;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::System.DateTime>.Data _sys_CreatedOn;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, string>.Data _sys_ModifiedBy;
-            
-            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.NIBBS_DB_Detail, global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass, global::System.DateTime>.Data _sys_ModifiedOn;
+            private global::Microsoft.LightSwitch.Details.Framework.EntityReferenceProperty<global::LightSwitchApplication.vwReconProcessStatu, global::LightSwitchApplication.vwReconProcessStatu.DetailsClass, global::LightSwitchApplication.ReconProcess>.Data _ReconProcess;
             
         }
     

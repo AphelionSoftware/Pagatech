@@ -2,12 +2,28 @@
 
 (function (lightSwitchApplication) {
 
+    msls._addEntryPoints(lightSwitchApplication.FieldType, {
+        /// <field>
+        /// Called when a new fieldType is created.
+        /// <br/>created(msls.application.FieldType entity)
+        /// </field>
+        created: [lightSwitchApplication.FieldType]
+    });
+
     msls._addEntryPoints(lightSwitchApplication.FileDefinition, {
         /// <field>
         /// Called when a new fileDefinition is created.
         /// <br/>created(msls.application.FileDefinition entity)
         /// </field>
         created: [lightSwitchApplication.FileDefinition]
+    });
+
+    msls._addEntryPoints(lightSwitchApplication.FileFieldRule, {
+        /// <field>
+        /// Called when a new fileFieldRule is created.
+        /// <br/>created(msls.application.FileFieldRule entity)
+        /// </field>
+        created: [lightSwitchApplication.FileFieldRule]
     });
 
     msls._addEntryPoints(lightSwitchApplication.FileField, {
@@ -50,12 +66,28 @@
         created: [lightSwitchApplication.ImportedFile]
     });
 
+    msls._addEntryPoints(lightSwitchApplication.NIBBS_DB_Detail, {
+        /// <field>
+        /// Called when a new nIBBS_DB_Detail is created.
+        /// <br/>created(msls.application.NIBBS_DB_Detail entity)
+        /// </field>
+        created: [lightSwitchApplication.NIBBS_DB_Detail]
+    });
+
     msls._addEntryPoints(lightSwitchApplication.ReconDetail, {
         /// <field>
         /// Called when a new reconDetail is created.
         /// <br/>created(msls.application.ReconDetail entity)
         /// </field>
         created: [lightSwitchApplication.ReconDetail]
+    });
+
+    msls._addEntryPoints(lightSwitchApplication.ReconField, {
+        /// <field>
+        /// Called when a new reconField is created.
+        /// <br/>created(msls.application.ReconField entity)
+        /// </field>
+        created: [lightSwitchApplication.ReconField]
     });
 
     msls._addEntryPoints(lightSwitchApplication.ReconItemStatu, {
@@ -122,6 +154,14 @@
         created: [lightSwitchApplication.ReconType]
     });
 
+    msls._addEntryPoints(lightSwitchApplication.RuleType, {
+        /// <field>
+        /// Called when a new ruleType is created.
+        /// <br/>created(msls.application.RuleType entity)
+        /// </field>
+        created: [lightSwitchApplication.RuleType]
+    });
+
     msls._addEntryPoints(lightSwitchApplication.SkyeImportDetail, {
         /// <field>
         /// Called when a new skyeImportDetail is created.
@@ -138,6 +178,14 @@
         created: [lightSwitchApplication.SkyeImportHeader]
     });
 
+    msls._addEntryPoints(lightSwitchApplication.Synonym, {
+        /// <field>
+        /// Called when a new synonym is created.
+        /// <br/>created(msls.application.Synonym entity)
+        /// </field>
+        created: [lightSwitchApplication.Synonym]
+    });
+
     msls._addEntryPoints(lightSwitchApplication.SystemField, {
         /// <field>
         /// Called when a new systemField is created.
@@ -152,54 +200,6 @@
         /// <br/>created(msls.application.vwReconProcessStatu entity)
         /// </field>
         created: [lightSwitchApplication.vwReconProcessStatu]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.FieldType, {
-        /// <field>
-        /// Called when a new fieldType is created.
-        /// <br/>created(msls.application.FieldType entity)
-        /// </field>
-        created: [lightSwitchApplication.FieldType]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.ReconField, {
-        /// <field>
-        /// Called when a new reconField is created.
-        /// <br/>created(msls.application.ReconField entity)
-        /// </field>
-        created: [lightSwitchApplication.ReconField]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.RuleType, {
-        /// <field>
-        /// Called when a new ruleType is created.
-        /// <br/>created(msls.application.RuleType entity)
-        /// </field>
-        created: [lightSwitchApplication.RuleType]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.FileFieldRule, {
-        /// <field>
-        /// Called when a new fileFieldRule is created.
-        /// <br/>created(msls.application.FileFieldRule entity)
-        /// </field>
-        created: [lightSwitchApplication.FileFieldRule]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.Synonym, {
-        /// <field>
-        /// Called when a new synonym is created.
-        /// <br/>created(msls.application.Synonym entity)
-        /// </field>
-        created: [lightSwitchApplication.Synonym]
-    });
-
-    msls._addEntryPoints(lightSwitchApplication.NIBBS_DB_Detail, {
-        /// <field>
-        /// Called when a new nIBBS_DB_Detail is created.
-        /// <br/>created(msls.application.NIBBS_DB_Detail entity)
-        /// </field>
-        created: [lightSwitchApplication.NIBBS_DB_Detail]
     });
 
 }(msls.application));

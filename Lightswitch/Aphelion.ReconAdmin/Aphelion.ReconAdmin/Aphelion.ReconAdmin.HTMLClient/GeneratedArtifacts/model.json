@@ -6336,206 +6336,6 @@
               ]
             },
             {
-              "id": "ReconData/Members[FK_ImportFileField_ReconField_ReconField]",
-              "name": "FK_ImportFileField_ReconField_ReconField",
-              "association": { "__id": "FK_ImportFileField_ReconField_ReconField" },
-              "ends":
-              [
-                {
-                  "properties": [ "ID" ],
-                  "id": "ReconData/Members[FK_ImportFileField_ReconField_ReconField]/Members[ReconField]",
-                  "name": "ReconField",
-                  "entitySet": { "__id": "ReconData/Members[ReconFields]" }
-                },
-                {
-                  "properties": [ "ReconFieldID" ],
-                  "id": "ReconData/Members[FK_ImportFileField_ReconField_ReconField]/Members[ImportFileField_ReconField]",
-                  "name": "ImportFileField_ReconField",
-                  "entitySet": { "__id": "ReconData/Members[ImportFileField_ReconFields]" }
-                }
-              ]
-            },
-            {
-              "id": "ReconData/Members[FK_ReconProcessStep_ReconProcess]",
-              "name": "FK_ReconProcessStep_ReconProcess",
-              "association": { "__id": "FK_ReconProcessStep_ReconProcess" },
-              "ends":
-              [
-                {
-                  "properties": [ "ID" ],
-                  "id": "ReconData/Members[FK_ReconProcessStep_ReconProcess]/Members[ReconProcess]",
-                  "name": "ReconProcess",
-                  "entitySet": { "__id": "ReconData/Members[ReconProcesses]" }
-                },
-                {
-                  "properties": [ "ReconProcessID" ],
-                  "id": "ReconData/Members[FK_ReconProcessStep_ReconProcess]/Members[ReconProcessStep]",
-                  "name": "ReconProcessStep",
-                  "entitySet": { "__id": "ReconData/Members[ReconProcessSteps]" }
-                }
-              ]
-            },
-            {
-              "id": "ReconData/Members[FK_ReconField_ReconProcessStep]",
-              "name": "FK_ReconField_ReconProcessStep",
-              "association": { "__id": "FK_ReconField_ReconProcessStep" },
-              "ends":
-              [
-                {
-                  "properties": [ "ID" ],
-                  "id": "ReconData/Members[FK_ReconField_ReconProcessStep]/Members[ReconProcessStep]",
-                  "name": "ReconProcessStep",
-                  "entitySet": { "__id": "ReconData/Members[ReconProcessSteps]" }
-                },
-                {
-                  "properties": [ "ReconProcessStepID" ],
-                  "id": "ReconData/Members[FK_ReconField_ReconProcessStep]/Members[ReconField]",
-                  "name": "ReconField",
-                  "entitySet": { "__id": "ReconData/Members[ReconFields]" }
-                }
-              ]
-            },
-            {
-              "id": "ReconData/Members[FK_ReconSource_ReconSourceType]",
-              "name": "FK_ReconSource_ReconSourceType",
-              "association": { "__id": "FK_ReconSource_ReconSourceType" },
-              "ends":
-              [
-                {
-                  "properties": [ "ID" ],
-                  "id": "ReconData/Members[FK_ReconSource_ReconSourceType]/Members[ReconSourceType]",
-                  "name": "ReconSourceType",
-                  "entitySet": { "__id": "ReconData/Members[ReconSourceTypes]" }
-                },
-                {
-                  "properties": [ "ReconSourceTypeID" ],
-                  "id": "ReconData/Members[FK_ReconSource_ReconSourceType]/Members[ReconSource]",
-                  "name": "ReconSource",
-                  "entitySet": { "__id": "ReconData/Members[ReconSources]" }
-                }
-              ]
-            },
-            {
-              "id": "ReconData/Members[FK_ImportedFile_ReconSummary]",
-              "name": "FK_ImportedFile_ReconSummary",
-              "association": { "__id": "FK_ImportedFile_ReconSummary" },
-              "ends":
-              [
-                {
-                  "properties": [ "ID" ],
-                  "id": "ReconData/Members[FK_ImportedFile_ReconSummary]/Members[ReconSummary]",
-                  "name": "ReconSummary",
-                  "entitySet": { "__id": "ReconData/Members[ReconSummaries]" }
-                },
-                {
-                  "properties": [ "ReconSummaryID" ],
-                  "id": "ReconData/Members[FK_ImportedFile_ReconSummary]/Members[ImportedFile]",
-                  "name": "ImportedFile",
-                  "entitySet": { "__id": "ReconData/Members[ImportedFiles]" }
-                }
-              ]
-            },
-            {
-              "id": "ReconData/Members[FK_ReconProcessStep_ReconType]",
-              "name": "FK_ReconProcessStep_ReconType",
-              "association": { "__id": "FK_ReconProcessStep_ReconType" },
-              "ends":
-              [
-                {
-                  "properties": [ "ID" ],
-                  "id": "ReconData/Members[FK_ReconProcessStep_ReconType]/Members[ReconType]",
-                  "name": "ReconType",
-                  "entitySet": { "__id": "ReconData/Members[ReconTypes]" }
-                },
-                {
-                  "properties": [ "ReconTypeID" ],
-                  "id": "ReconData/Members[FK_ReconProcessStep_ReconType]/Members[ReconProcessStep]",
-                  "name": "ReconProcessStep",
-                  "entitySet": { "__id": "ReconData/Members[ReconProcessSteps]" }
-                }
-              ]
-            },
-            {
-              "id": "ReconData/Members[FK_ReconField_SystemField]",
-              "name": "FK_ReconField_SystemField",
-              "association": { "__id": "FK_ReconField_SystemField" },
-              "ends":
-              [
-                {
-                  "properties": [ "ID" ],
-                  "id": "ReconData/Members[FK_ReconField_SystemField]/Members[SystemField]",
-                  "name": "SystemField",
-                  "entitySet": { "__id": "ReconData/Members[SystemFields]" }
-                },
-                {
-                  "properties": [ "SystemFieldID" ],
-                  "id": "ReconData/Members[FK_ReconField_SystemField]/Members[ReconField]",
-                  "name": "ReconField",
-                  "entitySet": { "__id": "ReconData/Members[ReconFields]" }
-                }
-              ]
-            },
-            {
-              "id": "ReconData/Members[FK_FileDefinition_ReconSource]",
-              "name": "FK_FileDefinition_ReconSource",
-              "association": { "__id": "FK_FileDefinition_ReconSource" },
-              "ends":
-              [
-                {
-                  "properties": [ "ID" ],
-                  "id": "ReconData/Members[FK_FileDefinition_ReconSource]/Members[ReconSource]",
-                  "name": "ReconSource",
-                  "entitySet": { "__id": "ReconData/Members[ReconSources]" }
-                },
-                {
-                  "properties": [ "ReconSourceID" ],
-                  "id": "ReconData/Members[FK_FileDefinition_ReconSource]/Members[FileDefinition]",
-                  "name": "FileDefinition",
-                  "entitySet": { "__id": "ReconData/Members[FileDefinitions]" }
-                }
-              ]
-            },
-            {
-              "id": "ReconData/Members[FK_ReconSummary_ReconProcessStep]",
-              "name": "FK_ReconSummary_ReconProcessStep",
-              "association": { "__id": "FK_ReconSummary_ReconProcessStep" },
-              "ends":
-              [
-                {
-                  "properties": [ "ID" ],
-                  "id": "ReconData/Members[FK_ReconSummary_ReconProcessStep]/Members[ReconProcessStep]",
-                  "name": "ReconProcessStep",
-                  "entitySet": { "__id": "ReconData/Members[ReconProcessSteps]" }
-                },
-                {
-                  "properties": [ "ReconProcessStepID" ],
-                  "id": "ReconData/Members[FK_ReconSummary_ReconProcessStep]/Members[ReconSummary]",
-                  "name": "ReconSummary",
-                  "entitySet": { "__id": "ReconData/Members[ReconSummaries]" }
-                }
-              ]
-            },
-            {
-              "id": "ReconData/Members[FK_ReconSummary_ReconStatus]",
-              "name": "FK_ReconSummary_ReconStatus",
-              "association": { "__id": "FK_ReconSummary_ReconStatus" },
-              "ends":
-              [
-                {
-                  "properties": [ "ID" ],
-                  "id": "ReconData/Members[FK_ReconSummary_ReconStatus]/Members[ReconStatus]",
-                  "name": "ReconStatus",
-                  "entitySet": { "__id": "ReconData/Members[ReconStatus]" }
-                },
-                {
-                  "properties": [ "ReconStatusID" ],
-                  "id": "ReconData/Members[FK_ReconSummary_ReconStatus]/Members[ReconSummary]",
-                  "name": "ReconSummary",
-                  "entitySet": { "__id": "ReconData/Members[ReconSummaries]" }
-                }
-              ]
-            },
-            {
               "id": "ReconData/Members[FK_ReconProcessStep_ImportedFile]",
               "name": "FK_ReconProcessStep_ImportedFile",
               "association": { "__id": "FK_ReconProcessStep_ImportedFile" },
@@ -6612,6 +6412,206 @@
                   "id": "ReconData/Members[FK_ReconSummary_ImportedFile1]/Members[ReconSummary]",
                   "name": "ReconSummary",
                   "entitySet": { "__id": "ReconData/Members[ReconSummaries]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ImportFileField_ReconField_ReconField]",
+              "name": "FK_ImportFileField_ReconField_ReconField",
+              "association": { "__id": "FK_ImportFileField_ReconField_ReconField" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ImportFileField_ReconField_ReconField]/Members[ReconField]",
+                  "name": "ReconField",
+                  "entitySet": { "__id": "ReconData/Members[ReconFields]" }
+                },
+                {
+                  "properties": [ "ReconFieldID" ],
+                  "id": "ReconData/Members[FK_ImportFileField_ReconField_ReconField]/Members[ImportFileField_ReconField]",
+                  "name": "ImportFileField_ReconField",
+                  "entitySet": { "__id": "ReconData/Members[ImportFileField_ReconFields]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ReconProcessStep_ReconProcess]",
+              "name": "FK_ReconProcessStep_ReconProcess",
+              "association": { "__id": "FK_ReconProcessStep_ReconProcess" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ReconProcessStep_ReconProcess]/Members[ReconProcess]",
+                  "name": "ReconProcess",
+                  "entitySet": { "__id": "ReconData/Members[ReconProcesses]" }
+                },
+                {
+                  "properties": [ "ReconProcessID" ],
+                  "id": "ReconData/Members[FK_ReconProcessStep_ReconProcess]/Members[ReconProcessStep]",
+                  "name": "ReconProcessStep",
+                  "entitySet": { "__id": "ReconData/Members[ReconProcessSteps]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ReconField_ReconProcessStep]",
+              "name": "FK_ReconField_ReconProcessStep",
+              "association": { "__id": "FK_ReconField_ReconProcessStep" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ReconField_ReconProcessStep]/Members[ReconProcessStep]",
+                  "name": "ReconProcessStep",
+                  "entitySet": { "__id": "ReconData/Members[ReconProcessSteps]" }
+                },
+                {
+                  "properties": [ "ReconProcessStepID" ],
+                  "id": "ReconData/Members[FK_ReconField_ReconProcessStep]/Members[ReconField]",
+                  "name": "ReconField",
+                  "entitySet": { "__id": "ReconData/Members[ReconFields]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ReconSummary_ReconProcessStep]",
+              "name": "FK_ReconSummary_ReconProcessStep",
+              "association": { "__id": "FK_ReconSummary_ReconProcessStep" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ReconSummary_ReconProcessStep]/Members[ReconProcessStep]",
+                  "name": "ReconProcessStep",
+                  "entitySet": { "__id": "ReconData/Members[ReconProcessSteps]" }
+                },
+                {
+                  "properties": [ "ReconProcessStepID" ],
+                  "id": "ReconData/Members[FK_ReconSummary_ReconProcessStep]/Members[ReconSummary]",
+                  "name": "ReconSummary",
+                  "entitySet": { "__id": "ReconData/Members[ReconSummaries]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_FileDefinition_ReconSource]",
+              "name": "FK_FileDefinition_ReconSource",
+              "association": { "__id": "FK_FileDefinition_ReconSource" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_FileDefinition_ReconSource]/Members[ReconSource]",
+                  "name": "ReconSource",
+                  "entitySet": { "__id": "ReconData/Members[ReconSources]" }
+                },
+                {
+                  "properties": [ "ReconSourceID" ],
+                  "id": "ReconData/Members[FK_FileDefinition_ReconSource]/Members[FileDefinition]",
+                  "name": "FileDefinition",
+                  "entitySet": { "__id": "ReconData/Members[FileDefinitions]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ReconSource_ReconSourceType]",
+              "name": "FK_ReconSource_ReconSourceType",
+              "association": { "__id": "FK_ReconSource_ReconSourceType" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ReconSource_ReconSourceType]/Members[ReconSourceType]",
+                  "name": "ReconSourceType",
+                  "entitySet": { "__id": "ReconData/Members[ReconSourceTypes]" }
+                },
+                {
+                  "properties": [ "ReconSourceTypeID" ],
+                  "id": "ReconData/Members[FK_ReconSource_ReconSourceType]/Members[ReconSource]",
+                  "name": "ReconSource",
+                  "entitySet": { "__id": "ReconData/Members[ReconSources]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ReconSummary_ReconStatus]",
+              "name": "FK_ReconSummary_ReconStatus",
+              "association": { "__id": "FK_ReconSummary_ReconStatus" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ReconSummary_ReconStatus]/Members[ReconStatus]",
+                  "name": "ReconStatus",
+                  "entitySet": { "__id": "ReconData/Members[ReconStatus]" }
+                },
+                {
+                  "properties": [ "ReconStatusID" ],
+                  "id": "ReconData/Members[FK_ReconSummary_ReconStatus]/Members[ReconSummary]",
+                  "name": "ReconSummary",
+                  "entitySet": { "__id": "ReconData/Members[ReconSummaries]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ImportedFile_ReconSummary]",
+              "name": "FK_ImportedFile_ReconSummary",
+              "association": { "__id": "FK_ImportedFile_ReconSummary" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ImportedFile_ReconSummary]/Members[ReconSummary]",
+                  "name": "ReconSummary",
+                  "entitySet": { "__id": "ReconData/Members[ReconSummaries]" }
+                },
+                {
+                  "properties": [ "ReconSummaryID" ],
+                  "id": "ReconData/Members[FK_ImportedFile_ReconSummary]/Members[ImportedFile]",
+                  "name": "ImportedFile",
+                  "entitySet": { "__id": "ReconData/Members[ImportedFiles]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ReconProcessStep_ReconType]",
+              "name": "FK_ReconProcessStep_ReconType",
+              "association": { "__id": "FK_ReconProcessStep_ReconType" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ReconProcessStep_ReconType]/Members[ReconType]",
+                  "name": "ReconType",
+                  "entitySet": { "__id": "ReconData/Members[ReconTypes]" }
+                },
+                {
+                  "properties": [ "ReconTypeID" ],
+                  "id": "ReconData/Members[FK_ReconProcessStep_ReconType]/Members[ReconProcessStep]",
+                  "name": "ReconProcessStep",
+                  "entitySet": { "__id": "ReconData/Members[ReconProcessSteps]" }
+                }
+              ]
+            },
+            {
+              "id": "ReconData/Members[FK_ReconField_SystemField]",
+              "name": "FK_ReconField_SystemField",
+              "association": { "__id": "FK_ReconField_SystemField" },
+              "ends":
+              [
+                {
+                  "properties": [ "ID" ],
+                  "id": "ReconData/Members[FK_ReconField_SystemField]/Members[SystemField]",
+                  "name": "SystemField",
+                  "entitySet": { "__id": "ReconData/Members[SystemFields]" }
+                },
+                {
+                  "properties": [ "SystemFieldID" ],
+                  "id": "ReconData/Members[FK_ReconField_SystemField]/Members[ReconField]",
+                  "name": "ReconField",
+                  "entitySet": { "__id": "ReconData/Members[ReconFields]" }
                 }
               ]
             }
@@ -7486,6 +7486,146 @@
               "name": "ReconField",
               "multiplicity": "Many",
               "entityType": { "__id": "ReconField" }
+            }
+          ]
+        },
+        {
+          "id": "FK_FileDefinition_ReconSource",
+          "name": "FK_FileDefinition_ReconSource",
+          "ends":
+          [
+            {
+              "id": "FK_FileDefinition_ReconSource/Ends[ReconSource]",
+              "name": "ReconSource",
+              "multiplicity": "One",
+              "entityType": { "__id": "ReconSource" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_FileDefinition_ReconSource/Ends[FileDefinition]",
+              "name": "FileDefinition",
+              "multiplicity": "Many",
+              "entityType": { "__id": "FileDefinition" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconSummary_ReconProcessStep",
+          "name": "FK_ReconSummary_ReconProcessStep",
+          "ends":
+          [
+            {
+              "id": "FK_ReconSummary_ReconProcessStep/Ends[ReconProcessStep]",
+              "name": "ReconProcessStep",
+              "multiplicity": "One",
+              "entityType": { "__id": "ReconProcessStep" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconSummary_ReconProcessStep/Ends[ReconSummary]",
+              "name": "ReconSummary",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconSummary" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconSummary_ReconStatus",
+          "name": "FK_ReconSummary_ReconStatus",
+          "ends":
+          [
+            {
+              "id": "FK_ReconSummary_ReconStatus/Ends[ReconStatus]",
+              "name": "ReconStatus",
+              "multiplicity": "One",
+              "entityType": { "__id": "ReconStatu" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconSummary_ReconStatus/Ends[ReconSummary]",
+              "name": "ReconSummary",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconSummary" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconProcessStep_ImportedFile",
+          "name": "FK_ReconProcessStep_ImportedFile",
+          "ends":
+          [
+            {
+              "id": "FK_ReconProcessStep_ImportedFile/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconProcessStep_ImportedFile/Ends[ReconProcessStep]",
+              "name": "ReconProcessStep",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconProcessStep" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconProcessStep_ImportedFile1",
+          "name": "FK_ReconProcessStep_ImportedFile1",
+          "ends":
+          [
+            {
+              "id": "FK_ReconProcessStep_ImportedFile1/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconProcessStep_ImportedFile1/Ends[ReconProcessStep]",
+              "name": "ReconProcessStep",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconProcessStep" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconSummary_ImportedFile",
+          "name": "FK_ReconSummary_ImportedFile",
+          "ends":
+          [
+            {
+              "id": "FK_ReconSummary_ImportedFile/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconSummary_ImportedFile/Ends[ReconSummary]",
+              "name": "ReconSummary",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconSummary" }
+            }
+          ]
+        },
+        {
+          "id": "FK_ReconSummary_ImportedFile1",
+          "name": "FK_ReconSummary_ImportedFile1",
+          "ends":
+          [
+            {
+              "id": "FK_ReconSummary_ImportedFile1/Ends[ImportedFile]",
+              "name": "ImportedFile",
+              "multiplicity": "ZeroOrOne",
+              "entityType": { "__id": "ImportedFile" },
+              ":@DeleteRule": { "action": "Unset" }
+            },
+            {
+              "id": "FK_ReconSummary_ImportedFile1/Ends[ReconSummary]",
+              "name": "ReconSummary",
+              "multiplicity": "Many",
+              "entityType": { "__id": "ReconSummary" }
             }
           ]
         },
@@ -12210,6 +12350,194 @@
           ]
         },
         {
+          "displayName": "ReconSource",
+          "id": "AddEditReconSource",
+          "name": "AddEditReconSource",
+          "launchMode": "Single",
+          ":@SaveChangesTo":
+          {
+            "property": { "__id": "DataWorkspace/Members[ReconData]" }
+          },
+          "rootContentItem":
+          {
+            "displayName": "ReconSource",
+            "name": "RootContentItem",
+            "kind": "Screen",
+            "view": { "__id": ":Screen" },
+            "childContentItems":
+            [
+              {
+                "displayName": "Tabs",
+                "name": "Tabs",
+                "kind": "Group",
+                "view": { "__id": ":TabPages" },
+                "childContentItems":
+                [
+                  {
+                    "displayName": "Details",
+                    "name": "Details",
+                    "kind": "Tab",
+                    "view": { "__id": ":RowsLayout" },
+                    "childContentItems":
+                    [
+                      {
+                        "displayName": "columns",
+                        "name": "columns",
+                        "kind": "Details",
+                        "view": { "__id": ":ColumnsLayout" },
+                        "dataSource":
+                        {
+                          "member": { "__id": "AddEditReconSource/Properties[ReconSource]" }
+                        },
+                        "childContentItems":
+                        [
+                          {
+                            "displayName": "left",
+                            "name": "left",
+                            "kind": "Group",
+                            "view": { "__id": ":RowsLayout" },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "Code",
+                                "name": "Code",
+                                "kind": "Value",
+                                "view": { "__id": ":TextBox" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ReconSource/Properties[Code]" }
+                                }
+                              },
+                              {
+                                "displayName": "Name",
+                                "name": "Name",
+                                "kind": "Value",
+                                "view": { "__id": ":TextBox" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ReconSource/Properties[Name]" }
+                                }
+                              }
+                            ],
+                            "propertySources":
+                            [
+                              {
+                                "property": { "__id": ":RootControl/Properties[MinWidth]" },
+                                "value": 200
+                              },
+                              {
+                                "property": { "__id": ":RootControl/Properties[MaxWidth]" },
+                                "value": 400
+                              }
+                            ]
+                          },
+                          {
+                            "displayName": "right",
+                            "name": "right",
+                            "kind": "Group",
+                            "view": { "__id": ":RowsLayout" },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "Recon Source Type",
+                                "name": "ReconSourceType",
+                                "kind": "Details",
+                                "view": { "__id": ":DetailsModalPicker" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ReconSource/Properties[ReconSourceType]" }
+                                },
+                                "childContentItems":
+                                [
+                                  {
+                                    "displayName": "Recon Source Type",
+                                    "name": "RowTemplate",
+                                    "kind": "Value",
+                                    "view": { "__id": ":Text" },
+                                    "dataSource":
+                                    {
+                                      "member": { "__id": "ReconSourceType/Properties[Code]" }
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "propertySources":
+                            [
+                              {
+                                "property": { "__id": ":RootControl/Properties[MinWidth]" },
+                                "value": 200
+                              },
+                              {
+                                "property": { "__id": ":RootControl/Properties[MaxWidth]" },
+                                "value": 400
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "displayName": "Popups",
+                "name": "Popups",
+                "kind": "Group",
+                "view": { "__id": ":DialogPages" }
+              }
+            ],
+            "propertySources":
+            [
+              {
+                "property": { "__id": ":Screen/Properties[ScreenType]" },
+                "value": "Edit"
+              },
+              {
+                "property": { "__id": ":Screen/Properties[ShowAsDialog]" },
+                "value": true
+              }
+            ]
+          },
+          "methods":
+          [
+            {
+              "id": "AddEditReconSource/Methods[showTab]",
+              "name": "showTab",
+              "parameters":
+              [
+                {
+                  "id": "AddEditReconSource/Methods[showTab]/Parameters[tabName]",
+                  "name": "tabName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            },
+            {
+              "id": "AddEditReconSource/Methods[showDialog]",
+              "name": "showDialog",
+              "parameters":
+              [
+                {
+                  "id": "AddEditReconSource/Methods[showDialog]/Parameters[dialogName]",
+                  "name": "dialogName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            }
+          ],
+          "properties":
+          [
+            {
+              "id": "AddEditReconSource/Properties[ReconSource]",
+              "name": "ReconSource",
+              "elementType": { "__id": "ReconSource" },
+              "propertyType": { "__id": "ReconSource" },
+              ":@IsParameter": { }
+            }
+          ]
+        },
+        {
           "displayName": "ReconProcesses",
           "id": "BrowseReconProcesses",
           "name": "BrowseReconProcesses",
@@ -12744,6 +13072,288 @@
               "source":
               {
                 "target": { "__id": "BrowseReconProcessSteps/Properties[ReconProcessSteps]/Query" }
+              }
+            }
+          ]
+        },
+        {
+          "displayName": "ReconSources",
+          "id": "BrowseReconSources",
+          "name": "BrowseReconSources",
+          "launchMode": "Single",
+          ":@SaveChangesTo":
+          {
+            "property": { "__id": "DataWorkspace/Members[ReconData]" }
+          },
+          "rootContentItem":
+          {
+            "displayName": "ReconSources",
+            "name": "RootContentItem",
+            "kind": "Screen",
+            "view": { "__id": ":Screen" },
+            "childContentItems":
+            [
+              {
+                "displayName": "Tabs",
+                "name": "Tabs",
+                "kind": "Group",
+                "view": { "__id": ":TabPages" },
+                "childContentItems":
+                [
+                  {
+                    "displayName": "Recon Source List",
+                    "name": "ReconSourceList",
+                    "kind": "Tab",
+                    "view": { "__id": ":RowsLayout" },
+                    "childContentItems":
+                    [
+                      {
+                        "displayName": "ReconSources",
+                        "name": "ReconSources",
+                        "kind": "Collection",
+                        "view": { "__id": ":TileList" },
+                        "dataSource":
+                        {
+                          "member": { "__id": "BrowseReconSources/Properties[ReconSources]" }
+                        },
+                        "childContentItems":
+                        [
+                          {
+                            "displayName": "rows",
+                            "name": "rows",
+                            "kind": "Details",
+                            "view": { "__id": ":RowsLayout" },
+                            "dataSource":
+                            {
+                              "links":
+                              [
+                              ]
+                            },
+                            "childContentItems":
+                            [
+                              {
+                                "displayName": "Code",
+                                "name": "Code",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ReconSource/Properties[Code]" }
+                                },
+                                "propertySources":
+                                [
+                                  {
+                                    "property": { "__id": ":RootControl/Properties[FontStyle]" },
+                                    "value": "Large"
+                                  }
+                                ]
+                              },
+                              {
+                                "displayName": "Name",
+                                "name": "Name",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "ReconSource/Properties[Name]" }
+                                },
+                                "propertySources":
+                                [
+                                  {
+                                    "property": { "__id": ":RootControl/Properties[FontStyle]" },
+                                    "value": "Small"
+                                  }
+                                ]
+                              },
+                              {
+                                "displayName": "Recon Source Type",
+                                "name": "ReconSourceType",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "links":
+                                  [
+                                    {
+                                      "member": { "__id": "ReconSource/Properties[ReconSourceType]" }
+                                    },
+                                    {
+                                      "member": { "__id": "ReconSourceType/Properties[Code]" }
+                                    }
+                                  ]
+                                },
+                                "propertySources":
+                                [
+                                  {
+                                    "property": { "__id": ":RootControl/Properties[FontStyle]" },
+                                    "value": "Small"
+                                  }
+                                ]
+                              }
+                            ],
+                            "propertySources":
+                            [
+                              {
+                                "property": { "__id": ":RootControl/Properties[WidthSizingMode]" },
+                                "value": "FitToContent"
+                              }
+                            ]
+                          }
+                        ],
+                        "propertySources":
+                        [
+                          {
+                            "property": { "__id": ":RootCollectionControl/Properties[ItemTap]" },
+                            "source":
+                            {
+                              "target": { "__id": "!module/Methods[showAddEditReconSource]" },
+                              ":@AssociatedCollection": { "collection": { "__id": "BrowseReconSources/Properties[ReconSources]" } },
+                              "arguments":
+                              [
+                                {
+                                  "parameter": { "__id": "!module/Methods[showAddEditReconSource]/Parameters[ReconSource]" },
+                                  "value":
+                                  {
+                                    "links":
+                                    [
+                                      {
+                                        "member": { "__id": "BrowseReconSources/Properties[ReconSources]" }
+                                      },
+                                      {
+                                        "member": { "__id": "CollectionView$ReconSource/Properties[selectedItem]" }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "commandItems":
+                    [
+                      {
+                        "displayName": "Add",
+                        "name": "AddReconSource",
+                        "kind": "Command",
+                        "view": { "__id": ":CommandBarButton" },
+                        "propertySources":
+                        [
+                          {
+                            "property": { "__id": ":RootControl/Properties[Tap]" },
+                            "source":
+                            {
+                              "target": { "__id": "!module/Methods[showAddEditReconSource]" },
+                              ":@AssociatedCollection": { "collection": { "__id": "BrowseReconSources/Properties[ReconSources]" } },
+                              ":@CreateNewEntity":
+                              {
+                                "targetParameter": { "__id": "!module/Methods[showAddEditReconSource]/Parameters[ReconSource]" }
+                              }
+                            }
+                          },
+                          {
+                            "property": { "__id": ":RootCommand/Properties[Icon]" },
+                            "value": "msls-add"
+                          }
+                        ]
+                      },
+                      {
+                        "displayName": "Search",
+                        "name": "SearchReconSources",
+                        "kind": "Command",
+                        "view": { "__id": ":CommandBarButton" },
+                        "propertySources":
+                        [
+                          {
+                            "property": { "__id": ":RootControl/Properties[Tap]" },
+                            "source":
+                            {
+                              "links":
+                              [
+                                {
+                                  "member": { "__id": "BrowseReconSources/Properties[ReconSources]" }
+                                },
+                                {
+                                  "target": { "__id": "CollectionView$ReconSource/Methods[showSearch]" }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "property": { "__id": ":RootCommand/Properties[Icon]" },
+                            "value": "msls-search"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "propertySources":
+                [
+                  {
+                    "property": { "__id": ":RootControl/Properties[BrowseOnly]" },
+                    "value": true
+                  }
+                ]
+              },
+              {
+                "displayName": "Popups",
+                "name": "Popups",
+                "kind": "Group",
+                "view": { "__id": ":DialogPages" }
+              }
+            ]
+          },
+          "methods":
+          [
+            {
+              "id": "BrowseReconSources/Methods[showTab]",
+              "name": "showTab",
+              "parameters":
+              [
+                {
+                  "id": "BrowseReconSources/Methods[showTab]/Parameters[tabName]",
+                  "name": "tabName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            },
+            {
+              "id": "BrowseReconSources/Methods[showDialog]",
+              "name": "showDialog",
+              "parameters":
+              [
+                {
+                  "id": "BrowseReconSources/Methods[showDialog]/Parameters[dialogName]",
+                  "name": "dialogName",
+                  "parameterType": { "__id": ":String" }
+                }
+              ]
+            }
+          ],
+          "properties":
+          [
+            {
+              "id": "BrowseReconSources/Properties[ReconSources]",
+              "name": "ReconSources",
+              "pageSize": 45,
+              "elementType": { "__id": "ReconSource" },
+              "propertyType": { "__id": "CollectionView$ReconSource" },
+              "query":
+              {
+                "id": "BrowseReconSources/Properties[ReconSources]/Query",
+                "name": "ReconSourcesQuery",
+                "elementType": { "__id": "ReconSource" },
+                "returnType": { "__id": "ReconSource*" },
+                "source":
+                {
+                  "member": { "__id": "ReconData/Members[ReconSources]" }
+                }
+              },
+              "source":
+              {
+                "target": { "__id": "BrowseReconSources/Properties[ReconSources]/Query" }
               }
             }
           ]
@@ -17336,7 +17946,7 @@
                     ]
                   },
                   {
-                    "displayName": "FIelds",
+                    "displayName": "Fields",
                     "name": "FIelds",
                     "kind": "Tab",
                     "view": { "__id": ":RowsLayout" },
@@ -17497,146 +18107,6 @@
                   "parameterType": { "__id": ":String" }
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": "FK_FileDefinition_ReconSource",
-          "name": "FK_FileDefinition_ReconSource",
-          "ends":
-          [
-            {
-              "id": "FK_FileDefinition_ReconSource/Ends[ReconSource]",
-              "name": "ReconSource",
-              "multiplicity": "One",
-              "entityType": { "__id": "ReconSource" },
-              ":@DeleteRule": { "action": "Unset" }
-            },
-            {
-              "id": "FK_FileDefinition_ReconSource/Ends[FileDefinition]",
-              "name": "FileDefinition",
-              "multiplicity": "Many",
-              "entityType": { "__id": "FileDefinition" }
-            }
-          ]
-        },
-        {
-          "id": "FK_ReconSummary_ReconProcessStep",
-          "name": "FK_ReconSummary_ReconProcessStep",
-          "ends":
-          [
-            {
-              "id": "FK_ReconSummary_ReconProcessStep/Ends[ReconProcessStep]",
-              "name": "ReconProcessStep",
-              "multiplicity": "One",
-              "entityType": { "__id": "ReconProcessStep" },
-              ":@DeleteRule": { "action": "Unset" }
-            },
-            {
-              "id": "FK_ReconSummary_ReconProcessStep/Ends[ReconSummary]",
-              "name": "ReconSummary",
-              "multiplicity": "Many",
-              "entityType": { "__id": "ReconSummary" }
-            }
-          ]
-        },
-        {
-          "id": "FK_ReconSummary_ReconStatus",
-          "name": "FK_ReconSummary_ReconStatus",
-          "ends":
-          [
-            {
-              "id": "FK_ReconSummary_ReconStatus/Ends[ReconStatus]",
-              "name": "ReconStatus",
-              "multiplicity": "One",
-              "entityType": { "__id": "ReconStatu" },
-              ":@DeleteRule": { "action": "Unset" }
-            },
-            {
-              "id": "FK_ReconSummary_ReconStatus/Ends[ReconSummary]",
-              "name": "ReconSummary",
-              "multiplicity": "Many",
-              "entityType": { "__id": "ReconSummary" }
-            }
-          ]
-        },
-        {
-          "id": "FK_ReconProcessStep_ImportedFile",
-          "name": "FK_ReconProcessStep_ImportedFile",
-          "ends":
-          [
-            {
-              "id": "FK_ReconProcessStep_ImportedFile/Ends[ImportedFile]",
-              "name": "ImportedFile",
-              "multiplicity": "ZeroOrOne",
-              "entityType": { "__id": "ImportedFile" },
-              ":@DeleteRule": { "action": "Unset" }
-            },
-            {
-              "id": "FK_ReconProcessStep_ImportedFile/Ends[ReconProcessStep]",
-              "name": "ReconProcessStep",
-              "multiplicity": "Many",
-              "entityType": { "__id": "ReconProcessStep" }
-            }
-          ]
-        },
-        {
-          "id": "FK_ReconProcessStep_ImportedFile1",
-          "name": "FK_ReconProcessStep_ImportedFile1",
-          "ends":
-          [
-            {
-              "id": "FK_ReconProcessStep_ImportedFile1/Ends[ImportedFile]",
-              "name": "ImportedFile",
-              "multiplicity": "ZeroOrOne",
-              "entityType": { "__id": "ImportedFile" },
-              ":@DeleteRule": { "action": "Unset" }
-            },
-            {
-              "id": "FK_ReconProcessStep_ImportedFile1/Ends[ReconProcessStep]",
-              "name": "ReconProcessStep",
-              "multiplicity": "Many",
-              "entityType": { "__id": "ReconProcessStep" }
-            }
-          ]
-        },
-        {
-          "id": "FK_ReconSummary_ImportedFile",
-          "name": "FK_ReconSummary_ImportedFile",
-          "ends":
-          [
-            {
-              "id": "FK_ReconSummary_ImportedFile/Ends[ImportedFile]",
-              "name": "ImportedFile",
-              "multiplicity": "ZeroOrOne",
-              "entityType": { "__id": "ImportedFile" },
-              ":@DeleteRule": { "action": "Unset" }
-            },
-            {
-              "id": "FK_ReconSummary_ImportedFile/Ends[ReconSummary]",
-              "name": "ReconSummary",
-              "multiplicity": "Many",
-              "entityType": { "__id": "ReconSummary" }
-            }
-          ]
-        },
-        {
-          "id": "FK_ReconSummary_ImportedFile1",
-          "name": "FK_ReconSummary_ImportedFile1",
-          "ends":
-          [
-            {
-              "id": "FK_ReconSummary_ImportedFile1/Ends[ImportedFile]",
-              "name": "ImportedFile",
-              "multiplicity": "ZeroOrOne",
-              "entityType": { "__id": "ImportedFile" },
-              ":@DeleteRule": { "action": "Unset" }
-            },
-            {
-              "id": "FK_ReconSummary_ImportedFile1/Ends[ReconSummary]",
-              "name": "ReconSummary",
-              "multiplicity": "Many",
-              "entityType": { "__id": "ReconSummary" }
             }
           ]
         }
@@ -17825,6 +18295,19 @@
           ]
         },
         {
+          "id": "!module/Methods[showAddEditReconSource]",
+          "name": "showAddEditReconSource",
+          ":@ShowScreenMethod": { "targetScreen": { "__id": "AddEditReconSource" } },
+          "parameters":
+          [
+            {
+              "id": "!module/Methods[showAddEditReconSource]/Parameters[ReconSource]",
+              "name": "ReconSource",
+              "parameterType": { "__id": "ReconSource" }
+            }
+          ]
+        },
+        {
           "id": "!module/Methods[showBrowseReconProcesses]",
           "name": "showBrowseReconProcesses",
           ":@ShowScreenMethod": { "targetScreen": { "__id": "BrowseReconProcesses" } }
@@ -17833,6 +18316,11 @@
           "id": "!module/Methods[showBrowseReconProcessSteps]",
           "name": "showBrowseReconProcessSteps",
           ":@ShowScreenMethod": { "targetScreen": { "__id": "BrowseReconProcessSteps" } }
+        },
+        {
+          "id": "!module/Methods[showBrowseReconSources]",
+          "name": "showBrowseReconSources",
+          ":@ShowScreenMethod": { "targetScreen": { "__id": "BrowseReconSources" } }
         },
         {
           "id": "!module/Methods[showViewReconProcess]",
@@ -18118,6 +18606,11 @@
           "id": "!module/NavigationItems[link12]",
           "name": "link12",
           "method": { "__id": "!module/Methods[showBrowseReconProcessSteps]" }
+        },
+        {
+          "id": "!module/NavigationItems[link13]",
+          "name": "link13",
+          "method": { "__id": "!module/Methods[showBrowseReconSources]" }
         }
       ]
     }

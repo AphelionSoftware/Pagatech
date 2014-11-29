@@ -109,15 +109,16 @@
 
             if (activeTypeDropDown !== undefined) {
                 activeTypeDropDown.isVisible = false;
-            }
 
-            screen.details.dataWorkspace.MeerkatData.ActiveTypes.filter("Code eq 'Active'").execute().then(function (x) {
-                thisObject.setActiveType(x.results[0]);
-            }, function (x) {
-                msls.showMessageBox(x, {
-                    title: "Default value for ActiveType failed"
+
+                screen.details.dataWorkspace.MeerkatData.ActiveTypes.filter("Code eq 'Active'").execute().then(function (x) {
+                    thisObject.setActiveType(x.results[0]);
+                }, function (x) {
+                    msls.showMessageBox(x, {
+                        title: "Default value for ActiveType failed"
+                    });
                 });
-            });
+            }
 
 
             return;

@@ -2809,6 +2809,138 @@
         RowTemplate1_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconProcessStep().findContentItem("RowTemplate1"); }]
     });
 
+    lightSwitchApplication.AddEditReconSource.prototype._$contentItems = {
+        Tabs: {
+            _$class: msls.ContentItem,
+            _$name: "Tabs",
+            _$parentName: "RootContentItem",
+            screen: lightSwitchApplication.AddEditReconSource
+        },
+        Details: {
+            _$class: msls.ContentItem,
+            _$name: "Details",
+            _$parentName: "Tabs",
+            screen: lightSwitchApplication.AddEditReconSource,
+            data: lightSwitchApplication.AddEditReconSource,
+            value: lightSwitchApplication.AddEditReconSource
+        },
+        columns: {
+            _$class: msls.ContentItem,
+            _$name: "columns",
+            _$parentName: "Details",
+            screen: lightSwitchApplication.AddEditReconSource,
+            data: lightSwitchApplication.AddEditReconSource,
+            value: lightSwitchApplication.ReconSource
+        },
+        left: {
+            _$class: msls.ContentItem,
+            _$name: "left",
+            _$parentName: "columns",
+            screen: lightSwitchApplication.AddEditReconSource,
+            data: lightSwitchApplication.ReconSource,
+            value: lightSwitchApplication.ReconSource
+        },
+        Code: {
+            _$class: msls.ContentItem,
+            _$name: "Code",
+            _$parentName: "left",
+            screen: lightSwitchApplication.AddEditReconSource,
+            data: lightSwitchApplication.ReconSource,
+            value: String
+        },
+        Name: {
+            _$class: msls.ContentItem,
+            _$name: "Name",
+            _$parentName: "left",
+            screen: lightSwitchApplication.AddEditReconSource,
+            data: lightSwitchApplication.ReconSource,
+            value: String
+        },
+        right: {
+            _$class: msls.ContentItem,
+            _$name: "right",
+            _$parentName: "columns",
+            screen: lightSwitchApplication.AddEditReconSource,
+            data: lightSwitchApplication.ReconSource,
+            value: lightSwitchApplication.ReconSource
+        },
+        ReconSourceType: {
+            _$class: msls.ContentItem,
+            _$name: "ReconSourceType",
+            _$parentName: "right",
+            screen: lightSwitchApplication.AddEditReconSource,
+            data: lightSwitchApplication.ReconSource,
+            value: lightSwitchApplication.ReconSourceType
+        },
+        RowTemplate: {
+            _$class: msls.ContentItem,
+            _$name: "RowTemplate",
+            _$parentName: "ReconSourceType",
+            screen: lightSwitchApplication.AddEditReconSource,
+            data: lightSwitchApplication.ReconSourceType,
+            value: lightSwitchApplication.ReconSourceType
+        },
+        Popups: {
+            _$class: msls.ContentItem,
+            _$name: "Popups",
+            _$parentName: "RootContentItem",
+            screen: lightSwitchApplication.AddEditReconSource
+        }
+    };
+
+    msls._addEntryPoints(lightSwitchApplication.AddEditReconSource, {
+        /// <field>
+        /// Called when a new AddEditReconSource screen is created.
+        /// <br/>created(msls.application.AddEditReconSource screen)
+        /// </field>
+        created: [lightSwitchApplication.AddEditReconSource],
+        /// <field>
+        /// Called before changes on an active AddEditReconSource screen are applied.
+        /// <br/>beforeApplyChanges(msls.application.AddEditReconSource screen)
+        /// </field>
+        beforeApplyChanges: [lightSwitchApplication.AddEditReconSource],
+        /// <field>
+        /// Called after the Details content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        Details_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("Details"); }],
+        /// <field>
+        /// Called after the columns content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        columns_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("columns"); }],
+        /// <field>
+        /// Called after the left content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        left_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("left"); }],
+        /// <field>
+        /// Called after the Code content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        Code_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("Code"); }],
+        /// <field>
+        /// Called after the Name content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        Name_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("Name"); }],
+        /// <field>
+        /// Called after the right content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        right_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("right"); }],
+        /// <field>
+        /// Called after the ReconSourceType content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        ReconSourceType_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("ReconSourceType"); }],
+        /// <field>
+        /// Called after the RowTemplate content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        RowTemplate_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("RowTemplate"); }]
+    });
+
     lightSwitchApplication.BrowseReconProcesses.prototype._$contentItems = {
         Tabs: {
             _$class: msls.ContentItem,
@@ -3018,6 +3150,118 @@
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
         /// </field>
         FileSection_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconProcessSteps().findContentItem("FileSection"); }]
+    });
+
+    lightSwitchApplication.BrowseReconSources.prototype._$contentItems = {
+        Tabs: {
+            _$class: msls.ContentItem,
+            _$name: "Tabs",
+            _$parentName: "RootContentItem",
+            screen: lightSwitchApplication.BrowseReconSources
+        },
+        ReconSourceList: {
+            _$class: msls.ContentItem,
+            _$name: "ReconSourceList",
+            _$parentName: "Tabs",
+            screen: lightSwitchApplication.BrowseReconSources,
+            data: lightSwitchApplication.BrowseReconSources,
+            value: lightSwitchApplication.BrowseReconSources
+        },
+        ReconSources: {
+            _$class: msls.ContentItem,
+            _$name: "ReconSources",
+            _$parentName: "ReconSourceList",
+            screen: lightSwitchApplication.BrowseReconSources,
+            data: lightSwitchApplication.BrowseReconSources,
+            value: {
+                _$class: msls.VisualCollection,
+                screen: lightSwitchApplication.BrowseReconSources,
+                _$entry: {
+                    elementType: lightSwitchApplication.ReconSource
+                }
+            }
+        },
+        rows: {
+            _$class: msls.ContentItem,
+            _$name: "rows",
+            _$parentName: "ReconSources",
+            screen: lightSwitchApplication.BrowseReconSources,
+            data: lightSwitchApplication.ReconSource,
+            value: lightSwitchApplication.ReconSource
+        },
+        Code: {
+            _$class: msls.ContentItem,
+            _$name: "Code",
+            _$parentName: "rows",
+            screen: lightSwitchApplication.BrowseReconSources,
+            data: lightSwitchApplication.ReconSource,
+            value: String
+        },
+        Name: {
+            _$class: msls.ContentItem,
+            _$name: "Name",
+            _$parentName: "rows",
+            screen: lightSwitchApplication.BrowseReconSources,
+            data: lightSwitchApplication.ReconSource,
+            value: String
+        },
+        ReconSourceType: {
+            _$class: msls.ContentItem,
+            _$name: "ReconSourceType",
+            _$parentName: "rows",
+            screen: lightSwitchApplication.BrowseReconSources,
+            data: lightSwitchApplication.ReconSource,
+            value: lightSwitchApplication.ReconSourceType
+        },
+        Popups: {
+            _$class: msls.ContentItem,
+            _$name: "Popups",
+            _$parentName: "RootContentItem",
+            screen: lightSwitchApplication.BrowseReconSources
+        }
+    };
+
+    msls._addEntryPoints(lightSwitchApplication.BrowseReconSources, {
+        /// <field>
+        /// Called when a new BrowseReconSources screen is created.
+        /// <br/>created(msls.application.BrowseReconSources screen)
+        /// </field>
+        created: [lightSwitchApplication.BrowseReconSources],
+        /// <field>
+        /// Called before changes on an active BrowseReconSources screen are applied.
+        /// <br/>beforeApplyChanges(msls.application.BrowseReconSources screen)
+        /// </field>
+        beforeApplyChanges: [lightSwitchApplication.BrowseReconSources],
+        /// <field>
+        /// Called after the ReconSourceList content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        ReconSourceList_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconSources().findContentItem("ReconSourceList"); }],
+        /// <field>
+        /// Called after the ReconSources content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        ReconSources_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconSources().findContentItem("ReconSources"); }],
+        /// <field>
+        /// Called after the rows content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        rows_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconSources().findContentItem("rows"); }],
+        /// <field>
+        /// Called after the Code content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        Code_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconSources().findContentItem("Code"); }],
+        /// <field>
+        /// Called after the Name content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        Name_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconSources().findContentItem("Name"); }],
+        /// <field>
+        /// Called after the ReconSourceType content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        ReconSourceType_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconSources().findContentItem("ReconSourceType"); }]
     });
 
     lightSwitchApplication.ViewReconProcess.prototype._$contentItems = {
@@ -5591,250 +5835,6 @@
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
         /// </field>
         Statuses_postRender: [$element, function () { return new lightSwitchApplication.Home().findContentItem("Statuses"); }]
-    });
-
-    lightSwitchApplication.AddEditReconSource.prototype._$contentItems = {
-        Tabs: {
-            _$class: msls.ContentItem,
-            _$name: "Tabs",
-            _$parentName: "RootContentItem",
-            screen: lightSwitchApplication.AddEditReconSource
-        },
-        Details: {
-            _$class: msls.ContentItem,
-            _$name: "Details",
-            _$parentName: "Tabs",
-            screen: lightSwitchApplication.AddEditReconSource,
-            data: lightSwitchApplication.AddEditReconSource,
-            value: lightSwitchApplication.AddEditReconSource
-        },
-        columns: {
-            _$class: msls.ContentItem,
-            _$name: "columns",
-            _$parentName: "Details",
-            screen: lightSwitchApplication.AddEditReconSource,
-            data: lightSwitchApplication.AddEditReconSource,
-            value: lightSwitchApplication.ReconSource
-        },
-        left: {
-            _$class: msls.ContentItem,
-            _$name: "left",
-            _$parentName: "columns",
-            screen: lightSwitchApplication.AddEditReconSource,
-            data: lightSwitchApplication.ReconSource,
-            value: lightSwitchApplication.ReconSource
-        },
-        Code: {
-            _$class: msls.ContentItem,
-            _$name: "Code",
-            _$parentName: "left",
-            screen: lightSwitchApplication.AddEditReconSource,
-            data: lightSwitchApplication.ReconSource,
-            value: String
-        },
-        Name: {
-            _$class: msls.ContentItem,
-            _$name: "Name",
-            _$parentName: "left",
-            screen: lightSwitchApplication.AddEditReconSource,
-            data: lightSwitchApplication.ReconSource,
-            value: String
-        },
-        right: {
-            _$class: msls.ContentItem,
-            _$name: "right",
-            _$parentName: "columns",
-            screen: lightSwitchApplication.AddEditReconSource,
-            data: lightSwitchApplication.ReconSource,
-            value: lightSwitchApplication.ReconSource
-        },
-        ReconSourceType: {
-            _$class: msls.ContentItem,
-            _$name: "ReconSourceType",
-            _$parentName: "right",
-            screen: lightSwitchApplication.AddEditReconSource,
-            data: lightSwitchApplication.ReconSource,
-            value: lightSwitchApplication.ReconSourceType
-        },
-        RowTemplate: {
-            _$class: msls.ContentItem,
-            _$name: "RowTemplate",
-            _$parentName: "ReconSourceType",
-            screen: lightSwitchApplication.AddEditReconSource,
-            data: lightSwitchApplication.ReconSourceType,
-            value: lightSwitchApplication.ReconSourceType
-        },
-        Popups: {
-            _$class: msls.ContentItem,
-            _$name: "Popups",
-            _$parentName: "RootContentItem",
-            screen: lightSwitchApplication.AddEditReconSource
-        }
-    };
-
-    msls._addEntryPoints(lightSwitchApplication.AddEditReconSource, {
-        /// <field>
-        /// Called when a new AddEditReconSource screen is created.
-        /// <br/>created(msls.application.AddEditReconSource screen)
-        /// </field>
-        created: [lightSwitchApplication.AddEditReconSource],
-        /// <field>
-        /// Called before changes on an active AddEditReconSource screen are applied.
-        /// <br/>beforeApplyChanges(msls.application.AddEditReconSource screen)
-        /// </field>
-        beforeApplyChanges: [lightSwitchApplication.AddEditReconSource],
-        /// <field>
-        /// Called after the Details content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        Details_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("Details"); }],
-        /// <field>
-        /// Called after the columns content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        columns_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("columns"); }],
-        /// <field>
-        /// Called after the left content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        left_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("left"); }],
-        /// <field>
-        /// Called after the Code content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        Code_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("Code"); }],
-        /// <field>
-        /// Called after the Name content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        Name_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("Name"); }],
-        /// <field>
-        /// Called after the right content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        right_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("right"); }],
-        /// <field>
-        /// Called after the ReconSourceType content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        ReconSourceType_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("ReconSourceType"); }],
-        /// <field>
-        /// Called after the RowTemplate content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        RowTemplate_postRender: [$element, function () { return new lightSwitchApplication.AddEditReconSource().findContentItem("RowTemplate"); }]
-    });
-
-    lightSwitchApplication.BrowseReconSources.prototype._$contentItems = {
-        Tabs: {
-            _$class: msls.ContentItem,
-            _$name: "Tabs",
-            _$parentName: "RootContentItem",
-            screen: lightSwitchApplication.BrowseReconSources
-        },
-        ReconSourceList: {
-            _$class: msls.ContentItem,
-            _$name: "ReconSourceList",
-            _$parentName: "Tabs",
-            screen: lightSwitchApplication.BrowseReconSources,
-            data: lightSwitchApplication.BrowseReconSources,
-            value: lightSwitchApplication.BrowseReconSources
-        },
-        ReconSources: {
-            _$class: msls.ContentItem,
-            _$name: "ReconSources",
-            _$parentName: "ReconSourceList",
-            screen: lightSwitchApplication.BrowseReconSources,
-            data: lightSwitchApplication.BrowseReconSources,
-            value: {
-                _$class: msls.VisualCollection,
-                screen: lightSwitchApplication.BrowseReconSources,
-                _$entry: {
-                    elementType: lightSwitchApplication.ReconSource
-                }
-            }
-        },
-        rows: {
-            _$class: msls.ContentItem,
-            _$name: "rows",
-            _$parentName: "ReconSources",
-            screen: lightSwitchApplication.BrowseReconSources,
-            data: lightSwitchApplication.ReconSource,
-            value: lightSwitchApplication.ReconSource
-        },
-        Code: {
-            _$class: msls.ContentItem,
-            _$name: "Code",
-            _$parentName: "rows",
-            screen: lightSwitchApplication.BrowseReconSources,
-            data: lightSwitchApplication.ReconSource,
-            value: String
-        },
-        Name: {
-            _$class: msls.ContentItem,
-            _$name: "Name",
-            _$parentName: "rows",
-            screen: lightSwitchApplication.BrowseReconSources,
-            data: lightSwitchApplication.ReconSource,
-            value: String
-        },
-        ReconSourceType: {
-            _$class: msls.ContentItem,
-            _$name: "ReconSourceType",
-            _$parentName: "rows",
-            screen: lightSwitchApplication.BrowseReconSources,
-            data: lightSwitchApplication.ReconSource,
-            value: lightSwitchApplication.ReconSourceType
-        },
-        Popups: {
-            _$class: msls.ContentItem,
-            _$name: "Popups",
-            _$parentName: "RootContentItem",
-            screen: lightSwitchApplication.BrowseReconSources
-        }
-    };
-
-    msls._addEntryPoints(lightSwitchApplication.BrowseReconSources, {
-        /// <field>
-        /// Called when a new BrowseReconSources screen is created.
-        /// <br/>created(msls.application.BrowseReconSources screen)
-        /// </field>
-        created: [lightSwitchApplication.BrowseReconSources],
-        /// <field>
-        /// Called before changes on an active BrowseReconSources screen are applied.
-        /// <br/>beforeApplyChanges(msls.application.BrowseReconSources screen)
-        /// </field>
-        beforeApplyChanges: [lightSwitchApplication.BrowseReconSources],
-        /// <field>
-        /// Called after the ReconSourceList content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        ReconSourceList_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconSources().findContentItem("ReconSourceList"); }],
-        /// <field>
-        /// Called after the ReconSources content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        ReconSources_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconSources().findContentItem("ReconSources"); }],
-        /// <field>
-        /// Called after the rows content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        rows_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconSources().findContentItem("rows"); }],
-        /// <field>
-        /// Called after the Code content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        Code_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconSources().findContentItem("Code"); }],
-        /// <field>
-        /// Called after the Name content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        Name_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconSources().findContentItem("Name"); }],
-        /// <field>
-        /// Called after the ReconSourceType content item has been rendered.
-        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
-        /// </field>
-        ReconSourceType_postRender: [$element, function () { return new lightSwitchApplication.BrowseReconSources().findContentItem("ReconSourceType"); }]
     });
 
 }(msls.application));
