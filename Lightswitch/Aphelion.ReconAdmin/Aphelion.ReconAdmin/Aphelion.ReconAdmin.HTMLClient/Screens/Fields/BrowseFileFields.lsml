@@ -25,10 +25,24 @@
             Name="FileFieldList"
             Kind="Group">
             <ContentItem
+              Name="Name"
+              Kind="Value"
+              DataType=":String?"
+              View="Microsoft.LightSwitch.MobileWeb:TextBox">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="BrowseFileFields/Properties[Name]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+            </ContentItem>
+            <ContentItem
               Name="FileFields"
               Kind="Collection"
               DataType="CollectionView$FileField"
-              View="Microsoft.LightSwitch.MobileWeb:TileList">
+              View="Microsoft.LightSwitch.MobileWeb:Table">
               <ContentItem.Attributes>
                 <DisplayName
                   Value="FileFields" />
@@ -56,56 +70,6 @@
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  Name="ColumnName"
-                  Kind="Value"
-                  DataType=":String">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="FileField/Properties[ColumnName]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[FontStyle]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="Large"
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
-                  Name="Position"
-                  Kind="Value"
-                  DataType=":Int32">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="FileField/Properties[Position]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[FontStyle]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="Small"
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
                   Name="FileSection"
                   Kind="Details"
                   DataType="FileSection">
@@ -127,18 +91,32 @@
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
                   </ContentItem>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[FontStyle]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="Small"
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  Name="ColumnName"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="FileField/Properties[ColumnName]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="Position"
+                  Kind="Value"
+                  DataType=":Int32">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="FileField/Properties[Position]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
@@ -302,7 +280,23 @@
             Name="FileFieldsQuery"
             ReturnType="FileField*">
             <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
+              <QueryFilterExpressionTree>
+                <BinaryExpression
+                  NodeType="Equal">
+                  <BinaryExpression.Left>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="FileField/Properties[FileSection]" />
+                      <MemberExpression
+                        Member="Name" />
+                    </ChainExpression>
+                  </BinaryExpression.Left>
+                  <BinaryExpression.Right>
+                    <ParameterExpression
+                      Parameter="Name" />
+                  </BinaryExpression.Right>
+                </BinaryExpression>
+              </QueryFilterExpressionTree>
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
@@ -310,15 +304,36 @@
                   Member="ReconData/Members[FileFields]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
+            <ScreenQueryDefinition.Parameters>
+              <QueryParameter
+                Name="Name"
+                IsOptional="True"
+                ParameterType=":String?" />
+            </ScreenQueryDefinition.Parameters>
           </ScreenQueryDefinition>
         </ScreenCollectionProperty.Query>
         <ScreenExpressionTree>
           <ChainExpression>
             <CallExpression
-              Target="BrowseFileFields/Properties[FileFields]/Query" />
+              Target="BrowseFileFields/Properties[FileFields]/Query">
+              <ArgumentExpression
+                Parameter="Name">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="BrowseFileFields/Properties[Name]" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
+      <ScreenProperty
+        Name="Name"
+        PropertyType=":String?">
+        <ScreenProperty.Attributes>
+          <IsParameter />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
     </Screen.Properties>
   </Screen>
   <Application.Methods>
@@ -328,6 +343,9 @@
         <ShowScreenMethod
           TargetScreen="BrowseFileFields" />
       </ApplicationMethod.Attributes>
+      <ApplicationMethodParameter
+        Name="Name"
+        ParameterType=":String?" />
     </ApplicationMethod>
   </Application.Methods>
 </Application>

@@ -87,6 +87,9 @@
         /// <field name="FileFields" type="msls.VisualCollection" elementType="msls.application.FileField">
         /// Gets the fileFields for this screen.
         /// </field>
+        /// <field name="Name" type="String">
+        /// Gets or sets the name for this screen.
+        /// </field>
         /// <field name="details" type="msls.application.BrowseFileFields.Details">
         /// Gets the details for this screen.
         /// </field>
@@ -964,10 +967,11 @@
         BrowseFileFields: $defineScreen(BrowseFileFields, [
             {
                 name: "FileFields", kind: "collection", elementType: lightSwitchApplication.FileField,
-                createQuery: function () {
-                    return this.dataWorkspace.ReconData.FileFields.expand("FileSection");
+                createQuery: function (Name) {
+                    return this.dataWorkspace.ReconData.FileFields.filter("" + ((Name === undefined || Name === null) ? "true" : "(FileSection/Name eq " + $toODataString(Name, "String?") + ")") + "").expand("FileSection");
                 }
-            }
+            },
+            { name: "Name", kind: "local", type: String }
         ], [
         ]),
 
@@ -1321,7 +1325,7 @@
             return lightSwitchApplication.showScreen("AddEditSystemField", parameters, options);
         }),
 
-        showBrowseFileFields: $defineShowScreen(function showBrowseFileFields(options) {
+        showBrowseFileFields: $defineShowScreen(function showBrowseFileFields(Name, options) {
             /// <summary>
             /// Asynchronously navigates forward to the BrowseFileFields screen.
             /// </summary>
@@ -1329,7 +1333,7 @@
             /// An object that provides one or more of the following options:<br/>- beforeShown: a function that is called after boundary behavior has been applied but before the screen is shown.<br/>+ Signature: beforeShown(screen)<br/>- afterClosed: a function that is called after boundary behavior has been applied and the screen has been closed.<br/>+ Signature: afterClosed(screen, action : msls.NavigateBackAction)
             /// </param>
             /// <returns type="WinJS.Promise" />
-            var parameters = Array.prototype.slice.call(arguments, 0, 0);
+            var parameters = Array.prototype.slice.call(arguments, 0, 1);
             return lightSwitchApplication.showScreen("BrowseFileFields", parameters, options);
         }),
 

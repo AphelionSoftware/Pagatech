@@ -8345,10 +8345,20 @@
                     "childContentItems":
                     [
                       {
+                        "displayName": "Name",
+                        "name": "Name",
+                        "kind": "Value",
+                        "view": { "__id": ":TextBox" },
+                        "dataSource":
+                        {
+                          "member": { "__id": "BrowseFileFields/Properties[Name]" }
+                        }
+                      },
+                      {
                         "displayName": "FileFields",
                         "name": "FileFields",
                         "kind": "Collection",
-                        "view": { "__id": ":TileList" },
+                        "view": { "__id": ":Table" },
                         "dataSource":
                         {
                           "member": { "__id": "BrowseFileFields/Properties[FileFields]" }
@@ -8359,7 +8369,7 @@
                             "displayName": "rows",
                             "name": "rows",
                             "kind": "Details",
-                            "view": { "__id": ":RowsLayout" },
+                            "view": { "__id": ":TableRowLayout" },
                             "dataSource":
                             {
                               "links":
@@ -8368,40 +8378,6 @@
                             },
                             "childContentItems":
                             [
-                              {
-                                "displayName": "Column Name",
-                                "name": "ColumnName",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "FileField/Properties[ColumnName]" }
-                                },
-                                "propertySources":
-                                [
-                                  {
-                                    "property": { "__id": ":RootControl/Properties[FontStyle]" },
-                                    "value": "Large"
-                                  }
-                                ]
-                              },
-                              {
-                                "displayName": "Position",
-                                "name": "Position",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "member": { "__id": "FileField/Properties[Position]" }
-                                },
-                                "propertySources":
-                                [
-                                  {
-                                    "property": { "__id": ":RootControl/Properties[FontStyle]" },
-                                    "value": "Small"
-                                  }
-                                ]
-                              },
                               {
                                 "displayName": "File Section",
                                 "name": "FileSection",
@@ -8418,14 +8394,27 @@
                                       "member": { "__id": "FileSection/Properties[Code]" }
                                     }
                                   ]
-                                },
-                                "propertySources":
-                                [
-                                  {
-                                    "property": { "__id": ":RootControl/Properties[FontStyle]" },
-                                    "value": "Small"
-                                  }
-                                ]
+                                }
+                              },
+                              {
+                                "displayName": "Column Name",
+                                "name": "ColumnName",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "FileField/Properties[ColumnName]" }
+                                }
+                              },
+                              {
+                                "displayName": "Position",
+                                "name": "Position",
+                                "kind": "Value",
+                                "view": { "__id": ":Text" },
+                                "dataSource":
+                                {
+                                  "member": { "__id": "FileField/Properties[Position]" }
+                                }
                               }
                             ],
                             "propertySources":
@@ -8583,15 +8572,66 @@
                 "name": "FileFieldsQuery",
                 "elementType": { "__id": "FileField" },
                 "returnType": { "__id": "FileField*" },
+                "filterExpression":
+                {
+                  "nodeType": "Equal",
+                  "left":
+                  {
+                    "links":
+                    [
+                      {
+                        "member": { "__id": "FileField/Properties[FileSection]" }
+                      },
+                      {
+                        "member": { "__id": "FileSection/Properties[Name]" }
+                      }
+                    ]
+                  },
+                  "right":
+                  {
+                    "parameter": { "__id": "BrowseFileFields/Properties[FileFields]/Query/Parameters[Name]" }
+                  }
+                },
                 "source":
                 {
                   "member": { "__id": "ReconData/Members[FileFields]" }
-                }
+                },
+                "parameters":
+                [
+                  {
+                    "id": "BrowseFileFields/Properties[FileFields]/Query/Parameters[Name]",
+                    "name": "Name",
+                    "isOptional": true,
+                    "parameterType": { "__id": ":String?" }
+                  }
+                ]
               },
               "source":
               {
-                "target": { "__id": "BrowseFileFields/Properties[FileFields]/Query" }
+                "target": { "__id": "BrowseFileFields/Properties[FileFields]/Query" },
+                "arguments":
+                [
+                  {
+                    "parameter": { "__id": "BrowseFileFields/Properties[FileFields]/Query/Parameters[Name]" },
+                    "value":
+                    {
+                      "links":
+                      [
+                        {
+                          "member": { "__id": "BrowseFileFields/Properties[Name]" }
+                        }
+                      ]
+                    }
+                  }
+                ]
               }
+            },
+            {
+              "id": "BrowseFileFields/Properties[Name]",
+              "name": "Name",
+              "elementType": { "__id": ":String?" },
+              "propertyType": { "__id": ":String?" },
+              ":@IsParameter": { }
             }
           ]
         },
@@ -9209,44 +9249,6 @@
                                 "dataSource":
                                 {
                                   "member": { "__id": "FileField/Properties[Position]" }
-                                }
-                              }
-                            ],
-                            "propertySources":
-                            [
-                              {
-                                "property": { "__id": ":RootControl/Properties[MinWidth]" },
-                                "value": 200
-                              },
-                              {
-                                "property": { "__id": ":RootControl/Properties[MaxWidth]" },
-                                "value": 400
-                              }
-                            ]
-                          },
-                          {
-                            "displayName": "right",
-                            "name": "right",
-                            "kind": "Group",
-                            "view": { "__id": ":RowsLayout" },
-                            "childContentItems":
-                            [
-                              {
-                                "displayName": "File Section",
-                                "name": "FileSection",
-                                "kind": "Value",
-                                "view": { "__id": ":Text" },
-                                "dataSource":
-                                {
-                                  "links":
-                                  [
-                                    {
-                                      "member": { "__id": "FileField/Properties[FileSection]" }
-                                    },
-                                    {
-                                      "member": { "__id": "FileSection/Properties[Code]" }
-                                    }
-                                  ]
                                 }
                               }
                             ],
@@ -18155,7 +18157,15 @@
         {
           "id": "!module/Methods[showBrowseFileFields]",
           "name": "showBrowseFileFields",
-          ":@ShowScreenMethod": { "targetScreen": { "__id": "BrowseFileFields" } }
+          ":@ShowScreenMethod": { "targetScreen": { "__id": "BrowseFileFields" } },
+          "parameters":
+          [
+            {
+              "id": "!module/Methods[showBrowseFileFields]/Parameters[Name]",
+              "name": "Name",
+              "parameterType": { "__id": ":String?" }
+            }
+          ]
         },
         {
           "id": "!module/Methods[showBrowseReconFields]",
