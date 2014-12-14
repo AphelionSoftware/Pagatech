@@ -4,17 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>Paga_Staging</Name>
+    <Name>Paga_Errors</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{808ad7da-8296-41c0-a9e8-301eaf7d0b35}</ProjectGuid>
+    <ProjectGuid>{e99a8e51-77f5-4160-8467-c3a44f6017a8}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>Paga_Staging</RootNamespace>
-    <AssemblyName>Paga_Staging</AssemblyName>
-    <ModelCollation>1033,CI</ModelCollation>
+    <RootNamespace>Database1</RootNamespace>
+    <AssemblyName>Database1</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -23,8 +23,6 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
-    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -59,34 +57,5 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="dbo\" />
-    <Folder Include="dbo\Tables\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="dbo\Tables\Fact_FinancialTransaction.sql" />
-    <Build Include="dbo\Tables\Dim_IntegrationTransactionType.sql" />
-    <Build Include="dbo\Tables\Dim_ExternalOrganization.sql" />
-    <Build Include="dbo\Tables\Dim_IntegrationTransactionResult.sql" />
-    <Build Include="dbo\Tables\Dim_ProcessType.sql" />
-    <Build Include="dbo\Tables\Dim_ProcessEvent.sql" />
-    <Build Include="dbo\Tables\Dim_ProcessChannel.sql" />
-    <Build Include="dbo\Tables\Dim_ProcessStatus.sql" />
-    <Build Include="dbo\Tables\Dim_User.sql" />
-    <Build Include="dbo\Tables\Dim_InitiatingUserRole.sql" />
-    <Build Include="dbo\Tables\Dim_Role.sql" />
-    <Build Include="dbo\Tables\Dim_FinancialTransactionType.sql" />
-    <Build Include="dbo\Tables\Fact_GLTransaction.sql" />
-    <Build Include="dbo\Tables\Dim_InitiatingUser.sql" />
-    <Build Include="dbo\Tables\Dim_Currency.sql" />
-    <Build Include="dbo\Tables\Dim_FinancialAccount.sql" />
-    <Build Include="dbo\Tables\Dim_HoldingFinancialAccount.sql" />
-    <Build Include="dbo\Tables\Dim_FinancialAccountType.sql" />
-    <Build Include="dbo\Tables\Dim_PagaAccount.sql" />
-    <Build Include="dbo\Tables\Dim_BankingStatus.sql" />
-    <Build Include="dbo\Tables\Dim_PagaAccountStatus.sql" />
-    <Build Include="dbo\Tables\Dim_GLCode.sql" />
-    <Build Include="dbo\Tables\Dim_GLCodeGroup.sql" />
-    <Build Include="dbo\Tables\Dim_COA.sql" />
-    <Build Include="dbo\Tables\Fact_IntegrationTransaction.sql" />
   </ItemGroup>
 </Project>

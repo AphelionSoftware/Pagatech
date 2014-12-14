@@ -22,7 +22,8 @@
     [ShortCode]                     VARCHAR (10)    NULL,
     [Cancelled]                     INT             NULL,
     [IsIntegrationTx]               BIT             NULL,
-    [FactIntegrationTx_SourceKey]   INT             NULL
+    [FactIntegrationTx_SourceKey]   INT             NULL, 
+    [PaymentUseCase_SourceKey] VARCHAR(255) NULL
 );
 
 
