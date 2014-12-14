@@ -47,7 +47,10 @@ namespace Aphelion.Recon
                 rb.lstSourceAggregates = tlSrc.lstAggregations;
                 rb.lstDestinationAggregates = tlDest.lstAggregations;
                 rb.SetupDataSets();
+                rb.AddSourceKey( tlSrc.lstKeyFields );
+                rb.AddDestKey ( tlDest.lstKeyFields );
                 rb.CompareRollup();
+                rb.CompareLines();
                 ReconWriter rw = new ReconWriter(sConnection, rb);
                 rw.strReconProcessStep = sReconProcessStepCode;
                 rw.SetupDataTables();

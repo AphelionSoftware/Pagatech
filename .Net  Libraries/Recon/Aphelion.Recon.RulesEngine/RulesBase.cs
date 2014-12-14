@@ -30,6 +30,8 @@ namespace Aphelion.Recon.RulesEngine
         public DataTable dtMatchedUnbalanced { get; private set; }
         public DataTable dtSourceUnmatched { get; private set; }
         public DataTable dtDestinationUnmatched { get; private set; }
+        public DataTable dtSourceDuplicated { get; private set; }
+        public DataTable dtDestinationDuplicated { get; private set; }
         DataTable _dtSource;
         public DataTable dtSource
         {
@@ -70,49 +72,19 @@ namespace Aphelion.Recon.RulesEngine
         }
         public DataTable dtDestinationSynonyms { get; set; }
         public string[] test;
+
         public List<string> lstKeyFieldsSource
         {
-            get
-            {
-                return lstKeyFieldsSource;
-            }
+            get;
             private set
-            {
-                foreach (DataRow drSource in dtSource.Rows)
-                {
-                    string hshValue = "";
-                    foreach (string sCol in lstKeyFieldsSource)
-                    {
-                        hshValue += drSource[sCol];
-                    }
-
-                    drSource.SetField("SourceKey", hshValue);
-                    drSource.SetField("Hash", Hashing.HashFNV1a_64(hshValue));
-
-
-                }
-            }
+            ;
         }
         public List<string> lstKeyFieldsDestination
         {
             get
-            {
-                return lstKeyFieldsDestination;
-            }
+            ;
             private set
-            {
-                foreach (DataRow drDestination in dtDestination.Rows)
-                {
-                    string hshValue = "";
-                    foreach (string sCol in lstKeyFieldsDestination)
-                    {
-                        hshValue += drDestination[sCol];
-                    }
-                    drDestination.SetField("Hash", Hashing.HashFNV1a_64(hshValue));
-                    drDestination.SetField("SourceKey", hshValue);
-
-                }
-            }
+            ;
         }
 
         #region Keys
@@ -130,17 +102,21 @@ namespace Aphelion.Recon.RulesEngine
                 {
                     hshValue += drSource[sCol];
                 }
+
+
+                drSource.SetField("SourceKey", hshValue);
                 drSource.SetField("Hash", Hashing.HashFNV1a_64(hshValue));
             }
             DataColumn[] dcSource = new DataColumn[1];
             dcSource[0] = dtSource.Columns["Hash"];
-            _dtSource.PrimaryKey = dcSource;
+            //_dtSource.PrimaryKey = dcSource;
             
         }
 
         public void AddSourceKey(List<string> lstKey)
         {
             lstKeyFieldsSource = lstKey;
+
             foreach (DataRow drSource in dtSource.Rows)
             {
                 string hshValue = "";
@@ -148,11 +124,13 @@ namespace Aphelion.Recon.RulesEngine
                 {
                     hshValue += drSource[sCol];
                 }
+
+                drSource.SetField("SourceKey", hshValue);
                 drSource.SetField("Hash", Hashing.HashFNV1a_64(hshValue));
             }
             DataColumn[] dcSource = new DataColumn[1];
             dcSource[0] = dtSource.Columns["Hash"];
-            _dtSource.PrimaryKey = dcSource;
+            //_dtSource.PrimaryKey = dcSource;
                 
         }
         /// <summary>
@@ -169,11 +147,13 @@ namespace Aphelion.Recon.RulesEngine
                 {
                     hshValue += drDestination[sCol];
                 }
+
+                drDestination.SetField("SourceKey", hshValue);
                 drDestination.SetField("Hash", Hashing.HashFNV1a_64(hshValue));
             }
             DataColumn[] dcDestination = new DataColumn[1];
             dcDestination[0] = dtDestination.Columns["Hash"];
-            _dtDestination.PrimaryKey = dcDestination;
+            //_dtDestination.PrimaryKey = dcDestination;
             
         }
 
@@ -187,11 +167,13 @@ namespace Aphelion.Recon.RulesEngine
                 {
                     hshValue += drDestination[sCol];
                 }
+
+                drDestination.SetField("SourceKey", hshValue);
                 drDestination.SetField("Hash", Hashing.HashFNV1a_64(hshValue));
             }
             DataColumn[] dcDestination = new DataColumn[1];
             dcDestination[0] = dtDestination.Columns["Hash"];
-            _dtDestination.PrimaryKey = dcDestination;
+            //_dtDestination.PrimaryKey = dcDestination;
             
         }
         #endregion

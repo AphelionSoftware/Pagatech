@@ -22,6 +22,9 @@ namespace Aphelion.Recon
         public DataTable dtResult { get; private set; }
         public List<Aggregation> lstAggregations { get; set;}
 
+        public List<string> lstKeyFields = new List<string>();
+            
+
         public TableLoader( string pConn, string pReconProcessStepCode, LegType pLT)
         {
             this.strConn = pConn;
@@ -60,7 +63,12 @@ namespace Aphelion.Recon
                      sTable = drFields.GetString(2);
                      iImportedFileID = drFields.GetInt32(4);
                 }
-                lstFields.Add(string.Format("[{0}].[{1}]", drFields.GetString(2), drFields.GetString(3)));
+                string sFieldName = string.Format("[{0}].[{1}]", drFields.GetString(2), drFields.GetString(3));
+                lstFields.Add(sFieldName);
+                if (drFields.GetString(0) == "KEY")
+                {
+                    lstKeyFields.Add(drFields.GetString(3));
+                }
                 AggregationType at = AggregationType.Detail;
                 switch (drFields.GetString(0)){
                     case "SUM":

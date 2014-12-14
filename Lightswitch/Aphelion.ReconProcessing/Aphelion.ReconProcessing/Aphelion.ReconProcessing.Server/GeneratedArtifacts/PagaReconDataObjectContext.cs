@@ -19,11 +19,16 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_FieldType", "FieldType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FieldType), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_SystemField_FieldType", "FieldType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FieldType), "SystemField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.SystemField), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileSection_FileDefinition", "FileDefinition", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileDefinition), "FileSection", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileSection), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ImportedFile_FileDefinition", "FileDefinition", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileDefinition), "ImportedFile", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ImportedFile), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileFieldRules_FileSection", "FileField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileField), "FileFieldRules", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileFieldRule), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_FileField", "FileField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileField), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileField_FileSection", "FileSection", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileSection), "FileField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileField), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconProcessStep_FileSection", "FileSection", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileSection), "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconProcessStep), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconProcessStep_FileSection1", "FileSection", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileSection), "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconProcessStep), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_Synonym_FileSection", "FileSection", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileSection), "Synonym", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.Synonym), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileDefinition_FileType", "FileType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileType), "FileDefinition", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileDefinition), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconSummary_ImportedFile1", "ImportedFile", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(LightSwitchApplication.Implementation.ImportedFile), "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSummary), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_SkyeImportDetails_ImportedFile", "ImportedFile", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(LightSwitchApplication.Implementation.ImportedFile), "SkyeImportDetails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.SkyeImportDetail), true)]
@@ -33,20 +38,15 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconProcessStep_ReconProcess", "ReconProcess", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconProcess), "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconProcessStep), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "vwReconProcessStatu_ReconProcess", "ReconProcess", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconProcess), "vwReconProcessStatu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.vwReconProcessStatu), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconSummary_ReconProcessStep", "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconProcessStep), "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSummary), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_ReconProcessStep", "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconProcessStep), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileDefinition_ReconSource", "ReconSource", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconSource), "FileDefinition", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileDefinition), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconSource_ReconSourceType", "ReconSourceType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconSourceType), "ReconSource", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSource), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconSummary_ReconStatus", "ReconStatus", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconStatu), "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSummary), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ImportedFile_ReconSummary", "ImportedFile", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(LightSwitchApplication.Implementation.ImportedFile), "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconSummary), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconProcessStep_ReconType", "ReconType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconType), "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconProcessStep), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileFieldRules_FileSection", "FileField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileField), "FileFieldRules", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileFieldRule), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileFieldRules_RuleType", "RuleType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.RuleType), "FileFieldRules", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileFieldRule), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ImportedFile_ReconSummary1", "ReconSummary", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(LightSwitchApplication.Implementation.ReconSummary), "ImportedFile", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ImportedFile), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_FieldType", "FieldType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FieldType), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_FileField", "FileField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileField), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_ReconProcessStep", "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconProcessStep), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconProcessStep_ReconType", "ReconType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.ReconType), "ReconProcessStep", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconProcessStep), true)]
+[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_FileFieldRules_RuleType", "RuleType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.RuleType), "FileFieldRules", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.FileFieldRule), true)]
 [assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_ReconField_SystemField", "SystemField", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.SystemField), "ReconField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.ReconField), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_Synonym_FileSection", "FileSection", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FileSection), "Synonym", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.Synonym), true)]
-[assembly: EdmRelationshipAttribute("LightSwitchApplication", "FK_SystemField_FieldType", "FieldType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(LightSwitchApplication.Implementation.FieldType), "SystemField", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(LightSwitchApplication.Implementation.SystemField), true)]
 
 #endregion
 
@@ -98,6 +98,22 @@ namespace LightSwitchApplication.Implementation
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<FieldType> FieldTypes
+        {
+            get
+            {
+                if ((_FieldTypes == null))
+                {
+                    _FieldTypes = base.CreateObjectSet<FieldType>("FieldTypes");
+                }
+                return _FieldTypes;
+            }
+        }
+        private ObjectSet<FieldType> _FieldTypes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<FileDefinition> FileDefinitions
         {
             get
@@ -110,6 +126,22 @@ namespace LightSwitchApplication.Implementation
             }
         }
         private ObjectSet<FileDefinition> _FileDefinitions;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FileFieldRule> FileFieldRules
+        {
+            get
+            {
+                if ((_FileFieldRules == null))
+                {
+                    _FileFieldRules = base.CreateObjectSet<FileFieldRule>("FileFieldRules");
+                }
+                return _FileFieldRules;
+            }
+        }
+        private ObjectSet<FileFieldRule> _FileFieldRules;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -194,6 +226,22 @@ namespace LightSwitchApplication.Implementation
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<NIBBS_DB_Detail> NIBBS_DB_Details
+        {
+            get
+            {
+                if ((_NIBBS_DB_Details == null))
+                {
+                    _NIBBS_DB_Details = base.CreateObjectSet<NIBBS_DB_Detail>("NIBBS_DB_Details");
+                }
+                return _NIBBS_DB_Details;
+            }
+        }
+        private ObjectSet<NIBBS_DB_Detail> _NIBBS_DB_Details;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<ReconDetail> ReconDetails
         {
             get
@@ -206,6 +254,22 @@ namespace LightSwitchApplication.Implementation
             }
         }
         private ObjectSet<ReconDetail> _ReconDetails;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ReconField> ReconFields
+        {
+            get
+            {
+                if ((_ReconFields == null))
+                {
+                    _ReconFields = base.CreateObjectSet<ReconField>("ReconFields");
+                }
+                return _ReconFields;
+            }
+        }
+        private ObjectSet<ReconField> _ReconFields;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -338,6 +402,22 @@ namespace LightSwitchApplication.Implementation
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<RuleType> RuleTypes
+        {
+            get
+            {
+                if ((_RuleTypes == null))
+                {
+                    _RuleTypes = base.CreateObjectSet<RuleType>("RuleTypes");
+                }
+                return _RuleTypes;
+            }
+        }
+        private ObjectSet<RuleType> _RuleTypes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<SkyeImportDetail> SkyeImportDetails
         {
             get
@@ -370,6 +450,22 @@ namespace LightSwitchApplication.Implementation
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<Synonym> Synonyms
+        {
+            get
+            {
+                if ((_Synonyms == null))
+                {
+                    _Synonyms = base.CreateObjectSet<Synonym>("Synonyms");
+                }
+                return _Synonyms;
+            }
+        }
+        private ObjectSet<Synonym> _Synonyms;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<SystemField> SystemFields
         {
             get
@@ -398,106 +494,18 @@ namespace LightSwitchApplication.Implementation
             }
         }
         private ObjectSet<vwReconProcessStatu> _vwReconProcessStatus;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<FieldType> FieldTypes
-        {
-            get
-            {
-                if ((_FieldTypes == null))
-                {
-                    _FieldTypes = base.CreateObjectSet<FieldType>("FieldTypes");
-                }
-                return _FieldTypes;
-            }
-        }
-        private ObjectSet<FieldType> _FieldTypes;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ReconField> ReconFields
-        {
-            get
-            {
-                if ((_ReconFields == null))
-                {
-                    _ReconFields = base.CreateObjectSet<ReconField>("ReconFields");
-                }
-                return _ReconFields;
-            }
-        }
-        private ObjectSet<ReconField> _ReconFields;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<RuleType> RuleTypes
-        {
-            get
-            {
-                if ((_RuleTypes == null))
-                {
-                    _RuleTypes = base.CreateObjectSet<RuleType>("RuleTypes");
-                }
-                return _RuleTypes;
-            }
-        }
-        private ObjectSet<RuleType> _RuleTypes;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<FileFieldRule> FileFieldRules
-        {
-            get
-            {
-                if ((_FileFieldRules == null))
-                {
-                    _FileFieldRules = base.CreateObjectSet<FileFieldRule>("FileFieldRules");
-                }
-                return _FileFieldRules;
-            }
-        }
-        private ObjectSet<FileFieldRule> _FileFieldRules;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Synonym> Synonyms
-        {
-            get
-            {
-                if ((_Synonyms == null))
-                {
-                    _Synonyms = base.CreateObjectSet<Synonym>("Synonyms");
-                }
-                return _Synonyms;
-            }
-        }
-        private ObjectSet<Synonym> _Synonyms;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<NIBBS_DB_Detail> NIBBS_DB_Details
-        {
-            get
-            {
-                if ((_NIBBS_DB_Details == null))
-                {
-                    _NIBBS_DB_Details = base.CreateObjectSet<NIBBS_DB_Detail>("NIBBS_DB_Details");
-                }
-                return _NIBBS_DB_Details;
-            }
-        }
-        private ObjectSet<NIBBS_DB_Detail> _NIBBS_DB_Details;
 
         #endregion
 
         #region AddTo Methods
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FieldTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFieldTypes(FieldType fieldType)
+        {
+            base.AddObject("FieldTypes", fieldType);
+        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the FileDefinitions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -505,6 +513,14 @@ namespace LightSwitchApplication.Implementation
         public void AddToFileDefinitions(FileDefinition fileDefinition)
         {
             base.AddObject("FileDefinitions", fileDefinition);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FileFieldRules EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFileFieldRules(FileFieldRule fileFieldRule)
+        {
+            base.AddObject("FileFieldRules", fileFieldRule);
         }
     
         /// <summary>
@@ -548,11 +564,27 @@ namespace LightSwitchApplication.Implementation
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the NIBBS_DB_Details EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToNIBBS_DB_Details(NIBBS_DB_Detail nIBBS_DB_Detail)
+        {
+            base.AddObject("NIBBS_DB_Details", nIBBS_DB_Detail);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the ReconDetails EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToReconDetails(ReconDetail reconDetail)
         {
             base.AddObject("ReconDetails", reconDetail);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ReconFields EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToReconFields(ReconField reconField)
+        {
+            base.AddObject("ReconFields", reconField);
         }
     
         /// <summary>
@@ -620,6 +652,14 @@ namespace LightSwitchApplication.Implementation
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the RuleTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToRuleTypes(RuleType ruleType)
+        {
+            base.AddObject("RuleTypes", ruleType);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the SkyeImportDetails EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToSkyeImportDetails(SkyeImportDetail skyeImportDetail)
@@ -636,6 +676,14 @@ namespace LightSwitchApplication.Implementation
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the Synonyms EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSynonyms(Synonym synonym)
+        {
+            base.AddObject("Synonyms", synonym);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the SystemFields EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToSystemFields(SystemField systemField)
@@ -649,54 +697,6 @@ namespace LightSwitchApplication.Implementation
         public void AddTovwReconProcessStatus(vwReconProcessStatu vwReconProcessStatu)
         {
             base.AddObject("vwReconProcessStatus", vwReconProcessStatu);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the FieldTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToFieldTypes(FieldType fieldType)
-        {
-            base.AddObject("FieldTypes", fieldType);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ReconFields EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToReconFields(ReconField reconField)
-        {
-            base.AddObject("ReconFields", reconField);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the RuleTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToRuleTypes(RuleType ruleType)
-        {
-            base.AddObject("RuleTypes", ruleType);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the FileFieldRules EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToFileFieldRules(FileFieldRule fileFieldRule)
-        {
-            base.AddObject("FileFieldRules", fileFieldRule);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Synonyms EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToSynonyms(Synonym synonym)
-        {
-            base.AddObject("Synonyms", synonym);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the NIBBS_DB_Details EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToNIBBS_DB_Details(NIBBS_DB_Detail nIBBS_DB_Detail)
-        {
-            base.AddObject("NIBBS_DB_Details", nIBBS_DB_Detail);
         }
 
         #endregion

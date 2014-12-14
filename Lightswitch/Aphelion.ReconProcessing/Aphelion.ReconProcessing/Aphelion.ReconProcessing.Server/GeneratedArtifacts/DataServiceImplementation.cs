@@ -64,9 +64,17 @@ namespace LightSwitchApplication.Implementation
     #region Protected Methods
         protected override object CreateObject(global::System.Type type)
         {
+            if (type == typeof(global::LightSwitchApplication.Implementation.FieldType))
+            {
+                return new global::LightSwitchApplication.Implementation.FieldType();
+            }
             if (type == typeof(global::LightSwitchApplication.Implementation.FileDefinition))
             {
                 return new global::LightSwitchApplication.Implementation.FileDefinition();
+            }
+            if (type == typeof(global::LightSwitchApplication.Implementation.FileFieldRule))
+            {
+                return new global::LightSwitchApplication.Implementation.FileFieldRule();
             }
             if (type == typeof(global::LightSwitchApplication.Implementation.FileField))
             {
@@ -88,9 +96,17 @@ namespace LightSwitchApplication.Implementation
             {
                 return new global::LightSwitchApplication.Implementation.ImportedFile();
             }
+            if (type == typeof(global::LightSwitchApplication.Implementation.NIBBS_DB_Detail))
+            {
+                return new global::LightSwitchApplication.Implementation.NIBBS_DB_Detail();
+            }
             if (type == typeof(global::LightSwitchApplication.Implementation.ReconDetail))
             {
                 return new global::LightSwitchApplication.Implementation.ReconDetail();
+            }
+            if (type == typeof(global::LightSwitchApplication.Implementation.ReconField))
+            {
+                return new global::LightSwitchApplication.Implementation.ReconField();
             }
             if (type == typeof(global::LightSwitchApplication.Implementation.ReconItemStatu))
             {
@@ -124,6 +140,10 @@ namespace LightSwitchApplication.Implementation
             {
                 return new global::LightSwitchApplication.Implementation.ReconType();
             }
+            if (type == typeof(global::LightSwitchApplication.Implementation.RuleType))
+            {
+                return new global::LightSwitchApplication.Implementation.RuleType();
+            }
             if (type == typeof(global::LightSwitchApplication.Implementation.SkyeImportDetail))
             {
                 return new global::LightSwitchApplication.Implementation.SkyeImportDetail();
@@ -132,6 +152,10 @@ namespace LightSwitchApplication.Implementation
             {
                 return new global::LightSwitchApplication.Implementation.SkyeImportHeader();
             }
+            if (type == typeof(global::LightSwitchApplication.Implementation.Synonym))
+            {
+                return new global::LightSwitchApplication.Implementation.Synonym();
+            }
             if (type == typeof(global::LightSwitchApplication.Implementation.SystemField))
             {
                 return new global::LightSwitchApplication.Implementation.SystemField();
@@ -139,30 +163,6 @@ namespace LightSwitchApplication.Implementation
             if (type == typeof(global::LightSwitchApplication.Implementation.vwReconProcessStatu))
             {
                 return new global::LightSwitchApplication.Implementation.vwReconProcessStatu();
-            }
-            if (type == typeof(global::LightSwitchApplication.Implementation.FieldType))
-            {
-                return new global::LightSwitchApplication.Implementation.FieldType();
-            }
-            if (type == typeof(global::LightSwitchApplication.Implementation.ReconField))
-            {
-                return new global::LightSwitchApplication.Implementation.ReconField();
-            }
-            if (type == typeof(global::LightSwitchApplication.Implementation.RuleType))
-            {
-                return new global::LightSwitchApplication.Implementation.RuleType();
-            }
-            if (type == typeof(global::LightSwitchApplication.Implementation.FileFieldRule))
-            {
-                return new global::LightSwitchApplication.Implementation.FileFieldRule();
-            }
-            if (type == typeof(global::LightSwitchApplication.Implementation.Synonym))
-            {
-                return new global::LightSwitchApplication.Implementation.Synonym();
-            }
-            if (type == typeof(global::LightSwitchApplication.Implementation.NIBBS_DB_Detail))
-            {
-                return new global::LightSwitchApplication.Implementation.NIBBS_DB_Detail();
             }
     
             return base.CreateObject(type);
@@ -180,9 +180,17 @@ namespace LightSwitchApplication.Implementation
     
         protected override global::Microsoft.LightSwitch.Internal.IEntityImplementation CreateEntityImplementation<T>()
         {
+            if (typeof(T) == typeof(global::LightSwitchApplication.FieldType))
+            {
+                return new global::LightSwitchApplication.Implementation.FieldType();
+            }
             if (typeof(T) == typeof(global::LightSwitchApplication.FileDefinition))
             {
                 return new global::LightSwitchApplication.Implementation.FileDefinition();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.FileFieldRule))
+            {
+                return new global::LightSwitchApplication.Implementation.FileFieldRule();
             }
             if (typeof(T) == typeof(global::LightSwitchApplication.FileField))
             {
@@ -204,9 +212,17 @@ namespace LightSwitchApplication.Implementation
             {
                 return new global::LightSwitchApplication.Implementation.ImportedFile();
             }
+            if (typeof(T) == typeof(global::LightSwitchApplication.NIBBS_DB_Detail))
+            {
+                return new global::LightSwitchApplication.Implementation.NIBBS_DB_Detail();
+            }
             if (typeof(T) == typeof(global::LightSwitchApplication.ReconDetail))
             {
                 return new global::LightSwitchApplication.Implementation.ReconDetail();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.ReconField))
+            {
+                return new global::LightSwitchApplication.Implementation.ReconField();
             }
             if (typeof(T) == typeof(global::LightSwitchApplication.ReconItemStatu))
             {
@@ -240,6 +256,10 @@ namespace LightSwitchApplication.Implementation
             {
                 return new global::LightSwitchApplication.Implementation.ReconType();
             }
+            if (typeof(T) == typeof(global::LightSwitchApplication.RuleType))
+            {
+                return new global::LightSwitchApplication.Implementation.RuleType();
+            }
             if (typeof(T) == typeof(global::LightSwitchApplication.SkyeImportDetail))
             {
                 return new global::LightSwitchApplication.Implementation.SkyeImportDetail();
@@ -248,6 +268,10 @@ namespace LightSwitchApplication.Implementation
             {
                 return new global::LightSwitchApplication.Implementation.SkyeImportHeader();
             }
+            if (typeof(T) == typeof(global::LightSwitchApplication.Synonym))
+            {
+                return new global::LightSwitchApplication.Implementation.Synonym();
+            }
             if (typeof(T) == typeof(global::LightSwitchApplication.SystemField))
             {
                 return new global::LightSwitchApplication.Implementation.SystemField();
@@ -255,30 +279,6 @@ namespace LightSwitchApplication.Implementation
             if (typeof(T) == typeof(global::LightSwitchApplication.vwReconProcessStatu))
             {
                 return new global::LightSwitchApplication.Implementation.vwReconProcessStatu();
-            }
-            if (typeof(T) == typeof(global::LightSwitchApplication.FieldType))
-            {
-                return new global::LightSwitchApplication.Implementation.FieldType();
-            }
-            if (typeof(T) == typeof(global::LightSwitchApplication.ReconField))
-            {
-                return new global::LightSwitchApplication.Implementation.ReconField();
-            }
-            if (typeof(T) == typeof(global::LightSwitchApplication.RuleType))
-            {
-                return new global::LightSwitchApplication.Implementation.RuleType();
-            }
-            if (typeof(T) == typeof(global::LightSwitchApplication.FileFieldRule))
-            {
-                return new global::LightSwitchApplication.Implementation.FileFieldRule();
-            }
-            if (typeof(T) == typeof(global::LightSwitchApplication.Synonym))
-            {
-                return new global::LightSwitchApplication.Implementation.Synonym();
-            }
-            if (typeof(T) == typeof(global::LightSwitchApplication.NIBBS_DB_Detail))
-            {
-                return new global::LightSwitchApplication.Implementation.NIBBS_DB_Detail();
             }
             return null;
         }
@@ -325,9 +325,17 @@ namespace LightSwitchApplication.Implementation
     {
         global::System.Type global::Microsoft.LightSwitch.Internal.ITypeMappingProvider.GetImplementationType(global::System.Type definitionType)
         {
+            if (typeof(global::LightSwitchApplication.FieldType) == definitionType)
+            {
+                return typeof(global::LightSwitchApplication.Implementation.FieldType);
+            }
             if (typeof(global::LightSwitchApplication.FileDefinition) == definitionType)
             {
                 return typeof(global::LightSwitchApplication.Implementation.FileDefinition);
+            }
+            if (typeof(global::LightSwitchApplication.FileFieldRule) == definitionType)
+            {
+                return typeof(global::LightSwitchApplication.Implementation.FileFieldRule);
             }
             if (typeof(global::LightSwitchApplication.FileField) == definitionType)
             {
@@ -349,9 +357,17 @@ namespace LightSwitchApplication.Implementation
             {
                 return typeof(global::LightSwitchApplication.Implementation.ImportedFile);
             }
+            if (typeof(global::LightSwitchApplication.NIBBS_DB_Detail) == definitionType)
+            {
+                return typeof(global::LightSwitchApplication.Implementation.NIBBS_DB_Detail);
+            }
             if (typeof(global::LightSwitchApplication.ReconDetail) == definitionType)
             {
                 return typeof(global::LightSwitchApplication.Implementation.ReconDetail);
+            }
+            if (typeof(global::LightSwitchApplication.ReconField) == definitionType)
+            {
+                return typeof(global::LightSwitchApplication.Implementation.ReconField);
             }
             if (typeof(global::LightSwitchApplication.ReconItemStatu) == definitionType)
             {
@@ -385,6 +401,10 @@ namespace LightSwitchApplication.Implementation
             {
                 return typeof(global::LightSwitchApplication.Implementation.ReconType);
             }
+            if (typeof(global::LightSwitchApplication.RuleType) == definitionType)
+            {
+                return typeof(global::LightSwitchApplication.Implementation.RuleType);
+            }
             if (typeof(global::LightSwitchApplication.SkyeImportDetail) == definitionType)
             {
                 return typeof(global::LightSwitchApplication.Implementation.SkyeImportDetail);
@@ -392,6 +412,10 @@ namespace LightSwitchApplication.Implementation
             if (typeof(global::LightSwitchApplication.SkyeImportHeader) == definitionType)
             {
                 return typeof(global::LightSwitchApplication.Implementation.SkyeImportHeader);
+            }
+            if (typeof(global::LightSwitchApplication.Synonym) == definitionType)
+            {
+                return typeof(global::LightSwitchApplication.Implementation.Synonym);
             }
             if (typeof(global::LightSwitchApplication.SystemField) == definitionType)
             {
@@ -401,33 +425,58 @@ namespace LightSwitchApplication.Implementation
             {
                 return typeof(global::LightSwitchApplication.Implementation.vwReconProcessStatu);
             }
-            if (typeof(global::LightSwitchApplication.FieldType) == definitionType)
-            {
-                return typeof(global::LightSwitchApplication.Implementation.FieldType);
-            }
-            if (typeof(global::LightSwitchApplication.ReconField) == definitionType)
-            {
-                return typeof(global::LightSwitchApplication.Implementation.ReconField);
-            }
-            if (typeof(global::LightSwitchApplication.RuleType) == definitionType)
-            {
-                return typeof(global::LightSwitchApplication.Implementation.RuleType);
-            }
-            if (typeof(global::LightSwitchApplication.FileFieldRule) == definitionType)
-            {
-                return typeof(global::LightSwitchApplication.Implementation.FileFieldRule);
-            }
-            if (typeof(global::LightSwitchApplication.Synonym) == definitionType)
-            {
-                return typeof(global::LightSwitchApplication.Implementation.Synonym);
-            }
-            if (typeof(global::LightSwitchApplication.NIBBS_DB_Detail) == definitionType)
-            {
-                return typeof(global::LightSwitchApplication.Implementation.NIBBS_DB_Detail);
-            }
             return null;
         }
     }
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class FieldType :
+        global::LightSwitchApplication.FieldType.DetailsClass.IImplementation
+    {
+    
+        global::System.Collections.IEnumerable global::LightSwitchApplication.FieldType.DetailsClass.IImplementation.ReconFields
+        {
+            get
+            {
+                return this.ReconFields;
+            }
+        }
+        
+        global::System.Collections.IEnumerable global::LightSwitchApplication.FieldType.DetailsClass.IImplementation.SystemFields
+        {
+            get
+            {
+                return this.SystemFields;
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public partial class FileDefinition :
@@ -495,6 +544,87 @@ namespace LightSwitchApplication.Implementation
             if (this.__host != null)
             {
                 this.__host.RaisePropertyChanged("ReconSource");
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class FileFieldRule :
+        global::LightSwitchApplication.FileFieldRule.DetailsClass.IImplementation
+    {
+    
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.FileFieldRule.DetailsClass.IImplementation.FileField
+        {
+            get
+            {
+                return this.FileField;
+            }
+            set
+            {
+                this.FileField = (global::LightSwitchApplication.Implementation.FileField)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("FileField");
+                }
+            }
+        }
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.FileFieldRule.DetailsClass.IImplementation.RuleType
+        {
+            get
+            {
+                return this.RuleType;
+            }
+            set
+            {
+                this.RuleType = (global::LightSwitchApplication.Implementation.RuleType)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("RuleType");
+                }
+            }
+        }
+        
+        partial void OnFileFieldIDChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("FileField");
+            }
+        }
+        
+        partial void OnRuleTypeIDChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("RuleType");
             }
         }
         
@@ -892,10 +1022,172 @@ namespace LightSwitchApplication.Implementation
     
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class NIBBS_DB_Detail :
+        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.IImplementation
+    {
+    
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public partial class ReconDetail :
         global::LightSwitchApplication.ReconDetail.DetailsClass.IImplementation
     {
     
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class ReconField :
+        global::LightSwitchApplication.ReconField.DetailsClass.IImplementation
+    {
+    
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.ReconField.DetailsClass.IImplementation.FieldType
+        {
+            get
+            {
+                return this.FieldType;
+            }
+            set
+            {
+                this.FieldType = (global::LightSwitchApplication.Implementation.FieldType)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("FieldType");
+                }
+            }
+        }
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.ReconField.DetailsClass.IImplementation.FileField
+        {
+            get
+            {
+                return this.FileField;
+            }
+            set
+            {
+                this.FileField = (global::LightSwitchApplication.Implementation.FileField)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("FileField");
+                }
+            }
+        }
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.ReconField.DetailsClass.IImplementation.ReconProcessStep
+        {
+            get
+            {
+                return this.ReconProcessStep;
+            }
+            set
+            {
+                this.ReconProcessStep = (global::LightSwitchApplication.Implementation.ReconProcessStep)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("ReconProcessStep");
+                }
+            }
+        }
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.ReconField.DetailsClass.IImplementation.SystemField
+        {
+            get
+            {
+                return this.SystemField;
+            }
+            set
+            {
+                this.SystemField = (global::LightSwitchApplication.Implementation.SystemField)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("SystemField");
+                }
+            }
+        }
+        
+        partial void OnFieldTypeIDChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("FieldType");
+            }
+        }
+        
+        partial void OnFileFieldIDChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("FileField");
+            }
+        }
+        
+        partial void OnReconProcessStepIDChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("ReconProcessStep");
+            }
+        }
+        
+        partial void OnSystemFieldIDChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("SystemField");
+            }
+        }
+        
         #region IEntityImplementation Members
         private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
         
@@ -1525,6 +1817,47 @@ namespace LightSwitchApplication.Implementation
     
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class RuleType :
+        global::LightSwitchApplication.RuleType.DetailsClass.IImplementation
+    {
+    
+        global::System.Collections.IEnumerable global::LightSwitchApplication.RuleType.DetailsClass.IImplementation.FileFieldRules
+        {
+            get
+            {
+                return this.FileFieldRules;
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public partial class SkyeImportDetail :
         global::LightSwitchApplication.SkyeImportDetail.DetailsClass.IImplementation
     {
@@ -1607,6 +1940,63 @@ namespace LightSwitchApplication.Implementation
             if (this.__host != null)
             {
                 this.__host.RaisePropertyChanged("ImportedFile");
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class Synonym :
+        global::LightSwitchApplication.Synonym.DetailsClass.IImplementation
+    {
+    
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.Synonym.DetailsClass.IImplementation.FileSection
+        {
+            get
+            {
+                return this.FileSection;
+            }
+            set
+            {
+                this.FileSection = (global::LightSwitchApplication.Implementation.FileSection)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("FileSection");
+                }
+            }
+        }
+        
+        partial void OnFileSectionIDChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("FileSection");
             }
         }
         
@@ -1732,396 +2122,6 @@ namespace LightSwitchApplication.Implementation
             }
         }
         
-        #region IEntityImplementation Members
-        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
-        
-        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
-        {
-            get
-            {
-                return this.__host;
-            }
-        }
-        
-        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
-        {
-            this.__host = host;
-        }
-        
-        protected override void OnPropertyChanged(string propertyName)
-        {
-            base.OnPropertyChanged(propertyName);
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged(propertyName);
-            }
-        }
-        #endregion
-    }
-    
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    public partial class FieldType :
-        global::LightSwitchApplication.FieldType.DetailsClass.IImplementation
-    {
-    
-        global::System.Collections.IEnumerable global::LightSwitchApplication.FieldType.DetailsClass.IImplementation.ReconFields
-        {
-            get
-            {
-                return this.ReconFields;
-            }
-        }
-        
-        global::System.Collections.IEnumerable global::LightSwitchApplication.FieldType.DetailsClass.IImplementation.SystemFields
-        {
-            get
-            {
-                return this.SystemFields;
-            }
-        }
-        
-        #region IEntityImplementation Members
-        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
-        
-        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
-        {
-            get
-            {
-                return this.__host;
-            }
-        }
-        
-        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
-        {
-            this.__host = host;
-        }
-        
-        protected override void OnPropertyChanged(string propertyName)
-        {
-            base.OnPropertyChanged(propertyName);
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged(propertyName);
-            }
-        }
-        #endregion
-    }
-    
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    public partial class ReconField :
-        global::LightSwitchApplication.ReconField.DetailsClass.IImplementation
-    {
-    
-        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.ReconField.DetailsClass.IImplementation.FieldType
-        {
-            get
-            {
-                return this.FieldType;
-            }
-            set
-            {
-                this.FieldType = (global::LightSwitchApplication.Implementation.FieldType)value;
-                if (this.__host != null)
-                {
-                    this.__host.RaisePropertyChanged("FieldType");
-                }
-            }
-        }
-        
-        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.ReconField.DetailsClass.IImplementation.FileField
-        {
-            get
-            {
-                return this.FileField;
-            }
-            set
-            {
-                this.FileField = (global::LightSwitchApplication.Implementation.FileField)value;
-                if (this.__host != null)
-                {
-                    this.__host.RaisePropertyChanged("FileField");
-                }
-            }
-        }
-        
-        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.ReconField.DetailsClass.IImplementation.ReconProcessStep
-        {
-            get
-            {
-                return this.ReconProcessStep;
-            }
-            set
-            {
-                this.ReconProcessStep = (global::LightSwitchApplication.Implementation.ReconProcessStep)value;
-                if (this.__host != null)
-                {
-                    this.__host.RaisePropertyChanged("ReconProcessStep");
-                }
-            }
-        }
-        
-        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.ReconField.DetailsClass.IImplementation.SystemField
-        {
-            get
-            {
-                return this.SystemField;
-            }
-            set
-            {
-                this.SystemField = (global::LightSwitchApplication.Implementation.SystemField)value;
-                if (this.__host != null)
-                {
-                    this.__host.RaisePropertyChanged("SystemField");
-                }
-            }
-        }
-        
-        partial void OnFieldTypeIDChanged()
-        {
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged("FieldType");
-            }
-        }
-        
-        partial void OnFileFieldIDChanged()
-        {
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged("FileField");
-            }
-        }
-        
-        partial void OnReconProcessStepIDChanged()
-        {
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged("ReconProcessStep");
-            }
-        }
-        
-        partial void OnSystemFieldIDChanged()
-        {
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged("SystemField");
-            }
-        }
-        
-        #region IEntityImplementation Members
-        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
-        
-        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
-        {
-            get
-            {
-                return this.__host;
-            }
-        }
-        
-        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
-        {
-            this.__host = host;
-        }
-        
-        protected override void OnPropertyChanged(string propertyName)
-        {
-            base.OnPropertyChanged(propertyName);
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged(propertyName);
-            }
-        }
-        #endregion
-    }
-    
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    public partial class RuleType :
-        global::LightSwitchApplication.RuleType.DetailsClass.IImplementation
-    {
-    
-        global::System.Collections.IEnumerable global::LightSwitchApplication.RuleType.DetailsClass.IImplementation.FileFieldRules
-        {
-            get
-            {
-                return this.FileFieldRules;
-            }
-        }
-        
-        #region IEntityImplementation Members
-        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
-        
-        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
-        {
-            get
-            {
-                return this.__host;
-            }
-        }
-        
-        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
-        {
-            this.__host = host;
-        }
-        
-        protected override void OnPropertyChanged(string propertyName)
-        {
-            base.OnPropertyChanged(propertyName);
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged(propertyName);
-            }
-        }
-        #endregion
-    }
-    
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    public partial class FileFieldRule :
-        global::LightSwitchApplication.FileFieldRule.DetailsClass.IImplementation
-    {
-    
-        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.FileFieldRule.DetailsClass.IImplementation.FileField
-        {
-            get
-            {
-                return this.FileField;
-            }
-            set
-            {
-                this.FileField = (global::LightSwitchApplication.Implementation.FileField)value;
-                if (this.__host != null)
-                {
-                    this.__host.RaisePropertyChanged("FileField");
-                }
-            }
-        }
-        
-        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.FileFieldRule.DetailsClass.IImplementation.RuleType
-        {
-            get
-            {
-                return this.RuleType;
-            }
-            set
-            {
-                this.RuleType = (global::LightSwitchApplication.Implementation.RuleType)value;
-                if (this.__host != null)
-                {
-                    this.__host.RaisePropertyChanged("RuleType");
-                }
-            }
-        }
-        
-        partial void OnFileFieldIDChanged()
-        {
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged("FileField");
-            }
-        }
-        
-        partial void OnRuleTypeIDChanged()
-        {
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged("RuleType");
-            }
-        }
-        
-        #region IEntityImplementation Members
-        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
-        
-        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
-        {
-            get
-            {
-                return this.__host;
-            }
-        }
-        
-        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
-        {
-            this.__host = host;
-        }
-        
-        protected override void OnPropertyChanged(string propertyName)
-        {
-            base.OnPropertyChanged(propertyName);
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged(propertyName);
-            }
-        }
-        #endregion
-    }
-    
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    public partial class Synonym :
-        global::LightSwitchApplication.Synonym.DetailsClass.IImplementation
-    {
-    
-        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.Synonym.DetailsClass.IImplementation.FileSection
-        {
-            get
-            {
-                return this.FileSection;
-            }
-            set
-            {
-                this.FileSection = (global::LightSwitchApplication.Implementation.FileSection)value;
-                if (this.__host != null)
-                {
-                    this.__host.RaisePropertyChanged("FileSection");
-                }
-            }
-        }
-        
-        partial void OnFileSectionIDChanged()
-        {
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged("FileSection");
-            }
-        }
-        
-        #region IEntityImplementation Members
-        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
-        
-        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
-        {
-            get
-            {
-                return this.__host;
-            }
-        }
-        
-        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
-        {
-            this.__host = host;
-        }
-        
-        protected override void OnPropertyChanged(string propertyName)
-        {
-            base.OnPropertyChanged(propertyName);
-            if (this.__host != null)
-            {
-                this.__host.RaisePropertyChanged(propertyName);
-            }
-        }
-        #endregion
-    }
-    
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "12.1.0.0")]
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    public partial class NIBBS_DB_Detail :
-        global::LightSwitchApplication.NIBBS_DB_Detail.DetailsClass.IImplementation
-    {
-    
         #region IEntityImplementation Members
         private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
         

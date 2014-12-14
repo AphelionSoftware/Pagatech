@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Namespace="LightSwitchApplication" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="FieldType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Name" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <NavigationProperty Name="ReconFields" Relationship="LightSwitchApplication.FK_ReconField_FieldType" ToRole="ReconField" FromRole="FieldType" />
+    <NavigationProperty Name="SystemFields" Relationship="LightSwitchApplication.FK_SystemField_FieldType" ToRole="SystemField" FromRole="FieldType" />
+  </EntityType>
   <EntityType Name="FileDefinition">
     <Key>
       <PropertyRef Name="ID" />
@@ -17,6 +31,29 @@
     <NavigationProperty Name="FileSections" Relationship="LightSwitchApplication.FK_FileSection_FileDefinition" ToRole="FileSection" FromRole="FileDefinition" />
     <NavigationProperty Name="ImportedFiles" Relationship="LightSwitchApplication.FK_ImportedFile_FileDefinition" ToRole="ImportedFile" FromRole="FileDefinition" />
     <NavigationProperty Name="ReconSource" Relationship="LightSwitchApplication.FK_FileDefinition_ReconSource" ToRole="ReconSource" FromRole="FileDefinition" />
+  </EntityType>
+  <EntityType Name="FileFieldRule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProcessingRule" Type="Edm.String" MaxLength="Max" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="StartPos" Type="Edm.Int32" ConcurrencyMode="Fixed" />
+    <Property Name="EndPos" Type="Edm.Int32" ConcurrencyMode="Fixed" />
+    <Property Name="FirstChar" Type="Edm.String" MaxLength="1" FixedLength="true" ConcurrencyMode="Fixed" />
+    <Property Name="LastChar" Type="Edm.String" MaxLength="1" FixedLength="true" ConcurrencyMode="Fixed" />
+    <Property Name="FirstPattern" Type="Edm.String" MaxLength="50" ConcurrencyMode="Fixed" />
+    <Property Name="LastPattern" Type="Edm.String" MaxLength="50" ConcurrencyMode="Fixed" />
+    <Property Name="SplitChar" Type="Edm.String" MaxLength="1" FixedLength="true" ConcurrencyMode="Fixed" />
+    <Property Name="ArrPos" Type="Edm.Int32" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="FileFieldID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="RuleTypeID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <NavigationProperty Name="FileField" Relationship="LightSwitchApplication.FK_FileFieldRules_FileSection" ToRole="FileField" FromRole="FileFieldRules" />
+    <NavigationProperty Name="RuleType" Relationship="LightSwitchApplication.FK_FileFieldRules_RuleType" ToRole="RuleType" FromRole="FileFieldRules" />
   </EntityType>
   <EntityType Name="FileField">
     <Key>
@@ -111,6 +148,23 @@
     <NavigationProperty Name="ReconProcessSteps1" Relationship="LightSwitchApplication.FK_ReconProcessStep_ImportedFile1" ToRole="ReconProcessStep" FromRole="ImportedFile" />
     <NavigationProperty Name="ReconSummary1" Relationship="LightSwitchApplication.FK_ImportedFile_ReconSummary1" ToRole="ReconSummary" FromRole="ImportedFile" />
   </EntityType>
+  <EntityType Name="NIBBS_DB_Detail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Narration" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Posting_Date" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Value_Date" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Debit" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Credit" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Reference" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Balance" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+  </EntityType>
   <EntityType Name="ReconDetail">
     <Key>
       <PropertyRef Name="ID" />
@@ -126,6 +180,24 @@
     <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
     <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
     <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+  </EntityType>
+  <EntityType Name="ReconField">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="FieldTypeID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="FileFieldID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="ReconProcessStepID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="SystemFieldID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <NavigationProperty Name="FieldType" Relationship="LightSwitchApplication.FK_ReconField_FieldType" ToRole="FieldType" FromRole="ReconField" />
+    <NavigationProperty Name="FileField" Relationship="LightSwitchApplication.FK_ReconField_FileField" ToRole="FileField" FromRole="ReconField" />
+    <NavigationProperty Name="ReconProcessStep" Relationship="LightSwitchApplication.FK_ReconField_ReconProcessStep" ToRole="ReconProcessStep" FromRole="ReconField" />
+    <NavigationProperty Name="SystemField" Relationship="LightSwitchApplication.FK_ReconField_SystemField" ToRole="SystemField" FromRole="ReconField" />
   </EntityType>
   <EntityType Name="ReconItemStatu">
     <Key>
@@ -260,6 +332,19 @@
     <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
     <NavigationProperty Name="ReconProcessSteps" Relationship="LightSwitchApplication.FK_ReconProcessStep_ReconType" ToRole="ReconProcessStep" FromRole="ReconType" />
   </EntityType>
+  <EntityType Name="RuleType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="Name" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <NavigationProperty Name="FileFieldRules" Relationship="LightSwitchApplication.FK_FileFieldRules_RuleType" ToRole="FileFieldRules" FromRole="RuleType" />
+  </EntityType>
   <EntityType Name="SkyeImportDetail">
     <Key>
       <PropertyRef Name="ID" />
@@ -296,6 +381,20 @@
     <Property Name="ImportedFileID" Type="Edm.Int32" ConcurrencyMode="Fixed" />
     <NavigationProperty Name="ImportedFile" Relationship="LightSwitchApplication.FK_SkyeImportHeader_ImportedFile" ToRole="ImportedFile" FromRole="SkyeImportHeader" />
   </EntityType>
+  <EntityType Name="Synonym">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SourceValue" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="SynonymValue" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
+    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="FileSectionID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <NavigationProperty Name="FileSection" Relationship="LightSwitchApplication.FK_Synonym_FileSection" ToRole="FileSection" FromRole="Synonym" />
+  </EntityType>
   <EntityType Name="SystemField">
     <Key>
       <PropertyRef Name="ID" />
@@ -331,105 +430,30 @@
     <Property Name="ReconProcessStepName" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
     <NavigationProperty Name="ReconProcess" Relationship="LightSwitchApplication.vwReconProcessStatu_ReconProcess" ToRole="ReconProcess" FromRole="vwReconProcessStatu" />
   </EntityType>
-  <EntityType Name="FieldType">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="Name" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-    <NavigationProperty Name="ReconFields" Relationship="LightSwitchApplication.FK_ReconField_FieldType" ToRole="ReconField" FromRole="FieldType" />
-    <NavigationProperty Name="SystemFields" Relationship="LightSwitchApplication.FK_SystemField_FieldType" ToRole="SystemField" FromRole="FieldType" />
-  </EntityType>
-  <EntityType Name="ReconField">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-    <Property Name="FieldTypeID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
-    <Property Name="FileFieldID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
-    <Property Name="ReconProcessStepID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
-    <Property Name="SystemFieldID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
-    <NavigationProperty Name="FieldType" Relationship="LightSwitchApplication.FK_ReconField_FieldType" ToRole="FieldType" FromRole="ReconField" />
-    <NavigationProperty Name="FileField" Relationship="LightSwitchApplication.FK_ReconField_FileField" ToRole="FileField" FromRole="ReconField" />
-    <NavigationProperty Name="ReconProcessStep" Relationship="LightSwitchApplication.FK_ReconField_ReconProcessStep" ToRole="ReconProcessStep" FromRole="ReconField" />
-    <NavigationProperty Name="SystemField" Relationship="LightSwitchApplication.FK_ReconField_SystemField" ToRole="SystemField" FromRole="ReconField" />
-  </EntityType>
-  <EntityType Name="RuleType">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="Name" Type="Edm.String" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-    <NavigationProperty Name="FileFieldRules" Relationship="LightSwitchApplication.FK_FileFieldRules_RuleType" ToRole="FileFieldRules" FromRole="RuleType" />
-  </EntityType>
-  <EntityType Name="FileFieldRule">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProcessingRule" Type="Edm.String" MaxLength="Max" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="StartPos" Type="Edm.Int32" ConcurrencyMode="Fixed" />
-    <Property Name="EndPos" Type="Edm.Int32" ConcurrencyMode="Fixed" />
-    <Property Name="FirstChar" Type="Edm.String" MaxLength="1" FixedLength="true" ConcurrencyMode="Fixed" />
-    <Property Name="LastChar" Type="Edm.String" MaxLength="1" FixedLength="true" ConcurrencyMode="Fixed" />
-    <Property Name="FirstPattern" Type="Edm.String" MaxLength="50" ConcurrencyMode="Fixed" />
-    <Property Name="LastPattern" Type="Edm.String" MaxLength="50" ConcurrencyMode="Fixed" />
-    <Property Name="SplitChar" Type="Edm.String" MaxLength="1" FixedLength="true" ConcurrencyMode="Fixed" />
-    <Property Name="ArrPos" Type="Edm.Int32" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-    <Property Name="FileFieldID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
-    <Property Name="RuleTypeID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
-    <NavigationProperty Name="FileField" Relationship="LightSwitchApplication.FK_FileFieldRules_FileSection" ToRole="FileField" FromRole="FileFieldRules" />
-    <NavigationProperty Name="RuleType" Relationship="LightSwitchApplication.FK_FileFieldRules_RuleType" ToRole="RuleType" FromRole="FileFieldRules" />
-  </EntityType>
-  <EntityType Name="Synonym">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SourceValue" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="SynonymValue" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-    <Property Name="FileSectionID" Type="Edm.Int32" Nullable="false" ConcurrencyMode="Fixed" />
-    <NavigationProperty Name="FileSection" Relationship="LightSwitchApplication.FK_Synonym_FileSection" ToRole="FileSection" FromRole="Synonym" />
-  </EntityType>
-  <EntityType Name="NIBBS_DB_Detail">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Narration" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="Posting_Date" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="Value_Date" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="Debit" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="Credit" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="Reference" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="Balance" Type="Edm.String" Nullable="false" MaxLength="1000" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedBy" Type="Edm.String" Nullable="false" MaxLength="255" Unicode="false" ConcurrencyMode="Fixed" />
-    <Property Name="sys_ModifiedOn" Type="Edm.DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
-  </EntityType>
+  <Association Name="FK_ReconField_FieldType">
+    <End Role="FieldType" Type="LightSwitchApplication.FieldType" Multiplicity="1" />
+    <End Role="ReconField" Type="LightSwitchApplication.ReconField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FieldType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconField">
+        <PropertyRef Name="FieldTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemField_FieldType">
+    <End Role="FieldType" Type="LightSwitchApplication.FieldType" Multiplicity="1" />
+    <End Role="SystemField" Type="LightSwitchApplication.SystemField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FieldType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemField">
+        <PropertyRef Name="FieldTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_FileSection_FileDefinition">
     <End Role="FileDefinition" Type="LightSwitchApplication.FileDefinition" Multiplicity="1" />
     <End Role="FileSection" Type="LightSwitchApplication.FileSection" Multiplicity="*" />
@@ -451,6 +475,30 @@
       </Principal>
       <Dependent Role="ImportedFile">
         <PropertyRef Name="FileDefinitionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileFieldRules_FileSection">
+    <End Role="FileField" Type="LightSwitchApplication.FileField" Multiplicity="1" />
+    <End Role="FileFieldRules" Type="LightSwitchApplication.FileFieldRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileField">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FileFieldRules">
+        <PropertyRef Name="FileFieldID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReconField_FileField">
+    <End Role="FileField" Type="LightSwitchApplication.FileField" Multiplicity="1" />
+    <End Role="ReconField" Type="LightSwitchApplication.ReconField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileField">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconField">
+        <PropertyRef Name="FileFieldID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -487,6 +535,18 @@
       </Principal>
       <Dependent Role="ReconProcessStep">
         <PropertyRef Name="TargetFileSectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Synonym_FileSection">
+    <End Role="FileSection" Type="LightSwitchApplication.FileSection" Multiplicity="1" />
+    <End Role="Synonym" Type="LightSwitchApplication.Synonym" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileSection">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Synonym">
+        <PropertyRef Name="FileSectionID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -598,6 +658,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ReconField_ReconProcessStep">
+    <End Role="ReconProcessStep" Type="LightSwitchApplication.ReconProcessStep" Multiplicity="1" />
+    <End Role="ReconField" Type="LightSwitchApplication.ReconField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReconProcessStep">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReconField">
+        <PropertyRef Name="ReconProcessStepID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_FileDefinition_ReconSource">
     <End Role="ReconSource" Type="LightSwitchApplication.ReconSource" Multiplicity="1" />
     <End Role="FileDefinition" Type="LightSwitchApplication.FileDefinition" Multiplicity="*" />
@@ -646,6 +718,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ImportedFile_ReconSummary1">
+    <End Role="ReconSummary" Type="LightSwitchApplication.ReconSummary" Multiplicity="0..1" />
+    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReconSummary">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ImportedFile">
+        <PropertyRef Name="ReconSummaryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ReconProcessStep_ReconType">
     <End Role="ReconType" Type="LightSwitchApplication.ReconType" Multiplicity="1" />
     <End Role="ReconProcessStep" Type="LightSwitchApplication.ReconProcessStep" Multiplicity="*" />
@@ -655,18 +739,6 @@
       </Principal>
       <Dependent Role="ReconProcessStep">
         <PropertyRef Name="ReconTypeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_FileFieldRules_FileSection">
-    <End Role="FileField" Type="LightSwitchApplication.FileField" Multiplicity="1" />
-    <End Role="FileFieldRules" Type="LightSwitchApplication.FileFieldRule" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="FileField">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="FileFieldRules">
-        <PropertyRef Name="FileFieldID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -682,54 +754,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ImportedFile_ReconSummary1">
-    <End Role="ReconSummary" Type="LightSwitchApplication.ReconSummary" Multiplicity="0..1" />
-    <End Role="ImportedFile" Type="LightSwitchApplication.ImportedFile" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ReconSummary">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ImportedFile">
-        <PropertyRef Name="ReconSummaryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReconField_FieldType">
-    <End Role="FieldType" Type="LightSwitchApplication.FieldType" Multiplicity="1" />
-    <End Role="ReconField" Type="LightSwitchApplication.ReconField" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="FieldType">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ReconField">
-        <PropertyRef Name="FieldTypeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReconField_FileField">
-    <End Role="FileField" Type="LightSwitchApplication.FileField" Multiplicity="1" />
-    <End Role="ReconField" Type="LightSwitchApplication.ReconField" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="FileField">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ReconField">
-        <PropertyRef Name="FileFieldID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReconField_ReconProcessStep">
-    <End Role="ReconProcessStep" Type="LightSwitchApplication.ReconProcessStep" Multiplicity="1" />
-    <End Role="ReconField" Type="LightSwitchApplication.ReconField" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ReconProcessStep">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ReconField">
-        <PropertyRef Name="ReconProcessStepID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ReconField_SystemField">
     <End Role="SystemField" Type="LightSwitchApplication.SystemField" Multiplicity="1" />
     <End Role="ReconField" Type="LightSwitchApplication.ReconField" Multiplicity="*" />
@@ -742,38 +766,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Synonym_FileSection">
-    <End Role="FileSection" Type="LightSwitchApplication.FileSection" Multiplicity="1" />
-    <End Role="Synonym" Type="LightSwitchApplication.Synonym" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="FileSection">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Synonym">
-        <PropertyRef Name="FileSectionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SystemField_FieldType">
-    <End Role="FieldType" Type="LightSwitchApplication.FieldType" Multiplicity="1" />
-    <End Role="SystemField" Type="LightSwitchApplication.SystemField" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="FieldType">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="SystemField">
-        <PropertyRef Name="FieldTypeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="PagaReconData" m:IsDefaultEntityContainer="true">
+    <EntitySet Name="FieldTypes" EntityType="LightSwitchApplication.FieldType" />
     <EntitySet Name="FileDefinitions" EntityType="LightSwitchApplication.FileDefinition" />
+    <EntitySet Name="FileFieldRules" EntityType="LightSwitchApplication.FileFieldRule" />
     <EntitySet Name="FileFields" EntityType="LightSwitchApplication.FileField" />
     <EntitySet Name="FileSections" EntityType="LightSwitchApplication.FileSection" />
     <EntitySet Name="FileTypes" EntityType="LightSwitchApplication.FileType" />
     <EntitySet Name="GlobalSettings" EntityType="LightSwitchApplication.GlobalSetting" />
     <EntitySet Name="ImportedFiles" EntityType="LightSwitchApplication.ImportedFile" />
+    <EntitySet Name="NIBBS_DB_Details" EntityType="LightSwitchApplication.NIBBS_DB_Detail" />
     <EntitySet Name="ReconDetails" EntityType="LightSwitchApplication.ReconDetail" />
+    <EntitySet Name="ReconFields" EntityType="LightSwitchApplication.ReconField" />
     <EntitySet Name="ReconItemStatus" EntityType="LightSwitchApplication.ReconItemStatu" />
     <EntitySet Name="ReconProcesses" EntityType="LightSwitchApplication.ReconProcess" />
     <EntitySet Name="ReconProcessSteps" EntityType="LightSwitchApplication.ReconProcessStep" />
@@ -782,16 +786,20 @@
     <EntitySet Name="ReconStatus" EntityType="LightSwitchApplication.ReconStatu" />
     <EntitySet Name="ReconSummaries" EntityType="LightSwitchApplication.ReconSummary" />
     <EntitySet Name="ReconTypes" EntityType="LightSwitchApplication.ReconType" />
+    <EntitySet Name="RuleTypes" EntityType="LightSwitchApplication.RuleType" />
     <EntitySet Name="SkyeImportDetails" EntityType="LightSwitchApplication.SkyeImportDetail" />
     <EntitySet Name="SkyeImportHeaders" EntityType="LightSwitchApplication.SkyeImportHeader" />
+    <EntitySet Name="Synonyms" EntityType="LightSwitchApplication.Synonym" />
     <EntitySet Name="SystemFields" EntityType="LightSwitchApplication.SystemField" />
     <EntitySet Name="vwReconProcessStatus" EntityType="LightSwitchApplication.vwReconProcessStatu" />
-    <EntitySet Name="FieldTypes" EntityType="LightSwitchApplication.FieldType" />
-    <EntitySet Name="ReconFields" EntityType="LightSwitchApplication.ReconField" />
-    <EntitySet Name="RuleTypes" EntityType="LightSwitchApplication.RuleType" />
-    <EntitySet Name="FileFieldRules" EntityType="LightSwitchApplication.FileFieldRule" />
-    <EntitySet Name="Synonyms" EntityType="LightSwitchApplication.Synonym" />
-    <EntitySet Name="NIBBS_DB_Details" EntityType="LightSwitchApplication.NIBBS_DB_Detail" />
+    <AssociationSet Name="FK_ReconField_FieldType" Association="LightSwitchApplication.FK_ReconField_FieldType">
+      <End Role="FieldType" EntitySet="FieldTypes" />
+      <End Role="ReconField" EntitySet="ReconFields" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemField_FieldType" Association="LightSwitchApplication.FK_SystemField_FieldType">
+      <End Role="FieldType" EntitySet="FieldTypes" />
+      <End Role="SystemField" EntitySet="SystemFields" />
+    </AssociationSet>
     <AssociationSet Name="FK_FileSection_FileDefinition" Association="LightSwitchApplication.FK_FileSection_FileDefinition">
       <End Role="FileDefinition" EntitySet="FileDefinitions" />
       <End Role="FileSection" EntitySet="FileSections" />
@@ -799,6 +807,14 @@
     <AssociationSet Name="FK_ImportedFile_FileDefinition" Association="LightSwitchApplication.FK_ImportedFile_FileDefinition">
       <End Role="FileDefinition" EntitySet="FileDefinitions" />
       <End Role="ImportedFile" EntitySet="ImportedFiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileFieldRules_FileSection" Association="LightSwitchApplication.FK_FileFieldRules_FileSection">
+      <End Role="FileField" EntitySet="FileFields" />
+      <End Role="FileFieldRules" EntitySet="FileFieldRules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReconField_FileField" Association="LightSwitchApplication.FK_ReconField_FileField">
+      <End Role="FileField" EntitySet="FileFields" />
+      <End Role="ReconField" EntitySet="ReconFields" />
     </AssociationSet>
     <AssociationSet Name="FK_FileField_FileSection" Association="LightSwitchApplication.FK_FileField_FileSection">
       <End Role="FileSection" EntitySet="FileSections" />
@@ -811,6 +827,10 @@
     <AssociationSet Name="FK_ReconProcessStep_FileSection1" Association="LightSwitchApplication.FK_ReconProcessStep_FileSection1">
       <End Role="FileSection" EntitySet="FileSections" />
       <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Synonym_FileSection" Association="LightSwitchApplication.FK_Synonym_FileSection">
+      <End Role="FileSection" EntitySet="FileSections" />
+      <End Role="Synonym" EntitySet="Synonyms" />
     </AssociationSet>
     <AssociationSet Name="FK_FileDefinition_FileType" Association="LightSwitchApplication.FK_FileDefinition_FileType">
       <End Role="FileType" EntitySet="FileTypes" />
@@ -848,6 +868,10 @@
       <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
       <End Role="ReconSummary" EntitySet="ReconSummaries" />
     </AssociationSet>
+    <AssociationSet Name="FK_ReconField_ReconProcessStep" Association="LightSwitchApplication.FK_ReconField_ReconProcessStep">
+      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
+      <End Role="ReconField" EntitySet="ReconFields" />
+    </AssociationSet>
     <AssociationSet Name="FK_FileDefinition_ReconSource" Association="LightSwitchApplication.FK_FileDefinition_ReconSource">
       <End Role="ReconSource" EntitySet="ReconSources" />
       <End Role="FileDefinition" EntitySet="FileDefinitions" />
@@ -864,45 +888,21 @@
       <End Role="ImportedFile" EntitySet="ImportedFiles" />
       <End Role="ReconSummary" EntitySet="ReconSummaries" />
     </AssociationSet>
+    <AssociationSet Name="FK_ImportedFile_ReconSummary1" Association="LightSwitchApplication.FK_ImportedFile_ReconSummary1">
+      <End Role="ReconSummary" EntitySet="ReconSummaries" />
+      <End Role="ImportedFile" EntitySet="ImportedFiles" />
+    </AssociationSet>
     <AssociationSet Name="FK_ReconProcessStep_ReconType" Association="LightSwitchApplication.FK_ReconProcessStep_ReconType">
       <End Role="ReconType" EntitySet="ReconTypes" />
       <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
-    </AssociationSet>
-    <AssociationSet Name="FK_FileFieldRules_FileSection" Association="LightSwitchApplication.FK_FileFieldRules_FileSection">
-      <End Role="FileField" EntitySet="FileFields" />
-      <End Role="FileFieldRules" EntitySet="FileFieldRules" />
     </AssociationSet>
     <AssociationSet Name="FK_FileFieldRules_RuleType" Association="LightSwitchApplication.FK_FileFieldRules_RuleType">
       <End Role="RuleType" EntitySet="RuleTypes" />
       <End Role="FileFieldRules" EntitySet="FileFieldRules" />
     </AssociationSet>
-    <AssociationSet Name="FK_ImportedFile_ReconSummary1" Association="LightSwitchApplication.FK_ImportedFile_ReconSummary1">
-      <End Role="ReconSummary" EntitySet="ReconSummaries" />
-      <End Role="ImportedFile" EntitySet="ImportedFiles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReconField_FieldType" Association="LightSwitchApplication.FK_ReconField_FieldType">
-      <End Role="FieldType" EntitySet="FieldTypes" />
-      <End Role="ReconField" EntitySet="ReconFields" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReconField_FileField" Association="LightSwitchApplication.FK_ReconField_FileField">
-      <End Role="FileField" EntitySet="FileFields" />
-      <End Role="ReconField" EntitySet="ReconFields" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReconField_ReconProcessStep" Association="LightSwitchApplication.FK_ReconField_ReconProcessStep">
-      <End Role="ReconProcessStep" EntitySet="ReconProcessSteps" />
-      <End Role="ReconField" EntitySet="ReconFields" />
-    </AssociationSet>
     <AssociationSet Name="FK_ReconField_SystemField" Association="LightSwitchApplication.FK_ReconField_SystemField">
       <End Role="SystemField" EntitySet="SystemFields" />
       <End Role="ReconField" EntitySet="ReconFields" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Synonym_FileSection" Association="LightSwitchApplication.FK_Synonym_FileSection">
-      <End Role="FileSection" EntitySet="FileSections" />
-      <End Role="Synonym" EntitySet="Synonyms" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SystemField_FieldType" Association="LightSwitchApplication.FK_SystemField_FieldType">
-      <End Role="FieldType" EntitySet="FieldTypes" />
-      <End Role="SystemField" EntitySet="SystemFields" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

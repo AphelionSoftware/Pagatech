@@ -12,8 +12,12 @@
     [sys_CreatedOn]  DATETIME       CONSTRAINT [DF_NIBBS_DB_Detail_sys_CreatedOn] DEFAULT (getdate()) NOT NULL,
     [sys_ModifiedBy] VARCHAR (255)  CONSTRAINT [DF_NIBBS_DB_Detail_sys_ModifiedBy] DEFAULT (user_name()) NOT NULL,
     [sys_ModifiedOn] DATETIME       CONSTRAINT [DF_NIBBS_DB_Detail_sys_ModifiedOn] DEFAULT (getdate()) NOT NULL,
+    [IntRefNo]       AS             (substring(replace([Narration],' ',''),(5),(30))),
+    [TxAmount]       AS             (case when isnumeric([Credit])=(1) then CONVERT([money],[Credit]) else case when isnumeric([Debit])=(1) then  -((1)*CONVERT([money],[Debit])) else (0) end end),
     CONSTRAINT [PK_NIBBS_DB_Detail] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+
+
 
 
 
