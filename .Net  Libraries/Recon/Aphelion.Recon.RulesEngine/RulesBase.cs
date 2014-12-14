@@ -43,10 +43,9 @@ namespace Aphelion.Recon.RulesEngine
             {
                 _dtSource = value;
                 _dtSource.Columns.Add("Hash", (typeof(Int64)));
-                //DataColumn[] dcSource = new DataColumn[1];
-                //dcSource[0] = dtSource.Columns["Hash"];
-                //_dtSource.PrimaryKey = dcSource;
+                
                 _dtSource.Columns.Add("SourceKey", (typeof(string)));
+               
                 
             }
         }
@@ -67,6 +66,9 @@ namespace Aphelion.Recon.RulesEngine
                 //dcDestination[0] = dtDestination.Columns["Hash"];
                 //_dtDestination.PrimaryKey = dcDestination;
                 _dtDestination.Columns.Add("SourceKey", (typeof(string)));
+
+               
+                
                 
             }
         }
@@ -110,6 +112,39 @@ namespace Aphelion.Recon.RulesEngine
             DataColumn[] dcSource = new DataColumn[1];
             dcSource[0] = dtSource.Columns["Hash"];
             //_dtSource.PrimaryKey = dcSource;
+            if (dtSourceDuplicated == null)
+            {
+                dtSourceDuplicated = dtSource.Clone();
+            }
+            try
+            {
+                _dtSource.PrimaryKey = dcSource;
+            }
+            catch
+            {
+                //Checking for duplicates in source
+                var varDuplicateSrc = from r in dtSource.AsEnumerable()
+                                      group r by r.Field<Int64>("Hash") into grp
+                                      where grp.Count() > 1
+                                      select grp;
+
+                foreach (IGrouping<Int64, DataRow> gr in varDuplicateSrc)
+                {
+                    DataRow drSource = gr.ElementAt(0);
+                    dtSourceDuplicated.Rows.Add(drSource.ItemArray);
+                    DataView dvDel = new DataView(dtSource);
+                    dvDel.RowFilter = "Hash = " + drSource["Hash"];
+                    foreach (DataRowView drv in dvDel)
+                    {
+                        dtSource.Rows.Remove(drv.Row);
+                    }
+                }
+                dtSource.AcceptChanges();
+            }
+            finally
+            {
+                _dtSource.PrimaryKey = dcSource;
+            }
             
         }
 
@@ -131,6 +166,39 @@ namespace Aphelion.Recon.RulesEngine
             DataColumn[] dcSource = new DataColumn[1];
             dcSource[0] = dtSource.Columns["Hash"];
             //_dtSource.PrimaryKey = dcSource;
+            if (dtSourceDuplicated == null)
+            {
+                dtSourceDuplicated = dtSource.Clone();
+            }
+            try
+            {
+                _dtSource.PrimaryKey = dcSource;
+            }
+            catch
+            {
+                //Checking for duplicates in source
+                var varDuplicateSrc = from r in dtSource.AsEnumerable()
+                                      group r by r.Field<Int64>("Hash") into grp
+                                      where grp.Count() > 1
+                                      select grp;
+
+                foreach (IGrouping<Int64, DataRow> gr in varDuplicateSrc)
+                {
+                    DataRow drSource = gr.ElementAt(0);
+                    dtSourceDuplicated.Rows.Add(drSource.ItemArray);
+                    DataView dvDel = new DataView(dtSource);
+                    dvDel.RowFilter = "Hash = " + drSource["Hash"];
+                    foreach (DataRowView drv in dvDel)
+                    {
+                        dtSource.Rows.Remove(drv.Row);
+                    }
+                }
+                dtSource.AcceptChanges();
+            }
+            finally
+            {
+                _dtSource.PrimaryKey = dcSource;
+            }
                 
         }
         /// <summary>
@@ -154,6 +222,40 @@ namespace Aphelion.Recon.RulesEngine
             DataColumn[] dcDestination = new DataColumn[1];
             dcDestination[0] = dtDestination.Columns["Hash"];
             //_dtDestination.PrimaryKey = dcDestination;
+            if (dtDestinationDuplicated == null)
+            {
+                dtDestinationDuplicated = dtDestination.Clone();
+            }
+            try
+            {
+                _dtDestination.PrimaryKey = dcDestination;
+            }
+            catch
+            {
+                //Checking for duplicates in Destination
+                var varDuplicateDestination = from r in dtDestination.AsEnumerable()
+                                      group r by r.Field<Int64>("Hash") into grp
+                                      where grp.Count() > 1
+                                      select grp;
+
+
+                foreach (IGrouping<Int64, DataRow> gr in varDuplicateDestination)
+                {
+                    DataRow drDestination = gr.ElementAt(0);
+                    dtDestinationDuplicated.Rows.Add(drDestination.ItemArray);
+                    DataView dvDel = new DataView(dtDestination);
+                    dvDel.RowFilter = "Hash = " + drDestination["Hash"];
+                    foreach (DataRowView drv in dvDel)
+                    {
+                        dtDestination.Rows.Remove(drv.Row);
+                    }
+                }
+                dtDestination.AcceptChanges();
+            }
+            finally
+            {
+                _dtDestination.PrimaryKey = dcDestination;
+            }
             
         }
 
@@ -174,6 +276,40 @@ namespace Aphelion.Recon.RulesEngine
             DataColumn[] dcDestination = new DataColumn[1];
             dcDestination[0] = dtDestination.Columns["Hash"];
             //_dtDestination.PrimaryKey = dcDestination;
+            if (dtDestinationDuplicated == null)
+            {
+                dtDestinationDuplicated = dtDestination.Clone();
+            }
+            try
+            {
+                _dtDestination.PrimaryKey = dcDestination;
+            }
+            catch
+            {
+                //Checking for duplicates in Destination
+                var varDuplicateDestination = from r in dtDestination.AsEnumerable()
+                                              group r by r.Field<Int64>("Hash") into grp
+                                              where grp.Count() > 1
+                                              select grp;
+
+
+                foreach (IGrouping<Int64, DataRow> gr in varDuplicateDestination)
+                {
+                    DataRow drDestination = gr.ElementAt(0);
+                    dtDestinationDuplicated.Rows.Add(drDestination.ItemArray);
+                    DataView dvDel = new DataView(dtDestination);
+                    dvDel.RowFilter = "Hash = " + drDestination["Hash"];
+                    foreach (DataRowView drv in dvDel)
+                    {
+                        dtDestination.Rows.Remove(drv.Row);
+                    }
+                }
+                dtDestination.AcceptChanges();
+            }
+            finally
+            {
+                _dtDestination.PrimaryKey = dcDestination;
+            }
             
         }
         #endregion
@@ -236,8 +372,8 @@ namespace Aphelion.Recon.RulesEngine
                         Values[i + drSrc.ItemArray.Length] = drDest.ItemArray[i];
                     }
 
-                    DataRow drMatched = dtMatched.Rows.Add(Values);
 
+                    DataRow drMatched = dtMatched.Rows.Add(Values);
                     //Check the values
                     //If we have a list of fields to check
                     if (dictMatchFields != null)
@@ -299,6 +435,12 @@ namespace Aphelion.Recon.RulesEngine
                     dtDestinationUnmatched.Rows.Add(drDest.ItemArray);
                 }
             }
+
+           
+
+           
+
+
         }
 
         public decimal CompareRollup()
