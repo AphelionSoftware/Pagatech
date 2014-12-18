@@ -1,5 +1,3 @@
-﻿CREATE SCHEMA [mapping]
+﻿CREATE SCHEMA [Mapping]
     AUTHORIZATION [dbo];
-
-
 
