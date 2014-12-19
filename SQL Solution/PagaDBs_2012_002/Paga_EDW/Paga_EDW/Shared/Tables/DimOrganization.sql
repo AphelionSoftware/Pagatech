@@ -22,8 +22,20 @@
     [sys_ModifiedOn]                      DATETIME       DEFAULT (getdate()) NOT NULL,
     [sys_CreatedBy]                       VARCHAR (255)  DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]                       DATETIME       DEFAULT (getdate()) NOT NULL,
-    CONSTRAINT [pk_DimOrganizationID] PRIMARY KEY CLUSTERED ([DimOrganizationID] ASC)
+    CONSTRAINT [pk_DimOrganizationID] PRIMARY KEY CLUSTERED ([DimOrganizationID] ASC),
+    CONSTRAINT [fk_DimOrganization_DimBusinessTypeID] FOREIGN KEY ([DimBusinessTypeID]) REFERENCES [Classification].[DimBusinessType] ([DimBusinessTypeID]),
+    CONSTRAINT [fk_DimOrganization_DimChannelID] FOREIGN KEY ([DimChannelID]) REFERENCES [Shared].[DimProcessChannel] ([DimChannelID]),
+    CONSTRAINT [fk_DimOrganization_DimMerchantCategoryID] FOREIGN KEY ([DimMerchantCategoryID]) REFERENCES [Classification].[DimMerchantCategory] ([DimMerchantCategoryID]),
+    CONSTRAINT [fk_DimOrganization_DimOrganizationSubscriptionStatusID] FOREIGN KEY ([DimOrganizationSubscriptionStatusID]) REFERENCES [Classification].[DimOrganizationSubscriptionStatus] ([DimOrganizationSubscriptionStatusID]),
+    CONSTRAINT [fk_DimOrganization_DimOrganizationVerificationStatusID] FOREIGN KEY ([DimOrganizationVerificationStatusID]) REFERENCES [Classification].[DimOrganizationVerificationStatus] ([DimOrganizationVerificationStatusID]),
+    CONSTRAINT [fk_DimOrganization_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
+
+
+
+
 
 
 GO
@@ -107,4 +119,15 @@ FROM
 	LEFT JOIN dbo.OrganizationMerchantProcessChannel AS ompc ON
 		o.OrganizationId = ompc.OrganizationId
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+
+
+
+
+
+
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganization_SourceKey]
+    ON [Shared].[DimOrganization]([SourceKey] ASC, [DimChannelID] ASC, [DimMerchantCategoryID] ASC);
 

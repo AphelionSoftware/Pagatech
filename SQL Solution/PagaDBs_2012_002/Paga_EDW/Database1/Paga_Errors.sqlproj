@@ -14,7 +14,7 @@
     </RootPath>
     <RootNamespace>Database1</RootNamespace>
     <AssemblyName>Database1</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -23,6 +23,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -57,5 +59,35 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Errors\" />
+    <Folder Include="Errors\Tables\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Errors\Tables\Dim_BankingStatus.sql" />
+    <Build Include="Errors\Tables\Dim_Currency.sql" />
+    <Build Include="Errors\Tables\Dim_ExternalOrganization.sql" />
+    <Build Include="Errors\Tables\Dim_FinancialAccount.sql" />
+    <Build Include="Errors\Tables\Dim_FinancialAccountType.sql" />
+    <Build Include="Errors\Tables\Dim_FinancialTransactionType.sql" />
+    <Build Include="Errors\Tables\Dim_GLCode.sql" />
+    <Build Include="Errors\Tables\Dim_GLCodeGroup.sql" />
+    <Build Include="Errors\Tables\Dim_HoldingFinancialAccount.sql" />
+    <Build Include="Errors\Tables\Dim_InitiatingUser.sql" />
+    <Build Include="Errors\Tables\Dim_InitiatingUserRole.sql" />
+    <Build Include="Errors\Tables\Dim_IntegrationTransactionResult.sql" />
+    <Build Include="Errors\Tables\Dim_IntegrationTransactionType.sql" />
+    <Build Include="Errors\Tables\Dim_PagaAccount.sql" />
+    <Build Include="Errors\Tables\Dim_PagaAccountStatus.sql" />
+    <Build Include="Errors\Tables\Dim_ProcessChannel.sql" />
+    <Build Include="Errors\Tables\Dim_ProcessEvent.sql" />
+    <Build Include="Errors\Tables\Dim_ProcessStatus.sql" />
+    <Build Include="Errors\Tables\Dim_ProcessType.sql" />
+    <Build Include="Errors\Tables\Dim_Role.sql" />
+    <Build Include="Errors\Tables\Dim_User.sql" />
+    <Build Include="Errors\Tables\Fact_FinancialTransaction.sql" />
+    <Build Include="Errors\Tables\Fact_GLTransaction.sql" />
+    <Build Include="Errors\Tables\Fact_IntegrationTransaction.sql" />
+    <Build Include="Security\Errors.sql" />
   </ItemGroup>
 </Project>

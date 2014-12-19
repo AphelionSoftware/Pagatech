@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Errors].[Fact_FinancialTransaction] (
+﻿CREATE TABLE [Errors].[FactFinancialTransaction] (
     [QueueID]                       INT             NOT NULL,
     [SSISErrorCode]                 INT             NOT NULL,
     [SSISErrorColumn]               INT             NOT NULL,

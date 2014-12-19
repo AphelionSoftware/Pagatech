@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Errors].[Fact_GLTransaction] (
+﻿CREATE TABLE [Errors].[FactGLTransaction] (
     [QueueID]                    INT             NOT NULL,
     [SSISErrorCode]              INT             NOT NULL,
     [SSISErrorColumn]            INT             NOT NULL,

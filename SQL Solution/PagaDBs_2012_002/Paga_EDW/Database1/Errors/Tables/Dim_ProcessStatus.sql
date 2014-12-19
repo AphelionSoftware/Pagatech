@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Errors].[Dim_ProcessStatus] (
+﻿CREATE TABLE [Errors].[DimProcessStatus] (
     [QueueID]            INT           NOT NULL,
     [SSISErrorCode]      INT           NOT NULL,
     [SSISErrorColumn]    INT           NOT NULL,

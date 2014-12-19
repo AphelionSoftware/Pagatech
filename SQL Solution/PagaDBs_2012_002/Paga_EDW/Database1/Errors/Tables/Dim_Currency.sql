@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Errors].[Dim_Currency] (
+﻿CREATE TABLE [Errors].[DimCurrency] (
     [QueueID]         INT           NOT NULL,
     [SSISErrorCode]   INT           NOT NULL,
     [SSISErrorColumn] INT           NOT NULL,

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Errors].[Dim_InitiatingUserRole] (
+﻿CREATE TABLE [Errors].[DimInitiatingUserRole] (
     [QueueID]                 INT           NOT NULL,
     [SSISErrorCode]           INT           NOT NULL,
     [SSISErrorColumn]         INT           NOT NULL,

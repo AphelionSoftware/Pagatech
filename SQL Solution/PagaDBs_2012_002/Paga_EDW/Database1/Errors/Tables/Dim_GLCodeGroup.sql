@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Errors].[Dim_GLCodeGroup] (
+﻿CREATE TABLE [Errors].[DimGLCodeGroup] (
     [QueueID]          INT            NOT NULL,
     [SSISErrorCode]    INT            NOT NULL,
     [SSISErrorColumn]  INT            NOT NULL,

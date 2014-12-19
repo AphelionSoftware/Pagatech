@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Errors].[Dim_PagaAccountStatus] (
+﻿CREATE TABLE [Errors].[DimPagaAccountStatus] (
     [QueueID]                     INT           NOT NULL,
     [SSISErrorCode]               INT           NOT NULL,
     [SSISErrorColumn]             INT           NOT NULL,

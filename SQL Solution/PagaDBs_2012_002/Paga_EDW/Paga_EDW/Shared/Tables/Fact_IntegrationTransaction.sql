@@ -25,10 +25,12 @@
     CONSTRAINT [fk_FactIntegrationTransaction_DimIntegrationTxResultID] FOREIGN KEY ([DimIntegrationTxResultID]) REFERENCES [Shared].[DimIntegrationTransactionResult] ([DimIntegrationTxResultID]),
     CONSTRAINT [fk_FactIntegrationTransaction_DimIntegrationTxTimeID] FOREIGN KEY ([DimIntegrationTxTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactIntegrationTransaction_DimIntegrationTxTypeID] FOREIGN KEY ([DimIntegrationTxTypeID]) REFERENCES [Shared].[DimIntegrationTransactionType] ([DimIntegrationTxTypeID]),
-    CONSTRAINT [fk_FactIntegrationTransaction_DimProcessTypeID] FOREIGN KEY ([DimProcessTypeID]) REFERENCES [Shared].[DimProcessType] ([DimProcessTypeID]),
+    CONSTRAINT [fk_FactIntegrationTransaction_DimProcessTypeID] FOREIGN KEY ([DimProcessTypeID]) REFERENCES [Classification].[DimProcessType] ([DimProcessTypeID]),
     CONSTRAINT [fk_FactIntegrationTransaction_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactIntegrationTransaction_FactFinancialTxID] FOREIGN KEY ([FactFinancialTxID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTxID])
 );
+
+
 
 
 GO
