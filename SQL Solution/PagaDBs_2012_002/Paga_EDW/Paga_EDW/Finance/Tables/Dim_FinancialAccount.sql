@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Finance].[DimFinancialAccount] (
     [DimFinancialAccountID]        INT             IDENTITY (1, 1) NOT NULL,
-    [SourceKey]                    INT   NOT NULL,
+    [SourceKey]                    INT             NOT NULL,
     [Name]                         VARCHAR (255)   NOT NULL,
     [DimFinancialHoldingAccountID] INT             NULL,
     [DimBankAccountID]             INT             NOT NULL,
@@ -24,6 +24,10 @@
     CONSTRAINT [fk_DimFinancialAccount_DimFinancialHoldingAccount] FOREIGN KEY ([DimFinancialHoldingAccountID]) REFERENCES [Finance].[DimFinancialHoldingAccount] ([DimFinancialHoldingAccountID]),
     CONSTRAINT [fk_DimFinancialAccount_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
+
+
 
 
 
@@ -75,7 +79,7 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'WITH cte AS
 		fa.OpeningBalance,
 		fa.RestrictedBalance,
 		fa.TotalBalance,
-		DimBankAccountSourceKey =  COALESCE(fa.BankAccountId, ''UNKNOWN''),
+		DimBankAccountSourceKey =  COALESCE(fa.BankAccountId, -1),
 		DimCurrencySourceKey =  COALESCE(fa.CurrencyId, ''UNKNOWN''),
 		DimFinancialAccountTypeSourceKey = fa.FinancialAccountTypeId,
 		DimHoldingFinancialAccountSourceKey = fa.FinancialAccountId,
@@ -92,7 +96,7 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'WITH cte AS
 		fa1.OpeningBalance,
 		fa1.RestrictedBalance,
 		fa1.TotalBalance,
-		DimBankAccountSourceKey =  COALESCE(fa1.BankAccountId, ''UNKNOWN''),
+		DimBankAccountSourceKey =  COALESCE(fa1.BankAccountId, -1),
 		DimCurrencySourceKey =  COALESCE(fa1.CurrencyId, ''UNKNOWN''),
 		DimFinancialAccountTypeSourceKey = fa1.FinancialAccountTypeId,		
 		DimHoldingFinancialAccountSourceKey = fa1.HoldingFinancialAccountId,
@@ -122,15 +126,15 @@ FROM
 (
 	SELECT 
 		SourceKey = cte.SourceKey,
-		AccountNumber =  CONVERT(VARCHAR(20), cte.AccountNumber),
-		Name = CONVERT(VARCHAR(20), cte.AccountNumber),
+		AccountNumber =  cte.AccountNumber,
+		Name = cte.AccountNumber,
 		cte.OpeningBalance,
 		cte.RestrictedBalance,
 		cte.TotalBalance,
-		DimBankAccountSourceKey =  COALESCE(cte.dimBankAccountSourceKey,''UNKNOWN''),
+		DimBankAccountSourceKey =  COALESCE(cte.dimBankAccountSourceKey,-1),
 		DimCurrencySourceKey =  COALESCE(cte.DimCurrencySourceKey, ''UNKNOWN''),
 		DimFinancialAccountTypeSourceKey = cte.DimFinancialAccountTypeSourceKey,
-		DimPagaAccountSourceKey = COALESCE(paga_acct.PagaAccountId,''UNKNOWN''),
+		DimPagaAccountSourceKey = COALESCE(paga_acct.PagaAccountId,-1),
 		cte.DimHoldingFinancialAccountSourceKey
 	FROM cte 
 	OUTER APPLY
@@ -143,9 +147,11 @@ FROM
 		WHERE
 			pa.AccountHolderId = cte.AccountHolderId
 	) AS paga_acct
-) AS base_query
+) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount';
 
-', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount';
+
+
+
 
 
 GO

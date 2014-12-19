@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Finance].[DimFinancialHoldingAccount] (
     [DimFinancialHoldingAccountID] INT             IDENTITY (1, 1) NOT NULL,
-    [SourceKey]                    INT   NOT NULL,
+    [SourceKey]                    INT             NOT NULL,
     [Name]                         VARCHAR (255)   NOT NULL,
     [AccountNumber]                VARCHAR (20)    NULL,
     [RestrictedBalance]            DECIMAL (18, 2) NULL,
@@ -14,6 +14,8 @@
     [sys_CreatedOn]                DATETIME        DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimFinancialHoldingAccountID] PRIMARY KEY CLUSTERED ([DimFinancialHoldingAccountID] ASC)
 );
+
+
 
 
 GO
@@ -53,8 +55,7 @@ FROM
 (
 	SELECT 
 		SourceKey = fa.FinancialAccountId,
-		AccountNumber =  CONVERT(VARCHAR(20), fa.AccountNumber),
-		Name = CONVERT(VARCHAR(20), fa.AccountNumber),
+		AccountNumber = CONVERT(VARCHAR(20), fa.AccountNumber),					Name = CONVERT(VARCHAR(20), fa.AccountNumber),
 		fa.OpeningBalance,
 		fa.RestrictedBalance,
 		fa.TotalBalance
@@ -62,4 +63,6 @@ FROM
 	WHERE 
 		fa.HoldingFinancialAccountId IS NULL
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialHoldingAccount';
+
+
 
