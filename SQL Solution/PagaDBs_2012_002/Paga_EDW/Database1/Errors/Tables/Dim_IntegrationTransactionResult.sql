@@ -4,10 +4,12 @@
     [SSISErrorColumn]          INT           NOT NULL,
     [PackageName]              VARCHAR (255) NOT NULL,
     [ErrorType]                VARCHAR (255) NOT NULL,
-    [DimIntegrationTxResultID] INT           NOT NULL,
-    [SourceKey]                VARCHAR (50)  NULL,
     [DeltaHash]                BIGINT        NULL,
+    [DimIntegrationTxResultID] INT           NULL,
     [Name]                     VARCHAR (255) NULL,
+    [SourceKey]                VARCHAR (255) NOT NULL,
     [SourceKeyHash]            BIGINT        NULL
 );
+
+
 

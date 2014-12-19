@@ -4,12 +4,14 @@
     [SSISErrorColumn] INT           NOT NULL,
     [PackageName]     VARCHAR (255) NOT NULL,
     [ErrorType]       VARCHAR (255) NOT NULL,
-    [CurrencyName]    VARCHAR (300) NOT NULL,
-    [Entity]          VARCHAR (300) NOT NULL,
-    [SourceKey]       VARCHAR (10)  NOT NULL,
-    [DeltaHash]       BIGINT        NULL,
     [DimCurrencyID]   INT           NULL,
-    [Name]            VARCHAR (255) NULL,
-    [SourceKeyHash]   BIGINT        NULL
+    [DeltaHash]       BIGINT        NULL,
+    [ISOCode]         CHAR (3)      NULL,
+    [Name]            VARCHAR (255) NOT NULL,
+    [SourceKey]       VARCHAR (255) NOT NULL,
+    [SourceKeyHash]   BIGINT        NULL,
+    [Symbol]          VARCHAR (3)   NULL
 );
+
+
 

@@ -4,10 +4,12 @@
     [SSISErrorColumn]    INT           NOT NULL,
     [PackageName]        VARCHAR (255) NOT NULL,
     [ErrorType]          VARCHAR (255) NOT NULL,
-    [DimProcessStatusID] INT           NOT NULL,
-    [SourceKey]          VARCHAR (50)  NULL,
+    [DimProcessStatusID] INT           NULL,
     [DeltaHash]          BIGINT        NULL,
-    [Name]               VARCHAR (255) NULL,
+    [Name]               VARCHAR (255) NOT NULL,
+    [SourceKey]          VARCHAR (255) NOT NULL,
     [SourceKeyHash]      BIGINT        NULL
 );
+
+
 

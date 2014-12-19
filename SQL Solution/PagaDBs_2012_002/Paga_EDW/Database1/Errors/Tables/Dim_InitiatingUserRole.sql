@@ -4,14 +4,16 @@
     [SSISErrorColumn]         INT           NOT NULL,
     [PackageName]             VARCHAR (255) NOT NULL,
     [ErrorType]               VARCHAR (255) NOT NULL,
-    [DimInitiatingUserRoleID] INT           NOT NULL,
-    [DimRoleID]               INT           NULL,
-    [DimUserID]               INT           NULL,
-    [Role_SourceKey]          INT           NULL,
-    [User_SourceKey]          INT           NULL,
+    [DimInitiatingUserRoleID] INT           NULL,
     [DeltaHash]               BIGINT        NULL,
+    [DimRoleSourceKey]        VARCHAR (255) NOT NULL,
+    [DimUserSourceKey]        VARCHAR (255) NOT NULL,
     [Name]                    VARCHAR (255) NULL,
-    [SourceKey]               INT           NULL,
-    [SourceKeyHash]           BIGINT        NULL
+    [SourceKey]               INT           NOT NULL,
+    [SourceKeyHash]           BIGINT        NULL,
+    [DimRoleID]               INT           NULL,
+    [DimUserID]               INT           NULL
 );
+
+
 
