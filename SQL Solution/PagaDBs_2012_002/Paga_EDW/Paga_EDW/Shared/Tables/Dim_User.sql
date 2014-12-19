@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Shared].[DimUser] (
     [DimUserID]                   INT             IDENTITY (1, 1) NOT NULL,
-    [SourceKey]                   VARCHAR (255)   NOT NULL,
+    [SourceKey]                   INT   NOT NULL,
     [Name]                        VARCHAR (255)   NOT NULL,
     [DateOfBirthID]               INT             NULL,
     [DimPagaAccountID]            INT             NULL,

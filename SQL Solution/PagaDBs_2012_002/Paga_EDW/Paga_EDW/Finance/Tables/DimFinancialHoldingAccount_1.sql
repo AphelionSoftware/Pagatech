@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Finance].[DimFinancialHoldingAccount] (
     [DimFinancialHoldingAccountID] INT             IDENTITY (1, 1) NOT NULL,
-    [SourceKey]                    VARCHAR (255)   NOT NULL,
+    [SourceKey]                    INT   NOT NULL,
     [Name]                         VARCHAR (255)   NOT NULL,
     [AccountNumber]                VARCHAR (20)    NULL,
     [RestrictedBalance]            DECIMAL (18, 2) NULL,

@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Finance].[DimGLCodeGroup] (
     [DimGLCodeGroupID]     INT           IDENTITY (1, 1) NOT NULL,
-    [SourceKey]            VARCHAR (255) NOT NULL,
+    [SourceKey]            INT NOT NULL,
     [Name]                 VARCHAR (255) NOT NULL,
     [DimChartofAccountsID] INT           NOT NULL,
     [GLCodeRange]          VARCHAR (255) NULL,

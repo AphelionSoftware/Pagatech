@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Shared].[DimOrganizationUnitLevel3] (
     [DimOrganizationUnitLevel3ID] INT           IDENTITY (1, 1) NOT NULL,
-    [SourceKey]                   VARCHAR (255) NOT NULL,
+    [SourceKey]                   INT NOT NULL,
     [Name]                        VARCHAR (255) NOT NULL,
     [DimOrganizationUnitLevel2ID] INT           NOT NULL,
     [DimOrganizationUnitTypeID]   INT           NOT NULL,
