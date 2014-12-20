@@ -7,14 +7,20 @@
     [IdentificationNumber]        VARCHAR (20)  NULL,
     [SourceKeyHash]               BIGINT        NULL,
     [DeltaHash]                   BIGINT        NULL,
-    [sys_ModifiedBy]              VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn]              DATETIME      DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]               VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]               DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_ModifiedBy]              VARCHAR (255) CONSTRAINT [DF__DimOrgani__sys_M__2EA5EC27] DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]              DATETIME      CONSTRAINT [DF__DimOrgani__sys_M__2F9A1060] DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]               VARCHAR (255) CONSTRAINT [DF__DimOrgani__sys_C__308E3499] DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]               DATETIME      CONSTRAINT [DF__DimOrgani__sys_C__318258D2] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationUnitLevel2ID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitLevel2ID] ASC),
     CONSTRAINT [fk_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID] FOREIGN KEY ([DimOrganizationUnitLevel1ID]) REFERENCES [Shared].[DimOrganizationUnitLevel1] ([DimOrganizationUnitLevel1ID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID])
 );
+
+
+
+
+
+
 
 
 
@@ -62,15 +68,14 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'OrganizationUnit
 
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SET NOCOUNT ON;
-DECLARE @OrgLevel AS INT = 2
-
+DECLARE @OrgLevel AS INT = 2;
 DECLARE @OrgUnit AS Table
 (
 	[SourceKey] [varchar](255) ,
 	[Name] [varchar](255) ,
-	[DimOrganizationUnitLevel1SourceKey] [int],
+	[DimOrganizationSourceKey] [int],
 	[DimOrganizationUnitTypeSourceKey] [varchar](50),
-	[IdentificationNumber] [varchar](20)
+	[IdentificationNumber] [varchar](20) 
 );
 
 WITH cte AS
@@ -111,7 +116,7 @@ WITH cte AS
 	(
 		SourceKey,
 		Name,
-		DimOrganizationUnitLevel1SourceKey,
+		DimOrganizationSourceKey,
 		DimOrganizationUnitTypeSourceKey,
 		IdentificationNumber
 	)
@@ -119,23 +124,28 @@ WITH cte AS
 	SELECT
 		SourceKey = cte.OrganizationUnitId,
 		Name = CONVERT(VARCHAR(255),cte.UnitName),
-		DimOrganizationUnitLevel1SourceKey = cte.ParentOrganizationUnitId,
-		DimOrganizationTypeSourceKey = COALESCE(cte.[Description], -1),
+		DimOrganizationSourceKey = cte.OrganizationId,
+		DimOrganizationTypeSourceKey = COALESCE(LTRIM(RTRIM(cte.[Description])), ''UNKNOWN''),
 		IdentificationNumber
 	FROM cte
 	WHERE 
-		cte.OrgLevel BETWEEN 1 AND @OrgLevel
+		cte.OrgLevel = @OrgLevel
 	
 	
 	SELECT 
 		SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I''),
 		base_query.Name,
-		base_query.DimOrganizationUnitLevel1SourceKey,
+		DimOrganizationUnitLevel1SourceKey = base_query.DimOrganizationSourceKey,
 		base_query.DimOrganizationUnitTypeSourceKey,
-		base_query.IdentificationNumber
-		
+		base_query.IdentificationNumber,
+		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 	FROM @OrgUnit AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel2';
+
+
+
+
+
+
 
 
 

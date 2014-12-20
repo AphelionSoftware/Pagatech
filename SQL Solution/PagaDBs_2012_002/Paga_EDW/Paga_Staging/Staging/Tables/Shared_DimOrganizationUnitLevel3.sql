@@ -6,6 +6,8 @@
     [SourceKey]                          INT           NOT NULL,
     [SourceKeyHash]                      BIGINT        NULL,
     [DimOrganizationUnitLevel2SourceKey] INT           NOT NULL,
-    [DimOrganizationUnitTypeSourceKey]   INT           NOT NULL
+    [DimOrganizationUnitTypeSourceKey]   VARCHAR (255) NOT NULL
 );
+
+
 

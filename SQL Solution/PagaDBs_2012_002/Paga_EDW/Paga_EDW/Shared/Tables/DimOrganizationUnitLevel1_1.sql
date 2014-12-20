@@ -7,14 +7,18 @@
     [IdentificationNumber]        VARCHAR (20)  NULL,
     [SourceKeyHash]               BIGINT        NULL,
     [DeltaHash]                   BIGINT        NULL,
-    [sys_ModifiedBy]              VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn]              DATETIME      DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]               VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]               DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_ModifiedBy]              VARCHAR (255) CONSTRAINT [DF__DimOrgani__sys_M__32767D0B] DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]              DATETIME      CONSTRAINT [DF__DimOrgani__sys_M__336AA144] DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]               VARCHAR (255) CONSTRAINT [DF__DimOrgani__sys_C__345EC57D] DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]               DATETIME      CONSTRAINT [DF__DimOrgani__sys_C__3552E9B6] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationUnitLevel1ID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitLevel1ID] ASC),
     CONSTRAINT [fk_DimOrganizationUnitLevel1_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel1_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID])
 );
+
+
+
+
 
 
 
@@ -121,7 +125,7 @@ WITH cte AS
 		SourceKey = cte.OrganizationUnitId,
 		Name = CONVERT(VARCHAR(255),cte.UnitName),
 		DimOrganizationSourceKey = cte.OrganizationId,
-		DimOrganizationTypeSourceKey = COALESCE(cte.[Description], -1),
+		DimOrganizationTypeSourceKey = COALESCE(LTRIM(RTRIM(cte.[Description])), ''PARENT ORGANIZATION''),
 		IdentificationNumber
 	FROM cte
 	WHERE 
@@ -136,6 +140,10 @@ WITH cte AS
 		base_query.IdentificationNumber,
 		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 	FROM @OrgUnit AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel1';
+
+
+
+
 
 
 

@@ -1,15 +1,19 @@
 ﻿CREATE TABLE [Classification].[DimOrganizationUnitType] (
     [DimOrganizationUnitTypeID] INT           IDENTITY (1, 1) NOT NULL,
-    [SourceKey]                 INT           NOT NULL,
+    [SourceKey]                 VARCHAR (255) NOT NULL,
     [Name]                      VARCHAR (255) NOT NULL,
     [SourceKeyHash]             BIGINT        NULL,
     [DeltaHash]                 BIGINT        NULL,
-    [sys_ModifiedBy]            VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn]            DATETIME      DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]             VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]             DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_ModifiedBy]            VARCHAR (255) CONSTRAINT [DF__DimOrgani__sys_M__7F2BE32F] DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]            DATETIME      CONSTRAINT [DF__DimOrgani__sys_M__00200768] DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]             VARCHAR (255) CONSTRAINT [DF__DimOrgani__sys_C__01142BA1] DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]             DATETIME      CONSTRAINT [DF__DimOrgani__sys_C__02084FDA] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationUnitTypeID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitTypeID] ASC)
 );
+
+
+
+
 
 
 
@@ -79,6 +83,10 @@ FROM
 	WHERE 
 		org_unit_type.rn = 1
 ) AS base_query ', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitType';
+
+
+
+
 
 
 
