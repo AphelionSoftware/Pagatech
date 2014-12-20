@@ -43,8 +43,10 @@ namespace Aphelion.Recon.RulesEngine
             {
                 _dtSource = value;
                 _dtSource.Columns.Add("Hash", (typeof(Int64)));
-                
+
                 _dtSource.Columns.Add("SourceKey", (typeof(string)));
+
+                //_dtSource.Columns.Add("Value", (typeof(decimal)));
                
                 
             }
@@ -66,7 +68,8 @@ namespace Aphelion.Recon.RulesEngine
                 //dcDestination[0] = dtDestination.Columns["Hash"];
                 //_dtDestination.PrimaryKey = dcDestination;
                 _dtDestination.Columns.Add("SourceKey", (typeof(string)));
-
+                //_dtDestination.Columns.Add("Value", (typeof(decimal)));
+               
                
                 
                 
@@ -192,7 +195,7 @@ namespace Aphelion.Recon.RulesEngine
                     {
                         dtSource.Rows.Remove(drv.Row);
                     }
-                }
+                } 
                 dtSource.AcceptChanges();
             }
             finally

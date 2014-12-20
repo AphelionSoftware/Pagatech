@@ -190,11 +190,12 @@ namespace Aphelion.Recon
 
         private void LoadDetails(DataRow drSummary)
         {
+            #region Balanced
             foreach (DataRow drMatch in this.rbCompare.dtMatchedBalanced.Rows)
             {
                 DataRow drSource = dtDetail.Rows.Add();
                 drSource["ReconSummaryID"] = drSummary["ID"];
-                drSource["ReconItemStatusID"] = TypeCache.GetTypeCache().getReconStatusID("AUTO");
+                drSource["ReconItemStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconItemStatusID("AUTO");
                 drSource["Value"] = drMatch["SrcValue"];
                 drSource["SourceKey"] = drMatch["SrcSourceKey"];
                 drSource.AcceptChanges();
@@ -202,7 +203,7 @@ namespace Aphelion.Recon
                 DataRow drDestination = dtDetail.Rows.Add();
                 drDestination["ReconSummaryID"] = drSummary["ID"];
                 drDestination["MatchedReconDetailID"] = drSource["ID"];
-                drDestination["ReconItemStatusID"] = TypeCache.GetTypeCache().getReconStatusID("AUTO");
+                drDestination["ReconItemStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconItemStatusID("AUTO");
                 drDestination["Value"] = drMatch["SrcValue"];
                 drDestination["DestinationKey"] = drMatch["SrcDestinationKey"];
                 drDestination.AcceptChanges();
@@ -210,8 +211,73 @@ namespace Aphelion.Recon
                 //Match back the rows - so it's a two way match. 
                 drSource["MatchedReconDetailID"] = drDestination["ID"];
                 drSource.AcceptChanges();
-            
+
             }
+            #endregion
+            #region Matched
+            foreach (DataRow drMatch in this.rbCompare.dtMatchedUnbalanced.Rows)
+            {
+                DataRow drSource = dtDetail.Rows.Add();
+                drSource["ReconSummaryID"] = drSummary["ID"];
+                drSource["ReconItemStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconItemStatusID("UNBAL");
+                drSource["Value"] = drMatch["SrcValue"];
+                drSource["SourceKey"] = drMatch["SrcSourceKey"];
+                drSource.AcceptChanges();
+
+                DataRow drDestination = dtDetail.Rows.Add();
+                drDestination["ReconSummaryID"] = drSummary["ID"];
+                drDestination["MatchedReconDetailID"] = drSource["ID"];
+                drDestination["ReconItemStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconItemStatusID("UNBAL");
+                drDestination["Value"] = drMatch["SrcValue"];
+                drDestination["DestinationKey"] = drMatch["SrcDestinationKey"];
+                drDestination.AcceptChanges();
+
+                //Match back the rows - so it's a two way match. 
+                drSource["MatchedReconDetailID"] = drDestination["ID"];
+                drSource.AcceptChanges();
+
+            }
+            #endregion
+            #region Unmatched
+            foreach (DataRow drMatch in this.rbCompare.dtSourceUnmatched.Rows)
+            {
+                DataRow drSource = dtDetail.Rows.Add();
+                drSource["ReconSummaryID"] = drSummary["ID"];
+                drSource["ReconItemStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconItemStatusID("UNMATCH");
+                drSource["Value"] = drMatch["SrcValue"];
+                drSource["SourceKey"] = drMatch["SourceKey"];
+                drSource.AcceptChanges();
+            } 
+            foreach (DataRow drMatch in this.rbCompare.dtDestinationUnmatched.Rows)
+            {
+                DataRow drDestination = dtDetail.Rows.Add();
+                drDestination["ReconSummaryID"] = drSummary["ID"];
+                drDestination["ReconItemStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconItemStatusID("UNMATCH");
+                drDestination["Value"] = drMatch["SrcValue"];
+                drDestination["DestinationKey"] = drMatch["SourceKey"];
+                drDestination.AcceptChanges();
+            }
+            #endregion
+            #region Duplicated
+            foreach (DataRow drMatch in this.rbCompare.dtSourceDuplicated.Rows)
+            {
+                DataRow drSource = dtDetail.Rows.Add();
+                drSource["ReconSummaryID"] = drSummary["ID"];
+                drSource["ReconItemStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconItemStatusID("DUP");
+                drSource["Value"] = drMatch["SrcValue"];
+                drSource["SourceKey"] = drMatch["SrcSourceKey"];
+                drSource.AcceptChanges();
+            } 
+            foreach (DataRow drMatch in this.rbCompare.dtDestinationDuplicated.Rows)
+            {
+                DataRow drDestination = dtDetail.Rows.Add();
+                drDestination["ReconSummaryID"] = drSummary["ID"];
+                drDestination["ReconItemStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconItemStatusID("DUP");
+                drDestination["Value"] = drMatch["SrcValue"];
+                drDestination["DestinationKey"] = drMatch["SourceKey"];
+                drDestination.AcceptChanges();
+            }
+            #endregion 
         }
         private void LoadSummaryAsDetails(DataRow drSummary)
         {
