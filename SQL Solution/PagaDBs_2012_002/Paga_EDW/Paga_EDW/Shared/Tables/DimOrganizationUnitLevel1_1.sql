@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Shared].[DimOrganizationUnitLevel1] (
     [DimOrganizationUnitLevel1ID] INT           IDENTITY (1, 1) NOT NULL,
-    [SourceKey]                   INT NOT NULL,
+    [SourceKey]                   INT           NOT NULL,
     [Name]                        VARCHAR (255) NOT NULL,
     [DimOrganizationID]           INT           NOT NULL,
     [DimOrganizationUnitTypeID]   INT           NOT NULL,
@@ -15,6 +15,10 @@
     CONSTRAINT [fk_DimOrganizationUnitLevel1_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel1_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID])
 );
+
+
+
+
 
 
 GO
@@ -117,7 +121,7 @@ WITH cte AS
 		SourceKey = cte.OrganizationUnitId,
 		Name = CONVERT(VARCHAR(255),cte.UnitName),
 		DimOrganizationSourceKey = cte.OrganizationId,
-		DimOrganizationTypeSourceKey = COALESCE(cte.[Description], ''UNKNOWN''),
+		DimOrganizationTypeSourceKey = COALESCE(cte.[Description], -1),
 		IdentificationNumber
 	FROM cte
 	WHERE 
@@ -132,4 +136,8 @@ WITH cte AS
 		base_query.IdentificationNumber,
 		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
 	FROM @OrgUnit AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel1';
+
+
+
+
 

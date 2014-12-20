@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Shared].[DimOrganization] (
     [DimOrganizationID]                   INT            IDENTITY (1, 1) NOT NULL,
-    [SourceKey]                           INT  NOT NULL,
+    [SourceKey]                           INT            NOT NULL,
     [Name]                                VARCHAR (255)  NOT NULL,
     [DimBusinessTypeID]                   INT            NOT NULL,
     [DimOrganizationSubscriptionStatusID] INT            NOT NULL,
@@ -30,6 +30,8 @@
     CONSTRAINT [fk_DimOrganization_DimOrganizationVerificationStatusID] FOREIGN KEY ([DimOrganizationVerificationStatusID]) REFERENCES [Classification].[DimOrganizationVerificationStatus] ([DimOrganizationVerificationStatusID]),
     CONSTRAINT [fk_DimOrganization_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
 
 
 
@@ -92,7 +94,7 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
 	DimOrganizationSubscriptionStatusSourceKey, 
 	DimOrganizationVerificationStatusSourceKey,
 	DimMerchantCategorySourceKey,
-	DimChannelSourceKey
+	DimProcessChannelSourceKey
 	
 FROM 
 (
@@ -112,13 +114,15 @@ FROM
 		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId, 
 		DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId,
 		DimMerchantCategorySourceKey = CONVERT(VARCHAR(50), COALESCE(omc.MerchantCategoryId, ''UNKNOWN'')),
-		DimChannelSourceKey = CONVERT(VARCHAR(50), COALESCE(ompc.ProcessChannelId, ''UNKNOWN''))
+		DimProcessChannelSourceKey = CONVERT(VARCHAR(50), COALESCE(ompc.ProcessChannelId, ''UNKNOWN''))
 	FROM dbo.Organization AS o
 	LEFT JOIN dbo.OrganizationMerchantCategory AS omc ON
 		o.OrganizationId = omc.OrganizationId
 	LEFT JOIN dbo.OrganizationMerchantProcessChannel AS ompc ON
 		o.OrganizationId = ompc.OrganizationId
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+
+
 
 
 
