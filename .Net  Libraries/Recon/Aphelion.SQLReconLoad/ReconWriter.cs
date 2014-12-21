@@ -190,7 +190,10 @@ namespace Aphelion.Recon
 
         private void LoadDetails(DataRow drSummary)
         {
+
+            bool boolInsert = true;
             #region Balanced
+            
             foreach (DataRow drMatch in this.rbCompare.dtMatchedBalanced.Rows)
             {
                 DataRow drSource = dtDetail.Rows.Add();
@@ -211,6 +214,7 @@ namespace Aphelion.Recon
                 //Match back the rows - so it's a two way match. 
                 drSource["MatchedReconDetailID"] = drDestination["ID"];
                 drSource.AcceptChanges();
+
 
             }
             #endregion
@@ -236,6 +240,7 @@ namespace Aphelion.Recon
                 drSource["MatchedReconDetailID"] = drDestination["ID"];
                 drSource.AcceptChanges();
 
+
             }
             #endregion
             #region Unmatched
@@ -244,7 +249,7 @@ namespace Aphelion.Recon
                 DataRow drSource = dtDetail.Rows.Add();
                 drSource["ReconSummaryID"] = drSummary["ID"];
                 drSource["ReconItemStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconItemStatusID("UNMATCH");
-                drSource["Value"] = drMatch["SrcValue"];
+                drSource["Value"] = drMatch["Value"];
                 drSource["SourceKey"] = drMatch["SourceKey"];
                 drSource.AcceptChanges();
             } 
@@ -253,7 +258,7 @@ namespace Aphelion.Recon
                 DataRow drDestination = dtDetail.Rows.Add();
                 drDestination["ReconSummaryID"] = drSummary["ID"];
                 drDestination["ReconItemStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconItemStatusID("UNMATCH");
-                drDestination["Value"] = drMatch["SrcValue"];
+                drDestination["Value"] = drMatch["Value"];
                 drDestination["DestinationKey"] = drMatch["SourceKey"];
                 drDestination.AcceptChanges();
             }
@@ -264,8 +269,8 @@ namespace Aphelion.Recon
                 DataRow drSource = dtDetail.Rows.Add();
                 drSource["ReconSummaryID"] = drSummary["ID"];
                 drSource["ReconItemStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconItemStatusID("DUP");
-                drSource["Value"] = drMatch["SrcValue"];
-                drSource["SourceKey"] = drMatch["SrcSourceKey"];
+                drSource["Value"] = drMatch["Value"];
+                drSource["SourceKey"] = drMatch["SourceKey"];
                 drSource.AcceptChanges();
             } 
             foreach (DataRow drMatch in this.rbCompare.dtDestinationDuplicated.Rows)
@@ -273,11 +278,26 @@ namespace Aphelion.Recon
                 DataRow drDestination = dtDetail.Rows.Add();
                 drDestination["ReconSummaryID"] = drSummary["ID"];
                 drDestination["ReconItemStatusID"] = TypeCache.GetTypeCache(this.sqlConn.ConnectionString).getReconItemStatusID("DUP");
-                drDestination["Value"] = drMatch["SrcValue"];
-                drDestination["DestinationKey"] = drMatch["SourceKey"];
+                drDestination["Value"] = drMatch["Value"];
+                drDestination["SourceKey"] = drMatch["SourceKey"];
                 drDestination.AcceptChanges();
             }
             #endregion 
+
+            
+            if (boolInsert)
+            {
+                SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConn);
+                bulkCopy.BatchSize = 20000;
+                bulkCopy.DestinationTableName = "Recon." + dtDetail.TableName;
+                for (int i = 0; i < dtDetail.Columns.Count; i++)
+                {
+                    SqlBulkCopyColumnMapping cMap = new SqlBulkCopyColumnMapping(i, i);
+                    bulkCopy.ColumnMappings.Add(cMap);
+                }
+                bulkCopy.WriteToServer(dtDetail);
+
+            }
         }
         private void LoadSummaryAsDetails(DataRow drSummary)
         {

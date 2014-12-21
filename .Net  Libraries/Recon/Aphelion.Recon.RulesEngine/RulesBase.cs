@@ -118,6 +118,7 @@ namespace Aphelion.Recon.RulesEngine
             if (dtSourceDuplicated == null)
             {
                 dtSourceDuplicated = dtSource.Clone();
+                dtSourceDuplicated.Columns.Add("Value");
             }
             try
             {
@@ -172,6 +173,8 @@ namespace Aphelion.Recon.RulesEngine
             if (dtSourceDuplicated == null)
             {
                 dtSourceDuplicated = dtSource.Clone();
+
+                dtSourceDuplicated.Columns.Add("Value");
             }
             try
             {
@@ -228,6 +231,7 @@ namespace Aphelion.Recon.RulesEngine
             if (dtDestinationDuplicated == null)
             {
                 dtDestinationDuplicated = dtDestination.Clone();
+                dtDestinationDuplicated.Columns.Add("Value");
             }
             try
             {
@@ -282,6 +286,7 @@ namespace Aphelion.Recon.RulesEngine
             if (dtDestinationDuplicated == null)
             {
                 dtDestinationDuplicated = dtDestination.Clone();
+                dtDestinationDuplicated.Columns.Add("Value");
             }
             try
             {
@@ -337,7 +342,9 @@ namespace Aphelion.Recon.RulesEngine
             dtMatchedUnbalanced = dtMatchedBalanced.Clone();
 
             dtSourceUnmatched = dtSource.Clone();
+            dtSourceUnmatched.Columns.Add("Value");
             dtDestinationUnmatched = dtDestination.Clone();
+            dtDestinationUnmatched.Columns.Add("Value");
 
             dictSrcKeys = new Dictionary<string, int>();
             dictDestKeys = new Dictionary<string, int>();
