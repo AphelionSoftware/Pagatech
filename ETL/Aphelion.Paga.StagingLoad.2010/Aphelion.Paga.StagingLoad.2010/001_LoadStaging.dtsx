@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="111"
-  DTS:VersionGUID="{B9E3F971-1280-43DE-ABF7-C7D53E4F6E81}">
+  DTS:VersionBuild="121"
+  DTS:VersionGUID="{B50FA6C4-D710-4E7F-A728-E69DCE1B0020}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -34,7 +34,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">WHERE TABLE_SCHEMA = 'Shared'</DTS:Property>
+        DTS:Name="ParameterValue">WHERE TABLE_SCHEMA = 'Finance'</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -119,7 +119,7 @@ FROM
 				t.TABLE_SCHEMA,
 				major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  
 			FROM INFORMATION_SCHEMA.TABLES AS t
-				WHERE TABLE_SCHEMA = 'Shared'
+				WHERE TABLE_SCHEMA = 'Finance'
 		) AS table_list
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
