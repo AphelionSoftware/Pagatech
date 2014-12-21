@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)' != 'Release' ">
+    <UseDesignTimeFeatures>true</UseDesignTimeFeatures>
+  </PropertyGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{f9e87b6c-e53c-447f-858a-0bef2ba615b5}</ProjectGuid>
+    <LightSwitchVersion>v4.5</LightSwitchVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.Default.props" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.props" />
+  <PropertyGroup>
+    <!--TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetPlatformVersion>8.0</TargetPlatformVersion-->
+    <LightSwitchProjectTypeV45>Client</LightSwitchProjectTypeV45>
+    <LightSwitchProjectSubType>JScript</LightSwitchProjectSubType>
+    <ProjectTypeGuids>{8BB0C5E8-0616-4F60-8E55-A43933E57E9C};{262852c6-cd72-467d-83fe-5eeb1973a190}</ProjectTypeGuids>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <SupportedCultures>en-US</SupportedCultures>
+    <DefaultPlatform>AnyCPU</DefaultPlatform>
+    <ClientProjectName>HTMLClient</ClientProjectName>
+    <ServerProjectReference>..\Aphelion.ReconAdmin.Server\Aphelion.ReconAdmin.Server.csproj</ServerProjectReference>
+    <LightSwitchDisplayName>HTMLClient</LightSwitchDisplayName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Content\dark-theme-2.5.0.css" />
+    <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\icons-18-black.png" />
+    <Content Include="Content\Images\icons-18-white.png" />
+    <Content Include="Content\Images\icons-36-black.png" />
+    <Content Include="Content\Images\icons-36-white.png" />
+    <Content Include="Content\Images\msls-black-icons-18.png" />
+    <Content Include="Content\Images\msls-black-icons-36.png" />
+    <Content Include="Content\Images\msls-loader-dark.gif" />
+    <Content Include="Content\Images\msls-loader-light.gif" />
+    <Content Include="Content\Images\msls-white-icons-18.png" />
+    <Content Include="Content\Images\msls-white-icons-36.png" />
+    <Content Include="Content\Images\msls-blue-icons-36.png" />
+    <Content Include="Content\jquery.mobile-1.3.0.css" />
+    <Content Include="Content\jquery.mobile-1.3.0.min.css" />
+    <Content Include="Content\jquery.mobile.structure-1.3.0.css" />
+    <Content Include="Content\jquery.mobile.structure-1.3.0.min.css" />
+    <Content Include="Content\jquery.mobile.theme-1.3.0.css" />
+    <Content Include="Content\jquery.mobile.theme-1.3.0.min.css" />
+    <Content Include="Content\light-theme-2.5.0.css" />
+    <Content Include="Content\msls-2.5.0.css" />
+    <Content Include="Content\msls-2.5.0.min.css" />
+    <Content Include="Content\msls-dark-2.5.0.css" />
+    <Content Include="Content\msls-light-2.5.0.css" />
+    <Content Include="default.htm" />
+    <Content Include="Content\user-customization.css" />
+    <Content Include="Content\Images\user-logo.png" />
+    <Content Include="Content\Images\user-logo.ico" />
+    <Content Include="Content\Images\user-logo-144.png" />
+    <Content Include="Content\Images\user-splash-screen.png" />
+    <Content Include="Content\Web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Screens\Fields\AddEditFileField.lsml.js">
+      <DependentUpon>AddEditFileField.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Fields\AddEditReconField.lsml.js">
+      <DependentUpon>AddEditReconField.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Fields\AddEditSystemField.lsml.js">
+      <DependentUpon>AddEditSystemField.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Fields\ViewSystemField.lsml.js">
+      <DependentUpon>ViewSystemField.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Fields\ViewFileField.lsml.js">
+      <DependentUpon>ViewFileField.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Fields\ViewReconField.lsml.js">
+      <DependentUpon>ViewReconField.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\FileDefinitions\AddEditFileDefinition.lsml.js">
+      <DependentUpon>AddEditFileDefinition.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\FileDefinitions\AddEditFileSection.lsml.js">
+      <DependentUpon>AddEditFileSection.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\FileDefinitions\ViewFileDefinition.lsml.js">
+      <DependentUpon>ViewFileDefinition.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\FileDefinitions\ViewFileSection.lsml.js">
+      <DependentUpon>ViewFileSection.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\ReconProcesses\AddEditReconProcess.lsml.js">
+      <DependentUpon>AddEditReconProcess.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\ReconProcesses\AddEditReconProcessStep.lsml.js">
+      <DependentUpon>AddEditReconProcessStep.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\ReconProcesses\AddEditReconSource.lsml.js">
+      <DependentUpon>AddEditReconSource.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\ReconProcesses\ViewReconProcess.lsml.js">
+      <DependentUpon>ViewReconProcess.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\ReconProcesses\ViewReconProcessStep.lsml.js">
+      <DependentUpon>ViewReconProcessStep.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\ReconStatusSet\AddEditReconItemStatu.lsml.js">
+      <DependentUpon>AddEditReconItemStatu.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\ReconStatusSet\AddEditReconStatus.lsml.js">
+      <DependentUpon>AddEditReconStatus.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\ReconStatusSet\ViewReconItemStatu.lsml.js">
+      <DependentUpon>ViewReconItemStatu.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\ReconStatusSet\ViewReconStatus.lsml.js">
+      <DependentUpon>ViewReconStatus.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\TypesSet\ViewFileType.lsml.js">
+      <DependentUpon>ViewFileType.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\TypesSet\ViewReconSourceType.lsml.js">
+      <DependentUpon>ViewReconSourceType.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\TypesSet\ViewReconType.lsml.js">
+      <DependentUpon>ViewReconType.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\TypesSet\ViewFieldTypes.lsml.js">
+      <DependentUpon>ViewFieldTypes.lsml</DependentUpon>
+    </Content>
+    <Content Include="Scripts\datajs-1.1.1.js" />
+    <Content Include="Scripts\datajs-1.1.1.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.mobile-1.3.0-vsdoc.js" />
+    <Content Include="Scripts\jquery.mobile-1.3.0.js" />
+    <Content Include="Scripts\jquery.mobile-1.3.0.min.js" />
+    <Content Include="Scripts\LightSwitchTools.js" />
+    <Content Include="Scripts\msls.js" />
+    <Content Include="Scripts\msls-2.5.0-vsdoc.js" />
+    <Content Include="Scripts\msls-2.5.0.js" />
+    <Content Include="Scripts\msls-2.5.0.min.js" />
+    <Content Include="Scripts\winjs-1.0.js" />
+    <Content Include="Scripts\winjs-1.0.min.js" />
+    <Content Include="UserCode\FileSection.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\FileType.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\ImportedFile.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\ImportFileField_ReconField.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\ReconDetail.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\ReconField.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\ReconItemStatu.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\ReconProcess.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\ReconProcessStep.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\ReconSource.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\ReconSourceType.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\ReconStatu.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\ReconSummary.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\ReconType.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\SystemField.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ServiceMetadataReference Include="..\Aphelion.ReconAdmin.Server\Aphelion.ReconAdmin.Server.csproj">
+      <Visible>false</Visible>
+    </ServiceMetadataReference>
+  </ItemGroup>
+  <ItemGroup>
+    <LightSwitchModel Include="Properties\Client.lsml">
+      <ProjectCritical>true</ProjectCritical>
+    </LightSwitchModel>
+    <LightSwitchModel Include="Properties\Proxies.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\FieldTypes.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\FileDefinitions.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\FileFields.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\FileSections.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\FileTypes.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\ImportedFiles.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\ImportFileField_ReconFields.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\ReconDetails.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\ReconFields.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\ReconItemStatus.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\ReconProcesses.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\ReconProcessSteps.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\ReconSources.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\ReconSourceTypes.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\ReconStatus.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\ReconSummaries.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\ReconTypes.lsml" />
+    <LightSwitchModel Include="Properties\ReconData\SystemFields.lsml" />
+    <LightSwitchModel Include="Screens\Fields\AddEditSystemField.lsml" />
+    <LightSwitchModel Include="Screens\Fields\AddEditFileField.lsml" />
+    <LightSwitchModel Include="Screens\Fields\AddEditReconField.lsml" />
+    <LightSwitchModel Include="Screens\Fields\BrowseSystemFields.lsml" />
+    <LightSwitchModel Include="Screens\Fields\BrowseFileFields.lsml" />
+    <LightSwitchModel Include="Screens\Fields\BrowseReconFields.lsml" />
+    <LightSwitchModel Include="Screens\Fields\ViewSystemField.lsml" />
+    <LightSwitchModel Include="Screens\Fields\ViewFileField.lsml" />
+    <LightSwitchModel Include="Screens\Fields\ViewReconField.lsml" />
+    <LightSwitchModel Include="Screens\FileDefinitions\AddEditFileDefinition.lsml" />
+    <LightSwitchModel Include="Screens\FileDefinitions\AddEditFileSection.lsml" />
+    <LightSwitchModel Include="Screens\FileDefinitions\BrowseFileDefinitions.lsml" />
+    <LightSwitchModel Include="Screens\FileDefinitions\BrowseFileSections.lsml" />
+    <LightSwitchModel Include="Screens\FileDefinitions\ViewFileDefinition.lsml" />
+    <LightSwitchModel Include="Screens\FileDefinitions\ViewFileSection.lsml" />
+    <LightSwitchModel Include="Screens\Home.lsml" />
+    <LightSwitchModel Include="Screens\ReconProcesses\AddEditReconProcess.lsml" />
+    <LightSwitchModel Include="Screens\ReconProcesses\AddEditReconProcessStep.lsml" />
+    <LightSwitchModel Include="Screens\ReconProcesses\AddEditReconSource.lsml" />
+    <LightSwitchModel Include="Screens\ReconProcesses\BrowseReconProcesses.lsml" />
+    <LightSwitchModel Include="Screens\ReconProcesses\BrowseReconProcessSteps.lsml" />
+    <LightSwitchModel Include="Screens\ReconProcesses\BrowseReconSources.lsml" />
+    <LightSwitchModel Include="Screens\ReconProcesses\ViewReconProcess.lsml" />
+    <LightSwitchModel Include="Screens\ReconProcesses\ViewReconProcessStep.lsml" />
+    <LightSwitchModel Include="Screens\ReconStatusSet\AddEditReconItemStatu.lsml" />
+    <LightSwitchModel Include="Screens\ReconStatusSet\AddEditReconStatus.lsml" />
+    <LightSwitchModel Include="Screens\ReconStatusSet\BrowseReconItemStatus.lsml" />
+    <LightSwitchModel Include="Screens\ReconStatusSet\BrowseReconStatusSet.lsml" />
+    <LightSwitchModel Include="Screens\ReconStatusSet\ViewReconItemStatu.lsml" />
+    <LightSwitchModel Include="Screens\ReconStatusSet\ViewReconStatus.lsml" />
+    <LightSwitchModel Include="Screens\TypesSet\AddEditFileType.lsml" />
+    <LightSwitchModel Include="Screens\TypesSet\AddEditReconSourceType.lsml" />
+    <LightSwitchModel Include="Screens\TypesSet\AddEditReconType.lsml" />
+    <LightSwitchModel Include="Screens\TypesSet\AddEditFieldTypes.lsml" />
+    <LightSwitchModel Include="Screens\TypesSet\BrowseFileTypes.lsml" />
+    <LightSwitchModel Include="Screens\TypesSet\BrowseReconSourceTypes.lsml" />
+    <LightSwitchModel Include="Screens\TypesSet\BrowseReconTypes.lsml" />
+    <LightSwitchModel Include="Screens\TypesSet\BrowseFieldTypes.lsml" />
+    <LightSwitchModel Include="Screens\TypesSet\ViewFileType.lsml" />
+    <LightSwitchModel Include="Screens\TypesSet\ViewReconSourceType.lsml" />
+    <LightSwitchModel Include="Screens\TypesSet\ViewReconType.lsml" />
+    <LightSwitchModel Include="Screens\TypesSet\ViewFieldTypes.lsml" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ClientBuildFile Include="GeneratedArtifacts\model.json">
+      <SubFolder>Content\Resources\Generated</SubFolder>
+    </_ClientBuildFile>
+    <_ClientBuildFile Include="GeneratedArtifacts\data.js">
+      <SubFolder>Scripts\Generated</SubFolder>
+    </_ClientBuildFile>
+    <_ClientBuildFile Include="GeneratedArtifacts\viewModel.js">
+      <SubFolder>Scripts\Generated</SubFolder>
+    </_ClientBuildFile>
+    <_ClientBuildFile Include="GeneratedArtifacts\usercode.js">
+      <SubFolder>Scripts\Generated</SubFolder>
+    </_ClientBuildFile>
+    <_ClientBuildFile Include="GeneratedArtifacts\resources.js">
+      <SubFolder>Scripts\Generated</SubFolder>
+    </_ClientBuildFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\Microsoft.LightSwitch.Build.Tasks.targets" />
+  <!-- Redefine the targets to be empty -->
+  <Target Name="GetXapOutputFile" />
+  <PropertyGroup>
+    <AppxPackage>false</AppxPackage>
+    <AppxGeneratePriEnabled>false</AppxGeneratePriEnabled>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Aphelion.PagaRecon.DB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{a812961f-dcac-41dc-a102-523f9175ab5f}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Aphelion.PagaRecon.DB</RootNamespace>
+    <AssemblyName>Aphelion.PagaRecon.DB</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Staging" />
+    <Folder Include="Recon" />
+    <Folder Include="Admin" />
+    <Folder Include="Recon\Tables\" />
+    <Folder Include="Admin\Tables\" />
+    <Folder Include="Import\" />
+    <Folder Include="Import\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="Staging\Tables\" />
+    <Folder Include="Admin\Stored Procedures\" />
+    <Folder Include="Recon\Stored Procedures\" />
+    <Folder Include="Recon\Views\" />
+    <Folder Include="Settings\" />
+    <Folder Include="Settings\Tables\" />
+    <Folder Include="Import\Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Staging.sql" />
+    <Build Include="Recon.sql" />
+    <Build Include="Admin.sql" />
+    <Build Include="Recon\Tables\ReconSummary.sql" />
+    <Build Include="Recon\Tables\ReconDetail.sql" />
+    <Build Include="Recon\Tables\ImportedFile.sql" />
+    <Build Include="Admin\Tables\SystemField.sql" />
+    <Build Include="Admin\Tables\ReconType.sql" />
+    <Build Include="Admin\Tables\ReconStatus.sql" />
+    <Build Include="Admin\Tables\ReconSourceType.sql" />
+    <Build Include="Admin\Tables\ReconSource.sql" />
+    <Build Include="Admin\Tables\ReconProcess.sql" />
+    <Build Include="Admin\Tables\ReconItemStatus.sql" />
+    <Build Include="Admin\Tables\ReconField.sql" />
+    <Build Include="Admin\Tables\ImportFileField_ReconField.sql" />
+    <Build Include="Admin\Tables\FieldType.sql" />
+    <Build Include="Import\Tables\FileDefinition.sql" />
+    <Build Include="Import\Tables\FileSection.sql" />
+    <Build Include="Import\Tables\FileField.sql" />
+    <Build Include="Import\Tables\FileType.sql" />
+    <Build Include="Security\Import.sql" />
+    <Build Include="Staging\Tables\SkyeImportDetails.sql" />
+    <Build Include="Admin\Stored Procedures\InsertDefinitionsFromStagingTable.sql" />
+    <Build Include="Staging\Tables\SkyeImportHeader.sql" />
+    <Build Include="Admin\Tables\ReconProcessStep.sql" />
+    <Build Include="Recon\Stored Procedures\insertReconSource.sql" />
+    <Build Include="Import\Tables\Synonym.sql" />
+    <Build Include="Import\Tables\FileFieldRules.sql" />
+    <Build Include="Admin\Tables\RuleType.sql" />
+    <Build Include="Settings\Tables\GlobalSettings.sql" />
+    <Build Include="Import\Views\vwReconProcessStatus.sql" />
+    <Build Include="Security\Settings.sql" />
+    <Build Include="Staging\Tables\NIBBS_GL_Detail.sql" />
+    <Build Include="Staging\Tables\NIBBS_DiamondBank_Detail.sql" />
+    <Build Include="Settings\Tables\GlobalSettings.sql" />
+    <Build Include="Security\Settings.sql" />
+  </ItemGroup>
+</Project>
