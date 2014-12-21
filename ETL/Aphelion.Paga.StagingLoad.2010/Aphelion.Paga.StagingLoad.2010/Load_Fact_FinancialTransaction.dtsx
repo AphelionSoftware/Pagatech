@@ -1,0 +1,1391 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/29/2014 1:03:27 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
+  DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{2A2292BD-2C8F-4C51-B14E-BFD558F157CF}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load_Fact_FinancialTransaction"
+  DTS:PackageType="5"
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{5E111D9E-6D5E-4851-AA0B-391B46A3270D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.5.0.1,1533.paga_bi.christina.leo.aphelion]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C3DF1853-1DCE-425E-A9E5-A37FC26AB70F}"
+      DTS:ObjectName="10.5.0.1,1533.paga_bi.christina.leo.aphelion">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectionString="Data Source=10.5.0.1,1533;User ID=christina.leo.aphelion;Initial Catalog=paga_bi;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAO2pnOxchMkKz2vwu38peOAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACDtVobJGY85INBn4gimR9wcuVhwQV2gflj0ZTL7gfr3QAAAAAOgAAAAAIAACAAAACkHNzl4WvSAL8Wsj0RI/pI/349Jf823VvDs94myCH0WiAAAACl0Yj1qxlBcoSj1cigUMiAGin2ShkTmJtDqaEqSErSBkAAAABMPJp8TgOd4d7EyITbVYIBlkV4kRPMRyvlAytEDEyxY+eJBtWw6MI1E62NJLy4kn6qS7nz1sjXO0qs7hF/MJTK</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[__sql2012.Paga_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A21F36FE-946C-401E-AF1B-F123F46ADFF7}"
+      DTS:ObjectName="__sql2012.Paga_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{362CA959-F2A3-40EC-AAD6-E15F5A18752F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Iterations">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C5C9C640-EDF4-4E62-A7AE-170ACA8676EF}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoopPosition">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0DBAC90D-73AC-4AC3-828E-DD1085FBE91D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MaxID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{785B9332-468C-4B3C-8146-9C5C0DA867F1}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::LoopPosition] == 0 ? 0 :  (@[User::LoopPosition] * 100000)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Offset">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CF3B43D1-6FE1-44B5-B246-4FBACC97BE05}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Variable">
+      <DTS:VariableValue
+        DTS:DataType="8">MaxID</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\EST_BuildStagingTableOnSource"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A7196A75-CE8E-4F0E-9BC4-505794996DB0}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_BuildStagingTableOnSource"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C3DF1853-1DCE-425E-A9E5-A37FC26AB70F}"
+          SQLTask:SqlStatementSource="/* 20141012 Get Latest row moved to target */&#xA;DECLARE @MaxSourceKey AS INT = ?&#xA;&#xA;CREATE TABLE #Reversals &#xA;(&#xA;&#x9;FinancialTransactionId INT,&#xA;&#x9;EffDate DATETIME,&#xA;&#x9;OrigTxID INT,&#xA;&#x9;RelatedTxID INT&#xA;);&#xA;&#xA;/*create table used to drive the population of the staging data*/&#xA;INSERT INTO #Reversals&#xA;(&#xA;&#x9;FinancialTransactionId,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT&#xA;&#x9;&#x9;ft1.FinancialTransactionId,&#xA;&#x9;&#x9;ft1.TransactionDate AS EffDate,&#xA;&#x9;&#x9;ft1.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;ft1.Reverses AS RelatedTxID&#xA;FROM dbo.FinancialTransaction AS ft1&#xA;WHERE&#xA;&#x9;ft1.FinancialTransactionId &gt; @maxSourceKey&#xA;&#xA;&#xA;INSERT INTO #Reversals&#xA;(&#xA;&#x9;financialTransactionID,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT&#xA;&#x9;&#x9;ft2.FinancialTransactionId,&#xA;&#x9;&#x9;ft2.TransactionDate AS EffDate,&#xA;&#x9;&#x9;ft2.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;ft2.Reverses AS RelatedTxID&#xA;FROM dbo.FinancialTransaction AS ft2&#xA;WHERE &#xA;&#x9;ft2.FinancialTransactionId IN&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT r.relatedtxID &#xA;&#x9;&#x9;FROM #Reversals as r&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;RelatedTxID IS NOT NULL &#xA;&#x9;&#x9;&#x9;AND RelatedTxID &lt;= @Maxsourcekey&#xA;&#x9;);&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Reversals_TxID ON #Reversals&#xA;(FinancialTransactionId, RelatedTxID);&#xA;&#xA;&#xA;CREATE NONCLUSTERED INDEX ix_Reversals_NullRelatedTxID ON #Reversals&#xA;(RelatedTxID)&#xA;WHERE RelatedTxID IS NULL;&#xA;&#xA;&#xA;CREATE NONCLUSTERED INDEX ix_Reversals_RelatedTxID ON #Reversals&#xA;(RelatedTxID);&#xA;&#xA;&#xA;/*Run recursive query to populate related financial transaction ID&#xA;for filter set created in previous step. */&#xA;&#xA;CREATE TABLE #ReversalChain&#xA;(&#xA;&#x9;TxID  INT,&#xA;&#x9;EffDate  DATETIME,&#xA;&#x9;OrigTxID  INT,&#xA;&#x9;RelatedTxID  INT&#xA;);&#xA;WITH reversals AS&#xA;(&#xA;&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ft1.FinancialTransactionId,&#xA;&#x9;&#x9;ft1.EffDate AS EffDate,&#xA;&#x9;&#x9;ft1.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;ft1.RelatedTxID AS RelatedTxID&#xA;&#x9;FROM #Reversals AS ft1&#xA;&#x9;WHERE&#xA;&#x9;&#x9;ft1.RelatedTxID IS NULL&#xA;&#x9;UNION ALL&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ft2.FinancialTransactionId,&#xA;&#x9;&#x9;R.EffDate,&#xA;&#x9;&#x9;R.OrigTxID,&#xA;&#x9;&#x9;ft2.RelatedTxID&#xA;&#x9;FROM #Reversals AS ft2&#xA;&#x9;INNER JOIN reversals AS r&#xA;&#x9;&#x9;ON ft2.RelatedTxID = R.FinancialTransactionId&#xA;)&#xA;INSERT INTO #ReversalChain&#xA;(&#xA;&#x9;TxID,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT&#xA;&#x9;reversals.financialTransactionId,&#xA;&#x9;reversals.EffDate,&#xA;&#x9;reversals.OrigTxID,&#xA;&#x9;reversals.relatedTxID&#xA;FROM reversals;&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Reversals_TxID ON #ReversalChain&#xA;(TxID);&#xA;&#xA;/*populate temporary staging table used to by SSIS*/&#xA;&#xA;SELECT &#xA;&#x9;By_User.*,&#xA;&#x9;change_operation = 'I'&#xA;INTO ##BaseQuery&#xA;FROM &#xA;(&#xA;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;UserID = COALESCE(userID,-1), &#xA;&#x9;&#x9;[FinancialTransactionTypeId] &#xA;&#x9;FROM dbo.financialTransaction&#xA;&#x9;WHERE&#xA;&#x9;&#x9;FinancialTransactionId &gt; @MaxSourceKey /*same filter used to create reversals table, so we're limiting to the same set of TXIDs*/&#xA;) AS driver&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;SourceKey = ft.FinancialTransactionId, &#xA;&#x9;&#x9;DimCreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)), &#xA;&#x9;&#x9;DimCreatedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),':','')), &#xA;&#x9;&#x9;DimEffectiveDateID = CONVERT(INT,CONVERT(VARCHAR(8),r2.EffDate,112)), &#xA;&#x9;&#x9;DimEffectiveTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), r2.EffDate, 114),':','')), &#xA;&#x9;&#x9;DimTransactionDateID = CONVERT(INT,CONVERT(VARCHAR(8),ft.TransactionDate,112)),&#xA;&#x9;&#x9;DimTransactionTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), ft.TransactionDate, 114),':','')), &#xA;&#x9;&#x9;DimFinancialTxTypeSourceKey = FinancialTransactionTypeId, &#xA;&#x9;&#x9;DimFinancialTxSubTypeSourceKey = FinancialTransactionSubTypeId, &#xA;&#x9;&#x9;DimOrganizationUnitLevel4SourceKey = orgUnit.OrganizationUnitId, &#xA;&#x9;&#x9;DimUserSourceKey = UserId, &#xA;&#x9;&#x9;FactProcessTxSourceKey = COALESCE(ProcessId, -1), &#xA;&#x9;&#x9;RelatedFactFinancialTxHeaderSourceKey = r2.relatedTxID, &#xA;&#x9;&#x9;OriginalFactFinancialTxHeaderSourceKey = r2.OrigTxID, &#xA;&#x9;&#x9;DimCurrencySourceKey = CurrencyId, &#xA;&#x9;&#x9;TextDescription = CONVERT(VARCHAR(100),[Description]), &#xA;&#x9;&#x9;Amount, &#xA;&#x9;&#x9;ExchangeRate, &#xA;&#x9;&#x9;ExternalReferenceNumber,&#xA;&#x9;&#x9;Fee, &#xA;&#x9;&#x9;ForeignCurrencyAmount, &#xA;&#x9;&#x9;ReferenceNumber, &#xA;&#x9;&#x9;ShortCode&#xA;&#x9;FROM dbo.financialTransaction AS ft&#xA;&#x9;CROSS APPLY &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;r1.OrigTxID,&#xA;&#x9;&#x9;&#x9;COALESCE(r1.RelatedTxID,r1.OrigTxID) AS RelatedTxID,&#xA;&#x9;&#x9;&#x9;r1.EffDate&#xA;&#x9;&#x9;FROM #ReversalChain AS R1&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;R1.TxID = ft.FinancialTransactionId&#xA;&#x9;) AS R2&#xA;&#x9;OUTER APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;OrganizationUnitId&#xA;&#x9;&#x9;FROM [dbo].[OrganizationUnitUser] As ouu&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;ouu.UserId = ft.UserId&#xA;&#x9;) AS orgUnit&#xA;&#x9;WHERE&#xA;&#x9;&#x9;COALESCE(ft.userID,-1) = driver.UserID&#xA;&#x9;&#x9;AND ft.FinancialTransactionTypeId = driver.FinancialTransactionTypeId&#xA;) By_User;&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Header ON ##BaseQuery&#xA;(SourceKey);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::MaxID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_GetIterations"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BE952C85-7A06-421B-AFB0-BE0F4D05E0BE}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_GetIterations"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C3DF1853-1DCE-425E-A9E5-A37FC26AB70F}"
+          SQLTask:SqlStatementSource="SELECT &#xA;&#x9;Iterations= (count(*)/100000) +1&#xA;FROM ##BaseQuery AS ft1&#x9;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="Iterations"
+            SQLTask:DtsVariableName="User::Iterations" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_GetMaxFinTxID"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0FC691D4-A48E-4427-9B88-8CA46CD4FBBC}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_GetMaxFinTxID"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A21F36FE-946C-401E-AF1B-F123F46ADFF7}"
+          SQLTask:SqlStatementSource="SELECT MAX(CAST(SourceKey AS INT)) AS MaxID FROM Staging.Finance_FactFinancialTxHeader"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="MaxID"
+            SQLTask:DtsVariableName="User::MaxID" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load_100,000_Record_Batches"
+      DTS:AssignExpression="@[User::LoopPosition] = @[User::LoopPosition] +1"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="For Loop Container"
+      DTS:DTSID="{3B6A1BFE-502B-4B76-984A-81659A502049}"
+      DTS:EvalExpression="@[User::LoopPosition] &lt; @[User::Iterations]"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:InitExpression="@[User::LoopPosition] = 0"
+      DTS:LocaleID="-1"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="Load_100,000_Record_Batches">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals"
+          DTS:CreationName="{5918251B-2970-45A4-AB5F-01C3C588FE5A}"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{D59F4216-D91D-4F1C-BDFA-AAD5C8E59B02}"
+          DTS:ExecutableType="{5918251B-2970-45A4-AB5F-01C3C588FE5A}"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT_Load_Reversals">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[Finance_FactFinancialTxHeader]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">100000</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[__sql2012.Paga_Staging]"
+                      connectionManagerRefId="Package.ConnectionManagers[__sql2012.Paga_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SourceKey]"
+                          cachedDataType="i4"
+                          cachedName="SourceKey"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceKey]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DimCreatedDateID]"
+                          cachedDataType="i4"
+                          cachedName="DimCreatedDateID"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimCreatedDateID]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimCreatedDateID]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DimCreatedTimeID]"
+                          cachedDataType="i4"
+                          cachedName="DimCreatedTimeID"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimCreatedTimeID]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimCreatedTimeID]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DimEffectiveDateID]"
+                          cachedDataType="i4"
+                          cachedName="DimEffectiveDateID"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimEffectiveDateID]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimEffectiveDateID]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DimEffectiveTimeID]"
+                          cachedDataType="i4"
+                          cachedName="DimEffectiveTimeID"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimEffectiveTimeID]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimEffectiveTimeID]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DimTransactionDateID]"
+                          cachedDataType="i4"
+                          cachedName="DimTransactionDateID"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimTransactionDateID]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimTransactionDateID]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DimTransactionTimeID]"
+                          cachedDataType="i4"
+                          cachedName="DimTransactionTimeID"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimTransactionTimeID]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimTransactionTimeID]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DimFinancialTxTypeSourceKey]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DimFinancialTxTypeSourceKey"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTxTypeSourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimFinancialTxTypeSourceKey]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DimFinancialTxSubTypeSourceKey]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DimFinancialTxSubTypeSourceKey"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTxSubTypeSourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimFinancialTxSubTypeSourceKey]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DimOrganizationUnitLevel4SourceKey]"
+                          cachedDataType="i4"
+                          cachedName="DimOrganizationUnitLevel4SourceKey"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimOrganizationUnitLevel4SourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimOrganizationUnitLevel4SourceKey]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DimUserSourceKey]"
+                          cachedDataType="i4"
+                          cachedName="DimUserSourceKey"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimUserSourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimUserSourceKey]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FactProcessTxSourceKey]"
+                          cachedDataType="i4"
+                          cachedName="FactProcessTxSourceKey"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FactProcessTxSourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[FactProcessTxSourceKey]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DimCurrencySourceKey]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DimCurrencySourceKey"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimCurrencySourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimCurrencySourceKey]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TextDescription]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="TextDescription"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TextDescription]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[TextDescription]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Amount]"
+                          cachedDataType="numeric"
+                          cachedName="Amount"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[Amount]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ExchangeRate]"
+                          cachedDataType="numeric"
+                          cachedName="ExchangeRate"
+                          cachedPrecision="16"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExchangeRate]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ExternalReferenceNumber]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="ExternalReferenceNumber"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExternalReferenceNumber]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExternalReferenceNumber]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fee]"
+                          cachedDataType="numeric"
+                          cachedName="Fee"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fee]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fee]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ForeignCurrencyAmount]"
+                          cachedDataType="numeric"
+                          cachedName="ForeignCurrencyAmount"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ForeignCurrencyAmount]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ForeignCurrencyAmount]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ReferenceNumber]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ReferenceNumber"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReferenceNumber]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReferenceNumber]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ShortCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="ShortCode"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShortCode]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShortCode]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OriginalFactFinancialTxHeaderSourceKey]"
+                          cachedDataType="i4"
+                          cachedName="OriginalFactFinancialTxHeaderSourceKey"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OriginalFactFinancialTxHeaderSourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[OriginalFactFinancialTxHeaderSourceKey]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RelatedFactFinancialTxHeaderSourceKey]"
+                          cachedDataType="i4"
+                          cachedName="RelatedFactFinancialTxHeaderSourceKey"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RelatedFactFinancialTxHeaderSourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[RelatedFactFinancialTxHeaderSourceKey]" />
+                        <inputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[change_operation]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="change_operation"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[change_operation]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[change_operation]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                          dataType="numeric"
+                          name="Amount"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
+                          dataType="numeric"
+                          name="ExchangeRate"
+                          precision="16"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExternalReferenceNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="ExternalReferenceNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fee]"
+                          dataType="numeric"
+                          name="Fee"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ForeignCurrencyAmount]"
+                          dataType="numeric"
+                          name="ForeignCurrencyAmount"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReferenceNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ReferenceNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShortCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="ShortCode" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceKey]"
+                          dataType="i4"
+                          name="SourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TextDescription]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="TextDescription" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimCreatedDateID]"
+                          dataType="i4"
+                          name="DimCreatedDateID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimCreatedTimeID]"
+                          dataType="i4"
+                          name="DimCreatedTimeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimEffectiveDateID]"
+                          dataType="i4"
+                          name="DimEffectiveDateID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimEffectiveTimeID]"
+                          dataType="i4"
+                          name="DimEffectiveTimeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimTransactionDateID]"
+                          dataType="i4"
+                          name="DimTransactionDateID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimTransactionTimeID]"
+                          dataType="i4"
+                          name="DimTransactionTimeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimCurrencySourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="DimCurrencySourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTxSubTypeSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="DimFinancialTxSubTypeSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTxTypeSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="DimFinancialTxTypeSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimOrganizationUnitLevel4SourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="DimOrganizationUnitLevel4SourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimUserSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="DimUserSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FactProcessTxSourceKey]"
+                          dataType="i4"
+                          name="FactProcessTxSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OriginalFactFinancialTxHeaderSourceKey]"
+                          dataType="i4"
+                          name="OriginalFactFinancialTxHeaderSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RelatedFactFinancialTxHeaderSourceKey]"
+                          dataType="i4"
+                          name="RelatedFactFinancialTxHeaderSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[change_operation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="change_operation" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source"
+                  componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[AccountCode]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT * FROM ##BaseQuery AS x
+ORDER BY CAST(x.SourceKey AS INT)
+OFFSET ? ROWS
+FETCH NEXT 100000 ROWS ONLY</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"OffsetValue:Input",{785B9332-468C-4B3C-8146-9C5C0DA867F1};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[10.5.0.1,1533.paga_bi.christina.leo.aphelion]"
+                      connectionManagerRefId="Package.ConnectionManagers[10.5.0.1,1533.paga_bi.christina.leo.aphelion]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceKey]"
+                          name="SourceKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimCreatedDateID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimCreatedDateID]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimCreatedDateID]"
+                          name="DimCreatedDateID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimCreatedTimeID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimCreatedTimeID]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimCreatedTimeID]"
+                          name="DimCreatedTimeID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimEffectiveDateID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimEffectiveDateID]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimEffectiveDateID]"
+                          name="DimEffectiveDateID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimEffectiveTimeID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimEffectiveTimeID]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimEffectiveTimeID]"
+                          name="DimEffectiveTimeID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimTransactionDateID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimTransactionDateID]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimTransactionDateID]"
+                          name="DimTransactionDateID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimTransactionTimeID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimTransactionTimeID]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimTransactionTimeID]"
+                          name="DimTransactionTimeID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimFinancialTxTypeSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimFinancialTxTypeSourceKey]"
+                          length="50"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimFinancialTxTypeSourceKey]"
+                          name="DimFinancialTxTypeSourceKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimFinancialTxSubTypeSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimFinancialTxSubTypeSourceKey]"
+                          length="50"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimFinancialTxSubTypeSourceKey]"
+                          name="DimFinancialTxSubTypeSourceKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimOrganizationUnitLevel4SourceKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimOrganizationUnitLevel4SourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimOrganizationUnitLevel4SourceKey]"
+                          name="DimOrganizationUnitLevel4SourceKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimUserSourceKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimUserSourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimUserSourceKey]"
+                          name="DimUserSourceKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[FactProcessTxSourceKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FactProcessTxSourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[FactProcessTxSourceKey]"
+                          name="FactProcessTxSourceKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimCurrencySourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimCurrencySourceKey]"
+                          length="50"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[DimCurrencySourceKey]"
+                          name="DimCurrencySourceKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[TextDescription]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TextDescription]"
+                          length="100"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[TextDescription]"
+                          name="TextDescription"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[Amount]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[Amount]"
+                          name="Amount"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExchangeRate]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExchangeRate]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExchangeRate]"
+                          name="ExchangeRate"
+                          precision="16"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExternalReferenceNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExternalReferenceNumber]"
+                          length="100"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExternalReferenceNumber]"
+                          name="ExternalReferenceNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fee]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fee]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fee]"
+                          name="Fee"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ForeignCurrencyAmount]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ForeignCurrencyAmount]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ForeignCurrencyAmount]"
+                          name="ForeignCurrencyAmount"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReferenceNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ReferenceNumber]"
+                          length="50"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ReferenceNumber]"
+                          name="ReferenceNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShortCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShortCode]"
+                          length="10"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShortCode]"
+                          name="ShortCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[RelatedFactFinancialTxHeaderSourceKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RelatedFactFinancialTxHeaderSourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[RelatedFactFinancialTxHeaderSourceKey]"
+                          name="RelatedFactFinancialTxHeaderSourceKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[OriginalFactFinancialTxHeaderSourceKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OriginalFactFinancialTxHeaderSourceKey]"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[OriginalFactFinancialTxHeaderSourceKey]"
+                          name="OriginalFactFinancialTxHeaderSourceKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[change_operation]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[change_operation]"
+                          length="1"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].Columns[change_operation]"
+                          name="change_operation"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SourceKey]"
+                          dataType="i4"
+                          name="SourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimCreatedDateID]"
+                          dataType="i4"
+                          name="DimCreatedDateID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimCreatedTimeID]"
+                          dataType="i4"
+                          name="DimCreatedTimeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimEffectiveDateID]"
+                          dataType="i4"
+                          name="DimEffectiveDateID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimEffectiveTimeID]"
+                          dataType="i4"
+                          name="DimEffectiveTimeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimTransactionDateID]"
+                          dataType="i4"
+                          name="DimTransactionDateID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimTransactionTimeID]"
+                          dataType="i4"
+                          name="DimTransactionTimeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimFinancialTxTypeSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DimFinancialTxTypeSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimFinancialTxSubTypeSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DimFinancialTxSubTypeSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimOrganizationUnitLevel4SourceKey]"
+                          dataType="i4"
+                          name="DimOrganizationUnitLevel4SourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimUserSourceKey]"
+                          dataType="i4"
+                          name="DimUserSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FactProcessTxSourceKey]"
+                          dataType="i4"
+                          name="FactProcessTxSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DimCurrencySourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DimCurrencySourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TextDescription]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="TextDescription" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                          dataType="numeric"
+                          name="Amount"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExchangeRate]"
+                          dataType="numeric"
+                          name="ExchangeRate"
+                          precision="16"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExternalReferenceNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="ExternalReferenceNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fee]"
+                          dataType="numeric"
+                          name="Fee"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ForeignCurrencyAmount]"
+                          dataType="numeric"
+                          name="ForeignCurrencyAmount"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ReferenceNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ReferenceNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShortCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="ShortCode" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RelatedFactFinancialTxHeaderSourceKey]"
+                          dataType="i4"
+                          name="RelatedFactFinancialTxHeaderSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OriginalFactFinancialTxHeaderSourceKey]"
+                          dataType="i4"
+                          name="OriginalFactFinancialTxHeaderSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[change_operation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="change_operation" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SourceKey]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SourceKey]"
+                          name="SourceKey" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimCreatedDateID]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimCreatedDateID]"
+                          name="DimCreatedDateID" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimCreatedTimeID]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimCreatedTimeID]"
+                          name="DimCreatedTimeID" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimEffectiveDateID]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimEffectiveDateID]"
+                          name="DimEffectiveDateID" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimEffectiveTimeID]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimEffectiveTimeID]"
+                          name="DimEffectiveTimeID" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimTransactionDateID]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimTransactionDateID]"
+                          name="DimTransactionDateID" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimTransactionTimeID]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimTransactionTimeID]"
+                          name="DimTransactionTimeID" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimFinancialTxTypeSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimFinancialTxTypeSourceKey]"
+                          name="DimFinancialTxTypeSourceKey" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimFinancialTxSubTypeSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimFinancialTxSubTypeSourceKey]"
+                          name="DimFinancialTxSubTypeSourceKey" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimOrganizationUnitLevel4SourceKey]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimOrganizationUnitLevel4SourceKey]"
+                          name="DimOrganizationUnitLevel4SourceKey" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimUserSourceKey]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimUserSourceKey]"
+                          name="DimUserSourceKey" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FactProcessTxSourceKey]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FactProcessTxSourceKey]"
+                          name="FactProcessTxSourceKey" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RelatedFactFinancialTxHeaderSourceKey]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RelatedFactFinancialTxHeaderSourceKey]"
+                          name="RelatedFactFinancialTxHeaderSourceKey" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OriginalFactFinancialTxHeaderSourceKey]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OriginalFactFinancialTxHeaderSourceKey]"
+                          name="OriginalFactFinancialTxHeaderSourceKey" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimCurrencySourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DimCurrencySourceKey]"
+                          name="DimCurrencySourceKey" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TextDescription]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TextDescription]"
+                          name="TextDescription" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                          dataType="numeric"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                          name="Amount"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExchangeRate]"
+                          dataType="numeric"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExchangeRate]"
+                          name="ExchangeRate"
+                          precision="16"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExternalReferenceNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExternalReferenceNumber]"
+                          name="ExternalReferenceNumber" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fee]"
+                          dataType="numeric"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fee]"
+                          name="Fee"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ForeignCurrencyAmount]"
+                          dataType="numeric"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ForeignCurrencyAmount]"
+                          name="ForeignCurrencyAmount"
+                          precision="18"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ReferenceNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ReferenceNumber]"
+                          name="ReferenceNumber" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ShortCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ShortCode]"
+                          name="ShortCode" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[change_operation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[change_operation]"
+                          name="change_operation" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals.Paths[OLE DB Source Output]"
+                  endId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C4FCCDAF-6DF4-4A8D-A31B-9AC20B1744F4}"
+      DTS:From="Package\EST_GetMaxFinTxID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\EST_BuildStagingTableOnSource" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D0E772A9-B041-49A4-8823-810C53E2A41D}"
+      DTS:From="Package\EST_BuildStagingTableOnSource"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\EST_GetIterations" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{37D5CD92-6B84-4881-8A93-387E62A1020B}"
+      DTS:From="Package\EST_GetIterations"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Load_100,000_Record_Batches" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="233,42"
+          Id="Package\EST_BuildStagingTableOnSource"
+          TopLeft="10,95" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\EST_GetIterations"
+          TopLeft="40.5,174.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\EST_GetMaxFinTxID"
+          TopLeft="34,17" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Load_100,000_Record_Batches\DFT_Load_Reversals"
+          TopLeft="35.5,28.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="250,126"
+          Size="250,169"
+          Id="Package\Load_100,000_Record_Batches"
+          TopLeft="342,107" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="124,59">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="124.5,137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.5"
+              Start="0,0"
+              End="0,30">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="204.5,193.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137.5,0"
+              Start="0,0"
+              End="130,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="130,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load_100,000_Record_Batches\DFT_Load_Reversals">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source"
+          TopLeft="98.5,35.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination"
+          TopLeft="87,159" />
+        <EdgeLayout
+          Id="Package\Load_100,000_Record_Batches\DFT_Load_Reversals.Paths[OLE DB Source Output]"
+          TopLeft="173,77.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81.5"
+              Start="0,0"
+              End="0,74">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load_100,000_Record_Batches\DFT_Load_Reversals\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

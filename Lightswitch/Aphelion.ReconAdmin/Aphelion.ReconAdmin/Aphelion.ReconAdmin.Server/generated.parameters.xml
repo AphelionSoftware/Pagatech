@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="Aphelion.ReconAdmin_IisWebApplication" description="IIS Web Application content location" defaultValue="Default Web Site/Aphelion_ReconAdmin" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\GitHub\\Pagatech\\Lightswitch\\Aphelion\.ReconAdmin\\Aphelion\.ReconAdmin\\bin\\Debug\\app\.publish\\$" />
+  </parameter>
+  <parameter name="ReconData" description="Configure the ConnectionString" defaultValue="data source=.\sql2012;initial catalog=Aphelion.PagaRecon.DB;integrated security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="web.config" match="/configuration/connectionStrings/add[@name='ReconData']/@connectionString" />
+  </parameter>
+</parameters>
