@@ -46,7 +46,7 @@ namespace Aphelion.Recon.RulesEngine
 
                 _dtSource.Columns.Add("SourceKey", (typeof(string)));
 
-                //_dtSource.Columns.Add("Value", (typeof(decimal)));
+                _dtSource.Columns.Add("Value", (typeof(decimal)));
                
                 
             }
@@ -68,7 +68,7 @@ namespace Aphelion.Recon.RulesEngine
                 //dcDestination[0] = dtDestination.Columns["Hash"];
                 //_dtDestination.PrimaryKey = dcDestination;
                 _dtDestination.Columns.Add("SourceKey", (typeof(string)));
-                //_dtDestination.Columns.Add("Value", (typeof(decimal)));
+                _dtDestination.Columns.Add("Value", (typeof(decimal)));
                
                
                 
@@ -91,6 +91,78 @@ namespace Aphelion.Recon.RulesEngine
             private set
             ;
         }
+        public List<string> lstValueFieldsSource
+        {
+            get;
+            private set
+                    ;
+        }
+        public List<string> lstValueFieldsDestination
+        {
+            get
+            ;
+            private set
+            ;
+        }
+
+
+        #region Value Field
+
+        /// <summary>
+        /// This is a very expensive way to add, as it rescans the DataTable. Convenience only for single field values
+        /// </summary>
+        /// <param name="sKey">Single key to add</param>
+        public void AddSourceValueField(string sKey)
+        {
+            if (lstValueFieldsSource == null)
+            {
+                lstValueFieldsSource = new List<string>();
+            }
+            lstValueFieldsSource.Add(sKey);
+            foreach (DataRow drSource in dtSource.Rows)
+            {
+                string sValue = "";
+                foreach (string sCol in lstValueFieldsSource)
+                {
+                    sValue += drSource[sCol];
+                }
+
+
+                drSource.SetField("Value", sValue);
+            }
+            DataColumn[] dcSource = new DataColumn[1];
+            dcSource[0] = dtSource.Columns["Hash"];
+
+        }
+
+        /// <summary>
+        /// This is a very expensive way to add, as it rescans the DataTable. Convenience only for single field values
+        /// </summary>
+        /// <param name="sKey">Single key to add</param>
+        public void AddDestValueField(string sKey)
+        {
+            
+            if (lstValueFieldsDestination == null)
+            {
+                lstValueFieldsDestination = new List<string>();
+            }
+            lstValueFieldsDestination.Add(sKey);
+            foreach (DataRow drDestination in dtDestination.Rows)
+            {
+                string sValue = "";
+                foreach (string sCol in lstValueFieldsDestination)
+                {
+                    sValue += drDestination[sCol];
+                }
+
+                drDestination.SetField("Value", sValue);
+            }
+            DataColumn[] dcDestination = new DataColumn[1];
+            dcDestination[0] = dtDestination.Columns["Hash"];
+
+        }
+
+        #endregion
 
         #region Keys
         /// <summary>
@@ -118,7 +190,7 @@ namespace Aphelion.Recon.RulesEngine
             if (dtSourceDuplicated == null)
             {
                 dtSourceDuplicated = dtSource.Clone();
-                dtSourceDuplicated.Columns.Add("Value");
+                //dtSourceDuplicated.Columns.Add("Value");
             }
             try
             {
@@ -174,7 +246,7 @@ namespace Aphelion.Recon.RulesEngine
             {
                 dtSourceDuplicated = dtSource.Clone();
 
-                dtSourceDuplicated.Columns.Add("Value");
+                //dtSourceDuplicated.Columns.Add("Value");
             }
             try
             {
@@ -231,7 +303,7 @@ namespace Aphelion.Recon.RulesEngine
             if (dtDestinationDuplicated == null)
             {
                 dtDestinationDuplicated = dtDestination.Clone();
-                dtDestinationDuplicated.Columns.Add("Value");
+                //dtDestinationDuplicated.Columns.Add("Value");
             }
             try
             {
@@ -286,7 +358,7 @@ namespace Aphelion.Recon.RulesEngine
             if (dtDestinationDuplicated == null)
             {
                 dtDestinationDuplicated = dtDestination.Clone();
-                dtDestinationDuplicated.Columns.Add("Value");
+                //dtDestinationDuplicated.Columns.Add("Value");
             }
             try
             {
@@ -337,14 +409,14 @@ namespace Aphelion.Recon.RulesEngine
             }
 
             dtMatchedBalanced = dtMatched.Clone();
-            dtMatchedBalanced.Columns.Add("SrcValue");
-            dtMatchedBalanced.Columns.Add("DestValue");
+            //dtMatchedBalanced.Columns.Add("SrcValue");
+            //dtMatchedBalanced.Columns.Add("DestValue");
             dtMatchedUnbalanced = dtMatchedBalanced.Clone();
 
             dtSourceUnmatched = dtSource.Clone();
-            dtSourceUnmatched.Columns.Add("Value");
+            //dtSourceUnmatched.Columns.Add("Value");
             dtDestinationUnmatched = dtDestination.Clone();
-            dtDestinationUnmatched.Columns.Add("Value");
+            //dtDestinationUnmatched.Columns.Add("Value");
 
             dictSrcKeys = new Dictionary<string, int>();
             dictDestKeys = new Dictionary<string, int>();

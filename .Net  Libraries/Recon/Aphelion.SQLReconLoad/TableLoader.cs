@@ -23,6 +23,7 @@ namespace Aphelion.Recon
         public List<Aggregation> lstAggregations { get; set;}
 
         public List<string> lstKeyFields = new List<string>();
+        public List<string> lstValueFields = new List<string>();
             
 
         public TableLoader( string pConn, string pReconProcessStepCode, LegType pLT)
@@ -76,6 +77,11 @@ namespace Aphelion.Recon
                         break;
                     case "NEGSUM":
                        at = AggregationType.NegSum;
+                        break;
+
+                    case "VALUE":
+                        at = AggregationType.Detail;
+                        lstValueFields.Add(drFields.GetString(3));
                         break;
                     ///TODO: Add the other aggregation types
                 }

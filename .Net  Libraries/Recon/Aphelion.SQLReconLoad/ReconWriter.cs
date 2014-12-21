@@ -39,6 +39,8 @@ namespace Aphelion.Recon
         public DataTable dtSummary { get; private set; }
         public DataTable dtDetail { get; private set; }
         public DateTime dtReconDate { get; set; }
+        SqlDataAdapter daSummary;
+
         public int intReconProcessStepID { get; set; }
         private string _strReconProcessStep;
 
@@ -99,14 +101,14 @@ namespace Aphelion.Recon
         {
             sqlConn.Open();
             SqlCommand comm = new SqlCommand();
-            SqlDataAdapter da ;
 
             this.dtSummary = new DataTable("ReconSummary");
             comm.Connection = sqlConn;
             comm.CommandText = string.Format(SQL.constSQLGetReconSummary, this._strReconProcessStep, this.dtReconDate);
-            da = new SqlDataAdapter(comm);
-            da.Fill(dtSummary);
-       
+            daSummary = new SqlDataAdapter(comm);
+            daSummary.Fill(dtSummary);
+
+            SqlDataAdapter da;
             this.dtDetail = new DataTable("ReconDetail");
             comm.Connection = sqlConn;
             comm.CommandText = string.Format(SQL.constSQLGetReconDetail, this._strReconProcessStep, this.dtReconDate);
@@ -155,25 +157,29 @@ namespace Aphelion.Recon
             dtSummary.AcceptChanges();
             if (boolInsert)
             {
-                SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConn);
-                bulkCopy.BatchSize = 20000;
-                bulkCopy.DestinationTableName = "Recon." + dtSummary.TableName;
-                for (int i = 0; i < dtSummary.Columns.Count; i++ )
-                {
-                    SqlBulkCopyColumnMapping cMap = new SqlBulkCopyColumnMapping(i, i);
-                    bulkCopy.ColumnMappings.Add(cMap);
-                } 
-                bulkCopy.WriteToServer(dtSummary);
+                //No reason to use Bulk Copy for one row!
+                 SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConn);
+                 bulkCopy.BatchSize = 20000;
+                 bulkCopy.DestinationTableName = "Recon." + dtSummary.TableName;
+                 for (int i = 0; i < dtSummary.Columns.Count; i++ )
+                 {
+                     SqlBulkCopyColumnMapping cMap = new SqlBulkCopyColumnMapping(i, i);
+                     bulkCopy.ColumnMappings.Add(cMap);
+                 } 
+                 bulkCopy.WriteToServer(dtSummary);
+
   
             }
-            else
-            {
+            //else
+            //{
                 ///TODO: Support updates of same day recons
-                SqlDataAdapter da = new SqlDataAdapter(string.Format(SQL.constSQLGetReconSummary, this._strReconProcessStep, this.dtReconDate), sqlConn);
+            this.dtSummary = new DataTable("ReconSummary");
+               
+            SqlDataAdapter da = new SqlDataAdapter(string.Format(SQL.constSQLGetReconSummary, this._strReconProcessStep, this.dtReconDate), sqlConn);
                 new SqlCommandBuilder(da);
-                da.Update(dtSummary);
+                da.Fill(dtSummary);
                 dtSummary.AcceptChanges();
-            }
+            //}
             #endregion
 
             if (rtCompare == ReconType.SUMMARY)
