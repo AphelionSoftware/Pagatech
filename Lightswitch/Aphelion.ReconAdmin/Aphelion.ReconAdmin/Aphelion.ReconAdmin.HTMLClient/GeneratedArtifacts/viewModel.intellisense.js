@@ -926,6 +926,22 @@
             data: lightSwitchApplication.FileField,
             value: Number
         },
+        right: {
+            _$class: msls.ContentItem,
+            _$name: "right",
+            _$parentName: "columns",
+            screen: lightSwitchApplication.ViewFileField,
+            data: lightSwitchApplication.FileField,
+            value: lightSwitchApplication.FileField
+        },
+        FileSection: {
+            _$class: msls.ContentItem,
+            _$name: "FileSection",
+            _$parentName: "right",
+            screen: lightSwitchApplication.ViewFileField,
+            data: lightSwitchApplication.FileField,
+            value: lightSwitchApplication.FileSection
+        },
         ImportFileField_ReconFields: {
             _$class: msls.ContentItem,
             _$name: "ImportFileField_ReconFields",
@@ -1024,6 +1040,16 @@
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
         /// </field>
         Position_postRender: [$element, function () { return new lightSwitchApplication.ViewFileField().findContentItem("Position"); }],
+        /// <field>
+        /// Called after the right content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        right_postRender: [$element, function () { return new lightSwitchApplication.ViewFileField().findContentItem("right"); }],
+        /// <field>
+        /// Called after the FileSection content item has been rendered.
+        /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
+        /// </field>
+        FileSection_postRender: [$element, function () { return new lightSwitchApplication.ViewFileField().findContentItem("FileSection"); }],
         /// <field>
         /// Called after the ImportFileField_ReconFields content item has been rendered.
         /// <br/>postRender(HTMLElement element, msls.ContentItem contentItem)
