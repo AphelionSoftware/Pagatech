@@ -7,9 +7,11 @@
     [DeltaHash]         BIGINT         NULL,
     [DimRoleID]         INT            NULL,
     [Name]              VARCHAR (255)  NOT NULL,
-    [SourceKey]         VARCHAR (255)  NOT NULL,
+    [SourceKey]         INT            NOT NULL,
     [SourceKeyHash]     BIGINT         NULL,
-    [SystemDescription] VARCHAR (255)  NULL,
+    [SystemDescription] VARCHAR (255)  NOT NULL,
     [TextDesciption]    VARCHAR (1000) NULL
 );
+
+
 

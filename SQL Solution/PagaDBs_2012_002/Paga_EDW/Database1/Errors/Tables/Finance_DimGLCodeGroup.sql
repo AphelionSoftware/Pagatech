@@ -5,11 +5,13 @@
     [PackageName]                 VARCHAR (255) NOT NULL,
     [ErrorType]                   VARCHAR (255) NOT NULL,
     [DeltaHash]                   BIGINT        NULL,
-    [DimChartOfAccountsSourceKey] VARCHAR (255) NOT NULL,
+    [DimChartOfAccountsSourceKey] INT           NOT NULL,
     [DimGLCodeGroupID]            INT           NULL,
     [GLCodeRange]                 VARCHAR (255) NULL,
     [Name]                        VARCHAR (255) NOT NULL,
-    [SourceKey]                   VARCHAR (255) NOT NULL,
+    [SourceKey]                   INT           NOT NULL,
     [SourceKeyHash]               BIGINT        NULL
 );
+
+
 

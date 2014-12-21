@@ -8,7 +8,9 @@
     [DimChartOfAccountsID] INT           NULL,
     [GLCodeRange]          VARCHAR (255) NULL,
     [Name]                 VARCHAR (255) NOT NULL,
-    [SourceKey]            VARCHAR (255) NOT NULL,
+    [SourceKey]            INT           NOT NULL,
     [SourceKeyHash]        BIGINT        NULL
 );
+
+
 

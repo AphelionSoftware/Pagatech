@@ -6,10 +6,12 @@
     [ErrorType]               VARCHAR (255) NOT NULL,
     [DeltaHash]               BIGINT        NULL,
     [DimInitiatingUserRoleID] INT           NULL,
-    [DimRoleSourceKey]        VARCHAR (255) NOT NULL,
-    [DimUserSourceKey]        VARCHAR (255) NOT NULL,
+    [DimRoleSourceKey]        INT           NOT NULL,
+    [DimUserSourceKey]        INT           NOT NULL,
     [Name]                    VARCHAR (255) NULL,
     [SourceKey]               INT           NOT NULL,
     [SourceKeyHash]           BIGINT        NULL
 );
+
+
 

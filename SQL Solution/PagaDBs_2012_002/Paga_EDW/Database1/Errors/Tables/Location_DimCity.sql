@@ -6,10 +6,12 @@
     [ErrorType]                       VARCHAR (255) NOT NULL,
     [DeltaHash]                       BIGINT        NULL,
     [DimCityID]                       INT           NULL,
-    [DimLocalGovernmentAreaSourceKey] VARCHAR (255) NOT NULL,
+    [DimLocalGovernmentAreaSourceKey] INT           NOT NULL,
     [Name]                            VARCHAR (255) NOT NULL,
     [PostalCode]                      INT           NOT NULL,
-    [SourceKey]                       VARCHAR (255) NOT NULL,
+    [SourceKey]                       INT           NOT NULL,
     [SourceKeyHash]                   BIGINT        NULL
 );
+
+
 

@@ -10,8 +10,10 @@
     [Name]                         VARCHAR (255)   NOT NULL,
     [OpeningBalance]               DECIMAL (18, 2) NULL,
     [RestrictedBalance]            DECIMAL (18, 2) NULL,
-    [SourceKey]                    VARCHAR (255)   NOT NULL,
+    [SourceKey]                    INT             NOT NULL,
     [SourceKeyHash]                BIGINT          NULL,
     [TotalBalance]                 DECIMAL (18, 2) NULL
 );
+
+
 

@@ -7,11 +7,13 @@
     [BankAccountLinkType]      VARCHAR (255) NOT NULL,
     [DeltaHash]                BIGINT        NULL,
     [DimBankID]                INT           NULL,
-    [DimOrganizationSourceKey] VARCHAR (255) NOT NULL,
+    [DimOrganizationSourceKey] INT           NOT NULL,
     [Name]                     VARCHAR (255) NOT NULL,
-    [SourceKey]                VARCHAR (255) NOT NULL,
+    [SourceKey]                INT           NOT NULL,
     [SourceKeyHash]            BIGINT        NULL,
     [SupportsCredit]           BIT           NULL,
     [SupportsDebit]            BIT           NULL
 );
+
+
 

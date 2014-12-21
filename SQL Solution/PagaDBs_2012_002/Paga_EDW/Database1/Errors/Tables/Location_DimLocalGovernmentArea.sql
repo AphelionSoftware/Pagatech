@@ -7,9 +7,11 @@
     [Code]                     VARCHAR (50)  NOT NULL,
     [DeltaHash]                BIGINT        NULL,
     [DimLocalGovernmentAreaID] INT           NULL,
-    [DimRegionSourceKey]       VARCHAR (255) NOT NULL,
+    [DimRegionSourceKey]       INT           NOT NULL,
     [Name]                     VARCHAR (255) NOT NULL,
-    [SourceKey]                VARCHAR (255) NOT NULL,
+    [SourceKey]                INT           NOT NULL,
     [SourceKeyHash]            BIGINT        NULL
 );
+
+
 

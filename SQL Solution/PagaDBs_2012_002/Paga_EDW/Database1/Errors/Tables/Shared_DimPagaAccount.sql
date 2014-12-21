@@ -28,7 +28,9 @@
     [Name]                          VARCHAR (255) NOT NULL,
     [PagaAccountNumber]             VARCHAR (12)  NULL,
     [RegistrationDateID]            INT           NULL,
-    [SourceKey]                     VARCHAR (255) NOT NULL,
+    [SourceKey]                     INT           NOT NULL,
     [SourceKeyHash]                 BIGINT        NULL
 );
+
+
 

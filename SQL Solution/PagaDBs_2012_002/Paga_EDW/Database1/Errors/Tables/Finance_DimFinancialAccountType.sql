@@ -6,10 +6,12 @@
     [ErrorType]                 VARCHAR (255)  NOT NULL,
     [DeltaHash]                 BIGINT         NULL,
     [DimFinancialAccountTypeID] INT            NULL,
-    [DimGLCodeSourceKey]        VARCHAR (255)  NOT NULL,
+    [DimGLCodeSourceKey]        INT            NOT NULL,
     [Name]                      VARCHAR (255)  NOT NULL,
     [SourceKey]                 VARCHAR (255)  NOT NULL,
     [SourceKeyHash]             BIGINT         NULL,
     [TextDesciption]            VARCHAR (1000) NULL
 );
+
+
 

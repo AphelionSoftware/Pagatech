@@ -6,12 +6,14 @@
     [ErrorType]                  VARCHAR (255)  NOT NULL,
     [DeltaHash]                  BIGINT         NULL,
     [DimGLCodeID]                INT            NULL,
-    [DimGLCodeSubGroupSourceKey] VARCHAR (255)  NOT NULL,
+    [DimGLCodeSubGroupSourceKey] INT            NOT NULL,
     [GLCode]                     VARCHAR (255)  NULL,
     [IsNormalDebit]              BIT            NULL,
     [Name]                       VARCHAR (255)  NOT NULL,
-    [SourceKey]                  VARCHAR (255)  NOT NULL,
+    [SourceKey]                  INT            NOT NULL,
     [SourceKeyHash]              BIGINT         NULL,
     [TextDesciption]             VARCHAR (1000) NULL
 );
+
+
 

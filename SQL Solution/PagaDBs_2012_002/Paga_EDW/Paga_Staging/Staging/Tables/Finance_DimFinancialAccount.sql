@@ -10,10 +10,12 @@
     [TotalBalance]                        DECIMAL (18, 2) NULL,
     [DimBankAccountSourceKey]             INT             NOT NULL,
     [DimCurrencySourceKey]                VARCHAR (255)   NOT NULL,
+    [DimFinancialAccountTypeSourceKey]    VARCHAR (255)   NOT NULL,
     [DimFinancialHoldingAccountSourceKey] INT             NULL,
-    [DimPagaAccountSourceKey]             INT             NOT NULL,
-    [DimFinancialAccountTypeSourceKey]    VARCHAR (255)   NOT NULL
+    [DimPagaAccountSourceKey]             INT             NOT NULL
 );
+
+
 
 
 

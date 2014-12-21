@@ -11,7 +11,7 @@
     [DimIntegrationTxDateID]                   INT             NULL,
     [DimIntegrationTxTimeID]                   INT             NULL,
     [DimProcessTypeSourceKey]                  VARCHAR (255)   NOT NULL,
-    [DimUserSourceKey]                         VARCHAR (255)   NULL,
+    [DimUserSourceKey]                         INT             NULL,
     [ExternalReferenceNumber]                  VARCHAR (50)    NULL,
     [FactFinancialTransactionSourceKey]        INT             NULL,
     [FactIntegrationTxID]                      INT             NULL,
@@ -21,4 +21,6 @@
     [SourceKey]                                INT             NOT NULL,
     [SourceKeyHash]                            BIGINT          NULL
 );
+
+
 

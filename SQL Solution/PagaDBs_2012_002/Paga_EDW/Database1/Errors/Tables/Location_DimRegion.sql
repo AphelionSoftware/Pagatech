@@ -5,10 +5,12 @@
     [PackageName]         VARCHAR (255) NOT NULL,
     [ErrorType]           VARCHAR (255) NOT NULL,
     [DeltaHash]           BIGINT        NULL,
-    [DimGeoZoneSourceKey] VARCHAR (255) NOT NULL,
+    [DimGeoZoneSourceKey] INT           NOT NULL,
     [DimRegionID]         INT           NULL,
     [Name]                VARCHAR (255) NOT NULL,
-    [SourceKey]           VARCHAR (255) NOT NULL,
+    [SourceKey]           INT           NOT NULL,
     [SourceKeyHash]       BIGINT        NULL
 );
+
+
 

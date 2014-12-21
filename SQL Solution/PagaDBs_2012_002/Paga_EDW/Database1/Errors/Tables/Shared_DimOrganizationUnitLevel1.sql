@@ -5,12 +5,14 @@
     [PackageName]                      VARCHAR (255) NOT NULL,
     [ErrorType]                        VARCHAR (255) NOT NULL,
     [DeltaHash]                        BIGINT        NULL,
-    [DimOrganizationSourceKey]         VARCHAR (255) NOT NULL,
+    [DimOrganizationSourceKey]         INT           NOT NULL,
     [DimOrganizationUnitLevel1ID]      INT           NULL,
     [DimOrganizationUnitTypeSourceKey] VARCHAR (255) NOT NULL,
     [IdentificationNumber]             VARCHAR (20)  NULL,
     [Name]                             VARCHAR (255) NOT NULL,
-    [SourceKey]                        VARCHAR (255) NOT NULL,
+    [SourceKey]                        INT           NOT NULL,
     [SourceKeyHash]                    BIGINT        NULL
 );
+
+
 

@@ -6,10 +6,12 @@
     [ErrorType]           VARCHAR (255) NOT NULL,
     [Code]                VARCHAR (50)  NOT NULL,
     [DeltaHash]           BIGINT        NULL,
-    [DimCountrySourceKey] VARCHAR (255) NOT NULL,
+    [DimCountrySourceKey] INT           NOT NULL,
     [DimGeoZoneID]        INT           NULL,
     [Name]                VARCHAR (255) NOT NULL,
-    [SourceKey]           VARCHAR (255) NOT NULL,
+    [SourceKey]           INT           NOT NULL,
     [SourceKeyHash]       BIGINT        NULL
 );
+
+
 
