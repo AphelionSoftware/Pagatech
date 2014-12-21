@@ -1,0 +1,26 @@
+﻿CREATE TABLE [Errors].[Shared_FactProcessEvent] (
+    [QueueID]                     INT             NOT NULL,
+    [SSISErrorCode]               INT             NOT NULL,
+    [SSISErrorColumn]             INT             NOT NULL,
+    [PackageName]                 VARCHAR (255)   NOT NULL,
+    [ErrorType]                   VARCHAR (255)   NOT NULL,
+    [DeltaHash]                   BIGINT          NULL,
+    [DimCompletedDateID]          INT             NULL,
+    [DimCompletedTimeID]          INT             NULL,
+    [DimForUserID]                INT             NULL,
+    [DimInitiatingUserID]         INT             NULL,
+    [DimOriginalProcessChannelID] INT             NULL,
+    [DimProcessChannelID]         INT             NOT NULL,
+    [DimProcessStatusID]          INT             NULL,
+    [DimProcessTypeID]            INT             NULL,
+    [DimToUserID]                 INT             NULL,
+    [DimUserID]                   INT             NULL,
+    [FactProcessEventID]          INT             NULL,
+    [HasFinancialTransaction]     BIT             NULL,
+    [Name]                        VARCHAR (255)   NULL,
+    [ProcessAmount]               DECIMAL (18, 2) NULL,
+    [ProcessFee]                  DECIMAL (18, 2) NULL,
+    [SourceKey]                   INT             NOT NULL,
+    [SourceKeyHash]               BIGINT          NULL
+);
+
