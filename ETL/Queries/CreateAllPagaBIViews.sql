@@ -1,3 +1,29 @@
+USE [paga];
+GO
+IF OBJECT_ID('dbo.chng_tracking_current_version') IS NOT NULL DROP VIEW dbo.chng_tracking_current_version;
+	GO
+
+
+CREATE VIEW [dbo].[chng_tracking_current_version] AS
+(
+	SELECT [CurrentVersion] = CHANGE_TRACKING_CURRENT_VERSION()
+);
+
+GO
+
+USE [paga_bi];
+GO
+IF OBJECT_ID('dbo.chng_tracking_current_version') IS NOT NULL DROP VIEW dbo.chng_tracking_current_version;
+	GO
+
+CREATE VIEW dbo.chng_tracking_current_version
+AS
+(
+	SELECT CurrentVersion FROM paga.dbo.chng_tracking_current_version
+);
+GO
+
+
 IF OBJECT_ID('dbo.AccountCode') IS NOT NULL DROP VIEW dbo.AccountCode;
 	GO
 	
