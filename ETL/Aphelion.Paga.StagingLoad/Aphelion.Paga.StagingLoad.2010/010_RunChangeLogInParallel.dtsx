@@ -6,12 +6,12 @@
   DTS:CreatorComputerName="MGS-NETBOOK"
   DTS:CreationDate="8/3/2012 11:09:39 AM"
   DTS:PackageType="5"
-  DTS:VersionBuild="76"
-  DTS:VersionGUID="{23B61991-D935-4763-9758-098B9416534E}"
+  DTS:VersionBuild="88"
+  DTS:VersionGUID="{32635D2B-2A75-4CE5-BCA2-D17FE7C370C3}"
   DTS:LastModifiedProductVersion="11.0.2100.60"
   DTS:LocaleID="7177"
-  DTS:ObjectName="010_RunInParallel"
-  DTS:DTSID="{DF3425D1-C7FD-48B9-8854-5A5C3BE65D08}"
+  DTS:ObjectName="010_RunChangeLogInParallel"
+  DTS:DTSID="{12D53A6A-EEC1-4559-BACC-D8411B98E875}"
   DTS:CreationName="SSIS.Package.3">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -19,7 +19,7 @@
     <DTS:PackageParameter
       DTS:DataType="8"
       DTS:ObjectName="parmInnerQuery"
-      DTS:DTSID="{FE2F174E-CDE2-47F6-9758-6D25D3E8841F}"
+      DTS:DTSID="{997C8A3C-C155-4049-9674-6A1BACDCB6D4}"
       DTS:CreationName="">
       <DTS:Property
         DTS:Name="ParameterValue"
@@ -32,10 +32,10 @@
       DTS:Namespace="User"
       DTS:IncludeInDebugDump="6789"
       DTS:ObjectName="NumberOfStreams"
-      DTS:DTSID="{417C843F-A8AA-4613-AA9A-9EBACA7A9F30}"
+      DTS:DTSID="{AB093100-ED63-4C72-ADFE-B8637C61878E}"
       DTS:CreationName="">
       <DTS:VariableValue
-        DTS:DataType="3">8</DTS:VariableValue>
+        DTS:DataType="3">1</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:Expression="&quot;select * from ( select PackageName +'.dtsx' AS PackageName&#xA;,  strParm1&#xA;, (Row_Number() over (order by PackageName)) % 8 as Stream&#xA;&#xA;FROM &#xA;(&#xA;&quot;&#xA;+  &#xA; @[$Package::parmInnerQuery] &#xA;+&#xA;&quot;&#xA;  ) src ) OuterSrc WHERE Stream =  &quot;"
@@ -43,7 +43,7 @@
       DTS:Namespace="User"
       DTS:IncludeInDebugDump="2345"
       DTS:ObjectName="SQLStatementBase"
-      DTS:DTSID="{578A9CCD-6CDC-4D10-904C-D0F79123E34E}"
+      DTS:DTSID="{192CBFF5-8A66-4299-A9D0-85AFE5EE6E7B}"
       DTS:CreationName="">
       <DTS:VariableValue
         DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
@@ -62,7 +62,7 @@ FROM
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ_Stream00"
-      DTS:DTSID="{9ED8EC5C-5474-4994-AD36-A32AB53F6B68}"
+      DTS:DTSID="{A108E56A-5FE4-49AB-8D8F-CB95C0E44824}"
       DTS:Description="Sequence Container"
       DTS:CreationName="STOCK:SEQUENCE">
       <DTS:Variables>
@@ -70,7 +70,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="DBListRowset"
-          DTS:DTSID="{8F82BF8D-C19A-4EF8-BAC7-714FC7DCFC13}"
+          DTS:DTSID="{93503A2C-5C15-4767-B943-59A421A56BD8}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataSubType="ManagedSerializable"
@@ -88,10 +88,10 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="PackageName"
-          DTS:DTSID="{F1520583-1096-4916-B886-58C9ECECD0C7}"
+          DTS:DTSID="{1E70698D-3AC7-4BB8-8D07-8B1E5242D372}"
           DTS:CreationName="">
           <DTS:VariableValue
-            DTS:DataType="8">100_DummyTablePackage.dtsx</DTS:VariableValue>
+            DTS:DataType="8">101_DummyChangeLogPackage.dtsx</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
           DTS:Expression="@[User::SQLStatementBase] + (DT_STR,255,1252) @[User::Stream]"
@@ -99,7 +99,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="SQLStatement"
-          DTS:DTSID="{65F4AFF5-12BF-4468-BB81-A8F2EB1A1620}"
+          DTS:DTSID="{286BA5D1-37D2-43A7-BBF3-4D9C364BC5DC}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
@@ -115,7 +115,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="Stream"
-          DTS:DTSID="{79CC76E5-4384-4F7D-A69F-7C14BEA7E07A}"
+          DTS:DTSID="{0039F4AD-BC60-4806-8FBE-18470E731D14}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="3">0</DTS:VariableValue>
@@ -124,7 +124,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="strParm1"
-          DTS:DTSID="{B38FB006-AAC9-458F-8030-D7759DF9FFE1}"
+          DTS:DTSID="{F6ECE396-2511-4B3F-BBC0-FDB092AE6C15}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8"
@@ -139,13 +139,13 @@ FROM
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream0_Workload"
-          DTS:DTSID="{84CCBA04-00E0-459B-AA83-9235430E7E40}"
+          DTS:DTSID="{0FB592F4-FFA1-4378-B4A9-7CDF2C1A95DC}"
           DTS:Description="Execute SQL Task"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -166,12 +166,12 @@ FROM
           DTS:ExecutableType="STOCK:FOREACHLOOP"
           DTS:LocaleID="-1"
           DTS:ObjectName="FLC_Stream00"
-          DTS:DTSID="{FFD70D79-7C6A-4F48-84A8-A81E1CC53F95}"
+          DTS:DTSID="{655FCBDC-6A4F-40A1-951D-2150EA542C83}"
           DTS:Description="Foreach Loop Container"
           DTS:CreationName="STOCK:FOREACHLOOP">
           <DTS:ForEachEnumerator
-            DTS:ObjectName="{79F64018-0A41-4C36-BC88-456DF82A790D}"
-            DTS:DTSID="{79F64018-0A41-4C36-BC88-456DF82A790D}"
+            DTS:ObjectName="{61FCE38A-2F1C-4291-B3E5-A6219752521B}"
+            DTS:DTSID="{61FCE38A-2F1C-4291-B3E5-A6219752521B}"
             DTS:CreationName="Microsoft.SqlServer.Dts.Runtime.Enumerators.ADO.ForEachADOEnumerator, Microsoft.SqlServer.ForEachADOEnumerator, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
             <DTS:ObjectData>
               <FEEADO
@@ -186,8 +186,9 @@ FROM
               DTS:ExecutableType="SSIS.ExecutePackageTask.3"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:LocaleID="-1"
+              DTS:DelayValidation="True"
               DTS:ObjectName="EPT_Package_01"
-              DTS:DTSID="{E73181C0-EDC2-4597-998C-67960C9060A1}"
+              DTS:DTSID="{AE6711C5-A6BE-4551-B2AF-A325DCBDEB50}"
               DTS:Description="Execute Package Task"
               DTS:CreationName="SSIS.ExecutePackageTask.3">
               <DTS:Variables />
@@ -196,7 +197,8 @@ FROM
               <DTS:ObjectData>
                 <ExecutePackageTask>
                   <UseProjectReference>True</UseProjectReference>
-                  <PackageName>100_DummyTablePackage.dtsx</PackageName>
+                  <ExecuteOutOfProcess>True</ExecuteOutOfProcess>
+                  <PackageName>101_DummyChangeLogPackage.dtsx</PackageName>
                   <ParameterAssignment>
                     <ParameterName>strParm1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
@@ -209,14 +211,14 @@ FROM
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::PackageName"
               DTS:ValueIndex="0"
-              DTS:ObjectName="{A3BEB7BA-FA74-4706-A93F-999E065F7ADE}"
-              DTS:DTSID="{A3BEB7BA-FA74-4706-A93F-999E065F7ADE}"
+              DTS:ObjectName="{8E0C29E5-F348-4470-8CC5-F12BE880C72C}"
+              DTS:DTSID="{8E0C29E5-F348-4470-8CC5-F12BE880C72C}"
               DTS:CreationName="" />
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::strParm1"
               DTS:ValueIndex="1"
-              DTS:ObjectName="{BE1ADDB7-2141-4491-A393-4D9FE36A488F}"
-              DTS:DTSID="{BE1ADDB7-2141-4491-A393-4D9FE36A488F}"
+              DTS:ObjectName="{0AAF406B-CADF-436F-8B85-CADC9C3021FC}"
+              DTS:DTSID="{0AAF406B-CADF-436F-8B85-CADC9C3021FC}"
               DTS:CreationName="" />
           </DTS:ForEachVariableMappings>
         </DTS:Executable>
@@ -228,16 +230,17 @@ FROM
           DTS:To="Package\SEQ_Stream00\FLC_Stream00"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:DTSID="{4FC37B03-2A26-4611-8134-4F6FB66AC78C}"
+          DTS:DTSID="{5DC0D34F-9035-4AF6-83F7-2BE5EEB3C85E}"
           DTS:CreationName="" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream01"
       DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:Disabled="True"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ_Stream01"
-      DTS:DTSID="{3445332E-393B-4B23-84A4-E7778E89058C}"
+      DTS:DTSID="{7B32262B-6DB1-4CE5-9EDC-D5568232B678}"
       DTS:Description="Sequence Container"
       DTS:CreationName="STOCK:SEQUENCE">
       <DTS:Variables>
@@ -245,7 +248,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="DBListRowset"
-          DTS:DTSID="{25D7DFB7-1665-4914-B54B-03292A775A82}"
+          DTS:DTSID="{8F0A619D-C3EB-4814-8975-64D34EC77A29}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataSubType="ManagedSerializable"
@@ -263,7 +266,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="PackageName"
-          DTS:DTSID="{D25AF5AB-A813-4249-91BA-961AF343440A}"
+          DTS:DTSID="{BE04D818-79DF-4B7A-A163-6ACC0D9FFCF8}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">100_DummyTablePackage.dtsx</DTS:VariableValue>
@@ -274,7 +277,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="SQLStatement"
-          DTS:DTSID="{78AE522E-5F31-481D-8BFC-120325F656FF}"
+          DTS:DTSID="{3DC72DC6-9A7C-4EFD-9B73-22C91261CF60}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
@@ -290,7 +293,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="Stream"
-          DTS:DTSID="{37E809F9-9CC1-4B14-9F29-CC9D5D3F988B}"
+          DTS:DTSID="{A4953CA3-9438-4AD2-BE0A-814D86315CEE}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="3">1</DTS:VariableValue>
@@ -299,7 +302,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="strParm1"
-          DTS:DTSID="{16FB658E-DD72-45DC-A5E7-2DA8772A988B}"
+          DTS:DTSID="{371D4672-F20A-4E72-AD53-EFBEB53F6073}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8"
@@ -310,17 +313,17 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream01\EST_Stream1_Workload"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:ThreadHint="1"
+          DTS:ThreadHint="2"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream1_Workload"
-          DTS:DTSID="{3633150B-F2D1-4638-A7D9-59317623A703}"
+          DTS:DTSID="{5682F1C7-B678-42A7-BB5B-56AFEE40697E}"
           DTS:Description="Execute SQL Task"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -341,12 +344,12 @@ FROM
           DTS:ExecutableType="STOCK:FOREACHLOOP"
           DTS:LocaleID="-1"
           DTS:ObjectName="FLC_Stream01"
-          DTS:DTSID="{BC166D36-1817-4286-86E6-AC743B884A45}"
+          DTS:DTSID="{3639C4BB-9011-4DF5-A2CA-9BBB600964E7}"
           DTS:Description="Foreach Loop Container"
           DTS:CreationName="STOCK:FOREACHLOOP">
           <DTS:ForEachEnumerator
-            DTS:ObjectName="{79F64018-0A41-4C36-BC88-456DF82A790D}"
-            DTS:DTSID="{5548258A-0015-46F8-B013-3BB8662B94F6}"
+            DTS:ObjectName="{61FCE38A-2F1C-4291-B3E5-A6219752521B}"
+            DTS:DTSID="{0C380523-2A6D-4B80-8BE6-9A25CC3EAFD6}"
             DTS:CreationName="Microsoft.SqlServer.Dts.Runtime.Enumerators.ADO.ForEachADOEnumerator, Microsoft.SqlServer.ForEachADOEnumerator, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
             <DTS:ObjectData>
               <FEEADO
@@ -361,8 +364,9 @@ FROM
               DTS:ExecutableType="SSIS.ExecutePackageTask.3"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:LocaleID="-1"
+              DTS:DelayValidation="True"
               DTS:ObjectName="EPT_Package_01"
-              DTS:DTSID="{8FA18499-414A-41B9-A938-D87F990907CE}"
+              DTS:DTSID="{DF7EDAEB-590B-4653-B625-756C5610F629}"
               DTS:Description="Execute Package Task"
               DTS:CreationName="SSIS.ExecutePackageTask.3">
               <DTS:Variables />
@@ -371,6 +375,7 @@ FROM
               <DTS:ObjectData>
                 <ExecutePackageTask>
                   <UseProjectReference>True</UseProjectReference>
+                  <ExecuteOutOfProcess>True</ExecuteOutOfProcess>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
                     <ParameterName>strParm1</ParameterName>
@@ -384,14 +389,14 @@ FROM
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::PackageName"
               DTS:ValueIndex="0"
-              DTS:ObjectName="{97B99297-6639-4644-8545-647C9E54E546}"
-              DTS:DTSID="{97B99297-6639-4644-8545-647C9E54E546}"
+              DTS:ObjectName="{7F76C94B-4E3D-4E25-B41D-AF8617B382F8}"
+              DTS:DTSID="{7F76C94B-4E3D-4E25-B41D-AF8617B382F8}"
               DTS:CreationName="" />
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::strParm1"
               DTS:ValueIndex="1"
-              DTS:ObjectName="{D83481D3-D3A2-485F-BFEE-D5FF7C07C0C0}"
-              DTS:DTSID="{D83481D3-D3A2-485F-BFEE-D5FF7C07C0C0}"
+              DTS:ObjectName="{A2FE2F39-5995-45E0-9192-16420DC99C39}"
+              DTS:DTSID="{A2FE2F39-5995-45E0-9192-16420DC99C39}"
               DTS:CreationName="" />
           </DTS:ForEachVariableMappings>
         </DTS:Executable>
@@ -403,16 +408,17 @@ FROM
           DTS:To="Package\SEQ_Stream01\FLC_Stream01"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:DTSID="{FEF7B34F-F384-4B49-9358-2BBC50504BA1}"
+          DTS:DTSID="{528A9587-8948-45A5-8379-202BA043AE30}"
           DTS:CreationName="" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream02"
       DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:Disabled="True"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ_Stream02"
-      DTS:DTSID="{F26C507C-D711-4DA1-AB92-10895B6AD0C8}"
+      DTS:DTSID="{C05CF47F-3FF6-407B-99B7-637C66DC83B1}"
       DTS:Description="Sequence Container"
       DTS:CreationName="STOCK:SEQUENCE">
       <DTS:Variables>
@@ -420,7 +426,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="DBListRowset"
-          DTS:DTSID="{C7F50574-0979-4917-B935-924AFA69E23B}"
+          DTS:DTSID="{A09046D1-0AFE-41C3-A926-A4F74D8E66B8}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataSubType="ManagedSerializable"
@@ -438,10 +444,10 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="PackageName"
-          DTS:DTSID="{34417AFA-18A7-4956-8C0E-9625921B1B52}"
+          DTS:DTSID="{7E234D3B-5DC0-40A2-BDAB-231B16EE7AA8}"
           DTS:CreationName="">
           <DTS:VariableValue
-            DTS:DataType="8">100_DummyTablePackage.dtsx</DTS:VariableValue>
+            DTS:DataType="8">101_DummyChangeLogPackage.dtsx</DTS:VariableValue>
         </DTS:Variable>
         <DTS:Variable
           DTS:Expression="@[User::SQLStatementBase] + (DT_STR,255,1252) @[User::Stream]"
@@ -449,7 +455,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="SQLStatement"
-          DTS:DTSID="{7BDDAB46-4260-40A2-9259-24B99547F2A9}"
+          DTS:DTSID="{ED2E610E-7F1E-411A-8937-E30B8C581AF8}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
@@ -465,7 +471,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="Stream"
-          DTS:DTSID="{24A712C6-FD58-4840-B6DE-D6C58B4CE333}"
+          DTS:DTSID="{BF622A19-6639-4818-9910-45521F39C792}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="3">2</DTS:VariableValue>
@@ -474,7 +480,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="strParm1"
-          DTS:DTSID="{4182BD17-ED54-4C95-B718-81FC020F2DEE}"
+          DTS:DTSID="{5456CAD4-DF34-4DEC-8C77-717C93A3F4E2}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8"
@@ -485,17 +491,17 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream02\EST_Stream02_Workload"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:ThreadHint="2"
+          DTS:ThreadHint="1"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream02_Workload"
-          DTS:DTSID="{2851F1A8-ED31-4BA1-B6A4-D41B0B5BA2A2}"
+          DTS:DTSID="{131D879F-FA0C-4DEB-921C-C8135DBD4A1C}"
           DTS:Description="Execute SQL Task"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -516,12 +522,12 @@ FROM
           DTS:ExecutableType="STOCK:FOREACHLOOP"
           DTS:LocaleID="-1"
           DTS:ObjectName="FLC_Stream02"
-          DTS:DTSID="{56F50A5A-E33F-4807-AEFA-6413771E67C8}"
+          DTS:DTSID="{9D09F4A0-50DD-4D43-89CE-036B2FE2FE7C}"
           DTS:Description="Foreach Loop Container"
           DTS:CreationName="STOCK:FOREACHLOOP">
           <DTS:ForEachEnumerator
-            DTS:ObjectName="{79F64018-0A41-4C36-BC88-456DF82A790D}"
-            DTS:DTSID="{F3AF8A5F-42EB-4DC4-9384-7C3290ADD4E1}"
+            DTS:ObjectName="{61FCE38A-2F1C-4291-B3E5-A6219752521B}"
+            DTS:DTSID="{D8E92373-DD34-4EDB-BB6D-F89B82ECAF2E}"
             DTS:CreationName="Microsoft.SqlServer.Dts.Runtime.Enumerators.ADO.ForEachADOEnumerator, Microsoft.SqlServer.ForEachADOEnumerator, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
             <DTS:ObjectData>
               <FEEADO
@@ -536,8 +542,9 @@ FROM
               DTS:ExecutableType="SSIS.ExecutePackageTask.3"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:LocaleID="-1"
+              DTS:DelayValidation="True"
               DTS:ObjectName="EPT_Package_02"
-              DTS:DTSID="{D39D3865-20A7-48DA-8A61-A56D465546F9}"
+              DTS:DTSID="{F4357CA5-735D-44D4-9C85-0426DA6D9ECA}"
               DTS:Description="Execute Package Task"
               DTS:CreationName="SSIS.ExecutePackageTask.3">
               <DTS:Variables />
@@ -546,7 +553,8 @@ FROM
               <DTS:ObjectData>
                 <ExecutePackageTask>
                   <UseProjectReference>True</UseProjectReference>
-                  <PackageName>100_DummyTablePackage.dtsx</PackageName>
+                  <ExecuteOutOfProcess>True</ExecuteOutOfProcess>
+                  <PackageName>101_DummyChangeLogPackage.dtsx</PackageName>
                   <ParameterAssignment>
                     <ParameterName>strParm1</ParameterName>
                     <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
@@ -559,14 +567,14 @@ FROM
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::PackageName"
               DTS:ValueIndex="0"
-              DTS:ObjectName="{CF910F78-F158-4171-BE52-2829008F18A8}"
-              DTS:DTSID="{CF910F78-F158-4171-BE52-2829008F18A8}"
+              DTS:ObjectName="{CBA8791E-A318-41E3-BD2A-680B2F41ED1B}"
+              DTS:DTSID="{CBA8791E-A318-41E3-BD2A-680B2F41ED1B}"
               DTS:CreationName="" />
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::strParm1"
               DTS:ValueIndex="1"
-              DTS:ObjectName="{BBA3822D-8764-42A3-B6A0-533543449741}"
-              DTS:DTSID="{BBA3822D-8764-42A3-B6A0-533543449741}"
+              DTS:ObjectName="{42CE1A6F-6133-41E9-B951-3920A28E1EE5}"
+              DTS:DTSID="{42CE1A6F-6133-41E9-B951-3920A28E1EE5}"
               DTS:CreationName="" />
           </DTS:ForEachVariableMappings>
         </DTS:Executable>
@@ -578,16 +586,17 @@ FROM
           DTS:To="Package\SEQ_Stream02\FLC_Stream02"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:DTSID="{9BD336A5-D0EE-4D9D-A653-E314F6C88556}"
+          DTS:DTSID="{D4AC482A-5F0D-4A2C-B927-7F6573F29146}"
           DTS:CreationName="" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream03"
       DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:Disabled="True"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ_Stream03"
-      DTS:DTSID="{CF859B9F-71B3-4B78-A5CE-824F40C930CE}"
+      DTS:DTSID="{FFA3DD3B-A5BF-4543-909C-6A33D99309BA}"
       DTS:Description="Sequence Container"
       DTS:CreationName="STOCK:SEQUENCE">
       <DTS:Variables>
@@ -595,7 +604,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="DBListRowset"
-          DTS:DTSID="{00A141EC-75F8-4824-ADCF-4397504D50BB}"
+          DTS:DTSID="{99AA6256-22F1-490C-9474-97C240462CC5}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataSubType="ManagedSerializable"
@@ -613,7 +622,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="PackageName"
-          DTS:DTSID="{BD9BA7ED-6CF0-4016-950F-D72355C12B89}"
+          DTS:DTSID="{9F96A200-91EB-4985-9589-BBACC5BA7FFC}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">100_DummyTablePackage.dtsx</DTS:VariableValue>
@@ -624,7 +633,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="SQLStatement"
-          DTS:DTSID="{51C79853-A258-41A1-8727-2B49E5D72BF0}"
+          DTS:DTSID="{CC5527FD-F2CA-4F3B-8E2C-1F0F6A07921B}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
@@ -640,7 +649,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="Stream"
-          DTS:DTSID="{A47B3661-84C4-42A2-A494-F0103FD9F9EA}"
+          DTS:DTSID="{FBE06BF1-35F0-42FC-AF1D-B121327F0190}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="3">3</DTS:VariableValue>
@@ -649,7 +658,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="strParm1"
-          DTS:DTSID="{DA216131-C0C1-43F0-8474-68C0C6C50222}"
+          DTS:DTSID="{C4075CEB-660B-442A-895A-33E04F7748A9}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8"
@@ -660,17 +669,17 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream03\EST_Stream03_Workload"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:ThreadHint="3"
+          DTS:ThreadHint="6"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream03_Workload"
-          DTS:DTSID="{87539F0D-DE61-43C1-AB95-A9FCA5F6A442}"
+          DTS:DTSID="{A3A5AB85-629D-45F8-806D-05FC809AE33E}"
           DTS:Description="Execute SQL Task"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -691,12 +700,12 @@ FROM
           DTS:ExecutableType="STOCK:FOREACHLOOP"
           DTS:LocaleID="-1"
           DTS:ObjectName="FLC_Stream03"
-          DTS:DTSID="{60025F18-E2DE-4021-BF06-DFC1FD631126}"
+          DTS:DTSID="{C74A169F-3951-45E8-9DCF-F7FDE9EE49B2}"
           DTS:Description="Foreach Loop Container"
           DTS:CreationName="STOCK:FOREACHLOOP">
           <DTS:ForEachEnumerator
-            DTS:ObjectName="{79F64018-0A41-4C36-BC88-456DF82A790D}"
-            DTS:DTSID="{B4CA4CA4-C713-4E16-A611-D83B5B8DE69E}"
+            DTS:ObjectName="{61FCE38A-2F1C-4291-B3E5-A6219752521B}"
+            DTS:DTSID="{3A0AD5FD-9F98-4DA9-B13A-9D76631423D7}"
             DTS:CreationName="Microsoft.SqlServer.Dts.Runtime.Enumerators.ADO.ForEachADOEnumerator, Microsoft.SqlServer.ForEachADOEnumerator, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
             <DTS:ObjectData>
               <FEEADO
@@ -711,8 +720,9 @@ FROM
               DTS:ExecutableType="SSIS.ExecutePackageTask.3"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:LocaleID="-1"
+              DTS:DelayValidation="True"
               DTS:ObjectName="EPT_Package_03"
-              DTS:DTSID="{ED50A251-54A2-4731-A08B-B76669ECAE00}"
+              DTS:DTSID="{BA7FC16C-A058-4380-B358-D7E30F07F8E6}"
               DTS:Description="Execute Package Task"
               DTS:CreationName="SSIS.ExecutePackageTask.3">
               <DTS:Variables />
@@ -721,6 +731,7 @@ FROM
               <DTS:ObjectData>
                 <ExecutePackageTask>
                   <UseProjectReference>True</UseProjectReference>
+                  <ExecuteOutOfProcess>True</ExecuteOutOfProcess>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
                     <ParameterName>strParm1</ParameterName>
@@ -734,14 +745,14 @@ FROM
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::PackageName"
               DTS:ValueIndex="0"
-              DTS:ObjectName="{85FA9C17-6208-4E57-B9FE-FCC4AD97913C}"
-              DTS:DTSID="{85FA9C17-6208-4E57-B9FE-FCC4AD97913C}"
+              DTS:ObjectName="{4FA7C7C0-9B74-4DF5-BE9D-46554106CBD8}"
+              DTS:DTSID="{4FA7C7C0-9B74-4DF5-BE9D-46554106CBD8}"
               DTS:CreationName="" />
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::strParm1"
               DTS:ValueIndex="1"
-              DTS:ObjectName="{933EC056-C05E-42CD-8146-68390957B49F}"
-              DTS:DTSID="{933EC056-C05E-42CD-8146-68390957B49F}"
+              DTS:ObjectName="{ADF988F6-2437-4F28-8DF3-77CBE7F22EB5}"
+              DTS:DTSID="{ADF988F6-2437-4F28-8DF3-77CBE7F22EB5}"
               DTS:CreationName="" />
           </DTS:ForEachVariableMappings>
         </DTS:Executable>
@@ -753,16 +764,17 @@ FROM
           DTS:To="Package\SEQ_Stream03\FLC_Stream03"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:DTSID="{77346827-8B4E-46EF-AD73-28BF9F592EF7}"
+          DTS:DTSID="{04B2D32D-90D0-4F0B-B3D8-DC536B4D9722}"
           DTS:CreationName="" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream04"
       DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:Disabled="True"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ_Stream04"
-      DTS:DTSID="{7282A93F-D51C-4F10-8EFA-6190B0C91ADB}"
+      DTS:DTSID="{439F683E-337D-404E-BE06-E8A799CB2E63}"
       DTS:Description="Sequence Container"
       DTS:CreationName="STOCK:SEQUENCE">
       <DTS:Variables>
@@ -770,7 +782,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="DBListRowset"
-          DTS:DTSID="{5C32FB2D-C3E8-4AF2-A628-AA705A414939}"
+          DTS:DTSID="{E0B0395D-B381-4C76-9E34-9D0377F742E6}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataSubType="ManagedSerializable"
@@ -788,7 +800,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="PackageName"
-          DTS:DTSID="{39735245-61D3-4EC7-8962-7143409E6CF3}"
+          DTS:DTSID="{E46ACC99-EEAD-4BEE-9D4D-47CE3AF4F0BC}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">100_DummyTablePackage.dtsx</DTS:VariableValue>
@@ -799,7 +811,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="SQLStatement"
-          DTS:DTSID="{B27510CE-7C58-4B8F-B9E5-ADA6FE178E99}"
+          DTS:DTSID="{C82DBA1F-169C-4C78-80B7-A19A84F0E445}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
@@ -815,7 +827,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="Stream"
-          DTS:DTSID="{BDAF1C7E-CC89-4C8C-8399-1A27D0407C5D}"
+          DTS:DTSID="{7B967BCD-70A4-4291-B1C6-765B3A9F9AD5}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="3">4</DTS:VariableValue>
@@ -824,7 +836,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="strParm1"
-          DTS:DTSID="{5132CC58-B98B-470F-A86B-8EFD905990B3}"
+          DTS:DTSID="{27418CF5-1F7F-45A1-B69D-45459429993D}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8"
@@ -835,17 +847,17 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream04\EST_Stream4_Workload"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:ThreadHint="7"
+          DTS:ThreadHint="3"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream4_Workload"
-          DTS:DTSID="{342C8C73-B021-48D5-A433-07B3FB22ABAB}"
+          DTS:DTSID="{E5111AFF-CAAB-4471-98CD-E514F26F6A15}"
           DTS:Description="Execute SQL Task"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -866,12 +878,12 @@ FROM
           DTS:ExecutableType="STOCK:FOREACHLOOP"
           DTS:LocaleID="-1"
           DTS:ObjectName="FLC_Stream04"
-          DTS:DTSID="{56B3FDDF-C343-418A-82E7-72CAEDACE329}"
+          DTS:DTSID="{A583A4EC-8485-413A-BE9A-35BB5C6D833B}"
           DTS:Description="Foreach Loop Container"
           DTS:CreationName="STOCK:FOREACHLOOP">
           <DTS:ForEachEnumerator
-            DTS:ObjectName="{79F64018-0A41-4C36-BC88-456DF82A790D}"
-            DTS:DTSID="{62E71CA1-2D52-43BB-9E1C-F8449EDFA9C8}"
+            DTS:ObjectName="{61FCE38A-2F1C-4291-B3E5-A6219752521B}"
+            DTS:DTSID="{F959092E-5E58-4D22-B6D6-B6B52AD48485}"
             DTS:CreationName="Microsoft.SqlServer.Dts.Runtime.Enumerators.ADO.ForEachADOEnumerator, Microsoft.SqlServer.ForEachADOEnumerator, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
             <DTS:ObjectData>
               <FEEADO
@@ -886,8 +898,9 @@ FROM
               DTS:ExecutableType="SSIS.ExecutePackageTask.3"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:LocaleID="-1"
+              DTS:DelayValidation="True"
               DTS:ObjectName="EPT_Package_04"
-              DTS:DTSID="{EB07EE0B-48A2-40CE-B5D3-B2EA210AEF70}"
+              DTS:DTSID="{8510FCD0-FBE7-4C01-9031-F88046F2CF2A}"
               DTS:Description="Execute Package Task"
               DTS:CreationName="SSIS.ExecutePackageTask.3">
               <DTS:Variables />
@@ -896,6 +909,7 @@ FROM
               <DTS:ObjectData>
                 <ExecutePackageTask>
                   <UseProjectReference>True</UseProjectReference>
+                  <ExecuteOutOfProcess>True</ExecuteOutOfProcess>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
                     <ParameterName>strParm1</ParameterName>
@@ -909,14 +923,14 @@ FROM
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::PackageName"
               DTS:ValueIndex="0"
-              DTS:ObjectName="{09E5BDC4-7F13-4A06-B44C-EEF6991366AE}"
-              DTS:DTSID="{09E5BDC4-7F13-4A06-B44C-EEF6991366AE}"
+              DTS:ObjectName="{67C1D2C4-9005-4889-A2CC-B6F07635D93D}"
+              DTS:DTSID="{67C1D2C4-9005-4889-A2CC-B6F07635D93D}"
               DTS:CreationName="" />
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::strParm1"
               DTS:ValueIndex="1"
-              DTS:ObjectName="{3BE7EEE0-597D-453F-A7DE-79CB756E6FED}"
-              DTS:DTSID="{3BE7EEE0-597D-453F-A7DE-79CB756E6FED}"
+              DTS:ObjectName="{CAB1961C-B0DF-45D5-BF70-7FD269679CAC}"
+              DTS:DTSID="{CAB1961C-B0DF-45D5-BF70-7FD269679CAC}"
               DTS:CreationName="" />
           </DTS:ForEachVariableMappings>
         </DTS:Executable>
@@ -928,16 +942,17 @@ FROM
           DTS:To="Package\SEQ_Stream04\FLC_Stream04"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:DTSID="{2C9019EA-C522-4E18-A2F6-5F1C425AC8BB}"
+          DTS:DTSID="{EF979537-227F-4135-8AA2-216333BFEDE2}"
           DTS:CreationName="" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream05"
       DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:Disabled="True"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ_Stream05"
-      DTS:DTSID="{DDDC3A08-A176-4DEB-AC71-9B4E6F4F203F}"
+      DTS:DTSID="{F5D68BB0-3FAD-4B00-A66C-1637B003609E}"
       DTS:Description="Sequence Container"
       DTS:CreationName="STOCK:SEQUENCE">
       <DTS:Variables>
@@ -945,7 +960,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="DBListRowset"
-          DTS:DTSID="{AF92D15B-073D-437E-850E-DDBD1C78B184}"
+          DTS:DTSID="{460BE138-5063-4252-B5F2-620434A25D32}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataSubType="ManagedSerializable"
@@ -963,7 +978,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="PackageName"
-          DTS:DTSID="{E9613BDA-A4E9-4DE2-B196-B138484A70A4}"
+          DTS:DTSID="{9EB5E9C7-42F3-41DD-89CE-AA79E408FDAF}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">100_DummyTablePackage.dtsx</DTS:VariableValue>
@@ -974,7 +989,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="SQLStatement"
-          DTS:DTSID="{FF333F13-F611-4A9D-A8E9-E3B47E389EFA}"
+          DTS:DTSID="{BECA4A52-6639-4096-AA57-8F3EAAB214EE}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
@@ -990,7 +1005,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="Stream"
-          DTS:DTSID="{405843ED-6F12-4ACA-AF99-6D10DDE5A2D0}"
+          DTS:DTSID="{03B371AE-1BD3-4170-B983-182C2CDCDD1E}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="3">5</DTS:VariableValue>
@@ -999,7 +1014,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="strParm1"
-          DTS:DTSID="{7229BAC1-3451-4085-B505-B4825BE7AADB}"
+          DTS:DTSID="{ECC7AB02-5558-4FBD-8AE0-A53DE4A1189D}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8"
@@ -1014,13 +1029,13 @@ FROM
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream05_Workload"
-          DTS:DTSID="{F9EC2C74-0474-487D-872B-94106933C748}"
+          DTS:DTSID="{1E41E938-DF22-430B-B1EA-9044533668C2}"
           DTS:Description="Execute SQL Task"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -1041,12 +1056,12 @@ FROM
           DTS:ExecutableType="STOCK:FOREACHLOOP"
           DTS:LocaleID="-1"
           DTS:ObjectName="FLC_Stream05"
-          DTS:DTSID="{DC1C2F38-DC07-4FE6-BB94-197AF005BF7B}"
+          DTS:DTSID="{D029D4D8-5734-45F1-A078-BCE905353077}"
           DTS:Description="Foreach Loop Container"
           DTS:CreationName="STOCK:FOREACHLOOP">
           <DTS:ForEachEnumerator
-            DTS:ObjectName="{79F64018-0A41-4C36-BC88-456DF82A790D}"
-            DTS:DTSID="{E2F3A9DA-DB6C-4CDB-BE8E-1D9EAA9B6C13}"
+            DTS:ObjectName="{61FCE38A-2F1C-4291-B3E5-A6219752521B}"
+            DTS:DTSID="{798C677E-34C8-4134-90FD-A350BCE4AB02}"
             DTS:CreationName="Microsoft.SqlServer.Dts.Runtime.Enumerators.ADO.ForEachADOEnumerator, Microsoft.SqlServer.ForEachADOEnumerator, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
             <DTS:ObjectData>
               <FEEADO
@@ -1061,8 +1076,9 @@ FROM
               DTS:ExecutableType="SSIS.ExecutePackageTask.3"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:LocaleID="-1"
+              DTS:DelayValidation="True"
               DTS:ObjectName="EPT_Package_05"
-              DTS:DTSID="{7564D8FE-ADC1-4392-8F33-E0BAB8E9476B}"
+              DTS:DTSID="{41442BE8-B93D-49DA-978C-BCC8AF84C60F}"
               DTS:Description="Execute Package Task"
               DTS:CreationName="SSIS.ExecutePackageTask.3">
               <DTS:Variables />
@@ -1071,6 +1087,7 @@ FROM
               <DTS:ObjectData>
                 <ExecutePackageTask>
                   <UseProjectReference>True</UseProjectReference>
+                  <ExecuteOutOfProcess>True</ExecuteOutOfProcess>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
                     <ParameterName>strParm1</ParameterName>
@@ -1084,14 +1101,14 @@ FROM
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::PackageName"
               DTS:ValueIndex="0"
-              DTS:ObjectName="{207E0E66-C7BC-42E1-A345-84F00C76681B}"
-              DTS:DTSID="{207E0E66-C7BC-42E1-A345-84F00C76681B}"
+              DTS:ObjectName="{83C35511-EA46-4F44-A52F-CC429B661365}"
+              DTS:DTSID="{83C35511-EA46-4F44-A52F-CC429B661365}"
               DTS:CreationName="" />
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::strParm1"
               DTS:ValueIndex="1"
-              DTS:ObjectName="{43641FBF-BCC0-4FD2-996C-854530483EE0}"
-              DTS:DTSID="{43641FBF-BCC0-4FD2-996C-854530483EE0}"
+              DTS:ObjectName="{837D432F-5839-41A1-9242-FCC8DF5807C6}"
+              DTS:DTSID="{837D432F-5839-41A1-9242-FCC8DF5807C6}"
               DTS:CreationName="" />
           </DTS:ForEachVariableMappings>
         </DTS:Executable>
@@ -1103,16 +1120,17 @@ FROM
           DTS:To="Package\SEQ_Stream05\FLC_Stream05"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:DTSID="{1880FB9A-BF13-48CB-86E6-77ABF34ACAAD}"
+          DTS:DTSID="{2360DC13-F234-450A-8187-461440C52078}"
           DTS:CreationName="" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream06"
       DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:Disabled="True"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ_Stream06"
-      DTS:DTSID="{7BD0B33D-2F67-4EA1-AE76-4800D5607D2D}"
+      DTS:DTSID="{997977FF-DBEB-4E66-98F5-FB0B180425C6}"
       DTS:Description="Sequence Container"
       DTS:CreationName="STOCK:SEQUENCE">
       <DTS:Variables>
@@ -1120,7 +1138,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="DBListRowset"
-          DTS:DTSID="{15E04353-17F9-4F73-A1C5-48C1BE0DA90C}"
+          DTS:DTSID="{C401B50D-0901-44DE-994A-9EFD9D88601F}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataSubType="ManagedSerializable"
@@ -1138,7 +1156,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="PackageName"
-          DTS:DTSID="{A7FA872F-1FE6-48CA-9F57-89F620322EAE}"
+          DTS:DTSID="{684BF8EC-1A4B-4E0C-A25B-56D063818126}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">100_DummyTablePackage.dtsx</DTS:VariableValue>
@@ -1149,7 +1167,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="SQLStatement"
-          DTS:DTSID="{DA30AD25-3285-4C3E-A80F-1D3EC3250CD7}"
+          DTS:DTSID="{EB1EA04C-C9CC-44DA-9B21-1EC321AAE8E6}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
@@ -1165,7 +1183,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="Stream"
-          DTS:DTSID="{0DF86716-D65D-4150-AB0F-8F2F70690E7A}"
+          DTS:DTSID="{E35456CE-5A59-4293-A4A9-C83A34E7671A}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="3">6</DTS:VariableValue>
@@ -1174,7 +1192,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="strParm1"
-          DTS:DTSID="{DE6C0591-E666-452C-B00A-7EC12E26FAC6}"
+          DTS:DTSID="{DA61ED3C-0CB6-41FE-AF4B-736D60C53CF4}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8"
@@ -1189,13 +1207,13 @@ FROM
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream06_Workload"
-          DTS:DTSID="{0AA41014-988F-4995-BC7F-EA5C38BEAB36}"
+          DTS:DTSID="{F5CE4766-90A1-48DE-AC64-6ADDF8821185}"
           DTS:Description="Execute SQL Task"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -1216,12 +1234,12 @@ FROM
           DTS:ExecutableType="STOCK:FOREACHLOOP"
           DTS:LocaleID="-1"
           DTS:ObjectName="FLC_Stream06"
-          DTS:DTSID="{8E95EC88-6754-4EE7-ACB7-40FA8CF7028C}"
+          DTS:DTSID="{4F943DA0-2C8E-4075-BC02-E9AEC2F8AEA9}"
           DTS:Description="Foreach Loop Container"
           DTS:CreationName="STOCK:FOREACHLOOP">
           <DTS:ForEachEnumerator
-            DTS:ObjectName="{79F64018-0A41-4C36-BC88-456DF82A790D}"
-            DTS:DTSID="{EB2BE451-465A-4C29-BA78-7B513000CD6C}"
+            DTS:ObjectName="{61FCE38A-2F1C-4291-B3E5-A6219752521B}"
+            DTS:DTSID="{BF132D2E-B307-4DE6-BB8C-F24F6267A9B7}"
             DTS:CreationName="Microsoft.SqlServer.Dts.Runtime.Enumerators.ADO.ForEachADOEnumerator, Microsoft.SqlServer.ForEachADOEnumerator, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
             <DTS:ObjectData>
               <FEEADO
@@ -1236,8 +1254,9 @@ FROM
               DTS:ExecutableType="SSIS.ExecutePackageTask.3"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:LocaleID="-1"
+              DTS:DelayValidation="True"
               DTS:ObjectName="EPT_Package_06"
-              DTS:DTSID="{F332DDD1-4DD6-4D97-827B-05EEB251D7F2}"
+              DTS:DTSID="{1404E3E1-D028-40DB-815C-0E42BAFD0A17}"
               DTS:Description="Execute Package Task"
               DTS:CreationName="SSIS.ExecutePackageTask.3">
               <DTS:Variables />
@@ -1246,6 +1265,7 @@ FROM
               <DTS:ObjectData>
                 <ExecutePackageTask>
                   <UseProjectReference>True</UseProjectReference>
+                  <ExecuteOutOfProcess>True</ExecuteOutOfProcess>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
                     <ParameterName>strParm1</ParameterName>
@@ -1259,14 +1279,14 @@ FROM
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::PackageName"
               DTS:ValueIndex="0"
-              DTS:ObjectName="{2DCB7A43-8513-4312-AB25-8C1A308EE504}"
-              DTS:DTSID="{2DCB7A43-8513-4312-AB25-8C1A308EE504}"
+              DTS:ObjectName="{54F76C21-8EB8-4016-AA03-51BDDB6C0BB1}"
+              DTS:DTSID="{54F76C21-8EB8-4016-AA03-51BDDB6C0BB1}"
               DTS:CreationName="" />
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::strParm1"
               DTS:ValueIndex="1"
-              DTS:ObjectName="{5C099DA4-DBDA-45B1-A0DB-B59FA4456988}"
-              DTS:DTSID="{5C099DA4-DBDA-45B1-A0DB-B59FA4456988}"
+              DTS:ObjectName="{23498476-2AE2-4BA0-89FC-6EB8E5622092}"
+              DTS:DTSID="{23498476-2AE2-4BA0-89FC-6EB8E5622092}"
               DTS:CreationName="" />
           </DTS:ForEachVariableMappings>
         </DTS:Executable>
@@ -1278,16 +1298,17 @@ FROM
           DTS:To="Package\SEQ_Stream06\FLC_Stream06"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:DTSID="{55415187-563F-406B-93DE-D50A5333236C}"
+          DTS:DTSID="{CD5954E6-4948-4D79-99CE-06FCC01B91C9}"
           DTS:CreationName="" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream07"
       DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:Disabled="True"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ_Stream07"
-      DTS:DTSID="{E8CEAAB0-56DF-4238-B33D-30CF9812FE5B}"
+      DTS:DTSID="{EB987E09-488A-444D-A815-44D9CBEBC36C}"
       DTS:Description="Sequence Container"
       DTS:CreationName="STOCK:SEQUENCE">
       <DTS:Variables>
@@ -1295,7 +1316,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="DBListRowset"
-          DTS:DTSID="{3F303495-FC28-466A-B35E-565F7439A4F8}"
+          DTS:DTSID="{D8354837-DDA9-461F-9769-C90477A41EA1}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataSubType="ManagedSerializable"
@@ -1313,7 +1334,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="PackageName"
-          DTS:DTSID="{0F5120A2-7433-489C-99DB-B63B52DDAC97}"
+          DTS:DTSID="{581575D5-5BCF-4BCA-8B27-637BEFD03565}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">100_DummyTablePackage.dtsx</DTS:VariableValue>
@@ -1324,7 +1345,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="SQLStatement"
-          DTS:DTSID="{EE8CF8D6-7450-4BAA-AA23-C2E6433F1DE9}"
+          DTS:DTSID="{4EF54C0D-A96E-4521-B661-476B0B18DD86}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8">select * from ( select PackageName +'.dtsx' AS PackageName
@@ -1340,7 +1361,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="6789"
           DTS:ObjectName="Stream"
-          DTS:DTSID="{28560F94-7F89-4F1C-9F27-C83489F97285}"
+          DTS:DTSID="{DEAE2337-F413-4CDE-90DD-6E06071D9D64}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="3">7</DTS:VariableValue>
@@ -1349,7 +1370,7 @@ FROM
           DTS:Namespace="User"
           DTS:IncludeInDebugDump="2345"
           DTS:ObjectName="strParm1"
-          DTS:DTSID="{C8EE0A27-82D4-4085-A6D3-38072EC16091}"
+          DTS:DTSID="{19231E9F-FE1D-4E01-A28D-072C1E089D10}"
           DTS:CreationName="">
           <DTS:VariableValue
             DTS:DataType="8"
@@ -1360,17 +1381,17 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream07\EST_Stream07_Workload"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:ThreadHint="6"
+          DTS:ThreadHint="7"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream07_Workload"
-          DTS:DTSID="{EDFBA892-EFCC-4B62-8428-7C33603F6DBF}"
+          DTS:DTSID="{2A3CE74D-1068-41EB-937C-9B9C0DD92C37}"
           DTS:Description="Execute SQL Task"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -1391,12 +1412,12 @@ FROM
           DTS:ExecutableType="STOCK:FOREACHLOOP"
           DTS:LocaleID="-1"
           DTS:ObjectName="FLC_Stream07"
-          DTS:DTSID="{3F01C96D-F123-4FDB-996D-1B90334CB0E5}"
+          DTS:DTSID="{E9613F9C-6502-4716-84D9-CD12EE9068F8}"
           DTS:Description="Foreach Loop Container"
           DTS:CreationName="STOCK:FOREACHLOOP">
           <DTS:ForEachEnumerator
-            DTS:ObjectName="{79F64018-0A41-4C36-BC88-456DF82A790D}"
-            DTS:DTSID="{A128749D-029F-40B1-814E-50DD5A35389C}"
+            DTS:ObjectName="{61FCE38A-2F1C-4291-B3E5-A6219752521B}"
+            DTS:DTSID="{2FDF52B2-1DF6-466E-A568-B45A1C559E4A}"
             DTS:CreationName="Microsoft.SqlServer.Dts.Runtime.Enumerators.ADO.ForEachADOEnumerator, Microsoft.SqlServer.ForEachADOEnumerator, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
             <DTS:ObjectData>
               <FEEADO
@@ -1411,8 +1432,9 @@ FROM
               DTS:ExecutableType="SSIS.ExecutePackageTask.3"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:LocaleID="-1"
+              DTS:DelayValidation="True"
               DTS:ObjectName="EPT_Package_07"
-              DTS:DTSID="{367A0DF7-60B8-41F2-AB3D-118B47F5C801}"
+              DTS:DTSID="{014700C5-B117-4062-960C-67F1D9A71D30}"
               DTS:Description="Execute Package Task"
               DTS:CreationName="SSIS.ExecutePackageTask.3">
               <DTS:Variables />
@@ -1421,6 +1443,7 @@ FROM
               <DTS:ObjectData>
                 <ExecutePackageTask>
                   <UseProjectReference>True</UseProjectReference>
+                  <ExecuteOutOfProcess>True</ExecuteOutOfProcess>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
                     <ParameterName>strParm1</ParameterName>
@@ -1434,14 +1457,14 @@ FROM
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::PackageName"
               DTS:ValueIndex="0"
-              DTS:ObjectName="{E530E9F2-E3CF-4E87-8328-AF7950011491}"
-              DTS:DTSID="{E530E9F2-E3CF-4E87-8328-AF7950011491}"
+              DTS:ObjectName="{AB30F8B5-62B7-48B8-A975-B4401426D83C}"
+              DTS:DTSID="{AB30F8B5-62B7-48B8-A975-B4401426D83C}"
               DTS:CreationName="" />
             <DTS:ForEachVariableMapping
               DTS:VariableName="User::strParm1"
               DTS:ValueIndex="1"
-              DTS:ObjectName="{9AB9A2AD-B68F-44DF-A9DA-4BA14A5EEADE}"
-              DTS:DTSID="{9AB9A2AD-B68F-44DF-A9DA-4BA14A5EEADE}"
+              DTS:ObjectName="{615DD7C1-E5B9-4CAA-AE3D-441DA0111FEF}"
+              DTS:DTSID="{615DD7C1-E5B9-4CAA-AE3D-441DA0111FEF}"
               DTS:CreationName="" />
           </DTS:ForEachVariableMappings>
         </DTS:Executable>
@@ -1453,7 +1476,7 @@ FROM
           DTS:To="Package\SEQ_Stream07\FLC_Stream07"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:DTSID="{B7DCC283-7B46-4D0B-84D7-773D5563DB03}"
+          DTS:DTSID="{BD536928-7E40-4264-8BDB-F65A7098BA7A}"
           DTS:CreationName="" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
@@ -1783,14 +1806,14 @@ FROM
           Id="Package\SEQ_Stream07\EST_Stream07_Workload"
           TopLeft="17.1,5.5" />
         <NodeLayout
-          Size="148,44"
+          Size="158,42"
           Id="Package\SEQ_Stream07\FLC_Stream07\EPT_Package_07"
           TopLeft="5.5,5.5" />
         <ContainerLayout
           HeaderHeight="43.924528301886795"
           IsExpanded="True"
-          PanelSize="159,105"
-          Size="159,149"
+          PanelSize="168,105"
+          Size="168,149"
           Id="Package\SEQ_Stream07\FLC_Stream07"
           TopLeft="5.50000000000004,109.5" />
         <EdgeLayout

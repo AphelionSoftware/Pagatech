@@ -1,0 +1,548 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable
+  DTS:refId="Package" xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:CreatorName="Christina"
+  DTS:CreatorComputerName="TWIST"
+  DTS:CreationDate="1/11/2015 4:41:45 PM"
+  DTS:VersionMajor="0"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{28BE2C22-5503-46FF-A726-7296C6A3AF0D}"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="1108_dbo_Country"
+  DTS:DTSID="{ED390E85-10B0-40A6-8224-9A1D025A391E}"
+  DTS:CreationName="SSIS.Package.3">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:DataType="8"
+      DTS:ObjectName="strParm1"
+      DTS:DTSID="{973070E6-DE0A-43A7-80CB-43C6C4B9139F}"
+      DTS:CreationName="">
+      <DTS:Property
+        DTS:Name="ParameterValue"
+        xml:space="preserve"
+        DTS:DataType="8"></DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:Namespace="User"
+      DTS:IncludeInDebugDump="2345"
+      DTS:ObjectName="BaseQuery"
+      DTS:DTSID="{2F398305-3267-408E-B03A-C12F5811BEE2}"
+      DTS:CreationName="">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT * FROM CHANGETABLE(CHANGES dbo.Country,0)  AS change_log</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:Namespace="User"
+      DTS:IncludeInDebugDump="6789"
+      DTS:ObjectName="CurrentVersion"
+      DTS:DTSID="{C5B2DB3A-8F71-40AB-B3A8-C9E647EE6B0F}"
+      DTS:CreationName="">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;"
+      DTS:EvaluateAsExpression="True"
+      DTS:Namespace="User"
+      DTS:IncludeInDebugDump="2345"
+      DTS:ObjectName="FullQueryText"
+      DTS:DTSID="{F2FB6F27-88F3-4D33-A753-71CE168073FD}"
+      DTS:CreationName="">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT * FROM CHANGETABLE(CHANGES dbo.Country,0)  AS change_log ;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:Namespace="User"
+      DTS:IncludeInDebugDump="6789"
+      DTS:ObjectName="LastSyncVersion"
+      DTS:DTSID="{F5ECEF6C-6991-4F80-820C-0F8F3B2ABEB5}"
+      DTS:CreationName="">
+      <DTS:VariableValue
+        DTS:DataType="3">6</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load dbo_Country"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load dbo_Country"
+      DTS:DTSID="{7DDECA42-D710-409C-BEB0-7590668075C4}"
+      DTS:CreationName="SSIS.Pipeline.3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load dbo_Country\OLEDB_GetData"
+              name="OLEDB_GetData"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              usesDispositions="true"
+              version="7"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7">
+              <properties>
+                <property
+                  name="CommandTimeout"
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out.">0</property>
+                <property
+                  name="OpenRowset"
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."></property>
+                <property
+                  name="OpenRowsetVariable"
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."></property>
+                <property
+                  name="SqlCommand"
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  name="SqlCommandVariable"
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed.">User::FullQueryText</property>
+                <property
+                  name="DefaultCodePage"
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source.">1252</property>
+                <property
+                  name="AlwaysUseDefaultCodePage"
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data.">false</property>
+                <property
+                  name="AccessMode"
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  typeConverter="AccessMode">3</property>
+                <property
+                  name="ParameterMapping"
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Connections[OleDbConnection]"
+                  name="OleDbConnection"
+                  description="The OLE DB runtime connection used to access the database."
+                  connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]"
+                      name="SYS_CHANGE_CREATION_VERSION"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]"
+                      name="SYS_CHANGE_COLUMNS"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]"
+                      length="4100"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      name="SYS_CHANGE_CONTEXT"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      length="128"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[CountryId]"
+                      name="CountryId"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[CountryId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].ExternalColumns[CountryId]" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      dataType="i8" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
+                      name="SYS_CHANGE_CREATION_VERSION"
+                      dataType="i8" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      dataType="wstr"
+                      length="1" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]"
+                      name="SYS_CHANGE_COLUMNS"
+                      dataType="bytes"
+                      length="4100" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      name="SYS_CHANGE_CONTEXT"
+                      dataType="bytes"
+                      length="128" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].ExternalColumns[CountryId]"
+                      name="CountryId"
+                      dataType="i4" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error]"
+                  name="Error"
+                  isErrorOut="true">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]"
+                      name="SYS_CHANGE_CREATION_VERSION"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]"
+                      dataType="i8" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      dataType="wstr" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]"
+                      name="SYS_CHANGE_COLUMNS"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]"
+                      length="4100"
+                      dataType="bytes" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      name="SYS_CHANGE_CONTEXT"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      length="128"
+                      dataType="bytes" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[CountryId]"
+                      name="CountryId"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[CountryId]"
+                      dataType="i4" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog"
+              name="OLEDB_InsertIntoChangeLog"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              usesDispositions="true"
+              version="4"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4">
+              <properties>
+                <property
+                  name="CommandTimeout"
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out.">0</property>
+                <property
+                  name="OpenRowset"
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset.">dbo.Country</property>
+                <property
+                  name="OpenRowsetVariable"
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."></property>
+                <property
+                  name="SqlCommand"
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  name="DefaultCodePage"
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source.">1252</property>
+                <property
+                  name="AlwaysUseDefaultCodePage"
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data.">false</property>
+                <property
+                  name="AccessMode"
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database.">0</property>
+                <property
+                  name="FastLoadKeepIdentity"
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on.">true</property>
+                <property
+                  name="FastLoadKeepNulls"
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on.">false</property>
+                <property
+                  name="FastLoadOptions"
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on.">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  name="FastLoadMaxInsertCommitSize"
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on.">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Connections[OleDbConnection]"
+                  name="OleDbConnection"
+                  description="The OLE DB runtime connection used to access the database."
+                  connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
+                  name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog"
+                  hasSideEffects="true"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]"
+                      cachedName="SYS_CHANGE_VERSION"
+                      cachedDataType="i8" />
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
+                      cachedName="SYS_CHANGE_CREATION_VERSION"
+                      cachedDataType="i8" />
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      cachedName="SYS_CHANGE_OPERATION"
+                      cachedDataType="wstr"
+                      cachedLength="1" />
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_COLUMNS]"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]"
+                      cachedName="SYS_CHANGE_COLUMNS"
+                      cachedDataType="bytes"
+                      cachedLength="4100" />
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      cachedName="SYS_CHANGE_CONTEXT"
+                      cachedDataType="bytes"
+                      cachedLength="128" />
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[CountryId]"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output].Columns[CountryId]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CountryId]"
+                      cachedName="CountryId"
+                      cachedDataType="i4" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      dataType="i8" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
+                      name="SYS_CHANGE_CREATION_VERSION"
+                      dataType="i8" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      dataType="wstr"
+                      length="1" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]"
+                      name="SYS_CHANGE_COLUMNS"
+                      dataType="bytes"
+                      length="4100" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      name="SYS_CHANGE_CONTEXT"
+                      dataType="bytes"
+                      length="128" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CountryId]"
+                      name="CountryId"
+                      dataType="i4" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Outputs[Error]"
+                  name="Error"
+                  exclusionGroup="1"
+                  synchronousInputId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
+                  isErrorOut="true">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      lineageId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load dbo_Country.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
+              name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog"
+              startId="Package\DFT_Load dbo_Country\OLEDB_GetData.Outputs[Output]"
+              endId="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="189,42"
+          Id="Package\DFT_Load dbo_Country"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load dbo_Country">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\DFT_Load dbo_Country\OLEDB_GetData"
+          TopLeft="36.5,5.5" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog"
+          TopLeft="5.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\DFT_Load dbo_Country.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
+          TopLeft="113.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load dbo_Country\OLEDB_GetData">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load dbo_Country\OLEDB_InsertIntoChangeLog">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
