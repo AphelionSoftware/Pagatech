@@ -1,0 +1,1 @@
+SELECT * FROM CHANGETABLE(CHANGES dbo.Bank,0)  AS change_log
