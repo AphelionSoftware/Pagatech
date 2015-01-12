@@ -11,6 +11,8 @@
 );
 
 
+
+
 GO
 CREATE CLUSTERED INDEX [ix_Users_UserId]
     ON [dbo].[Users]([UserId] ASC, [row_id] ASC);
@@ -25,6 +27,8 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'
 			SYS_CHANGE_OPERATION,
 			SYS_CHANGE_COLUMNS,
 			SYS_CHANGE_CONTEXT,
-			UserId
+			UserId = CAST(UserId AS int)
 		FROM CHANGETABLE(CHANGES [dbo].[User],0)  AS change_log', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Users';
+
+
 

@@ -15,6 +15,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'
 		SET NOCOUNT ON;
@@ -24,8 +26,10 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'
 			SYS_CHANGE_OPERATION,
 			SYS_CHANGE_COLUMNS,
 			SYS_CHANGE_CONTEXT,
-			FinancialTransactionTypeId
+			FinancialTransactionTypeId = CAST(FinancialTransactionTypeId AS varchar(50))
 		FROM CHANGETABLE(CHANGES [dbo].[FinancialTransactionType],0)  AS change_log', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'FinancialTransactionType';
+
+
 
 
 
