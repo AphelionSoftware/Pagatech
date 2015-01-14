@@ -123,12 +123,12 @@
 					  </Variables>
 				
 					 <Tasks>
-							<Dataflow Name="DFT_Load <#=String.Format("{0}_{1}",TableSchema, TableName)#>">
+							<Dataflow Name="DFT_Load <#=String.Format("{0}_{1}",TableSchema, TableName)#> ">
 							  <Transformations>
 								<OleDbSource Name="OLEDB_GetData" ConnectionName="PrimaryDB">
 								  <VariableInput VariableName="User.FullQueryText"></VariableInput>
 								</OleDbSource>
-								<OleDbDestination Name="OLEDB_InsertIntoChangeLog" ConnectionName="ChangeLogDB" KeepIdentity="true" UseFastLoadIfAvailable="false">
+								<OleDbDestination Name="OLEDB_InsertIntoChangeLog" ConnectionName="ChangeLogDB" KeepIdentity="true" BatchSize="10000" UseFastLoadIfAvailable="true" MaximumInsertCommitSize="2000000" >
 								  <ExternalTableOutput Table="<#=String.Format("{0}.{1}",TableSchema, TableName)#>"/>
 								</OleDbDestination>
 							  </Transformations>
