@@ -1,0 +1,449 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/2/2014 4:29:16 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
+  DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
+  DTS:DTSID="{50604A75-4C13-49FF-934A-60FFCD440A47}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2000.8"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="001_LoadChangeLog"
+  DTS:PackageType="5"
+  DTS:VersionBuild="166"
+  DTS:VersionGUID="{0C692C4D-E504-4E73-8FEB-3829FC7B90C8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{2C66F787-024D-416F-BC9D-A0174420B9A9}"
+      DTS:ObjectName="LoadAll"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{B675FC5B-D170-4CFE-BDCF-0DF0977767F1}"
+      DTS:ObjectName="SchemaFilter"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F584885F-E167-4A38-939C-EA6C5BDCC350}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CurrentVersion">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{86A53C9A-6298-47FA-8532-ED0C7BCDCC2D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LastSyncVersion">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{66E201CB-80B3-46BC-9044-0E715084E431}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::LoadAll]  ? &quot; &quot; :  @[User::strWhereClause]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strLoadAll">
+      <DTS:VariableValue
+        DTS:DataType="8">WHERE 	SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3A79794E-2F37-4857-BD87-250D81484874}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(CHAR(4),(prefix.package_grp + list.rn)) +'_' + StagingTableName,&#xA;&#x9;strParm1 = '&quot; + @[User::strLoadAll] +&quot;' &#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY base.Table_Schema ORDER BY base.StagingTableName) AS rn,&#xA;&#x9;&#x9;base.StagingTableName,&#xA;&#x9;&#x9;base.KeyColumn,&#xA;&#x9;&#x9;base.SourceTable,&#xA;&#x9;&#x9;base.TABLE_SCHEMA&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA,&#xA;&#x9;&#x9;&#x9;StagingTableName,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,&#xA;&#x9;&#x9;&#x9;CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN&#xA;&#x9;&#x9;&#x9;&#x9;CASE&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN ext_prop.value IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) &gt; 0 THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) = 0 THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;END&#xA;&#x9;&#x9;&#x9;END)) AS HasBaseQueryDef&#xA;&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,&#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA,&#xA;&#x9;&#x9;&#x9;&#x9;major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  &#xA;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;&#x9;&#x9;&quot;+@[$Package::SchemaFilter] +&quot;&#xA;&#x9;&#x9;) AS table_list&#xA;&#x9;&#x9;INNER JOIN sys.extended_properties as ext_prop ON &#xA;&#x9;&#x9;&#x9;table_list.major_id = ext_prop.major_id&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'&#xA;&#x9;&#x9;GROUP BY&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA,&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName&#xA;&#x9;) AS base&#xA;&#x9;WHERE &#xA;&#x9;&#x9;base.HasBaseQueryDef = 1&#xA;) AS list&#xA;INNER JOIN&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;(tsg.seed *100) + 1000 AS package_grp,&#xA;&#x9;&#x9;tsg.TABLE_SCHEMA&#xA;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed,&#xA;&#x9;&#x9;&#x9;ts.TABLE_SCHEMA&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA&#xA;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_TYPE = 'BASE TABLE'&#xA;&#x9;&#x9;) as ts&#xA;&#x9;) AS tsg&#xA;) as prefix ON&#xA;&#x9;list.TABLE_SCHEMA = prefix.TABLE_SCHEMA&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strPackageQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT
+	PackageName = CONVERT(CHAR(4),(prefix.package_grp + list.rn)) +'_' + StagingTableName,
+	strParm1 = 'WHERE 	SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 0' 
+FROM
+(
+	SELECT
+		ROW_NUMBER() OVER (PARTITION BY base.Table_Schema ORDER BY base.StagingTableName) AS rn,
+		base.StagingTableName,
+		base.KeyColumn,
+		base.SourceTable,
+		base.TABLE_SCHEMA
+	FROM
+	(
+		SELECT
+			table_list.TABLE_SCHEMA,
+			StagingTableName,
+			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,
+			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,
+			CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN
+				CASE	
+					WHEN ext_prop.value IS NULL THEN 0
+					WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) &gt; 0 THEN 1
+					WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) = 0 THEN 0
+				END
+			END)) AS HasBaseQueryDef
+
+		FROM
+		(
+			SELECT 
+				StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,
+				t.TABLE_SCHEMA,
+				major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  
+			FROM INFORMATION_SCHEMA.TABLES AS t
+				
+		) AS table_list
+		INNER JOIN sys.extended_properties as ext_prop ON 
+			table_list.major_id = ext_prop.major_id
+		WHERE 
+			ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'
+		GROUP BY
+			table_list.TABLE_SCHEMA,
+			table_list.StagingTableName
+	) AS base
+	WHERE 
+		base.HasBaseQueryDef = 1
+) AS list
+INNER JOIN
+(
+	SELECT
+		(tsg.seed *100) + 1000 AS package_grp,
+		tsg.TABLE_SCHEMA
+	FROM
+		(
+		SELECT
+			ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed,
+			ts.TABLE_SCHEMA
+		FROM
+		(
+			SELECT DISTINCT 
+				t.TABLE_SCHEMA
+			FROM INFORMATION_SCHEMA.TABLES AS t
+			WHERE
+				t.TABLE_TYPE = 'BASE TABLE'
+		) as ts
+	) AS tsg
+) as prefix ON
+	list.TABLE_SCHEMA = prefix.TABLE_SCHEMA</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7F3E4024-7BC3-45AD-A74D-AF29F57259CD}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;WHERE &#x9;SYS_CHANGE_VERSION &gt;  &quot; +(DT_STR, 20,1252) @[User::LastSyncVersion] +&quot; AND SYS_CHANGE_VERSION &lt;= &quot; +(DT_STR, 20,1252) @[User::CurrentVersion]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strWhereClause">
+      <DTS:VariableValue
+        DTS:DataType="8">WHERE 	SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="2">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\EPT_ExecInParallel"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{18B0D2E3-648D-42A8-BEF2-4944266DE6E1}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EPT_ExecInParallel"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>010_RunChangeLogInParallel.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>parmInnerQuery</ParameterName>
+            <BindedVariableOrParameterName>User::strPackageQuery</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_GetCurrentVersion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DDA58CFA-D5B8-47B1-BF48-2E26405F353A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_GetCurrentVersion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FEF7BC34-776E-4B48-8123-6BAC7A499774}"
+          SQLTask:SqlStatementSource="SELECT [CurrentVersion] = CHANGE_TRACKING_CURRENT_VERSION()"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="CurrentVersion"
+            SQLTask:DtsVariableName="User::CurrentVersion" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_GetVersionNumbers"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{543BC9CD-5165-4062-8316-C750D4A510ED}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_GetVersionNumbers"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{58D08405-99FD-49DC-8B1E-FF6A419E845A}"
+          SQLTask:SqlStatementSource="SELECT CurrentVersion, LastSyncVersion FROM [ChangeTracking].[Load_History]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="CurrentVersion"
+            SQLTask:DtsVariableName="User::CurrentVersion" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LastSyncVersion"
+            SQLTask:DtsVariableName="User::LastSyncVersion" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_UpdateLoadQueueVersion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6C3ACE8B-5A0E-4174-A6E9-E86C72D8686E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_UpdateLoadQueueVersion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{58D08405-99FD-49DC-8B1E-FF6A419E845A}"
+          SQLTask:SqlStatementSource="UPDATE [Aphelion.DB.LoadQueue].[ChangeTracking].[Load_History]&#xA;SET &#xA;[CurrentVersion] = ?,&#xA;[LastSyncVersion] = [CurrentVersion]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::CurrentVersion"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{428B24D2-3FE2-470C-B3C4-0BA50EC8DEA0}"
+      DTS:From="Package\EST_GetCurrentVersion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\EST_UpdateLoadQueueVersion" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{7D7276B2-A1FA-4FBD-BB4B-C30DBF9C6A7A}"
+      DTS:From="Package\EST_UpdateLoadQueueVersion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\EST_GetVersionNumbers" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{1F2FFD87-325A-4782-89AF-6D224207A334}"
+      DTS:From="Package\EST_GetVersionNumbers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\EPT_ExecInParallel" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="230,42"
+          Id="Package\EPT_ExecInParallel"
+          TopLeft="106,326.5" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\EST_GetCurrentVersion"
+          TopLeft="81,5.5" />
+        <NodeLayout
+          Size="369,42"
+          Id="Package\EST_GetVersionNumbers"
+          TopLeft="5.5,209.5" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\EST_UpdateLoadQueueVersion"
+          TopLeft="78,107.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="175.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.5,60"
+              Start="0,0"
+              End="14.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="10.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.5,30"
+                    Point2="14.5,30"
+                    Point3="14.5,34" />
+                  <mssgle:LineSegment
+                    End="14.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="190,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="190,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31,75"
+              Start="0,0"
+              End="31,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.5"
+                    Point2="0,37.5"
+                    Point3="4,37.5" />
+                  <mssgle:LineSegment
+                    End="27,37.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27,37.5"
+                    Point2="31,37.5"
+                    Point3="31,41.5" />
+                  <mssgle:LineSegment
+                    End="31,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="The SETVersionNumbers task should run at the very beginning of the load. It runs against the operational DB and writes to the LoadQueue DB.&#xA;The version numbers set in this step will be used for &#xA;all subsequent loads. It is currently disabled so that it doesn't interfere with testing."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="781,66"
+          Id="d63dff49-fdc4-4c30-b05a-142b284a4e18"
+          TopLeft="290.5,0.5" />
+        <AnnotationLayout
+          Text="Be sure to set Load All Parameter to True or False before running."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="375,39"
+          Id="cddb0a45-8ad2-4e34-b4e9-6c45c9760449"
+          TopLeft="328.5,85.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
