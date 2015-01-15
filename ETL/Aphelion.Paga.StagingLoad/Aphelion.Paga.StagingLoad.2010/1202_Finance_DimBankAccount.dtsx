@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/15/2015 14:07:53" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{34E2384A-61BA-4147-ABAD-B48AB3AB8AAA}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1202_Finance_DimBankAccount" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{296B585E-7971-4BEB-863A-F04D2B669340}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/15/2015 19:47:57" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{296E379A-50FF-4874-8CA4-B7097875AC07}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1202_Finance_DimBankAccount" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{AFE96582-76DE-48A6-B892-08FEABFB4A8B}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{C07147BF-1A11-4D30-A927-F50B9AC3CF52}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimBankAccount" DTS:refId="Package\DFT_Load Finance_DimBankAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{48F8279E-0C51-406B-AE01-4DDB4F046973}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimBankAccount" DTS:refId="Package\DFT_Load Finance_DimBankAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -108,7 +108,7 @@
                 </property>
                 <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
                 </property>
-                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::BaseQuery</property>
                 <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
                 <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
                 <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
@@ -229,24 +229,37 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{2FF6CE8A-85A2-4DCF-BEE6-F8A404635EEF}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{4DB33E8C-781C-4ED0-8575-07E4ADB827FF}" DTS:ObjectName="Filter" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="11" DTS:Description="" DTS:DTSID="{31582E9D-9EBC-475E-9C5A-DF94169D6264}" DTS:ObjectName="LoadAll" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="11" DTS:Name="ParameterValue">False</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0FF0D701-DB27-445E-B1A7-02FFF41B27BB}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{43A8AF67-7B20-4D2C-AEEF-9B254344A962}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{454DFBFB-4BC2-42AF-B9A6-E9CD94DAA7A0}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3E2E2375-ABEC-4189-9BBF-B05A7FC7B03E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3D065CB5-A9A6-4C2B-A1CC-345CEB7CEFFF}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DA6568AA-EF31-4F25-8F81-DDF0B50228FC}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	AccountAlias,  	AccountHolderName,  	BankAccountLinkStatusComment,  	BankAccountLinkStatusType = COALESCE(BankAccountLinkStatusType, 'UNKNOWN'),  	BranchName,  	DurationLimit,  	DurationLimitSeconds,  	KYC_Rating,  	Name,  	TransactionLimit,  	DimBankSourceKey 	 FROM  ( 	SELECT          AccountAlias= CONVERT(VARCHAR(20),[AccountAlias]),  		 AccountHolderName = CONVERT(VARCHAR(200),[AccountHolderName]),  		 BankAccountLinkStatusComment= CONVERT(VARCHAR(1000),[BankAccountLinkStatusComment]),  		 BankAccountLinkStatusType = [BankAccountLinkStatusTypeId],  		 BranchName = CONVERT(VARCHAR(200),[BranchName]),  		 DurationLimit = [DurationLimit],  		 DurationLimitSeconds=[DurationLimitSeconds],  		 KYC_Rating = [KYCId],  		 Name = CONVERT(VARCHAR(200),[AccountHolderName]),  		 SourceKey = [BankAccountId],  		 TransactionLimit =[TransactionLimit],  		 DimBankSourceKey = [BankId] 	FROM [dbo].[BankAccount] ) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CB889E11-61DC-493E-B4D2-39F442A6BB91}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	AccountAlias,  	AccountHolderName,  	BankAccountLinkStatusComment,  	BankAccountLinkStatusType = COALESCE(BankAccountLinkStatusType, 'UNKNOWN'),  	BranchName,  	DurationLimit,  	DurationLimitSeconds,  	KYC_Rating,  	Name,  	TransactionLimit,  	DimBankSourceKey 	 FROM  ( 	SELECT          AccountAlias= CONVERT(VARCHAR(20),[AccountAlias]),  		 AccountHolderName = CONVERT(VARCHAR(200),[AccountHolderName]),  		 BankAccountLinkStatusComment= CONVERT(VARCHAR(1000),[BankAccountLinkStatusComment]),  		 BankAccountLinkStatusType = [BankAccountLinkStatusTypeId],  		 BranchName = CONVERT(VARCHAR(200),[BranchName]),  		 DurationLimit = [DurationLimit],  		 DurationLimitSeconds=[DurationLimitSeconds],  		 KYC_Rating = [KYCId],  		 Name = CONVERT(VARCHAR(200),[AccountHolderName]),  		 SourceKey = [BankAccountId],  		 TransactionLimit =[TransactionLimit],  		 DimBankSourceKey = [BankId] 	FROM [dbo].[BankAccount] ) as base_query ;</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A2B56864-CD3E-4240-8170-48F29349EA73}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Filter_1">
+      <DTS:VariableValue DTS:DataType="8">WHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.BankAccount AS ct WHERE base_query.SourceKey = ct.BankAccountId</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CFFE00CE-37D7-4126-BFEF-8422527DB19A}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::Filter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Filter_2">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{196B61E9-0640-4877-83F8-7644CBA2EE71}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::Filter_1] + @[$User::Filter_2] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="WHEREClause">
+      <DTS:VariableValue DTS:DataType="8">WHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.BankAccount AS ct WHERE base_query.SourceKey = ct.BankAccountId;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EC9152DB-5DA3-4DA7-A3E9-545A07E34AF4}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::LoadAll] ? @[User::BaseQuery] :  @[User::BaseQuery]+  @[User::WHEREClause]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	AccountAlias,  	AccountHolderName,  	BankAccountLinkStatusComment,  	BankAccountLinkStatusType = COALESCE(BankAccountLinkStatusType, 'UNKNOWN'),  	BranchName,  	DurationLimit,  	DurationLimitSeconds,  	KYC_Rating,  	Name,  	TransactionLimit,  	DimBankSourceKey 	 FROM  ( 	SELECT          AccountAlias= CONVERT(VARCHAR(20),[AccountAlias]),  		 AccountHolderName = CONVERT(VARCHAR(200),[AccountHolderName]),  		 BankAccountLinkStatusComment= CONVERT(VARCHAR(1000),[BankAccountLinkStatusComment]),  		 BankAccountLinkStatusType = [BankAccountLinkStatusTypeId],  		 BranchName = CONVERT(VARCHAR(200),[BranchName]),  		 DurationLimit = [DurationLimit],  		 DurationLimitSeconds=[DurationLimitSeconds],  		 KYC_Rating = [KYCId],  		 Name = CONVERT(VARCHAR(200),[AccountHolderName]),  		 SourceKey = [BankAccountId],  		 TransactionLimit =[TransactionLimit],  		 DimBankSourceKey = [BankId] 	FROM [dbo].[BankAccount] ) as base_queryWHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.BankAccount AS ct WHERE base_query.SourceKey = ct.BankAccountId;</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>

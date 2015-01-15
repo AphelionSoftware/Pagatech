@@ -124,34 +124,34 @@
 				string KeyColumn = row[4].ToString();
 				string SourceTable = row[5].ToString();
 
-				string Filter = "WHERE EXISTS "+
+				string Filter = " WHERE EXISTS "+
 										"( "+
 											"SELECT "+ 
 													"1 "+
 												"FROM [paga_change_log].[dbo]." +SourceTable +" AS ct "+
-												"WHERE base_query.SourceKey = ct." +KeyColumn +" "+
-										")";
+												"WHERE base_query.SourceKey = ct." +KeyColumn +"";
 		#>	
 				<Package Name="<#=PackageName#>" ConstraintMode="Linear"  ProtectionLevel="EncryptSensitiveWithUserKey"  AutoCreateConfigurationsType="None">
-           
-						<Parameters>
-							<Parameter Name="strParm1" DataType="String"></Parameter>
-						</Parameters>
-            
-						<Variables>
-						  <Variable Name="CurrentVersion" DataType="Int32">0</Variable>
-						  <Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
-						  <Variable Name="BaseQuery" DataType="String"><#=BaseQuery#></Variable>
-						  <Variable Name="WHEREClause" DataType="String"><#=Filter#></Variable>
-
-						  <Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]+ " " +@[$Package::strParm1] +";"</Variable>
-					  </Variables>
+				<Parameters>
+					<Parameter Name="Filter" DataType="String"></Parameter>
+					<Parameter Name="LoadAll" DataType="Boolean">false</Parameter>
+				</Parameters>
+				
+				<Variables>
+						<Variable Name="CurrentVersion" DataType="Int32">0</Variable>
+						<Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
+						<Variable Name="BaseQuery" DataType="String"><#=BaseQuery#></Variable>
+						<Variable Name="Filter_1" DataType="String"><#=Filter#></Variable>
+						<Variable Name="Filter_2" DataType="String" EvaluateAsExpression="true">@[$Package::Filter]</Variable>
+						<Variable Name="WHEREClause" DataType="String" EvaluateAsExpression="true"> @[User::Filter_1] + @[$User::Filter_2] +";"</Variable>
+						<Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[$Package::LoadAll] ? @[User::BaseQuery] :  @[User::BaseQuery]+  @[User::WHEREClause]</Variable>
+					</Variables>
 				
 				<Tasks>
 					<Dataflow Name="DFT_Load <#=String.Format("{0}_{1}",TableSchema, TableName)#>">
 						<Transformations>
 						<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
-							<VariableInput VariableName="User.FullQueryText"></VariableInput>
+							<VariableInput VariableName="User.BaseQuery"></VariableInput>
 						</OleDbSource>
 						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="Paga_Staging" KeepIdentity="false">
 							<ExternalTableOutput Table="<#=String.Format("{0}.{1}_{2}","Staging",TableSchema, TableName)#>"/>

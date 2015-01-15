@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/15/2015 14:07:53" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{B919143D-52D6-438A-94AD-E70AAB63C1CB}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1112_Classification_DimProcessType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{FCA60FCC-323E-46C8-9C19-AF658E2A0D7F}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/15/2015 19:47:57" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{256BB234-F67F-44D1-BDB6-C67628A9C128}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1112_Classification_DimProcessType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{57A97C8D-EE1E-4A61-A45E-BB209A4C07DC}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{6B41EB43-4B88-4913-B884-FEC70EA59A7B}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimProcessType" DTS:refId="Package\DFT_Load Classification_DimProcessType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{A5ABD513-D459-4A03-9677-74B76035D01E}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimProcessType" DTS:refId="Package\DFT_Load Classification_DimProcessType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -54,7 +54,7 @@
                 </property>
                 <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
                 </property>
-                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::BaseQuery</property>
                 <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
                 <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
                 <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
@@ -133,24 +133,37 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{965A28F3-31F5-4B73-9D69-B2AC805800F0}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{EDA34808-942C-4079-80EF-FA0782AD4AEB}" DTS:ObjectName="Filter" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="11" DTS:Description="" DTS:DTSID="{01052F4B-D4FB-43F0-86C8-8C321A1F23EA}" DTS:ObjectName="LoadAll" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="11" DTS:Name="ParameterValue">False</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{196AD16C-0A4A-4386-ABF0-B55396BF57B6}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{42CA6143-106A-4576-B5AF-7BE6A14ECEEE}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2B38D6A6-47D1-485A-B357-9DD31AA29256}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4E8AEAC2-A9A6-4D76-8519-5171B6321F48}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D4678E83-653C-4087-83EC-A9498949DC0D}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{666E25CD-94D0-4CDC-8DAC-B8190C5AADBC}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	base_query.name, 	DimProcessTypeGroupSourceKey FROM  ( 	SELECT 		SourceKey, 		Name= SourceKey, 		DimProcessTypeGroupSourceKey = COALESCE(DimProcessTypeGroupSourceKey,'UNKNOWN'), 		DescriptionText 		FROM 		( 		SELECT 			pt.ProcessTypeID AS SourceKey,  			CONVERT(VARCHAR(255),pt.Description) AS Name, 			CONVERT(VARCHAR(255), ptg.ProcessTypeGroupId) AS DimProcessTypeGroupSourceKey, 			CONVERT(VARCHAR(1000),pt.description) AS DescriptionText 		FROM dbo.ProcessType AS pt 		LEFT JOIN dbo.ProcessTypeProcessTypeGroup AS ptg ON 		pt.ProcessTypeID = ptg.ProcessTypeID 	) AS bq ) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{811C7811-9002-4993-A075-BCD988E3F344}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	base_query.name, 	DimProcessTypeGroupSourceKey FROM  ( 	SELECT 		SourceKey, 		Name= SourceKey, 		DimProcessTypeGroupSourceKey = COALESCE(DimProcessTypeGroupSourceKey,'UNKNOWN'), 		DescriptionText 		FROM 		( 		SELECT 			pt.ProcessTypeID AS SourceKey,  			CONVERT(VARCHAR(255),pt.Description) AS Name, 			CONVERT(VARCHAR(255), ptg.ProcessTypeGroupId) AS DimProcessTypeGroupSourceKey, 			CONVERT(VARCHAR(1000),pt.description) AS DescriptionText 		FROM dbo.ProcessType AS pt 		LEFT JOIN dbo.ProcessTypeProcessTypeGroup AS ptg ON 		pt.ProcessTypeID = ptg.ProcessTypeID 	) AS bq ) as base_query ;</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D57BCB2F-4FA6-48E4-9F19-B072EB45975A}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Filter_1">
+      <DTS:VariableValue DTS:DataType="8">WHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.ProcessType AS ct WHERE base_query.SourceKey = ct.ProcessTypeID</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{52553EE2-EA1A-4AC0-A238-0D3171030429}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::Filter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Filter_2">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{03C7DDC9-9CC6-4161-A5AA-57E51DAA8147}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::Filter_1] + @[$User::Filter_2] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="WHEREClause">
+      <DTS:VariableValue DTS:DataType="8">WHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.ProcessType AS ct WHERE base_query.SourceKey = ct.ProcessTypeID;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{9A42EB76-7630-451A-B106-87EB188E62EA}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::LoadAll] ? @[User::BaseQuery] :  @[User::BaseQuery]+  @[User::WHEREClause]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	base_query.name, 	DimProcessTypeGroupSourceKey FROM  ( 	SELECT 		SourceKey, 		Name= SourceKey, 		DimProcessTypeGroupSourceKey = COALESCE(DimProcessTypeGroupSourceKey,'UNKNOWN'), 		DescriptionText 		FROM 		( 		SELECT 			pt.ProcessTypeID AS SourceKey,  			CONVERT(VARCHAR(255),pt.Description) AS Name, 			CONVERT(VARCHAR(255), ptg.ProcessTypeGroupId) AS DimProcessTypeGroupSourceKey, 			CONVERT(VARCHAR(1000),pt.description) AS DescriptionText 		FROM dbo.ProcessType AS pt 		LEFT JOIN dbo.ProcessTypeProcessTypeGroup AS ptg ON 		pt.ProcessTypeID = ptg.ProcessTypeID 	) AS bq ) as base_queryWHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.ProcessType AS ct WHERE base_query.SourceKey = ct.ProcessTypeID;</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>

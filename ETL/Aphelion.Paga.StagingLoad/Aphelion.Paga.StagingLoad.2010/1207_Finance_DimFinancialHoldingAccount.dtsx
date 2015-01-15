@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/15/2015 14:07:53" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{C2C537A7-31A2-40B2-B8A9-7E0C409F08FF}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1207_Finance_DimFinancialHoldingAccount" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{C6972658-2419-44A4-8BEE-9DAB21210A78}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/15/2015 19:47:57" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{B2CF911B-2ADB-493D-AC7B-7F92EB1358F6}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1207_Finance_DimFinancialHoldingAccount" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{F145EB01-83EB-4BEE-80E0-4BC53EF04422}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{D0D49FB3-B284-4322-B8DD-81B404995307}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimFinancialHoldingAccount" DTS:refId="Package\DFT_Load Finance_DimFinancialHoldingAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{B7EC9134-2F15-4356-8CE2-DFB70C0EE59A}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimFinancialHoldingAccount" DTS:refId="Package\DFT_Load Finance_DimFinancialHoldingAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -72,7 +72,7 @@
                 </property>
                 <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
                 </property>
-                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::BaseQuery</property>
                 <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
                 <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
                 <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
@@ -161,24 +161,37 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{177009E2-7CC1-4F58-9E50-45A97310912C}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{D3FD6BAB-F5E9-49AC-8214-FA2BE9AB55EA}" DTS:ObjectName="Filter" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="11" DTS:Description="" DTS:DTSID="{739B7D9B-269A-411C-B9D7-75D538BA7636}" DTS:ObjectName="LoadAll" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="11" DTS:Name="ParameterValue">False</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{989C31C2-5A98-48D1-BB25-255BFBF20D44}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5A8D4645-F47F-4F62-9CD0-6955A31416D2}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5A0B46CE-7B2F-4CE6-9F56-EFEEE578E41C}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{40D55D4C-D279-44D7-8DE0-FC7569B42349}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F0DC6A37-2E18-4EFE-8F95-ECACF86C7923}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{949F114F-1D95-4DB6-9EB4-5D7FFE094684}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.AccountNumber, 	base_query.Name, 	base_query.OpeningBalance, 	base_query.RestrictedBalance, 	base_query.TotalBalance FROM ( 	SELECT  		SourceKey = fa.FinancialAccountId, 		AccountNumber = CONVERT(VARCHAR(20), fa.AccountNumber),					Name = CONVERT(VARCHAR(20), fa.AccountNumber), 		fa.OpeningBalance, 		fa.RestrictedBalance, 		fa.TotalBalance 	FROM dbo.FinancialAccount AS fa  	WHERE  		fa.HoldingFinancialAccountId IS NULL ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F9563B31-344D-46F9-B076-1A82A53066BF}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.AccountNumber, 	base_query.Name, 	base_query.OpeningBalance, 	base_query.RestrictedBalance, 	base_query.TotalBalance FROM ( 	SELECT  		SourceKey = fa.FinancialAccountId, 		AccountNumber = CONVERT(VARCHAR(20), fa.AccountNumber),					Name = CONVERT(VARCHAR(20), fa.AccountNumber), 		fa.OpeningBalance, 		fa.RestrictedBalance, 		fa.TotalBalance 	FROM dbo.FinancialAccount AS fa  	WHERE  		fa.HoldingFinancialAccountId IS NULL ) AS base_query ;</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B26992D8-F427-438C-A300-F4A021DEAD99}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Filter_1">
+      <DTS:VariableValue DTS:DataType="8">WHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.FinancialAccount AS ct WHERE base_query.SourceKey = ct.FinancialAccountId</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{42552C81-B244-431F-ADC9-838962F0AB3B}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::Filter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Filter_2">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3FB97116-D084-46D1-8630-028192E85E47}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::Filter_1] + @[$User::Filter_2] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="WHEREClause">
+      <DTS:VariableValue DTS:DataType="8">WHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.FinancialAccount AS ct WHERE base_query.SourceKey = ct.FinancialAccountId;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{57984456-757C-4143-AC44-D34EED02754C}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::LoadAll] ? @[User::BaseQuery] :  @[User::BaseQuery]+  @[User::WHEREClause]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.AccountNumber, 	base_query.Name, 	base_query.OpeningBalance, 	base_query.RestrictedBalance, 	base_query.TotalBalance FROM ( 	SELECT  		SourceKey = fa.FinancialAccountId, 		AccountNumber = CONVERT(VARCHAR(20), fa.AccountNumber),					Name = CONVERT(VARCHAR(20), fa.AccountNumber), 		fa.OpeningBalance, 		fa.RestrictedBalance, 		fa.TotalBalance 	FROM dbo.FinancialAccount AS fa  	WHERE  		fa.HoldingFinancialAccountId IS NULL ) AS base_queryWHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.FinancialAccount AS ct WHERE base_query.SourceKey = ct.FinancialAccountId;</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>
