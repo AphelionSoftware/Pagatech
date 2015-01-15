@@ -1,7 +1,6 @@
 SELECT 
 	COALESCE(base_query.SourceKey,-1) AS SourceKey,
-	CONVERT(VARCHAR(255),COALESCE(base_query.name,'UNKNOWN')) AS name,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
+	CONVERT(VARCHAR(255),COALESCE(base_query.name,'UNKNOWN')) AS name
 FROM
 (
  	SELECT

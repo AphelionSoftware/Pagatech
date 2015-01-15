@@ -1,11 +1,10 @@
 SELECT 
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	SourceKey ,
 	base_query.DimGLCodeSubGroupSourceKey, 
 	base_query.name,
 	base_query.TextDescription,
 	base_query.GLCode,
-	base_query.IsNormalDebit,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
+	base_query.IsNormalDebit
 FROM 
 (
 	SELECT

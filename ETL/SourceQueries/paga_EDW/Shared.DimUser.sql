@@ -1,6 +1,6 @@
+--DimUser
 SELECT
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I'),
+	SourceKey ,
 	Name = CONVERT(VARCHAR(255),
 		CASE 
 			WHEN (FirstName IS NULL AND LastName IS NULL) THEN 
@@ -22,8 +22,6 @@ SELECT
 	MiddleName, 
 	LastName, 
 	Sex, 
-	PhoneNumber, 
-	Email, 
 	IsEnabled,
 	CreatedDateID
 FROM
@@ -35,15 +33,13 @@ FROM
 		MiddleName = CASE WHEN LEN(u.MiddleName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.MiddleName) END,
 		LastName = CASE WHEN LEN(u.LastName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.LastName) END,
 		Sex = u.GenderId,
-		u.PhoneNumber,
-		Email = CONVERT(VARCHAR(100),u.Email),
 		DateofBirthID = CONVERT(INT,CONVERT(VARCHAR(8),u.dateOfBirth,112)),
 		CreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)),
 		UserType = u.Namespace,
 		DimPagaAccountSourceKey,
 		DimOrganizationUnitLevel4SourceKey = ouu.OrganizationUnitId,
 		u.IsEnabled
-	FROM dbo.[USER] as u 
+	FROM dbo.Users as u 
 	LEFT JOIN 	
 	(
 		SELECT 

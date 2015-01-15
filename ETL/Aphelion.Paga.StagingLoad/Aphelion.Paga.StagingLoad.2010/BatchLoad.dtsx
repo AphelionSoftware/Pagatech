@@ -1,0 +1,292 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/29/2014 1:03:27 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
+  DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{81774C39-10F3-4ABE-80EF-AE3C06910D7A}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="BatchLoad"
+  DTS:PackageType="5"
+  DTS:VersionBuild="64"
+  DTS:VersionGUID="{B53ABEFC-FB28-42E5-88E2-8AC9270E5F21}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[__sql2012.Paga_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2C1FE555-821C-4858-B707-2FBFB3727829}"
+      DTS:ObjectName="__sql2012.Paga_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B1D361D0-B9C9-4B0F-BB4F-86682A108846}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Iterations">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5B6856E5-615F-440F-86F1-CD823375F9A7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoopPosition">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{87BE824C-824A-4E60-B081-28D662D84A71}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MaxID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{31277ADB-003E-461C-9693-1EBFEC9EEA42}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::LoopPosition] == 0 ? 0 :  (@[User::LoopPosition] * 100000)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Offset">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{57DAAD54-8FFD-44A0-BEC7-AA2BD0F40C89}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Variable">
+      <DTS:VariableValue
+        DTS:DataType="8">MaxID</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\EST_BuildStagingTableOnSource"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{90C2BABB-58DA-4AA6-AF61-20D5016F554D}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_BuildStagingTableOnSource"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4E1601A1-670A-4D99-BC59-B05BF47F4C7D}"
+          SQLTask:SqlStatementSource="/* 20141012 Get Latest row moved to target */&#xA;DECLARE @MaxSourceKey AS INT = ?&#xA;&#xA;CREATE TABLE #Reversals &#xA;(&#xA;&#x9;FinancialTransactionId INT,&#xA;&#x9;EffDate DATETIME,&#xA;&#x9;OrigTxID INT,&#xA;&#x9;RelatedTxID INT&#xA;);&#xA;&#xA;/*create table used to drive the population of the staging data*/&#xA;INSERT INTO #Reversals&#xA;(&#xA;&#x9;FinancialTransactionId,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT&#xA;&#x9;&#x9;ft1.FinancialTransactionId,&#xA;&#x9;&#x9;ft1.TransactionDate AS EffDate,&#xA;&#x9;&#x9;ft1.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;ft1.Reverses AS RelatedTxID&#xA;FROM dbo.FinancialTransaction AS ft1&#xA;WHERE&#xA;&#x9;ft1.FinancialTransactionId &gt; @maxSourceKey&#xA;&#xA;&#xA;INSERT INTO #Reversals&#xA;(&#xA;&#x9;financialTransactionID,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT&#xA;&#x9;&#x9;ft2.FinancialTransactionId,&#xA;&#x9;&#x9;ft2.TransactionDate AS EffDate,&#xA;&#x9;&#x9;ft2.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;ft2.Reverses AS RelatedTxID&#xA;FROM dbo.FinancialTransaction AS ft2&#xA;WHERE &#xA;&#x9;ft2.FinancialTransactionId IN&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT r.relatedtxID &#xA;&#x9;&#x9;FROM #Reversals as r&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;RelatedTxID IS NOT NULL &#xA;&#x9;&#x9;&#x9;AND RelatedTxID &lt;= @Maxsourcekey&#xA;&#x9;);&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Reversals_TxID ON #Reversals&#xA;(FinancialTransactionId, RelatedTxID);&#xA;&#xA;&#xA;CREATE NONCLUSTERED INDEX ix_Reversals_NullRelatedTxID ON #Reversals&#xA;(RelatedTxID)&#xA;WHERE RelatedTxID IS NULL;&#xA;&#xA;&#xA;CREATE NONCLUSTERED INDEX ix_Reversals_RelatedTxID ON #Reversals&#xA;(RelatedTxID);&#xA;&#xA;&#xA;/*Run recursive query to populate related financial transaction ID&#xA;for filter set created in previous step. */&#xA;&#xA;CREATE TABLE #ReversalChain&#xA;(&#xA;&#x9;TxID  INT,&#xA;&#x9;EffDate  DATETIME,&#xA;&#x9;OrigTxID  INT,&#xA;&#x9;RelatedTxID  INT&#xA;);&#xA;WITH reversals AS&#xA;(&#xA;&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ft1.FinancialTransactionId,&#xA;&#x9;&#x9;ft1.EffDate AS EffDate,&#xA;&#x9;&#x9;ft1.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;ft1.RelatedTxID AS RelatedTxID&#xA;&#x9;FROM #Reversals AS ft1&#xA;&#x9;WHERE&#xA;&#x9;&#x9;ft1.RelatedTxID IS NULL&#xA;&#x9;UNION ALL&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ft2.FinancialTransactionId,&#xA;&#x9;&#x9;R.EffDate,&#xA;&#x9;&#x9;R.OrigTxID,&#xA;&#x9;&#x9;ft2.RelatedTxID&#xA;&#x9;FROM #Reversals AS ft2&#xA;&#x9;INNER JOIN reversals AS r&#xA;&#x9;&#x9;ON ft2.RelatedTxID = R.FinancialTransactionId&#xA;)&#xA;INSERT INTO #ReversalChain&#xA;(&#xA;&#x9;TxID,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT&#xA;&#x9;reversals.financialTransactionId,&#xA;&#x9;reversals.EffDate,&#xA;&#x9;reversals.OrigTxID,&#xA;&#x9;reversals.relatedTxID&#xA;FROM reversals;&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Reversals_TxID ON #ReversalChain&#xA;(TxID);&#xA;&#xA;/*populate temporary staging table used to by SSIS*/&#xA;&#xA;SELECT &#xA;&#x9;By_User.*,&#xA;&#x9;change_operation = 'I'&#xA;INTO ##BaseQuery&#xA;FROM &#xA;(&#xA;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;UserID = COALESCE(userID,-1), &#xA;&#x9;&#x9;[FinancialTransactionTypeId] &#xA;&#x9;FROM dbo.financialTransaction&#xA;&#x9;WHERE&#xA;&#x9;&#x9;FinancialTransactionId &gt; @MaxSourceKey /*same filter used to create reversals table, so we're limiting to the same set of TXIDs*/&#xA;) AS driver&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;SourceKey = ft.FinancialTransactionId, &#xA;&#x9;&#x9;DimCreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)), &#xA;&#x9;&#x9;DimCreatedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),':','')), &#xA;&#x9;&#x9;DimEffectiveDateID = CONVERT(INT,CONVERT(VARCHAR(8),r2.EffDate,112)), &#xA;&#x9;&#x9;DimEffectiveTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), r2.EffDate, 114),':','')), &#xA;&#x9;&#x9;DimTransactionDateID = CONVERT(INT,CONVERT(VARCHAR(8),ft.TransactionDate,112)),&#xA;&#x9;&#x9;DimTransactionTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), ft.TransactionDate, 114),':','')), &#xA;&#x9;&#x9;DimFinancialTxTypeSourceKey = FinancialTransactionTypeId, &#xA;&#x9;&#x9;DimFinancialTxSubTypeSourceKey = FinancialTransactionSubTypeId, &#xA;&#x9;&#x9;DimOrganizationUnitLevel4SourceKey = orgUnit.OrganizationUnitId, &#xA;&#x9;&#x9;DimUserSourceKey = UserId, &#xA;&#x9;&#x9;FactProcessTxSourceKey = COALESCE(ProcessId, -1), &#xA;&#x9;&#x9;RelatedFactFinancialTxHeaderSourceKey = r2.relatedTxID, &#xA;&#x9;&#x9;OriginalFactFinancialTxHeaderSourceKey = r2.OrigTxID, &#xA;&#x9;&#x9;DimCurrencySourceKey = CurrencyId, &#xA;&#x9;&#x9;TextDescription = CONVERT(VARCHAR(100),[Description]), &#xA;&#x9;&#x9;Amount, &#xA;&#x9;&#x9;ExchangeRate, &#xA;&#x9;&#x9;ExternalReferenceNumber,&#xA;&#x9;&#x9;Fee, &#xA;&#x9;&#x9;ForeignCurrencyAmount, &#xA;&#x9;&#x9;ReferenceNumber, &#xA;&#x9;&#x9;ShortCode&#xA;&#x9;FROM dbo.financialTransaction AS ft&#xA;&#x9;CROSS APPLY &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;r1.OrigTxID,&#xA;&#x9;&#x9;&#x9;COALESCE(r1.RelatedTxID,r1.OrigTxID) AS RelatedTxID,&#xA;&#x9;&#x9;&#x9;r1.EffDate&#xA;&#x9;&#x9;FROM #ReversalChain AS R1&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;R1.TxID = ft.FinancialTransactionId&#xA;&#x9;) AS R2&#xA;&#x9;OUTER APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;OrganizationUnitId&#xA;&#x9;&#x9;FROM [dbo].[OrganizationUnitUser] As ouu&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;ouu.UserId = ft.UserId&#xA;&#x9;) AS orgUnit&#xA;&#x9;WHERE&#xA;&#x9;&#x9;COALESCE(ft.userID,-1) = driver.UserID&#xA;&#x9;&#x9;AND ft.FinancialTransactionTypeId = driver.FinancialTransactionTypeId&#xA;) By_User;&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Header ON ##BaseQuery&#xA;(SourceKey);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::MaxID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_GetIterations"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{68A09BD3-2618-4955-A9AD-0F9C7EC155F6}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_GetIterations"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4E1601A1-670A-4D99-BC59-B05BF47F4C7D}"
+          SQLTask:SqlStatementSource="SELECT &#xA;&#x9;Iterations= (count(*)/100000) +1&#xA;FROM ##BaseQuery AS ft1&#x9;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="Iterations"
+            SQLTask:DtsVariableName="User::Iterations" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_GetMaxFinTxID"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{70AACE3C-8C36-4789-BA47-6357B4E4B678}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_GetMaxFinTxID"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2C1FE555-821C-4858-B707-2FBFB3727829}"
+          SQLTask:SqlStatementSource="SELECT MAX(CAST(SourceKey AS INT)) AS MaxID FROM Staging.Finance_FactFinancialTxHeader"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="MaxID"
+            SQLTask:DtsVariableName="User::MaxID" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load_100,000_Record_Batches"
+      DTS:AssignExpression="@[User::LoopPosition] = @[User::LoopPosition] +1"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="For Loop Container"
+      DTS:DTSID="{5DFC1C48-7ED6-490C-91D7-4D55F96292CA}"
+      DTS:EvalExpression="@[User::LoopPosition] &lt; @[User::Iterations]"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:InitExpression="@[User::LoopPosition] = 0"
+      DTS:LocaleID="-1"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="Load_100,000_Record_Batches">
+      <DTS:Variables />
+      <DTS:Executables />
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{05F63690-A2A3-4836-BE2A-C9CE99E1CB80}"
+      DTS:From="Package\EST_GetMaxFinTxID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\EST_BuildStagingTableOnSource" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{72B518BB-6D48-45CC-B213-E36D00826F57}"
+      DTS:From="Package\EST_BuildStagingTableOnSource"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\EST_GetIterations" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B174F252-038A-4168-B8C3-654414E23782}"
+      DTS:From="Package\EST_GetIterations"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Load_100,000_Record_Batches" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="233,42"
+          Id="Package\EST_BuildStagingTableOnSource"
+          TopLeft="10,95" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\EST_GetIterations"
+          TopLeft="40.5,174.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\EST_GetMaxFinTxID"
+          TopLeft="34,17" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="250,126"
+          Size="250,169"
+          Id="Package\Load_100,000_Record_Batches"
+          TopLeft="342,107" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="124,59">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="124.5,137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.5"
+              Start="0,0"
+              End="0,30">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="204.5,193.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137.5,0"
+              Start="0,0"
+              End="130,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="130,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

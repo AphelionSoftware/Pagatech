@@ -1,6 +1,6 @@
 # Update Base Query from File
 
-$Path = "E:\GitHub\Pagatech\ETL\SourceQueries"
+$Path = "E:\GitHub\Pagatech\ETL\SourceQueries\paga_EDW"
 Get-ChildItem $Path | Where-Object {$_.name -like "*.sql"}| ForEach {
 	$string = $_.Name
 	$QueryFile = $string.split(".")

@@ -1,5 +1,5 @@
 SELECT 
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	SourceKey,
 	Name, 
 	DimPagaAccountStatusSourceKey, 
 	CreatedDateID,
@@ -21,8 +21,7 @@ SELECT
 	IsMobileOperator, 
 	IsPaga, 
 	IsRemittanceProcessor, 
-	IsServiceAggregator,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
+	IsServiceAggregator
 FROM 
 (
 	SELECT

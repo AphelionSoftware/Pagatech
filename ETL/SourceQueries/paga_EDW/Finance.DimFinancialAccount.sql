@@ -39,8 +39,7 @@ WITH cte AS
 
 
 SELECT	
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I'),
+	SourceKey,
 	base_query.AccountNumber,
 	base_query.Name,
 	base_query.OpeningBalance,

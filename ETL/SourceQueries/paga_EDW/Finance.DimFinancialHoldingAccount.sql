@@ -1,5 +1,5 @@
 SELECT 
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	SourceKey,
 	base_query.AccountNumber,
 	base_query.Name,
 	base_query.OpeningBalance,

@@ -1,8 +1,7 @@
 SELECT 
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+	SourceKey ,
 	base_query.name,
-	DimProcessTypeGroupSourceKey,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
+	DimProcessTypeGroupSourceKey
 FROM 
 (
 	SELECT

@@ -1,6 +1,5 @@
 SELECT 
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I'),
+	SourceKey,
 	DisplayName, 
 	Name, 
 	OrganizationCode, 

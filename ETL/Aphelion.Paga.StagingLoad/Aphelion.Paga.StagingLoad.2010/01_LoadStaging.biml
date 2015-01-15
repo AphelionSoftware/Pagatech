@@ -9,9 +9,8 @@
 <Biml xmlns="http://schemas.varigence.com/biml.xsd">
 	<Connections>
 	 <Connection Name="Aphelion.DB.LoadQueue" ConnectionString="Data Source=.\sql2012;Initial Catalog=Aphelion.DB.LoadQueue;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
-	 <Connection Name="StagingDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
-	 <Connection Name="SourceDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=paga_bi;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
-	 <Connection Name="MetadataDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_EDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="Paga_Staging" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="SourceDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=paga;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
 	</Connections>
 	<PackageProjects>
 		<PackageProject Name="Aphelion.Paga.StagingLoad.2010">
@@ -25,7 +24,9 @@
 											"PackageName = CONVERT(CHAR(4),(prefix.package_grp + list.rn)) +'_' + StagingTableName, "+
 											"list.TABLE_SCHEMA, "+
 											"list.TABLE_NAME, "+
-											"list.BaseQuery "+
+											"list.BaseQuery, "+
+											"list.KeyColumn, "+
+											"list.SourceTable "+
 										"FROM "+
 										"(  "+
 											"SELECT  "+
@@ -33,14 +34,18 @@
 												"StagingTableName = (TABLE_SCHEMA +'_' +TABLE_NAME), "+
 												"pl.TABLE_SCHEMA,  "+
 												"pl.TABLE_NAME,  "+
-												"BaseQuery = pl.bq  "+
+												"BaseQuery = pl.bq,  "+
+												"KeyColumn = pl.kc,  "+
+												"SourceTable = pl.st  "+
 											"FROM  "+
 											"(  "+
 												"SELECT  "+
 													"package_list.TABLE_SCHEMA,  "+
 													"package_list.TABLE_NAME,  "+
 													"CONVERT(CHAR(1),MAX(packageType)) AS pt,  "+
-													"CONVERT(VARCHAR(MAX),MAX(BaseQuery)) AS bq  "+
+													"CONVERT(VARCHAR(MAX),MAX(BaseQuery)) AS bq,  "+
+													"CONVERT(VARCHAR(MAX),MAX(KeyColumn)) AS kc,  "+
+													"CONVERT(VARCHAR(MAX),MAX(SourceTable)) AS st  "+
 												"FROM  "+
 												"(  "+
 													"SELECT  "+
@@ -54,7 +59,15 @@
 														"CASE	 "+
 																"WHEN ext_prop.name =  'BaseQuery'  "+
 																"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
-														"END as BaseQuery  "+
+														"END as BaseQuery,  "+
+														"CASE	 "+
+																"WHEN ext_prop.name =  'KeyColumn'  "+
+																"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
+														"END as KeyColumn,  "+
+														"CASE	 "+
+																"WHEN ext_prop.name =  'SourceTable'  "+
+																"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
+														"END as SourceTable  "+
 													"FROM  "+
 													"(  "+
 														"SELECT   "+
@@ -67,7 +80,7 @@
 													"INNER JOIN sys.extended_properties AS ext_prop ON   "+
 														"table_list.object_id = ext_prop.major_id  "+
 													"WHERE  "+ 
-														"ext_prop.name = 'PackageType' OR ext_prop.name = 'BaseQuery'  "+
+														"ext_prop.name = 'PackageType' OR ext_prop.name = 'BaseQuery' OR ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable'  "+
 												") AS package_list  "+
 												"GROUP BY  "+
 													"package_list.TABLE_SCHEMA,  "+
@@ -108,33 +121,44 @@
 				string TableSchema = row[1].ToString();
 				string TableName = row[2].ToString();
 				string BaseQuery = row[3].ToString();
+				string KeyColumn = row[4].ToString();
+				string SourceTable = row[5].ToString();
+
+				string Filter = "WHERE EXISTS "+
+										"( "+
+											"SELECT "+ 
+													"1 "+
+												"FROM [paga_change_log].[dbo]." +SourceTable +" AS ct "+
+												"WHERE base_query.SourceKey = ct." +KeyColumn +" "+
+										")";
 		#>	
 				<Package Name="<#=PackageName#>" ConstraintMode="Linear"  ProtectionLevel="EncryptSensitiveWithUserKey"  AutoCreateConfigurationsType="None">
            
 						<Parameters>
-							<Parameter Name="strParm1" DataType="String">
-							</Parameter>
+							<Parameter Name="strParm1" DataType="String"></Parameter>
 						</Parameters>
             
 						<Variables>
 						  <Variable Name="CurrentVersion" DataType="Int32">0</Variable>
 						  <Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
 						  <Variable Name="BaseQuery" DataType="String"><#=BaseQuery#></Variable>
+						  <Variable Name="WHEREClause" DataType="String"><#=Filter#></Variable>
+
 						  <Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]+ " " +@[$Package::strParm1] +";"</Variable>
 					  </Variables>
 				
-					 <Tasks>
-							<Dataflow Name="DFT_Load <#=String.Format("{0}_{1}",TableSchema, TableName)#>">
-							  <Transformations>
-								<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
-								  <VariableInput VariableName="User.FullQueryText"></VariableInput>
-								</OleDbSource>
-								<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="StagingDB" KeepIdentity="true">
-								  <ExternalTableOutput Table="<#=String.Format("{0}.{1}_{2}","Staging",TableSchema, TableName)#>"/>
-								</OleDbDestination>
-							  </Transformations>
-							</Dataflow>
-						</Tasks>
+				<Tasks>
+					<Dataflow Name="DFT_Load <#=String.Format("{0}_{1}",TableSchema, TableName)#>">
+						<Transformations>
+						<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
+							<VariableInput VariableName="User.FullQueryText"></VariableInput>
+						</OleDbSource>
+						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="Paga_Staging" KeepIdentity="false">
+							<ExternalTableOutput Table="<#=String.Format("{0}.{1}_{2}","Staging",TableSchema, TableName)#>"/>
+						</OleDbDestination>
+						</Transformations>
+					</Dataflow>
+				</Tasks>
 				
 		
 				</Package>

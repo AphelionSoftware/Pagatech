@@ -52,9 +52,8 @@ WITH cte AS
 	WHERE COA_Level BETWEEN 0 AND 4
 
 	SELECT 
-		SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
+		SourceKey,
 		base_query.name,
 		base_query.GLCodeRange,
-		base_query.DimGLCodeGroupSourceKey,
-		change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),'I')
+		base_query.DimGLCodeGroupSourceKey
 	FROM @COA AS base_query
