@@ -5,21 +5,21 @@
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
   DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
-  DTS:DTSID="{DE2A6B41-5470-4E67-8E39-A679FF9EBDE9}"
+  DTS:DTSID="{03258E52-3119-4831-A25E-7FD89090C081}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="156"
-  DTS:VersionGUID="{F2D23E2A-AE6C-4109-AC57-8288FEBE04BA}">
+  DTS:VersionBuild="160"
+  DTS:VersionGUID="{EC3007DE-D70E-424A-8914-BEF3DAC86AC9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="11"
-      DTS:DTSID="{DB6C1855-462B-4985-A236-E796E1D39563}"
+      DTS:DTSID="{2E57E68C-0C61-4A63-929F-91631B4D386B}"
       DTS:ObjectName="LoadAll"
       DTS:Required="True">
       <DTS:Property
@@ -29,7 +29,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{35E89B58-6666-4348-B056-B14385E848E7}"
+      DTS:DTSID="{B29B7FF9-CB51-4B20-9071-2599A6125050}"
       DTS:ObjectName="SchemaFilter"
       DTS:Required="True">
       <DTS:Property
@@ -40,7 +40,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{FBFA9AA7-C770-43E2-9577-AD765A00D1C0}"
+      DTS:DTSID="{2E6619F3-1195-406B-9CF4-F12034519966}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="CurrentVersion">
@@ -49,7 +49,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{AC62BD19-F223-47A2-963B-9420F7DAC0BF}"
+      DTS:DTSID="{A2887ADA-85EF-4EE4-BEC2-793539EAAEA9}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LastSyncVersion">
@@ -58,60 +58,58 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{DC7FB7D2-BF7F-4B19-9216-A37C074AB32E}"
+      DTS:DTSID="{6F04BAFE-F37A-4B9F-A8DB-CC5B6D1CD578}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[$Package::LoadAll]  ? &quot; &quot; :  @[User::strWhereClause]"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="strFilter">
-      <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"> </DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{F3A1E2CD-33A6-4CA1-B15E-80209741C9AE}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(CHAR(4),(prefix.package_grp + list.rn)) +'_' + StagingTableName&#xA;&#xA;&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY base.Table_Schema ORDER BY base.StagingTableName) AS rn,&#xA;&#x9;&#x9;base.StagingTableName,&#xA;&#x9;&#x9;base.KeyColumn,&#xA;&#x9;&#x9;base.SourceTable,&#xA;&#x9;&#x9;base.TABLE_SCHEMA&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA,&#xA;&#x9;&#x9;&#x9;StagingTableName,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,&#xA;&#x9;&#x9;&#x9;CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN&#xA;&#x9;&#x9;&#x9;&#x9;CASE&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN ext_prop.value IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) &gt; 0 THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) = 0 THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;END&#xA;&#x9;&#x9;&#x9;END)) AS HasBaseQueryDef&#xA;&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,&#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA,&#xA;&#x9;&#x9;&#x9;&#x9;major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  &#xA;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;&#x9;&#x9;&quot;+@[$Package::SchemaFilter] +&quot;&#xA;&#x9;&#x9;) AS table_list&#xA;&#x9;&#x9;INNER JOIN sys.extended_properties as ext_prop ON &#xA;&#x9;&#x9;&#x9;table_list.major_id = ext_prop.major_id&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'&#xA;&#x9;&#x9;GROUP BY&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA,&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName&#xA;&#x9;) AS base&#xA;&#x9;WHERE &#xA;&#x9;&#x9;base.HasBaseQueryDef = 1&#xA;) AS list&#xA;INNER JOIN&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;(tsg.seed *100) + 1000 AS package_grp,&#xA;&#x9;&#x9;tsg.TABLE_SCHEMA&#xA;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed,&#xA;&#x9;&#x9;&#x9;ts.TABLE_SCHEMA&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA&#xA;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_TYPE = 'BASE TABLE'&#xA;&#x9;&#x9;) as ts&#xA;&#x9;) AS tsg&#xA;) as prefix ON&#xA;&#x9;list.TABLE_SCHEMA = prefix.TABLE_SCHEMA&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(CHAR(4),(x.package_grp + x.rn)) +'_' + StagingTableName,&#xA;&#x9;strParm1 = &#xA;&#x9;'WHERE&#xA;&#x9;&#x9;EXISTS&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;1&#xA;&#x9;&#x9;&#x9;FROM CHANGETABLE (CHANGES ' +x.SourceTable +',0)&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;' +x.KeyColumn +' = ct.' +x.KeyColumn &#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER (ORDER BY base.StagingTableName) AS rn,&#xA;&#x9;&#x9;base.StagingTableName,&#xA;&#x9;&#x9;base.KeyColumn,&#xA;&#x9;&#x9;base.SourceTable,&#xA;&#x9;&#x9;base.BaseQuery,&#xA;&#x9;&#x9;prefix.package_grp&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(MAX), MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN ext_prop.value END)) AS BaseQuery,&#xA;&#x9;&#x9;&#x9;CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN&#xA;&#x9;&#x9;&#x9;&#x9;CASE&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN ext_prop.value IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) &gt; 0 THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) = 0 THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;END&#xA;&#x9;&#x9;&#x9;END)) AS HasBaseQueryDef,&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,&#xA;&#x9;&#x9;&#x9;&#x9;major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,&#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA&#xA;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA= 'classification'&#xA;&#x9;&#x9;) AS table_list&#xA;&#x9;&#x9;INNER JOIN sys.extended_properties as ext_prop ON &#xA;&#x9;&#x9;&#x9;table_list.major_id = ext_prop.major_id&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'&#xA;&#x9;&#x9;GROUP BY&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA,&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName&#xA;&#x9;) AS base&#xA;&#x9;INNER JOIN &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;(tsg.seed *100) + 1000 AS package_grp, &#xA;&#x9;&#x9;&#x9;tsg.TABLE_SCHEMA &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;( &#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed, &#xA;&#x9;&#x9;&#x9;&#x9;ts.TABLE_SCHEMA &#xA;&#x9;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;( &#xA;&#x9;&#x9;&#x9;&#x9;SELECT DISTINCT  &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA &#xA;&#x9;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t &#xA;&#x9;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.TABLE_TYPE = 'BASE TABLE' &#xA;&#x9;&#x9;&#x9;) as ts &#xA;&#x9;&#x9;) AS tsg &#xA;&#x9;) as prefix ON &#xA;&#x9;&#x9;base.TABLE_SCHEMA = prefix.TABLE_SCHEMA&#xA;&#x9;&#x9;AND base.HasBaseQueryDef = 1&#xA;) AS x&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strPackageQuery">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
-	PackageName = CONVERT(CHAR(4),(prefix.package_grp + list.rn)) +'_' + StagingTableName
-
-
+	PackageName = CONVERT(CHAR(4),(x.package_grp + x.rn)) +'_' + StagingTableName,
+	strParm1 = 
+	'WHERE
+		EXISTS
+		(
+			SELECT 
+				1
+			FROM CHANGETABLE (CHANGES ' +x.SourceTable +',0)
+			WHERE
+			' +x.KeyColumn +' = ct.' +x.KeyColumn 
 FROM
 (
 	SELECT
-		ROW_NUMBER() OVER (PARTITION BY base.Table_Schema ORDER BY base.StagingTableName) AS rn,
+		ROW_NUMBER() OVER (ORDER BY base.StagingTableName) AS rn,
 		base.StagingTableName,
 		base.KeyColumn,
 		base.SourceTable,
-		base.TABLE_SCHEMA
+		base.BaseQuery,
+		prefix.package_grp
 	FROM
 	(
 		SELECT
-			table_list.TABLE_SCHEMA,
-			StagingTableName,
+		
+			table_list.StagingTableName,
 			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,
 			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,
+			CONVERT(VARCHAR(MAX), MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN ext_prop.value END)) AS BaseQuery,
 			CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN
 				CASE	
 					WHEN ext_prop.value IS NULL THEN 0
 					WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) &gt; 0 THEN 1
 					WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) = 0 THEN 0
 				END
-			END)) AS HasBaseQueryDef
-
+			END)) AS HasBaseQueryDef,
+			table_list.TABLE_SCHEMA
 		FROM
 		(
 			SELECT 
 				StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,
-				t.TABLE_SCHEMA,
-				major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'')  
+				major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,
+				t.TABLE_SCHEMA
 			FROM INFORMATION_SCHEMA.TABLES AS t
-				WHERE TABLE_SCHEMA = 'Location'
+			WHERE 
+				t.TABLE_SCHEMA= 'classification'
 		) AS table_list
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
@@ -121,34 +119,33 @@ FROM
 			table_list.TABLE_SCHEMA,
 			table_list.StagingTableName
 	) AS base
-	WHERE 
-		base.HasBaseQueryDef = 1
-) AS list
-INNER JOIN
-(
-	SELECT
-		(tsg.seed *100) + 1000 AS package_grp,
-		tsg.TABLE_SCHEMA
-	FROM
-		(
-		SELECT
-			ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed,
-			ts.TABLE_SCHEMA
-		FROM
-		(
-			SELECT DISTINCT 
-				t.TABLE_SCHEMA
-			FROM INFORMATION_SCHEMA.TABLES AS t
-			WHERE
-				t.TABLE_TYPE = 'BASE TABLE'
-		) as ts
-	) AS tsg
-) as prefix ON
-	list.TABLE_SCHEMA = prefix.TABLE_SCHEMA</DTS:VariableValue>
+	INNER JOIN 
+	(
+		SELECT 
+			(tsg.seed *100) + 1000 AS package_grp, 
+			tsg.TABLE_SCHEMA 
+		FROM 
+			( 
+			SELECT 
+				ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed, 
+				ts.TABLE_SCHEMA 
+			FROM 
+			( 
+				SELECT DISTINCT  
+					t.TABLE_SCHEMA 
+				FROM INFORMATION_SCHEMA.TABLES AS t 
+				WHERE 
+					t.TABLE_TYPE = 'BASE TABLE' 
+			) as ts 
+		) AS tsg 
+	) as prefix ON 
+		base.TABLE_SCHEMA = prefix.TABLE_SCHEMA
+		AND base.HasBaseQueryDef = 1
+) AS x</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{11266445-D56E-4700-9509-D4B8E871C56E}"
+      DTS:DTSID="{8E522E5C-AE85-4193-9AE8-9FFC6F6542BA}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;AND ct.SYS_CHANGE_VERSION &gt;  &quot; +(DT_STR, 20,1252) @[User::LastSyncVersion] +&quot; AND ct.SYS_CHANGE_VERSION &lt;= &quot; +(DT_STR, 20,1252) @[User::CurrentVersion] +&quot;)&quot;"
       DTS:IncludeInDebugDump="2345"
@@ -163,7 +160,7 @@ INNER JOIN
       DTS:refId="Package\EPT_ExecInParallel"
       DTS:CreationName="SSIS.ExecutePackageTask.3"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{0F3A5B34-5982-490B-8905-0BFF8F13072D}"
+      DTS:DTSID="{39C4C09D-C4CE-458D-8350-1D3B5BF5083B}"
       DTS:ExecutableType="SSIS.ExecutePackageTask.3"
       DTS:LocaleID="-1"
       DTS:ObjectName="EPT_ExecInParallel"
@@ -182,8 +179,8 @@ INNER JOIN
             <BindedVariableOrParameterName>$Package::LoadAll</BindedVariableOrParameterName>
           </ParameterAssignment>
           <ParameterAssignment>
-            <ParameterName>ChangeVersionFilter</ParameterName>
-            <BindedVariableOrParameterName>User::strFilter</BindedVariableOrParameterName>
+            <ParameterName>WHEREClause</ParameterName>
+            <BindedVariableOrParameterName>User::strWhereClause</BindedVariableOrParameterName>
           </ParameterAssignment>
         </ExecutePackageTask>
       </DTS:ObjectData>
@@ -192,7 +189,7 @@ INNER JOIN
       DTS:refId="Package\EST_GetVersionNumbers"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{2A6AB7CD-5852-4673-918D-CA5DB6CFA8BF}"
+      DTS:DTSID="{2189A807-521B-425D-8F43-F8DB156F6FE9}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
       DTS:ObjectName="EST_GetVersionNumbers"
@@ -218,7 +215,7 @@ INNER JOIN
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{BF9C6209-5032-409F-B91F-5D79F74049A9}"
+      DTS:DTSID="{DA7A2593-8C54-49C2-B49F-F1707C089EBE}"
       DTS:From="Package\EST_GetVersionNumbers"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"

@@ -15,7 +15,7 @@
       <SSIS:Project SSIS:ProtectionLevel="EncryptSensitiveWithUserKey" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
         <SSIS:Properties>
           <SSIS:Property SSIS:Name="ID">{b95056c9-98f1-4948-a270-8232881e7257}</SSIS:Property>
-          <SSIS:Property SSIS:Name="Name">Aphelion.Paga.StagingLoad.2010</SSIS:Property>
+          <SSIS:Property SSIS:Name="Name">Aphelion.Paga</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
@@ -26,12 +26,13 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">WIN-TDGNUUDMOVR</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0u0bgLAzOEGKSqCiv35A5gAAAAACAAAAAAAQZgAAAAEAACAAAABI8U+tQghg3Alwp6agzOIOek127fvXcxvlo88d6krRGAAAAAAOgAAAAAIAACAAAAAoWq4PWnP7HQKwPhF+V+DxfD0ObVeLigFgc2J83NtPIpAAAACb0AkWXE1iYvg+q334HakvMRC8lM85Tp88+yX9WIFrERU2+NpGQiUfESgPSJieahgpnWaD94Rs6vU/wqHVM4VggJRB5Xo5t9OKklJijLMFunFM9ndz5DKSZdTFuSSJoUovf0uHWE8IPIvBNXj7GqJtA/O391izwb8RC9FE4ERMLV/eiw500gXYKcKB2eNdsqlAAAAAlZX5S/ibCUglFWbPKfYNUwiCxmN3ZzqoxBdYlk7fRZMOnLa3NA238RU3CvEDkPkJqWBzLvwGtPNkdTHBJGm+WQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0u0bgLAzOEGKSqCiv35A5gAAAAACAAAAAAAQZgAAAAEAACAAAAC4V2dxJQNN1t5LhEjGfPaQSZ/hMbO4uc1vvNp9QLng7QAAAAAOgAAAAAIAACAAAACuIQlJDzghWNpbAQu4oEY7vzgimtYqn+7zD6EBO1oq95AAAAAM7WvF4QqSK+M4EThBkkrNOJFpIA+eiM8gxsFM3QO+OwxG+QTdBHUqIXeisyCFAJmwpYukloYDILWSl3NJu7p9gACbsOh1fIMxyWZt9B9z0VMb6qnXsUlN+qThPzFDlzVk6yBoLsrzAzkJanSh7VBKPOp7oJv/Nv+c115d6/4BU9+Crhpwxy/vRQtvV+72phlAAAAAVKf/Fzh25h/SoBYeHmYHjT/kOcT4DJewYX8s+784FDearFWk51h7y/4N3NfHpN60ehTKgBSYA4xO+kz05WIN4g==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="100_DummyTablePackage.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="010_RunStagingInParallel.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="001_LoadStaging.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="1101_Classification_DimAgentCommissionType.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="1102_Classification_DimBusinessType.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="1103_Classification_DimFinancialTransactionSubType.dtsx" SSIS:EntryPoint="1" />
@@ -176,7 +177,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=.\sql2012;Initial Catalog=Paga_EDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=.\sql2012;Initial Catalog=Paga_EDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -521,23 +522,23 @@
           <SSIS:PackageInfo>
             <SSIS:PackageMetaData SSIS:Name="100_DummyTablePackage.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{7D1A11FD-D33E-4314-BF9B-96B3BF41DD54}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{64AD0B50-16D5-4CC3-A171-6463D6E21E5F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">100_DummyTablePackage</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">15</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AAA62D1D-60A1-4831-B274-65F0217E1713}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4290DBB3-888B-4E81-8CB4-4224DCAA496F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{6E48B749-FBB2-47CC-B3AA-A7ACD2C8996B}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{0AC3EC1F-110F-4B12-BD4E-0748C9398E8F}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -558,10 +559,10 @@
                 <SSIS:Property SSIS:Name="Name">010_RunStagingInParallel</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">85</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">88</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{79C0408A-3584-4C10-8890-7A64D53A4FD7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B97CE7CB-45EA-4448-A99E-4DA6F0472EA5}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -614,25 +615,71 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="1101_Classification_DimAgentCommissionType.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="001_LoadStaging.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{6BD380D8-7F70-4BB7-BF44-D1F75CC97C58}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">1101_Classification_DimAgentCommissionType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{03258E52-3119-4831-A25E-7FD89090C081}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">001_LoadStaging</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">159</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A4E02412-6C87-4D8C-B314-931BE07E2FBA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{EE60A723-E465-4AE0-9B34-DF0297661A6F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="LoadAll">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{F24D4126-BC0F-4E79-89D9-843D20FDDA40}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{2E57E68C-0C61-4A63-929F-91631B4D386B}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="SchemaFilter">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{B29B7FF9-CB51-4B20-9071-2599A6125050}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">WHERE TABLE_SCHEMA = 'Location'</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="1101_Classification_DimAgentCommissionType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{954ADE0F-A686-402A-B8DB-DC6A7D62ADB9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">1101_Classification_DimAgentCommissionType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F265D926-99F9-4B74-B52D-7051E33ACCD4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{6731B7CA-AD2C-46BD-95A2-AE4929FF1E62}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -649,23 +696,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1102_Classification_DimBusinessType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{1A67F61D-C13F-448D-8F40-3A18AE3CC07E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{B8BB382E-F6B7-4AAD-9E09-A711E3923809}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1102_Classification_DimBusinessType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{0443877E-64A7-4EF5-9DE3-168ADA27BFD3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E80FA15E-384B-44B9-A0BF-256CBBAFBEBC}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{D56F6E5B-D6FF-46ED-B53F-3EFFCB0BDA2C}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{1B098D8D-343B-43C2-B36F-43D877DB5BAB}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -682,23 +729,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1103_Classification_DimFinancialTransactionSubType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{D45BEC4F-683D-4FA4-B3A1-AEC3934AD4F3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{EAC4A3F9-5686-40EC-A806-19FABCCABA3C}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1103_Classification_DimFinancialTransactionSubType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{0CD6BC55-0D2E-4D5D-AA05-270C18F8E38E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5E45FB3A-3521-413A-9E41-CD4A4189D117}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{7E2A8655-B3F1-4663-A812-E634D6217D0C}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{3EC047BF-E4C3-4E0F-AD19-6477D66BA400}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -715,23 +762,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1104_Classification_DimFinancialTransactionType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{D8B61CDB-D48A-4F4A-8FDA-7E048CD79E27}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{5CA6BE37-7527-4B23-9EAD-E05108BD98E2}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1104_Classification_DimFinancialTransactionType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{D4B03E0A-6A64-4ED3-89F9-4251B189FB3B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9C72D7D8-DF59-4AAA-8C4E-5E89229291D8}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{4EF35C93-9586-4524-8D1A-2C5CA413B5C6}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{B2F560BB-934A-4BD6-9570-03ECB0EE9DE3}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -748,23 +795,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1105_Classification_DimMerchantCategory.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{F4A10E5B-7AC9-4135-AC15-5C6D426D6CDF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{A73D5D53-E1C9-4A5E-B4DD-C406EBE830C5}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1105_Classification_DimMerchantCategory</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{EFD53D35-9EE8-40B3-9F3C-288B8614E812}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{1F2001C1-5A1D-41B1-ACF3-40C7E43D7241}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{56C46B58-B0BF-41F1-BF67-DA2023EA6BBD}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{F8A9BD36-5376-4A8A-AAA4-78F47167DA47}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -781,23 +828,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1106_Classification_DimOrganizationSubscriptionStatus.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{C2423194-8FC0-44E2-8FBC-504584E42337}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{C90A64F2-6036-44F9-8510-EEB2E45242A3}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1106_Classification_DimOrganizationSubscriptionStatus</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2833E8BF-A18E-4E2D-BFDC-AF4CCD1B7426}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{71A56084-9D4E-4339-AB3E-BC9FE832B702}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{8E957ED0-5472-402F-9006-C71DDF56326F}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{79F6BB9A-F9DF-4D39-ABEA-8030E20A7637}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -814,23 +861,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1107_Classification_DimOrganizationUnitType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{167CD2FB-6CA1-457C-88CE-24E97F4D3B4D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{DE6E6CBF-C6DA-448F-97CA-3B180DE95E01}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1107_Classification_DimOrganizationUnitType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{BCC2F22B-5C40-4BE8-9AA8-96B5924570D6}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FC3F23F7-514F-4D6F-BC8B-04FDAEE262EE}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{C96A966D-C09C-4E44-851F-13FB023CC68F}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{75A72ED2-5227-4A76-AD8D-76E32975E8CB}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -847,23 +894,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1108_Classification_DimOrganizationVerificationStatus.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{C946EF5F-2A48-4268-87AA-5DDD8C3791E3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{A6B82361-5CD2-4455-834A-4707FF9F5CD5}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1108_Classification_DimOrganizationVerificationStatus</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9C93CC0B-5644-4DA2-838D-6A2311EE4FBB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{1A8688FA-38AA-4259-8A17-85C1326EB5BB}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{348A41D9-F7FF-4B32-8970-E4CAA8ED4349}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{8BD342F1-664E-4666-B16D-550FC7FE5BAF}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -880,23 +927,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1109_Classification_DimPagaAccountStatus.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{88824AFA-7391-47C8-BFBF-6B4EE097D78E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{0A928ABD-B11B-4B9F-B5D7-E2724CD3F626}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1109_Classification_DimPagaAccountStatus</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A03E375F-470C-457F-8ACC-0E92B3660000}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D6FCEBF9-BF55-4030-AA6F-0579948AAACE}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{C9D27079-3A8D-40D0-9A72-15CCA7DFF7C9}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{F57B9E5C-0807-4833-99FF-42BDAFD43AA1}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -913,23 +960,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1110_Classification_DimPagaAccountUserType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{64593B5F-B383-4D13-805D-FD20F16D6B8B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{31083227-1683-494E-8569-6451F4B4E80C}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1110_Classification_DimPagaAccountUserType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9FD0EBFE-535C-4FBE-A0CF-71EB53035AF1}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F0C4BFD7-BDA7-49E3-B7F8-C486B1B70C80}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{E47EA9FE-C05D-4983-87FF-EC4360CEF52F}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{BCA05B76-33BE-4946-AF58-230E63F036FA}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -946,23 +993,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1111_Classification_DimProcessStatus.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{EB24D7C9-E3FA-40D0-8C64-C82BA9D40BE2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{301C015C-0371-4055-8A0F-F078C5FAFDF9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1111_Classification_DimProcessStatus</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{861392FE-5875-4AFA-AB30-2B405D68A4BF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A64FCAD1-9DB5-472D-9735-E375F9690AD5}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{29879D1D-6982-4598-9E86-2E0FB58A2022}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{B98322EE-1524-4C98-8FD2-577218722668}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -979,23 +1026,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1112_Classification_DimProcessType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{597A514D-5F17-4EDE-802D-EFE88F1E6174}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{3F3A160F-2F8B-4667-9652-B27A377232DD}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1112_Classification_DimProcessType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9CE0FFF5-242B-49CC-92BC-FF6A84A20FA0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{813EC097-63B7-45CF-B00E-7638811C9FA2}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{8A1A3542-A74D-47CF-AFBD-543C021612FF}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{48413051-6F1B-49ED-830A-8BF67662BBB9}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1012,23 +1059,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1113_Classification_DimProcessTypeGroup.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{0B4A2C88-44F2-4667-AE30-2E32808BDBBF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{A8DE5CFE-1274-4D29-8A80-8E9E4CE9633C}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1113_Classification_DimProcessTypeGroup</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{F8EFD16F-701F-4F0E-9822-608F0EF52AE9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{75026CFA-2FCD-4BF5-9F48-9313227B6D82}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{1E0A227B-B0B8-413F-9267-04CCFB037BE3}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{92732E67-46F9-4CB3-9C0B-CFE3C31A4D81}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1045,23 +1092,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1201_Finance_DimBank.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{855FD7E6-A420-4132-AAF9-800A61C00452}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{8C4E2E66-A8BB-411A-8123-4DA6DDD01747}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1201_Finance_DimBank</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B50C3D8F-C0CA-4269-8BFF-BE345032A508}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{01BF4548-2894-4CA9-A386-180DEA569044}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{D379DC36-4EBD-4A74-B907-1A02F2F8F556}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{AD53902B-65D3-437B-942E-F147DD7C425E}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1078,23 +1125,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1202_Finance_DimBankAccount.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{9F80C890-9A65-4D02-B952-98116B297F64}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{033039CE-EC19-494D-9BB3-11209CFB44E4}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1202_Finance_DimBankAccount</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{0EF52551-CDC6-4E0D-8F1A-2EA250DAA7EA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A0016F62-8555-43CE-8B36-6C1CB03ADD57}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{6E9A7975-ACA2-4148-A990-9144B4A8ED62}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{F685A7D3-CA1D-43CD-AC94-A6A302C6242F}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1111,23 +1158,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1203_Finance_DimChartOfAccounts.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{F3C6A1B0-6FA2-43BF-AB05-AEB01F3BDF05}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{2FC6D56A-585F-406B-B632-F7044168EFA8}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1203_Finance_DimChartOfAccounts</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{147C6F85-F109-4A95-AD80-9FDA54306A4F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{949D2E78-987A-44CB-B671-8C9D5E038271}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{1DB95A21-083C-4844-95C5-D57E4761F428}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{4E483D12-670E-41BD-8ACE-70FD069714F5}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1144,23 +1191,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1204_Finance_DimCurrency.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{E0D88DB6-F025-44ED-87A3-0E786B79E518}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{033FC0AE-4B31-4570-B06F-62E9DE591E65}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1204_Finance_DimCurrency</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{11999F63-F348-47E7-9962-8EC3B1AA96F3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A27B5B17-26A2-4D01-A3FB-F3FBE759A1EF}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{D4E58961-6466-462C-AF2D-57B885864F8B}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{EADBF594-409B-485D-9989-F85722F86892}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1177,23 +1224,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1205_Finance_DimFinancialAccount.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{583F6548-AA19-4CC9-B0BF-3F7AECC829FB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{15402C3C-D2AB-4476-9CEA-CD324DE47DD2}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1205_Finance_DimFinancialAccount</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6997DA4F-2D90-4B99-BD2B-60A66A3D8F97}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{C7C9B91C-22AA-42D6-8093-C659EBF54E4F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{2FE3BB20-57A8-43D5-AB45-C5E57BF84F95}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{0354956D-D396-4406-B5DE-5DBDC5B132CD}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1210,23 +1257,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1206_Finance_DimFinancialAccountType.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{CB1DD2FA-636E-4ED8-AAFC-D6B40C277AB7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{D53FB79B-2368-4669-BA72-6ED3722DF9DC}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1206_Finance_DimFinancialAccountType</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C2EE47D3-AB07-4494-B819-2D8D2BCA858A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D81E5E75-BD1B-4503-8F8E-E0389B736152}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{0A93A1C6-CB20-4FD6-B809-B880E9C5BC70}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{14E51C4A-ECE3-4315-8368-E050A4B1638F}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1243,23 +1290,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1207_Finance_DimFinancialHoldingAccount.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{2D0CC10B-B190-4C65-9B1E-5A20E000360B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{00D321E9-7741-4D50-B9C7-72533370100F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1207_Finance_DimFinancialHoldingAccount</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{BA77EBFC-18B0-404C-85B1-13CFC30B2B77}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{885D033E-30C3-4BBE-97CB-B95C8D02B955}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{7B6DFE7B-8169-4977-8B6A-57C6CAA655B6}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{63622CFD-28A4-45B4-B0C1-510EAD956454}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1276,23 +1323,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1208_Finance_DimGLCode.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{3A1C7487-4AC5-4326-95B4-94BE617B750B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{9596C211-991C-4A88-86EC-34C25D5B47D1}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1208_Finance_DimGLCode</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{3184F37A-8D67-492F-84D9-126DDF8DCF0F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2B5E5A32-F9DE-472D-9502-3EB1738AF249}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{F581EE03-2A84-44C6-ACB8-B7928ABB56AD}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{4F70CD9C-B382-4D3B-A3CA-2B1000B53200}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1309,23 +1356,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1209_Finance_DimGLCodeGroup.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{A64166E9-5C4B-44B4-A196-30DE986B310A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{A10663E8-024A-4E92-AABE-E9CFB35D974E}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1209_Finance_DimGLCodeGroup</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{CACE8EB0-C092-4E68-A09C-767FA4A85FCF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{64D9FA34-EE74-435E-BF79-7631B275A80A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{B95BD507-5134-47B3-8440-5078A817B3CA}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{1BC6F0A6-EE27-467D-83F2-FED4AEDAFCCD}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1342,23 +1389,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1210_Finance_DimGLCodeSubGroup.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{90A27A07-CA80-4254-BEE9-A656CA3A7C9A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{252E6129-2CFB-44E9-BDF2-80AA8F4A46BA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1210_Finance_DimGLCodeSubGroup</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{93B705F5-F1C6-40E6-8157-45E7C299885E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{81A36A06-7175-4A69-9C42-939751D931C3}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{007A5AFC-CDCF-4010-A013-F45F49A39FA6}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{1277C2AA-FBDE-4739-80A3-47FD432ADDD2}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1375,23 +1422,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1301_Location_DimCity.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{D2182BFC-D97E-4B22-9170-F0F957FB4999}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{4D2011CF-9EC9-437A-AFDB-43357FD6F42A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1301_Location_DimCity</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9E7C8296-1182-4991-9517-D4F6BBD2A4EB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{64692641-E70F-4188-AE70-BD7F559A233A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{580DA445-3835-41CB-BE43-73DE0FCDBA02}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{2D44EE59-2419-478A-8DFE-8DF5743315FC}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1408,23 +1455,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1302_Location_DimCountry.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{6828BF5C-D18E-4B9B-A242-8CCA33C86E50}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{9399622F-1311-4405-9A5B-140664506C0D}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1302_Location_DimCountry</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1EADF2DE-323C-4CEE-A26C-D510DD204FB2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B5795258-1D46-44DC-82BA-D50DF074EA41}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{3CBED81B-ECC5-4161-97A3-EA0A22DD98C4}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{0C114295-9E7D-4A6D-814D-A91A378CB7D3}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1441,23 +1488,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1303_Location_DimGeoZone.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{766D1C70-F087-43CA-BF3B-F1E0F6683619}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{11DC79EF-4A94-4C38-BA74-A28F5D3AC1D0}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1303_Location_DimGeoZone</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6CCD3482-A482-418F-9A43-CBAED3BA2651}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{16E77EB4-5E49-4879-B316-1F2FA11164AF}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{B8F65EE8-AA4A-4696-9A97-1F7F9DED1063}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{0C94751F-D096-4E6D-A887-1836025D1838}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1474,23 +1521,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1304_Location_DimLocalGovernmentArea.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{793D926A-7A18-47AD-928E-2011645AB5C5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{BA107B0E-34DE-426C-8C5D-0D9A9AC9C2E6}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1304_Location_DimLocalGovernmentArea</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B564972D-A263-4264-AC37-2C2A5D873DC9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{C5260B3F-5218-48D2-8025-DF723A99E83E}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{B49C7904-8D36-44A2-800C-01699B6E63D3}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{8A69904C-D00A-42B4-8C7C-F54C83AC4FB5}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1507,23 +1554,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1305_Location_DimRegion.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{BEE62572-4941-4A34-B162-670F583C2D2C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{CF68F7BA-6EDF-47E2-A07F-408D104BBFEE}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1305_Location_DimRegion</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{55CF6774-B9BD-47A3-9BED-4703BCFEECF9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F249B121-9815-4BEA-848F-706A38FD5089}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{CA20BF70-AFFC-4077-9464-35EDCD4D010E}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{96263EED-C495-407D-9231-DF1CD231BD83}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1540,23 +1587,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1501_Shared_DimOrganization.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{5C1FDB38-23F8-4DEC-B9E9-603CF96C99DC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{6AD81177-B68E-468C-B220-433479C19475}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1501_Shared_DimOrganization</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AFBAFABD-B18D-4470-A56B-EE4F1EB21426}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A7F2DE70-15B9-4B77-98F5-E4FB413F3145}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{07A20DE0-9D24-45F9-AA7A-B8FD4241C0D8}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{8833B744-EE74-4D84-AC15-35F03B2936B5}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1573,23 +1620,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1502_Shared_DimOrganizationUnitLevel1.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{37F0018E-9BDE-45E4-8CA5-48FE880BEABF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{8A4A223D-D1ED-40F2-B47B-CE7CFEEA792B}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1502_Shared_DimOrganizationUnitLevel1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{3A60E096-410C-43BF-B95D-FDC5FC68E624}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E7A0F81B-A6BB-4225-8F25-A4FD17B49962}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{BEE5E91D-B1E9-4DEC-A42C-A934DE591589}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{2006465E-75D5-4303-AA22-327CC5C93DDA}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1606,23 +1653,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1503_Shared_DimOrganizationUnitLevel2.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{ECF83F12-7DC5-4582-A5E5-498B58C3D95E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{613E8233-FDED-40F4-9958-6B1FCAF87FEB}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1503_Shared_DimOrganizationUnitLevel2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C2242179-6F99-461C-9982-DC4A95E38BE7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{092D1F2F-AD2D-49F5-BF74-CA818C0BF0AE}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{5D0D56BC-B20E-466E-81DC-136CF653FA97}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{5810C511-81DA-4D98-9B0F-BEE4C4108320}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1639,23 +1686,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1504_Shared_DimOrganizationUnitLevel3.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{F7B490D4-295B-46B0-AB75-5FB5697DBC77}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{9F7122AD-83BF-494B-962A-6ECEFFDD9FEF}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1504_Shared_DimOrganizationUnitLevel3</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{ED693AB3-C108-41C2-A371-A0EA9FA26CED}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FB60C880-26A0-4F2F-AE1E-FA12B0152899}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{2253F5C3-99CC-4E68-8398-CFA57DFC61B9}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{E19BB5F8-DB78-4E77-9176-E613CA5BF7A9}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1672,23 +1719,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1505_Shared_DimOrganizationUnitLevel4.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B9238E81-EAD3-4727-93DC-1C65FDB9BA7E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{BAF519A0-A216-4381-9BD9-7575312F16D8}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1505_Shared_DimOrganizationUnitLevel4</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AE5390B2-5279-4CC6-B1B2-5E3447132F4C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9DB0057A-EBC9-4503-A41E-2518C6CC6803}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{D73FFCB2-4BEA-4377-884E-2E6B5ECE6B98}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{997BD320-0003-406F-92D9-059A5F25E88B}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1705,23 +1752,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1506_Shared_DimPagaAccount.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{9A6050C6-C11D-4AC9-AF51-E1D23CC927F6}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{D64AA251-433A-4D7A-92BF-E453276BA3FE}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1506_Shared_DimPagaAccount</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{637AB5C6-23F9-4D3C-A727-65D41F258296}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{95868363-B66A-48D5-A22D-131F86014F85}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{5B97ED3E-CCCB-44E7-9361-DAA298901441}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{65034261-4EEC-47AC-B54C-19E9CFAE7E31}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1738,23 +1785,23 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="1507_Shared_DimProcessChannel.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{EF8156D7-2DB1-4D5D-A669-2FC7C6D7C905}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{9BF88C92-19D4-4F79-86D4-F86B59C33AB5}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">1507_Shared_DimProcessChannel</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{8FFEFF8A-1ED9-4243-8BF8-F3CDA337C47E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D4DDE182-09BA-4A49-B1E9-6D03613A5AC4}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="strParm1">
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
                   <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{86AAEA98-ACB7-4918-8E18-DDEB116DCE94}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="ID">{2055DA18-1422-4DA0-9817-BF68D1C42DCD}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">

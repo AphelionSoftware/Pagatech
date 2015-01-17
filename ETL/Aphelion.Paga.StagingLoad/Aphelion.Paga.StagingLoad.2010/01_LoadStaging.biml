@@ -133,18 +133,12 @@
 		#>	
 				<Package Name="<#=PackageName#>" ConstraintMode="Linear"  ProtectionLevel="EncryptSensitiveWithUserKey"  AutoCreateConfigurationsType="None">
 				<Parameters>
-					<Parameter Name="Filter" DataType="String"></Parameter>
-					<Parameter Name="LoadAll" DataType="Boolean">false</Parameter>
+					<Parameter Name="EndOfQuery" DataType="String"></Parameter>
 				</Parameters>
 				
 				<Variables>
-						<Variable Name="CurrentVersion" DataType="Int32">0</Variable>
-						<Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
 						<Variable Name="BaseQuery" DataType="String"><#=BaseQuery#></Variable>
-						<Variable Name="Filter_1" DataType="String"><#=Filter#></Variable>
-						<Variable Name="Filter_2" DataType="String" EvaluateAsExpression="true">@[$Package::Filter]</Variable>
-						<Variable Name="WHEREClause" DataType="String" EvaluateAsExpression="true"> @[User::Filter_1] + @[$User::Filter_2] +";"</Variable>
-						<Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[$Package::LoadAll] ? @[User::BaseQuery] :  @[User::BaseQuery]+  @[User::WHEREClause]</Variable>
+						<Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]+ @[$Package::EndOfQuery]</Variable>
 					</Variables>
 				
 				<Tasks>

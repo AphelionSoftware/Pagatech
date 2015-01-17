@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/15/2015 19:47:57" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{795A61F4-521F-44B1-8C23-9BA4D4CF7049}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1301_Location_DimCity" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{99C0E450-480B-4B55-9000-6CA72344F864}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/17/2015 16:04:40" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{4D2011CF-9EC9-437A-AFDB-43357FD6F42A}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1301_Location_DimCity" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{64692641-E70F-4188-AE70-BD7F559A233A}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{8CDC00A0-A1F5-4ABE-8F3C-72BE4FC0A3AB}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Location_DimCity" DTS:refId="Package\DFT_Load Location_DimCity" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{173C147A-4FAC-4903-8069-1951022D18A5}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Location_DimCity" DTS:refId="Package\DFT_Load Location_DimCity" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -141,37 +141,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{F7B195A1-4F8E-41BD-9B3B-C2BF3DE35A67}" DTS:ObjectName="Filter" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{2D44EE59-2419-478A-8DFE-8DF5743315FC}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="11" DTS:Description="" DTS:DTSID="{397F36A7-2C32-43B9-8BFE-2EB828476EC9}" DTS:ObjectName="LoadAll" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="11" DTS:Name="ParameterValue">False</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{9DF5171A-7202-4F2F-891E-FA6DBC9585D8}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
-      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6113DA09-C600-4E9E-968C-312100BEB6DB}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
-      <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1FDF912E-384A-4119-A277-9EE6701E0D11}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{19DF06DC-A57C-4004-9FA8-9797BDD051E6}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	PostalCode = COALESCE(base_query.PostalCode, -1), 	DimLocalGovernmentAreaSourceKey= COALESCE(base_query.DimLocalGovernmentAreaSourceKey, -1) FROM   (SELECT CityId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, PostalCode as PostalCode, LocalGovernmentAreaId AS DimLocalGovernmentAreaSourceKey FROM dbo.City) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EB843D79-6369-45D9-8962-8C3656BBEE6A}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Filter_1">
-      <DTS:VariableValue DTS:DataType="8">WHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.City AS ct WHERE base_query.SourceKey = ct.CityId</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{272939AD-AD7E-41B2-945E-8A50412BDB0A}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::Filter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Filter_2">
-      <DTS:VariableValue DTS:DataType="8">
-      </DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{19D248F0-0919-4CC8-83EC-C1962DFE1D5F}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::Filter_1] + @[$User::Filter_2] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="WHEREClause">
-      <DTS:VariableValue DTS:DataType="8">WHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.City AS ct WHERE base_query.SourceKey = ct.CityId;</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{72B9FB94-1B9B-4E6E-9530-C8D35BFE1E2E}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::LoadAll] ? @[User::BaseQuery] :  @[User::BaseQuery]+  @[User::WHEREClause]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	PostalCode = COALESCE(base_query.PostalCode, -1), 	DimLocalGovernmentAreaSourceKey= COALESCE(base_query.DimLocalGovernmentAreaSourceKey, -1) FROM   (SELECT CityId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, PostalCode as PostalCode, LocalGovernmentAreaId AS DimLocalGovernmentAreaSourceKey FROM dbo.City) as base_queryWHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.City AS ct WHERE base_query.SourceKey = ct.CityId;</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E2973DF0-228E-4934-BB50-1B62629FAE8B}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	PostalCode = COALESCE(base_query.PostalCode, -1), 	DimLocalGovernmentAreaSourceKey= COALESCE(base_query.DimLocalGovernmentAreaSourceKey, -1) FROM   (SELECT CityId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, PostalCode as PostalCode, LocalGovernmentAreaId AS DimLocalGovernmentAreaSourceKey FROM dbo.City) as base_query</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>

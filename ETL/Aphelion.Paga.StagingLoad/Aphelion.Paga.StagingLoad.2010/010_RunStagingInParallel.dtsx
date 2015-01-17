@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="010_RunStagingInParallel"
   DTS:PackageType="5"
-  DTS:VersionBuild="85"
-  DTS:VersionGUID="{79C0408A-3584-4C10-8890-7A64D53A4FD7}">
+  DTS:VersionBuild="94"
+  DTS:VersionGUID="{EF2CC63D-4F6B-49AC-96B6-1C50BC5A4935}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -49,6 +49,18 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{B87DEFE6-A03C-4CE1-AA86-7571A83642F1}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::LoadAll]  ? &quot;;&quot; :  @[User::strParm1] +&quot; &quot; + @[$Package::WHEREClause]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EndOfQuery">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"> </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{417C843F-A8AA-4613-AA9A-9EBACA7A9F30}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
@@ -73,6 +85,16 @@ FROM
 (
 
   ) src ) OuterSrc WHERE Stream =  </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D551022D-3D6A-482E-B585-349D696DCC08}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strParm1">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -139,18 +161,6 @@ FROM
           <DTS:VariableValue
             DTS:DataType="3">0</DTS:VariableValue>
         </DTS:Variable>
-        <DTS:Variable
-          DTS:CreationName=""
-          DTS:DTSID="{B38FB006-AAC9-458F-8030-D7759DF9FFE1}"
-          DTS:EvaluateAsExpression="True"
-          DTS:Expression="@[$Package::LoadAll]  ? &quot;;&quot; :  @[User::strParm1] +&quot; &quot; + @[$Package::WHEREClause]"
-          DTS:IncludeInDebugDump="2345"
-          DTS:Namespace="User"
-          DTS:ObjectName="strParm1">
-          <DTS:VariableValue
-            DTS:DataType="8"
-            xml:space="preserve"> </DTS:VariableValue>
-        </DTS:Variable>
       </DTS:Variables>
       <DTS:Executables>
         <DTS:Executable
@@ -162,11 +172,11 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream0_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{89527442-0535-4045-8E32-5693BB8999E6}"
+              SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -219,8 +229,8 @@ FROM
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                    <ParameterName>EndOfQuery</ParameterName>
+                    <BindedVariableOrParameterName>User::EndOfQuery</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -229,14 +239,14 @@ FROM
           <DTS:ForEachVariableMappings>
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{849A4182-2493-43DB-913D-BF67C6288BAA}"
-              DTS:ObjectName="{849A4182-2493-43DB-913D-BF67C6288BAA}"
+              DTS:DTSID="{3537E351-4F89-4AFA-B910-46268AC1FBE0}"
+              DTS:ObjectName="{3537E351-4F89-4AFA-B910-46268AC1FBE0}"
               DTS:ValueIndex="0"
               DTS:VariableName="User::PackageName" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{1E3B4A85-F0FE-4D3D-B962-8C35C71CB1DD}"
-              DTS:ObjectName="{1E3B4A85-F0FE-4D3D-B962-8C35C71CB1DD}"
+              DTS:DTSID="{F39560B5-DB06-482A-9A06-A85CE75FEC9A}"
+              DTS:ObjectName="{F39560B5-DB06-482A-9A06-A85CE75FEC9A}"
               DTS:ValueIndex="1"
               DTS:VariableName="User::strParm1" />
           </DTS:ForEachVariableMappings>
@@ -317,16 +327,6 @@ FROM
           <DTS:VariableValue
             DTS:DataType="3">1</DTS:VariableValue>
         </DTS:Variable>
-        <DTS:Variable
-          DTS:CreationName=""
-          DTS:DTSID="{16FB658E-DD72-45DC-A5E7-2DA8772A988B}"
-          DTS:IncludeInDebugDump="2345"
-          DTS:Namespace="User"
-          DTS:ObjectName="strParm1">
-          <DTS:VariableValue
-            DTS:DataType="8"
-            xml:space="preserve"></DTS:VariableValue>
-        </DTS:Variable>
       </DTS:Variables>
       <DTS:Executables>
         <DTS:Executable
@@ -338,11 +338,11 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream1_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -395,8 +395,8 @@ FROM
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                    <ParameterName>EndOfQuery</ParameterName>
+                    <BindedVariableOrParameterName>User::EndOfQuery</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -405,14 +405,14 @@ FROM
           <DTS:ForEachVariableMappings>
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{97B99297-6639-4644-8545-647C9E54E546}"
-              DTS:ObjectName="{97B99297-6639-4644-8545-647C9E54E546}"
+              DTS:DTSID="{56AE4350-CC29-4D6A-AD15-F813C0AABB34}"
+              DTS:ObjectName="{56AE4350-CC29-4D6A-AD15-F813C0AABB34}"
               DTS:ValueIndex="0"
               DTS:VariableName="User::PackageName" />
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{D83481D3-D3A2-485F-BFEE-D5FF7C07C0C0}"
-              DTS:ObjectName="{D83481D3-D3A2-485F-BFEE-D5FF7C07C0C0}"
+              DTS:DTSID="{C128D050-D142-4798-9E3C-013A8A48BF42}"
+              DTS:ObjectName="{C128D050-D142-4798-9E3C-013A8A48BF42}"
               DTS:ValueIndex="1"
               DTS:VariableName="User::strParm1" />
           </DTS:ForEachVariableMappings>
@@ -514,11 +514,11 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream02_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -571,8 +571,8 @@ FROM
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                    <ParameterName>EndOfQuery</ParameterName>
+                    <BindedVariableOrParameterName>User::EndOfQuery</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -690,11 +690,11 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream03_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -747,8 +747,8 @@ FROM
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                    <ParameterName>EndOfQuery</ParameterName>
+                    <BindedVariableOrParameterName>User::EndOfQuery</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -866,11 +866,11 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream4_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -923,8 +923,8 @@ FROM
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                    <ParameterName>EndOfQuery</ParameterName>
+                    <BindedVariableOrParameterName>User::EndOfQuery</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -1042,11 +1042,11 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream05_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -1099,8 +1099,8 @@ FROM
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                    <ParameterName>EndOfQuery</ParameterName>
+                    <BindedVariableOrParameterName>User::EndOfQuery</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -1218,11 +1218,11 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream06_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -1275,8 +1275,8 @@ FROM
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                    <ParameterName>EndOfQuery</ParameterName>
+                    <BindedVariableOrParameterName>User::EndOfQuery</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -1394,11 +1394,11 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream07_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{7377AADE-99F0-4897-909A-38428ED4239F}"
+              SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
               SQLTask:SqlStmtSourceType="Variable"
               SQLTask:SqlStatementSource="User::SQLStatement"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -1451,8 +1451,8 @@ FROM
                   <UseProjectReference>True</UseProjectReference>
                   <PackageName>100_DummyTablePackage.dtsx</PackageName>
                   <ParameterAssignment>
-                    <ParameterName>strParm1</ParameterName>
-                    <BindedVariableOrParameterName>User::strParm1</BindedVariableOrParameterName>
+                    <ParameterName>EndOfQuery</ParameterName>
+                    <BindedVariableOrParameterName>User::EndOfQuery</BindedVariableOrParameterName>
                   </ParameterAssignment>
                 </ExecutePackageTask>
               </DTS:ObjectData>
@@ -1559,7 +1559,7 @@ FROM
           TopLeft="5.50000000000004,109.5" />
         <EdgeLayout
           Id="Package\SEQ_Stream01.PrecedenceConstraints[Constraint]"
-          TopLeft="90.7,49.5">
+          TopLeft="90.6,49.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"

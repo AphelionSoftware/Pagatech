@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/15/2015 19:47:56" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{EC5CCDB6-3EC4-483C-AB88-727901E5D033}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1104_Classification_DimFinancialTransactionType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{4818DF72-CA56-4D4D-9649-D1E3CBB6DEB5}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/17/2015 16:04:40" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{5CA6BE37-7527-4B23-9EAD-E05108BD98E2}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1104_Classification_DimFinancialTransactionType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{9C72D7D8-DF59-4AAA-8C4E-5E89229291D8}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{3DC78B4C-0030-43E6-ADF0-7DDB93CE38D0}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimFinancialTransactionType" DTS:refId="Package\DFT_Load Classification_DimFinancialTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{47C18005-0746-4693-8DAF-212634328EAC}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimFinancialTransactionType" DTS:refId="Package\DFT_Load Classification_DimFinancialTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -131,37 +131,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{D15588B9-9FAF-4C40-85DE-5B247C02D7E6}" DTS:ObjectName="Filter" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{B2F560BB-934A-4BD6-9570-03ECB0EE9DE3}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="11" DTS:Description="" DTS:DTSID="{82FCEC13-9250-4C95-ADDA-473105854228}" DTS:ObjectName="LoadAll" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="11" DTS:Name="ParameterValue">False</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8B2C54E0-89FE-4FBD-B783-3365CD1E7977}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
-      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{70AC3A92-63D7-48B3-9DEE-4BD2A5D95625}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
-      <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{35033EA8-501B-4B53-9890-A4A4A4EA5F9F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7800EFA6-1C7E-4BDB-A8A9-B2997B8E7373}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	base_query.FinancialTxCategory 	 FROM  ( 	SELECT 		FinancialTransactionTypeID AS SourceKey,  		CONVERT(VARCHAR(255),Description) AS Name, 		CONVERT(VARCHAR(255),COALESCE(FinancialTransactionTypeGroupId,'UNKNOWN')) AS FinancialTxCategory 	FROM dbo.FinancialTransactionType AS ftt 	OUTER APPLY 	( 		SELECT TOP 1  			x.FinancialTransactionTypeGroupId 		FROM [dbo].[FinancialTransactionTypeTransactionTypeGroup] as x 		WHERE  			x.FinancialTransactionTypeId = ftt.FinancialTransactionTypeId 		ORDER BY  			x.UpdatedDate DESC 	) AS ftg ) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FC55F5AE-61AF-4DC8-AE32-FAE381C5FB5F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Filter_1">
-      <DTS:VariableValue DTS:DataType="8">WHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.FinancialTransactionType AS ct WHERE base_query.SourceKey = ct.FinancialTransactionTypeID</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A09CD355-1C69-441F-AD2C-47215C0C2C8D}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::Filter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Filter_2">
-      <DTS:VariableValue DTS:DataType="8">
-      </DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E3A78516-7FCB-409F-A4BC-9CE7EAF2585D}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::Filter_1] + @[$User::Filter_2] +&quot;;&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="WHEREClause">
-      <DTS:VariableValue DTS:DataType="8">WHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.FinancialTransactionType AS ct WHERE base_query.SourceKey = ct.FinancialTransactionTypeID;</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5887AB8C-7277-4312-980E-4F39113F49A0}" DTS:EvaluateAsExpression="True" DTS:Expression="@[$Package::LoadAll] ? @[User::BaseQuery] :  @[User::BaseQuery]+  @[User::WHEREClause]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	base_query.FinancialTxCategory 	 FROM  ( 	SELECT 		FinancialTransactionTypeID AS SourceKey,  		CONVERT(VARCHAR(255),Description) AS Name, 		CONVERT(VARCHAR(255),COALESCE(FinancialTransactionTypeGroupId,'UNKNOWN')) AS FinancialTxCategory 	FROM dbo.FinancialTransactionType AS ftt 	OUTER APPLY 	( 		SELECT TOP 1  			x.FinancialTransactionTypeGroupId 		FROM [dbo].[FinancialTransactionTypeTransactionTypeGroup] as x 		WHERE  			x.FinancialTransactionTypeId = ftt.FinancialTransactionTypeId 		ORDER BY  			x.UpdatedDate DESC 	) AS ftg ) as base_queryWHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.FinancialTransactionType AS ct WHERE base_query.SourceKey = ct.FinancialTransactionTypeID;</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3497F8FB-602C-481F-B90D-C6A8B2A97ED2}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	base_query.FinancialTxCategory 	 FROM  ( 	SELECT 		FinancialTransactionTypeID AS SourceKey,  		CONVERT(VARCHAR(255),Description) AS Name, 		CONVERT(VARCHAR(255),COALESCE(FinancialTransactionTypeGroupId,'UNKNOWN')) AS FinancialTxCategory 	FROM dbo.FinancialTransactionType AS ftt 	OUTER APPLY 	( 		SELECT TOP 1  			x.FinancialTransactionTypeGroupId 		FROM [dbo].[FinancialTransactionTypeTransactionTypeGroup] as x 		WHERE  			x.FinancialTransactionTypeId = ftt.FinancialTransactionTypeId 		ORDER BY  			x.UpdatedDate DESC 	) AS ftg ) as base_query</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>

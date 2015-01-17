@@ -10,8 +10,8 @@
   DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="100_DummyTablePackage"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{34725ABB-FBC2-4DF6-8024-EFAF55C9931F}"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{4290DBB3-888B-4E81-8CB4-4224DCAA496F}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -20,20 +20,11 @@
       DTS:CreationName=""
       DTS:DataType="8"
       DTS:DTSID="{0AC3EC1F-110F-4B12-BD4E-0748C9398E8F}"
-      DTS:ObjectName="Filter">
+      DTS:ObjectName="EndOfQuery">
       <DTS:Property
         DTS:DataType="8"
         DTS:Name="ParameterValue"
         xml:space="preserve"></DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="11"
-      DTS:DTSID="{3DFE4A91-3C66-419B-9A43-25F6A1AEF835}"
-      DTS:ObjectName="LoadAll">
-      <DTS:Property
-        DTS:DataType="11"
-        DTS:Name="ParameterValue">-1</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -48,55 +39,14 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B7D41833-8E28-47BD-B56C-21FE84E38E01}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="CurrentVersion">
-      <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{20F3DD5E-BC3A-40DF-9E98-DDAEDE40D38C}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[$Package::Filter]"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="Filter_2">
-      <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
       DTS:DTSID="{384F7762-F476-4582-BFDD-8F14B375D588}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[$Package::LoadAll] ? @[User::BaseQuery] :  @[User::BaseQuery]+  @[User::WHEREClause]"
+      DTS:Expression="@[User::BaseQuery]+ @[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="FullQueryText">
       <DTS:VariableValue
         DTS:DataType="8">SELECT 	* FROM ( 	SELECT  		AgentCommissionTypeId AS SourceKey,  		CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name  	FROM dbo.AgentCommissionType ) AS base_query</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{85526472-1D63-4361-80D0-397004CDF753}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="LastSyncVersion">
-      <DTS:VariableValue
-        DTS:DataType="3">6</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{E1CAF6A3-EB80-4394-905C-D708BDA6E544}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot; WHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.AgentCommissionType AS ct WHERE base_query.SourceKey = ct.AgentCommissionTypeID &quot; + @[User::CTFilter]"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="WHEREClause">
-      <DTS:VariableValue
-        DTS:DataType="8">WHERE EXISTS ( SELECT 1 FROM [paga_change_log].[dbo].dbo.AgentCommissionType AS ct WHERE base_query.SourceKey = ct.AgentCommissionTypeID )</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
