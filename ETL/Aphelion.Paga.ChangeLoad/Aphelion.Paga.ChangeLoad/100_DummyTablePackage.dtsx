@@ -1,25 +1,25 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="1/11/2015 2:24:09 PM"
-  DTS:CreationName="Microsoft.Package"
-  DTS:CreatorComputerName="TWIST"
-  DTS:CreatorName="Christina"
-  DTS:DTSID="{EC9750CF-828B-4AF8-9D07-2B99659CC00F}"
-  DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="12.0.2000.8"
+  DTS:CreationDate="1/17/2015 4:57:22 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
+  DTS:CreatorName="Administrator"
+  DTS:DTSID="{66406545-86FC-4559-8CDB-407161327B04}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="101_DummyChangeLogPackage"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{5EED6EEA-5C6E-4834-B706-A5F35BD1EB5A}"
+  DTS:ObjectName="100_DummyTablePackage"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{D57D8273-5917-487F-8C34-5392D43EA6B2}"
   DTS:VersionMajor="0">
   <DTS:Property
-    DTS:Name="PackageFormatVersion">8</DTS:Property>
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{81EF1AAD-622B-4249-87F7-F442911AE044}"
+      DTS:DTSID="{C3F78C49-2FC1-4BD5-BF35-71EEB8D99D19}"
       DTS:ObjectName="strParm1">
       <DTS:Property
         DTS:DataType="8"
@@ -30,16 +30,24 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{402660BD-E915-4BE3-ACBD-63200D2BCDD0}"
+      DTS:DTSID="{9D262494-9DBD-4590-ABB9-47B49EC8F538}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="BaseQuery">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT * FROM CHANGETABLE(CHANGES dbo.AccountCode,0)  AS change_log</DTS:VariableValue>
+        DTS:DataType="8">SET NOCOUNT ON;
+		SELECT 
+			SYS_CHANGE_VERSION,
+			SYS_CHANGE_CREATION_VERSION,
+			SYS_CHANGE_OPERATION,
+			SYS_CHANGE_COLUMNS,
+			SYS_CHANGE_CONTEXT,
+			AccountCodeId = CAST(AccountCodeId AS int)
+		FROM CHANGETABLE(CHANGES [dbo].[AccountCode],0)  AS change_log</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{FEEFD0E2-C5BA-49F9-8A6F-AF7E63E1DBC1}"
+      DTS:DTSID="{EFC6187A-3DFC-4AB8-9F30-CCE0F3F0D52E}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="CurrentVersion">
@@ -48,18 +56,26 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{56BE49B9-0D46-4EC8-88E9-0A1C8DB7904F}"
+      DTS:DTSID="{3D9688F0-D03C-4459-A1D0-9A078423CC96}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="FullQueryText">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT * FROM CHANGETABLE(CHANGES dbo.AccountCode,0)  AS change_log ;</DTS:VariableValue>
+        DTS:DataType="8">SET NOCOUNT ON;
+		SELECT 
+			SYS_CHANGE_VERSION,
+			SYS_CHANGE_CREATION_VERSION,
+			SYS_CHANGE_OPERATION,
+			SYS_CHANGE_COLUMNS,
+			SYS_CHANGE_CONTEXT,
+			AccountCodeId = CAST(AccountCodeId AS int)
+		FROM CHANGETABLE(CHANGES [dbo].[AccountCode],0)  AS change_log ;</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3BD97FB9-E97E-4551-9F9F-76C28ABC8F1E}"
+      DTS:DTSID="{56B6AF6A-7FCE-4F53-9B45-D2B3F463EE3F}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LastSyncVersion">
@@ -70,9 +86,9 @@
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\DFT_Load dbo_AccountCode"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:DTSID="{99301B62-7042-44B7-A7F4-C2CE0F01BE11}"
-      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DTSID="{2A1DA41A-62B1-406F-8E04-9AE7CAC3009D}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
       DTS:ObjectName="DFT_Load dbo_AccountCode"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
@@ -85,7 +101,7 @@
           <components>
             <component
               refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData"
-              componentClassID="Microsoft.OLEDBSource"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               name="OLEDB_GetData"
               usesDispositions="true"
@@ -107,7 +123,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -289,7 +305,7 @@
             </component>
             <component
               refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog"
-              componentClassID="Microsoft.OLEDBDestination"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               name="OLEDB_InsertIntoChangeLog"
               usesDispositions="true"
@@ -311,7 +327,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -323,11 +339,11 @@
                 <property
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
-                  name="AccessMode">3</property>
+                  name="AccessMode">0</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">true</property>
+                  name="FastLoadKeepIdentity">false</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
@@ -335,7 +351,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                  name="FastLoadOptions"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -505,16 +521,16 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="154,42"
+          Size="155,42"
           Id="Package\DFT_Load dbo_AccountCode\OLEDB_GetData"
           TopLeft="36.5,5.5" />
         <NodeLayout
-          Size="216,42"
+          Size="217,42"
           Id="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog"
           TopLeft="5.50000000000001,107.5" />
         <EdgeLayout
           Id="Package\DFT_Load dbo_AccountCode.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
-          TopLeft="113.5,47.5">
+          TopLeft="114,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -542,19 +558,6 @@
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

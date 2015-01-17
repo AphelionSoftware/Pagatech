@@ -1,40 +1,181 @@
-<?xml version="1.0"?>
-<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:refId="Package"
-  DTS:CreationDate="1/14/2015 4:28:02 PM"
-  DTS:CreationName="Microsoft.Package"
-  DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
-  DTS:CreatorName="Administrator"
-  DTS:DTSID="{D2859BB6-F1CC-477D-9708-47230DAE57B8}"
-  DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="12.0.2000.8"
-  DTS:LocaleID="1033"
-  DTS:ObjectName="1124_dbo_OrganizationMerchantCategory"
-  DTS:VersionGUID="{1D083F9F-3E99-47CC-B19B-B9C81A741DC8}"
-  DTS:VersionMajor="0">
-  <DTS:Property
-    DTS:Name="PackageFormatVersion">8</DTS:Property>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="01/17/2015 17:58:28" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{29F0EE13-123A-4AD9-BE81-F91453E2D32E}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1124_dbo_OrganizationMerchantCategory" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{6525F97B-D0A3-49F5-AFDC-78145F2BB7AD}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{E78CF1C1-27F3-41C4-8C81-781AAF380FC3}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_OrganizationMerchantCategory" DTS:refId="Package\DFT_Load dbo_OrganizationMerchantCategory" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+          <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="wstr" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bytes" length="4100" name="SYS_CHANGE_COLUMNS" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bytes" length="128" name="SYS_CHANGE_CONTEXT" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="OrganizationMerchantCategoryId" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[OrganizationMerchantCategoryId]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="wstr" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="bytes" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]" length="4100" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]" name="SYS_CHANGE_COLUMNS" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="bytes" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]" length="128" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" name="SYS_CHANGE_CONTEXT" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[OrganizationMerchantCategoryId]" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[OrganizationMerchantCategoryId]" name="OrganizationMerchantCategoryId" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[OrganizationMerchantCategoryId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="wstr" length="1" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                    </outputColumn>
+                    <outputColumn dataType="bytes" length="4100" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]" name="SYS_CHANGE_COLUMNS" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]">
+                    </outputColumn>
+                    <outputColumn dataType="bytes" length="128" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]" name="SYS_CHANGE_CONTEXT" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[OrganizationMerchantCategoryId]" name="OrganizationMerchantCategoryId" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[OrganizationMerchantCategoryId]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external" connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="wstr" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bytes" length="4100" name="SYS_CHANGE_COLUMNS" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bytes" length="128" name="SYS_CHANGE_CONTEXT" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="OrganizationMerchantCategoryId" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[OrganizationMerchantCategoryId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_CreatedBy]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_CREATION_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="wstr" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="bytes" cachedLength="4100" cachedName="SYS_CHANGE_COLUMNS" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_COLUMNS]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="bytes" cachedLength="128" cachedName="SYS_CHANGE_CONTEXT" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CONTEXT]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="OrganizationMerchantCategoryId" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[OrganizationMerchantCategoryId]" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[OrganizationMerchantCategoryId]" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[OrganizationMerchantCategoryId]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Outputs[Error]" synchronousInputId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">dbo.OrganizationMerchantCategory</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+            </component>
+          </components>
+          <paths>
+            <path endId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_OrganizationMerchantCategory.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output]">
+            </path>
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="8"
-      DTS:DTSID="{0D6C0B3B-279E-45F6-B91A-E812D22D2C17}"
-      DTS:ObjectName="strParm1">
-      <DTS:Property
-        DTS:DataType="8"
-        DTS:Name="ParameterValue"
-        xml:space="preserve"></DTS:Property>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{5425E06D-4C3C-40CD-B164-5D61C6860C07}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
+      </DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{95A007C3-8ADD-41B5-A83C-7CBAE566BD63}"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue
-        DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7C07008C-FCD9-49E6-8FCD-21CF58344803}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{85D71AEA-C854-4137-B444-C473096B014F}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+      <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2DF0D587-85E2-452E-B5B2-0515D232B026}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
 		SELECT 
 			SYS_CHANGE_VERSION,
 			SYS_CHANGE_CREATION_VERSION,
@@ -44,25 +185,8 @@
 			OrganizationMerchantCategoryId = CAST(OrganizationMerchantCategoryId AS int)
 		FROM CHANGETABLE(CHANGES [dbo].[OrganizationMerchantCategory],0)  AS change_log</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{4F8AA637-02B3-4F6B-AE8E-A8A7F7168319}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="CurrentVersion">
-      <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{45E9681D-DE95-48B4-8A05-A794824D0911}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue
-        DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2C9473FC-8E31-425F-B0D5-679C1F927947}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
 		SELECT 
 			SYS_CHANGE_VERSION,
 			SYS_CHANGE_CREATION_VERSION,
@@ -70,429 +194,7 @@
 			SYS_CHANGE_COLUMNS,
 			SYS_CHANGE_CONTEXT,
 			OrganizationMerchantCategoryId = CAST(OrganizationMerchantCategoryId AS int)
-		FROM CHANGETABLE(CHANGES [dbo].[OrganizationMerchantCategory],0)  AS change_log ;</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{D86AC49F-5006-494E-878A-86B061AB14FA}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="LastSyncVersion">
-      <DTS:VariableValue
-        DTS:DataType="3">6</DTS:VariableValue>
+		FROM CHANGETABLE(CHANGES [dbo].[OrganizationMerchantCategory],0)  AS change_log </DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
-  <DTS:Executables>
-    <DTS:Executable
-      DTS:refId="Package\DFT_Load dbo_OrganizationMerchantCategory"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:DTSID="{83616F7B-93FF-4A56-A34B-0933AA7A92A7}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="DFT_Load dbo_OrganizationMerchantCategory"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          BLOBTempStoragePath=""
-          bufferTempStoragePath=""
-          version="1">
-          <components>
-            <component
-              refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              name="OLEDB_GetData"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable">User::FullQueryText</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Connections[OleDbConnection]"
-                  connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output]"
-                  name="Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      name="SYS_CHANGE_CREATION_VERSION"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      length="1"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      length="4100"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]"
-                      name="SYS_CHANGE_COLUMNS"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
-                      dataType="bytes"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
-                      length="128"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
-                      name="SYS_CHANGE_CONTEXT"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[OrganizationMerchantCategoryId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[OrganizationMerchantCategoryId]"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[OrganizationMerchantCategoryId]"
-                      name="OrganizationMerchantCategoryId"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_VERSION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_CREATION_VERSION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      length="1"
-                      name="SYS_CHANGE_OPERATION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      length="4100"
-                      name="SYS_CHANGE_COLUMNS" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
-                      dataType="bytes"
-                      length="128"
-                      name="SYS_CHANGE_CONTEXT" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].ExternalColumns[OrganizationMerchantCategoryId]"
-                      dataType="i4"
-                      name="OrganizationMerchantCategoryId" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error]"
-                  isErrorOut="true"
-                  name="Error">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      dataType="i8"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      name="SYS_CHANGE_CREATION_VERSION" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      length="1"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      length="4100"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]"
-                      name="SYS_CHANGE_COLUMNS" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
-                      dataType="bytes"
-                      length="128"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
-                      name="SYS_CHANGE_CONTEXT" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[OrganizationMerchantCategoryId]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[OrganizationMerchantCategoryId]"
-                      name="OrganizationMerchantCategoryId" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              name="OLEDB_InsertIntoChangeLog"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">dbo.OrganizationMerchantCategory</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode">0</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Connections[OleDbConnection]"
-                  connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]"
-                      cachedDataType="i8"
-                      cachedName="SYS_CHANGE_VERSION"
-                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      cachedDataType="i8"
-                      cachedName="SYS_CHANGE_CREATION_VERSION"
-                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]"
-                      cachedDataType="wstr"
-                      cachedLength="1"
-                      cachedName="SYS_CHANGE_OPERATION"
-                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_COLUMNS]"
-                      cachedDataType="bytes"
-                      cachedLength="4100"
-                      cachedName="SYS_CHANGE_COLUMNS"
-                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CONTEXT]"
-                      cachedDataType="bytes"
-                      cachedLength="128"
-                      cachedName="SYS_CHANGE_CONTEXT"
-                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[OrganizationMerchantCategoryId]"
-                      cachedDataType="i4"
-                      cachedName="OrganizationMerchantCategoryId"
-                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[OrganizationMerchantCategoryId]"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output].Columns[OrganizationMerchantCategoryId]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_VERSION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_CREATION_VERSION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      length="1"
-                      name="SYS_CHANGE_OPERATION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      length="4100"
-                      name="SYS_CHANGE_COLUMNS" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]"
-                      dataType="bytes"
-                      length="128"
-                      name="SYS_CHANGE_CONTEXT" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[OrganizationMerchantCategoryId]"
-                      dataType="i4"
-                      name="OrganizationMerchantCategoryId" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_CreatedBy]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="sys_CreatedBy" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_CreatedOn]"
-                      dataType="dbTimeStamp"
-                      name="sys_CreatedOn" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]"
-                      dataType="i4"
-                      name="row_id" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Outputs[Error]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Error"
-                  synchronousInputId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\DFT_Load dbo_OrganizationMerchantCategory.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
-              endId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
-              name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog"
-              startId="Package\DFT_Load dbo_OrganizationMerchantCategory\OLEDB_GetData.Outputs[Output]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-  </DTS:Executables>
 </DTS:Executable>

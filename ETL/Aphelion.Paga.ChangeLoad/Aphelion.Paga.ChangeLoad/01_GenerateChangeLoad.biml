@@ -119,7 +119,7 @@
 						  <Variable Name="CurrentVersion" DataType="Int32">0</Variable>
 						  <Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
 						  <Variable Name="BaseQuery" DataType="String"><#=BaseQuery#></Variable>
-						  <Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]+ " " +@[$Package::strParm1] +";"</Variable>
+						  <Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]+ " " +@[$Package::strParm1]</Variable>
 					  </Variables>
 				
 					 <Tasks>
@@ -128,7 +128,7 @@
 								<OleDbSource Name="OLEDB_GetData" ConnectionName="PrimaryDB">
 								  <VariableInput VariableName="User.FullQueryText"></VariableInput>
 								</OleDbSource>
-								<OleDbDestination Name="OLEDB_InsertIntoChangeLog" ConnectionName="ChangeLogDB" KeepIdentity="false" UseFastLoadIfAvailable="false"  >
+								<OleDbDestination Name="OLEDB_InsertIntoChangeLog" ConnectionName="ChangeLogDB" KeepIdentity="false" UseFastLoadIfAvailable="true"  >
 								  <ExternalTableOutput Table="<#=String.Format("{0}.{1}",TableSchema, TableName)#>"/>
 								</OleDbDestination>
 							  </Transformations>

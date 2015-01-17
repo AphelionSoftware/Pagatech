@@ -1,40 +1,181 @@
-<?xml version="1.0"?>
-<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:refId="Package"
-  DTS:CreationDate="1/14/2015 4:28:03 PM"
-  DTS:CreationName="Microsoft.Package"
-  DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
-  DTS:CreatorName="Administrator"
-  DTS:DTSID="{83091F70-9B5D-458A-B00C-A79CA63C7326}"
-  DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="12.0.2000.8"
-  DTS:LocaleID="1033"
-  DTS:ObjectName="1142_dbo_Region"
-  DTS:VersionGUID="{7C806DB2-02AE-4947-9BD5-17076E040C9B}"
-  DTS:VersionMajor="0">
-  <DTS:Property
-    DTS:Name="PackageFormatVersion">8</DTS:Property>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="01/17/2015 17:58:29" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{43D9AD12-BE68-4889-8108-02A76F8379DA}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1142_dbo_Region" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{696F4A24-DBB5-4737-97BB-5EBF905ACA18}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{A631C2A4-5158-421B-A2B4-8C74F1A7F72A}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_Region" DTS:refId="Package\DFT_Load dbo_Region" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+          <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load dbo_Region\OLEDB_GetData" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="wstr" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bytes" length="4100" name="SYS_CHANGE_COLUMNS" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bytes" length="128" name="SYS_CHANGE_CONTEXT" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="RegionId" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[RegionId]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="wstr" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="bytes" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]" length="4100" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]" name="SYS_CHANGE_COLUMNS" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="bytes" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]" length="128" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" name="SYS_CHANGE_CONTEXT" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[RegionId]" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[RegionId]" name="RegionId" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[RegionId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="wstr" length="1" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                    </outputColumn>
+                    <outputColumn dataType="bytes" length="4100" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]" name="SYS_CHANGE_COLUMNS" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]">
+                    </outputColumn>
+                    <outputColumn dataType="bytes" length="128" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]" name="SYS_CHANGE_CONTEXT" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[RegionId]" name="RegionId" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[RegionId]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external" connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="wstr" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bytes" length="4100" name="SYS_CHANGE_COLUMNS" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bytes" length="128" name="SYS_CHANGE_CONTEXT" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="RegionId" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[RegionId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_CreatedBy]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_CREATION_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="wstr" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="bytes" cachedLength="4100" cachedName="SYS_CHANGE_COLUMNS" externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_COLUMNS]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="bytes" cachedLength="128" cachedName="SYS_CHANGE_CONTEXT" externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CONTEXT]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="RegionId" externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[RegionId]" lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[RegionId]" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[RegionId]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Outputs[Error]" synchronousInputId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">dbo.Region</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+            </component>
+          </components>
+          <paths>
+            <path endId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_Region.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output]">
+            </path>
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="8"
-      DTS:DTSID="{A9262EDA-387C-471F-873C-0F3A5674F122}"
-      DTS:ObjectName="strParm1">
-      <DTS:Property
-        DTS:DataType="8"
-        DTS:Name="ParameterValue"
-        xml:space="preserve"></DTS:Property>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{652AFAA0-482F-4F9D-BEC4-D2F7FDE387A7}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
+      </DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{8FE160B1-49BE-4456-B91F-A9319485682B}"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue
-        DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0558B65F-A6AB-4390-8557-D5DC4D2B59F2}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DA6B9F76-A709-48E3-9D80-93415F0D3496}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+      <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4D50A1B4-0551-49FE-AA50-DFA5EAE65542}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
 		SELECT 
 			SYS_CHANGE_VERSION,
 			SYS_CHANGE_CREATION_VERSION,
@@ -44,25 +185,8 @@
 			RegionId = CAST(RegionId AS int)
 		FROM CHANGETABLE(CHANGES [dbo].[Region],0)  AS change_log</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{9EFCB13D-094D-45C1-8070-E52363091983}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="CurrentVersion">
-      <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{D8A4EDE1-74AA-4649-B925-7A0DCD3988B9}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue
-        DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{91BB0610-159D-48FC-9142-ADDC1B0AC7C1}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
 		SELECT 
 			SYS_CHANGE_VERSION,
 			SYS_CHANGE_CREATION_VERSION,
@@ -70,429 +194,7 @@
 			SYS_CHANGE_COLUMNS,
 			SYS_CHANGE_CONTEXT,
 			RegionId = CAST(RegionId AS int)
-		FROM CHANGETABLE(CHANGES [dbo].[Region],0)  AS change_log ;</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{C5732670-C3A7-4447-842B-523A488FD106}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="LastSyncVersion">
-      <DTS:VariableValue
-        DTS:DataType="3">6</DTS:VariableValue>
+		FROM CHANGETABLE(CHANGES [dbo].[Region],0)  AS change_log </DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
-  <DTS:Executables>
-    <DTS:Executable
-      DTS:refId="Package\DFT_Load dbo_Region"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:DTSID="{F03D05F9-D878-474C-B186-DECFBFF18FE0}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="DFT_Load dbo_Region"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          BLOBTempStoragePath=""
-          bufferTempStoragePath=""
-          version="1">
-          <components>
-            <component
-              refId="Package\DFT_Load dbo_Region\OLEDB_GetData"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              name="OLEDB_GetData"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable">User::FullQueryText</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Connections[OleDbConnection]"
-                  connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output]"
-                  name="Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      name="SYS_CHANGE_CREATION_VERSION"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      length="1"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      length="4100"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]"
-                      name="SYS_CHANGE_COLUMNS"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
-                      dataType="bytes"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
-                      length="128"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
-                      name="SYS_CHANGE_CONTEXT"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[RegionId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[RegionId]"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[RegionId]"
-                      name="RegionId"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_VERSION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_CREATION_VERSION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      length="1"
-                      name="SYS_CHANGE_OPERATION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      length="4100"
-                      name="SYS_CHANGE_COLUMNS" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
-                      dataType="bytes"
-                      length="128"
-                      name="SYS_CHANGE_CONTEXT" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].ExternalColumns[RegionId]"
-                      dataType="i4"
-                      name="RegionId" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error]"
-                  isErrorOut="true"
-                  name="Error">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      dataType="i8"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      name="SYS_CHANGE_CREATION_VERSION" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      length="1"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      length="4100"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]"
-                      name="SYS_CHANGE_COLUMNS" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
-                      dataType="bytes"
-                      length="128"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
-                      name="SYS_CHANGE_CONTEXT" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[RegionId]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[RegionId]"
-                      name="RegionId" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              name="OLEDB_InsertIntoChangeLog"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">dbo.Region</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode">0</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Connections[OleDbConnection]"
-                  connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]"
-                      cachedDataType="i8"
-                      cachedName="SYS_CHANGE_VERSION"
-                      externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      cachedDataType="i8"
-                      cachedName="SYS_CHANGE_CREATION_VERSION"
-                      externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]"
-                      cachedDataType="wstr"
-                      cachedLength="1"
-                      cachedName="SYS_CHANGE_OPERATION"
-                      externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_COLUMNS]"
-                      cachedDataType="bytes"
-                      cachedLength="4100"
-                      cachedName="SYS_CHANGE_COLUMNS"
-                      externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CONTEXT]"
-                      cachedDataType="bytes"
-                      cachedLength="128"
-                      cachedName="SYS_CHANGE_CONTEXT"
-                      externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[RegionId]"
-                      cachedDataType="i4"
-                      cachedName="RegionId"
-                      externalMetadataColumnId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[RegionId]"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output].Columns[RegionId]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_VERSION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_CREATION_VERSION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      length="1"
-                      name="SYS_CHANGE_OPERATION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      length="4100"
-                      name="SYS_CHANGE_COLUMNS" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]"
-                      dataType="bytes"
-                      length="128"
-                      name="SYS_CHANGE_CONTEXT" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[RegionId]"
-                      dataType="i4"
-                      name="RegionId" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_CreatedBy]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="sys_CreatedBy" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_CreatedOn]"
-                      dataType="dbTimeStamp"
-                      name="sys_CreatedOn" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]"
-                      dataType="i4"
-                      name="row_id" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Outputs[Error]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Error"
-                  synchronousInputId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\DFT_Load dbo_Region.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
-              endId="Package\DFT_Load dbo_Region\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
-              name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog"
-              startId="Package\DFT_Load dbo_Region\OLEDB_GetData.Outputs[Output]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-  </DTS:Executables>
 </DTS:Executable>
