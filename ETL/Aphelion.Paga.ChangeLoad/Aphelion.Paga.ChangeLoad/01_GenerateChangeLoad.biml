@@ -128,7 +128,7 @@
 								<OleDbSource Name="OLEDB_GetData" ConnectionName="PrimaryDB">
 								  <VariableInput VariableName="User.FullQueryText"></VariableInput>
 								</OleDbSource>
-								<OleDbDestination Name="OLEDB_InsertIntoChangeLog" ConnectionName="ChangeLogDB" KeepIdentity="false" UseFastLoadIfAvailable="true"  >
+								<OleDbDestination Name="OLEDB_InsertIntoChangeLog" ConnectionName="ChangeLogDB" KeepIdentity="false" UseFastLoadIfAvailable="false"  >
 								  <ExternalTableOutput Table="<#=String.Format("{0}.{1}",TableSchema, TableName)#>"/>
 								</OleDbDestination>
 							  </Transformations>
