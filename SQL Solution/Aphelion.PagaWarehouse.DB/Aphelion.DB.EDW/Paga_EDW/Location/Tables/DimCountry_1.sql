@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Location].[DimCountry] (
     [DimCountryID]   INT           IDENTITY (1, 1) NOT NULL,
-    [SourceKey]      INT NOT NULL,
+    [SourceKey]      INT           NOT NULL,
     [Name]           VARCHAR (255) NOT NULL,
     [Code]           VARCHAR (50)  NOT NULL,
     [SourceKeyHash]  BIGINT        NULL,
@@ -11,6 +11,8 @@
     [sys_CreatedOn]  DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimCountryID] PRIMARY KEY CLUSTERED ([DimCountryID] ASC)
 );
+
+
 
 
 GO
@@ -59,12 +61,7 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'CountryID', @lev
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-	base_query.name,
-    base_query.code,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
-FROM 
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	SourceKey , 	base_query.name,     base_query.code FROM   (SELECT CountryId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, ''NGA'' AS Code FROM dbo.Country) as base_query', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCountry';
 
-(SELECT CountryId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, ''NGA'' AS Code FROM dbo.Country) as base_query', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCountry';
+
 

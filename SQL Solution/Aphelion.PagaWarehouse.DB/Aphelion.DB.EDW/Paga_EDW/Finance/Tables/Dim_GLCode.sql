@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Finance].[DimGLCode] (
     [DimGLCodeID]         INT            IDENTITY (1, 1) NOT NULL,
-    [SourceKey]           INT  NOT NULL,
+    [SourceKey]           INT            NOT NULL,
     [Name]                VARCHAR (255)  NOT NULL,
     [DimGLCodeSubGroupID] INT            NOT NULL,
     [GLCode]              VARCHAR (255)  NULL,
@@ -15,6 +15,8 @@
     CONSTRAINT [pk_DimGLCodeID] PRIMARY KEY CLUSTERED ([DimGLCodeID] ASC),
     CONSTRAINT [fk_DimGLCode_DimGLCodeSubGroupID] FOREIGN KEY ([DimGLCodeSubGroupID]) REFERENCES [Finance].[DimGLCodeSubGroup] ([DimGLCodeSubGroupID])
 );
+
+
 
 
 
@@ -49,25 +51,9 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'AccountCodeId', 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-	base_query.DimGLCodeSubGroupSourceKey, 
-	base_query.name,
-	base_query.TextDescription,
-	base_query.GLCode,
-	base_query.IsNormalDebit,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
-FROM 
-(
-	SELECT
-		SourceKey = AccountCodeId,
-		DimGLCodeSubGroupSourceKey = AccountCodeGroupId,
-		Name,
-		TextDescription = CONVERT(VARCHAR(1000),[Description]),
-		GLCode = Code,
-		IsNormalDebit
-	FROM dbo.AccountCode
-) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	SourceKey , 	base_query.DimGLCodeSubGroupSourceKey,  	base_query.name, 	base_query.TextDescription, 	base_query.GLCode, 	base_query.IsNormalDebit FROM  ( 	SELECT 		SourceKey = AccountCodeId, 		DimGLCodeSubGroupSourceKey = AccountCodeGroupId, 		Name, 		TextDescription = CONVERT(VARCHAR(1000),[Description]), 		GLCode = Code, 		IsNormalDebit 	FROM dbo.AccountCode ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode';
+
+
 
 
 GO

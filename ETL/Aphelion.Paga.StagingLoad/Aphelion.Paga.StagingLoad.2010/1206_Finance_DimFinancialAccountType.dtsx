@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/17/2015 16:04:40" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{D53FB79B-2368-4669-BA72-6ED3722DF9DC}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1206_Finance_DimFinancialAccountType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{D81E5E75-BD1B-4503-8F8E-E0389B736152}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/18/2015 11:40:37" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{6606222E-0ACE-4ACC-9E4F-68BEDB600D0F}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1206_Finance_DimFinancialAccountType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{DAE44214-FD52-4410-B2E5-81DB01F93C71}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{4324F7CC-24BB-4B5A-B140-D2C62ADB5C01}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimFinancialAccountType" DTS:refId="Package\DFT_Load Finance_DimFinancialAccountType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{D557CD0B-F8FE-456E-9FD9-B9BF6F3093F7}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimFinancialAccountType" DTS:refId="Package\DFT_Load Finance_DimFinancialAccountType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -139,17 +139,17 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{14E51C4A-ECE3-4315-8368-E050A4B1638F}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{35EFDD13-52EF-4562-9D6E-C030D94E495F}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A482CE19-670C-4D94-9D1A-CAE318AEA4E7}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8DC0D484-D2E7-48B6-BCD6-1613D4F7AF3C}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	base_query.name, 	base_query.TextDescription, 	base_query.DimGLCodeSourceKey FROM  ( 	SELECT DISTINCT 		SourceKey = fat.FinancialAccountTypeId, 		Name = fat.FinancialAccountTypeId, 		TextDescription = [Description], 		DimGLCodeSourceKey = fa.AccountCodeId 	FROM dbo.FinancialAccountType as fat 	INNER JOIN dbo.FinancialAccount AS fa ON 		fat.FinancialAccountTypeId = fa.FinancialAccountTypeId ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4B81E527-A7C4-422A-8C08-DA0FE4C37FD3}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{71A6D4CD-0DEB-48A5-B89B-9FEB2F206651}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	base_query.name, 	base_query.TextDescription, 	base_query.DimGLCodeSourceKey FROM  ( 	SELECT DISTINCT 		SourceKey = fat.FinancialAccountTypeId, 		Name = fat.FinancialAccountTypeId, 		TextDescription = [Description], 		DimGLCodeSourceKey = fa.AccountCodeId 	FROM dbo.FinancialAccountType as fat 	INNER JOIN dbo.FinancialAccount AS fa ON 		fat.FinancialAccountTypeId = fa.FinancialAccountTypeId ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

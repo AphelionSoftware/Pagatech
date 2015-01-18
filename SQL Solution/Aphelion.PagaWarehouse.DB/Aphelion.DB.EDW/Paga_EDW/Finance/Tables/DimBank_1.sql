@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Finance].[DimBank] (
     [DimBankID]           INT           IDENTITY (1, 1) NOT NULL,
-    [SourceKey]           INT NOT NULL,
+    [SourceKey]           INT           NOT NULL,
     [Name]                VARCHAR (255) NOT NULL,
     [BankAccountLinkType] VARCHAR (255) NOT NULL,
     [DimOrganizationID]   INT           NOT NULL,
@@ -15,6 +15,8 @@
     CONSTRAINT [pk_DimBankID] PRIMARY KEY CLUSTERED ([DimBankID] ASC),
     CONSTRAINT [fk_DimBank_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID])
 );
+
+
 
 
 GO
@@ -59,19 +61,7 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'BankId', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-	base_query.name,
-	base_query.DimOrganizationSourceKey,
-	base_query.BankAccountLinkType,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
-FROM 
-(
-	SELECT
-           [BankAccountLinkType] = COALESCE([BankAccountLinkTypeId],''UNKNOWN''),
-           [Name]= CONVERT(Varchar(50),[BankName]),
-           [SourceKey]=[BankId],
-           [DimOrganizationSourceKey]=[OrganizationId]
-    FROM [dbo].[Bank]    
-) as base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBank';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	SourceKey , 	base_query.name, 	base_query.DimOrganizationSourceKey, 	base_query.BankAccountLinkType FROM  ( 	SELECT            [BankAccountLinkType] = COALESCE([BankAccountLinkTypeId],''UNKNOWN''),            [Name]= CONVERT(Varchar(50),[BankName]),            [SourceKey]=[BankId],            [DimOrganizationSourceKey]=[OrganizationId]     FROM [dbo].[Bank]     ) as base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBank';
+
+
 

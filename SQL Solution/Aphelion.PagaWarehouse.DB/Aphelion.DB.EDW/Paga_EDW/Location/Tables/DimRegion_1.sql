@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Location].[DimRegion] (
     [DimRegionID]    INT           IDENTITY (1, 1) NOT NULL,
-    [SourceKey]      INT NOT NULL,
+    [SourceKey]      INT           NOT NULL,
     [Name]           VARCHAR (255) NOT NULL,
     [DimGeoZoneID]   INT           NOT NULL,
     [SourceKeyHash]  BIGINT        NULL,
@@ -12,6 +12,8 @@
     CONSTRAINT [pk_DimRegionID] PRIMARY KEY CLUSTERED ([DimRegionID] ASC),
     CONSTRAINT [fk_DimRegion_DimGeoZoneID] FOREIGN KEY ([DimGeoZoneID]) REFERENCES [Location].[DimGeoZone] ([DimGeoZoneID])
 );
+
+
 
 
 GO
@@ -51,12 +53,7 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'RegionId', @leve
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-	base_query.name,
-	DimGeoZoneSourceKey = COALESCE(base_query.DimGeoZoneSourceKey, -1),
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
-FROM 
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	SourceKey, 	base_query.name, 	DimGeoZoneSourceKey = COALESCE(base_query.DimGeoZoneSourceKey, -1) FROM   (SELECT RegionId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, GeoZoneId AS DimGeoZoneSourceKey FROM dbo.Region) as base_query', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimRegion';
 
-(SELECT RegionId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, GeoZoneId AS DimGeoZoneSourceKey FROM dbo.Region) as base_query', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimRegion';
+
 

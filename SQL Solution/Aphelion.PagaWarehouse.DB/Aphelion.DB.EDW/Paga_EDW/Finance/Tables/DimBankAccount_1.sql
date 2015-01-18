@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Finance].[DimBankAccount] (
     [DimBankAccountID]             INT             IDENTITY (1, 1) NOT NULL,
-    [SourceKey]                    INT   NOT NULL,
+    [SourceKey]                    INT             NOT NULL,
     [Name]                         VARCHAR (255)   NOT NULL,
     [DimBankID]                    INT             NOT NULL,
     [BankAccountLinkStatusType]    VARCHAR (255)   NOT NULL,
@@ -26,6 +26,8 @@
     CONSTRAINT [pk_DimBankAccountID] PRIMARY KEY CLUSTERED ([DimBankAccountID] ASC),
     CONSTRAINT [fk_DimBankAccount_DimBankID] FOREIGN KEY ([DimBankID]) REFERENCES [Finance].[DimBank] ([DimBankID])
 );
+
+
 
 
 GO
@@ -70,39 +72,7 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'BankAccountId', 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
-	SourceKey = COALESCE(base_query.SourceKey,change_log.change_log_SourceKey),
-	AccountAlias, 
-	AccountHolderName, 
-	AccountLinkIdentifier, 
-	BankAccountLinkStatusComment, 
-	BankAccountLinkStatusType = COALESCE(BankAccountLinkStatusType, ''UNKNOWN''), 
-	BranchName, 
-	DurationLimit, 
-	DurationLimitSeconds, 
-	KYC_Rating, 
-	MobilePhoneNumber, 
-	Name, 
-	TransactionLimit, 
-	DimBankSourceKey,
-	change_operation = COALESCE(CONVERT(CHAR(1),change_log.change_operation),''I'')
-FROM 
-(
-	SELECT
-         AccountAlias= CONVERT(VARCHAR(20),[AccountAlias]), 
-		 AccountHolderName = CONVERT(VARCHAR(200),[AccountHolderName]), 
-		 AccountLinkIdentifier = [AccountLinkIdentifier], 
-		 BankAccountLinkStatusComment= CONVERT(VARCHAR(1000),[BankAccountLinkStatusComment]), 
-		 BankAccountLinkStatusType = [BankAccountLinkStatusTypeId], 
-		 BranchName = CONVERT(VARCHAR(200),[BranchName]), 
-		 DurationLimit = [DurationLimit], 
-		 DurationLimitSeconds=[DurationLimitSeconds], 
-		 KYC_Rating = [KYCId], 
-		 MobilePhoneNumber = CONVERT(VARCHAR(30),[MobilePhoneNumber]), 
-		 Name = CONVERT(VARCHAR(200),[AccountHolderName]), 
-		 SourceKey = [BankAccountId], 
-		 TransactionLimit =[TransactionLimit], 
-		 DimBankSourceKey = [BankId]
-	FROM [dbo].[BankAccount]
-) as base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBankAccount';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	SourceKey , 	AccountAlias,  	AccountHolderName,  	BankAccountLinkStatusComment,  	BankAccountLinkStatusType = COALESCE(BankAccountLinkStatusType, ''UNKNOWN''),  	BranchName,  	DurationLimit,  	DurationLimitSeconds,  	KYC_Rating,  	Name,  	TransactionLimit,  	DimBankSourceKey 	 FROM  ( 	SELECT          AccountAlias= CONVERT(VARCHAR(20),[AccountAlias]),  		 AccountHolderName = CONVERT(VARCHAR(200),[AccountHolderName]),  		 BankAccountLinkStatusComment= CONVERT(VARCHAR(1000),[BankAccountLinkStatusComment]),  		 BankAccountLinkStatusType = [BankAccountLinkStatusTypeId],  		 BranchName = CONVERT(VARCHAR(200),[BranchName]),  		 DurationLimit = [DurationLimit],  		 DurationLimitSeconds=[DurationLimitSeconds],  		 KYC_Rating = [KYCId],  		 Name = CONVERT(VARCHAR(200),[AccountHolderName]),  		 SourceKey = [BankAccountId],  		 TransactionLimit =[TransactionLimit],  		 DimBankSourceKey = [BankId] 	FROM [dbo].[BankAccount] ) as base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBankAccount';
+
+
 

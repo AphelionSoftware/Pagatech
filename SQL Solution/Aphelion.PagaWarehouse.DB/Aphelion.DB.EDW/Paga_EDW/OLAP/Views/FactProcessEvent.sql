@@ -45,6 +45,30 @@ SELECT
 
 FROM [Shared].[FactProcessEvent] [FactProcessEvent]
 GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'WithdrawalCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'WithdrawalCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'WithdrawalCode', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'WithdrawalCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'VerificationStatus';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'VerificationStatus';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'VerificationStatus', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'VerificationStatus';
+
+
+GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'SourceKey';
 
 
@@ -54,6 +78,30 @@ EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'SourceKey', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'SourceKey';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'SenderPhoneNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'SenderPhoneNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'SenderPhoneNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'SenderPhoneNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ReferenceNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ReferenceNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'ReferenceNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ReferenceNumber';
 
 
 GO
@@ -69,6 +117,18 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'ProcessFee', @le
 
 
 GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ProcessCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ProcessCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'ProcessCode', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ProcessCode';
+
+
+GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ProcessAmount';
 
 
@@ -78,6 +138,30 @@ EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'ProcessAmount', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ProcessAmount';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'PaymentSource';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'PaymentSource';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'PaymentSource', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'PaymentSource';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'OriginalFactProcessTxID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'OriginalFactProcessTxID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'OriginalFactProcessTxID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'OriginalFactProcessTxID';
 
 
 GO
@@ -93,6 +177,54 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'Name', @level0ty
 
 
 GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'MerchantCustomerAccountNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'MerchantCustomerAccountNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MerchantCustomerAccountNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'MerchantCustomerAccountNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'MerchantConfirmationCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'MerchantConfirmationCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MerchantConfirmationCode', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'MerchantConfirmationCode';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'LinkedPhoneNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'LinkedPhoneNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'LinkedPhoneNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'LinkedPhoneNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'IntegrationReferenceNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'IntegrationReferenceNumber';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IntegrationReferenceNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'IntegrationReferenceNumber';
+
+
+GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'HasFinancialTransaction';
 
 
@@ -102,6 +234,18 @@ EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'HasFinancialTransaction', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'HasFinancialTransaction';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'DimVerifiedByUserID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'DimVerifiedByUserID';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimVerifiedByUserID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'DimVerifiedByUserID';
 
 
 GO
@@ -225,154 +369,6 @@ EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimCompletedDate
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'XMLATableType', @value = N'MeasureGroup', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'WithdrawalCode';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'WithdrawalCode';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'WithdrawalCode', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'WithdrawalCode';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'VerificationStatus';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'VerificationStatus';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'VerificationStatus', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'VerificationStatus';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'SenderPhoneNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'SenderPhoneNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'SenderPhoneNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'SenderPhoneNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ReferenceNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ReferenceNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'ReferenceNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ReferenceNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ProcessCode';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ProcessCode';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'ProcessCode', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'ProcessCode';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'PaymentSource';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'PaymentSource';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'PaymentSource', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'PaymentSource';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'OriginalFactProcessTxID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'OriginalFactProcessTxID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'OriginalFactProcessTxID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'OriginalFactProcessTxID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'MerchantCustomerAccountNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'MerchantCustomerAccountNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MerchantCustomerAccountNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'MerchantCustomerAccountNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'MerchantConfirmationCode';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'MerchantConfirmationCode';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'MerchantConfirmationCode', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'MerchantConfirmationCode';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'LinkedPhoneNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'LinkedPhoneNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'LinkedPhoneNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'LinkedPhoneNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'IntegrationReferenceNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'IntegrationReferenceNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'IntegrationReferenceNumber', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'IntegrationReferenceNumber';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'DimVerifiedByUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'DimVerifiedByUserID';
-
-
-GO
-EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'DimVerifiedByUserID', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'DimVerifiedByUserID';
-
-
-GO
 EXECUTE sp_addextendedproperty @name = N'SrcTable', @value = N'FactProcessEvent', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'DimCancellationApprovedByUserID';
 
 
@@ -490,4 +486,8 @@ EXECUTE sp_addextendedproperty @name = N'SrcSchema', @value = N'Shared', @level0
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SrcColumn', @value = N'AgentCommissionAmount', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent', @level2type = N'COLUMN', @level2name = N'AgentCommissionAmount';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'XMLATableType', @value = N'MeasureGroup', @level0type = N'SCHEMA', @level0name = N'OLAP', @level1type = N'VIEW', @level1name = N'FactProcessEvent';
 
