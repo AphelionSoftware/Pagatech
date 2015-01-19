@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/19/2015 12:01:15" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{09695ECC-C6C4-4D3A-90B0-CB1175DC2197}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1501_Shared_DimOrganization" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{048AB62A-C199-44D3-A083-1F300DC94217}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/19/2015 13:14:37" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{E5832745-3549-4876-BB31-73F30250B365}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1501_Shared_DimOrganization" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{86B7E994-25BB-47F9-9185-D6D4419C9E71}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{744ADE81-9A60-4673-ABD9-3326399613C2}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimOrganization" DTS:refId="Package\DFT_Load Shared_DimOrganization" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{D020FAF4-42E3-4BB3-A33C-898B957226C9}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimOrganization" DTS:refId="Package\DFT_Load Shared_DimOrganization" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -152,7 +152,7 @@
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="1" lineageId="Package\DFT_Load Shared_DimOrganization\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimOrganization\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="IgnoreFailure" length="1" lineageId="Package\DFT_Load Shared_DimOrganization\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimOrganization\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">@[$Package::ChangeOperation]</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[$Package::ChangeOperation]</property>
@@ -309,24 +309,24 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{BBADFDDF-8F16-4B16-89E0-61567D8ABE58}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{B39EBDFE-21BC-4CC2-BA96-DCE6E49D0DE1}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{CA0CF890-42EB-46CD-8FF6-82BD58682898}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{C1AA9FDA-1F42-44EA-B09B-D44279E69B05}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{52E673F5-FC96-4BF5-9C16-656030DD1A3E}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{5C43C6D9-6B25-42B7-BB7A-FFA3CA6D2190}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="20" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E82EF10B-49B3-4E44-AC3A-9F6FF0329DD0}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6640DE80-B08F-4012-ABE2-CC497517CDCC}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	DisplayName,  	Name,  	OrganizationCode,  	RcName,  	ReferenceNumber,  	TaxIDNumber,  	TextDesciption,  	VATCertificationNumber,  	WebsiteURL,  	DimBusinessTypeSourceKey,  	DimPagaAccountSourceKey,  	DimOrganizationSubscriptionStatusSourceKey,  	DimOrganizationVerificationStatusSourceKey, 	DimMerchantCategorySourceKey, 	DimProcessChannelSourceKey 	 FROM  ( 	SELECT  		SourceKey = o.OrganizationId, 		DisplayName = CONVERT(VARCHAR(100),o.DisplayName),  		Name = CONVERT(VARCHAR(255),o.Name),  		OrganizationCode = o.Code,  		o.RcName,  		o.ReferenceNumber,  		o.TaxIDNumber,  		TextDesciption = CONVERT(VARCHAR(1000), o.Description), 		o.VATCertificationNumber,  		o.WebsiteURL,  		DimBusinessTypeSourceKey = COALESCE(o.BusinessTypeId, 'UNKNOWN'),  		DimPagaAccountSourceKey = o.PagaAccountId,  		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId,  		DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId, 		DimMerchantCategorySourceKey = CONVERT(VARCHAR(50), COALESCE(omc.MerchantCategoryId, 'UNKNOWN')), 		DimProcessChannelSourceKey = CONVERT(VARCHAR(50), COALESCE(ompc.ProcessChannelId, 'UNKNOWN')) 	FROM dbo.Organization AS o 	LEFT JOIN dbo.OrganizationMerchantCategory AS omc ON 		o.OrganizationId = omc.OrganizationId 	LEFT JOIN dbo.OrganizationMerchantProcessChannel AS ompc ON 		o.OrganizationId = ompc.OrganizationId ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CECA0F40-AFD1-4DDA-81A5-0A60F654C58A}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8E7C95A5-AFDC-4D5A-9C12-A0A8BE511C6B}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	DisplayName,  	Name,  	OrganizationCode,  	RcName,  	ReferenceNumber,  	TaxIDNumber,  	TextDesciption,  	VATCertificationNumber,  	WebsiteURL,  	DimBusinessTypeSourceKey,  	DimPagaAccountSourceKey,  	DimOrganizationSubscriptionStatusSourceKey,  	DimOrganizationVerificationStatusSourceKey, 	DimMerchantCategorySourceKey, 	DimProcessChannelSourceKey 	 FROM  ( 	SELECT  		SourceKey = o.OrganizationId, 		DisplayName = CONVERT(VARCHAR(100),o.DisplayName),  		Name = CONVERT(VARCHAR(255),o.Name),  		OrganizationCode = o.Code,  		o.RcName,  		o.ReferenceNumber,  		o.TaxIDNumber,  		TextDesciption = CONVERT(VARCHAR(1000), o.Description), 		o.VATCertificationNumber,  		o.WebsiteURL,  		DimBusinessTypeSourceKey = COALESCE(o.BusinessTypeId, 'UNKNOWN'),  		DimPagaAccountSourceKey = o.PagaAccountId,  		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId,  		DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId, 		DimMerchantCategorySourceKey = CONVERT(VARCHAR(50), COALESCE(omc.MerchantCategoryId, 'UNKNOWN')), 		DimProcessChannelSourceKey = CONVERT(VARCHAR(50), COALESCE(ompc.ProcessChannelId, 'UNKNOWN')) 	FROM dbo.Organization AS o 	LEFT JOIN dbo.OrganizationMerchantCategory AS omc ON 		o.OrganizationId = omc.OrganizationId 	LEFT JOIN dbo.OrganizationMerchantProcessChannel AS ompc ON 		o.OrganizationId = ompc.OrganizationId ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

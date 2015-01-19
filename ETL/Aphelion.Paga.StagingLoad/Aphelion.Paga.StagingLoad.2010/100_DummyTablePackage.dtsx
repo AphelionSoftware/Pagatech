@@ -10,8 +10,8 @@
   DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="100_DummyTablePackage"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{7BB9F002-9404-4F21-B244-D38C6C51B275}"
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{A03E46BE-FE23-4939-B963-19FE4F4CC36E}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -65,6 +65,16 @@
       DTS:ObjectName="FullQueryText">
       <DTS:VariableValue
         DTS:DataType="8">SELECT 	* FROM ( 	SELECT  		AgentCommissionTypeId AS SourceKey,  		CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name  	FROM dbo.AgentCommissionType ) AS base_query</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A6E670D5-2BFC-4182-A56A-91900CF22A85}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strChangeOperation">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -522,17 +532,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="155,42"
-          Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData"
-          TopLeft="34.5,5.5" />
+          Size="199,42"
+          Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging"
+          TopLeft="49.5,264.5" />
         <NodeLayout
           Size="153,42"
           Id="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData"
           TopLeft="93,161" />
         <NodeLayout
-          Size="199,42"
-          Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging"
-          TopLeft="49.5,264.5" />
+          Size="155,42"
+          Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData"
+          TopLeft="34.5,5.5" />
         <EdgeLayout
           Id="Package\DFT_Load Classification_DimAgentCommissionType.Paths[Output]"
           TopLeft="112,47.5">

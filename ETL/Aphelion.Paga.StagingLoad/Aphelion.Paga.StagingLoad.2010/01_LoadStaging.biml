@@ -151,9 +151,18 @@
 						</OleDbSource>
 						<DerivedColumns Name="dc_ChangeData">
 								<Columns>
-									<Column Name="SYS_CHANGE_OPERATION" DataType="AnsiString" Length="1">@[$Package::ChangeOperation]</Column>
+									<Column Name="SYS_CHANGE_OPERATION" DataType="AnsiStringFixedLength" Length="1" CodePage="1252" >@[$Package::ChangeOperation]</Column>
 									<Column Name="SYS_CHANGE_VERSION" DataType="Int64">@[$Package::ChangeVersion]</Column>
 								</Columns>
+								<ErrorHandling ErrorRowDisposition="FailComponent" TruncationRowDisposition="FailComponent">
+                                <Outputs>
+                                    <Output OutputName="Output" ErrorRowDisposition="FailComponent" TruncationRowDisposition="FailComponent">
+                                        <Columns>
+                                            <Column ColumnName="SYS_CHANGE_OPERATION" ErrorRowDisposition="IgnoreFailure" TruncationRowDisposition="IgnoreFailure" />
+                                       </Columns>
+                                    </Output>
+                                </Outputs>
+                            </ErrorHandling>
 						</DerivedColumns>
 						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="Paga_Staging" KeepIdentity="false">
 							<ExternalTableOutput Table="<#=String.Format("{0}.{1}_{2}","Staging",TableSchema, TableName)#>"/>
