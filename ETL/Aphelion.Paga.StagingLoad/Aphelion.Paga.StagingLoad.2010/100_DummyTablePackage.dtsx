@@ -10,8 +10,8 @@
   DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="100_DummyTablePackage"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{7F4F9785-E0F8-4875-BF83-0E1A698CA615}"
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{7BB9F002-9404-4F21-B244-D38C6C51B275}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -24,6 +24,15 @@
       <DTS:Property
         DTS:DataType="8"
         DTS:Name="ParameterValue">I</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{4A004761-CCFE-41FF-BCED-CC77F976471B}"
+      DTS:ObjectName="ChangeVersion">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -75,15 +84,15 @@
           version="1">
           <components>
             <component
-              refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation"
+              refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData"
               componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="dc_ChangeOperation"
+              name="dc_ChangeData"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Inputs[Derived Column Input]"
+                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <externalMetadataColumns />
@@ -91,20 +100,20 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Derived Column Output]"
+                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Derived Column Output].Columns[SYS_CHANGE_OPERATION]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output].Columns[SYS_CHANGE_OPERATION]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
                       length="1"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Derived Column Output].Columns[SYS_CHANGE_OPERATION]"
+                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output].Columns[SYS_CHANGE_OPERATION]"
                       name="SYS_CHANGE_OPERATION"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -121,27 +130,49 @@
                           name="FriendlyExpression">(DT_STR,1,1252)@[$Package::ChangeOperation]</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::ChangeVersion]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::ChangeVersion]</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Derived Column Error Output]"
+                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -377,7 +408,13 @@
                       cachedLength="1"
                       cachedName="SYS_CHANGE_OPERATION"
                       externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Derived Column Output].Columns[SYS_CHANGE_OPERATION]" />
+                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output].Columns[SYS_CHANGE_OPERATION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output].Columns[SYS_CHANGE_VERSION]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -411,6 +448,10 @@
                       dataType="str"
                       length="1"
                       name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -445,10 +486,10 @@
               refId="Package\DFT_Load Classification_DimAgentCommissionType.Paths[Derived Column Output]"
               endId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]"
               name="Derived Column Output"
-              startId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Derived Column Output]" />
+              startId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output]" />
             <path
               refId="Package\DFT_Load Classification_DimAgentCommissionType.Paths[Output]"
-              endId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Inputs[Derived Column Input]"
+              endId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Inputs[Derived Column Input]"
               name="Output"
               startId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output]" />
           </paths>
@@ -481,26 +522,26 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="199,42"
-          Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging"
-          TopLeft="49.5,264.5" />
-        <NodeLayout
           Size="155,42"
           Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData"
           TopLeft="34.5,5.5" />
         <NodeLayout
-          Size="177,42"
-          Id="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation"
+          Size="153,42"
+          Id="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData"
           TopLeft="93,161" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging"
+          TopLeft="49.5,264.5" />
         <EdgeLayout
           Id="Package\DFT_Load Classification_DimAgentCommissionType.Paths[Output]"
           TopLeft="112,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="69.5,113.5"
+              EndConnector="57.5,113.5"
               Start="0,0"
-              End="69.5,106">
+              End="57.5,106">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -511,13 +552,13 @@
                     Point2="0,56.75"
                     Point3="4,56.75" />
                   <mssgle:LineSegment
-                    End="65.5,56.75" />
+                    End="53.5,56.75" />
                   <mssgle:CubicBezierSegment
-                    Point1="65.5,56.75"
-                    Point2="69.5,56.75"
-                    Point3="69.5,60.75" />
+                    Point1="53.5,56.75"
+                    Point2="57.5,56.75"
+                    Point3="57.5,60.75" />
                   <mssgle:LineSegment
-                    End="69.5,106" />
+                    End="57.5,106" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -528,13 +569,13 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load Classification_DimAgentCommissionType.Paths[Derived Column Output]"
-          TopLeft="181.5,203">
+          TopLeft="169.5,203">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-32.5,61.5"
+              EndConnector="-20.5,61.5"
               Start="0,0"
-              End="-32.5,54">
+              End="-20.5,54">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -545,13 +586,13 @@
                     Point2="0,30.75"
                     Point3="-4,30.75" />
                   <mssgle:LineSegment
-                    End="-28.5,30.75" />
+                    End="-16.5,30.75" />
                   <mssgle:CubicBezierSegment
-                    Point1="-28.5,30.75"
-                    Point2="-32.5,30.75"
-                    Point3="-32.5,34.75" />
+                    Point1="-16.5,30.75"
+                    Point2="-20.5,30.75"
+                    Point3="-20.5,34.75" />
                   <mssgle:LineSegment
-                    End="-32.5,54" />
+                    End="-20.5,54" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

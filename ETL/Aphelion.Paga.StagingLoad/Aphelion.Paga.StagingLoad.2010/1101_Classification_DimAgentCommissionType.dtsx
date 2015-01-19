@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="1/19/2015 11:03:52 AM"
+  DTS:CreationDate="1/19/2015 12:01:15 PM"
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
   DTS:CreatorName="Administrator"
-  DTS:DTSID="{4FCEA653-E575-4A79-864C-EFD27CBF9D66}"
+  DTS:DTSID="{531ACEEE-12FB-4E22-8E0B-DE10A153BBF2}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="1101_Classification_DimAgentCommissionType"
   DTS:VersionBuild="1"
-  DTS:VersionGUID="{AA28F789-ACF1-4E67-80E8-386ECD9F8650}"
+  DTS:VersionGUID="{36787DC8-31D4-4797-9876-DA84C73278C0}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -19,7 +19,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{33F71955-A79C-492B-8BAF-7F8C0F902D82}"
+      DTS:DTSID="{831999F2-3BB7-4479-BEF4-E41163616F3C}"
       DTS:ObjectName="ChangeOperation">
       <DTS:Property
         DTS:DataType="8"
@@ -28,8 +28,17 @@
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{90FEE62C-DF34-4C50-AE2F-D7FDC1CE6AE9}"
+      DTS:ObjectName="ChangeVersion">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{9E65AAC7-76F0-4986-A4BD-C8170E38E344}"
+      DTS:DTSID="{123BD473-2F52-4909-8167-659E27C5920E}"
       DTS:ObjectName="EndOfQuery">
       <DTS:Property
         DTS:DataType="8"
@@ -40,7 +49,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{ABD52F9A-CE9F-4F92-B7D7-54F4A5FD8BD6}"
+      DTS:DTSID="{4F556F6F-4CD9-4A52-8987-67B2EED2475E}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="BaseQuery">
@@ -49,7 +58,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{D42A12CB-5C15-4F8D-8C52-66186D54BCE9}"
+      DTS:DTSID="{F20B3D1A-2D53-4584-8AF1-23CC5D86EC6E}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::BaseQuery]+ @[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
@@ -63,7 +72,7 @@
     <DTS:Executable
       DTS:refId="Package\DFT_Load Classification_DimAgentCommissionType"
       DTS:CreationName="SSIS.Pipeline.3"
-      DTS:DTSID="{6960B962-C761-420A-9B0A-7624AFDAE6F4}"
+      DTS:DTSID="{D71F1050-8FF2-4151-9ED6-9C059A84DDA3}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
       DTS:ObjectName="DFT_Load Classification_DimAgentCommissionType"
@@ -76,33 +85,33 @@
           version="1">
           <components>
             <component
-              refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation"
+              refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData"
               componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              name="dc_ChangeOperation"
+              name="dc_ChangeData"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Inputs[OLEDB_GetData_Output_dc_ChangeOperation]"
-                  name="OLEDB_GetData_Output_dc_ChangeOperation">
+                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+                  name="OLEDB_GetData_Output_dc_ChangeData">
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Output]"
+                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Output]"
                   exclusionGroup="1"
                   name="Output"
-                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Inputs[OLEDB_GetData_Output_dc_ChangeOperation]">
+                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
                       length="1"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
                       name="SYS_CHANGE_OPERATION"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -117,26 +126,46 @@
                           name="FriendlyExpression">@[$Package::ChangeOperation]</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::ChangeVersion]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::ChangeVersion]</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Error]"
+                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Error]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Error"
-                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Inputs[OLEDB_GetData_Output_dc_ChangeOperation]">
+                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Error].Columns[ErrorCode]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Error].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Error].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Error].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -343,69 +372,79 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging]"
+                  refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
-                  name="dc_ChangeOperation_Output_OLEDB_InsertIntoStaging">
+                  name="dc_ChangeData_Output_OLEDB_InsertIntoStaging">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="SYS_CHANGE_OPERATION"
-                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
+                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
                     <inputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="SourceKey"
-                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
+                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
                       lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" />
                     <inputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].Columns[Name]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[Name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="255"
                       cachedName="Name"
-                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
+                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
                       lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].Columns[Name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimAgentCommissionTypeID]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimAgentCommissionTypeID]"
                       dataType="i4"
                       name="DimAgentCommissionTypeID" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[DeltaHash]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DeltaHash]"
                       dataType="i8"
                       name="DeltaHash" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
                       codePage="1252"
                       dataType="str"
                       length="255"
                       name="Name" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
                       codePage="1252"
                       dataType="str"
                       length="255"
                       name="SourceKey" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKeyHash]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKeyHash]"
                       dataType="i8"
                       name="SourceKeyHash" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
                       codePage="1252"
                       dataType="str"
                       length="1"
                       name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -415,7 +454,7 @@
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Error"
-                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging]">
+                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]">
                   <outputColumns>
                     <outputColumn
                       refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
@@ -437,14 +476,14 @@
           </components>
           <paths>
             <path
-              refId="Package\DFT_Load Classification_DimAgentCommissionType.Paths[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging]"
-              endId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging]"
-              name="dc_ChangeOperation_Output_OLEDB_InsertIntoStaging"
-              startId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Outputs[Output]" />
+              refId="Package\DFT_Load Classification_DimAgentCommissionType.Paths[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
+              endId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
+              name="dc_ChangeData_Output_OLEDB_InsertIntoStaging"
+              startId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load Classification_DimAgentCommissionType.Paths[OLEDB_GetData_Output_dc_ChangeOperation]"
-              endId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation.Inputs[OLEDB_GetData_Output_dc_ChangeOperation]"
-              name="OLEDB_GetData_Output_dc_ChangeOperation"
+              refId="Package\DFT_Load Classification_DimAgentCommissionType.Paths[OLEDB_GetData_Output_dc_ChangeData]"
+              endId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+              name="OLEDB_GetData_Output_dc_ChangeData"
               startId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output]" />
           </paths>
         </pipeline>
@@ -480,15 +519,15 @@
           Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging"
           TopLeft="5.50000000000003,209.5" />
         <NodeLayout
-          Size="177,42"
-          Id="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeOperation"
-          TopLeft="16.5,107.5" />
+          Size="153,42"
+          Id="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData"
+          TopLeft="28.5,107.5" />
         <NodeLayout
           Size="155,42"
           Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData"
           TopLeft="27.5,5.5" />
         <EdgeLayout
-          Id="Package\DFT_Load Classification_DimAgentCommissionType.Paths[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging]"
+          Id="Package\DFT_Load Classification_DimAgentCommissionType.Paths[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
           TopLeft="105,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -510,7 +549,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Classification_DimAgentCommissionType.Paths[OLEDB_GetData_Output_dc_ChangeOperation]"
+          Id="Package\DFT_Load Classification_DimAgentCommissionType.Paths[OLEDB_GetData_Output_dc_ChangeData]"
           TopLeft="105,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve

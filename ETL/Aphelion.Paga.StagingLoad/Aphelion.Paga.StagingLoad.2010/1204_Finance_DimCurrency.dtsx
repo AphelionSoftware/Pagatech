@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/19/2015 11:03:53" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{2E2A73D3-F465-4DFD-8D35-AE08434CE52A}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1204_Finance_DimCurrency" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{5FD638C6-12AD-494C-AC52-05DEF84FD87B}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/19/2015 12:01:15" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{8D5F9BBA-8D9F-4AFE-9B2C-9237A36A0465}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1204_Finance_DimCurrency" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{0CCF302F-ED52-4DF6-AF94-9BD5D9685F30}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{CBFEC7D5-9BAD-4BB4-8C05-D694D69E2A02}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimCurrency" DTS:refId="Package\DFT_Load Finance_DimCurrency" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{F8C90D08-098E-47FA-87F7-9EEF677A37AA}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimCurrency" DTS:refId="Package\DFT_Load Finance_DimCurrency" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -56,33 +56,39 @@
                 </property>
               </properties>
             </component>
-            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeOperation" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation" usesDispositions="true">
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeData" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData" usesDispositions="true">
               <inputs>
-                <input name="OLEDB_GetData_Output_dc_ChangeOperation" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Inputs[OLEDB_GetData_Output_dc_ChangeOperation]">
+                <input name="OLEDB_GetData_Output_dc_ChangeData" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
-                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Outputs[Output]" synchronousInputId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Inputs[OLEDB_GetData_Output_dc_ChangeOperation]">
+                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Output]" synchronousInputId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="1" lineageId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="1" lineageId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
                       <properties>
                         <property dataType="System.String" description="Derived Column Expression" name="Expression">@[$Package::ChangeOperation]</property>
                         <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[$Package::ChangeOperation]</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[$Package::ChangeVersion]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[$Package::ChangeVersion]</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                 </output>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Outputs[Error]" synchronousInputId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Inputs[OLEDB_GetData_Output_dc_ChangeOperation]">
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Error]" synchronousInputId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
                     </outputColumn>
                   </outputColumns>
                 </output>
@@ -94,37 +100,41 @@
                 </connection>
               </connections>
               <inputs>
-                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="dc_ChangeOperation_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging]">
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="dc_ChangeData_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i4" name="DimCurrencyID" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimCurrencyID]">
+                    <externalMetadataColumn dataType="i4" name="DimCurrencyID" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimCurrencyID]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[DeltaHash]">
+                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DeltaHash]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="3" name="ISOCode" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[ISOCode]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="3" name="ISOCode" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[ISOCode]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKeyHash]">
+                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKeyHash]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="3" name="Symbol" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[Symbol]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="3" name="Symbol" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Symbol]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]">
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]">
                     </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Finance_DimCurrency\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Finance_DimCurrency\OLEDB_GetData.Outputs[Output].Columns[Name]" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging].Columns[Name]">
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Finance_DimCurrency\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Finance_DimCurrency\OLEDB_GetData.Outputs[Output].Columns[Name]" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[Name]">
                     </inputColumn>
                   </inputColumns>
                 </input>
               </inputs>
               <outputs>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Outputs[Error]" synchronousInputId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging]">
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Outputs[Error]" synchronousInputId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
@@ -153,9 +163,9 @@
             </component>
           </components>
           <paths>
-            <path endId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Inputs[OLEDB_GetData_Output_dc_ChangeOperation]" name="OLEDB_GetData_Output_dc_ChangeOperation" refId="Package\DFT_Load Finance_DimCurrency.Paths[OLEDB_GetData_Output_dc_ChangeOperation]" startId="Package\DFT_Load Finance_DimCurrency\OLEDB_GetData.Outputs[Output]">
+            <path endId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]" name="OLEDB_GetData_Output_dc_ChangeData" refId="Package\DFT_Load Finance_DimCurrency.Paths[OLEDB_GetData_Output_dc_ChangeData]" startId="Package\DFT_Load Finance_DimCurrency\OLEDB_GetData.Outputs[Output]">
             </path>
-            <path endId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging]" name="dc_ChangeOperation_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Finance_DimCurrency.Paths[dc_ChangeOperation_Output_OLEDB_InsertIntoStaging]" startId="Package\DFT_Load Finance_DimCurrency\dc_ChangeOperation.Outputs[Output]">
+            <path endId="Package\DFT_Load Finance_DimCurrency\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]" name="dc_ChangeData_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Finance_DimCurrency.Paths[dc_ChangeData_Output_OLEDB_InsertIntoStaging]" startId="Package\DFT_Load Finance_DimCurrency\dc_ChangeData.Outputs[Output]">
             </path>
           </paths>
         </pipeline>
@@ -163,21 +173,24 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{6448D61A-6422-41E6-9401-464782CC0724}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{CFA62C72-EAB3-46DF-8842-89EB29D217D9}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{6683D89A-4B78-4523-804A-893314D0B181}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{0301C1D5-D6C4-4AEE-AFC4-F61A0ABE5B2C}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{C3AA82D5-4AFA-46AB-B2D1-A75C01F3976C}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="20" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CE3DFAD6-EA2E-475F-A2D2-2126BFCE50E7}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{893C5B14-9937-4734-A85D-A2F81CC5B65A}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	Name = CONVERT(VARCHAR(255),base_query.name) FROM  ( 	SELECT 		SourceKey = CurrencyId, 		Name = [Description] 	FROM dbo.Currency ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EDE9739F-BF96-4820-95D9-48F5A87A6771}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0158FE77-DB0A-4750-B94E-4D4CBA0AE644}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	Name = CONVERT(VARCHAR(255),base_query.name) FROM  ( 	SELECT 		SourceKey = CurrencyId, 		Name = [Description] 	FROM dbo.Currency ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

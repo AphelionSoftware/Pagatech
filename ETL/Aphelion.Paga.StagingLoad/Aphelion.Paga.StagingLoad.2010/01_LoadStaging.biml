@@ -135,6 +135,7 @@
 				<Parameters>
 					<Parameter Name="EndOfQuery" DataType="String"></Parameter>
 					<Parameter Name="ChangeOperation" DataType="String"></Parameter>
+					<Parameter Name="ChangeVersion" DataType="Int64">0</Parameter>
 				</Parameters>
 				
 				<Variables>
@@ -148,9 +149,10 @@
 						<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
 							<VariableInput VariableName="User.BaseQuery"></VariableInput>
 						</OleDbSource>
-						<DerivedColumns Name="dc_ChangeOperation">
+						<DerivedColumns Name="dc_ChangeData">
 								<Columns>
 									<Column Name="SYS_CHANGE_OPERATION" DataType="AnsiString" Length="1">@[$Package::ChangeOperation]</Column>
+									<Column Name="SYS_CHANGE_VERSION" DataType="Int64">@[$Package::ChangeVersion]</Column>
 								</Columns>
 						</DerivedColumns>
 						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="Paga_Staging" KeepIdentity="false">

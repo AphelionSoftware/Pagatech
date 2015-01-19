@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="168"
-  DTS:VersionGUID="{7A40C4EB-F1BC-4424-BA32-28D32489FCBF}">
+  DTS:VersionBuild="170"
+  DTS:VersionGUID="{F53E5095-CD20-41AF-860F-C7B60A515777}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -45,7 +45,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
+        DTS:DataType="3">20</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -55,6 +55,17 @@
       DTS:ObjectName="Delete">
       <DTS:VariableValue
         DTS:DataType="8">"D"</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4D450068-DB3D-4E0D-ADB7-8BAB3B15B54A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::CurrentVersion] - @[User::LastSyncVersion]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EndLoop">
+      <DTS:VariableValue
+        DTS:DataType="3">10</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -72,7 +83,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
+        DTS:DataType="3">10</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -84,6 +95,15 @@
       DTS:ObjectName="LoadTypeFilter">
       <DTS:VariableValue
         DTS:DataType="8">NOT EXISTS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0E060045-B866-4298-BE81-CA9AC4DBA95F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoopCounter">
+      <DTS:VariableValue
+        DTS:DataType="3">1</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -213,7 +233,18 @@ FROM
       DTS:Namespace="User"
       DTS:ObjectName="strVersionFilter">
       <DTS:VariableValue
-        DTS:DataType="8">AND ct.SYS_CHANGE_VERSION &gt;  0 AND ct.SYS_CHANGE_VERSION &lt;= 0</DTS:VariableValue>
+        DTS:DataType="8">AND ct.SYS_CHANGE_VERSION &gt;  10 AND ct.SYS_CHANGE_VERSION &lt;= 20</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{307BA8A0-5B09-40FE-8CF4-B21AA9609D83}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::LastSyncVersion] +  @[User::LoopCounter]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SyncVersion">
+      <DTS:VariableValue
+        DTS:DataType="3">11</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -230,6 +261,7 @@ FROM
       DTS:refId="Package\EPT_ExecInParallel_Deleted"
       DTS:CreationName="SSIS.ExecutePackageTask.3"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{7fadba99-a31b-432d-b0ad-2a6832692cde}"
       DTS:ExecutableType="SSIS.ExecutePackageTask.3"
       DTS:LocaleID="-1"
@@ -259,6 +291,7 @@ FROM
       DTS:refId="Package\EPT_ExecInParallel_Inserted"
       DTS:CreationName="SSIS.ExecutePackageTask.3"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{39C4C09D-C4CE-458D-8350-1D3B5BF5083B}"
       DTS:ExecutableType="SSIS.ExecutePackageTask.3"
       DTS:LocaleID="-1"
@@ -288,6 +321,7 @@ FROM
       DTS:refId="Package\EPT_ExecInParallel_Updated"
       DTS:CreationName="SSIS.ExecutePackageTask.3"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{0261e5f0-1efd-485f-9ebd-43a33e067709}"
       DTS:ExecutableType="SSIS.ExecutePackageTask.3"
       DTS:LocaleID="-1"
@@ -338,6 +372,21 @@ FROM
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\For Loop Container"
+      DTS:AssignExpression="@LoopCounter = @LoopCounter + 1"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="For Loop Container"
+      DTS:DTSID="{FE6F1B2D-AD6D-4F99-8299-B553D00901D2}"
+      DTS:EvalExpression="@LoopCounter &lt;= @EndLoop"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:InitExpression="@LoopCounter = 1"
+      DTS:LocaleID="-1"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="For Loop Container">
+      <DTS:Variables />
+      <DTS:Executables />
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -357,13 +406,13 @@ FROM
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\EPT_ExecInParallel_Deleted" />
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{DA7A2593-8C54-49C2-B49F-F1707C089EBE}"
+      DTS:DTSID="{C68C969D-D6F6-4CF1-915B-DE4C554F14D3}"
       DTS:From="Package\EST_GetVersionNumbers"
       DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 3"
-      DTS:To="Package\EPT_ExecInParallel_Inserted" />
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\For Loop Container" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -385,28 +434,6 @@ FROM
           Size="280,42"
           Id="Package\EST_GetVersionNumbers"
           TopLeft="30.5,22.5" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="171.5,64.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,54"
-              Start="0,0"
-              End="0,46.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="214,42"
           Id="Package\EPT_ExecInParallel_Updated"
@@ -451,6 +478,47 @@ FROM
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="205,114"
+          Size="205,157"
+          Id="Package\For Loop Container"
+          TopLeft="535,145" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="170.5,64.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="467,80.5"
+              Start="0,0"
+              End="467,73">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.25"
+                    Point2="0,40.25"
+                    Point3="4,40.25" />
+                  <mssgle:LineSegment
+                    End="463,40.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="463,40.25"
+                    Point2="467,40.25"
+                    Point3="467,44.25" />
+                  <mssgle:LineSegment
+                    End="467,73" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
