@@ -24,6 +24,9 @@
     [RegistrationDateID]            INT           NULL,
     [SourceKey]                     INT           NOT NULL,
     [SourceKeyHash]                 BIGINT        NULL,
-    [DimPagaAccountStatusSourceKey] VARCHAR (255) NOT NULL
+    [DimPagaAccountStatusSourceKey] VARCHAR (255) NOT NULL,
+    [SYS_CHANGE_OPERATION]          CHAR (1)      DEFAULT ('I') NOT NULL
 );
+
+
 

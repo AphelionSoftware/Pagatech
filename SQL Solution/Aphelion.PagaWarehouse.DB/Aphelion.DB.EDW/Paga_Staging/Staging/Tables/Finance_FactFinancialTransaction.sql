@@ -25,6 +25,9 @@
     [ShortCode]                 VARCHAR (10)    NULL,
     [SourceKey]                 INT             NOT NULL,
     [SourceKeyHash]             BIGINT          NULL,
-    [TextDescription]           VARCHAR (100)   NULL
+    [TextDescription]           VARCHAR (100)   NULL,
+    [SYS_CHANGE_OPERATION]      CHAR (1)        DEFAULT ('I') NOT NULL
 );
+
+
 

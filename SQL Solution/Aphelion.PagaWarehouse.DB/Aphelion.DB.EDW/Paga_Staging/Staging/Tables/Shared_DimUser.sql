@@ -13,8 +13,11 @@
     [CreatedDateID]                      INT           NOT NULL,
     [DateOfBirthID]                      INT           NULL,
     [DimOrganizationUnitLevel4SourceKey] INT           NULL,
-    [DimPagaAccountSourceKey]            INT           NULL
+    [DimPagaAccountSourceKey]            INT           NULL,
+    [SYS_CHANGE_OPERATION]               CHAR (1)      DEFAULT ('I') NOT NULL
 );
+
+
 
 
 

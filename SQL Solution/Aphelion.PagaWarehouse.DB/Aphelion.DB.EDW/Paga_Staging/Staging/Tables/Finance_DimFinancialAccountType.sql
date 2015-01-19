@@ -5,6 +5,9 @@
     [SourceKey]                 VARCHAR (255)  NOT NULL,
     [SourceKeyHash]             BIGINT         NULL,
     [TextDesciption]            VARCHAR (1000) NULL,
-    [DimGLCodeSourceKey]        INT            NOT NULL
+    [DimGLCodeSourceKey]        INT            NOT NULL,
+    [SYS_CHANGE_OPERATION]      CHAR (1)       DEFAULT ('I') NOT NULL
 );
+
+
 

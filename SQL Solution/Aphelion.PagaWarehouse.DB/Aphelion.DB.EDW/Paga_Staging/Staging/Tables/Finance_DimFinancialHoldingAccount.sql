@@ -7,6 +7,9 @@
     [RestrictedBalance]            DECIMAL (18, 2) NULL,
     [SourceKey]                    INT             NOT NULL,
     [SourceKeyHash]                BIGINT          NULL,
-    [TotalBalance]                 DECIMAL (18, 2) NULL
+    [TotalBalance]                 DECIMAL (18, 2) NULL,
+    [SYS_CHANGE_OPERATION]         CHAR (1)        DEFAULT ('I') NOT NULL
 );
+
+
 

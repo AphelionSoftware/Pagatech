@@ -5,6 +5,9 @@
     [PostalCode]                      INT           NOT NULL,
     [SourceKey]                       INT           NOT NULL,
     [SourceKeyHash]                   BIGINT        NULL,
-    [DimLocalGovernmentAreaSourceKey] INT           NOT NULL
+    [DimLocalGovernmentAreaSourceKey] INT           NOT NULL,
+    [SYS_CHANGE_OPERATION]            CHAR (1)      DEFAULT ('I') NOT NULL
 );
+
+
 

@@ -5,6 +5,9 @@
     [SourceKey]              INT           NOT NULL,
     [SourceKeyHash]          BIGINT        NULL,
     [DimRoleSourceKey]       INT           NOT NULL,
-    [DimUserSourceKey]       INT           NOT NULL
+    [DimUserSourceKey]       INT           NOT NULL,
+    [SYS_CHANGE_OPERATION]   CHAR (1)      DEFAULT ('I') NOT NULL
 );
+
+
 

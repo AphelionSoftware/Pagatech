@@ -7,6 +7,9 @@
     [SourceKeyHash]            BIGINT        NULL,
     [SupportsCredit]           BIT           NULL,
     [SupportsDebit]            BIT           NULL,
-    [DimOrganizationSourceKey] INT           NOT NULL
+    [DimOrganizationSourceKey] INT           NOT NULL,
+    [SYS_CHANGE_OPERATION]     CHAR (1)      DEFAULT ('I') NOT NULL
 );
+
+
 

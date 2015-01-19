@@ -14,6 +14,9 @@
     [DimIntegrationTransactionTypeSourceKey]   VARCHAR (255)   NULL,
     [DimProcessTypeSourceKey]                  VARCHAR (255)   NOT NULL,
     [DimUserSourceKey]                         INT             NULL,
-    [FactFinancialTransactionSourceKey]        INT             NULL
+    [FactFinancialTransactionSourceKey]        INT             NULL,
+    [SYS_CHANGE_OPERATION]                     CHAR (1)        DEFAULT ('I') NOT NULL
 );
+
+
 

@@ -10,6 +10,9 @@
     [TransactionLineNumber]             INT             NULL,
     [DimFinancialAccountSourceKey]      INT             NULL,
     [DimGLCodeSourceKey]                INT             NULL,
-    [FactFinancialTransactionSourceKey] INT             NULL
+    [FactFinancialTransactionSourceKey] INT             NULL,
+    [SYS_CHANGE_OPERATION]              CHAR (1)        DEFAULT ('I') NOT NULL
 );
+
+
 

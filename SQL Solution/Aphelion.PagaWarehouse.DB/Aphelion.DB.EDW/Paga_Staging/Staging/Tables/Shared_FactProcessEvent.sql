@@ -38,8 +38,11 @@
     [SourceKey]                       INT             NOT NULL,
     [SourceKeyHash]                   BIGINT          NULL,
     [VerificationStatus]              VARCHAR (200)   NULL,
-    [WithdrawalCode]                  VARCHAR (200)   NULL
+    [WithdrawalCode]                  VARCHAR (200)   NULL,
+    [SYS_CHANGE_OPERATION]            CHAR (1)        DEFAULT ('I') NOT NULL
 );
+
+
 
 
 
