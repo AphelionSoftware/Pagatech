@@ -134,6 +134,7 @@
 				<Package Name="<#=PackageName#>" ConstraintMode="Linear"  ProtectionLevel="EncryptSensitiveWithUserKey"  AutoCreateConfigurationsType="None">
 				<Parameters>
 					<Parameter Name="EndOfQuery" DataType="String"></Parameter>
+					<Parameter Name="ChangeOperation" DataType="String"></Parameter>
 				</Parameters>
 				
 				<Variables>
@@ -147,6 +148,11 @@
 						<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
 							<VariableInput VariableName="User.BaseQuery"></VariableInput>
 						</OleDbSource>
+						<DerivedColumns Name="dc_ChangeOperation">
+								<Columns>
+									<Column Name="SYS_CHANGE_OPERATION" DataType="AnsiString" Length="1">@[$Package::ChangeOperation]</Column>
+								</Columns>
+						</DerivedColumns>
 						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="Paga_Staging" KeepIdentity="false">
 							<ExternalTableOutput Table="<#=String.Format("{0}.{1}_{2}","Staging",TableSchema, TableName)#>"/>
 						</OleDbDestination>
