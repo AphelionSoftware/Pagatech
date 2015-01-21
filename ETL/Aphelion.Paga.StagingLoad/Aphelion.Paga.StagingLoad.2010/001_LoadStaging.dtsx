@@ -7,14 +7,39 @@
   DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
   DTS:DTSID="{03258E52-3119-4831-A25E-7FD89090C081}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="11.0.5058.0"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="191"
-  DTS:VersionGUID="{9EA47051-C071-446F-8AA3-3486EA944467}">
+  DTS:VersionBuild="196"
+  DTS:VersionGUID="{16F1D2C7-74CB-4B9C-8EB4-56EE5A2C8A31}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LoadStaging.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{86F85149-37F7-4B07-AB62-75AA4887B4E7}"
+      DTS:ObjectName="LoadStaging.txt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="E:\GitHub\Pagatech\ETL\LoadStaging.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="LoadStaging.txt"
+      DTS:CreationName="DTS.LogProviderTextFile.3"
+      DTS:Description="Writes log entries for events to a CSV file"
+      DTS:DTSID="{1F51729F-9D84-445A-971C-87F87D81B5A9}"
+      DTS:ObjectName="SSIS log provider for Text files">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
   <DTS:PackageParameters>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -46,7 +71,8 @@
       DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot; ? (DT_I8) 0 : (DT_I8) (@[User::LastSyncVersion] + @[User::LoopCounter])"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="ChangeVersion">
+      DTS:ObjectName="ChangeVersion"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="20">1</DTS:VariableValue>
     </DTS:Variable>
@@ -55,7 +81,8 @@
       DTS:DTSID="{2E6619F3-1195-406B-9CF4-F12034519966}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
-      DTS:ObjectName="CurrentVersion">
+      DTS:ObjectName="CurrentVersion"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="3">20</DTS:VariableValue>
     </DTS:Variable>
@@ -64,7 +91,8 @@
       DTS:DTSID="{7323FFD4-F491-40B6-9A2C-557246E13FFC}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="Delete">
+      DTS:ObjectName="Delete"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="8">"D"</DTS:VariableValue>
     </DTS:Variable>
@@ -75,7 +103,8 @@
       DTS:Expression="@[User::CurrentVersion] - @[User::LastSyncVersion]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="EndLoop">
+      DTS:ObjectName="EndLoop"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="3">20</DTS:VariableValue>
     </DTS:Variable>
@@ -84,7 +113,8 @@
       DTS:DTSID="{E51DDF82-E80B-4628-933D-FA29D48A4C7C}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="Insert">
+      DTS:ObjectName="Insert"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="8">"I"</DTS:VariableValue>
     </DTS:Variable>
@@ -93,7 +123,8 @@
       DTS:DTSID="{A2887ADA-85EF-4EE4-BEC2-793539EAAEA9}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="LastSyncVersion">
+      DTS:ObjectName="LastSyncVersion"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
@@ -104,7 +135,8 @@
       DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot; ? &quot;NOT EXISTS&quot;: &quot;EXISTS&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="LoadTypeFilter">
+      DTS:ObjectName="LoadTypeFilter"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="8">EXISTS</DTS:VariableValue>
     </DTS:Variable>
@@ -115,7 +147,8 @@
       DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot; ? 0 : 1"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="LoopCounter">
+      DTS:ObjectName="LoopCounter"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="3">1</DTS:VariableValue>
     </DTS:Variable>
@@ -126,7 +159,8 @@
       DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot;? &quot;)&quot;: @[User::strVersionFilter] + &quot; AND ct.SYS_CHANGE_OPERATION = 'D')&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="strDeleteFilter">
+      DTS:ObjectName="strDeleteFilter"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="8">AND ct.SYS_CHANGE_VERSION =  1 AND ct.SYS_CHANGE_OPERATION = 'D')</DTS:VariableValue>
     </DTS:Variable>
@@ -137,7 +171,8 @@
       DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot;? &quot;)&quot;: @[User::strVersionFilter] + &quot; AND ct.SYS_CHANGE_OPERATION = 'I')&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="strInsertFilter">
+      DTS:ObjectName="strInsertFilter"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="8">AND ct.SYS_CHANGE_VERSION =  1 AND ct.SYS_CHANGE_OPERATION = 'I')</DTS:VariableValue>
     </DTS:Variable>
@@ -148,7 +183,8 @@
       DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(CHAR(4),(x.package_grp + x.rn)) +'_' + StagingTableName,&#xA;&#x9;strParm1 = &#xA;&#x9;'WHERE&#xA;&#x9;&#x9;&quot; + @[User::LoadTypeFilter]  +&quot;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;1&#xA;&#x9;&#x9;&#x9;FROM paga_change_log.' +x.SourceTable +'&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;' +x.KeyColumn +' = ct.' +x.KeyColumn &#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY prefix.package_grp ORDER BY base.StagingTableName) AS rn,&#x9;&#x9;base.StagingTableName,&#xA;&#x9;&#x9;base.KeyColumn,&#xA;&#x9;&#x9;base.SourceTable,&#xA;&#x9;&#x9;base.BaseQuery,&#xA;&#x9;&#x9;prefix.package_grp&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(MAX), MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN ext_prop.value END)) AS BaseQuery,&#xA;&#x9;&#x9;&#x9;CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN&#xA;&#x9;&#x9;&#x9;&#x9;CASE&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN ext_prop.value IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) &gt; 0 THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) = 0 THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;END&#xA;&#x9;&#x9;&#x9;END)) AS HasBaseQueryDef,&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,&#xA;&#x9;&#x9;&#x9;&#x9;major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,&#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA&#xA;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;&#x9;&quot; + @[$Package::SchemaFilter]  +&quot;&#x9;&#x9;) AS table_list&#xA;&#x9;&#x9;INNER JOIN sys.extended_properties as ext_prop ON &#xA;&#x9;&#x9;&#x9;table_list.major_id = ext_prop.major_id&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'&#xA;&#x9;&#x9;GROUP BY&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA,&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName&#xA;&#x9;) AS base&#xA;&#x9;INNER JOIN &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;(tsg.seed *100) + 1000 AS package_grp, &#xA;&#x9;&#x9;&#x9;tsg.TABLE_SCHEMA &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;( &#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed, &#xA;&#x9;&#x9;&#x9;&#x9;ts.TABLE_SCHEMA &#xA;&#x9;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;( &#xA;&#x9;&#x9;&#x9;&#x9;SELECT DISTINCT  &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA &#xA;&#x9;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t &#xA;&#x9;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.TABLE_TYPE = 'BASE TABLE' &#xA;&#x9;&#x9;&#x9;) as ts &#xA;&#x9;&#x9;) AS tsg &#xA;&#x9;) as prefix ON &#xA;&#x9;&#x9;base.TABLE_SCHEMA = prefix.TABLE_SCHEMA&#xA;&#x9;&#x9;AND base.HasBaseQueryDef = 1&#xA;) AS x&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="strPackageQuery">
+      DTS:ObjectName="strPackageQuery"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
 	PackageName = CONVERT(CHAR(4),(x.package_grp + x.rn)) +'_' + StagingTableName,
@@ -230,7 +266,8 @@ FROM
       DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot;? &quot;)&quot;: @[User::strVersionFilter] + &quot; AND ct.SYS_CHANGE_OPERATION = 'U')&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="strUpdateFilter">
+      DTS:ObjectName="strUpdateFilter"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="8">AND ct.SYS_CHANGE_VERSION =  1 AND ct.SYS_CHANGE_OPERATION = 'U')</DTS:VariableValue>
     </DTS:Variable>
@@ -241,7 +278,8 @@ FROM
       DTS:Expression="&quot;AND ct.SYS_CHANGE_VERSION =  &quot; +(DT_STR, 20,1252)  @[User::ChangeVersion]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="strVersionFilter">
+      DTS:ObjectName="strVersionFilter"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="8">AND ct.SYS_CHANGE_VERSION =  1</DTS:VariableValue>
     </DTS:Variable>
@@ -250,11 +288,41 @@ FROM
       DTS:DTSID="{02C62C29-A9E3-4994-A79F-2534E283AEA8}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="Update">
+      DTS:ObjectName="Update"
+      DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
         DTS:DataType="8">"U"</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{1F51729F-9D84-445A-971C-87F87D81B5A9}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\EPT_ExecInParallel_Initial"
@@ -266,6 +334,31 @@ FROM
       DTS:ObjectName="EPT_ExecInParallel_Initial"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
@@ -300,6 +393,31 @@ FROM
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{58D08405-99FD-49DC-8B1E-FF6A419E845A}"
@@ -327,6 +445,31 @@ FROM
       DTS:MaxConcurrent="1"
       DTS:ObjectName="Iterate Through Version Numbers">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
       <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Deleted"
@@ -338,6 +481,31 @@ FROM
           DTS:ObjectName="EPT_ExecInParallel_Deleted"
           DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnVariableValueChanged"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
@@ -371,6 +539,31 @@ FROM
           DTS:ObjectName="EPT_ExecInParallel_Inserted"
           DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnVariableValueChanged"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
@@ -404,6 +597,31 @@ FROM
           DTS:ObjectName="EPT_ExecInParallel_Updated"
           DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnVariableValueChanged"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
@@ -470,6 +688,95 @@ FROM
       DTS:ObjectName="InitialLoad"
       DTS:To="Package\EPT_ExecInParallel_Initial" />
   </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnVariableValueChanged]"
+      DTS:CreationName="OnVariableValueChanged"
+      DTS:DTSID="{5511A7DB-1ECA-4C7D-B2A8-3FDA2B4909CC}"
+      DTS:EventID="269854244"
+      DTS:EventName="OnVariableValueChanged"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{0CF9C6DA-069C-41AD-9903-44BACCFF961D}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnVariableValueChanged]\EST_Log_Variable_Values_LoadStaging"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{6F5AF838-8374-489F-ACAB-DA04F9A9A806}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_Log_Variable_Values_LoadStaging"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{62A1B24F-A693-4E26-AE0F-0898101FEDF7}"
+              SQLTask:SqlStatementSource="INSERT INTO [dbo].[Variable_Logging]&#xA;           ([PackageID]&#xA;           ,[PackageName]&#xA;           ,[TaskID]&#xA;           ,[TaskName]&#xA;           ,[VariableID]&#xA;           ,[VariableName]&#xA;           ,[VariableValue]&#xA;           ,[StartTime])&#xA;     VALUES&#xA;           (&#xA;&#x9;&#x9;&#x9;?&#xA;           ,?&#xA;           ,?&#xA;           ,?&#xA;           ,?&#xA;           ,?&#xA;           ,?&#xA;           ,?&#xA;&#x9;&#x9;&#x9;)&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="System::TaskID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="System::VariableID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="System::VariableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="System::VariableValue"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="System::StartTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -489,7 +796,7 @@ FROM
         <NodeLayout
           Size="280,42"
           Id="Package\EST_GetVersionNumbers"
-          TopLeft="30.5,22.5" />
+          TopLeft="29.5,22.5" />
         <NodeLayout
           Size="210,42"
           Id="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Deleted"
@@ -555,13 +862,13 @@ FROM
           TopLeft="168,153" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[ChangeLoad]"
-          TopLeft="170.5,64.5">
+          TopLeft="169.5,64.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="153.5,88.5"
+              EndConnector="154.5,88.5"
               Start="0,0"
-              End="153.5,81">
+              End="154.5,81">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -572,56 +879,56 @@ FROM
                     Point2="0,44.25"
                     Point3="4,44.25" />
                   <mssgle:LineSegment
-                    End="149.5,44.25" />
+                    End="150.5,44.25" />
                   <mssgle:CubicBezierSegment
-                    Point1="149.5,44.25"
-                    Point2="153.5,44.25"
-                    Point3="153.5,48.25" />
+                    Point1="150.5,44.25"
+                    Point2="154.5,44.25"
+                    Point3="154.5,48.25" />
                   <mssgle:LineSegment
-                    End="153.5,81" />
+                    End="154.5,81" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="40.383359375,49.25,72.73328125,16"
+              BoundingBox="40.883359375,49.25,72.73328125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[InitialLoad]"
-          TopLeft="310.5,43.5">
+          TopLeft="309.5,43.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="189.5,17.5"
+              EndConnector="190.5,17.5"
               Start="0,0"
-              End="182,17.5">
+              End="183,17.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="90.75,0" />
+                    End="91.25,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="90.75,0"
-                    Point2="94.75,0"
-                    Point3="94.75,4" />
+                    Point1="91.25,0"
+                    Point2="95.25,0"
+                    Point3="95.25,4" />
                   <mssgle:LineSegment
-                    End="94.75,13.5" />
+                    End="95.25,13.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="94.75,13.5"
-                    Point2="94.75,17.5"
-                    Point3="98.75,17.5" />
+                    Point1="95.25,13.5"
+                    Point2="95.25,17.5"
+                    Point3="99.25,17.5" />
                   <mssgle:LineSegment
-                    End="182,17.5" />
+                    End="183,17.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="62.603359375,-22,64.29328125,16"
+              BoundingBox="63.103359375,-22,64.29328125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -636,5 +943,17 @@ FROM
     design-time-name="Package.PrecedenceConstraints[InitialLoad]">
     <ShowAnnotation>ConstraintName</ShowAnnotation>
   </PrecedenceConstraint>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnVariableValueChanged]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="264,42"
+          Id="Package.EventHandlers[OnVariableValueChanged]\EST_Log_Variable_Values_LoadStaging"
+          TopLeft="570,170" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
