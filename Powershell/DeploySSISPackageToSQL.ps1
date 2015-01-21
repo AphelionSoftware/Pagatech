@@ -24,20 +24,26 @@ $ssis = New-Object $ISNamespace".IntegrationServices" $con
  {             
     $ssis.Catalogs["SSISDB"].Drop()             
  }            
- #>
+
  
 # TODO check for catalog     
 # Provision a new SSIS Catalog            
 Write-Host "Creating new SSISDB Catalog ..."            
 $cat = New-Object $ISNamespace".Catalog" ($ssis, "SSISDB", "#PASSWORD1")            
 $cat.Create()            
-            
+     #>        
 # Create a new folder            
 Write-Host "Creating Folder ..."            
-$folder = New-Object $ISNamespace".CatalogFolder" ($cat, "Folder", "Description")            
+$folder = New-Object $ISNamespace".CatalogFolder" ($cat, "Aphelion.Paga.BI", "Description")            
 $folder.Create()            
-            
+
+             
 # Read the project file, and deploy it to the folder            
 Write-Host "Deploying ExecutionDemo project ..."            
-[byte[]] $projectFile = [System.IO.File]::ReadAllBytes("E:\GitHub\Pagatech\ETL\Aphelion.Paga.StagingLoad\Aphelion.Paga.StagingLoad.2010\bin\Development\Aphelion.Paga.StagingLoad.ispac")            
-$folder.DeployProject("Aphelion.Paga.StagingLoad.2010", $projectFile)  
+[byte[]] $projectFile = [System.IO.File]::ReadAllBytes("F:\GitHub\Pagatech\ETL\Aphelion.Paga.StagingLoad\Aphelion.Paga.StagingLoad.2010\bin\Development\Aphelion.Paga.ispac")            
+$folder.DeployProject("Aphelion.Paga.StagingLoad", $projectFile)  
+
+# Read the project file, and deploy it to the folder            
+Write-Host "Deploying ExecutionDemo project ..."            
+[byte[]] $projectFile = [System.IO.File]::ReadAllBytes("F:\GitHub\Pagatech\ETL\Aphelion.Paga.ChangeLoad\Aphelion.Paga.ChangeLoad\bin\Development\Aphelion.Paga.ispac")            
+$folder.DeployProject("Aphelion.Paga.ChangeLoad", $projectFile)  

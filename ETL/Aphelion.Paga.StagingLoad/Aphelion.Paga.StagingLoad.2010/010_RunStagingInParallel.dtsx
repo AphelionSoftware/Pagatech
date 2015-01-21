@@ -7,14 +7,39 @@
   DTS:CreatorName="MGS-Netbook\MarkGStacey"
   DTS:DTSID="{36949C62-7362-4664-A5BB-E3066AE9EDCE}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="7177"
   DTS:ObjectName="010_RunStagingInParallel"
   DTS:PackageType="5"
-  DTS:VersionBuild="103"
-  DTS:VersionGUID="{8D80B66D-43BD-41B3-ACA1-454F22AD3FE8}">
+  DTS:VersionBuild="105"
+  DTS:VersionGUID="{6FEDA2D0-81EF-4829-83D1-5E6146501D5A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[RunStagingInParallel.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{A98B4CBD-AE15-4A94-B317-12D18F5FEC4D}"
+      DTS:ObjectName="RunStagingInParallel.txt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="F:\SSIS_Logging\RunStagingInParallel.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="RunStagingInParallel.txt"
+      DTS:CreationName="DTS.LogProviderTextFile.3"
+      DTS:Description="Writes log entries for events to a CSV file"
+      DTS:DTSID="{395171C1-3A67-49B8-8288-8494E0AD2A30}"
+      DTS:ObjectName="SSIS log provider for Text files">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
   <DTS:PackageParameters>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -107,6 +132,35 @@ FROM
         xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{395171C1-3A67-49B8-8288-8494E0AD2A30}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream00"
@@ -172,6 +226,8 @@ FROM
             DTS:DataType="3">0</DTS:VariableValue>
         </DTS:Variable>
       </DTS:Variables>
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream00\EST_Stream0_Workload"
@@ -182,8 +238,10 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream0_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
@@ -221,6 +279,8 @@ FROM
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:Executables>
             <DTS:Executable
               DTS:refId="Package\SEQ_Stream00\FLC_Stream00\EPT_Package_01"
@@ -232,6 +292,8 @@ FROM
               DTS:ObjectName="EPT_Package_01"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
               <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
               <DTS:PropertyExpression
                 DTS:Name="PackageName">@[User::PackageName]</DTS:PropertyExpression>
               <DTS:ObjectData>
@@ -285,6 +347,7 @@ FROM
       DTS:refId="Package\SEQ_Stream01"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{3445332E-393B-4B23-84A4-E7778E89058C}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -345,6 +408,8 @@ FROM
             DTS:DataType="3">1</DTS:VariableValue>
         </DTS:Variable>
       </DTS:Variables>
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream01\EST_Stream1_Workload"
@@ -355,8 +420,10 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream1_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="1">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
@@ -394,6 +461,8 @@ FROM
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:Executables>
             <DTS:Executable
               DTS:refId="Package\SEQ_Stream01\FLC_Stream01\EPT_Package_01"
@@ -405,6 +474,8 @@ FROM
               DTS:ObjectName="EPT_Package_01"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
               <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
               <DTS:PropertyExpression
                 DTS:Name="PackageName">@[User::PackageName]</DTS:PropertyExpression>
               <DTS:ObjectData>
@@ -458,6 +529,7 @@ FROM
       DTS:refId="Package\SEQ_Stream02"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{F26C507C-D711-4DA1-AB92-10895B6AD0C8}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -528,6 +600,8 @@ FROM
             xml:space="preserve"></DTS:VariableValue>
         </DTS:Variable>
       </DTS:Variables>
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream02\EST_Stream02_Workload"
@@ -540,6 +614,8 @@ FROM
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="2">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
@@ -577,6 +653,8 @@ FROM
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:Executables>
             <DTS:Executable
               DTS:refId="Package\SEQ_Stream02\FLC_Stream02\EPT_Package_02"
@@ -588,6 +666,8 @@ FROM
               DTS:ObjectName="EPT_Package_02"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
               <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
               <DTS:PropertyExpression
                 DTS:Name="PackageName">@[User::PackageName]</DTS:PropertyExpression>
               <DTS:ObjectData>
@@ -641,6 +721,7 @@ FROM
       DTS:refId="Package\SEQ_Stream03"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{CF859B9F-71B3-4B78-A5CE-824F40C930CE}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -711,6 +792,8 @@ FROM
             xml:space="preserve"></DTS:VariableValue>
         </DTS:Variable>
       </DTS:Variables>
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream03\EST_Stream03_Workload"
@@ -721,8 +804,10 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream03_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="3">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
@@ -760,6 +845,8 @@ FROM
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:Executables>
             <DTS:Executable
               DTS:refId="Package\SEQ_Stream03\FLC_Stream03\EPT_Package_03"
@@ -771,6 +858,8 @@ FROM
               DTS:ObjectName="EPT_Package_03"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
               <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
               <DTS:PropertyExpression
                 DTS:Name="PackageName">@[User::PackageName]</DTS:PropertyExpression>
               <DTS:ObjectData>
@@ -824,6 +913,7 @@ FROM
       DTS:refId="Package\SEQ_Stream04"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{7282A93F-D51C-4F10-8EFA-6190B0C91ADB}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -894,6 +984,8 @@ FROM
             xml:space="preserve"></DTS:VariableValue>
         </DTS:Variable>
       </DTS:Variables>
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream04\EST_Stream4_Workload"
@@ -904,8 +996,10 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream4_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="4">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
@@ -943,6 +1037,8 @@ FROM
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:Executables>
             <DTS:Executable
               DTS:refId="Package\SEQ_Stream04\FLC_Stream04\EPT_Package_04"
@@ -954,6 +1050,8 @@ FROM
               DTS:ObjectName="EPT_Package_04"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
               <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
               <DTS:PropertyExpression
                 DTS:Name="PackageName">@[User::PackageName]</DTS:PropertyExpression>
               <DTS:ObjectData>
@@ -1007,6 +1105,7 @@ FROM
       DTS:refId="Package\SEQ_Stream05"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{DDDC3A08-A176-4DEB-AC71-9B4E6F4F203F}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -1077,6 +1176,8 @@ FROM
             xml:space="preserve"></DTS:VariableValue>
         </DTS:Variable>
       </DTS:Variables>
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream05\EST_Stream05_Workload"
@@ -1087,8 +1188,10 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream05_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="5">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
@@ -1126,6 +1229,8 @@ FROM
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:Executables>
             <DTS:Executable
               DTS:refId="Package\SEQ_Stream05\FLC_Stream05\EPT_Package_05"
@@ -1137,6 +1242,8 @@ FROM
               DTS:ObjectName="EPT_Package_05"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
               <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
               <DTS:PropertyExpression
                 DTS:Name="PackageName">@[User::PackageName]</DTS:PropertyExpression>
               <DTS:ObjectData>
@@ -1190,6 +1297,7 @@ FROM
       DTS:refId="Package\SEQ_Stream06"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{7BD0B33D-2F67-4EA1-AE76-4800D5607D2D}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -1260,6 +1368,8 @@ FROM
             xml:space="preserve"></DTS:VariableValue>
         </DTS:Variable>
       </DTS:Variables>
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream06\EST_Stream06_Workload"
@@ -1270,8 +1380,10 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream06_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="6">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
@@ -1309,6 +1421,8 @@ FROM
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:Executables>
             <DTS:Executable
               DTS:refId="Package\SEQ_Stream06\FLC_Stream06\EPT_Package_06"
@@ -1320,6 +1434,8 @@ FROM
               DTS:ObjectName="EPT_Package_06"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
               <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
               <DTS:PropertyExpression
                 DTS:Name="PackageName">@[User::PackageName]</DTS:PropertyExpression>
               <DTS:ObjectData>
@@ -1373,6 +1489,7 @@ FROM
       DTS:refId="Package\SEQ_Stream07"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{E8CEAAB0-56DF-4238-B33D-30CF9812FE5B}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -1443,6 +1560,8 @@ FROM
             xml:space="preserve"></DTS:VariableValue>
         </DTS:Variable>
       </DTS:Variables>
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream07\EST_Stream07_Workload"
@@ -1453,8 +1572,10 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Stream07_Workload"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="7">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D8F5793B-785D-4AC5-9CEE-E22CE120CC77}"
@@ -1492,6 +1613,8 @@ FROM
             </DTS:ObjectData>
           </DTS:ForEachEnumerator>
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:Executables>
             <DTS:Executable
               DTS:refId="Package\SEQ_Stream07\FLC_Stream07\EPT_Package_07"
@@ -1503,6 +1626,8 @@ FROM
               DTS:ObjectName="EPT_Package_07"
               DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
               <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
               <DTS:PropertyExpression
                 DTS:Name="PackageName">@[User::PackageName]</DTS:PropertyExpression>
               <DTS:ObjectData>
@@ -1577,12 +1702,12 @@ FROM
           HeaderHeight="43.924528301886795"
           IsExpanded="True"
           PanelSize="170,102"
-          Size="170,146"
+          Size="171,146"
           Id="Package\SEQ_Stream00\FLC_Stream00"
           TopLeft="16.3,107.1" />
         <EdgeLayout
           Id="Package\SEQ_Stream00.PrecedenceConstraints[Constraint]"
-          TopLeft="101.4,47.5">
+          TopLeft="101.65,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1784,7 +1909,7 @@ FROM
           PanelSize="170,314"
           Size="170,358"
           Id="Package\SEQ_Stream04"
-          TopLeft="89.9000000000001,400.5" />
+          TopLeft="89.9000000000001,401.5" />
         <NodeLayout
           Size="136,44"
           Id="Package\SEQ_Stream05\EST_Stream05_Workload"

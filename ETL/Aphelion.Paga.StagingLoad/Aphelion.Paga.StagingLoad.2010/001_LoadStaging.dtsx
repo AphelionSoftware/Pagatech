@@ -7,25 +7,25 @@
   DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
   DTS:DTSID="{03258E52-3119-4831-A25E-7FD89090C081}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="180"
-  DTS:VersionGUID="{03546818-462D-4E5F-9E57-8E92A7738357}">
+  DTS:VersionBuild="191"
+  DTS:VersionGUID="{9EA47051-C071-446F-8AA3-3486EA944467}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:Description="Initial, AllChanges, LatestChanges"
+      DTS:Description="Initial, Changes"
       DTS:DTSID="{2E57E68C-0C61-4A63-929F-91631B4D386B}"
       DTS:ObjectName="LoadType"
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">Initial</DTS:Property>
+        DTS:Name="ParameterValue">Changes</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -35,8 +35,7 @@
       DTS:ObjectName="SchemaFilter">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue"
-        xml:space="preserve"></DTS:Property>
+        DTS:Name="ParameterValue">WHERE TABLE_SCHEMA =  'Location'</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -49,7 +48,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ChangeVersion">
       <DTS:VariableValue
-        DTS:DataType="20">0</DTS:VariableValue>
+        DTS:DataType="20">1</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -107,7 +106,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="LoadTypeFilter">
       <DTS:VariableValue
-        DTS:DataType="8">NOT EXISTS</DTS:VariableValue>
+        DTS:DataType="8">EXISTS</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -118,35 +117,35 @@
       DTS:Namespace="User"
       DTS:ObjectName="LoopCounter">
       <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
+        DTS:DataType="3">1</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{4B409876-F6BF-437B-9756-4E3FA6D8DEFB}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[$Package::LoadType] == &quot;AllChanges&quot; ? &quot;AND ct.SYS_CHANGE_OPERATION = 'D')&quot;:( @[$Package::LoadType] == &quot;LatestChanges&quot; ?  @[User::strVersionFilter] + &quot; AND ct.SYS_CHANGE_OPERATION = 'D')&quot; : &quot;)&quot;)"
+      DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot;? &quot;)&quot;: @[User::strVersionFilter] + &quot; AND ct.SYS_CHANGE_OPERATION = 'D')&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strDeleteFilter">
       <DTS:VariableValue
-        DTS:DataType="8">)</DTS:VariableValue>
+        DTS:DataType="8">AND ct.SYS_CHANGE_VERSION =  1 AND ct.SYS_CHANGE_OPERATION = 'D')</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{758E9D63-6CC9-4609-8EB1-5907B5D650F5}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[$Package::LoadType] == &quot;AllChanges&quot; ? &quot;AND ct.SYS_CHANGE_OPERATION = 'I')&quot;:( @[$Package::LoadType] == &quot;LatestChanges&quot; ?  @[User::strVersionFilter] + &quot; AND ct.SYS_CHANGE_OPERATION = 'I')&quot; : &quot;)&quot;)"
+      DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot;? &quot;)&quot;: @[User::strVersionFilter] + &quot; AND ct.SYS_CHANGE_OPERATION = 'I')&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strInsertFilter">
       <DTS:VariableValue
-        DTS:DataType="8">)</DTS:VariableValue>
+        DTS:DataType="8">AND ct.SYS_CHANGE_VERSION =  1 AND ct.SYS_CHANGE_OPERATION = 'I')</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{6F04BAFE-F37A-4B9F-A8DB-CC5B6D1CD578}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(CHAR(4),(x.package_grp + x.rn)) +'_' + StagingTableName,&#xA;&#x9;strParm1 = &#xA;&#x9;'WHERE&#xA;&#x9;&#x9;&quot; + @[User::LoadTypeFilter]  +&quot;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;1&#xA;&#x9;&#x9;&#x9;FROM CHANGETABLE (CHANGES ' +x.SourceTable +',0)&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;' +x.KeyColumn +' = ct.' +x.KeyColumn &#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ROW_NUMBER() OVER (ORDER BY base.StagingTableName) AS rn,&#xA;&#x9;&#x9;base.StagingTableName,&#xA;&#x9;&#x9;base.KeyColumn,&#xA;&#x9;&#x9;base.SourceTable,&#xA;&#x9;&#x9;base.BaseQuery,&#xA;&#x9;&#x9;prefix.package_grp&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(MAX), MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN ext_prop.value END)) AS BaseQuery,&#xA;&#x9;&#x9;&#x9;CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN&#xA;&#x9;&#x9;&#x9;&#x9;CASE&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN ext_prop.value IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) &gt; 0 THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) = 0 THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;END&#xA;&#x9;&#x9;&#x9;END)) AS HasBaseQueryDef,&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,&#xA;&#x9;&#x9;&#x9;&#x9;major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,&#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA&#xA;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA= 'classification'&#xA;&#x9;&#x9;) AS table_list&#xA;&#x9;&#x9;INNER JOIN sys.extended_properties as ext_prop ON &#xA;&#x9;&#x9;&#x9;table_list.major_id = ext_prop.major_id&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'&#xA;&#x9;&#x9;GROUP BY&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA,&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName&#xA;&#x9;) AS base&#xA;&#x9;INNER JOIN &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;(tsg.seed *100) + 1000 AS package_grp, &#xA;&#x9;&#x9;&#x9;tsg.TABLE_SCHEMA &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;( &#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed, &#xA;&#x9;&#x9;&#x9;&#x9;ts.TABLE_SCHEMA &#xA;&#x9;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;( &#xA;&#x9;&#x9;&#x9;&#x9;SELECT DISTINCT  &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA &#xA;&#x9;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t &#xA;&#x9;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.TABLE_TYPE = 'BASE TABLE' &#xA;&#x9;&#x9;&#x9;) as ts &#xA;&#x9;&#x9;) AS tsg &#xA;&#x9;) as prefix ON &#xA;&#x9;&#x9;base.TABLE_SCHEMA = prefix.TABLE_SCHEMA&#xA;&#x9;&#x9;AND base.HasBaseQueryDef = 1&#xA;) AS x&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(CHAR(4),(x.package_grp + x.rn)) +'_' + StagingTableName,&#xA;&#x9;strParm1 = &#xA;&#x9;'WHERE&#xA;&#x9;&#x9;&quot; + @[User::LoadTypeFilter]  +&quot;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;1&#xA;&#x9;&#x9;&#x9;FROM paga_change_log.' +x.SourceTable +'&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;' +x.KeyColumn +' = ct.' +x.KeyColumn &#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY prefix.package_grp ORDER BY base.StagingTableName) AS rn,&#x9;&#x9;base.StagingTableName,&#xA;&#x9;&#x9;base.KeyColumn,&#xA;&#x9;&#x9;base.SourceTable,&#xA;&#x9;&#x9;base.BaseQuery,&#xA;&#x9;&#x9;prefix.package_grp&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(MAX), MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN ext_prop.value END)) AS BaseQuery,&#xA;&#x9;&#x9;&#x9;CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN&#xA;&#x9;&#x9;&#x9;&#x9;CASE&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN ext_prop.value IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) &gt; 0 THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) = 0 THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;END&#xA;&#x9;&#x9;&#x9;END)) AS HasBaseQueryDef,&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,&#xA;&#x9;&#x9;&#x9;&#x9;major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,&#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA&#xA;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;&#x9;&quot; + @[$Package::SchemaFilter]  +&quot;&#x9;&#x9;) AS table_list&#xA;&#x9;&#x9;INNER JOIN sys.extended_properties as ext_prop ON &#xA;&#x9;&#x9;&#x9;table_list.major_id = ext_prop.major_id&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'&#xA;&#x9;&#x9;GROUP BY&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA,&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName&#xA;&#x9;) AS base&#xA;&#x9;INNER JOIN &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;(tsg.seed *100) + 1000 AS package_grp, &#xA;&#x9;&#x9;&#x9;tsg.TABLE_SCHEMA &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;( &#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed, &#xA;&#x9;&#x9;&#x9;&#x9;ts.TABLE_SCHEMA &#xA;&#x9;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;( &#xA;&#x9;&#x9;&#x9;&#x9;SELECT DISTINCT  &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA &#xA;&#x9;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t &#xA;&#x9;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.TABLE_TYPE = 'BASE TABLE' &#xA;&#x9;&#x9;&#x9;) as ts &#xA;&#x9;&#x9;) AS tsg &#xA;&#x9;) as prefix ON &#xA;&#x9;&#x9;base.TABLE_SCHEMA = prefix.TABLE_SCHEMA&#xA;&#x9;&#x9;AND base.HasBaseQueryDef = 1&#xA;) AS x&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strPackageQuery">
@@ -155,17 +154,15 @@
 	PackageName = CONVERT(CHAR(4),(x.package_grp + x.rn)) +'_' + StagingTableName,
 	strParm1 = 
 	'WHERE
-		NOT EXISTS	(
+		EXISTS	(
 			SELECT 
 				1
-			FROM CHANGETABLE (CHANGES ' +x.SourceTable +',0)
-			WHERE
+			FROM paga_change_log.' +x.SourceTable +'			WHERE
 			' +x.KeyColumn +' = ct.' +x.KeyColumn 
 FROM
 (
 	SELECT
-		ROW_NUMBER() OVER (ORDER BY base.StagingTableName) AS rn,
-		base.StagingTableName,
+			ROW_NUMBER() OVER (PARTITION BY prefix.package_grp ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
 		base.KeyColumn,
 		base.SourceTable,
 		base.BaseQuery,
@@ -193,9 +190,7 @@ FROM
 				major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,
 				t.TABLE_SCHEMA
 			FROM INFORMATION_SCHEMA.TABLES AS t
-			WHERE 
-				t.TABLE_SCHEMA= 'classification'
-		) AS table_list
+			WHERE TABLE_SCHEMA =  'Location'		) AS table_list
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
 		WHERE 
@@ -232,23 +227,23 @@ FROM
       DTS:CreationName=""
       DTS:DTSID="{371DDDD3-CF8C-4ADE-A16A-E356F96228E7}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[$Package::LoadType] == &quot;AllChanges&quot; ? &quot;AND ct.SYS_CHANGE_OPERATION = 'U')&quot;:( @[$Package::LoadType] == &quot;LatestChanges&quot; ?  @[User::strVersionFilter] + &quot; AND ct.SYS_CHANGE_OPERATION = 'U')&quot; : &quot;)&quot;)"
+      DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot;? &quot;)&quot;: @[User::strVersionFilter] + &quot; AND ct.SYS_CHANGE_OPERATION = 'U')&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strUpdateFilter">
       <DTS:VariableValue
-        DTS:DataType="8">)</DTS:VariableValue>
+        DTS:DataType="8">AND ct.SYS_CHANGE_VERSION =  1 AND ct.SYS_CHANGE_OPERATION = 'U')</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{8E522E5C-AE85-4193-9AE8-9FFC6F6542BA}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;AND ct.SYS_CHANGE_VERSION &gt;  &quot; +(DT_STR, 20,1252) @[User::LastSyncVersion] +&quot; AND ct.SYS_CHANGE_VERSION &lt;= &quot; +(DT_STR, 20,1252) @[User::CurrentVersion]"
+      DTS:Expression="&quot;AND ct.SYS_CHANGE_VERSION =  &quot; +(DT_STR, 20,1252)  @[User::ChangeVersion]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strVersionFilter">
       <DTS:VariableValue
-        DTS:DataType="8">AND ct.SYS_CHANGE_VERSION &gt;  0 AND ct.SYS_CHANGE_VERSION &lt;= 20</DTS:VariableValue>
+        DTS:DataType="8">AND ct.SYS_CHANGE_VERSION =  1</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -488,13 +483,25 @@ FROM
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="201,42"
+          Id="Package\EPT_ExecInParallel_Initial"
+          TopLeft="500,40" />
+        <NodeLayout
           Size="280,42"
           Id="Package\EST_GetVersionNumbers"
           TopLeft="30.5,22.5" />
         <NodeLayout
+          Size="210,42"
+          Id="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Deleted"
+          TopLeft="19.5,215.5" />
+        <NodeLayout
           Size="214,42"
           Id="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Inserted"
           TopLeft="14.5,10.5" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Updated"
+          TopLeft="19.5,113.5" />
         <EdgeLayout
           Id="Package\Iterate Through Version Numbers.PrecedenceConstraints[Constraint]"
           TopLeft="124,52.5">
@@ -517,10 +524,6 @@ FROM
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Updated"
-          TopLeft="19.5,113.5" />
         <EdgeLayout
           Id="Package\Iterate Through Version Numbers.PrecedenceConstraints[Constraint 1]"
           TopLeft="125.5,155.5">
@@ -543,57 +546,13 @@ FROM
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="210,42"
-          Id="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Deleted"
-          TopLeft="19.5,215.5" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="312,312"
+          PanelSize="312,313"
           Size="312,356"
           Id="Package\Iterate Through Version Numbers"
           TopLeft="168,153" />
-        <NodeLayout
-          Size="201,42"
-          Id="Package\EPT_ExecInParallel_Initial"
-          TopLeft="500,40" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[InitialLoad]"
-          TopLeft="310.5,43.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="189.5,17.5"
-              Start="0,0"
-              End="182,17.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="90.75,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="90.75,0"
-                    Point2="94.75,0"
-                    Point3="94.75,4" />
-                  <mssgle:LineSegment
-                    End="94.75,13.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="94.75,13.5"
-                    Point2="94.75,17.5"
-                    Point3="98.75,17.5" />
-                  <mssgle:LineSegment
-                    End="182,17.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="62.603359375,-22,64.29328125,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[ChangeLoad]"
           TopLeft="170.5,64.5">
@@ -630,15 +589,51 @@ FROM
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[InitialLoad]"
+          TopLeft="310.5,43.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="189.5,17.5"
+              Start="0,0"
+              End="182,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="90.75,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="90.75,0"
+                    Point2="94.75,0"
+                    Point3="94.75,4" />
+                  <mssgle:LineSegment
+                    End="94.75,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.75,13.5"
+                    Point2="94.75,17.5"
+                    Point3="98.75,17.5" />
+                  <mssgle:LineSegment
+                    End="182,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="62.603359375,-22,64.29328125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <PrecedenceConstraint
-    design-time-name="Package.PrecedenceConstraints[InitialLoad]">
+    design-time-name="Package.PrecedenceConstraints[ChangeLoad]">
     <ShowAnnotation>ConstraintName</ShowAnnotation>
   </PrecedenceConstraint>
   <PrecedenceConstraint
-    design-time-name="Package.PrecedenceConstraints[ChangeLoad]">
+    design-time-name="Package.PrecedenceConstraints[InitialLoad]">
     <ShowAnnotation>ConstraintName</ShowAnnotation>
   </PrecedenceConstraint>
 </Objects>]]></DTS:DesignTimeProperties>
