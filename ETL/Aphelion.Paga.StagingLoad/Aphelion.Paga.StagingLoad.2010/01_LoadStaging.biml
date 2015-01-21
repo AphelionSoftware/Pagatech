@@ -121,15 +121,8 @@
 				string TableSchema = row[1].ToString();
 				string TableName = row[2].ToString();
 				string BaseQuery = row[3].ToString();
-				string KeyColumn = row[4].ToString();
-				string SourceTable = row[5].ToString();
 
-				string Filter = " WHERE EXISTS "+
-										"( "+
-											"SELECT "+ 
-													"1 "+
-												"FROM [paga_change_log].[dbo]." +SourceTable +" AS ct "+
-												"WHERE base_query.SourceKey = ct." +KeyColumn +"";
+
 		#>	
 				<Package Name="<#=PackageName#>" ConstraintMode="Linear"  ProtectionLevel="EncryptSensitiveWithUserKey"  AutoCreateConfigurationsType="None">
 				<Parameters>
@@ -140,14 +133,14 @@
 				
 				<Variables>
 						<Variable Name="BaseQuery" DataType="String"><#=BaseQuery#></Variable>
-						<Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]+ @[$Package::EndOfQuery]</Variable>
+						<Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery] +" " +@[$Package::EndOfQuery]</Variable>
 					</Variables>
 				
 				<Tasks>
 					<Dataflow Name="DFT_Load <#=String.Format("{0}_{1}",TableSchema, TableName)#>">
 						<Transformations>
 						<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
-							<VariableInput VariableName="User.BaseQuery"></VariableInput>
+							<VariableInput VariableName="User.FullQueryText"></VariableInput>
 						</OleDbSource>
 						<DerivedColumns Name="dc_ChangeData">
 								<Columns>
