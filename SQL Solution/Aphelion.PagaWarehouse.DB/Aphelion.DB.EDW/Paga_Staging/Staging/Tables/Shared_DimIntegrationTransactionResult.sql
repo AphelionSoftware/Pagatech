@@ -13,7 +13,11 @@
 
 
 
+
+
 GO
 CREATE UNIQUE CLUSTERED INDEX [ix_Shared_DimIntegrationTransactionResult]
-    ON [Staging].[Shared_DimIntegrationTransactionResult]([SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+    ON [Staging].[Shared_DimIntegrationTransactionResult]([SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC, [SourceKey] ASC);
+
+
 

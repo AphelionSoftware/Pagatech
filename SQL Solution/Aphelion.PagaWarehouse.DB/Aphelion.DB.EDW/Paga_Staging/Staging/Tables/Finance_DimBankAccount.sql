@@ -27,7 +27,15 @@
 
 
 
+
+
+
+
 GO
 CREATE UNIQUE CLUSTERED INDEX [ix_Finance_DimBankAccount]
-    ON [Staging].[Finance_DimBankAccount]([SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+    ON [Staging].[Finance_DimBankAccount]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+
+
+
+
 

@@ -14,7 +14,15 @@
 
 
 
+
+
+
+
 GO
 CREATE UNIQUE CLUSTERED INDEX [ix_Location_DimCountry]
-    ON [Staging].[Location_DimCountry]([SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+    ON [Staging].[Location_DimCountry]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+
+
+
+
 

@@ -50,7 +50,11 @@
 
 
 
+
+
 GO
 CREATE UNIQUE CLUSTERED INDEX [ix_Shared_FactProcessEvent]
-    ON [Staging].[Shared_FactProcessEvent]([SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+    ON [Staging].[Shared_FactProcessEvent]([SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC, [SourceKey] ASC);
+
+
 

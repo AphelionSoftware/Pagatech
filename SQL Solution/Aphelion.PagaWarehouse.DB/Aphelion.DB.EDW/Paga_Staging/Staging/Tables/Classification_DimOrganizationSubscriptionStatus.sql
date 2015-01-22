@@ -13,7 +13,15 @@
 
 
 
+
+
+
+
 GO
 CREATE UNIQUE CLUSTERED INDEX [ix_Classification_DimOrganizationSubscriptionStatus]
-    ON [Staging].[Classification_DimOrganizationSubscriptionStatus]([SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+    ON [Staging].[Classification_DimOrganizationSubscriptionStatus]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+
+
+
+
 

@@ -12,7 +12,8 @@
 
 
 
+
+
 GO
-CREATE UNIQUE CLUSTERED INDEX [ix_Mapping_PaymentUseCaseToTxTypeMap]
-    ON [Staging].[Mapping_PaymentUseCaseToTxTypeMap]([SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+
 
