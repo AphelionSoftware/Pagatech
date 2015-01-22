@@ -10,8 +10,8 @@
   DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="100_DummyTablePackage"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{A03E46BE-FE23-4939-B963-19FE4F4CC36E}"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{BDD10389-A9F6-45F5-9659-CCDE98F702F6}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -65,16 +65,6 @@
       DTS:ObjectName="FullQueryText">
       <DTS:VariableValue
         DTS:DataType="8">SELECT 	* FROM ( 	SELECT  		AgentCommissionTypeId AS SourceKey,  		CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name  	FROM dbo.AgentCommissionType ) AS base_query</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{A6E670D5-2BFC-4182-A56A-91900CF22A85}"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="strChangeOperation">
-      <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -624,6 +614,14 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
