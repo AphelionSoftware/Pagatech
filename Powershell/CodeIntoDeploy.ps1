@@ -19,40 +19,27 @@ cls
 git fetch --all 2>&1 | %{ "$_" } 
 Echo ""
 
-Echo "Pull Origin" $DepToDep
+Echo "Pull Remote Deployment Branch" $DepToDep
 git pull --rebase --progress "origin"$DepToDep 2>&1 | %{ "$_" }
 Echo "" 
 
-Echo "Checkout " $BranchPrefix"/Deployment"
+Echo "Checkout Deployment Branch " $BranchPrefix"/Deployment"
 git checkout --force $BranchPrefix"/Deployment" 2>&1 | %{ "$_" }
 Echo "" 
 
-Echo "Pull origin"$DepToDev
-git pull --rebase --progress "origin"$DepToDev 2>&1 | %{ "$_" } 
-Echo ""
-
-Echo "merge " $DevBranch
+Echo "Merge Development Branch Into Deployment "$DepToDev
 git merge $DevBranch 2>&1 | %{ "$_" } 
 Echo ""
 
-Echo "Push origin" $DepToDep
+
+Echo "Push Deployment to Remote" $DepToDep
 git push --progress "origin" $DepToDep 2>&1 | %{ "$_" } 
 Echo ""
 
-Echo "checkout " $BranchPrefix"/Development"
+Echo "Push Development to Remote" $DevToDev
+git push --progress "origin" $DevToDev 2>&1 | %{ "$_" } 
+Echo ""
+
+Echo "Checkout Development" $BranchPrefix"/Development"
 git checkout --force $BranchPrefix"/Development" 2>&1 | %{ "$_" } 
 Echo ""
-
-Echo "Push origin"$DepToDev 
-git push --progress "origin"$DepToDev  2>&1 | %{ "$_" }
-Echo "" 
-
-Echo  "Push origin" $DepToDep
-git push --recurse-submodules=check --progress "origin" $DepToDep 2>&1 | %{ "$_" } 
-Echo ""
-
-
-Echo  "Push origin" $DevToDev
-git push --recurse-submodules=check --progress "origin" $DevToDev 2>&1 | %{ "$_" } 
-Echo ""
-
