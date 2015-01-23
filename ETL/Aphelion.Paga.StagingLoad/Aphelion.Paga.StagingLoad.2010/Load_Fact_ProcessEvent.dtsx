@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/29/2014 1:03:27 PM"
@@ -6,48 +6,32 @@
   DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
   DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
   DTS:DelayValidation="True"
-  DTS:DTSID="{F9D176D2-FF3E-4F5D-B0CA-8D82CA5CC552}"
+  DTS:DTSID="{6B9B4281-13D7-4EDD-81C0-1C0E193F7272}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="Load_Fact_ProcessEvent"
   DTS:PackageType="5"
-  DTS:VersionBuild="69"
-  DTS:VersionGUID="{17F99F11-7F1B-4D00-A34D-BAD1449AC7A0}">
+  DTS:VersionBuild="70"
+  DTS:VersionGUID="{967037C8-AFCF-491F-ADD9-C187521AF884}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[.\sql2012.Paga_Staging]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{E1DACD41-FA60-4680-98C0-2458BD4F01EC}"
+      DTS:DTSID="{A87A0E1D-7F59-4AFF-A873-DE7BCA7A8D85}"
       DTS:ObjectName=".\sql2012.Paga_Staging">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[10.5.0.1,1533.paga_bi.christina.leo.aphelion]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{9C11CAF0-451D-4D5B-9666-60844C157525}"
-      DTS:ObjectName="10.5.0.1,1533.paga_bi.christina.leo.aphelion">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Retain="True"
-          DTS:ConnectionString="Data Source=10.5.0.1,1533;User ID=christina.leo.aphelion;Initial Catalog=paga_bi;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAO2pnOxchMkKz2vwu38peOAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACbZjnKb/F5U35krUjEG1z9lNVu3tDeb4NHURtJfRRsNwAAAAAOgAAAAAIAACAAAACPcJXXYdbqwTwO9FYukb6hb+QSy+mnhl5wOnT4239pTiAAAACBd5zHYplmgnCOVD2NjI6GuzYYS2C0WhoUiuHuEPw9iEAAAADZBGeKIm2IV3IPywotnjHklcYCXCAkBQ0YPwH8ohjs+34uF9EQuJtnt9/+OifLOfLAGs1smp6Ml8scG2NwoZw6</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{CC25B610-DF78-431F-A0D9-43A6F03FD52C}"
+      DTS:DTSID="{7451C460-048A-441B-A52A-D61920422AAB}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="Iterations">
@@ -56,7 +40,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{0A2C9826-16DD-4272-A35F-232619C88132}"
+      DTS:DTSID="{0399C7B0-658F-4729-846B-169E40DB3C84}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LoopPosition">
@@ -65,7 +49,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{4D09CC31-71B6-494A-B57E-A7E9C78249A4}"
+      DTS:DTSID="{A47ADDC6-0AAA-43DB-A450-CA3B5D22AB44}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="MaxID">
@@ -74,7 +58,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{41B79ECC-6B95-4F10-BE1B-F0CED4DC1F9C}"
+      DTS:DTSID="{72088C42-8163-43D3-9B60-EB977CE71940}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::LoopPosition] == 0 ? 0 :  (@[User::LoopPosition] * 1000)"
       DTS:IncludeInDebugDump="2345"
@@ -85,7 +69,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{2190E6A3-0EE3-4D30-B608-5BFD8EDAA756}"
+      DTS:DTSID="{9E4FD38A-D174-4A30-9E7B-8414AB6B4330}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Variable">
@@ -98,7 +82,7 @@
       DTS:refId="Package\EST_GetIterations"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{2CA19724-E298-4814-98A0-A8C45BE5E84B}"
+      DTS:DTSID="{07092C7A-0C55-4F2C-91F7-7D7745A949E5}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
       DTS:ObjectName="EST_GetIterations"
@@ -107,7 +91,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{9C11CAF0-451D-4D5B-9666-60844C157525}"
+          SQLTask:Connection="{46109E87-51F4-4F43-B189-DD70108A8BF8}"
           SQLTask:SqlStatementSource="SELECT (COUNT(DISTINCT(CAST(UserID AS INT)))/1000)+1 AS Iterations&#xA;FROM dbo.Process&#xA;WHERE &#xA;&#x9;UserID IS NULL"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -127,7 +111,7 @@
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
       DTS:Disabled="True"
-      DTS:DTSID="{6827F545-73C1-4391-BEAA-8DED72A72E0B}"
+      DTS:DTSID="{D9F32368-B4D7-4583-AA50-02F85667D3DC}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
       DTS:ObjectName="EST_GetMaxProcessID"
@@ -136,7 +120,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{E1DACD41-FA60-4680-98C0-2458BD4F01EC}"
+          SQLTask:Connection="{A87A0E1D-7F59-4AFF-A873-DE7BCA7A8D85}"
           SQLTask:SqlStatementSource="SELECT MAX(CAST (DimInitiatingUserSourceKey AS INT)) AS MaxID FROM Staging.Activity_FactProcessTx"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -150,7 +134,7 @@
       DTS:AssignExpression="@[User::LoopPosition] = @[User::LoopPosition] +1"
       DTS:CreationName="STOCK:FORLOOP"
       DTS:Description="For Loop Container"
-      DTS:DTSID="{B1CB4B04-E342-43DB-9157-9A3A0DA2D67E}"
+      DTS:DTSID="{A4A2E7AD-AC8D-4C25-AFF1-97D983DE52BA}"
       DTS:EvalExpression="@[User::LoopPosition] &lt; @[User::Iterations]"
       DTS:ExecutableType="STOCK:FORLOOP"
       DTS:InitExpression="@[User::LoopPosition] = 0"
@@ -163,7 +147,7 @@
           DTS:refId="Package\Load_In_Batches_of_10000_UserIDs\DFT_Load_Batched_ProcessTx"
           DTS:CreationName="{5918251B-2970-45A4-AB5F-01C3C588FE5A}"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{6BAAAA72-86DF-4D1A-B91B-BE44D9BF16FF}"
+          DTS:DTSID="{A44BF88D-963D-4C90-9490-839E062A7809}"
           DTS:ExecutableType="{5918251B-2970-45A4-AB5F-01C3C588FE5A}"
           DTS:LocaleID="-1"
           DTS:ObjectName="DFT_Load_Batched_ProcessTx">
@@ -223,8 +207,8 @@
                   <connections>
                     <connection
                       refId="Package\Load_In_Batches_of_10000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[10.5.0.1,1533.paga_bi.christina.leo.aphelion]"
-                      connectionManagerRefId="Package.ConnectionManagers[10.5.0.1,1533.paga_bi.christina.leo.aphelion]"
+                      connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[SourceDB]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1584,7 +1568,7 @@
           DTS:refId="Package\Load_In_Batches_of_10000_UserIDs\EST_BuildStagingTableOnSource"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{BB1415E3-B105-4743-993D-39F80A385372}"
+          DTS:DTSID="{EC480B92-379B-4531-A898-62E5446FD8BD}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_BuildStagingTableOnSource"
@@ -1593,7 +1577,7 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{9C11CAF0-451D-4D5B-9666-60844C157525}"
+              SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
               SQLTask:SqlStatementSource="DECLARE @UserID AS INT = ?&#xA;/*create indexed list that we can use to drive later data retrieval*/&#xA;SELECT &#xA;&#x9;ProcessID, &#xA;&#x9;ProcessTypeId, &#xA;&#x9;UserID = COALESCE(UserID, -1)&#xA;INTO #MasterList&#xA;FROM dbo.Process&#xA;&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON #MasterList&#xA;(&#x9;&#xA;&#x9;UserID,&#xA;&#x9;ProcessID&#xA;);&#xA;&#xA;DECLARE @OffSet AS INT = ?&#xA;&#xA;&#xA;/*create subset of MasterList to enable batching*/&#xA;SELECT &#xA;&#x9;*&#xA;INTO #PullList&#xA;FROM &#xA;(&#x9;/*determines the batch size*/&#xA;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;UserID&#xA;&#x9;FROM #MasterList&#xA;&#x9;WHERE UserID = -1&#xA;&#x9;--ORDER BY UserID ASC&#xA;&#x9;--OFFSET @OffSet ROWS&#xA;&#x9;--FETCH NEXT 10000 ROWS ONLY&#xA;) AS ml1&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ProcessID,&#xA;&#x9;&#x9;ProcessTypeID&#xA;&#x9;FROM #MasterList AS ml&#xA;&#x9;WHERE&#xA;&#x9;&#x9;ml.UserID = ml1.UserID&#xA;) AS ml2&#xA;CREATE UNIQUE CLUSTERED INDEX ix_PullList ON #PullList&#xA;(&#x9;&#xA;&#x9;UserID,&#xA;&#x9;ProcessTypeId, &#xA;&#x9;ProcessID&#xA;);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;/*Pull only the rows we need from ProcessData for the subset, &#xA;add index to assist with pivoting in the next stage.*/&#xA;&#xA;&#xA;&#xA;SELECT &#xA;&#x9;*&#xA;INTO #PivotList&#xA;FROM&#xA;(&#xA;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;UserID&#xA;&#x9;FROM #PullList&#xA;) AS pl&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;p1.ProcessID,&#xA;&#x9;&#x9;p0.ProcessDataID,&#xA;&#x9;&#x9;Name,&#xA;&#x9;&#x9;Value&#xA;&#x9;FROM dbo.ProcessData as p0&#xA;&#x9;INNER JOIN #PullList AS p1 ON&#xA;&#x9;&#x9;p0.ProcessId = p1.ProcessId&#xA;&#x9;WHERE&#xA;&#x9;&#x9;p1.UserId = pl.UserID&#xA;) AS pd&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_PivotList on #PivotList&#xA;(ProcessID, Name, Value, ProcessDataID);&#xA;&#xA;/*Create Pivoted Version of ProcessData*/&#xA;&#xA;&#xA;SELECT &#xA;&#x9;*&#xA;INTO #ProcessData&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;pd.ProcessId,&#xA;&#x9;&#x9;WithdrawalCode=MAX(CASE WHEN pd.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd.value) END),&#xA;&#x9;&#x9;ATMReferenceNumber=MAX(CASE WHEN pd.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd.value) END),&#xA;&#x9;&#x9;CardProcessorName=MAX(CASE WHEN pd.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;CustomerBillerAccount=MAX(CASE WHEN pd.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;CustomerPhoneNumber=MAX(CASE WHEN pd.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;DepositNumber=MAX(CASE WHEN pd.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;LinkedPhoneNumber=MAX(CASE WHEN pd.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;MerchantConfirmationCode=MAX(CASE WHEN pd.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;MerchantCustomerAccountNumber=MAX(CASE WHEN pd.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;PaymentSource=MAX(CASE WHEN pd.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;ReferenceNumber=MAX(CASE WHEN pd.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;RequestedProcessChannel=MAX(CASE WHEN pd.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;SenderPhoneNumber=MAX(CASE WHEN pd.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END),&#xA;&#x9;&#x9;DependentFactProcessTxSourceKey=MAX(CASE WHEN pd.Name='dependentProcessId' THEN CONVERT(INT,pd.value) END),&#xA;&#x9;&#x9;OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd.Name='originalProcessId' THEN CONVERT(INT,pd.value) END),&#xA;&#x9;&#x9;VerificationStatus=MAX(CASE WHEN pd.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd.value) END),&#xA;&#x9;&#x9;DimVerifiedByUserSourceKey=MAX(CASE WHEN pd.Name='verifiedByUserId' THEN CONVERT(INT,pd.value) END),&#xA;&#x9;&#x9;IntegrationReferenceNumber= MAX(CASE WHEN pd.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd.value) END),&#xA;&#x9;&#x9;DimApprovedByUserSourceKey= MAX(CASE WHEN pd.Name='approvedByUserId' THEN CONVERT(INT,pd.value) END),&#xA;&#x9;&#x9;DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd.Name='cancelledByUserId' THEN CONVERT(INT,pd.value) END)&#xA;&#x9;FROM #PivotList AS pd&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;pd.ProcessId&#xA;) AS pd_pivot&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_ProcessData_Temp ON #ProcessData&#xA;(ProcessId);&#xA;&#xA;/*Create Staging Table to use in SSIS Data Flow*/&#xA;&#xA;SELECT&#xA;&#x9;base_query.*&#xA;INTO ##ProcessTransactions&#xA;FROM&#xA;(&#xA;&#x9;/*Limit our result set to the subset of UserIDs we isolated in the PullList*/&#xA;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;ProcessTypeId, &#xA;&#x9;&#x9;UserID &#xA;&#x9;FROM #PullList&#xA;) AS driver&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT&#x9;&#xA;&#x9;&#x9;SourceKey = p.ProcessID,&#xA;&#x9;&#x9;change_operation = 'I',&#xA;&#x9;&#x9;p.AgentCommissionAmount, &#xA;&#x9;&#x9;ProcessAmount = p.Amount, &#xA;&#x9;&#x9;p.ProcessCode, &#xA;&#x9;&#x9;ProcessFee = p.Fee, &#xA;&#x9;&#x9;DimCompletedDateID=CONVERT(INT,CONVERT(VARCHAR(8),p.CreatedDate,112)), &#xA;&#x9;&#x9;DimCompletedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CreatedDate, 114),':','')),&#xA;&#x9;&#x9;DimCreatedDateID=CONVERT(INT,CONVERT(VARCHAR(8),p.CreatedDate,112)),  &#xA;&#x9;&#x9;DimCreatedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CreatedDate, 114),':','')),&#xA;&#x9;&#x9;DimStartedDateID=CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)),  &#xA;&#x9;&#x9;DimStartedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),&#xA;&#x9;&#x9;DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, &#xA;&#x9;&#x9;DimChannelSourceKey = p.ProcessChannelId, &#xA;&#x9;&#x9;DimInitiatingUserSourceKey = COALESCE(p.UserID, -1),&#xA;&#x9;&#x9;DimOnBehalffUserSourceKey = p.ForUserId, &#xA;&#x9;&#x9;DimProcessStatusSourceKey = p.ProcessStatusId, &#xA;&#x9;&#x9;DimProcessTypeSourceKey = p.ProcessTypeId, &#xA;&#x9;&#x9;DimReceivingUserSourceKey = p.ToUserId,&#xA;&#x9;&#x9;pd.*&#xA;&#x9;FROM dbo.Process AS p&#xA;&#x9;OUTER APPLY &#xA;&#x9;/*not all processes have processData records, use apply to eliminate the processdata.sourcekey column that would be present with a join &#xA;&#x9;so we don't have to explicitly state all the column names in the main select*/&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;WithdrawalCode,&#xA;&#x9;&#x9;&#x9;ATMReferenceNumber,&#xA;&#x9;&#x9;&#x9;CardProcessorName,&#xA;&#x9;&#x9;&#x9;CustomerBillerAccount,&#xA;&#x9;&#x9;&#x9;CustomerPhoneNumber,&#xA;&#x9;&#x9;&#x9;DepositNumber,&#xA;&#x9;&#x9;&#x9;LinkedPhoneNumber,&#xA;&#x9;&#x9;&#x9;MerchantConfirmationCode,&#xA;&#x9;&#x9;&#x9;MerchantCustomerAccountNumber,&#xA;&#x9;&#x9;&#x9;PaymentSource,&#xA;&#x9;&#x9;&#x9;ReferenceNumber,&#xA;&#x9;&#x9;&#x9;RequestedProcessChannel,&#xA;&#x9;&#x9;&#x9;SenderPhoneNumber,&#xA;&#x9;&#x9;&#x9;DependentFactProcessTxSourceKey,&#xA;&#x9;&#x9;&#x9;OriginalFactProcessTxSourceKey,&#xA;&#x9;&#x9;&#x9;VerificationStatus,&#xA;&#x9;&#x9;&#x9;DimVerifiedByUserSourceKey,&#xA;&#x9;&#x9;&#x9;IntegrationReferenceNumber,&#xA;&#x9;&#x9;&#x9;DimApprovedByUserSourceKey,&#xA;&#x9;&#x9;&#x9;DimCancellationApprovedByUserSourceKey&#xA;&#x9;&#x9;FROM #ProcessData AS pd0&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;p.ProcessID = pd0.ProcessID&#x9;&#x9;&#xA;&#x9;) AS pd&#xA;&#x9;WHERE&#xA;&#x9;&#x9;COALESCE(p.UserID, -1) = driver.UserID&#xA;&#x9;&#x9;AND p.ProcessTypeID = driver.ProcessTypeID&#xA;) AS base_query" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="1"
@@ -1614,7 +1598,7 @@
           DTS:refId="Package\Load_In_Batches_of_10000_UserIDs\EST_Drop_Temp_Tables"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{96C9A7EC-E179-45AC-B556-EC60FD31A69C}"
+          DTS:DTSID="{5F6062F5-D95E-4258-8F97-6FC3AAB3A116}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_Drop_Temp_Tables"
@@ -1623,7 +1607,7 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{9C11CAF0-451D-4D5B-9666-60844C157525}"
+              SQLTask:Connection="{46109E87-51F4-4F43-B189-DD70108A8BF8}"
               SQLTask:SqlStatementSource="&#xA;DROP TABLE ##ProcessTransactions" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
@@ -1632,7 +1616,7 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Load_In_Batches_of_10000_UserIDs.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{BFD78B98-EC7E-4A59-BF84-9E90C21E821C}"
+          DTS:DTSID="{F103CC48-48A4-4284-B463-6B28A1D2ECE9}"
           DTS:From="Package\Load_In_Batches_of_10000_UserIDs\EST_BuildStagingTableOnSource"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
@@ -1640,7 +1624,7 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Load_In_Batches_of_10000_UserIDs.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{BEDEA3F8-1D9C-4570-A677-A5542224AB04}"
+          DTS:DTSID="{73536844-92D9-4CDC-A977-62D724FD8B50}"
           DTS:From="Package\Load_In_Batches_of_10000_UserIDs\DFT_Load_Batched_ProcessTx"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
@@ -1652,7 +1636,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{93EAE466-04EC-4ADD-97A6-3E759B6E4B39}"
+      DTS:DTSID="{7AFF43C8-6D62-4D68-AB53-17B3C74D3C1B}"
       DTS:From="Package\EST_GetMaxProcessID"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1660,7 +1644,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{127036F8-7A44-4788-90AB-07D75590B73A}"
+      DTS:DTSID="{248708D9-E4FB-46DD-A52C-691D70ECD2A7}"
       DTS:From="Package\EST_GetIterations"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"

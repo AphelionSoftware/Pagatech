@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/29/2014 1:03:27 PM"
@@ -6,21 +6,21 @@
   DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
   DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
   DTS:DelayValidation="True"
-  DTS:DTSID="{2A2292BD-2C8F-4C51-B14E-BFD558F157CF}"
+  DTS:DTSID="{FBDD9F54-A735-47F3-AA2B-EA4E88B8B531}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.3436.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="Load_Fact_FinancialTransaction"
   DTS:PackageType="5"
-  DTS:VersionBuild="62"
-  DTS:VersionGUID="{5E111D9E-6D5E-4851-AA0B-391B46A3270D}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{674F7691-0380-4DDF-89D0-E76DD82478F9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[10.5.0.1,1533.paga_bi.christina.leo.aphelion]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{C3DF1853-1DCE-425E-A9E5-A37FC26AB70F}"
+      DTS:DTSID="{7065629A-D849-4D71-8833-AA3CCA23FF16}"
       DTS:ObjectName="10.5.0.1,1533.paga_bi.christina.leo.aphelion">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -29,14 +29,14 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAO2pnOxchMkKz2vwu38peOAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACDtVobJGY85INBn4gimR9wcuVhwQV2gflj0ZTL7gfr3QAAAAAOgAAAAAIAACAAAACkHNzl4WvSAL8Wsj0RI/pI/349Jf823VvDs94myCH0WiAAAACl0Yj1qxlBcoSj1cigUMiAGin2ShkTmJtDqaEqSErSBkAAAABMPJp8TgOd4d7EyITbVYIBlkV4kRPMRyvlAytEDEyxY+eJBtWw6MI1E62NJLy4kn6qS7nz1sjXO0qs7hF/MJTK</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0u0bgLAzOEGKSqCiv35A5gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADee24fgh7YKsER5AS4jp4Sk79vhFBDc+lGG/xY8pmq/QAAAAAOgAAAAAIAACAAAACOtPgbDuulY1qqmdYgYlgpo6K3zCtZ36ulibMt5aQZUSAAAACFb33fiJuC10R01kv4l8REcQhX1vN7folN903u7+LM0EAAAABn8caHKye4DVJOs2da95CeRIAvH0zW0I0+ar/cpibMo04vasVzjZ+IQFJ5UCb5LhIDaVApF4fk4oVORS6b5Tby</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[__sql2012.Paga_Staging]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{A21F36FE-946C-401E-AF1B-F123F46ADFF7}"
+      DTS:DTSID="{05ED6AC3-93D6-4A9D-8E40-3F06E7DDFC02}"
       DTS:ObjectName="__sql2012.Paga_Staging">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -47,7 +47,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{362CA959-F2A3-40EC-AAD6-E15F5A18752F}"
+      DTS:DTSID="{30C71CFA-7D6B-4BCF-B0E4-544FE040E83A}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="Iterations">
@@ -56,7 +56,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{C5C9C640-EDF4-4E62-A7AE-170ACA8676EF}"
+      DTS:DTSID="{622D3D3D-BBC5-4A99-9C5F-2DD9CEE84A2C}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LoopPosition">
@@ -65,7 +65,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{0DBAC90D-73AC-4AC3-828E-DD1085FBE91D}"
+      DTS:DTSID="{8B45AA23-F734-44C6-B5D4-E7892008336D}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="MaxID">
@@ -74,7 +74,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{785B9332-468C-4B3C-8146-9C5C0DA867F1}"
+      DTS:DTSID="{C01B5FB5-677A-4E57-BB65-720D6FE0834A}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::LoopPosition] == 0 ? 0 :  (@[User::LoopPosition] * 100000)"
       DTS:IncludeInDebugDump="2345"
@@ -85,7 +85,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{CF3B43D1-6FE1-44B5-B246-4FBACC97BE05}"
+      DTS:DTSID="{D01E41F2-A6CB-486B-A812-F4081BE7C287}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Variable">
@@ -98,7 +98,7 @@
       DTS:refId="Package\EST_BuildStagingTableOnSource"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{A7196A75-CE8E-4F0E-9BC4-505794996DB0}"
+      DTS:DTSID="{B3AB5EA4-6A4F-4945-876A-E1E8B4123036}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
       DTS:ObjectName="EST_BuildStagingTableOnSource"
@@ -107,7 +107,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C3DF1853-1DCE-425E-A9E5-A37FC26AB70F}"
+          SQLTask:Connection="{7065629A-D849-4D71-8833-AA3CCA23FF16}"
           SQLTask:SqlStatementSource="/* 20141012 Get Latest row moved to target */&#xA;DECLARE @MaxSourceKey AS INT = ?&#xA;&#xA;CREATE TABLE #Reversals &#xA;(&#xA;&#x9;FinancialTransactionId INT,&#xA;&#x9;EffDate DATETIME,&#xA;&#x9;OrigTxID INT,&#xA;&#x9;RelatedTxID INT&#xA;);&#xA;&#xA;/*create table used to drive the population of the staging data*/&#xA;INSERT INTO #Reversals&#xA;(&#xA;&#x9;FinancialTransactionId,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT&#xA;&#x9;&#x9;ft1.FinancialTransactionId,&#xA;&#x9;&#x9;ft1.TransactionDate AS EffDate,&#xA;&#x9;&#x9;ft1.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;ft1.Reverses AS RelatedTxID&#xA;FROM dbo.FinancialTransaction AS ft1&#xA;WHERE&#xA;&#x9;ft1.FinancialTransactionId &gt; @maxSourceKey&#xA;&#xA;&#xA;INSERT INTO #Reversals&#xA;(&#xA;&#x9;financialTransactionID,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT&#xA;&#x9;&#x9;ft2.FinancialTransactionId,&#xA;&#x9;&#x9;ft2.TransactionDate AS EffDate,&#xA;&#x9;&#x9;ft2.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;ft2.Reverses AS RelatedTxID&#xA;FROM dbo.FinancialTransaction AS ft2&#xA;WHERE &#xA;&#x9;ft2.FinancialTransactionId IN&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT r.relatedtxID &#xA;&#x9;&#x9;FROM #Reversals as r&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;RelatedTxID IS NOT NULL &#xA;&#x9;&#x9;&#x9;AND RelatedTxID &lt;= @Maxsourcekey&#xA;&#x9;);&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Reversals_TxID ON #Reversals&#xA;(FinancialTransactionId, RelatedTxID);&#xA;&#xA;&#xA;CREATE NONCLUSTERED INDEX ix_Reversals_NullRelatedTxID ON #Reversals&#xA;(RelatedTxID)&#xA;WHERE RelatedTxID IS NULL;&#xA;&#xA;&#xA;CREATE NONCLUSTERED INDEX ix_Reversals_RelatedTxID ON #Reversals&#xA;(RelatedTxID);&#xA;&#xA;&#xA;/*Run recursive query to populate related financial transaction ID&#xA;for filter set created in previous step. */&#xA;&#xA;CREATE TABLE #ReversalChain&#xA;(&#xA;&#x9;TxID  INT,&#xA;&#x9;EffDate  DATETIME,&#xA;&#x9;OrigTxID  INT,&#xA;&#x9;RelatedTxID  INT&#xA;);&#xA;WITH reversals AS&#xA;(&#xA;&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ft1.FinancialTransactionId,&#xA;&#x9;&#x9;ft1.EffDate AS EffDate,&#xA;&#x9;&#x9;ft1.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;ft1.RelatedTxID AS RelatedTxID&#xA;&#x9;FROM #Reversals AS ft1&#xA;&#x9;WHERE&#xA;&#x9;&#x9;ft1.RelatedTxID IS NULL&#xA;&#x9;UNION ALL&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ft2.FinancialTransactionId,&#xA;&#x9;&#x9;R.EffDate,&#xA;&#x9;&#x9;R.OrigTxID,&#xA;&#x9;&#x9;ft2.RelatedTxID&#xA;&#x9;FROM #Reversals AS ft2&#xA;&#x9;INNER JOIN reversals AS r&#xA;&#x9;&#x9;ON ft2.RelatedTxID = R.FinancialTransactionId&#xA;)&#xA;INSERT INTO #ReversalChain&#xA;(&#xA;&#x9;TxID,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT&#xA;&#x9;reversals.financialTransactionId,&#xA;&#x9;reversals.EffDate,&#xA;&#x9;reversals.OrigTxID,&#xA;&#x9;reversals.relatedTxID&#xA;FROM reversals;&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Reversals_TxID ON #ReversalChain&#xA;(TxID);&#xA;&#xA;/*populate temporary staging table used to by SSIS*/&#xA;&#xA;SELECT &#xA;&#x9;By_User.*,&#xA;&#x9;change_operation = 'I'&#xA;INTO ##BaseQuery&#xA;FROM &#xA;(&#xA;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;UserID = COALESCE(userID,-1), &#xA;&#x9;&#x9;[FinancialTransactionTypeId] &#xA;&#x9;FROM dbo.financialTransaction&#xA;&#x9;WHERE&#xA;&#x9;&#x9;FinancialTransactionId &gt; @MaxSourceKey /*same filter used to create reversals table, so we're limiting to the same set of TXIDs*/&#xA;) AS driver&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;SourceKey = ft.FinancialTransactionId, &#xA;&#x9;&#x9;DimCreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),CreatedDate,112)), &#xA;&#x9;&#x9;DimCreatedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), CreatedDate, 114),':','')), &#xA;&#x9;&#x9;DimEffectiveDateID = CONVERT(INT,CONVERT(VARCHAR(8),r2.EffDate,112)), &#xA;&#x9;&#x9;DimEffectiveTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), r2.EffDate, 114),':','')), &#xA;&#x9;&#x9;DimTransactionDateID = CONVERT(INT,CONVERT(VARCHAR(8),ft.TransactionDate,112)),&#xA;&#x9;&#x9;DimTransactionTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), ft.TransactionDate, 114),':','')), &#xA;&#x9;&#x9;DimFinancialTxTypeSourceKey = FinancialTransactionTypeId, &#xA;&#x9;&#x9;DimFinancialTxSubTypeSourceKey = FinancialTransactionSubTypeId, &#xA;&#x9;&#x9;DimOrganizationUnitLevel4SourceKey = orgUnit.OrganizationUnitId, &#xA;&#x9;&#x9;DimUserSourceKey = UserId, &#xA;&#x9;&#x9;FactProcessTxSourceKey = COALESCE(ProcessId, -1), &#xA;&#x9;&#x9;RelatedFactFinancialTxHeaderSourceKey = r2.relatedTxID, &#xA;&#x9;&#x9;OriginalFactFinancialTxHeaderSourceKey = r2.OrigTxID, &#xA;&#x9;&#x9;DimCurrencySourceKey = CurrencyId, &#xA;&#x9;&#x9;TextDescription = CONVERT(VARCHAR(100),[Description]), &#xA;&#x9;&#x9;Amount, &#xA;&#x9;&#x9;ExchangeRate, &#xA;&#x9;&#x9;ExternalReferenceNumber,&#xA;&#x9;&#x9;Fee, &#xA;&#x9;&#x9;ForeignCurrencyAmount, &#xA;&#x9;&#x9;ReferenceNumber, &#xA;&#x9;&#x9;ShortCode&#xA;&#x9;FROM dbo.financialTransaction AS ft&#xA;&#x9;CROSS APPLY &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;r1.OrigTxID,&#xA;&#x9;&#x9;&#x9;COALESCE(r1.RelatedTxID,r1.OrigTxID) AS RelatedTxID,&#xA;&#x9;&#x9;&#x9;r1.EffDate&#xA;&#x9;&#x9;FROM #ReversalChain AS R1&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;R1.TxID = ft.FinancialTransactionId&#xA;&#x9;) AS R2&#xA;&#x9;OUTER APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;OrganizationUnitId&#xA;&#x9;&#x9;FROM [dbo].[OrganizationUnitUser] As ouu&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;ouu.UserId = ft.UserId&#xA;&#x9;) AS orgUnit&#xA;&#x9;WHERE&#xA;&#x9;&#x9;COALESCE(ft.userID,-1) = driver.UserID&#xA;&#x9;&#x9;AND ft.FinancialTransactionTypeId = driver.FinancialTransactionTypeId&#xA;) By_User;&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Header ON ##BaseQuery&#xA;(SourceKey);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
@@ -122,7 +122,7 @@
       DTS:refId="Package\EST_GetIterations"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{BE952C85-7A06-421B-AFB0-BE0F4D05E0BE}"
+      DTS:DTSID="{34705DA7-74AB-488A-9F9E-6BFEE6020850}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
       DTS:ObjectName="EST_GetIterations"
@@ -131,7 +131,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C3DF1853-1DCE-425E-A9E5-A37FC26AB70F}"
+          SQLTask:Connection="{7065629A-D849-4D71-8833-AA3CCA23FF16}"
           SQLTask:SqlStatementSource="SELECT &#xA;&#x9;Iterations= (count(*)/100000) +1&#xA;FROM ##BaseQuery AS ft1&#x9;"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -144,7 +144,7 @@
       DTS:refId="Package\EST_GetMaxFinTxID"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{0FC691D4-A48E-4427-9B88-8CA46CD4FBBC}"
+      DTS:DTSID="{E8547219-0E01-4BA5-A36B-37FAC2BC5861}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
       DTS:ObjectName="EST_GetMaxFinTxID"
@@ -153,7 +153,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{A21F36FE-946C-401E-AF1B-F123F46ADFF7}"
+          SQLTask:Connection="{05ED6AC3-93D6-4A9D-8E40-3F06E7DDFC02}"
           SQLTask:SqlStatementSource="SELECT MAX(CAST(SourceKey AS INT)) AS MaxID FROM Staging.Finance_FactFinancialTxHeader"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -167,7 +167,7 @@
       DTS:AssignExpression="@[User::LoopPosition] = @[User::LoopPosition] +1"
       DTS:CreationName="STOCK:FORLOOP"
       DTS:Description="For Loop Container"
-      DTS:DTSID="{3B6A1BFE-502B-4B76-984A-81659A502049}"
+      DTS:DTSID="{02F52F00-08EB-4AAF-8CBB-7CF88AAE4B3E}"
       DTS:EvalExpression="@[User::LoopPosition] &lt; @[User::Iterations]"
       DTS:ExecutableType="STOCK:FORLOOP"
       DTS:InitExpression="@[User::LoopPosition] = 0"
@@ -180,7 +180,7 @@
           DTS:refId="Package\Load_100,000_Record_Batches\DFT_Load_Reversals"
           DTS:CreationName="{5918251B-2970-45A4-AB5F-01C3C588FE5A}"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{D59F4216-D91D-4F1C-BDFA-AAD5C8E59B02}"
+          DTS:DTSID="{59A08D76-CC4A-435F-80DD-B60A254004B7}"
           DTS:ExecutableType="{5918251B-2970-45A4-AB5F-01C3C588FE5A}"
           DTS:LocaleID="-1"
           DTS:ObjectName="DFT_Load_Reversals">
@@ -633,7 +633,7 @@ FETCH NEXT 100000 ROWS ONLY</property>
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"OffsetValue:Input",{785B9332-468C-4B3C-8146-9C5C0DA867F1};</property>
+                      name="ParameterMapping">"OffsetValue:Input",{C01B5FB5-677A-4E57-BB65-720D6FE0834A};</property>
                   </properties>
                   <connections>
                     <connection
@@ -1197,7 +1197,7 @@ FETCH NEXT 100000 ROWS ONLY</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{C4FCCDAF-6DF4-4A8D-A31B-9AC20B1744F4}"
+      DTS:DTSID="{4D74C8EB-5CBE-408D-98B9-280ADF71D392}"
       DTS:From="Package\EST_GetMaxFinTxID"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1205,7 +1205,7 @@ FETCH NEXT 100000 ROWS ONLY</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{D0E772A9-B041-49A4-8823-810C53E2A41D}"
+      DTS:DTSID="{FE60A791-FB68-4C7A-891C-BC7855B9413D}"
       DTS:From="Package\EST_BuildStagingTableOnSource"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
@@ -1213,7 +1213,7 @@ FETCH NEXT 100000 ROWS ONLY</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{37D5CD92-6B84-4881-8A93-387E62A1020B}"
+      DTS:DTSID="{2C5D52DC-C0AD-4969-B0F1-69B0316FCE89}"
       DTS:From="Package\EST_GetIterations"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
