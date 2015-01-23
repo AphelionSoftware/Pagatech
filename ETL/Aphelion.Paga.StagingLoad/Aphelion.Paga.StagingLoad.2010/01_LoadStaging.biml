@@ -10,7 +10,7 @@
 	<Connections>
 	 <Connection Name="Aphelion.DB.LoadQueue" ConnectionString="Data Source=.\sql2012;Initial Catalog=Aphelion.DB.LoadQueue;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
 	 <Connection Name="Paga_Staging" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
-	 <Connection Name="SourceDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=paga;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="SourceDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=paga_bi;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
 	</Connections>
 	<PackageProjects>
 		<PackageProject Name="Aphelion.Paga.StagingLoad.2010">
@@ -21,7 +21,7 @@
 	<Packages>
 		<#
 			string PackageListQuery = "SELECT "+
-											"PackageName = CONVERT(CHAR(4),(prefix.package_grp + list.rn)) +'_' + StagingTableName, "+
+											"PackageName = CONVERT(CHAR(4),(list.LoadGroup + list.rn)) +'_' + StagingTableName, "+
 											"list.TABLE_SCHEMA, "+
 											"list.TABLE_NAME, "+
 											"list.BaseQuery, "+
@@ -30,12 +30,13 @@
 										"FROM "+
 										"(  "+
 											"SELECT  "+
-												"ROW_NUMBER()OVER(PARTITION BY TABLE_SCHEMA ORDER BY TABLE_NAME) AS rn, "+
+												"ROW_NUMBER()OVER(PARTITION BY pl.lg ORDER BY TABLE_SCHEMA,TABLE_NAME) AS rn, "+
 												"StagingTableName = (TABLE_SCHEMA +'_' +TABLE_NAME), "+
 												"pl.TABLE_SCHEMA,  "+
 												"pl.TABLE_NAME,  "+
 												"BaseQuery = pl.bq,  "+
 												"KeyColumn = pl.kc,  "+
+												"LoadGroup = pl.lg, "+
 												"SourceTable = pl.st  "+
 											"FROM  "+
 											"(  "+
@@ -45,6 +46,7 @@
 													"CONVERT(CHAR(1),MAX(packageType)) AS pt,  "+
 													"CONVERT(VARCHAR(MAX),MAX(BaseQuery)) AS bq,  "+
 													"CONVERT(VARCHAR(MAX),MAX(KeyColumn)) AS kc,  "+
+													"CONVERT(INT ,MAX(LoadGroup)) AS lg,  "+
 													"CONVERT(VARCHAR(MAX),MAX(SourceTable)) AS st  "+
 												"FROM  "+
 												"(  "+
@@ -65,6 +67,10 @@
 																"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
 														"END as KeyColumn,  "+
 														"CASE	 "+
+																"WHEN ext_prop.name =  'LoadGroup'  "+
+																"THEN CONVERT(INT,ext_prop.value)  "+
+														"END as LoadGroup,  "+
+														"CASE	 "+
 																"WHEN ext_prop.name =  'SourceTable'  "+
 																"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
 														"END as SourceTable  "+
@@ -80,7 +86,7 @@
 													"INNER JOIN sys.extended_properties AS ext_prop ON   "+
 														"table_list.object_id = ext_prop.major_id  "+
 													"WHERE  "+ 
-														"ext_prop.name = 'PackageType' OR ext_prop.name = 'BaseQuery' OR ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable'  "+
+														"ext_prop.name = 'PackageType' OR ext_prop.name = 'BaseQuery' OR ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'LoadGroup' "+
 												") AS package_list  "+
 												"GROUP BY  "+
 													"package_list.TABLE_SCHEMA,  "+
@@ -93,7 +99,6 @@
 										"INNER JOIN "+
 										"("+
 											"SELECT "+
-												"(tsg.seed *100) + 1000 AS package_grp, "+
 												"tsg.TABLE_SCHEMA "+
 											"FROM "+
 												"( "+

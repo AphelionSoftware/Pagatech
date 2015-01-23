@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="287"
-  DTS:VersionGUID="{D1D315C6-DDAF-4B53-9E24-407B55F2CE0E}">
+  DTS:VersionBuild="289"
+  DTS:VersionGUID="{89671B9B-EDA6-447C-9E2A-57CCF20B71CF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -88,7 +88,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ConvertSystemStart">
       <DTS:VariableValue
-        DTS:DataType="8">2015-01-23 08:31:40.000</DTS:VariableValue>
+        DTS:DataType="8">2015-01-23 16:48:52.000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -138,11 +138,11 @@
 FROM
 (
 	SELECT
-			ROW_NUMBER() OVER (PARTITION BY prefix.package_grp ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
+			ROW_NUMBER() OVER (PARTITION BY base.LoadGroup ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
 		base.KeyColumn,
 		base.SourceTable,
 		base.BaseQuery,
-		prefix.package_grp
+		base.LoadGroup
 	FROM
 	(
 		SELECT
@@ -151,6 +151,7 @@ FROM
 			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,
 			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,
 			CONVERT(VARCHAR(MAX), MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN ext_prop.value END)) AS BaseQuery,
+			CONVERT(INT, MAX(CASE WHEN ext_prop.name = 'LoadGroup' THEN ext_prop.value END)) AS LoadGroup,
 			CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN
 				CASE	
 					WHEN ext_prop.value IS NULL THEN 0
@@ -170,7 +171,7 @@ FROM
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
 		WHERE 
-			ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'
+			ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery' OR ext_prop.name = 'LoadGroup'
 		GROUP BY
 			table_list.TABLE_SCHEMA,
 			table_list.StagingTableName
@@ -178,7 +179,6 @@ FROM
 	INNER JOIN 
 	(
 		SELECT 
-			(tsg.seed *100) + 1000 AS package_grp, 
 			tsg.TABLE_SCHEMA 
 		FROM 
 			( 
@@ -223,11 +223,11 @@ FROM
 FROM
 (
 	SELECT
-			ROW_NUMBER() OVER (PARTITION BY prefix.package_grp ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
+			ROW_NUMBER() OVER (PARTITION BY base.LoadGroup ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
 		base.KeyColumn,
 		base.SourceTable,
 		base.BaseQuery,
-		prefix.package_grp
+		base.LoadGroup
 	FROM
 	(
 		SELECT
@@ -236,6 +236,7 @@ FROM
 			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,
 			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,
 			CONVERT(VARCHAR(MAX), MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN ext_prop.value END)) AS BaseQuery,
+			CONVERT(INT, MAX(CASE WHEN ext_prop.name = 'LoadGroup' THEN ext_prop.value END)) AS LoadGroup,
 			CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN
 				CASE	
 					WHEN ext_prop.value IS NULL THEN 0
@@ -255,7 +256,7 @@ FROM
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
 		WHERE 
-			ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'
+			ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery' OR ext_prop.name = 'LoadGroup'
 		GROUP BY
 			table_list.TABLE_SCHEMA,
 			table_list.StagingTableName
@@ -263,7 +264,6 @@ FROM
 	INNER JOIN 
 	(
 		SELECT 
-			(tsg.seed *100) + 1000 AS package_grp, 
 			tsg.TABLE_SCHEMA 
 		FROM 
 			( 
@@ -310,11 +310,11 @@ FROM
 FROM
 (
 	SELECT
-			ROW_NUMBER() OVER (PARTITION BY prefix.package_grp ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
+			ROW_NUMBER() OVER (PARTITION BY base.LoadGroup ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
 		base.KeyColumn,
 		base.SourceTable,
 		base.BaseQuery,
-		prefix.package_grp
+		base.LoadGroup
 	FROM
 	(
 		SELECT
@@ -323,6 +323,7 @@ FROM
 			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,
 			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,
 			CONVERT(VARCHAR(MAX), MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN ext_prop.value END)) AS BaseQuery,
+			CONVERT(INT, MAX(CASE WHEN ext_prop.name = 'LoadGroup' THEN ext_prop.value END)) AS LoadGroup,
 			CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN
 				CASE	
 					WHEN ext_prop.value IS NULL THEN 0
@@ -342,7 +343,7 @@ FROM
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
 		WHERE 
-			ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'
+			ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery' OR ext_prop.name = 'LoadGroup'
 		GROUP BY
 			table_list.TABLE_SCHEMA,
 			table_list.StagingTableName
@@ -350,7 +351,6 @@ FROM
 	INNER JOIN 
 	(
 		SELECT 
-			(tsg.seed *100) + 1000 AS package_grp, 
 			tsg.TABLE_SCHEMA 
 		FROM 
 			( 
@@ -397,11 +397,11 @@ FROM
 FROM
 (
 	SELECT
-			ROW_NUMBER() OVER (PARTITION BY prefix.package_grp ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
+			ROW_NUMBER() OVER (PARTITION BY base.LoadGroup ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
 		base.KeyColumn,
 		base.SourceTable,
 		base.BaseQuery,
-		prefix.package_grp
+		base.LoadGroup
 	FROM
 	(
 		SELECT
@@ -410,6 +410,7 @@ FROM
 			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,
 			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,
 			CONVERT(VARCHAR(MAX), MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN ext_prop.value END)) AS BaseQuery,
+			CONVERT(INT, MAX(CASE WHEN ext_prop.name = 'LoadGroup' THEN ext_prop.value END)) AS LoadGroup,
 			CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN
 				CASE	
 					WHEN ext_prop.value IS NULL THEN 0
@@ -429,7 +430,7 @@ FROM
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
 		WHERE 
-			ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'
+			ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery' OR ext_prop.name = 'LoadGroup'
 		GROUP BY
 			table_list.TABLE_SCHEMA,
 			table_list.StagingTableName
@@ -437,7 +438,6 @@ FROM
 	INNER JOIN 
 	(
 		SELECT 
-			(tsg.seed *100) + 1000 AS package_grp, 
 			tsg.TABLE_SCHEMA 
 		FROM 
 			( 
@@ -494,7 +494,7 @@ FROM
       DTS:CreationName=""
       DTS:DTSID="{6F04BAFE-F37A-4B9F-A8DB-CC5B6D1CD578}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY prefix.package_grp ORDER BY base.StagingTableName) AS rn,&#x9;&#x9;base.StagingTableName,&#xA;&#x9;&#x9;base.KeyColumn,&#xA;&#x9;&#x9;base.SourceTable,&#xA;&#x9;&#x9;base.BaseQuery,&#xA;&#x9;&#x9;prefix.package_grp&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(MAX), MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN ext_prop.value END)) AS BaseQuery,&#xA;&#x9;&#x9;&#x9;CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN&#xA;&#x9;&#x9;&#x9;&#x9;CASE&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN ext_prop.value IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) &gt; 0 THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) = 0 THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;END&#xA;&#x9;&#x9;&#x9;END)) AS HasBaseQueryDef,&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,&#xA;&#x9;&#x9;&#x9;&#x9;major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,&#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA&#xA;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;&#x9;&quot; + @[$Package::SchemaFilter]  +&quot;&#x9;&#x9;) AS table_list&#xA;&#x9;&#x9;INNER JOIN sys.extended_properties as ext_prop ON &#xA;&#x9;&#x9;&#x9;table_list.major_id = ext_prop.major_id&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'&#xA;&#x9;&#x9;GROUP BY&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA,&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName&#xA;&#x9;) AS base&#xA;&#x9;INNER JOIN &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;(tsg.seed *100) + 1000 AS package_grp, &#xA;&#x9;&#x9;&#x9;tsg.TABLE_SCHEMA &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;( &#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed, &#xA;&#x9;&#x9;&#x9;&#x9;ts.TABLE_SCHEMA &#xA;&#x9;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;( &#xA;&#x9;&#x9;&#x9;&#x9;SELECT DISTINCT  &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA &#xA;&#x9;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t &#xA;&#x9;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.TABLE_TYPE = 'BASE TABLE' &#xA;&#x9;&#x9;&#x9;) as ts &#xA;&#x9;&#x9;) AS tsg &#xA;&#x9;) as prefix ON &#xA;&#x9;&#x9;base.TABLE_SCHEMA = prefix.TABLE_SCHEMA&#xA;&#x9;&#x9;AND base.HasBaseQueryDef = 1&#xA;) AS x&quot;"
+      DTS:Expression="&quot;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY base.LoadGroup ORDER BY base.StagingTableName) AS rn,&#x9;&#x9;base.StagingTableName,&#xA;&#x9;&#x9;base.KeyColumn,&#xA;&#x9;&#x9;base.SourceTable,&#xA;&#x9;&#x9;base.BaseQuery,&#xA;&#x9;&#x9;base.LoadGroup&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,&#xA;&#x9;&#x9;&#x9;CONVERT(VARCHAR(MAX), MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN ext_prop.value END)) AS BaseQuery,&#xA;&#x9;&#x9;&#x9;CONVERT(INT, MAX(CASE WHEN ext_prop.name = 'LoadGroup' THEN ext_prop.value END)) AS LoadGroup,&#xA;&#x9;&#x9;&#x9;CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN&#xA;&#x9;&#x9;&#x9;&#x9;CASE&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN ext_prop.value IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) &gt; 0 THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN LEN(CONVERT(VARCHAR(max),ext_prop.value)) = 0 THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;END&#xA;&#x9;&#x9;&#x9;END)) AS HasBaseQueryDef,&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;StagingTableName = t.TABLE_SCHEMA +'_' + t.TABLE_NAME,&#xA;&#x9;&#x9;&#x9;&#x9;major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,&#xA;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA&#xA;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t&#xA;&#x9;&#x9;&#x9;&quot; + @[$Package::SchemaFilter]  +&quot;&#x9;&#x9;) AS table_list&#xA;&#x9;&#x9;INNER JOIN sys.extended_properties as ext_prop ON &#xA;&#x9;&#x9;&#x9;table_list.major_id = ext_prop.major_id&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery' OR ext_prop.name = 'LoadGroup'&#xA;&#x9;&#x9;GROUP BY&#xA;&#x9;&#x9;&#x9;table_list.TABLE_SCHEMA,&#xA;&#x9;&#x9;&#x9;table_list.StagingTableName&#xA;&#x9;) AS base&#xA;&#x9;INNER JOIN &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;tsg.TABLE_SCHEMA &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;( &#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed, &#xA;&#x9;&#x9;&#x9;&#x9;ts.TABLE_SCHEMA &#xA;&#x9;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;( &#xA;&#x9;&#x9;&#x9;&#x9;SELECT DISTINCT  &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.TABLE_SCHEMA &#xA;&#x9;&#x9;&#x9;&#x9;FROM INFORMATION_SCHEMA.TABLES AS t &#xA;&#x9;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.TABLE_TYPE = 'BASE TABLE' &#xA;&#x9;&#x9;&#x9;) as ts &#xA;&#x9;&#x9;) AS tsg &#xA;&#x9;) as prefix ON &#xA;&#x9;&#x9;base.TABLE_SCHEMA = prefix.TABLE_SCHEMA&#xA;&#x9;&#x9;AND base.HasBaseQueryDef = 1&#xA;) AS x&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strPackageQuery"
@@ -503,11 +503,11 @@ FROM
         DTS:DataType="8">FROM
 (
 	SELECT
-			ROW_NUMBER() OVER (PARTITION BY prefix.package_grp ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
+			ROW_NUMBER() OVER (PARTITION BY base.LoadGroup ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
 		base.KeyColumn,
 		base.SourceTable,
 		base.BaseQuery,
-		prefix.package_grp
+		base.LoadGroup
 	FROM
 	(
 		SELECT
@@ -516,6 +516,7 @@ FROM
 			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'KeyColumn' THEN ext_prop.value END)) AS KeyColumn,
 			CONVERT(VARCHAR(1000), MAX(CASE WHEN ext_prop.name = 'SourceTable' THEN ext_prop.value END)) AS SourceTable,
 			CONVERT(VARCHAR(MAX), MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN ext_prop.value END)) AS BaseQuery,
+			CONVERT(INT, MAX(CASE WHEN ext_prop.name = 'LoadGroup' THEN ext_prop.value END)) AS LoadGroup,
 			CONVERT(CHAR(1),MAX(CASE WHEN ext_prop.name = 'BaseQuery' THEN
 				CASE	
 					WHEN ext_prop.value IS NULL THEN 0
@@ -535,7 +536,7 @@ FROM
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
 		WHERE 
-			ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery'
+			ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'BaseQuery' OR ext_prop.name = 'LoadGroup'
 		GROUP BY
 			table_list.TABLE_SCHEMA,
 			table_list.StagingTableName
@@ -543,7 +544,6 @@ FROM
 	INNER JOIN 
 	(
 		SELECT 
-			(tsg.seed *100) + 1000 AS package_grp, 
 			tsg.TABLE_SCHEMA 
 		FROM 
 			( 
@@ -607,6 +607,7 @@ FROM
     <DTS:Executable
       DTS:refId="Package\EPT_ExecInParallel_Initial"
       DTS:CreationName="SSIS.ExecutePackageTask.3"
+      DTS:DelayValidation="True"
       DTS:Description="Execute Package Task"
       DTS:DTSID="{c084d00d-1db4-4b03-8b3b-e66284429673}"
       DTS:ExecutableType="SSIS.ExecutePackageTask.3"
@@ -665,6 +666,7 @@ FROM
     <DTS:Executable
       DTS:refId="Package\EST_GetVersionNumbers"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:DelayValidation="True"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{2189A807-521B-425D-8F43-F8DB156F6FE9}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
@@ -716,6 +718,7 @@ FROM
       DTS:refId="Package\Iterate Through Version Numbers"
       DTS:AssignExpression="@LoopCounter = @LoopCounter + 1"
       DTS:CreationName="STOCK:FORLOOP"
+      DTS:DelayValidation="True"
       DTS:Description="For Loop Container"
       DTS:DTSID="{FE6F1B2D-AD6D-4F99-8299-B553D00901D2}"
       DTS:EvalExpression="@LoopCounter &lt;= @EndLoop"
@@ -754,6 +757,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Deletes"
           DTS:CreationName="SSIS.ExecutePackageTask.3"
+          DTS:DelayValidation="True"
           DTS:Description="Execute Package Task"
           DTS:DTSID="{2c108f3e-cd25-4aa3-ac06-cbd26aff86b5}"
           DTS:ExecutableType="SSIS.ExecutePackageTask.3"
@@ -812,6 +816,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Inserts"
           DTS:CreationName="SSIS.ExecutePackageTask.3"
+          DTS:DelayValidation="True"
           DTS:Description="Execute Package Task"
           DTS:DTSID="{39C4C09D-C4CE-458D-8350-1D3B5BF5083B}"
           DTS:ExecutableType="SSIS.ExecutePackageTask.3"
@@ -870,6 +875,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Updates"
           DTS:CreationName="SSIS.ExecutePackageTask.3"
+          DTS:DelayValidation="True"
           DTS:Description="Execute Package Task"
           DTS:DTSID="{d1fb4f70-7512-4bc5-9478-977794bea41d}"
           DTS:ExecutableType="SSIS.ExecutePackageTask.3"
@@ -1047,7 +1053,7 @@ FROM
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="224,306"
+          PanelSize="224,307"
           Size="224,350"
           Id="Package\Iterate Through Version Numbers"
           TopLeft="5.50000000000006,107.5" />
