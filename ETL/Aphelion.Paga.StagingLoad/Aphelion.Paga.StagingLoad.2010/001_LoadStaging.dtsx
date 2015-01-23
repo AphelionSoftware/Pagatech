@@ -7,12 +7,12 @@
   DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
   DTS:DTSID="{03258E52-3119-4831-A25E-7FD89090C081}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="275"
-  DTS:VersionGUID="{F24B276F-EE5E-4819-AFD6-AA6344110695}">
+  DTS:VersionBuild="280"
+  DTS:VersionGUID="{3C978AAA-BD0C-4041-95A5-613968537F38}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -28,18 +28,6 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
-  <DTS:LogProviders>
-    <DTS:LogProvider
-      DTS:ConfigString="LoadStaging.txt"
-      DTS:CreationName="DTS.LogProviderTextFile.3"
-      DTS:Description="Writes log entries for events to a CSV file"
-      DTS:DTSID="{1F51729F-9D84-445A-971C-87F87D81B5A9}"
-      DTS:ObjectName="SSIS log provider for Text files">
-      <DTS:ObjectData>
-        <InnerObject />
-      </DTS:ObjectData>
-    </DTS:LogProvider>
-  </DTS:LogProviders>
   <DTS:PackageParameters>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -50,7 +38,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">Initial</DTS:Property>
+        DTS:Name="ParameterValue">Changes</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -60,7 +48,7 @@
       DTS:ObjectName="SchemaFilter">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">WHERE TABLE_SCHEMA =  'Classification'</DTS:Property>
+        DTS:Name="ParameterValue">WHERE TABLE_SCHEMA =  'Shared'</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -101,7 +89,7 @@
       DTS:ObjectName="ChangeVersion"
       DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
-        DTS:DataType="20">0</DTS:VariableValue>
+        DTS:DataType="20">1</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -112,7 +100,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ConvertSystemStart">
       <DTS:VariableValue
-        DTS:DataType="8">2015-01-22 09:34:46.000</DTS:VariableValue>
+        DTS:DataType="8">2015-01-23 07:45:59.000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -149,7 +137,7 @@
 	PackageName = CONVERT(CHAR(4),(x.package_grp + x.rn)) +'_' + StagingTableName,
 	strParm1 = 
 	'WHERE
-		NOT EXISTS	
+		EXISTS	
 		(
 			SELECT 
 				1
@@ -157,7 +145,7 @@
 			WHERE
 				base_query.SourceKey = ct.' +x.KeyColumn 
 				+' AND ct.SYS_CHANGE_OPERATION = ''D'''
-				
+				+' AND ct.SYS_CHANGE_VERSION =  1
 		)'
 FROM
 (
@@ -190,7 +178,7 @@ FROM
 				major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,
 				t.TABLE_SCHEMA
 			FROM INFORMATION_SCHEMA.TABLES AS t
-			WHERE TABLE_SCHEMA =  'Classification'		) AS table_list
+			WHERE TABLE_SCHEMA =  'Shared'		) AS table_list
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
 		WHERE 
@@ -236,7 +224,7 @@ FROM
 	PackageName = CONVERT(CHAR(4),(x.package_grp + x.rn)) +'_' + StagingTableName,
 	strParm1 = 
 	'WHERE
-		NOT EXISTS	
+		EXISTS	
 		(
 			SELECT 
 				1
@@ -275,7 +263,7 @@ FROM
 				major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,
 				t.TABLE_SCHEMA
 			FROM INFORMATION_SCHEMA.TABLES AS t
-			WHERE TABLE_SCHEMA =  'Classification'		) AS table_list
+			WHERE TABLE_SCHEMA =  'Shared'		) AS table_list
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
 		WHERE 
@@ -321,7 +309,7 @@ FROM
 	PackageName = CONVERT(CHAR(4),(x.package_grp + x.rn)) +'_' + StagingTableName,
 	strParm1 = 
 	'WHERE
-		NOT EXISTS	
+		EXISTS	
 		(
 			SELECT 
 				1
@@ -329,7 +317,7 @@ FROM
 			WHERE
 				base_query.SourceKey = ct.' +x.KeyColumn 
 				+' AND ct.SYS_CHANGE_OPERATION = ''I'''
-				
+				+' AND ct.SYS_CHANGE_VERSION =  1
 		)'
 FROM
 (
@@ -362,7 +350,7 @@ FROM
 				major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,
 				t.TABLE_SCHEMA
 			FROM INFORMATION_SCHEMA.TABLES AS t
-			WHERE TABLE_SCHEMA =  'Classification'		) AS table_list
+			WHERE TABLE_SCHEMA =  'Shared'		) AS table_list
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
 		WHERE 
@@ -408,7 +396,7 @@ FROM
 	PackageName = CONVERT(CHAR(4),(x.package_grp + x.rn)) +'_' + StagingTableName,
 	strParm1 = 
 	'WHERE
-		NOT EXISTS	
+		EXISTS	
 		(
 			SELECT 
 				1
@@ -416,7 +404,7 @@ FROM
 			WHERE
 				base_query.SourceKey = ct.' +x.KeyColumn 
 				+' AND ct.SYS_CHANGE_OPERATION = ''U'''
-				
+				+' AND ct.SYS_CHANGE_VERSION =  1
 		)'
 FROM
 (
@@ -449,7 +437,7 @@ FROM
 				major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,
 				t.TABLE_SCHEMA
 			FROM INFORMATION_SCHEMA.TABLES AS t
-			WHERE TABLE_SCHEMA =  'Classification'		) AS table_list
+			WHERE TABLE_SCHEMA =  'Shared'		) AS table_list
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
 		WHERE 
@@ -502,7 +490,7 @@ FROM
       DTS:ObjectName="LoadTypeFilter"
       DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
-        DTS:DataType="8">NOT EXISTS</DTS:VariableValue>
+        DTS:DataType="8">EXISTS</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -555,7 +543,7 @@ FROM
 				major_id = OBJECT_ID('' +t.TABLE_SCHEMA +'.' + t.TABLE_NAME +'') ,
 				t.TABLE_SCHEMA
 			FROM INFORMATION_SCHEMA.TABLES AS t
-			WHERE TABLE_SCHEMA =  'Classification'		) AS table_list
+			WHERE TABLE_SCHEMA =  'Shared'		) AS table_list
 		INNER JOIN sys.extended_properties as ext_prop ON 
 			table_list.major_id = ext_prop.major_id
 		WHERE 
@@ -598,13 +586,12 @@ FROM
       DTS:ObjectName="strVersionFilter"
       DTS:RaiseChangedEvent="True">
       <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
+        DTS:DataType="8">+' AND ct.SYS_CHANGE_VERSION =  1</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:LoggingOptions
     DTS:FilterKind="0"
-    DTS:LoggingMode="1">
+    DTS:LoggingMode="2">
     <DTS:Property
       DTS:DataType="8"
       DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
@@ -626,10 +613,6 @@ FROM
       <DTS:Property
         DTS:Name="DataBytes">-1</DTS:Property>
     </DTS:Property>
-    <DTS:SelectedLogProviders>
-      <DTS:SelectedLogProvider
-        DTS:InstanceID="{1F51729F-9D84-445A-971C-87F87D81B5A9}" />
-    </DTS:SelectedLogProviders>
   </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
@@ -644,7 +627,7 @@ FROM
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0"
-        DTS:LoggingMode="1">
+        DTS:LoggingMode="2">
         <DTS:Property
           DTS:DataType="8"
           DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
@@ -703,7 +686,7 @@ FROM
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0"
-        DTS:LoggingMode="1">
+        DTS:LoggingMode="2">
         <DTS:Property
           DTS:DataType="8"
           DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
@@ -755,7 +738,7 @@ FROM
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0"
-        DTS:LoggingMode="1">
+        DTS:LoggingMode="2">
         <DTS:Property
           DTS:DataType="8"
           DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
@@ -964,6 +947,8 @@ FROM
           DTS:ObjectName="ST_GetVariables"
           DTS:ThreadHint="0">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <ScriptProject
               Name="ST_f1e9e6b83d3a4f9cafb50d4d38943ad3"
@@ -1558,9 +1543,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           Id="Package\EST_GetVersionNumbers"
           TopLeft="191.5,76.9999999999999" />
         <NodeLayout
+          Size="209,42"
+          Id="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Deletes"
+          TopLeft="33,286.25" />
+        <NodeLayout
           Size="207,42"
           Id="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Inserts"
           TopLeft="33,108.75" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Updates"
+          TopLeft="35.75,184.25" />
         <NodeLayout
           Size="156,42"
           Id="Package\Iterate Through Version Numbers\ST_GetVariables"
@@ -1587,10 +1580,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="213,42"
-          Id="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Updates"
-          TopLeft="35.75,184.25" />
         <EdgeLayout
           Id="Package\Iterate Through Version Numbers.PrecedenceConstraints[Constraint 1]"
           TopLeft="139.375,150.75">
@@ -1613,10 +1602,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="209,42"
-          Id="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Deletes"
-          TopLeft="33,286.25" />
         <EdgeLayout
           Id="Package\Iterate Through Version Numbers.PrecedenceConstraints[Constraint 2]"
           TopLeft="139.875,226.25">

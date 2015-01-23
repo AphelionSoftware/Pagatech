@@ -1,213 +1,633 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/21/2015 18:31:55" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{D03B0D1F-9BF6-4854-BB2C-4124B2680365}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1303_Location_DimGeoZone" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{7D39ECBF-76B1-481E-BF57-9570BB2A9D9F}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/21/2015 6:31:55 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
+  DTS:CreatorName="Administrator"
+  DTS:DTSID="{D03B0D1F-9BF6-4854-BB2C-4124B2680365}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="1303_Location_DimGeoZone"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{96EE13FB-5D4B-40A7-A19E-F28F73628B0E}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{D3B08A89-DF93-4ED2-8FA9-42DFF40AB7E9}"
+      DTS:ObjectName="ChangeOperation">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{C80F76B7-D2DB-4B67-89D1-DCF98B236B85}"
+      DTS:ObjectName="ChangeVersion">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{95E310C7-CC9A-4E0F-9308-7DEC917A0158}"
+      DTS:ObjectName="EndOfQuery">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{85755DE4-D443-4509-B828-ADDE74A4729F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	base_query.code, 	base_query.DimCountrySourceKey FROM   (SELECT GeoZoneId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, Symbol AS Code, 1 AS DimCountrySourceKey FROM dbo.GeoZone) as base_query</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A1B0775D-0176-47D5-9A4D-86FE6DAA3BD4}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	base_query.code, 	base_query.DimCountrySourceKey FROM   (SELECT GeoZoneId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, Symbol AS Code, 1 AS DimCountrySourceKey FROM dbo.GeoZone) as base_query </DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{D9492663-045E-49EB-9A2A-576CFE8AD224}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Location_DimGeoZone" DTS:refId="Package\DFT_Load Location_DimGeoZone" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load Location_DimGeoZone"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DTSID="{D9492663-045E-49EB-9A2A-576CFE8AD224}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load Location_DimGeoZone"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
       <DTS:ObjectData>
-        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
           <components>
-            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData" usesDispositions="true" version="7">
-              <connections>
-                <connection connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Connections[OleDbConnection]">
-                </connection>
-              </connections>
-              <outputs>
-                <output name="Output" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="name" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[name]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="3" name="code" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[code]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimCountrySourceKey" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[DimCountrySourceKey]">
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
-                  <outputColumns>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[name]" length="255" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[name]" name="name" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[name]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[code]" length="3" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[code]" name="code" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[code]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[DimCountrySourceKey]" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[DimCountrySourceKey]" name="DimCountrySourceKey" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[DimCountrySourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                  </outputColumns>
-                </output>
-                <output isErrorOut="true" name="Error" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
-                  <outputColumns>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[SourceKey]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[name]" name="name" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[name]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="3" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[code]" name="code" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[code]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[DimCountrySourceKey]" name="DimCountrySourceKey" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[DimCountrySourceKey]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
-                  </outputColumns>
-                </output>
-              </outputs>
-              <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
-                </property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
-                </property>
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-                </property>
-                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
-                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
-                </property>
-              </properties>
-            </component>
-            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeData" refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData" usesDispositions="true">
+            <component
+              refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData"
+              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              name="dc_ChangeData"
+              usesDispositions="true">
               <inputs>
-                <input name="OLEDB_GetData_Output_dc_ChangeData" refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
+                <input
+                  refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+                  name="OLEDB_GetData_Output_dc_ChangeData">
+                  <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
-                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output]" synchronousInputId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
+                <output
+                  refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output]"
+                  exclusionGroup="1"
+                  name="Output"
+                  synchronousInputId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <outputColumns>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="IgnoreFailure" length="1" lineageId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="IgnoreFailure">
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      length="1"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
-                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[$Package::ChangeOperation]</property>
-                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[$Package::ChangeOperation]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::ChangeOperation]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::ChangeOperation]</property>
                       </properties>
                     </outputColumn>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent">
                       <properties>
-                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[$Package::ChangeVersion]</property>
-                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[$Package::ChangeVersion]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::ChangeVersion]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::ChangeVersion]</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
+                  <externalMetadataColumns />
                 </output>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Error]" synchronousInputId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
+                <output
+                  refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <outputColumns>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
+                  <externalMetadataColumns />
                 </output>
               </outputs>
             </component>
-            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging" usesDispositions="true" version="4">
+            <component
+              refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLEDB_GetData"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::FullQueryText</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
               <connections>
-                <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Connections[OleDbConnection]">
-                </connection>
+                <connection
+                  refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Connections[OleDbConnection]"
+                  connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SourceDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[SourceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[SourceKey]"
+                      name="SourceKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[name]"
+                      length="255"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[code]"
+                      length="3"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[code]"
+                      name="code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[DimCountrySourceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[DimCountrySourceKey]"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[DimCountrySourceKey]"
+                      name="DimCountrySourceKey"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]"
+                      dataType="i4"
+                      name="SourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="code" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].ExternalColumns[DimCountrySourceKey]"
+                      dataType="i4"
+                      name="DimCountrySourceKey" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[SourceKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[SourceKey]"
+                      name="SourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[code]"
+                      name="code" />
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[DimCountrySourceKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[DimCountrySourceKey]"
+                      name="DimCountrySourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDB_InsertIntoStaging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Staging.Location_DimGeoZone</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Connections[OleDbConnection]"
+                  connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <inputs>
-                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="dc_ChangeData_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i4" name="DimGeoZoneID" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimGeoZoneID]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="Code" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Code]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimCountrySourceKey" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimCountrySourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]">
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
+                <input
+                  refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="dc_ChangeData_Output_OLEDB_InsertIntoStaging">
                   <inputColumns>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="name" externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[name]" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[name]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="3" cachedName="code" externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Code]" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[code]" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[code]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="DimCountrySourceKey" externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimCountrySourceKey]" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[DimCountrySourceKey]" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[DimCountrySourceKey]">
-                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="SYS_CHANGE_OPERATION"
+                      externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]"
+                      cachedDataType="i4"
+                      cachedName="SourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="code"
+                      externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Code]"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[code]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[DimCountrySourceKey]"
+                      cachedDataType="i4"
+                      cachedName="DimCountrySourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimCountrySourceKey]"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output].Columns[DimCountrySourceKey]" />
                   </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimGeoZoneID]"
+                      dataType="i4"
+                      name="DimGeoZoneID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DeltaHash]"
+                      dataType="i8"
+                      name="DeltaHash" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
+                      dataType="i4"
+                      name="SourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKeyHash]"
+                      dataType="i8"
+                      name="SourceKeyHash" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimCountrySourceKey]"
+                      dataType="i4"
+                      name="DimCountrySourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                  </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Outputs[Error]" synchronousInputId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
+                <output
+                  refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]">
                   <outputColumns>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
+                  <externalMetadataColumns />
                 </output>
               </outputs>
-              <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Staging.Location_DimGeoZone</property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
-                </property>
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-                </property>
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
-                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
-                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
-                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
             </component>
           </components>
           <paths>
-            <path endId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]" name="OLEDB_GetData_Output_dc_ChangeData" refId="Package\DFT_Load Location_DimGeoZone.Paths[OLEDB_GetData_Output_dc_ChangeData]" startId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output]">
-            </path>
-            <path endId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]" name="dc_ChangeData_Output_OLEDB_InsertIntoStaging" refId="Package\DFT_Load Location_DimGeoZone.Paths[dc_ChangeData_Output_OLEDB_InsertIntoStaging]" startId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output]">
-            </path>
+            <path
+              refId="Package\DFT_Load Location_DimGeoZone.Paths[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
+              endId="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
+              name="dc_ChangeData_Output_OLEDB_InsertIntoStaging"
+              startId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load Location_DimGeoZone.Paths[OLEDB_GetData_Output_dc_ChangeData]"
+              endId="Package\DFT_Load Location_DimGeoZone\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+              name="OLEDB_GetData_Output_dc_ChangeData"
+              startId="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData.Outputs[Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
-  <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{95E310C7-CC9A-4E0F-9308-7DEC917A0158}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
-      </DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{D3B08A89-DF93-4ED2-8FA9-42DFF40AB7E9}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
-      </DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{C80F76B7-D2DB-4B67-89D1-DCF98B236B85}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="20" DTS:Name="ParameterValue">0</DTS:Property>
-    </DTS:PackageParameter>
-  </DTS:PackageParameters>
-  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
-  <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{85755DE4-D443-4509-B828-ADDE74A4729F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	base_query.code, 	base_query.DimCountrySourceKey FROM   (SELECT GeoZoneId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, Symbol AS Code, 1 AS DimCountrySourceKey FROM dbo.GeoZone) as base_query</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A1B0775D-0176-47D5-9A4D-86FE6DAA3BD4}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	base_query.code, 	base_query.DimCountrySourceKey FROM   (SELECT GeoZoneId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, Symbol AS Code, 1 AS DimCountrySourceKey FROM dbo.GeoZone) as base_query </DTS:VariableValue>
-    </DTS:Variable>
-  </DTS:Variables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="237,42"
+          Id="Package\DFT_Load Location_DimGeoZone"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load Location_DimGeoZone">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="201,42"
+          Id="Package\DFT_Load Location_DimGeoZone\OLEDB_InsertIntoStaging"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DFT_Load Location_DimGeoZone\OLEDB_GetData"
+          TopLeft="26.5,4.5" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\DFT_Load Location_DimGeoZone\dc_ChangeData"
+          TopLeft="28.5,107.5" />
+        <EdgeLayout
+          Id="Package\DFT_Load Location_DimGeoZone.Paths[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
+          TopLeft="106,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Location_DimGeoZone.Paths[OLEDB_GetData_Output_dc_ChangeData]"
+          TopLeft="105.5,46.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
