@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">WIN-TDGNUUDMOVR</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0u0bgLAzOEGKSqCiv35A5gAAAAACAAAAAAAQZgAAAAEAACAAAAD1dD6hPJl1XuTM92edEOULtcrRrM+cDea1sWmA7wZvygAAAAAOgAAAAAIAACAAAADA69WkDDISMLa/biLALFowvlMhcf+6O0tIk81fX8PIiJAAAAByv4hrM1Xso5dOUzEgGHT20kFQC1A0foR1OvXY/9Fe80AjC2lddt+n0M5QBSmMRa/c4SJbAT0UydPVXHNTGF0KP54pqPColOAmaOvNGtDJ+/bxTUEBabzOsUBPqnV0/1NVzIr8R75Ng+BTuz5sZ6S9CwZMUFK3EVi/6B4yMWJIr1AoyGQiV23iFcWNyTOD2CVAAAAAD9gkgRkF+1ex2y9aGiv1RqdHsR9+3s8WjHM8nfuaJJZX9ZhdvNrj+CmW3xOQerTxBPP7IfX1Fvcju0Jv+MG39g==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0u0bgLAzOEGKSqCiv35A5gAAAAACAAAAAAAQZgAAAAEAACAAAABpYG4hznLu2QfeHUFUx9s6Z0bjCVQJooe65NcU3qO/1wAAAAAOgAAAAAIAACAAAAAdK+sfFoCAfGENyLuKh3m97MdEQo43Pw7GabRStUG/7JAAAADoAAsU9bh5Op1ZCWjgmJ3ekWdFAzEP/EX7PNFv+8IgDAiYy27RTNyvG3QriQnTbIoKlH2MnAEDubIFLDbR8PjKfHVZ7EgjkbfpIOi99E3H1Y24ZnnlZtMsqkYDhQbyPbXbGm2OQMFlEdCEgq94xIZirYUtaCg01d9u4yrDdLwuzlm7jkRBB6evxH6IUU5vMz5AAAAAaH7VqGL0cdIRqw2t1tpTWk2gGwI+MuSw8wS2iZm9SSbF8jCkZJ2uTMeUE7v46Khnfr9rPN51WHCEnjvWOZCv7Q==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -72,10 +72,10 @@
           <SSIS:Package SSIS:Name="2502_Shared_DimOrganizationUnitLevel4.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2601_Shared_DimUser.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2701_Shared_DimPrimaryUserRole.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="3001_Finance_FactGLTransaction.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="3002_Shared_FactIntegrationTransaction.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="3004_Finance_FinancialTransaction.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="3003_Shared_FactProcessEvent.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="3001_Finance_FactFinancialTransaction.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="3002_Finance_FactGLTransaction.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="3004_Shared_FactProcessEvent.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="3003_Shared_FactIntegrationTransaction.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="Aphelion.DB.LoadQueue.conmgr" />
@@ -493,7 +493,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -2970,16 +2970,33 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="3001_Finance_FactGLTransaction.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="3001_Finance_FactFinancialTransaction.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{284C44FE-7816-40AA-B943-F639FBB31000}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">3001_Finance_FactGLTransaction</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{C06FBBA5-6BE8-43CB-94B5-551CC166D9FB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">3001_Finance_FactFinancialTransaction</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">71</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{605659FF-93EC-47C3-8AA2-E710264E7044}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2A7B577B-A97F-41F5-9FD1-14D0E1B726B9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="3002_Finance_FactGLTransaction.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{3BB8C563-CD6D-4F4F-A7E3-022C9B5306A6}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">3002_Finance_FactGLTransaction</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{7717118F-021D-4B87-AFE1-C68607F9B78D}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -2996,6 +3013,8 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -3023,21 +3042,40 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="3002_Shared_FactIntegrationTransaction.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="3004_Shared_FactProcessEvent.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{A6CB9BE2-3006-46D4-B186-458EBCB6E90A}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">3002_Shared_FactIntegrationTransaction</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{6AFCB10B-B88B-4F0C-BA01-D958B38FFD5A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">3004_Shared_FactProcessEvent</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">75</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{96CC95B2-A042-44C6-9EEA-AC03B91E1668}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9879B329-75C1-4FE7-9A7A-6557F5D1742D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="3003_Shared_FactIntegrationTransaction.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{5E84D713-7EE8-4F3B-8C4D-F1F5DBC75E1B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">3003_Shared_FactIntegrationTransaction</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{92A07FE2-8F1F-4BA5-9B87-A13A4682B575}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -3054,6 +3092,8 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -3081,44 +3121,12 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
               </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="3004_Finance_FinancialTransaction.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{ACC2CC50-CC03-4D20-8143-FD05166EF4BB}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">3004_Finance_FinancialTransaction</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">65</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A3D3C964-6991-4F81-8646-09DD2CF476DB}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="3003_Shared_FactProcessEvent.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{C81D9FDA-BAFA-45E2-9B5B-24520DCCE63A}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">3003_Shared_FactProcessEvent</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">74</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{21F52332-D625-421A-B4F4-D873633EF50F}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
