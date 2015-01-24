@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="301"
-  DTS:VersionGUID="{42DF4014-55E6-4655-9117-DF8D47788AD6}">
+  DTS:VersionBuild="311"
+  DTS:VersionGUID="{3531227D-51B8-4067-B4DC-E3E554F3E4EE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -24,7 +24,7 @@
       DTS:ObjectName="LoadGroupFilter">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">AND base.LoadGroup = 3200</DTS:Property>
+        DTS:Name="ParameterValue">AND base.LoadGroup &lt; 3000</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -126,13 +126,13 @@
       DTS:CreationName=""
       DTS:DTSID="{6FF5D855-AEDC-4B71-B38C-30801B906C64}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(CHAR(4),(xLoadGroup + x.rn)) +'_' + StagingTableName,&#xA;&#x9;strParm1 = &#xA;&#x9;'WHERE&#xA;&#x9;&#x9;&quot; + @[User::LoadTypeFilter]  +&quot;&#x9;&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;1&#xA;&#x9;&#x9;&#x9;FROM paga_change_log.' +x.SourceTable +' AS ct&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;base_query.SourceKey = ct.' +x.KeyColumn &#xA;&#x9;&#x9;&#x9;&#x9;+' AND ct.SYS_CHANGE_OPERATION = ''D'''&#xA;&#x9;&#x9;&#x9;&#x9;&quot;+ @[User::strVersionFilter] +&quot;&#xA;&#x9;&#x9;)'&#xA;&quot;+ @[User::strPackageQuery]"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(CHAR(4),(x.LoadGroup + x.rn)) +'_' + StagingTableName,&#xA;&#x9;strParm1 = &#xA;&#x9;'WHERE&#xA;&#x9;&#x9;&quot; + @[User::LoadTypeFilter]  +&quot;&#x9;&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;1&#xA;&#x9;&#x9;&#x9;FROM paga_change_log.' +x.SourceTable +' AS ct&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;base_query.SourceKey = ct.' +x.KeyColumn &#xA;&#x9;&#x9;&#x9;&#x9;+' AND ct.SYS_CHANGE_OPERATION = ''D'''&#xA;&#x9;&#x9;&#x9;&#x9;&quot;+ @[User::strVersionFilter] +&quot;&#xA;&#x9;&#x9;)'&#xA;&quot;+ @[User::strPackageQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="GetDeletes">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
-	PackageName = CONVERT(CHAR(4),(xLoadGroup + x.rn)) +'_' + StagingTableName,
+	PackageName = CONVERT(CHAR(4),(x.LoadGroup + x.rn)) +'_' + StagingTableName,
 	strParm1 = 
 	'WHERE
 		NOT EXISTS	
@@ -207,7 +207,7 @@ FROM
 	) as prefix ON 
 		base.TABLE_SCHEMA = prefix.TABLE_SCHEMA
 		AND base.HasBaseQueryDef = 1
-		AND base.LoadGroup = 3200) AS x</DTS:VariableValue>
+		AND base.LoadGroup &lt; 3000) AS x</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -292,7 +292,7 @@ FROM
 	) as prefix ON 
 		base.TABLE_SCHEMA = prefix.TABLE_SCHEMA
 		AND base.HasBaseQueryDef = 1
-		AND base.LoadGroup = 3200) AS x</DTS:VariableValue>
+		AND base.LoadGroup &lt; 3000) AS x</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -379,19 +379,19 @@ FROM
 	) as prefix ON 
 		base.TABLE_SCHEMA = prefix.TABLE_SCHEMA
 		AND base.HasBaseQueryDef = 1
-		AND base.LoadGroup = 3200) AS x</DTS:VariableValue>
+		AND base.LoadGroup &lt; 3000) AS x</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{94F642A3-6CC5-42B6-ADCA-595E404E47F5}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(CHAR(4),(xLoadGroup + x.rn)) +'_' + StagingTableName,&#xA;&#x9;strParm1 = &#xA;&#x9;'WHERE&#xA;&#x9;&#x9;&quot; + @[User::LoadTypeFilter]  +&quot;&#x9;&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;1&#xA;&#x9;&#x9;&#x9;FROM paga_change_log.' +x.SourceTable +' AS ct&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;base_query.SourceKey = ct.' +x.KeyColumn &#xA;&#x9;&#x9;&#x9;&#x9;+' AND ct.SYS_CHANGE_OPERATION = ''U'''&#xA;&#x9;&#x9;&#x9;&#x9;&quot;+ @[User::strVersionFilter] +&quot;&#xA;&#x9;&#x9;)'&#xA;&quot;+ @[User::strPackageQuery]"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(CHAR(4),(x.LoadGroup + x.rn)) +'_' + StagingTableName,&#xA;&#x9;strParm1 = &#xA;&#x9;'WHERE&#xA;&#x9;&#x9;&quot; + @[User::LoadTypeFilter]  +&quot;&#x9;&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;1&#xA;&#x9;&#x9;&#x9;FROM paga_change_log.' +x.SourceTable +' AS ct&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;base_query.SourceKey = ct.' +x.KeyColumn &#xA;&#x9;&#x9;&#x9;&#x9;+' AND ct.SYS_CHANGE_OPERATION = ''U'''&#xA;&#x9;&#x9;&#x9;&#x9;&quot;+ @[User::strVersionFilter] +&quot;&#xA;&#x9;&#x9;)'&#xA;&quot;+ @[User::strPackageQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="GetUpdates">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
-	PackageName = CONVERT(CHAR(4),(xLoadGroup + x.rn)) +'_' + StagingTableName,
+	PackageName = CONVERT(CHAR(4),(x.LoadGroup + x.rn)) +'_' + StagingTableName,
 	strParm1 = 
 	'WHERE
 		NOT EXISTS	
@@ -466,7 +466,7 @@ FROM
 	) as prefix ON 
 		base.TABLE_SCHEMA = prefix.TABLE_SCHEMA
 		AND base.HasBaseQueryDef = 1
-		AND base.LoadGroup = 3200) AS x</DTS:VariableValue>
+		AND base.LoadGroup &lt; 3000) AS x</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -572,7 +572,7 @@ FROM
 	) as prefix ON 
 		base.TABLE_SCHEMA = prefix.TABLE_SCHEMA
 		AND base.HasBaseQueryDef = 1
-		AND base.LoadGroup = 3200) AS x</DTS:VariableValue>
+		AND base.LoadGroup &lt; 3000) AS x</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""

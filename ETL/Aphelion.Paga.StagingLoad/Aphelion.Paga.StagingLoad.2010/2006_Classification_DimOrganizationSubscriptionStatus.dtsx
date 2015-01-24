@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/24/2015 13:15:41" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{6F45735A-A2B0-4F57-A80A-B52E8B52FBDE}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2006_Classification_DimOrganizationSubscriptionStatus" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{D271F0B2-548D-4508-B12F-3A9454678B5D}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/24/2015 18:37:48" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{9D820169-546D-4A86-8CE7-6F82C57C7CBF}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2006_Classification_DimOrganizationSubscriptionStatus" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{E948F1E0-951E-4285-87CD-EB6DBB2F14B7}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{0034F8A4-5C5C-4737-BCFE-5AAE8C1687A3}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimOrganizationSubscriptionStatus" DTS:refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{4E3EBC72-C8D1-4F7F-A265-F657C9D2C9B5}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimOrganizationSubscriptionStatus" DTS:refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
-            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData" usesDispositions="true" version="7">
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData" usesDispositions="true" validateExternalMetadata="False" version="7">
               <connections>
                 <connection connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Connections[OleDbConnection]">
                 </connection>
@@ -56,7 +56,7 @@
                 </property>
               </properties>
             </component>
-            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeData" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\dc_ChangeData" usesDispositions="true">
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeData" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\dc_ChangeData" usesDispositions="true" validateExternalMetadata="False">
               <inputs>
                 <input name="OLEDB_GetData_Output_dc_ChangeData" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <externalMetadataColumns>
@@ -94,7 +94,7 @@
                 </output>
               </outputs>
             </component>
-            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging" usesDispositions="true" version="4">
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging" usesDispositions="true" validateExternalMetadata="False" version="4">
               <connections>
                 <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Connections[OleDbConnection]">
                 </connection>
@@ -106,8 +106,16 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="name" externalMetadataColumnId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[name]" refId="Package\DFT_Load Classification_DimOrganizationSubscriptionStatus\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[name]">
@@ -139,7 +147,7 @@
                 <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
                 <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
                 <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
-                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 10000</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 50000</property>
                 <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
             </component>
@@ -155,24 +163,24 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{D8C7549C-61CE-41D3-828D-BF4DFAC4289E}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{C43CA95D-33D1-4372-8DDE-E0045F454D69}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{4FE981D9-CBFA-43EA-9DD6-9E355ACB2CF6}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{35DD1E07-609B-4AE7-B21F-3920A3962C19}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{E8818F61-FA65-4392-9132-85B2279F5F59}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{41B4C9D6-6424-4123-9773-9AB3C9E245CD}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="20" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F49A1A7B-539B-460B-8084-4422C2183C47}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{381FDC9A-912A-42CF-A44E-FAB924473D7D}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  			SourceKey, 			base_query.name 		 	FROM   	(SELECT 	OrganizationSubscriptionStatusId AS SourceKey,  	 CONVERT(VARCHAR(255),Description) AS Name FROM dbo.OrganizationSubscriptionStatus) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B25E796F-8A74-4E7A-8348-2DC1A5971F2E}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A55C02FC-704F-4325-B944-6810EBA95A05}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">SELECT  			SourceKey, 			base_query.name 		 	FROM   	(SELECT 	OrganizationSubscriptionStatusId AS SourceKey,  	 CONVERT(VARCHAR(255),Description) AS Name FROM dbo.OrganizationSubscriptionStatus) as base_query </DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

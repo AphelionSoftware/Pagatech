@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/24/2015 13:15:41" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{D4EC5802-5D2E-4B1A-884A-8265670DE8CD}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2003_Classification_DimFinancialTransactionSubType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{35E2D550-34CB-4292-BE9A-9B847DD81F6A}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/24/2015 18:37:47" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{D297C48A-436D-4E47-B844-7A48D420375D}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2003_Classification_DimFinancialTransactionSubType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{16F80ABD-A20E-4DC8-BD73-EDD7701C6457}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{678134A0-5686-4D4F-8519-0527E060943A}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimFinancialTransactionSubType" DTS:refId="Package\DFT_Load Classification_DimFinancialTransactionSubType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{4657C2FC-EED0-44A3-87E2-889C44A03C78}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimFinancialTransactionSubType" DTS:refId="Package\DFT_Load Classification_DimFinancialTransactionSubType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
-            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_GetData" usesDispositions="true" version="7">
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_GetData" usesDispositions="true" validateExternalMetadata="False" version="7">
               <connections>
                 <connection connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_GetData.Connections[OleDbConnection]">
                 </connection>
@@ -56,7 +56,7 @@
                 </property>
               </properties>
             </component>
-            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeData" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\dc_ChangeData" usesDispositions="true">
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeData" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\dc_ChangeData" usesDispositions="true" validateExternalMetadata="False">
               <inputs>
                 <input name="OLEDB_GetData_Output_dc_ChangeData" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <externalMetadataColumns>
@@ -94,7 +94,7 @@
                 </output>
               </outputs>
             </component>
-            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging" usesDispositions="true" version="4">
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging" usesDispositions="true" validateExternalMetadata="False" version="4">
               <connections>
                 <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging.Connections[OleDbConnection]">
                 </connection>
@@ -106,8 +106,16 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Classification_DimFinancialTransactionSubType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Classification_DimFinancialTransactionSubType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]">
+                    </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="name" externalMetadataColumnId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_GetData.Outputs[Output].Columns[name]" refId="Package\DFT_Load Classification_DimFinancialTransactionSubType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[name]">
@@ -139,7 +147,7 @@
                 <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
                 <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
                 <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
-                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 10000</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 50000</property>
                 <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
             </component>
@@ -155,21 +163,21 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{C070AC9E-2108-4A4B-8384-92400D1268BB}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{A9976C70-B261-4DDA-A7B9-A711D5B2EB91}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{2CA31D3E-1D0E-4181-84E2-E0999B642060}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{80DF646E-5BD3-45C9-8C7C-F723899CD46D}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{785D47F1-773F-4E8D-84C5-BCF1A6EC7CA7}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{9372BAF9-E5A0-4650-8021-7A59DDF670F8}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="20" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{64B90F53-45B6-4804-A7D4-541DEE1461C3}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{9CA48875-6A7F-43C1-ACCA-824BCCDE355C}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">--DimFinancialTransactionSubType
 SELECT 
 	SourceKey,
@@ -182,7 +190,7 @@ FROM
 	FROM dbo.FinancialTransactionSubType
 ) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2B4B8D89-0C77-45A5-9ED2-B6ACC92A52BB}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C50D30EF-31B0-47B7-8E82-74E563C94716}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">--DimFinancialTransactionSubType
 SELECT 
 	SourceKey,

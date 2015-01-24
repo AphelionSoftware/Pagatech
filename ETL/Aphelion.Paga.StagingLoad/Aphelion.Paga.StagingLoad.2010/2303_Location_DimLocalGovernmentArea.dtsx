@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/24/2015 13:15:41" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{417737B1-6942-4BC3-B6C0-29D781A16657}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2303_Location_DimLocalGovernmentArea" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{3EC238F8-F042-4845-81BC-1071D781822C}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/24/2015 18:37:48" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{BE2B54C9-0EF5-43CA-BCDB-5F5232E6CDAE}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2303_Location_DimLocalGovernmentArea" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{94CD38BF-2524-4E40-80B2-8B1D50FDAEE3}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{D92813B7-21AE-4925-8428-7A4EFBC2B29A}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Location_DimLocalGovernmentArea" DTS:refId="Package\DFT_Load Location_DimLocalGovernmentArea" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{1496BBDF-7FE0-4D9A-B0A1-DE7746BD0440}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Location_DimLocalGovernmentArea" DTS:refId="Package\DFT_Load Location_DimLocalGovernmentArea" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
-            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData" usesDispositions="true" version="7">
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData" usesDispositions="true" validateExternalMetadata="False" version="7">
               <connections>
                 <connection connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Connections[OleDbConnection]">
                 </connection>
@@ -68,7 +68,7 @@
                 </property>
               </properties>
             </component>
-            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeData" refId="Package\DFT_Load Location_DimLocalGovernmentArea\dc_ChangeData" usesDispositions="true">
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeData" refId="Package\DFT_Load Location_DimLocalGovernmentArea\dc_ChangeData" usesDispositions="true" validateExternalMetadata="False">
               <inputs>
                 <input name="OLEDB_GetData_Output_dc_ChangeData" refId="Package\DFT_Load Location_DimLocalGovernmentArea\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <externalMetadataColumns>
@@ -106,7 +106,7 @@
                 </output>
               </outputs>
             </component>
-            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging" usesDispositions="true" version="4">
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging" usesDispositions="true" validateExternalMetadata="False" version="4">
               <connections>
                 <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Connections[OleDbConnection]">
                 </connection>
@@ -122,8 +122,16 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="DimRegionSourceKey" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimRegionSourceKey]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]">
+                    </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="name" externalMetadataColumnId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_GetData.Outputs[Output].Columns[name]" refId="Package\DFT_Load Location_DimLocalGovernmentArea\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[name]">
@@ -159,7 +167,7 @@
                 <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
                 <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
                 <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
-                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 10000</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 50000</property>
                 <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
             </component>
@@ -175,24 +183,24 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{1D033CFB-E9C9-47D7-B752-19BC4023B8ED}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{FFF70EF5-E349-42FF-B26D-F381B4AB5271}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{459B4F7E-A8A1-4C55-98F8-236D9D7CD9DD}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{10A6A283-B91B-424B-BE90-5B5CAE5592F0}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{D44CD3AE-7B1A-4BFF-BB17-6CCBA3637114}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{827BFC1C-C1B7-40F5-ABF0-ED7F0A3A782E}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="20" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{02C2F169-556E-40AA-B4F2-2F94C26A00EE}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AE6F013A-2797-40D8-977B-28705DDFCA12}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	base_query.name, 	base_query.code, 	base_query.DimRegionSourceKey FROM   (SELECT LocalGovernmentAreaId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, CONVERT(VARCHAR(50),LgaCode) as Code, RegionId AS DimRegionSourceKey FROM dbo.LocalGovernmentArea) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{10B623F6-8C60-4A6D-AA84-AA07AB45EE2F}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{53503853-B149-49EB-B8CA-CA23EE81FEEE}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	base_query.name, 	base_query.code, 	base_query.DimRegionSourceKey FROM   (SELECT LocalGovernmentAreaId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, CONVERT(VARCHAR(50),LgaCode) as Code, RegionId AS DimRegionSourceKey FROM dbo.LocalGovernmentArea) as base_query </DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

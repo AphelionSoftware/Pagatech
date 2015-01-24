@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/24/2015 13:15:41" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{7CB863B0-472F-4934-8E2B-0ADCFB1E8F1A}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2111_Shared_DimOrganization" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{A7CC952E-8D40-4D21-8EFD-7DE191A75927}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/24/2015 18:37:48" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{D0C624BD-DD7C-42C4-84AD-8E7083314B11}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2111_Shared_DimOrganization" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{EA2B6137-6907-4ECB-80A6-E5004DDB8D02}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{590FE6CC-3CA6-4569-B78E-5AB83ABABA71}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimOrganization" DTS:refId="Package\DFT_Load Shared_DimOrganization" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{C0F2D079-EB23-4BF1-8EA6-5EA239BE96DE}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimOrganization" DTS:refId="Package\DFT_Load Shared_DimOrganization" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
-            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData" usesDispositions="true" version="7">
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData" usesDispositions="true" validateExternalMetadata="False" version="7">
               <connections>
                 <connection connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData.Connections[OleDbConnection]">
                 </connection>
@@ -140,7 +140,7 @@
                 </property>
               </properties>
             </component>
-            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeData" refId="Package\DFT_Load Shared_DimOrganization\dc_ChangeData" usesDispositions="true">
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeData" refId="Package\DFT_Load Shared_DimOrganization\dc_ChangeData" usesDispositions="true" validateExternalMetadata="False">
               <inputs>
                 <input name="OLEDB_GetData_Output_dc_ChangeData" refId="Package\DFT_Load Shared_DimOrganization\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <externalMetadataColumns>
@@ -178,7 +178,7 @@
                 </output>
               </outputs>
             </component>
-            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging" usesDispositions="true" version="4">
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging" usesDispositions="true" validateExternalMetadata="False" version="4">
               <connections>
                 <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging.Connections[OleDbConnection]">
                 </connection>
@@ -214,8 +214,16 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimPagaAccountSourceKey]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Shared_DimOrganization\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Shared_DimOrganization\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]">
+                    </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="100" cachedName="DisplayName" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DisplayName]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData.Outputs[Output].Columns[DisplayName]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[DisplayName]">
@@ -271,7 +279,7 @@
                 <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
                 <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
                 <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
-                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 10000</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 50000</property>
                 <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
             </component>
@@ -287,24 +295,24 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{A79DBA07-850F-4059-86D7-6DE8FA2890E6}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{77166B64-F7B2-4B06-8175-FBB94DB7F4D4}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{36F0CEC4-B816-49B9-8EBB-4864FF0FCD14}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{B74C8211-19D1-4AB7-B373-2D9118C5BC64}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{93462503-3612-4730-8947-4324E3398435}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{AA69271A-B37B-4EBF-9C39-313C2C40461A}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="20" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3DA1C6D1-0230-491E-8EC8-934F048CA2F6}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{78032840-0DB1-403F-9C0E-740F8499A80F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	DisplayName,  	Name,  	OrganizationCode,  	RcName,  	ReferenceNumber,  	TaxIDNumber,  	TextDesciption,  	VATCertificationNumber,  	WebsiteURL,  	DimBusinessTypeSourceKey,  	DimPagaAccountSourceKey,  	DimOrganizationSubscriptionStatusSourceKey,  	DimOrganizationVerificationStatusSourceKey, 	DimMerchantCategorySourceKey, 	DimProcessChannelSourceKey 	 FROM  ( 	SELECT  		SourceKey = o.OrganizationId, 		DisplayName = CONVERT(VARCHAR(100),o.DisplayName),  		Name = CONVERT(VARCHAR(255),o.Name),  		OrganizationCode = o.Code,  		o.RcName,  		o.ReferenceNumber,  		o.TaxIDNumber,  		TextDesciption = CONVERT(VARCHAR(1000), o.Description), 		o.VATCertificationNumber,  		o.WebsiteURL,  		DimBusinessTypeSourceKey = COALESCE(o.BusinessTypeId, 'UNKNOWN'),  		DimPagaAccountSourceKey = o.PagaAccountId,  		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId,  		DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId, 		DimMerchantCategorySourceKey = CONVERT(VARCHAR(50), COALESCE(omc.MerchantCategoryId, 'UNKNOWN')), 		DimProcessChannelSourceKey = CONVERT(VARCHAR(50), COALESCE(ompc.ProcessChannelId, 'UNKNOWN')) 	FROM dbo.Organization AS o 	LEFT JOIN dbo.OrganizationMerchantCategory AS omc ON 		o.OrganizationId = omc.OrganizationId 	LEFT JOIN dbo.OrganizationMerchantProcessChannel AS ompc ON 		o.OrganizationId = ompc.OrganizationId ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{87209B5C-242B-4BC6-A8DE-B8ACF36E1F4A}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{65DC26DB-8A11-41DB-8008-6C9E5ED1393A}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	DisplayName,  	Name,  	OrganizationCode,  	RcName,  	ReferenceNumber,  	TaxIDNumber,  	TextDesciption,  	VATCertificationNumber,  	WebsiteURL,  	DimBusinessTypeSourceKey,  	DimPagaAccountSourceKey,  	DimOrganizationSubscriptionStatusSourceKey,  	DimOrganizationVerificationStatusSourceKey, 	DimMerchantCategorySourceKey, 	DimProcessChannelSourceKey 	 FROM  ( 	SELECT  		SourceKey = o.OrganizationId, 		DisplayName = CONVERT(VARCHAR(100),o.DisplayName),  		Name = CONVERT(VARCHAR(255),o.Name),  		OrganizationCode = o.Code,  		o.RcName,  		o.ReferenceNumber,  		o.TaxIDNumber,  		TextDesciption = CONVERT(VARCHAR(1000), o.Description), 		o.VATCertificationNumber,  		o.WebsiteURL,  		DimBusinessTypeSourceKey = COALESCE(o.BusinessTypeId, 'UNKNOWN'),  		DimPagaAccountSourceKey = o.PagaAccountId,  		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId,  		DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId, 		DimMerchantCategorySourceKey = CONVERT(VARCHAR(50), COALESCE(omc.MerchantCategoryId, 'UNKNOWN')), 		DimProcessChannelSourceKey = CONVERT(VARCHAR(50), COALESCE(ompc.ProcessChannelId, 'UNKNOWN')) 	FROM dbo.Organization AS o 	LEFT JOIN dbo.OrganizationMerchantCategory AS omc ON 		o.OrganizationId = omc.OrganizationId 	LEFT JOIN dbo.OrganizationMerchantProcessChannel AS ompc ON 		o.OrganizationId = ompc.OrganizationId ) AS base_query </DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

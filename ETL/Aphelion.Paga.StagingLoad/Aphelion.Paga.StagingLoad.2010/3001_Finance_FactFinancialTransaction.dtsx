@@ -12,11 +12,30 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="3001_Finance_FactFinancialTransaction"
   DTS:PackageType="5"
-  DTS:VersionBuild="91"
-  DTS:VersionGUID="{8E46CC6E-6176-4ACD-AC47-6A307259B545}">
+  DTS:VersionBuild="96"
+  DTS:VersionGUID="{E4492C8F-AF2A-49BB-8507-C643988DB51B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{2CAED568-289D-413F-9D8A-21F09ECAEC2A}"
+      DTS:ObjectName="ChangeOperation">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{25A0E841-F619-4688-B078-528D75A1CC45}"
+      DTS:ObjectName="ChangeVersion">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
@@ -270,8 +289,24 @@ FROM reversals;</DTS:VariableValue>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
-          SQLTask:SqlStatementSource="DROP TABLE ##ReversalChain&#xA;DROP TABLE ##FT_PickList&#xA;"
-          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DROP TABLE ##ReversalChain&#xA;DROP TABLE ##FT_PickList&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_DropGlobalTempTables_JustInCase"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9845e9f0-36af-4951-a238-ac205015d200}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_DropGlobalTempTables_JustInCase"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
+          SQLTask:SqlStatementSource="IF OBJECT_ID('tempdb..##ReversalChain') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##ReversalChain&#xA;&#xA;&#x9;&#xA;&#xA;IF OBJECT_ID('tempdb..##FT_PickList') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##FT_PickList&#xA;&#xA;&#x9;&#x9;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -289,7 +324,7 @@ FROM reversals;</DTS:VariableValue>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
-          SQLTask:SqlStatementSource="SELECT Iterations = (MAX(grp)/10000) + 1 FROM ##FT_PickList"
+          SQLTask:SqlStatementSource="IF EXISTS (SELECT 1 FROM ##FT_PickList)&#xA;&#x9;SELECT Iterations = (MAX(grp)/10000) + 1 FROM ##FT_PickList&#xA;ELSE&#xA;&#x9;SELECT Iterations = 0"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="Iterations"
@@ -344,6 +379,95 @@ FROM reversals;</DTS:VariableValue>
             <pipeline
               version="1">
               <components>
+                <component
+                  refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData"
+                  componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  name="dc_ChangeData"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+                      name="OLEDB_GetData_Output_dc_ChangeData">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Output]"
+                      exclusionGroup="1"
+                      name="Output"
+                      synchronousInputId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="IgnoreFailure"
+                          length="1"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                          name="SYS_CHANGE_OPERATION"
+                          truncationRowDisposition="IgnoreFailure">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[$Package::ChangeOperation]</property>
+                            <property
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[$Package::ChangeOperation]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                          name="SYS_CHANGE_VERSION"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[$Package::ChangeVersion]</property>
+                            <property
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[$Package::ChangeVersion]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Error]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Error"
+                      synchronousInputId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
                 <component
                   refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction"
                   componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
@@ -1310,6 +1434,20 @@ CROSS APPLY
                           cachedName="RelatedFinancialTx_SourceKey"
                           externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FacttRelaedFinancialTxID]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[RelatedFinancialTx_SourceKey]" />
+                        <inputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_VERSION]"
+                          cachedDataType="i8"
+                          cachedName="SYS_CHANGE_VERSION"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
+                        <inputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_OPERATION]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="SYS_CHANGE_OPERATION"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1431,6 +1569,16 @@ CROSS APPLY
                           refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FacttRelaedFinancialTxID]"
                           dataType="i4"
                           name="FacttRelaedFinancialTxID" />
+                        <externalMetadataColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          name="SYS_CHANGE_VERSION" />
+                        <externalMetadataColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="SYS_CHANGE_OPERATION" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1463,9 +1611,14 @@ CROSS APPLY
               <paths>
                 <path
                   refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
-                  endId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input]"
+                  endId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
                   name="OLE DB Source Output"
                   startId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction.Paths[Output]"
+                  endId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input]"
+                  name="Output"
+                  startId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Output]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -1494,6 +1647,8 @@ CROSS APPLY
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{8C1FF6DE-0C02-494B-8F33-87FD9D2EC1E3}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::Iterations] &gt; 0"
       DTS:From="Package\EST_GetIterations"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -1506,6 +1661,24 @@ CROSS APPLY
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\EST_Drop Temp Tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{68F944CB-7247-4610-A172-4214E51B62D5}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::Iterations] == 0"
+      DTS:From="Package\EST_GetIterations"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\EST_Drop Temp Tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{144CDB84-9977-4211-91A9-E3B89E401AF7}"
+      DTS:From="Package\EST_DropGlobalTempTables_JustInCase"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\EST_LoadReversalsTempTable" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1518,23 +1691,23 @@ CROSS APPLY
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="247,42"
           Id="Package\EST_CreatePickListToBatchTheLoad"
-          TopLeft="32,107.5" />
+          TopLeft="243,209.5" />
         <NodeLayout
           Size="190,42"
           Id="Package\EST_Drop Temp Tables"
-          TopLeft="47,522" />
+          TopLeft="271.5,619.5" />
         <NodeLayout
           Size="164,42"
           Id="Package\EST_GetIterations"
-          TopLeft="73.5,209.5" />
+          TopLeft="284.5,311.5" />
         <NodeLayout
           Size="223,42"
           Id="Package\EST_LoadReversalsTempTable"
-          TopLeft="44,5.5" />
+          TopLeft="255,107.5" />
         <NodeLayout
           Size="289,42"
           Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction"
@@ -1542,13 +1715,13 @@ CROSS APPLY
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="300,103"
+          PanelSize="300,102"
           Size="300,146"
           Id="Package\Load 10,000 Groups Per Iteration"
-          TopLeft="5.50000000000006,311.5" />
+          TopLeft="5.50000000000009,413.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="155.5,47.5">
+          TopLeft="366.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1570,7 +1743,7 @@ CROSS APPLY
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="155.5,149.5">
+          TopLeft="366.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1592,7 +1765,105 @@ CROSS APPLY
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="155.5,251.5">
+          TopLeft="340.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-185,60"
+              Start="0,0"
+              End="-185,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3478260869565" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3478260869565"
+                    Point2="0,24.3478260869565"
+                    Point3="-4,24.3478260869565" />
+                  <mssgle:LineSegment
+                    End="-181,24.3478260869565" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-181,24.3478260869565"
+                    Point2="-185,24.3478260869565"
+                    Point3="-185,28.3478260869565" />
+                  <mssgle:LineSegment
+                    End="-185,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-100.5,29.3478260869565,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="155.5,559.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="180.666666666667,60"
+              Start="0,0"
+              End="180.666666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.6993736951983" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.6993736951983"
+                    Point2="0,35.6993736951983"
+                    Point3="4,35.6993736951983" />
+                  <mssgle:LineSegment
+                    End="176.666666666667,35.6993736951983" />
+                  <mssgle:CubicBezierSegment
+                    Point1="176.666666666667,35.6993736951983"
+                    Point2="180.666666666667,35.6993736951983"
+                    Point3="180.666666666667,39.6993736951983" />
+                  <mssgle:LineSegment
+                    End="180.666666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="394.666666666667,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,266"
+              Start="0,0"
+              End="0,258.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,258.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,121.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="269,42"
+          Id="Package\EST_DropGlobalTempTables_JustInCase"
+          TopLeft="232,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="366.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1612,32 +1883,86 @@ CROSS APPLY
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="316,42"
+          Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction"
+          TopLeft="46,338" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData"
+          TopLeft="98,238" />
+        <NodeLayout
+          Size="275,42"
+          Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction"
+          TopLeft="98.5,35.5" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="155.5,457.5">
+          Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction.Paths[Output]"
+          TopLeft="174.5,280">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-13.5000000000001,64.5"
+              EndConnector="29.5,58"
               Start="0,0"
-              End="-13.5000000000001,57">
+              End="29.5,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.25" />
+                    End="0,25" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.25"
-                    Point2="0,32.25"
-                    Point3="-4,32.25" />
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
                   <mssgle:LineSegment
-                    End="-9.50000000000006,32.25" />
+                    End="25.5,29" />
                   <mssgle:CubicBezierSegment
-                    Point1="-9.50000000000006,32.25"
-                    Point2="-13.5000000000001,32.25"
-                    Point3="-13.5000000000001,36.25" />
+                    Point1="25.5,29"
+                    Point2="29.5,29"
+                    Point3="29.5,33" />
                   <mssgle:LineSegment
-                    End="-13.5000000000001,57" />
+                    End="29.5,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
+          TopLeft="236,77.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-61.5,160.5"
+              Start="0,0"
+              End="-61.5,153">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,76.25"
+                    Point2="0,80.25"
+                    Point3="-4,80.25" />
+                  <mssgle:LineSegment
+                    End="-57.5,80.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.5,80.25"
+                    Point2="-61.5,80.25"
+                    Point3="-61.5,84.25" />
+                  <mssgle:LineSegment
+                    End="-61.5,153" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1648,61 +1973,9 @@ CROSS APPLY
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
-  </Package>
-  <TaskHost
-    design-time-name="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="275,42"
-          Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction"
-          TopLeft="98.5,35.5" />
-        <NodeLayout
-          Size="316,42"
-          Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction"
-          TopLeft="98,136" />
-        <EdgeLayout
-          Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
-          TopLeft="236,77.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="20,58.5"
-              Start="0,0"
-              End="20,51">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.25"
-                    Point2="0,29.25"
-                    Point3="4,29.25" />
-                  <mssgle:LineSegment
-                    End="16,29.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="16,29.25"
-                    Point2="20,29.25"
-                    Point3="20,33.25" />
-                  <mssgle:LineSegment
-                    End="20,51" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction">
+    design-time-name="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1715,7 +1988,7 @@ CROSS APPLY
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction">
+    design-time-name="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

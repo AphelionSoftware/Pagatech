@@ -12,11 +12,30 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="3201_Shared_FactProcessEvent"
   DTS:PackageType="5"
-  DTS:VersionBuild="92"
-  DTS:VersionGUID="{6B1C8578-A15A-437D-A35A-458162F34BE3}">
+  DTS:VersionBuild="100"
+  DTS:VersionGUID="{6CFB3463-9F66-4B0E-A682-0D24063E3298}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{69B20A20-7338-43F6-87AC-D92037FC2542}"
+      DTS:ObjectName="ChangeOperation">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{B7FE5D1A-1852-4140-87FF-D885948F109A}"
+      DTS:ObjectName="ChangeVersion">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
@@ -119,6 +138,41 @@ CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\EST_DropGlobalTempTables_JustInCase"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6C26B404-64AB-49CB-B036-13919F020DAF}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_DropGlobalTempTables_JustInCase"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
+          SQLTask:SqlStatementSource="IF OBJECT_ID('tempdb..##MasterList') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##MasterList&#xA;&#xA;&#x9;&#xA;&#xA;IF OBJECT_ID('tempdb..##PullList') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##PullList" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_Drop_##MasterList"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:DelayValidation="True"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3dbfe4c6-926c-41c9-8753-0c02127866cf}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_Drop_##MasterList"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
+          SQLTask:SqlStatementSource="&#xA;DROP TABLE ##MasterList&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\EST_GetIterations"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:DelayValidation="True"
@@ -133,17 +187,11 @@ CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
-          SQLTask:SqlStatementSource="SELECT (COUNT(DISTINCT(CAST(UserID AS INT)))/1000)+1 AS Iterations&#xA;FROM ##MasterList"
+          SQLTask:SqlStatementSource="IF EXISTS (SELECT 1 FROM ##MasterList)&#xA;&#x9;SELECT Iterations =(COUNT(DISTINCT(CAST(UserID AS INT)))/1000)+1  FROM ##MasterList&#xA;ELSE&#xA;&#x9;SELECT Iterations = 0&#xA;&#x9;"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="Iterations"
             SQLTask:DtsVariableName="User::Iterations" />
-          <SQLTask:ParameterBinding
-            SQLTask:ParameterName="0"
-            SQLTask:DtsVariableName="User::MaxID"
-            SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="3"
-            SQLTask:ParameterSize="-1" />
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -176,6 +224,95 @@ CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList
             <pipeline
               version="1">
               <components>
+                <component
+                  refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData"
+                  componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  name="dc_ChangeData"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+                      name="OLEDB_GetData_Output_dc_ChangeData">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Output]"
+                      exclusionGroup="1"
+                      name="Output"
+                      synchronousInputId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="IgnoreFailure"
+                          length="1"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                          name="SYS_CHANGE_OPERATION"
+                          truncationRowDisposition="IgnoreFailure">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[$Package::ChangeOperation]</property>
+                            <property
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[$Package::ChangeOperation]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                          name="SYS_CHANGE_VERSION"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[$Package::ChangeVersion]</property>
+                            <property
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[$Package::ChangeVersion]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Error]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Error"
+                      synchronousInputId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
                 <component
                   refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions"
                   componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
@@ -1551,6 +1688,20 @@ OUTER APPLY
                           cachedName="HasFinancialTransaction"
                           externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[HasFinancialTransaction]"
                           lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]" />
+                        <inputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_VERSION]"
+                          cachedDataType="i8"
+                          cachedName="SYS_CHANGE_VERSION"
+                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
+                        <inputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_OPERATION]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="SYS_CHANGE_OPERATION"
+                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1744,6 +1895,16 @@ OUTER APPLY
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[FactOriginalProcessEventSourceKey]"
                           dataType="i4"
                           name="FactOriginalProcessEventSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          name="SYS_CHANGE_VERSION" />
+                        <externalMetadataColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="SYS_CHANGE_OPERATION" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1776,9 +1937,14 @@ OUTER APPLY
               <paths>
                 <path
                   refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx.Paths[OLE DB Source Output]"
-                  endId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input]"
+                  endId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
                   name="OLE DB Source Output"
                   startId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx.Paths[Output]"
+                  endId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input]"
+                  name="Output"
+                  startId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Output]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -1809,21 +1975,21 @@ OUTER APPLY
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Load_In_Batches_of_1000_UserIDs\EST_Drop_Temp_Tables"
+          DTS:refId="Package\Load_In_Batches_of_1000_UserIDs\EST_Drop_##PullList"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:DelayValidation="True"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{12D4E363-4440-4027-9B29-F9C5D7D8A0FC}"
+          DTS:DTSID="{dc1fc869-5b0e-4c8b-9070-64491654ddf4}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
-          DTS:ObjectName="EST_Drop_Temp_Tables"
+          DTS:ObjectName="EST_Drop_##PullList"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
-              SQLTask:SqlStatementSource="&#xA;DROP TABLE ##MasterList&#xA;DROP TABLE ##PullList&#xA;DROP TABLE ##ProcessData" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="&#xA;DROP TABLE ##PullList&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -1839,11 +2005,11 @@ OUTER APPLY
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Load_In_Batches_of_1000_UserIDs.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{23FF7ACD-B65B-40C7-94D9-05BFCBE53679}"
+          DTS:DTSID="{E8CA7BAE-5A03-4CBE-B25B-66D34969A531}"
           DTS:From="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\Load_In_Batches_of_1000_UserIDs\EST_Drop_Temp_Tables" />
+          DTS:To="Package\Load_In_Batches_of_1000_UserIDs\EST_Drop_##PullList" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -1860,10 +2026,38 @@ OUTER APPLY
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
       DTS:DTSID="{EB1B3D29-7135-444E-A685-2871558042C0}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::Iterations] &gt; 0"
       DTS:From="Package\EST_GetIterations"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Load_In_Batches_of_1000_UserIDs" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B9D1419F-0614-4E12-B166-B82C5FE6C007}"
+      DTS:From="Package\Load_In_Batches_of_1000_UserIDs"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\EST_Drop_##MasterList" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{DEF1B463-F4C1-4663-B422-49863B5BAF42}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::Iterations] == 0"
+      DTS:From="Package\EST_GetIterations"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\EST_Drop_##MasterList" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{F5B06939-C2E2-4A60-939C-937F850E58A6}"
+      DTS:From="Package\EST_DropGlobalTempTables_JustInCase"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\EST_Create_MasterList_TempTable" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1876,15 +2070,15 @@ OUTER APPLY
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="245,42"
           Id="Package\EST_Create_MasterList_TempTable"
-          TopLeft="117,78" />
+          TopLeft="188,107.5" />
         <NodeLayout
           Size="164,42"
           Id="Package\EST_GetIterations"
-          TopLeft="162.5,175.5" />
+          TopLeft="228.5,209.5" />
         <NodeLayout
           Size="223,42"
           Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx"
@@ -1893,10 +2087,6 @@ OUTER APPLY
           Size="233,42"
           Id="Package\Load_In_Batches_of_1000_UserIDs\EST_BuildStagingTableOnSource"
           TopLeft="5.50000000000001,5.5" />
-        <NodeLayout
-          Size="195,42"
-          Id="Package\Load_In_Batches_of_1000_UserIDs\EST_Drop_Temp_Tables"
-          TopLeft="24.5,209.5" />
         <EdgeLayout
           Id="Package\Load_In_Batches_of_1000_UserIDs.PrecedenceConstraints[Constraint]"
           TopLeft="122,47.5">
@@ -1919,6 +2109,10 @@ OUTER APPLY
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Load_In_Batches_of_1000_UserIDs\EST_Drop_##PullList"
+          TopLeft="32,209.5" />
         <EdgeLayout
           Id="Package\Load_In_Batches_of_1000_UserIDs.PrecedenceConstraints[Constraint 1]"
           TopLeft="122,149.5">
@@ -1944,24 +2138,24 @@ OUTER APPLY
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="244,307"
-          Size="270,350"
+          PanelSize="244,306"
+          Size="244,350"
           Id="Package\Load_In_Batches_of_1000_UserIDs"
-          TopLeft="121.5,280.5" />
+          TopLeft="5.50000000000009,311.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="242,120">
+          TopLeft="310.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55.5"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,48">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1972,30 +2166,120 @@ OUTER APPLY
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="244.5,217.5">
+          TopLeft="284.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="12,63"
+              EndConnector="-157,60"
               Start="0,0"
-              End="12,55.5">
+              End="-157,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.5" />
+                    End="0,20.3478260869565" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,27.5"
-                    Point2="0,31.5"
-                    Point3="4,31.5" />
+                    Point1="0,20.3478260869565"
+                    Point2="0,24.3478260869565"
+                    Point3="-4,24.3478260869565" />
                   <mssgle:LineSegment
-                    End="8,31.5" />
+                    End="-153,24.3478260869565" />
                   <mssgle:CubicBezierSegment
-                    Point1="8,31.5"
-                    Point2="12,31.5"
-                    Point3="12,35.5" />
+                    Point1="-153,24.3478260869565"
+                    Point2="-157,24.3478260869565"
+                    Point3="-157,28.3478260869565" />
                   <mssgle:LineSegment
-                    End="12,55.5" />
+                    End="-157,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-86.5,29.3478260869565,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="195,42"
+          Id="Package\EST_Drop_##MasterList"
+          TopLeft="213,721.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="127.5,661.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="151.833333333333,60"
+              Start="0,0"
+              End="151.833333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.707019328586" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.707019328586"
+                    Point2="0,35.707019328586"
+                    Point3="4,35.707019328586" />
+                  <mssgle:LineSegment
+                    End="147.833333333333,35.707019328586" />
+                  <mssgle:CubicBezierSegment
+                    Point1="147.833333333333,35.707019328586"
+                    Point2="151.833333333333,35.707019328586"
+                    Point3="151.833333333333,39.707019328586" />
+                  <mssgle:LineSegment
+                    End="151.833333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="339.083333333333,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,470"
+              Start="0,0"
+              End="0,462.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,462.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,223.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="269,42"
+          Id="Package\EST_DropGlobalTempTables_JustInCase"
+          TopLeft="176,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="310.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2011,41 +2295,79 @@ OUTER APPLY
     design-time-name="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="228,42"
-          Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions"
-          TopLeft="480,91" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="237,42"
           Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent"
           TopLeft="565,252" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData"
+          TopLeft="526,160" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions"
+          TopLeft="480,91" />
         <EdgeLayout
           Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx.Paths[OLE DB Source Output]"
           TopLeft="594,133">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="89.5,119"
+              EndConnector="8.5,27"
               Start="0,0"
-              End="89.5,111.5">
+              End="8.5,19.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.5" />
+                    End="0,9.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,55.5"
-                    Point2="0,59.5"
-                    Point3="4,59.5" />
+                    Point1="0,9.5"
+                    Point2="0,13.5"
+                    Point3="4,13.5" />
                   <mssgle:LineSegment
-                    End="85.5,59.5" />
+                    End="4.5,13.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="85.5,59.5"
-                    Point2="89.5,59.5"
-                    Point3="89.5,63.5" />
+                    Point1="4.5,13.5"
+                    Point2="8.5,13.5"
+                    Point3="8.5,17.5" />
                   <mssgle:LineSegment
-                    End="89.5,111.5" />
+                    End="8.5,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx.Paths[Output]"
+          TopLeft="602.5,202">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="81,50"
+              Start="0,0"
+              End="81,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="4,25" />
+                  <mssgle:LineSegment
+                    End="77,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="77,25"
+                    Point2="81,25"
+                    Point3="81,29" />
+                  <mssgle:LineSegment
+                    End="81,42.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2058,14 +2380,6 @@ OUTER APPLY
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent">
     <Properties>
       <Property>
@@ -2075,6 +2389,14 @@ OUTER APPLY
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
