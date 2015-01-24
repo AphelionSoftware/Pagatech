@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="1/23/2015 5:28:39 PM"
+  DTS:CreationDate="1/24/2015 1:15:42 PM"
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
   DTS:CreatorName="Administrator"
-  DTS:DTSID="{3BB8C563-CD6D-4F4F-A7E3-022C9B5306A6}"
+  DTS:DTSID="{7DF7E642-CC4B-45B7-90D9-1A5B85041C0B}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="3002_Finance_FactGLTransaction"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{7717118F-021D-4B87-AFE1-C68607F9B78D}"
+  DTS:ObjectName="3101_Finance_FactGLTransaction"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{28881CB0-FB7E-4C8E-AB3D-E5A4F20501CD}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -19,7 +19,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{A6D15CBB-4713-4E50-908A-5AE63BE159C9}"
+      DTS:DTSID="{D1500670-4126-4F2E-9F64-E15A09037032}"
       DTS:ObjectName="ChangeOperation">
       <DTS:Property
         DTS:DataType="8"
@@ -29,7 +29,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="20"
-      DTS:DTSID="{5D8B02BF-B36C-4592-959F-4846639C726A}"
+      DTS:DTSID="{F594E0D1-1E32-4516-A81A-34DE7BBE0899}"
       DTS:ObjectName="ChangeVersion">
       <DTS:Property
         DTS:DataType="20"
@@ -38,7 +38,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{4A4B45AB-2642-4457-9E84-C18904AEEE36}"
+      DTS:DTSID="{656AEF6E-313D-4A70-9BC8-86324FB5A882}"
       DTS:ObjectName="EndOfQuery">
       <DTS:Property
         DTS:DataType="8"
@@ -49,7 +49,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{C2B1E810-8060-45B9-899A-FD1B547F8ABA}"
+      DTS:DTSID="{A94D46E2-C25A-42EA-B0BB-BB56861C5480}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="BaseQuery">
@@ -81,7 +81,7 @@ FROM
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{8E8860E9-4D74-4187-AD54-CB98E0E916B9}"
+      DTS:DTSID="{2A00597E-A629-486D-A7BD-D10D5B80AFFB}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
@@ -118,7 +118,7 @@ FROM
     <DTS:Executable
       DTS:refId="Package\DFT_Load Finance_FactGLTransaction"
       DTS:CreationName="SSIS.Pipeline.3"
-      DTS:DTSID="{8E3F21B2-9033-4E2D-B609-600F43DD038C}"
+      DTS:DTSID="{BC491FCA-93C5-4972-9926-F58C3D103D51}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
       DTS:ObjectName="DFT_Load Finance_FactGLTransaction"
@@ -537,7 +537,7 @@ FROM
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 50000</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -559,20 +559,6 @@ FROM
                   hasSideEffects="true"
                   name="dc_ChangeData_Output_OLEDB_InsertIntoStaging">
                   <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1"
-                      cachedName="SYS_CHANGE_OPERATION"
-                      externalMetadataColumnId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]"
-                      cachedDataType="i8"
-                      cachedName="SYS_CHANGE_VERSION"
-                      externalMetadataColumnId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
                     <inputColumn
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[CreditAmount]"
                       cachedDataType="numeric"
@@ -650,14 +636,6 @@ FROM
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DeltaHash]"
-                      dataType="i8"
-                      name="DeltaHash" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[FactGLTxID]"
-                      dataType="i4"
-                      name="FactGLTxID" />
-                    <externalMetadataColumn
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Movement]"
                       dataType="numeric"
                       name="Movement"
@@ -667,10 +645,6 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
                       dataType="i4"
                       name="SourceKey" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKeyHash]"
-                      dataType="i8"
-                      name="SourceKeyHash" />
                     <externalMetadataColumn
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[TextDescription]"
                       dataType="wstr"
@@ -692,16 +666,6 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[FactFinancialTransactionSourceKey]"
                       dataType="i4"
                       name="FactFinancialTransactionSourceKey" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      name="SYS_CHANGE_OPERATION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_VERSION" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -766,5 +730,90 @@ FROM
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load Finance_FactGLTransaction">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="199,42"
+          Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData"
+          TopLeft="28.5,107.5" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData"
+          TopLeft="27.5,5.5" />
+        <EdgeLayout
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
+          TopLeft="105,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[OLEDB_GetData_Output_dc_ChangeData]"
+          TopLeft="105,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

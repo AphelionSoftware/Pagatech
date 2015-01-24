@@ -95,6 +95,7 @@
 											"WHERE   "+
 												"pl.bq IS NOT NULL  "+
 												"AND LEN(pl.bq) > 0 "+
+												"AND pl.bq <> 'PlaceHolder' "+
 										") AS list "+
 										"INNER JOIN "+
 										"("+
@@ -162,7 +163,7 @@
                                 </Outputs>
                             </ErrorHandling>
 						</DerivedColumns>
-						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="Paga_Staging" KeepIdentity="false">
+						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="Paga_Staging" KeepIdentity="false" BatchSize = "10000">
 							<ExternalTableOutput Table="<#=String.Format("{0}.{1}_{2}","Staging",TableSchema, TableName)#>"/>
 						</OleDbDestination>
 						</Transformations>

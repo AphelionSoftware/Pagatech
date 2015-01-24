@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="1/23/2015 5:28:39 PM"
+  DTS:CreationDate="1/24/2015 1:15:42 PM"
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
   DTS:CreatorName="Administrator"
-  DTS:DTSID="{5E84D713-7EE8-4F3B-8C4D-F1F5DBC75E1B}"
+  DTS:DTSID="{6254D6F0-566A-4117-96F6-2646F5B66306}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="3003_Shared_FactIntegrationTransaction"
+  DTS:ObjectName="3102_Shared_FactIntegrationTransaction"
   DTS:VersionBuild="1"
-  DTS:VersionGUID="{92A07FE2-8F1F-4BA5-9B87-A13A4682B575}"
+  DTS:VersionGUID="{8EDCA818-C3FC-4930-9D80-6D27A02A9EAD}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -19,7 +19,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{5E2BBCB9-BC8D-46B7-AF1F-A1FB35814A5E}"
+      DTS:DTSID="{20B0B653-7839-4854-AB10-F760388A940B}"
       DTS:ObjectName="ChangeOperation">
       <DTS:Property
         DTS:DataType="8"
@@ -29,7 +29,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="20"
-      DTS:DTSID="{6A06F19C-FF59-4CCA-9028-7F4FCE2156FD}"
+      DTS:DTSID="{CDE9AB99-29FE-4646-9B33-E2D3DF39E6D3}"
       DTS:ObjectName="ChangeVersion">
       <DTS:Property
         DTS:DataType="20"
@@ -38,7 +38,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{F77A67E5-5549-4525-97E6-FF860ED90E8D}"
+      DTS:DTSID="{DFCE2E61-130B-4928-8F20-E9CEC1E729E7}"
       DTS:ObjectName="EndOfQuery">
       <DTS:Property
         DTS:DataType="8"
@@ -49,7 +49,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{6A5A29B4-686C-454B-8434-5E526097E70C}"
+      DTS:DTSID="{720F87B8-DCE0-49F4-B3DC-47991F11D2A6}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="BaseQuery">
@@ -93,7 +93,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3CB9933B-9198-4228-A884-66EAD62BDE70}"
+      DTS:DTSID="{EBDEAC48-830A-41A6-955E-E6C966A1304D}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
@@ -142,7 +142,7 @@
     <DTS:Executable
       DTS:refId="Package\DFT_Load Shared_FactIntegrationTransaction"
       DTS:CreationName="SSIS.Pipeline.3"
-      DTS:DTSID="{F9175190-34C9-4E0F-B2CF-C146E248ADAC}"
+      DTS:DTSID="{F7E60E66-3047-4C35-964D-B61B44707536}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
       DTS:ObjectName="DFT_Load Shared_FactIntegrationTransaction"
@@ -648,7 +648,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 50000</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -670,20 +670,6 @@
                   hasSideEffects="true"
                   name="dc_ChangeData_Output_OLEDB_InsertIntoStaging">
                   <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1"
-                      cachedName="SYS_CHANGE_OPERATION"
-                      externalMetadataColumnId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]"
-                      cachedDataType="i8"
-                      cachedName="SYS_CHANGE_VERSION"
-                      externalMetadataColumnId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
                     <inputColumn
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[ExternalReferenceNumber]"
                       cachedCodepage="1252"
@@ -778,19 +764,11 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DeltaHash]"
-                      dataType="i8"
-                      name="DeltaHash" />
-                    <externalMetadataColumn
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[ExternalReferenceNumber]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="ExternalReferenceNumber" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[FactIntegrationTxID]"
-                      dataType="i4"
-                      name="FactIntegrationTxID" />
                     <externalMetadataColumn
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[HasFinancialTx]"
                       dataType="i4"
@@ -811,10 +789,6 @@
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
                       dataType="i4"
                       name="SourceKey" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKeyHash]"
-                      dataType="i8"
-                      name="SourceKeyHash" />
                     <externalMetadataColumn
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimIntegrationTxDateID]"
                       dataType="i4"
@@ -853,16 +827,6 @@
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[FactFinancialTransactionSourceKey]"
                       dataType="i4"
                       name="FactFinancialTransactionSourceKey" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      name="SYS_CHANGE_OPERATION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_VERSION" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -927,5 +891,82 @@
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load Shared_FactIntegrationTransaction">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="199,42"
+          Id="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData"
+          TopLeft="27.5,5.5" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData"
+          TopLeft="28.5,107.5" />
+        <EdgeLayout
+          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[OLEDB_GetData_Output_dc_ChangeData]"
+          TopLeft="105,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
+          TopLeft="105,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
