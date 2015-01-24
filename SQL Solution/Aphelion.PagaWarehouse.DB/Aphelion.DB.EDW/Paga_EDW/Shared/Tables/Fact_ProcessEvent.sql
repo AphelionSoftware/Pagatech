@@ -30,8 +30,8 @@
     [PaymentSource]                   VARCHAR (200) SPARSE   NULL,
     [ReferenceNumber]                 VARCHAR (200) SPARSE   NULL,
     [SenderPhoneNumber]               VARCHAR (200) SPARSE   NULL,
-    [DependentFactProcessTxID]        INT SPARSE             NULL,
-    [OriginalFactProcessTxID]         INT SPARSE             NULL,
+    [FactDependentProcessEventID]     INT SPARSE             NULL,
+    [FactOriginalProcessEventID]      INT SPARSE             NULL,
     [VerificationStatus]              VARCHAR (200) SPARSE   NULL,
     [DimApprovedByUserID]             INT SPARSE             NULL,
     [DimVerifiedByUserID]             INT SPARSE             NULL,
@@ -43,8 +43,26 @@
     [sys_CreatedOn]                   DATETIME               DEFAULT (getdate()) NOT NULL,
     [sys_ModifiedBy]                  VARCHAR (255)          DEFAULT (user_name()) NOT NULL,
     [sys_ModifiedOn]                  DATETIME               DEFAULT (getdate()) NOT NULL,
-    CONSTRAINT [pk_FactProcessEvent] PRIMARY KEY CLUSTERED ([FactProcessEventID] ASC)
+    CONSTRAINT [pk_FactProcessEvent] PRIMARY KEY CLUSTERED ([FactProcessEventID] ASC),
+    CONSTRAINT [fk_FactFinancialTransaction_DimAgentCommissionTypeID] FOREIGN KEY ([DimAgentCommissionTypeID]) REFERENCES [Classification].[DimAgentCommissionType] ([DimAgentCommissionTypeID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimApprovedByUserID] FOREIGN KEY ([DimApprovedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimCancellationApprovedByUserID] FOREIGN KEY ([DimCancellationApprovedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimCompletedDateID] FOREIGN KEY ([DimCompletedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimCompletedTimeID] FOREIGN KEY ([DimCompletedTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimForUserID] FOREIGN KEY ([DimForUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimInitiatingUserID] FOREIGN KEY ([DimInitiatingUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimOriginalProcessChannelID] FOREIGN KEY ([DimOriginalProcessChannelID]) REFERENCES [Shared].[DimProcessChannel] ([DimProcessChannelID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimProcessChannelID] FOREIGN KEY ([DimProcessChannelID]) REFERENCES [Shared].[DimProcessChannel] ([DimProcessChannelID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimProcessStatusID] FOREIGN KEY ([DimProcessStatusID]) REFERENCES [Classification].[DimProcessStatus] ([DimProcessStatusID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimProcessTypeID] FOREIGN KEY ([DimProcessTypeID]) REFERENCES [Classification].[DimProcessType] ([DimProcessTypeID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimToUserID] FOREIGN KEY ([DimToUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimVerifiedByUserID] FOREIGN KEY ([DimVerifiedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
+    CONSTRAINT [fk_FactFinancialTransaction_FactDependentProcessEventID] FOREIGN KEY ([FactDependentProcessEventID]) REFERENCES [Shared].[FactProcessEvent] ([FactProcessEventID]),
+    CONSTRAINT [fk_FactFinancialTransaction_FactOriginalProcessEventID] FOREIGN KEY ([FactOriginalProcessEventID]) REFERENCES [Shared].[FactProcessEvent] ([FactProcessEventID])
 );
+
+
 
 
 
