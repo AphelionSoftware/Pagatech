@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Finance_DimBankAccount] (
+CREATE TABLE [Staging].[Finance_DimBankAccount] (
     [AccountAlias]                 VARCHAR (20)    NULL,
     [AccountHolderName]            VARCHAR (255)   NULL,
     [AccountLinkIdentifier]        VARCHAR (30)    NULL,
@@ -14,7 +14,9 @@
     [SourceKey]                    INT             NOT NULL,
     [TextDesciption]               VARCHAR (1000)  NULL,
     [TransactionLimit]             DECIMAL (18, 2) NULL,
-    [DimBankSourceKey]             INT             NOT NULL
+    [DimBankSourceKey]             INT             NOT NULL,
+    [SYS_CHANGE_VERSION]           BIGINT          DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]         CHAR (1)        DEFAULT ('I') NOT NULL
 );
 
 
@@ -28,10 +30,9 @@
 
 
 
+
+
 GO
-
-
-
-
-
+CREATE UNIQUE CLUSTERED INDEX [ix_Finance_DimBankAccount]
+    ON [Staging].[Finance_DimBankAccount]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 
