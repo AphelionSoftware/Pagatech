@@ -6,7 +6,8 @@
     [ErrorType]                            VARCHAR (255) NOT NULL,
     [DimFinancialTransactionTypeSourceKey] VARCHAR (255) NOT NULL,
     [DimPaymentUseCaseSourceKey]           VARCHAR (255) NOT NULL,
-    [FinancialTxTypeName]                  VARCHAR (255) NULL,
-    [PaymentUseCaseToTxTypeMapID]          INT           NULL
+    [FinancialTxTypeName]                  VARCHAR (255) NULL
 );
+
+
 

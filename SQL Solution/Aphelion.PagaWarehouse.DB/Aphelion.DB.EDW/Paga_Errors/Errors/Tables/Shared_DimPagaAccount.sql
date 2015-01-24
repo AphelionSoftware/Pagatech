@@ -6,8 +6,6 @@
     [ErrorType]                     VARCHAR (255) NOT NULL,
     [BankingStatus]                 VARCHAR (50)  NOT NULL,
     [CreatedDateID]                 INT           NOT NULL,
-    [DeltaHash]                     BIGINT        NULL,
-    [DimPagaAccountID]              INT           NULL,
     [DimPagaAccountStatusSourceKey] VARCHAR (255) NOT NULL,
     [ExternalAccountNumber]         VARCHAR (12)  NULL,
     [hasOnlineAccount]              BIT           NULL,
@@ -28,9 +26,10 @@
     [Name]                          VARCHAR (255) NOT NULL,
     [PagaAccountNumber]             VARCHAR (12)  NULL,
     [RegistrationDateID]            INT           NULL,
-    [SourceKey]                     INT           NOT NULL,
-    [SourceKeyHash]                 BIGINT        NULL
+    [SourceKey]                     INT           NOT NULL
 );
+
+
 
 
 

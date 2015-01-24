@@ -6,10 +6,8 @@
     [ErrorType]                          VARCHAR (255) NOT NULL,
     [CreatedDateID]                      INT           NOT NULL,
     [DateOfBirthID]                      INT           NULL,
-    [DeltaHash]                          BIGINT        NULL,
     [DimOrganizationUnitLevel4SourceKey] INT           NULL,
     [DimPagaAccountSourceKey]            INT           NULL,
-    [DimUserID]                          INT           NULL,
     [Email]                              VARCHAR (100) NULL,
     [FirstName]                          VARCHAR (255) NULL,
     [IsEnabled]                          BIT           NULL,
@@ -17,9 +15,10 @@
     [MiddleName]                         VARCHAR (255) NULL,
     [Name]                               VARCHAR (255) NOT NULL,
     [Sex]                                VARCHAR (50)  NULL,
-    [SourceKey]                          INT           NOT NULL,
-    [SourceKeyHash]                      BIGINT        NULL
+    [SourceKey]                          INT           NOT NULL
 );
+
+
 
 
 

@@ -51,8 +51,8 @@
     CONSTRAINT [fk_FactFinancialTransaction_DimCompletedTimeID] FOREIGN KEY ([DimCompletedTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimForUserID] FOREIGN KEY ([DimForUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimInitiatingUserID] FOREIGN KEY ([DimInitiatingUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
-    CONSTRAINT [fk_FactFinancialTransaction_DimOriginalProcessChannelID] FOREIGN KEY ([DimOriginalProcessChannelID]) REFERENCES [Shared].[DimProcessChannel] ([DimProcessChannelID]),
-    CONSTRAINT [fk_FactFinancialTransaction_DimProcessChannelID] FOREIGN KEY ([DimProcessChannelID]) REFERENCES [Shared].[DimProcessChannel] ([DimProcessChannelID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimOriginalProcessChannelID] FOREIGN KEY ([DimOriginalProcessChannelID]) REFERENCES [Classification].[DimProcessChannel] ([DimProcessChannelID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimProcessChannelID] FOREIGN KEY ([DimProcessChannelID]) REFERENCES [Classification].[DimProcessChannel] ([DimProcessChannelID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimProcessStatusID] FOREIGN KEY ([DimProcessStatusID]) REFERENCES [Classification].[DimProcessStatus] ([DimProcessStatusID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimProcessTypeID] FOREIGN KEY ([DimProcessTypeID]) REFERENCES [Classification].[DimProcessType] ([DimProcessTypeID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimToUserID] FOREIGN KEY ([DimToUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
@@ -61,6 +61,8 @@
     CONSTRAINT [fk_FactFinancialTransaction_FactDependentProcessEventID] FOREIGN KEY ([FactDependentProcessEventID]) REFERENCES [Shared].[FactProcessEvent] ([FactProcessEventID]),
     CONSTRAINT [fk_FactFinancialTransaction_FactOriginalProcessEventID] FOREIGN KEY ([FactOriginalProcessEventID]) REFERENCES [Shared].[FactProcessEvent] ([FactProcessEventID])
 );
+
+
 
 
 

@@ -4,14 +4,13 @@
     [SSISErrorColumn]         INT           NOT NULL,
     [PackageName]             VARCHAR (255) NOT NULL,
     [ErrorType]               VARCHAR (255) NOT NULL,
-    [DeltaHash]               BIGINT        NULL,
     [DimGLCodeGroupSourceKey] INT           NOT NULL,
-    [DimGLCodeSubGroupID]     INT           NULL,
     [GLCodeRange]             VARCHAR (255) NULL,
     [Name]                    VARCHAR (255) NOT NULL,
-    [SourceKey]               INT           NOT NULL,
-    [SourceKeyHash]           BIGINT        NULL
+    [SourceKey]               INT           NOT NULL
 );
+
+
 
 
 

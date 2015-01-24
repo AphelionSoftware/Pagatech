@@ -4,13 +4,12 @@
     [SSISErrorColumn]     INT           NOT NULL,
     [PackageName]         VARCHAR (255) NOT NULL,
     [ErrorType]           VARCHAR (255) NOT NULL,
-    [DeltaHash]           BIGINT        NULL,
     [DimGeoZoneSourceKey] INT           NOT NULL,
-    [DimRegionID]         INT           NULL,
     [Name]                VARCHAR (255) NOT NULL,
-    [SourceKey]           INT           NOT NULL,
-    [SourceKeyHash]       BIGINT        NULL
+    [SourceKey]           INT           NOT NULL
 );
+
+
 
 
 

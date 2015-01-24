@@ -1,33 +1,28 @@
 ﻿CREATE TABLE [Staging].[Finance_FactFinancialTransaction] (
-    [Cancelled]                 INT             NULL,
-    [DeltaHash]                 BIGINT          NULL,
-    [DimBusinessTypeID]         INT             NULL,
-    [DimCurrencyID]             INT             NULL,
-    [DimEffectiveDateID]        INT             NULL,
-    [DimEffectiveTimeID]        INT             NULL,
-    [DimFinancialTxDateID]      INT             NULL,
-    [DimFinancialTxTimeID]      INT             NULL,
-    [DimFinancialTxTypeID]      INT             NULL,
-    [DimUserID]                 INT             NULL,
-    [ExchangeRate]              DECIMAL (16, 4) NULL,
-    [ExternalReferenceNumber]   VARCHAR (100)   NULL,
-    [FactFinancialTxID]         INT             NULL,
-    [FactIntegrationTxID]       INT             NULL,
-    [FactOriginalFinancialTxID] INT             NULL,
-    [FactProcessEventID]        INT             NULL,
-    [FactRelatedFinancialTxID]  INT             NULL,
-    [FinancialTx_Amount]        DECIMAL (18, 2) NULL,
-    [FinancialTx_Fee]           DECIMAL (18, 2) NULL,
-    [ForeignCurrencyAmount]     DECIMAL (18, 2) NULL,
-    [IsIntegrationTx]           BIT             NULL,
-    [ReferenceNumber]           VARCHAR (50)    NULL,
-    [Reversed]                  BIT             NOT NULL,
-    [ShortCode]                 VARCHAR (10)    NULL,
-    [SourceKey]                 INT             NOT NULL,
-    [SourceKeyHash]             BIGINT          NULL,
-    [TextDescription]           VARCHAR (100)   NULL,
-    [SYS_CHANGE_OPERATION]      CHAR (1)        DEFAULT ('I') NOT NULL,
-    [SYS_CHANGE_VERSION]        BIGINT          DEFAULT ((0)) NOT NULL
+    [Cancelled]                            INT             NULL,
+    [ExchangeRate]                         DECIMAL (16, 4) NULL,
+    [ExternalReferenceNumber]              VARCHAR (100)   NULL,
+    [FinancialTx_Amount]                   DECIMAL (18, 2) NULL,
+    [FinancialTx_Fee]                      DECIMAL (18, 2) NULL,
+    [ForeignCurrencyAmount]                DECIMAL (18, 2) NULL,
+    [IsIntegrationTx]                      BIT             NULL,
+    [ReferenceNumber]                      VARCHAR (50)    NULL,
+    [Reversed]                             BIT             NOT NULL,
+    [ShortCode]                            VARCHAR (10)    NULL,
+    [SourceKey]                            INT             NOT NULL,
+    [TextDescription]                      VARCHAR (100)   NULL,
+    [DimEffectiveDateID]                   INT             NULL,
+    [DimEffectiveTimeID]                   INT             NULL,
+    [DimFinancialTxDateID]                 INT             NULL,
+    [DimFinancialTxTimeID]                 INT             NULL,
+    [DimBusinessTypeSourceKey]             VARCHAR (255)   NULL,
+    [DimCurrencySourceKey]                 VARCHAR (255)   NULL,
+    [DimFinancialTransactionTypeSourceKey] VARCHAR (255)   NULL,
+    [DimUserSourceKey]                     INT             NULL,
+    [FactIntegrationTransactionSourceKey]  INT             NULL,
+    [FactOriginalFinancialTxID]            INT             NULL,
+    [FactProcessEventSourceKey]            INT             NULL,
+    [FacttRelaedFinancialTxID]             INT             NULL
 );
 
 
@@ -39,9 +34,10 @@
 
 
 
+
+
 GO
-CREATE UNIQUE CLUSTERED INDEX [ix_Finance_FactFinancialTransaction]
-    ON [Staging].[Finance_FactFinancialTransaction]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+
 
 
 

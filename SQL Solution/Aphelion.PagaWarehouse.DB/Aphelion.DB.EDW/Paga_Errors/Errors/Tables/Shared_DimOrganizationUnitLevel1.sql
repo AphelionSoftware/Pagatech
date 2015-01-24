@@ -4,15 +4,14 @@
     [SSISErrorColumn]                  INT           NOT NULL,
     [PackageName]                      VARCHAR (255) NOT NULL,
     [ErrorType]                        VARCHAR (255) NOT NULL,
-    [DeltaHash]                        BIGINT        NULL,
     [DimOrganizationSourceKey]         INT           NOT NULL,
-    [DimOrganizationUnitLevel1ID]      INT           NULL,
     [DimOrganizationUnitTypeSourceKey] VARCHAR (255) NOT NULL,
     [IdentificationNumber]             VARCHAR (20)  NULL,
     [Name]                             VARCHAR (255) NOT NULL,
-    [SourceKey]                        INT           NOT NULL,
-    [SourceKeyHash]                    BIGINT        NULL
+    [SourceKey]                        INT           NOT NULL
 );
+
+
 
 
 

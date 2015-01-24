@@ -5,15 +5,14 @@
     [PackageName]              VARCHAR (255) NOT NULL,
     [ErrorType]                VARCHAR (255) NOT NULL,
     [BankAccountLinkType]      VARCHAR (255) NOT NULL,
-    [DeltaHash]                BIGINT        NULL,
-    [DimBankID]                INT           NULL,
     [DimOrganizationSourceKey] INT           NOT NULL,
     [Name]                     VARCHAR (255) NOT NULL,
     [SourceKey]                INT           NOT NULL,
-    [SourceKeyHash]            BIGINT        NULL,
     [SupportsCredit]           BIT           NULL,
     [SupportsDebit]            BIT           NULL
 );
+
+
 
 
 
