@@ -6,8 +6,6 @@
     [DimOrganizationSubscriptionStatusID] INT            NOT NULL,
     [DimOrganizationVerificationStatusID] INT            NOT NULL,
     [DimPagaAccountID]                    INT            NOT NULL,
-    [DimMerchantCategoryID]               INT            NOT NULL,
-    [DimChannelID]                        INT            NOT NULL,
     [TextDesciption]                      VARCHAR (1000) NULL,
     [ReferenceNumber]                     VARCHAR (30)   NULL,
     [TaxIDNumber]                         VARCHAR (30)   NULL,
@@ -24,12 +22,12 @@
     [sys_CreatedOn]                       DATETIME       DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationID] PRIMARY KEY CLUSTERED ([DimOrganizationID] ASC),
     CONSTRAINT [fk_DimOrganization_DimBusinessTypeID] FOREIGN KEY ([DimBusinessTypeID]) REFERENCES [Classification].[DimBusinessType] ([DimBusinessTypeID]),
-    CONSTRAINT [fk_DimOrganization_DimChannelID] FOREIGN KEY ([DimChannelID]) REFERENCES [Shared].[DimProcessChannel] ([DimChannelID]),
-    CONSTRAINT [fk_DimOrganization_DimMerchantCategoryID] FOREIGN KEY ([DimMerchantCategoryID]) REFERENCES [Classification].[DimMerchantCategory] ([DimMerchantCategoryID]),
     CONSTRAINT [fk_DimOrganization_DimOrganizationSubscriptionStatusID] FOREIGN KEY ([DimOrganizationSubscriptionStatusID]) REFERENCES [Classification].[DimOrganizationSubscriptionStatus] ([DimOrganizationSubscriptionStatusID]),
     CONSTRAINT [fk_DimOrganization_DimOrganizationVerificationStatusID] FOREIGN KEY ([DimOrganizationVerificationStatusID]) REFERENCES [Classification].[DimOrganizationVerificationStatus] ([DimOrganizationVerificationStatusID]),
     CONSTRAINT [fk_DimOrganization_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
 
 
 
@@ -94,5 +92,7 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	SourceK
 
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganization_SourceKey]
-    ON [Shared].[DimOrganization]([SourceKey] ASC, [DimChannelID] ASC, [DimMerchantCategoryID] ASC);
+    ON [Shared].[DimOrganization]([SourceKey] ASC);
+
+
 

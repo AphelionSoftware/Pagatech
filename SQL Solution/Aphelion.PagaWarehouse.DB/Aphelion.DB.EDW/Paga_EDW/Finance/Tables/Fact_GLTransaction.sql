@@ -22,11 +22,54 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_FactGLTransaction_SourceKey]
     ON [Finance].[FactGLTransaction]([SourceKey] ASC);
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'3000', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
+
+
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo,FinancialTransactionItem', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'10', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialTransactionItemId', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
+	[CreditAmount],
+	[DebitAmount],
+	[Movement],
+	[SourceKey],
+	[TextDescription],
+	[TransactionLineNumber],
+	[DimFinancialAccountSourceKey],
+	[DimGLCodeSourceKey],
+	[FactFinancialTransactionSourceKey]
+FROM
+(
+	SELECT
+		SourceKey = [FinancialTransactionItemId],
+		[DimGLCodeSourceKey] = [AccountCodeId],
+		TextDescription = [Description],
+		[DimFinancialAccountSourceKey] = [FinancialAccountId],
+		[FactFinancialTransactionSourceKey] = [FinancialTransactionId],
+		[TransactionLineNumber],
+		[CreditAmount],
+		[DebitAmount],
+		[Movement] = ([CreditAmount]+[DebitAmount])			
+	FROM [dbo].[FinancialTransactionItem]
+) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
 

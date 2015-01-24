@@ -33,6 +33,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimUser_SourceKey]
     ON [Shared].[DimUser]([SourceKey] ASC);
@@ -68,7 +70,31 @@ EXECUTE sp_addextendedproperty @name = N'ExcludeFromCube', @value = N'True', @le
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--DimUser
+SELECT
+	Sourcekey,
+	DimCreatedDateID,
+	[FirstName],
+	[LastName],
+	[MiddleName],
+	UserDescription,
+	Gender_SourceKey,
+	DimDateOfBirthID
+FROM
+(
+	SELECT 
+		SourceKey = [UserId],
+		DimCreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8), [CreatedDate], 112)),
+		[FirstName],
+		[LastName],
+		[MiddleName],
+		UserDescription = [Namespace], 
+		Gender_SourceKey = [GenderId],
+		DimDateOfBirthID =CONVERT(INT,CONVERT(VARCHAR(8), [DateOfBirth], 112))
+	FROM [dbo].[Users]
+) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+
+
 
 
 

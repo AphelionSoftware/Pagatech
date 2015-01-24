@@ -19,6 +19,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialAccountType_SourceKey]
     ON [Finance].[DimFinancialAccountType]([SourceKey] ASC);
@@ -39,7 +41,9 @@ EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0typ
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'4', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountType';
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'5', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountType';
+
+
 
 
 GO

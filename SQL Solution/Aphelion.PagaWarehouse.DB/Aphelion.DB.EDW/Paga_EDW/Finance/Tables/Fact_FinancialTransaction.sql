@@ -34,6 +34,8 @@
 );
 
 
+
+
 GO
 CREATE NONCLUSTERED INDEX [ix_FactFinancialTransaction_TxDate_NotCancelled]
     ON [Finance].[FactFinancialTransaction]([DimFinancialTxDateID] ASC, [Cancelled] ASC)
@@ -48,4 +50,24 @@ CREATE NONCLUSTERED INDEX [ix_FactFinancialTx_DimProcessEventID]
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_FactFinancialTransaction_SourceKey]
     ON [Finance].[FactFinancialTransaction]([SourceKey] ASC);
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.FinancialTransaction', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'9', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'3000', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialTransactionId', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'PlaceHolder', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
 

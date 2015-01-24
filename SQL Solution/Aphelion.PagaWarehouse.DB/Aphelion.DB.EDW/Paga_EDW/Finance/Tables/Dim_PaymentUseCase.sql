@@ -13,3 +13,13 @@
     CONSTRAINT [FK_DimPaymentUseCaseTypeID] FOREIGN KEY ([DimPaymentUseCaseTypeID]) REFERENCES [Finance].[DimPaymentUseCaseType] ([DimPaymentUseCaseTypeID])
 );
 
+
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimPaymentUseCase';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimPaymentUseCase';
+

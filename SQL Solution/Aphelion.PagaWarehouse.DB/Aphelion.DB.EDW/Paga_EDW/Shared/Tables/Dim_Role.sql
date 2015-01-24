@@ -20,6 +20,8 @@
 
 
 
+
+
 GO
 
 
@@ -49,7 +51,23 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'RoleId', @level0
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimRole';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--DimRoleLookup
+SELECT
+	SourceKey,
+	DescriptionText,
+	Name,
+	SystemDescription
+FROM 
+(
+SELECT 
+	SourceKey = [RoleId],
+	DescriptionText = [Description],
+	Name,
+	SystemDescription = [Namespace]
+ FROM [dbo].[RoleLookup]
+) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimRole';
+
+
 
 
 

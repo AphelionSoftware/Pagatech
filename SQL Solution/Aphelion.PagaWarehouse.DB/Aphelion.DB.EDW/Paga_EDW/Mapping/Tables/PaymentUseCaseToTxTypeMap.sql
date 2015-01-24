@@ -12,3 +12,13 @@
     CONSTRAINT [FK_PaymentUseCaseToTxTypeMap_DimPaymentUseCaseID] FOREIGN KEY ([DimPaymentUseCaseID]) REFERENCES [Finance].[DimPaymentUseCase] ([DimPaymentUseCaseID])
 );
 
+
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Mapping', @level1type = N'TABLE', @level1name = N'PaymentUseCaseToTxTypeMap';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Mapping', @level1type = N'TABLE', @level1name = N'PaymentUseCaseToTxTypeMap';
+

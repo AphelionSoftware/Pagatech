@@ -12,11 +12,43 @@
 );
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimIntegrationTransactionResult_SourceKey]
     ON [Shared].[DimIntegrationTransactionResult]([SourceKey] ASC);
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimIntegrationTransactionResult';
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2000', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimIntegrationTransactionResult';
+
+
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.IntegrationTransactionResult', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimIntegrationTransactionResult';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimIntegrationTransactionResult';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'IntegrationTransactionResultId', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimIntegrationTransactionResult';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--IntegrationTransactionResult	
+SELECT 		
+	SourceKey, 		
+	Name= SourceKey, 		
+	DescriptionText 		
+FROM 		
+( 		
+	SELECT 			
+		itr.IntegrationTransactionResultId AS SourceKey,  			
+		itr.IntegrationTransactionResultId AS Name,
+		CONVERT(VARCHAR(1000),itr.description) AS DescriptionText 		
+	FROM dbo.IntegrationTransactionResult AS itr 			
+) as base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimIntegrationTransactionResult';
 

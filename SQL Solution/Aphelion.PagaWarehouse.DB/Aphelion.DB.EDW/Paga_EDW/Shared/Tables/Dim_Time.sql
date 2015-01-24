@@ -1,4 +1,4 @@
-CREATE TABLE [Shared].[DimTime] (
+﻿CREATE TABLE [Shared].[DimTime] (
     [DimTimeID]             INT           NOT NULL,
     [FullTime]              VARCHAR (8)   NOT NULL,
     [HourNumber]            TINYINT       NOT NULL,
@@ -18,10 +18,20 @@ CREATE TABLE [Shared].[DimTime] (
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimTime';
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'ExcludeFromStaging', @value = N'true', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimTime';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimTime';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimTime';
 

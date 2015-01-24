@@ -1,4 +1,4 @@
-CREATE TABLE [Shared].[DimDate] (
+﻿CREATE TABLE [Shared].[DimDate] (
     [DimDateID]               INT           NOT NULL,
     [FullDate]                DATETIME      NULL,
     [FullDateUK]              CHAR (10)     NULL,
@@ -62,10 +62,20 @@ CREATE TABLE [Shared].[DimDate] (
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimDate';
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'ExcludeFromStaging', @value = N'true', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimDate';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimDate';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimDate';
 
