@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Shared_FactProcessEvent] (
+CREATE TABLE [Staging].[Shared_FactProcessEvent] (
     [AgentCommissionAmount]                  DECIMAL (18, 2) NULL,
     [ATMReferenceNumber]                     VARCHAR (200)   NULL,
     [CardProcessorName]                      VARCHAR (200)   NULL,
@@ -52,8 +52,9 @@
 
 
 
+
+
 GO
-
-
-
+CREATE UNIQUE CLUSTERED INDEX [ix_Shared_FactProcessEvent]
+    ON [Staging].[Shared_FactProcessEvent]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

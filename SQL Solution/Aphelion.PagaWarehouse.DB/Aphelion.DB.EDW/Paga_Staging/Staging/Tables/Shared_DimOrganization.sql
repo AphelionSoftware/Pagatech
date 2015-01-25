@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Shared_DimOrganization] (
+CREATE TABLE [Staging].[Shared_DimOrganization] (
     [DisplayName]                                VARCHAR (100)  NULL,
     [Name]                                       VARCHAR (255)  NOT NULL,
     [OrganizationCode]                           VARCHAR (10)   NULL,
@@ -28,8 +28,9 @@
 
 
 
+
+
 GO
-
-
-
+CREATE UNIQUE CLUSTERED INDEX [ix_Shared_DimOrganization]
+    ON [Staging].[Shared_DimOrganization]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

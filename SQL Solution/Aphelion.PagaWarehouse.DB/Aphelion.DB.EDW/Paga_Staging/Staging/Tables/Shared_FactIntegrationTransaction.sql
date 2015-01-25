@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Shared_FactIntegrationTransaction] (
+CREATE TABLE [Staging].[Shared_FactIntegrationTransaction] (
     [ExternalReferenceNumber]                  VARCHAR (50)    NULL,
     [HasFinancialTx]                           INT             NOT NULL,
     [IntegrationTx_Amount]                     DECIMAL (18, 2) NULL,
@@ -27,8 +27,9 @@
 
 
 
+
+
 GO
-
-
-
+CREATE UNIQUE CLUSTERED INDEX [ix_Shared_FactIntegrationTransaction]
+    ON [Staging].[Shared_FactIntegrationTransaction]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

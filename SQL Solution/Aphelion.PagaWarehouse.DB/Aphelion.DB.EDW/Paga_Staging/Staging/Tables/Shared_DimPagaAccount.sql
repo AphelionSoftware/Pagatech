@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Shared_DimPagaAccount] (
+CREATE TABLE [Staging].[Shared_DimPagaAccount] (
     [BankingStatus]                 VARCHAR (50)  NOT NULL,
     [CreatedDateID]                 INT           NOT NULL,
     [ExternalAccountNumber]         VARCHAR (12)  NULL,
@@ -37,8 +37,9 @@
 
 
 
+
+
 GO
-
-
-
+CREATE UNIQUE CLUSTERED INDEX [ix_Shared_DimPagaAccount]
+    ON [Staging].[Shared_DimPagaAccount]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

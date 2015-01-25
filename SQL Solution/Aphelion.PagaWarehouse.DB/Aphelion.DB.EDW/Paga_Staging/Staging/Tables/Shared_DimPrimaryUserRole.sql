@@ -9,3 +9,10 @@
 
 
 
+
+
+
+GO
+CREATE UNIQUE CLUSTERED INDEX [ix_Shared_DimPrimaryUserRole]
+    ON [Staging].[Shared_DimPrimaryUserRole]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+

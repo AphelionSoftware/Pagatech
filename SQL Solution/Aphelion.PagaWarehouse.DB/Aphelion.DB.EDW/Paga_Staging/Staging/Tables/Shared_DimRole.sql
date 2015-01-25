@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Shared_DimRole] (
+CREATE TABLE [Staging].[Shared_DimRole] (
     [Name]                 VARCHAR (255)  NOT NULL,
     [SourceKey]            INT            NOT NULL,
     [SystemDescription]    VARCHAR (255)  NOT NULL,
@@ -22,8 +22,9 @@
 
 
 
+
+
 GO
-
-
-
+CREATE UNIQUE CLUSTERED INDEX [ix_Shared_DimRole]
+    ON [Staging].[Shared_DimRole]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

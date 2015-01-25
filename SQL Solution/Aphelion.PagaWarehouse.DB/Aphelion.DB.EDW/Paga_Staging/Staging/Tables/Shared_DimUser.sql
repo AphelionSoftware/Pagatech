@@ -1,11 +1,11 @@
-﻿CREATE TABLE [Staging].[Shared_DimUser] (
+CREATE TABLE [Staging].[Shared_DimUser] (
     [Email]                              VARCHAR (100) NULL,
     [FirstName]                          VARCHAR (255) NULL,
+    [Gender]                             VARCHAR (50)  NULL,
     [IsEnabled]                          BIT           NULL,
     [LastName]                           VARCHAR (255) NULL,
     [MiddleName]                         VARCHAR (255) NULL,
     [Name]                               VARCHAR (255) NOT NULL,
-    [Sex]                                VARCHAR (50)  NULL,
     [SourceKey]                          INT           NOT NULL,
     [CreatedDateID]                      INT           NOT NULL,
     [DateOfBirthID]                      INT           NULL,
@@ -28,8 +28,9 @@
 
 
 
+
+
 GO
-
-
-
+CREATE UNIQUE CLUSTERED INDEX [ix_Shared_DimUser]
+    ON [Staging].[Shared_DimUser]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 
