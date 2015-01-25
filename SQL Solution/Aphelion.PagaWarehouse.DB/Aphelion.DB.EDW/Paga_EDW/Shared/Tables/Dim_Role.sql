@@ -24,6 +24,8 @@
 
 
 
+
+
 GO
 
 
@@ -63,11 +65,13 @@ FROM
 (
 SELECT 
 	SourceKey = [RoleId],
-	TextDescription= [Description],
-	Name = CONVERT(VARCHAR(300),Name),
+	TextDescription= CONVERT(VARCHAR(1000), [Description]),
+	Name = CONVERT(VARCHAR(255),Name),
 	SystemDescription = [Namespace]
  FROM [dbo].[RoleLookup]
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimRole';
+
+
 
 
 
