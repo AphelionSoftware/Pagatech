@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="3001_Finance_FactFinancialTransaction"
   DTS:PackageType="5"
-  DTS:VersionBuild="99"
-  DTS:VersionGUID="{35431EDB-59C8-42E8-9C25-E2F8DA66142E}">
+  DTS:VersionBuild="97"
+  DTS:VersionGUID="{3026D111-457C-4E03-A72D-8D62F0FD26C3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -262,7 +262,7 @@ FROM reversals;</DTS:VariableValue>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{47A96CB5-9E20-4A19-9577-5AD218B68A15}"
+          SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
           SQLTask:SqlStmtSourceType="Variable"
           SQLTask:SqlStatementSource="User::CreatePickListQuery" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
@@ -288,7 +288,7 @@ FROM reversals;</DTS:VariableValue>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{47A96CB5-9E20-4A19-9577-5AD218B68A15}"
+          SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
           SQLTask:SqlStatementSource="DROP TABLE ##ReversalChain&#xA;DROP TABLE ##FT_PickList&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -305,7 +305,7 @@ FROM reversals;</DTS:VariableValue>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{47A96CB5-9E20-4A19-9577-5AD218B68A15}"
+          SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
           SQLTask:SqlStatementSource="IF OBJECT_ID('tempdb..##ReversalChain') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##ReversalChain&#xA;&#xA;&#x9;&#xA;&#xA;IF OBJECT_ID('tempdb..##FT_PickList') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##FT_PickList&#xA;&#xA;&#x9;&#x9;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -323,7 +323,7 @@ FROM reversals;</DTS:VariableValue>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{47A96CB5-9E20-4A19-9577-5AD218B68A15}"
+          SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
           SQLTask:SqlStatementSource="IF EXISTS (SELECT 1 FROM ##FT_PickList)&#xA;&#x9;SELECT Iterations = (MAX(grp)/10000) + 1 FROM ##FT_PickList&#xA;ELSE&#xA;&#x9;SELECT Iterations = 0"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -345,7 +345,7 @@ FROM reversals;</DTS:VariableValue>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{47A96CB5-9E20-4A19-9577-5AD218B68A15}"
+          SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
           SQLTask:SqlStmtSourceType="Variable"
           SQLTask:SqlStatementSource="User::CreateReversalsQuery" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
@@ -637,8 +637,8 @@ CROSS APPLY
                   <connections>
                     <connection
                       refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Connections[OleDbConnection]"
-                      connectionManagerID="{47A96CB5-9E20-4A19-9577-5AD218B68A15}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Source-RetainConnection_1]"
+                      connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[SourceDB]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>

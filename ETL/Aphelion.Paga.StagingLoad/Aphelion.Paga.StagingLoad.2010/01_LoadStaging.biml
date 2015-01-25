@@ -145,10 +145,10 @@
 				<Tasks>
 					<Dataflow Name="DFT_Load <#=String.Format("{0}_{1}",TableSchema, TableName)#>"  DelayValidation="true">
 						<Transformations>
-						<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB" ValidateExternalMetadata = "false">
+						<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
 							<VariableInput VariableName="User.FullQueryText"></VariableInput>
 						</OleDbSource>
-						<DerivedColumns Name="dc_ChangeData" ValidateExternalMetadata = "false">
+						<DerivedColumns Name="dc_ChangeData" >
 								<Columns>
 									<Column Name="SYS_CHANGE_OPERATION" DataType="AnsiStringFixedLength" Length="1" CodePage="1252" >@[$Package::ChangeOperation]</Column>
 									<Column Name="SYS_CHANGE_VERSION" DataType="Int64">@[$Package::ChangeVersion]</Column>
@@ -163,7 +163,7 @@
                                 </Outputs>
                             </ErrorHandling>
 						</DerivedColumns>
-						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="Paga_Staging" KeepIdentity="false" BatchSize = "50000" ValidateExternalMetadata = "false">
+						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="Paga_Staging" KeepIdentity="false" BatchSize = "50000" >
 							<ExternalTableOutput Table="<#=String.Format("{0}.{1}_{2}","Staging",TableSchema, TableName)#>"/>
 						</OleDbDestination>
 						</Transformations>

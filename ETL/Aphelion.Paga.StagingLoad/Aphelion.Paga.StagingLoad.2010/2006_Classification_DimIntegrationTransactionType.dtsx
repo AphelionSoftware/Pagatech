@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="1/24/2015 6:37:48 PM"
+  DTS:CreationDate="1/25/2015 12:41:50 PM"
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
   DTS:CreatorName="Administrator"
   DTS:DelayValidation="True"
-  DTS:DTSID="{D724BE3E-3CBD-451A-A3B0-202554F6D213}"
+  DTS:DTSID="{E6661ADA-B5BF-4DF9-AA51-08425AE10E36}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="2018_Shared_DimIntegrationTransactionType"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{AE5B0C09-813B-417F-B020-3E9E380B1052}"
+  DTS:ObjectName="2006_Classification_DimIntegrationTransactionType"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{672CEED4-6DA6-4E00-9D6D-A1F23CF9D1C4}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -20,7 +20,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{76BE01D8-8C87-4E56-9067-5E5BCC8542C0}"
+      DTS:DTSID="{F16E7E82-8580-4FD3-AC03-DCA29DBACA51}"
       DTS:ObjectName="ChangeOperation">
       <DTS:Property
         DTS:DataType="8"
@@ -30,7 +30,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="20"
-      DTS:DTSID="{030B5DBC-1C38-4A71-A027-4047EC36B352}"
+      DTS:DTSID="{712777EE-E0BD-413A-98D9-10D8B3E79C1B}"
       DTS:ObjectName="ChangeVersion">
       <DTS:Property
         DTS:DataType="20"
@@ -39,7 +39,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{4CD9036B-DAEE-4D20-BBEE-1D62AB000348}"
+      DTS:DTSID="{FD84AFA0-449D-4939-A427-FDCE80D84AE1}"
       DTS:ObjectName="EndOfQuery">
       <DTS:Property
         DTS:DataType="8"
@@ -50,7 +50,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B629F97E-732C-4268-95F7-88FF78E61354}"
+      DTS:DTSID="{3A9A48F7-FCAF-4106-A677-A6DF436E20F4}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="BaseQuery">
@@ -71,7 +71,7 @@ FROM
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{07DA0445-D6FE-4A30-8711-F53AC2D837DC}"
+      DTS:DTSID="{AA215E11-6280-4EC7-83F7-0775F96F512D}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
@@ -95,13 +95,13 @@ FROM
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DFT_Load Shared_DimIntegrationTransactionType"
+      DTS:refId="Package\DFT_Load Classification_DimIntegrationTransactionType"
       DTS:CreationName="SSIS.Pipeline.3"
       DTS:DelayValidation="True"
-      DTS:DTSID="{C0FB72CB-946E-4006-9CCA-867A3CC2375C}"
+      DTS:DTSID="{28D0EC2C-1521-41E2-9F73-C84107AA2E74}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DFT_Load Shared_DimIntegrationTransactionType"
+      DTS:ObjectName="DFT_Load Classification_DimIntegrationTransactionType"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -111,34 +111,33 @@ FROM
           version="1">
           <components>
             <component
-              refId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData"
+              refId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData"
               componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               name="dc_ChangeData"
-              usesDispositions="true"
-              validateExternalMetadata="False">
+              usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+                  refId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
                   name="OLEDB_GetData_Output_dc_ChangeData">
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output]"
+                  refId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output]"
                   exclusionGroup="1"
                   name="Output"
-                  synchronousInputId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
+                  synchronousInputId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="IgnoreFailure"
                       length="1"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
                       name="SYS_CHANGE_OPERATION"
                       truncationRowDisposition="IgnoreFailure">
                       <properties>
@@ -154,11 +153,11 @@ FROM
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -177,22 +176,22 @@ FROM
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Error]"
+                  refId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Error]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Error"
-                  synchronousInputId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
+                  synchronousInputId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -201,12 +200,11 @@ FROM
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData"
+              refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData"
               componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               name="OLEDB_GetData"
               usesDispositions="true"
-              validateExternalMetadata="False"
               version="7">
               <properties>
                 <property
@@ -250,7 +248,7 @@ FROM
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Connections[OleDbConnection]"
+                  refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Connections[OleDbConnection]"
                   connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external"
                   connectionManagerRefId="Project.ConnectionManagers[SourceDB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -258,59 +256,59 @@ FROM
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output]"
+                  refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output]"
                   name="Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]"
+                      externalMetadataColumnId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]"
                       length="50"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]"
                       name="SourceKey"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[Name]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[Name]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]"
+                      externalMetadataColumnId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]"
                       length="50"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[Name]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[Name]"
                       name="Name"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[DescriptionText]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[DescriptionText]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[DescriptionText]"
+                      externalMetadataColumnId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[DescriptionText]"
                       length="1000"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[DescriptionText]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[DescriptionText]"
                       name="DescriptionText"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="SourceKey" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Name" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[DescriptionText]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].ExternalColumns[DescriptionText]"
                       codePage="1252"
                       dataType="str"
                       length="1000"
@@ -318,41 +316,41 @@ FROM
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error]"
+                  refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error]"
                   isErrorOut="true"
                   name="Error">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[SourceKey]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[SourceKey]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[SourceKey]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[SourceKey]"
                       name="SourceKey" />
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[Name]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[Name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[Name]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[Name]"
                       name="Name" />
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[DescriptionText]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[DescriptionText]"
                       codePage="1252"
                       dataType="str"
                       length="1000"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[DescriptionText]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[DescriptionText]"
                       name="DescriptionText" />
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -361,12 +359,11 @@ FROM
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging"
+              refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging"
               componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               name="OLEDB_InsertIntoStaging"
               usesDispositions="true"
-              validateExternalMetadata="False"
               version="4">
               <properties>
                 <property
@@ -376,7 +373,7 @@ FROM
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">Staging.Shared_DimIntegrationTransactionType</property>
+                  name="OpenRowset">Staging.Classification_DimIntegrationTransactionType</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -417,7 +414,7 @@ FROM
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Connections[OleDbConnection]"
+                  refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Connections[OleDbConnection]"
                   connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]"
                   description="The OLE DB runtime connection used to access the database."
@@ -425,63 +422,63 @@ FROM
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
+                  refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="dc_ChangeData_Output_OLEDB_InsertIntoStaging">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="SYS_CHANGE_OPERATION"
-                      externalMetadataColumnId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
+                      externalMetadataColumnId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
                     <inputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]"
                       cachedDataType="i8"
                       cachedName="SYS_CHANGE_VERSION"
-                      externalMetadataColumnId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
+                      externalMetadataColumnId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
                     <inputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="SourceKey"
-                      externalMetadataColumnId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" />
+                      externalMetadataColumnId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" />
                     <inputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[Name]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[Name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Name"
-                      externalMetadataColumnId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[Name]" />
+                      externalMetadataColumnId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output].Columns[Name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
                       codePage="1252"
                       dataType="str"
                       length="255"
                       name="Name" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
                       codePage="1252"
                       dataType="str"
                       length="255"
                       name="SourceKey" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       name="SYS_CHANGE_VERSION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
                       codePage="1252"
                       dataType="str"
                       length="1"
@@ -491,22 +488,22 @@ FROM
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Outputs[Error]"
+                  refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Outputs[Error]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Error"
-                  synchronousInputId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]">
+                  synchronousInputId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -517,15 +514,15 @@ FROM
           </components>
           <paths>
             <path
-              refId="Package\DFT_Load Shared_DimIntegrationTransactionType.Paths[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
-              endId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
+              refId="Package\DFT_Load Classification_DimIntegrationTransactionType.Paths[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
+              endId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
               name="dc_ChangeData_Output_OLEDB_InsertIntoStaging"
-              startId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output]" />
+              startId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load Shared_DimIntegrationTransactionType.Paths[OLEDB_GetData_Output_dc_ChangeData]"
-              endId="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+              refId="Package\DFT_Load Classification_DimIntegrationTransactionType.Paths[OLEDB_GetData_Output_dc_ChangeData]"
+              endId="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
               name="OLEDB_GetData_Output_dc_ChangeData"
-              startId="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output]" />
+              startId="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData.Outputs[Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -544,31 +541,31 @@ FROM
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="317,42"
-          Id="Package\DFT_Load Shared_DimIntegrationTransactionType"
+          Size="345,42"
+          Id="Package\DFT_Load Classification_DimIntegrationTransactionType"
           TopLeft="5.5,5.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT_Load Shared_DimIntegrationTransactionType">
+    design-time-name="Package\DFT_Load Classification_DimIntegrationTransactionType">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="153,42"
-          Id="Package\DFT_Load Shared_DimIntegrationTransactionType\dc_ChangeData"
+          Id="Package\DFT_Load Classification_DimIntegrationTransactionType\dc_ChangeData"
           TopLeft="28.5,107.5" />
         <NodeLayout
           Size="199,42"
-          Id="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging"
+          Id="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_InsertIntoStaging"
           TopLeft="5.50000000000003,209.5" />
         <NodeLayout
           Size="155,42"
-          Id="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData"
+          Id="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData"
           TopLeft="27.5,5.5" />
         <EdgeLayout
-          Id="Package\DFT_Load Shared_DimIntegrationTransactionType.Paths[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
+          Id="Package\DFT_Load Classification_DimIntegrationTransactionType.Paths[dc_ChangeData_Output_OLEDB_InsertIntoStaging]"
           TopLeft="105,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -587,12 +584,12 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-18.1201171875,21.46337890625,36.240234375,9.5732421875"
+              BoundingBox="-15.45359375,21.4658203125,30.9071875,9.568359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Shared_DimIntegrationTransactionType.Paths[OLEDB_GetData_Output_dc_ChangeData]"
+          Id="Package\DFT_Load Classification_DimIntegrationTransactionType.Paths[OLEDB_GetData_Output_dc_ChangeData]"
           TopLeft="105,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -611,7 +608,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-18.1201171875,21.46337890625,36.240234375,9.5732421875"
+              BoundingBox="-15.45359375,21.4658203125,30.9071875,9.568359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -619,20 +616,7 @@ FROM
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_InsertIntoStaging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load Shared_DimIntegrationTransactionType\OLEDB_GetData">
+    design-time-name="Package\DFT_Load Classification_DimIntegrationTransactionType\OLEDB_GetData">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

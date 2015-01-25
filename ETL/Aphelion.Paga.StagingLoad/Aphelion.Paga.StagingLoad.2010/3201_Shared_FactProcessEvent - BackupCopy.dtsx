@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="3201_Shared_FactProcessEvent"
   DTS:PackageType="5"
-  DTS:VersionBuild="102"
-  DTS:VersionGUID="{20549A54-1652-46A9-9278-375426CD06DF}">
+  DTS:VersionBuild="100"
+  DTS:VersionGUID="{6CFB3463-9F66-4B0E-A682-0D24063E3298}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -132,7 +132,7 @@ CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{efca6b46-98a1-427b-a858-3d3c6d0e2b36}"
+          SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
           SQLTask:SqlStmtSourceType="Variable"
           SQLTask:SqlStatementSource="User::CreateMasterList" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
@@ -150,7 +150,7 @@ CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{efca6b46-98a1-427b-a858-3d3c6d0e2b36}"
+          SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
           SQLTask:SqlStatementSource="IF OBJECT_ID('tempdb..##MasterList') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##MasterList&#xA;&#xA;&#x9;&#xA;&#xA;IF OBJECT_ID('tempdb..##PullList') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##PullList" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -168,7 +168,7 @@ CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{efca6b46-98a1-427b-a858-3d3c6d0e2b36}"
+          SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
           SQLTask:SqlStatementSource="&#xA;DROP TABLE ##MasterList&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -186,7 +186,7 @@ CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{efca6b46-98a1-427b-a858-3d3c6d0e2b36}"
+          SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
           SQLTask:SqlStatementSource="IF EXISTS (SELECT 1 FROM ##MasterList)&#xA;&#x9;SELECT Iterations =(COUNT(DISTINCT(CAST(UserID AS INT)))/1000)+1  FROM ##MasterList&#xA;ELSE&#xA;&#x9;SELECT Iterations = 0&#xA;&#x9;"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -443,8 +443,8 @@ OUTER APPLY
                   <connections>
                     <connection
                       refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Connections[OleDbConnection]"
-                      connectionManagerID="{efca6b46-98a1-427b-a858-3d3c6d0e2b36}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Source-RetainConnection_2]"
+                      connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[SourceDB]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1963,7 +1963,7 @@ OUTER APPLY
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{efca6b46-98a1-427b-a858-3d3c6d0e2b36}"
+              SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
               SQLTask:SqlStatementSource="DECLARE @OffSet AS INT =?&#xA;&#xA;&#xA;/*&#xA;&#x9;Using the master list, get 10,000 userIDs per iteration&#xA;&#x9;This pull list will be used to populate a temp table&#xA;*/&#xA;SELECT &#xA;&#x9;*&#xA;INTO ##PullList&#xA;FROM &#xA;(&#x9;/*determines the batch size*/&#xA;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;UserID&#xA;&#x9;FROM ##MasterList&#xA;&#x9;ORDER BY UserID ASC&#xA;&#x9;OFFSET @OffSet ROWS&#xA;&#x9;FETCH NEXT 10000 ROWS ONLY&#xA;) AS ml1&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;SourceKey, --ProcessID,&#xA;&#x9;&#x9;ProcessTypeID&#xA;&#x9;FROM ##MasterList AS ml&#xA;&#x9;WHERE&#xA;&#x9;&#x9;ml.UserID = ml1.UserID&#xA;) AS ml2&#xA;CREATE UNIQUE CLUSTERED INDEX ix_PullList ON ##PullList&#xA;(&#x9;&#xA;&#x9;UserID,&#xA;&#x9;ProcessTypeId, &#xA;&#x9;SourceKey&#xA;);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;/*Pull only the rows we need from ProcessData for the subset, &#xA;add index to assist with pivoting in the next stage.*/&#xA;&#xA;&#xA;&#xA;SELECT &#xA;&#x9;*&#xA;INTO #PivotList&#xA;FROM&#xA;(&#xA;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;UserID&#xA;&#x9;FROM ##PullList&#xA;) AS pl&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;p1.SourceKey,&#xA;&#x9;&#x9;p0.ProcessDataID,&#xA;&#x9;&#x9;Name,&#xA;&#x9;&#x9;Value&#xA;&#x9;FROM dbo.ProcessData as p0&#xA;&#x9;INNER JOIN ##PullList AS p1 ON&#xA;&#x9;&#x9;p0.ProcessId = p1.SourceKey&#xA;&#x9;WHERE&#xA;&#x9;&#x9;p1.UserId = pl.UserID&#xA;) AS pd&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_PivotList on #PivotList&#xA;(SourceKey, Name, Value, ProcessDataID);&#xA;&#xA;/*Create Pivoted Version of ProcessData*/&#xA;&#xA;&#xA;SELECT &#xA;&#x9;*&#xA;INTO ##ProcessData&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;pd.SourceKey,&#xA;&#x9;&#x9;WithdrawalCode=MAX(CASE WHEN pd.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd.value) END),&#xA;&#x9;&#x9;ATMReferenceNumber=MAX(CASE WHEN pd.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd.value) END),&#xA;&#x9;&#x9;CardProcessorName=MAX(CASE WHEN pd.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;CustomerBillerAccount=MAX(CASE WHEN pd.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;CustomerPhoneNumber=MAX(CASE WHEN pd.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;DepositNumber=MAX(CASE WHEN pd.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;LinkedPhoneNumber=MAX(CASE WHEN pd.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;MerchantConfirmationCode=MAX(CASE WHEN pd.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;MerchantCustomerAccountNumber=MAX(CASE WHEN pd.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;PaymentSource=MAX(CASE WHEN pd.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;ReferenceNumber=MAX(CASE WHEN pd.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;RequestedProcessChannel=MAX(CASE WHEN pd.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd.value) END), &#xA;&#x9;&#x9;SenderPhoneNumber=MAX(CASE WHEN pd.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd.value) END),&#xA;&#x9;&#x9;DependentFactProcessTxSourceKey=MAX(CASE WHEN pd.Name='dependentProcessId' THEN CONVERT(INT,pd.value) END),&#xA;&#x9;&#x9;OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd.Name='originalProcessId' THEN CONVERT(INT,pd.value) END),&#xA;&#x9;&#x9;VerificationStatus=MAX(CASE WHEN pd.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd.value) END),&#xA;&#x9;&#x9;DimVerifiedByUserSourceKey=MAX(CASE WHEN pd.Name='verifiedByUserId' THEN CONVERT(INT,pd.value) END),&#xA;&#x9;&#x9;IntegrationReferenceNumber= MAX(CASE WHEN pd.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd.value) END),&#xA;&#x9;&#x9;DimApprovedByUserSourceKey= MAX(CASE WHEN pd.Name='approvedByUserId' THEN CONVERT(INT,pd.value) END),&#xA;&#x9;&#x9;DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd.Name='cancelledByUserId' THEN CONVERT(INT,pd.value) END)&#xA;&#x9;FROM #PivotList AS pd&#xA;&#x9;GROUP BY&#xA;&#x9;&#x9;pd.SourceKey&#xA;) AS pd_pivot&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_ProcessData_Temp ON ##ProcessData&#xA;(SourceKey);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -1988,7 +1988,7 @@ OUTER APPLY
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{efca6b46-98a1-427b-a858-3d3c6d0e2b36}"
+              SQLTask:Connection="{80F91B65-61AA-4178-AD02-3719F4D72015}"
               SQLTask:SqlStatementSource="&#xA;DROP TABLE ##PullList&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
@@ -2076,14 +2076,6 @@ OUTER APPLY
           Id="Package\EST_Create_MasterList_TempTable"
           TopLeft="188,107.5" />
         <NodeLayout
-          Size="195,42"
-          Id="Package\EST_Drop_##MasterList"
-          TopLeft="213,721.5" />
-        <NodeLayout
-          Size="269,42"
-          Id="Package\EST_DropGlobalTempTables_JustInCase"
-          TopLeft="176,5.5" />
-        <NodeLayout
           Size="164,42"
           Id="Package\EST_GetIterations"
           TopLeft="228.5,209.5" />
@@ -2095,10 +2087,6 @@ OUTER APPLY
           Size="233,42"
           Id="Package\Load_In_Batches_of_1000_UserIDs\EST_BuildStagingTableOnSource"
           TopLeft="5.50000000000001,5.5" />
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Load_In_Batches_of_1000_UserIDs\EST_Drop_##PullList"
-          TopLeft="32,209.5" />
         <EdgeLayout
           Id="Package\Load_In_Batches_of_1000_UserIDs.PrecedenceConstraints[Constraint]"
           TopLeft="122,47.5">
@@ -2121,6 +2109,10 @@ OUTER APPLY
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Load_In_Batches_of_1000_UserIDs\EST_Drop_##PullList"
+          TopLeft="32,209.5" />
         <EdgeLayout
           Id="Package\Load_In_Batches_of_1000_UserIDs.PrecedenceConstraints[Constraint 1]"
           TopLeft="122,149.5">
@@ -2146,7 +2138,7 @@ OUTER APPLY
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="244,307"
+          PanelSize="244,306"
           Size="244,350"
           Id="Package\Load_In_Batches_of_1000_UserIDs"
           TopLeft="5.50000000000009,311.5" />
@@ -2208,6 +2200,10 @@ OUTER APPLY
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="195,42"
+          Id="Package\EST_Drop_##MasterList"
+          TopLeft="213,721.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="127.5,661.5">
@@ -2266,6 +2262,10 @@ OUTER APPLY
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="269,42"
+          Id="Package\EST_DropGlobalTempTables_JustInCase"
+          TopLeft="176,5.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="310.5,47.5">
@@ -2295,7 +2295,7 @@ OUTER APPLY
     design-time-name="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="237,42"
           Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent"
@@ -2339,9 +2339,7 @@ OUTER APPLY
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2375,9 +2373,7 @@ OUTER APPLY
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

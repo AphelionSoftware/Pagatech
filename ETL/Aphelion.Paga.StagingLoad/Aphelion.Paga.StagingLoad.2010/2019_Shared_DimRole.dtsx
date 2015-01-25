@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/24/2015 18:37:48" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{083D6BE4-C897-4B17-964D-932BD804C4C8}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2019_Shared_DimRole" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{CDFD4045-5EF6-4F30-B5DA-7B6FC17B18F9}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/25/2015 12:41:50" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{01D7DE4E-ED71-483E-AF91-2904CC37EC02}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2019_Shared_DimRole" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{D60C7062-9161-409C-99AA-4541242659EA}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{EEC7D517-1A09-4507-A884-830CFD3DFAA3}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimRole" DTS:refId="Package\DFT_Load Shared_DimRole" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{A4B72D60-3A87-4588-8276-3569A9F5272F}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimRole" DTS:refId="Package\DFT_Load Shared_DimRole" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
-            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData" usesDispositions="true" validateExternalMetadata="False" version="7">
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData" usesDispositions="true" version="7">
               <connections>
                 <connection connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Connections[OleDbConnection]">
                 </connection>
@@ -15,9 +15,9 @@
                   <externalMetadataColumns isUsed="True">
                     <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="wstr" length="255" name="TextDescription" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].ExternalColumns[TextDescription]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDescription" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].ExternalColumns[TextDescription]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="300" name="Name" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="100" name="SystemDescription" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].ExternalColumns[SystemDescription]">
                     </externalMetadataColumn>
@@ -25,9 +25,9 @@
                   <outputColumns>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
                     </outputColumn>
-                    <outputColumn dataType="wstr" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].ExternalColumns[TextDescription]" length="255" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[TextDescription]" name="TextDescription" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[TextDescription]" truncationRowDisposition="FailComponent">
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].ExternalColumns[TextDescription]" length="1000" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[TextDescription]" name="TextDescription" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[TextDescription]" truncationRowDisposition="FailComponent">
                     </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]" length="300" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].ExternalColumns[SystemDescription]" length="100" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[SystemDescription]" name="SystemDescription" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[SystemDescription]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -39,9 +39,9 @@
                   <outputColumns>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Error].Columns[SourceKey]">
                     </outputColumn>
-                    <outputColumn dataType="wstr" length="255" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Error].Columns[TextDescription]" name="TextDescription" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Error].Columns[TextDescription]">
+                    <outputColumn codePage="1252" dataType="str" length="1000" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Error].Columns[TextDescription]" name="TextDescription" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Error].Columns[TextDescription]">
                     </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="300" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Error].Columns[Name]">
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Error].Columns[Name]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="100" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Error].Columns[SystemDescription]" name="SystemDescription" refId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Error].Columns[SystemDescription]">
                     </outputColumn>
@@ -68,7 +68,7 @@
                 </property>
               </properties>
             </component>
-            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeData" refId="Package\DFT_Load Shared_DimRole\dc_ChangeData" usesDispositions="true" validateExternalMetadata="False">
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_ChangeData" refId="Package\DFT_Load Shared_DimRole\dc_ChangeData" usesDispositions="true">
               <inputs>
                 <input name="OLEDB_GetData_Output_dc_ChangeData" refId="Package\DFT_Load Shared_DimRole\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
                   <externalMetadataColumns>
@@ -106,7 +106,7 @@
                 </output>
               </outputs>
             </component>
-            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Shared_DimRole\OLEDB_InsertIntoStaging" usesDispositions="true" validateExternalMetadata="False" version="4">
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging" refId="Package\DFT_Load Shared_DimRole\OLEDB_InsertIntoStaging" usesDispositions="true" version="4">
               <connections>
                 <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Shared_DimRole\OLEDB_InsertIntoStaging.Connections[OleDbConnection]">
                 </connection>
@@ -134,7 +134,7 @@
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimRole\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Shared_DimRole\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
                     </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="300" cachedName="Name" externalMetadataColumnId="Package\DFT_Load Shared_DimRole\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[Name]" refId="Package\DFT_Load Shared_DimRole\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[Name]">
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load Shared_DimRole\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[Name]" refId="Package\DFT_Load Shared_DimRole\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[Name]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="100" cachedName="SystemDescription" externalMetadataColumnId="Package\DFT_Load Shared_DimRole\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SystemDescription]" lineageId="Package\DFT_Load Shared_DimRole\OLEDB_GetData.Outputs[Output].Columns[SystemDescription]" refId="Package\DFT_Load Shared_DimRole\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SystemDescription]">
                     </inputColumn>
@@ -181,21 +181,21 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{00010ED5-57DB-40D9-8C41-64587601D37D}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{A094F2CF-7F9B-49FE-B6B1-713422452ED5}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{399728F4-42DB-44CA-9810-8F8AAAAB422A}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{0C5F309C-9E40-46FB-83FD-6FA1CB32F580}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{F6601545-0F45-42C6-AA54-BD56C3A77409}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="20" DTS:Description="" DTS:DTSID="{89B24E3D-68E4-4484-9C3A-1B6F90DC2DFC}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="20" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{380AB648-34B6-43A3-99A9-AC7C326895FC}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0C356F61-49A3-4E7A-8955-BAC7A9553E9E}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">--DimRoleLookup
 SELECT
 	SourceKey,
@@ -206,13 +206,13 @@ FROM
 (
 SELECT 
 	SourceKey = [RoleId],
-	TextDescription= [Description],
-	Name = CONVERT(VARCHAR(300),Name),
+	TextDescription= CONVERT(VARCHAR(1000), [Description]),
+	Name = CONVERT(VARCHAR(255),Name),
 	SystemDescription = [Namespace]
  FROM [dbo].[RoleLookup]
 ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BF5E3B76-6E17-4F61-86EB-2B625A135711}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{07C59550-B1F8-4F14-957F-7594FD22960E}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">--DimRoleLookup
 SELECT
 	SourceKey,
@@ -223,8 +223,8 @@ FROM
 (
 SELECT 
 	SourceKey = [RoleId],
-	TextDescription= [Description],
-	Name = CONVERT(VARCHAR(300),Name),
+	TextDescription= CONVERT(VARCHAR(1000), [Description]),
+	Name = CONVERT(VARCHAR(255),Name),
 	SystemDescription = [Namespace]
  FROM [dbo].[RoleLookup]
 ) AS base_query </DTS:VariableValue>
