@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="3201_Shared_FactProcessEvent"
   DTS:PackageType="5"
-  DTS:VersionBuild="102"
-  DTS:VersionGUID="{20549A54-1652-46A9-9278-375426CD06DF}">
+  DTS:VersionBuild="107"
+  DTS:VersionGUID="{32A54FF2-57BC-4B06-B374-97A2FFF038F5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -52,7 +52,7 @@
       DTS:CreationName=""
       DTS:DTSID="{2934B9E8-C497-4C05-81D0-7AD259056063}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;*&#xA;INTO ##MasterList&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;SourceKey = ProcessID, &#xA;&#x9;&#x9;ProcessTypeId, &#xA;&#x9;&#x9;UserID = COALESCE(UserID, -1)&#xA;&#x9;FROM dbo.Process&#xA;) AS base_query&#xA;&quot;+ @[$Package::EndOfQuery] +&quot;&#xA;&#xA;&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList&#xA;(&#x9;&#xA;&#x9;UserID,&#xA;&#x9;SourceKey --ProcessId&#xA;);&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;*&#xA;INTO ##MasterList&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;SourceKey = ProcessID, &#xA;&#x9;&#x9;ProcessTypeId, &#xA;&#x9;&#x9;UserID = COALESCE(UserID, -1)&#xA;&#x9;FROM dbo.Process&#xA;) AS base_query&#xA;&quot;+ @[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="CreateMasterList">
@@ -68,15 +68,7 @@ FROM
 		UserID = COALESCE(UserID, -1)
 	FROM dbo.Process
 ) AS base_query
-
-
-
-
-CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList
-(	
-	UserID,
-	SourceKey --ProcessId
-);</DTS:VariableValue>
+</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -119,6 +111,24 @@ CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
+      DTS:refId="Package\EST_CreateIndexOnMasterList"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:DelayValidation="True"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{826f7cdd-6d74-491b-aafc-fffe759dcb18}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_CreateIndexOnMasterList"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{efca6b46-98a1-427b-a858-3d3c6d0e2b36}"
+          SQLTask:SqlStatementSource="CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList&#xA;(&#x9;&#xA;&#x9;UserID,&#xA;&#x9;SourceKey&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\EST_Create_MasterList_TempTable"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:DelayValidation="True"
@@ -138,6 +148,23 @@ CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\EST_DropGlobalTempTables"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{f0dc4211-9972-4373-b6ea-62d4094cb8fc}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_DropGlobalTempTables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{efca6b46-98a1-427b-a858-3d3c6d0e2b36}"
+          SQLTask:SqlStatementSource="IF OBJECT_ID('tempdb..##MasterList') IS NOT NULL&#xA;  DROP TABLE ##MasterList;&#xA;&#xA; &#xA;&#xA;IF OBJECT_ID('tempdb..##PullList') IS NOT NULL&#xA;  DROP TABLE ##PullList;&#xA;&#xA;&#xA;IF OBJECT_ID('tempdb..##ProcessData') IS NOT NULL&#xA;  DROP TABLE ##ProcessData;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\EST_DropGlobalTempTables_JustInCase"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
@@ -151,7 +178,7 @@ CREATE UNIQUE CLUSTERED INDEX ix_MasterList ON ##MasterList
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{efca6b46-98a1-427b-a858-3d3c6d0e2b36}"
-          SQLTask:SqlStatementSource="IF OBJECT_ID('tempdb..##MasterList') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##MasterList&#xA;&#xA;&#x9;&#xA;&#xA;IF OBJECT_ID('tempdb..##PullList') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##PullList" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="IF OBJECT_ID('tempdb..##MasterList') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##MasterList;&#xA;&#xA;&#x9;&#xA;&#xA;IF OBJECT_ID('tempdb..##PullList') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##PullList;&#xA;&#xA;&#xA;IF OBJECT_ID('tempdb..##ProcessData') IS NOT NULL&#xA;&#x9;&#x9;DROP TABLE ##ProcessData;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -357,26 +384,42 @@ CROSS APPLY
 (
 	SELECT	
 		SourceKey = p.ProcessID,
-		change_operation = 'I',
-		p.AgentCommissionAmount, 
-		ProcessAmount = p.Amount, 
-		p.ProcessCode, 
-		ProcessFee = p.Fee, 
-		DimCompletedDateID=CONVERT(INT,CONVERT(VARCHAR(8),p.CreatedDate,112)), 
-		DimCompletedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CreatedDate, 114),':','')),
-		DimCreatedDateID=CONVERT(INT,CONVERT(VARCHAR(8),p.CreatedDate,112)),  
-		DimCreatedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CreatedDate, 114),':','')),
-		DimStartedDateID=CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)),  
-		DimStartedTimeID=CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),
+		DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), 
+		DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),
 		DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, 
+		DimForUserSourceKey = p.ForUserId,
+		DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), 
 		DimProcessChannelSourceKey = p.ProcessChannelId, 
-		DimUserSourceKey = COALESCE(p.UserID, -1),
-		DimForUserSourceKey = p.ForUserId, 
 		DimProcessStatusSourceKey = p.ProcessStatusId, 
 		DimProcessTypeSourceKey = p.ProcessTypeId, 
-		DimToUserSourceKey = p.ToUserId,
-		DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1),
-		pd.*
+		DimToUserSourceKey = p.ToUserId, 
+		DimUserSourceKey = COALESCE(p.UserID, -1), 
+		DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), 
+		DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),
+		AgentCommissionAmount = p.AgentCommissionAmount, 
+		ProcessAmount = p.Amount, 
+		ProcessCode = p.ProcessCode, 
+		ProcessFee = p.Fee, 
+		FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, 
+		FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,
+		DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, 
+		DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, 
+		DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, 
+		DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, 
+		ATMReferenceNumber = pd.ATMReferenceNumber, 
+		CardProcessorName = pd.CardProcessorName, 
+		CustomerBillerAccount = pd.CustomerBillerAccount, 
+		CustomerPhoneNumber = pd.CustomerPhoneNumber, 
+		DepositNumber = pd.DepositNumber, 
+		IntegrationReferenceNumber = pd.IntegrationReferenceNumber, 
+		LinkedPhoneNumber = pd.LinkedPhoneNumber, 
+		MerchantConfirmationCode = pd.MerchantConfirmationCode, 
+		MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,
+		PaymentSource = pd.PaymentSource, 
+		ReferenceNumber = pd.ReferenceNumber, 
+		SenderPhoneNumber= pd.SenderPhoneNumber, 
+		VerificationStatus = pd.VerificationStatus, 
+		WithdrawalCode = pd.WithdrawalCode
 	FROM dbo.Process AS p
 	OUTER APPLY 
 	/*not all processes have processData records, use apply to eliminate the processdata.sourcekey column that would be present with a join 
@@ -463,17 +506,6 @@ OUTER APPLY
                           name="SourceKey"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[change_operation]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[change_operation]"
-                          length="1"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[change_operation]"
-                          name="change_operation"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[AgentCommissionAmount]"
                           dataType="numeric"
                           errorOrTruncationOperation="Conversion"
@@ -534,24 +566,6 @@ OUTER APPLY
                           externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[DimCompletedTimeID]"
                           lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DimCompletedTimeID]"
                           name="DimCompletedTimeID"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DimCreatedDateID]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[DimCreatedDateID]"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DimCreatedDateID]"
-                          name="DimCreatedDateID"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DimCreatedTimeID]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[DimCreatedTimeID]"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DimCreatedTimeID]"
-                          name="DimCreatedTimeID"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DimStartedDateID]"
@@ -735,17 +749,6 @@ OUTER APPLY
                           name="ReferenceNumber"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[RequestedProcessChannel]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[RequestedProcessChannel]"
-                          length="200"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[RequestedProcessChannel]"
-                          name="RequestedProcessChannel"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[SenderPhoneNumber]"
                           codePage="1252"
                           dataType="str"
@@ -755,24 +758,6 @@ OUTER APPLY
                           length="200"
                           lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[SenderPhoneNumber]"
                           name="SenderPhoneNumber"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DependentFactProcessTxSourceKey]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[DependentFactProcessTxSourceKey]"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DependentFactProcessTxSourceKey]"
-                          name="DependentFactProcessTxSourceKey"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[OriginalFactProcessTxSourceKey]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[OriginalFactProcessTxSourceKey]"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[OriginalFactProcessTxSourceKey]"
-                          name="OriginalFactProcessTxSourceKey"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[VerificationStatus]"
@@ -870,6 +855,35 @@ OUTER APPLY
                           lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]"
                           name="HasFinancialTransaction"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[FactDependentProcessEventSourceKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[FactDependentProcessEventSourceKey]"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[FactDependentProcessEventSourceKey]"
+                          name="FactDependentProcessEventSourceKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[FactOriginalProcessEventSourceKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[FactOriginalProcessEventSourceKey]"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[FactOriginalProcessEventSourceKey]"
+                          name="FactOriginalProcessEventSourceKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DimRequestedProcessChannelSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[DimRequestedProcessChannelSourceKey]"
+                          length="200"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DimRequestedProcessChannelSourceKey]"
+                          name="DimRequestedProcessChannelSourceKey"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -877,12 +891,6 @@ OUTER APPLY
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[SourceKey]"
                           dataType="i4"
                           name="SourceKey" />
-                        <externalMetadataColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[change_operation]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          name="change_operation" />
                         <externalMetadataColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[AgentCommissionAmount]"
                           dataType="numeric"
@@ -915,14 +923,6 @@ OUTER APPLY
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[DimCompletedTimeID]"
                           dataType="i4"
                           name="DimCompletedTimeID" />
-                        <externalMetadataColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[DimCreatedDateID]"
-                          dataType="i4"
-                          name="DimCreatedDateID" />
-                        <externalMetadataColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[DimCreatedTimeID]"
-                          dataType="i4"
-                          name="DimCreatedTimeID" />
                         <externalMetadataColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[DimStartedDateID]"
                           dataType="i4"
@@ -1020,25 +1020,11 @@ OUTER APPLY
                           length="200"
                           name="ReferenceNumber" />
                         <externalMetadataColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[RequestedProcessChannel]"
-                          codePage="1252"
-                          dataType="str"
-                          length="200"
-                          name="RequestedProcessChannel" />
-                        <externalMetadataColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[SenderPhoneNumber]"
                           codePage="1252"
                           dataType="str"
                           length="200"
                           name="SenderPhoneNumber" />
-                        <externalMetadataColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[DependentFactProcessTxSourceKey]"
-                          dataType="i4"
-                          name="DependentFactProcessTxSourceKey" />
-                        <externalMetadataColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[OriginalFactProcessTxSourceKey]"
-                          dataType="i4"
-                          name="OriginalFactProcessTxSourceKey" />
                         <externalMetadataColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[VerificationStatus]"
                           codePage="1252"
@@ -1085,6 +1071,20 @@ OUTER APPLY
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[HasFinancialTransaction]"
                           dataType="i4"
                           name="HasFinancialTransaction" />
+                        <externalMetadataColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[FactDependentProcessEventSourceKey]"
+                          dataType="i4"
+                          name="FactDependentProcessEventSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[FactOriginalProcessEventSourceKey]"
+                          dataType="i4"
+                          name="FactOriginalProcessEventSourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].ExternalColumns[DimRequestedProcessChannelSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="DimRequestedProcessChannelSourceKey" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -1097,13 +1097,6 @@ OUTER APPLY
                           dataType="i4"
                           lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[SourceKey]"
                           name="SourceKey" />
-                        <outputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[change_operation]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[change_operation]"
-                          name="change_operation" />
                         <outputColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[AgentCommissionAmount]"
                           dataType="numeric"
@@ -1142,16 +1135,6 @@ OUTER APPLY
                           dataType="i4"
                           lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[DimCompletedTimeID]"
                           name="DimCompletedTimeID" />
-                        <outputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[DimCreatedDateID]"
-                          dataType="i4"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[DimCreatedDateID]"
-                          name="DimCreatedDateID" />
-                        <outputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[DimCreatedTimeID]"
-                          dataType="i4"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[DimCreatedTimeID]"
-                          name="DimCreatedTimeID" />
                         <outputColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[DimStartedDateID]"
                           dataType="i4"
@@ -1210,6 +1193,23 @@ OUTER APPLY
                           dataType="i4"
                           lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[DimToUserSourceKey]"
                           name="DimToUserSourceKey" />
+                        <outputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[FactDependentProcessEventSourceKey]"
+                          dataType="i4"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[FactDependentProcessEventSourceKey]"
+                          name="FactDependentProcessEventSourceKey" />
+                        <outputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[FactOriginalProcessEventSourceKey]"
+                          dataType="i4"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[FactOriginalProcessEventSourceKey]"
+                          name="FactOriginalProcessEventSourceKey" />
+                        <outputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[DimRequestedProcessChannelSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[DimRequestedProcessChannelSourceKey]"
+                          name="DimRequestedProcessChannelSourceKey" />
                         <outputColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[WithdrawalCode]"
                           codePage="1252"
@@ -1288,29 +1288,12 @@ OUTER APPLY
                           lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[ReferenceNumber]"
                           name="ReferenceNumber" />
                         <outputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[RequestedProcessChannel]"
-                          codePage="1252"
-                          dataType="str"
-                          length="200"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[RequestedProcessChannel]"
-                          name="RequestedProcessChannel" />
-                        <outputColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[SenderPhoneNumber]"
                           codePage="1252"
                           dataType="str"
                           length="200"
                           lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[SenderPhoneNumber]"
                           name="SenderPhoneNumber" />
-                        <outputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[DependentFactProcessTxSourceKey]"
-                          dataType="i4"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[DependentFactProcessTxSourceKey]"
-                          name="DependentFactProcessTxSourceKey" />
-                        <outputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[OriginalFactProcessTxSourceKey]"
-                          dataType="i4"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[OriginalFactProcessTxSourceKey]"
-                          name="OriginalFactProcessTxSourceKey" />
                         <outputColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Error Output].Columns[VerificationStatus]"
                           codePage="1252"
@@ -1671,18 +1654,6 @@ OUTER APPLY
                           externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[DimUserSourceKey]"
                           lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DimUserSourceKey]" />
                         <inputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].Columns[DependentFactProcessTxSourceKey]"
-                          cachedDataType="i4"
-                          cachedName="DependentFactProcessTxSourceKey"
-                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[FactDependentProcessEventSourceKey]"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DependentFactProcessTxSourceKey]" />
-                        <inputColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].Columns[OriginalFactProcessTxSourceKey]"
-                          cachedDataType="i4"
-                          cachedName="OriginalFactProcessTxSourceKey"
-                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[FactOriginalProcessEventSourceKey]"
-                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[OriginalFactProcessTxSourceKey]" />
-                        <inputColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].Columns[HasFinancialTransaction]"
                           cachedDataType="i4"
                           cachedName="HasFinancialTransaction"
@@ -1702,6 +1673,38 @@ OUTER APPLY
                           cachedName="SYS_CHANGE_OPERATION"
                           externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
                           lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
+                        <inputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].Columns[DimStartedDateID]"
+                          cachedDataType="i4"
+                          cachedName="DimStartedDateID"
+                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[DimStartedDateID]"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DimStartedDateID]" />
+                        <inputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].Columns[DimStartedTimeID]"
+                          cachedDataType="i4"
+                          cachedName="DimStartedTimeID"
+                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[DimStartedTimeID]"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DimStartedTimeID]" />
+                        <inputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].Columns[DimRequestedProcessChannelSourceKey]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="200"
+                          cachedName="DimRequestedProcessChannelSourceKey"
+                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[DimRequestedProcessChannelSourceKey]"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[DimRequestedProcessChannelSourceKey]" />
+                        <inputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].Columns[FactOriginalProcessEventSourceKey]"
+                          cachedDataType="i4"
+                          cachedName="FactOriginalProcessEventSourceKey"
+                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[FactOriginalProcessEventSourceKey]"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[FactOriginalProcessEventSourceKey]" />
+                        <inputColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].Columns[FactDependentProcessEventSourceKey]"
+                          cachedDataType="i4"
+                          cachedName="FactDependentProcessEventSourceKey"
+                          externalMetadataColumnId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[FactDependentProcessEventSourceKey]"
+                          lineageId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions.Outputs[OLE DB Source Output].Columns[FactDependentProcessEventSourceKey]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1852,12 +1855,6 @@ OUTER APPLY
                           dataType="i4"
                           name="DimInitiatingUserSourceKey" />
                         <externalMetadataColumn
-                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[DimOriginalProcessChannelSourceKey]"
-                          codePage="1252"
-                          dataType="str"
-                          length="255"
-                          name="DimOriginalProcessChannelSourceKey" />
-                        <externalMetadataColumn
                           refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[DimProcessChannelSourceKey]"
                           codePage="1252"
                           dataType="str"
@@ -1905,6 +1902,20 @@ OUTER APPLY
                           dataType="str"
                           length="1"
                           name="SYS_CHANGE_OPERATION" />
+                        <externalMetadataColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[DimStartedDateID]"
+                          dataType="i4"
+                          name="DimStartedDateID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[DimStartedTimeID]"
+                          dataType="i4"
+                          name="DimStartedTimeID" />
+                        <externalMetadataColumn
+                          refId="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent.Inputs[OLE DB Destination Input].ExternalColumns[DimRequestedProcessChannelSourceKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="DimRequestedProcessChannelSourceKey" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -2017,11 +2028,11 @@ OUTER APPLY
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{984F0E4D-D4F1-4583-AE3A-5E439B30FDD6}"
+      DTS:DTSID="{F35F36C9-CED7-4A0B-9755-4C2C872D17E4}"
       DTS:From="Package\EST_Create_MasterList_TempTable"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\EST_GetIterations" />
+      DTS:To="Package\EST_CreateIndexOnMasterList" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
@@ -2035,11 +2046,11 @@ OUTER APPLY
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{B9D1419F-0614-4E12-B166-B82C5FE6C007}"
+      DTS:DTSID="{A534F274-C87D-43C8-BDCC-E26DE0EC5DD1}"
       DTS:From="Package\Load_In_Batches_of_1000_UserIDs"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
-      DTS:To="Package\EST_Drop_##MasterList" />
+      DTS:To="Package\EST_DropGlobalTempTables" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
@@ -2058,6 +2069,14 @@ OUTER APPLY
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\EST_Create_MasterList_TempTable" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{37715B4A-9550-4DC7-8362-682C1E33768F}"
+      DTS:From="Package\EST_CreateIndexOnMasterList"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\EST_GetIterations" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2070,23 +2089,23 @@ OUTER APPLY
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="245,42"
           Id="Package\EST_Create_MasterList_TempTable"
-          TopLeft="188,107.5" />
+          TopLeft="285,107.5" />
         <NodeLayout
           Size="195,42"
           Id="Package\EST_Drop_##MasterList"
-          TopLeft="213,721.5" />
+          TopLeft="310,567.5" />
         <NodeLayout
           Size="269,42"
           Id="Package\EST_DropGlobalTempTables_JustInCase"
-          TopLeft="176,5.5" />
+          TopLeft="273,5.5" />
         <NodeLayout
           Size="164,42"
           Id="Package\EST_GetIterations"
-          TopLeft="228.5,209.5" />
+          TopLeft="325.5,311.5" />
         <NodeLayout
           Size="223,42"
           Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx"
@@ -2146,13 +2165,111 @@ OUTER APPLY
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="244,307"
+          PanelSize="244,306"
           Size="244,350"
           Id="Package\Load_In_Batches_of_1000_UserIDs"
-          TopLeft="5.50000000000009,311.5" />
+          TopLeft="5.50000000000006,413.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="381.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-254,60"
+              Start="0,0"
+              End="-254,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3478260869565" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3478260869565"
+                    Point2="0,24.3478260869565"
+                    Point3="-4,24.3478260869565" />
+                  <mssgle:LineSegment
+                    End="-250,24.3478260869565" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-250,24.3478260869565"
+                    Point2="-254,24.3478260869565"
+                    Point3="-254,28.3478260869565" />
+                  <mssgle:LineSegment
+                    End="-254,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-135,29.3478260869565,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="433.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-26,214"
+              Start="0,0"
+              End="-26,206.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.8405797101449" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,82.8405797101449"
+                    Point2="0,86.8405797101449"
+                    Point3="-4,86.8405797101449" />
+                  <mssgle:LineSegment
+                    End="-22,86.8405797101449" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22,86.8405797101449"
+                    Point2="-26,86.8405797101449"
+                    Point3="-26,90.8405797101449" />
+                  <mssgle:LineSegment
+                    End="-26,206.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-21,91.8405797101449,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="407.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="222,42"
+          Id="Package\EST_CreateIndexOnMasterList"
+          TopLeft="296.5,209.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="310.5,149.5">
+          TopLeft="407.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2173,67 +2290,19 @@ OUTER APPLY
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="284.5,251.5">
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="407.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-157,60"
+              EndConnector="0,60"
               Start="0,0"
-              End="-157,52.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.3478260869565" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.3478260869565"
-                    Point2="0,24.3478260869565"
-                    Point3="-4,24.3478260869565" />
-                  <mssgle:LineSegment
-                    End="-153,24.3478260869565" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-153,24.3478260869565"
-                    Point2="-157,24.3478260869565"
-                    Point3="-157,28.3478260869565" />
-                  <mssgle:LineSegment
-                    End="-157,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-86.5,29.3478260869565,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="127.5,661.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="151.833333333333,60"
-              Start="0,0"
-              End="151.833333333333,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.707019328586" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.707019328586"
-                    Point2="0,35.707019328586"
-                    Point3="4,35.707019328586" />
-                  <mssgle:LineSegment
-                    End="147.833333333333,35.707019328586" />
-                  <mssgle:CubicBezierSegment
-                    Point1="147.833333333333,35.707019328586"
-                    Point2="151.833333333333,35.707019328586"
-                    Point3="151.833333333333,39.707019328586" />
-                  <mssgle:LineSegment
-                    End="151.833333333333,52.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2242,33 +2311,13 @@ OUTER APPLY
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="212,42"
+          Id="Package\EST_DropGlobalTempTables"
+          TopLeft="21.5000000000001,823.5" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="339.083333333333,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,470"
-              Start="0,0"
-              End="0,462.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,462.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,223.25,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="310.5,47.5">
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="127.5,763.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2295,89 +2344,61 @@ OUTER APPLY
     design-time-name="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="237,42"
           Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEDB_Shared_FactProcessEvent"
-          TopLeft="565,252" />
+          TopLeft="5.50000000000003,209.5" />
         <NodeLayout
           Size="153,42"
           Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\dc_ChangeData"
-          TopLeft="526,160" />
+          TopLeft="47.5,107.5" />
         <NodeLayout
           Size="228,42"
           Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx\OLEBD_##ProcessTransactions"
-          TopLeft="480,91" />
+          TopLeft="10,5.5" />
         <EdgeLayout
           Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx.Paths[OLE DB Source Output]"
-          TopLeft="594,133">
+          TopLeft="124,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="8.5,27"
+              EndConnector="0,60"
               Start="0,0"
-              End="8.5,19.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,9.5"
-                    Point2="0,13.5"
-                    Point3="4,13.5" />
-                  <mssgle:LineSegment
-                    End="4.5,13.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.5,13.5"
-                    Point2="8.5,13.5"
-                    Point3="8.5,17.5" />
-                  <mssgle:LineSegment
-                    End="8.5,19.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load_In_Batches_of_1000_UserIDs\DFT_Load_Batched_ProcessTx.Paths[Output]"
-          TopLeft="602.5,202">
+          TopLeft="124,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="81,50"
+              EndConnector="0,60"
               Start="0,0"
-              End="81,42.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21"
-                    Point2="0,25"
-                    Point3="4,25" />
-                  <mssgle:LineSegment
-                    End="77,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="77,25"
-                    Point2="81,25"
-                    Point3="81,29" />
-                  <mssgle:LineSegment
-                    End="81,42.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

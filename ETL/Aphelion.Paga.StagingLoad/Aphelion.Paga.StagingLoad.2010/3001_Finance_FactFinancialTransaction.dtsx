@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="3001_Finance_FactFinancialTransaction"
   DTS:PackageType="5"
-  DTS:VersionBuild="99"
-  DTS:VersionGUID="{35431EDB-59C8-42E8-9C25-E2F8DA66142E}">
+  DTS:VersionBuild="103"
+  DTS:VersionGUID="{AF2E8B52-C5D3-497E-B58E-7967BBE9149D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -293,6 +293,23 @@ FROM reversals;</DTS:VariableValue>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\EST_DropGlobalTempTables"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{ba59c118-3fad-4ded-b384-21850480bd2f}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_DropGlobalTempTables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{47A96CB5-9E20-4A19-9577-5AD218B68A15}"
+          SQLTask:SqlStatementSource="IF OBJECT_ID('tempdb..##ReversalChain') IS NOT NULL&#xA;  DROP TABLE ##ReversalChain&#xA;&#xA; &#xA;&#xA;IF OBJECT_ID('tempdb..##FT_PickList') IS NOT NULL&#xA;  DROP TABLE ##FT_PickList&#xA;&#xA;  &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\EST_DropGlobalTempTables_JustInCase"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
@@ -504,7 +521,6 @@ SELECT
     ,[DimFinancialTxDateID]
     ,[DimFinancialTxTimeID]
     ,[FinancialTxType_SourceKey]
-    ,[FinancialTxSubType_SourceKey]
     ,[User_SourceKey]
     ,ProcessEvent_SourceKey
     ,[Reversed]
@@ -770,17 +786,6 @@ CROSS APPLY
                           name="FinancialTxType_SourceKey"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[FinancialTxSubType_SourceKey]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].ExternalColumns[FinancialTxSubType_SourceKey]"
-                          length="50"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[FinancialTxSubType_SourceKey]"
-                          name="FinancialTxSubType_SourceKey"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[User_SourceKey]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
@@ -962,12 +967,6 @@ CROSS APPLY
                           length="50"
                           name="FinancialTxType_SourceKey" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].ExternalColumns[FinancialTxSubType_SourceKey]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="FinancialTxSubType_SourceKey" />
-                        <externalMetadataColumn
                           refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].ExternalColumns[User_SourceKey]"
                           dataType="i4"
                           name="User_SourceKey" />
@@ -1062,13 +1061,6 @@ CROSS APPLY
                           length="50"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Error Output].Columns[FinancialTxType_SourceKey]"
                           name="FinancialTxType_SourceKey" />
-                        <outputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Error Output].Columns[FinancialTxSubType_SourceKey]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Error Output].Columns[FinancialTxSubType_SourceKey]"
-                          name="FinancialTxSubType_SourceKey" />
                         <outputColumn
                           refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Error Output].Columns[User_SourceKey]"
                           dataType="i4"
@@ -1197,11 +1189,11 @@ CROSS APPLY
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction"
+                  refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging"
                   componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
-                  name="OLE DB Staging_Finance_FactFinancialTransaction"
+                  name="OLEDB_InsertIntoStaging"
                   usesDispositions="true"
                   version="4">
                   <properties>
@@ -1254,7 +1246,7 @@ CROSS APPLY
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Connections[OleDbConnection]"
+                      refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Connections[OleDbConnection]"
                       connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external"
                       connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]"
                       description="The OLE DB runtime connection used to access the database."
@@ -1262,344 +1254,344 @@ CROSS APPLY
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input]"
+                      refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[SourceKey]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[SourceKey]"
                           cachedDataType="i4"
                           cachedName="SourceKey"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[SourceKey]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[SourceKey]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[SourceKey]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[DimEffectiveDateID]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[DimEffectiveDateID]"
                           cachedDataType="i4"
                           cachedName="DimEffectiveDateID"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimEffectiveDateID]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimEffectiveDateID]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[DimEffectiveDateID]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[DimEffectiveTimeID]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[DimEffectiveTimeID]"
                           cachedDataType="i4"
                           cachedName="DimEffectiveTimeID"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimEffectiveTimeID]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimEffectiveTimeID]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[DimEffectiveTimeID]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[TextDescription]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[TextDescription]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="100"
                           cachedName="TextDescription"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[TextDescription]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[TextDescription]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[TextDescription]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[ExchangeRate]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[ExchangeRate]"
                           cachedDataType="numeric"
                           cachedName="ExchangeRate"
                           cachedPrecision="16"
                           cachedScale="4"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[ExchangeRate]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[ExternalReferenceNumber]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[ExternalReferenceNumber]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="100"
                           cachedName="ExternalReferenceNumber"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[ExternalReferenceNumber]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[ExternalReferenceNumber]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[ExternalReferenceNumber]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[ForeignCurrencyAmount]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[ForeignCurrencyAmount]"
                           cachedDataType="numeric"
                           cachedName="ForeignCurrencyAmount"
                           cachedPrecision="18"
                           cachedScale="2"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[ForeignCurrencyAmount]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[ForeignCurrencyAmount]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[ForeignCurrencyAmount]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[ReferenceNumber]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[ReferenceNumber]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="ReferenceNumber"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[ReferenceNumber]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[ReferenceNumber]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[ReferenceNumber]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[ShortCode]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[ShortCode]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="10"
                           cachedName="ShortCode"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[ShortCode]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[ShortCode]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[ShortCode]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[DimFinancialTxDateID]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[DimFinancialTxDateID]"
                           cachedDataType="i4"
                           cachedName="DimFinancialTxDateID"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTxDateID]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTxDateID]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[DimFinancialTxDateID]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[DimFinancialTxTimeID]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[DimFinancialTxTimeID]"
                           cachedDataType="i4"
                           cachedName="DimFinancialTxTimeID"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTxTimeID]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTxTimeID]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[DimFinancialTxTimeID]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[Reversed]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[Reversed]"
                           cachedDataType="i4"
                           cachedName="Reversed"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[Reversed]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[Reversed]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[Reversed]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[FinancialTx_Amount]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[FinancialTx_Amount]"
                           cachedDataType="numeric"
                           cachedName="FinancialTx_Amount"
                           cachedPrecision="18"
                           cachedScale="2"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FinancialTx_Amount]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FinancialTx_Amount]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[FinancialTx_Amount]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[FinancialTx_Fee]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[FinancialTx_Fee]"
                           cachedDataType="numeric"
                           cachedName="FinancialTx_Fee"
                           cachedPrecision="18"
                           cachedScale="2"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FinancialTx_Fee]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FinancialTx_Fee]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[FinancialTx_Fee]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[Cancelled]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[Cancelled]"
                           cachedDataType="i4"
                           cachedName="Cancelled"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[Cancelled]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[Cancelled]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[Cancelled]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[IsIntegrationTx]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[IsIntegrationTx]"
                           cachedDataType="i4"
                           cachedName="IsIntegrationTx"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[IsIntegrationTx]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[IsIntegrationTx]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[IsIntegrationTx]" />
                         <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[BusinessType_SourceKey]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="BusinessType_SourceKey"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimBusinessTypeSourceKey]"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[BusinessType_SourceKey]" />
-                        <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[Currency_SourceKey]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="Currency_SourceKey"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimCurrencySourceKey]"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[Currency_SourceKey]" />
-                        <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[FinancialTxType_SourceKey]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="FinancialTxType_SourceKey"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTransactionTypeSourceKey]"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[FinancialTxType_SourceKey]" />
-                        <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[User_SourceKey]"
-                          cachedDataType="i4"
-                          cachedName="User_SourceKey"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimUserSourceKey]"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[User_SourceKey]" />
-                        <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[FactIntegrationTx_SourceKey]"
-                          cachedDataType="i4"
-                          cachedName="FactIntegrationTx_SourceKey"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FactIntegrationTransactionSourceKey]"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[FactIntegrationTx_SourceKey]" />
-                        <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[OriginalFinancialTx_SourceKey]"
-                          cachedDataType="i4"
-                          cachedName="OriginalFinancialTx_SourceKey"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FactOriginalFinancialTxID]"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[OriginalFinancialTx_SourceKey]" />
-                        <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[ProcessEvent_SourceKey]"
-                          cachedDataType="i4"
-                          cachedName="ProcessEvent_SourceKey"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FactProcessEventSourceKey]"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[ProcessEvent_SourceKey]" />
-                        <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[RelatedFinancialTx_SourceKey]"
-                          cachedDataType="i4"
-                          cachedName="RelatedFinancialTx_SourceKey"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FacttRelaedFinancialTxID]"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[RelatedFinancialTx_SourceKey]" />
-                        <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_VERSION]"
-                          cachedDataType="i8"
-                          cachedName="SYS_CHANGE_VERSION"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
-                        <inputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_OPERATION]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_OPERATION]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="1"
                           cachedName="SYS_CHANGE_OPERATION"
-                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
                           lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
+                        <inputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_VERSION]"
+                          cachedDataType="i8"
+                          cachedName="SYS_CHANGE_VERSION"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
+                        <inputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[BusinessType_SourceKey]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="BusinessType_SourceKey"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimBusinessTypeSourceKey]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[BusinessType_SourceKey]" />
+                        <inputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[Currency_SourceKey]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Currency_SourceKey"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimCurrencySourceKey]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[Currency_SourceKey]" />
+                        <inputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[FinancialTxType_SourceKey]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FinancialTxType_SourceKey"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTransactionTypeSourceKey]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[FinancialTxType_SourceKey]" />
+                        <inputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[User_SourceKey]"
+                          cachedDataType="i4"
+                          cachedName="User_SourceKey"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimUserSourceKey]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[User_SourceKey]" />
+                        <inputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[FactIntegrationTx_SourceKey]"
+                          cachedDataType="i4"
+                          cachedName="FactIntegrationTx_SourceKey"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FactIntegrationTransactionSourceKey]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[FactIntegrationTx_SourceKey]" />
+                        <inputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[OriginalFinancialTx_SourceKey]"
+                          cachedDataType="i4"
+                          cachedName="OriginalFinancialTx_SourceKey"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FactOriginalFinancialTxID]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[OriginalFinancialTx_SourceKey]" />
+                        <inputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[ProcessEvent_SourceKey]"
+                          cachedDataType="i4"
+                          cachedName="ProcessEvent_SourceKey"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FactProcessEventSourceKey]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[ProcessEvent_SourceKey]" />
+                        <inputColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[RelatedFinancialTx_SourceKey]"
+                          cachedDataType="i4"
+                          cachedName="RelatedFinancialTx_SourceKey"
+                          externalMetadataColumnId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FactRelatedFinancialTxID]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output].Columns[RelatedFinancialTx_SourceKey]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[Cancelled]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[Cancelled]"
                           dataType="i4"
                           name="Cancelled" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
                           dataType="numeric"
                           name="ExchangeRate"
                           precision="16"
                           scale="4" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[ExternalReferenceNumber]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[ExternalReferenceNumber]"
                           codePage="1252"
                           dataType="str"
                           length="100"
                           name="ExternalReferenceNumber" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FinancialTx_Amount]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FinancialTx_Amount]"
                           dataType="numeric"
                           name="FinancialTx_Amount"
                           precision="18"
                           scale="2" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FinancialTx_Fee]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FinancialTx_Fee]"
                           dataType="numeric"
                           name="FinancialTx_Fee"
                           precision="18"
                           scale="2" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[ForeignCurrencyAmount]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[ForeignCurrencyAmount]"
                           dataType="numeric"
                           name="ForeignCurrencyAmount"
                           precision="18"
                           scale="2" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[IsIntegrationTx]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[IsIntegrationTx]"
                           dataType="bool"
                           name="IsIntegrationTx" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[ReferenceNumber]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[ReferenceNumber]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="ReferenceNumber" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[Reversed]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[Reversed]"
                           dataType="bool"
                           name="Reversed" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[ShortCode]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[ShortCode]"
                           codePage="1252"
                           dataType="str"
                           length="10"
                           name="ShortCode" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[SourceKey]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[SourceKey]"
                           dataType="i4"
                           name="SourceKey" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[TextDescription]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[TextDescription]"
                           codePage="1252"
                           dataType="str"
                           length="100"
                           name="TextDescription" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimEffectiveDateID]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimEffectiveDateID]"
                           dataType="i4"
                           name="DimEffectiveDateID" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimEffectiveTimeID]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimEffectiveTimeID]"
                           dataType="i4"
                           name="DimEffectiveTimeID" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTxDateID]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTxDateID]"
                           dataType="i4"
                           name="DimFinancialTxDateID" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTxTimeID]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTxTimeID]"
                           dataType="i4"
                           name="DimFinancialTxTimeID" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimBusinessTypeSourceKey]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimBusinessTypeSourceKey]"
                           codePage="1252"
                           dataType="str"
                           length="255"
                           name="DimBusinessTypeSourceKey" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimCurrencySourceKey]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimCurrencySourceKey]"
                           codePage="1252"
                           dataType="str"
                           length="255"
                           name="DimCurrencySourceKey" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTransactionTypeSourceKey]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimFinancialTransactionTypeSourceKey]"
                           codePage="1252"
                           dataType="str"
                           length="255"
                           name="DimFinancialTransactionTypeSourceKey" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[DimUserSourceKey]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[DimUserSourceKey]"
                           dataType="i4"
                           name="DimUserSourceKey" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FactIntegrationTransactionSourceKey]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FactIntegrationTransactionSourceKey]"
                           dataType="i4"
                           name="FactIntegrationTransactionSourceKey" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FactOriginalFinancialTxID]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FactOriginalFinancialTxID]"
                           dataType="i4"
                           name="FactOriginalFinancialTxID" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FactProcessEventSourceKey]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FactProcessEventSourceKey]"
                           dataType="i4"
                           name="FactProcessEventSourceKey" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[FacttRelaedFinancialTxID]"
-                          dataType="i4"
-                          name="FacttRelaedFinancialTxID" />
-                        <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
                           dataType="i8"
                           name="SYS_CHANGE_VERSION" />
                         <externalMetadataColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
                           codePage="1252"
                           dataType="str"
                           length="1"
                           name="SYS_CHANGE_OPERATION" />
+                        <externalMetadataColumn
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FactRelatedFinancialTxID]"
+                          dataType="i4"
+                          name="FactRelatedFinancialTxID" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -1616,7 +1608,7 @@ CROSS APPLY
                   startId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction.Paths[Output]"
-                  endId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction.Inputs[OLE DB Destination Input]"
+                  endId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
                   name="Output"
                   startId="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData.Outputs[Output]" />
               </paths>
@@ -1656,11 +1648,11 @@ CROSS APPLY
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{1C239346-B18E-4EC9-8F9C-04A2399C7EE1}"
+      DTS:DTSID="{69CEF22C-74F1-4D86-A128-BBB0AE470E1D}"
       DTS:From="Package\Load 10,000 Groups Per Iteration"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
-      DTS:To="Package\EST_Drop Temp Tables" />
+      DTS:To="Package\EST_DropGlobalTempTables" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
@@ -1804,40 +1796,6 @@ CROSS APPLY
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="155.5,559.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="180.666666666667,60"
-              Start="0,0"
-              End="180.666666666667,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.6993736951983" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.6993736951983"
-                    Point2="0,35.6993736951983"
-                    Point3="4,35.6993736951983" />
-                  <mssgle:LineSegment
-                    End="176.666666666667,35.6993736951983" />
-                  <mssgle:CubicBezierSegment
-                    Point1="176.666666666667,35.6993736951983"
-                    Point2="180.666666666667,35.6993736951983"
-                    Point3="180.666666666667,39.6993736951983" />
-                  <mssgle:LineSegment
-                    End="180.666666666667,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="394.666666666667,353.5">
           <EdgeLayout.Curve>
@@ -1883,6 +1841,44 @@ CROSS APPLY
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="212,42"
+          Id="Package\EST_DropGlobalTempTables"
+          TopLeft="5.50000000000009,721.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="155.5,559.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-44,162"
+              Start="0,0"
+              End="-44,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,77"
+                    Point2="0,81"
+                    Point3="-4,81" />
+                  <mssgle:LineSegment
+                    End="-40,81" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-40,81"
+                    Point2="-44,81"
+                    Point3="-44,85" />
+                  <mssgle:LineSegment
+                    End="-44,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1892,10 +1888,6 @@ CROSS APPLY
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="316,42"
-          Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction"
-          TopLeft="46,338" />
-        <NodeLayout
           Size="153,42"
           Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData"
           TopLeft="98,238" />
@@ -1903,40 +1895,6 @@ CROSS APPLY
           Size="275,42"
           Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction"
           TopLeft="98.5,35.5" />
-        <EdgeLayout
-          Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction.Paths[Output]"
-          TopLeft="174.5,280">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="29.5,58"
-              Start="0,0"
-              End="29.5,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25"
-                    Point2="0,29"
-                    Point3="4,29" />
-                  <mssgle:LineSegment
-                    End="25.5,29" />
-                  <mssgle:CubicBezierSegment
-                    Point1="25.5,29"
-                    Point2="29.5,29"
-                    Point3="29.5,33" />
-                  <mssgle:LineSegment
-                    End="29.5,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
           TopLeft="236,77.5">
@@ -1971,11 +1929,49 @@ CROSS APPLY
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging"
+          TopLeft="87,326" />
+        <EdgeLayout
+          Id="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction.Paths[Output]"
+          TopLeft="174.5,280">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12,46"
+              Start="0,0"
+              End="12,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="4,23" />
+                  <mssgle:LineSegment
+                    End="8,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8,23"
+                    Point2="12,23"
+                    Point3="12,27" />
+                  <mssgle:LineSegment
+                    End="12,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Staging_Finance_FactFinancialTransaction">
+    design-time-name="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1988,7 +1984,7 @@ CROSS APPLY
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction">
+    design-time-name="Package\Load 10,000 Groups Per Iteration\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

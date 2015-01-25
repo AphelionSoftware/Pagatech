@@ -1,4 +1,4 @@
-CREATE TABLE [Staging].[Finance_FactFinancialTransaction] (
+﻿CREATE TABLE [Staging].[Finance_FactFinancialTransaction] (
     [Cancelled]                            INT             NULL,
     [ExchangeRate]                         DECIMAL (16, 4) NULL,
     [ExternalReferenceNumber]              VARCHAR (100)   NULL,
@@ -22,10 +22,12 @@ CREATE TABLE [Staging].[Finance_FactFinancialTransaction] (
     [FactIntegrationTransactionSourceKey]  INT             NULL,
     [FactOriginalFinancialTxID]            INT             NULL,
     [FactProcessEventSourceKey]            INT             NULL,
-    [FacttRelaedFinancialTxID]             INT             NULL,
+    [FactRelatedFinancialTxID]             INT             NULL,
     [SYS_CHANGE_VERSION]                   BIGINT          DEFAULT ((0)) NOT NULL,
     [SYS_CHANGE_OPERATION]                 CHAR (1)        DEFAULT ('I') NOT NULL
 );
+
+
 
 
 
