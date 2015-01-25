@@ -1,7 +1,6 @@
 ﻿CREATE TABLE [Shared].[FactProcessEvent] (
     [FactProcessEventID]              INT                    IDENTITY (1, 1) NOT NULL,
     [SourceKey]                       INT                    NOT NULL,
-    [Name]                            VARCHAR (255)          NULL,
     [DimProcessTypeID]                INT                    NULL,
     [DimUserID]                       INT                    NULL,
     [DimForUserID]                    INT                    NULL,
@@ -69,16 +68,22 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.Process', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactProcessEvent';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'9', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactProcessEvent';
+EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'12', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactProcessEvent';
+
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'3000', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactProcessEvent';
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'3200', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactProcessEvent';
+
+
 
 
 GO

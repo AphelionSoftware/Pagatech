@@ -8,7 +8,7 @@
     [FirstName]                   VARCHAR (255)   NULL,
     [MiddleName]                  VARCHAR (255)   NULL,
     [LastName]                    VARCHAR (255)   NULL,
-    [Sex]                         VARCHAR (50)    NULL,
+    [Gender]                      VARCHAR (50)    NULL,
     [PhoneNumber]                 VARBINARY (256) NULL,
     [Email]                       VARCHAR (100)   NULL,
     [IsEnabled]                   BIT             NULL,
@@ -25,6 +25,10 @@
     CONSTRAINT [fk_DimUser_DimOrganizationUnitLevel4ID] FOREIGN KEY ([DimOrganizationUnitLevel4ID]) REFERENCES [Shared].[DimOrganizationUnitLevel4] ([DimOrganizationUnitLevel4ID]),
     CONSTRAINT [fk_DimUser_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
+
+
 
 
 
@@ -85,14 +89,17 @@ FROM
 	SELECT 
 		SourceKey = [UserId],
 		DimCreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8), [CreatedDate], 112)),
-		[FirstName],
-		[LastName],
-		[MiddleName],
+		[FirstName]=CONVERT(VARCHAR(300),[FirstName]),
+		[LastName]=CONVERT(VARCHAR(300),[LastName]),
+		[MiddleName] =CONVERT(VARCHAR(300),[MiddleName]),
 		UserDescription = [Namespace], 
 		Gender_SourceKey = [GenderId],
 		DimDateOfBirthID =CONVERT(INT,CONVERT(VARCHAR(8), [DateOfBirth], 112))
 	FROM [dbo].[Users]
-) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+) AS base_query
+', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+
+
 
 
 
