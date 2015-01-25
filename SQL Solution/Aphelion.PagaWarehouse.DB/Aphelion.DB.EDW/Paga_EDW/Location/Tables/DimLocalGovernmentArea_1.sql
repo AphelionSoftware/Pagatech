@@ -17,6 +17,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea', @level2type = N'COLUMN', @level2name = N'DeltaHash';
 
@@ -54,7 +56,9 @@ EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2300', @level0ty
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'DimLocalGovernmentAreaId', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea';
+EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'LocalGovernmentAreaId', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimLocalGovernmentArea';
+
+
 
 
 GO
