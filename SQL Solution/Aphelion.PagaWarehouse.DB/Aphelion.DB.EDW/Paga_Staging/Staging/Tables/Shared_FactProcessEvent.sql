@@ -1,4 +1,4 @@
-CREATE TABLE [Staging].[Shared_FactProcessEvent] (
+﻿CREATE TABLE [Staging].[Shared_FactProcessEvent] (
     [AgentCommissionAmount]                  DECIMAL (18, 2) NULL,
     [ATMReferenceNumber]                     VARCHAR (200)   NULL,
     [CardProcessorName]                      VARCHAR (200)   NULL,
@@ -21,12 +21,14 @@ CREATE TABLE [Staging].[Shared_FactProcessEvent] (
     [WithdrawalCode]                         VARCHAR (200)   NULL,
     [DimCompletedDateID]                     INT             NULL,
     [DimCompletedTimeID]                     INT             NULL,
+    [DimStartedDateID]                       INT             NULL,
+    [DimStartedTimeID]                       INT             NULL,
     [DimAgentCommissionTypeSourceKey]        VARCHAR (255)   NULL,
     [DimApprovedByUserSourceKey]             INT             NULL,
     [DimCancellationApprovedByUserSourceKey] INT             NULL,
     [DimForUserSourceKey]                    INT             NULL,
     [DimInitiatingUserSourceKey]             INT             NULL,
-    [DimOriginalProcessChannelSourceKey]     VARCHAR (255)   NULL,
+    [DimRequestedProcessChannelSourceKey]    VARCHAR (255)   NULL,
     [DimProcessChannelSourceKey]             VARCHAR (255)   NOT NULL,
     [DimProcessStatusSourceKey]              VARCHAR (255)   NULL,
     [DimProcessTypeSourceKey]                VARCHAR (255)   NULL,
@@ -38,6 +40,8 @@ CREATE TABLE [Staging].[Shared_FactProcessEvent] (
     [SYS_CHANGE_VERSION]                     BIGINT          DEFAULT ((0)) NOT NULL,
     [SYS_CHANGE_OPERATION]                   CHAR (1)        DEFAULT ('I') NOT NULL
 );
+
+
 
 
 

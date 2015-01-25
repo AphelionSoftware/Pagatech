@@ -5,13 +5,14 @@
     [IsEnabled]            BIT           NULL,
     [LastName]             VARCHAR (255) NULL,
     [MiddleName]           VARCHAR (255) NULL,
-    [Name]                 VARCHAR (255) NOT NULL,
     [SourceKey]            INT           NOT NULL,
-    [CreatedDateID]        INT           NOT NULL,
-    [DateOfBirthID]        INT           NULL,
+    [DimCreatedDateID]     INT           NOT NULL,
+    [DimDateOfBirthID]     INT           NULL,
     [SYS_CHANGE_VERSION]   BIGINT        DEFAULT ((0)) NOT NULL,
     [SYS_CHANGE_OPERATION] CHAR (1)      DEFAULT ('I') NOT NULL
 );
+
+
 
 
 
