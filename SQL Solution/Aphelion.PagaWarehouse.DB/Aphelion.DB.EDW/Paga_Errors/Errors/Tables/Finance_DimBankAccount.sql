@@ -18,9 +18,13 @@
     [MobilePhoneNumber]            VARCHAR (30)    NULL,
     [Name]                         VARCHAR (255)   NOT NULL,
     [SourceKey]                    INT             NOT NULL,
+    [SYS_CHANGE_OPERATION]         CHAR (1)        NOT NULL,
+    [SYS_CHANGE_VERSION]           BIGINT          NOT NULL,
     [TextDesciption]               VARCHAR (1000)  NULL,
     [TransactionLimit]             DECIMAL (18, 2) NULL
 );
+
+
 
 
 

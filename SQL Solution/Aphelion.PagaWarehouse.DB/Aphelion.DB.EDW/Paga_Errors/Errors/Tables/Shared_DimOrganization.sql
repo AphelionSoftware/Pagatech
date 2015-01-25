@@ -14,11 +14,15 @@
     [RcName]                                     VARCHAR (50)   NULL,
     [ReferenceNumber]                            VARCHAR (30)   NULL,
     [SourceKey]                                  INT            NOT NULL,
+    [SYS_CHANGE_OPERATION]                       CHAR (1)       NOT NULL,
+    [SYS_CHANGE_VERSION]                         BIGINT         NOT NULL,
     [TaxIDNumber]                                VARCHAR (30)   NULL,
     [TextDesciption]                             VARCHAR (1000) NULL,
     [VATCertificationNumber]                     VARCHAR (30)   NULL,
     [WebsiteURL]                                 VARCHAR (100)  NULL
 );
+
+
 
 
 

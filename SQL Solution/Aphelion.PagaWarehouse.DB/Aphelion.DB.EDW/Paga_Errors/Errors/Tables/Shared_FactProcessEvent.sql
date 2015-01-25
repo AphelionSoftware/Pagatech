@@ -31,7 +31,6 @@
     [LinkedPhoneNumber]                      VARCHAR (200)   NULL,
     [MerchantConfirmationCode]               VARCHAR (200)   NULL,
     [MerchantCustomerAccountNumber]          VARCHAR (200)   NULL,
-    [Name]                                   VARCHAR (255)   NULL,
     [PaymentSource]                          VARCHAR (200)   NULL,
     [ProcessAmount]                          DECIMAL (18, 2) NULL,
     [ProcessCode]                            VARCHAR (36)    NOT NULL,
@@ -39,9 +38,13 @@
     [ReferenceNumber]                        VARCHAR (200)   NULL,
     [SenderPhoneNumber]                      VARCHAR (200)   NULL,
     [SourceKey]                              INT             NOT NULL,
+    [SYS_CHANGE_OPERATION]                   CHAR (1)        NOT NULL,
+    [SYS_CHANGE_VERSION]                     BIGINT          NOT NULL,
     [VerificationStatus]                     VARCHAR (200)   NULL,
     [WithdrawalCode]                         VARCHAR (200)   NULL
 );
+
+
 
 
 

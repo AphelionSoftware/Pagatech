@@ -9,8 +9,12 @@
     [Name]                     VARCHAR (255) NOT NULL,
     [SourceKey]                INT           NOT NULL,
     [SupportsCredit]           BIT           NULL,
-    [SupportsDebit]            BIT           NULL
+    [SupportsDebit]            BIT           NULL,
+    [SYS_CHANGE_OPERATION]     CHAR (1)      NOT NULL,
+    [SYS_CHANGE_VERSION]       BIGINT        NOT NULL
 );
+
+
 
 
 

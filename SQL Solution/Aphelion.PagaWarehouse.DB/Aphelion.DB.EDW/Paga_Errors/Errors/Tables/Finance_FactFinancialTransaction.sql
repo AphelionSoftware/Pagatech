@@ -27,8 +27,12 @@
     [Reversed]                             BIT             NOT NULL,
     [ShortCode]                            VARCHAR (10)    NULL,
     [SourceKey]                            INT             NOT NULL,
+    [SYS_CHANGE_OPERATION]                 CHAR (1)        NOT NULL,
+    [SYS_CHANGE_VERSION]                   BIGINT          NOT NULL,
     [TextDescription]                      VARCHAR (100)   NULL
 );
+
+
 
 
 
