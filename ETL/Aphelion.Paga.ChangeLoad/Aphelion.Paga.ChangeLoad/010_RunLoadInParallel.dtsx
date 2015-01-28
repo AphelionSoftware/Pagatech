@@ -5,6 +5,7 @@
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="MGS-NETBOOK"
   DTS:CreatorName="MGS-Netbook\MarkGStacey"
+  DTS:DelayValidation="True"
   DTS:DTSID="{12D53A6A-EEC1-4559-BACC-D8411B98E875}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.5058.0"
@@ -12,8 +13,8 @@
   DTS:ObjectName="010_RunChangeLogInParallel"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="102"
-  DTS:VersionGUID="{B840F33D-0328-4463-BDBB-872ABD0FCB8C}">
+  DTS:VersionBuild="103"
+  DTS:VersionGUID="{0853A67A-2EDA-4EE0-A392-7DAE6E8CD191}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -70,6 +71,7 @@ FROM
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream00"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Sequence Container"
       DTS:DTSID="{A108E56A-5FE4-49AB-8D8F-CB95C0E44824}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -134,6 +136,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream00\EST_Stream0_Workload"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{0FB592F4-FFA1-4378-B4A9-7CDF2C1A95DC}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
@@ -163,6 +166,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream00\FLC_Stream00"
           DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:DelayValidation="True"
           DTS:Description="Foreach Loop Container"
           DTS:DTSID="{655FCBDC-6A4F-40A1-951D-2150EA542C83}"
           DTS:ExecutableType="STOCK:FOREACHLOOP"
@@ -230,6 +234,7 @@ FROM
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream01"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Sequence Container"
       DTS:DTSID="{7B32262B-6DB1-4CE5-9EDC-D5568232B678}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -304,6 +309,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream01\EST_Stream1_Workload"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{5682F1C7-B678-42A7-BB5B-56AFEE40697E}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
@@ -333,6 +339,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream01\FLC_Stream01"
           DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:DelayValidation="True"
           DTS:Description="Foreach Loop Container"
           DTS:DTSID="{3639C4BB-9011-4DF5-A2CA-9BBB600964E7}"
           DTS:ExecutableType="STOCK:FOREACHLOOP"
@@ -400,6 +407,7 @@ FROM
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream02"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Sequence Container"
       DTS:DTSID="{C05CF47F-3FF6-407B-99B7-637C66DC83B1}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -474,6 +482,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream02\EST_Stream02_Workload"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{131D879F-FA0C-4DEB-921C-C8135DBD4A1C}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
@@ -503,6 +512,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream02\FLC_Stream02"
           DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:DelayValidation="True"
           DTS:Description="Foreach Loop Container"
           DTS:DTSID="{9D09F4A0-50DD-4D43-89CE-036B2FE2FE7C}"
           DTS:ExecutableType="STOCK:FOREACHLOOP"
@@ -570,6 +580,7 @@ FROM
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream03"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Sequence Container"
       DTS:DTSID="{FFA3DD3B-A5BF-4543-909C-6A33D99309BA}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -644,6 +655,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream03\EST_Stream03_Workload"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{A3A5AB85-629D-45F8-806D-05FC809AE33E}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
@@ -673,6 +685,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream03\FLC_Stream03"
           DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:DelayValidation="True"
           DTS:Description="Foreach Loop Container"
           DTS:DTSID="{C74A169F-3951-45E8-9DCF-F7FDE9EE49B2}"
           DTS:ExecutableType="STOCK:FOREACHLOOP"
@@ -740,6 +753,7 @@ FROM
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream04"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Sequence Container"
       DTS:DTSID="{439F683E-337D-404E-BE06-E8A799CB2E63}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -814,6 +828,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream04\EST_Stream4_Workload"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{E5111AFF-CAAB-4471-98CD-E514F26F6A15}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
@@ -843,6 +858,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream04\FLC_Stream04"
           DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:DelayValidation="True"
           DTS:Description="Foreach Loop Container"
           DTS:DTSID="{A583A4EC-8485-413A-BE9A-35BB5C6D833B}"
           DTS:ExecutableType="STOCK:FOREACHLOOP"
@@ -910,6 +926,7 @@ FROM
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream05"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Sequence Container"
       DTS:DTSID="{F5D68BB0-3FAD-4B00-A66C-1637B003609E}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -984,6 +1001,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream05\EST_Stream05_Workload"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{1E41E938-DF22-430B-B1EA-9044533668C2}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
@@ -1013,6 +1031,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream05\FLC_Stream05"
           DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:DelayValidation="True"
           DTS:Description="Foreach Loop Container"
           DTS:DTSID="{D029D4D8-5734-45F1-A078-BCE905353077}"
           DTS:ExecutableType="STOCK:FOREACHLOOP"
@@ -1080,6 +1099,7 @@ FROM
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream06"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Sequence Container"
       DTS:DTSID="{997977FF-DBEB-4E66-98F5-FB0B180425C6}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -1154,6 +1174,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream06\EST_Stream06_Workload"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{F5CE4766-90A1-48DE-AC64-6ADDF8821185}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
@@ -1183,6 +1204,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream06\FLC_Stream06"
           DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:DelayValidation="True"
           DTS:Description="Foreach Loop Container"
           DTS:DTSID="{4F943DA0-2C8E-4075-BC02-E9AEC2F8AEA9}"
           DTS:ExecutableType="STOCK:FOREACHLOOP"
@@ -1250,6 +1272,7 @@ FROM
     <DTS:Executable
       DTS:refId="Package\SEQ_Stream07"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Sequence Container"
       DTS:DTSID="{EB987E09-488A-444D-A815-44D9CBEBC36C}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -1324,6 +1347,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream07\EST_Stream07_Workload"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{2A3CE74D-1068-41EB-937C-9B9C0DD92C37}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
@@ -1353,6 +1377,7 @@ FROM
         <DTS:Executable
           DTS:refId="Package\SEQ_Stream07\FLC_Stream07"
           DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:DelayValidation="True"
           DTS:Description="Foreach Loop Container"
           DTS:DTSID="{E9613F9C-6502-4716-84D9-CD12EE9068F8}"
           DTS:ExecutableType="STOCK:FOREACHLOOP"
