@@ -1,201 +1,525 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/18/2015 09:30:01" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DTSID="{102195DC-13B2-45A1-A301-E957647E4075}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1111_dbo_FinancialAccountType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{5D1C6596-BBCE-4F1A-AD38-2A08B620B864}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/28/2015 3:30:00 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="PAGA01SV015"
+  DTS:CreatorName="christina.leo.apheli"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{E3D6E156-53D7-4D5D-98A1-9E4437F6AE9C}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="1111_dbo_FinancialAccountType"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{D47A8F33-75C2-435F-80B7-1CE1BAA529A7}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{5807BB27-EE54-406A-8BF8-A542A1A574F4}"
+      DTS:ObjectName="strParm1">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7C0D842E-8556-4CFE-BB1C-FF0C8296FCD9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SET NOCOUNT ON;
+		SELECT
+			c.*
+		FROM 
+		(
+			SELECT
+				FinancialAccountTypeId
+			FROM FinancialAccountType AS bq
+		) AS stream
+		CROSS APPLY
+			CHANGETABLE(VERSION [dbo].[FinancialAccountType], ( FinancialAccountTypeId), (stream.FinancialAccountTypeId))  AS c
+		WHERE
+			c.SYS_CHANGE_VERSION IS NULL</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{26028BEB-EF03-4683-B23E-DE105FF22A4C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CurrentVersion">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3F09C6F5-40AA-4E1F-9165-F867354DD59F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue
+        DTS:DataType="8">SET NOCOUNT ON;
+		SELECT
+			c.*
+		FROM 
+		(
+			SELECT
+				FinancialAccountTypeId
+			FROM FinancialAccountType AS bq
+		) AS stream
+		CROSS APPLY
+			CHANGETABLE(VERSION [dbo].[FinancialAccountType], ( FinancialAccountTypeId), (stream.FinancialAccountTypeId))  AS c
+		WHERE
+			c.SYS_CHANGE_VERSION IS NULL </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{64A10DA4-BADF-4368-8458-F1B2FA9B05C0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LastSyncVersion">
+      <DTS:VariableValue
+        DTS:DataType="3">6</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{33EE60CE-819C-4302-B3AC-AC0B7347AEF9}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_FinancialAccountType" DTS:refId="Package\DFT_Load dbo_FinancialAccountType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load dbo_FinancialAccountType"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{E08418A5-D56D-45CF-B4C1-2B87479BE7E4}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load dbo_FinancialAccountType"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
       <DTS:ObjectData>
-        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
           <components>
-            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData" usesDispositions="true" version="7">
-              <connections>
-                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Connections[OleDbConnection]">
-                </connection>
-              </connections>
-              <outputs>
-                <output name="Output" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="wstr" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bytes" length="4100" name="SYS_CHANGE_COLUMNS" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bytes" length="128" name="SYS_CHANGE_CONTEXT" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="70" name="FinancialAccountTypeId" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[FinancialAccountTypeId]">
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
-                  <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="wstr" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="bytes" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]" length="4100" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]" name="SYS_CHANGE_COLUMNS" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="bytes" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]" length="128" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" name="SYS_CHANGE_CONTEXT" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[FinancialAccountTypeId]" length="70" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[FinancialAccountTypeId]" name="FinancialAccountTypeId" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[FinancialAccountTypeId]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                  </outputColumns>
-                </output>
-                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
-                  <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
-                    </outputColumn>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]">
-                    </outputColumn>
-                    <outputColumn dataType="wstr" length="1" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
-                    </outputColumn>
-                    <outputColumn dataType="bytes" length="4100" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]" name="SYS_CHANGE_COLUMNS" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]">
-                    </outputColumn>
-                    <outputColumn dataType="bytes" length="128" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]" name="SYS_CHANGE_CONTEXT" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="70" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[FinancialAccountTypeId]" name="FinancialAccountTypeId" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[FinancialAccountTypeId]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
-                  </outputColumns>
-                </output>
-              </outputs>
+            <component
+              refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
               <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
-                </property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
-                </property>
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-                </property>
-                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
-                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
-                </property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FinancialAccountType]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
-            </component>
-            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog" usesDispositions="true" version="4">
               <connections>
-                <connection connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external" connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Connections[OleDbConnection]">
-                </connection>
+                <connection
+                  refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <inputs>
-                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="wstr" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bytes" length="4100" name="SYS_CHANGE_COLUMNS" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bytes" length="128" name="SYS_CHANGE_CONTEXT" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="70" name="FinancialAccountTypeId" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[FinancialAccountTypeId]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_CreatedBy]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_CreatedOn]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
+                <input
+                  refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_CREATION_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="wstr" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="bytes" cachedLength="4100" cachedName="SYS_CHANGE_COLUMNS" externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_COLUMNS]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="bytes" cachedLength="128" cachedName="SYS_CHANGE_CONTEXT" externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CONTEXT]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="70" cachedName="FinancialAccountTypeId" externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[FinancialAccountTypeId]" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[FinancialAccountTypeId]" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[FinancialAccountTypeId]">
-                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_CONTEXT]"
+                      cachedDataType="bytes"
+                      cachedLength="128"
+                      cachedName="SYS_CHANGE_CONTEXT"
+                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" />
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FinancialAccountTypeId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="FinancialAccountTypeId"
+                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FinancialAccountTypeId]"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[FinancialAccountTypeId]" />
                   </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_CREATION_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      dataType="wstr"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_COLUMNS]"
+                      dataType="bytes"
+                      length="4100"
+                      name="SYS_CHANGE_COLUMNS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      dataType="bytes"
+                      length="128"
+                      name="SYS_CHANGE_CONTEXT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sys_CreatedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="sys_CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sys_CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="sys_CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[row_id]"
+                      dataType="i4"
+                      name="row_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FinancialAccountTypeId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      name="FinancialAccountTypeId" />
+                  </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Outputs[Error]" synchronousInputId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
+                <output
+                  refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input]">
                   <outputColumns>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
+                  <externalMetadataColumns />
                 </output>
               </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLEDB_GetData"
+              usesDispositions="true"
+              version="7">
               <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">dbo.FinancialAccountType</property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
-                </property>
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-                </property>
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">0</property>
-                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
-                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
-                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">
-                </property>
-                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::FullQueryText</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
               </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Connections[OleDbConnection]"
+                  connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      length="128"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      name="SYS_CHANGE_CONTEXT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[FinancialAccountTypeId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[FinancialAccountTypeId]"
+                      length="70"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].Columns[FinancialAccountTypeId]"
+                      name="FinancialAccountTypeId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      dataType="bytes"
+                      length="128"
+                      name="SYS_CHANGE_CONTEXT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output].ExternalColumns[FinancialAccountTypeId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      name="FinancialAccountTypeId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      dataType="bytes"
+                      length="128"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      name="SYS_CHANGE_CONTEXT" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[FinancialAccountTypeId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[FinancialAccountTypeId]"
+                      name="FinancialAccountTypeId" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
             </component>
           </components>
           <paths>
-            <path endId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_FinancialAccountType.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output]">
-            </path>
+            <path
+              refId="Package\DFT_Load dbo_FinancialAccountType.Paths[Output]"
+              endId="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Output"
+              startId="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData.Outputs[Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
-  <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{33A6E58C-4244-4585-9815-61794C5EE5E2}" DTS:ObjectName="strParm1" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
-      </DTS:Property>
-    </DTS:PackageParameter>
-  </DTS:PackageParameters>
-  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
-  <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6F3EB53C-DC7F-4405-9196-B4BA101650D6}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
-      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3317CFD2-E726-4969-9F4B-94849AAC93BD}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
-      <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{182D7428-2E92-43DA-88AD-7D6793874327}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
-		SELECT 
-			SYS_CHANGE_VERSION,
-			SYS_CHANGE_CREATION_VERSION,
-			SYS_CHANGE_OPERATION,
-			SYS_CHANGE_COLUMNS,
-			SYS_CHANGE_CONTEXT,
-			FinancialAccountTypeId = CAST(FinancialAccountTypeId AS varchar(70))
-		FROM CHANGETABLE(CHANGES [dbo].[FinancialAccountType],0)  AS change_log</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6A281756-C0DE-4E6C-8418-E3811FBC0E16}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
-		SELECT 
-			SYS_CHANGE_VERSION,
-			SYS_CHANGE_CREATION_VERSION,
-			SYS_CHANGE_OPERATION,
-			SYS_CHANGE_COLUMNS,
-			SYS_CHANGE_CONTEXT,
-			FinancialAccountTypeId = CAST(FinancialAccountTypeId AS varchar(70))
-		FROM CHANGETABLE(CHANGES [dbo].[FinancialAccountType],0)  AS change_log </DTS:VariableValue>
-    </DTS:Variable>
-  </DTS:Variables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="257,42"
+          Id="Package\DFT_Load dbo_FinancialAccountType"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load dbo_FinancialAccountType">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DFT_Load dbo_FinancialAccountType\OLEDB_GetData"
+          TopLeft="36.5,5.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination"
+          TopLeft="36.5,107.5" />
+        <EdgeLayout
+          Id="Package\DFT_Load dbo_FinancialAccountType.Paths[Output]"
+          TopLeft="115,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8,60"
+              Start="0,0"
+              End="8,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="4,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4,30"
+                    Point2="8,30"
+                    Point3="8,34" />
+                  <mssgle:LineSegment
+                    End="8,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load dbo_FinancialAccountType\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

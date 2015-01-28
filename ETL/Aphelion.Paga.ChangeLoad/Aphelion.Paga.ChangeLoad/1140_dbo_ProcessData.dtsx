@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="1/28/2015 2:37:59 PM"
+  DTS:CreationDate="1/28/2015 2:38:00 PM"
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="PAGA01SV015"
   DTS:CreatorName="christina.leo.apheli"
-  DTS:DTSID="{CB419391-3D75-4F23-BA65-716E3B6E495F}"
+  DTS:DTSID="{C75A4A25-81E0-4431-A37D-7B820B7003F1}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="1112_dbo_FinancialTransaction"
+  DTS:ObjectName="1140_dbo_ProcessData"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{F033E64A-8B34-404F-A9BB-369105A6D52A}"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{3623E05B-2AA6-4A94-A90B-D0D95249FC09}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -20,7 +20,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{AA797305-1DFF-4A1A-B7F2-F8F5AA9B3FE8}"
+      DTS:DTSID="{25B161C7-EF3A-4DFA-8BEE-3AED1C527625}"
       DTS:ObjectName="strParm1">
       <DTS:Property
         DTS:DataType="8"
@@ -31,7 +31,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{03B87E17-1C02-4C44-BEBC-C6EFBA38C00B}"
+      DTS:DTSID="{7BC4B1A9-E08E-4AEC-938D-760783A59905}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="BaseQuery">
@@ -42,17 +42,17 @@
 		FROM 
 		(
 			SELECT
-				FinancialTransactionId
-			FROM FinancialTransaction AS bq
+				ProcessDataId
+			FROM ProcessData AS bq
 		) AS stream
 		CROSS APPLY
-			CHANGETABLE(VERSION [dbo].[FinancialTransaction], ( FinancialTransactionId), (stream.FinancialTransactionId))  AS c
+			CHANGETABLE(VERSION [dbo].[ProcessData], ( ProcessDataId), (stream.ProcessDataId))  AS c
 		WHERE
 			c.SYS_CHANGE_VERSION IS NULL</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{57B582E0-3486-4555-B49A-7684DB7A1245}"
+      DTS:DTSID="{043108C5-4E15-476B-8A9D-CA87285362B2}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="CurrentVersion">
@@ -61,7 +61,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{D27648F8-E60D-47CE-A27E-6DBA365F8A4F}"
+      DTS:DTSID="{23F5454E-47D3-49D4-878A-A70A2EFA2DE8}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1]"
       DTS:IncludeInDebugDump="2345"
@@ -74,17 +74,17 @@
 		FROM 
 		(
 			SELECT
-				FinancialTransactionId
-			FROM FinancialTransaction AS bq
+				ProcessDataId
+			FROM ProcessData AS bq
 		) AS stream
 		CROSS APPLY
-			CHANGETABLE(VERSION [dbo].[FinancialTransaction], ( FinancialTransactionId), (stream.FinancialTransactionId))  AS c
+			CHANGETABLE(VERSION [dbo].[ProcessData], ( ProcessDataId), (stream.ProcessDataId))  AS c
 		WHERE
 			c.SYS_CHANGE_VERSION IS NULL </DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{7026E22C-B4AE-4A98-96BF-7454CCF106BC}"
+      DTS:DTSID="{0C3D01BF-A15B-4246-B3FB-7D55CAC2B8A7}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LastSyncVersion">
@@ -93,9 +93,9 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{85C262F5-83E0-4A75-BC40-564C63EF0B00}"
+      DTS:DTSID="{DA807C5C-3E82-41AA-8761-EE7C2FE50BF5}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;c.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;FinancialTransactionId&#xA;&#x9;FROM FinancialTransaction AS bq&#xA;&#x9;CROSS APPLY (SELECT (CAST(FinancialTransactionId AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;WHERE &#xA;&#x9;&#x9;g.grp = 0&#xA;) AS stream&#xA;CROSS APPLY CHANGETABLE &#xA;    (VERSION FinancialTransaction, (FinancialTransactionId), (stream.FinancialTransactionId)) AS c&#xA;WHERE &#xA;&#x9;c.SYS_CHANGE_VERSION IS NULL&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;c.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;ProcessDataId&#xA;&#x9;FROM ProcessData AS bq&#xA;&#x9;CROSS APPLY (SELECT (CAST(ProcessDataId AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;WHERE &#xA;&#x9;&#x9;g.grp = 0&#xA;) AS stream&#xA;CROSS APPLY CHANGETABLE &#xA;    (VERSION ProcessData, (ProcessDataId), (stream.ProcessDataId)) AS c&#xA;WHERE &#xA;&#x9;c.SYS_CHANGE_VERSION IS NULL&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream0">
@@ -105,22 +105,22 @@
 FROM
 (
 	SELECT 
-		FinancialTransactionId
-	FROM FinancialTransaction AS bq
-	CROSS APPLY (SELECT (CAST(FinancialTransactionId AS VARCHAR) % 4) AS grp) as g
+		ProcessDataId
+	FROM ProcessData AS bq
+	CROSS APPLY (SELECT (CAST(ProcessDataId AS VARCHAR) % 4) AS grp) as g
 	WHERE 
 		g.grp = 0
 ) AS stream
 CROSS APPLY CHANGETABLE 
-    (VERSION FinancialTransaction, (FinancialTransactionId), (stream.FinancialTransactionId)) AS c
+    (VERSION ProcessData, (ProcessDataId), (stream.ProcessDataId)) AS c
 WHERE 
 	c.SYS_CHANGE_VERSION IS NULL</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{571C6702-679D-464C-8CBE-B20D472AE4B6}"
+      DTS:DTSID="{493A3385-954C-4DB0-ACCD-2474B2E8A000}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;c.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;FinancialTransactionId&#xA;&#x9;FROM FinancialTransaction AS bq&#xA;&#x9;CROSS APPLY (SELECT (CAST(FinancialTransactionId AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;WHERE &#xA;&#x9;&#x9;g.grp = 1&#xA;) AS stream&#xA;CROSS APPLY CHANGETABLE &#xA;    (VERSION FinancialTransaction, (FinancialTransactionId), (stream.FinancialTransactionId)) AS c&#xA;WHERE &#xA;&#x9;c.SYS_CHANGE_VERSION IS NULL&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;c.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;ProcessDataId&#xA;&#x9;FROM ProcessData AS bq&#xA;&#x9;CROSS APPLY (SELECT (CAST(ProcessDataId AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;WHERE &#xA;&#x9;&#x9;g.grp = 1&#xA;) AS stream&#xA;CROSS APPLY CHANGETABLE &#xA;    (VERSION ProcessData, (ProcessDataId), (stream.ProcessDataId)) AS c&#xA;WHERE &#xA;&#x9;c.SYS_CHANGE_VERSION IS NULL&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream1">
@@ -130,22 +130,22 @@ WHERE
 FROM
 (
 	SELECT 
-		FinancialTransactionId
-	FROM FinancialTransaction AS bq
-	CROSS APPLY (SELECT (CAST(FinancialTransactionId AS VARCHAR) % 4) AS grp) as g
+		ProcessDataId
+	FROM ProcessData AS bq
+	CROSS APPLY (SELECT (CAST(ProcessDataId AS VARCHAR) % 4) AS grp) as g
 	WHERE 
 		g.grp = 1
 ) AS stream
 CROSS APPLY CHANGETABLE 
-    (VERSION FinancialTransaction, (FinancialTransactionId), (stream.FinancialTransactionId)) AS c
+    (VERSION ProcessData, (ProcessDataId), (stream.ProcessDataId)) AS c
 WHERE 
 	c.SYS_CHANGE_VERSION IS NULL</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{1A17E5ED-E68D-413E-9147-32E2FBF04411}"
+      DTS:DTSID="{56F07636-4420-4C79-A7EC-816C6F3C5C5E}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;c.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;FinancialTransactionId&#xA;&#x9;FROM FinancialTransaction AS bq&#xA;&#x9;CROSS APPLY (SELECT (CAST(FinancialTransactionId AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;WHERE &#xA;&#x9;&#x9;g.grp = 2&#xA;) AS stream&#xA;CROSS APPLY CHANGETABLE &#xA;    (VERSION FinancialTransaction, (FinancialTransactionId), (stream.FinancialTransactionId)) AS c&#xA;WHERE &#xA;&#x9;c.SYS_CHANGE_VERSION IS NULL&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;c.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;ProcessDataId&#xA;&#x9;FROM ProcessData AS bq&#xA;&#x9;CROSS APPLY (SELECT (CAST(ProcessDataId AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;WHERE &#xA;&#x9;&#x9;g.grp = 2&#xA;) AS stream&#xA;CROSS APPLY CHANGETABLE &#xA;    (VERSION ProcessData, (ProcessDataId), (stream.ProcessDataId)) AS c&#xA;WHERE &#xA;&#x9;c.SYS_CHANGE_VERSION IS NULL&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream2">
@@ -155,22 +155,22 @@ WHERE
 FROM
 (
 	SELECT 
-		FinancialTransactionId
-	FROM FinancialTransaction AS bq
-	CROSS APPLY (SELECT (CAST(FinancialTransactionId AS VARCHAR) % 4) AS grp) as g
+		ProcessDataId
+	FROM ProcessData AS bq
+	CROSS APPLY (SELECT (CAST(ProcessDataId AS VARCHAR) % 4) AS grp) as g
 	WHERE 
 		g.grp = 2
 ) AS stream
 CROSS APPLY CHANGETABLE 
-    (VERSION FinancialTransaction, (FinancialTransactionId), (stream.FinancialTransactionId)) AS c
+    (VERSION ProcessData, (ProcessDataId), (stream.ProcessDataId)) AS c
 WHERE 
 	c.SYS_CHANGE_VERSION IS NULL</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{F2576510-ADCC-4044-A0D0-CFAB2EBF9480}"
+      DTS:DTSID="{3172D351-16A8-49D9-ADEF-9B4C8E6C5F7E}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;c.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;FinancialTransactionId&#xA;&#x9;FROM FinancialTransaction AS bq&#xA;&#x9;CROSS APPLY (SELECT (CAST(FinancialTransactionId AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;WHERE &#xA;&#x9;&#x9;g.grp = 2&#xA;) AS stream&#xA;CROSS APPLY CHANGETABLE &#xA;    (VERSION FinancialTransaction, (FinancialTransactionId), (stream.FinancialTransactionId)) AS c&#xA;WHERE &#xA;&#x9;c.SYS_CHANGE_VERSION IS NULL&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;c.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;ProcessDataId&#xA;&#x9;FROM ProcessData AS bq&#xA;&#x9;CROSS APPLY (SELECT (CAST(ProcessDataId AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;WHERE &#xA;&#x9;&#x9;g.grp = 3&#xA;) AS stream&#xA;CROSS APPLY CHANGETABLE &#xA;    (VERSION ProcessData, (ProcessDataId), (stream.ProcessDataId)) AS c&#xA;WHERE &#xA;&#x9;c.SYS_CHANGE_VERSION IS NULL&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream3">
@@ -180,26 +180,26 @@ WHERE
 FROM
 (
 	SELECT 
-		FinancialTransactionId
-	FROM FinancialTransaction AS bq
-	CROSS APPLY (SELECT (CAST(FinancialTransactionId AS VARCHAR) % 4) AS grp) as g
+		ProcessDataId
+	FROM ProcessData AS bq
+	CROSS APPLY (SELECT (CAST(ProcessDataId AS VARCHAR) % 4) AS grp) as g
 	WHERE 
-		g.grp = 2
+		g.grp = 3
 ) AS stream
 CROSS APPLY CHANGETABLE 
-    (VERSION FinancialTransaction, (FinancialTransactionId), (stream.FinancialTransactionId)) AS c
+    (VERSION ProcessData, (ProcessDataId), (stream.ProcessDataId)) AS c
 WHERE 
 	c.SYS_CHANGE_VERSION IS NULL</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DFT_Load dbo_FinancialTransaction"
+      DTS:refId="Package\DFT_Load dbo_ProcessData"
       DTS:CreationName="SSIS.Pipeline.3"
-      DTS:DTSID="{DC8E0934-6DFD-4132-9FF9-9AE0CCA6B3DE}"
+      DTS:DTSID="{3D983711-F8F3-44A0-BC31-EAD461B34B5B}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DFT_Load dbo_FinancialTransaction"
+      DTS:ObjectName="DFT_Load dbo_ProcessData"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -209,170 +209,7 @@ WHERE
           version="1">
           <components>
             <component
-              refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination"
-              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Destination"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FinancialTransaction]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_VERSION]"
-                      cachedDataType="i8"
-                      cachedName="SYS_CHANGE_VERSION"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_CONTEXT]"
-                      cachedDataType="bytes"
-                      cachedLength="128"
-                      cachedName="SYS_CHANGE_CONTEXT"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CONTEXT]"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FinancialTransactionId]"
-                      cachedDataType="i4"
-                      cachedName="FinancialTransactionId"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FinancialTransactionId]"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[FinancialTransactionId]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_VERSION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_CREATION_VERSION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      length="1"
-                      name="SYS_CHANGE_OPERATION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      length="4100"
-                      name="SYS_CHANGE_COLUMNS" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CONTEXT]"
-                      dataType="bytes"
-                      length="128"
-                      name="SYS_CHANGE_CONTEXT" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FinancialTransactionId]"
-                      dataType="i4"
-                      name="FinancialTransactionId" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sys_CreatedBy]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="sys_CreatedBy" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sys_CreatedOn]"
-                      dataType="dbTimeStamp"
-                      name="sys_CreatedOn" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[row_id]"
-                      dataType="i4"
-                      name="row_id" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData"
+              refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData"
               componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               name="OLEDB_GetData"
@@ -420,7 +257,7 @@ WHERE
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Connections[OleDbConnection]"
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Connections[OleDbConnection]"
                   connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
                   connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -428,86 +265,86 @@ WHERE
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output]"
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output]"
                   name="Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
                       length="128"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
                       name="SYS_CHANGE_CONTEXT"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].Columns[ProcessDataId]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].ExternalColumns[FinancialTransactionId]"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].Columns[FinancialTransactionId]"
-                      name="FinancialTransactionId"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].ExternalColumns[ProcessDataId]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].Columns[ProcessDataId]"
+                      name="ProcessDataId"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       name="SYS_CHANGE_VERSION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
                       name="SYS_CHANGE_CONTEXT" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].ExternalColumns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].ExternalColumns[ProcessDataId]"
                       dataType="i4"
-                      name="FinancialTransactionId" />
+                      name="ProcessDataId" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Error]"
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Error]"
                   isErrorOut="true"
                   name="Error">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
                       dataType="i8"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
                       name="SYS_CHANGE_CONTEXT" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Error].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Error].Columns[ProcessDataId]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Error].Columns[FinancialTransactionId]"
-                      name="FinancialTransactionId" />
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Error].Columns[ProcessDataId]"
+                      name="ProcessDataId" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -516,7 +353,7 @@ WHERE
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1"
+              refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1"
               componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               name="OLEDB_GetData 1"
@@ -564,7 +401,7 @@ WHERE
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Connections[OleDbConnection]"
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Connections[OleDbConnection]"
                   connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
                   connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -572,86 +409,86 @@ WHERE
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output]"
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output]"
                   name="Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
                       length="128"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
                       name="SYS_CHANGE_CONTEXT"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].Columns[ProcessDataId]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].ExternalColumns[FinancialTransactionId]"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].Columns[FinancialTransactionId]"
-                      name="FinancialTransactionId"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].ExternalColumns[ProcessDataId]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].Columns[ProcessDataId]"
+                      name="ProcessDataId"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       name="SYS_CHANGE_VERSION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
                       name="SYS_CHANGE_CONTEXT" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].ExternalColumns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].ExternalColumns[ProcessDataId]"
                       dataType="i4"
-                      name="FinancialTransactionId" />
+                      name="ProcessDataId" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Error]"
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Error]"
                   isErrorOut="true"
                   name="Error">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
                       dataType="i8"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
                       name="SYS_CHANGE_CONTEXT" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Error].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Error].Columns[ProcessDataId]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Error].Columns[FinancialTransactionId]"
-                      name="FinancialTransactionId" />
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Error].Columns[ProcessDataId]"
+                      name="ProcessDataId" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Error].Columns[ErrorCode]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Error].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Error].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Error].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -660,7 +497,7 @@ WHERE
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2"
+              refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2"
               componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               name="OLEDB_GetData 2"
@@ -708,7 +545,7 @@ WHERE
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Connections[OleDbConnection]"
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Connections[OleDbConnection]"
                   connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
                   connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -716,86 +553,86 @@ WHERE
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output]"
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output]"
                   name="Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
                       length="128"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
                       name="SYS_CHANGE_CONTEXT"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].Columns[ProcessDataId]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].ExternalColumns[FinancialTransactionId]"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].Columns[FinancialTransactionId]"
-                      name="FinancialTransactionId"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].ExternalColumns[ProcessDataId]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].Columns[ProcessDataId]"
+                      name="ProcessDataId"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       name="SYS_CHANGE_VERSION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
                       name="SYS_CHANGE_CONTEXT" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].ExternalColumns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].ExternalColumns[ProcessDataId]"
                       dataType="i4"
-                      name="FinancialTransactionId" />
+                      name="ProcessDataId" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Error]"
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Error]"
                   isErrorOut="true"
                   name="Error">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
                       dataType="i8"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
                       name="SYS_CHANGE_CONTEXT" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Error].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Error].Columns[ProcessDataId]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Error].Columns[FinancialTransactionId]"
-                      name="FinancialTransactionId" />
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Error].Columns[ProcessDataId]"
+                      name="ProcessDataId" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Error].Columns[ErrorCode]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Error].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Error].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Error].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -804,7 +641,7 @@ WHERE
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3"
+              refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3"
               componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               name="OLEDB_GetData 3"
@@ -852,7 +689,7 @@ WHERE
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Connections[OleDbConnection]"
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Connections[OleDbConnection]"
                   connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
                   connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -860,86 +697,86 @@ WHERE
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output]"
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output]"
                   name="Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
                       length="128"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
                       name="SYS_CHANGE_CONTEXT"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].Columns[ProcessDataId]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].ExternalColumns[FinancialTransactionId]"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].Columns[FinancialTransactionId]"
-                      name="FinancialTransactionId"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].ExternalColumns[ProcessDataId]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].Columns[ProcessDataId]"
+                      name="ProcessDataId"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       name="SYS_CHANGE_VERSION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
                       name="SYS_CHANGE_CONTEXT" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].ExternalColumns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].ExternalColumns[ProcessDataId]"
                       dataType="i4"
-                      name="FinancialTransactionId" />
+                      name="ProcessDataId" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Error]"
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Error]"
                   isErrorOut="true"
                   name="Error">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
                       dataType="i8"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
                       name="SYS_CHANGE_CONTEXT" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Error].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Error].Columns[ProcessDataId]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Error].Columns[FinancialTransactionId]"
-                      name="FinancialTransactionId" />
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Error].Columns[ProcessDataId]"
+                      name="ProcessDataId" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Error].Columns[ErrorCode]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Error].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Error].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Error].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -948,7 +785,168 @@ WHERE
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load dbo_FinancialTransaction\Union All"
+              refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDB_InsertIntoChangeLog"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">dbo.Process</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Connections[OleDbConnection]"
+                  connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CONTEXT]"
+                      cachedDataType="bytes"
+                      cachedLength="128"
+                      cachedName="SYS_CHANGE_CONTEXT"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]" />
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[ProcessDataId]"
+                      cachedDataType="i4"
+                      cachedName="ProcessDataId"
+                      externalMetadataColumnId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[ProcessId]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[ProcessDataId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_CREATION_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      dataType="wstr"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]"
+                      dataType="bytes"
+                      length="4100"
+                      name="SYS_CHANGE_COLUMNS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      dataType="bytes"
+                      length="128"
+                      name="SYS_CHANGE_CONTEXT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[ProcessId]"
+                      dataType="i4"
+                      name="ProcessId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_CreatedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="sys_CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="sys_CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]"
+                      dataType="i4"
+                      name="row_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load dbo_ProcessData\Union All"
               componentClassID="{B594E9A8-4351-4939-891C-CFE1AB93E925}"
               contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
@@ -956,198 +954,198 @@ WHERE
               version="1">
               <inputs>
                 <input
-                  refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 1]"
+                  refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 1]"
                   name="Union All Input 1">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 1].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 1].Columns[SYS_CHANGE_VERSION]"
                       cachedDataType="i8"
                       cachedName="SYS_CHANGE_VERSION"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 1].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 1].Columns[SYS_CHANGE_CONTEXT]"
                       cachedDataType="bytes"
                       cachedLength="128"
                       cachedName="SYS_CHANGE_CONTEXT"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]">
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 1].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 1].Columns[ProcessDataId]"
                       cachedDataType="i4"
-                      cachedName="FinancialTransactionId"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output].Columns[FinancialTransactionId]">
+                      cachedName="ProcessDataId"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output].Columns[ProcessDataId]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[FinancialTransactionId]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[ProcessDataId]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 2]"
+                  refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 2]"
                   hasSideEffects="true"
                   name="Union All Input 2">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 2].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 2].Columns[SYS_CHANGE_VERSION]"
                       cachedDataType="i8"
                       cachedName="SYS_CHANGE_VERSION"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 2].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 2].Columns[SYS_CHANGE_CONTEXT]"
                       cachedDataType="bytes"
                       cachedLength="128"
                       cachedName="SYS_CHANGE_CONTEXT"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]">
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 2].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 2].Columns[ProcessDataId]"
                       cachedDataType="i4"
-                      cachedName="FinancialTransactionId"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output].Columns[FinancialTransactionId]">
+                      cachedName="ProcessDataId"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output].Columns[ProcessDataId]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[FinancialTransactionId]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[ProcessDataId]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 3]"
+                  refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 3]"
                   hasSideEffects="true"
                   name="Union All Input 3">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 3].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 3].Columns[SYS_CHANGE_VERSION]"
                       cachedDataType="i8"
                       cachedName="SYS_CHANGE_VERSION"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 3].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 3].Columns[SYS_CHANGE_CONTEXT]"
                       cachedDataType="bytes"
                       cachedLength="128"
                       cachedName="SYS_CHANGE_CONTEXT"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]">
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 3].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 3].Columns[ProcessDataId]"
                       cachedDataType="i4"
-                      cachedName="FinancialTransactionId"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output].Columns[FinancialTransactionId]">
+                      cachedName="ProcessDataId"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output].Columns[ProcessDataId]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[FinancialTransactionId]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[ProcessDataId]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 4]"
+                  refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 4]"
                   hasSideEffects="true"
                   name="Union All Input 4">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 4].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 4].Columns[SYS_CHANGE_VERSION]"
                       cachedDataType="i8"
                       cachedName="SYS_CHANGE_VERSION"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 4].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 4].Columns[SYS_CHANGE_CONTEXT]"
                       cachedDataType="bytes"
                       cachedLength="128"
                       cachedName="SYS_CHANGE_CONTEXT"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]">
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 4].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 4].Columns[ProcessDataId]"
                       cachedDataType="i4"
-                      cachedName="FinancialTransactionId"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output].Columns[FinancialTransactionId]">
+                      cachedName="ProcessDataId"
+                      lineageId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output].Columns[ProcessDataId]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[FinancialTransactionId]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[ProcessDataId]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 5]"
+                  refId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 5]"
                   dangling="true"
                   hasSideEffects="true"
                   name="Union All Input 5">
@@ -1156,25 +1154,25 @@ WHERE
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1]"
+                  refId="Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1]"
                   name="Union All Output 1">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]"
                       dataType="i8"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_CONTEXT]"
                       name="SYS_CHANGE_CONTEXT" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[FinancialTransactionId]"
+                      refId="Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[ProcessDataId]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1].Columns[FinancialTransactionId]"
-                      name="FinancialTransactionId" />
+                      lineageId="Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1].Columns[ProcessDataId]"
+                      name="ProcessDataId" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1183,30 +1181,30 @@ WHERE
           </components>
           <paths>
             <path
-              refId="Package\DFT_Load dbo_FinancialTransaction.Paths[Output2]"
-              endId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 3]"
+              refId="Package\DFT_Load dbo_ProcessData.Paths[Output2]"
+              endId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 3]"
               name="Output"
-              startId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2.Outputs[Output]" />
+              startId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load dbo_FinancialTransaction.Paths[Output3]"
-              endId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 4]"
+              refId="Package\DFT_Load dbo_ProcessData.Paths[Output3]"
+              endId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 4]"
               name="Output"
-              startId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3.Outputs[Output]" />
+              startId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load dbo_FinancialTransaction.Paths[Output]"
-              endId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 1]"
+              refId="Package\DFT_Load dbo_ProcessData.Paths[Output]"
+              endId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 1]"
               name="Output"
-              startId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData.Outputs[Output]" />
+              startId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load dbo_FinancialTransaction.Paths[Output1]"
-              endId="Package\DFT_Load dbo_FinancialTransaction\Union All.Inputs[Union All Input 2]"
+              refId="Package\DFT_Load dbo_ProcessData.Paths[Output1]"
+              endId="Package\DFT_Load dbo_ProcessData\Union All.Inputs[Union All Input 2]"
               name="Output"
-              startId="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1.Outputs[Output]" />
+              startId="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load dbo_FinancialTransaction.Paths[Union All Output 1]"
-              endId="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              refId="Package\DFT_Load dbo_ProcessData.Paths[Union All Output 1]"
+              endId="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]"
               name="Union All Output 1"
-              startId="Package\DFT_Load dbo_FinancialTransaction\Union All.Outputs[Union All Output 1]" />
+              startId="Package\DFT_Load dbo_ProcessData\Union All.Outputs[Union All Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1225,107 +1223,43 @@ WHERE
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="251,42"
-          Id="Package\DFT_Load dbo_FinancialTransaction"
+          Size="213,42"
+          Id="Package\DFT_Load dbo_ProcessData"
           TopLeft="5.5,5.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT_Load dbo_FinancialTransaction">
+    design-time-name="Package\DFT_Load dbo_ProcessData">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="219,42"
+          Id="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog"
+          TopLeft="410.5,209.5" />
+        <NodeLayout
           Size="157,42"
-          Id="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2"
+          Id="Package\DFT_Load dbo_ProcessData\OLEDB_GetData"
           TopLeft="5.5,5.5" />
         <NodeLayout
           Size="157,42"
-          Id="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1"
+          Id="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1"
           TopLeft="223.5,5.49999999999989" />
         <NodeLayout
           Size="157,42"
-          Id="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3"
+          Id="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2"
           TopLeft="441.5,5.49999999999989" />
         <NodeLayout
           Size="157,42"
-          Id="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData"
+          Id="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3"
           TopLeft="659.5,5.49999999999989" />
         <NodeLayout
           Size="123,42"
-          Id="Package\DFT_Load dbo_FinancialTransaction\Union All"
+          Id="Package\DFT_Load dbo_ProcessData\Union All"
           TopLeft="458.5,107.5" />
         <EdgeLayout
-          Id="Package\DFT_Load dbo_FinancialTransaction.Paths[Output]"
-          TopLeft="738,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-183.5,60"
-              Start="0,0"
-              End="-183.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.6949152542373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.6949152542373"
-                    Point2="0,41.6949152542373"
-                    Point3="-4,41.6949152542373" />
-                  <mssgle:LineSegment
-                    End="-179.5,41.6949152542373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-179.5,41.6949152542373"
-                    Point2="-183.5,41.6949152542373"
-                    Point3="-183.5,45.6949152542373" />
-                  <mssgle:LineSegment
-                    End="-183.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load dbo_FinancialTransaction.Paths[Output1]"
-          TopLeft="302,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="206.5,60"
-              Start="0,0"
-              End="206.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.0941704035874" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.0941704035874"
-                    Point2="0,33.0941704035874"
-                    Point3="4,33.0941704035874" />
-                  <mssgle:LineSegment
-                    End="202.5,33.0941704035874" />
-                  <mssgle:CubicBezierSegment
-                    Point1="202.5,33.0941704035874"
-                    Point2="206.5,33.0941704035874"
-                    Point3="206.5,37.0941704035874" />
-                  <mssgle:LineSegment
-                    End="206.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load dbo_FinancialTransaction.Paths[Output2]"
+          Id="Package\DFT_Load dbo_ProcessData.Paths[Output]"
           TopLeft="84,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1359,7 +1293,41 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load dbo_FinancialTransaction.Paths[Output3]"
+          Id="Package\DFT_Load dbo_ProcessData.Paths[Output1]"
+          TopLeft="302,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="206.5,60"
+              Start="0,0"
+              End="206.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.0941704035874" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.0941704035874"
+                    Point2="0,33.0941704035874"
+                    Point3="4,33.0941704035874" />
+                  <mssgle:LineSegment
+                    End="202.5,33.0941704035874" />
+                  <mssgle:CubicBezierSegment
+                    Point1="202.5,33.0941704035874"
+                    Point2="206.5,33.0941704035874"
+                    Point3="206.5,37.0941704035874" />
+                  <mssgle:LineSegment
+                    End="206.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load dbo_ProcessData.Paths[Output2]"
           TopLeft="520,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1392,36 +1360,54 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173,42"
-          Id="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination"
-          TopLeft="505,235" />
         <EdgeLayout
-          Id="Package\DFT_Load dbo_FinancialTransaction.Paths[Union All Output 1]"
-          TopLeft="520,149.5">
+          Id="Package\DFT_Load dbo_ProcessData.Paths[Output3]"
+          TopLeft="738,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="71.5,85.5000000000001"
+              EndConnector="-183.5,60"
               Start="0,0"
-              End="71.5,78.0000000000001">
+              End="-183.5,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.7500000000001" />
+                    End="0,37.6949152542373" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,38.7500000000001"
-                    Point2="0,42.7500000000001"
-                    Point3="4,42.7500000000001" />
+                    Point1="0,37.6949152542373"
+                    Point2="0,41.6949152542373"
+                    Point3="-4,41.6949152542373" />
                   <mssgle:LineSegment
-                    End="67.5,42.7500000000001" />
+                    End="-179.5,41.6949152542373" />
                   <mssgle:CubicBezierSegment
-                    Point1="67.5,42.7500000000001"
-                    Point2="71.5,42.7500000000001"
-                    Point3="71.5,46.7500000000001" />
+                    Point1="-179.5,41.6949152542373"
+                    Point2="-183.5,41.6949152542373"
+                    Point3="-183.5,45.6949152542373" />
                   <mssgle:LineSegment
-                    End="71.5,78.0000000000001" />
+                    End="-183.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load dbo_ProcessData.Paths[Union All Output 1]"
+          TopLeft="520,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1434,39 +1420,7 @@ WHERE
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 1">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 3">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load dbo_FinancialTransaction\OLEDB_GetData 2">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load dbo_FinancialTransaction\OLE DB Destination">
+    design-time-name="Package\DFT_Load dbo_ProcessData\OLEDB_InsertIntoChangeLog">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1475,6 +1429,38 @@ WHERE
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load dbo_ProcessData\OLEDB_GetData">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load dbo_ProcessData\OLEDB_GetData 3">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

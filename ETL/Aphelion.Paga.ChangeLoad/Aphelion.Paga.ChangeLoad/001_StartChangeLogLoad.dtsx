@@ -7,12 +7,13 @@
   DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
   DTS:DTSID="{50604A75-4C13-49FF-934A-60FFCD440A47}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadChangeLog"
   DTS:PackageType="5"
-  DTS:VersionBuild="172"
-  DTS:VersionGUID="{92662A89-CE52-4C18-AF9F-9E1C33570382}">
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="178"
+  DTS:VersionGUID="{6163DEB9-67A6-4E2B-ACB7-C645D8714ED6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -24,7 +25,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="11"
-        DTS:Name="ParameterValue">0</DTS:Property>
+        DTS:Name="ParameterValue">-1</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -48,6 +49,16 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{E22F096A-83AF-4B62-B479-E558437D6ECF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NoWhereClause">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{66E201CB-80B3-46BC-9044-0E715084E431}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[$Package::LoadAll]  ? &quot; &quot; :  @[User::strWhereClause]"
@@ -55,7 +66,8 @@
       DTS:Namespace="User"
       DTS:ObjectName="strLoadAll">
       <DTS:VariableValue
-        DTS:DataType="8">WHERE 	SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 0</DTS:VariableValue>
+        DTS:DataType="8"
+        xml:space="preserve"> </DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -193,7 +205,7 @@ INNER JOIN
           </ParameterAssignment>
           <ParameterAssignment>
             <ParameterName>WHEREClause</ParameterName>
-            <BindedVariableOrParameterName>User::strLoadAll</BindedVariableOrParameterName>
+            <BindedVariableOrParameterName>User::NoWhereClause</BindedVariableOrParameterName>
           </ParameterAssignment>
         </ExecutePackageTask>
       </DTS:ObjectData>
@@ -317,11 +329,11 @@ INNER JOIN
         <NodeLayout
           Size="230,42"
           Id="Package\EPT_ExecInParallel"
-          TopLeft="106,326.5" />
+          TopLeft="75,323.5" />
         <NodeLayout
           Size="189,42"
           Id="Package\EST_GetCurrentVersion"
-          TopLeft="81,5.5" />
+          TopLeft="95.5,5.49999999999989" />
         <NodeLayout
           Size="369,42"
           Id="Package\EST_GetVersionNumbers"
@@ -332,30 +344,18 @@ INNER JOIN
           TopLeft="78,107.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="175.5,47.5">
+          TopLeft="190,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="14.5,60"
+              EndConnector="0,60"
               Start="0,0"
-              End="14.5,52.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="4,30" />
-                  <mssgle:LineSegment
-                    End="10.5,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="10.5,30"
-                    Point2="14.5,30"
-                    Point3="14.5,34" />
-                  <mssgle:LineSegment
-                    End="14.5,52.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -392,26 +392,14 @@ INNER JOIN
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="31,75"
+              EndConnector="0,72"
               Start="0,0"
-              End="31,67.5">
+              End="0,64.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.5"
-                    Point2="0,37.5"
-                    Point3="4,37.5" />
-                  <mssgle:LineSegment
-                    End="27,37.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27,37.5"
-                    Point2="31,37.5"
-                    Point3="31,41.5" />
-                  <mssgle:LineSegment
-                    End="31,67.5" />
+                    End="0,64.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -424,16 +412,16 @@ INNER JOIN
           Text="The SETVersionNumbers task should run at the very beginning of the load. It runs against the operational DB and writes to the LoadQueue DB.&#xA;The version numbers set in this step will be used for &#xA;all subsequent loads. It is currently disabled so that it doesn't interfere with testing."
           ParentId="Package"
           FontInfo="{assembly:Null}"
-          Size="781,72"
+          Size="781,66"
           Id="d63dff49-fdc4-4c30-b05a-142b284a4e18"
-          TopLeft="290.5,0.5" />
+          TopLeft="365.5,311.5" />
         <AnnotationLayout
           Text="Be sure to set Load All Parameter to True or False before running."
           ParentId="Package"
           FontInfo="{assembly:Null}"
-          Size="375,40"
+          Size="375,39"
           Id="cddb0a45-8ad2-4e34-b4e9-6c45c9760449"
-          TopLeft="328.5,85.5" />
+          TopLeft="1207.5,325" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

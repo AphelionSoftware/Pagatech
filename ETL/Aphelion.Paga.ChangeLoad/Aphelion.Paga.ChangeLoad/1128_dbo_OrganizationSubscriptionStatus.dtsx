@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="1/28/2015 3:30:00 PM"
+  DTS:CreationDate="1/28/2015 3:30:01 PM"
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="PAGA01SV015"
   DTS:CreatorName="christina.leo.apheli"
   DTS:DelayValidation="True"
-  DTS:DTSID="{B8570886-D967-4403-9BDA-30616C5B74B4}"
+  DTS:DTSID="{5232B990-6516-43F2-AE7B-D5D1E837BA13}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="1107_dbo_City"
+  DTS:ObjectName="1128_dbo_OrganizationSubscriptionStatus"
   DTS:ProtectionLevel="0"
   DTS:VersionBuild="1"
-  DTS:VersionGUID="{8584AC5A-575F-4171-BDFD-5B9F24792599}"
+  DTS:VersionGUID="{91121E0D-FE25-412D-A1B9-D27027F07DF0}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -21,7 +21,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{76FF5D32-D240-4CDF-BA9F-3A5CF0073694}"
+      DTS:DTSID="{9E552C4D-F593-4ED4-8C98-1D362EBC55E8}"
       DTS:ObjectName="strParm1">
       <DTS:Property
         DTS:DataType="8"
@@ -32,7 +32,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3D34A669-827E-42C6-A925-2731EB2BD5FD}"
+      DTS:DTSID="{D581F588-CD12-4FD2-BF32-8293529AC8D5}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="BaseQuery">
@@ -43,17 +43,17 @@
 		FROM 
 		(
 			SELECT
-				CityId
-			FROM City AS bq
+				OrganizationSubscriptionStatusId
+			FROM OrganizationSubscriptionStatus AS bq
 		) AS stream
 		CROSS APPLY
-			CHANGETABLE(VERSION [dbo].[City], ( CityId), (stream.CityId))  AS c
+			CHANGETABLE(VERSION [dbo].[OrganizationSubscriptionStatus], ( OrganizationSubscriptionStatusId), (stream.OrganizationSubscriptionStatusId))  AS c
 		WHERE
 			c.SYS_CHANGE_VERSION IS NULL</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{C46152C9-6D20-420D-9ED5-F845E573B564}"
+      DTS:DTSID="{1AEF5F12-1242-46ED-AEB7-41D5F526995E}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="CurrentVersion">
@@ -62,7 +62,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{BC1DD639-D7F6-47E1-BD05-765925E07143}"
+      DTS:DTSID="{BB04B0B4-6198-48E2-AAB9-8550356BDCCC}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1]"
       DTS:IncludeInDebugDump="2345"
@@ -75,17 +75,17 @@
 		FROM 
 		(
 			SELECT
-				CityId
-			FROM City AS bq
+				OrganizationSubscriptionStatusId
+			FROM OrganizationSubscriptionStatus AS bq
 		) AS stream
 		CROSS APPLY
-			CHANGETABLE(VERSION [dbo].[City], ( CityId), (stream.CityId))  AS c
+			CHANGETABLE(VERSION [dbo].[OrganizationSubscriptionStatus], ( OrganizationSubscriptionStatusId), (stream.OrganizationSubscriptionStatusId))  AS c
 		WHERE
 			c.SYS_CHANGE_VERSION IS NULL </DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{F39D71E0-3499-44C5-983C-7C53B981623B}"
+      DTS:DTSID="{5DEBDE1D-3C6B-4A96-99B9-C4D50588F9B2}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LastSyncVersion">
@@ -95,13 +95,13 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DFT_Load dbo_City"
+      DTS:refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus"
       DTS:CreationName="SSIS.Pipeline.3"
       DTS:DelayValidation="True"
-      DTS:DTSID="{952C6AE3-6684-4528-B546-B4F9563E9268}"
+      DTS:DTSID="{437F7367-D62E-44D9-B66B-BECB4AD67203}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DFT_Load dbo_City"
+      DTS:ObjectName="DFT_Load dbo_OrganizationSubscriptionStatus"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -111,7 +111,7 @@
           version="1">
           <components>
             <component
-              refId="Package\DFT_Load dbo_City\OLE DB Destination"
+              refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination"
               componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -126,7 +126,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[City]</property>
+                  name="OpenRowset">[dbo].[OrganizationSubscriptionStatus]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -168,7 +168,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT_Load dbo_City\OLE DB Destination.Connections[OleDbConnection]"
+                  refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Connections[OleDbConnection]"
                   connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -176,96 +176,100 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_VERSION]"
                       cachedDataType="i8"
                       cachedName="SYS_CHANGE_VERSION"
-                      externalMetadataColumnId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
+                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
                     <inputColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_CONTEXT]"
                       cachedDataType="bytes"
                       cachedLength="128"
                       cachedName="SYS_CHANGE_CONTEXT"
-                      externalMetadataColumnId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CONTEXT]"
-                      lineageId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" />
+                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]" />
                     <inputColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CityId]"
-                      cachedDataType="i4"
-                      cachedName="CityId"
-                      externalMetadataColumnId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityId]"
-                      lineageId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].Columns[CityId]" />
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrganizationSubscriptionStatusId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OrganizationSubscriptionStatusId"
+                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationSubscriptionStatusId]"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[OrganizationSubscriptionStatusId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       name="SYS_CHANGE_VERSION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
                       dataType="i8"
                       name="SYS_CHANGE_CREATION_VERSION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
                       dataType="wstr"
                       length="1"
                       name="SYS_CHANGE_OPERATION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_COLUMNS]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_COLUMNS]"
                       dataType="bytes"
                       length="4100"
                       name="SYS_CHANGE_COLUMNS" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
                       name="SYS_CHANGE_CONTEXT" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sys_CreatedBy]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sys_CreatedBy]"
                       codePage="1252"
                       dataType="str"
                       length="255"
                       name="sys_CreatedBy" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sys_CreatedOn]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sys_CreatedOn]"
                       dataType="dbTimeStamp"
                       name="sys_CreatedOn" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[row_id]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[row_id]"
                       dataType="i4"
                       name="row_id" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityId]"
-                      dataType="i4"
-                      name="CityId" />
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationSubscriptionStatusId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OrganizationSubscriptionStatusId" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT_Load dbo_City\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_City\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_City\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_City\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -274,7 +278,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load dbo_City\OLEDB_GetData"
+              refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData"
               componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               name="OLEDB_GetData"
@@ -322,7 +326,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT_Load dbo_City\OLEDB_GetData.Connections[OleDbConnection]"
+                  refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Connections[OleDbConnection]"
                   connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
                   connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -330,86 +334,92 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output]"
+                  refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output]"
                   name="Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
                       length="128"
-                      lineageId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
                       name="SYS_CHANGE_CONTEXT"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].Columns[CityId]"
-                      dataType="i4"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[OrganizationSubscriptionStatusId]"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].ExternalColumns[CityId]"
-                      lineageId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].Columns[CityId]"
-                      name="CityId"
+                      externalMetadataColumnId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[OrganizationSubscriptionStatusId]"
+                      length="50"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].Columns[OrganizationSubscriptionStatusId]"
+                      name="OrganizationSubscriptionStatusId"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       name="SYS_CHANGE_VERSION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
                       name="SYS_CHANGE_CONTEXT" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output].ExternalColumns[CityId]"
-                      dataType="i4"
-                      name="CityId" />
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output].ExternalColumns[OrganizationSubscriptionStatusId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OrganizationSubscriptionStatusId" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Error]"
+                  refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error]"
                   isErrorOut="true"
                   name="Error">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
                       dataType="i8"
-                      lineageId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
-                      lineageId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
                       name="SYS_CHANGE_CONTEXT" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Error].Columns[CityId]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Error].Columns[CityId]"
-                      name="CityId" />
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[OrganizationSubscriptionStatusId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[OrganizationSubscriptionStatusId]"
+                      name="OrganizationSubscriptionStatusId" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -420,10 +430,10 @@
           </components>
           <paths>
             <path
-              refId="Package\DFT_Load dbo_City.Paths[Output]"
-              endId="Package\DFT_Load dbo_City\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              refId="Package\DFT_Load dbo_OrganizationSubscriptionStatus.Paths[Output]"
+              endId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="Output"
-              startId="Package\DFT_Load dbo_City\OLEDB_GetData.Outputs[Output]" />
+              startId="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData.Outputs[Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -442,27 +452,27 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="173,42"
-          Id="Package\DFT_Load dbo_City"
+          Size="301,42"
+          Id="Package\DFT_Load dbo_OrganizationSubscriptionStatus"
           TopLeft="5.5,5.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT_Load dbo_City">
+    design-time-name="Package\DFT_Load dbo_OrganizationSubscriptionStatus">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="157,42"
-          Id="Package\DFT_Load dbo_City\OLEDB_GetData"
+          Id="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLEDB_GetData"
           TopLeft="36.5,5.5" />
         <NodeLayout
           Size="173,42"
-          Id="Package\DFT_Load dbo_City\OLE DB Destination"
+          Id="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination"
           TopLeft="36.5,107.5" />
         <EdgeLayout
-          Id="Package\DFT_Load dbo_City.Paths[Output]"
+          Id="Package\DFT_Load dbo_OrganizationSubscriptionStatus.Paths[Output]"
           TopLeft="115,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -499,7 +509,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load dbo_City\OLE DB Destination">
+    design-time-name="Package\DFT_Load dbo_OrganizationSubscriptionStatus\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

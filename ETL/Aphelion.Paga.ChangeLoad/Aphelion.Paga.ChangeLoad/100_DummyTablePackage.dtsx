@@ -7,11 +7,12 @@
   DTS:CreatorName="Administrator"
   DTS:DTSID="{66406545-86FC-4559-8CDB-407161327B04}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="100_DummyTablePackage"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{D57D8273-5917-487F-8C34-5392D43EA6B2}"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{9ABD3A1D-2536-4AAA-B881-8C927B937330}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -31,19 +32,26 @@
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{9D262494-9DBD-4590-ABB9-47B49EC8F538}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;&#xA;&#x9;&#x9;SET NOCOUNT ON;&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;c.*&#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;AccountCodeId&#xA;&#x9;&#x9;&#x9;FROM AccountCode AS bq&#xA;&#x9;&#x9;) AS stream&#xA;&#x9;&#x9;CROSS APPLY&#xA;&#x9;&#x9;&#x9;CHANGETABLE(VERSION [dbo].[AccountCode], ( AccountCodeId), (stream.AccountCodeId))  AS c&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;c.SYS_CHANGE_VERSION IS NULL&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="BaseQuery">
       <DTS:VariableValue
-        DTS:DataType="8">SET NOCOUNT ON;
-		SELECT 
-			SYS_CHANGE_VERSION,
-			SYS_CHANGE_CREATION_VERSION,
-			SYS_CHANGE_OPERATION,
-			SYS_CHANGE_COLUMNS,
-			SYS_CHANGE_CONTEXT,
-			AccountCodeId = CAST(AccountCodeId AS int)
-		FROM CHANGETABLE(CHANGES [dbo].[AccountCode],0)  AS change_log</DTS:VariableValue>
+        DTS:DataType="8">
+		SET NOCOUNT ON;
+		SELECT
+			c.*
+		FROM 
+		(
+			SELECT
+				AccountCodeId
+			FROM AccountCode AS bq
+		) AS stream
+		CROSS APPLY
+			CHANGETABLE(VERSION [dbo].[AccountCode], ( AccountCodeId), (stream.AccountCodeId))  AS c
+		WHERE
+			c.SYS_CHANGE_VERSION IS NULL</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -63,15 +71,20 @@
       DTS:Namespace="User"
       DTS:ObjectName="FullQueryText">
       <DTS:VariableValue
-        DTS:DataType="8">SET NOCOUNT ON;
-		SELECT 
-			SYS_CHANGE_VERSION,
-			SYS_CHANGE_CREATION_VERSION,
-			SYS_CHANGE_OPERATION,
-			SYS_CHANGE_COLUMNS,
-			SYS_CHANGE_CONTEXT,
-			AccountCodeId = CAST(AccountCodeId AS int)
-		FROM CHANGETABLE(CHANGES [dbo].[AccountCode],0)  AS change_log ;</DTS:VariableValue>
+        DTS:DataType="8">
+		SET NOCOUNT ON;
+		SELECT
+			c.*
+		FROM 
+		(
+			SELECT
+				AccountCodeId
+			FROM AccountCode AS bq
+		) AS stream
+		CROSS APPLY
+			CHANGETABLE(VERSION [dbo].[AccountCode], ( AccountCodeId), (stream.AccountCodeId))  AS c
+		WHERE
+			c.SYS_CHANGE_VERSION IS NULL ;</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -169,35 +182,6 @@
                       name="SYS_CHANGE_VERSION"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      name="SYS_CHANGE_CREATION_VERSION"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      length="1"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      length="4100"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]"
-                      name="SYS_CHANGE_COLUMNS"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       errorOrTruncationOperation="Conversion"
@@ -224,20 +208,6 @@
                       dataType="i8"
                       name="SYS_CHANGE_VERSION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
-                      dataType="i8"
-                      name="SYS_CHANGE_CREATION_VERSION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      length="1"
-                      name="SYS_CHANGE_OPERATION" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      length="4100"
-                      name="SYS_CHANGE_COLUMNS" />
-                    <externalMetadataColumn
                       refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
                       length="128"
@@ -258,23 +228,6 @@
                       dataType="i8"
                       lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
                       name="SYS_CHANGE_VERSION" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      dataType="i8"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      name="SYS_CHANGE_CREATION_VERSION" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      length="1"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      length="4100"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_COLUMNS]"
-                      name="SYS_CHANGE_COLUMNS" />
                     <outputColumn
                       refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CONTEXT]"
                       dataType="bytes"
@@ -379,26 +332,6 @@
                       cachedName="SYS_CHANGE_VERSION"
                       externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]"
                       lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]"
-                      cachedDataType="i8"
-                      cachedName="SYS_CHANGE_CREATION_VERSION"
-                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]"
-                      cachedDataType="wstr"
-                      cachedLength="1"
-                      cachedName="SYS_CHANGE_OPERATION"
-                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
-                    <inputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_COLUMNS]"
-                      cachedDataType="bytes"
-                      cachedLength="4100"
-                      cachedName="SYS_CHANGE_COLUMNS"
-                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_COLUMNS]" />
                     <inputColumn
                       refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CONTEXT]"
                       cachedDataType="bytes"
@@ -558,6 +491,19 @@
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
