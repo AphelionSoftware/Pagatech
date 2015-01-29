@@ -13,8 +13,8 @@
   DTS:ObjectName="001_LoadChangeLog"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="181"
-  DTS:VersionGUID="{EB8F26E1-BA9D-4832-8B8D-3A1A9A09F0A1}">
+  DTS:VersionBuild="182"
+  DTS:VersionGUID="{E89C6824-0E81-45FA-B4F9-B512001D5455}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -189,6 +189,7 @@ INNER JOIN
       DTS:CreationName="SSIS.ExecutePackageTask.3"
       DTS:DelayValidation="True"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{18B0D2E3-648D-42A8-BEF2-4944266DE6E1}"
       DTS:ExecutableType="SSIS.ExecutePackageTask.3"
       DTS:LocaleID="-1"
@@ -293,6 +294,24 @@ INNER JOIN
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute Package Task"
+      DTS:CreationName="SSIS.ExecutePackageTask.3"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{9670F47B-C24E-4AB8-A531-552A3E43F258}"
+      DTS:ExecutableType="SSIS.ExecutePackageTask.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Package Task"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <ExecuteOutOfProcess>True</ExecuteOutOfProcess>
+          <PackageName>1101_dbo_AccountCode.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -311,6 +330,14 @@ INNER JOIN
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\EST_GetVersionNumbers" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{0D7A367D-DD20-45BE-96A5-3DA1C56E5088}"
+      DTS:From="Package\EST_GetVersionNumbers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Execute Package Task" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
@@ -428,6 +455,44 @@ INNER JOIN
           Size="375,39"
           Id="cddb0a45-8ad2-4e34-b4e9-6c45c9760449"
           TopLeft="1207.5,325" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Execute Package Task"
+          TopLeft="516,509" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="250.166666666667,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="358.333333333333,257.5"
+              Start="0,0"
+              End="358.333333333333,250">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,99.667026443605" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,99.667026443605"
+                    Point2="0,103.667026443605"
+                    Point3="4,103.667026443605" />
+                  <mssgle:LineSegment
+                    End="354.333333333333,103.667026443605" />
+                  <mssgle:CubicBezierSegment
+                    Point1="354.333333333333,103.667026443605"
+                    Point2="358.333333333333,103.667026443605"
+                    Point3="358.333333333333,107.667026443605" />
+                  <mssgle:LineSegment
+                    End="358.333333333333,250" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
