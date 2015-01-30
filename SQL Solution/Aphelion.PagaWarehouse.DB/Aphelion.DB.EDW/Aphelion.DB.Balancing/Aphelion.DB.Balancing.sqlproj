@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Aphelion.DB.Balancing</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{df5dcebb-cece-4913-a787-00f585585d28}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Aphelion.DB.Balancing</RootNamespace>
+    <AssemblyName>Aphelion.DB.Balancing</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="row_counts\" />
+    <Folder Include="row_counts\Tables\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="row_counts\Tables\FinancialTransaction.sql" />
+    <Build Include="row_counts\Tables\FinancialTransactionItem.sql" />
+    <Build Include="row_counts\Tables\FinancialTransactionRelationship.sql" />
+    <Build Include="row_counts\Tables\FinancialTransactionSubType.sql" />
+    <Build Include="row_counts\Tables\FinancialTransactionType.sql" />
+    <Build Include="row_counts\Tables\FinancialTransactionTypeTransactionTypeGroup.sql" />
+    <Build Include="row_counts\Tables\Geozone.sql" />
+    <Build Include="row_counts\Tables\IntegrationTransaction.sql" />
+    <Build Include="row_counts\Tables\IntegrationTransactionResult.sql" />
+    <Build Include="row_counts\Tables\IntegrationTransactionType.sql" />
+    <Build Include="row_counts\Tables\LocalGovernmentArea.sql" />
+    <Build Include="row_counts\Tables\MerchantCategory.sql" />
+    <Build Include="row_counts\Tables\MobileOperator.sql" />
+    <Build Include="row_counts\Tables\Organization.sql" />
+    <Build Include="row_counts\Tables\OrganizationMerchantCategory.sql" />
+    <Build Include="row_counts\Tables\OrganizationMerchantProcessChannel.sql" />
+    <Build Include="row_counts\Tables\OrganizationSubscriptionStatus.sql" />
+    <Build Include="row_counts\Tables\OrganizationUnit.sql" />
+    <Build Include="row_counts\Tables\OrganizationUnitType.sql" />
+    <Build Include="row_counts\Tables\OrganizationUnitUser.sql" />
+    <Build Include="row_counts\Tables\OrganizationVerificationStatus.sql" />
+    <Build Include="row_counts\Tables\PagaAccount.sql" />
+    <Build Include="row_counts\Tables\PagaAccountNature.sql" />
+    <Build Include="row_counts\Tables\PagaAccountStatus.sql" />
+    <Build Include="row_counts\Tables\PagaAccountUser.sql" />
+    <Build Include="row_counts\Tables\PagaAccountUserType.sql" />
+    <Build Include="row_counts\Tables\Process.sql" />
+    <Build Include="row_counts\Tables\ProcessChannel.sql" />
+    <Build Include="row_counts\Tables\ProcessData.sql" />
+    <Build Include="row_counts\Tables\ProcessStatus.sql" />
+    <Build Include="row_counts\Tables\ProcessType.sql" />
+    <Build Include="row_counts\Tables\ProcessTypeGroup.sql" />
+    <Build Include="row_counts\Tables\Region.sql" />
+    <Build Include="row_counts\Tables\RoleLookup.sql" />
+    <Build Include="row_counts\Tables\UserRole.sql" />
+    <Build Include="row_counts\Tables\Users.sql" />
+    <Build Include="row_counts\Tables\AccountCode.sql" />
+    <Build Include="row_counts\Tables\AccountCodeGroup.sql" />
+    <Build Include="row_counts\Tables\AgentCommissionType.sql" />
+    <Build Include="row_counts\Tables\Bank.sql" />
+    <Build Include="row_counts\Tables\BankAccount.sql" />
+    <Build Include="row_counts\Tables\BusinessType.sql" />
+    <Build Include="row_counts\Tables\City.sql" />
+    <Build Include="row_counts\Tables\Country.sql" />
+    <Build Include="row_counts\Tables\Currency.sql" />
+    <Build Include="row_counts\Tables\FinancialAccount.sql" />
+    <Build Include="row_counts\Tables\FinancialAccountType.sql" />
+    <Build Include="Security\MYPAGA_BI_SERVER_ADMIN.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="Security\row_counts.sql" />
+  </ItemGroup>
+</Project>
