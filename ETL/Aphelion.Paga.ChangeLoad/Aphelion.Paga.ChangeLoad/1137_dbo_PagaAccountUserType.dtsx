@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/29/2015 16:45:55" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{B60089D5-DC72-478E-8926-E9A95CF1E330}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1137_dbo_PagaAccountUserType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{5603983C-C601-43C5-BF1B-BBF50BA63EBD}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/30/2015 14:50:29" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{0F7C6D89-203F-443E-B393-56FFDA9B09A4}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1137_dbo_PagaAccountUserType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{933791BC-D0CF-46E1-9728-DD997AEAA39E}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{98B4CB64-D389-48CB-B34F-4A9DFAD540B1}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_PagaAccountUserType" DTS:refId="Package\DFT_Load dbo_PagaAccountUserType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{EA9A638E-5A45-4D5E-A1FB-57D7CCBD646F}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_PagaAccountUserType" DTS:refId="Package\DFT_Load dbo_PagaAccountUserType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -13,7 +13,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].ExternalColumns[PagaAccountUserTypeId]">
                     </externalMetadataColumn>
@@ -21,9 +21,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].ExternalColumns[PagaAccountUserTypeId]" length="50" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[PagaAccountUserTypeId]" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[PagaAccountUserTypeId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -31,19 +33,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[PagaAccountUserTypeId]" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[PagaAccountUserTypeId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -76,7 +82,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].ExternalColumns[PagaAccountUserTypeId]">
                     </externalMetadataColumn>
@@ -84,9 +90,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].ExternalColumns[PagaAccountUserTypeId]" length="50" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[PagaAccountUserTypeId]" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[PagaAccountUserTypeId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -94,19 +102,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[PagaAccountUserTypeId]" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[PagaAccountUserTypeId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -139,7 +151,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].ExternalColumns[PagaAccountUserTypeId]">
                     </externalMetadataColumn>
@@ -147,9 +159,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].ExternalColumns[PagaAccountUserTypeId]" length="50" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[PagaAccountUserTypeId]" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[PagaAccountUserTypeId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -157,19 +171,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[PagaAccountUserTypeId]" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[PagaAccountUserTypeId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -202,7 +220,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].ExternalColumns[PagaAccountUserTypeId]">
                     </externalMetadataColumn>
@@ -210,9 +228,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].ExternalColumns[PagaAccountUserTypeId]" length="50" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[PagaAccountUserTypeId]" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[PagaAccountUserTypeId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -220,19 +240,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[PagaAccountUserTypeId]" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[PagaAccountUserTypeId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -263,9 +287,9 @@
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="PagaAccountUserTypeId" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[PagaAccountUserTypeId]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[PagaAccountUserTypeId]">
@@ -283,15 +307,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData1_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="PagaAccountUserTypeId" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[PagaAccountUserTypeId]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[PagaAccountUserTypeId]">
@@ -309,15 +338,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData2_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="PagaAccountUserTypeId" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[PagaAccountUserTypeId]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[PagaAccountUserTypeId]">
@@ -335,15 +369,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData3_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="PagaAccountUserTypeId" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[PagaAccountUserTypeId]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[PagaAccountUserTypeId]">
@@ -361,6 +400,11 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input dangling="true" hasSideEffects="true" name="Input1" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Inputs[Input1]">
@@ -373,13 +417,15 @@
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[PagaAccountUserTypeId]" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[PagaAccountUserTypeId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                   </outputColumns>
                 </output>
@@ -395,21 +441,25 @@
                   <externalMetadataColumns isUsed="True">
                     <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_created_on" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_created_on]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="PagaAccountUserTypeId" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[PagaAccountUserTypeId]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[as_of_change_version]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="PagaAccountUserTypeId" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[PagaAccountUserTypeId]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[PagaAccountUserTypeId]" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[PagaAccountUserTypeId]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_PagaAccountUserType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_PagaAccountUserType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
                   </inputColumns>
                 </input>
@@ -461,110 +511,130 @@
   </DTS:Executables>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BAE32B71-5E9E-412E-95E0-246E88598CE2}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0BAD3A3C-61A7-47F3-9273-84BDD7E8344B}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{957E6BE5-7044-49E8-8932-A3CC1D3CA7B6}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B680638D-1552-47D6-BEF3-D88747C9385B}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8BC78304-2805-432F-BEDF-710C37BB3FDE}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B7E50DB6-A3F6-41FF-920B-BB07EDEE07B0}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
+      <DTS:VariableValue DTS:DataType="8">--PagaAccountUserType
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 0
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					PagaAccountUserTypeId,
 					ROW_NUMBER() OVER (ORDER BY PagaAccountUserTypeId) as rn
 				FROM [dbo].[PagaAccountUserType]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [PagaAccountUserType], (PagaAccountUserTypeId), (stream.PagaAccountUserTypeId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C3003FC1-36AA-40F1-887B-092F3DA630AA}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3721BF43-7107-45FE-8180-3657D23464DA}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
+      <DTS:VariableValue DTS:DataType="8">--PagaAccountUserType
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 1
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					PagaAccountUserTypeId,
 					ROW_NUMBER() OVER (ORDER BY PagaAccountUserTypeId) as rn
 				FROM [dbo].[PagaAccountUserType]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [PagaAccountUserType], (PagaAccountUserTypeId), (stream.PagaAccountUserTypeId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C749618C-C610-4F41-B688-64DE92F9192F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D287A23D-ABFF-4608-9AD7-E114299F6411}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
+      <DTS:VariableValue DTS:DataType="8">--PagaAccountUserType
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 2
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					PagaAccountUserTypeId,
 					ROW_NUMBER() OVER (ORDER BY PagaAccountUserTypeId) as rn
 				FROM [dbo].[PagaAccountUserType]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [PagaAccountUserType], (PagaAccountUserTypeId), (stream.PagaAccountUserTypeId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7CCF2950-3D03-4719-B126-BABC9FB7F3D4}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E53600F4-EC8B-40A1-A09D-B3B5D8CF6700}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
+      <DTS:VariableValue DTS:DataType="8">--PagaAccountUserType
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 3
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					PagaAccountUserTypeId,
 					ROW_NUMBER() OVER (ORDER BY PagaAccountUserTypeId) as rn
 				FROM [dbo].[PagaAccountUserType]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [PagaAccountUserType], (PagaAccountUserTypeId), (stream.PagaAccountUserTypeId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

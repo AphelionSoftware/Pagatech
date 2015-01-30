@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/29/2015 16:45:53" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{2EFB1FE4-FE3C-4FC2-9489-BFA31FCA799E}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1116_dbo_FinancialTransactionType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{5768124C-E489-4A6D-AFF4-58E49B5BECA3}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/30/2015 14:50:26" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{39C89EBE-A963-4019-A986-6777AD83BE67}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1116_dbo_FinancialTransactionType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{CE5B5788-A592-49CE-8EB0-F24255288506}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{D7461FEA-A241-4A2C-999D-94C2E2BF65BF}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_FinancialTransactionType" DTS:refId="Package\DFT_Load dbo_FinancialTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{F807904A-2773-4CBE-9B94-85A5D4286E3E}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_FinancialTransactionType" DTS:refId="Package\DFT_Load dbo_FinancialTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -13,7 +13,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].ExternalColumns[FinancialTransactionTypeId]">
                     </externalMetadataColumn>
@@ -21,9 +21,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].ExternalColumns[FinancialTransactionTypeId]" length="50" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[FinancialTransactionTypeId]" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[FinancialTransactionTypeId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -31,19 +33,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[FinancialTransactionTypeId]" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[FinancialTransactionTypeId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -76,7 +82,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].ExternalColumns[FinancialTransactionTypeId]">
                     </externalMetadataColumn>
@@ -84,9 +90,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].ExternalColumns[FinancialTransactionTypeId]" length="50" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[FinancialTransactionTypeId]" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[FinancialTransactionTypeId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -94,19 +102,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[FinancialTransactionTypeId]" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[FinancialTransactionTypeId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -139,7 +151,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].ExternalColumns[FinancialTransactionTypeId]">
                     </externalMetadataColumn>
@@ -147,9 +159,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].ExternalColumns[FinancialTransactionTypeId]" length="50" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[FinancialTransactionTypeId]" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[FinancialTransactionTypeId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -157,19 +171,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[FinancialTransactionTypeId]" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[FinancialTransactionTypeId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -202,7 +220,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].ExternalColumns[FinancialTransactionTypeId]">
                     </externalMetadataColumn>
@@ -210,9 +228,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].ExternalColumns[FinancialTransactionTypeId]" length="50" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[FinancialTransactionTypeId]" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[FinancialTransactionTypeId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -220,19 +240,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[FinancialTransactionTypeId]" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[FinancialTransactionTypeId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -263,9 +287,9 @@
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="FinancialTransactionTypeId" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[FinancialTransactionTypeId]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[FinancialTransactionTypeId]">
@@ -283,15 +307,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData1_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="FinancialTransactionTypeId" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[FinancialTransactionTypeId]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[FinancialTransactionTypeId]">
@@ -309,15 +338,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData2_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="FinancialTransactionTypeId" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[FinancialTransactionTypeId]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[FinancialTransactionTypeId]">
@@ -335,15 +369,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData3_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="FinancialTransactionTypeId" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[FinancialTransactionTypeId]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[FinancialTransactionTypeId]">
@@ -361,6 +400,11 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input dangling="true" hasSideEffects="true" name="Input1" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Inputs[Input1]">
@@ -373,13 +417,15 @@
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[FinancialTransactionTypeId]" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[FinancialTransactionTypeId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                   </outputColumns>
                 </output>
@@ -395,21 +441,25 @@
                   <externalMetadataColumns isUsed="True">
                     <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_created_on" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_created_on]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="FinancialTransactionTypeId" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[FinancialTransactionTypeId]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[as_of_change_version]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="FinancialTransactionTypeId" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[FinancialTransactionTypeId]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[FinancialTransactionTypeId]" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[FinancialTransactionTypeId]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_FinancialTransactionType\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_FinancialTransactionType\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
                   </inputColumns>
                 </input>
@@ -461,110 +511,130 @@
   </DTS:Executables>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{657C1971-18DA-465B-912B-FFBC3A7B3489}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CCD8AAD0-3EF9-4B60-AB41-2AA05078E005}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{58E7090D-4C9D-470E-9764-89178205CC9A}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CF2E9DB6-E1CE-4403-B51C-6184BC4FB009}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F2EDBE9F-BF7E-46B0-AEDD-0184245E86A0}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{08092B7C-3DD4-4208-8902-4D29496D936E}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
+      <DTS:VariableValue DTS:DataType="8">--FinancialTransactionType
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 0
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					FinancialTransactionTypeId,
 					ROW_NUMBER() OVER (ORDER BY FinancialTransactionTypeId) as rn
 				FROM [dbo].[FinancialTransactionType]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [FinancialTransactionType], (FinancialTransactionTypeId), (stream.FinancialTransactionTypeId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3A5654D4-B66D-41D6-BB03-20BE304C22A9}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C6171DE1-1AFD-44DE-9FD1-EFFB78A0F738}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
+      <DTS:VariableValue DTS:DataType="8">--FinancialTransactionType
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 1
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					FinancialTransactionTypeId,
 					ROW_NUMBER() OVER (ORDER BY FinancialTransactionTypeId) as rn
 				FROM [dbo].[FinancialTransactionType]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [FinancialTransactionType], (FinancialTransactionTypeId), (stream.FinancialTransactionTypeId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8821B0C9-F84B-4BAB-BA06-382C613D176D}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{681178B6-0C26-4748-875F-0FBBA30C11B4}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
+      <DTS:VariableValue DTS:DataType="8">--FinancialTransactionType
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 2
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					FinancialTransactionTypeId,
 					ROW_NUMBER() OVER (ORDER BY FinancialTransactionTypeId) as rn
 				FROM [dbo].[FinancialTransactionType]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [FinancialTransactionType], (FinancialTransactionTypeId), (stream.FinancialTransactionTypeId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FBC0B13C-D96F-4809-9583-078CDD032195}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A3461C2C-E86A-48A9-9379-E8A043E8A9CC}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
+      <DTS:VariableValue DTS:DataType="8">--FinancialTransactionType
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 3
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					FinancialTransactionTypeId,
 					ROW_NUMBER() OVER (ORDER BY FinancialTransactionTypeId) as rn
 				FROM [dbo].[FinancialTransactionType]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [FinancialTransactionType], (FinancialTransactionTypeId), (stream.FinancialTransactionTypeId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

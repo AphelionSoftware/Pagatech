@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/29/2015 16:45:52" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{9DAF3DA6-2022-475B-BE86-F86F6E72F9B3}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1107_dbo_City" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{51A0EA99-F807-48AD-A780-A3A58CADD024}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/30/2015 14:50:24" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{358CADE5-C533-4BA8-9B1E-9A487B9821FB}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1107_dbo_City" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{4D2035B8-73B1-4D30-A159-C94426C0077B}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{6B00617B-029A-4827-A9FB-B3537E11EC56}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_City" DTS:refId="Package\DFT_Load dbo_City" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{6B272D3E-1881-446D-88DE-290E1FF2AD93}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_City" DTS:refId="Package\DFT_Load dbo_City" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -13,7 +13,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].ExternalColumns[CityId]">
                     </externalMetadataColumn>
@@ -21,9 +21,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].ExternalColumns[CityId]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[CityId]" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[CityId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -31,19 +33,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[CityId]" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[CityId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -76,7 +82,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].ExternalColumns[CityId]">
                     </externalMetadataColumn>
@@ -84,9 +90,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].ExternalColumns[CityId]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[CityId]" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[CityId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -94,19 +102,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[CityId]" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[CityId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -139,7 +151,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].ExternalColumns[CityId]">
                     </externalMetadataColumn>
@@ -147,9 +159,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].ExternalColumns[CityId]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[CityId]" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[CityId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -157,19 +171,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[CityId]" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[CityId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -202,7 +220,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].ExternalColumns[CityId]">
                     </externalMetadataColumn>
@@ -210,9 +228,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].ExternalColumns[CityId]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[CityId]" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[CityId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -220,19 +240,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[CityId]" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[CityId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -263,9 +287,9 @@
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="CityId" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[CityId]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[CityId]">
@@ -283,15 +307,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData1_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="CityId" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[CityId]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[CityId]">
@@ -309,15 +338,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData2_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="CityId" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[CityId]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[CityId]">
@@ -335,15 +369,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData3_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="CityId" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[CityId]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[CityId]">
@@ -361,6 +400,11 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_City\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input dangling="true" hasSideEffects="true" name="Input1" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Inputs[Input1]">
@@ -373,13 +417,15 @@
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[CityId]" name="CityId" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[CityId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                   </outputColumns>
                 </output>
@@ -395,21 +441,25 @@
                   <externalMetadataColumns isUsed="True">
                     <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_created_on" refId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_created_on]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="CityId" refId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CityId]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[as_of_change_version]">
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="CityId" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CityId]" lineageId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[CityId]" refId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[CityId]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_City\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_City\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
                   </inputColumns>
                 </input>
@@ -461,110 +511,130 @@
   </DTS:Executables>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DC9CEB98-2289-4B48-980C-EDB8A343EAA4}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{9A23C6CC-4435-409F-9A23-FFB5E441060C}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{43B16CBA-7432-4F53-8AFF-4A7C56F0BD64}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0B1E9E47-6C50-45AD-BB01-6095CBC4238E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D19F8163-4C29-4543-9B3F-755C9E14A645}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C6D2146A-A640-42BD-8312-DF6ED3FDCE1C}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
+      <DTS:VariableValue DTS:DataType="8">--City
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 0
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					CityId,
 					ROW_NUMBER() OVER (ORDER BY CityId) as rn
 				FROM [dbo].[City]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [City], (CityId), (stream.CityId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1B087C6A-25EA-4934-BF04-87040903212D}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{01F77412-D946-4725-AA34-3C3E8001B3F8}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
+      <DTS:VariableValue DTS:DataType="8">--City
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 1
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					CityId,
 					ROW_NUMBER() OVER (ORDER BY CityId) as rn
 				FROM [dbo].[City]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [City], (CityId), (stream.CityId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7DB16293-7538-4ADA-8650-3B5DFCD2E5CF}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D3D65333-B891-4A28-92E3-E790B3378F1F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
+      <DTS:VariableValue DTS:DataType="8">--City
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 2
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					CityId,
 					ROW_NUMBER() OVER (ORDER BY CityId) as rn
 				FROM [dbo].[City]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [City], (CityId), (stream.CityId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7BA7EC4A-15A3-4CCD-8B67-1DA79A06210B}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{87EFD791-1600-493F-AC53-38F88059A881}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
+      <DTS:VariableValue DTS:DataType="8">--City
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 3
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					CityId,
 					ROW_NUMBER() OVER (ORDER BY CityId) as rn
 				FROM [dbo].[City]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [City], (CityId), (stream.CityId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

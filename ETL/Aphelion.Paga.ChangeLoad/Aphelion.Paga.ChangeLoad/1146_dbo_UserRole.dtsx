@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/29/2015 16:45:55" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{744BB375-AF2B-4A2F-9AD8-67D684086C23}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1146_dbo_UserRole" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{8B81D06C-2220-4B58-9485-56E5C25BB7E0}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/30/2015 14:50:30" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{CA436959-6CBF-4D64-B004-9E9635850686}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1146_dbo_UserRole" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{8C4FCB98-DA67-4D71-A61E-35B6C6CA0635}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{607E9B3B-0B6C-463E-9D81-5EE4E27792CF}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_UserRole" DTS:refId="Package\DFT_Load dbo_UserRole" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{EFDA7A77-31A3-4339-B13B-96034B858BD8}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_UserRole" DTS:refId="Package\DFT_Load dbo_UserRole" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -13,7 +13,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].ExternalColumns[UserRoleId]">
                     </externalMetadataColumn>
@@ -21,9 +21,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].ExternalColumns[UserRoleId]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[UserRoleId]" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[UserRoleId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -31,19 +33,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[UserRoleId]" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[UserRoleId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -76,7 +82,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].ExternalColumns[UserRoleId]">
                     </externalMetadataColumn>
@@ -84,9 +90,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].ExternalColumns[UserRoleId]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[UserRoleId]" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[UserRoleId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -94,19 +102,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[UserRoleId]" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[UserRoleId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -139,7 +151,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].ExternalColumns[UserRoleId]">
                     </externalMetadataColumn>
@@ -147,9 +159,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].ExternalColumns[UserRoleId]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[UserRoleId]" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[UserRoleId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -157,19 +171,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[UserRoleId]" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[UserRoleId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -202,7 +220,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].ExternalColumns[UserRoleId]">
                     </externalMetadataColumn>
@@ -210,9 +228,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].ExternalColumns[UserRoleId]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[UserRoleId]" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[UserRoleId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -220,19 +240,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[UserRoleId]" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[UserRoleId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -263,9 +287,9 @@
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="UserRoleId" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[UserRoleId]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[UserRoleId]">
@@ -283,15 +307,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData1_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="UserRoleId" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[UserRoleId]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[UserRoleId]">
@@ -309,15 +338,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData2_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="UserRoleId" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[UserRoleId]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[UserRoleId]">
@@ -335,15 +369,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData3_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="UserRoleId" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[UserRoleId]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[UserRoleId]">
@@ -361,6 +400,11 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_UserRole\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input dangling="true" hasSideEffects="true" name="Input1" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Inputs[Input1]">
@@ -373,13 +417,15 @@
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[UserRoleId]" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[UserRoleId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                   </outputColumns>
                 </output>
@@ -395,21 +441,25 @@
                   <externalMetadataColumns isUsed="True">
                     <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_created_on" refId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_created_on]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="UserRoleId" refId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[UserRoleId]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[as_of_change_version]">
                     </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="UserRoleId" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[UserRoleId]" lineageId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[UserRoleId]" refId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[UserRoleId]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_UserRole\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_UserRole\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
                   </inputColumns>
                 </input>
@@ -461,110 +511,130 @@
   </DTS:Executables>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F166139F-5CC3-413B-8D8B-7A075455D697}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0D0CD2B9-D3D1-47E4-9B82-F4C7E31A9292}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5657CAC2-FBAE-4A0E-B54F-F86A17EE8D6C}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{41074181-0945-4C8B-8BD3-E7936D070110}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{461718D8-00F7-45A5-BB80-8E6BB65BBBAA}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E58CD411-8131-4C2F-95A4-DCDFAF6CBA0C}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
+      <DTS:VariableValue DTS:DataType="8">--UserRole
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 0
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					UserRoleId,
 					ROW_NUMBER() OVER (ORDER BY UserRoleId) as rn
 				FROM [dbo].[UserRole]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [UserRole], (UserRoleId), (stream.UserRoleId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{893E2F2B-61B1-4AF9-844D-C25259DABA74}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{567F8B11-1A7D-4258-9EA0-4233085556A5}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
+      <DTS:VariableValue DTS:DataType="8">--UserRole
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 1
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					UserRoleId,
 					ROW_NUMBER() OVER (ORDER BY UserRoleId) as rn
 				FROM [dbo].[UserRole]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [UserRole], (UserRoleId), (stream.UserRoleId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3E7D1365-F62E-4D6E-9EF4-23B34AF047D1}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{18A22E9F-80B1-4872-B418-4D92D60D06BB}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
+      <DTS:VariableValue DTS:DataType="8">--UserRole
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 2
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					UserRoleId,
 					ROW_NUMBER() OVER (ORDER BY UserRoleId) as rn
 				FROM [dbo].[UserRole]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [UserRole], (UserRoleId), (stream.UserRoleId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8F057A64-0BE8-4C6E-B256-2429739E73CB}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BD675CC1-DAB6-4229-9013-0AEB8A405A03}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
+      <DTS:VariableValue DTS:DataType="8">--UserRole
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 3
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					UserRoleId,
 					ROW_NUMBER() OVER (ORDER BY UserRoleId) as rn
 				FROM [dbo].[UserRole]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [UserRole], (UserRoleId), (stream.UserRoleId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

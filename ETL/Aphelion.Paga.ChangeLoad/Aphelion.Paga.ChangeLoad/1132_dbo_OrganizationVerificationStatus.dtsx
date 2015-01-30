@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/29/2015 16:45:54" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{B3A9CF7F-14AC-4BCA-BF16-53DE86885A87}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1132_dbo_OrganizationVerificationStatus" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{7F1B1E51-2804-4844-92BE-8BEBE284880C}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="01/30/2015 14:50:29" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{8C7FB8A9-8D7F-4027-A04C-32AD40E4470D}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1132_dbo_OrganizationVerificationStatus" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{E4F75348-D4CE-4619-A24A-4337E578AB8F}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{621BA53E-D1F4-4E01-BEC4-12869AF48035}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_OrganizationVerificationStatus" DTS:refId="Package\DFT_Load dbo_OrganizationVerificationStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{63E941C1-34CB-4102-9CE5-EA560C1CA362}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_OrganizationVerificationStatus" DTS:refId="Package\DFT_Load dbo_OrganizationVerificationStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -13,7 +13,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]">
                     </externalMetadataColumn>
@@ -21,9 +21,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[OrganizationVerificationStatusId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -31,19 +33,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[OrganizationVerificationStatusId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -76,7 +82,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]">
                     </externalMetadataColumn>
@@ -84,9 +90,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[OrganizationVerificationStatusId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -94,19 +102,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[OrganizationVerificationStatusId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -139,7 +151,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]">
                     </externalMetadataColumn>
@@ -147,9 +159,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[OrganizationVerificationStatusId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -157,19 +171,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[OrganizationVerificationStatusId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -202,7 +220,7 @@
               <outputs>
                 <output name="Output" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]">
                     </externalMetadataColumn>
@@ -210,9 +228,11 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].ExternalColumns[grp]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[OrganizationVerificationStatusId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -220,19 +240,23 @@
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                   </outputColumns>
                 </output>
                 <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[OrganizationVerificationStatusId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -263,9 +287,9 @@
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="OrganizationVerificationStatusId" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[OrganizationVerificationStatusId]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[OrganizationVerificationStatusId]">
@@ -283,15 +307,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData1_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="OrganizationVerificationStatusId" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[OrganizationVerificationStatusId]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[OrganizationVerificationStatusId]">
@@ -309,15 +338,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData2_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="OrganizationVerificationStatusId" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[OrganizationVerificationStatusId]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[OrganizationVerificationStatusId]">
@@ -335,15 +369,20 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input hasSideEffects="true" name="OLEDB_GetData3_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[as_of_change_version]">
                       <properties>
-                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]}</property>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="OrganizationVerificationStatusId" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[OrganizationVerificationStatusId]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[OrganizationVerificationStatusId]">
@@ -361,6 +400,11 @@
                         <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                 </input>
                 <input dangling="true" hasSideEffects="true" name="Input1" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[Input1]">
@@ -373,13 +417,15 @@
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[OrganizationVerificationStatusId]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[rn]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
                   </outputColumns>
                 </output>
@@ -395,21 +441,25 @@
                   <externalMetadataColumns isUsed="True">
                     <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_created_on" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_created_on]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="CHANGE_TRACKING_CURRENT_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[OrganizationVerificationStatusId]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="CHANGE_TRACKING_CURRENT_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[CHANGE_TRACKING_CURRENT_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[CHANGE_TRACKING_CURRENT_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[CHANGE_TRACKING_CURRENT_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[as_of_change_version]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="OrganizationVerificationStatusId" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[OrganizationVerificationStatusId]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[OrganizationVerificationStatusId]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[OrganizationVerificationStatusId]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
                   </inputColumns>
                 </input>
@@ -461,110 +511,130 @@
   </DTS:Executables>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4102C907-2EB1-46B1-B588-F25BF3D4BD64}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{713BE0C6-5F55-4DE7-8601-F9D587827780}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{19CC2677-99F0-4181-A128-17DCD3ADD2E9}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{93364CC9-9360-4F20-9AED-E5D7D251BC4E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
       <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BB6084AB-EB7D-4980-8C14-D2BB2A85CFDC}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2B83668C-7E80-4788-966B-18EE7D8BD416}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
+      <DTS:VariableValue DTS:DataType="8">--OrganizationVerificationStatus
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 0
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					OrganizationVerificationStatusId,
 					ROW_NUMBER() OVER (ORDER BY OrganizationVerificationStatusId) as rn
 				FROM [dbo].[OrganizationVerificationStatus]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [OrganizationVerificationStatus], (OrganizationVerificationStatusId), (stream.OrganizationVerificationStatusId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{71337C5F-F26B-40AC-B4B6-5C0BCCD1EB6A}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AE6555D1-3FC2-43C8-A440-4E89CC75A494}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
+      <DTS:VariableValue DTS:DataType="8">--OrganizationVerificationStatus
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 1
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					OrganizationVerificationStatusId,
 					ROW_NUMBER() OVER (ORDER BY OrganizationVerificationStatusId) as rn
 				FROM [dbo].[OrganizationVerificationStatus]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [OrganizationVerificationStatus], (OrganizationVerificationStatusId), (stream.OrganizationVerificationStatusId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C603E841-BB53-459F-A9F2-606ADE3FFF7A}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1124414D-E1BD-4398-A387-1E4B4FEC3761}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
+      <DTS:VariableValue DTS:DataType="8">--OrganizationVerificationStatus
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 2
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					OrganizationVerificationStatusId,
 					ROW_NUMBER() OVER (ORDER BY OrganizationVerificationStatusId) as rn
 				FROM [dbo].[OrganizationVerificationStatus]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [OrganizationVerificationStatus], (OrganizationVerificationStatusId), (stream.OrganizationVerificationStatusId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2F61326E-1972-4A9E-AEE6-368D884F8A29}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON;
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{13350947-D862-4E2A-A6AA-EE8B7462D092}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
+      <DTS:VariableValue DTS:DataType="8">--OrganizationVerificationStatus
+		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 3
 
 		SELECT
-			c.*
+			stream.*,
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
-				*
+				bq.*,
+				g.grp
 			FROM
 			( 
 				SELECT 
-					CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
 					OrganizationVerificationStatusId,
 					ROW_NUMBER() OVER (ORDER BY OrganizationVerificationStatusId) as rn
 				FROM [dbo].[OrganizationVerificationStatus]  AS bq
 			) AS bq
-				CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-				WHERE 
-						g.grp = @grp
-		) AS c
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [OrganizationVerificationStatus], (OrganizationVerificationStatusId), (stream.OrganizationVerificationStatusId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

@@ -1,50 +1,26 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="1/17/2015 4:57:22 PM"
+  DTS:CreationDate="1/30/2015 2:50:23 PM"
   DTS:CreationName="SSIS.Package.3"
-  DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
-  DTS:CreatorName="Administrator"
-  DTS:DTSID="{66406545-86FC-4559-8CDB-407161327B04}"
+  DTS:CreatorComputerName="PAGA01SV015"
+  DTS:CreatorName="christina.leo.apheli"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{92A62CC4-F41F-4418-88F2-5A79EA0CEA9F}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="100_DummyTablePackage"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{466BA239-8251-4B58-BFCB-A53B4DFD4976}"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{131AAAAC-EEC5-4A6E-9C65-342F77F82266}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
-  <DTS:PackageParameters>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="8"
-      DTS:DTSID="{C3F78C49-2FC1-4BD5-BF35-71EEB8D99D19}"
-      DTS:ObjectName="strParm1">
-      <DTS:Property
-        DTS:DataType="8"
-        DTS:Name="ParameterValue"
-        xml:space="preserve"></DTS:Property>
-    </DTS:PackageParameter>
-  </DTS:PackageParameters>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{9D262494-9DBD-4590-ABB9-47B49EC8F538}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT &#xA;&#x9;&#x9;FinancialAccountId&#xA;&#x9;FROM FinancialAccount AS bq&quot;"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue
-        DTS:DataType="8">SELECT 
-		FinancialAccountId
-	FROM FinancialAccount AS bq</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{EFC6187A-3DFC-4AB8-9F30-CCE0F3F0D52E}"
+      DTS:DTSID="{23DCEF14-268F-4D5B-8B64-E660FE899A73}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="CurrentVersion">
@@ -53,20 +29,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3D9688F0-D03C-4459-A1D0-9A078423CC96}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::BaseQuery]+ &quot; &quot; +@[$Package::strParm1] +&quot;;&quot;"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue
-        DTS:DataType="8">SELECT 
-		FinancialAccountId
-	FROM FinancialAccount AS bq ;</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{56B6AF6A-7FCE-4F53-9B45-D2B3F463EE3F}"
+      DTS:DTSID="{01E45772-29E8-4456-A246-100186042F98}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LastSyncVersion">
@@ -75,99 +38,155 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{99C75DD4-A412-45A6-8959-3B2AD60DBCF6}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS TINYINT = 0&#xA;&#xA;SELECT&#xA;&#x9;stream.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;FinancialAccountId&#xA;&#x9;FROM FinancialAccount AS bq&#xA;&#x9;CROSS APPLY (SELECT (CAST(FinancialAccountId AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;WHERE &#xA;&#x9;&#x9;g.grp = @grp&#xA;) AS stream&quot;"
+      DTS:DTSID="{7B8F33D3-D223-41E5-A30F-2CA582E02B8D}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="Variable">
+      DTS:ObjectName="Stream0">
       <DTS:VariableValue
-        DTS:DataType="8">DECLARE @grp AS TINYINT = 0
+        DTS:DataType="8">--AccountCode
+		SET NOCOUNT ON;
+			
+		DECLARE @grp AS TINYINT = 0
 
-SELECT
-	stream.*
-FROM
-(
-	SELECT 
-		FinancialAccountId
-	FROM FinancialAccount AS bq
-	CROSS APPLY (SELECT (CAST(FinancialAccountId AS VARCHAR) % 4) AS grp) as g
-	WHERE 
-		g.grp = @grp
-) AS stream</DTS:VariableValue>
+		SELECT
+			stream.*,
+			c.SYS_CHANGE_VERSION
+		FROM
+		(
+			SELECT
+				bq.*,
+				g.grp
+			FROM
+			( 
+				SELECT 
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+					AccountCodeId,
+					ROW_NUMBER() OVER (ORDER BY AccountCodeId) as rn
+				FROM [dbo].[AccountCode]  AS bq
+			) AS bq
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [AccountCode], (AccountCodeId), (stream.AccountCodeId)) AS c
+		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{73EAC667-813D-4E70-A9A6-D7F7A39EFCB2}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS TINYINT = 1&#xA;SELECT&#xA;&#x9;stream.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;FinancialAccountId&#xA;&#x9;FROM FinancialAccount AS bq&#xA;&#x9;CROSS APPLY (SELECT (CAST(FinancialAccountId AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;WHERE &#xA;&#x9;&#x9;g.grp = @grp&#xA;) AS stream&quot;"
+      DTS:DTSID="{8A004197-BE50-49C1-8CEF-35234D835670}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="Variable1">
+      DTS:ObjectName="Stream1">
       <DTS:VariableValue
-        DTS:DataType="8">DECLARE @grp AS TINYINT = 1
-SELECT
-	stream.*
-FROM
-(
-	SELECT 
-		FinancialAccountId
-	FROM FinancialAccount AS bq
-	CROSS APPLY (SELECT (CAST(FinancialAccountId AS VARCHAR) % 4) AS grp) as g
-	WHERE 
-		g.grp = @grp
-) AS stream</DTS:VariableValue>
+        DTS:DataType="8">--AccountCode
+		SET NOCOUNT ON;
+			
+		DECLARE @grp AS TINYINT = 1
+
+		SELECT
+			stream.*,
+			c.SYS_CHANGE_VERSION
+		FROM
+		(
+			SELECT
+				bq.*,
+				g.grp
+			FROM
+			( 
+				SELECT 
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+					AccountCodeId,
+					ROW_NUMBER() OVER (ORDER BY AccountCodeId) as rn
+				FROM [dbo].[AccountCode]  AS bq
+			) AS bq
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [AccountCode], (AccountCodeId), (stream.AccountCodeId)) AS c
+		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{638B76AF-2277-4795-89E1-2C4EC49A609E}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS TINYINT = 2&#xA;SELECT&#xA;&#x9;stream.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;FinancialAccountId&#xA;&#x9;FROM FinancialAccount AS bq&#xA;&#x9;CROSS APPLY (SELECT (CAST(FinancialAccountId AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;WHERE &#xA;&#x9;&#x9;g.grp = @grp&#xA;) AS stream&quot;"
+      DTS:DTSID="{47041464-6B9A-4932-B733-66AFEB1FF847}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="Variable2">
+      DTS:ObjectName="Stream2">
       <DTS:VariableValue
-        DTS:DataType="8">DECLARE @grp AS TINYINT = 2
-SELECT
-	stream.*
-FROM
-(
-	SELECT 
-		FinancialAccountId
-	FROM FinancialAccount AS bq
-	CROSS APPLY (SELECT (CAST(FinancialAccountId AS VARCHAR) % 4) AS grp) as g
-	WHERE 
-		g.grp = @grp
-) AS stream</DTS:VariableValue>
+        DTS:DataType="8">--AccountCode
+		SET NOCOUNT ON;
+			
+		DECLARE @grp AS TINYINT = 2
+
+		SELECT
+			stream.*,
+			c.SYS_CHANGE_VERSION
+		FROM
+		(
+			SELECT
+				bq.*,
+				g.grp
+			FROM
+			( 
+				SELECT 
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+					AccountCodeId,
+					ROW_NUMBER() OVER (ORDER BY AccountCodeId) as rn
+				FROM [dbo].[AccountCode]  AS bq
+			) AS bq
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [AccountCode], (AccountCodeId), (stream.AccountCodeId)) AS c
+		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3D51F5F2-A6E8-42EA-A08B-BF61102F6A1C}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS TINYINT = 3&#xA;SELECT&#xA;&#x9;stream.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;FinancialAccountId&#xA;&#x9;FROM FinancialAccount AS bq&#xA;&#x9;CROSS APPLY (SELECT (CAST(FinancialAccountId AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;WHERE &#xA;&#x9;&#x9;g.grp = @grp&#xA;) AS stream&quot;"
+      DTS:DTSID="{2C4D205B-C2D6-42FC-99DD-32004159DF52}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="Variable3">
+      DTS:ObjectName="Stream3">
       <DTS:VariableValue
-        DTS:DataType="8">DECLARE @grp AS TINYINT = 3
-SELECT
-	stream.*
-FROM
-(
-	SELECT 
-		FinancialAccountId
-	FROM FinancialAccount AS bq
-	CROSS APPLY (SELECT (CAST(FinancialAccountId AS VARCHAR) % 4) AS grp) as g
-	WHERE 
-		g.grp = @grp
-) AS stream</DTS:VariableValue>
+        DTS:DataType="8">--AccountCode
+		SET NOCOUNT ON;
+			
+		DECLARE @grp AS TINYINT = 3
+
+		SELECT
+			stream.*,
+			c.SYS_CHANGE_VERSION
+		FROM
+		(
+			SELECT
+				bq.*,
+				g.grp
+			FROM
+			( 
+				SELECT 
+					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+					AccountCodeId,
+					ROW_NUMBER() OVER (ORDER BY AccountCodeId) as rn
+				FROM [dbo].[AccountCode]  AS bq
+			) AS bq
+			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+			WHERE 
+					g.grp = @grp
+		) AS stream
+		CROSS APPLY 
+			CHANGETABLE (VERSION [AccountCode], (AccountCodeId), (stream.AccountCodeId)) AS c
+		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\DFT_Load dbo_AccountCode"
       DTS:CreationName="SSIS.Pipeline.3"
-      DTS:DTSID="{2A1DA41A-62B1-406F-8E04-9AE7CAC3009D}"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{2F05AD45-3236-4DD7-A440-C678A45D75C9}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
       DTS:ObjectName="DFT_Load dbo_AccountCode"
@@ -180,72 +199,175 @@ FROM
           version="1">
           <components>
             <component
-              refId="Package\DFT_Load dbo_AccountCode\Derived Column"
-              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT_Load dbo_AccountCode\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
+              refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLEDB_GetData0"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::Stream0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Connections[OleDbConnection]"
+                  connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
               <outputs>
                 <output
-                  refId="Package\DFT_Load dbo_AccountCode\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\DFT_Load dbo_AccountCode\Derived Column.Inputs[Derived Column Input]">
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output]"
+                  name="Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\Derived Column.Outputs[Derived Column Output].Columns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="1"
-                      lineageId="Package\DFT_Load dbo_AccountCode\Derived Column.Outputs[Derived Column Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">"I"</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">"I"</property>
-                      </properties>
-                    </outputColumn>
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].ExternalColumns[as_of_change_version]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]"
+                      name="as_of_change_version"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[AccountCodeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].ExternalColumns[AccountCodeId]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[AccountCodeId]"
+                      name="AccountCodeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[rn]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].ExternalColumns[rn]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[rn]"
+                      name="rn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[grp]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].ExternalColumns[grp]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[grp]"
+                      name="grp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
-                  <externalMetadataColumns />
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].ExternalColumns[as_of_change_version]"
+                      dataType="i8"
+                      name="as_of_change_version" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].ExternalColumns[AccountCodeId]"
+                      dataType="i4"
+                      name="AccountCodeId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].ExternalColumns[rn]"
+                      dataType="i8"
+                      name="rn" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].ExternalColumns[grp]"
+                      dataType="i4"
+                      name="grp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                  </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT_Load dbo_AccountCode\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error]"
                   isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT_Load dbo_AccountCode\Derived Column.Inputs[Derived Column Input]">
+                  name="Error">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[as_of_change_version]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[as_of_change_version]"
+                      name="as_of_change_version" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[AccountCodeId]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[AccountCodeId]"
+                      name="AccountCodeId" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[rn]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[rn]"
+                      name="rn" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[grp]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[grp]"
+                      name="grp" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -254,11 +376,541 @@ FROM
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination"
+              refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLEDB_GetData1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::Stream1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Connections[OleDbConnection]"
+                  connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].ExternalColumns[as_of_change_version]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]"
+                      name="as_of_change_version"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[AccountCodeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].ExternalColumns[AccountCodeId]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[AccountCodeId]"
+                      name="AccountCodeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[rn]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].ExternalColumns[rn]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[rn]"
+                      name="rn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[grp]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].ExternalColumns[grp]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[grp]"
+                      name="grp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].ExternalColumns[as_of_change_version]"
+                      dataType="i8"
+                      name="as_of_change_version" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].ExternalColumns[AccountCodeId]"
+                      dataType="i4"
+                      name="AccountCodeId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].ExternalColumns[rn]"
+                      dataType="i8"
+                      name="rn" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].ExternalColumns[grp]"
+                      dataType="i4"
+                      name="grp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[as_of_change_version]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[as_of_change_version]"
+                      name="as_of_change_version" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[AccountCodeId]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[AccountCodeId]"
+                      name="AccountCodeId" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[rn]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[rn]"
+                      name="rn" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[grp]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[grp]"
+                      name="grp" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLEDB_GetData2"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::Stream2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Connections[OleDbConnection]"
+                  connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].ExternalColumns[as_of_change_version]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]"
+                      name="as_of_change_version"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[AccountCodeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].ExternalColumns[AccountCodeId]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[AccountCodeId]"
+                      name="AccountCodeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[rn]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].ExternalColumns[rn]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[rn]"
+                      name="rn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[grp]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].ExternalColumns[grp]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[grp]"
+                      name="grp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].ExternalColumns[as_of_change_version]"
+                      dataType="i8"
+                      name="as_of_change_version" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].ExternalColumns[AccountCodeId]"
+                      dataType="i4"
+                      name="AccountCodeId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].ExternalColumns[rn]"
+                      dataType="i8"
+                      name="rn" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].ExternalColumns[grp]"
+                      dataType="i4"
+                      name="grp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[as_of_change_version]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[as_of_change_version]"
+                      name="as_of_change_version" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[AccountCodeId]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[AccountCodeId]"
+                      name="AccountCodeId" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[rn]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[rn]"
+                      name="rn" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[grp]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[grp]"
+                      name="grp" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLEDB_GetData3"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::Stream3</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Connections[OleDbConnection]"
+                  connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].ExternalColumns[as_of_change_version]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]"
+                      name="as_of_change_version"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[AccountCodeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].ExternalColumns[AccountCodeId]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[AccountCodeId]"
+                      name="AccountCodeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[rn]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].ExternalColumns[rn]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[rn]"
+                      name="rn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[grp]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].ExternalColumns[grp]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[grp]"
+                      name="grp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].ExternalColumns[as_of_change_version]"
+                      dataType="i8"
+                      name="as_of_change_version" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].ExternalColumns[AccountCodeId]"
+                      dataType="i4"
+                      name="AccountCodeId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].ExternalColumns[rn]"
+                      dataType="i8"
+                      name="rn" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].ExternalColumns[grp]"
+                      dataType="i4"
+                      name="grp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[as_of_change_version]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[as_of_change_version]"
+                      name="as_of_change_version" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[AccountCodeId]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[AccountCodeId]"
+                      name="AccountCodeId" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[rn]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[rn]"
+                      name="rn" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[grp]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[grp]"
+                      name="grp" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog"
               componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Destination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDB_InsertIntoChangeLog"
               usesDispositions="true"
               version="4">
               <properties>
@@ -269,7 +921,7 @@ FROM
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FinancialAccount]</property>
+                  name="OpenRowset">dbo.AccountCode</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -290,8 +942,7 @@ FROM
                 <property
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  name="AccessMode">3</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -311,7 +962,7 @@ FROM
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Connections[OleDbConnection]"
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Connections[OleDbConnection]"
                   connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -319,90 +970,84 @@ FROM
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
-                  name="OLE DB Destination Input">
+                  name="UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FinancialAccountId]"
-                      cachedDataType="i4"
-                      cachedName="FinancialAccountId"
-                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FinancialAccountId]"
-                      lineageId="Package\DFT_Load dbo_AccountCode\Union All.Outputs[Union All Output 1].Columns[FinancialAccountId]" />
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[as_of_change_version]"
+                      cachedDataType="i8"
+                      cachedName="as_of_change_version"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]" />
                     <inputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SYS_CHANGE_OPERATION]"
-                      cachedDataType="wstr"
-                      cachedLength="1"
-                      cachedName="SYS_CHANGE_OPERATION"
-                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      lineageId="Package\DFT_Load dbo_AccountCode\Derived Column.Outputs[Derived Column Output].Columns[SYS_CHANGE_OPERATION]" />
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[AccountCodeId]"
+                      cachedDataType="i4"
+                      cachedName="AccountCodeId"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[AccountCodeId]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[AccountCodeId]" />
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]"
+                      dataType="i4"
+                      name="row_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_created_on]"
+                      dataType="dbTimeStamp"
+                      name="sys_created_on" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       name="SYS_CHANGE_VERSION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]"
                       dataType="i8"
                       name="SYS_CHANGE_CREATION_VERSION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      dataType="wstr"
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
                       length="1"
                       name="SYS_CHANGE_OPERATION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_COLUMNS]"
-                      dataType="bytes"
-                      length="4100"
-                      name="SYS_CHANGE_COLUMNS" />
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]"
+                      dataType="i8"
+                      name="as_of_change_version" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SYS_CHANGE_CONTEXT]"
-                      dataType="bytes"
-                      length="128"
-                      name="SYS_CHANGE_CONTEXT" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FinancialAccountId]"
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[AccountCodeId]"
                       dataType="i4"
-                      name="FinancialAccountId" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sys_CreatedBy]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="sys_CreatedBy" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sys_CreatedOn]"
-                      dataType="dbTimeStamp"
-                      name="sys_CreatedOn" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[row_id]"
-                      dataType="i4"
-                      name="row_id" />
+                      name="AccountCodeId" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Outputs[Error]"
                   exclusionGroup="1"
                   isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  name="Error"
+                  synchronousInputId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -411,534 +1056,341 @@ FROM
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData"
-              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              name="OLEDB_GetData"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable">User::Variable</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Connections[OleDbConnection]"
-                  connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output]"
-                  name="Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[FinancialAccountId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].ExternalColumns[FinancialAccountId]"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[FinancialAccountId]"
-                      name="FinancialAccountId"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].ExternalColumns[FinancialAccountId]"
-                      dataType="i4"
-                      name="FinancialAccountId" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error]"
-                  isErrorOut="true"
-                  name="Error">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[FinancialAccountId]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[FinancialAccountId]"
-                      name="FinancialAccountId" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1"
-              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              name="OLEDB_GetData 1"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable">User::Variable1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Connections[OleDbConnection]"
-                  connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Output]"
-                  name="Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Output].Columns[FinancialAccountId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Output].ExternalColumns[FinancialAccountId]"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Output].Columns[FinancialAccountId]"
-                      name="FinancialAccountId"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Output].ExternalColumns[FinancialAccountId]"
-                      dataType="i4"
-                      name="FinancialAccountId" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Error]"
-                  isErrorOut="true"
-                  name="Error">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Error].Columns[FinancialAccountId]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Error].Columns[FinancialAccountId]"
-                      name="FinancialAccountId" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2"
-              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              name="OLEDB_GetData 2"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable">User::Variable2</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Connections[OleDbConnection]"
-                  connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Output]"
-                  name="Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Output].Columns[FinancialAccountId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Output].ExternalColumns[FinancialAccountId]"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Output].Columns[FinancialAccountId]"
-                      name="FinancialAccountId"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Output].ExternalColumns[FinancialAccountId]"
-                      dataType="i4"
-                      name="FinancialAccountId" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Error]"
-                  isErrorOut="true"
-                  name="Error">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Error].Columns[FinancialAccountId]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Error].Columns[FinancialAccountId]"
-                      name="FinancialAccountId" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3"
-              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              name="OLEDB_GetData 3"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable">User::Variable3</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Connections[OleDbConnection]"
-                  connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Output]"
-                  name="Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Output].Columns[FinancialAccountId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Output].ExternalColumns[FinancialAccountId]"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Output].Columns[FinancialAccountId]"
-                      name="FinancialAccountId"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Output].ExternalColumns[FinancialAccountId]"
-                      dataType="i4"
-                      name="FinancialAccountId" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Error]"
-                  isErrorOut="true"
-                  name="Error">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Error].Columns[FinancialAccountId]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Error].Columns[FinancialAccountId]"
-                      name="FinancialAccountId" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load dbo_AccountCode\Union All"
+              refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams"
               componentClassID="{B594E9A8-4351-4939-891C-CFE1AB93E925}"
-              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
-              name="Union All"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              name="UA_JoinStreams"
               version="1">
               <inputs>
                 <input
-                  refId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 1]"
-                  name="Union All Input 1">
+                  refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams]"
+                  name="OLEDB_GetData0_Output_UA_JoinStreams">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 1].Columns[FinancialAccountId]"
-                      cachedDataType="i4"
-                      cachedName="FinancialAccountId"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Output].Columns[FinancialAccountId]">
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[as_of_change_version]"
+                      cachedDataType="i8"
+                      cachedName="as_of_change_version"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[as_of_change_version]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\Union All.Outputs[Union All Output 1].Columns[FinancialAccountId]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[AccountCodeId]"
+                      cachedDataType="i4"
+                      cachedName="AccountCodeId"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[AccountCodeId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[AccountCodeId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[rn]"
+                      cachedDataType="i8"
+                      cachedName="rn"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[rn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[grp]"
+                      cachedDataType="i4"
+                      cachedName="grp"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[grp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 2]"
+                  refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams]"
                   hasSideEffects="true"
-                  name="Union All Input 2">
+                  name="OLEDB_GetData1_Output_UA_JoinStreams">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 2].Columns[FinancialAccountId]"
-                      cachedDataType="i4"
-                      cachedName="FinancialAccountId"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Output].Columns[FinancialAccountId]">
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[as_of_change_version]"
+                      cachedDataType="i8"
+                      cachedName="as_of_change_version"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[as_of_change_version]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\Union All.Outputs[Union All Output 1].Columns[FinancialAccountId]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[AccountCodeId]"
+                      cachedDataType="i4"
+                      cachedName="AccountCodeId"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[AccountCodeId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[AccountCodeId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[rn]"
+                      cachedDataType="i8"
+                      cachedName="rn"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[rn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[grp]"
+                      cachedDataType="i4"
+                      cachedName="grp"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[grp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 3]"
+                  refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams]"
                   hasSideEffects="true"
-                  name="Union All Input 3">
+                  name="OLEDB_GetData2_Output_UA_JoinStreams">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 3].Columns[FinancialAccountId]"
-                      cachedDataType="i4"
-                      cachedName="FinancialAccountId"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Output].Columns[FinancialAccountId]">
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[as_of_change_version]"
+                      cachedDataType="i8"
+                      cachedName="as_of_change_version"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[as_of_change_version]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\Union All.Outputs[Union All Output 1].Columns[FinancialAccountId]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[AccountCodeId]"
+                      cachedDataType="i4"
+                      cachedName="AccountCodeId"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[AccountCodeId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[AccountCodeId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[rn]"
+                      cachedDataType="i8"
+                      cachedName="rn"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[rn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[grp]"
+                      cachedDataType="i4"
+                      cachedName="grp"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[grp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 4]"
+                  refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams]"
                   hasSideEffects="true"
-                  name="Union All Input 4">
+                  name="OLEDB_GetData3_Output_UA_JoinStreams">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 4].Columns[FinancialAccountId]"
-                      cachedDataType="i4"
-                      cachedName="FinancialAccountId"
-                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output].Columns[FinancialAccountId]">
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[as_of_change_version]"
+                      cachedDataType="i8"
+                      cachedName="as_of_change_version"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[as_of_change_version]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\Union All.Outputs[Union All Output 1].Columns[FinancialAccountId]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[AccountCodeId]"
+                      cachedDataType="i4"
+                      cachedName="AccountCodeId"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[AccountCodeId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[AccountCodeId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[rn]"
+                      cachedDataType="i8"
+                      cachedName="rn"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[rn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[grp]"
+                      cachedDataType="i4"
+                      cachedName="grp"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[grp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      lineageId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 5]"
+                  refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[Input1]"
                   dangling="true"
                   hasSideEffects="true"
-                  name="Union All Input 5">
+                  name="Input1">
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT_Load dbo_AccountCode\Union All.Outputs[Union All Output 1]"
-                  name="Union All Output 1">
+                  refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output]"
+                  name="Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load dbo_AccountCode\Union All.Outputs[Union All Output 1].Columns[FinancialAccountId]"
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]"
+                      name="as_of_change_version" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[AccountCodeId]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load dbo_AccountCode\Union All.Outputs[Union All Output 1].Columns[FinancialAccountId]"
-                      name="FinancialAccountId" />
+                      lineageId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[AccountCodeId]"
+                      name="AccountCodeId" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[rn]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[rn]"
+                      name="rn" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[grp]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[grp]"
+                      name="grp" />
+                    <outputColumn
+                      refId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -947,35 +1399,30 @@ FROM
           </components>
           <paths>
             <path
-              refId="Package\DFT_Load dbo_AccountCode.Paths[Derived Column Output]"
-              endId="Package\DFT_Load dbo_AccountCode\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\DFT_Load dbo_AccountCode\Derived Column.Outputs[Derived Column Output]" />
+              refId="Package\DFT_Load dbo_AccountCode.Paths[OLEDB_GetData0_Output_UA_JoinStreams]"
+              endId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData0_Output_UA_JoinStreams]"
+              name="OLEDB_GetData0_Output_UA_JoinStreams"
+              startId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load dbo_AccountCode.Paths[Output3]"
-              endId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 4]"
-              name="Output"
-              startId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData.Outputs[Output]" />
+              refId="Package\DFT_Load dbo_AccountCode.Paths[OLEDB_GetData1_Output_UA_JoinStreams]"
+              endId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData1_Output_UA_JoinStreams]"
+              name="OLEDB_GetData1_Output_UA_JoinStreams"
+              startId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load dbo_AccountCode.Paths[Output]"
-              endId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 1]"
-              name="Output"
-              startId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3.Outputs[Output]" />
+              refId="Package\DFT_Load dbo_AccountCode.Paths[OLEDB_GetData2_Output_UA_JoinStreams]"
+              endId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData2_Output_UA_JoinStreams]"
+              name="OLEDB_GetData2_Output_UA_JoinStreams"
+              startId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load dbo_AccountCode.Paths[Output1]"
-              endId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 2]"
-              name="Output"
-              startId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2.Outputs[Output]" />
+              refId="Package\DFT_Load dbo_AccountCode.Paths[OLEDB_GetData3_Output_UA_JoinStreams]"
+              endId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams]"
+              name="OLEDB_GetData3_Output_UA_JoinStreams"
+              startId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load dbo_AccountCode.Paths[Output2]"
-              endId="Package\DFT_Load dbo_AccountCode\Union All.Inputs[Union All Input 3]"
-              name="Output"
-              startId="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load dbo_AccountCode.Paths[Union All Output 1]"
-              endId="Package\DFT_Load dbo_AccountCode\Derived Column.Inputs[Derived Column Input]"
-              name="Union All Output 1"
-              startId="Package\DFT_Load dbo_AccountCode\Union All.Outputs[Union All Output 1]" />
+              refId="Package\DFT_Load dbo_AccountCode.Paths[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]"
+              endId="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]"
+              name="UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog"
+              startId="Package\DFT_Load dbo_AccountCode\UA_JoinStreams.Outputs[Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -994,7 +1441,7 @@ FROM
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="214,42"
+          Size="216,42"
           Id="Package\DFT_Load dbo_AccountCode"
           TopLeft="5.5,5.5" />
       </GraphLayout>
@@ -1006,51 +1453,55 @@ FROM
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="155,42"
-          Id="Package\DFT_Load dbo_AccountCode\OLEDB_GetData"
-          TopLeft="36.5,17.5" />
+          Size="163,42"
+          Id="Package\DFT_Load dbo_AccountCode\OLEDB_GetData2"
+          TopLeft="5.5,5.5" />
         <NodeLayout
-          Size="155,42"
-          Id="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1"
-          TopLeft="254.5,24.5" />
+          Size="163,42"
+          Id="Package\DFT_Load dbo_AccountCode\OLEDB_GetData1"
+          TopLeft="229.5,5.49999999999989" />
         <NodeLayout
-          Size="155,42"
-          Id="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2"
-          TopLeft="495.5,10.5" />
+          Size="163,42"
+          Id="Package\DFT_Load dbo_AccountCode\OLEDB_GetData0"
+          TopLeft="453.5,5.49999999999989" />
         <NodeLayout
-          Size="155,42"
-          Id="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3"
-          TopLeft="709.5,8.5" />
+          Size="219,42"
+          Id="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog"
+          TopLeft="425.5,209.5" />
         <NodeLayout
-          Size="123,42"
-          Id="Package\DFT_Load dbo_AccountCode\Union All"
-          TopLeft="395,163" />
+          Size="157,42"
+          Id="Package\DFT_Load dbo_AccountCode\UA_JoinStreams"
+          TopLeft="456.5,107.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\DFT_Load dbo_AccountCode\OLEDB_GetData3"
+          TopLeft="677.5,5.49999999999989" />
         <EdgeLayout
-          Id="Package\DFT_Load dbo_AccountCode.Paths[Output]"
-          TopLeft="787,50.5">
+          Id="Package\DFT_Load dbo_AccountCode.Paths[OLEDB_GetData2_Output_UA_JoinStreams]"
+          TopLeft="87,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-330.5,112.5"
+              EndConnector="403.3,59.9999999999999"
               Start="0,0"
-              End="-330.5,105">
+              End="403.3,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.25" />
+                    End="0,37.9412288512911" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,52.25"
-                    Point2="0,56.25"
-                    Point3="-4,56.25" />
+                    Point1="0,37.9412288512911"
+                    Point2="0,41.9412288512911"
+                    Point3="4,41.9412288512911" />
                   <mssgle:LineSegment
-                    End="-326.5,56.25" />
+                    End="399.3,41.9412288512911" />
                   <mssgle:CubicBezierSegment
-                    Point1="-326.5,56.25"
-                    Point2="-330.5,56.25"
-                    Point3="-330.5,60.25" />
+                    Point1="399.3,41.9412288512911"
+                    Point2="403.3,41.9412288512911"
+                    Point3="403.3,45.9412288512911" />
                   <mssgle:LineSegment
-                    End="-330.5,105" />
+                    End="403.3,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1060,31 +1511,31 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load dbo_AccountCode.Paths[Output1]"
-          TopLeft="573,52.5">
+          Id="Package\DFT_Load dbo_AccountCode.Paths[OLEDB_GetData1_Output_UA_JoinStreams]"
+          TopLeft="311,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-135.666666666667,110.5"
+              EndConnector="209.1,60"
               Start="0,0"
-              End="-135.666666666667,103">
+              End="209.1,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.4486356340289" />
+                    End="0,29.1456720619282" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,61.4486356340289"
-                    Point2="0,65.4486356340289"
-                    Point3="-4,65.4486356340289" />
+                    Point1="0,29.1456720619282"
+                    Point2="0,33.1456720619282"
+                    Point3="4,33.1456720619282" />
                   <mssgle:LineSegment
-                    End="-131.666666666667,65.4486356340289" />
+                    End="205.1,33.1456720619282" />
                   <mssgle:CubicBezierSegment
-                    Point1="-131.666666666667,65.4486356340289"
-                    Point2="-135.666666666667,65.4486356340289"
-                    Point3="-135.666666666667,69.4486356340289" />
+                    Point1="205.1,33.1456720619282"
+                    Point2="209.1,33.1456720619282"
+                    Point3="209.1,37.1456720619282" />
                   <mssgle:LineSegment
-                    End="-135.666666666667,103" />
+                    End="209.1,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1094,31 +1545,31 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load dbo_AccountCode.Paths[Output2]"
-          TopLeft="332,66.5">
+          Id="Package\DFT_Load dbo_AccountCode.Paths[OLEDB_GetData0_Output_UA_JoinStreams]"
+          TopLeft="535,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="95.75,96.5"
+              EndConnector="14.9,60"
               Start="0,0"
-              End="95.75,89">
+              End="14.9,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,58.9681697612732" />
+                    End="0,29.1456720619282" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,58.9681697612732"
-                    Point2="0,62.9681697612732"
-                    Point3="4,62.9681697612732" />
+                    Point1="0,29.1456720619282"
+                    Point2="0,33.1456720619282"
+                    Point3="4,33.1456720619282" />
                   <mssgle:LineSegment
-                    End="91.75,62.9681697612732" />
+                    End="10.9,33.1456720619282" />
                   <mssgle:CubicBezierSegment
-                    Point1="91.75,62.9681697612732"
-                    Point2="95.75,62.9681697612732"
-                    Point3="95.75,66.9681697612732" />
+                    Point1="10.9,33.1456720619282"
+                    Point2="14.9,33.1456720619282"
+                    Point3="14.9,37.1456720619282" />
                   <mssgle:LineSegment
-                    End="95.75,89" />
+                    End="14.9,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1128,31 +1579,19 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load dbo_AccountCode.Paths[Output3]"
-          TopLeft="114,59.5">
+          Id="Package\DFT_Load dbo_AccountCode.Paths[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]"
+          TopLeft="535,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="308,103.5"
+              EndConnector="0,60"
               Start="0,0"
-              End="308,96">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,67.9237288135593" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,67.9237288135593"
-                    Point2="0,71.9237288135593"
-                    Point3="4,71.9237288135593" />
-                  <mssgle:LineSegment
-                    End="304,71.9237288135593" />
-                  <mssgle:CubicBezierSegment
-                    Point1="304,71.9237288135593"
-                    Point2="308,71.9237288135593"
-                    Point3="308,75.9237288135593" />
-                  <mssgle:LineSegment
-                    End="308,96" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1161,74 +1600,32 @@ FROM
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="156,42"
-          Id="Package\DFT_Load dbo_AccountCode\Derived Column"
-          TopLeft="440,254" />
         <EdgeLayout
-          Id="Package\DFT_Load dbo_AccountCode.Paths[Union All Output 1]"
-          TopLeft="456.5,205">
+          Id="Package\DFT_Load dbo_AccountCode.Paths[OLEDB_GetData3_Output_UA_JoinStreams]"
+          TopLeft="759,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="61.5,49"
+              EndConnector="-179.3,60"
               Start="0,0"
-              End="61.5,41.5">
+              End="-179.3,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.5" />
+                    End="0,37.9412288512912" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.5"
-                    Point2="0,24.5"
-                    Point3="4,24.5" />
+                    Point1="0,37.9412288512912"
+                    Point2="0,41.9412288512912"
+                    Point3="-4,41.9412288512912" />
                   <mssgle:LineSegment
-                    End="57.5,24.5" />
+                    End="-175.3,41.9412288512912" />
                   <mssgle:CubicBezierSegment
-                    Point1="57.5,24.5"
-                    Point2="61.5,24.5"
-                    Point3="61.5,28.5" />
+                    Point1="-175.3,41.9412288512912"
+                    Point2="-179.3,41.9412288512912"
+                    Point3="-179.3,45.9412288512912" />
                   <mssgle:LineSegment
-                    End="61.5,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="173,42"
-          Id="Package\DFT_Load dbo_AccountCode\OLE DB Destination"
-          TopLeft="498,418" />
-        <EdgeLayout
-          Id="Package\DFT_Load dbo_AccountCode.Paths[Derived Column Output]"
-          TopLeft="518,296">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="66.5,122"
-              Start="0,0"
-              End="66.5,114.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,57"
-                    Point2="0,61"
-                    Point3="4,61" />
-                  <mssgle:LineSegment
-                    End="62.5,61" />
-                  <mssgle:CubicBezierSegment
-                    Point1="62.5,61"
-                    Point2="66.5,61"
-                    Point3="66.5,65" />
-                  <mssgle:LineSegment
-                    End="66.5,114.5" />
+                    End="-179.3,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1241,39 +1638,7 @@ FROM
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load dbo_AccountCode\OLEDB_GetData">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 1">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 2">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load dbo_AccountCode\OLEDB_GetData 3">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load dbo_AccountCode\OLE DB Destination">
+    design-time-name="Package\DFT_Load dbo_AccountCode\OLEDB_InsertIntoChangeLog">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
