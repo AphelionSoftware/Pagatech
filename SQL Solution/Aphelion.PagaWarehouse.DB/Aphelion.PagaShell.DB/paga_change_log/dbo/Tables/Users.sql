@@ -13,6 +13,8 @@
 
 
 
+
+
 GO
 
 
@@ -39,125 +41,133 @@ CREATE UNIQUE CLUSTERED INDEX [ix_Users]
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'Stream3', @value = N'
-		SET NOCOUNT ON;
+EXECUTE sp_addextendedproperty @name = N'Stream3', @value = N'--User Stream 3
+SET NOCOUNT ON;
 			
-		DECLARE @grp AS TINYINT = 3
+DECLARE @grp AS TINYINT = 3
 
-		SELECT
-			stream.*,
-			c.SYS_CHANGE_VERSION AS InitialVersion
-		FROM
-		(
-			SELECT
-				bq.*,
-				g.grp
-			FROM
-			( 
-				SELECT 
-					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
-					UsersId,
-					ROW_NUMBER() OVER (ORDER BY UsersId) as rn
-				FROM [dbo].[Users]  AS bq
-			) AS bq
-			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-			WHERE 
-					g.grp = @grp
-		) AS stream
-		CROSS APPLY 
-			CHANGETABLE (VERSION Users, (UsersId), (stream.UsersId)) AS c
-		OPTION (MAXDOP 1)', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Users';
+SELECT
+	stream.*,
+	c.SYS_CHANGE_VERSION AS InitialVersion
+FROM
+(
+	SELECT
+		bq.*,
+		g.grp
+	FROM
+	( 
+		SELECT 
+			as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+			UserId,
+			ROW_NUMBER() OVER (ORDER BY UserId) as rn
+		FROM [dbo].[User]  AS bq
+	) AS bq
+	CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+	WHERE 
+			g.grp = @grp
+) AS stream
+CROSS APPLY 
+	CHANGETABLE (VERSION [User], (UserId), (stream.UserId)) AS c
+OPTION (MAXDOP 1)', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Users';
+
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'Stream2', @value = N'
-		SET NOCOUNT ON;
+EXECUTE sp_addextendedproperty @name = N'Stream2', @value = N'--User Stream 2
+SET NOCOUNT ON;
 			
-		DECLARE @grp AS TINYINT = 2
+DECLARE @grp AS TINYINT = 2
 
-		SELECT
-			stream.*,
-			c.SYS_CHANGE_VERSION AS InitialVersion
-		FROM
-		(
-			SELECT
-				bq.*,
-				g.grp
-			FROM
-			( 
-				SELECT 
-					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
-					UsersId,
-					ROW_NUMBER() OVER (ORDER BY UsersId) as rn
-				FROM [dbo].[Users]  AS bq
-			) AS bq
-			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-			WHERE 
-					g.grp = @grp
-		) AS stream
-		CROSS APPLY 
-			CHANGETABLE (VERSION Users, (UsersId), (stream.UsersId)) AS c
-		OPTION (MAXDOP 1)', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Users';
+SELECT
+	stream.*,
+	c.SYS_CHANGE_VERSION AS InitialVersion
+FROM
+(
+	SELECT
+		bq.*,
+		g.grp
+	FROM
+	( 
+		SELECT 
+			as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+			UserId,
+			ROW_NUMBER() OVER (ORDER BY UserId) as rn
+		FROM [dbo].[User]  AS bq
+	) AS bq
+	CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+	WHERE 
+			g.grp = @grp
+) AS stream
+CROSS APPLY 
+	CHANGETABLE (VERSION [User], (UserId), (stream.UserId)) AS c
+OPTION (MAXDOP 1)', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Users';
+
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'Stream1', @value = N'
-		SET NOCOUNT ON;
+EXECUTE sp_addextendedproperty @name = N'Stream1', @value = N'--User Stream 1
+SET NOCOUNT ON;
 			
-		DECLARE @grp AS TINYINT = 1
+DECLARE @grp AS TINYINT = 1
 
-		SELECT
-			stream.*,
-			c.SYS_CHANGE_VERSION AS InitialVersion
-		FROM
-		(
-			SELECT
-				bq.*,
-				g.grp
-			FROM
-			( 
-				SELECT 
-					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
-					UsersId,
-					ROW_NUMBER() OVER (ORDER BY UsersId) as rn
-				FROM [dbo].[Users]  AS bq
-			) AS bq
-			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-			WHERE 
-					g.grp = @grp
-		) AS stream
-		CROSS APPLY 
-			CHANGETABLE (VERSION Users, (UsersId), (stream.UsersId)) AS c
-		OPTION (MAXDOP 1)', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Users';
+SELECT
+	stream.*,
+	c.SYS_CHANGE_VERSION AS InitialVersion
+FROM
+(
+	SELECT
+		bq.*,
+		g.grp
+	FROM
+	( 
+		SELECT 
+			as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+			UserId,
+			ROW_NUMBER() OVER (ORDER BY UserId) as rn
+		FROM [dbo].[User]  AS bq
+	) AS bq
+	CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+	WHERE 
+			g.grp = @grp
+) AS stream
+CROSS APPLY 
+	CHANGETABLE (VERSION [User], (UserId), (stream.UserId)) AS c
+OPTION (MAXDOP 1)', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Users';
+
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'Stream0', @value = N'
-		SET NOCOUNT ON;
+EXECUTE sp_addextendedproperty @name = N'Stream0', @value = N'--User Stream 0
+SET NOCOUNT ON;
 			
-		DECLARE @grp AS TINYINT = 0
+DECLARE @grp AS TINYINT = 0
 
-		SELECT
-			stream.*,
-			c.SYS_CHANGE_VERSION AS InitialVersion
-		FROM
-		(
-			SELECT
-				bq.*,
-				g.grp
-			FROM
-			( 
-				SELECT 
-					as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
-					UsersId,
-					ROW_NUMBER() OVER (ORDER BY UsersId) as rn
-				FROM [dbo].[Users]  AS bq
-			) AS bq
-			CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
-			WHERE 
-					g.grp = @grp
-		) AS stream
-		CROSS APPLY 
-			CHANGETABLE (VERSION Users, (UsersId), (stream.UsersId)) AS c
-		OPTION (MAXDOP 1)', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Users';
+SELECT
+	stream.*,
+	c.SYS_CHANGE_VERSION AS InitialVersion
+FROM
+(
+	SELECT
+		bq.*,
+		g.grp
+	FROM
+	( 
+		SELECT 
+			as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+			UserId,
+			ROW_NUMBER() OVER (ORDER BY UserId) as rn
+		FROM [dbo].[User]  AS bq
+	) AS bq
+	CROSS APPLY (SELECT (CAST(bq.rn AS VARCHAR) % 4) AS grp) as g
+	WHERE 
+			g.grp = @grp
+) AS stream
+CROSS APPLY 
+	CHANGETABLE (VERSION [User], (UserId), (stream.UserId)) AS c
+OPTION (MAXDOP 1)', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Users';
+
+
 
