@@ -1,0 +1,195 @@
+<#@ template language="C#" hostspecific="true"#>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="Varigence.Hadron.CoreLowerer.SchemaManagement" #>
+
+<# var DestConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=10.0.20.15;Initial Catalog=paga_change_log;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
+
+
+	
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+	<Connections>
+	 <Connection Name="Aphelion.DB.LoadQueue" ConnectionString="Data Source=.\sql2012;Initial Catalog=Aphelion.DB.LoadQueue;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="PrimaryDB" ConnectionString="Data Source=pagahalistener,1433;Initial Catalog=paga;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="ChangeLogDB" ConnectionString="Data Source=10.0.20.15;Initial Catalog=paga_change_log;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	</Connections>
+	<PackageProjects>
+		<PackageProject Name="Aphelion.Paga.ChangeLoad">
+      
+		</PackageProject>
+	 </PackageProjects>
+	
+	<Packages>
+		<#
+			string PackageListQuery = "SELECT "+
+			"PackageName = CONVERT(CHAR(4),(prefix.package_grp + list.rn)) +'_' + StagingTableName, "+
+			"list.TABLE_SCHEMA, "+
+			"list.TABLE_NAME, "+
+			"list.Stream0, "+
+			"list.Stream1, "+
+			"list.Stream2, "+
+			"list.Stream3 "+
+			"FROM "+
+			"(  "+
+			"SELECT  "+
+			"ROW_NUMBER()OVER(PARTITION BY TABLE_SCHEMA ORDER BY TABLE_NAME) AS rn, "+
+			"StagingTableName = (TABLE_SCHEMA +'_' +TABLE_NAME), "+
+			"pl.TABLE_SCHEMA,  "+
+			"pl.TABLE_NAME,  "+
+			"Stream0 = pl.s0,  "+
+			"Stream1 = pl.s1,  "+
+			"Stream2 = pl.s2,  "+
+			"Stream3 = pl.s3  "+
+			"FROM  "+
+			"(  "+
+			"SELECT  "+
+			"package_list.TABLE_SCHEMA,  "+
+			"package_list.TABLE_NAME,  "+
+			"CONVERT(CHAR(1),MAX(packageType)) AS pt,  "+
+			"CONVERT(VARCHAR(MAX),MAX(Stream0)) AS s0,  "+
+			"CONVERT(VARCHAR(MAX),MAX(Stream1)) AS s1,  "+
+			"CONVERT(VARCHAR(MAX),MAX(Stream2)) AS s2,  "+
+			"CONVERT(VARCHAR(MAX),MAX(Stream3)) AS s3  "+
+			"FROM  "+
+			"(  "+
+			"SELECT  "+
+			"table_list.StagingTableName,  "+
+			"table_list.TABLE_SCHEMA,  "+
+			"table_list.TABLE_NAME, "+
+			"CASE  "+
+			"WHEN ext_prop.name =  'PackageType'  "+
+			"THEN CONVERT(CHAR(1),ext_prop.value)  "+
+			"END as PackageType,  "+
+			"CASE	 "+
+			"WHEN ext_prop.name =  'Stream0'  "+
+			"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
+			"END as Stream0,  "+
+			"CASE	 "+
+			"WHEN ext_prop.name =  'Stream1'  "+
+			"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
+			"END as Stream1,  "+
+			"CASE	 "+
+			"WHEN ext_prop.name =  'Stream2'  "+
+			"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
+			"END as Stream2,  "+
+			"CASE	 "+
+			"WHEN ext_prop.name =  'Stream3'  "+
+			"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
+			"END as Stream3  "+
+			"FROM  "+
+			"(  "+
+			"SELECT   "+
+			"StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name,  "+
+			"TABLE_SCHEMA = SCHEMA_NAME(t.schema_id),  "+
+			"TABLE_NAME = t.name,  "+
+			"t.object_id  "+
+			"FROM sys.tables AS t  "+
+			") table_list  "+
+			"INNER JOIN sys.extended_properties AS ext_prop ON   "+
+			"table_list.object_id = ext_prop.major_id  "+
+			"WHERE  "+
+			"ext_prop.name = 'PackageType' OR ext_prop.name LIKE 'Stream%'  "+
+			") AS package_list  "+
+			"GROUP BY  "+
+			"package_list.TABLE_SCHEMA,  "+
+			"package_list.TABLE_NAME  "+
+			") as pl  "+
+			"WHERE   "+
+			"pl.s0 IS NOT NULL  "+
+			"AND LEN(pl.s0) > 0 "+
+			") AS list "+
+			"INNER JOIN "+
+			"("+
+			"SELECT "+
+			"(tsg.seed *100) + 1000 AS package_grp, "+
+			"tsg.TABLE_SCHEMA "+
+			"FROM "+
+			"( "+
+			"SELECT "+
+			"ROW_NUMBER()OVER(ORDER BY ts.TABLE_SCHEMA) as seed, "+
+			"ts.TABLE_SCHEMA "+
+			"FROM "+
+			"( "+
+			"SELECT DISTINCT  "+
+			"t.TABLE_SCHEMA "+
+			"FROM INFORMATION_SCHEMA.TABLES AS t "+
+			"WHERE "+
+			"t.TABLE_TYPE = 'BASE TABLE' "+
+			") as ts "+
+			") AS tsg "+
+			") as prefix ON "+
+			"list.TABLE_SCHEMA = prefix.TABLE_SCHEMA ";
+
+
+			DataTable tableNamesToImport = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, PackageListQuery);
+
+			foreach (DataRow row in tableNamesToImport.Rows)
+			{
+				string PackageName = row[0].ToString();
+				string TableSchema = row[1].ToString();
+				string TableName = row[2].ToString();
+				string Stream0 = row[3].ToString();
+				string Stream1 = row[4].ToString();
+				string Stream2 = row[5].ToString();
+				string Stream3 = row[6].ToString();
+				string KeyColumn = row[2].ToString() +"Id";
+			#>
+			<Package Name="<#=PackageName#>" ConstraintMode="Linear"  ProtectionLevel="DontSaveSensitive"  AutoCreateConfigurationsType="None" DelayValidation = "true">
+           
+						
+						<Variables>
+						  <Variable Name="CurrentVersion" DataType="Int32">0</Variable>
+						  <Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
+						  <Variable Name="Stream0" DataType="String"><#=Stream0#></Variable>
+							<Variable Name="Stream1" DataType="String">
+								<#=Stream1#>
+							</Variable>
+							<Variable Name="Stream2" DataType="String">
+								<#=Stream2#>
+							</Variable>
+							<Variable Name="Stream3" DataType="String">
+								<#=Stream3#>
+							</Variable>
+						  
+					  </Variables>
+				
+					 <Tasks>
+							<Dataflow Name="DFT_Load <#=String.Format("{0}_{1}",TableSchema, TableName)#> " DelayValidation = "true">
+							  <Transformations>
+								<OleDbSource Name="OLEDB_GetData0" ConnectionName="PrimaryDB">
+								  <VariableInput VariableName="User.Stream0"></VariableInput>
+								</OleDbSource>
+								<OleDbSource Name="OLEDB_GetData1" ConnectionName="PrimaryDB">
+									  <VariableInput VariableName="User.Stream1"></VariableInput>
+								  </OleDbSource>
+								  <OleDbSource Name="OLEDB_GetData2" ConnectionName="PrimaryDB">
+									  <VariableInput VariableName="User.Stream2"></VariableInput>
+								  </OleDbSource>
+								  <OleDbSource Name="OLEDB_GetData3" ConnectionName="PrimaryDB">
+									  <VariableInput VariableName="User.Stream3"></VariableInput>
+								  </OleDbSource>
+								  <UnionAll Name="UA_JoinStreams">
+									<InputPaths>
+										
+										<InputPath OutputPathName="OLEDB_GetData0.Output" />
+											
+										<InputPath OutputPathName="OLEDB_GetData1.Output" />
+												
+										<InputPath OutputPathName="OLEDB_GetData2.Output" />
+													
+										<InputPath OutputPathName="OLEDB_GetData3.Output" />
+									</InputPaths>
+								</UnionAll>
+								  <OleDbDestination Name="OLEDB_InsertIntoChangeLog" ConnectionName="ChangeLogDB" KeepIdentity="false" UseFastLoadIfAvailable="true" BatchSize = "100000" >
+								  <ExternalTableOutput Table="<#=String.Format("{0}.{1}",TableSchema, TableName)#>"/>
+								</OleDbDestination>
+							  </Transformations>
+							</Dataflow>
+						</Tasks>
+				
+		
+				</Package>
+		
+		<# } #>
+	</Packages>
+		
+</Biml>

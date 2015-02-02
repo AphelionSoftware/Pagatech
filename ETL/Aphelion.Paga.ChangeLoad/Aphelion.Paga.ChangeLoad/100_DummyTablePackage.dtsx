@@ -12,30 +12,32 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="100_DummyTablePackage"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{131AAAAC-EEC5-4A6E-9C65-342F77F82266}"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{57F0F706-5074-4973-ADE8-5A40B230263F}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
-  <DTS:Variables>
-    <DTS:Variable
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
       DTS:CreationName=""
-      DTS:DTSID="{23DCEF14-268F-4D5B-8B64-E660FE899A73}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
+      DTS:DataType="8"
+      DTS:DTSID="{021528CF-C219-4004-B95A-9BE6103CAB9D}"
       DTS:ObjectName="CurrentVersion">
-      <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
       DTS:CreationName=""
-      DTS:DTSID="{01E45772-29E8-4456-A246-100186042F98}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
+      DTS:DataType="8"
+      DTS:DTSID="{00A3EEC8-4C2C-4AD9-81F1-E9D0828F5F01}"
       DTS:ObjectName="LastSyncVersion">
-      <DTS:VariableValue
-        DTS:DataType="3">6</DTS:VariableValue>
-    </DTS:Variable>
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{7B8F33D3-D223-41E5-A30F-2CA582E02B8D}"
@@ -179,6 +181,17 @@
 		CROSS APPLY 
 			CHANGETABLE (VERSION [AccountCode], (AccountCodeId), (stream.AccountCodeId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{039281AD-BEAE-4839-8AC9-94E9DA1B109C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;WHERE SYS_CHANGE_VERSION &gt;  &quot; +@[$Package::LastSyncVersion] +&quot; AND SYS_CHANGE_VERSION &lt;= &quot; + @[$Package::CurrentVersion]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="VersionFilter">
+      <DTS:VariableValue
+        DTS:DataType="8">WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
