@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/03/2015 13:56:44" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{3E5306AE-2A7B-4F40-8144-AD4CE6E7CA1A}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2116_dbo_FinancialTransactionType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{A4229C23-0F67-4389-B3C7-BDE19F762988}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/03/2015 16:22:11" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{4C21E06D-FDBB-4445-B95C-1E23C44AC318}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2116_dbo_FinancialTransactionType" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{FC047936-DE14-49E7-953B-61F96EE64D73}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{EE84AC43-5F13-41B0-B62F-6FF064FC574F}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{C5793FFC-DDB9-4555-9758-7DD750E8A368}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="PrimaryDB" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
@@ -9,7 +9,7 @@
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{C7CBF422-42E4-442C-9A11-089DEFAFDCAA}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_FinancialTransactionType" DTS:refId="Package\DFT_Load dbo_FinancialTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{73B81D3D-C3A8-4FB1-91F8-8DB09E8DE380}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_FinancialTransactionType" DTS:refId="Package\DFT_Load dbo_FinancialTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -185,20 +185,20 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{22104E4B-C8A7-4295-98AE-17E763856EF1}" DTS:ObjectName="CurrentVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{96A93A11-8677-479B-9EC7-EED457E6CBA6}" DTS:ObjectName="CurrentVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">6</DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{5F36E5E8-5E9F-43C9-BD06-553D1E6ADC39}" DTS:ObjectName="LastSyncVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{998DCAC2-17DE-49A9-878E-2E8080BDA28F}" DTS:ObjectName="LastSyncVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{6B5B120F-8E4F-49F6-9B93-87C207912036}" DTS:EvalOp="1" DTS:Expression="@RowCount&gt;0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load dbo_FinancialTransactionType" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load dbo_FinancialTransactionType]" DTS:To="Package\DFT_Load dbo_FinancialTransactionType">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{F133752A-6647-483A-A935-B48AC757603A}" DTS:EvalOp="1" DTS:Expression="@RowCount&gt;0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load dbo_FinancialTransactionType" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load dbo_FinancialTransactionType]" DTS:To="Package\DFT_Load dbo_FinancialTransactionType">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5E711677-0CE5-4F5D-9128-3B4D41BBE8A0}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E0757697-9C3E-4189-BD82-888058D9ADD0}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">-- FinancialTransactionType
 		SET NOCOUNT ON;
 		SELECT 
@@ -206,15 +206,15 @@
 			SYS_CHANGE_CREATION_VERSION,
 			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),  
 			FinancialTransactionTypeId
-		FROM CHANGETABLE(CHANGES [dbo].[FinancialTransactionType],0)  AS change_log</DTS:VariableValue>
+		FROM CHANGETABLE(CHANGES [dbo].[FinancialTransactionType]</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C8BECFA4-3F02-47ED-8B88-DF90C18A8D9A}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot; WHERE SYS_CHANGE_VERSION &gt;  &quot; +@[$Package::LastSyncVersion] +&quot; AND SYS_CHANGE_VERSION &lt;= &quot; + @[$Package::CurrentVersion]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="VersionFilter">
-      <DTS:VariableValue DTS:DataType="8"> WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{185DDDF4-84C4-4397-B9C7-CBB51BB888A7}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;, &quot; +@[$Package::LastSyncVersion] +&quot;) AS change_log WHERE SYS_CHANGE_VERSION &lt;= &quot; + @[$Package::CurrentVersion]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="VersionFilter">
+      <DTS:VariableValue DTS:DataType="8">, 0) AS change_log WHERE SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{45AACA86-3156-487A-9153-65D8901284D9}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[FinancialTransactionType],0) AS ct&quot; + @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
-      <DTS:VariableValue DTS:DataType="8">SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[FinancialTransactionType],0) AS ct WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{952477EA-A4E7-4D39-A848-8D37E11D35C4}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[FinancialTransactionType] &quot; + @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[FinancialTransactionType] , 0) AS change_log WHERE SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4DECB7D9-C2CA-4214-85F2-22E59B6FC886}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D415CD97-335A-4D8C-BD6A-74C01AE034AB}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
       <DTS:VariableValue DTS:DataSubType="ManagedSerializable" DTS:DataType="13">
         <SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0">
           <SOAP-ENV:Body>
@@ -224,7 +224,7 @@
         </SOAP-ENV:Envelope>
       </DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{22C6CBC9-049F-42A8-99D0-E0167B16B993}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetChangedRows">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F70C1CA4-B353-4537-A3CF-AA141B6BDB85}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetChangedRows">
       <DTS:VariableValue DTS:DataType="8">-- FinancialTransactionType
 		SET NOCOUNT ON;
 		SELECT 
@@ -232,10 +232,7 @@
 			SYS_CHANGE_CREATION_VERSION,
 			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),  
 			FinancialTransactionTypeId
-		FROM CHANGETABLE(CHANGES [dbo].[FinancialTransactionType],0)  AS change_log WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8D6F5081-3471-47FE-8BF3-19C027270D0A}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
-      <DTS:VariableValue DTS:DataType="8"> WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
+		FROM CHANGETABLE(CHANGES [dbo].[FinancialTransactionType], 0) AS change_log WHERE SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>

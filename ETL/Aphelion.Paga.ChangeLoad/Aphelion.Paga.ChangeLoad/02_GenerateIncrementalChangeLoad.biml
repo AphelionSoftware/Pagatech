@@ -24,6 +24,7 @@
 			"PackageName = CONVERT(CHAR(4),(prefix.package_grp + list.rn)) +'_' + StagingTableName, "+
 			"list.TABLE_SCHEMA, "+
 			"list.TABLE_NAME, "+
+			"list.prod_table_name, "+
 			"list.BaseQuery "+
 			
 			"FROM "+
@@ -33,6 +34,7 @@
 			"StagingTableName = (TABLE_SCHEMA +'_' +TABLE_NAME), "+
 			"pl.TABLE_SCHEMA,  "+
 			"pl.TABLE_NAME,  "+
+			"pl.prod_table_name,  "+
 			"BaseQuery = pl.bq  "+
 		
 			"FROM  "+
@@ -40,6 +42,7 @@
 			"SELECT  "+
 			"package_list.TABLE_SCHEMA,  "+
 			"package_list.TABLE_NAME,  "+
+			"package_list.prod_table_name, "+
 			"CONVERT(CHAR(1),MAX(packageType)) AS pt,  "+
 			"CONVERT(VARCHAR(MAX),MAX(BaseQuery)) AS bq  "+
 			
@@ -49,6 +52,7 @@
 			"table_list.StagingTableName,  "+
 			"table_list.TABLE_SCHEMA,  "+
 			"table_list.TABLE_NAME, "+
+			"table_list.prod_table_name, "+
 			"CASE  "+
 			"WHEN ext_prop.name =  'PackageType'  "+
 			"THEN CONVERT(CHAR(1),ext_prop.value)  "+
@@ -64,7 +68,12 @@
 			"StagingTableName = SCHEMA_NAME(t.schema_id) +'_' + t.name,  "+
 			"TABLE_SCHEMA = SCHEMA_NAME(t.schema_id),  "+
 			"TABLE_NAME = t.name,  "+
-			"t.object_id  "+
+			"t.object_id,  "+
+			"CASE "+
+				"WHEN t.name = 'RoleLookup' THEN 'Role'  "+ 
+				"WHEN t.name = 'Users' THEN 'User'  "+
+				"ELSE t.name  "+ 
+			"END AS prod_table_name  "+
 			"FROM sys.tables AS t  "+
 			") table_list  "+
 			"INNER JOIN sys.extended_properties AS ext_prop ON   "+
@@ -74,7 +83,8 @@
 			") AS package_list  "+
 			"GROUP BY  "+
 			"package_list.TABLE_SCHEMA,  "+
-			"package_list.TABLE_NAME  "+
+			"package_list.TABLE_NAME,  "+
+			"package_list.prod_table_name "+
 			") as pl  "+
 			"WHERE   "+
 			"pl.bq IS NOT NULL  "+
@@ -110,9 +120,9 @@
 				string PackageName = row[0].ToString();
 				string TableSchema = row[1].ToString();
 				string TableName = row[2].ToString();
-				string BaseQuery = row[3].ToString() +" ";
-				string KeyColumn = row[2].ToString() +"Id";
-				string CountQuery = "&quot;SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[" +row[2].ToString() +"],0) AS ct&quot;";
+				string ProdTableName = row[3].ToString();
+				string BaseQuery = row[4].ToString() +" ";
+				string CountQuery = "&quot;SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[" +ProdTableName +"] &quot;";
 				
 			#>
 			<Package Name="<#=PackageName#>" ConstraintMode="Parallel"  ProtectionLevel="DontSaveSensitive"  AutoCreateConfigurationsType="None" DelayValidation = "true">
@@ -125,11 +135,11 @@
 					
 					<Variables>
 						<Variable Name="BaseQuery" DataType="String"><#=BaseQuery#></Variable>
-						<Variable Name="VersionFilter" DataType="String" EvaluateAsExpression="true">" WHERE SYS_CHANGE_VERSION >  " +@[$Package::LastSyncVersion] +" AND SYS_CHANGE_VERSION &lt;= " + @[$Package::CurrentVersion]</Variable>
+						<Variable Name="VersionFilter" DataType="String" EvaluateAsExpression="true">", " +@[$Package::LastSyncVersion] +") AS change_log WHERE SYS_CHANGE_VERSION &lt;= " + @[$Package::CurrentVersion]</Variable>
 						<Variable Name="GetRowCount" DataType="String" EvaluateAsExpression="true"><#=CountQuery#> + @[User::VersionFilter]</Variable>
 						<Variable Name="RowCount" DataType="Object"></Variable>
 						<Variable Name="GetChangedRows" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]+ @[User::VersionFilter]</Variable>
-						<Variable Name="CurrentVersion" DataType="String" EvaluateAsExpression="true">@[User::VersionFilter]</Variable>
+						
 					</Variables>
 				
 				 <Tasks>
@@ -149,7 +159,6 @@
 								</OleDbSource>
 									 <DerivedColumns Name="dc_as_of_change_version">
 									<Columns>
-									
 										<Column Name="as_of_change_version" DataType="Int32" >@[$Package::CurrentVersion]</Column>
 									</Columns>
 								</DerivedColumns>
