@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/02/2015 16:06:39" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{6C30834F-FF2D-441E-97EB-40F21C77FE18}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2124_dbo_MobileOperator" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{4033C70E-4AB5-4766-9E8E-032FE46E8B6F}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/03/2015 13:56:44" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{CA11C918-4F9F-4856-BFA5-67F66C5C3D76}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2124_dbo_MobileOperator" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{3D6269D1-CEE2-4736-B746-02F1A9F7338F}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{9206EA19-0132-44C6-9617-28AE7B8D60F0}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{3E69D09E-9361-46DF-A329-8C199676E9AE}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="PrimaryDB" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
@@ -9,7 +9,7 @@
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{6E8AE6D4-0BDB-4BD7-A974-A6E26EB0ECAD}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_MobileOperator" DTS:refId="Package\DFT_Load dbo_MobileOperator" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{B55641A7-5806-46B6-8339-133308F3DC56}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_MobileOperator" DTS:refId="Package\DFT_Load dbo_MobileOperator" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -27,8 +27,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].ExternalColumns[as_of_change_version]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="MobileOperatorId" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].ExternalColumns[MobileOperatorId]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -38,8 +36,6 @@
                     <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].ExternalColumns[MobileOperatorId]" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[MobileOperatorId]" name="MobileOperatorId" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[MobileOperatorId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -54,8 +50,6 @@
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
-                    </outputColumn>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Error].Columns[MobileOperatorId]" name="MobileOperatorId" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Error].Columns[MobileOperatorId]">
                     </outputColumn>
@@ -82,45 +76,77 @@
                 </property>
               </properties>
             </component>
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_as_of_change_version" refId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version" usesDispositions="true">
+              <inputs>
+                <input name="OLEDB_GetData_Output_dc_as_of_change_version" refId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Inputs[OLEDB_GetData_Output_dc_as_of_change_version]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Outputs[Output]" synchronousInputId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Inputs[OLEDB_GetData_Output_dc_as_of_change_version]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[$Package::CurrentVersion]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[$Package::CurrentVersion]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Outputs[Error]" synchronousInputId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Inputs[OLEDB_GetData_Output_dc_as_of_change_version]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+            </component>
             <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog" usesDispositions="true" version="4">
               <connections>
                 <connection connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external" connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Connections[OleDbConnection]">
                 </connection>
               </connections>
               <inputs>
-                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
+                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_created_on" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_created_on]">
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_created_on" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_created_on]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="MobileOperatorId" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[MobileOperatorId]">
+                    <externalMetadataColumn dataType="i4" name="MobileOperatorId" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[MobileOperatorId]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
+                    <inputColumn cachedDataType="i4" cachedName="as_of_change_version" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[as_of_change_version]">
                     </inputColumn>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_CREATION_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]">
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_CREATION_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]">
                     </inputColumn>
-                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[as_of_change_version]">
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]">
                     </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="MobileOperatorId" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[MobileOperatorId]" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[MobileOperatorId]" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[MobileOperatorId]">
+                    <inputColumn cachedDataType="i4" cachedName="MobileOperatorId" externalMetadataColumnId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[MobileOperatorId]" lineageId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output].Columns[MobileOperatorId]" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[MobileOperatorId]">
                     </inputColumn>
                   </inputColumns>
                 </input>
               </inputs>
               <outputs>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Outputs[Error]" synchronousInputId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Outputs[Error]" synchronousInputId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
@@ -149,7 +175,9 @@
             </component>
           </components>
           <paths>
-            <path endId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_MobileOperator.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output]">
+            <path endId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Inputs[OLEDB_GetData_Output_dc_as_of_change_version]" name="OLEDB_GetData_Output_dc_as_of_change_version" refId="Package\DFT_Load dbo_MobileOperator.Paths[OLEDB_GetData_Output_dc_as_of_change_version]" startId="Package\DFT_Load dbo_MobileOperator\OLEDB_GetData.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_MobileOperator\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog]" name="dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_MobileOperator.Paths[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_MobileOperator\dc_as_of_change_version.Outputs[Output]">
             </path>
           </paths>
         </pipeline>
@@ -157,37 +185,36 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{9F51C19E-B612-4956-9C63-FB269C358613}" DTS:ObjectName="CurrentVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{82C64FD8-AAB5-4AD8-8952-686D76FC41FC}" DTS:ObjectName="CurrentVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">6</DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{249AEEFD-D432-4B4D-BC01-A161C86ACF64}" DTS:ObjectName="LastSyncVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{FE02FE96-4FAD-49DD-A76C-7308B3617E17}" DTS:ObjectName="LastSyncVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{9107DBAE-0E0A-4FEC-9C61-9DAE12AB1AAC}" DTS:EvalOp="1" DTS:Expression="@RowCount&gt;0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load dbo_MobileOperator" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load dbo_MobileOperator]" DTS:To="Package\DFT_Load dbo_MobileOperator">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{46D951F2-1A4C-4AE6-A25C-60D36F53B63A}" DTS:EvalOp="1" DTS:Expression="@RowCount&gt;0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load dbo_MobileOperator" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load dbo_MobileOperator]" DTS:To="Package\DFT_Load dbo_MobileOperator">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{98BAAF49-0924-44DD-8066-C15788CFC016}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AADF33E4-33EA-4F2C-929E-F5E24D07C601}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">-- MobileOperator
 		SET NOCOUNT ON;
 		SELECT 
 			SYS_CHANGE_VERSION,
 			SYS_CHANGE_CREATION_VERSION,
-			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),
-			as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),  
 			MobileOperatorId
 		FROM CHANGETABLE(CHANGES [dbo].[MobileOperator],0)  AS change_log</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7F142D3B-E481-4105-93A2-696C8862B362}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot; WHERE SYS_CHANGE_VERSION &gt;  &quot; +@[$Package::LastSyncVersion] +&quot; AND SYS_CHANGE_VERSION &lt;= &quot; + @[$Package::CurrentVersion]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="VersionFilter">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EB8EF827-47E4-4D41-94FF-0782AC1134D7}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot; WHERE SYS_CHANGE_VERSION &gt;  &quot; +@[$Package::LastSyncVersion] +&quot; AND SYS_CHANGE_VERSION &lt;= &quot; + @[$Package::CurrentVersion]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="VersionFilter">
       <DTS:VariableValue DTS:DataType="8"> WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{483DEC6F-910A-481E-957B-EB48AA268155}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[MobileOperator],0) AS ct&quot; + @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7920BAED-BA09-4A98-B831-EC9A8FD54FEA}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[MobileOperator],0) AS ct&quot; + @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
       <DTS:VariableValue DTS:DataType="8">SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[MobileOperator],0) AS ct WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DC26877A-3A09-42D9-8299-9EC9E395653A}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5C0CEC35-3F8F-4386-96F8-E296A8605CF6}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
       <DTS:VariableValue DTS:DataSubType="ManagedSerializable" DTS:DataType="13">
         <SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0">
           <SOAP-ENV:Body>
@@ -197,16 +224,18 @@
         </SOAP-ENV:Envelope>
       </DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{055817A0-DF75-4691-9EE1-AFF8B741C6A9}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetChangedRows">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2E013109-F7A3-40BB-AE24-4EF10669DA5E}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetChangedRows">
       <DTS:VariableValue DTS:DataType="8">-- MobileOperator
 		SET NOCOUNT ON;
 		SELECT 
 			SYS_CHANGE_VERSION,
 			SYS_CHANGE_CREATION_VERSION,
-			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),
-			as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),  
 			MobileOperatorId
 		FROM CHANGETABLE(CHANGES [dbo].[MobileOperator],0)  AS change_log WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{968C90F7-21EC-4266-BDEC-275A782F33B7}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+      <DTS:VariableValue DTS:DataType="8"> WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>

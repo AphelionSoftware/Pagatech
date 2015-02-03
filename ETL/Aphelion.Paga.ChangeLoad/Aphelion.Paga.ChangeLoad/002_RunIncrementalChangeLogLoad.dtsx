@@ -12,8 +12,8 @@
   DTS:ObjectName="002_RunIncrementalChangeLogLoad"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{B5F05C5A-E60B-4EEF-BED8-3D321D25EA5A}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{E3A72028-BEB8-4BEC-A9CD-09D50337D2D3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -283,7 +283,7 @@ INNER JOIN
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{58D08405-99FD-49DC-8B1E-FF6A419E845A}"
-          SQLTask:SqlStatementSource="SELECT CurrentVersion, LastSyncVersion FROM [ChangeTracking].[Load_History]"
+          SQLTask:SqlStatementSource="SELECT CurrentVersion = MAX(ChangeVersion), LastSyncVersion = MIN(ChangeVersion) FROM [ChangeTracking].[Load_History] WHERE PushedToStaging = 0"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="CurrentVersion"
@@ -310,7 +310,7 @@ INNER JOIN
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{58D08405-99FD-49DC-8B1E-FF6A419E845A}"
-          SQLTask:SqlStatementSource="UPDATE [Aphelion.DB.LoadQueue].[ChangeTracking].[Load_History]&#xA;SET &#xA;[CurrentVersion] = ?,&#xA;[LastSyncVersion] = [CurrentVersion]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="INSERT INTO ChangeTracking.Load_History&#xA;(ChangeVersion)&#xA;VALUES&#xA;(?)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::CurrentVersion"

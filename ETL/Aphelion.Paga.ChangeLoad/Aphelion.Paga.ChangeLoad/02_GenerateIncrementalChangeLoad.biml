@@ -110,7 +110,7 @@
 				string PackageName = row[0].ToString();
 				string TableSchema = row[1].ToString();
 				string TableName = row[2].ToString();
-				string BaseQuery = row[3].ToString();
+				string BaseQuery = row[3].ToString() +" ";
 				string KeyColumn = row[2].ToString() +"Id";
 				string CountQuery = "&quot;SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[" +row[2].ToString() +"],0) AS ct&quot;";
 				
@@ -129,6 +129,7 @@
 						<Variable Name="GetRowCount" DataType="String" EvaluateAsExpression="true"><#=CountQuery#> + @[User::VersionFilter]</Variable>
 						<Variable Name="RowCount" DataType="Object"></Variable>
 						<Variable Name="GetChangedRows" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery]+ @[User::VersionFilter]</Variable>
+						<Variable Name="CurrentVersion" DataType="String" EvaluateAsExpression="true">@[User::VersionFilter]</Variable>
 					</Variables>
 				
 				 <Tasks>
@@ -144,8 +145,14 @@
 							  <Transformations>
 								<OleDbSource Name="OLEDB_GetData" ConnectionName="PrimaryDB">
 								  <VariableInput VariableName="User.GetChangedRows"></VariableInput>
+								  
 								</OleDbSource>
-							
+									 <DerivedColumns Name="dc_as_of_change_version">
+									<Columns>
+									
+										<Column Name="as_of_change_version" DataType="Int32" >@[$Package::CurrentVersion]</Column>
+									</Columns>
+								</DerivedColumns>
 								  <OleDbDestination Name="OLEDB_InsertIntoChangeLog" ConnectionName="ChangeLogDB" KeepIdentity="false" UseFastLoadIfAvailable="true" BatchSize = "100000" >
 								  <ExternalTableOutput Table="<#=String.Format("{0}.{1}",TableSchema, TableName)#>"/>
 								</OleDbDestination>

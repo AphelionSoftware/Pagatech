@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/02/2015 16:06:39" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{95B4517B-6D0B-4DBC-8651-2A0B14F56A67}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2127_dbo_OrganizationMerchantProcessChannel" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{114D045F-3BE0-472E-A4CF-3CA3DD84DBD8}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/03/2015 13:56:44" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{7AD9051D-1E62-4A8E-849C-9358E7FCF34B}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2127_dbo_OrganizationMerchantProcessChannel" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{8D7E45B3-B535-43B7-A84B-6058046D83CA}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{CB13D5D6-0E9F-48B1-B1BA-1B370961D5D2}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{5E4F75D7-C9F9-4845-AF79-E2D9BCE81B50}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="PrimaryDB" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
@@ -9,7 +9,7 @@
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{5B62C1AF-1E14-43B2-B3E6-123E2448BC5A}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_OrganizationMerchantProcessChannel" DTS:refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{7D7557CE-7FD4-4A37-9FB8-C5F9CF8B2179}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_OrganizationMerchantProcessChannel" DTS:refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -27,8 +27,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].ExternalColumns[as_of_change_version]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].ExternalColumns[OrganizationMerchantProcessChannelId]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -38,8 +36,6 @@
                     <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].ExternalColumns[OrganizationMerchantProcessChannelId]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -54,8 +50,6 @@
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
-                    </outputColumn>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Error].Columns[OrganizationMerchantProcessChannelId]" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Error].Columns[OrganizationMerchantProcessChannelId]">
                     </outputColumn>
@@ -82,45 +76,77 @@
                 </property>
               </properties>
             </component>
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version" usesDispositions="true">
+              <inputs>
+                <input name="OLEDB_GetData_Output_dc_as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Inputs[OLEDB_GetData_Output_dc_as_of_change_version]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Outputs[Output]" synchronousInputId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Inputs[OLEDB_GetData_Output_dc_as_of_change_version]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[$Package::CurrentVersion]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[$Package::CurrentVersion]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Outputs[Error]" synchronousInputId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Inputs[OLEDB_GetData_Output_dc_as_of_change_version]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+            </component>
             <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog" usesDispositions="true" version="4">
               <connections>
                 <connection connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external" connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Connections[OleDbConnection]">
                 </connection>
               </connections>
               <inputs>
-                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
+                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_created_on" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_created_on]">
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_created_on" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_created_on]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[OrganizationMerchantProcessChannelId]">
+                    <externalMetadataColumn dataType="i4" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[OrganizationMerchantProcessChannelId]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
+                    <inputColumn cachedDataType="i4" cachedName="as_of_change_version" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[as_of_change_version]">
                     </inputColumn>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_CREATION_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]">
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_CREATION_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]">
                     </inputColumn>
-                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[as_of_change_version]">
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]">
                     </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="OrganizationMerchantProcessChannelId" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[OrganizationMerchantProcessChannelId]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[OrganizationMerchantProcessChannelId]">
+                    <inputColumn cachedDataType="i4" cachedName="OrganizationMerchantProcessChannelId" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[OrganizationMerchantProcessChannelId]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[OrganizationMerchantProcessChannelId]">
                     </inputColumn>
                   </inputColumns>
                 </input>
               </inputs>
               <outputs>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Outputs[Error]" synchronousInputId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Outputs[Error]" synchronousInputId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
@@ -149,7 +175,9 @@
             </component>
           </components>
           <paths>
-            <path endId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output]">
+            <path endId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Inputs[OLEDB_GetData_Output_dc_as_of_change_version]" name="OLEDB_GetData_Output_dc_as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel.Paths[OLEDB_GetData_Output_dc_as_of_change_version]" startId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog]" name="dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel.Paths[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\dc_as_of_change_version.Outputs[Output]">
             </path>
           </paths>
         </pipeline>
@@ -157,37 +185,36 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{CE916EA4-60D0-4B6D-803E-82B931746C32}" DTS:ObjectName="CurrentVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{F48C0528-D6C6-4858-B9A3-27C62E9F42D0}" DTS:ObjectName="CurrentVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">6</DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{225ADC32-711F-4789-8BDF-3D6A9A64FA3D}" DTS:ObjectName="LastSyncVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{F04048C1-55F3-479E-BB48-12BC5BCBF5E9}" DTS:ObjectName="LastSyncVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{863E6EC1-4220-4B83-815B-E7998B561C15}" DTS:EvalOp="1" DTS:Expression="@RowCount&gt;0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load dbo_OrganizationMerchantProcessChannel" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load dbo_OrganizationMerchantProcessChannel]" DTS:To="Package\DFT_Load dbo_OrganizationMerchantProcessChannel">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{683B612E-95E3-4E26-BF42-BFE4EF2B7BE3}" DTS:EvalOp="1" DTS:Expression="@RowCount&gt;0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load dbo_OrganizationMerchantProcessChannel" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load dbo_OrganizationMerchantProcessChannel]" DTS:To="Package\DFT_Load dbo_OrganizationMerchantProcessChannel">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{118F5E37-F7EB-4BB3-9870-3AC3AF4C5C64}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A8EFB50C-B73C-41CC-A4C9-986327D0F900}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">-- OrganizationMerchantProcessChannel
 		SET NOCOUNT ON;
 		SELECT 
 			SYS_CHANGE_VERSION,
 			SYS_CHANGE_CREATION_VERSION,
-			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),
-			as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),  
 			OrganizationMerchantProcessChannelId
 		FROM CHANGETABLE(CHANGES [dbo].[OrganizationMerchantProcessChannel],0)  AS change_log</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{51EBF8A6-C5D6-4D7B-9F5E-88B3607A1C27}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot; WHERE SYS_CHANGE_VERSION &gt;  &quot; +@[$Package::LastSyncVersion] +&quot; AND SYS_CHANGE_VERSION &lt;= &quot; + @[$Package::CurrentVersion]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="VersionFilter">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F84F064C-8F67-4487-96DD-642C0B460697}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot; WHERE SYS_CHANGE_VERSION &gt;  &quot; +@[$Package::LastSyncVersion] +&quot; AND SYS_CHANGE_VERSION &lt;= &quot; + @[$Package::CurrentVersion]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="VersionFilter">
       <DTS:VariableValue DTS:DataType="8"> WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8534B1AA-29F6-49EF-8906-8351801D998D}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[OrganizationMerchantProcessChannel],0) AS ct&quot; + @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D88093B7-D7E8-40F5-B75C-D251E817F8AB}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[OrganizationMerchantProcessChannel],0) AS ct&quot; + @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
       <DTS:VariableValue DTS:DataType="8">SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[OrganizationMerchantProcessChannel],0) AS ct WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AEFD08A7-16A8-4892-8A36-C8A4EE429FEC}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5234D229-743B-4FE6-9830-FDA4437A656E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
       <DTS:VariableValue DTS:DataSubType="ManagedSerializable" DTS:DataType="13">
         <SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0">
           <SOAP-ENV:Body>
@@ -197,16 +224,18 @@
         </SOAP-ENV:Envelope>
       </DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{33DFF7D3-7449-406D-B91A-2E826326DF79}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetChangedRows">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CB2D41B0-2F85-4C8D-9A95-4497D516A1AE}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetChangedRows">
       <DTS:VariableValue DTS:DataType="8">-- OrganizationMerchantProcessChannel
 		SET NOCOUNT ON;
 		SELECT 
 			SYS_CHANGE_VERSION,
 			SYS_CHANGE_CREATION_VERSION,
-			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),
-			as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),  
 			OrganizationMerchantProcessChannelId
 		FROM CHANGETABLE(CHANGES [dbo].[OrganizationMerchantProcessChannel],0)  AS change_log WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A4427233-6F67-42DA-8F01-74DECF5194CD}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+      <DTS:VariableValue DTS:DataType="8"> WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>

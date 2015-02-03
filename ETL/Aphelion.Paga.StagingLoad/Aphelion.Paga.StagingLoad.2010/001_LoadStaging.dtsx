@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="337"
-  DTS:VersionGUID="{6B61ECC3-256F-4C99-86FE-AC451A900475}">
+  DTS:VersionBuild="338"
+  DTS:VersionGUID="{5E65B1DE-E2C9-4242-B3CF-AABF4C92A4F2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -97,7 +97,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ConvertSystemStart">
       <DTS:VariableValue
-        DTS:DataType="8">2015-02-03 12:13:58.000</DTS:VariableValue>
+        DTS:DataType="8">2015-02-03 12:27:19.000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -710,7 +710,7 @@ FROM
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{58D08405-99FD-49DC-8B1E-FF6A419E845A}"
-          SQLTask:SqlStatementSource="SELECT CurrentVersion, LastSyncVersion FROM [ChangeTracking].[Load_History]"
+          SQLTask:SqlStatementSource="SELECT CurrentVersion = MAX(ChangeVersion), LastSyncVersion = MIN(ChangeVersion) FROM [ChangeTracking].[Load_History] WHERE PushedToStaging = 0"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="CurrentVersion"
@@ -741,6 +741,36 @@ FROM
         <SQLTask:SqlTaskData
           SQLTask:Connection="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}"
           SQLTask:SqlStatementSource="&#xA;TRUNCATE TABLE Staging.Location_DimRegion&#xA;TRUNCATE TABLE Staging.Location_DimLocalGovernmentArea&#xA;TRUNCATE TABLE Staging.Location_DimGeoZone&#xA;TRUNCATE TABLE Staging.Location_DimCountry&#xA;TRUNCATE TABLE Staging.Location_DimCity&#xA;TRUNCATE TABLE Staging.Finance_FactGLTransaction&#xA;TRUNCATE TABLE Staging.Finance_FactFinancialTransaction&#xA;TRUNCATE TABLE Staging.Finance_DimPaymentUseCaseType&#xA;TRUNCATE TABLE Staging.Finance_DimPaymentUseCase&#xA;TRUNCATE TABLE Staging.Finance_DimGLCodeSubGroup&#xA;TRUNCATE TABLE Staging.Finance_DimGLCodeGroup&#xA;TRUNCATE TABLE Staging.Finance_DimGLCode&#xA;TRUNCATE TABLE Staging.Finance_DimFinancialHoldingAccount&#xA;TRUNCATE TABLE Staging.Finance_DimFinancialAccountType&#xA;TRUNCATE TABLE Staging.Finance_DimFinancialAccount&#xA;TRUNCATE TABLE Staging.Finance_DimCurrency&#xA;TRUNCATE TABLE Staging.Finance_DimChartOfAccounts&#xA;TRUNCATE TABLE Staging.Finance_DimBankAccount&#xA;TRUNCATE TABLE Staging.Finance_DimBank&#xA;TRUNCATE TABLE Staging.Classification_DimProcessType&#xA;TRUNCATE TABLE Staging.Classification_DimProcessStatus&#xA;TRUNCATE TABLE Staging.Classification_DimProcessChannel&#xA;TRUNCATE TABLE Staging.Classification_DimPagaAccountUserType&#xA;TRUNCATE TABLE Staging.Classification_DimPagaAccountStatus&#xA;TRUNCATE TABLE Staging.Classification_DimOrganizationVerificationStatus&#xA;TRUNCATE TABLE Staging.Classification_DimOrganizationUnitType&#xA;TRUNCATE TABLE Staging.Classification_DimOrganizationSubscriptionStatus&#xA;TRUNCATE TABLE Staging.Classification_DimMerchantCategory&#xA;TRUNCATE TABLE Staging.Classification_DimFinancialTransactionType&#xA;TRUNCATE TABLE Staging.Classification_DimFinancialTransactionSubType&#xA;TRUNCATE TABLE Staging.Classification_DimBusinessType&#xA;TRUNCATE TABLE Staging.Classification_DimAgentCommissionType&#xA;TRUNCATE TABLE Staging.Shared_DimUser&#xA;TRUNCATE TABLE Staging.Shared_FactProcessEvent&#xA;TRUNCATE TABLE Staging.Shared_FactIntegrationTransaction&#xA;TRUNCATE TABLE Staging.Shared_DimRole&#xA;TRUNCATE TABLE Staging.Shared_DimPrimaryUserRole&#xA;TRUNCATE TABLE Staging.Shared_DimPagaAccount&#xA;TRUNCATE TABLE Staging.Shared_DimOrganizationUnitLevel4&#xA;TRUNCATE TABLE Staging.Shared_DimOrganizationUnitLevel3&#xA;TRUNCATE TABLE Staging.Shared_DimOrganizationUnitLevel2&#xA;TRUNCATE TABLE Staging.Shared_DimOrganizationUnitLevel1&#xA;TRUNCATE TABLE Staging.Shared_DimOrganization&#xA;TRUNCATE TABLE Staging.Classification_DimIntegrationTransactionType&#xA;TRUNCATE TABLE Staging.Classification_DimIntegrationTransactionResult&#xA;TRUNCATE TABLE Staging.Classification_DimBankingStatus" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_Update_PushedToStagingFlag"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9C6689C6-C441-4B55-8CEE-F9F4ACCFF2FD}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_Update_PushedToStagingFlag"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{58D08405-99FD-49DC-8B1E-FF6A419E845A}"
+          SQLTask:SqlStatementSource="UPDATE [ChangeTracking].[Load_History]&#xA;SET PushedToStaging = 1&#xA;WHERE&#xA;&#x9;ChangeVersion &gt;= ?&#xA;&#x9;AND ChangeVersion &lt;= ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::LastSyncVersion"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::CurrentVersion"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1003,8 +1033,35 @@ FROM
           Language="CSharp"
           ReadOnlyVariables="User::ConvertSystemStart,User::CurrentVersion,User::EndLoop,User::GetDeletes,User::GetInitial,User::GetInserts,User::GetUpdates,User::LastSyncVersion,User::LoadTypeFilter,System::PackageName">
           <ProjectItem
-            Name="ST_e848de3a3fa2473bb5546f021408ac4b.csproj"
-            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{0A3DF908-F350-41C8-9952-018B358261E3}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_5aca6a89e3af479da9ad932b24616bcb</RootNamespace><AssemblyName>ST_e848de3a3fa2473bb5546f021408ac4b</AssemblyName><TargetFrameworkVersion>v4.0</TargetFrameworkVersion><FileAlignment>512</FileAlignment></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="devenv.exe" DebugInfoCommandLine="/vstaHostDebugUri:&quot;vstadebug96f0c5f4-94df-4bb6-b98d-ef522c1841ff/011a29ac-fe8d-4a3e-a5b3-d15f77f52693&quot;" /><Host Name="ScriptTask" /><ProjectClient><HostIdentifier>SSIS_ST110</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("GetVariableValue")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_5aca6a89e3af479da9ad932b24616bcb")]
+[assembly: AssemblyCopyright("Copyright @  2015")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -1125,15 +1182,6 @@ FROM
   </resheader>
 </root>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
-          <ProjectItem
             Name="ScriptMain.cs"
             Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
 /* The Script Task allows you to perform virtually any operation that can be accomplished in
@@ -1237,6 +1285,9 @@ namespace ST_5aca6a89e3af479da9ad932b24616bcb
 	</msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
+            Name="ST_e848de3a3fa2473bb5546f021408ac4b.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{0A3DF908-F350-41C8-9952-018B358261E3}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_5aca6a89e3af479da9ad932b24616bcb</RootNamespace><AssemblyName>ST_e848de3a3fa2473bb5546f021408ac4b</AssemblyName><TargetFrameworkVersion>v4.0</TargetFrameworkVersion><FileAlignment>512</FileAlignment></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="devenv.exe" DebugInfoCommandLine="/vstaHostDebugUri:&quot;vstadebug96f0c5f4-94df-4bb6-b98d-ef522c1841ff/011a29ac-fe8d-4a3e-a5b3-d15f77f52693&quot;" /><Host Name="ScriptTask" /><ProjectClient><HostIdentifier>SSIS_ST110</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+          <ProjectItem
             Name="Properties\Settings.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
 // <auto-generated>
@@ -1266,35 +1317,14 @@ namespace ST_5aca6a89e3af479da9ad932b24616bcb.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("GetVariableValue")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_5aca6a89e3af479da9ad932b24616bcb")]
-[assembly: AssemblyCopyright("Copyright @  2015")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -1531,6 +1561,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\EST_GetVersionNumbers" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{3AB9DAB9-1C1C-4CF2-8435-B66BD10F48E3}"
+      DTS:From="Package\Iterate Through Version Numbers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\EST_Update_PushedToStagingFlag" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[InitialLoad]"
       DTS:CreationName=""
       DTS:DTSID="{077A511C-27F6-4B9D-BA80-6D429DA2CEBD}"
@@ -1556,15 +1594,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="231,42"
           Id="Package\EPT_ExecInParallel_Initial"
-          TopLeft="344,424.5" />
+          TopLeft="556.5,363.5" />
         <NodeLayout
           Size="196,42"
           Id="Package\EST_GetVersionNumbers"
-          TopLeft="319.5,168.5" />
+          TopLeft="300,107.5" />
         <NodeLayout
           Size="182,42"
           Id="Package\EST_TruncateStaging"
-          TopLeft="428,36" />
+          TopLeft="307,5.5" />
         <NodeLayout
           Size="209,42"
           Id="Package\Iterate Through Version Numbers\EPT_ExecInParallel_Deletes"
@@ -1624,76 +1662,64 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="224,307"
+          PanelSize="224,306"
           Size="224,350"
           Id="Package\Iterate Through Version Numbers"
-          TopLeft="59.5000000000001,270.5" />
+          TopLeft="16,209.5" />
         <NodeLayout
           Size="195,42"
           Id="Package\ST_GetPackageVariables"
-          TopLeft="798.5,221.5" />
+          TopLeft="300.5,363.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[ChangeLoad]"
-          TopLeft="386.166666666667,210.5">
+          TopLeft="351,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-214.666666666667,60"
+              EndConnector="-223,60.0000000000001"
               Start="0,0"
-              End="-214.666666666667,52.5">
+              End="-223,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2914979757085" />
+                    End="0,16.5369127516779" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2914979757085"
-                    Point2="0,24.2914979757085"
-                    Point3="-4,24.2914979757085" />
+                    Point1="0,16.5369127516779"
+                    Point2="0,20.5369127516779"
+                    Point3="-4,20.5369127516779" />
                   <mssgle:LineSegment
-                    End="-210.666666666667,24.2914979757085" />
+                    End="-219,20.5369127516779" />
                   <mssgle:CubicBezierSegment
-                    Point1="-210.666666666667,24.2914979757085"
-                    Point2="-214.666666666667,24.2914979757085"
-                    Point3="-214.666666666667,28.2914979757085" />
+                    Point1="-219,20.5369127516779"
+                    Point2="-223,20.5369127516779"
+                    Point3="-223,24.5369127516779" />
                   <mssgle:LineSegment
-                    End="-214.666666666667,52.5" />
+                    End="-223,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-143.699973958333,29.2914979757085,72.73328125,16"
+              BoundingBox="-147.866640625,25.5369127516779,72.73328125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="515.5,189.5">
+          TopLeft="398,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="283,53"
+              EndConnector="0,214"
               Start="0,0"
-              End="275.5,53">
+              End="0,206.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="137.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="137.5,0"
-                    Point2="141.5,0"
-                    Point3="141.5,4" />
-                  <mssgle:LineSegment
-                    End="141.5,49" />
-                  <mssgle:CubicBezierSegment
-                    Point1="141.5,49"
-                    Point2="141.5,53"
-                    Point3="145.5,53" />
-                  <mssgle:LineSegment
-                    End="275.5,53" />
+                    End="0,206.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1704,30 +1730,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="519,78">
+          TopLeft="398,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-101.5,90.5"
+              EndConnector="0,60"
               Start="0,0"
-              End="-101.5,83">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,41.25"
-                    Point2="0,45.25"
-                    Point3="-4,45.25" />
-                  <mssgle:LineSegment
-                    End="-97.5,45.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-97.5,45.25"
-                    Point2="-101.5,45.25"
-                    Point3="-101.5,49.25" />
-                  <mssgle:LineSegment
-                    End="-101.5,83" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1738,38 +1752,64 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[InitialLoad]"
-          TopLeft="448.833333333333,210.5">
+          TopLeft="445,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="10.6666666666667,214"
+              EndConnector="227,214"
               Start="0,0"
-              End="10.6666666666667,206.5">
+              End="227,206.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,82.6396761133603" />
+                    End="0,69.248322147651" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,82.6396761133603"
-                    Point2="0,86.6396761133603"
-                    Point3="4,86.6396761133603" />
+                    Point1="0,69.248322147651"
+                    Point2="0,73.248322147651"
+                    Point3="4,73.248322147651" />
                   <mssgle:LineSegment
-                    End="6.66666666666669,86.6396761133603" />
+                    End="223,73.248322147651" />
                   <mssgle:CubicBezierSegment
-                    Point1="6.66666666666669,86.6396761133603"
-                    Point2="10.6666666666667,86.6396761133603"
-                    Point3="10.6666666666667,90.6396761133603" />
+                    Point1="223,73.248322147651"
+                    Point2="227,73.248322147651"
+                    Point3="227,77.248322147651" />
                   <mssgle:LineSegment
-                    End="10.6666666666667,206.5" />
+                    End="227,206.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-26.8133072916667,91.6396761133603,64.29328125,16"
+              BoundingBox="81.353359375,78.248322147651,64.29328125,16"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="245,42"
+          Id="Package\EST_Update_PushedToStagingFlag"
+          TopLeft="5.5,619.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="128,559.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

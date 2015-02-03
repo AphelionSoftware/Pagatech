@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/02/2015 16:06:38" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{80D574A0-1488-4C9E-AA90-781BC201C7E3}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2102_dbo_AccountCodeGroup" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{66C6E6DC-FE09-4988-BBED-AA4C0BF3C6E8}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/03/2015 13:56:43" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{AE298DEF-3D19-478B-8B6B-AEF677D0780F}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2102_dbo_AccountCodeGroup" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{BE1B08A3-BF8E-4813-A99B-611115EAA39A}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{B1C4A6F1-03AA-4D26-B6EB-FE04F7FE7979}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{DA010AF2-B7D6-4C45-8D5C-BC18CD025971}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="PrimaryDB" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
@@ -9,7 +9,7 @@
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{6E6E72F1-7280-417B-92D6-703B422A8915}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_AccountCodeGroup" DTS:refId="Package\DFT_Load dbo_AccountCodeGroup" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{2D438600-2F7A-472C-9570-9FBD1BB6FEFE}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_AccountCodeGroup" DTS:refId="Package\DFT_Load dbo_AccountCodeGroup" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -27,8 +27,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].ExternalColumns[as_of_change_version]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="AccountCodeGroupId" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].ExternalColumns[AccountCodeGroupId]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -38,8 +36,6 @@
                     <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].ExternalColumns[AccountCodeGroupId]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[AccountCodeGroupId]" name="AccountCodeGroupId" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[AccountCodeGroupId]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -54,8 +50,6 @@
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_CREATION_VERSION]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
-                    </outputColumn>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Error].Columns[as_of_change_version]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Error].Columns[AccountCodeGroupId]" name="AccountCodeGroupId" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Error].Columns[AccountCodeGroupId]">
                     </outputColumn>
@@ -82,45 +76,77 @@
                 </property>
               </properties>
             </component>
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="dc_as_of_change_version" refId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version" usesDispositions="true">
+              <inputs>
+                <input name="OLEDB_GetData_Output_dc_as_of_change_version" refId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Inputs[OLEDB_GetData_Output_dc_as_of_change_version]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Outputs[Output]" synchronousInputId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Inputs[OLEDB_GetData_Output_dc_as_of_change_version]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[$Package::CurrentVersion]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[$Package::CurrentVersion]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Outputs[Error]" synchronousInputId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Inputs[OLEDB_GetData_Output_dc_as_of_change_version]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+            </component>
             <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog" usesDispositions="true" version="4">
               <connections>
                 <connection connectionManagerID="{3C533A63-84CA-43CD-B82E-CC4CBB2D2751}:external" connectionManagerRefId="Project.ConnectionManagers[ChangeLogDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Connections[OleDbConnection]">
                 </connection>
               </connections>
               <inputs>
-                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog]">
                   <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
+                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[row_id]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_created_on" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_created_on]">
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_created_on" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[sys_created_on]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_CREATION_VERSION" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="AccountCodeGroupId" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[AccountCodeGroupId]">
+                    <externalMetadataColumn dataType="i4" name="AccountCodeGroupId" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[AccountCodeGroupId]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
+                    <inputColumn cachedDataType="i4" cachedName="as_of_change_version" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[as_of_change_version]">
                     </inputColumn>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_CREATION_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]">
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]">
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_CREATION_VERSION" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_CREATION_VERSION]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_CREATION_VERSION]" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_CREATION_VERSION]">
                     </inputColumn>
-                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[as_of_change_version]">
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[SYS_CHANGE_OPERATION]">
                     </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="AccountCodeGroupId" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[AccountCodeGroupId]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[AccountCodeGroupId]" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog].Columns[AccountCodeGroupId]">
+                    <inputColumn cachedDataType="i4" cachedName="AccountCodeGroupId" externalMetadataColumnId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].ExternalColumns[AccountCodeGroupId]" lineageId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output].Columns[AccountCodeGroupId]" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog].Columns[AccountCodeGroupId]">
                     </inputColumn>
                   </inputColumns>
                 </input>
               </inputs>
               <outputs>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Outputs[Error]" synchronousInputId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]">
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Outputs[Error]" synchronousInputId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
                   <outputColumns>
@@ -149,7 +175,9 @@
             </component>
           </components>
           <paths>
-            <path endId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" name="OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_AccountCodeGroup.Paths[OLEDB_GetData_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output]">
+            <path endId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Inputs[OLEDB_GetData_Output_dc_as_of_change_version]" name="OLEDB_GetData_Output_dc_as_of_change_version" refId="Package\DFT_Load dbo_AccountCodeGroup.Paths[OLEDB_GetData_Output_dc_as_of_change_version]" startId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_GetData.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_AccountCodeGroup\OLEDB_InsertIntoChangeLog.Inputs[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog]" name="dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_AccountCodeGroup.Paths[dc_as_of_change_version_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_AccountCodeGroup\dc_as_of_change_version.Outputs[Output]">
             </path>
           </paths>
         </pipeline>
@@ -157,37 +185,36 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{A29AB0E2-D015-4646-88DE-56F4BC48A328}" DTS:ObjectName="CurrentVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{A4A16679-5BFC-41BD-ADAE-9069AA55026C}" DTS:ObjectName="CurrentVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">6</DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{EB31A6A2-EC91-44AC-AD48-E105BB1CA551}" DTS:ObjectName="LastSyncVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{59ACC987-B8F9-44EB-B731-6361E63D196F}" DTS:ObjectName="LastSyncVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{95E4F3B2-855E-4E5E-BCC0-8798013EE1F6}" DTS:EvalOp="1" DTS:Expression="@RowCount&gt;0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load dbo_AccountCodeGroup" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load dbo_AccountCodeGroup]" DTS:To="Package\DFT_Load dbo_AccountCodeGroup">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{A7D9C560-7C4D-45BD-ABC6-91CD89AF0B01}" DTS:EvalOp="1" DTS:Expression="@RowCount&gt;0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load dbo_AccountCodeGroup" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load dbo_AccountCodeGroup]" DTS:To="Package\DFT_Load dbo_AccountCodeGroup">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2C0481D8-2A89-468B-8912-4AB92CD1AB7B}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5D3930D0-03EC-4716-BD02-47DB8C916CBB}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">-- AccountCodeGroup
 		SET NOCOUNT ON;
 		SELECT 
 			SYS_CHANGE_VERSION,
 			SYS_CHANGE_CREATION_VERSION,
-			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),
-			as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),  
 			AccountCodeGroupId
 		FROM CHANGETABLE(CHANGES [dbo].[AccountCodeGroup],0)  AS change_log</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D89D323A-3E43-465F-AD6E-E3CC09A44E6C}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot; WHERE SYS_CHANGE_VERSION &gt;  &quot; +@[$Package::LastSyncVersion] +&quot; AND SYS_CHANGE_VERSION &lt;= &quot; + @[$Package::CurrentVersion]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="VersionFilter">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{918F9AA2-C3F2-4F90-AF4C-3713FD9A31D9}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot; WHERE SYS_CHANGE_VERSION &gt;  &quot; +@[$Package::LastSyncVersion] +&quot; AND SYS_CHANGE_VERSION &lt;= &quot; + @[$Package::CurrentVersion]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="VersionFilter">
       <DTS:VariableValue DTS:DataType="8"> WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6F1196C1-C509-459E-BF2F-B62D265B5C83}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[AccountCodeGroup],0) AS ct&quot; + @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AF34A7E4-3CF4-4E41-AF1B-700DD57C045B}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[AccountCodeGroup],0) AS ct&quot; + @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
       <DTS:VariableValue DTS:DataType="8">SELECT COUNT(*) AS _count FROM CHANGETABLE(CHANGES [dbo].[AccountCodeGroup],0) AS ct WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E9022993-89E6-444D-B251-02DF1180A5D8}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6E19599D-CE11-43D1-A505-7C94405B7EA8}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
       <DTS:VariableValue DTS:DataSubType="ManagedSerializable" DTS:DataType="13">
         <SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0">
           <SOAP-ENV:Body>
@@ -197,16 +224,18 @@
         </SOAP-ENV:Envelope>
       </DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{9125AF64-1347-49D8-9EAC-7932425468AD}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetChangedRows">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0A2DA210-0ADE-46D3-8C60-782D23CB5B0F}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery]+ @[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetChangedRows">
       <DTS:VariableValue DTS:DataType="8">-- AccountCodeGroup
 		SET NOCOUNT ON;
 		SELECT 
 			SYS_CHANGE_VERSION,
 			SYS_CHANGE_CREATION_VERSION,
-			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),
-			as_of_change_version = CHANGE_TRACKING_CURRENT_VERSION(),
+			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),  
 			AccountCodeGroupId
 		FROM CHANGETABLE(CHANGES [dbo].[AccountCodeGroup],0)  AS change_log WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C7CFDD9D-D86B-4B4D-A328-9965448BFBBA}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::VersionFilter]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+      <DTS:VariableValue DTS:DataType="8"> WHERE SYS_CHANGE_VERSION &gt;  0 AND SYS_CHANGE_VERSION &lt;= 6</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>
