@@ -9,7 +9,7 @@
     [PhoneNumber]      VARBINARY (256) NULL,
     [Email]            VARCHAR (100)   NULL,
     [IsEnabled]        BIT             NULL,
-	[DimPrimaryRoleID] INT			   NOT NULL,	
+    [DimPrimaryRoleID] INT             NOT NULL,
     [DimCreatedDateID] INT             NOT NULL,
     [SourceKeyHash]    BIGINT          NULL,
     [DeltaHash]        BIGINT          NULL,
@@ -19,9 +19,11 @@
     [sys_CreatedOn]    DATETIME        DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimUserID] PRIMARY KEY CLUSTERED ([DimUserID] ASC),
     CONSTRAINT [fk_DimUser_CreatedDateID] FOREIGN KEY ([DimCreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
-	CONSTRAINT [fk_DimUser_DimPrimaryRoleID] FOREIGN KEY ([DimPrimaryRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID]),
-    CONSTRAINT [fk_DimUser_DateOfBirthID] FOREIGN KEY ([DimDateOfBirthID]) REFERENCES [Shared].[DimDate] ([DimDateID])
+    CONSTRAINT [fk_DimUser_DateOfBirthID] FOREIGN KEY ([DimDateOfBirthID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
+    CONSTRAINT [fk_DimUser_DimPrimaryRoleID] FOREIGN KEY ([DimPrimaryRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID])
 );
+
+
 
 
 
@@ -88,7 +90,7 @@ SELECT
 	DimDateOfBirthID,
 	Email,
 	IsEnabled,
-	DimRoleSourceKey
+	DimPrimaryRoleSourceKey 
 FROM
 (
 	SELECT 
@@ -102,10 +104,10 @@ FROM
 		DimDateOfBirthID =CONVERT(INT,CONVERT(VARCHAR(8), [DateOfBirth], 112)),
 		Email = NULL,
 		IsEnabled,
-		DimRoleSourceKey
+		DimPrimaryRoleSourceKey = COALESCE(DimRoleSourceKey, -1)
 	FROM [dbo].[Users] AS u1
 	
-	CROSS APPLY
+	OUTER APPLY
 	(
 		SELECT TOP 1
 			DimRoleSourceKey = u.[RoleId]
@@ -117,6 +119,8 @@ FROM
 	) AS ur
 
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+
+
 
 
 

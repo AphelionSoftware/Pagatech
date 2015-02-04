@@ -12,8 +12,12 @@
     [DimBusinessTypeSourceKey]                   VARCHAR (255)  NOT NULL,
     [DimOrganizationSubscriptionStatusSourceKey] VARCHAR (255)  NOT NULL,
     [DimOrganizationVerificationStatusSourceKey] VARCHAR (255)  NOT NULL,
-    [DimPagaAccountSourceKey]                    INT            NOT NULL
+    [DimPagaAccountSourceKey]                    INT            NOT NULL,
+    [SYS_CHANGE_VERSION]                         BIGINT         DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]                       CHAR (1)       DEFAULT ('I') NOT NULL
 );
+
+
 
 
 

@@ -4,8 +4,12 @@
     [SourceKey]                INT           NOT NULL,
     [SupportsCredit]           BIT           NULL,
     [SupportsDebit]            BIT           NULL,
-    [DimOrganizationSourceKey] INT           NOT NULL
+    [DimOrganizationSourceKey] INT           NOT NULL,
+    [SYS_CHANGE_VERSION]       BIGINT        DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]     CHAR (1)      DEFAULT ('I') NOT NULL
 );
+
+
 
 
 

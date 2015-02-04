@@ -8,8 +8,12 @@
     [SourceKey]               INT           NOT NULL,
     [DimCreatedDateID]        INT           NOT NULL,
     [DimDateOfBirthID]        INT           NULL,
-    [DimimPraryRoleSourceKey] INT           NOT NULL
+    [DimPrimaryRoleSourceKey] INT           NOT NULL,
+    [SYS_CHANGE_VERSION]      BIGINT        DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]    CHAR (1)      DEFAULT ('I') NOT NULL
 );
+
+
 
 
 

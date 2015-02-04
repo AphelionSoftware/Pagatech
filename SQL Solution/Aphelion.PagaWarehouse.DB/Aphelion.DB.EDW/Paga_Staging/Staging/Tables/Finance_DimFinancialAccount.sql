@@ -9,8 +9,12 @@
     [DimCurrencySourceKey]                VARCHAR (255)   NOT NULL,
     [DimFinancialAccountTypeSourceKey]    VARCHAR (255)   NOT NULL,
     [DimFinancialHoldingAccountSourceKey] INT             NULL,
-    [DimPagaAccountSourceKey]             INT             NOT NULL
+    [DimPagaAccountSourceKey]             INT             NOT NULL,
+    [SYS_CHANGE_VERSION]                  BIGINT          DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]                CHAR (1)        DEFAULT ('I') NOT NULL
 );
+
+
 
 
 
