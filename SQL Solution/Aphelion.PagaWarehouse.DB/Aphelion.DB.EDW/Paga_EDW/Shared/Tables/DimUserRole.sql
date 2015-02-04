@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [Shared].[DimUserRole] (
-    [DimPrimarygUserRoleID] INT           IDENTITY (1, 1) NOT NULL,
+    [DimUserRoleID] INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]             INT           NOT NULL,
     [Name]                  VARCHAR (255) NULL,
     [DimUserID]             INT           NOT NULL,
@@ -11,9 +11,9 @@
     [sys_CreatedOn]         DATETIME      DEFAULT (getdate()) NOT NULL,
     [sys_ModifiedBy]        VARCHAR (255) DEFAULT (user_name()) NOT NULL,
     [sys_ModifiedOn]        DATETIME      DEFAULT (getdate()) NOT NULL,
-    CONSTRAINT [pk_DimInitiatingUserRole] PRIMARY KEY CLUSTERED ([DimPrimarygUserRoleID] ASC),
-    CONSTRAINT [fk_DimInitiatingUserRole_DimRoleID] FOREIGN KEY ([DimRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID]),
-    CONSTRAINT [fk_DimInitiatingUserRole_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID])
+    CONSTRAINT [pk_DimUserRole] PRIMARY KEY CLUSTERED ([DimUserRoleID] ASC),
+    CONSTRAINT [fk_DimUserRole_DimRoleID] FOREIGN KEY ([DimRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID]),
+    CONSTRAINT [fk_DimUserRole_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID])
 );
 
 
