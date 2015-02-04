@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/04/2015 10:40:14" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{BFC737A5-6C72-4E85-8A4A-C811387556D1}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2004_Classification_DimFinancialTransactionType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{9AF3A61B-81F9-4DDE-AD0C-6ED525FF0194}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/04/2015 11:12:54" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{9EB60027-4FD3-4824-B076-D37EB168915F}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2004_Classification_DimFinancialTransactionType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{8684ECDC-8F3F-44D0-A09C-67D083E5EE23}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{AEEDA0DA-B979-43D6-ADBF-0E7FF4D611B0}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimFinancialTransactionType" DTS:refId="Package\DFT_Load Classification_DimFinancialTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{E20515D9-69B0-4C85-892E-A164F78E5AA9}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimFinancialTransactionType" DTS:refId="Package\DFT_Load Classification_DimFinancialTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -165,24 +165,24 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{FDAADBCA-C25A-4BEF-BE23-B7C30E1AC79D}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{9AF9B132-568E-4154-A53D-09C7B98AA243}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{5DBDC8E7-EE5E-4CB6-BA10-909F7212E57A}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{4694A7A1-42AD-4580-AF11-405D102F513D}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{6A29AD13-026D-4340-B372-B13BA6254DDC}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{8DFCC453-1AD3-4091-9958-111FA7608389}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8A11D009-EAAF-4DFC-9A6A-BE415A470767}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{9EB102B0-F739-49AA-9A98-798DBF658B0A}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	base_query.FinancialTxCategory 	 FROM  ( 	SELECT 		FinancialTransactionTypeID AS SourceKey,  		CONVERT(VARCHAR(255),Description) AS Name, 		CONVERT(VARCHAR(255),COALESCE(FinancialTransactionTypeGroupId,'UNKNOWN')) AS FinancialTxCategory 	FROM dbo.FinancialTransactionType AS ftt 	OUTER APPLY 	( 		SELECT TOP 1  			x.FinancialTransactionTypeGroupId 		FROM [dbo].[FinancialTransactionTypeTransactionTypeGroup] as x 		WHERE  			x.FinancialTransactionTypeId = ftt.FinancialTransactionTypeId 		ORDER BY  			x.UpdatedDate DESC 	) AS ftg ) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8ECA09D3-598F-4C1F-83CA-097EAE12A2BA}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F085224B-8BEA-43DF-BF44-AC3D4C44CB78}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	base_query.FinancialTxCategory 	 FROM  ( 	SELECT 		FinancialTransactionTypeID AS SourceKey,  		CONVERT(VARCHAR(255),Description) AS Name, 		CONVERT(VARCHAR(255),COALESCE(FinancialTransactionTypeGroupId,'UNKNOWN')) AS FinancialTxCategory 	FROM dbo.FinancialTransactionType AS ftt 	OUTER APPLY 	( 		SELECT TOP 1  			x.FinancialTransactionTypeGroupId 		FROM [dbo].[FinancialTransactionTypeTransactionTypeGroup] as x 		WHERE  			x.FinancialTransactionTypeId = ftt.FinancialTransactionTypeId 		ORDER BY  			x.UpdatedDate DESC 	) AS ftg ) as base_query </DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

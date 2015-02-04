@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/04/2015 10:40:15" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="WIN-TDGNUUDMOVR" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{DC980C27-168D-44BD-AD78-571BEF449E42}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2301_Finance_DimBankAccount" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{C17EF366-35C0-474D-9AEC-009932A27AD8}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/04/2015 11:12:55" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{DE2EFA44-DB6B-4D79-8D4F-C8859B615BDA}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2301_Finance_DimBankAccount" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{B9D9F12E-71D9-44F1-97CB-A9023CF8D1E9}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{C24A9C6F-7139-411D-BBA4-B3889FF30968}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimBankAccount" DTS:refId="Package\DFT_Load Finance_DimBankAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{2FBB440E-B4AE-4A1E-8781-93E7C73534F6}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimBankAccount" DTS:refId="Package\DFT_Load Finance_DimBankAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -194,8 +194,16 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="DimBankSourceKey" refId="Package\DFT_Load Finance_DimBankAccount\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimBankSourceKey]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimBankAccount\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimBankAccount\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Finance_DimBankAccount\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Finance_DimBankAccount\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Finance_DimBankAccount\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Finance_DimBankAccount\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Finance_DimBankAccount\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Finance_DimBankAccount\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]">
+                    </inputColumn>
                     <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Finance_DimBankAccount\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Finance_DimBankAccount\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Finance_DimBankAccount\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="20" cachedName="AccountAlias" externalMetadataColumnId="Package\DFT_Load Finance_DimBankAccount\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].ExternalColumns[AccountAlias]" lineageId="Package\DFT_Load Finance_DimBankAccount\OLEDB_GetData.Outputs[Output].Columns[AccountAlias]" refId="Package\DFT_Load Finance_DimBankAccount\OLEDB_InsertIntoStaging.Inputs[dc_ChangeData_Output_OLEDB_InsertIntoStaging].Columns[AccountAlias]">
@@ -263,24 +271,24 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{8305A114-73DF-4D12-9145-E9E38391C6B7}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{5F7CB2F9-CE76-4815-B8C5-C7AD04EA1A54}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{73677B90-0972-4BF8-A974-2B8110E45544}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{FC2D5677-C36E-48BF-82B8-BB4611962B4B}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{2D95634D-A94E-47E4-AFD1-5187B1509A15}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{95438ABE-B724-4CF6-87B2-2FAFF85E87C3}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{88C43D61-066F-4B69-96A8-51416BB87ADE}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{9BC0CC00-DEA1-4F5B-B45B-77AB3A47D329}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	AccountAlias,  	AccountHolderName,  	BankAccountLinkStatusComment,  	BankAccountLinkStatusType = COALESCE(BankAccountLinkStatusType, 'UNKNOWN'),  	BranchName,  	DurationLimit,  	DurationLimitSeconds,  	KYC_Rating,  	Name,  	TransactionLimit,  	DimBankSourceKey 	 FROM  ( 	SELECT          AccountAlias= CONVERT(VARCHAR(20),[AccountAlias]),  		 AccountHolderName = CONVERT(VARCHAR(200),[AccountHolderName]),  		 BankAccountLinkStatusComment= CONVERT(VARCHAR(1000),[BankAccountLinkStatusComment]),  		 BankAccountLinkStatusType = [BankAccountLinkStatusTypeId],  		 BranchName = CONVERT(VARCHAR(200),[BranchName]),  		 DurationLimit = [DurationLimit],  		 DurationLimitSeconds=[DurationLimitSeconds],  		 KYC_Rating = [KYCId],  		 Name = CONVERT(VARCHAR(200),[AccountHolderName]),  		 SourceKey = [BankAccountId],  		 TransactionLimit =[TransactionLimit],  		 DimBankSourceKey = [BankId] 	FROM [dbo].[BankAccount] ) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3BE378B4-62E3-4718-86CF-3076516F2EE5}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B80461AD-0756-4C8E-9806-10238940F7BB}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
       <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	AccountAlias,  	AccountHolderName,  	BankAccountLinkStatusComment,  	BankAccountLinkStatusType = COALESCE(BankAccountLinkStatusType, 'UNKNOWN'),  	BranchName,  	DurationLimit,  	DurationLimitSeconds,  	KYC_Rating,  	Name,  	TransactionLimit,  	DimBankSourceKey 	 FROM  ( 	SELECT          AccountAlias= CONVERT(VARCHAR(20),[AccountAlias]),  		 AccountHolderName = CONVERT(VARCHAR(200),[AccountHolderName]),  		 BankAccountLinkStatusComment= CONVERT(VARCHAR(1000),[BankAccountLinkStatusComment]),  		 BankAccountLinkStatusType = [BankAccountLinkStatusTypeId],  		 BranchName = CONVERT(VARCHAR(200),[BranchName]),  		 DurationLimit = [DurationLimit],  		 DurationLimitSeconds=[DurationLimitSeconds],  		 KYC_Rating = [KYCId],  		 Name = CONVERT(VARCHAR(200),[AccountHolderName]),  		 SourceKey = [BankAccountId],  		 TransactionLimit =[TransactionLimit],  		 DimBankSourceKey = [BankId] 	FROM [dbo].[BankAccount] ) as base_query </DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
