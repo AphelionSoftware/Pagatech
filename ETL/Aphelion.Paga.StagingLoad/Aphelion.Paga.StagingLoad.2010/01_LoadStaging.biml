@@ -11,6 +11,7 @@
 	 <Connection Name="Aphelion.DB.LoadQueue" ConnectionString="Data Source=.\sql2012;Initial Catalog=Aphelion.DB.LoadQueue;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
 	 <Connection Name="Paga_Staging" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
 	 <Connection Name="SourceDB" ConnectionString="Data Source=10.0.20.15;Initial Catalog=paga_bi;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="ChangeLog" ConnectionString="Data Source=10.0.20.15;Initial Catalog=paga_change_log;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
 	</Connections>
 	<PackageProjects>
 		<PackageProject Name="Aphelion.Paga.StagingLoad.2010">
@@ -46,7 +47,7 @@
 													"CONVERT(CHAR(1),MAX(packageType)) AS pt,  "+
 													"CONVERT(VARCHAR(MAX),MAX(BaseQuery)) AS bq,  "+
 													"CONVERT(VARCHAR(MAX),MAX(KeyColumn)) AS kc,  "+
-													"CONVERT(INT ,MAX(LoadGroup)) AS lg,  "+
+													"CONVERT(INT ,MAX(LoadGroup))/10 AS lg,  "+
 													"CONVERT(VARCHAR(MAX),MAX(SourceTable)) AS st  "+
 												"FROM  "+
 												"(  "+
@@ -127,7 +128,8 @@
 				string TableSchema = row[1].ToString();
 				string TableName = row[2].ToString();
 				string BaseQuery = row[3].ToString();
-
+				string SourceTable = row[5].ToString() +" ";
+				string CountQuery = "&quot;SELECT COUNT(*) AS _count FROM " +SourceTable +" WHERE as_of_change_version = &quot;";
 
 		#>	
 				<Package Name="<#=PackageName#>" ConstraintMode="Linear"  ProtectionLevel="EncryptSensitiveWithUserKey"  AutoCreateConfigurationsType="None" DelayValidation="true">
@@ -140,9 +142,18 @@
 				<Variables>
 						<Variable Name="BaseQuery" DataType="String"><#=BaseQuery#></Variable>
 						<Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery] +" " +@[$Package::EndOfQuery]</Variable>
+						<Variable Name="GetRowCount" DataType="String" EvaluateAsExpression="true"><#=CountQuery#> + (DT_STR, 20, 1252)@[$Package::ChangeVersion]</Variable>
+						<Variable Name="RowCount" DataType="Object"></Variable>
 					</Variables>
 				
 				<Tasks>
+					<ExecuteSQL Name="EST_CheckForRows" ConnectionName="ChangeLog" ResultSet="SingleRow">
+						<VariableInput VariableName="User.GetRowCount" />
+						<Results>
+							<Result Name="_count" VariableName="User.RowCount" />
+						</Results>
+								
+					</ExecuteSQL>
 					<Dataflow Name="DFT_Load <#=String.Format("{0}_{1}",TableSchema, TableName)#>"  DelayValidation="true">
 						<Transformations>
 						<OleDbSource Name="OLEDB_GetData" ConnectionName="SourceDB">
@@ -163,10 +174,15 @@
                                 </Outputs>
                             </ErrorHandling>
 						</DerivedColumns>
-						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="Paga_Staging" KeepIdentity="false" BatchSize = "50000" >
+						<OleDbDestination Name="OLEDB_InsertIntoStaging" ConnectionName="Paga_Staging" KeepIdentity="false" BatchSize = "100000" >
 							<ExternalTableOutput Table="<#=String.Format("{0}.{1}_{2}","Staging",TableSchema, TableName)#>"/>
 						</OleDbDestination>
 						</Transformations>
+						<PrecedenceConstraints>
+									<Inputs>
+										<Input OutputPathName="EST_CheckForRows.Output" EvaluationOperation="Expression" Expression="@RowCount>0"/>
+									</Inputs>
+								</PrecedenceConstraints>
 					</Dataflow>
 				</Tasks>
 				

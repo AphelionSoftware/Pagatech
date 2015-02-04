@@ -31,7 +31,8 @@
 											"list.TABLE_NAME, "+
 											"list.BaseQuery, "+
 											"list.KeyColumn, "+
-											"list.SourceTable "+
+											"list.SourceTable, "+
+											"ErrorTable = StagingTableName "+
 										"FROM "+
 										"(  "+
 											"SELECT  "+
@@ -99,8 +100,7 @@
 												") as pl  "+
 											"WHERE   "+
 												"pl.bq IS NOT NULL  "+
-												"AND LEN(pl.bq) > 0 "+
-												"AND pl.bq <> 'PlaceHolder' "+
+												
 										") AS list "+
 										"INNER JOIN "+
 										"("+
@@ -129,7 +129,7 @@
 				string PackageName = row[0].ToString();
 				string TableSchema = row[1].ToString();
 				string TableName = row[2].ToString();
-				string errTable = row[3].ToString();
+				string errTable = row[6].ToString();
 #>	
 	<Package Name="<#=PackageName#>" ConstraintMode="Parallel" ProtectionLevel="EncryptSensitiveWithUserKey"  MaxErrorCount="2000"  DelayValidation="true">
 	

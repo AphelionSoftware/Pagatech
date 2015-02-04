@@ -1,0 +1,654 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="02/04/2015 16:46:09" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{23C066E3-F1D9-4505-A62D-4FC2732BC962}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2401_Finance_DimFinancialAccountType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{7E65B367-2BDC-498C-8BF3-5AB8E4E6100E}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{7F58B526-FC00-4FFA-9B33-DC9CC5B270AB}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimFinancialAccountType" DTS:refId="Package\SQL_Truncate_Error_Finance_DimFinancialAccountType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Finance_DimFinancialAccountType]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{E7FBF4CF-1300-4340-8DE7-9E4F40EF324B}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimFinancialAccountType" DTS:refId="Package\DFT_Load_Finance_DimFinancialAccountType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+          <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLE_SRC_Staging_Finance_DimFinancialAccountType" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[TextDesciption]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimGLCodeSourceKey" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[DimGLCodeSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[SourceKey]" length="255" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[TextDesciption]" length="1000" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[TextDesciption]" name="TextDesciption" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[TextDesciption]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[DimGLCodeSourceKey]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[DimGLCodeSourceKey]" name="DimGLCodeSourceKey" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[DimGLCodeSourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[Name]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[SourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1000" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[TextDesciption]" name="TextDesciption" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[TextDesciption]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[DimGLCodeSourceKey]" name="DimGLCodeSourceKey" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[DimGLCodeSourceKey]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+					SELECT *
+					FROM [Staging].[Finance_DimFinancialAccountType]
+				  </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">2</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}" contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5" name="LKP_DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID" usesDispositions="true" version="6">
+              <connections>
+                <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="Connection manager used to access lookup data." name="OleDbConnection" refId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input name="OLE_SRC_Staging_Finance_DimFinancialAccountType_Output_LKP_DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Inputs[OLE_SRC_Staging_Finance_DimFinancialAccountType_Output_LKP_DimGLCodeID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="DimGLCodeSourceKey" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[DimGLCodeSourceKey]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Inputs[OLE_SRC_Staging_Finance_DimFinancialAccountType_Output_LKP_DimGLCodeID].Columns[DimGLCodeSourceKey]">
+                      <properties>
+                        <property dataType="System.String" description="Specifies the column in the reference table that a column joins." name="JoinToReferenceColumn">SourceKey</property>
+                        <property dataType="System.Null" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">
+                        </property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output errorOrTruncationOperation="Lookup" errorRowDisposition="RedirectRow" exclusionGroup="1" name="Match" refId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Match]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Inputs[OLE_SRC_Staging_Finance_DimFinancialAccountType_Output_LKP_DimGLCodeID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="CopyColumn" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Match].Columns[DimGLCodeID]" name="DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Match].Columns[DimGLCodeID]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">DimGLCodeID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;" exclusionGroup="1" name="NoMatch" refId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[NoMatch]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Inputs[OLE_SRC_Staging_Finance_DimFinancialAccountType_Output_LKP_DimGLCodeID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Error]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Inputs[OLE_SRC_Staging_Finance_DimFinancialAccountType_Output_LKP_DimGLCodeID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.String" description="Specifies the SQL statement that generates the lookup table." expressionType="Notify" name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SourceKey, DimGLCodeID FROM [Finance].[DimGLCode]</property>
+                <property dataType="System.String" description="Specifies a SQL statement that uses parameters to generate the lookup table." expressionType="Notify" name="SqlCommandParam" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT SourceKey, DimGLCodeID FROM [Finance].[DimGLCode]) [refTable] where [refTable].[SourceKey] = ?</property>
+                <property dataType="System.Int32" description="Specifies the type of connection used to access the reference dataset." name="ConnectionType" typeConverter="LookupConnectionType">0</property>
+                <property dataType="System.Int32" description="Specifies the cache type of the lookup table." name="CacheType" typeConverter="CacheType">0</property>
+                <property dataType="System.Int32" description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set." name="NoMatchBehavior" typeConverter="LookupNoMatchBehavior">0</property>
+                <property dataType="System.Int32" description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset." name="NoMatchCachePercentage">0</property>
+                <property dataType="System.Int32" description="Maximum Memory Usage for Reference Cache on a 32 bit platform." name="MaxMemoryUsage">25</property>
+                <property dataType="System.Int64" description="Maximum Memory Usage for Reference Cache on a 64 bit platform." name="MaxMemoryUsage64">25</property>
+                <property dataType="System.String" description="Indicates whether to reference metadata in an XML format." name="ReferenceMetadataXml">&lt;referenceMetadata&gt;
+  &lt;referenceColumns&gt;
+    &lt;referenceColumn name="SourceKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+    &lt;referenceColumn name="DimGLCodeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+  &lt;/referenceColumns&gt;
+&lt;/referenceMetadata&gt;</property>
+                <property containsID="true" dataType="System.String" description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons." name="ParameterMap">#{Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[DimGLCodeSourceKey]};</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used." name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Finance_DimFinancialAccountType" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="DimFinancialAccountTypeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[DimFinancialAccountTypeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[TextDesciption]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[DimGLCodeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[SourceKeyHash]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[DeltaHash]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[sys_ModifiedBy]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[sys_ModifiedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[sys_CreatedBy]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="DimGLCodeID" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[DimGLCodeID]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Match].Columns[DimGLCodeID]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].Columns[DimGLCodeID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[Name]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].Columns[Name]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].ExternalColumns[TextDesciption]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[TextDesciption]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType].Columns[TextDesciption]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Outputs[Error]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Finance.DimFinancialAccountType</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Singleton_Finance_DimFinancialAccountType" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="DimFinancialAccountTypeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[DimFinancialAccountTypeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[TextDesciption]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[DimGLCodeID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[SourceKeyHash]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[DeltaHash]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[sys_ModifiedBy]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[sys_ModifiedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[sys_CreatedBy]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="DimGLCodeID" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[DimGLCodeID]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Match].Columns[DimGLCodeID]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].Columns[DimGLCodeID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[Name]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].Columns[Name]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].ExternalColumns[TextDesciption]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[TextDesciption]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType].Columns[TextDesciption]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Outputs[Error]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Finance.DimFinancialAccountType</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">1</property>
+              </properties>
+            </component>
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails" usesDispositions="true">
+              <inputs>
+                <input name="OLE_DST_Singleton_Finance_DimFinancialAccountType_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimFinancialAccountType_Error_DC_AddErrorDetails]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimFinancialAccountType_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimFinancialAccountType_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimFinancialAccountType_Error_DC_AddErrorDetails]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_DimFinancialAccountType.ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_DimFinancialAccountType.ErrorColumn</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Error]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimFinancialAccountType_Error_DC_AddErrorDetails]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+            </component>
+            <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors" refId="Package\DFT_Load_Finance_DimFinancialAccountType\RC_CountErrors">
+              <inputs>
+                <input hasSideEffects="true" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\DFT_Load_Finance_DimFinancialAccountType\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load_Finance_DimFinancialAccountType\RC_CountErrors.Outputs[Output]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Finance_DimFinancialAccountType" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{2C3E7E8F-26FE-46EC-83AC-2F8FC8506F95}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[QueueID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[SSISErrorCode]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[SSISErrorColumn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[PackageName]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[ErrorType]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimGLCodeSourceKey" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[DimGLCodeSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[TextDesciption]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[PackageName]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].Columns[PackageName]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[QueueID]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].Columns[QueueID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].Columns[ErrorType]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].Columns[SSISErrorColumn]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[Name]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].Columns[Name]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[TextDesciption]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[TextDesciption]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].Columns[TextDesciption]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimGLCodeSourceKey" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].ExternalColumns[DimGLCodeSourceKey]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[DimGLCodeSourceKey]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType].Columns[DimGLCodeSourceKey]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Outputs[Error]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Finance_DimFinancialAccountType]</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+              </properties>
+            </component>
+            <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails_DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID" usesDispositions="true">
+              <inputs>
+                <input name="LKP_DimGLCodeID_Error_DC_AddErrorDetails_DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Inputs[LKP_DimGLCodeID_Error_DC_AddErrorDetails_DimGLCodeID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Error].Columns[ErrorCode]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Inputs[LKP_DimGLCodeID_Error_DC_AddErrorDetails_DimGLCodeID].Columns[ErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Error].Columns[ErrorColumn]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Inputs[LKP_DimGLCodeID_Error_DC_AddErrorDetails_DimGLCodeID].Columns[ErrorColumn]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" name="Output" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Inputs[LKP_DimGLCodeID_Error_DC_AddErrorDetails_DimGLCodeID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Failed Lookup DimGLCodeID")</property>
+                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Failed Lookup DimGLCodeID")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Error].Columns[ErrorCode]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Error].Columns[ErrorColumn]}</property>
+                        <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorColumn</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Error]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Inputs[LKP_DimGLCodeID_Error_DC_AddErrorDetails_DimGLCodeID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+            </component>
+            <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors_DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\RC_CountErrors_DimGLCodeID">
+              <inputs>
+                <input hasSideEffects="true" name="DC_AddErrorDetails_DimGLCodeID_Output_RC_CountErrors_DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\RC_CountErrors_DimGLCodeID.Inputs[DC_AddErrorDetails_DimGLCodeID_Output_RC_CountErrors_DimGLCodeID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load_Finance_DimFinancialAccountType\RC_CountErrors_DimGLCodeID.Outputs[Output]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\RC_CountErrors_DimGLCodeID.Inputs[DC_AddErrorDetails_DimGLCodeID_Output_RC_CountErrors_DimGLCodeID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{2C3E7E8F-26FE-46EC-83AC-2F8FC8506F95}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[QueueID]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[SSISErrorCode]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[SSISErrorColumn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[PackageName]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[ErrorType]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimGLCodeSourceKey" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[DimGLCodeSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[TextDesciption]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[PackageName]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[PackageName]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].Columns[PackageName]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[QueueID]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[QueueID]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].Columns[QueueID]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[ErrorType]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[ErrorType]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].Columns[ErrorType]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[SSISErrorCode]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[SSISErrorCode]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].Columns[SSISErrorCode]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[SSISErrorColumn]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].Columns[SSISErrorColumn]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[Name]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[Name]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].Columns[Name]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[TextDesciption]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[TextDesciption]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].Columns[TextDesciption]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimGLCodeSourceKey" externalMetadataColumnId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].ExternalColumns[DimGLCodeSourceKey]" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output].Columns[DimGLCodeSourceKey]" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID].Columns[DimGLCodeSourceKey]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Outputs[Error]" synchronousInputId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Finance_DimFinancialAccountType]</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+              </properties>
+            </component>
+          </components>
+          <paths>
+            <path endId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Inputs[OLE_SRC_Staging_Finance_DimFinancialAccountType_Output_LKP_DimGLCodeID]" name="OLE_SRC_Staging_Finance_DimFinancialAccountType_Output_LKP_DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType.Paths[OLE_SRC_Staging_Finance_DimFinancialAccountType_Output_LKP_DimGLCodeID]" startId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_SRC_Staging_Finance_DimFinancialAccountType.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Inputs[LKP_DimGLCodeID_Error_DC_AddErrorDetails_DimGLCodeID]" name="LKP_DimGLCodeID_Error_DC_AddErrorDetails_DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType.Paths[LKP_DimGLCodeID_Error_DC_AddErrorDetails_DimGLCodeID]" startId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Error]">
+            </path>
+            <path endId="Package\DFT_Load_Finance_DimFinancialAccountType\RC_CountErrors_DimGLCodeID.Inputs[DC_AddErrorDetails_DimGLCodeID_Output_RC_CountErrors_DimGLCodeID]" name="DC_AddErrorDetails_DimGLCodeID_Output_RC_CountErrors_DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType.Paths[DC_AddErrorDetails_DimGLCodeID_Output_RC_CountErrors_DimGLCodeID]" startId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails_DimGLCodeID.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID.Inputs[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID]" name="RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID" refId="Package\DFT_Load_Finance_DimFinancialAccountType.Paths[RC_CountErrors_DimGLCodeID_Output_OLE_DST_Error_Finance_DimFinancialAccountType_DimGLCodeID]" startId="Package\DFT_Load_Finance_DimFinancialAccountType\RC_CountErrors_DimGLCodeID.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Inputs[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType]" name="LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType" refId="Package\DFT_Load_Finance_DimFinancialAccountType.Paths[LKP_DimGLCodeID_Match_OLE_DST_Finance_DimFinancialAccountType]" startId="Package\DFT_Load_Finance_DimFinancialAccountType\LKP_DimGLCodeID.Outputs[Match]">
+            </path>
+            <path endId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Inputs[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType]" name="OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType" refId="Package\DFT_Load_Finance_DimFinancialAccountType.Paths[OLE_DST_Finance_DimFinancialAccountType_Error_OLE_DST_Singleton_Finance_DimFinancialAccountType]" startId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Finance_DimFinancialAccountType.Outputs[Error]">
+            </path>
+            <path endId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_DimFinancialAccountType_Error_DC_AddErrorDetails]" name="OLE_DST_Singleton_Finance_DimFinancialAccountType_Error_DC_AddErrorDetails" refId="Package\DFT_Load_Finance_DimFinancialAccountType.Paths[OLE_DST_Singleton_Finance_DimFinancialAccountType_Error_DC_AddErrorDetails]" startId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Singleton_Finance_DimFinancialAccountType.Outputs[Error]">
+            </path>
+            <path endId="Package\DFT_Load_Finance_DimFinancialAccountType\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\DFT_Load_Finance_DimFinancialAccountType.Paths[DC_AddErrorDetails_Output_RC_CountErrors]" startId="Package\DFT_Load_Finance_DimFinancialAccountType\DC_AddErrorDetails.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load_Finance_DimFinancialAccountType\OLE_DST_Error_Finance_DimFinancialAccountType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType]" name="RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType" refId="Package\DFT_Load_Finance_DimFinancialAccountType.Paths[RC_CountErrors_Output_OLE_DST_Error_Finance_DimFinancialAccountType]" startId="Package\DFT_Load_Finance_DimFinancialAccountType\RC_CountErrors.Outputs[Output]">
+            </path>
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{8F9FA79A-9DF8-44ED-A256-0926B9D08DF5}" DTS:From="Package\SQL_Truncate_Error_Finance_DimFinancialAccountType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimFinancialAccountType_To_DFT_Load_Finance_DimFinancialAccountType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimFinancialAccountType_To_DFT_Load_Finance_DimFinancialAccountType]" DTS:To="Package\DFT_Load_Finance_DimFinancialAccountType">
+    </DTS:PrecedenceConstraint>
+  </DTS:PrecedenceConstraints>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A0D29111-CF7E-4024-8EA9-1A61FF279C3E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{913AD850-9046-4928-B2EA-AD073D77948A}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DB002F54-C44B-4BE1-A83B-00BFC390ECA7}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+      <DTS:VariableValue DTS:DataType="8">2401_Finance_DimFinancialAccountType</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>
