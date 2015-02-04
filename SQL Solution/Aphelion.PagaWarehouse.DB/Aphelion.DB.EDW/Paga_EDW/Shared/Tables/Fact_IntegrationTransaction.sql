@@ -41,6 +41,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_FactIntegrationTransaction_SourceKey]
     ON [Shared].[FactIntegrationTransaction]([SourceKey] ASC);
@@ -69,42 +71,9 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'IntegrationTrans
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT
-	ExternalReferenceNumber,
-   	HasFinancialTx,
-	IntegrationTx_Amount,
-	MessageText,
-	SourceKey,
-	DimIntegrationTxDateID, 
-	DimIntegrationTxTimeID,
-	DimExternalOrganizationSourceKey,
-	DimIntegrationTransactionResultSourceKey,
-	DimIntegrationTransactionTypeSourceKey,
-	DimProcessTypeSourceKey,
-	DimUserSourceKey,
-	FactFinancialTransactionSourceKey
-	FROM
-(
-	SELECT 
-		SourceKey = [IntegrationTransactionId],  
-		DimIntegrationTxDateID = CONVERT(INT,CONVERT(VARCHAR(8), [IntegrationTransactionTimestamp], 112)),
-		DimIntegrationTxTimeID = CONVERT(INT,REPLACE(CONVERT(TIME(0) ,IntegrationTransactionTimestamp),'':'','''')), 
-		DimExternalOrganizationSourceKey = CAST([ExternalOrganizationId] AS VARCHAR(300)),
-		ExternalOrganization_Name = CAST(it.ExternalOrganizationName AS VARCHAR(300)),
-		DimUserSourceKey = [UserId],
-		DimIntegrationTransactionTypeSourceKey = CAST([IntegrationTransactionTypeId] AS VARCHAR(50)),
-		DimProcessTypeSourceKey = COALESCE(-1,CAST([ProcessTypeId] AS VARCHAR(50))),
-		DimIntegrationTransactionResultSourceKey = CAST([IntegrationTransactionResultId] AS VARCHAR(50)),
-		[ExternalReferenceNumber] = CAST([ExternalReferenceNumber] AS VARCHAR(50)),
-		[MessageText] = CAST([Message] AS VARCHAR(300)),
-		IntegrationTx_Amount = [Amount],
-		CASE 
-			WHEN [FinancialTransactionId] IS NULL THEN CAST(0 AS BIT)
-			ELSE CAST (1 AS BIT)
-		END AS HasFinancialTx,
-		FactFinancialTransactionSourceKey = [FinancialTransactionId]
-	FROM [dbo].[IntegrationTransaction] as it
-) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactIntegrationTransaction';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'PlaceHolder', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactIntegrationTransaction';
+
+
 
 
 

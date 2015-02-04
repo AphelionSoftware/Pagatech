@@ -26,6 +26,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_FactGLTransaction_SourceKey]
     ON [Finance].[FactGLTransaction]([SourceKey] ASC);
@@ -56,28 +58,7 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialTransac
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 
-	[CreditAmount],
-	[DebitAmount],
-	[Movement],
-	[SourceKey],
-	[TextDescription],
-	[TransactionLineNumber],
-	[DimFinancialAccountSourceKey],
-	[DimGLCodeSourceKey],
-	[FactFinancialTransactionSourceKey]
-FROM
-(
-	SELECT
-		SourceKey = [FinancialTransactionItemId],
-		[DimGLCodeSourceKey] = [AccountCodeId],
-		TextDescription = [Description],
-		[DimFinancialAccountSourceKey] = [FinancialAccountId],
-		[FactFinancialTransactionSourceKey] = [FinancialTransactionId],
-		[TransactionLineNumber],
-		[CreditAmount],
-		[DebitAmount],
-		[Movement] = ([CreditAmount]+[DebitAmount])			
-	FROM [dbo].[FinancialTransactionItem]
-) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'PlaceHolder', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
+
+
 
