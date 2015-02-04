@@ -15,15 +15,14 @@
     [DimEffectiveTimeID]                   INT             NULL,
     [DimFinancialTxDateID]                 INT             NULL,
     [DimFinancialTxTimeID]                 INT             NULL,
+    [DimBusinessTypeSourceKey]             VARCHAR (255)   NULL,
     [DimCurrencySourceKey]                 VARCHAR (255)   NULL,
     [DimFinancialTransactionTypeSourceKey] VARCHAR (255)   NULL,
     [DimUserSourceKey]                     INT             NULL,
     [FactIntegrationTransactionSourceKey]  INT             NULL,
     [FactOriginalFinancialTxID]            INT             NULL,
     [FactProcessEventSourceKey]            INT             NULL,
-    [FactRelatedFinancialTxID]             INT             NULL,
-    [SYS_CHANGE_VERSION]                   BIGINT          DEFAULT ((0)) NOT NULL,
-    [SYS_CHANGE_OPERATION]                 CHAR (1)        DEFAULT ('I') NOT NULL
+    [FacttRelaedFinancialTxID]             INT             NULL
 );
 
 
@@ -43,7 +42,8 @@
 
 
 
+
+
 GO
-CREATE UNIQUE CLUSTERED INDEX [ix_Finance_FactFinancialTransaction]
-    ON [Staging].[Finance_FactFinancialTransaction]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+
 

@@ -17,10 +17,12 @@
     [DimCompletedTimeID]                     INT             NULL,
     [DimForUserSourceKey]                    INT             NULL,
     [DimInitiatingUserSourceKey]             INT             NULL,
-    [DimOriginalProcessChannelSourceKey]     VARCHAR (255)   NULL,
     [DimProcessChannelSourceKey]             VARCHAR (255)   NOT NULL,
     [DimProcessStatusSourceKey]              VARCHAR (255)   NULL,
     [DimProcessTypeSourceKey]                VARCHAR (255)   NULL,
+    [DimRequestedProcessChannelSourceKey]    VARCHAR (255)   NULL,
+    [DimStartedDateID]                       INT             NULL,
+    [DimStartedTimeID]                       INT             NULL,
     [DimToUserSourceKey]                     INT             NULL,
     [DimUserSourceKey]                       INT             NULL,
     [DimVerifiedByUserSourceKey]             INT             NULL,
@@ -38,11 +40,13 @@
     [ReferenceNumber]                        VARCHAR (200)   NULL,
     [SenderPhoneNumber]                      VARCHAR (200)   NULL,
     [SourceKey]                              INT             NOT NULL,
-    [SYS_CHANGE_OPERATION]                   CHAR (1)        NOT NULL,
-    [SYS_CHANGE_VERSION]                     BIGINT          NOT NULL,
     [VerificationStatus]                     VARCHAR (200)   NULL,
     [WithdrawalCode]                         VARCHAR (200)   NULL
 );
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-CREATE TABLE [Staging].[Shared_DimOrganization] (
+﻿CREATE TABLE [Staging].[Shared_DimOrganization] (
     [DisplayName]                                VARCHAR (100)  NULL,
     [Name]                                       VARCHAR (255)  NOT NULL,
     [OrganizationCode]                           VARCHAR (10)   NULL,
@@ -12,9 +12,7 @@ CREATE TABLE [Staging].[Shared_DimOrganization] (
     [DimBusinessTypeSourceKey]                   VARCHAR (255)  NOT NULL,
     [DimOrganizationSubscriptionStatusSourceKey] VARCHAR (255)  NOT NULL,
     [DimOrganizationVerificationStatusSourceKey] VARCHAR (255)  NOT NULL,
-    [DimPagaAccountSourceKey]                    INT            NOT NULL,
-    [SYS_CHANGE_VERSION]                         BIGINT         DEFAULT ((0)) NOT NULL,
-    [SYS_CHANGE_OPERATION]                       CHAR (1)       DEFAULT ('I') NOT NULL
+    [DimPagaAccountSourceKey]                    INT            NOT NULL
 );
 
 
@@ -30,7 +28,8 @@ CREATE TABLE [Staging].[Shared_DimOrganization] (
 
 
 
+
+
 GO
-CREATE UNIQUE CLUSTERED INDEX [ix_Shared_DimOrganization]
-    ON [Staging].[Shared_DimOrganization]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+
 

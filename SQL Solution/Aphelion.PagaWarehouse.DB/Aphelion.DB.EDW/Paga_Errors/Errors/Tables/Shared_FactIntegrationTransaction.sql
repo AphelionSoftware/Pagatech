@@ -16,10 +16,10 @@
     [HasFinancialTx]                           INT             NOT NULL,
     [IntegrationTx_Amount]                     DECIMAL (18, 2) NULL,
     [MessageText]                              VARCHAR (300)   NULL,
-    [SourceKey]                                INT             NOT NULL,
-    [SYS_CHANGE_OPERATION]                     CHAR (1)        NOT NULL,
-    [SYS_CHANGE_VERSION]                       BIGINT          NOT NULL
+    [SourceKey]                                INT             NOT NULL
 );
+
+
 
 
 

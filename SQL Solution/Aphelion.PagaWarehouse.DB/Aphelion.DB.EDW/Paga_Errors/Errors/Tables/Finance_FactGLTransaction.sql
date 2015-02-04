@@ -11,11 +11,11 @@
     [FactFinancialTransactionSourceKey] INT             NULL,
     [Movement]                          DECIMAL (19, 2) NULL,
     [SourceKey]                         INT             NOT NULL,
-    [SYS_CHANGE_OPERATION]              CHAR (1)        NOT NULL,
-    [SYS_CHANGE_VERSION]                BIGINT          NOT NULL,
     [TextDescription]                   NVARCHAR (200)  NULL,
     [TransactionLineNumber]             INT             NULL
 );
+
+
 
 
 

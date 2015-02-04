@@ -26,10 +26,10 @@
     [Name]                          VARCHAR (255) NOT NULL,
     [PagaAccountNumber]             VARCHAR (12)  NULL,
     [RegistrationDateID]            INT           NULL,
-    [SourceKey]                     INT           NOT NULL,
-    [SYS_CHANGE_OPERATION]          CHAR (1)      NOT NULL,
-    [SYS_CHANGE_VERSION]            BIGINT        NOT NULL
+    [SourceKey]                     INT           NOT NULL
 );
+
+
 
 
 

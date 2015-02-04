@@ -1,4 +1,4 @@
-CREATE TABLE [Staging].[Shared_DimPagaAccount] (
+﻿CREATE TABLE [Staging].[Shared_DimPagaAccount] (
     [BankingStatus]                 VARCHAR (50)  NOT NULL,
     [CreatedDateID]                 INT           NOT NULL,
     [ExternalAccountNumber]         VARCHAR (12)  NULL,
@@ -21,9 +21,7 @@ CREATE TABLE [Staging].[Shared_DimPagaAccount] (
     [PagaAccountNumber]             VARCHAR (12)  NULL,
     [RegistrationDateID]            INT           NULL,
     [SourceKey]                     INT           NOT NULL,
-    [DimPagaAccountStatusSourceKey] VARCHAR (255) NOT NULL,
-    [SYS_CHANGE_VERSION]            BIGINT        DEFAULT ((0)) NOT NULL,
-    [SYS_CHANGE_OPERATION]          CHAR (1)      DEFAULT ('I') NOT NULL
+    [DimPagaAccountStatusSourceKey] VARCHAR (255) NOT NULL
 );
 
 
@@ -39,7 +37,8 @@ CREATE TABLE [Staging].[Shared_DimPagaAccount] (
 
 
 
+
+
 GO
-CREATE UNIQUE CLUSTERED INDEX [ix_Shared_DimPagaAccount]
-    ON [Staging].[Shared_DimPagaAccount]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+
 

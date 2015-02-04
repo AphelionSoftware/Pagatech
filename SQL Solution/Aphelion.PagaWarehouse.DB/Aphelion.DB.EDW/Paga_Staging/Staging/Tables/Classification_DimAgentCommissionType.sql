@@ -1,8 +1,6 @@
-CREATE TABLE [Staging].[Classification_DimAgentCommissionType] (
-    [Name]                 VARCHAR (255) NOT NULL,
-    [SourceKey]            VARCHAR (255) NOT NULL,
-    [SYS_CHANGE_VERSION]   BIGINT        DEFAULT ((0)) NOT NULL,
-    [SYS_CHANGE_OPERATION] CHAR (1)      DEFAULT ('I') NOT NULL
+﻿CREATE TABLE [Staging].[Classification_DimAgentCommissionType] (
+    [Name]      VARCHAR (255) NOT NULL,
+    [SourceKey] VARCHAR (255) NOT NULL
 );
 
 
@@ -18,7 +16,8 @@ CREATE TABLE [Staging].[Classification_DimAgentCommissionType] (
 
 
 
+
+
 GO
-CREATE UNIQUE CLUSTERED INDEX [ix_Classification_DimAgentCommissionType]
-    ON [Staging].[Classification_DimAgentCommissionType]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+
 

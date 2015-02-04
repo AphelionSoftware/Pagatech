@@ -1,12 +1,10 @@
-CREATE TABLE [Staging].[Finance_DimGLCode] (
+﻿CREATE TABLE [Staging].[Finance_DimGLCode] (
     [GLCode]                     VARCHAR (255)  NULL,
     [IsNormalDebit]              BIT            NULL,
     [Name]                       VARCHAR (255)  NOT NULL,
     [SourceKey]                  INT            NOT NULL,
     [TextDesciption]             VARCHAR (1000) NULL,
-    [DimGLCodeSubGroupSourceKey] INT            NOT NULL,
-    [SYS_CHANGE_VERSION]         BIGINT         DEFAULT ((0)) NOT NULL,
-    [SYS_CHANGE_OPERATION]       CHAR (1)       DEFAULT ('I') NOT NULL
+    [DimGLCodeSubGroupSourceKey] INT            NOT NULL
 );
 
 
@@ -22,7 +20,8 @@ CREATE TABLE [Staging].[Finance_DimGLCode] (
 
 
 
+
+
 GO
-CREATE UNIQUE CLUSTERED INDEX [ix_Finance_DimGLCode]
-    ON [Staging].[Finance_DimGLCode]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+
 

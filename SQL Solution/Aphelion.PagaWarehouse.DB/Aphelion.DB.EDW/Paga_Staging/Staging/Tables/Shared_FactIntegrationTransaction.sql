@@ -1,4 +1,4 @@
-CREATE TABLE [Staging].[Shared_FactIntegrationTransaction] (
+﻿CREATE TABLE [Staging].[Shared_FactIntegrationTransaction] (
     [ExternalReferenceNumber]                  VARCHAR (50)    NULL,
     [HasFinancialTx]                           INT             NOT NULL,
     [IntegrationTx_Amount]                     DECIMAL (18, 2) NULL,
@@ -11,9 +11,7 @@ CREATE TABLE [Staging].[Shared_FactIntegrationTransaction] (
     [DimIntegrationTransactionTypeSourceKey]   VARCHAR (255)   NULL,
     [DimProcessTypeSourceKey]                  VARCHAR (255)   NOT NULL,
     [DimUserSourceKey]                         INT             NULL,
-    [FactFinancialTransactionSourceKey]        INT             NULL,
-    [SYS_CHANGE_VERSION]                       BIGINT          DEFAULT ((0)) NOT NULL,
-    [SYS_CHANGE_OPERATION]                     CHAR (1)        DEFAULT ('I') NOT NULL
+    [FactFinancialTransactionSourceKey]        INT             NULL
 );
 
 
@@ -29,7 +27,8 @@ CREATE TABLE [Staging].[Shared_FactIntegrationTransaction] (
 
 
 
+
+
 GO
-CREATE UNIQUE CLUSTERED INDEX [ix_Shared_FactIntegrationTransaction]
-    ON [Staging].[Shared_FactIntegrationTransaction]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+
 
