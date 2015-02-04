@@ -14,6 +14,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimIntegrationTransactionType_SourceKey]
     ON [Classification].[DimIntegrationTransactionType]([SourceKey] ASC);
@@ -36,7 +38,21 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'IntegrationTrans
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimIntegrationTransactionType';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--IntegrationTransactionType	
+SELECT 		
+	SourceKey, 		
+	Name= SourceKey, 		
+	DescriptionText 		
+FROM 		
+( 		
+	SELECT 			
+		itt.IntegrationTransactionTypeId AS SourceKey,  			
+		itt.IntegrationTransactionTypeId AS Name,
+		CONVERT(VARCHAR(1000),itt.description) AS DescriptionText 		
+	FROM dbo.IntegrationTransactionType AS itt 			
+) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimIntegrationTransactionType';
+
+
 
 
 

@@ -9,6 +9,7 @@
     [PhoneNumber]      VARBINARY (256) NULL,
     [Email]            VARCHAR (100)   NULL,
     [IsEnabled]        BIT             NULL,
+	[DimPrimaryRoleID] INT			   NOT NULL,	
     [DimCreatedDateID] INT             NOT NULL,
     [SourceKeyHash]    BIGINT          NULL,
     [DeltaHash]        BIGINT          NULL,
@@ -18,8 +19,11 @@
     [sys_CreatedOn]    DATETIME        DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimUserID] PRIMARY KEY CLUSTERED ([DimUserID] ASC),
     CONSTRAINT [fk_DimUser_CreatedDateID] FOREIGN KEY ([DimCreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
+	CONSTRAINT [fk_DimUser_DimPrimaryRoleID] FOREIGN KEY ([DimPrimaryRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID]),
     CONSTRAINT [fk_DimUser_DateOfBirthID] FOREIGN KEY ([DimDateOfBirthID]) REFERENCES [Shared].[DimDate] ([DimDateID])
 );
+
+
 
 
 
@@ -83,7 +87,8 @@ SELECT
 	Gender,
 	DimDateOfBirthID,
 	Email,
-	IsEnabled
+	IsEnabled,
+	DimRoleSourceKey
 FROM
 (
 	SELECT 
@@ -96,10 +101,24 @@ FROM
 		Gender = [GenderId],
 		DimDateOfBirthID =CONVERT(INT,CONVERT(VARCHAR(8), [DateOfBirth], 112)),
 		Email = NULL,
-		IsEnabled
-	FROM [dbo].[Users]
-) AS base_query
-', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+		IsEnabled,
+		DimRoleSourceKey
+	FROM [dbo].[Users] AS u1
+	
+	CROSS APPLY
+	(
+		SELECT TOP 1
+			DimRoleSourceKey = u.[RoleId]
+		FROM [dbo].[UserRole] AS u
+		WHERE
+			u.UserId = u1.[UserId]
+		ORDER BY
+			u.RoleID 
+	) AS ur
+
+) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+
+
 
 
 

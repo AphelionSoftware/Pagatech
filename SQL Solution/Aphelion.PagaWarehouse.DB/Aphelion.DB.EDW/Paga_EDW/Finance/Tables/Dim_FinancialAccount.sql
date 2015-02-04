@@ -48,6 +48,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialAccount_SourceKey]
     ON [Finance].[DimFinancialAccount]([SourceKey] ASC, [DimFinancialAccountID] ASC);
@@ -85,7 +87,8 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialAccount
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'WITH cte AS 
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--FinancialAccount
+WITH cte AS 
 (  	
 	SELECT  		
 		SourceKey = fa.FinancialAccountId, 		
@@ -98,7 +101,7 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'WITH cte AS
 		DimCurrencySourceKey =  COALESCE(fa.CurrencyId, ''UNKNOWN''), 		
 		DimFinancialAccountTypeSourceKey = fa.FinancialAccountTypeId, 		
 		DimHoldingFinancialAccountSourceKey = fa.FinancialAccountId, 		
-		fa.AccountHolderId, 		1 AS OrgLevel ,
+		1 AS OrgLevel,
 		fa.PagaAccountId	
 	FROM dbo.FinancialAccount AS fa  	
 	WHERE  		fa.HoldingFinancialAccountId IS NULL 	
@@ -114,7 +117,6 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'WITH cte AS
 		DimCurrencySourceKey =  COALESCE(fa1.CurrencyId, ''UNKNOWN''), 		
 		DimFinancialAccountTypeSourceKey = fa1.FinancialAccountTypeId,		 		
 		DimHoldingFinancialAccountSourceKey = fa1.HoldingFinancialAccountId, 		
-		fa1.accountholderid, 
 		fa1.PagaAccountId,			
 		st.OrgLevel + 1 AS OrgLevel 	
 		FROM [dbo].FinancialAccount AS fa1 	
@@ -151,6 +153,8 @@ FROM
 	FROM cte  	
 ) 
 AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount';
+
+
 
 
 
