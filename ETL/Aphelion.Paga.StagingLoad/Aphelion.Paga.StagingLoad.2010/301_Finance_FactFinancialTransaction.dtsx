@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="301_Finance_FactFinancialTransaction"
   DTS:PackageType="5"
-  DTS:VersionBuild="116"
-  DTS:VersionGUID="{19AFF811-9BC9-488F-8656-A21D9A79D7D3}">
+  DTS:VersionBuild="118"
+  DTS:VersionGUID="{F1E35664-6571-4B56-998B-D6B546DDAD50}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -52,7 +52,7 @@
       DTS:CreationName=""
       DTS:DTSID="{1A157695-4EAD-45CD-A016-0A457C30CC44}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;g.grp,&#xA;&#x9;x.UserID,&#xA;&#x9;x.FinancialTransactionTypeId&#xA;INTO ##FT_PickList&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;DENSE_RANK() OVER (ORDER BY pl.userid) AS dr,&#xA;&#x9;&#x9;pl.UserID,&#xA;&#x9;&#x9;pl.FinancialTransactionTypeId&#xA;&#xA;&#x9;FROM &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;&#x9;&#x9;UserID = COALESCE(userID,-1), &#xA;&#x9;&#x9;&#x9;&#x9;[FinancialTransactionTypeId] &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;UserID,&#xA;&#x9;&#x9;&#x9;&#x9;[FinancialTransactionTypeId],&#xA;&#x9;&#x9;&#x9;&#x9;SourceKey =FinancialTransactionId&#xA;&#x9;&#x9;&#x9;FROM dbo.financialTransaction&#xA;&#x9;&#x9;) AS base_query&#xA;&#x9;&#x9;&quot;+ @[$Package::EndQuery] +&quot;&#xA;&#x9;) AS pl&#xA;) AS x&#xA;CROSS APPLY (SELECT (CAST(x.dr AS VARCHAR) % 4) AS grp) as g&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;g.grp,&#xA;&#x9;x.UserID,&#xA;&#x9;x.FinancialTransactionTypeId&#xA;INTO ##FT_PickList&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;pl.UserID,&#xA;&#x9;&#x9;pl.FinancialTransactionTypeId&#xA;&#xA;&#x9;FROM &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;&#x9;&#x9;UserID = COALESCE(userID,-1), &#xA;&#x9;&#x9;&#x9;&#x9;[FinancialTransactionTypeId] &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;UserID,&#xA;&#x9;&#x9;&#x9;&#x9;[FinancialTransactionTypeId],&#xA;&#x9;&#x9;&#x9;&#x9;SourceKey =FinancialTransactionId&#xA;&#x9;&#x9;&#x9;FROM dbo.financialTransaction&#xA;&#x9;&#x9;) AS base_query&#xA;&quot; +@[$Package::EndQuery] +&quot;&#xA;&#x9;) AS pl&#xA;) AS x&#xA;CROSS APPLY (SELECT (CAST(x.UserID AS VARCHAR) % 4) AS grp) as g;&#xA;&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_FT_Picklist ON ##FT_Picklist&#xA;(&#xA;&#x9;grp,&#xA;&#x9;UserID,&#xA;&#x9;FinancialTransactionTypeID&#xA;);&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="CreatePickListQuery">
@@ -65,7 +65,6 @@ INTO ##FT_PickList
 FROM
 (
 	SELECT
-		DENSE_RANK() OVER (ORDER BY pl.userid) AS dr,
 		pl.UserID,
 		pl.FinancialTransactionTypeId
 
@@ -82,16 +81,24 @@ FROM
 				SourceKey =FinancialTransactionId
 			FROM dbo.financialTransaction
 		) AS base_query
-		
+
 	) AS pl
 ) AS x
-CROSS APPLY (SELECT (CAST(x.dr AS VARCHAR) % 4) AS grp) as g</DTS:VariableValue>
+CROSS APPLY (SELECT (CAST(x.UserID AS VARCHAR) % 4) AS grp) as g;
+
+
+CREATE UNIQUE CLUSTERED INDEX ix_FT_Picklist ON ##FT_Picklist
+(
+	grp,
+	UserID,
+	FinancialTransactionTypeID
+);</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{BC137B6B-08BD-4CAA-9ECA-0CB4B69DD9A8}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;CREATE TABLE #Reversals &#xA;(&#xA;&#x9;FinancialTransactionId INT,&#xA;&#x9;EffDate DATETIME,&#xA;&#x9;OrigTxID INT,&#xA;&#x9;RelatedTxID INT&#xA;);&#xA;&#xA;/*create table used to drive the population of the staging data*/&#xA;&#xA;DECLARE @MaxID AS INT&#xA;SELECT @MaxID =MAX(FinancialTransactionId) FROM paga_change_log.dbo.FinancialTransaction&#xA;&#xA;INSERT INTO #Reversals&#xA;(&#xA;&#x9;FinancialTransactionId,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT &#xA;&#x9;base_query.FinancialTransactionId,&#xA;&#x9;base_query.EffDate,&#xA;&#x9;base_query.OrigTxID,&#xA;&#x9;base_query.RelatedTxID&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;ft1.FinancialTransactionId,&#xA;&#x9;&#x9;&#x9;ft1.TransactionDate AS EffDate,&#xA;&#x9;&#x9;&#x9;ft1.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;&#x9;ft1.__Reverses AS RelatedTxID,&#xA;&#x9;&#x9;&#x9;SourceKey = ft1.FinancialTransactionId&#xA;&#x9;FROM dbo.FinancialTransaction AS ft1&#xA; WHERE&#xA;&#x9;&#x9;ft1.FinancialTransactionId &lt;= @MaxID) AS base_query&#xA;&quot; &#xA;&#xA;+&quot;&#xA;&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Reversals_TxID ON #Reversals&#xA;(FinancialTransactionId, RelatedTxID);&#xA;&#xA;&#xA;CREATE NONCLUSTERED INDEX ix_Reversals_NullRelatedTxID ON #Reversals&#xA;(RelatedTxID)&#xA;WHERE RelatedTxID IS NULL;&#xA;&#xA;&#xA;CREATE NONCLUSTERED INDEX ix_Reversals_RelatedTxID ON #Reversals&#xA;(RelatedTxID);&#xA;&#xA;&#xA;/*Run recursive query to populate related financial transaction ID&#xA;for filter set created in previous step. */&#xA;&#xA;CREATE TABLE ##ReversalChain&#xA;(&#xA;&#x9;TxID  INT,&#xA;&#x9;EffDate  DATETIME,&#xA;&#x9;OrigTxID  INT,&#xA;&#x9;RelatedTxID  INT&#xA;);&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Reversals_TxID ON ##ReversalChain&#xA;(TxID);&#xA;&#xA;WITH reversals AS&#xA;(&#xA;&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ft1.FinancialTransactionId,&#xA;&#x9;&#x9;ft1.EffDate AS EffDate,&#xA;&#x9;&#x9;ft1.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;ft1.RelatedTxID AS RelatedTxID&#xA;&#x9;FROM #Reversals AS ft1&#xA;&#x9;WHERE&#xA;&#x9;&#x9;ft1.RelatedTxID IS NULL&#xA;&#x9;UNION ALL&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ft2.FinancialTransactionId,&#xA;&#x9;&#x9;R.EffDate,&#xA;&#x9;&#x9;R.OrigTxID,&#xA;&#x9;&#x9;ft2.RelatedTxID&#xA;&#x9;FROM #Reversals AS ft2&#xA;&#x9;INNER JOIN reversals AS r&#xA;&#x9;&#x9;ON ft2.RelatedTxID = R.FinancialTransactionId&#xA;)&#xA;INSERT INTO ##ReversalChain&#xA;(&#xA;&#x9;TxID,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT&#xA;&#x9;reversals.financialTransactionId,&#xA;&#x9;reversals.EffDate,&#xA;&#x9;reversals.OrigTxID,&#xA;&#x9;reversals.relatedTxID&#xA;FROM reversals;&quot;"
+      DTS:Expression="&quot;CREATE TABLE #Reversals &#xA;(&#xA;&#x9;FinancialTransactionId INT,&#xA;&#x9;EffDate DATETIME,&#xA;&#x9;OrigTxID INT,&#xA;&#x9;RelatedTxID INT&#xA;);&#xA;&#xA;/*create table used to drive the population of the staging data*/&#xA;&#xA;DECLARE @MaxID AS INT&#xA;SELECT @MaxID =MAX(FinancialTransactionId) FROM paga_change_log.dbo.FinancialTransaction&#xA;&#xA;INSERT INTO #Reversals&#xA;(&#xA;&#x9;FinancialTransactionId,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT &#xA;&#x9;base_query.FinancialTransactionId,&#xA;&#x9;base_query.EffDate,&#xA;&#x9;base_query.OrigTxID,&#xA;&#x9;base_query.RelatedTxID&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;ft1.FinancialTransactionId,&#xA;&#x9;&#x9;&#x9;ft1.TransactionDate AS EffDate,&#xA;&#x9;&#x9;&#x9;ft1.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;&#x9;ft1.__Reverses AS RelatedTxID,&#xA;&#x9;&#x9;&#x9;SourceKey = ft1.FinancialTransactionId&#xA;&#x9;FROM dbo.FinancialTransaction AS ft1&#xA; WHERE&#xA;&#x9;&#x9;ft1.FinancialTransactionId &lt;= @MaxID) AS base_query&#xA;&#xA;&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Reversals_TxID ON #Reversals&#xA;(FinancialTransactionId, RelatedTxID);&#xA;&#xA;&#xA;CREATE NONCLUSTERED INDEX ix_Reversals_NullRelatedTxID ON #Reversals&#xA;(RelatedTxID)&#xA;WHERE RelatedTxID IS NULL;&#xA;&#xA;&#xA;CREATE NONCLUSTERED INDEX ix_Reversals_RelatedTxID ON #Reversals&#xA;(RelatedTxID);&#xA;&#xA;&#xA;/*Run recursive query to populate related financial transaction ID&#xA;for filter set created in previous step. */&#xA;&#xA;CREATE TABLE ##ReversalChain&#xA;(&#xA;&#x9;TxID  INT,&#xA;&#x9;EffDate  DATETIME,&#xA;&#x9;OrigTxID  INT,&#xA;&#x9;RelatedTxID  INT&#xA;);&#xA;&#xA;CREATE UNIQUE CLUSTERED INDEX ix_Reversals_TxID ON ##ReversalChain&#xA;(TxID);&#xA;&#xA;WITH reversals AS&#xA;(&#xA;&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ft1.FinancialTransactionId,&#xA;&#x9;&#x9;ft1.EffDate AS EffDate,&#xA;&#x9;&#x9;ft1.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;ft1.RelatedTxID AS RelatedTxID&#xA;&#x9;FROM #Reversals AS ft1&#xA;&#x9;WHERE&#xA;&#x9;&#x9;ft1.RelatedTxID IS NULL&#xA;&#x9;UNION ALL&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ft2.FinancialTransactionId,&#xA;&#x9;&#x9;R.EffDate,&#xA;&#x9;&#x9;R.OrigTxID,&#xA;&#x9;&#x9;ft2.RelatedTxID&#xA;&#x9;FROM #Reversals AS ft2&#xA;&#x9;INNER JOIN reversals AS r&#xA;&#x9;&#x9;ON ft2.RelatedTxID = R.FinancialTransactionId&#xA;)&#xA;INSERT INTO ##ReversalChain&#xA;(&#xA;&#x9;TxID,&#xA;&#x9;EffDate,&#xA;&#x9;OrigTxID,&#xA;&#x9;RelatedTxID&#xA;)&#xA;SELECT&#xA;(&#xA;&#x9;base_query.financialTransactionId,&#xA;&#x9;base_query.EffDate,&#xA;&#x9;base_query.OrigTxID,&#xA;&#x9;base_query.relatedTxID&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;SourceKey = financialTransactionId,&#xA;&#x9;&#x9;reversals.financialTransactionId,&#xA;&#x9;&#x9;reversals.EffDate,&#xA;&#x9;&#x9;reversals.OrigTxID,&#xA;&#x9;&#x9;reversals.relatedTxID&#xA;&#x9;FROM reversals&#xA;) AS base_query&#xA;&quot; + @[$Package::EndQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="CreateReversalsQuery">
@@ -191,11 +198,22 @@ INSERT INTO ##ReversalChain
 	RelatedTxID
 )
 SELECT
-	reversals.financialTransactionId,
-	reversals.EffDate,
-	reversals.OrigTxID,
-	reversals.relatedTxID
-FROM reversals;</DTS:VariableValue>
+(
+	base_query.financialTransactionId,
+	base_query.EffDate,
+	base_query.OrigTxID,
+	base_query.relatedTxID
+FROM
+(
+	SELECT
+		SourceKey = financialTransactionId,
+		reversals.financialTransactionId,
+		reversals.EffDate,
+		reversals.OrigTxID,
+		reversals.relatedTxID
+	FROM reversals
+) AS base_query
+</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -210,7 +228,7 @@ FROM reversals;</DTS:VariableValue>
       DTS:CreationName=""
       DTS:DTSID="{4BE4A797-489D-4108-80A8-4DC21D6CFFB6}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 0&#xA;&#xA;SELECT &#xA;&#x9;Cancelled, &#xA;&#x9;ExchangeRate, &#xA;&#x9;ExternalReferenceNumber, &#xA;&#x9;FinancialTx_Amount, &#xA;&#x9;FinancialTx_Fee, &#xA;&#x9;ForeignCurrencyAmount, &#xA;&#x9;IsIntegrationTx, &#xA;&#x9;ReferenceNumber, &#xA;&#x9;Reversed, &#xA;&#x9;ShortCode, &#xA;&#x9;SourceKey, &#xA;&#x9;TextDescription,&#xA;&#x9;DimEffectiveDateID, &#xA;&#x9;DimEffectiveTimeID, &#xA;&#x9;DimFinancialTxDateID, &#xA;&#x9;DimFinancialTxTimeID, &#xA;&#x9;DimCurrencySourceKey, &#xA;&#x9;DimFinancialTxTypeSourceKey, &#xA;&#x9;DimUserSourceKey, &#xA;&#x9;FactIntegrationTxSourceKey, &#xA;&#x9;FactOriginalFinancialTxSourceKey, &#xA;&#x9;FactProcessEventSourceKey, &#xA;&#x9;FactRelatedFinancialTxSourceKey           &#xA;FROM &#xA;(&#xA;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;UserID ,&#xA;&#x9;&#x9;[FinancialTransactionTypeId] &#xA;&#x9;FROM ##FT_Picklist&#xA;&#x9;WHERE&#xA;&#x9;&#x9;grp  = @grp&#xA;) AS driver&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;SourceKey = ft.FinancialTransactionId, &#xA;&#x9;&#x9;DimEffectiveDateID = CONVERT(INT,CONVERT(VARCHAR(8),r2.EffDate,112)), &#xA;&#x9;&#x9;DimEffectiveTimeID =  CONVERT(INT,REPLACE(CONVERT(TIME(0),r2.EffDate),':','')),&#xA;&#x9;&#x9;[DimFinancialTxDateID] = CONVERT(INT,CONVERT(VARCHAR(8),ft.TransactionDate,112)),&#xA;&#x9;&#x9;[DimFinancialTxTimeID] =  CONVERT(INT,REPLACE(CONVERT(TIME(0),ft.TransactionDate),':','')),&#xA;&#x9;&#x9;DimFinancialTxTypeSourceKey = FinancialTransactionTypeId, &#xA;&#x9;&#x9;DimUserSourceKey = UserId, &#xA;&#x9;&#x9;FactProcessEventSourceKey = COALESCE(ProcessId, -1), &#xA;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;WHEN FT.__ReversedBy IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;ELSE 1&#xA;&#x9;&#x9;END AS [Reversed],&#xA;&#x9;&#x9;FactRelatedFinancialTxSourceKey = r2.relatedTxID, &#xA;&#x9;&#x9;FactOriginalFinancialTxSourceKey = r2.OrigTxID, &#xA;&#x9;&#x9;DimCurrencySourceKey = CurrencyId, &#xA;&#x9;&#x9;TextDescription = CONVERT(VARCHAR(100),[Description]), &#xA;&#x9;&#x9;FinancialTx_Amount = &#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN (FT.Reverses IS NOT NULL OR FT.__Reverses IS NOT NULL) THEN -FT.Amount &#xA;&#x9;&#x9;&#x9;&#x9;ELSE FT.Amount &#xA;&#x9;&#x9;&#x9;END, &#xA;&#x9;&#x9;ExchangeRate, &#xA;&#x9;&#x9;ExternalReferenceNumber,&#xA;&#x9;&#x9;FinancialTx_Fee = Fee, &#xA;&#x9;&#x9;ForeignCurrencyAmount, &#xA;&#x9;&#x9;ReferenceNumber, &#xA;&#x9;&#x9;ShortCode,&#xA;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NOT NULL AND FT.Reverses IS NOT NULL) THEN 1&#xA;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NOT NULL AND FT.Reverses IS NULL) THEN 1&#xA;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NULL AND FT.Reverses IS NOT NULL) THEN 1&#xA;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NULL AND FT.Reverses IS NULL) THEN 0&#xA;&#x9;&#x9;END  AS [Cancelled],&#xA;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;WHEN it.FactIntegrationTxSourceKey IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;ELSE 1&#xA;&#x9;&#x9;END AS [IsIntegrationTx],&#xA;&#x9;&#x9;it.FactIntegrationTxSourceKey&#xA;&#x9;FROM dbo.financialTransaction AS ft&#xA;&#x9;CROSS APPLY &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;r1.OrigTxID,&#xA;&#x9;&#x9;&#x9;r1.RelatedTxID,&#xA;&#x9;&#x9;&#x9;r1.EffDate&#xA;&#x9;&#x9;FROM ##ReversalChain AS R1 &#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;R1.TxID = ft.FinancialTransactionId&#xA;&#x9;) AS R2&#xA;&#x9;OUTER APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;FactIntegrationTxSourceKey = intTx.IntegrationTransactionId&#xA;&#x9;&#x9;FROM dbo.IntegrationTransaction as intTx&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;intTx.FinancialTransactionId = ft.FinancialTransactionId&#xA;&#x9;&#x9;&#x9;AND inttx.ExternalReferenceNumber = ft.ReferenceNumber&#xA;&#x9;) AS it&#xA;&#x9;WHERE &#xA;&#x9;&#x9;COALESCE(ft.userID,-1) = driver.UserID&#xA;&#x9;&#x9;AND ft.FinancialTransactionTypeId = driver.FinancialTransactionTypeId&#xA;) base_query&#xA;&quot;"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 0&#xA;&#xA;SELECT &#xA;&#x9;Cancelled, &#xA;&#x9;ExchangeRate, &#xA;&#x9;ExternalReferenceNumber, &#xA;&#x9;FinancialTx_Amount, &#xA;&#x9;FinancialTx_Fee, &#xA;&#x9;ForeignCurrencyAmount, &#xA;&#x9;IsIntegrationTx, &#xA;&#x9;ReferenceNumber, &#xA;&#x9;Reversed, &#xA;&#x9;ShortCode, &#xA;&#x9;SourceKey, &#xA;&#x9;TextDescription,&#xA;&#x9;DimEffectiveDateID, &#xA;&#x9;DimEffectiveTimeID, &#xA;&#x9;DimFinancialTxDateID, &#xA;&#x9;DimFinancialTxTimeID, &#xA;&#x9;DimCurrencySourceKey, &#xA;&#x9;DimFinancialTxTypeSourceKey, &#xA;&#x9;DimUserSourceKey, &#xA;&#x9;FactIntegrationTxSourceKey, &#xA;&#x9;FactOriginalFinancialTxSourceKey, &#xA;&#x9;FactProcessEventSourceKey, &#xA;&#x9;FactRelatedFinancialTxSourceKey           &#xA;FROM &#xA;(&#xA;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;UserID ,&#xA;&#x9;&#x9;[FinancialTransactionTypeId] &#xA;&#x9;FROM ##FT_Picklist&#xA;&#x9;WHERE&#xA;&#x9;&#x9;grp  = @grp&#xA;) AS driver&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;SourceKey = ft.FinancialTransactionId, &#xA;&#x9;&#x9;DimEffectiveDateID = CONVERT(INT,CONVERT(VARCHAR(8),r2.EffDate,112)), &#xA;&#x9;&#x9;DimEffectiveTimeID =  CONVERT(INT,REPLACE(CONVERT(TIME(0),r2.EffDate),':','')),&#xA;&#x9;&#x9;[DimFinancialTxDateID] = CONVERT(INT,CONVERT(VARCHAR(8),ft.TransactionDate,112)),&#xA;&#x9;&#x9;[DimFinancialTxTimeID] =  CONVERT(INT,REPLACE(CONVERT(TIME(0),ft.TransactionDate),':','')),&#xA;&#x9;&#x9;DimFinancialTxTypeSourceKey = FinancialTransactionTypeId, &#xA;&#x9;&#x9;DimUserSourceKey = UserId, &#xA;&#x9;&#x9;FactProcessEventSourceKey = COALESCE(ProcessId, -1), &#xA;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;WHEN FT.__ReversedBy IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;ELSE 1&#xA;&#x9;&#x9;END AS [Reversed],&#xA;&#x9;&#x9;FactRelatedFinancialTxSourceKey = r2.relatedTxID, &#xA;&#x9;&#x9;FactOriginalFinancialTxSourceKey = r2.OrigTxID, &#xA;&#x9;&#x9;DimCurrencySourceKey = CurrencyId, &#xA;&#x9;&#x9;TextDescription = CONVERT(VARCHAR(100),[Description]), &#xA;&#x9;&#x9;FinancialTx_Amount = &#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN (FT.Reverses IS NOT NULL OR FT.__Reverses IS NOT NULL) THEN -FT.Amount &#xA;&#x9;&#x9;&#x9;&#x9;ELSE FT.Amount &#xA;&#x9;&#x9;&#x9;END, &#xA;&#x9;&#x9;ExchangeRate, &#xA;&#x9;&#x9;ExternalReferenceNumber,&#xA;&#x9;&#x9;FinancialTx_Fee = Fee, &#xA;&#x9;&#x9;ForeignCurrencyAmount, &#xA;&#x9;&#x9;ReferenceNumber, &#xA;&#x9;&#x9;ShortCode,&#xA;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NOT NULL AND FT.Reverses IS NOT NULL) THEN 1&#xA;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NOT NULL AND FT.Reverses IS NULL) THEN 1&#xA;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NULL AND FT.Reverses IS NOT NULL) THEN 1&#xA;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NULL AND FT.Reverses IS NULL) THEN 0&#xA;&#x9;&#x9;END  AS [Cancelled],&#xA;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;WHEN it.FactIntegrationTxSourceKey IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;ELSE 1&#xA;&#x9;&#x9;END AS [IsIntegrationTx],&#xA;&#x9;&#x9;it.FactIntegrationTxSourceKey&#xA;&#x9;FROM dbo.financialTransaction AS ft&#xA;&#x9;CROSS APPLY &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;r1.OrigTxID,&#xA;&#x9;&#x9;&#x9;r1.RelatedTxID,&#xA;&#x9;&#x9;&#x9;r1.EffDate&#xA;&#x9;&#x9;FROM ##ReversalChain AS R1 &#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;R1.TxID = ft.FinancialTransactionId&#xA;&#x9;) AS R2&#xA;&#x9;OUTER APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;FactIntegrationTxSourceKey = intTx.IntegrationTransactionId&#xA;&#x9;&#x9;FROM dbo.IntegrationTransaction as intTx&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;intTx.FinancialTransactionId = ft.FinancialTransactionId&#xA;&#x9;&#x9;&#x9;AND inttx.ExternalReferenceNumber = ft.ReferenceNumber&#xA;&#x9;) AS it&#xA;&#x9;WHERE &#xA;&#x9;&#x9;COALESCE(ft.userID,-1) = driver.UserID&#xA;&#x9;&#x9;AND ft.FinancialTransactionTypeId = driver.FinancialTransactionTypeId&#xA;) base_query&#xA;&#xA;&quot; + @[$Package::EndQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream0">
@@ -315,6 +333,7 @@ CROSS APPLY
 		COALESCE(ft.userID,-1) = driver.UserID
 		AND ft.FinancialTransactionTypeId = driver.FinancialTransactionTypeId
 ) base_query
+
 </DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
@@ -5731,44 +5750,44 @@ CROSS APPLY
           <paths>
             <path
               refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output2]"
-              endId="Package\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData_2.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction_2.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
-              endId="Package\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData_3.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction_3.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData_0.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction_0.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData_1.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction_1.Outputs[OLE DB Source Output]" />
             <path
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData_2.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction_2.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
+              endId="Package\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData_3.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction_3.Outputs[OLE DB Source Output]" />
+            <path
               refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output2]"
-              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 3]"
-              name="Output"
-              startId="Package\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData_2.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output3]"
-              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 4]"
-              name="Output"
-              startId="Package\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData_3.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 1]"
               name="Output"
               startId="Package\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData_0.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output1]"
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output3]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 2]"
               name="Output"
               startId="Package\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData_1.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output]"
+              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 3]"
+              name="Output"
+              startId="Package\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData_2.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output1]"
+              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 4]"
+              name="Output"
+              startId="Package\DFT_Load_Finance_FactFinancialTransaction\dc_ChangeData_3.Outputs[Output]" />
             <path
               refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Union All Output 1]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -6198,7 +6217,7 @@ CROSS APPLY
           Id="Package\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction_2"
           TopLeft="705.5,5.49999999999989" />
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output2]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
           TopLeft="848.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6220,7 +6239,7 @@ CROSS APPLY
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
           TopLeft="500,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6242,7 +6261,7 @@ CROSS APPLY
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output2]"
           TopLeft="150,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6264,7 +6283,7 @@ CROSS APPLY
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
           TopLeft="1194,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6290,7 +6309,7 @@ CROSS APPLY
           Id="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction"
           TopLeft="550,248" />
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output2]"
           TopLeft="150,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6324,7 +6343,7 @@ CROSS APPLY
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output1]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output3]"
           TopLeft="500,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6358,7 +6377,7 @@ CROSS APPLY
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output2]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output]"
           TopLeft="847,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6392,7 +6411,7 @@ CROSS APPLY
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output3]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Output1]"
           TopLeft="1194,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6496,14 +6515,6 @@ CROSS APPLY
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction_2">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging">
     <Properties>
       <Property>
@@ -6513,6 +6524,14 @@ CROSS APPLY
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Finance_FactFinancialTransaction\OLE DB Finance_FactFinancialTransaction_2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
