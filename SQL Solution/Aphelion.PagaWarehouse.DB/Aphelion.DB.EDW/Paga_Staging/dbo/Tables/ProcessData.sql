@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[ProcessData] (
+    [ProcessID]            INT            NOT NULL,
+    [ProcessDataID]        INT            NOT NULL,
+    [Name]                 VARCHAR (255)  NULL,
+    [Value]                VARCHAR (8000) NULL,
+    [UpdatedDate]          DATETIME       NOT NULL,
+    [row_id]               INT            IDENTITY (1, 1) NOT NULL,
+    [SYS_CHANGE_VERSION]   BIGINT         DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION] CHAR (1)       DEFAULT ('I') NOT NULL
+);
+

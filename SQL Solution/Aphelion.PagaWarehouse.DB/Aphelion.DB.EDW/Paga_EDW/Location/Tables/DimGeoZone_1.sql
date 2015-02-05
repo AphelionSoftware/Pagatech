@@ -4,15 +4,18 @@
     [Name]           VARCHAR (255) NOT NULL,
     [Code]           VARCHAR (50)  NOT NULL,
     [DimCountryID]   INT           NOT NULL,
-    [SourceKeyHash]  BIGINT        NULL,
-    [DeltaHash]      BIGINT        NULL,
     [sys_ModifiedBy] VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_ModifiedOn] DATETIME      DEFAULT (getdate()) NOT NULL,
     [sys_CreatedBy]  VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]  DATETIME      DEFAULT (getdate()) NOT NULL,
+    [IsActive]       BIT           DEFAULT ((1)) NOT NULL,
     CONSTRAINT [pk_DimGeoZoneID] PRIMARY KEY CLUSTERED ([DimGeoZoneID] ASC),
     CONSTRAINT [fk_DimGeoZone_DimCountryID] FOREIGN KEY ([DimCountryID]) REFERENCES [Location].[DimCountry] ([DimCountryID])
 );
+
+
+
+
 
 
 
@@ -23,11 +26,11 @@ CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGeoZone_SourceKey]
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimGeoZone', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimGeoZone', @level2type = N'COLUMN', @level2name = N'SourceKeyHash';
+
 
 
 GO

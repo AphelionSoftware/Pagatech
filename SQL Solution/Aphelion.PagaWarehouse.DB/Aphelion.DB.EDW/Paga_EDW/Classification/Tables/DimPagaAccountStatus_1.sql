@@ -2,14 +2,17 @@
     [DimPagaAccountStatusID] INT           IDENTITY (1, 1) NOT NULL,
     [SourceKey]              VARCHAR (255) NOT NULL,
     [Name]                   VARCHAR (255) NOT NULL,
-    [SourceKeyHash]          BIGINT        NULL,
-    [DeltaHash]              BIGINT        NULL,
     [sys_ModifiedBy]         VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_ModifiedOn]         DATETIME      DEFAULT (getdate()) NOT NULL,
     [sys_CreatedBy]          VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]          DATETIME      DEFAULT (getdate()) NOT NULL,
+    [IsActive]               BIT           DEFAULT ((1)) NOT NULL,
     CONSTRAINT [pk_DimPagaAccountStatusID] PRIMARY KEY CLUSTERED ([DimPagaAccountStatusID] ASC)
 );
+
+
+
+
 
 
 
@@ -20,11 +23,11 @@ CREATE UNIQUE NONCLUSTERED INDEX [ix_DimPagaAccountStatus_SourceKey]
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountStatus', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountStatus', @level2type = N'COLUMN', @level2name = N'SourceKeyHash';
+
 
 
 GO

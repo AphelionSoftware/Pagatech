@@ -3,14 +3,17 @@
     [SourceKey]            INT           NOT NULL,
     [Name]                 VARCHAR (255) NOT NULL,
     [GLCodeRange]          VARCHAR (255) NULL,
-    [SourceKeyHash]        BIGINT        NULL,
-    [DeltaHash]            BIGINT        NULL,
     [sys_ModifiedBy]       VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_ModifiedOn]       DATETIME      DEFAULT (getdate()) NOT NULL,
     [sys_CreatedBy]        VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]        DATETIME      DEFAULT (getdate()) NOT NULL,
+    [IsActive]             BIT           DEFAULT ((1)) NOT NULL,
     CONSTRAINT [pk_DimGLHeadingID] PRIMARY KEY CLUSTERED ([DimChartOfAccountsID] ASC)
 );
+
+
+
+
 
 
 

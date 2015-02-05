@@ -6,15 +6,18 @@
     [DimOrganizationID]   INT           NOT NULL,
     [SupportsDebit]       BIT           NULL,
     [SupportsCredit]      BIT           NULL,
-    [SourceKeyHash]       BIGINT        NULL,
-    [DeltaHash]           BIGINT        NULL,
     [sys_ModifiedBy]      VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_ModifiedOn]      DATETIME      DEFAULT (getdate()) NOT NULL,
     [sys_CreatedBy]       VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]       DATETIME      DEFAULT (getdate()) NOT NULL,
+    [IsActive]            BIT           DEFAULT ((1)) NOT NULL,
     CONSTRAINT [pk_DimBankID] PRIMARY KEY CLUSTERED ([DimBankID] ASC),
     CONSTRAINT [fk_DimBank_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID])
 );
+
+
+
+
 
 
 
@@ -25,11 +28,11 @@ CREATE UNIQUE NONCLUSTERED INDEX [ix_DimBank_SourceKey]
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBank', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBank', @level2type = N'COLUMN', @level2name = N'SourceKeyHash';
+
 
 
 GO

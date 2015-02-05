@@ -6,15 +6,18 @@
     [GLCode]              VARCHAR (255)  NULL,
     [TextDesciption]      VARCHAR (1000) NULL,
     [IsNormalDebit]       BIT            NULL,
-    [SourceKeyHash]       BIGINT         NULL,
-    [DeltaHash]           BIGINT         NULL,
     [sys_ModifiedBy]      VARCHAR (255)  DEFAULT (suser_sname()) NOT NULL,
     [sys_ModifiedOn]      DATETIME       DEFAULT (getdate()) NOT NULL,
     [sys_CreatedBy]       VARCHAR (255)  DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]       DATETIME       DEFAULT (getdate()) NOT NULL,
+    [IsActive]            BIT            DEFAULT ((1)) NOT NULL,
     CONSTRAINT [pk_DimGLCodeID] PRIMARY KEY CLUSTERED ([DimGLCodeID] ASC),
     CONSTRAINT [fk_DimGLCode_DimGLCodeSubGroupID] FOREIGN KEY ([DimGLCodeSubGroupID]) REFERENCES [Finance].[DimGLCodeSubGroup] ([DimGLCodeSubGroupID])
 );
+
+
+
+
 
 
 
@@ -57,7 +60,7 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	SourceK
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode', @level2type = N'COLUMN', @level2name = N'SourceKeyHash';
+
 
 
 GO
@@ -69,5 +72,5 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
 
