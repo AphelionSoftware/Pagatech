@@ -22,7 +22,7 @@
 	<Packages>
 		<#
 			string PackageListQuery = "SELECT "+
-											"PackageName = CONVERT(CHAR(3),(list.LoadGroup + list.rn)) +'_' + StagingTableName, "+
+											"PackageName = CONVERT(CHAR(4),(list.LoadGroup + list.rn)) +'_' + StagingTableName, "+
 											"list.TABLE_SCHEMA, "+
 											"list.TABLE_NAME, "+
 											"list.BaseQuery, "+
@@ -47,7 +47,7 @@
 													"CONVERT(CHAR(1),MAX(packageType)) AS pt,  "+
 													"CONVERT(VARCHAR(MAX),MAX(BaseQuery)) AS bq,  "+
 													"CONVERT(VARCHAR(MAX),MAX(KeyColumn)) AS kc,  "+
-													"CONVERT(INT ,MAX(LoadGroup))/10 AS lg,  "+
+													"CONVERT(INT ,MAX(LoadGroup)) AS lg,  "+
 													"CONVERT(VARCHAR(MAX),MAX(SourceTable)) AS st  "+
 												"FROM  "+
 												"(  "+
