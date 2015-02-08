@@ -38,7 +38,7 @@
 												"BaseQuery = pl.bq,  "+
 												"KeyColumn = pl.kc,  "+
 												"LoadGroup = pl.lg, "+
-												"SourceTable = pl.st  "+
+												"SourceTable = RTRIM(LTRIM(pl.st))  "+
 											"FROM  "+
 											"(  "+
 												"SELECT  "+
@@ -128,9 +128,9 @@
 				string TableSchema = row[1].ToString();
 				string TableName = row[2].ToString();
 				string BaseQuery = row[3].ToString();
-				string SourceTable = row[5].ToString() +" ";
-				string CountQuery = "&quot;SELECT COUNT(*) AS _count FROM " +SourceTable +" WHERE as_of_change_version = &quot;";
-
+				string KeyColumn = row[4].ToString();
+				string SourceTable = row[5].ToString();
+				string CountQuery = "&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= "+KeyColumn +" FROM " +SourceTable +") AS base_query &quot;";
 		#>	
 				<Package Name="<#=PackageName#>" ConstraintMode="Linear"  ProtectionLevel="EncryptSensitiveWithUserKey"  AutoCreateConfigurationsType="None" DelayValidation="true">
 				<Parameters>
@@ -142,8 +142,8 @@
 				<Variables>
 						<Variable Name="BaseQuery" DataType="String"><#=BaseQuery#></Variable>
 						<Variable Name="FullQueryText" DataType="String" EvaluateAsExpression="true">@[User::BaseQuery] +" " +@[$Package::EndOfQuery]</Variable>
-						<Variable Name="GetRowCount" DataType="String" EvaluateAsExpression="true"><#=CountQuery#> + (DT_STR, 20, 1252)@[$Package::ChangeVersion]</Variable>
-						<Variable Name="RowCount" DataType="Object"></Variable>
+						<Variable Name="GetRowCount" DataType="String" EvaluateAsExpression="true"><#=CountQuery#> + @[$Package::EndOfQuery]</Variable>
+						<Variable Name="RowCount" DataType="Int32">0</Variable>
 					</Variables>
 				
 				<Tasks>
@@ -180,7 +180,7 @@
 						</Transformations>
 						<PrecedenceConstraints>
 									<Inputs>
-										<Input OutputPathName="EST_CheckForRows.Output" EvaluationOperation="Expression" Expression="@RowCount>0"/>
+										<Input OutputPathName="EST_CheckForRows.Output" EvaluationOperation="ExpressionAndConstraint" EvaluationValue="Success" Expression="@[User::RowCount] > 0"/>
 									</Inputs>
 								</PrecedenceConstraints>
 					</Dataflow>
