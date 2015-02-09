@@ -6,14 +6,14 @@
   DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
   DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
   DTS:DelayValidation="True"
-  DTS:DTSID="{14C2ED40-258F-4FDE-A4C2-7FB8E173B8E5}"
+  DTS:DTSID="{B114B48D-9782-4162-8DA5-D958BEF68668}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="3003_Shared_FactProcessEvent"
   DTS:PackageType="5"
-  DTS:VersionBuild="177"
-  DTS:VersionGUID="{2A16854E-331C-4D4C-83D0-6A5ABD76A40C}">
+  DTS:VersionBuild="197"
+  DTS:VersionGUID="{363AAA37-37F0-454F-96A9-E675CAC94A9C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -86,7 +86,7 @@
       DTS:CreationName=""
       DTS:DTSID="{79DB54BC-C79C-407E-988A-5ED8B5E73994}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;*&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;pd0.ProcessDataId,&#xA;&#x9;&#x9;pd0.ProcessId,&#xA;&#x9;&#x9;pd0.Name,&#xA;&#x9;&#x9;pd0.Value,&#xA;&#x9;&#x9;pd0.UpdatedDate,&#xA;&#x9;&#x9;pd0.SourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;[ProcessDataID],&#xA;&#x9;&#x9;&#x9;[ProcessId],&#xA;&#x9;&#x9;&#x9;SourceKey = ProcessID,&#xA;&#x9;&#x9;&#x9;Name = CONVERT(VARCHAR(255),[Name]),&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;Value = CONVERT(VARCHAR(8000),[Value]),&#xA;&#x9;&#x9;&#x9;UpdatedDate&#xA;&#x9;&#x9;FROM [dbo].[ProcessData]&#xA;&#x9;) AS pd0&#xA;&#x9;CROSS APPLY (SELECT grp = (CAST(ProcessDataID AS VARCHAR) %&quot; + @[User::Streams]+&quot; ) ) AS g&#xA;&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;*&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;pd0.ProcessDataId,&#xA;&#x9;&#x9;pd0.ProcessId,&#xA;&#x9;&#x9;pd0.Name,&#xA;&#x9;&#x9;pd0.Value,&#xA;&#x9;&#x9;pd0.UpdatedDate,&#xA;&#x9;&#x9;pd0.SourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;[ProcessDataID],&#xA;&#x9;&#x9;&#x9;[ProcessId],&#xA;&#x9;&#x9;&#x9;SourceKey = ProcessDataID,&#xA;&#x9;&#x9;&#x9;Name = CONVERT(VARCHAR(255),[Name]),&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;Value = CONVERT(VARCHAR(8000),[Value]),&#xA;&#x9;&#x9;&#x9;UpdatedDate&#xA;&#x9;&#x9;FROM [dbo].[ProcessData]&#xA;&#x9;) AS pd0&#xA;&#x9;CROSS APPLY (SELECT grp = (CAST(ProcessDataID AS VARCHAR) %&quot; + @[User::Streams]+&quot; ) ) AS g&#xA;&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="GetProcessData">
@@ -107,7 +107,7 @@ FROM
 		SELECT
 			[ProcessDataID],
 			[ProcessId],
-			SourceKey = ProcessID,
+			SourceKey = ProcessDataID,
 			Name = CONVERT(VARCHAR(255),[Name]),			
 			Value = CONVERT(VARCHAR(8000),[Value]),
 			UpdatedDate
@@ -120,457 +120,621 @@ FROM
       DTS:CreationName=""
       DTS:DTSID="{E7F66780-9999-4A62-9AF8-530DCB7BCADB}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 0&#xA;SELECT &#xA;&#x9;SourceKey = driver.ProcessID,&#xA;&#x9;DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), &#xA;&#x9;DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),&#xA;&#x9;DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, &#xA;&#x9;DimForUserSourceKey = p.ForUserId,&#xA;&#x9;DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), &#xA;&#x9;DimProcessChannelSourceKey = p.ProcessChannelId, &#xA;&#x9;DimProcessStatusSourceKey = p.ProcessStatusId, &#xA;&#x9;DimProcessTypeSourceKey = p.ProcessTypeId, &#xA;&#x9;DimToUserSourceKey = p.ToUserId, &#xA;&#x9;DimUserSourceKey = COALESCE(p.UserID, -1), &#xA;&#x9;DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), &#xA;&#x9;DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),&#xA;&#x9;AgentCommissionAmount = p.AgentCommissionAmount, &#xA;&#x9;ProcessAmount = p.Amount, &#xA;&#x9;ProcessCode = p.ProcessCode, &#xA;&#x9;ProcessFee = p.Fee, &#xA;&#x9;FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, &#xA;&#x9;FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,&#xA;&#x9;DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, &#xA;&#x9;DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, &#xA;&#x9;DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, &#xA;&#x9;DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, &#xA;&#x9;ATMReferenceNumber = pd.ATMReferenceNumber, &#xA;&#x9;CardProcessorName = pd.CardProcessorName, &#xA;&#x9;CustomerBillerAccount = pd.CustomerBillerAccount, &#xA;&#x9;CustomerPhoneNumber = pd.CustomerPhoneNumber, &#xA;&#x9;DepositNumber = pd.DepositNumber, &#xA;&#x9;IntegrationReferenceNumber = pd.IntegrationReferenceNumber, &#xA;&#x9;LinkedPhoneNumber = pd.LinkedPhoneNumber, &#xA;&#x9;MerchantConfirmationCode = pd.MerchantConfirmationCode, &#xA;&#x9;MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,&#xA;&#x9;PaymentSource = pd.PaymentSource, &#xA;&#x9;ReferenceNumber = pd.ReferenceNumber, &#xA;&#x9;SenderPhoneNumber= pd.SenderPhoneNumber, &#xA;&#x9;VerificationStatus = pd.VerificationStatus, &#xA;&#x9;WithdrawalCode = pd.WithdrawalCode&#xA;FROM&#xA;(&#xA;&#x9;&#xA;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;ProcessID&#xA;&#x9;FROM dbo.Process&#xA;&#x9;CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp&#xA;&#x9;WHERE &#xA;&#x9;&#x9;grp.g = @grp&#xA;) AS driver&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT&#x9;&#xA;&#x9;&#x9;*&#xA;&#x9;FROM dbo.Process&#xA;&#x9;WHERE &#xA;&#x9;&#x9;ProcessID = driver.ProcessId&#xA;) AS p&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT  &#x9;&#xA;&#x9;&#x9;WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9;&#xA;&#x9;&#x9;RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) &#x9; &#xA;&#x9;FROM &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;pd1.*&#xA;&#x9;&#x9;FROM&#xA;&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,&#xA;&#x9;&#x9;&#x9;&#x9;pd0.[Name],&#xA;&#x9;&#x9;&#x9;&#x9;pd0.[ProcessId],&#xA;&#x9;&#x9;&#x9;&#x9;pd0.[Value]&#xA;&#x9;&#x9;&#x9;FROM [dbo].[ProcessData] AS pd0&#xA;&#x9;&#x9;&#x9;WHERE pd0.ProcessID = driver.ProcessId&#xA;&#x9;&#x9;) AS pd1&#xA;&#x9;&#x9;WHERE pd1.rn = 1&#xA;&#x9;) AS pd2&#xA;) AS pd&#xA;OPTION (MAXDOP 1)&quot;"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 0&#xA;&quot; + @[User::LoadQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Load0">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 0
 SELECT 
-	SourceKey = driver.ProcessID,
-	DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), 
-	DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),
-	DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, 
-	DimForUserSourceKey = p.ForUserId,
-	DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), 
-	DimProcessChannelSourceKey = p.ProcessChannelId, 
-	DimProcessStatusSourceKey = p.ProcessStatusId, 
-	DimProcessTypeSourceKey = p.ProcessTypeId, 
-	DimToUserSourceKey = p.ToUserId, 
-	DimUserSourceKey = COALESCE(p.UserID, -1), 
-	DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), 
-	DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),
-	AgentCommissionAmount = p.AgentCommissionAmount, 
-	ProcessAmount = p.Amount, 
-	ProcessCode = p.ProcessCode, 
-	ProcessFee = p.Fee, 
-	FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, 
-	FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,
-	DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, 
-	DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, 
-	DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, 
-	DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, 
-	ATMReferenceNumber = pd.ATMReferenceNumber, 
-	CardProcessorName = pd.CardProcessorName, 
-	CustomerBillerAccount = pd.CustomerBillerAccount, 
-	CustomerPhoneNumber = pd.CustomerPhoneNumber, 
-	DepositNumber = pd.DepositNumber, 
-	IntegrationReferenceNumber = pd.IntegrationReferenceNumber, 
-	LinkedPhoneNumber = pd.LinkedPhoneNumber, 
-	MerchantConfirmationCode = pd.MerchantConfirmationCode, 
-	MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,
-	PaymentSource = pd.PaymentSource, 
-	ReferenceNumber = pd.ReferenceNumber, 
-	SenderPhoneNumber= pd.SenderPhoneNumber, 
-	VerificationStatus = pd.VerificationStatus, 
-	WithdrawalCode = pd.WithdrawalCode
+	*
 FROM
 (
-	
-	SELECT DISTINCT 
-		ProcessID
-	FROM dbo.Process
-	CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp
-	WHERE 
-		grp.g = @grp
-) AS driver
-CROSS APPLY
-(
-	SELECT	
-		*
-	FROM dbo.Process
-	WHERE 
-		ProcessID = driver.ProcessId
-) AS p
-CROSS APPLY
-(
-	SELECT  	
-		WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		
-		RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), 		 
-		OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), 		 
-		VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
-		IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
-		DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) 	 
-	FROM 
+	SELECT 
+		SourceKey = driver.ProcessID,
+		DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), 
+		DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),
+		DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, 
+		DimForUserSourceKey = p.ForUserId,
+		DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), 
+		DimProcessChannelSourceKey = p.ProcessChannelId, 
+		DimProcessStatusSourceKey = p.ProcessStatusId, 
+		DimProcessTypeSourceKey = p.ProcessTypeId, 
+		DimToUserSourceKey = p.ToUserId, 
+		DimUserSourceKey = COALESCE(p.UserID, -1), 
+		DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), 
+		DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),
+		AgentCommissionAmount = p.AgentCommissionAmount, 
+		ProcessAmount = p.Amount, 
+		ProcessCode = p.ProcessCode, 
+		ProcessFee = p.Fee, 
+		FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, 
+		FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,
+		DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, 
+		DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, 
+		DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, 
+		DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, 
+		ATMReferenceNumber = pd.ATMReferenceNumber, 
+		CardProcessorName = pd.CardProcessorName, 
+		CustomerBillerAccount = pd.CustomerBillerAccount, 
+		CustomerPhoneNumber = pd.CustomerPhoneNumber, 
+		DepositNumber = pd.DepositNumber, 
+		IntegrationReferenceNumber = pd.IntegrationReferenceNumber, 
+		LinkedPhoneNumber = pd.LinkedPhoneNumber, 
+		MerchantConfirmationCode = pd.MerchantConfirmationCode, 
+		MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,
+		PaymentSource = pd.PaymentSource, 
+		ReferenceNumber = pd.ReferenceNumber, 
+		SenderPhoneNumber= pd.SenderPhoneNumber, 
+		VerificationStatus = pd.VerificationStatus, 
+		WithdrawalCode = pd.WithdrawalCode
+	FROM
 	(
-		SELECT 
-			pd1.*
-		FROM
-
+	
+		SELECT DISTINCT 
+			ProcessID
+		FROM dbo.Process
+		CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp
+		WHERE 
+			grp.g = @grp
+	) AS driver
+	CROSS APPLY
+	(
+		SELECT	
+			*
+		FROM dbo.Process
+		WHERE 
+			ProcessID = driver.ProcessId
+	) AS p
+	CROSS APPLY
+	(
+		SELECT  	
+			WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		
+			RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), 		 
+			OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), 		 
+			VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
+			IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
+			DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) 	 
+		FROM 
 		(
-			SELECT
-				ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,
-				pd0.[Name],
-				pd0.[ProcessId],
-				pd0.[Value]
-			FROM [dbo].[ProcessData] AS pd0
-			WHERE pd0.ProcessID = driver.ProcessId
-		) AS pd1
-		WHERE pd1.rn = 1
-	) AS pd2
-) AS pd
-OPTION (MAXDOP 1)</DTS:VariableValue>
+			SELECT 
+				pd1.*
+			FROM
+
+			(
+				SELECT
+					ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,
+					pd0.[Name],
+					pd0.[ProcessId],
+					pd0.[Value]
+				FROM [dbo].[ProcessData] AS pd0
+				WHERE pd0.ProcessID = driver.ProcessId
+			) AS pd1
+			WHERE pd1.rn = 1
+		) AS pd2
+	) AS pd
+) AS base_query
+</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{DD331F3B-EBB0-4064-8797-B41554362F07}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 1&#xA;SELECT &#xA;&#x9;SourceKey = driver.ProcessID,&#xA;&#x9;DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), &#xA;&#x9;DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),&#xA;&#x9;DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, &#xA;&#x9;DimForUserSourceKey = p.ForUserId,&#xA;&#x9;DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), &#xA;&#x9;DimProcessChannelSourceKey = p.ProcessChannelId, &#xA;&#x9;DimProcessStatusSourceKey = p.ProcessStatusId, &#xA;&#x9;DimProcessTypeSourceKey = p.ProcessTypeId, &#xA;&#x9;DimToUserSourceKey = p.ToUserId, &#xA;&#x9;DimUserSourceKey = COALESCE(p.UserID, -1), &#xA;&#x9;DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), &#xA;&#x9;DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),&#xA;&#x9;AgentCommissionAmount = p.AgentCommissionAmount, &#xA;&#x9;ProcessAmount = p.Amount, &#xA;&#x9;ProcessCode = p.ProcessCode, &#xA;&#x9;ProcessFee = p.Fee, &#xA;&#x9;FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, &#xA;&#x9;FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,&#xA;&#x9;DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, &#xA;&#x9;DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, &#xA;&#x9;DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, &#xA;&#x9;DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, &#xA;&#x9;ATMReferenceNumber = pd.ATMReferenceNumber, &#xA;&#x9;CardProcessorName = pd.CardProcessorName, &#xA;&#x9;CustomerBillerAccount = pd.CustomerBillerAccount, &#xA;&#x9;CustomerPhoneNumber = pd.CustomerPhoneNumber, &#xA;&#x9;DepositNumber = pd.DepositNumber, &#xA;&#x9;IntegrationReferenceNumber = pd.IntegrationReferenceNumber, &#xA;&#x9;LinkedPhoneNumber = pd.LinkedPhoneNumber, &#xA;&#x9;MerchantConfirmationCode = pd.MerchantConfirmationCode, &#xA;&#x9;MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,&#xA;&#x9;PaymentSource = pd.PaymentSource, &#xA;&#x9;ReferenceNumber = pd.ReferenceNumber, &#xA;&#x9;SenderPhoneNumber= pd.SenderPhoneNumber, &#xA;&#x9;VerificationStatus = pd.VerificationStatus, &#xA;&#x9;WithdrawalCode = pd.WithdrawalCode&#xA;FROM&#xA;(&#xA;&#x9;&#xA;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;ProcessID&#xA;&#x9;FROM dbo.Process&#xA;&#x9;CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp&#xA;&#x9;WHERE &#xA;&#x9;&#x9;grp.g = @grp&#xA;) AS driver&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT&#x9;&#xA;&#x9;&#x9;*&#xA;&#x9;FROM dbo.Process&#xA;&#x9;WHERE &#xA;&#x9;&#x9;ProcessID = driver.ProcessId&#xA;) AS p&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT  &#x9;&#xA;&#x9;&#x9;WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9;&#xA;&#x9;&#x9;RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) &#x9; &#xA;&#x9;FROM &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;pd1.*&#xA;&#x9;&#x9;FROM&#xA;&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,&#xA;&#x9;&#x9;&#x9;&#x9;pd0.[Name],&#xA;&#x9;&#x9;&#x9;&#x9;pd0.[ProcessId],&#xA;&#x9;&#x9;&#x9;&#x9;pd0.[Value]&#xA;&#x9;&#x9;&#x9;FROM [dbo].[ProcessData] AS pd0&#xA;&#x9;&#x9;&#x9;WHERE pd0.ProcessID = driver.ProcessId&#xA;&#x9;&#x9;) AS pd1&#xA;&#x9;&#x9;WHERE pd1.rn = 1&#xA;&#x9;) AS pd2&#xA;) AS pd&#xA;OPTION (MAXDOP 1)&quot;"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 1&#xA;&quot; + @[User::LoadQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Load1">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 1
 SELECT 
-	SourceKey = driver.ProcessID,
-	DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), 
-	DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),
-	DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, 
-	DimForUserSourceKey = p.ForUserId,
-	DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), 
-	DimProcessChannelSourceKey = p.ProcessChannelId, 
-	DimProcessStatusSourceKey = p.ProcessStatusId, 
-	DimProcessTypeSourceKey = p.ProcessTypeId, 
-	DimToUserSourceKey = p.ToUserId, 
-	DimUserSourceKey = COALESCE(p.UserID, -1), 
-	DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), 
-	DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),
-	AgentCommissionAmount = p.AgentCommissionAmount, 
-	ProcessAmount = p.Amount, 
-	ProcessCode = p.ProcessCode, 
-	ProcessFee = p.Fee, 
-	FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, 
-	FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,
-	DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, 
-	DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, 
-	DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, 
-	DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, 
-	ATMReferenceNumber = pd.ATMReferenceNumber, 
-	CardProcessorName = pd.CardProcessorName, 
-	CustomerBillerAccount = pd.CustomerBillerAccount, 
-	CustomerPhoneNumber = pd.CustomerPhoneNumber, 
-	DepositNumber = pd.DepositNumber, 
-	IntegrationReferenceNumber = pd.IntegrationReferenceNumber, 
-	LinkedPhoneNumber = pd.LinkedPhoneNumber, 
-	MerchantConfirmationCode = pd.MerchantConfirmationCode, 
-	MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,
-	PaymentSource = pd.PaymentSource, 
-	ReferenceNumber = pd.ReferenceNumber, 
-	SenderPhoneNumber= pd.SenderPhoneNumber, 
-	VerificationStatus = pd.VerificationStatus, 
-	WithdrawalCode = pd.WithdrawalCode
+	*
 FROM
 (
-	
-	SELECT DISTINCT 
-		ProcessID
-	FROM dbo.Process
-	CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp
-	WHERE 
-		grp.g = @grp
-) AS driver
-CROSS APPLY
-(
-	SELECT	
-		*
-	FROM dbo.Process
-	WHERE 
-		ProcessID = driver.ProcessId
-) AS p
-CROSS APPLY
-(
-	SELECT  	
-		WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		
-		RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), 		 
-		OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), 		 
-		VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
-		IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
-		DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) 	 
-	FROM 
+	SELECT 
+		SourceKey = driver.ProcessID,
+		DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), 
+		DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),
+		DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, 
+		DimForUserSourceKey = p.ForUserId,
+		DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), 
+		DimProcessChannelSourceKey = p.ProcessChannelId, 
+		DimProcessStatusSourceKey = p.ProcessStatusId, 
+		DimProcessTypeSourceKey = p.ProcessTypeId, 
+		DimToUserSourceKey = p.ToUserId, 
+		DimUserSourceKey = COALESCE(p.UserID, -1), 
+		DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), 
+		DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),
+		AgentCommissionAmount = p.AgentCommissionAmount, 
+		ProcessAmount = p.Amount, 
+		ProcessCode = p.ProcessCode, 
+		ProcessFee = p.Fee, 
+		FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, 
+		FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,
+		DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, 
+		DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, 
+		DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, 
+		DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, 
+		ATMReferenceNumber = pd.ATMReferenceNumber, 
+		CardProcessorName = pd.CardProcessorName, 
+		CustomerBillerAccount = pd.CustomerBillerAccount, 
+		CustomerPhoneNumber = pd.CustomerPhoneNumber, 
+		DepositNumber = pd.DepositNumber, 
+		IntegrationReferenceNumber = pd.IntegrationReferenceNumber, 
+		LinkedPhoneNumber = pd.LinkedPhoneNumber, 
+		MerchantConfirmationCode = pd.MerchantConfirmationCode, 
+		MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,
+		PaymentSource = pd.PaymentSource, 
+		ReferenceNumber = pd.ReferenceNumber, 
+		SenderPhoneNumber= pd.SenderPhoneNumber, 
+		VerificationStatus = pd.VerificationStatus, 
+		WithdrawalCode = pd.WithdrawalCode
+	FROM
 	(
-		SELECT 
-			pd1.*
-		FROM
-
+	
+		SELECT DISTINCT 
+			ProcessID
+		FROM dbo.Process
+		CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp
+		WHERE 
+			grp.g = @grp
+	) AS driver
+	CROSS APPLY
+	(
+		SELECT	
+			*
+		FROM dbo.Process
+		WHERE 
+			ProcessID = driver.ProcessId
+	) AS p
+	CROSS APPLY
+	(
+		SELECT  	
+			WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		
+			RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), 		 
+			OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), 		 
+			VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
+			IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
+			DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) 	 
+		FROM 
 		(
-			SELECT
-				ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,
-				pd0.[Name],
-				pd0.[ProcessId],
-				pd0.[Value]
-			FROM [dbo].[ProcessData] AS pd0
-			WHERE pd0.ProcessID = driver.ProcessId
-		) AS pd1
-		WHERE pd1.rn = 1
-	) AS pd2
-) AS pd
-OPTION (MAXDOP 1)</DTS:VariableValue>
+			SELECT 
+				pd1.*
+			FROM
+
+			(
+				SELECT
+					ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,
+					pd0.[Name],
+					pd0.[ProcessId],
+					pd0.[Value]
+				FROM [dbo].[ProcessData] AS pd0
+				WHERE pd0.ProcessID = driver.ProcessId
+			) AS pd1
+			WHERE pd1.rn = 1
+		) AS pd2
+	) AS pd
+) AS base_query
+</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{33002A14-0C0E-4FC5-A524-F1883582431D}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 2&#xA;SELECT &#xA;&#x9;SourceKey = driver.ProcessID,&#xA;&#x9;DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), &#xA;&#x9;DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),&#xA;&#x9;DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, &#xA;&#x9;DimForUserSourceKey = p.ForUserId,&#xA;&#x9;DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), &#xA;&#x9;DimProcessChannelSourceKey = p.ProcessChannelId, &#xA;&#x9;DimProcessStatusSourceKey = p.ProcessStatusId, &#xA;&#x9;DimProcessTypeSourceKey = p.ProcessTypeId, &#xA;&#x9;DimToUserSourceKey = p.ToUserId, &#xA;&#x9;DimUserSourceKey = COALESCE(p.UserID, -1), &#xA;&#x9;DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), &#xA;&#x9;DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),&#xA;&#x9;AgentCommissionAmount = p.AgentCommissionAmount, &#xA;&#x9;ProcessAmount = p.Amount, &#xA;&#x9;ProcessCode = p.ProcessCode, &#xA;&#x9;ProcessFee = p.Fee, &#xA;&#x9;FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, &#xA;&#x9;FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,&#xA;&#x9;DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, &#xA;&#x9;DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, &#xA;&#x9;DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, &#xA;&#x9;DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, &#xA;&#x9;ATMReferenceNumber = pd.ATMReferenceNumber, &#xA;&#x9;CardProcessorName = pd.CardProcessorName, &#xA;&#x9;CustomerBillerAccount = pd.CustomerBillerAccount, &#xA;&#x9;CustomerPhoneNumber = pd.CustomerPhoneNumber, &#xA;&#x9;DepositNumber = pd.DepositNumber, &#xA;&#x9;IntegrationReferenceNumber = pd.IntegrationReferenceNumber, &#xA;&#x9;LinkedPhoneNumber = pd.LinkedPhoneNumber, &#xA;&#x9;MerchantConfirmationCode = pd.MerchantConfirmationCode, &#xA;&#x9;MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,&#xA;&#x9;PaymentSource = pd.PaymentSource, &#xA;&#x9;ReferenceNumber = pd.ReferenceNumber, &#xA;&#x9;SenderPhoneNumber= pd.SenderPhoneNumber, &#xA;&#x9;VerificationStatus = pd.VerificationStatus, &#xA;&#x9;WithdrawalCode = pd.WithdrawalCode&#xA;FROM&#xA;(&#xA;&#x9;&#xA;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;ProcessID&#xA;&#x9;FROM dbo.Process&#xA;&#x9;CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp&#xA;&#x9;WHERE &#xA;&#x9;&#x9;grp.g = @grp&#xA;) AS driver&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT&#x9;&#xA;&#x9;&#x9;*&#xA;&#x9;FROM dbo.Process&#xA;&#x9;WHERE &#xA;&#x9;&#x9;ProcessID = driver.ProcessId&#xA;) AS p&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT  &#x9;&#xA;&#x9;&#x9;WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9;&#xA;&#x9;&#x9;RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) &#x9; &#xA;&#x9;FROM &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;pd1.*&#xA;&#x9;&#x9;FROM&#xA;&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,&#xA;&#x9;&#x9;&#x9;&#x9;pd0.[Name],&#xA;&#x9;&#x9;&#x9;&#x9;pd0.[ProcessId],&#xA;&#x9;&#x9;&#x9;&#x9;pd0.[Value]&#xA;&#x9;&#x9;&#x9;FROM [dbo].[ProcessData] AS pd0&#xA;&#x9;&#x9;&#x9;WHERE pd0.ProcessID = driver.ProcessId&#xA;&#x9;&#x9;) AS pd1&#xA;&#x9;&#x9;WHERE pd1.rn = 1&#xA;&#x9;) AS pd2&#xA;) AS pd&#xA;OPTION (MAXDOP 1)&quot;"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 2&#xA;&#xA;&quot; + @[User::LoadQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Load2">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 2
+
 SELECT 
-	SourceKey = driver.ProcessID,
-	DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), 
-	DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),
-	DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, 
-	DimForUserSourceKey = p.ForUserId,
-	DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), 
-	DimProcessChannelSourceKey = p.ProcessChannelId, 
-	DimProcessStatusSourceKey = p.ProcessStatusId, 
-	DimProcessTypeSourceKey = p.ProcessTypeId, 
-	DimToUserSourceKey = p.ToUserId, 
-	DimUserSourceKey = COALESCE(p.UserID, -1), 
-	DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), 
-	DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),
-	AgentCommissionAmount = p.AgentCommissionAmount, 
-	ProcessAmount = p.Amount, 
-	ProcessCode = p.ProcessCode, 
-	ProcessFee = p.Fee, 
-	FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, 
-	FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,
-	DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, 
-	DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, 
-	DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, 
-	DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, 
-	ATMReferenceNumber = pd.ATMReferenceNumber, 
-	CardProcessorName = pd.CardProcessorName, 
-	CustomerBillerAccount = pd.CustomerBillerAccount, 
-	CustomerPhoneNumber = pd.CustomerPhoneNumber, 
-	DepositNumber = pd.DepositNumber, 
-	IntegrationReferenceNumber = pd.IntegrationReferenceNumber, 
-	LinkedPhoneNumber = pd.LinkedPhoneNumber, 
-	MerchantConfirmationCode = pd.MerchantConfirmationCode, 
-	MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,
-	PaymentSource = pd.PaymentSource, 
-	ReferenceNumber = pd.ReferenceNumber, 
-	SenderPhoneNumber= pd.SenderPhoneNumber, 
-	VerificationStatus = pd.VerificationStatus, 
-	WithdrawalCode = pd.WithdrawalCode
+	*
 FROM
 (
-	
-	SELECT DISTINCT 
-		ProcessID
-	FROM dbo.Process
-	CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp
-	WHERE 
-		grp.g = @grp
-) AS driver
-CROSS APPLY
-(
-	SELECT	
-		*
-	FROM dbo.Process
-	WHERE 
-		ProcessID = driver.ProcessId
-) AS p
-CROSS APPLY
-(
-	SELECT  	
-		WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		
-		RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), 		 
-		OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), 		 
-		VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
-		IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
-		DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) 	 
-	FROM 
+	SELECT 
+		SourceKey = driver.ProcessID,
+		DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), 
+		DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),
+		DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, 
+		DimForUserSourceKey = p.ForUserId,
+		DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), 
+		DimProcessChannelSourceKey = p.ProcessChannelId, 
+		DimProcessStatusSourceKey = p.ProcessStatusId, 
+		DimProcessTypeSourceKey = p.ProcessTypeId, 
+		DimToUserSourceKey = p.ToUserId, 
+		DimUserSourceKey = COALESCE(p.UserID, -1), 
+		DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), 
+		DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),
+		AgentCommissionAmount = p.AgentCommissionAmount, 
+		ProcessAmount = p.Amount, 
+		ProcessCode = p.ProcessCode, 
+		ProcessFee = p.Fee, 
+		FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, 
+		FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,
+		DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, 
+		DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, 
+		DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, 
+		DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, 
+		ATMReferenceNumber = pd.ATMReferenceNumber, 
+		CardProcessorName = pd.CardProcessorName, 
+		CustomerBillerAccount = pd.CustomerBillerAccount, 
+		CustomerPhoneNumber = pd.CustomerPhoneNumber, 
+		DepositNumber = pd.DepositNumber, 
+		IntegrationReferenceNumber = pd.IntegrationReferenceNumber, 
+		LinkedPhoneNumber = pd.LinkedPhoneNumber, 
+		MerchantConfirmationCode = pd.MerchantConfirmationCode, 
+		MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,
+		PaymentSource = pd.PaymentSource, 
+		ReferenceNumber = pd.ReferenceNumber, 
+		SenderPhoneNumber= pd.SenderPhoneNumber, 
+		VerificationStatus = pd.VerificationStatus, 
+		WithdrawalCode = pd.WithdrawalCode
+	FROM
 	(
-		SELECT 
-			pd1.*
-		FROM
-
+	
+		SELECT DISTINCT 
+			ProcessID
+		FROM dbo.Process
+		CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp
+		WHERE 
+			grp.g = @grp
+	) AS driver
+	CROSS APPLY
+	(
+		SELECT	
+			*
+		FROM dbo.Process
+		WHERE 
+			ProcessID = driver.ProcessId
+	) AS p
+	CROSS APPLY
+	(
+		SELECT  	
+			WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		
+			RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), 		 
+			OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), 		 
+			VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
+			IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
+			DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) 	 
+		FROM 
 		(
-			SELECT
-				ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,
-				pd0.[Name],
-				pd0.[ProcessId],
-				pd0.[Value]
-			FROM [dbo].[ProcessData] AS pd0
-			WHERE pd0.ProcessID = driver.ProcessId
-		) AS pd1
-		WHERE pd1.rn = 1
-	) AS pd2
-) AS pd
-OPTION (MAXDOP 1)</DTS:VariableValue>
+			SELECT 
+				pd1.*
+			FROM
+
+			(
+				SELECT
+					ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,
+					pd0.[Name],
+					pd0.[ProcessId],
+					pd0.[Value]
+				FROM [dbo].[ProcessData] AS pd0
+				WHERE pd0.ProcessID = driver.ProcessId
+			) AS pd1
+			WHERE pd1.rn = 1
+		) AS pd2
+	) AS pd
+) AS base_query
+</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{38BDE438-644B-49A6-885B-30C456D38C78}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 3&#xA;SELECT &#xA;&#x9;SourceKey = driver.ProcessID,&#xA;&#x9;DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), &#xA;&#x9;DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),&#xA;&#x9;DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, &#xA;&#x9;DimForUserSourceKey = p.ForUserId,&#xA;&#x9;DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), &#xA;&#x9;DimProcessChannelSourceKey = p.ProcessChannelId, &#xA;&#x9;DimProcessStatusSourceKey = p.ProcessStatusId, &#xA;&#x9;DimProcessTypeSourceKey = p.ProcessTypeId, &#xA;&#x9;DimToUserSourceKey = p.ToUserId, &#xA;&#x9;DimUserSourceKey = COALESCE(p.UserID, -1), &#xA;&#x9;DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), &#xA;&#x9;DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),&#xA;&#x9;AgentCommissionAmount = p.AgentCommissionAmount, &#xA;&#x9;ProcessAmount = p.Amount, &#xA;&#x9;ProcessCode = p.ProcessCode, &#xA;&#x9;ProcessFee = p.Fee, &#xA;&#x9;FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, &#xA;&#x9;FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,&#xA;&#x9;DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, &#xA;&#x9;DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, &#xA;&#x9;DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, &#xA;&#x9;DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, &#xA;&#x9;ATMReferenceNumber = pd.ATMReferenceNumber, &#xA;&#x9;CardProcessorName = pd.CardProcessorName, &#xA;&#x9;CustomerBillerAccount = pd.CustomerBillerAccount, &#xA;&#x9;CustomerPhoneNumber = pd.CustomerPhoneNumber, &#xA;&#x9;DepositNumber = pd.DepositNumber, &#xA;&#x9;IntegrationReferenceNumber = pd.IntegrationReferenceNumber, &#xA;&#x9;LinkedPhoneNumber = pd.LinkedPhoneNumber, &#xA;&#x9;MerchantConfirmationCode = pd.MerchantConfirmationCode, &#xA;&#x9;MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,&#xA;&#x9;PaymentSource = pd.PaymentSource, &#xA;&#x9;ReferenceNumber = pd.ReferenceNumber, &#xA;&#x9;SenderPhoneNumber= pd.SenderPhoneNumber, &#xA;&#x9;VerificationStatus = pd.VerificationStatus, &#xA;&#x9;WithdrawalCode = pd.WithdrawalCode&#xA;FROM&#xA;(&#xA;&#x9;&#xA;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;ProcessID&#xA;&#x9;FROM dbo.Process&#xA;&#x9;CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp&#xA;&#x9;WHERE &#xA;&#x9;&#x9;grp.g = @grp&#xA;) AS driver&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT&#x9;&#xA;&#x9;&#x9;*&#xA;&#x9;FROM dbo.Process&#xA;&#x9;WHERE &#xA;&#x9;&#x9;ProcessID = driver.ProcessId&#xA;) AS p&#xA;CROSS APPLY&#xA;(&#xA;&#x9;SELECT  &#x9;&#xA;&#x9;&#x9;WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9;&#xA;&#x9;&#x9;RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) &#x9; &#xA;&#x9;FROM &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;pd1.*&#xA;&#x9;&#x9;FROM&#xA;&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,&#xA;&#x9;&#x9;&#x9;&#x9;pd0.[Name],&#xA;&#x9;&#x9;&#x9;&#x9;pd0.[ProcessId],&#xA;&#x9;&#x9;&#x9;&#x9;pd0.[Value]&#xA;&#x9;&#x9;&#x9;FROM [dbo].[ProcessData] AS pd0&#xA;&#x9;&#x9;&#x9;WHERE pd0.ProcessID = driver.ProcessId&#xA;&#x9;&#x9;) AS pd1&#xA;&#x9;&#x9;WHERE pd1.rn = 1&#xA;&#x9;) AS pd2&#xA;) AS pd&#xA;OPTION (MAXDOP 1)&quot;"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 3&#xA;&quot; + @[User::LoadQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Load3">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 3
 SELECT 
-	SourceKey = driver.ProcessID,
-	DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), 
-	DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),
-	DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, 
-	DimForUserSourceKey = p.ForUserId,
-	DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), 
-	DimProcessChannelSourceKey = p.ProcessChannelId, 
-	DimProcessStatusSourceKey = p.ProcessStatusId, 
-	DimProcessTypeSourceKey = p.ProcessTypeId, 
-	DimToUserSourceKey = p.ToUserId, 
-	DimUserSourceKey = COALESCE(p.UserID, -1), 
-	DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), 
-	DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),
-	AgentCommissionAmount = p.AgentCommissionAmount, 
-	ProcessAmount = p.Amount, 
-	ProcessCode = p.ProcessCode, 
-	ProcessFee = p.Fee, 
-	FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, 
-	FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,
-	DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, 
-	DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, 
-	DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, 
-	DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, 
-	ATMReferenceNumber = pd.ATMReferenceNumber, 
-	CardProcessorName = pd.CardProcessorName, 
-	CustomerBillerAccount = pd.CustomerBillerAccount, 
-	CustomerPhoneNumber = pd.CustomerPhoneNumber, 
-	DepositNumber = pd.DepositNumber, 
-	IntegrationReferenceNumber = pd.IntegrationReferenceNumber, 
-	LinkedPhoneNumber = pd.LinkedPhoneNumber, 
-	MerchantConfirmationCode = pd.MerchantConfirmationCode, 
-	MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,
-	PaymentSource = pd.PaymentSource, 
-	ReferenceNumber = pd.ReferenceNumber, 
-	SenderPhoneNumber= pd.SenderPhoneNumber, 
-	VerificationStatus = pd.VerificationStatus, 
-	WithdrawalCode = pd.WithdrawalCode
+	*
 FROM
 (
-	
-	SELECT DISTINCT 
-		ProcessID
-	FROM dbo.Process
-	CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp
-	WHERE 
-		grp.g = @grp
-) AS driver
-CROSS APPLY
-(
-	SELECT	
-		*
-	FROM dbo.Process
-	WHERE 
-		ProcessID = driver.ProcessId
-) AS p
-CROSS APPLY
-(
-	SELECT  	
-		WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		
-		RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
-		SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), 		 
-		OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), 		 
-		VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
-		IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
-		DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
-		DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) 	 
-	FROM 
+	SELECT 
+		SourceKey = driver.ProcessID,
+		DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), 
+		DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),
+		DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, 
+		DimForUserSourceKey = p.ForUserId,
+		DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), 
+		DimProcessChannelSourceKey = p.ProcessChannelId, 
+		DimProcessStatusSourceKey = p.ProcessStatusId, 
+		DimProcessTypeSourceKey = p.ProcessTypeId, 
+		DimToUserSourceKey = p.ToUserId, 
+		DimUserSourceKey = COALESCE(p.UserID, -1), 
+		DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), 
+		DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),
+		AgentCommissionAmount = p.AgentCommissionAmount, 
+		ProcessAmount = p.Amount, 
+		ProcessCode = p.ProcessCode, 
+		ProcessFee = p.Fee, 
+		FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, 
+		FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,
+		DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, 
+		DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, 
+		DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, 
+		DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, 
+		ATMReferenceNumber = pd.ATMReferenceNumber, 
+		CardProcessorName = pd.CardProcessorName, 
+		CustomerBillerAccount = pd.CustomerBillerAccount, 
+		CustomerPhoneNumber = pd.CustomerPhoneNumber, 
+		DepositNumber = pd.DepositNumber, 
+		IntegrationReferenceNumber = pd.IntegrationReferenceNumber, 
+		LinkedPhoneNumber = pd.LinkedPhoneNumber, 
+		MerchantConfirmationCode = pd.MerchantConfirmationCode, 
+		MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,
+		PaymentSource = pd.PaymentSource, 
+		ReferenceNumber = pd.ReferenceNumber, 
+		SenderPhoneNumber= pd.SenderPhoneNumber, 
+		VerificationStatus = pd.VerificationStatus, 
+		WithdrawalCode = pd.WithdrawalCode
+	FROM
 	(
-		SELECT 
-			pd1.*
-		FROM
-
+	
+		SELECT DISTINCT 
+			ProcessID
+		FROM dbo.Process
+		CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp
+		WHERE 
+			grp.g = @grp
+	) AS driver
+	CROSS APPLY
+	(
+		SELECT	
+			*
+		FROM dbo.Process
+		WHERE 
+			ProcessID = driver.ProcessId
+	) AS p
+	CROSS APPLY
+	(
+		SELECT  	
+			WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		
+			RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), 		 
+			OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), 		 
+			VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
+			IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
+			DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) 	 
+		FROM 
 		(
-			SELECT
-				ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,
-				pd0.[Name],
-				pd0.[ProcessId],
-				pd0.[Value]
-			FROM [dbo].[ProcessData] AS pd0
-			WHERE pd0.ProcessID = driver.ProcessId
-		) AS pd1
-		WHERE pd1.rn = 1
-	) AS pd2
-) AS pd
-OPTION (MAXDOP 1)</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{AF1C5385-44C0-4193-B36A-0269259BD437}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM &#xA;(SELECT SourceKey= ProcessDataId  FROM dbo.ProcessData&#xA;) AS base_query&#xA;&quot; + @[$Package::EndOfQuery]"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="PD_GetRowCounts">
-      <DTS:VariableValue
-        DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM 
-(SELECT SourceKey= ProcessDataId  FROM dbo.ProcessData
+			SELECT 
+				pd1.*
+			FROM
+
+			(
+				SELECT
+					ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,
+					pd0.[Name],
+					pd0.[ProcessId],
+					pd0.[Value]
+				FROM [dbo].[ProcessData] AS pd0
+				WHERE pd0.ProcessID = driver.ProcessId
+			) AS pd1
+			WHERE pd1.rn = 1
+		) AS pd2
+	) AS pd
 ) AS base_query
 </DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{55816D42-19CC-4C28-BB0D-97213FDFDB40}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT &#xA;&#x9;*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;SourceKey = driver.ProcessID,&#xA;&#x9;&#x9;DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), &#xA;&#x9;&#x9;DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),&#xA;&#x9;&#x9;DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, &#xA;&#x9;&#x9;DimForUserSourceKey = p.ForUserId,&#xA;&#x9;&#x9;DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), &#xA;&#x9;&#x9;DimProcessChannelSourceKey = p.ProcessChannelId, &#xA;&#x9;&#x9;DimProcessStatusSourceKey = p.ProcessStatusId, &#xA;&#x9;&#x9;DimProcessTypeSourceKey = p.ProcessTypeId, &#xA;&#x9;&#x9;DimToUserSourceKey = p.ToUserId, &#xA;&#x9;&#x9;DimUserSourceKey = COALESCE(p.UserID, -1), &#xA;&#x9;&#x9;DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), &#xA;&#x9;&#x9;DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),&#xA;&#x9;&#x9;AgentCommissionAmount = p.AgentCommissionAmount, &#xA;&#x9;&#x9;ProcessAmount = p.Amount, &#xA;&#x9;&#x9;ProcessCode = p.ProcessCode, &#xA;&#x9;&#x9;ProcessFee = p.Fee, &#xA;&#x9;&#x9;FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, &#xA;&#x9;&#x9;FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,&#xA;&#x9;&#x9;DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, &#xA;&#x9;&#x9;DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, &#xA;&#x9;&#x9;DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, &#xA;&#x9;&#x9;DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, &#xA;&#x9;&#x9;ATMReferenceNumber = pd.ATMReferenceNumber, &#xA;&#x9;&#x9;CardProcessorName = pd.CardProcessorName, &#xA;&#x9;&#x9;CustomerBillerAccount = pd.CustomerBillerAccount, &#xA;&#x9;&#x9;CustomerPhoneNumber = pd.CustomerPhoneNumber, &#xA;&#x9;&#x9;DepositNumber = pd.DepositNumber, &#xA;&#x9;&#x9;IntegrationReferenceNumber = pd.IntegrationReferenceNumber, &#xA;&#x9;&#x9;LinkedPhoneNumber = pd.LinkedPhoneNumber, &#xA;&#x9;&#x9;MerchantConfirmationCode = pd.MerchantConfirmationCode, &#xA;&#x9;&#x9;MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,&#xA;&#x9;&#x9;PaymentSource = pd.PaymentSource, &#xA;&#x9;&#x9;ReferenceNumber = pd.ReferenceNumber, &#xA;&#x9;&#x9;SenderPhoneNumber= pd.SenderPhoneNumber, &#xA;&#x9;&#x9;VerificationStatus = pd.VerificationStatus, &#xA;&#x9;&#x9;WithdrawalCode = pd.WithdrawalCode&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#xA;&#x9;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;&#x9;ProcessID&#xA;&#x9;&#x9;FROM dbo.Process&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;grp.g = @grp&#xA;&#x9;) AS driver&#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#x9;&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;FROM dbo.Process&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ProcessID = driver.ProcessId&#xA;&#x9;) AS p&#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT  &#x9;&#xA;&#x9;&#x9;&#x9;WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9;&#xA;&#x9;&#x9;&#x9;RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) &#x9; &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;pd1.*&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[Name],&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[ProcessId],&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[Value]&#xA;&#x9;&#x9;&#x9;&#x9;FROM [dbo].[ProcessData] AS pd0&#xA;&#x9;&#x9;&#x9;&#x9;WHERE pd0.ProcessID = driver.ProcessId&#xA;&#x9;&#x9;&#x9;) AS pd1&#xA;&#x9;&#x9;&#x9;WHERE pd1.rn = 1&#xA;&#x9;&#x9;) AS pd2&#xA;&#x9;) AS pd&#xA;) AS base_query&#xA;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoadQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT 
+	*
+FROM
+(
+	SELECT 
+		SourceKey = driver.ProcessID,
+		DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), 
+		DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),
+		DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, 
+		DimForUserSourceKey = p.ForUserId,
+		DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), 
+		DimProcessChannelSourceKey = p.ProcessChannelId, 
+		DimProcessStatusSourceKey = p.ProcessStatusId, 
+		DimProcessTypeSourceKey = p.ProcessTypeId, 
+		DimToUserSourceKey = p.ToUserId, 
+		DimUserSourceKey = COALESCE(p.UserID, -1), 
+		DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), 
+		DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),
+		AgentCommissionAmount = p.AgentCommissionAmount, 
+		ProcessAmount = p.Amount, 
+		ProcessCode = p.ProcessCode, 
+		ProcessFee = p.Fee, 
+		FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, 
+		FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,
+		DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, 
+		DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, 
+		DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, 
+		DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, 
+		ATMReferenceNumber = pd.ATMReferenceNumber, 
+		CardProcessorName = pd.CardProcessorName, 
+		CustomerBillerAccount = pd.CustomerBillerAccount, 
+		CustomerPhoneNumber = pd.CustomerPhoneNumber, 
+		DepositNumber = pd.DepositNumber, 
+		IntegrationReferenceNumber = pd.IntegrationReferenceNumber, 
+		LinkedPhoneNumber = pd.LinkedPhoneNumber, 
+		MerchantConfirmationCode = pd.MerchantConfirmationCode, 
+		MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,
+		PaymentSource = pd.PaymentSource, 
+		ReferenceNumber = pd.ReferenceNumber, 
+		SenderPhoneNumber= pd.SenderPhoneNumber, 
+		VerificationStatus = pd.VerificationStatus, 
+		WithdrawalCode = pd.WithdrawalCode
+	FROM
+	(
+	
+		SELECT DISTINCT 
+			ProcessID
+		FROM dbo.Process
+		CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp
+		WHERE 
+			grp.g = @grp
+	) AS driver
+	CROSS APPLY
+	(
+		SELECT	
+			*
+		FROM dbo.Process
+		WHERE 
+			ProcessID = driver.ProcessId
+	) AS p
+	CROSS APPLY
+	(
+		SELECT  	
+			WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  		
+			RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  		 
+			SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), 		 
+			OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), 		 
+			VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
+			IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), 		 
+			DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), 		 
+			DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) 	 
+		FROM 
+		(
+			SELECT 
+				pd1.*
+			FROM
+
+			(
+				SELECT
+					ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,
+					pd0.[Name],
+					pd0.[ProcessId],
+					pd0.[Value]
+				FROM [dbo].[ProcessData] AS pd0
+				WHERE pd0.ProcessID = driver.ProcessId
+			) AS pd1
+			WHERE pd1.rn = 1
+		) AS pd2
+	) AS pd
+) AS base_query
+</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{04870C84-EA4F-4C78-AA4C-FFEB64598201}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;) AS base_query &#xA;&#xA;WHERE&#xA;&#x9;&#x9;EXISTS&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;1&#xA;&#x9;&#x9;&#x9;FROM paga_change_log.dbo.ProcessData AS ct&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;base_query.SourceKey = ct.ProcessDataId&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AND as_of_change_version = &quot; + (DT_WSTR, 20) @[$Package::ChangeVersion] +&quot;&#xA;&#x9;&#x9;)&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="PD_Filter">
+      <DTS:VariableValue
+        DTS:DataType="8">) AS base_query 
+
+WHERE
+		EXISTS		(
+			SELECT 
+				1
+			FROM paga_change_log.dbo.ProcessData AS ct		
+			WHERE
+				base_query.SourceKey = ct.ProcessDataId
+							AND as_of_change_version = 0
+		)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AF1C5385-44C0-4193-B36A-0269259BD437}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM &#xA;(SELECT SourceKey= ProcessDataId  FROM dbo.ProcessData  &#xA;&quot; + @[User::PD_Filter]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="PD_GetRowCounts">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM 
+(SELECT SourceKey= ProcessDataId  FROM dbo.ProcessData  
+) AS base_query 
+
+WHERE
+		EXISTS		(
+			SELECT 
+				1
+			FROM paga_change_log.dbo.ProcessData AS ct		
+			WHERE
+				base_query.SourceKey = ct.ProcessDataId
+							AND as_of_change_version = 0
+		)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{408CBBD6-847A-4810-B6C2-7454680C8C06}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::GetProcessData] +&quot;&#x9;WHERE g.grp = 0&#xA;&#xA;) AS base_query &#xA;&quot; + @[$Package::EndOfQuery] +&quot;&#xA;OPTION (MAXDOP 1)&quot;"
+      DTS:Expression="@[User::GetProcessData] +&quot;&#x9;WHERE g.grp = 0 &quot; + @[User::PD_Filter] +&quot; &#xA;OPTION (MAXDOP 1)&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="PD_grp0">
@@ -591,24 +755,31 @@ FROM
 		SELECT
 			[ProcessDataID],
 			[ProcessId],
-			SourceKey = ProcessID,
+			SourceKey = ProcessDataID,
 			Name = CONVERT(VARCHAR(255),[Name]),			
 			Value = CONVERT(VARCHAR(8000),[Value]),
 			UpdatedDate
 		FROM [dbo].[ProcessData]
 	) AS pd0
 	CROSS APPLY (SELECT grp = (CAST(ProcessDataID AS VARCHAR) %4 ) ) AS g
-	WHERE g.grp = 0
+	WHERE g.grp = 0 ) AS base_query 
 
-) AS base_query 
-
+WHERE
+		EXISTS		(
+			SELECT 
+				1
+			FROM paga_change_log.dbo.ProcessData AS ct		
+			WHERE
+				base_query.SourceKey = ct.ProcessDataId
+							AND as_of_change_version = 0
+		) 
 OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{69DAD017-68DB-4C55-8FA2-A48D96B4DBA6}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::GetProcessData] +&quot;&#x9;WHERE g.grp = 1&#xA;) AS base_query &#xA;&quot; + @[$Package::EndOfQuery] +&quot;&#xA;OPTION (MAXDOP 1)&quot;"
+      DTS:Expression="@[User::GetProcessData] +&quot;&#x9;WHERE g.grp = 1 &quot; + @[User::PD_Filter] +&quot; &#xA;OPTION (MAXDOP 1)&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="PD_grp1">
@@ -629,23 +800,31 @@ FROM
 		SELECT
 			[ProcessDataID],
 			[ProcessId],
-			SourceKey = ProcessID,
+			SourceKey = ProcessDataID,
 			Name = CONVERT(VARCHAR(255),[Name]),			
 			Value = CONVERT(VARCHAR(8000),[Value]),
 			UpdatedDate
 		FROM [dbo].[ProcessData]
 	) AS pd0
 	CROSS APPLY (SELECT grp = (CAST(ProcessDataID AS VARCHAR) %4 ) ) AS g
-	WHERE g.grp = 1
-) AS base_query 
+	WHERE g.grp = 1 ) AS base_query 
 
+WHERE
+		EXISTS		(
+			SELECT 
+				1
+			FROM paga_change_log.dbo.ProcessData AS ct		
+			WHERE
+				base_query.SourceKey = ct.ProcessDataId
+							AND as_of_change_version = 0
+		) 
 OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{398F14B9-73ED-4776-AEB9-ACDF2A3CC0E5}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::GetProcessData] +&quot;&#x9;WHERE g.grp = 2 &#xA;&#xA;) AS base_query &#xA;&quot; + @[$Package::EndOfQuery] +&quot;&#xA;OPTION (MAXDOP 1)&quot;"
+      DTS:Expression="@[User::GetProcessData] +&quot;&#x9;WHERE g.grp = 2 &quot; + @[User::PD_Filter] +&quot; &#xA;OPTION (MAXDOP 1)&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="PD_grp2">
@@ -666,24 +845,31 @@ FROM
 		SELECT
 			[ProcessDataID],
 			[ProcessId],
-			SourceKey = ProcessID,
+			SourceKey = ProcessDataID,
 			Name = CONVERT(VARCHAR(255),[Name]),			
 			Value = CONVERT(VARCHAR(8000),[Value]),
 			UpdatedDate
 		FROM [dbo].[ProcessData]
 	) AS pd0
 	CROSS APPLY (SELECT grp = (CAST(ProcessDataID AS VARCHAR) %4 ) ) AS g
-	WHERE g.grp = 2 
+	WHERE g.grp = 2 ) AS base_query 
 
-) AS base_query 
-
+WHERE
+		EXISTS		(
+			SELECT 
+				1
+			FROM paga_change_log.dbo.ProcessData AS ct		
+			WHERE
+				base_query.SourceKey = ct.ProcessDataId
+							AND as_of_change_version = 0
+		) 
 OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{A288B333-8D78-418B-8BA2-C96BCD8B2A93}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::GetProcessData] +&quot;&#x9;WHERE g.grp = 3 &#xA; &#xA;) AS base_query &#xA;&quot; + @[$Package::EndOfQuery] +&quot;&#xA;OPTION (MAXDOP 1)&quot;"
+      DTS:Expression="@[User::GetProcessData] +&quot;&#x9;WHERE g.grp = 3  &quot; + @[User::PD_Filter] +&quot; &#xA;OPTION (MAXDOP 1)&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="PD_grp3">
@@ -704,17 +890,24 @@ FROM
 		SELECT
 			[ProcessDataID],
 			[ProcessId],
-			SourceKey = ProcessID,
+			SourceKey = ProcessDataID,
 			Name = CONVERT(VARCHAR(255),[Name]),			
 			Value = CONVERT(VARCHAR(8000),[Value]),
 			UpdatedDate
 		FROM [dbo].[ProcessData]
 	) AS pd0
 	CROSS APPLY (SELECT grp = (CAST(ProcessDataID AS VARCHAR) %4 ) ) AS g
-	WHERE g.grp = 3 
- 
-) AS base_query 
+	WHERE g.grp = 3  ) AS base_query 
 
+WHERE
+		EXISTS		(
+			SELECT 
+				1
+			FROM paga_change_log.dbo.ProcessData AS ct		
+			WHERE
+				base_query.SourceKey = ct.ProcessDataId
+							AND as_of_change_version = 0
+		) 
 OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
@@ -7967,44 +8160,44 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           <paths>
             <path
               refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output2]"
-              endId="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
-              endId="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output]" />
             <path
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
+              endId="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Output]" />
+            <path
               refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output2]"
-              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 3]"
-              name="Output"
-              startId="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 1.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output3]"
-              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 4]"
-              name="Output"
-              startId="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 2.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 1]"
               name="Output"
               startId="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 3.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output1]"
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output3]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 2]"
               name="Output"
               startId="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output]"
+              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 3]"
+              name="Output"
+              startId="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 1.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output1]"
+              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 4]"
+              name="Output"
+              startId="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 2.Outputs[Output]" />
             <path
               refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[Union All Output 1]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -8012,23 +8205,6 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
               startId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Outputs[Union All Output 1]" />
           </paths>
         </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\EST_IndexProcessData"
-      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{7743C8F6-7BC0-4855-81EB-FAA0CB4C6A3A}"
-      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="EST_IndexProcessData"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}"
-          SQLTask:SqlStatementSource="CREATE UNIQUE CLUSTERED INDEX [ix_ProcessData] ON [dbo].[ProcessData]&#xA;(&#xA;&#x9;[ProcessID] ASC,&#xA;&#x9;[Name] ASC,&#xA;&#x9;[UpdatedDate] ASC,&#xA;&#x9;[row_id] ASC&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -8462,7 +8638,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                     <property
                       dataType="System.String"
                       description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
+                      name="FastLoadOptions">TABLOCK,ROWS_PER_BATCH = 100000</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -12312,44 +12488,44 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
               <paths>
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output2]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
                 <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Output]" />
+                <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output2]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 1]"
-                  name="Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\dc_ChangeData 1.Outputs[Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output3]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 2]"
-                  name="Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\dc_ChangeData.Outputs[Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 3]"
                   name="Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\dc_ChangeData 3.Outputs[Output]" />
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output1]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output3]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 4]"
                   name="Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\dc_ChangeData 2.Outputs[Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 1]"
+                  name="Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\dc_ChangeData 1.Outputs[Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output1]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 2]"
+                  name="Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\dc_ChangeData.Outputs[Output]" />
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Union All Output 1]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_InsertIntoPrestaging.Inputs[OLE DB Destination Input]"
@@ -12780,7 +12956,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                     <property
                       dataType="System.String"
                       description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
+                      name="FastLoadOptions">TABLOCK,ROWS_PER_BATCH = 100000</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -14302,44 +14478,44 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
               <paths>
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output]" />
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
                 <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
+                <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output2]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1]"
-                  name="Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output3]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2]"
-                  name="Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3]"
                   name="Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Output]" />
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output1]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output3]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 4]"
                   name="Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1]"
+                  name="Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output1]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2]"
+                  name="Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Output]" />
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Union All Output 1]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_InsertIntoPreStaging.Inputs[OLE DB Destination Input]"
@@ -14410,6 +14586,57 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
               SQLTask:SqlStatementSource="DROP INDEX ix_ProcessData ON dbo.ProcessData" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ_Load_PreStaging\EST_DropProcessIndex"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9974C96F-8C5C-4D96-9C65-604516BE4C8C}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_DropProcessIndex"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}"
+              SQLTask:SqlStatementSource="ALTER TABLE [dbo].[Process] DROP CONSTRAINT [PK_Process_ProcessId]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ_Load_PreStaging\EST_IndexProcess"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3a0a290f-4160-4ce3-9519-cf41b58e7070}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_IndexProcess"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}"
+              SQLTask:SqlStatementSource="CREATE UNIQUE CLUSTERED INDEX ix_Process ON [dbo].[Process]&#xA;(&#xA;&#x9;[ProcessId] ASC,&#xA;&#x9;SYS_CHANGE_VERSION&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ_Load_PreStaging\EST_IndexProcessData"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{6aee1d03-0ae3-49be-9536-8a40e02f933a}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_IndexProcessData"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}"
+              SQLTask:SqlStatementSource="CREATE UNIQUE CLUSTERED INDEX [ix_ProcessData] ON [dbo].[ProcessData]&#xA;(&#xA; [ProcessID] ASC,&#xA; [Name] ASC,&#xA; [UpdatedDate] ASC,&#xA; [row_id] ASC&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
@@ -14423,13 +14650,13 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ_Load_PreStaging.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{52B85EDC-3644-416C-8173-0C8B67CB12CE}"
+          DTS:DTSID="{A97086B7-B85C-401E-94A8-BE3BCC37077A}"
           DTS:EvalOp="3"
           DTS:Expression="@[User::P_RowCount] &gt; 0"
           DTS:From="Package\SEQ_Load_PreStaging\EST_CheckForRows_P"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\SEQ_Load_PreStaging\DFT_Populate_Process" />
+          DTS:To="Package\SEQ_Load_PreStaging\EST_DropProcessIndex" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ_Load_PreStaging.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
@@ -14440,6 +14667,30 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
           DTS:To="Package\SEQ_Load_PreStaging\EST_DropProcessDataIndex" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ_Load_PreStaging.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{D3EA7C80-DD40-4565-8B1B-4D9308A0BFC4}"
+          DTS:From="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\SEQ_Load_PreStaging\EST_IndexProcessData" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ_Load_PreStaging.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{171D1608-E553-4D12-83A0-EE7A613245FA}"
+          DTS:From="Package\SEQ_Load_PreStaging\EST_DropProcessIndex"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\SEQ_Load_PreStaging\DFT_Populate_Process" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ_Load_PreStaging.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{CB4EE688-86AC-46D6-9074-62B58E2D23CA}"
+          DTS:From="Package\SEQ_Load_PreStaging\DFT_Populate_Process"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\SEQ_Load_PreStaging\EST_IndexProcess" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -14447,18 +14698,10 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{1D37923A-541D-49BA-B05D-4BD8A60FA1E2}"
+      DTS:DTSID="{5B52CE34-2680-4ABC-983E-65D29DE302F5}"
       DTS:From="Package\SEQ_Load_PreStaging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\EST_IndexProcessData" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
-      DTS:CreationName=""
-      DTS:DTSID="{40CE1733-E0FA-4AA5-B9FA-2AAA0EED4DEE}"
-      DTS:From="Package\EST_IndexProcessData"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 1"
       DTS:To="Package\DFT_Load_Shared_FactProcessEvent" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -14472,38 +14715,46 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="255,42"
           Id="Package\DFT_Load_Shared_FactProcessEvent"
-          TopLeft="113.5,517.5" />
-        <NodeLayout
-          Size="189,42"
-          Id="Package\EST_IndexProcessData"
-          TopLeft="146.5,415.5" />
+          TopLeft="115,517.5" />
         <NodeLayout
           Size="188,42"
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process"
-          TopLeft="5.50000000000006,209.5" />
+          TopLeft="6.50000000000006,209.5" />
         <NodeLayout
           Size="210,42"
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData"
-          TopLeft="254.5,209.5" />
+          TopLeft="257.5,209.5" />
         <NodeLayout
           Size="185,42"
           Id="Package\SEQ_Load_PreStaging\EST_CheckForRows_P"
-          TopLeft="7.00000000000006,107.5" />
+          TopLeft="8,5.5" />
         <NodeLayout
           Size="192,42"
           Id="Package\SEQ_Load_PreStaging\EST_CheckForRows_PD"
-          TopLeft="263.5,5.5" />
+          TopLeft="266.5,5.5" />
         <NodeLayout
           Size="212,42"
           Id="Package\SEQ_Load_PreStaging\EST_DropProcessDataIndex"
-          TopLeft="253.5,107.5" />
+          TopLeft="256.5,107.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\SEQ_Load_PreStaging\EST_DropProcessIndex"
+          TopLeft="5.5,107.5" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\SEQ_Load_PreStaging\EST_IndexProcess"
+          TopLeft="17.0000000000001,311.5" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\SEQ_Load_PreStaging\EST_IndexProcessData"
+          TopLeft="268,311.5" />
         <EdgeLayout
           Id="Package\SEQ_Load_PreStaging.PrecedenceConstraints[Constraint]"
-          TopLeft="359.5,149.5">
+          TopLeft="362.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14525,7 +14776,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Load_PreStaging.PrecedenceConstraints[Constraint 1]"
-          TopLeft="99.5000000000001,149.5">
+          TopLeft="100.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14549,7 +14800,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Load_PreStaging.PrecedenceConstraints[Constraint 2]"
-          TopLeft="359.5,47.5">
+          TopLeft="362.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14571,16 +14822,9 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="471,307"
-          Size="471,350"
-          Id="Package\SEQ_Load_PreStaging"
-          TopLeft="5.50000000000006,5.5" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="241,355.5">
+          Id="Package\SEQ_Load_PreStaging.PrecedenceConstraints[Constraint 3]"
+          TopLeft="362.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14601,8 +14845,59 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="241,457.5">
+          Id="Package\SEQ_Load_PreStaging.PrecedenceConstraints[Constraint 4]"
+          TopLeft="100.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging.PrecedenceConstraints[Constraint 5]"
+          TopLeft="100.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="474,409"
+          Size="474,452"
+          Id="Package\SEQ_Load_PreStaging"
+          TopLeft="5.50000000000006,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="242.5,457.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14629,19 +14924,39 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
     design-time-name="Package\DFT_Load_Shared_FactProcessEvent">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="223,42"
           Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent"
           TopLeft="5.5,5.5" />
         <NodeLayout
-          Size="223,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1"
-          TopLeft="289.5,5.5" />
+          Size="155,42"
+          Id="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 1"
+          TopLeft="607.5,107.5" />
         <NodeLayout
           Size="223,42"
           Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2"
           TopLeft="573.5,5.49999999999989" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_InsertIntoStaging"
+          TopLeft="546,425" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 2"
+          TopLeft="891.5,107.5" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent"
+          TopLeft="495,290" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1"
+          TopLeft="289.5,5.5" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 3"
+          TopLeft="39.5,107.5" />
         <NodeLayout
           Size="223,42"
           Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3"
@@ -14650,250 +14965,6 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           Size="155,42"
           Id="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData"
           TopLeft="323.5,107.5" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 1"
-          TopLeft="607.5,107.5" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 2"
-          TopLeft="891.5,107.5" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\dc_ChangeData 3"
-          TopLeft="39.5,107.5" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
-          TopLeft="401,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
-          TopLeft="685,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output2]"
-          TopLeft="969,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
-          TopLeft="117,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="182,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent"
-          TopLeft="495,290" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output]"
-          TopLeft="117,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="469,140.5"
-              Start="0,0"
-              End="469,133">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,66.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,66.25"
-                    Point2="0,70.25"
-                    Point3="4,70.25" />
-                  <mssgle:LineSegment
-                    End="465,70.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="465,70.25"
-                    Point2="469,70.25"
-                    Point3="469,74.25" />
-                  <mssgle:LineSegment
-                    End="469,133" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output1]"
-          TopLeft="401,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="214,140.5"
-              Start="0,0"
-              End="214,133">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,79.5653594771242" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,79.5653594771242"
-                    Point2="0,83.5653594771242"
-                    Point3="4,83.5653594771242" />
-                  <mssgle:LineSegment
-                    End="210,83.5653594771242" />
-                  <mssgle:CubicBezierSegment
-                    Point1="210,83.5653594771242"
-                    Point2="214,83.5653594771242"
-                    Point3="214,87.5653594771242" />
-                  <mssgle:LineSegment
-                    End="214,133" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output2]"
-          TopLeft="685,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-55.5,140.5"
-              Start="0,0"
-              End="-55.5,133">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,88.3140794223827" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,88.3140794223827"
-                    Point2="0,92.3140794223827"
-                    Point3="-4,92.3140794223827" />
-                  <mssgle:LineSegment
-                    End="-51.5,92.3140794223827" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-51.5,92.3140794223827"
-                    Point2="-55.5,92.3140794223827"
-                    Point3="-55.5,96.3140794223827" />
-                  <mssgle:LineSegment
-                    End="-55.5,133" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output3]"
-          TopLeft="969,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-330.8,140.5"
-              Start="0,0"
-              End="-330.8,133">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,94.5015408320494" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,94.5015408320494"
-                    Point2="0,98.5015408320494"
-                    Point3="-4,98.5015408320494" />
-                  <mssgle:LineSegment
-                    End="-326.8,98.5015408320494" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-326.8,98.5015408320494"
-                    Point2="-330.8,98.5015408320494"
-                    Point3="-330.8,102.501540832049" />
-                  <mssgle:LineSegment
-                    End="-330.8,133" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="201,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_InsertIntoStaging"
-          TopLeft="546,425" />
         <EdgeLayout
           Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Union All Output 1]"
           TopLeft="586,332">
@@ -14925,7 +14996,249 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output1]"
+          TopLeft="969,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-330.8,140.5"
+              Start="0,0"
+              End="-330.8,133">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,94.5015408320494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,94.5015408320494"
+                    Point2="0,98.5015408320494"
+                    Point3="-4,98.5015408320494" />
+                  <mssgle:LineSegment
+                    End="-326.8,98.5015408320494" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-326.8,98.5015408320494"
+                    Point2="-330.8,98.5015408320494"
+                    Point3="-330.8,102.501540832049" />
+                  <mssgle:LineSegment
+                    End="-330.8,133" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output]"
+          TopLeft="685,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-55.5,140.5"
+              Start="0,0"
+              End="-55.5,133">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,88.3140794223827" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,88.3140794223827"
+                    Point2="0,92.3140794223827"
+                    Point3="-4,92.3140794223827" />
+                  <mssgle:LineSegment
+                    End="-51.5,92.3140794223827" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-51.5,92.3140794223827"
+                    Point2="-55.5,92.3140794223827"
+                    Point3="-55.5,96.3140794223827" />
+                  <mssgle:LineSegment
+                    End="-55.5,133" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output3]"
+          TopLeft="401,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="214,140.5"
+              Start="0,0"
+              End="214,133">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.5653594771242" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,79.5653594771242"
+                    Point2="0,83.5653594771242"
+                    Point3="4,83.5653594771242" />
+                  <mssgle:LineSegment
+                    End="210,83.5653594771242" />
+                  <mssgle:CubicBezierSegment
+                    Point1="210,83.5653594771242"
+                    Point2="214,83.5653594771242"
+                    Point3="214,87.5653594771242" />
+                  <mssgle:LineSegment
+                    End="214,133" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Output2]"
+          TopLeft="117,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="469,140.5"
+              Start="0,0"
+              End="469,133">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,66.25"
+                    Point2="0,70.25"
+                    Point3="4,70.25" />
+                  <mssgle:LineSegment
+                    End="465,70.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="465,70.25"
+                    Point2="469,70.25"
+                    Point3="469,74.25" />
+                  <mssgle:LineSegment
+                    End="469,133" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
+          TopLeft="117,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
+          TopLeft="969,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
+          TopLeft="685,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output2]"
+          TopLeft="401,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -14980,7 +15293,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
     design-time-name="Package\SEQ_Load_PreStaging\DFT_Populate_Process">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="216,42"
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_InsertIntoPrestaging"
@@ -15052,79 +15365,13 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output1]"
-          TopLeft="753.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-177.6,60"
-              Start="0,0"
-              End="-177.6,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.8032786885246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.8032786885246"
-                    Point2="0,41.8032786885246"
-                    Point3="-4,41.8032786885246" />
-                  <mssgle:LineSegment
-                    End="-173.6,41.8032786885246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-173.6,41.8032786885246"
-                    Point2="-177.6,41.8032786885246"
-                    Point3="-177.6,45.8032786885246" />
-                  <mssgle:LineSegment
-                    End="-177.6,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output]"
-          TopLeft="537.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="12.8,60"
-              Start="0,0"
-              End="12.8,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.1168831168831" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.1168831168831"
-                    Point2="0,33.1168831168831"
-                    Point3="4,33.1168831168831" />
-                  <mssgle:LineSegment
-                    End="8.79999999999995,33.1168831168831" />
-                  <mssgle:CubicBezierSegment
-                    Point1="8.79999999999995,33.1168831168831"
-                    Point2="12.8,33.1168831168831"
-                    Point3="12.8,37.1168831168831" />
-                  <mssgle:LineSegment
-                    End="12.8,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output3]"
           TopLeft="321.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15154,11 +15401,13 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output2]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output]"
           TopLeft="105.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15188,67 +15437,85 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output3]"
+          TopLeft="753.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-177.6,60"
+              Start="0,0"
+              End="-177.6,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.8032786885246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.8032786885246"
+                    Point2="0,41.8032786885246"
+                    Point3="-4,41.8032786885246" />
+                  <mssgle:LineSegment
+                    End="-173.6,41.8032786885246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-173.6,41.8032786885246"
+                    Point2="-177.6,41.8032786885246"
+                    Point3="-177.6,45.8032786885246" />
+                  <mssgle:LineSegment
+                    End="-177.6,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Output2]"
+          TopLeft="537.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.8,60"
+              Start="0,0"
+              End="12.8,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1168831168831" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.1168831168831"
+                    Point2="0,33.1168831168831"
+                    Point3="4,33.1168831168831" />
+                  <mssgle:LineSegment
+                    End="8.79999999999995,33.1168831168831" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.79999999999995,33.1168831168831"
+                    Point2="12.8,33.1168831168831"
+                    Point3="12.8,37.1168831168831" />
+                  <mssgle:LineSegment
+                    End="12.8,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
-          TopLeft="537.5,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
-          TopLeft="762.5,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-9,60"
-              Start="0,0"
-              End="-9,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
-                  <mssgle:LineSegment
-                    End="-5,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5,30"
-                    Point2="-9,30"
-                    Point3="-9,34" />
-                  <mssgle:LineSegment
-                    End="-9,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
           TopLeft="87.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15278,11 +15545,13 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output2]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
           TopLeft="312.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15312,7 +15581,69 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
+          TopLeft="537.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output2]"
+          TopLeft="762.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9,60"
+              Start="0,0"
+              End="-9,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5,30"
+                    Point2="-9,30"
+                    Point3="-9,34" />
+                  <mssgle:LineSegment
+                    End="-9,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -15367,7 +15698,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
     design-time-name="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="217,42"
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_InsertIntoPreStaging"
@@ -15427,79 +15758,13 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output1]"
-          TopLeft="105.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="387,59.9999999999999"
-              Start="0,0"
-              End="387,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.9469026548672" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.9469026548672"
-                    Point2="0,41.9469026548672"
-                    Point3="4,41.9469026548672" />
-                  <mssgle:LineSegment
-                    End="383,41.9469026548672" />
-                  <mssgle:CubicBezierSegment
-                    Point1="383,41.9469026548672"
-                    Point2="387,41.9469026548672"
-                    Point3="387,45.9469026548672" />
-                  <mssgle:LineSegment
-                    End="387,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output]"
-          TopLeft="753.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-171,60"
-              Start="0,0"
-              End="-171,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.9469026548673" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.9469026548673"
-                    Point2="0,41.9469026548673"
-                    Point3="-4,41.9469026548673" />
-                  <mssgle:LineSegment
-                    End="-167,41.9469026548673" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-167,41.9469026548673"
-                    Point2="-171,41.9469026548673"
-                    Point3="-171,45.9469026548673" />
-                  <mssgle:LineSegment
-                    End="-171,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output3]"
           TopLeft="537.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15529,11 +15794,13 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output2]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output]"
           TopLeft="321.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15563,79 +15830,85 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output3]"
+          TopLeft="105.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="387,59.9999999999999"
+              Start="0,0"
+              End="387,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.9469026548672" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.9469026548672"
+                    Point2="0,41.9469026548672"
+                    Point3="4,41.9469026548672" />
+                  <mssgle:LineSegment
+                    End="383,41.9469026548672" />
+                  <mssgle:CubicBezierSegment
+                    Point1="383,41.9469026548672"
+                    Point2="387,41.9469026548672"
+                    Point3="387,45.9469026548672" />
+                  <mssgle:LineSegment
+                    End="387,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output2]"
+          TopLeft="753.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-171,60"
+              Start="0,0"
+              End="-171,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.9469026548673" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.9469026548673"
+                    Point2="0,41.9469026548673"
+                    Point3="-4,41.9469026548673" />
+                  <mssgle:LineSegment
+                    End="-167,41.9469026548673" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-167,41.9469026548673"
+                    Point2="-171,41.9469026548673"
+                    Point3="-171,45.9469026548673" />
+                  <mssgle:LineSegment
+                    End="-171,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
-          TopLeft="87.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="18,60"
-              Start="0,0"
-              End="18,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="4,30" />
-                  <mssgle:LineSegment
-                    End="14,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="14,30"
-                    Point2="18,30"
-                    Point3="18,34" />
-                  <mssgle:LineSegment
-                    End="18,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
-          TopLeft="762.5,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-9,60"
-              Start="0,0"
-              End="-9,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
-                  <mssgle:LineSegment
-                    End="-5,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5,30"
-                    Point2="-9,30"
-                    Point3="-9,34" />
-                  <mssgle:LineSegment
-                    End="-9,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
           TopLeft="537.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15653,11 +15926,13 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
           TopLeft="312.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15687,7 +15962,81 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
+          TopLeft="87.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18,60"
+              Start="0,0"
+              End="18,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="14,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14,30"
+                    Point2="18,30"
+                    Point3="18,34" />
+                  <mssgle:LineSegment
+                    End="18,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
+          TopLeft="762.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9,60"
+              Start="0,0"
+              End="-9,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5,30"
+                    Point2="-9,30"
+                    Point3="-9,34" />
+                  <mssgle:LineSegment
+                    End="-9,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

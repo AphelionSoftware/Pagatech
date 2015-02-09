@@ -11,8 +11,8 @@
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="3001_Finance_FactGLTransaction"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{2A1E86F9-2758-4A9D-991E-8D4C9D8B9DEE}"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{30544A0A-FFDC-452D-9D12-1728C957B190}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -43,8 +43,7 @@
       DTS:ObjectName="EndOfQuery">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue"
-        xml:space="preserve"></DTS:Property>
+        DTS:Name="ParameterValue">WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransactionItem AS ct		 			WHERE 				base_query.SourceKey = ct.FinancialTransactionItemIdAND as_of_change_version = 0 		)</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -52,15 +51,15 @@
       DTS:CreationName=""
       DTS:DTSID="{7F7054E6-48BD-45E4-AAC9-E534075C66BA}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM &#xA;(SELECT SourceKey= FinancialTransactionItemId FROM dbo.FinancialTransactionItem&#xA;) AS base_query&#xA;&quot; + @[$Package::EndOfQuery]"
+      DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM &#xA;(SELECT SourceKey= FinancialTransactionItemId FROM dbo.FinancialTransactionItem&#xA;) AS base_query   &#xA;&quot; + @[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="GetRowCount">
       <DTS:VariableValue
         DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM 
 (SELECT SourceKey= FinancialTransactionItemId FROM dbo.FinancialTransactionItem
-) AS base_query
-</DTS:VariableValue>
+) AS base_query   
+WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransactionItem AS ct		 			WHERE 				base_query.SourceKey = ct.FinancialTransactionItemIdAND as_of_change_version = 0 		)</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -112,7 +111,7 @@ FROM
 		WHERE 
 				g.grp = @grp
 	) AS stream 
-) AS base_query </DTS:VariableValue>
+) AS base_query WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransactionItem AS ct		 			WHERE 				base_query.SourceKey = ct.FinancialTransactionItemIdAND as_of_change_version = 0 		)</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -156,7 +155,7 @@ FROM
 		WHERE 
 				g.grp = @grp
 	) AS stream 
-) AS base_query </DTS:VariableValue>
+) AS base_query WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransactionItem AS ct		 			WHERE 				base_query.SourceKey = ct.FinancialTransactionItemIdAND as_of_change_version = 0 		)</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -200,7 +199,7 @@ FROM
 		WHERE 
 				g.grp = @grp
 	) AS stream 
-) AS base_query </DTS:VariableValue>
+) AS base_query WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransactionItem AS ct		 			WHERE 				base_query.SourceKey = ct.FinancialTransactionItemIdAND as_of_change_version = 0 		)</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -244,7 +243,7 @@ FROM
 		WHERE 
 				g.grp = @grp
 	) AS stream 
-) AS base_query </DTS:VariableValue>
+) AS base_query WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransactionItem AS ct		 			WHERE 				base_query.SourceKey = ct.FinancialTransactionItemIdAND as_of_change_version = 0 		)</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2793,7 +2792,7 @@ FROM
     design-time-name="Package\DFT_Load Finance_FactGLTransaction">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="169,42"
           Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0"
@@ -2865,109 +2864,81 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
-          TopLeft="785.5,149.5">
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output6]"
+          TopLeft="782.75,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-202.3,106.5"
+              EndConnector="0,60"
               Start="0,0"
-              End="-202.3,99.0000000000001">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,70.7018004501126" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,70.7018004501126"
-                    Point2="0,74.7018004501126"
-                    Point3="-4,74.7018004501126" />
-                  <mssgle:LineSegment
-                    End="-198.3,74.7018004501126" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-198.3,74.7018004501126"
-                    Point2="-202.3,74.7018004501126"
-                    Point3="-202.3,78.7018004501126" />
-                  <mssgle:LineSegment
-                    End="-202.3,99.0000000000001" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
-          TopLeft="555.5,149.5">
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output5]"
+          TopLeft="552.75,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="18.75,106.5"
+              EndConnector="0,60"
               Start="0,0"
-              End="18.75,99.0000000000001">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.0017574692444" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,66.0017574692444"
-                    Point2="0,70.0017574692444"
-                    Point3="4,70.0017574692444" />
-                  <mssgle:LineSegment
-                    End="14.75,70.0017574692444" />
-                  <mssgle:CubicBezierSegment
-                    Point1="14.75,70.0017574692444"
-                    Point2="18.75,70.0017574692444"
-                    Point3="18.75,74.0017574692444" />
-                  <mssgle:LineSegment
-                    End="18.75,99.0000000000001" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
-          TopLeft="325.5,149.5">
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output4]"
+          TopLeft="322.75,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="233.833333333333,106.5"
+              EndConnector="0,60"
               Start="0,0"
-              End="233.833333333333,99.0000000000001">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,59.3579003181337" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,59.3579003181337"
-                    Point2="0,63.3579003181337"
-                    Point3="4,63.3579003181337" />
-                  <mssgle:LineSegment
-                    End="229.833333333333,63.3579003181337" />
-                  <mssgle:CubicBezierSegment
-                    Point1="229.833333333333,63.3579003181337"
-                    Point2="233.833333333333,63.3579003181337"
-                    Point3="233.833333333333,67.3579003181337" />
-                  <mssgle:LineSegment
-                    End="233.833333333333,99.0000000000001" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3001,73 +2972,117 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output6]"
-          TopLeft="782.75,47.4999999999999">
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
+          TopLeft="785.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-202.3,106.5"
               Start="0,0"
-              End="0,52.5">
+              End="-202.3,99.0000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,70.7018004501126" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,70.7018004501126"
+                    Point2="0,74.7018004501126"
+                    Point3="-4,74.7018004501126" />
+                  <mssgle:LineSegment
+                    End="-198.3,74.7018004501126" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-198.3,74.7018004501126"
+                    Point2="-202.3,74.7018004501126"
+                    Point3="-202.3,78.7018004501126" />
+                  <mssgle:LineSegment
+                    End="-202.3,99.0000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output5]"
-          TopLeft="552.75,47.4999999999999">
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
+          TopLeft="555.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="18.75,106.5"
               Start="0,0"
-              End="0,52.5">
+              End="18.75,99.0000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,66.0017574692444" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,66.0017574692444"
+                    Point2="0,70.0017574692444"
+                    Point3="4,70.0017574692444" />
+                  <mssgle:LineSegment
+                    End="14.75,70.0017574692444" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.75,70.0017574692444"
+                    Point2="18.75,70.0017574692444"
+                    Point3="18.75,74.0017574692444" />
+                  <mssgle:LineSegment
+                    End="18.75,99.0000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output4]"
-          TopLeft="322.75,47.4999999999999">
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
+          TopLeft="325.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="233.833333333333,106.5"
               Start="0,0"
-              End="0,52.5">
+              End="233.833333333333,99.0000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,59.3579003181337" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.3579003181337"
+                    Point2="0,63.3579003181337"
+                    Point3="4,63.3579003181337" />
+                  <mssgle:LineSegment
+                    End="229.833333333333,63.3579003181337" />
+                  <mssgle:CubicBezierSegment
+                    Point1="229.833333333333,63.3579003181337"
+                    Point2="233.833333333333,63.3579003181337"
+                    Point3="233.833333333333,67.3579003181337" />
+                  <mssgle:LineSegment
+                    End="233.833333333333,99.0000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3089,7 +3104,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
