@@ -11,8 +11,8 @@
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="3001_Finance_FactGLTransaction"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{AE419F52-A4E0-49CB-9E70-5E7CE24BF56F}"
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{3AEC4B91-6AB3-4B0F-A769-3A14BF454371}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -43,10 +43,53 @@
       DTS:ObjectName="EndOfQuery">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransactionItem AS ct		 			WHERE 				base_query.SourceKey = ct.FinancialTransactionItemIdAND as_of_change_version = 0 		)</DTS:Property>
+        DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.[FinancialTransactionItem] as ct ON 	ct.[FinancialTransactionItemId] = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C7AD3664-B38C-4C7B-B1F5-43BFB3268122}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;base_query.*, &#x9;ct.SYS_CHANGE_OPERATION,&#xA;&#x9;ct.SYS_CHANGE_VERSION&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;[Movement],&#xA;&#x9;&#x9;[SourceKey],&#xA;&#x9;&#x9;[TextDescription],&#xA;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;[DimFinancialAccountSourceKey],&#xA;&#x9;&#x9;[DimGLCodeSourceKey],&#xA;&#x9;&#x9;[FactFinancialTransactionSourceKey]&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;SourceKey = [FinancialTransactionItemId],&#xA;&#x9;&#x9;&#x9;[DimGLCodeSourceKey] = [AccountCodeId],&#xA;&#x9;&#x9;&#x9;TextDescription = [Description],&#xA;&#x9;&#x9;&#x9;[DimFinancialAccountSourceKey] = [FinancialAccountId],&#xA;&#x9;&#x9;&#x9;[FactFinancialTransactionSourceKey] = [FinancialTransactionId],&#xA;&#x9;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;&#x9;[Movement] = ([CreditAmount]+[DebitAmount])&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;FROM [dbo].[FinancialTransactionItem]&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([FinancialTransactionItemId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT
+	base_query.*, 	ct.SYS_CHANGE_OPERATION,
+	ct.SYS_CHANGE_VERSION
+FROM
+(
+	SELECT 
+		[CreditAmount],
+		[DebitAmount],
+		[Movement],
+		[SourceKey],
+		[TextDescription],
+		[TransactionLineNumber],
+		[DimFinancialAccountSourceKey],
+		[DimGLCodeSourceKey],
+		[FactFinancialTransactionSourceKey]
+	FROM
+	(
+		SELECT
+			SourceKey = [FinancialTransactionItemId],
+			[DimGLCodeSourceKey] = [AccountCodeId],
+			TextDescription = [Description],
+			[DimFinancialAccountSourceKey] = [FinancialAccountId],
+			[FactFinancialTransactionSourceKey] = [FinancialTransactionId],
+			[TransactionLineNumber],
+			[CreditAmount],
+			[DebitAmount],
+			[Movement] = ([CreditAmount]+[DebitAmount])			
+		FROM [dbo].[FinancialTransactionItem]
+		CROSS APPLY (SELECT (CAST([FinancialTransactionItemId] AS VARCHAR) % 4) AS grp) as g
+		WHERE 
+				g.grp = @grp
+	) AS stream 
+) AS base_query </DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{7F7054E6-48BD-45E4-AAC9-E534075C66BA}"
@@ -59,7 +102,7 @@
         DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM 
 (SELECT SourceKey= FinancialTransactionItemId FROM dbo.FinancialTransactionItem
 ) AS base_query   
-WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransactionItem AS ct		 			WHERE 				base_query.SourceKey = ct.FinancialTransactionItemIdAND as_of_change_version = 0 		)</DTS:VariableValue>
+INNER JOIN paga_change_log.dbo.[FinancialTransactionItem] as ct ON 	ct.[FinancialTransactionItemId] = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -74,14 +117,15 @@ WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransact
       DTS:CreationName=""
       DTS:DTSID="{42B5DAF1-762C-4A87-AF64-0EED4D9098E4}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 0&#xA;SELECT&#xA;&#x9;base_query.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;[Movement],&#xA;&#x9;&#x9;[SourceKey],&#xA;&#x9;&#x9;[TextDescription],&#xA;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;[DimFinancialAccountSourceKey],&#xA;&#x9;&#x9;[DimGLCodeSourceKey],&#xA;&#x9;&#x9;[FactFinancialTransactionSourceKey]&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;SourceKey = [FinancialTransactionItemId],&#xA;&#x9;&#x9;&#x9;[DimGLCodeSourceKey] = [AccountCodeId],&#xA;&#x9;&#x9;&#x9;TextDescription = [Description],&#xA;&#x9;&#x9;&#x9;[DimFinancialAccountSourceKey] = [FinancialAccountId],&#xA;&#x9;&#x9;&#x9;[FactFinancialTransactionSourceKey] = [FinancialTransactionId],&#xA;&#x9;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;&#x9;[Movement] = ([CreditAmount]+[DebitAmount])&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;FROM [dbo].[FinancialTransactionItem]&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([FinancialTransactionItemId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;&#xA;+@[$Package::EndOfQuery]"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 0&#xA; &quot; + @[User::BaseQuery] +&quot; &quot; &#xA;+@[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream0">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 0
-SELECT
-	base_query.*
+ SELECT
+	base_query.*, 	ct.SYS_CHANGE_OPERATION,
+	ct.SYS_CHANGE_VERSION
 FROM
 (
 	SELECT 
@@ -111,21 +155,21 @@ FROM
 		WHERE 
 				g.grp = @grp
 	) AS stream 
-) AS base_query WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransactionItem AS ct		 			WHERE 				base_query.SourceKey = ct.FinancialTransactionItemIdAND as_of_change_version = 0 		)</DTS:VariableValue>
+) AS base_query  INNER JOIN paga_change_log.dbo.[FinancialTransactionItem] as ct ON 	ct.[FinancialTransactionItemId] = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{3B9408F9-2D61-46C4-AE91-04FCCC3D4617}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 1&#xA;&#xA;SELECT&#xA;&#x9;base_query.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;[Movement],&#xA;&#x9;&#x9;[SourceKey],&#xA;&#x9;&#x9;[TextDescription],&#xA;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;[DimFinancialAccountSourceKey],&#xA;&#x9;&#x9;[DimGLCodeSourceKey],&#xA;&#x9;&#x9;[FactFinancialTransactionSourceKey]&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;SourceKey = [FinancialTransactionItemId],&#xA;&#x9;&#x9;&#x9;[DimGLCodeSourceKey] = [AccountCodeId],&#xA;&#x9;&#x9;&#x9;TextDescription = [Description],&#xA;&#x9;&#x9;&#x9;[DimFinancialAccountSourceKey] = [FinancialAccountId],&#xA;&#x9;&#x9;&#x9;[FactFinancialTransactionSourceKey] = [FinancialTransactionId],&#xA;&#x9;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;&#x9;[Movement] = ([CreditAmount]+[DebitAmount])&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;FROM [dbo].[FinancialTransactionItem]&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([FinancialTransactionItemId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;&#xA;+@[$Package::EndOfQuery]"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 1&#xA; &quot; + @[User::BaseQuery] +&quot; &quot; &#xA;+@[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream1">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 1
-
-SELECT
-	base_query.*
+ SELECT
+	base_query.*, 	ct.SYS_CHANGE_OPERATION,
+	ct.SYS_CHANGE_VERSION
 FROM
 (
 	SELECT 
@@ -155,21 +199,21 @@ FROM
 		WHERE 
 				g.grp = @grp
 	) AS stream 
-) AS base_query WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransactionItem AS ct		 			WHERE 				base_query.SourceKey = ct.FinancialTransactionItemIdAND as_of_change_version = 0 		)</DTS:VariableValue>
+) AS base_query  INNER JOIN paga_change_log.dbo.[FinancialTransactionItem] as ct ON 	ct.[FinancialTransactionItemId] = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{D83A05C3-3DB6-4DAD-A453-DFC147CF134B}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 2&#xA;&#xA;SELECT&#xA;&#x9;base_query.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;[Movement],&#xA;&#x9;&#x9;[SourceKey],&#xA;&#x9;&#x9;[TextDescription],&#xA;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;[DimFinancialAccountSourceKey],&#xA;&#x9;&#x9;[DimGLCodeSourceKey],&#xA;&#x9;&#x9;[FactFinancialTransactionSourceKey]&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;SourceKey = [FinancialTransactionItemId],&#xA;&#x9;&#x9;&#x9;[DimGLCodeSourceKey] = [AccountCodeId],&#xA;&#x9;&#x9;&#x9;TextDescription = [Description],&#xA;&#x9;&#x9;&#x9;[DimFinancialAccountSourceKey] = [FinancialAccountId],&#xA;&#x9;&#x9;&#x9;[FactFinancialTransactionSourceKey] = [FinancialTransactionId],&#xA;&#x9;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;&#x9;[Movement] = ([CreditAmount]+[DebitAmount])&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;FROM [dbo].[FinancialTransactionItem]&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([FinancialTransactionItemId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;&#xA;+@[$Package::EndOfQuery]"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 2&#xA; &quot; + @[User::BaseQuery] +&quot; &quot; &#xA;+@[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream2">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 2
-
-SELECT
-	base_query.*
+ SELECT
+	base_query.*, 	ct.SYS_CHANGE_OPERATION,
+	ct.SYS_CHANGE_VERSION
 FROM
 (
 	SELECT 
@@ -199,21 +243,21 @@ FROM
 		WHERE 
 				g.grp = @grp
 	) AS stream 
-) AS base_query WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransactionItem AS ct		 			WHERE 				base_query.SourceKey = ct.FinancialTransactionItemIdAND as_of_change_version = 0 		)</DTS:VariableValue>
+) AS base_query  INNER JOIN paga_change_log.dbo.[FinancialTransactionItem] as ct ON 	ct.[FinancialTransactionItemId] = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{97B69093-354C-4FDA-989A-7D02BE9E3EF9}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 3&#xA;&#xA;SELECT&#xA;&#x9;base_query.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;[Movement],&#xA;&#x9;&#x9;[SourceKey],&#xA;&#x9;&#x9;[TextDescription],&#xA;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;[DimFinancialAccountSourceKey],&#xA;&#x9;&#x9;[DimGLCodeSourceKey],&#xA;&#x9;&#x9;[FactFinancialTransactionSourceKey]&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;SourceKey = [FinancialTransactionItemId],&#xA;&#x9;&#x9;&#x9;[DimGLCodeSourceKey] = [AccountCodeId],&#xA;&#x9;&#x9;&#x9;TextDescription = [Description],&#xA;&#x9;&#x9;&#x9;[DimFinancialAccountSourceKey] = [FinancialAccountId],&#xA;&#x9;&#x9;&#x9;[FactFinancialTransactionSourceKey] = [FinancialTransactionId],&#xA;&#x9;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;&#x9;[Movement] = ([CreditAmount]+[DebitAmount])&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;FROM [dbo].[FinancialTransactionItem]&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([FinancialTransactionItemId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;&#xA;+@[$Package::EndOfQuery]"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 3&#xA; &quot; + @[User::BaseQuery] +&quot; &quot; &#xA;+@[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream3">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 3
-
-SELECT
-	base_query.*
+ SELECT
+	base_query.*, 	ct.SYS_CHANGE_OPERATION,
+	ct.SYS_CHANGE_VERSION
 FROM
 (
 	SELECT 
@@ -243,7 +287,7 @@ FROM
 		WHERE 
 				g.grp = @grp
 	) AS stream 
-) AS base_query WHERE 		EXISTS		( 			SELECT  				1 			FROM paga_change_log.dbo.FinancialTransactionItem AS ct		 			WHERE 				base_query.SourceKey = ct.FinancialTransactionItemIdAND as_of_change_version = 0 		)</DTS:VariableValue>
+) AS base_query  INNER JOIN paga_change_log.dbo.[FinancialTransactionItem] as ct ON 	ct.[FinancialTransactionItemId] = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -251,7 +295,6 @@ FROM
       DTS:refId="Package\DFT_Load Finance_FactGLTransaction"
       DTS:CreationName="SSIS.Pipeline.3"
       DTS:DelayValidation="True"
-      DTS:Disabled="True"
       DTS:DTSID="{34722B64-8D3D-4C45-9850-27D92BD271C2}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
@@ -264,362 +307,6 @@ FROM
           bufferTempStoragePath=""
           version="1">
           <components>
-            <component
-              refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0"
-              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              name="dc_ChangeData 0"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLEDB_GetData_Output_dc_ChangeData">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Output]"
-                  exclusionGroup="1"
-                  name="Output"
-                  synchronousInputId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="IgnoreFailure"
-                      length="1"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="IgnoreFailure">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeOperation]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeOperation]</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeVersion]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Error]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Error"
-                  synchronousInputId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1"
-              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              name="dc_ChangeData 1"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLEDB_GetData_Output_dc_ChangeData">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Output]"
-                  exclusionGroup="1"
-                  name="Output"
-                  synchronousInputId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="IgnoreFailure"
-                      length="1"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="IgnoreFailure">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeOperation]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeOperation]</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeVersion]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Error]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Error"
-                  synchronousInputId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2"
-              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              name="dc_ChangeData 2"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLEDB_GetData_Output_dc_ChangeData">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Output]"
-                  exclusionGroup="1"
-                  name="Output"
-                  synchronousInputId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="IgnoreFailure"
-                      length="1"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="IgnoreFailure">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeOperation]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeOperation]</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeVersion]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Error]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Error"
-                  synchronousInputId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3"
-              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              name="dc_ChangeData 3"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLEDB_GetData_Output_dc_ChangeData">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Output]"
-                  exclusionGroup="1"
-                  name="Output"
-                  synchronousInputId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="IgnoreFailure"
-                      length="1"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="IgnoreFailure">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeOperation]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeOperation]</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeVersion]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Error]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Error"
-                  synchronousInputId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0"
               componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
@@ -768,6 +455,26 @@ FROM
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -814,6 +521,16 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].ExternalColumns[FactFinancialTransactionSourceKey]"
                       dataType="i4"
                       name="FactFinancialTransactionSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -873,6 +590,18 @@ FROM
                       dataType="i4"
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Error].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
                     <outputColumn
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
@@ -1038,6 +767,26 @@ FROM
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1084,6 +833,16 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].ExternalColumns[FactFinancialTransactionSourceKey]"
                       dataType="i4"
                       name="FactFinancialTransactionSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1143,6 +902,18 @@ FROM
                       dataType="i4"
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Error].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
                     <outputColumn
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
@@ -1308,6 +1079,26 @@ FROM
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1354,6 +1145,16 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].ExternalColumns[FactFinancialTransactionSourceKey]"
                       dataType="i4"
                       name="FactFinancialTransactionSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1413,6 +1214,18 @@ FROM
                       dataType="i4"
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Error].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
                     <outputColumn
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
@@ -1578,6 +1391,26 @@ FROM
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1624,6 +1457,16 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].ExternalColumns[FactFinancialTransactionSourceKey]"
                       dataType="i4"
                       name="FactFinancialTransactionSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1683,6 +1526,18 @@ FROM
                       dataType="i4"
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Error].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
                     <outputColumn
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
@@ -1940,11 +1795,12 @@ FROM
               version="1">
               <inputs>
                 <input
-                  refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1]"
-                  name="Union All Input 1">
+                  refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5]"
+                  hasSideEffects="true"
+                  name="Union All Input 5">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[CreditAmount]"
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5].Columns[CreditAmount]"
                       cachedDataType="numeric"
                       cachedName="CreditAmount"
                       cachedPrecision="18"
@@ -1959,7 +1815,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[DebitAmount]"
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5].Columns[DebitAmount]"
                       cachedDataType="numeric"
                       cachedName="DebitAmount"
                       cachedPrecision="18"
@@ -1974,7 +1830,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[Movement]"
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5].Columns[Movement]"
                       cachedDataType="numeric"
                       cachedName="Movement"
                       cachedPrecision="19"
@@ -1989,7 +1845,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[SourceKey]"
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5].Columns[SourceKey]"
                       cachedDataType="i4"
                       cachedName="SourceKey"
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].Columns[SourceKey]">
@@ -2002,7 +1858,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[TextDescription]"
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5].Columns[TextDescription]"
                       cachedDataType="wstr"
                       cachedLength="200"
                       cachedName="TextDescription"
@@ -2016,7 +1872,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[TransactionLineNumber]"
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5].Columns[TransactionLineNumber]"
                       cachedDataType="i4"
                       cachedName="TransactionLineNumber"
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].Columns[TransactionLineNumber]">
@@ -2029,7 +1885,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[DimFinancialAccountSourceKey]"
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5].Columns[DimFinancialAccountSourceKey]"
                       cachedDataType="i4"
                       cachedName="DimFinancialAccountSourceKey"
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].Columns[DimFinancialAccountSourceKey]">
@@ -2042,7 +1898,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[DimGLCodeSourceKey]"
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5].Columns[DimGLCodeSourceKey]"
                       cachedDataType="i4"
                       cachedName="DimGLCodeSourceKey"
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].Columns[DimGLCodeSourceKey]">
@@ -2055,10 +1911,170 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[FactFinancialTransactionSourceKey]"
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5].Columns[FactFinancialTransactionSourceKey]"
                       cachedDataType="i4"
                       cachedName="FactFinancialTransactionSourceKey"
                       lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[FactFinancialTransactionSourceKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5].Columns[SYS_CHANGE_OPERATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="SYS_CHANGE_OPERATION"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[SYS_CHANGE_OPERATION]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1]"
+                  hasSideEffects="true"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[CreditAmount]"
+                      cachedDataType="numeric"
+                      cachedName="CreditAmount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[CreditAmount]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[CreditAmount]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[DebitAmount]"
+                      cachedDataType="numeric"
+                      cachedName="DebitAmount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[DebitAmount]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[DebitAmount]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[Movement]"
+                      cachedDataType="numeric"
+                      cachedName="Movement"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[Movement]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[Movement]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[SourceKey]"
+                      cachedDataType="i4"
+                      cachedName="SourceKey"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[SourceKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[SourceKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[TextDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="TextDescription"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[TextDescription]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[TextDescription]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[TransactionLineNumber]"
+                      cachedDataType="i4"
+                      cachedName="TransactionLineNumber"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[TransactionLineNumber]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[TransactionLineNumber]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[DimFinancialAccountSourceKey]"
+                      cachedDataType="i4"
+                      cachedName="DimFinancialAccountSourceKey"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[DimFinancialAccountSourceKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[DimFinancialAccountSourceKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[DimGLCodeSourceKey]"
+                      cachedDataType="i4"
+                      cachedName="DimGLCodeSourceKey"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[DimGLCodeSourceKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[DimGLCodeSourceKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[FactFinancialTransactionSourceKey]"
+                      cachedDataType="i4"
+                      cachedName="FactFinancialTransactionSourceKey"
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2073,7 +2089,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="SYS_CHANGE_OPERATION"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
                       <properties>
                         <property
                           containsID="true"
@@ -2086,7 +2102,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1].Columns[SYS_CHANGE_VERSION]"
                       cachedDataType="i8"
                       cachedName="SYS_CHANGE_VERSION"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                       <properties>
                         <property
                           containsID="true"
@@ -2109,7 +2125,7 @@ FROM
                       cachedName="CreditAmount"
                       cachedPrecision="18"
                       cachedScale="2"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[CreditAmount]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[CreditAmount]">
                       <properties>
                         <property
                           containsID="true"
@@ -2124,7 +2140,7 @@ FROM
                       cachedName="DebitAmount"
                       cachedPrecision="18"
                       cachedScale="2"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[DebitAmount]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[DebitAmount]">
                       <properties>
                         <property
                           containsID="true"
@@ -2139,7 +2155,7 @@ FROM
                       cachedName="Movement"
                       cachedPrecision="19"
                       cachedScale="2"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[Movement]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[Movement]">
                       <properties>
                         <property
                           containsID="true"
@@ -2152,7 +2168,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 2].Columns[SourceKey]"
                       cachedDataType="i4"
                       cachedName="SourceKey"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[SourceKey]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[SourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2166,7 +2182,7 @@ FROM
                       cachedDataType="wstr"
                       cachedLength="200"
                       cachedName="TextDescription"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[TextDescription]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[TextDescription]">
                       <properties>
                         <property
                           containsID="true"
@@ -2179,7 +2195,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 2].Columns[TransactionLineNumber]"
                       cachedDataType="i4"
                       cachedName="TransactionLineNumber"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[TransactionLineNumber]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[TransactionLineNumber]">
                       <properties>
                         <property
                           containsID="true"
@@ -2192,7 +2208,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 2].Columns[DimFinancialAccountSourceKey]"
                       cachedDataType="i4"
                       cachedName="DimFinancialAccountSourceKey"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[DimFinancialAccountSourceKey]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[DimFinancialAccountSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2205,7 +2221,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 2].Columns[DimGLCodeSourceKey]"
                       cachedDataType="i4"
                       cachedName="DimGLCodeSourceKey"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[DimGLCodeSourceKey]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[DimGLCodeSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2218,7 +2234,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 2].Columns[FactFinancialTransactionSourceKey]"
                       cachedDataType="i4"
                       cachedName="FactFinancialTransactionSourceKey"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2233,7 +2249,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="SYS_CHANGE_OPERATION"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
                       <properties>
                         <property
                           containsID="true"
@@ -2246,7 +2262,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 2].Columns[SYS_CHANGE_VERSION]"
                       cachedDataType="i8"
                       cachedName="SYS_CHANGE_VERSION"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                       <properties>
                         <property
                           containsID="true"
@@ -2269,7 +2285,7 @@ FROM
                       cachedName="CreditAmount"
                       cachedPrecision="18"
                       cachedScale="2"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[CreditAmount]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[CreditAmount]">
                       <properties>
                         <property
                           containsID="true"
@@ -2284,7 +2300,7 @@ FROM
                       cachedName="DebitAmount"
                       cachedPrecision="18"
                       cachedScale="2"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[DebitAmount]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[DebitAmount]">
                       <properties>
                         <property
                           containsID="true"
@@ -2299,7 +2315,7 @@ FROM
                       cachedName="Movement"
                       cachedPrecision="19"
                       cachedScale="2"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[Movement]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[Movement]">
                       <properties>
                         <property
                           containsID="true"
@@ -2312,7 +2328,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3].Columns[SourceKey]"
                       cachedDataType="i4"
                       cachedName="SourceKey"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[SourceKey]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[SourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2326,7 +2342,7 @@ FROM
                       cachedDataType="wstr"
                       cachedLength="200"
                       cachedName="TextDescription"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[TextDescription]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[TextDescription]">
                       <properties>
                         <property
                           containsID="true"
@@ -2339,7 +2355,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3].Columns[TransactionLineNumber]"
                       cachedDataType="i4"
                       cachedName="TransactionLineNumber"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[TransactionLineNumber]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[TransactionLineNumber]">
                       <properties>
                         <property
                           containsID="true"
@@ -2352,7 +2368,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3].Columns[DimFinancialAccountSourceKey]"
                       cachedDataType="i4"
                       cachedName="DimFinancialAccountSourceKey"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[DimFinancialAccountSourceKey]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[DimFinancialAccountSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2365,7 +2381,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3].Columns[DimGLCodeSourceKey]"
                       cachedDataType="i4"
                       cachedName="DimGLCodeSourceKey"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[DimGLCodeSourceKey]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[DimGLCodeSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2378,7 +2394,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3].Columns[FactFinancialTransactionSourceKey]"
                       cachedDataType="i4"
                       cachedName="FactFinancialTransactionSourceKey"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2393,7 +2409,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="SYS_CHANGE_OPERATION"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
                       <properties>
                         <property
                           containsID="true"
@@ -2406,7 +2422,7 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3].Columns[SYS_CHANGE_VERSION]"
                       cachedDataType="i8"
                       cachedName="SYS_CHANGE_VERSION"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                       <properties>
                         <property
                           containsID="true"
@@ -2420,169 +2436,9 @@ FROM
                 </input>
                 <input
                   refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4]"
-                  hasSideEffects="true"
-                  name="Union All Input 4">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4].Columns[CreditAmount]"
-                      cachedDataType="numeric"
-                      cachedName="CreditAmount"
-                      cachedPrecision="18"
-                      cachedScale="2"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[CreditAmount]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[CreditAmount]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4].Columns[DebitAmount]"
-                      cachedDataType="numeric"
-                      cachedName="DebitAmount"
-                      cachedPrecision="18"
-                      cachedScale="2"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[DebitAmount]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[DebitAmount]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4].Columns[Movement]"
-                      cachedDataType="numeric"
-                      cachedName="Movement"
-                      cachedPrecision="19"
-                      cachedScale="2"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[Movement]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[Movement]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4].Columns[SourceKey]"
-                      cachedDataType="i4"
-                      cachedName="SourceKey"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[SourceKey]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[SourceKey]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4].Columns[TextDescription]"
-                      cachedDataType="wstr"
-                      cachedLength="200"
-                      cachedName="TextDescription"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[TextDescription]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[TextDescription]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4].Columns[TransactionLineNumber]"
-                      cachedDataType="i4"
-                      cachedName="TransactionLineNumber"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[TransactionLineNumber]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[TransactionLineNumber]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4].Columns[DimFinancialAccountSourceKey]"
-                      cachedDataType="i4"
-                      cachedName="DimFinancialAccountSourceKey"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[DimFinancialAccountSourceKey]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[DimFinancialAccountSourceKey]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4].Columns[DimGLCodeSourceKey]"
-                      cachedDataType="i4"
-                      cachedName="DimGLCodeSourceKey"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[DimGLCodeSourceKey]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[DimGLCodeSourceKey]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4].Columns[FactFinancialTransactionSourceKey]"
-                      cachedDataType="i4"
-                      cachedName="FactFinancialTransactionSourceKey"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[FactFinancialTransactionSourceKey]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4].Columns[SYS_CHANGE_OPERATION]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1"
-                      cachedName="SYS_CHANGE_OPERATION"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[SYS_CHANGE_OPERATION]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4].Columns[SYS_CHANGE_VERSION]"
-                      cachedDataType="i8"
-                      cachedName="SYS_CHANGE_VERSION"
-                      lineageId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-                <input
-                  refId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5]"
                   dangling="true"
                   hasSideEffects="true"
-                  name="Union All Input 5">
+                  name="Union All Input 4">
                   <externalMetadataColumns />
                 </input>
               </inputs>
@@ -2663,45 +2519,25 @@ FROM
           </components>
           <paths>
             <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[OLEDB_GetData_Output_dc_ChangeData]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-              name="OLEDB_GetData_Output_dc_ChangeData"
-              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output4]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-              name="Output"
-              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output5]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-              name="Output"
-              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output6]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
+              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3]"
               name="Output"
               startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1]"
-              name="Output"
-              startId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
+              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
               endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 2]"
               name="Output"
-              startId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1.Outputs[Output]" />
+              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output]" />
             <path
               refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3]"
+              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1]"
               name="Output"
-              startId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2.Outputs[Output]" />
+              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 4]"
+              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
+              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5]"
               name="Output"
-              startId="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3.Outputs[Output]" />
+              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output]" />
             <path
               refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Union All Output 1]"
               endId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -2714,7 +2550,6 @@ FROM
     <DTS:Executable
       DTS:refId="Package\EST_CheckForRows"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-      DTS:Disabled="True"
       DTS:DTSID="{1a0c64b3-323a-483f-acc4-06a24ed53e98}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
@@ -2794,7 +2629,7 @@ FROM
     design-time-name="Package\DFT_Load Finance_FactGLTransaction">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="169,42"
           Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0"
@@ -2802,78 +2637,26 @@ FROM
         <NodeLayout
           Size="169,42"
           Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2"
-          TopLeft="465.5,5.49999999999989" />
-        <NodeLayout
-          Size="164,42"
-          Id="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 1"
-          TopLeft="243.5,107.5" />
-        <NodeLayout
-          Size="164,42"
-          Id="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 2"
-          TopLeft="473.5,107.5" />
+          TopLeft="235.5,5.49999999999989" />
         <NodeLayout
           Size="187,42"
           Id="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction"
-          TopLeft="436,256" />
+          TopLeft="456.5,107.5" />
         <NodeLayout
           Size="169,42"
           Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1"
-          TopLeft="235.5,5.49999999999989" />
+          TopLeft="465.5,5.49999999999989" />
         <NodeLayout
           Size="169,42"
           Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3"
           TopLeft="695.5,5.49999999999989" />
         <NodeLayout
-          Size="164,42"
-          Id="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 3"
-          TopLeft="703.5,107.5" />
-        <NodeLayout
-          Size="164,42"
-          Id="Package\DFT_Load Finance_FactGLTransaction\dc_ChangeData 0"
-          TopLeft="8,107.5" />
-        <NodeLayout
           Size="201,42"
           Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging"
-          TopLeft="580,399" />
+          TopLeft="449.5,209.5" />
         <EdgeLayout
           Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Union All Output 1]"
-          TopLeft="529.5,298">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="151,101"
-              Start="0,0"
-              End="151,93.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,46.5"
-                    Point2="0,50.5"
-                    Point3="4,50.5" />
-                  <mssgle:LineSegment
-                    End="147,50.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="147,50.5"
-                    Point2="151,50.5"
-                    Point3="151,54.5" />
-                  <mssgle:LineSegment
-                    End="151,93.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output6]"
-          TopLeft="782.75,47.4999999999999">
+          TopLeft="550,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2890,225 +2673,143 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output5]"
-          TopLeft="552.75,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output4]"
-          TopLeft="322.75,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
-          TopLeft="90,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="439.5,106.5"
-              Start="0,0"
-              End="439.5,99">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,49.25"
-                    Point2="0,53.25"
-                    Point3="4,53.25" />
-                  <mssgle:LineSegment
-                    End="435.5,53.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="435.5,53.25"
-                    Point2="439.5,53.25"
-                    Point3="439.5,57.25" />
-                  <mssgle:LineSegment
-                    End="439.5,99" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
-          TopLeft="785.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-202.3,106.5"
-              Start="0,0"
-              End="-202.3,99.0000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,70.7018004501126" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,70.7018004501126"
-                    Point2="0,74.7018004501126"
-                    Point3="-4,74.7018004501126" />
-                  <mssgle:LineSegment
-                    End="-198.3,74.7018004501126" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-198.3,74.7018004501126"
-                    Point2="-202.3,74.7018004501126"
-                    Point3="-202.3,78.7018004501126" />
-                  <mssgle:LineSegment
-                    End="-202.3,99.0000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
-          TopLeft="555.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="18.75,106.5"
-              Start="0,0"
-              End="18.75,99.0000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,66.0017574692444" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,66.0017574692444"
-                    Point2="0,70.0017574692444"
-                    Point3="4,70.0017574692444" />
-                  <mssgle:LineSegment
-                    End="14.75,70.0017574692444" />
-                  <mssgle:CubicBezierSegment
-                    Point1="14.75,70.0017574692444"
-                    Point2="18.75,70.0017574692444"
-                    Point3="18.75,74.0017574692444" />
-                  <mssgle:LineSegment
-                    End="18.75,99.0000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
-          TopLeft="325.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="233.833333333333,106.5"
-              Start="0,0"
-              End="233.833333333333,99.0000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,59.3579003181337" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,59.3579003181337"
-                    Point2="0,63.3579003181337"
-                    Point3="4,63.3579003181337" />
-                  <mssgle:LineSegment
-                    End="229.833333333333,63.3579003181337" />
-                  <mssgle:CubicBezierSegment
-                    Point1="229.833333333333,63.3579003181337"
-                    Point2="233.833333333333,63.3579003181337"
-                    Point3="233.833333333333,67.3579003181337" />
-                  <mssgle:LineSegment
-                    End="233.833333333333,99.0000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[OLEDB_GetData_Output_dc_ChangeData]"
           TopLeft="90,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="406.3,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="406.3,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,38.085521380345" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.085521380345"
+                    Point2="0,42.085521380345"
+                    Point3="4,42.085521380345" />
+                  <mssgle:LineSegment
+                    End="402.3,42.085521380345" />
+                  <mssgle:CubicBezierSegment
+                    Point1="402.3,42.085521380345"
+                    Point2="406.3,42.085521380345"
+                    Point3="406.3,46.085521380345" />
+                  <mssgle:LineSegment
+                    End="406.3,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
+          TopLeft="550,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.9,60"
+              Start="0,0"
+              End="17.9,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1756357185098" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.1756357185098"
+                    Point2="0,33.1756357185098"
+                    Point3="4,33.1756357185098" />
+                  <mssgle:LineSegment
+                    End="13.9,33.1756357185098" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.9,33.1756357185098"
+                    Point2="17.9,33.1756357185098"
+                    Point3="17.9,37.1756357185098" />
+                  <mssgle:LineSegment
+                    End="17.9,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
+          TopLeft="320,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="212.1,60"
+              Start="0,0"
+              End="212.1,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1756357185098" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.1756357185098"
+                    Point2="0,33.1756357185098"
+                    Point3="4,33.1756357185098" />
+                  <mssgle:LineSegment
+                    End="208.1,33.1756357185098" />
+                  <mssgle:CubicBezierSegment
+                    Point1="208.1,33.1756357185098"
+                    Point2="212.1,33.1756357185098"
+                    Point3="212.1,37.1756357185098" />
+                  <mssgle:LineSegment
+                    End="212.1,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
+          TopLeft="780,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-176.3,60"
+              Start="0,0"
+              End="-176.3,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.0855213803451" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.0855213803451"
+                    Point2="0,42.0855213803451"
+                    Point3="-4,42.0855213803451" />
+                  <mssgle:LineSegment
+                    End="-172.3,42.0855213803451" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-172.3,42.0855213803451"
+                    Point2="-176.3,42.0855213803451"
+                    Point3="-176.3,46.0855213803451" />
+                  <mssgle:LineSegment
+                    End="-176.3,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

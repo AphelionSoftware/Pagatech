@@ -11,8 +11,8 @@
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="3002_Shared_FactIntegrationTransaction"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{7B8D4C72-842C-43D4-ACA3-16A31C3ACC46}"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{B8BD5F2D-454E-40FD-A1FE-533005771D04}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -43,11 +43,67 @@
       DTS:ObjectName="EndOfQuery">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue"
-        xml:space="preserve"></DTS:Property>
+        DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.IntegrationTransaction as ct ON 	ct.IntegrationTransactionID = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{15CE4717-0541-427E-A4E8-EEB8FF78A964}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;base_query.*,&#xA;&#x9;ct.SYS_CHANGE_OPERATION,&#xA;&#x9;ct.SYS_CHANGE_VERSION&#xA;&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ExternalReferenceNumber,&#xA;   &#x9;&#x9;HasFinancialTx,&#xA;&#x9;&#x9;IntegrationTx_Amount,&#xA;&#x9;&#x9;MessageText,&#xA;&#x9;&#x9;SourceKey,&#xA;&#x9;&#x9;DimIntegrationTxDateID, &#xA;&#x9;&#x9;DimIntegrationTxTimeID,&#xA;&#x9;&#x9;DimExternalOrganizationSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionResultSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey,&#xA;&#x9;&#x9;DimProcessTypeSourceKey,&#xA;&#x9;&#x9;DimUserSourceKey,&#xA;&#x9;&#x9;FactFinancialTransactionSourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;SourceKey = [IntegrationTransactionId],  &#xA;&#x9;&#x9;&#x9;DimIntegrationTxDateID = CONVERT(INT,CONVERT(VARCHAR(8), [IntegrationTransactionTimestamp], 112)),&#xA;&#x9;&#x9;&#x9;DimIntegrationTxTimeID = CONVERT(INT,REPLACE(CONVERT(TIME(0) ,IntegrationTransactionTimestamp),':','')), &#xA;&#x9;&#x9;&#x9;DimExternalOrganizationSourceKey = CAST([ExternalOrganizationId] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;ExternalOrganization_Name = CAST(it.ExternalOrganizationName AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;DimUserSourceKey = [UserId],&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey = CAST([IntegrationTransactionTypeId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;DimProcessTypeSourceKey = COALESCE(-1,CAST([ProcessTypeId] AS VARCHAR(50))),&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionResultSourceKey = CAST([IntegrationTransactionResultId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[ExternalReferenceNumber] = CAST([ExternalReferenceNumber] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[MessageText] = CAST([Message] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;IntegrationTx_Amount = [Amount],&#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN [FinancialTransactionId] IS NULL THEN CAST(0 AS BIT)&#xA;&#x9;&#x9;&#x9;&#x9;ELSE CAST (1 AS BIT)&#xA;&#x9;&#x9;&#x9;END AS HasFinancialTx,&#xA;&#x9;&#x9;&#x9;FactFinancialTransactionSourceKey = [FinancialTransactionId]&#xA;&#x9;&#x9;FROM [dbo].[IntegrationTransaction] as it&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([IntegrationTransactionId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT
+	base_query.*,
+	ct.SYS_CHANGE_OPERATION,
+	ct.SYS_CHANGE_VERSION
+
+FROM
+(
+	SELECT
+		ExternalReferenceNumber,
+   		HasFinancialTx,
+		IntegrationTx_Amount,
+		MessageText,
+		SourceKey,
+		DimIntegrationTxDateID, 
+		DimIntegrationTxTimeID,
+		DimExternalOrganizationSourceKey,
+		DimIntegrationTransactionResultSourceKey,
+		DimIntegrationTransactionTypeSourceKey,
+		DimProcessTypeSourceKey,
+		DimUserSourceKey,
+		FactFinancialTransactionSourceKey
+	FROM
+	(
+		SELECT 
+			SourceKey = [IntegrationTransactionId],  
+			DimIntegrationTxDateID = CONVERT(INT,CONVERT(VARCHAR(8), [IntegrationTransactionTimestamp], 112)),
+			DimIntegrationTxTimeID = CONVERT(INT,REPLACE(CONVERT(TIME(0) ,IntegrationTransactionTimestamp),':','')), 
+			DimExternalOrganizationSourceKey = CAST([ExternalOrganizationId] AS VARCHAR(300)),
+			ExternalOrganization_Name = CAST(it.ExternalOrganizationName AS VARCHAR(300)),
+			DimUserSourceKey = [UserId],
+			DimIntegrationTransactionTypeSourceKey = CAST([IntegrationTransactionTypeId] AS VARCHAR(50)),
+			DimProcessTypeSourceKey = COALESCE(-1,CAST([ProcessTypeId] AS VARCHAR(50))),
+			DimIntegrationTransactionResultSourceKey = CAST([IntegrationTransactionResultId] AS VARCHAR(50)),
+			[ExternalReferenceNumber] = CAST([ExternalReferenceNumber] AS VARCHAR(50)),
+			[MessageText] = CAST([Message] AS VARCHAR(300)),
+			IntegrationTx_Amount = [Amount],
+			CASE 
+				WHEN [FinancialTransactionId] IS NULL THEN CAST(0 AS BIT)
+				ELSE CAST (1 AS BIT)
+			END AS HasFinancialTx,
+			FactFinancialTransactionSourceKey = [FinancialTransactionId]
+		FROM [dbo].[IntegrationTransaction] as it
+		CROSS APPLY (SELECT (CAST([IntegrationTransactionId] AS VARCHAR) % 4) AS grp) as g
+		WHERE 
+				g.grp = @grp
+	) AS stream 
+) AS base_query </DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{7B258551-4B3D-4310-8285-AE686D3D9CED}"
@@ -60,7 +116,7 @@
         DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM 
 (SELECT SourceKey=IntegrationTransactionId  FROM dbo.IntegrationTransaction) 
 AS base_query
-     </DTS:VariableValue>
+     INNER JOIN paga_change_log.dbo.IntegrationTransaction as ct ON 	ct.IntegrationTransactionID = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -75,14 +131,17 @@ AS base_query
       DTS:CreationName=""
       DTS:DTSID="{5F69AAC9-51E8-4F70-8F0C-D11EB6452D80}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 0&#xA;SELECT&#xA;&#x9;base_query.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ExternalReferenceNumber,&#xA;   &#x9;&#x9;HasFinancialTx,&#xA;&#x9;&#x9;IntegrationTx_Amount,&#xA;&#x9;&#x9;MessageText,&#xA;&#x9;&#x9;SourceKey,&#xA;&#x9;&#x9;DimIntegrationTxDateID, &#xA;&#x9;&#x9;DimIntegrationTxTimeID,&#xA;&#x9;&#x9;DimExternalOrganizationSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionResultSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey,&#xA;&#x9;&#x9;DimProcessTypeSourceKey,&#xA;&#x9;&#x9;DimUserSourceKey,&#xA;&#x9;&#x9;FactFinancialTransactionSourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;SourceKey = [IntegrationTransactionId],  &#xA;&#x9;&#x9;&#x9;DimIntegrationTxDateID = CONVERT(INT,CONVERT(VARCHAR(8), [IntegrationTransactionTimestamp], 112)),&#xA;&#x9;&#x9;&#x9;DimIntegrationTxTimeID = CONVERT(INT,REPLACE(CONVERT(TIME(0) ,IntegrationTransactionTimestamp),':','')), &#xA;&#x9;&#x9;&#x9;DimExternalOrganizationSourceKey = CAST([ExternalOrganizationId] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;ExternalOrganization_Name = CAST(it.ExternalOrganizationName AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;DimUserSourceKey = [UserId],&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey = CAST([IntegrationTransactionTypeId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;DimProcessTypeSourceKey = COALESCE(-1,CAST([ProcessTypeId] AS VARCHAR(50))),&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionResultSourceKey = CAST([IntegrationTransactionResultId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[ExternalReferenceNumber] = CAST([ExternalReferenceNumber] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[MessageText] = CAST([Message] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;IntegrationTx_Amount = [Amount],&#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN [FinancialTransactionId] IS NULL THEN CAST(0 AS BIT)&#xA;&#x9;&#x9;&#x9;&#x9;ELSE CAST (1 AS BIT)&#xA;&#x9;&#x9;&#x9;END AS HasFinancialTx,&#xA;&#x9;&#x9;&#x9;FactFinancialTransactionSourceKey = [FinancialTransactionId]&#xA;&#x9;&#x9;FROM [dbo].[IntegrationTransaction] as it&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([IntegrationTransactionId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;&#xA;+@[$Package::EndOfQuery]"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 0&#xA; &quot; + @[User::BaseQuery] &#xA;+@[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream0">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 0
-SELECT
-	base_query.*
+ SELECT
+	base_query.*,
+	ct.SYS_CHANGE_OPERATION,
+	ct.SYS_CHANGE_VERSION
+
 FROM
 (
 	SELECT
@@ -124,21 +183,23 @@ FROM
 		WHERE 
 				g.grp = @grp
 	) AS stream 
-) AS base_query </DTS:VariableValue>
+) AS base_query INNER JOIN paga_change_log.dbo.IntegrationTransaction as ct ON 	ct.IntegrationTransactionID = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{93C9AE18-1BF9-4795-906F-EB6B89477CAF}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 1&#xA;&#xA;SELECT&#xA;&#x9;base_query.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ExternalReferenceNumber,&#xA;   &#x9;&#x9;HasFinancialTx,&#xA;&#x9;&#x9;IntegrationTx_Amount,&#xA;&#x9;&#x9;MessageText,&#xA;&#x9;&#x9;SourceKey,&#xA;&#x9;&#x9;DimIntegrationTxDateID, &#xA;&#x9;&#x9;DimIntegrationTxTimeID,&#xA;&#x9;&#x9;DimExternalOrganizationSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionResultSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey,&#xA;&#x9;&#x9;DimProcessTypeSourceKey,&#xA;&#x9;&#x9;DimUserSourceKey,&#xA;&#x9;&#x9;FactFinancialTransactionSourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;SourceKey = [IntegrationTransactionId],  &#xA;&#x9;&#x9;&#x9;DimIntegrationTxDateID = CONVERT(INT,CONVERT(VARCHAR(8), [IntegrationTransactionTimestamp], 112)),&#xA;&#x9;&#x9;&#x9;DimIntegrationTxTimeID = CONVERT(INT,REPLACE(CONVERT(TIME(0) ,IntegrationTransactionTimestamp),':','')), &#xA;&#x9;&#x9;&#x9;DimExternalOrganizationSourceKey = CAST([ExternalOrganizationId] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;ExternalOrganization_Name = CAST(it.ExternalOrganizationName AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;DimUserSourceKey = [UserId],&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey = CAST([IntegrationTransactionTypeId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;DimProcessTypeSourceKey = COALESCE(-1,CAST([ProcessTypeId] AS VARCHAR(50))),&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionResultSourceKey = CAST([IntegrationTransactionResultId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[ExternalReferenceNumber] = CAST([ExternalReferenceNumber] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[MessageText] = CAST([Message] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;IntegrationTx_Amount = [Amount],&#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN [FinancialTransactionId] IS NULL THEN CAST(0 AS BIT)&#xA;&#x9;&#x9;&#x9;&#x9;ELSE CAST (1 AS BIT)&#xA;&#x9;&#x9;&#x9;END AS HasFinancialTx,&#xA;&#x9;&#x9;&#x9;FactFinancialTransactionSourceKey = [FinancialTransactionId]&#xA;&#x9;&#x9;FROM [dbo].[IntegrationTransaction] as it&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([IntegrationTransactionId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;&#xA;+@[$Package::EndOfQuery]"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 1&#xA; &quot; + @[User::BaseQuery] &#xA;+@[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream1">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 1
+ SELECT
+	base_query.*,
+	ct.SYS_CHANGE_OPERATION,
+	ct.SYS_CHANGE_VERSION
 
-SELECT
-	base_query.*
 FROM
 (
 	SELECT
@@ -180,21 +241,23 @@ FROM
 		WHERE 
 				g.grp = @grp
 	) AS stream 
-) AS base_query </DTS:VariableValue>
+) AS base_query INNER JOIN paga_change_log.dbo.IntegrationTransaction as ct ON 	ct.IntegrationTransactionID = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{16596279-D58A-4E78-A9EF-FC0DF120CF56}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 2&#xA;&#xA;SELECT&#xA;&#x9;base_query.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ExternalReferenceNumber,&#xA;   &#x9;&#x9;HasFinancialTx,&#xA;&#x9;&#x9;IntegrationTx_Amount,&#xA;&#x9;&#x9;MessageText,&#xA;&#x9;&#x9;SourceKey,&#xA;&#x9;&#x9;DimIntegrationTxDateID, &#xA;&#x9;&#x9;DimIntegrationTxTimeID,&#xA;&#x9;&#x9;DimExternalOrganizationSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionResultSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey,&#xA;&#x9;&#x9;DimProcessTypeSourceKey,&#xA;&#x9;&#x9;DimUserSourceKey,&#xA;&#x9;&#x9;FactFinancialTransactionSourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;SourceKey = [IntegrationTransactionId],  &#xA;&#x9;&#x9;&#x9;DimIntegrationTxDateID = CONVERT(INT,CONVERT(VARCHAR(8), [IntegrationTransactionTimestamp], 112)),&#xA;&#x9;&#x9;&#x9;DimIntegrationTxTimeID = CONVERT(INT,REPLACE(CONVERT(TIME(0) ,IntegrationTransactionTimestamp),':','')), &#xA;&#x9;&#x9;&#x9;DimExternalOrganizationSourceKey = CAST([ExternalOrganizationId] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;ExternalOrganization_Name = CAST(it.ExternalOrganizationName AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;DimUserSourceKey = [UserId],&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey = CAST([IntegrationTransactionTypeId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;DimProcessTypeSourceKey = COALESCE(-1,CAST([ProcessTypeId] AS VARCHAR(50))),&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionResultSourceKey = CAST([IntegrationTransactionResultId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[ExternalReferenceNumber] = CAST([ExternalReferenceNumber] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[MessageText] = CAST([Message] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;IntegrationTx_Amount = [Amount],&#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN [FinancialTransactionId] IS NULL THEN CAST(0 AS BIT)&#xA;&#x9;&#x9;&#x9;&#x9;ELSE CAST (1 AS BIT)&#xA;&#x9;&#x9;&#x9;END AS HasFinancialTx,&#xA;&#x9;&#x9;&#x9;FactFinancialTransactionSourceKey = [FinancialTransactionId]&#xA;&#x9;&#x9;FROM [dbo].[IntegrationTransaction] as it&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([IntegrationTransactionId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;&#xA;+@[$Package::EndOfQuery]"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 2&#xA; &quot; + @[User::BaseQuery] &#xA;+@[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream2">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 2
+ SELECT
+	base_query.*,
+	ct.SYS_CHANGE_OPERATION,
+	ct.SYS_CHANGE_VERSION
 
-SELECT
-	base_query.*
 FROM
 (
 	SELECT
@@ -236,21 +299,23 @@ FROM
 		WHERE 
 				g.grp = @grp
 	) AS stream 
-) AS base_query </DTS:VariableValue>
+) AS base_query INNER JOIN paga_change_log.dbo.IntegrationTransaction as ct ON 	ct.IntegrationTransactionID = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{398EC2FE-DBB7-4EF8-A1F7-C8C6E489FB3C}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;DECLARE @grp AS INT = 3&#xA;&#xA;SELECT&#xA;&#x9;base_query.*&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ExternalReferenceNumber,&#xA;   &#x9;&#x9;HasFinancialTx,&#xA;&#x9;&#x9;IntegrationTx_Amount,&#xA;&#x9;&#x9;MessageText,&#xA;&#x9;&#x9;SourceKey,&#xA;&#x9;&#x9;DimIntegrationTxDateID, &#xA;&#x9;&#x9;DimIntegrationTxTimeID,&#xA;&#x9;&#x9;DimExternalOrganizationSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionResultSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey,&#xA;&#x9;&#x9;DimProcessTypeSourceKey,&#xA;&#x9;&#x9;DimUserSourceKey,&#xA;&#x9;&#x9;FactFinancialTransactionSourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;SourceKey = [IntegrationTransactionId],  &#xA;&#x9;&#x9;&#x9;DimIntegrationTxDateID = CONVERT(INT,CONVERT(VARCHAR(8), [IntegrationTransactionTimestamp], 112)),&#xA;&#x9;&#x9;&#x9;DimIntegrationTxTimeID = CONVERT(INT,REPLACE(CONVERT(TIME(0) ,IntegrationTransactionTimestamp),':','')), &#xA;&#x9;&#x9;&#x9;DimExternalOrganizationSourceKey = CAST([ExternalOrganizationId] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;ExternalOrganization_Name = CAST(it.ExternalOrganizationName AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;DimUserSourceKey = [UserId],&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey = CAST([IntegrationTransactionTypeId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;DimProcessTypeSourceKey = COALESCE(-1,CAST([ProcessTypeId] AS VARCHAR(50))),&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionResultSourceKey = CAST([IntegrationTransactionResultId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[ExternalReferenceNumber] = CAST([ExternalReferenceNumber] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[MessageText] = CAST([Message] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;IntegrationTx_Amount = [Amount],&#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN [FinancialTransactionId] IS NULL THEN CAST(0 AS BIT)&#xA;&#x9;&#x9;&#x9;&#x9;ELSE CAST (1 AS BIT)&#xA;&#x9;&#x9;&#x9;END AS HasFinancialTx,&#xA;&#x9;&#x9;&#x9;FactFinancialTransactionSourceKey = [FinancialTransactionId]&#xA;&#x9;&#x9;FROM [dbo].[IntegrationTransaction] as it&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([IntegrationTransactionId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;&#xA;+@[$Package::EndOfQuery]"
+      DTS:Expression="&quot;DECLARE @grp AS INT = 3&#xA; &quot; + @[User::BaseQuery] &#xA;+@[$Package::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Stream3">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 3
+ SELECT
+	base_query.*,
+	ct.SYS_CHANGE_OPERATION,
+	ct.SYS_CHANGE_VERSION
 
-SELECT
-	base_query.*
 FROM
 (
 	SELECT
@@ -292,7 +357,7 @@ FROM
 		WHERE 
 				g.grp = @grp
 	) AS stream 
-) AS base_query </DTS:VariableValue>
+) AS base_query INNER JOIN paga_change_log.dbo.IntegrationTransaction as ct ON 	ct.IntegrationTransactionID = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -300,7 +365,6 @@ FROM
       DTS:refId="Package\DFT_Load Shared_FactIntegrationTransaction"
       DTS:CreationName="SSIS.Pipeline.3"
       DTS:DelayValidation="True"
-      DTS:Disabled="True"
       DTS:DTSID="{D25C4310-98DD-4C7F-B01B-A4DE2BE5F509}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
@@ -313,362 +377,6 @@ FROM
           bufferTempStoragePath=""
           version="1">
           <components>
-            <component
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData"
-              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              name="dc_ChangeData"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLEDB_GetData_Output_dc_ChangeData">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Output]"
-                  exclusionGroup="1"
-                  name="Output"
-                  synchronousInputId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="IgnoreFailure"
-                      length="1"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="IgnoreFailure">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeOperation]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeOperation]</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeVersion]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Error]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Error"
-                  synchronousInputId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1"
-              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              name="dc_ChangeData 1"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLEDB_GetData_Output_dc_ChangeData">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Output]"
-                  exclusionGroup="1"
-                  name="Output"
-                  synchronousInputId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="IgnoreFailure"
-                      length="1"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="IgnoreFailure">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeOperation]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeOperation]</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeVersion]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Error]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Error"
-                  synchronousInputId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2"
-              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              name="dc_ChangeData 2"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLEDB_GetData_Output_dc_ChangeData">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Output]"
-                  exclusionGroup="1"
-                  name="Output"
-                  synchronousInputId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="IgnoreFailure"
-                      length="1"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="IgnoreFailure">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeOperation]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeOperation]</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeVersion]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Error]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Error"
-                  synchronousInputId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3"
-              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              name="dc_ChangeData 3"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLEDB_GetData_Output_dc_ChangeData">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Output]"
-                  exclusionGroup="1"
-                  name="Output"
-                  synchronousInputId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="IgnoreFailure"
-                      length="1"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="IgnoreFailure">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeOperation]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeOperation]</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeVersion]</property>
-                        <property
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Error]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Error"
-                  synchronousInputId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Error].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Error].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Error].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Error].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData"
               componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
@@ -858,6 +566,26 @@ FROM
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -925,6 +653,16 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].ExternalColumns[FactFinancialTransactionSourceKey]"
                       dataType="i4"
                       name="FactFinancialTransactionSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1009,6 +747,18 @@ FROM
                       dataType="i4"
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Error].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
                     <outputColumn
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
@@ -1215,6 +965,26 @@ FROM
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1282,6 +1052,16 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].ExternalColumns[FactFinancialTransactionSourceKey]"
                       dataType="i4"
                       name="FactFinancialTransactionSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1366,6 +1146,18 @@ FROM
                       dataType="i4"
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Error].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
                     <outputColumn
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
@@ -1572,6 +1364,26 @@ FROM
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1639,6 +1451,16 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].ExternalColumns[FactFinancialTransactionSourceKey]"
                       dataType="i4"
                       name="FactFinancialTransactionSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1723,6 +1545,18 @@ FROM
                       dataType="i4"
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Error].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
                     <outputColumn
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
@@ -1929,6 +1763,26 @@ FROM
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1996,6 +1850,16 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].ExternalColumns[FactFinancialTransactionSourceKey]"
                       dataType="i4"
                       name="FactFinancialTransactionSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2080,6 +1944,18 @@ FROM
                       dataType="i4"
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Error].Columns[FactFinancialTransactionSourceKey]"
                       name="FactFinancialTransactionSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
                     <outputColumn
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
@@ -2387,11 +2263,12 @@ FROM
               version="1">
               <inputs>
                 <input
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1]"
-                  name="Union All Input 1">
+                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5]"
+                  hasSideEffects="true"
+                  name="Union All Input 5">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[ExternalReferenceNumber]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[ExternalReferenceNumber]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
@@ -2406,7 +2283,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[HasFinancialTx]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[HasFinancialTx]"
                       cachedDataType="bool"
                       cachedName="HasFinancialTx"
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[HasFinancialTx]">
@@ -2419,7 +2296,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[IntegrationTx_Amount]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[IntegrationTx_Amount]"
                       cachedDataType="numeric"
                       cachedName="IntegrationTx_Amount"
                       cachedPrecision="18"
@@ -2434,7 +2311,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[MessageText]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[MessageText]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="300"
@@ -2449,7 +2326,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[SourceKey]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[SourceKey]"
                       cachedDataType="i4"
                       cachedName="SourceKey"
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[SourceKey]">
@@ -2462,7 +2339,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimIntegrationTxDateID]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[DimIntegrationTxDateID]"
                       cachedDataType="i4"
                       cachedName="DimIntegrationTxDateID"
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[DimIntegrationTxDateID]">
@@ -2475,7 +2352,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimIntegrationTxTimeID]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[DimIntegrationTxTimeID]"
                       cachedDataType="i4"
                       cachedName="DimIntegrationTxTimeID"
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[DimIntegrationTxTimeID]">
@@ -2488,7 +2365,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimExternalOrganizationSourceKey]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[DimExternalOrganizationSourceKey]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="300"
@@ -2503,7 +2380,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimIntegrationTransactionResultSourceKey]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[DimIntegrationTransactionResultSourceKey]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
@@ -2518,7 +2395,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimIntegrationTransactionTypeSourceKey]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[DimIntegrationTransactionTypeSourceKey]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
@@ -2533,7 +2410,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimProcessTypeSourceKey]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[DimProcessTypeSourceKey]"
                       cachedDataType="i4"
                       cachedName="DimProcessTypeSourceKey"
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[DimProcessTypeSourceKey]">
@@ -2546,7 +2423,7 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimUserSourceKey]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[DimUserSourceKey]"
                       cachedDataType="i4"
                       cachedName="DimUserSourceKey"
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[DimUserSourceKey]">
@@ -2559,10 +2436,227 @@ FROM
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[FactFinancialTransactionSourceKey]"
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[FactFinancialTransactionSourceKey]"
                       cachedDataType="i4"
                       cachedName="FactFinancialTransactionSourceKey"
                       lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[FactFinancialTransactionSourceKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[SYS_CHANGE_OPERATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="SYS_CHANGE_OPERATION"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_OPERATION]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1]"
+                  hasSideEffects="true"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[ExternalReferenceNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ExternalReferenceNumber"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[ExternalReferenceNumber]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[ExternalReferenceNumber]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[HasFinancialTx]"
+                      cachedDataType="bool"
+                      cachedName="HasFinancialTx"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[HasFinancialTx]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[HasFinancialTx]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[IntegrationTx_Amount]"
+                      cachedDataType="numeric"
+                      cachedName="IntegrationTx_Amount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[IntegrationTx_Amount]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[IntegrationTx_Amount]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[MessageText]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="300"
+                      cachedName="MessageText"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[MessageText]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[MessageText]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[SourceKey]"
+                      cachedDataType="i4"
+                      cachedName="SourceKey"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SourceKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[SourceKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimIntegrationTxDateID]"
+                      cachedDataType="i4"
+                      cachedName="DimIntegrationTxDateID"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimIntegrationTxDateID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimIntegrationTxDateID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimIntegrationTxTimeID]"
+                      cachedDataType="i4"
+                      cachedName="DimIntegrationTxTimeID"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimIntegrationTxTimeID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimIntegrationTxTimeID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimExternalOrganizationSourceKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="300"
+                      cachedName="DimExternalOrganizationSourceKey"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimExternalOrganizationSourceKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimExternalOrganizationSourceKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimIntegrationTransactionResultSourceKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DimIntegrationTransactionResultSourceKey"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimIntegrationTransactionResultSourceKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimIntegrationTransactionResultSourceKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimIntegrationTransactionTypeSourceKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DimIntegrationTransactionTypeSourceKey"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimIntegrationTransactionTypeSourceKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimIntegrationTransactionTypeSourceKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimProcessTypeSourceKey]"
+                      cachedDataType="i4"
+                      cachedName="DimProcessTypeSourceKey"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimProcessTypeSourceKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimProcessTypeSourceKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[DimUserSourceKey]"
+                      cachedDataType="i4"
+                      cachedName="DimUserSourceKey"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimUserSourceKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimUserSourceKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[FactFinancialTransactionSourceKey]"
+                      cachedDataType="i4"
+                      cachedName="FactFinancialTransactionSourceKey"
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2577,7 +2671,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="SYS_CHANGE_OPERATION"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
                       <properties>
                         <property
                           containsID="true"
@@ -2590,7 +2684,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1].Columns[SYS_CHANGE_VERSION]"
                       cachedDataType="i8"
                       cachedName="SYS_CHANGE_VERSION"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                       <properties>
                         <property
                           containsID="true"
@@ -2613,7 +2707,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="ExternalReferenceNumber"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[ExternalReferenceNumber]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[ExternalReferenceNumber]">
                       <properties>
                         <property
                           containsID="true"
@@ -2626,7 +2720,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 2].Columns[HasFinancialTx]"
                       cachedDataType="bool"
                       cachedName="HasFinancialTx"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[HasFinancialTx]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[HasFinancialTx]">
                       <properties>
                         <property
                           containsID="true"
@@ -2641,7 +2735,7 @@ FROM
                       cachedName="IntegrationTx_Amount"
                       cachedPrecision="18"
                       cachedScale="2"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[IntegrationTx_Amount]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[IntegrationTx_Amount]">
                       <properties>
                         <property
                           containsID="true"
@@ -2656,7 +2750,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="300"
                       cachedName="MessageText"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[MessageText]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[MessageText]">
                       <properties>
                         <property
                           containsID="true"
@@ -2669,7 +2763,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 2].Columns[SourceKey]"
                       cachedDataType="i4"
                       cachedName="SourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[SourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2682,7 +2776,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 2].Columns[DimIntegrationTxDateID]"
                       cachedDataType="i4"
                       cachedName="DimIntegrationTxDateID"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimIntegrationTxDateID]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimIntegrationTxDateID]">
                       <properties>
                         <property
                           containsID="true"
@@ -2695,7 +2789,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 2].Columns[DimIntegrationTxTimeID]"
                       cachedDataType="i4"
                       cachedName="DimIntegrationTxTimeID"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimIntegrationTxTimeID]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimIntegrationTxTimeID]">
                       <properties>
                         <property
                           containsID="true"
@@ -2710,7 +2804,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="300"
                       cachedName="DimExternalOrganizationSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimExternalOrganizationSourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimExternalOrganizationSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2725,7 +2819,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="DimIntegrationTransactionResultSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimIntegrationTransactionResultSourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimIntegrationTransactionResultSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2740,7 +2834,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="DimIntegrationTransactionTypeSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimIntegrationTransactionTypeSourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimIntegrationTransactionTypeSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2753,7 +2847,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 2].Columns[DimProcessTypeSourceKey]"
                       cachedDataType="i4"
                       cachedName="DimProcessTypeSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimProcessTypeSourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimProcessTypeSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2766,7 +2860,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 2].Columns[DimUserSourceKey]"
                       cachedDataType="i4"
                       cachedName="DimUserSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[DimUserSourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimUserSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2779,7 +2873,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 2].Columns[FactFinancialTransactionSourceKey]"
                       cachedDataType="i4"
                       cachedName="FactFinancialTransactionSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2794,7 +2888,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="SYS_CHANGE_OPERATION"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
                       <properties>
                         <property
                           containsID="true"
@@ -2807,7 +2901,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 2].Columns[SYS_CHANGE_VERSION]"
                       cachedDataType="i8"
                       cachedName="SYS_CHANGE_VERSION"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                       <properties>
                         <property
                           containsID="true"
@@ -2830,7 +2924,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="ExternalReferenceNumber"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[ExternalReferenceNumber]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[ExternalReferenceNumber]">
                       <properties>
                         <property
                           containsID="true"
@@ -2843,7 +2937,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 3].Columns[HasFinancialTx]"
                       cachedDataType="bool"
                       cachedName="HasFinancialTx"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[HasFinancialTx]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[HasFinancialTx]">
                       <properties>
                         <property
                           containsID="true"
@@ -2858,7 +2952,7 @@ FROM
                       cachedName="IntegrationTx_Amount"
                       cachedPrecision="18"
                       cachedScale="2"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[IntegrationTx_Amount]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[IntegrationTx_Amount]">
                       <properties>
                         <property
                           containsID="true"
@@ -2873,7 +2967,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="300"
                       cachedName="MessageText"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[MessageText]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[MessageText]">
                       <properties>
                         <property
                           containsID="true"
@@ -2886,7 +2980,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 3].Columns[SourceKey]"
                       cachedDataType="i4"
                       cachedName="SourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[SourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2899,7 +2993,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 3].Columns[DimIntegrationTxDateID]"
                       cachedDataType="i4"
                       cachedName="DimIntegrationTxDateID"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimIntegrationTxDateID]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimIntegrationTxDateID]">
                       <properties>
                         <property
                           containsID="true"
@@ -2912,7 +3006,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 3].Columns[DimIntegrationTxTimeID]"
                       cachedDataType="i4"
                       cachedName="DimIntegrationTxTimeID"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimIntegrationTxTimeID]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimIntegrationTxTimeID]">
                       <properties>
                         <property
                           containsID="true"
@@ -2927,7 +3021,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="300"
                       cachedName="DimExternalOrganizationSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimExternalOrganizationSourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimExternalOrganizationSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2942,7 +3036,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="DimIntegrationTransactionResultSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimIntegrationTransactionResultSourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimIntegrationTransactionResultSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2957,7 +3051,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="DimIntegrationTransactionTypeSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimIntegrationTransactionTypeSourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimIntegrationTransactionTypeSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2970,7 +3064,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 3].Columns[DimProcessTypeSourceKey]"
                       cachedDataType="i4"
                       cachedName="DimProcessTypeSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimProcessTypeSourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimProcessTypeSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2983,7 +3077,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 3].Columns[DimUserSourceKey]"
                       cachedDataType="i4"
                       cachedName="DimUserSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[DimUserSourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimUserSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2996,7 +3090,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 3].Columns[FactFinancialTransactionSourceKey]"
                       cachedDataType="i4"
                       cachedName="FactFinancialTransactionSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -3011,7 +3105,7 @@ FROM
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="SYS_CHANGE_OPERATION"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
                       <properties>
                         <property
                           containsID="true"
@@ -3024,7 +3118,7 @@ FROM
                       refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 3].Columns[SYS_CHANGE_VERSION]"
                       cachedDataType="i8"
                       cachedName="SYS_CHANGE_VERSION"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
                       <properties>
                         <property
                           containsID="true"
@@ -3038,226 +3132,9 @@ FROM
                 </input>
                 <input
                   refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4]"
-                  hasSideEffects="true"
-                  name="Union All Input 4">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[ExternalReferenceNumber]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="ExternalReferenceNumber"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[ExternalReferenceNumber]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[ExternalReferenceNumber]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[HasFinancialTx]"
-                      cachedDataType="bool"
-                      cachedName="HasFinancialTx"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[HasFinancialTx]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[HasFinancialTx]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[IntegrationTx_Amount]"
-                      cachedDataType="numeric"
-                      cachedName="IntegrationTx_Amount"
-                      cachedPrecision="18"
-                      cachedScale="2"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[IntegrationTx_Amount]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[IntegrationTx_Amount]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[MessageText]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="300"
-                      cachedName="MessageText"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[MessageText]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[MessageText]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[SourceKey]"
-                      cachedDataType="i4"
-                      cachedName="SourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[SourceKey]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[SourceKey]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[DimIntegrationTxDateID]"
-                      cachedDataType="i4"
-                      cachedName="DimIntegrationTxDateID"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimIntegrationTxDateID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimIntegrationTxDateID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[DimIntegrationTxTimeID]"
-                      cachedDataType="i4"
-                      cachedName="DimIntegrationTxTimeID"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimIntegrationTxTimeID]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimIntegrationTxTimeID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[DimExternalOrganizationSourceKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="300"
-                      cachedName="DimExternalOrganizationSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimExternalOrganizationSourceKey]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimExternalOrganizationSourceKey]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[DimIntegrationTransactionResultSourceKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="DimIntegrationTransactionResultSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimIntegrationTransactionResultSourceKey]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimIntegrationTransactionResultSourceKey]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[DimIntegrationTransactionTypeSourceKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="DimIntegrationTransactionTypeSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimIntegrationTransactionTypeSourceKey]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimIntegrationTransactionTypeSourceKey]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[DimProcessTypeSourceKey]"
-                      cachedDataType="i4"
-                      cachedName="DimProcessTypeSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimProcessTypeSourceKey]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimProcessTypeSourceKey]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[DimUserSourceKey]"
-                      cachedDataType="i4"
-                      cachedName="DimUserSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[DimUserSourceKey]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[DimUserSourceKey]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[FactFinancialTransactionSourceKey]"
-                      cachedDataType="i4"
-                      cachedName="FactFinancialTransactionSourceKey"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output].Columns[FactFinancialTransactionSourceKey]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[FactFinancialTransactionSourceKey]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[SYS_CHANGE_OPERATION]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1"
-                      cachedName="SYS_CHANGE_OPERATION"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_OPERATION]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4].Columns[SYS_CHANGE_VERSION]"
-                      cachedDataType="i8"
-                      cachedName="SYS_CHANGE_VERSION"
-                      lineageId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-                <input
-                  refId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5]"
                   dangling="true"
                   hasSideEffects="true"
-                  name="Union All Input 5">
+                  name="Union All Input 4">
                   <externalMetadataColumns />
                 </input>
               </inputs>
@@ -3363,45 +3240,25 @@ FROM
           </components>
           <paths>
             <path
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[OLEDB_GetData_Output_dc_ChangeData2]"
-              endId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-              name="OLEDB_GetData_Output_dc_ChangeData"
-              startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[OLEDB_GetData_Output_dc_ChangeData3]"
-              endId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-              name="OLEDB_GetData_Output_dc_ChangeData"
-              startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[OLEDB_GetData_Output_dc_ChangeData]"
-              endId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-              name="OLEDB_GetData_Output_dc_ChangeData"
-              startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[OLEDB_GetData_Output_dc_ChangeData1]"
-              endId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-              name="OLEDB_GetData_Output_dc_ChangeData"
-              startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output2]"
+              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output3]"
               endId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 3]"
               name="Output"
-              startId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2.Outputs[Output]" />
+              startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output3]"
-              endId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 4]"
-              name="Output"
-              startId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output]"
-              endId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1]"
-              name="Output"
-              startId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output1]"
+              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output2]"
               endId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 2]"
               name="Output"
-              startId="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1.Outputs[Output]" />
+              startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output1]"
+              endId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1]"
+              name="Output"
+              startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output]"
+              endId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5]"
+              name="Output"
+              startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output]" />
             <path
               refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Union All Output 1]"
               endId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -3414,7 +3271,6 @@ FROM
     <DTS:Executable
       DTS:refId="Package\EST_CheckForRows"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-      DTS:Disabled="True"
       DTS:DTSID="{080d2e6b-1483-46e4-be5f-8852c86f46b8}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
@@ -3498,23 +3354,15 @@ FROM
     design-time-name="Package\DFT_Load Shared_FactIntegrationTransaction">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="157,42"
           Id="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData"
           TopLeft="5.5,5.5" />
         <NodeLayout
-          Size="164,42"
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 1"
-          TopLeft="228,107.5" />
-        <NodeLayout
           Size="167,42"
           Id="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1"
           TopLeft="223.5,5.49999999999989" />
-        <NodeLayout
-          Size="164,42"
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 2"
-          TopLeft="453,107.5" />
         <NodeLayout
           Size="167,42"
           Id="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3"
@@ -3528,113 +3376,9 @@ FROM
           Id="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2"
           TopLeft="451.5,5.49999999999989" />
         <NodeLayout
-          Size="164,42"
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData 3"
-          TopLeft="678,107.5" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction\dc_ChangeData"
-          TopLeft="12.5,107.5" />
-        <NodeLayout
           Size="201,42"
           Id="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging"
           TopLeft="514,339" />
-        <EdgeLayout
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[OLEDB_GetData_Output_dc_ChangeData3]"
-          TopLeft="761.5,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[OLEDB_GetData_Output_dc_ChangeData2]"
-          TopLeft="535,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[OLEDB_GetData_Output_dc_ChangeData1]"
-          TopLeft="308.5,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[OLEDB_GetData_Output_dc_ChangeData]"
-          TopLeft="87,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Union All Output 1]"
           TopLeft="535,251.5">
@@ -3666,153 +3410,143 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output3]"
-          TopLeft="760,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-190.5,60"
-              Start="0,0"
-              End="-190.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.6949152542373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.6949152542373"
-                    Point2="0,41.6949152542373"
-                    Point3="-4,41.6949152542373" />
-                  <mssgle:LineSegment
-                    End="-186.5,41.6949152542373" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-186.5,41.6949152542373"
-                    Point2="-190.5,41.6949152542373"
-                    Point3="-190.5,45.6949152542373" />
-                  <mssgle:LineSegment
-                    End="-190.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output2]"
-          TopLeft="535,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="11.5,60"
-              Start="0,0"
-              End="11.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.0941704035874" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.0941704035874"
-                    Point2="0,33.0941704035874"
-                    Point3="4,33.0941704035874" />
-                  <mssgle:LineSegment
-                    End="7.5,33.0941704035874" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7.5,33.0941704035874"
-                    Point2="11.5,33.0941704035874"
-                    Point3="11.5,37.0941704035874" />
-                  <mssgle:LineSegment
-                    End="11.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output1]"
-          TopLeft="310,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="213.5,60"
-              Start="0,0"
-              End="213.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.0941704035874" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.0941704035874"
-                    Point2="0,33.0941704035874"
-                    Point3="4,33.0941704035874" />
-                  <mssgle:LineSegment
-                    End="209.5,33.0941704035874" />
-                  <mssgle:CubicBezierSegment
-                    Point1="209.5,33.0941704035874"
-                    Point2="213.5,33.0941704035874"
-                    Point3="213.5,37.0941704035874" />
-                  <mssgle:LineSegment
-                    End="213.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output]"
-          TopLeft="90,149.5">
+          TopLeft="84,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="410.5,59.9999999999999"
+              EndConnector="451,162"
               Start="0,0"
-              End="410.5,52.4999999999999">
+              End="451,154.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.6949152542372" />
+                    End="0,77" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,37.6949152542372"
-                    Point2="0,41.6949152542372"
-                    Point3="4,41.6949152542372" />
+                    Point1="0,77"
+                    Point2="0,81"
+                    Point3="4,81" />
                   <mssgle:LineSegment
-                    End="406.5,41.6949152542372" />
+                    End="447,81" />
                   <mssgle:CubicBezierSegment
-                    Point1="406.5,41.6949152542372"
-                    Point2="410.5,41.6949152542372"
-                    Point3="410.5,45.6949152542372" />
+                    Point1="447,81"
+                    Point2="451,81"
+                    Point3="451,85" />
                   <mssgle:LineSegment
-                    End="410.5,52.4999999999999" />
+                    End="451,154.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output1]"
+          TopLeft="307,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="247.166666666667,162"
+              Start="0,0"
+              End="247.166666666667,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,91.9518459069021" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,91.9518459069021"
+                    Point2="0,95.9518459069021"
+                    Point3="4,95.9518459069021" />
+                  <mssgle:LineSegment
+                    End="243.166666666667,95.9518459069021" />
+                  <mssgle:CubicBezierSegment
+                    Point1="243.166666666667,95.9518459069021"
+                    Point2="247.166666666667,95.9518459069021"
+                    Point3="247.166666666667,99.9518459069021" />
+                  <mssgle:LineSegment
+                    End="247.166666666667,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output2]"
+          TopLeft="535,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.75,162"
+              Start="0,0"
+              End="28.75,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,101.708222811671" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,101.708222811671"
+                    Point2="0,105.708222811671"
+                    Point3="4,105.708222811671" />
+                  <mssgle:LineSegment
+                    End="24.75,105.708222811671" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.75,105.708222811671"
+                    Point2="28.75,105.708222811671"
+                    Point3="28.75,109.708222811671" />
+                  <mssgle:LineSegment
+                    End="28.75,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output3]"
+          TopLeft="763,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-193.5,162"
+              Start="0,0"
+              End="-193.5,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,108.576271186441" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,108.576271186441"
+                    Point2="0,112.576271186441"
+                    Point3="-4,112.576271186441" />
+                  <mssgle:LineSegment
+                    End="-189.5,112.576271186441" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-189.5,112.576271186441"
+                    Point2="-193.5,112.576271186441"
+                    Point3="-193.5,116.576271186441" />
+                  <mssgle:LineSegment
+                    End="-193.5,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

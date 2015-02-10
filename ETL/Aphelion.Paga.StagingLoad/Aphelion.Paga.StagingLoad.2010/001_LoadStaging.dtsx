@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="430"
-  DTS:VersionGUID="{04F9F11D-EBC9-41B7-837C-7B69A1F76106}">
+  DTS:VersionBuild="431"
+  DTS:VersionGUID="{46BD980C-B505-4A11-B861-E0DA61A79511}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -107,7 +107,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ConvertSystemStart">
       <DTS:VariableValue
-        DTS:DataType="8">2015-02-10 10:01:14.000</DTS:VariableValue>
+        DTS:DataType="8">2015-02-10 16:04:39.000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -148,17 +148,9 @@
         DTS:DataType="8">SELECT
 	PackageName = CONVERT(CHAR(4),(x.LoadGroup + x.rn)) +'_' + StagingTableName,
 	TABLE_SCHEMA,
-	strParm1 = 
-	'WHERE
-		EXISTS		(
-			SELECT 
-				1
-			FROM paga_change_log.' +x.SourceTable +' AS ct		
-			WHERE
-				base_query.SourceKey = ct.' +x.KeyColumn 
-							
-		)'
- FROM
+	strParm1 = 'INNER JOIN paga_change_log.' +x.SourceTable +' AS ct ON		
+	base_query.SourceKey = ct.' +x.KeyColumn  +'
+WHERE ct.as_of_change_version = 0' FROM
 (
 	SELECT
 		ROW_NUMBER() OVER (PARTITION BY base.LoadGroup ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
@@ -342,7 +334,7 @@ ORDER BY
       DTS:CreationName=""
       DTS:DTSID="{000E3BD9-948D-4D9E-85BE-B07622FBE9FB}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(CHAR(4),(x.LoadGroup + x.rn)) +'_' + StagingTableName,&#xA;&#x9;TABLE_SCHEMA,&#xA;&#x9;strParm1 = &#xA;&#x9;'WHERE&#xA;&#x9;&#x9;EXISTS&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;1&#xA;&#x9;&#x9;&#x9;FROM paga_change_log.' +x.SourceTable +' AS ct&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;base_query.SourceKey = ct.' +x.KeyColumn &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&quot;+ @[User::strVersionFilter] +&quot;&#xA;&#x9;&#x9;)'&#xA;&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;PackageName = CONVERT(CHAR(4),(x.LoadGroup + x.rn)) +'_' + StagingTableName,&#xA;&#x9;TABLE_SCHEMA,&#xA;&#x9;strParm1 = 'INNER JOIN paga_change_log.' +x.SourceTable +' AS ct ON&#x9;&#x9;&#xA;&#x9;base_query.SourceKey = ct.' +x.KeyColumn  +'&#xA;&quot;+ @[User::strVersionFilter] +&quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strPackageQueryPrefix">
@@ -350,28 +342,20 @@ ORDER BY
         DTS:DataType="8">SELECT
 	PackageName = CONVERT(CHAR(4),(x.LoadGroup + x.rn)) +'_' + StagingTableName,
 	TABLE_SCHEMA,
-	strParm1 = 
-	'WHERE
-		EXISTS		(
-			SELECT 
-				1
-			FROM paga_change_log.' +x.SourceTable +' AS ct		
-			WHERE
-				base_query.SourceKey = ct.' +x.KeyColumn 
-							
-		)'
-</DTS:VariableValue>
+	strParm1 = 'INNER JOIN paga_change_log.' +x.SourceTable +' AS ct ON		
+	base_query.SourceKey = ct.' +x.KeyColumn  +'
+WHERE ct.as_of_change_version = 0'</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{570E83A4-F5C7-4F89-BC80-F8DF21E166E1}"
-      DTS:Expression="&quot;+ ' AND as_of_change_version = 0&quot;"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;WHERE ct.as_of_change_version = &quot; + (DT_WSTR, 20) @[User::ChangeVersion]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strVersionFilter">
       <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
+        DTS:DataType="8">WHERE ct.as_of_change_version = 0</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -611,133 +595,7 @@ WHERE
         </DTS:ObjectData>
       </DTS:ForEachEnumerator>
       <DTS:Variables />
-      <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\FLC_ChangeVersion\CycleThroughChangeOperations"
-          DTS:AssignExpression="@ChangeLoop = @ChangeLoop + 1"
-          DTS:CreationName="STOCK:FORLOOP"
-          DTS:Description="For Loop Container"
-          DTS:DTSID="{05504932-DC7A-4E22-AC52-9F8E4FE1557F}"
-          DTS:EvalExpression="@ChangeLoop &lt; 4"
-          DTS:ExecutableType="STOCK:FORLOOP"
-          DTS:InitExpression="@ChangeLoop = 1"
-          DTS:LocaleID="-1"
-          DTS:MaxConcurrent="1"
-          DTS:ObjectName="CycleThroughChangeOperations">
-          <DTS:Variables />
-          <DTS:Executables>
-            <DTS:Executable
-              DTS:refId="Package\FLC_ChangeVersion\CycleThroughChangeOperations\EPT_ExecInParallel_Changes"
-              DTS:CreationName="SSIS.ExecutePackageTask.3"
-              DTS:DelayValidation="True"
-              DTS:Description="Execute Package Task"
-              DTS:DTSID="{3a0ef3d0-d2d4-42ef-81e2-195031fb9d72}"
-              DTS:ExecutableType="SSIS.ExecutePackageTask.3"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="EPT_ExecInParallel_Changes"
-              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-              <DTS:Variables />
-              <DTS:LoggingOptions
-                DTS:FilterKind="0"
-                DTS:LoggingMode="2">
-                <DTS:Property
-                  DTS:DataType="8"
-                  DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
-                <DTS:Property
-                  DTS:EventName="OnVariableValueChanged"
-                  DTS:Name="ColumnFilter">
-                  <DTS:Property
-                    DTS:Name="Computer">-1</DTS:Property>
-                  <DTS:Property
-                    DTS:Name="Operator">-1</DTS:Property>
-                  <DTS:Property
-                    DTS:Name="SourceName">-1</DTS:Property>
-                  <DTS:Property
-                    DTS:Name="SourceID">-1</DTS:Property>
-                  <DTS:Property
-                    DTS:Name="ExecutionID">-1</DTS:Property>
-                  <DTS:Property
-                    DTS:Name="MessageText">-1</DTS:Property>
-                  <DTS:Property
-                    DTS:Name="DataBytes">-1</DTS:Property>
-                </DTS:Property>
-              </DTS:LoggingOptions>
-              <DTS:ObjectData>
-                <ExecutePackageTask>
-                  <UseProjectReference>True</UseProjectReference>
-                  <PackageName>010_RunStagingInParallel.dtsx</PackageName>
-                  <ParameterAssignment>
-                    <ParameterName>parmInnerQuery</ParameterName>
-                    <BindedVariableOrParameterName>User::GetInnerQuery</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                  <ParameterAssignment>
-                    <ParameterName>ChangeVersion</ParameterName>
-                    <BindedVariableOrParameterName>User::ChangeVersion</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                  <ParameterAssignment>
-                    <ParameterName>LoadType</ParameterName>
-                    <BindedVariableOrParameterName>$Package::LoadType</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                  <ParameterAssignment>
-                    <ParameterName>ChangeOperation</ParameterName>
-                    <BindedVariableOrParameterName>User::ChangeOperation</BindedVariableOrParameterName>
-                  </ParameterAssignment>
-                </ExecutePackageTask>
-              </DTS:ObjectData>
-            </DTS:Executable>
-            <DTS:Executable
-              DTS:refId="Package\FLC_ChangeVersion\CycleThroughChangeOperations\FT_GetChangeOperation"
-              DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-              DTS:Description="Expression Task"
-              DTS:DTSID="{571bfc53-f157-4b49-808e-304dcdde6f28}"
-              DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="FT_GetChangeOperation"
-              DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; � 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <ExpressionTask
-                  Expression="@[User::ChangeOperation] = (@[User::ChangeLoop] == 1  ? &quot;I&quot; :@[User::ChangeLoop] == 2  ? &quot;U&quot; : @[User::ChangeLoop] == 3  ? &quot;D&quot; : &quot;I&quot;)" />
-              </DTS:ObjectData>
-            </DTS:Executable>
-            <DTS:Executable
-              DTS:refId="Package\FLC_ChangeVersion\CycleThroughChangeOperations\FT_GetVersionFilter"
-              DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-              DTS:Description="Expression Task"
-              DTS:DTSID="{E0524956-B8FF-47B6-8510-E4FF2D726768}"
-              DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="FT_GetVersionFilter"
-              DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; � 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <ExpressionTask
-                  Expression="@[User::strVersionFilter] = (@[User::ChangeLoop] == 1  ? &quot;+ ' AND SYS_CHANGE_OPERATION = ''I'' AND as_of_change_version = &quot; + (DT_WSTR, 20) @[User::ChangeVersion] : @[User::ChangeLoop] == 2  ? &quot;+ ' AND SYS_CHANGE_OPERATION = ''U'' AND as_of_change_version = &quot; + (DT_WSTR, 20) @[User::ChangeVersion] :@[User::ChangeLoop] == 3  ? &quot;+ ' AND SYS_CHANGE_OPERATION = ''D'' AND as_of_change_version = &quot; + (DT_WSTR, 20) @[User::ChangeVersion] :&quot;&quot;)" />
-              </DTS:ObjectData>
-            </DTS:Executable>
-          </DTS:Executables>
-          <DTS:PrecedenceConstraints>
-            <DTS:PrecedenceConstraint
-              DTS:refId="Package\FLC_ChangeVersion\CycleThroughChangeOperations.PrecedenceConstraints[Constraint]"
-              DTS:CreationName=""
-              DTS:DTSID="{EC736A72-FF60-4D0C-B273-9BCD33C814D2}"
-              DTS:From="Package\FLC_ChangeVersion\CycleThroughChangeOperations\FT_GetVersionFilter"
-              DTS:LogicalAnd="True"
-              DTS:ObjectName="Constraint"
-              DTS:To="Package\FLC_ChangeVersion\CycleThroughChangeOperations\FT_GetChangeOperation" />
-            <DTS:PrecedenceConstraint
-              DTS:refId="Package\FLC_ChangeVersion\CycleThroughChangeOperations.PrecedenceConstraints[Constraint 1]"
-              DTS:CreationName=""
-              DTS:DTSID="{EF9D4A6C-50A6-4EFA-BF7D-6E93D599E635}"
-              DTS:From="Package\FLC_ChangeVersion\CycleThroughChangeOperations\FT_GetChangeOperation"
-              DTS:LogicalAnd="True"
-              DTS:ObjectName="Constraint 1"
-              DTS:To="Package\FLC_ChangeVersion\CycleThroughChangeOperations\EPT_ExecInParallel_Changes" />
-          </DTS:PrecedenceConstraints>
-        </DTS:Executable>
-      </DTS:Executables>
+      <DTS:Executables />
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
@@ -746,38 +604,6 @@ WHERE
           DTS:ValueIndex="0"
           DTS:VariableName="User::ChangeVersion" />
       </DTS:ForEachVariableMappings>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\FT_GetChangeOperation"
-      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-      DTS:Description="Expression Task"
-      DTS:DTSID="{24826f13-0467-45dd-a2fc-771645f7814c}"
-      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="FT_GetChangeOperation"
-      DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; � 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <ExpressionTask
-          Expression="@[User::ChangeOperation] = &quot;I&quot;" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\FT_GetVersionFilter"
-      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-      DTS:Description="Expression Task"
-      DTS:DTSID="{8b855cd1-a3aa-4d98-9c5e-4d608c379cf7}"
-      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="FT_GetVersionFilter"
-      DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; � 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <ExpressionTask
-          Expression="@[User::strVersionFilter] =&quot;+ ' AND as_of_change_version = &quot; + (DT_WSTR, 20) @[User::ChangeVersion]" />
-      </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
@@ -807,32 +633,6 @@ WHERE
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\FLC_ChangeVersion" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
-      DTS:CreationName=""
-      DTS:DTSID="{F60E44F5-FEBC-4269-B4F0-4ECB54C40815}"
-      DTS:From="Package\FT_GetVersionFilter"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 3"
-      DTS:To="Package\FT_GetChangeOperation" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
-      DTS:CreationName=""
-      DTS:DTSID="{9B5FB004-9580-4E85-84D2-D04324F6B951}"
-      DTS:EvalOp="3"
-      DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot;"
-      DTS:From="Package\EST_GetVersionNumbers"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 4"
-      DTS:To="Package\FT_GetVersionFilter" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
-      DTS:CreationName=""
-      DTS:DTSID="{FC9A6001-1330-4949-8228-8FBA92EC6EAF}"
-      DTS:From="Package\FT_GetChangeOperation"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 5"
-      DTS:To="Package\EPT_ExecInParallel_Initial" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -845,11 +645,11 @@ WHERE
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="203,42"
           Id="Package\EPT_ExecInParallel_Initial"
-          TopLeft="308.5,825.5" />
+          TopLeft="308.5,329.5" />
         <NodeLayout
           Size="198,42"
           Id="Package\EST_GetVersionNumbers"
@@ -859,75 +659,9 @@ WHERE
           Id="Package\EST_TruncateStaging"
           TopLeft="319,5.5" />
         <NodeLayout
-          Size="216,42"
-          Id="Package\FLC_ChangeVersion\CycleThroughChangeOperations\EPT_ExecInParallel_Changes"
-          TopLeft="5.50000000000003,209.5" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\FLC_ChangeVersion\CycleThroughChangeOperations\FT_GetVersionFilter"
-          TopLeft="27,5.5" />
-        <NodeLayout
-          Size="197,42"
-          Id="Package\FLC_ChangeVersion\CycleThroughChangeOperations\FT_GetChangeOperation"
-          TopLeft="15,107.5" />
-        <EdgeLayout
-          Id="Package\FLC_ChangeVersion\CycleThroughChangeOperations.PrecedenceConstraints[Constraint 1]"
-          TopLeft="113.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FLC_ChangeVersion\CycleThroughChangeOperations.PrecedenceConstraints[Constraint]"
-          TopLeft="113.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="227,306"
-          Size="227,350"
-          Id="Package\FLC_ChangeVersion\CycleThroughChangeOperations"
-          TopLeft="5.50000000000004,5.5" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="238,410"
-          Size="238,454"
-          Id="Package\FLC_ChangeVersion"
-          TopLeft="25.0000000000001,209.5" />
+          Size="245,42"
+          Id="Package\EST_Update_PushedToStagingFlag"
+          TopLeft="5.50000000000011,723.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="410,47.5">
@@ -950,6 +684,13 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="238,411"
+          Size="238,454"
+          Id="Package\FLC_ChangeVersion"
+          TopLeft="25.0000000000001,209.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="378.333333333333,149.5">
@@ -986,10 +727,6 @@ WHERE
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="245,42"
-          Id="Package\EST_Update_PushedToStagingFlag"
-          TopLeft="5.50000000000011,723.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="144,663.5">
@@ -1016,94 +753,6 @@ WHERE
                     Point3="-15.9999999999999,34" />
                   <mssgle:LineSegment
                     End="-15.9999999999999,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="173,42"
-          Id="Package\FT_GetVersionFilter"
-          TopLeft="323.5,415.5" />
-        <NodeLayout
-          Size="197,42"
-          Id="Package\FT_GetChangeOperation"
-          TopLeft="311.5,723.5" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="410,457.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,266"
-              Start="0,0"
-              End="0,258.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,258.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="441.666666666667,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-31.6666666666666,266"
-              Start="0,0"
-              End="-31.6666666666666,258.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,103.679358717435" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,103.679358717435"
-                    Point2="0,107.679358717435"
-                    Point3="-4,107.679358717435" />
-                  <mssgle:LineSegment
-                    End="-27.6666666666666,107.679358717435" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-27.6666666666666,107.679358717435"
-                    Point2="-31.6666666666666,107.679358717435"
-                    Point3="-31.6666666666666,111.679358717435" />
-                  <mssgle:LineSegment
-                    End="-31.6666666666666,258.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-23.8333333333333,112.679358717435,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="410,765.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
