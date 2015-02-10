@@ -12,21 +12,11 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="3101_Finance_FactFinancialTransaction"
   DTS:PackageType="5"
-  DTS:VersionBuild="192"
-  DTS:VersionGUID="{37DDD1CD-B169-42EE-91FA-6A0B89C2F4C2}">
+  DTS:VersionBuild="193"
+  DTS:VersionGUID="{B4977AFB-62D6-4717-8CD7-88E185EE7113}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="8"
-      DTS:DTSID="{789E463C-E476-4DAA-BA55-7AFB5F4B99B1}"
-      DTS:ObjectName="ChangeOperation">
-      <DTS:Property
-        DTS:DataType="8"
-        DTS:Name="ParameterValue"
-        xml:space="preserve"></DTS:Property>
-    </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="14"
@@ -4472,25 +4462,25 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           </components>
           <paths>
             <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
-              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 3]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 3.Outputs[OLE DB Source Output]" />
-            <path
               refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output2]"
-              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 2]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 2.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 1]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 1.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 5]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 3]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 3.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
+              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 2]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 2.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Union All Output 1]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -4634,7 +4624,7 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
           TopLeft="122.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4668,7 +4658,7 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output2]"
           TopLeft="422.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4702,7 +4692,7 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output2]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
           TopLeft="722.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4736,7 +4726,7 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
           TopLeft="1017.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4773,7 +4763,15 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction">
+    design-time-name="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 3">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4794,14 +4792,6 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 3">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 2">
     <Properties>
       <Property>
@@ -4810,7 +4800,7 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 1">
+    design-time-name="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

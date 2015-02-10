@@ -11,22 +11,12 @@
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="3001_Finance_FactGLTransaction"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{3AEC4B91-6AB3-4B0F-A769-3A14BF454371}"
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{B566CA08-CBA8-43A8-B643-52543F1F7AE0}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="8"
-      DTS:DTSID="{C186053E-A279-4F98-B75C-69F4F0D73B14}"
-      DTS:ObjectName="ChangeOperation">
-      <DTS:Property
-        DTS:DataType="8"
-        DTS:Name="ParameterValue"
-        xml:space="preserve"></DTS:Property>
-    </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="14"
@@ -2519,25 +2509,25 @@ FROM
           </components>
           <paths>
             <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3]"
-              name="Output"
-              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output]" />
-            <path
               refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 2]"
-              name="Output"
-              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
               endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1]"
               name="Output"
               startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
+              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
               endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5]"
               name="Output"
               startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
+              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3]"
+              name="Output"
+              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
+              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 2]"
+              name="Output"
+              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output]" />
             <path
               refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Union All Output 1]"
               endId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -2629,11 +2619,11 @@ FROM
     design-time-name="Package\DFT_Load Finance_FactGLTransaction">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="169,42"
-          Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0"
-          TopLeft="5.5,5.5" />
+          Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1"
+          TopLeft="465.5,5.49999999999989" />
         <NodeLayout
           Size="169,42"
           Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2"
@@ -2644,142 +2634,18 @@ FROM
           TopLeft="456.5,107.5" />
         <NodeLayout
           Size="169,42"
-          Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1"
-          TopLeft="465.5,5.49999999999989" />
-        <NodeLayout
-          Size="169,42"
           Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3"
           TopLeft="695.5,5.49999999999989" />
         <NodeLayout
           Size="201,42"
           Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging"
           TopLeft="449.5,209.5" />
-        <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Union All Output 1]"
-          TopLeft="550,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="169,42"
+          Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0"
+          TopLeft="5.5,5.5" />
         <EdgeLayout
           Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
-          TopLeft="90,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="406.3,59.9999999999999"
-              Start="0,0"
-              End="406.3,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.085521380345" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.085521380345"
-                    Point2="0,42.085521380345"
-                    Point3="4,42.085521380345" />
-                  <mssgle:LineSegment
-                    End="402.3,42.085521380345" />
-                  <mssgle:CubicBezierSegment
-                    Point1="402.3,42.085521380345"
-                    Point2="406.3,42.085521380345"
-                    Point3="406.3,46.085521380345" />
-                  <mssgle:LineSegment
-                    End="406.3,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
-          TopLeft="550,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="17.9,60"
-              Start="0,0"
-              End="17.9,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.1756357185098" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.1756357185098"
-                    Point2="0,33.1756357185098"
-                    Point3="4,33.1756357185098" />
-                  <mssgle:LineSegment
-                    End="13.9,33.1756357185098" />
-                  <mssgle:CubicBezierSegment
-                    Point1="13.9,33.1756357185098"
-                    Point2="17.9,33.1756357185098"
-                    Point3="17.9,37.1756357185098" />
-                  <mssgle:LineSegment
-                    End="17.9,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
-          TopLeft="320,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="212.1,60"
-              Start="0,0"
-              End="212.1,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.1756357185098" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.1756357185098"
-                    Point2="0,33.1756357185098"
-                    Point3="4,33.1756357185098" />
-                  <mssgle:LineSegment
-                    End="208.1,33.1756357185098" />
-                  <mssgle:CubicBezierSegment
-                    Point1="208.1,33.1756357185098"
-                    Point2="212.1,33.1756357185098"
-                    Point3="212.1,37.1756357185098" />
-                  <mssgle:LineSegment
-                    End="212.1,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
           TopLeft="780,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2809,14 +2675,148 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Union All Output 1]"
+          TopLeft="550,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
+          TopLeft="90,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="406.3,59.9999999999999"
+              Start="0,0"
+              End="406.3,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.085521380345" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.085521380345"
+                    Point2="0,42.085521380345"
+                    Point3="4,42.085521380345" />
+                  <mssgle:LineSegment
+                    End="402.3,42.085521380345" />
+                  <mssgle:CubicBezierSegment
+                    Point1="402.3,42.085521380345"
+                    Point2="406.3,42.085521380345"
+                    Point3="406.3,46.085521380345" />
+                  <mssgle:LineSegment
+                    End="406.3,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
+          TopLeft="550,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.9,60"
+              Start="0,0"
+              End="17.9,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1756357185098" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.1756357185098"
+                    Point2="0,33.1756357185098"
+                    Point3="4,33.1756357185098" />
+                  <mssgle:LineSegment
+                    End="13.9,33.1756357185098" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.9,33.1756357185098"
+                    Point2="17.9,33.1756357185098"
+                    Point3="17.9,37.1756357185098" />
+                  <mssgle:LineSegment
+                    End="17.9,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
+          TopLeft="320,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="212.1,60"
+              Start="0,0"
+              End="212.1,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1756357185098" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.1756357185098"
+                    Point2="0,33.1756357185098"
+                    Point3="4,33.1756357185098" />
+                  <mssgle:LineSegment
+                    End="208.1,33.1756357185098" />
+                  <mssgle:CubicBezierSegment
+                    Point1="208.1,33.1756357185098"
+                    Point2="212.1,33.1756357185098"
+                    Point3="212.1,37.1756357185098" />
+                  <mssgle:LineSegment
+                    End="212.1,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0">
+    design-time-name="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2825,14 +2825,6 @@ FROM
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2857,6 +2849,14 @@ FROM
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="431"
-  DTS:VersionGUID="{46BD980C-B505-4A11-B861-E0DA61A79511}">
+  DTS:VersionBuild="432"
+  DTS:VersionGUID="{C471608E-70C5-4EB4-9127-1EBAFE510864}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -461,10 +461,6 @@ WHERE
             <ParameterName>LoadType</ParameterName>
             <BindedVariableOrParameterName>$Package::LoadType</BindedVariableOrParameterName>
           </ParameterAssignment>
-          <ParameterAssignment>
-            <ParameterName>ChangeOperation</ParameterName>
-            <BindedVariableOrParameterName>User::ChangeOperation</BindedVariableOrParameterName>
-          </ParameterAssignment>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -595,7 +591,63 @@ WHERE
         </DTS:ObjectData>
       </DTS:ForEachEnumerator>
       <DTS:Variables />
-      <DTS:Executables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\FLC_ChangeVersion\EPT_ExecInParallel_Changes"
+          DTS:CreationName="SSIS.ExecutePackageTask.3"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{7b290399-b85b-42c2-b921-5280e8e85c92}"
+          DTS:ExecutableType="SSIS.ExecutePackageTask.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT_ExecInParallel_Changes"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="2">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnVariableValueChanged"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>010_RunStagingInParallel.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>parmInnerQuery</ParameterName>
+                <BindedVariableOrParameterName>User::GetInnerQuery</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ChangeVersion</ParameterName>
+                <BindedVariableOrParameterName>User::ChangeVersion</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>LoadType</ParameterName>
+                <BindedVariableOrParameterName>$Package::LoadType</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
@@ -633,6 +685,16 @@ WHERE
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\FLC_ChangeVersion" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{5D8B8EAF-9FA9-423C-80AC-B1DEBA3E6349}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot;"
+      DTS:From="Package\EST_GetVersionNumbers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\EPT_ExecInParallel_Initial" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -645,26 +707,26 @@ WHERE
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="203,42"
           Id="Package\EPT_ExecInParallel_Initial"
-          TopLeft="308.5,329.5" />
+          TopLeft="302.5,261.5" />
         <NodeLayout
           Size="198,42"
           Id="Package\EST_GetVersionNumbers"
-          TopLeft="311,107.5" />
+          TopLeft="305,107.5" />
         <NodeLayout
           Size="182,42"
           Id="Package\EST_TruncateStaging"
-          TopLeft="319,5.5" />
+          TopLeft="313,5.5" />
         <NodeLayout
           Size="245,42"
           Id="Package\EST_Update_PushedToStagingFlag"
-          TopLeft="5.50000000000011,723.5" />
+          TopLeft="5.50000000000006,415.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="410,47.5">
+          TopLeft="404,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -684,22 +746,26 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="216,42"
+          Id="Package\FLC_ChangeVersion\EPT_ExecInParallel_Changes"
+          TopLeft="5.5,5.5" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="238,411"
-          Size="238,454"
+          PanelSize="227,102"
+          Size="227,146"
           Id="Package\FLC_ChangeVersion"
-          TopLeft="25.0000000000001,209.5" />
+          TopLeft="14.5000000000001,209.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="378.333333333333,149.5">
+          TopLeft="372.333333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-234.333333333333,60"
+              EndConnector="-244.333333333333,60"
               Start="0,0"
-              End="-234.333333333333,52.5">
+              End="-244.333333333333,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -710,55 +776,79 @@ WHERE
                     Point2="0,24.2885771543086"
                     Point3="-4,24.2885771543086" />
                   <mssgle:LineSegment
-                    End="-230.333333333333,24.2885771543086" />
+                    End="-240.333333333333,24.2885771543086" />
                   <mssgle:CubicBezierSegment
-                    Point1="-230.333333333333,24.2885771543086"
-                    Point2="-234.333333333333,24.2885771543086"
-                    Point3="-234.333333333333,28.2885771543086" />
+                    Point1="-240.333333333333,24.2885771543086"
+                    Point2="-244.333333333333,24.2885771543086"
+                    Point3="-244.333333333333,28.2885771543086" />
                   <mssgle:LineSegment
-                    End="-234.333333333333,52.5" />
+                    End="-244.333333333333,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-125.166666666667,29.2885771543086,16,16"
+              BoundingBox="-130.166666666667,29.2885771543086,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="144,663.5">
+          TopLeft="128,355.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-15.9999999999999,60"
+              EndConnector="0,60"
               Start="0,0"
-              End="-15.9999999999999,52.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
-                  <mssgle:LineSegment
-                    End="-11.9999999999999,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-11.9999999999999,30"
-                    Point2="-15.9999999999999,30"
-                    Point3="-15.9999999999999,34" />
-                  <mssgle:LineSegment
-                    End="-15.9999999999999,52.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="435.666666666667,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-31.6666666666666,112"
+              Start="0,0"
+              End="-31.6666666666666,104.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.3386773547094" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.3386773547094"
+                    Point2="0,45.3386773547094"
+                    Point3="-4,45.3386773547094" />
+                  <mssgle:LineSegment
+                    End="-27.6666666666666,45.3386773547094" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-27.6666666666666,45.3386773547094"
+                    Point2="-31.6666666666666,45.3386773547094"
+                    Point3="-31.6666666666666,49.3386773547094" />
+                  <mssgle:LineSegment
+                    End="-31.6666666666666,104.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-23.8333333333333,50.3386773547094,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
