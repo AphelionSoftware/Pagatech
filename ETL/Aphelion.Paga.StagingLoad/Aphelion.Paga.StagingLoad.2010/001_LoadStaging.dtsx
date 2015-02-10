@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="397"
-  DTS:VersionGUID="{09778610-154E-4C1D-A1D6-D12F97C66F4E}">
+  DTS:VersionBuild="398"
+  DTS:VersionGUID="{115C45AA-8D2E-4D12-88E1-F91F6B53F4F3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -34,7 +34,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">1</DTS:Property>
+        DTS:Name="ParameterValue">2</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -45,7 +45,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">Initial</DTS:Property>
+        DTS:Name="ParameterValue">Changes</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -114,7 +114,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ConvertSystemStart">
       <DTS:VariableValue
-        DTS:DataType="8">2015-02-09 19:46:46.000</DTS:VariableValue>
+        DTS:DataType="8">2015-02-10 08:27:49.000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -164,7 +164,7 @@
 			WHERE
 				base_query.SourceKey = ct.' +x.KeyColumn 
 				+' AND ct.SYS_CHANGE_OPERATION = ''D'''
-				+' AND as_of_change_version = 0
+				+' AND as_of_change_version =  0
 		)'
 FROM
 (
@@ -253,7 +253,7 @@ FROM
 			FROM paga_change_log.' +x.SourceTable +' AS ct		
 			WHERE
 				base_query.SourceKey = ct.' +x.KeyColumn 
-							+' AND as_of_change_version = 0
+							+' AND as_of_change_version =  0
 		)'
 FROM
 (
@@ -343,7 +343,7 @@ FROM
 			WHERE
 				base_query.SourceKey = ct.' +x.KeyColumn 
 				+' AND ct.SYS_CHANGE_OPERATION = ''I'''
-				+' AND as_of_change_version = 0
+				+' AND as_of_change_version =  0
 		)'
 FROM
 (
@@ -433,7 +433,7 @@ FROM
 			WHERE
 				base_query.SourceKey = ct.' +x.KeyColumn 
 				+' AND ct.SYS_CHANGE_OPERATION = ''U'''
-				+' AND as_of_change_version = 0
+				+' AND as_of_change_version =  0
 		)'
 FROM
 (
@@ -515,7 +515,7 @@ FROM
 	ChangeVersion
 FROM [ChangeTracking].[Load_History]
 WHERE 
-	PushedToStaging = 0
+	PushedToStaging = 1
 ORDER BY
 	LoadID</DTS:VariableValue>
     </DTS:Variable>
@@ -537,7 +537,7 @@ ORDER BY
       DTS:Namespace="User"
       DTS:ObjectName="LoadLevelLess1">
       <DTS:VariableValue
-        DTS:DataType="8">0</DTS:VariableValue>
+        DTS:DataType="8">1</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -624,7 +624,7 @@ ORDER BY
       DTS:Namespace="User"
       DTS:ObjectName="strVersionFilter">
       <DTS:VariableValue
-        DTS:DataType="8">+' AND as_of_change_version = 0</DTS:VariableValue>
+        DTS:DataType="8">+' AND as_of_change_version =  0</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -647,7 +647,7 @@ ORDER BY
       DTS:ObjectName="UpdateLoadQueue">
       <DTS:VariableValue
         DTS:DataType="8">UPDATE [ChangeTracking].[Load_History]
-SET PushedToStaging = 1
+SET PushedToStaging = 2
 WHERE
  ChangeVersion = 0</DTS:VariableValue>
     </DTS:Variable>
