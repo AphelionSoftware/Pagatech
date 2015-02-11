@@ -11,8 +11,8 @@
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="3002_Shared_FactIntegrationTransaction"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{94B23AE7-B2BA-484D-AACF-26DA0F941E60}"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{E6BBC202-6E4D-4FB9-A48C-91CDB7CD3A07}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -41,7 +41,7 @@
       DTS:CreationName=""
       DTS:DTSID="{15CE4717-0541-427E-A4E8-EEB8FF78A964}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;base_query.*,&#xA;&#x9;ct.SYS_CHANGE_OPERATION,&#xA;&#x9;ct.SYS_CHANGE_VERSION&#xA;&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ExternalReferenceNumber,&#xA;   &#x9;&#x9;HasFinancialTx,&#xA;&#x9;&#x9;IntegrationTx_Amount,&#xA;&#x9;&#x9;MessageText,&#xA;&#x9;&#x9;SourceKey,&#xA;&#x9;&#x9;DimIntegrationTxDateID, &#xA;&#x9;&#x9;DimIntegrationTxTimeID,&#xA;&#x9;&#x9;DimExternalOrganizationSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionResultSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey,&#xA;&#x9;&#x9;DimProcessTypeSourceKey,&#xA;&#x9;&#x9;DimUserSourceKey,&#xA;&#x9;&#x9;FactFinancialTransactionSourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;SourceKey = [IntegrationTransactionId],  &#xA;&#x9;&#x9;&#x9;DimIntegrationTxDateID = CONVERT(INT,CONVERT(VARCHAR(8), [IntegrationTransactionTimestamp], 112)),&#xA;&#x9;&#x9;&#x9;DimIntegrationTxTimeID = CONVERT(INT,REPLACE(CONVERT(TIME(0) ,IntegrationTransactionTimestamp),':','')), &#xA;&#x9;&#x9;&#x9;DimExternalOrganizationSourceKey = CAST([ExternalOrganizationId] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;ExternalOrganization_Name = CAST(it.ExternalOrganizationName AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;DimUserSourceKey = [UserId],&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey = CAST([IntegrationTransactionTypeId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;DimProcessTypeSourceKey = COALESCE(-1,CAST([ProcessTypeId] AS VARCHAR(50))),&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionResultSourceKey = CAST([IntegrationTransactionResultId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[ExternalReferenceNumber] = CAST([ExternalReferenceNumber] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[MessageText] = CAST([Message] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;IntegrationTx_Amount = [Amount],&#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN [FinancialTransactionId] IS NULL THEN CAST(0 AS BIT)&#xA;&#x9;&#x9;&#x9;&#x9;ELSE CAST (1 AS BIT)&#xA;&#x9;&#x9;&#x9;END AS HasFinancialTx,&#xA;&#x9;&#x9;&#x9;FactFinancialTransactionSourceKey = [FinancialTransactionId]&#xA;&#x9;&#x9;FROM [dbo].[IntegrationTransaction] as it&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([IntegrationTransactionId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;base_query.*,&#xA;&#x9;ct.SYS_CHANGE_OPERATION,&#xA;&#x9;SYS_CHANGE_VERSION&#xA; = ct.as_of_change_version &#xA;&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;ExternalReferenceNumber,&#xA;   &#x9;&#x9;HasFinancialTx,&#xA;&#x9;&#x9;IntegrationTx_Amount,&#xA;&#x9;&#x9;MessageText,&#xA;&#x9;&#x9;SourceKey,&#xA;&#x9;&#x9;DimIntegrationTxDateID, &#xA;&#x9;&#x9;DimIntegrationTxTimeID,&#xA;&#x9;&#x9;DimExternalOrganizationSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionResultSourceKey,&#xA;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey,&#xA;&#x9;&#x9;DimProcessTypeSourceKey,&#xA;&#x9;&#x9;DimUserSourceKey,&#xA;&#x9;&#x9;FactFinancialTransactionSourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;SourceKey = [IntegrationTransactionId],  &#xA;&#x9;&#x9;&#x9;DimIntegrationTxDateID = CONVERT(INT,CONVERT(VARCHAR(8), [IntegrationTransactionTimestamp], 112)),&#xA;&#x9;&#x9;&#x9;DimIntegrationTxTimeID = CONVERT(INT,REPLACE(CONVERT(TIME(0) ,IntegrationTransactionTimestamp),':','')), &#xA;&#x9;&#x9;&#x9;DimExternalOrganizationSourceKey = CAST([ExternalOrganizationId] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;ExternalOrganization_Name = CAST(it.ExternalOrganizationName AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;DimUserSourceKey = [UserId],&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionTypeSourceKey = CAST([IntegrationTransactionTypeId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;DimProcessTypeSourceKey = COALESCE(-1,CAST([ProcessTypeId] AS VARCHAR(50))),&#xA;&#x9;&#x9;&#x9;DimIntegrationTransactionResultSourceKey = CAST([IntegrationTransactionResultId] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[ExternalReferenceNumber] = CAST([ExternalReferenceNumber] AS VARCHAR(50)),&#xA;&#x9;&#x9;&#x9;[MessageText] = CAST([Message] AS VARCHAR(300)),&#xA;&#x9;&#x9;&#x9;IntegrationTx_Amount = [Amount],&#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN [FinancialTransactionId] IS NULL THEN CAST(0 AS BIT)&#xA;&#x9;&#x9;&#x9;&#x9;ELSE CAST (1 AS BIT)&#xA;&#x9;&#x9;&#x9;END AS HasFinancialTx,&#xA;&#x9;&#x9;&#x9;FactFinancialTransactionSourceKey = [FinancialTransactionId]&#xA;&#x9;&#x9;FROM [dbo].[IntegrationTransaction] as it&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([IntegrationTransactionId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="BaseQuery">
@@ -49,7 +49,8 @@
         DTS:DataType="8">SELECT
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 
 FROM
 (
@@ -130,7 +131,8 @@ AS base_query
  SELECT
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 
 FROM
 (
@@ -188,7 +190,8 @@ FROM
  SELECT
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 
 FROM
 (
@@ -246,7 +249,8 @@ FROM
  SELECT
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 
 FROM
 (
@@ -304,7 +308,8 @@ FROM
  SELECT
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 
 FROM
 (
@@ -3231,24 +3236,24 @@ FROM
           <paths>
             <path
               refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output2]"
-              endId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1]"
-              name="Output"
-              startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output3]"
-              endId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5]"
-              name="Output"
-              startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output]"
               endId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 3]"
               name="Output"
               startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output1]"
+              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output3]"
               endId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 2]"
               name="Output"
               startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 2.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output]"
+              endId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 1]"
+              name="Output"
+              startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 1.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output1]"
+              endId="Package\DFT_Load Shared_FactIntegrationTransaction\Union All.Inputs[Union All Input 5]"
+              name="Output"
+              startId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData.Outputs[Output]" />
             <path
               refId="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Union All Output 1]"
               endId="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -3344,7 +3349,7 @@ FROM
     design-time-name="Package\DFT_Load Shared_FactIntegrationTransaction">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="167,42"
           Id="Package\DFT_Load Shared_FactIntegrationTransaction\OLEDB_GetData 3"
@@ -3400,79 +3405,13 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output3]"
-          TopLeft="84,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="451,162"
-              Start="0,0"
-              End="451,154.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,77" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,77"
-                    Point2="0,81"
-                    Point3="4,81" />
-                  <mssgle:LineSegment
-                    End="447,81" />
-                  <mssgle:CubicBezierSegment
-                    Point1="447,81"
-                    Point2="451,81"
-                    Point3="451,85" />
-                  <mssgle:LineSegment
-                    End="451,154.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output2]"
-          TopLeft="307,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="247.166666666667,162"
-              Start="0,0"
-              End="247.166666666667,154.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,91.9518459069021" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,91.9518459069021"
-                    Point2="0,95.9518459069021"
-                    Point3="4,95.9518459069021" />
-                  <mssgle:LineSegment
-                    End="243.166666666667,95.9518459069021" />
-                  <mssgle:CubicBezierSegment
-                    Point1="243.166666666667,95.9518459069021"
-                    Point2="247.166666666667,95.9518459069021"
-                    Point3="247.166666666667,99.9518459069021" />
-                  <mssgle:LineSegment
-                    End="247.166666666667,154.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output1]"
           TopLeft="535,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -3502,11 +3441,13 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output]"
+          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output2]"
           TopLeft="763,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -3536,7 +3477,81 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output1]"
+          TopLeft="84,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="451,162"
+              Start="0,0"
+              End="451,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,77"
+                    Point2="0,81"
+                    Point3="4,81" />
+                  <mssgle:LineSegment
+                    End="447,81" />
+                  <mssgle:CubicBezierSegment
+                    Point1="447,81"
+                    Point2="451,81"
+                    Point3="451,85" />
+                  <mssgle:LineSegment
+                    End="451,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load Shared_FactIntegrationTransaction.Paths[Output]"
+          TopLeft="307,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="247.166666666667,162"
+              Start="0,0"
+              End="247.166666666667,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,91.9518459069021" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,91.9518459069021"
+                    Point2="0,95.9518459069021"
+                    Point3="4,95.9518459069021" />
+                  <mssgle:LineSegment
+                    End="243.166666666667,95.9518459069021" />
+                  <mssgle:CubicBezierSegment
+                    Point1="243.166666666667,95.9518459069021"
+                    Point2="247.166666666667,95.9518459069021"
+                    Point3="247.166666666667,99.9518459069021" />
+                  <mssgle:LineSegment
+                    End="247.166666666667,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

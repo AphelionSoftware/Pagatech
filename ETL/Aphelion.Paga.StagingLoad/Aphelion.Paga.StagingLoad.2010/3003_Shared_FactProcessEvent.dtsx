@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="3003_Shared_FactProcessEvent"
   DTS:PackageType="5"
-  DTS:VersionBuild="204"
-  DTS:VersionGUID="{008BCE8E-1B47-4C1F-BB36-5FCB180D8690}">
+  DTS:VersionBuild="210"
+  DTS:VersionGUID="{CC16A235-433A-4AFC-AA86-B7713E847193}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -41,7 +41,7 @@
       DTS:CreationName=""
       DTS:DTSID="{700315F4-8614-416C-B163-4A66DDB1B97A}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT &#xA;&#x9;base_query.*,&#xA;&#x9;ct.SYS_CHANGE_OPERATION,&#xA;&#x9;ct.SYS_CHANGE_VERSION&#xA;FROM  &#xA;( &#xA;&#x9;SELECT &#xA;&#x9;&#x9;p.ProcessId, &#xA;&#x9;&#x9;p.Amount, &#xA;&#x9;&#x9;p.CompletedTimestamp, &#xA;&#x9;&#x9;p.CreatedDate, &#xA;&#x9;&#x9;p.Fee, &#xA;&#x9;&#x9;p.FinancialTransactionId, &#xA;&#x9;&#x9;p.ForUserId, &#xA;&#x9;&#x9;p.IsShortLived, &#xA;&#x9;&#x9;p.ProcessChannelId, &#xA;&#x9;&#x9;p.ProcessCode, &#xA;&#x9;&#x9;p.ProcessStatusId, &#xA;&#x9;&#x9;p.ProcessTypeId, &#xA;&#x9;&#x9;p.StartedTimestamp, &#xA;&#x9;&#x9;p.ToUserId, &#xA;&#x9;&#x9;p.UpdatedDate, &#xA;&#x9;&#x9;p.UserId, &#xA;&#x9;&#x9;p.AgentCommissionAmount, &#xA;&#x9;&#x9;p.AgentCommissionTypeId, &#xA;&#x9;&#x9;p.StatusMessage,&#xA;&#x9;&#x9;CASE  &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;WHEN&#x9;has_ft.FinancialTransactionId is NOT NULL THEN 1 &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;ELSE 0 &#x9;&#x9;&#xA;&#x9;&#x9;END AS HasFinancialTransaction,&#x9;&#x9; &#x9;&#x9;&#xA;&#x9;&#x9;SourceKey = p.ProcessID &#x9; &#x9;&#xA;&#x9;FROM dbo.Process AS p &#x9;&#xA;&#x9;CROSS APPLY &#x9;&#xA;&#x9;(  &#x9;&#x9;&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;(CAST(ProcessID AS VARCHAR) % 4) AS grp &#x9;&#xA;&#x9;) AS g &#xA;&#x9;OUTER APPLY &#x9;&#xA;&#x9;( &#x9;&#x9;&#xA;&#x9;&#x9;SELECT TOP 1 &#xA;&#x9;&#x9;&#x9;ft.FinancialTransactionId &#x9;&#x9;&#xA;&#x9;&#x9;FROM dbo.FinancialTransaction AS ft &#x9;&#x9;&#xA;&#x9;&#x9;WHERE  &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;ft.ProcessId = p.ProcessID &#x9;&#xA;&#x9;) as has_ft &quot;"
+      DTS:Expression="&quot;SELECT &#xA;&#x9;base_query.*,&#xA;&#x9;ct.SYS_CHANGE_OPERATION,&#xA;&#x9;SYS_CHANGE_VERSION&#xA; = ct.as_of_change_version &#xA;FROM  &#xA;( &#xA;&#x9;SELECT &#xA;&#x9;&#x9;p.ProcessId, &#xA;&#x9;&#x9;p.Amount, &#xA;&#x9;&#x9;p.CompletedTimestamp, &#xA;&#x9;&#x9;p.CreatedDate, &#xA;&#x9;&#x9;p.Fee, &#xA;&#x9;&#x9;p.FinancialTransactionId, &#xA;&#x9;&#x9;p.ForUserId, &#xA;&#x9;&#x9;p.IsShortLived, &#xA;&#x9;&#x9;p.ProcessChannelId, &#xA;&#x9;&#x9;p.ProcessCode, &#xA;&#x9;&#x9;p.ProcessStatusId, &#xA;&#x9;&#x9;p.ProcessTypeId, &#xA;&#x9;&#x9;p.StartedTimestamp, &#xA;&#x9;&#x9;p.ToUserId, &#xA;&#x9;&#x9;p.UpdatedDate, &#xA;&#x9;&#x9;p.UserId, &#xA;&#x9;&#x9;p.AgentCommissionAmount, &#xA;&#x9;&#x9;p.AgentCommissionTypeId, &#xA;&#x9;&#x9;p.StatusMessage,&#xA;&#x9;&#x9;CASE  &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;WHEN&#x9;has_ft.FinancialTransactionId is NOT NULL THEN 1 &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;ELSE 0 &#x9;&#x9;&#xA;&#x9;&#x9;END AS HasFinancialTransaction,&#x9;&#x9; &#x9;&#x9;&#xA;&#x9;&#x9;SourceKey = p.ProcessID &#x9; &#x9;&#xA;&#x9;FROM dbo.Process AS p &#x9;&#xA;&#x9;CROSS APPLY &#x9;&#xA;&#x9;(  &#x9;&#x9;&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;(CAST(ProcessID AS VARCHAR) % 4) AS grp &#x9;&#xA;&#x9;) AS g &#xA;&#x9;OUTER APPLY &#x9;&#xA;&#x9;( &#x9;&#x9;&#xA;&#x9;&#x9;SELECT TOP 1 &#xA;&#x9;&#x9;&#x9;ft.FinancialTransactionId &#x9;&#x9;&#xA;&#x9;&#x9;FROM dbo.FinancialTransaction AS ft &#x9;&#x9;&#xA;&#x9;&#x9;WHERE  &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;ft.ProcessId = p.ProcessID &#x9;&#xA;&#x9;) as has_ft &quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="GetProcess">
@@ -49,7 +49,8 @@
         DTS:DataType="8">SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 FROM  
 ( 
 	SELECT 
@@ -96,16 +97,17 @@ FROM
       DTS:CreationName=""
       DTS:DTSID="{79DB54BC-C79C-407E-988A-5ED8B5E73994}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;*&#xA;,&#xA;ct.SYS_CHANGE_OPERATION,&#xA;&#x9;ct.SYS_CHANGE_VERSION&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;pd0.ProcessDataId,&#xA;&#x9;&#x9;pd0.ProcessId,&#xA;&#x9;&#x9;pd0.Name,&#xA;&#x9;&#x9;pd0.Value,&#xA;&#x9;&#x9;pd0.UpdatedDate,&#xA;&#x9;&#x9;pd0.SourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;[ProcessDataID],&#xA;&#x9;&#x9;&#x9;[ProcessId],&#xA;&#x9;&#x9;&#x9;SourceKey = ProcessDataID,&#xA;&#x9;&#x9;&#x9;Name = CONVERT(VARCHAR(255),[Name]),&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;Value = CONVERT(VARCHAR(8000),[Value]),&#xA;&#x9;&#x9;&#x9;UpdatedDate&#xA;&#x9;&#x9;FROM [dbo].[ProcessData]&#xA;&#x9;) AS pd0&#xA;&#x9;CROSS APPLY (SELECT grp = (CAST(ProcessDataID AS VARCHAR) %&quot; + @[User::Streams]+&quot; ) ) AS g&#xA;&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;base_query.*&#xA;,&#xA;ct.SYS_CHANGE_OPERATION,&#xA;&#x9;SYS_CHANGE_VERSION&#xA; = ct.as_of_change_version &#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;pd0.ProcessDataId,&#xA;&#x9;&#x9;pd0.ProcessId,&#xA;&#x9;&#x9;pd0.Name,&#xA;&#x9;&#x9;pd0.Value,&#xA;&#x9;&#x9;pd0.UpdatedDate,&#xA;&#x9;&#x9;pd0.SourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;[ProcessDataID],&#xA;&#x9;&#x9;&#x9;[ProcessId],&#xA;&#x9;&#x9;&#x9;SourceKey = ProcessDataID,&#xA;&#x9;&#x9;&#x9;Name = CONVERT(VARCHAR(255),[Name]),&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;Value = CONVERT(VARCHAR(8000),[Value]),&#xA;&#x9;&#x9;&#x9;UpdatedDate&#xA;&#x9;&#x9;FROM [dbo].[ProcessData]&#xA;&#x9;) AS pd0&#xA;&#x9;CROSS APPLY (SELECT grp = (CAST(ProcessDataID AS VARCHAR) %&quot; + @[User::Streams]+&quot; ) ) AS g&#xA;&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="GetProcessData">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
-	*
+	base_query.*
 ,
 ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 FROM
 (
 	SELECT
@@ -752,10 +754,11 @@ WHERE ct.as_of_change_version = 0</DTS:VariableValue>
       DTS:ObjectName="PD_grp0">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
-	*
+	base_query.*
 ,
 ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 FROM
 (
 	SELECT
@@ -797,10 +800,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
       DTS:ObjectName="PD_grp1">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
-	*
+	base_query.*
 ,
 ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 FROM
 (
 	SELECT
@@ -842,10 +846,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
       DTS:ObjectName="PD_grp2">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
-	*
+	base_query.*
 ,
 ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 FROM
 (
 	SELECT
@@ -887,10 +892,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
       DTS:ObjectName="PD_grp3">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
-	*
+	base_query.*
 ,
 ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 FROM
 (
 	SELECT
@@ -957,7 +963,8 @@ INNER JOIN paga_change_log.dbo.Process as ct ON 	ct.ProcessId = base_query.Sourc
         DTS:DataType="8">SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 FROM  
 ( 
 	SELECT 
@@ -1016,7 +1023,8 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
         DTS:DataType="8">SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 FROM  
 ( 
 	SELECT 
@@ -1075,7 +1083,8 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
         DTS:DataType="8">SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 FROM  
 ( 
 	SELECT 
@@ -1134,7 +1143,8 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
         DTS:DataType="8">SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	ct.SYS_CHANGE_VERSION
+	SYS_CHANGE_VERSION
+ = ct.as_of_change_version 
 FROM  
 ( 
 	SELECT 
@@ -8068,25 +8078,25 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </components>
           <paths>
             <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
-              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 3]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output]" />
-            <path
               refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output2]"
-              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 2]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 1]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 5]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 3]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
+              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 2]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[Union All Output 1]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -12207,24 +12217,24 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
               <paths>
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output2]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 3]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 2]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 1]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 5]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 3]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 2]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Union All Output 1]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_InsertIntoPrestaging.Inputs[OLE DB Destination Input]"
@@ -12249,362 +12259,6 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             <pipeline
               version="1">
               <components>
-                <component
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData"
-                  componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  name="dc_ChangeData"
-                  usesDispositions="true">
-                  <inputs>
-                    <input
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                      name="OLEDB_GetData_Output_dc_ChangeData">
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Output]"
-                      exclusionGroup="1"
-                      name="Output"
-                      synchronousInputId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="IgnoreFailure"
-                          length="1"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                          name="SYS_CHANGE_OPERATION"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">@[$Package::ChangeOperation]</property>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">@[$Package::ChangeOperation]</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                          dataType="i8"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                          name="SYS_CHANGE_VERSION"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">@[$Package::ChangeVersion]</property>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                          </properties>
-                        </outputColumn>
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Error]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Error"
-                      synchronousInputId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Error].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Error].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1"
-                  componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  name="dc_ChangeData 1"
-                  usesDispositions="true">
-                  <inputs>
-                    <input
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                      name="OLEDB_GetData_Output_dc_ChangeData">
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Output]"
-                      exclusionGroup="1"
-                      name="Output"
-                      synchronousInputId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="IgnoreFailure"
-                          length="1"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                          name="SYS_CHANGE_OPERATION"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">@[$Package::ChangeOperation]</property>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">@[$Package::ChangeOperation]</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                          dataType="i8"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                          name="SYS_CHANGE_VERSION"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">@[$Package::ChangeVersion]</property>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                          </properties>
-                        </outputColumn>
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Error]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Error"
-                      synchronousInputId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Error].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Error].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Error].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Error].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2"
-                  componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  name="dc_ChangeData 2"
-                  usesDispositions="true">
-                  <inputs>
-                    <input
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                      name="OLEDB_GetData_Output_dc_ChangeData">
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Output]"
-                      exclusionGroup="1"
-                      name="Output"
-                      synchronousInputId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="IgnoreFailure"
-                          length="1"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                          name="SYS_CHANGE_OPERATION"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">@[$Package::ChangeOperation]</property>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">@[$Package::ChangeOperation]</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                          dataType="i8"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                          name="SYS_CHANGE_VERSION"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">@[$Package::ChangeVersion]</property>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                          </properties>
-                        </outputColumn>
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Error]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Error"
-                      synchronousInputId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Error].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Error].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Error].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Error].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3"
-                  componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  name="dc_ChangeData 3"
-                  usesDispositions="true">
-                  <inputs>
-                    <input
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                      name="OLEDB_GetData_Output_dc_ChangeData">
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Output]"
-                      exclusionGroup="1"
-                      name="Output"
-                      synchronousInputId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="IgnoreFailure"
-                          length="1"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
-                          name="SYS_CHANGE_OPERATION"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">@[$Package::ChangeOperation]</property>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">@[$Package::ChangeOperation]</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                          dataType="i8"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
-                          name="SYS_CHANGE_VERSION"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">@[$Package::ChangeVersion]</property>
-                            <property
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                          </properties>
-                        </outputColumn>
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Error]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Error"
-                      synchronousInputId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Error].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Error].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Error].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Error].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
                 <component
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_InsertIntoPreStaging"
                   componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
@@ -12857,15 +12511,6 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       name="OLE DB Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].Columns[SourceKey]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].ExternalColumns[SourceKey]"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].Columns[SourceKey]"
-                          name="SourceKey"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].Columns[ProcessDataId]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
@@ -12914,6 +12559,26 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
                           name="UpdatedDate"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          length="1"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_OPERATION]"
+                          name="SYS_CHANGE_OPERATION"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]"
+                          name="SYS_CHANGE_VERSION"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -12945,6 +12610,16 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
                           dataType="dbTimeStamp"
                           name="UpdatedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="SYS_CHANGE_OPERATION" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          name="SYS_CHANGE_VERSION" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -12982,10 +12657,17 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
                           name="UpdatedDate" />
                         <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Error Output].Columns[SourceKey]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Error Output].Columns[SourceKey]"
-                          name="SourceKey" />
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
+                          name="SYS_CHANGE_OPERATION" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_VERSION]"
+                          name="SYS_CHANGE_VERSION" />
                         <outputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -13066,15 +12748,6 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       name="OLE DB Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].Columns[SourceKey]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].ExternalColumns[SourceKey]"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].Columns[SourceKey]"
-                          name="SourceKey"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].Columns[ProcessDataId]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
@@ -13123,6 +12796,26 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
                           name="UpdatedDate"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          length="1"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_OPERATION]"
+                          name="SYS_CHANGE_OPERATION"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]"
+                          name="SYS_CHANGE_VERSION"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -13154,6 +12847,16 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
                           dataType="dbTimeStamp"
                           name="UpdatedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="SYS_CHANGE_OPERATION" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          name="SYS_CHANGE_VERSION" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -13191,10 +12894,17 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
                           name="UpdatedDate" />
                         <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Error Output].Columns[SourceKey]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Error Output].Columns[SourceKey]"
-                          name="SourceKey" />
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
+                          name="SYS_CHANGE_OPERATION" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_VERSION]"
+                          name="SYS_CHANGE_VERSION" />
                         <outputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -13275,15 +12985,6 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       name="OLE DB Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[SourceKey]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].ExternalColumns[SourceKey]"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[SourceKey]"
-                          name="SourceKey"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[ProcessDataId]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
@@ -13332,6 +13033,26 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
                           name="UpdatedDate"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          length="1"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_OPERATION]"
+                          name="SYS_CHANGE_OPERATION"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]"
+                          name="SYS_CHANGE_VERSION"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -13363,6 +13084,16 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
                           dataType="dbTimeStamp"
                           name="UpdatedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="SYS_CHANGE_OPERATION" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          name="SYS_CHANGE_VERSION" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -13400,10 +13131,17 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
                           name="UpdatedDate" />
                         <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Error Output].Columns[SourceKey]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Error Output].Columns[SourceKey]"
-                          name="SourceKey" />
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
+                          name="SYS_CHANGE_OPERATION" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_VERSION]"
+                          name="SYS_CHANGE_VERSION" />
                         <outputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -13484,15 +13222,6 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       name="OLE DB Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[SourceKey]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].ExternalColumns[SourceKey]"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[SourceKey]"
-                          name="SourceKey"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[ProcessDataId]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
@@ -13541,6 +13270,26 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
                           name="UpdatedDate"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          length="1"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_OPERATION]"
+                          name="SYS_CHANGE_OPERATION"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]"
+                          name="SYS_CHANGE_VERSION"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -13572,6 +13321,16 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
                           dataType="dbTimeStamp"
                           name="UpdatedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="SYS_CHANGE_OPERATION" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          name="SYS_CHANGE_VERSION" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -13609,10 +13368,17 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
                           name="UpdatedDate" />
                         <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Error Output].Columns[SourceKey]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Error Output].Columns[SourceKey]"
-                          name="SourceKey" />
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
+                          name="SYS_CHANGE_OPERATION" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_VERSION]"
+                          dataType="i8"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_VERSION]"
+                          name="SYS_CHANGE_VERSION" />
                         <outputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -13639,22 +13405,115 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                   version="1">
                   <inputs>
                     <input
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1]"
-                      name="Union All Input 1">
+                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5]"
+                      hasSideEffects="true"
+                      name="Union All Input 5">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1].Columns[SourceKey]"
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5].Columns[ProcessDataId]"
                           cachedDataType="i4"
-                          cachedName="SourceKey"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].Columns[SourceKey]">
+                          cachedName="ProcessDataId"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[ProcessDataId]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[SourceKey]}</property>
+                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[ProcessDataId]}</property>
                           </properties>
                         </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5].Columns[ProcessId]"
+                          cachedDataType="i4"
+                          cachedName="ProcessId"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[ProcessId]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[ProcessId]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5].Columns[Name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="Name"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[Name]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[Name]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5].Columns[Value]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8000"
+                          cachedName="Value"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[Value]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[Value]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5].Columns[UpdatedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="UpdatedDate"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[UpdatedDate]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[UpdatedDate]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5].Columns[SYS_CHANGE_OPERATION]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="SYS_CHANGE_OPERATION"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_OPERATION]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[SYS_CHANGE_OPERATION]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5].Columns[SYS_CHANGE_VERSION]"
+                          cachedDataType="i8"
+                          cachedName="SYS_CHANGE_VERSION"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1]"
+                      hasSideEffects="true"
+                      name="Union All Input 1">
+                      <inputColumns>
                         <inputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1].Columns[ProcessDataId]"
                           cachedDataType="i4"
@@ -13730,7 +13589,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           cachedDataType="str"
                           cachedLength="1"
                           cachedName="SYS_CHANGE_OPERATION"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_OPERATION]">
                           <properties>
                             <property
                               containsID="true"
@@ -13743,7 +13602,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1].Columns[SYS_CHANGE_VERSION]"
                           cachedDataType="i8"
                           cachedName="SYS_CHANGE_VERSION"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]">
                           <properties>
                             <property
                               containsID="true"
@@ -13760,47 +13619,6 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       hasSideEffects="true"
                       name="Union All Input 2">
                       <inputColumns>
-                        <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2].Columns[SourceKey]"
-                          cachedDataType="i4"
-                          cachedName="SourceKey"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].Columns[SourceKey]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[SourceKey]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2].Columns[SYS_CHANGE_OPERATION]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="1"
-                          cachedName="SYS_CHANGE_OPERATION"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[SYS_CHANGE_OPERATION]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2].Columns[SYS_CHANGE_VERSION]"
-                          cachedDataType="i8"
-                          cachedName="SYS_CHANGE_VERSION"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
-                          </properties>
-                        </inputColumn>
                         <inputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2].Columns[ProcessDataId]"
                           cachedDataType="i4"
@@ -13870,34 +13688,13 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                               name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[UpdatedDate]}</property>
                           </properties>
                         </inputColumn>
-                      </inputColumns>
-                      <externalMetadataColumns />
-                    </input>
-                    <input
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3]"
-                      hasSideEffects="true"
-                      name="Union All Input 3">
-                      <inputColumns>
                         <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3].Columns[SourceKey]"
-                          cachedDataType="i4"
-                          cachedName="SourceKey"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[SourceKey]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[SourceKey]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3].Columns[SYS_CHANGE_OPERATION]"
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2].Columns[SYS_CHANGE_OPERATION]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="1"
                           cachedName="SYS_CHANGE_OPERATION"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_OPERATION]">
                           <properties>
                             <property
                               containsID="true"
@@ -13907,10 +13704,10 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3].Columns[SYS_CHANGE_VERSION]"
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2].Columns[SYS_CHANGE_VERSION]"
                           cachedDataType="i8"
                           cachedName="SYS_CHANGE_VERSION"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]">
                           <properties>
                             <property
                               containsID="true"
@@ -13919,6 +13716,14 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                               name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
                           </properties>
                         </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3]"
+                      hasSideEffects="true"
+                      name="Union All Input 3">
+                      <inputColumns>
                         <inputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3].Columns[ProcessDataId]"
                           cachedDataType="i4"
@@ -13988,34 +13793,13 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                               name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[UpdatedDate]}</property>
                           </properties>
                         </inputColumn>
-                      </inputColumns>
-                      <externalMetadataColumns />
-                    </input>
-                    <input
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 4]"
-                      hasSideEffects="true"
-                      name="Union All Input 4">
-                      <inputColumns>
                         <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 4].Columns[SourceKey]"
-                          cachedDataType="i4"
-                          cachedName="SourceKey"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[SourceKey]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[SourceKey]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 4].Columns[SYS_CHANGE_OPERATION]"
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3].Columns[SYS_CHANGE_OPERATION]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="1"
                           cachedName="SYS_CHANGE_OPERATION"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]">
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_OPERATION]">
                           <properties>
                             <property
                               containsID="true"
@@ -14025,10 +13809,10 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 4].Columns[SYS_CHANGE_VERSION]"
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3].Columns[SYS_CHANGE_VERSION]"
                           cachedDataType="i8"
                           cachedName="SYS_CHANGE_VERSION"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Output].Columns[SYS_CHANGE_VERSION]">
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]">
                           <properties>
                             <property
                               containsID="true"
@@ -14037,83 +13821,14 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                               name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[SYS_CHANGE_VERSION]}</property>
                           </properties>
                         </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 4].Columns[ProcessDataId]"
-                          cachedDataType="i4"
-                          cachedName="ProcessDataId"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[ProcessDataId]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[ProcessDataId]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 4].Columns[ProcessId]"
-                          cachedDataType="i4"
-                          cachedName="ProcessId"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[ProcessId]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[ProcessId]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 4].Columns[Name]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="255"
-                          cachedName="Name"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[Name]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[Name]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 4].Columns[Value]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="8000"
-                          cachedName="Value"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[Value]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[Value]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 4].Columns[UpdatedDate]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="UpdatedDate"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output].Columns[UpdatedDate]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[UpdatedDate]}</property>
-                          </properties>
-                        </inputColumn>
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
                     <input
-                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5]"
+                      refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 4]"
                       dangling="true"
                       hasSideEffects="true"
-                      name="Union All Input 5">
+                      name="Union All Input 4">
                       <externalMetadataColumns />
                     </input>
                   </inputs>
@@ -14122,11 +13837,6 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1]"
                       name="Union All Output 1">
                       <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[SourceKey]"
-                          dataType="i4"
-                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[SourceKey]"
-                          name="SourceKey" />
                         <outputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Outputs[Union All Output 1].Columns[ProcessDataId]"
                           dataType="i4"
@@ -14176,45 +13886,25 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
               </components>
               <paths>
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
-                <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output]" />
                 <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
+                <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Inputs[OLEDB_GetData_Output_dc_ChangeData]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output2]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1]"
-                  name="Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1.Outputs[Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output3]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2]"
-                  name="Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData.Outputs[Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3]"
-                  name="Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3.Outputs[Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output1]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 4]"
-                  name="Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2.Outputs[Output]" />
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Union All Output 1]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_InsertIntoPreStaging.Inputs[OLE DB Destination Input]"
@@ -14316,7 +14006,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}"
-              SQLTask:SqlStatementSource="CREATE UNIQUE CLUSTERED INDEX ix_Process ON [dbo].[Process]&#xA;(&#xA;&#x9;[ProcessId] ASC,&#xA;&#x9;SYS_CHANGE_VERSION&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="CREATE UNIQUE CLUSTERED INDEX ix_Process ON [dbo].[Process]&#xA;(&#xA;&#x9;[ProcessId] ASC,&#xA;&#x9;SYS_CHANGE_VERSION,&#xA;&#x9;SYS_CHANGE_OPERATION&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -14657,123 +14347,33 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
     design-time-name="Package\DFT_Load_Shared_FactProcessEvent">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="223,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent"
-          TopLeft="5.5,5.5" />
-        <NodeLayout
-          Size="223,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2"
-          TopLeft="289.5,5.5" />
-        <NodeLayout
-          Size="201,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_InsertIntoStaging"
-          TopLeft="584.5,209.5" />
+          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1"
+          TopLeft="573.5,5.49999999999989" />
         <NodeLayout
           Size="182,42"
           Id="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent"
           TopLeft="594,107.5" />
         <NodeLayout
           Size="223,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1"
-          TopLeft="573.5,5.49999999999989" />
+          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2"
+          TopLeft="289.5,5.5" />
         <NodeLayout
           Size="223,42"
           Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3"
           TopLeft="857.5,5.49999999999989" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Union All Output 1]"
-          TopLeft="685,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
-          TopLeft="117,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="515.8,59.9999999999999"
-              Start="0,0"
-              End="515.8,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.0647149460708" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.0647149460708"
-                    Point2="0,42.0647149460708"
-                    Point3="4,42.0647149460708" />
-                  <mssgle:LineSegment
-                    End="511.8,42.0647149460708" />
-                  <mssgle:CubicBezierSegment
-                    Point1="511.8,42.0647149460708"
-                    Point2="515.8,42.0647149460708"
-                    Point3="515.8,46.0647149460708" />
-                  <mssgle:LineSegment
-                    End="515.8,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="201,42"
+          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_InsertIntoStaging"
+          TopLeft="584.5,209.5" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent"
+          TopLeft="5.5,5.5" />
         <EdgeLayout
           Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
-          TopLeft="685,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="17.4,60"
-              Start="0,0"
-              End="17.4,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.1713244228432" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.1713244228432"
-                    Point2="0,33.1713244228432"
-                    Point3="4,33.1713244228432" />
-                  <mssgle:LineSegment
-                    End="13.4,33.1713244228432" />
-                  <mssgle:CubicBezierSegment
-                    Point1="13.4,33.1713244228432"
-                    Point2="17.4,33.1713244228432"
-                    Point3="17.4,37.1713244228432" />
-                  <mssgle:LineSegment
-                    End="17.4,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output2]"
           TopLeft="401,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14803,11 +14403,13 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
           TopLeft="969,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14837,14 +14439,112 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Union All Output 1]"
+          TopLeft="685,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
+          TopLeft="117,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="515.8,59.9999999999999"
+              Start="0,0"
+              End="515.8,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.0647149460708" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.0647149460708"
+                    Point2="0,42.0647149460708"
+                    Point3="4,42.0647149460708" />
+                  <mssgle:LineSegment
+                    End="511.8,42.0647149460708" />
+                  <mssgle:CubicBezierSegment
+                    Point1="511.8,42.0647149460708"
+                    Point2="515.8,42.0647149460708"
+                    Point3="515.8,46.0647149460708" />
+                  <mssgle:LineSegment
+                    End="515.8,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output2]"
+          TopLeft="685,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.4,60"
+              Start="0,0"
+              End="17.4,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1713244228432" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.1713244228432"
+                    Point2="0,33.1713244228432"
+                    Point3="4,33.1713244228432" />
+                  <mssgle:LineSegment
+                    End="13.4,33.1713244228432" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.4,33.1713244228432"
+                    Point2="17.4,33.1713244228432"
+                    Point3="17.4,37.1713244228432" />
+                  <mssgle:LineSegment
+                    End="17.4,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent">
+    design-time-name="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -14853,6 +14553,14 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -14873,15 +14581,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3">
+    design-time-name="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -14954,7 +14654,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
           TopLeft="87.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14990,7 +14690,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output2]"
           TopLeft="312.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15026,7 +14726,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
           TopLeft="537.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15062,7 +14762,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output2]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
           TopLeft="762.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15149,15 +14849,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
     design-time-name="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="217,42"
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_InsertIntoPreStaging"
           TopLeft="429,311.5" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 1"
-          TopLeft="244,107.5" />
         <NodeLayout
           Size="164,42"
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1"
@@ -15175,21 +14871,9 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData"
           TopLeft="458.5,209.5" />
         <NodeLayout
-          Size="155,42"
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 2"
-          TopLeft="28,107.5" />
-        <NodeLayout
           Size="164,42"
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0"
           TopLeft="230.5,5.49999999999989" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData 3"
-          TopLeft="676,107.5" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\dc_ChangeData"
-          TopLeft="460,107.5" />
         <EdgeLayout
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Union All Output 1]"
           TopLeft="537.5,251.5">
@@ -15209,285 +14893,143 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output1]"
-          TopLeft="105.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="387,59.9999999999999"
-              Start="0,0"
-              End="387,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.9469026548672" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.9469026548672"
-                    Point2="0,41.9469026548672"
-                    Point3="4,41.9469026548672" />
-                  <mssgle:LineSegment
-                    End="383,41.9469026548672" />
-                  <mssgle:CubicBezierSegment
-                    Point1="383,41.9469026548672"
-                    Point2="387,41.9469026548672"
-                    Point3="387,45.9469026548672" />
-                  <mssgle:LineSegment
-                    End="387,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output]"
-          TopLeft="753.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-171,60"
-              Start="0,0"
-              End="-171,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.9469026548673" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.9469026548673"
-                    Point2="0,41.9469026548673"
-                    Point3="-4,41.9469026548673" />
-                  <mssgle:LineSegment
-                    End="-167,41.9469026548673" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-167,41.9469026548673"
-                    Point2="-171,41.9469026548673"
-                    Point3="-171,45.9469026548673" />
-                  <mssgle:LineSegment
-                    End="-171,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output3]"
-          TopLeft="537.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="15,60"
-              Start="0,0"
-              End="15,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.1468531468531" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.1468531468531"
-                    Point2="0,33.1468531468531"
-                    Point3="4,33.1468531468531" />
-                  <mssgle:LineSegment
-                    End="11,33.1468531468531" />
-                  <mssgle:CubicBezierSegment
-                    Point1="11,33.1468531468531"
-                    Point2="15,33.1468531468531"
-                    Point3="15,37.1468531468531" />
-                  <mssgle:LineSegment
-                    End="15,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Output2]"
-          TopLeft="321.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="201,60"
-              Start="0,0"
-              End="201,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.1468531468531" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.1468531468531"
-                    Point2="0,33.1468531468531"
-                    Point3="4,33.1468531468531" />
-                  <mssgle:LineSegment
-                    End="197,33.1468531468531" />
-                  <mssgle:CubicBezierSegment
-                    Point1="197,33.1468531468531"
-                    Point2="201,33.1468531468531"
-                    Point3="201,37.1468531468531" />
-                  <mssgle:LineSegment
-                    End="201,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
-          TopLeft="87.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="18,60"
-              Start="0,0"
-              End="18,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="4,30" />
-                  <mssgle:LineSegment
-                    End="14,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="14,30"
-                    Point2="18,30"
-                    Point3="18,34" />
-                  <mssgle:LineSegment
-                    End="18,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
-          TopLeft="762.5,47.4999999999999">
+          TopLeft="87.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9,60"
+              EndConnector="450,162"
               Start="0,0"
-              End="-9,52.5">
+              End="450,154.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
+                    End="0,77" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
+                    Point1="0,77"
+                    Point2="0,81"
+                    Point3="4,81" />
                   <mssgle:LineSegment
-                    End="-5,30" />
+                    End="446,81" />
                   <mssgle:CubicBezierSegment
-                    Point1="-5,30"
-                    Point2="-9,30"
-                    Point3="-9,34" />
+                    Point1="446,81"
+                    Point2="450,81"
+                    Point3="450,85" />
                   <mssgle:LineSegment
-                    End="-9,52.5" />
+                    End="450,154.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
-          TopLeft="537.5,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
           TopLeft="312.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="9,60"
+              EndConnector="250,162"
               Start="0,0"
-              End="9,52.5">
+              End="250,154.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
+                    End="0,92.2255639097745" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="4,30" />
+                    Point1="0,92.2255639097745"
+                    Point2="0,96.2255639097745"
+                    Point3="4,96.2255639097745" />
                   <mssgle:LineSegment
-                    End="5,30" />
+                    End="246,96.2255639097745" />
                   <mssgle:CubicBezierSegment
-                    Point1="5,30"
-                    Point2="9,30"
-                    Point3="9,34" />
+                    Point1="246,96.2255639097745"
+                    Point2="250,96.2255639097745"
+                    Point3="250,100.225563909774" />
                   <mssgle:LineSegment
-                    End="9,52.5" />
+                    End="250,154.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
+          TopLeft="537.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="37.5,162"
+              Start="0,0"
+              End="37.5,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,102.207468879668" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,102.207468879668"
+                    Point2="0,106.207468879668"
+                    Point3="4,106.207468879668" />
+                  <mssgle:LineSegment
+                    End="33.5,106.207468879668" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33.5,106.207468879668"
+                    Point2="37.5,106.207468879668"
+                    Point3="37.5,110.207468879668" />
+                  <mssgle:LineSegment
+                    End="37.5,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
+          TopLeft="762.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-180,162"
+              Start="0,0"
+              End="-180,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,109.256637168142" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,109.256637168142"
+                    Point2="0,113.256637168142"
+                    Point3="-4,113.256637168142" />
+                  <mssgle:LineSegment
+                    End="-176,113.256637168142" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-176,113.256637168142"
+                    Point2="-180,113.256637168142"
+                    Point3="-180,117.256637168142" />
+                  <mssgle:LineSegment
+                    End="-180,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
