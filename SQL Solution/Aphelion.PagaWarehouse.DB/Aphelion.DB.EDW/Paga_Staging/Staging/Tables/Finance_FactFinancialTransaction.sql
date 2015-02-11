@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Finance_FactFinancialTransaction] (
+CREATE TABLE [Staging].[Finance_FactFinancialTransaction] (
     [Cancelled]                        INT             NULL,
     [ExchangeRate]                     DECIMAL (16, 4) NULL,
     [ExternalReferenceNumber]          VARCHAR (100)   NULL,
@@ -47,6 +47,9 @@
 
 
 
-GO
 
+
+GO
+CREATE UNIQUE CLUSTERED INDEX [ix_Finance_FactFinancialTransaction]
+    ON [Staging].[Finance_FactFinancialTransaction]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

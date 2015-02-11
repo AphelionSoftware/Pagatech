@@ -76,6 +76,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.Process', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactProcessEvent';
 
@@ -87,7 +89,9 @@ EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'12', @level0type
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'3200', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactProcessEvent';
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'3000', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactProcessEvent';
+
+
 
 
 

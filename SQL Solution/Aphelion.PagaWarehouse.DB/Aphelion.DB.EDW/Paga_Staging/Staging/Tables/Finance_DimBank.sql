@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Finance_DimBank] (
+CREATE TABLE [Staging].[Finance_DimBank] (
     [BankAccountLinkType]      VARCHAR (255) NOT NULL,
     [Name]                     VARCHAR (255) NOT NULL,
     [SourceKey]                INT           NOT NULL,
@@ -26,6 +26,9 @@
 
 
 
-GO
 
+
+GO
+CREATE UNIQUE CLUSTERED INDEX [ix_Finance_DimBank]
+    ON [Staging].[Finance_DimBank]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

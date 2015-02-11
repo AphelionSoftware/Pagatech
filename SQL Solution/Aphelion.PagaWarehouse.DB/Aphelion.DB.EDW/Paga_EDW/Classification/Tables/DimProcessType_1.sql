@@ -18,6 +18,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.ProcessType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessType';
 
@@ -39,19 +41,30 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'ProcessTypeID', 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--DimProcessType	
-SELECT 		
-	SourceKey, 		
-	Name= SourceKey, 		
-	DescriptionText 		
-FROM 		
-( 		
-	SELECT 			
-		pt.ProcessTypeID AS SourceKey,  			
-		CONVERT(VARCHAR(255),pt.Description) AS Name,
-		CONVERT(VARCHAR(1000),pt.description) AS DescriptionText 		
-	FROM dbo.ProcessType AS pt 			
-) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessType';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT   
+	ct.SYS_CHANGE_OPERATION, 
+	SYS_CHANGE_VERSION = ct.as_of_change_version,	
+	SourceKey , 	
+	base_query.name
+ 
+FROM  
+( 	
+	SELECT 		
+		SourceKey, 		
+		Name= SourceKey, 		
+		DescriptionText 		
+	FROM 		
+	( 		
+		SELECT 			
+			pt.ProcessTypeID AS SourceKey,  			
+			CONVERT(VARCHAR(255),pt.Description) AS Name, 			
+			CONVERT(VARCHAR(1000),pt.description) AS DescriptionText 		
+		FROM dbo.ProcessType AS pt 			
+	) AS bq 
+) as base_query
+', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessType';
+
+
 
 
 

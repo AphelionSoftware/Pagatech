@@ -53,6 +53,8 @@
 
 
 
+
+
 GO
 CREATE NONCLUSTERED INDEX [ix_FactFinancialTransaction_TxDate_NotCancelled]
     ON [Finance].[FactFinancialTransaction]([DimFinancialTxDateID] ASC, [Cancelled] ASC)
@@ -78,7 +80,9 @@ EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'9', @level0type 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'3000', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'3100', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
+
+
 
 
 GO

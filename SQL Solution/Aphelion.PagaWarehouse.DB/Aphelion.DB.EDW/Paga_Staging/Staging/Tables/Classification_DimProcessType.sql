@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Classification_DimProcessType] (
+CREATE TABLE [Staging].[Classification_DimProcessType] (
     [DescriptionText]      VARCHAR (1000) NULL,
     [Name]                 VARCHAR (255)  NOT NULL,
     [SourceKey]            VARCHAR (255)  NOT NULL,
@@ -25,6 +25,9 @@
 
 
 
-GO
 
+
+GO
+CREATE UNIQUE CLUSTERED INDEX [ix_Classification_DimProcessType]
+    ON [Staging].[Classification_DimProcessType]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

@@ -24,6 +24,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialAccountType_SourceKey]
     ON [Finance].[DimFinancialAccountType]([SourceKey] ASC);
@@ -54,7 +56,9 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialAccount
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	SourceKey , 	base_query.name, 	base_query.TextDescription, 	base_query.DimGLCodeSourceKey FROM  ( 	SELECT DISTINCT 		SourceKey = fat.FinancialAccountTypeId, 		Name = fat.FinancialAccountTypeId, 		TextDescription = [Description], 		DimGLCodeSourceKey = fa.AccountCodeId 	FROM dbo.FinancialAccountType as fat 	INNER JOIN dbo.FinancialAccount AS fa ON 		fat.FinancialAccountTypeId = fa.FinancialAccountTypeId ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountType';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey , 	base_query.name, 	base_query.TextDescription, 	base_query.DimGLCodeSourceKey FROM  ( 	SELECT DISTINCT 		SourceKey = fat.FinancialAccountTypeId, 		Name = fat.FinancialAccountTypeId, 		TextDescription = [Description], 		DimGLCodeSourceKey = fa.AccountCodeId 	FROM dbo.FinancialAccountType as fat 	INNER JOIN dbo.FinancialAccount AS fa ON 		fat.FinancialAccountTypeId = fa.FinancialAccountTypeId ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccountType';
+
+
 
 
 

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Location_DimCity] (
+CREATE TABLE [Staging].[Location_DimCity] (
     [Name]                            VARCHAR (255) NOT NULL,
     [PostalCode]                      INT           NOT NULL,
     [SourceKey]                       INT           NOT NULL,
@@ -24,6 +24,9 @@
 
 
 
-GO
 
+
+GO
+CREATE UNIQUE CLUSTERED INDEX [ix_Location_DimCity]
+    ON [Staging].[Location_DimCity]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

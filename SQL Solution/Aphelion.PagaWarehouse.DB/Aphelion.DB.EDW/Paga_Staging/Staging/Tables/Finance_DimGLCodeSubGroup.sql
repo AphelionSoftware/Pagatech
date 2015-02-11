@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Finance_DimGLCodeSubGroup] (
+CREATE TABLE [Staging].[Finance_DimGLCodeSubGroup] (
     [GLCodeRange]             VARCHAR (255) NULL,
     [Name]                    VARCHAR (255) NOT NULL,
     [SourceKey]               INT           NOT NULL,
@@ -24,6 +24,9 @@
 
 
 
-GO
 
+
+GO
+CREATE UNIQUE CLUSTERED INDEX [ix_Finance_DimGLCodeSubGroup]
+    ON [Staging].[Finance_DimGLCodeSubGroup]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

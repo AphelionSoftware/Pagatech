@@ -5,8 +5,11 @@ BEGIN
 	SET NOCOUNT ON;
 
    
+	TRUNCATE TABLE [dbo].[FinancialTransaction];
 	TRUNCATE TABLE [dbo].[Process];
-	TRUNCATE TABLE [dbo].[ProcessDataPivot];
+	TRUNCATE TABLE [dbo].[ProcessData];
+	TRUNCATE TABLE [dbo].[ReversalChain];
+	TRUNCATE TABLE [dbo].[Reversals];
 	TRUNCATE TABLE [Staging].[Classification_DimAgentCommissionType];
 	TRUNCATE TABLE [Staging].[Classification_DimBankingStatus];
 	TRUNCATE TABLE [Staging].[Classification_DimBusinessType];

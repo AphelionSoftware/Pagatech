@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Finance_DimCurrency] (
+CREATE TABLE [Staging].[Finance_DimCurrency] (
     [ISOCode]              CHAR (3)      NULL,
     [Name]                 VARCHAR (255) NOT NULL,
     [SourceKey]            VARCHAR (255) NOT NULL,
@@ -24,6 +24,9 @@
 
 
 
-GO
 
+
+GO
+CREATE UNIQUE CLUSTERED INDEX [ix_Finance_DimCurrency]
+    ON [Staging].[Finance_DimCurrency]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

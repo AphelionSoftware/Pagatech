@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Location_DimGeoZone] (
+CREATE TABLE [Staging].[Location_DimGeoZone] (
     [Code]                 VARCHAR (50)  NOT NULL,
     [Name]                 VARCHAR (255) NOT NULL,
     [SourceKey]            INT           NOT NULL,
@@ -24,6 +24,9 @@
 
 
 
-GO
 
+
+GO
+CREATE UNIQUE CLUSTERED INDEX [ix_Location_DimGeoZone]
+    ON [Staging].[Location_DimGeoZone]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

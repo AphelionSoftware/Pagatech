@@ -9,3 +9,10 @@
     [SYS_CHANGE_OPERATION] CHAR (1)       DEFAULT ('I') NOT NULL
 );
 
+
+
+
+GO
+CREATE UNIQUE CLUSTERED INDEX [ix_ProcessData]
+    ON [dbo].[ProcessData]([ProcessID] ASC, [Name] ASC, [UpdatedDate] ASC, [row_id] ASC);
+

@@ -42,6 +42,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'DeltaHash';
 
@@ -79,40 +81,22 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'OrganizationId',
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	
-	SourceKey, 	
-	DisplayName,  	
-	Name,  
-	OrganizationCode,  	
-	RcName,  	
-	ReferenceNumber,  	
-	TaxIDNumber,  	
-	TextDesciption,  	
-	VATCertificationNumber,  	
-	WebsiteURL,  	
-	DimBusinessTypeSourceKey,  	
-	DimPagaAccountSourceKey,  	
-	DimOrganizationSubscriptionStatusSourceKey,  	
-	DimOrganizationVerificationStatusSourceKey 
-FROM  
-( 	
-	SELECT  		
-		SourceKey = o.OrganizationId, 		
-		DisplayName = CONVERT(VARCHAR(100),o.DisplayName),  		
-		Name = CONVERT(VARCHAR(255),o.Name),  		
-		OrganizationCode = o.Code,  		
-		o.RcName,  		
-		o.ReferenceNumber,  		
-		o.TaxIDNumber,  		
-		TextDesciption = CONVERT(VARCHAR(1000), o.Description), 		
-		o.VATCertificationNumber,  		
-		o.WebsiteURL,  		
-		DimBusinessTypeSourceKey = COALESCE(o.BusinessTypeId, ''UNKNOWN''),  		
-		DimPagaAccountSourceKey = o.PagaAccountId,  		
-		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId,  		
-		DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId
-	FROM dbo.Organization AS o 	
-) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	SourceKey, 	DisplayName,  	Name,  	OrganizationCode,  	RcName,  	ReferenceNumber,  	TaxIDNumber,  	TextDesciption,  	VATCertificationNumber,  	WebsiteURL,  	
+DimBusinessTypeSourceKey,  	DimPagaAccountSourceKey,  	DimOrganizationSubscriptionStatusSourceKey,  	DimOrganizationVerificationStatusSourceKey, 	DimMerchantCategorySourceKey, 	
+ ct.SYS_CHANGE_OPERATION, 	SYS_CHANGE_VERSION = ct.as_of_change_version 	 
+FROM  ( 	SELECT  		SourceKey = o.OrganizationId, 		DisplayName = CONVERT(VARCHAR(100),o.DisplayName),  		
+Name = CONVERT(VARCHAR(255),o.Name),  		OrganizationCode = o.Code,  		o.RcName,  		o.ReferenceNumber,  		o.TaxIDNumber,  		
+TextDesciption = CONVERT(VARCHAR(1000), o.Description), 		o.VATCertificationNumber,  		o.WebsiteURL,  		
+DimBusinessTypeSourceKey = COALESCE(o.BusinessTypeId, ''UNKNOWN''),  		
+DimPagaAccountSourceKey = o.PagaAccountId,  		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId,  		
+DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId, 		
+DimMerchantCategorySourceKey = CONVERT(VARCHAR(50), COALESCE(omc.MerchantCategoryId, ''UNKNOWN''))		
+	
+FROM dbo.Organization AS o 	LEFT JOIN dbo.OrganizationMerchantCategory AS omc ON 		
+o.OrganizationId = omc.OrganizationId 	 ) 
+AS base_query ', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+
+
 
 
 

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Finance_DimFinancialHoldingAccount] (
+CREATE TABLE [Staging].[Finance_DimFinancialHoldingAccount] (
     [AccountNumber]        VARCHAR (20)    NULL,
     [Name]                 VARCHAR (255)   NOT NULL,
     [OpeningBalance]       DECIMAL (18, 2) NULL,
@@ -26,6 +26,9 @@
 
 
 
-GO
 
+
+GO
+CREATE UNIQUE CLUSTERED INDEX [ix_Finance_DimFinancialHoldingAccount]
+    ON [Staging].[Finance_DimFinancialHoldingAccount]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
 

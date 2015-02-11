@@ -53,6 +53,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialAccount_SourceKey]
     ON [Finance].[DimFinancialAccount]([SourceKey] ASC, [DimFinancialAccountID] ASC);
@@ -90,8 +92,7 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialAccount
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--FinancialAccount
-WITH cte AS 
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'WITH cte AS 
 (  	
 	SELECT  		
 		SourceKey = fa.FinancialAccountId, 		
@@ -104,10 +105,11 @@ WITH cte AS
 		DimCurrencySourceKey =  COALESCE(fa.CurrencyId, ''UNKNOWN''), 		
 		DimFinancialAccountTypeSourceKey = fa.FinancialAccountTypeId, 		
 		DimHoldingFinancialAccountSourceKey = fa.FinancialAccountId, 		
-		1 AS OrgLevel,
-		fa.PagaAccountId	
+		fa.PagaAccountId, 		
+		1 AS OrgLevel 	
 	FROM dbo.FinancialAccount AS fa  	
-	WHERE  		fa.HoldingFinancialAccountId IS NULL 	
+	WHERE  		
+		fa.HoldingFinancialAccountId IS NULL 	
 	UNION ALL 	
 	SELECT  		
 		SourceKey = fa1.FinancialAccountId, 		
@@ -120,14 +122,16 @@ WITH cte AS
 		DimCurrencySourceKey =  COALESCE(fa1.CurrencyId, ''UNKNOWN''), 		
 		DimFinancialAccountTypeSourceKey = fa1.FinancialAccountTypeId,		 		
 		DimHoldingFinancialAccountSourceKey = fa1.HoldingFinancialAccountId, 		
-		fa1.PagaAccountId,			
+		fa1.PagaAccountId, 		
 		st.OrgLevel + 1 AS OrgLevel 	
-		FROM [dbo].FinancialAccount AS fa1 	
-		INNER JOIN cte AS ST ON  		
-			fa1.HoldingFinancialAccountId = st.SourceKey 	
-		WHERE fa1.HoldingFinancialAccountId IS NOT NULL 
+	FROM [dbo].FinancialAccount AS fa1 	
+	INNER JOIN cte AS ST ON  		
+		fa1.HoldingFinancialAccountId = st.SourceKey 	
+	WHERE fa1.HoldingFinancialAccountId IS NOT NULL 
 )  
 SELECT	 	
+	ct.SYS_CHANGE_OPERATION, 
+	SYS_CHANGE_VERSION = ct.as_of_change_version, 
 	SourceKey, 	
 	base_query.AccountNumber, 	
 	base_query.Name, 	
@@ -153,9 +157,10 @@ FROM
 		DimFinancialAccountTypeSourceKey = cte.DimFinancialAccountTypeSourceKey, 		
 		DimPagaAccountSourceKey = COALESCE(cte.PagaAccountId,-1), 		
 		cte.DimHoldingFinancialAccountSourceKey 	
-	FROM cte  	
-) 
-AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount';
+		FROM cte  	
+) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount';
+
+
 
 
 
