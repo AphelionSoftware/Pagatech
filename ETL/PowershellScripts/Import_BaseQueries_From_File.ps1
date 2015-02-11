@@ -1,6 +1,9 @@
 # Update Base Query from File
+import-module sqlps
 
-$Path = "E:\GitHub\Pagatech\ETL\SourceQueries\paga_EDW"
+$ServerName = "PAGA01SV015\SQL2012"
+
+$Path = "F:\GitHub\Pagatech\ETL\SourceQueries\paga_EDW"
 Get-ChildItem $Path | Where-Object {$_.name -like "*.sql"}| ForEach {
 	$string = $_.Name
 	$QueryFile = $string.split(".")
@@ -17,5 +20,5 @@ Get-ChildItem $Path | Where-Object {$_.name -like "*.sql"}| ForEach {
         @level0type=N'SCHEMA',@level0name=N'" +$SchemaName +"', 
         @level1type=N'TABLE',@level1name=N'" +$TableName +"';
 		"
-    Invoke-SQLCmd -query $UpdateQuery -Server WIN-TDGNUUDMOVR\SQL2012 
+    Invoke-SQLCmd -query $UpdateQuery -Server $ServerName
 }

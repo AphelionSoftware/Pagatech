@@ -1,15 +1,14 @@
 ﻿#E:\GitHub\Pagatech\ETL\SourceQueries
 
 ADD-PSSNAPIN Microsoft.TeamFoundation.PowerShell
-ADD-PSSNAPIN SqlServerCmdletSnapin100
-ADD-PSSNAPIN SqlServerProviderSnapin100
+import-module sqlps
 
 cls
 
 
-$ServerName = "WIN-TDGNUUDMOVR\SQL2012"
-$DatabaseName = "paga_change_log"
-$ExportPath = "E:\GitHub\Pagatech\ETL\SourceQueries\paga_change_log\"
+$ServerName = "PAGA01SV015\SQL2012"
+$DatabaseName = "Paga_EDW"
+$ExportPath = "F:\GitHub\Pagatech\ETL\SourceQueries\paga_EDW\"
 
 $GetBaseQueries = "
     SELECT 

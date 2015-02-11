@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="02/11/2015 13:29:02" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{0115CED0-37D9-4EF9-8134-8232361C8D3E}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2001_Classification_DimAgentCommissionType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{64D046DB-00EF-4183-896D-43BB3DA37AC3}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{2709FC49-C332-404F-8C48-22E10E3E4EEF}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="ChangeLog" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+          </SQLTask:ResultBinding>
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{58784B12-D451-4B2D-9486-4A2514EB517D}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">"INNER JOIN paga_change_log.dbo.AgentCommissionType AS ct ON ct.AgentCommissionTypeID = base_query.SourceKey WHERE ct.as_of_change_version = 0 "</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{F0FAE69B-CD5F-4872-B13B-8AC0F63CE4E6}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
+      </DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{FA4C50BD-75A3-40B8-BFE3-73EA3EE33A6F}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D0B9A0A1-86DB-4053-8E84-B461D1FC736A}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT 	base_query.*, ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version FROM ( 	SELECT  		AgentCommissionTypeId AS SourceKey,  		CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name  	FROM dbo.AgentCommissionType ) AS base_query</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{ED94EC3F-1A73-4A88-9F49-BCE8848B62FB}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT 	base_query.*, ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version FROM ( 	SELECT  		AgentCommissionTypeId AS SourceKey,  		CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name  	FROM dbo.AgentCommissionType ) AS base_query "INNER JOIN paga_change_log.dbo.AgentCommissionType AS ct ON ct.AgentCommissionTypeID = base_query.SourceKey WHERE ct.as_of_change_version = 0 "</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1DA756E4-667C-485E-B047-42B4E2AFC90C}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= AgentCommissionTypeID FROM dbo.AgentCommissionType) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= AgentCommissionTypeID FROM dbo.AgentCommissionType) AS base_query "INNER JOIN paga_change_log.dbo.AgentCommissionType AS ct ON ct.AgentCommissionTypeID = base_query.SourceKey WHERE ct.as_of_change_version = 0 "</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BA55C718-C966-483D-B532-FFB8E3766EBD}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>

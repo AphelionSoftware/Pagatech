@@ -1,0 +1,1 @@
+SELECT  	ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version,SourceKey, 	Name,  	TextDescription FROM  ( 	SELECT  		SourceKey = pc.ProcessChannelId, 		Name = pc.ProcessChannelId,  		TextDescription = pc.[Description] 	FROM dbo.ProcessChannel AS pc ) AS base_query

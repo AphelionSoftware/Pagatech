@@ -6,14 +6,14 @@
   DTS:CreatorComputerName="WIN-TDGNUUDMOVR"
   DTS:CreatorName="WIN-TDGNUUDMOVR\Administrator"
   DTS:DelayValidation="True"
-  DTS:DTSID="{B114B48D-9782-4162-8DA5-D958BEF68668}"
+  DTS:DTSID="{F361D722-B16A-4FAC-BCCE-3AD5AC1CADFF}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="3003_Shared_FactProcessEvent"
+  DTS:ObjectName="3002_Shared_FactProcessEvent"
   DTS:PackageType="5"
-  DTS:VersionBuild="210"
-  DTS:VersionGUID="{CC16A235-433A-4AFC-AA86-B7713E847193}">
+  DTS:VersionBuild="213"
+  DTS:VersionGUID="{4625E3ED-E643-46E8-A675-09B4DBDD59D7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -1215,6 +1215,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
       DTS:refId="Package\DFT_Load_Shared_FactProcessEvent"
       DTS:CreationName="SSIS.Pipeline.3"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{9A36954A-1900-4A84-9376-9D54A699C741}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
@@ -8110,6 +8111,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
       DTS:refId="Package\EST_Truncate_PreStaging"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{ef25d4ff-60e3-4fc9-8208-0daf41c3165b}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
@@ -8127,6 +8129,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
       DTS:refId="Package\SEQ_Load_PreStaging"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{9EA5C96D-76EB-4C56-9745-C17483F8C8E5}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -13886,22 +13889,22 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
               </components>
               <paths>
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output]" />
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
@@ -13972,7 +13975,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}"
-              SQLTask:SqlStatementSource="DROP INDEX ix_ProcessData ON dbo.ProcessData" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[ProcessData]') AND name = N'ix_ProcessData')&#xA;DROP INDEX ix_ProcessData ON [dbo].[ProcessData] WITH ( ONLINE = OFF )&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -13989,7 +13992,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}"
-              SQLTask:SqlStatementSource="DROP INDEX [ix_Process] ON [dbo].[Process] WITH ( ONLINE = OFF )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[Process]') AND name = N'ix_Process')&#xA;DROP INDEX ix_Process ON [dbo].[Process] WITH ( ONLINE = OFF )&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -14849,157 +14852,33 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
     design-time-name="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="217,42"
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_InsertIntoPreStaging"
-          TopLeft="429,311.5" />
-        <NodeLayout
-          Size="164,42"
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1"
-          TopLeft="455.5,5.49999999999989" />
-        <NodeLayout
-          Size="164,42"
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2"
-          TopLeft="680.5,5.49999999999989" />
-        <NodeLayout
-          Size="164,42"
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3"
-          TopLeft="5.5,5.5" />
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="158,42"
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData"
           TopLeft="458.5,209.5" />
         <NodeLayout
           Size="164,42"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2"
+          TopLeft="680.5,5.49999999999989" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1"
+          TopLeft="455.5,5.49999999999989" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_InsertIntoPreStaging"
+          TopLeft="429,311.5" />
+        <NodeLayout
+          Size="164,42"
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0"
           TopLeft="230.5,5.49999999999989" />
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Union All Output 1]"
-          TopLeft="537.5,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
-          TopLeft="87.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="450,162"
-              Start="0,0"
-              End="450,154.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,77" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,77"
-                    Point2="0,81"
-                    Point3="4,81" />
-                  <mssgle:LineSegment
-                    End="446,81" />
-                  <mssgle:CubicBezierSegment
-                    Point1="446,81"
-                    Point2="450,81"
-                    Point3="450,85" />
-                  <mssgle:LineSegment
-                    End="450,154.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
-          TopLeft="312.5,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="250,162"
-              Start="0,0"
-              End="250,154.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,92.2255639097745" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,92.2255639097745"
-                    Point2="0,96.2255639097745"
-                    Point3="4,96.2255639097745" />
-                  <mssgle:LineSegment
-                    End="246,96.2255639097745" />
-                  <mssgle:CubicBezierSegment
-                    Point1="246,96.2255639097745"
-                    Point2="250,96.2255639097745"
-                    Point3="250,100.225563909774" />
-                  <mssgle:LineSegment
-                    End="250,154.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
-          TopLeft="537.5,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="37.5,162"
-              Start="0,0"
-              End="37.5,154.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,102.207468879668" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,102.207468879668"
-                    Point2="0,106.207468879668"
-                    Point3="4,106.207468879668" />
-                  <mssgle:LineSegment
-                    End="33.5,106.207468879668" />
-                  <mssgle:CubicBezierSegment
-                    Point1="33.5,106.207468879668"
-                    Point2="37.5,106.207468879668"
-                    Point3="37.5,110.207468879668" />
-                  <mssgle:LineSegment
-                    End="37.5,154.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
           TopLeft="762.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15029,27 +14908,148 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
+          TopLeft="87.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="450,162"
+              Start="0,0"
+              End="450,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,77"
+                    Point2="0,81"
+                    Point3="4,81" />
+                  <mssgle:LineSegment
+                    End="446,81" />
+                  <mssgle:CubicBezierSegment
+                    Point1="446,81"
+                    Point2="450,81"
+                    Point3="450,85" />
+                  <mssgle:LineSegment
+                    End="450,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
+          TopLeft="312.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="250,162"
+              Start="0,0"
+              End="250,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,92.2255639097745" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,92.2255639097745"
+                    Point2="0,96.2255639097745"
+                    Point3="4,96.2255639097745" />
+                  <mssgle:LineSegment
+                    End="246,96.2255639097745" />
+                  <mssgle:CubicBezierSegment
+                    Point1="246,96.2255639097745"
+                    Point2="250,96.2255639097745"
+                    Point3="250,100.225563909774" />
+                  <mssgle:LineSegment
+                    End="250,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Union All Output 1]"
+          TopLeft="537.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
+          TopLeft="537.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="37.5,162"
+              Start="0,0"
+              End="37.5,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,102.207468879668" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,102.207468879668"
+                    Point2="0,106.207468879668"
+                    Point3="4,106.207468879668" />
+                  <mssgle:LineSegment
+                    End="33.5,106.207468879668" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33.5,106.207468879668"
+                    Point2="37.5,106.207468879668"
+                    Point3="37.5,110.207468879668" />
+                  <mssgle:LineSegment
+                    End="37.5,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_InsertIntoPreStaging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1">
+    design-time-name="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -15065,10 +15065,23 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3">
+    design-time-name="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_InsertIntoPreStaging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

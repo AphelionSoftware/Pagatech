@@ -1,10 +1,1 @@
-SELECT
-	*
-FROM
-(
-	SELECT 
-		AgentCommissionTypeId AS SourceKey, 
-		CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name 
-	FROM dbo.AgentCommissionType
-) AS base_query
-
+SELECT 	base_query.*, ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version FROM ( 	SELECT  		AgentCommissionTypeId AS SourceKey,  		CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name  	FROM dbo.AgentCommissionType ) AS base_query

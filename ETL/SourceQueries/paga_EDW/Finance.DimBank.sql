@@ -1,14 +1,1 @@
-SELECT 
-	SourceKey ,
-	base_query.name,
-	base_query.DimOrganizationSourceKey,
-	base_query.BankAccountLinkType
-FROM 
-(
-	SELECT
-           [BankAccountLinkType] = COALESCE([BankAccountLinkTypeId],'UNKNOWN'),
-           [Name]= CONVERT(Varchar(50),[BankName]),
-           [SourceKey]=[BankId],
-           [DimOrganizationSourceKey]=[OrganizationId]
-    FROM [dbo].[Bank]    
-) as base_query
+SELECT  	ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey , 	base_query.name, 	base_query.DimOrganizationSourceKey, 	base_query.BankAccountLinkType FROM  ( 	SELECT            [BankAccountLinkType] = COALESCE([BankAccountLinkTypeId],'UNKNOWN'),            [Name]= CONVERT(Varchar(50),[BankName]),            [SourceKey]=[BankId],            [DimOrganizationSourceKey]=[OrganizationId]     FROM [dbo].[Bank]     ) as base_query

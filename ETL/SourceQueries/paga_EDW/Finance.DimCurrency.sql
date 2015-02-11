@@ -1,10 +1,1 @@
-SELECT 
-	SourceKey ,
-	Name = CONVERT(VARCHAR(255),base_query.name)
-FROM 
-(
-	SELECT
-		SourceKey = CurrencyId,
-		Name = [Description]
-	FROM dbo.Currency
-) AS base_query
+SELECT  	ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey , 	Name = CONVERT(VARCHAR(255),base_query.name) FROM  ( 	SELECT 		SourceKey = CurrencyId, 		Name = [Description] 	FROM dbo.Currency ) AS base_query
