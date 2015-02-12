@@ -7,14 +7,16 @@
     [IdentificationNumber]        VARCHAR (20)  NULL,
     [SourceKeyHash]               BIGINT        NULL,
     [DeltaHash]                   BIGINT        NULL,
-    [sys_ModifiedBy]              VARCHAR (255) CONSTRAINT [DF__DimOrgani__sys_M__2AD55B43] DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn]              DATETIME      CONSTRAINT [DF__DimOrgani__sys_M__2BC97F7C] DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]               VARCHAR (255) CONSTRAINT [DF__DimOrgani__sys_C__2CBDA3B5] DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]               DATETIME      CONSTRAINT [DF__DimOrgani__sys_C__2DB1C7EE] DEFAULT (getdate()) NOT NULL,
+    [sys_ModifiedBy]              VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]              DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]               VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]               DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimOrganizationUnitLevel3ID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitLevel3ID] ASC),
     CONSTRAINT [fk_DimOrganizationUnitLevel3_DimOrganizationUnitLevel2ID] FOREIGN KEY ([DimOrganizationUnitLevel2ID]) REFERENCES [Shared].[DimOrganizationUnitLevel2] ([DimOrganizationUnitLevel2ID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel3_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID])
 );
+
+
 
 
 
@@ -63,7 +65,9 @@ EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'5', @level0type 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2400', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel3';
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2500', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel3';
+
+
 
 
 GO
