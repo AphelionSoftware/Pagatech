@@ -1,0 +1,822 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="02/12/2015 15:09:39" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{24B31C60-97BE-4D61-808A-81311B4300CE}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="3301_Finance_FactGLTransaction" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{970B39BA-B909-4E1A-8C8E-F5FCFD546EDF}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{ED4D5C31-A3CE-454E-921B-FFFCBB7CA35D}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_FactGLTransaction" DTS:refId="Package\SQL_Truncate_Error_Finance_FactGLTransaction" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Finance_FactGLTransaction]&#xA;     " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{BF4F2927-A903-45B4-A85D-7082937747AE}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Load_New_Rows" DTS:refId="Package\SEQ_Load_New_Rows">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{B5385787-4B9D-4678-B96A-1B429F141CB7}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;I&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{D68C3958-B8AF-4C74-98DB-E6FAD3C71796}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForInserts" DTS:refId="Package\SEQ_Load_New_Rows\EST_CheckForInserts" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{35AF892B-0194-4179-9CB9-A9522748472D}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_FactGLTransaction" DTS:refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+              <components>
+                <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLE_SRC_Staging_Finance_FactGLTransaction" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction" usesDispositions="true" version="7">
+                  <connections>
+                    <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="numeric" name="CreditAmount" precision="18" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[CreditAmount]" scale="2">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="numeric" name="DebitAmount" precision="18" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[DebitAmount]" scale="2">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="numeric" name="Movement" precision="19" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[Movement]" scale="2">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="wstr" length="200" name="TextDescription" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[TextDescription]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="TransactionLineNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[TransactionLineNumber]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimFinancialAccountSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[DimFinancialAccountSourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimGLCodeSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[DimGLCodeSourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="FactFinancialTxSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[FactFinancialTxSourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="numeric" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[CreditAmount]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[CreditAmount]" name="CreditAmount" precision="18" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[CreditAmount]" scale="2" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="numeric" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[DebitAmount]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DebitAmount]" name="DebitAmount" precision="18" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DebitAmount]" scale="2" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="numeric" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[Movement]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[Movement]" name="Movement" precision="19" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[Movement]" scale="2" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="wstr" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[TextDescription]" length="200" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[TextDescription]" name="TextDescription" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[TextDescription]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[TransactionLineNumber]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[TransactionLineNumber]" name="TransactionLineNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[TransactionLineNumber]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[DimFinancialAccountSourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DimFinancialAccountSourceKey]" name="DimFinancialAccountSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DimFinancialAccountSourceKey]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[DimGLCodeSourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DimGLCodeSourceKey]" name="DimGLCodeSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DimGLCodeSourceKey]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[FactFinancialTxSourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[FactFinancialTxSourceKey]" name="FactFinancialTxSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[FactFinancialTxSourceKey]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="numeric" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[CreditAmount]" name="CreditAmount" precision="18" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[CreditAmount]" scale="2">
+                        </outputColumn>
+                        <outputColumn dataType="numeric" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[DebitAmount]" name="DebitAmount" precision="18" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[DebitAmount]" scale="2">
+                        </outputColumn>
+                        <outputColumn dataType="numeric" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[Movement]" name="Movement" precision="19" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[Movement]" scale="2">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[SourceKey]">
+                        </outputColumn>
+                        <outputColumn dataType="wstr" length="200" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[TextDescription]" name="TextDescription" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[TextDescription]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[TransactionLineNumber]" name="TransactionLineNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[TransactionLineNumber]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[DimFinancialAccountSourceKey]" name="DimFinancialAccountSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[DimFinancialAccountSourceKey]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[DimGLCodeSourceKey]" name="DimGLCodeSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[DimGLCodeSourceKey]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[FactFinancialTxSourceKey]" name="FactFinancialTxSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[FactFinancialTxSourceKey]">
+                        </outputColumn>
+                        <outputColumn dataType="i8" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                    </property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::GetData</property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                    <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                    </property>
+                  </properties>
+                </component>
+                <component componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}" contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5" name="LKP_DimFinancialAccountID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID" usesDispositions="true" version="6">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="Connection manager used to access lookup data." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input name="OLE_SRC_Staging_Finance_FactGLTransaction_Output_LKP_DimFinancialAccountID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Inputs[OLE_SRC_Staging_Finance_FactGLTransaction_Output_LKP_DimFinancialAccountID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="DimFinancialAccountSourceKey" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DimFinancialAccountSourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Inputs[OLE_SRC_Staging_Finance_FactGLTransaction_Output_LKP_DimFinancialAccountID].Columns[DimFinancialAccountSourceKey]">
+                          <properties>
+                            <property dataType="System.String" description="Specifies the column in the reference table that a column joins." name="JoinToReferenceColumn">SourceKey</property>
+                            <property dataType="System.Null" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">
+                            </property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output errorOrTruncationOperation="Lookup" errorRowDisposition="IgnoreFailure" exclusionGroup="1" name="Match" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Outputs[Match]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Inputs[OLE_SRC_Staging_Finance_FactGLTransaction_Output_LKP_DimFinancialAccountID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="CopyColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Outputs[Match].Columns[DimFinancialAccountID]" name="DimFinancialAccountID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Outputs[Match].Columns[DimFinancialAccountID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">DimFinancialAccountID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;" exclusionGroup="1" name="NoMatch" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Outputs[NoMatch]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Inputs[OLE_SRC_Staging_Finance_FactGLTransaction_Output_LKP_DimFinancialAccountID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Inputs[OLE_SRC_Staging_Finance_FactGLTransaction_Output_LKP_DimFinancialAccountID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the SQL statement that generates the lookup table." expressionType="Notify" name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SourceKey, DimFinancialAccountID FROM [Finance].[DimFinancialAccount]</property>
+                    <property dataType="System.String" description="Specifies a SQL statement that uses parameters to generate the lookup table." expressionType="Notify" name="SqlCommandParam" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT SourceKey, DimFinancialAccountID FROM [Finance].[DimFinancialAccount]) [refTable] where [refTable].[SourceKey] = ?</property>
+                    <property dataType="System.Int32" description="Specifies the type of connection used to access the reference dataset." name="ConnectionType" typeConverter="LookupConnectionType">0</property>
+                    <property dataType="System.Int32" description="Specifies the cache type of the lookup table." name="CacheType" typeConverter="CacheType">0</property>
+                    <property dataType="System.Int32" description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set." name="NoMatchBehavior" typeConverter="LookupNoMatchBehavior">0</property>
+                    <property dataType="System.Int32" description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset." name="NoMatchCachePercentage">0</property>
+                    <property dataType="System.Int32" description="Maximum Memory Usage for Reference Cache on a 32 bit platform." name="MaxMemoryUsage">25</property>
+                    <property dataType="System.Int64" description="Maximum Memory Usage for Reference Cache on a 64 bit platform." name="MaxMemoryUsage64">25</property>
+                    <property dataType="System.String" description="Indicates whether to reference metadata in an XML format." name="ReferenceMetadataXml">&lt;referenceMetadata&gt;
+  &lt;referenceColumns&gt;
+    &lt;referenceColumn name="SourceKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+    &lt;referenceColumn name="DimFinancialAccountID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+  &lt;/referenceColumns&gt;
+&lt;/referenceMetadata&gt;</property>
+                    <property containsID="true" dataType="System.String" description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons." name="ParameterMap">#{Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DimFinancialAccountSourceKey]};</property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used." name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                </component>
+                <component componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}" contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5" name="LKP_DimGLCodeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID" usesDispositions="true" version="6">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="Connection manager used to access lookup data." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input name="LKP_DimFinancialAccountID_Match_LKP_DimGLCodeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Inputs[LKP_DimFinancialAccountID_Match_LKP_DimGLCodeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="DimGLCodeSourceKey" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DimGLCodeSourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Inputs[LKP_DimFinancialAccountID_Match_LKP_DimGLCodeID].Columns[DimGLCodeSourceKey]">
+                          <properties>
+                            <property dataType="System.String" description="Specifies the column in the reference table that a column joins." name="JoinToReferenceColumn">SourceKey</property>
+                            <property dataType="System.Null" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">
+                            </property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output errorOrTruncationOperation="Lookup" errorRowDisposition="IgnoreFailure" exclusionGroup="1" name="Match" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Outputs[Match]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Inputs[LKP_DimFinancialAccountID_Match_LKP_DimGLCodeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="CopyColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Outputs[Match].Columns[DimGLCodeID]" name="DimGLCodeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Outputs[Match].Columns[DimGLCodeID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">DimGLCodeID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;" exclusionGroup="1" name="NoMatch" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Outputs[NoMatch]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Inputs[LKP_DimFinancialAccountID_Match_LKP_DimGLCodeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Inputs[LKP_DimFinancialAccountID_Match_LKP_DimGLCodeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the SQL statement that generates the lookup table." expressionType="Notify" name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SourceKey, DimGLCodeID FROM [Finance].[DimGLCode]</property>
+                    <property dataType="System.String" description="Specifies a SQL statement that uses parameters to generate the lookup table." expressionType="Notify" name="SqlCommandParam" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT SourceKey, DimGLCodeID FROM [Finance].[DimGLCode]) [refTable] where [refTable].[SourceKey] = ?</property>
+                    <property dataType="System.Int32" description="Specifies the type of connection used to access the reference dataset." name="ConnectionType" typeConverter="LookupConnectionType">0</property>
+                    <property dataType="System.Int32" description="Specifies the cache type of the lookup table." name="CacheType" typeConverter="CacheType">0</property>
+                    <property dataType="System.Int32" description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set." name="NoMatchBehavior" typeConverter="LookupNoMatchBehavior">0</property>
+                    <property dataType="System.Int32" description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset." name="NoMatchCachePercentage">0</property>
+                    <property dataType="System.Int32" description="Maximum Memory Usage for Reference Cache on a 32 bit platform." name="MaxMemoryUsage">25</property>
+                    <property dataType="System.Int64" description="Maximum Memory Usage for Reference Cache on a 64 bit platform." name="MaxMemoryUsage64">25</property>
+                    <property dataType="System.String" description="Indicates whether to reference metadata in an XML format." name="ReferenceMetadataXml">&lt;referenceMetadata&gt;
+  &lt;referenceColumns&gt;
+    &lt;referenceColumn name="SourceKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+    &lt;referenceColumn name="DimGLCodeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+  &lt;/referenceColumns&gt;
+&lt;/referenceMetadata&gt;</property>
+                    <property containsID="true" dataType="System.String" description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons." name="ParameterMap">#{Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DimGLCodeSourceKey]};</property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used." name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                </component>
+                <component componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}" contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5" name="LKP_FactFinancialTxID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID" usesDispositions="true" version="6">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="Connection manager used to access lookup data." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input name="LKP_DimGLCodeID_Match_LKP_FactFinancialTxID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Inputs[LKP_DimGLCodeID_Match_LKP_FactFinancialTxID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="FactFinancialTxSourceKey" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[FactFinancialTxSourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Inputs[LKP_DimGLCodeID_Match_LKP_FactFinancialTxID].Columns[FactFinancialTxSourceKey]">
+                          <properties>
+                            <property dataType="System.String" description="Specifies the column in the reference table that a column joins." name="JoinToReferenceColumn">SourceKey</property>
+                            <property dataType="System.Null" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">
+                            </property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output errorOrTruncationOperation="Lookup" errorRowDisposition="IgnoreFailure" exclusionGroup="1" name="Match" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Outputs[Match]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Inputs[LKP_DimGLCodeID_Match_LKP_FactFinancialTxID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="CopyColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Outputs[Match].Columns[FactFinancialTxID]" name="FactFinancialTxID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Outputs[Match].Columns[FactFinancialTxID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">FactFinancialTxID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;" exclusionGroup="1" name="NoMatch" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Outputs[NoMatch]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Inputs[LKP_DimGLCodeID_Match_LKP_FactFinancialTxID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Inputs[LKP_DimGLCodeID_Match_LKP_FactFinancialTxID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the SQL statement that generates the lookup table." expressionType="Notify" name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SourceKey, FactFinancialTxID FROM [Finance].[FactFinancialTransaction]</property>
+                    <property dataType="System.String" description="Specifies a SQL statement that uses parameters to generate the lookup table." expressionType="Notify" name="SqlCommandParam" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT SourceKey, FactFinancialTxID FROM [Finance].[FactFinancialTransaction]) [refTable] where [refTable].[SourceKey] = ?</property>
+                    <property dataType="System.Int32" description="Specifies the type of connection used to access the reference dataset." name="ConnectionType" typeConverter="LookupConnectionType">0</property>
+                    <property dataType="System.Int32" description="Specifies the cache type of the lookup table." name="CacheType" typeConverter="CacheType">0</property>
+                    <property dataType="System.Int32" description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set." name="NoMatchBehavior" typeConverter="LookupNoMatchBehavior">0</property>
+                    <property dataType="System.Int32" description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset." name="NoMatchCachePercentage">0</property>
+                    <property dataType="System.Int32" description="Maximum Memory Usage for Reference Cache on a 32 bit platform." name="MaxMemoryUsage">25</property>
+                    <property dataType="System.Int64" description="Maximum Memory Usage for Reference Cache on a 64 bit platform." name="MaxMemoryUsage64">25</property>
+                    <property dataType="System.String" description="Indicates whether to reference metadata in an XML format." name="ReferenceMetadataXml">&lt;referenceMetadata&gt;
+  &lt;referenceColumns&gt;
+    &lt;referenceColumn name="SourceKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+    &lt;referenceColumn name="FactFinancialTxID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+  &lt;/referenceColumns&gt;
+&lt;/referenceMetadata&gt;</property>
+                    <property containsID="true" dataType="System.String" description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons." name="ParameterMap">#{Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[FactFinancialTxSourceKey]};</property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used." name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Finance_FactGLTransaction" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="FactGLTxID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[FactGLTxID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimGLCodeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[DimGLCodeID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="wstr" length="200" name="TextDescription" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[TextDescription]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimFinancialAccountID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[DimFinancialAccountID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="FactFinancialTxID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[FactFinancialTxID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="TransactionLineNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[TransactionLineNumber]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="numeric" name="CreditAmount" precision="18" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[CreditAmount]" scale="2">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="numeric" name="DebitAmount" precision="18" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[DebitAmount]" scale="2">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="numeric" name="Movement" precision="19" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[Movement]" scale="2">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[sys_CreatedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[sys_CreatedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[sys_ModifiedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[sys_ModifiedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[IsActive]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="FactFinancialTxID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[FactFinancialTxID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Outputs[Match].Columns[FactFinancialTxID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].Columns[FactFinancialTxID]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="DimGLCodeID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[DimGLCodeID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Outputs[Match].Columns[DimGLCodeID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].Columns[DimGLCodeID]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="DimFinancialAccountID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[DimFinancialAccountID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Outputs[Match].Columns[DimFinancialAccountID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].Columns[DimFinancialAccountID]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="numeric" cachedName="CreditAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[CreditAmount]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[CreditAmount]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].Columns[CreditAmount]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="numeric" cachedName="DebitAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[DebitAmount]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DebitAmount]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].Columns[DebitAmount]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="numeric" cachedName="Movement" cachedPrecision="19" cachedScale="2" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[Movement]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[Movement]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].Columns[Movement]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].Columns[SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="wstr" cachedLength="200" cachedName="TextDescription" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[TextDescription]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[TextDescription]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].Columns[TextDescription]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="TransactionLineNumber" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].ExternalColumns[TransactionLineNumber]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[TransactionLineNumber]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction].Columns[TransactionLineNumber]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Finance.FactGLTransaction</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Singleton_Finance_FactGLTransaction" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="FactGLTxID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[FactGLTxID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimGLCodeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[DimGLCodeID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="wstr" length="200" name="TextDescription" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[TextDescription]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimFinancialAccountID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[DimFinancialAccountID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="FactFinancialTxID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[FactFinancialTxID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="TransactionLineNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[TransactionLineNumber]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="numeric" name="CreditAmount" precision="18" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[CreditAmount]" scale="2">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="numeric" name="DebitAmount" precision="18" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[DebitAmount]" scale="2">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="numeric" name="Movement" precision="19" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[Movement]" scale="2">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[sys_CreatedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[sys_CreatedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[sys_ModifiedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[sys_ModifiedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[IsActive]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="FactFinancialTxID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[FactFinancialTxID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Outputs[Match].Columns[FactFinancialTxID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].Columns[FactFinancialTxID]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="DimGLCodeID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[DimGLCodeID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Outputs[Match].Columns[DimGLCodeID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].Columns[DimGLCodeID]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="DimFinancialAccountID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[DimFinancialAccountID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Outputs[Match].Columns[DimFinancialAccountID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].Columns[DimFinancialAccountID]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="numeric" cachedName="CreditAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[CreditAmount]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[CreditAmount]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].Columns[CreditAmount]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="numeric" cachedName="DebitAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[DebitAmount]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DebitAmount]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].Columns[DebitAmount]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="numeric" cachedName="Movement" cachedPrecision="19" cachedScale="2" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[Movement]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[Movement]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].Columns[Movement]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].Columns[SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="wstr" cachedLength="200" cachedName="TextDescription" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[TextDescription]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[TextDescription]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].Columns[TextDescription]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="TransactionLineNumber" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].ExternalColumns[TransactionLineNumber]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[TransactionLineNumber]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction].Columns[TransactionLineNumber]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Finance.FactGLTransaction</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">1</property>
+                  </properties>
+                </component>
+                <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails" usesDispositions="true">
+                  <inputs>
+                    <input name="OLE_DST_Singleton_Finance_FactGLTransaction_Error_DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_FactGLTransaction_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_FactGLTransaction_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_FactGLTransaction_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_FactGLTransaction_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorCode]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_FactGLTransaction.ErrorCode</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorColumn]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Finance_FactGLTransaction.ErrorColumn</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_FactGLTransaction_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                </component>
+                <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\RC_CountErrors">
+                  <inputs>
+                    <input hasSideEffects="true" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\RC_CountErrors.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Finance_FactGLTransaction" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{2C3E7E8F-26FE-46EC-83AC-2F8FC8506F95}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[QueueID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[SSISErrorCode]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[SSISErrorColumn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[PackageName]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[ErrorType]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="numeric" name="CreditAmount" precision="18" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[CreditAmount]" scale="2">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="numeric" name="DebitAmount" precision="18" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[DebitAmount]" scale="2">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimFinancialAccountSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[DimFinancialAccountSourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimGLCodeSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[DimGLCodeSourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="FactFinancialTransactionSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[FactFinancialTransactionSourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="numeric" name="Movement" precision="19" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[Movement]" scale="2">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="wstr" length="200" name="TextDescription" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[TextDescription]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="TransactionLineNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[TransactionLineNumber]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[PackageName]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[PackageName]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[QueueID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[QueueID]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[ErrorType]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[ErrorType]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[SSISErrorCode]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[SSISErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[SSISErrorColumn]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[SSISErrorColumn]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="numeric" cachedName="CreditAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[CreditAmount]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[CreditAmount]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[CreditAmount]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="numeric" cachedName="DebitAmount" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[DebitAmount]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DebitAmount]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[DebitAmount]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="numeric" cachedName="Movement" cachedPrecision="19" cachedScale="2" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[Movement]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[Movement]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[Movement]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="wstr" cachedLength="200" cachedName="TextDescription" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[TextDescription]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[TextDescription]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[TextDescription]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="TransactionLineNumber" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[TransactionLineNumber]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[TransactionLineNumber]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[TransactionLineNumber]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="DimFinancialAccountSourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[DimFinancialAccountSourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DimFinancialAccountSourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[DimFinancialAccountSourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="DimGLCodeSourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].ExternalColumns[DimGLCodeSourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output].Columns[DimGLCodeSourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction].Columns[DimGLCodeSourceKey]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Finance_FactGLTransaction]</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+                  </properties>
+                </component>
+              </components>
+              <paths>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Inputs[OLE_SRC_Staging_Finance_FactGLTransaction_Output_LKP_DimFinancialAccountID]" name="OLE_SRC_Staging_Finance_FactGLTransaction_Output_LKP_DimFinancialAccountID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction.Paths[OLE_SRC_Staging_Finance_FactGLTransaction_Output_LKP_DimFinancialAccountID]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_SRC_Staging_Finance_FactGLTransaction.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Inputs[LKP_DimFinancialAccountID_Match_LKP_DimGLCodeID]" name="LKP_DimFinancialAccountID_Match_LKP_DimGLCodeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction.Paths[LKP_DimFinancialAccountID_Match_LKP_DimGLCodeID]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimFinancialAccountID.Outputs[Match]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Inputs[LKP_DimGLCodeID_Match_LKP_FactFinancialTxID]" name="LKP_DimGLCodeID_Match_LKP_FactFinancialTxID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction.Paths[LKP_DimGLCodeID_Match_LKP_FactFinancialTxID]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_DimGLCodeID.Outputs[Match]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Inputs[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction]" name="LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction.Paths[LKP_FactFinancialTxID_Match_OLE_DST_Finance_FactGLTransaction]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\LKP_FactFinancialTxID.Outputs[Match]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Inputs[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction]" name="OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction.Paths[OLE_DST_Finance_FactGLTransaction_Error_OLE_DST_Singleton_Finance_FactGLTransaction]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Finance_FactGLTransaction.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Finance_FactGLTransaction_Error_DC_AddErrorDetails]" name="OLE_DST_Singleton_Finance_FactGLTransaction_Error_DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction.Paths[OLE_DST_Singleton_Finance_FactGLTransaction_Error_DC_AddErrorDetails]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Singleton_Finance_FactGLTransaction.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction.Paths[DC_AddErrorDetails_Output_RC_CountErrors]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\DC_AddErrorDetails.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\OLE_DST_Error_Finance_FactGLTransaction.Inputs[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction]" name="RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction" refId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction.Paths[RC_CountErrors_Output_OLE_DST_Error_Finance_FactGLTransaction]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction\RC_CountErrors.Outputs[Output]">
+                </path>
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{7839AB23-A331-4D4C-862C-F9A21D629B57}" DTS:From="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts" DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts]" DTS:To="Package\SEQ_Load_New_Rows\EST_CheckForInserts">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{239BBC7A-49EE-4F71-9B37-C9795DF7EEB9}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Load_New_Rows\EST_CheckForInserts" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForInserts_To_DFT_Load_Finance_FactGLTransaction" DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_EST_CheckForInserts_To_DFT_Load_Finance_FactGLTransaction]" DTS:To="Package\SEQ_Load_New_Rows\DFT_Load_Finance_FactGLTransaction">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{5BC3B467-EC0B-4506-8E74-85BA71CC4A3A}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Update_Changed_Rows" DTS:refId="Package\SEQ_Update_Changed_Rows">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{214D6569-07F2-4ADB-9666-9B2ED6CB217F}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;U&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{A96DF712-CD8B-4633-B39E-0DBBE2E1FE1A}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{165BA788-D3AF-49D5-A58B-596C78905616}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_UpdateChangedRows" DTS:refId="Package\SEQ_Update_Changed_Rows\EST_UpdateChangedRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_EDW" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="SELECT 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{67759888-BACA-49FF-9624-BCE66F2B96AA}" DTS:From="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates]" DTS:To="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{4AAACF72-3ECB-4646-8699-11D8F424D236}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForUpdates_To_EST_UpdateChangedRows" DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_EST_CheckForUpdates_To_EST_UpdateChangedRows]" DTS:To="Package\SEQ_Update_Changed_Rows\EST_UpdateChangedRows">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{FEC5D492-2A21-451C-84EE-CF2CA9FE2A1A}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Set_Deleted_Rows_Inactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{D2155089-A008-4AD6-8C6C-00CC4DDBFD80}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;D&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{764C88B6-15B3-4F9C-BAF8-25E828CA8466}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForDeletes" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{0DFF9152-FFA6-4A99-AA99-983B126B3EA5}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_SetDeletedRowsToInactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_EDW" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::InactiveQuery" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{FD2A138F-5D11-4CAC-A826-3E8CD63FD971}" DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{95479A6B-4EB0-4CBF-83E3-E52C6854E544}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{EFE905AC-DCB9-4835-BF61-70542BB93E94}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{1F6CC94A-56A5-4835-AAB3-FC8CB313B59C}" DTS:From="Package\SQL_Truncate_Error_Finance_FactGLTransaction" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_FactGLTransaction_To_SEQ_Load_New_Rows" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_FactGLTransaction_To_SEQ_Load_New_Rows]" DTS:To="Package\SEQ_Load_New_Rows">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{C85A3275-841D-4510-AE60-1D38A9AB51A1}" DTS:From="Package\SEQ_Load_New_Rows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows" DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows]" DTS:To="Package\SEQ_Update_Changed_Rows">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{81174598-226D-40A9-BE9D-73FB2A768CDC}" DTS:From="Package\SEQ_Update_Changed_Rows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive" DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive">
+    </DTS:PrecedenceConstraint>
+  </DTS:PrecedenceConstraints>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C7AE9815-DB05-4BA2-A071-CF3DAFE8B746}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D857531A-0A7B-44B6-91D6-C291D1183BC7}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{22259767-7BB9-4683-A002-2C4A9C1CE269}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+      <DTS:VariableValue DTS:DataType="8">3301_Finance_FactGLTransaction</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F826CCC5-0C4C-4401-8002-E75D9914508C}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="ChangeOperation">
+      <DTS:VariableValue DTS:DataType="8">I</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6DE019D7-3485-4716-BB9E-8BBF0D453320}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Finance_FactGLTransaction&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Finance_FactGLTransaction</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1A401112-DCD6-4758-B683-233F3BE74814}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;WHERE SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] +&quot; AND SYS_CHANGE_OPERATION = '&quot; + @[User::ChangeOperation] +&quot;'&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="EndOfQuery">
+      <DTS:VariableValue DTS:DataType="8">WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A6B9F8BC-24D7-43B2-8053-649297C42256}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D4F5FB2E-1946-4D58-97EC-7997FEC8AC6E}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT * FROM [Staging].[Finance_FactGLTransaction] &quot; + @[User::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetData">
+      <DTS:VariableValue DTS:DataType="8">SELECT * FROM [Staging].[Finance_FactGLTransaction] WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F179AC83-4D12-4F1A-8CA9-0078F029B904}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;UPDATE [Finance].[FactGLTransaction] SET IsActive = 0  WHERE  	EXISTS 	( 		SELECT 1  		FROM Paga_Staging.Staging.Finance_FactGLTransaction as stg 		WHERE  			stg.SourceKey = sourceKey 			AND SYS_CHANGE_OPERATION = 'D' 			AND SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] 	)" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="InactiveQuery">
+      <DTS:VariableValue DTS:DataType="8">UPDATE [Finance].[FactGLTransaction] SET IsActive = 0  WHERE  	EXISTS 	( 		SELECT 1  		FROM Paga_Staging.Staging.Finance_FactGLTransaction as stg 		WHERE  			stg.SourceKey = sourceKey 			AND SYS_CHANGE_OPERATION = 'D' 			AND SYS_CHANGE_VERSION = 0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>

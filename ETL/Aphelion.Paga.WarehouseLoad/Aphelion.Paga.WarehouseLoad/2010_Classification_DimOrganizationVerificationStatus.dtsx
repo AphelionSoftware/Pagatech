@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="02/12/2015 15:09:34" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{5D4CB70A-9D03-465E-976D-C8EAEE14FF5B}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2010_Classification_DimOrganizationVerificationStatus" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{B4659A1E-D963-450B-B5ED-C2C5CA3C8622}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{494E0674-DA1A-427F-9F3B-C54D407B97D8}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus" DTS:refId="Package\SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimOrganizationVerificationStatus]&#xA;     " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{8386C12A-6231-4BC5-B4DD-E14C206A6DC0}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Load_New_Rows" DTS:refId="Package\SEQ_Load_New_Rows">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{5139184A-00DD-4022-AA8C-A717F76C7219}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;I&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{ACBBDB23-CA69-4773-934E-CA32219F4620}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForInserts" DTS:refId="Package\SEQ_Load_New_Rows\EST_CheckForInserts" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{9B32CAF5-53A3-494B-842D-6A1C895B6DE1}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimOrganizationVerificationStatus" DTS:refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+              <components>
+                <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus" usesDispositions="true" version="7">
+                  <connections>
+                    <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[Name]" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].ExternalColumns[SourceKey]" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[Name]" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[Name]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[SourceKey]">
+                        </outputColumn>
+                        <outputColumn dataType="i8" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                    </property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::GetData</property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                    <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                    </property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Classification_DimOrganizationVerificationStatus" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="DimOrganizationVerificationStatusID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus].ExternalColumns[DimOrganizationVerificationStatusID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus].ExternalColumns[sys_ModifiedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus].ExternalColumns[sys_ModifiedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus].ExternalColumns[sys_CreatedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus].ExternalColumns[sys_CreatedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus].ExternalColumns[IsActive]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus].Columns[SourceKey]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Classification.DimOrganizationVerificationStatus</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="DimOrganizationVerificationStatusID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus].ExternalColumns[DimOrganizationVerificationStatusID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus].ExternalColumns[sys_ModifiedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus].ExternalColumns[sys_ModifiedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus].ExternalColumns[sys_CreatedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus].ExternalColumns[sys_CreatedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus].ExternalColumns[IsActive]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus].Columns[SourceKey]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Classification.DimOrganizationVerificationStatus</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">1</property>
+                  </properties>
+                </component>
+                <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails" usesDispositions="true">
+                  <inputs>
+                    <input name="OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorCode]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.ErrorCode</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorColumn]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.ErrorColumn</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                </component>
+                <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\RC_CountErrors">
+                  <inputs>
+                    <input hasSideEffects="true" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\RC_CountErrors.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Classification_DimOrganizationVerificationStatus" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{2C3E7E8F-26FE-46EC-83AC-2F8FC8506F95}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[QueueID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[SSISErrorCode]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[SSISErrorColumn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[PackageName]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[ErrorType]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[PackageName]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].Columns[PackageName]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[QueueID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].Columns[QueueID]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[ErrorType]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].Columns[ErrorType]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[SSISErrorCode]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].Columns[SSISErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[SSISErrorColumn]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].Columns[SSISErrorColumn]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus].Columns[SourceKey]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Classification_DimOrganizationVerificationStatus]</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+                  </properties>
+                </component>
+              </components>
+              <paths>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Inputs[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus]" name="OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus.Paths[OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus_Output_OLE_DST_Classification_DimOrganizationVerificationStatus]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_SRC_Staging_Classification_DimOrganizationVerificationStatus.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Inputs[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus]" name="OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus.Paths[OLE_DST_Classification_DimOrganizationVerificationStatus_Error_OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Classification_DimOrganizationVerificationStatus.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails]" name="OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus.Paths[OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus_Error_DC_AddErrorDetails]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Singleton_Classification_DimOrganizationVerificationStatus.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus.Paths[DC_AddErrorDetails_Output_RC_CountErrors]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\DC_AddErrorDetails.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\OLE_DST_Error_Classification_DimOrganizationVerificationStatus.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus]" name="RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus.Paths[RC_CountErrors_Output_OLE_DST_Error_Classification_DimOrganizationVerificationStatus]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus\RC_CountErrors.Outputs[Output]">
+                </path>
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{0186DBF9-4F94-408D-A3FF-CCAA10C14426}" DTS:From="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts" DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts]" DTS:To="Package\SEQ_Load_New_Rows\EST_CheckForInserts">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{6C82530A-DC0E-4B1F-9AFA-99294D41635B}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Load_New_Rows\EST_CheckForInserts" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForInserts_To_DFT_Load_Classification_DimOrganizationVerificationStatus" DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_EST_CheckForInserts_To_DFT_Load_Classification_DimOrganizationVerificationStatus]" DTS:To="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimOrganizationVerificationStatus">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{43199245-69FD-4292-9A5B-2008BD727A06}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Update_Changed_Rows" DTS:refId="Package\SEQ_Update_Changed_Rows">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{16BEC4F8-12BF-4874-A28D-FACDEB8F1AC6}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;U&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{E5169386-4D02-4277-AB15-AF70F024876D}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{F9C15D9C-F5F8-4F02-A1D0-6C1757A946D3}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_UpdateChangedRows" DTS:refId="Package\SEQ_Update_Changed_Rows\EST_UpdateChangedRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_EDW" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="SELECT 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{F8B17A6E-C819-4BC6-87DE-744D027F11E4}" DTS:From="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates]" DTS:To="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{0F136BB6-9215-4FF5-B38C-1CE3FD7B1130}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForUpdates_To_EST_UpdateChangedRows" DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_EST_CheckForUpdates_To_EST_UpdateChangedRows]" DTS:To="Package\SEQ_Update_Changed_Rows\EST_UpdateChangedRows">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{2DFB0B25-BD40-4F21-8537-E4D79312C911}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Set_Deleted_Rows_Inactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{C73A01B1-2C7B-4759-8E53-A4904043AC1F}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;D&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{32E5C712-163F-4554-88FE-E78584164AED}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForDeletes" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{40967B7A-95EF-4F0E-BD3F-C67E53A23DCA}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_SetDeletedRowsToInactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_EDW" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::InactiveQuery" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{A66F4F51-2050-4890-A8B3-852BF6D06810}" DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{145EC585-1133-4EB1-9951-32597086347B}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{4037C743-2628-4AC9-B26C-4FD17F85EFDF}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{3FB4E2FF-6388-4D56-8494-C2C74FBB7D5E}" DTS:From="Package\SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus_To_SEQ_Load_New_Rows" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimOrganizationVerificationStatus_To_SEQ_Load_New_Rows]" DTS:To="Package\SEQ_Load_New_Rows">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{97176F7D-E066-4981-87CA-A38B16FEE74A}" DTS:From="Package\SEQ_Load_New_Rows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows" DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows]" DTS:To="Package\SEQ_Update_Changed_Rows">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{2D4324CC-A3E9-4F14-BF65-B39DFCA16C3F}" DTS:From="Package\SEQ_Update_Changed_Rows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive" DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive">
+    </DTS:PrecedenceConstraint>
+  </DTS:PrecedenceConstraints>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CC3A4A85-A201-4D1F-8F1F-B227A253FB52}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6EE8806B-5906-4817-A1A6-DEBC7F52AB04}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{12CC9723-6D43-4287-A4CC-179CFB39133D}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+      <DTS:VariableValue DTS:DataType="8">2010_Classification_DimOrganizationVerificationStatus</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D28BA6E0-4E85-4C69-80BF-535EEED71962}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="ChangeOperation">
+      <DTS:VariableValue DTS:DataType="8">I</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D717E58C-07E9-4DF9-AD35-8050C1EB957D}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Classification_DimOrganizationVerificationStatus&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Classification_DimOrganizationVerificationStatus</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{38DDF1BA-92F9-40A1-9A48-5F656B941B61}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;WHERE SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] +&quot; AND SYS_CHANGE_OPERATION = '&quot; + @[User::ChangeOperation] +&quot;'&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="EndOfQuery">
+      <DTS:VariableValue DTS:DataType="8">WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A487212B-5064-46FC-ACCB-2150C5873991}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A42BC636-F991-45BE-9556-CA03A49A77FD}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT * FROM [Staging].[Classification_DimOrganizationVerificationStatus] &quot; + @[User::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetData">
+      <DTS:VariableValue DTS:DataType="8">SELECT * FROM [Staging].[Classification_DimOrganizationVerificationStatus] WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3AA1852C-B6D3-437D-90EB-40EA253F3A63}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;UPDATE [Classification].[DimOrganizationVerificationStatus] SET IsActive = 0  WHERE  	EXISTS 	( 		SELECT 1  		FROM Paga_Staging.Staging.Classification_DimOrganizationVerificationStatus as stg 		WHERE  			stg.SourceKey = sourceKey 			AND SYS_CHANGE_OPERATION = 'D' 			AND SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] 	)" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="InactiveQuery">
+      <DTS:VariableValue DTS:DataType="8">UPDATE [Classification].[DimOrganizationVerificationStatus] SET IsActive = 0  WHERE  	EXISTS 	( 		SELECT 1  		FROM Paga_Staging.Staging.Classification_DimOrganizationVerificationStatus as stg 		WHERE  			stg.SourceKey = sourceKey 			AND SYS_CHANGE_OPERATION = 'D' 			AND SYS_CHANGE_VERSION = 0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>

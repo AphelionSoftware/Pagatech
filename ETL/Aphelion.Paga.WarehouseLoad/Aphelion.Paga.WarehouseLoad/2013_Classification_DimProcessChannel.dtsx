@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="02/12/2015 15:09:34" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{F1A7D2D4-03C7-4FBB-B482-1A46C146B0E5}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2013_Classification_DimProcessChannel" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{E67384BF-6405-4238-9F79-5DFB1872D26E}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{C9A333B0-FCA9-4769-AD8E-328545E5A109}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimProcessChannel" DTS:refId="Package\SQL_Truncate_Error_Classification_DimProcessChannel" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimProcessChannel]&#xA;     " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{EAC4220B-578B-4296-80FC-95434CC07F8B}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Load_New_Rows" DTS:refId="Package\SEQ_Load_New_Rows">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{F60B550B-F98E-4E0F-8F07-2DE355D39478}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;I&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{80B02023-3ADA-46BC-A03C-585D775B4000}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForInserts" DTS:refId="Package\SEQ_Load_New_Rows\EST_CheckForInserts" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{892A58F0-0398-458C-BB96-290136F40948}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimProcessChannel" DTS:refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+              <components>
+                <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLE_SRC_Staging_Classification_DimProcessChannel" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel" usesDispositions="true" version="7">
+                  <connections>
+                    <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].ExternalColumns[TextDesciption]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[Name]" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].ExternalColumns[SourceKey]" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].ExternalColumns[TextDesciption]" length="1000" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[TextDesciption]" name="TextDesciption" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[TextDesciption]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[Name]" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[Name]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[SourceKey]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="1000" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[TextDesciption]" name="TextDesciption" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[TextDesciption]">
+                        </outputColumn>
+                        <outputColumn dataType="i8" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                    </property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::GetData</property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                    <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                    </property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Classification_DimProcessChannel" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="DimProcessChannelID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[DimProcessChannelID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[TextDesciption]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[sys_ModifiedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[sys_ModifiedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[sys_CreatedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[sys_CreatedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[IsActive]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].Columns[SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[TextDesciption]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[TextDesciption]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].Columns[TextDesciption]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Classification.DimProcessChannel</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Singleton_Classification_DimProcessChannel" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="DimProcessChannelID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[DimProcessChannelID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[TextDesciption]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[sys_ModifiedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[sys_ModifiedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[sys_CreatedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[sys_CreatedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[IsActive]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].Columns[SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[TextDesciption]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[TextDesciption]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].Columns[TextDesciption]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Classification.DimProcessChannel</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">1</property>
+                  </properties>
+                </component>
+                <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails" usesDispositions="true">
+                  <inputs>
+                    <input name="OLE_DST_Singleton_Classification_DimProcessChannel_Error_DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimProcessChannel_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimProcessChannel_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimProcessChannel_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimProcessChannel_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorCode]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimProcessChannel.ErrorCode</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorColumn]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimProcessChannel.ErrorColumn</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimProcessChannel_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                </component>
+                <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\RC_CountErrors">
+                  <inputs>
+                    <input hasSideEffects="true" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\RC_CountErrors.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Classification_DimProcessChannel" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{2C3E7E8F-26FE-46EC-83AC-2F8FC8506F95}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[QueueID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[SSISErrorCode]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[SSISErrorColumn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[PackageName]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[ErrorType]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[TextDesciption]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[PackageName]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].Columns[PackageName]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[QueueID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].Columns[QueueID]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[ErrorType]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].Columns[ErrorType]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[SSISErrorCode]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].Columns[SSISErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[SSISErrorColumn]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].Columns[SSISErrorColumn]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].Columns[SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].ExternalColumns[TextDesciption]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output].Columns[TextDesciption]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel].Columns[TextDesciption]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Classification_DimProcessChannel]</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+                  </properties>
+                </component>
+              </components>
+              <paths>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel]" name="OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel.Paths[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_SRC_Staging_Classification_DimProcessChannel.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel]" name="OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel.Paths[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimProcessChannel_Error_DC_AddErrorDetails]" name="OLE_DST_Singleton_Classification_DimProcessChannel_Error_DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel.Paths[OLE_DST_Singleton_Classification_DimProcessChannel_Error_DC_AddErrorDetails]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel.Paths[DC_AddErrorDetails_Output_RC_CountErrors]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\DC_AddErrorDetails.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\OLE_DST_Error_Classification_DimProcessChannel.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel]" name="RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel.Paths[RC_CountErrors_Output_OLE_DST_Error_Classification_DimProcessChannel]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel\RC_CountErrors.Outputs[Output]">
+                </path>
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{755BED1C-6015-4305-80E5-BBF5D53ECBCB}" DTS:From="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts" DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts]" DTS:To="Package\SEQ_Load_New_Rows\EST_CheckForInserts">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{B6D7B3D2-7DE4-4DF5-8E19-0A1F0F45881B}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Load_New_Rows\EST_CheckForInserts" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForInserts_To_DFT_Load_Classification_DimProcessChannel" DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_EST_CheckForInserts_To_DFT_Load_Classification_DimProcessChannel]" DTS:To="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimProcessChannel">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{E444A70A-5199-4DDB-AEF5-814CBB4E5045}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Update_Changed_Rows" DTS:refId="Package\SEQ_Update_Changed_Rows">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{D34BEC9D-E650-484B-AECF-28A0F8EAAA24}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;U&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{3189EB7C-B7A8-47A5-A9B9-B44239000572}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{E92ECB6B-6429-44A5-A297-9427C6A22E64}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_UpdateChangedRows" DTS:refId="Package\SEQ_Update_Changed_Rows\EST_UpdateChangedRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_EDW" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="SELECT 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{E9DCE8A5-8B06-470E-B2DE-2BD458AA7469}" DTS:From="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates]" DTS:To="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{CD5B7455-E6B5-4F31-AE52-47AC002E784D}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForUpdates_To_EST_UpdateChangedRows" DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_EST_CheckForUpdates_To_EST_UpdateChangedRows]" DTS:To="Package\SEQ_Update_Changed_Rows\EST_UpdateChangedRows">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{AE8991DE-FF35-4C78-9D11-F9D527FF5750}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Set_Deleted_Rows_Inactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{4329A43A-1413-4710-995E-CA25DB498F88}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;D&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{BBA92CA0-6DDD-4C92-963D-BCA99FA90429}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForDeletes" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{3824AE77-BD7A-4267-A552-DC0A37244724}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_SetDeletedRowsToInactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_EDW" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::InactiveQuery" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{6C937C8B-E8DE-4885-9278-EB8F401BA2EB}" DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{90E818E7-A348-4B67-9986-DE477509838A}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{C1F4FBA5-CB7D-4A9A-B0CC-2FC5DEEDBF49}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{ACE818A7-62BF-4214-B179-4FE799A2BC1A}" DTS:From="Package\SQL_Truncate_Error_Classification_DimProcessChannel" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimProcessChannel_To_SEQ_Load_New_Rows" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimProcessChannel_To_SEQ_Load_New_Rows]" DTS:To="Package\SEQ_Load_New_Rows">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{DCC8FE22-DB18-40E6-B073-010AA04EFB8B}" DTS:From="Package\SEQ_Load_New_Rows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows" DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows]" DTS:To="Package\SEQ_Update_Changed_Rows">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{36C43B03-64F0-440C-A94E-E97163578A0D}" DTS:From="Package\SEQ_Update_Changed_Rows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive" DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive">
+    </DTS:PrecedenceConstraint>
+  </DTS:PrecedenceConstraints>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DCE52FA9-05FB-410A-B80F-CAAE8FBDB36B}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{87D20B4F-86E6-4F1E-8708-607EECF98154}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B9558F14-3B4A-4ABE-9C3A-9B9C07289763}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+      <DTS:VariableValue DTS:DataType="8">2013_Classification_DimProcessChannel</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F88043CF-5524-4870-AA4A-60900C941772}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="ChangeOperation">
+      <DTS:VariableValue DTS:DataType="8">I</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D69B4FE4-158D-44DD-9C62-7062702DAC3E}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Classification_DimProcessChannel&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Classification_DimProcessChannel</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DD3E66D1-9CB1-436A-9CF3-7FD3D691BD75}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;WHERE SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] +&quot; AND SYS_CHANGE_OPERATION = '&quot; + @[User::ChangeOperation] +&quot;'&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="EndOfQuery">
+      <DTS:VariableValue DTS:DataType="8">WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F5BE0AE4-1E58-491E-B029-B7B98F6F8627}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FFCBB200-FA4C-44D7-9B05-0CE83FAE5069}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT * FROM [Staging].[Classification_DimProcessChannel] &quot; + @[User::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetData">
+      <DTS:VariableValue DTS:DataType="8">SELECT * FROM [Staging].[Classification_DimProcessChannel] WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6D25528C-2BE0-4FA3-ADB0-01B12233ED7B}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;UPDATE [Classification].[DimProcessChannel] SET IsActive = 0  WHERE  	EXISTS 	( 		SELECT 1  		FROM Paga_Staging.Staging.Classification_DimProcessChannel as stg 		WHERE  			stg.SourceKey = sourceKey 			AND SYS_CHANGE_OPERATION = 'D' 			AND SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] 	)" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="InactiveQuery">
+      <DTS:VariableValue DTS:DataType="8">UPDATE [Classification].[DimProcessChannel] SET IsActive = 0  WHERE  	EXISTS 	( 		SELECT 1  		FROM Paga_Staging.Staging.Classification_DimProcessChannel as stg 		WHERE  			stg.SourceKey = sourceKey 			AND SYS_CHANGE_OPERATION = 'D' 			AND SYS_CHANGE_VERSION = 0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>

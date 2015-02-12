@@ -1,12 +1,11 @@
-<# var SourceConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
+
 <# var DestConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_EDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
-<# var ErrorConnection = SchemaManager.CreateConnectionNode("SchemaProvider", "Data Source=.\\sql2012;Initial Catalog=Paga_Errors;Provider=SQLNCLI11.1;Integrated Security=SSPI;"); #>
+
 	
 <# var DestSchema = DestConnection.ImportDB("", "", ImportOptions.ExcludeViews); #>
 <# var DestTables = DestConnection.GenerateTableNodes(); #>
 	
-<# var ErrorSchema = ErrorConnection.ImportDB("", "", ImportOptions.ExcludeViews); #>
-<# var ErrorTables = ErrorConnection.GenerateTableNodes(); #>
+
 	
 <# var strLookup = ""; #>
 
@@ -25,7 +24,7 @@
   <Packages>
 
 	<# 
-		string PackageListQuery = "SELECT TOP 1"+
+		string PackageListQuery = "SELECT "+
 											"PackageName = CONVERT(CHAR(4),(list.LoadGroup + list.rn)) +'_' + StagingTableName, "+
 											"list.TABLE_SCHEMA, "+
 											"list.TABLE_NAME, "+
@@ -131,7 +130,18 @@
 				string TableName = row[2].ToString();
 				string errTable = row[6].ToString();
 				string CountQuery = "&quot;SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging." +TableSchema +"_" +TableName +"&quot;";
-				
+				string SetInactiveQuery =	"&quot;UPDATE ["+TableSchema +"].["+TableName+"] " +
+											"SET IsActive = 0  " +
+											"WHERE  " +
+											"	EXISTS " +
+											"	( " +
+											"		SELECT 1  " +
+											"		FROM Paga_Staging.Staging."+TableSchema +"_" +TableName +" as stg " +
+											"		WHERE  " +
+											"			stg.SourceKey = sourceKey " +
+											"			AND SYS_CHANGE_OPERATION = 'D' " +
+											"			AND SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] " +
+											"	)";
 #>	
 	<Package Name="<#=PackageName#>" ConstraintMode="Parallel" ProtectionLevel="EncryptSensitiveWithUserKey"  MaxErrorCount="2000"  DelayValidation="true">
 		<Parameters>
@@ -147,6 +157,7 @@
 			<Variable Name="EndOfQuery" DataType="String" EvaluateAsExpression="true">"WHERE SYS_CHANGE_VERSION = " +(DT_WSTR, 20)@[$Package::ChangeVersion] +" AND SYS_CHANGE_OPERATION = '" + @[User::ChangeOperation] +"'"</Variable>
 			<Variable Name="RowCount" DataType="Int32">0</Variable>
 			<Variable Name="GetData" DataType="String" EvaluateAsExpression="true">"SELECT * FROM [Staging].[<#=TableSchema#>_<#=TableName#>] " + @[User::EndOfQuery]</Variable>
+			<Variable Name="InactiveQuery" DataType="String" EvaluateAsExpression="true"><#=SetInactiveQuery#></Variable>
  		</Variables>
 
 	   <Tasks>
@@ -317,7 +328,7 @@
 							</Inputs>
 						</PrecedenceConstraints>
 					</ExecuteSQL>
-					<ExecuteSQL Name="EST_UpdateChangedRows" ConnectionName="Paga_Staging" ResultSet="SingleRow">
+					<ExecuteSQL Name="EST_UpdateChangedRows" ConnectionName="Paga_EDW" ResultSet="SingleRow">
 						<DirectInput>SELECT 1</DirectInput>
 						<PrecedenceConstraints>
 							<Inputs>
@@ -344,8 +355,8 @@
 							</Inputs>
 						</PrecedenceConstraints>
 					</ExecuteSQL>
-					<ExecuteSQL Name="EST_SetDeletedRowsToInactive" ConnectionName="Paga_Staging" ResultSet="SingleRow">
-						<DirectInput>SELECT 1</DirectInput>
+					<ExecuteSQL Name="EST_SetDeletedRowsToInactive" ConnectionName="Paga_EDW" ResultSet="SingleRow">
+						 <VariableInput VariableName="User.InactiveQuery"></VariableInput>
 						<PrecedenceConstraints>
 							<Inputs>
 								<Input OutputPathName="EST_CheckForDeletes.Output" EvaluationOperation="ExpressionAndConstraint" EvaluationValue="Success" Expression="@[User::RowCount] > 0"/>

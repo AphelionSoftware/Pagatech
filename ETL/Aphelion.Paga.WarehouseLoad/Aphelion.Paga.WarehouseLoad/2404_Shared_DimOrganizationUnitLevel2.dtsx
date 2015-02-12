@@ -1,0 +1,1019 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="02/12/2015 15:09:37" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{757ECCD5-ECAA-41E7-B843-1E5C6CBF7087}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2404_Shared_DimOrganizationUnitLevel2" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{0AF7BE50-16EA-405E-B66C-3D525F1E3F37}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{679E2F32-18C8-4B4F-809D-210E88B149CD}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Shared_DimOrganizationUnitLevel2" DTS:refId="Package\SQL_Truncate_Error_Shared_DimOrganizationUnitLevel2" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Shared_DimOrganizationUnitLevel2]&#xA;     " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{83FCE06A-4405-4916-A579-E73C99AE5736}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Load_New_Rows" DTS:refId="Package\SEQ_Load_New_Rows">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{A27A5A55-E108-4B59-B3EB-5F608E1C3B91}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;I&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{1EC9F52F-A03F-47D5-8552-089B84AD44BD}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForInserts" DTS:refId="Package\SEQ_Load_New_Rows\EST_CheckForInserts" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{E5B784A8-CADD-4C31-84F5-4C69F23F650E}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Shared_DimOrganizationUnitLevel2" DTS:refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+              <components>
+                <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2" usesDispositions="true" version="7">
+                  <connections>
+                    <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn codePage="1252" dataType="str" length="20" name="IdentificationNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[IdentificationNumber]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimOrganizationUnitLevel1SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[DimOrganizationUnitLevel1SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimOrganizationUnitTypeSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[DimOrganizationUnitTypeSourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[IdentificationNumber]" length="20" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[IdentificationNumber]" name="IdentificationNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[IdentificationNumber]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[Name]" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[DimOrganizationUnitLevel1SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitLevel1SourceKey]" name="DimOrganizationUnitLevel1SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitLevel1SourceKey]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[DimOrganizationUnitTypeSourceKey]" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitTypeSourceKey]" name="DimOrganizationUnitTypeSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitTypeSourceKey]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" length="20" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[IdentificationNumber]" name="IdentificationNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[IdentificationNumber]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[Name]" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[Name]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[SourceKey]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[DimOrganizationUnitLevel1SourceKey]" name="DimOrganizationUnitLevel1SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[DimOrganizationUnitLevel1SourceKey]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[DimOrganizationUnitTypeSourceKey]" name="DimOrganizationUnitTypeSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[DimOrganizationUnitTypeSourceKey]">
+                        </outputColumn>
+                        <outputColumn dataType="i8" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                    </property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::GetData</property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                    <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                    </property>
+                  </properties>
+                </component>
+                <component componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}" contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5" name="LKP_DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID" usesDispositions="true" version="6">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="Connection manager used to access lookup data." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input name="OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2_Output_LKP_DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Inputs[OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2_Output_LKP_DimOrganizationUnitLevel1ID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="DimOrganizationUnitLevel1SourceKey" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitLevel1SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Inputs[OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2_Output_LKP_DimOrganizationUnitLevel1ID].Columns[DimOrganizationUnitLevel1SourceKey]">
+                          <properties>
+                            <property dataType="System.String" description="Specifies the column in the reference table that a column joins." name="JoinToReferenceColumn">SourceKey</property>
+                            <property dataType="System.Null" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">
+                            </property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output errorOrTruncationOperation="Lookup" errorRowDisposition="RedirectRow" exclusionGroup="1" name="Match" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Match]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Inputs[OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2_Output_LKP_DimOrganizationUnitLevel1ID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="CopyColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Match].Columns[DimOrganizationUnitLevel1ID]" name="DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Match].Columns[DimOrganizationUnitLevel1ID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">DimOrganizationUnitLevel1ID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;" exclusionGroup="1" name="NoMatch" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[NoMatch]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Inputs[OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2_Output_LKP_DimOrganizationUnitLevel1ID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Inputs[OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2_Output_LKP_DimOrganizationUnitLevel1ID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the SQL statement that generates the lookup table." expressionType="Notify" name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SourceKey, DimOrganizationUnitLevel1ID FROM [Shared].[DimOrganizationUnitLevel1]</property>
+                    <property dataType="System.String" description="Specifies a SQL statement that uses parameters to generate the lookup table." expressionType="Notify" name="SqlCommandParam" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT SourceKey, DimOrganizationUnitLevel1ID FROM [Shared].[DimOrganizationUnitLevel1]) [refTable] where [refTable].[SourceKey] = ?</property>
+                    <property dataType="System.Int32" description="Specifies the type of connection used to access the reference dataset." name="ConnectionType" typeConverter="LookupConnectionType">0</property>
+                    <property dataType="System.Int32" description="Specifies the cache type of the lookup table." name="CacheType" typeConverter="CacheType">0</property>
+                    <property dataType="System.Int32" description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set." name="NoMatchBehavior" typeConverter="LookupNoMatchBehavior">0</property>
+                    <property dataType="System.Int32" description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset." name="NoMatchCachePercentage">0</property>
+                    <property dataType="System.Int32" description="Maximum Memory Usage for Reference Cache on a 32 bit platform." name="MaxMemoryUsage">25</property>
+                    <property dataType="System.Int64" description="Maximum Memory Usage for Reference Cache on a 64 bit platform." name="MaxMemoryUsage64">25</property>
+                    <property dataType="System.String" description="Indicates whether to reference metadata in an XML format." name="ReferenceMetadataXml">&lt;referenceMetadata&gt;
+  &lt;referenceColumns&gt;
+    &lt;referenceColumn name="SourceKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+    &lt;referenceColumn name="DimOrganizationUnitLevel1ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+  &lt;/referenceColumns&gt;
+&lt;/referenceMetadata&gt;</property>
+                    <property containsID="true" dataType="System.String" description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons." name="ParameterMap">#{Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitLevel1SourceKey]};</property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used." name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                </component>
+                <component componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}" contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5" name="LKP_DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID" usesDispositions="true" version="6">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="Connection manager used to access lookup data." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input name="LKP_DimOrganizationUnitLevel1ID_Match_LKP_DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitLevel1ID_Match_LKP_DimOrganizationUnitTypeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimOrganizationUnitTypeSourceKey" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitTypeSourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitLevel1ID_Match_LKP_DimOrganizationUnitTypeID].Columns[DimOrganizationUnitTypeSourceKey]">
+                          <properties>
+                            <property dataType="System.String" description="Specifies the column in the reference table that a column joins." name="JoinToReferenceColumn">SourceKey</property>
+                            <property dataType="System.Null" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">
+                            </property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output errorOrTruncationOperation="Lookup" errorRowDisposition="RedirectRow" exclusionGroup="1" name="Match" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Match]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitLevel1ID_Match_LKP_DimOrganizationUnitTypeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="CopyColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Match].Columns[DimOrganizationUnitTypeID]" name="DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Match].Columns[DimOrganizationUnitTypeID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Specifies the column in the reference table from which a column is copied." name="CopyFromReferenceColumn">DimOrganizationUnitTypeID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;" exclusionGroup="1" name="NoMatch" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[NoMatch]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitLevel1ID_Match_LKP_DimOrganizationUnitTypeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitLevel1ID_Match_LKP_DimOrganizationUnitTypeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the SQL statement that generates the lookup table." expressionType="Notify" name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SourceKey, DimOrganizationUnitTypeID FROM [Classification].[DimOrganizationUnitType]</property>
+                    <property dataType="System.String" description="Specifies a SQL statement that uses parameters to generate the lookup table." expressionType="Notify" name="SqlCommandParam" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT SourceKey, DimOrganizationUnitTypeID FROM [Classification].[DimOrganizationUnitType]) [refTable] where [refTable].[SourceKey] = ?</property>
+                    <property dataType="System.Int32" description="Specifies the type of connection used to access the reference dataset." name="ConnectionType" typeConverter="LookupConnectionType">0</property>
+                    <property dataType="System.Int32" description="Specifies the cache type of the lookup table." name="CacheType" typeConverter="CacheType">0</property>
+                    <property dataType="System.Int32" description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set." name="NoMatchBehavior" typeConverter="LookupNoMatchBehavior">0</property>
+                    <property dataType="System.Int32" description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset." name="NoMatchCachePercentage">0</property>
+                    <property dataType="System.Int32" description="Maximum Memory Usage for Reference Cache on a 32 bit platform." name="MaxMemoryUsage">25</property>
+                    <property dataType="System.Int64" description="Maximum Memory Usage for Reference Cache on a 64 bit platform." name="MaxMemoryUsage64">25</property>
+                    <property dataType="System.String" description="Indicates whether to reference metadata in an XML format." name="ReferenceMetadataXml">&lt;referenceMetadata&gt;
+  &lt;referenceColumns&gt;
+    &lt;referenceColumn name="SourceKey" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252" /&gt;
+    &lt;referenceColumn name="DimOrganizationUnitTypeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0" /&gt;
+  &lt;/referenceColumns&gt;
+&lt;/referenceMetadata&gt;</property>
+                    <property containsID="true" dataType="System.String" description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons." name="ParameterMap">#{Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitTypeSourceKey]};</property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used." name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Shared_DimOrganizationUnitLevel2" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="DimOrganizationUnitLevel2ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitLevel2ID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitLevel1ID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitTypeID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="20" name="IdentificationNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[IdentificationNumber]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[SourceKeyHash]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[DeltaHash]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[sys_ModifiedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[sys_ModifiedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[sys_CreatedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[sys_CreatedOn]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="DimOrganizationUnitTypeID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitTypeID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Match].Columns[DimOrganizationUnitTypeID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].Columns[DimOrganizationUnitTypeID]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="DimOrganizationUnitLevel1ID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitLevel1ID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Match].Columns[DimOrganizationUnitLevel1ID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].Columns[DimOrganizationUnitLevel1ID]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="20" cachedName="IdentificationNumber" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[IdentificationNumber]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[IdentificationNumber]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].Columns[IdentificationNumber]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2].Columns[SourceKey]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Shared.DimOrganizationUnitLevel2</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="DimOrganizationUnitLevel2ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitLevel2ID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitLevel1ID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitTypeID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="20" name="IdentificationNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[IdentificationNumber]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[SourceKeyHash]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[DeltaHash]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[sys_ModifiedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[sys_ModifiedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[sys_CreatedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[sys_CreatedOn]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="DimOrganizationUnitTypeID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitTypeID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Match].Columns[DimOrganizationUnitTypeID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].Columns[DimOrganizationUnitTypeID]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="DimOrganizationUnitLevel1ID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitLevel1ID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Match].Columns[DimOrganizationUnitLevel1ID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].Columns[DimOrganizationUnitLevel1ID]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="20" cachedName="IdentificationNumber" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[IdentificationNumber]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[IdentificationNumber]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].Columns[IdentificationNumber]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2].Columns[SourceKey]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Shared.DimOrganizationUnitLevel2</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">1</property>
+                  </properties>
+                </component>
+                <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails" usesDispositions="true">
+                  <inputs>
+                    <input name="OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2_Error_DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorCode]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.ErrorCode</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorColumn]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.ErrorColumn</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                </component>
+                <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors">
+                  <inputs>
+                    <input hasSideEffects="true" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Shared_DimOrganizationUnitLevel2" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{2C3E7E8F-26FE-46EC-83AC-2F8FC8506F95}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[QueueID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[SSISErrorCode]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[SSISErrorColumn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[PackageName]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[ErrorType]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimOrganizationUnitLevel1SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitLevel1SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimOrganizationUnitTypeSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitTypeSourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="20" name="IdentificationNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[IdentificationNumber]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[PackageName]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].Columns[PackageName]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[QueueID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].Columns[QueueID]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[ErrorType]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].Columns[ErrorType]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[SSISErrorCode]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].Columns[SSISErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[SSISErrorColumn]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].Columns[SSISErrorColumn]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="20" cachedName="IdentificationNumber" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[IdentificationNumber]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[IdentificationNumber]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].Columns[IdentificationNumber]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].Columns[SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="DimOrganizationUnitLevel1SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitLevel1SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitLevel1SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].Columns[DimOrganizationUnitLevel1SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimOrganizationUnitTypeSourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].ExternalColumns[DimOrganizationUnitTypeSourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitTypeSourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2].Columns[DimOrganizationUnitTypeSourceKey]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Shared_DimOrganizationUnitLevel2]</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+                  </properties>
+                </component>
+                <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails_DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID" usesDispositions="true">
+                  <inputs>
+                    <input name="LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID].Columns[ErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID].Columns[ErrorColumn]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Failed Lookup DimOrganizationUnitTypeID")</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Failed Lookup DimOrganizationUnitTypeID")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorCode]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorCode</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorColumn]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorColumn</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                </component>
+                <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors_DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors_DimOrganizationUnitTypeID">
+                  <inputs>
+                    <input hasSideEffects="true" name="DC_AddErrorDetails_DimOrganizationUnitTypeID_Output_RC_CountErrors_DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors_DimOrganizationUnitTypeID.Inputs[DC_AddErrorDetails_DimOrganizationUnitTypeID_Output_RC_CountErrors_DimOrganizationUnitTypeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors_DimOrganizationUnitTypeID.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors_DimOrganizationUnitTypeID.Inputs[DC_AddErrorDetails_DimOrganizationUnitTypeID_Output_RC_CountErrors_DimOrganizationUnitTypeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{2C3E7E8F-26FE-46EC-83AC-2F8FC8506F95}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[QueueID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[SSISErrorCode]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[SSISErrorColumn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[PackageName]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[ErrorType]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimOrganizationUnitLevel1SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[DimOrganizationUnitLevel1SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimOrganizationUnitTypeSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[DimOrganizationUnitTypeSourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="20" name="IdentificationNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[IdentificationNumber]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[PackageName]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[PackageName]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].Columns[PackageName]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[QueueID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[QueueID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].Columns[QueueID]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[ErrorType]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[ErrorType]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].Columns[ErrorType]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[SSISErrorCode]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[SSISErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].Columns[SSISErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[SSISErrorColumn]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].Columns[SSISErrorColumn]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="20" cachedName="IdentificationNumber" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[IdentificationNumber]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[IdentificationNumber]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].Columns[IdentificationNumber]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].Columns[SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="DimOrganizationUnitLevel1SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[DimOrganizationUnitLevel1SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitLevel1SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].Columns[DimOrganizationUnitLevel1SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimOrganizationUnitTypeSourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].ExternalColumns[DimOrganizationUnitTypeSourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitTypeSourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID].Columns[DimOrganizationUnitTypeSourceKey]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Shared_DimOrganizationUnitLevel2]</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+                  </properties>
+                </component>
+                <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails_DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID" usesDispositions="true">
+                  <inputs>
+                    <input name="LKP_DimOrganizationUnitLevel1ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Inputs[LKP_DimOrganizationUnitLevel1ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel1ID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Inputs[LKP_DimOrganizationUnitLevel1ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel1ID].Columns[ErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Inputs[LKP_DimOrganizationUnitLevel1ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel1ID].Columns[ErrorColumn]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Inputs[LKP_DimOrganizationUnitLevel1ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel1ID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Failed Lookup DimOrganizationUnitLevel1ID")</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Failed Lookup DimOrganizationUnitLevel1ID")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorCode]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorCode</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorColumn]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">ErrorColumn</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Inputs[LKP_DimOrganizationUnitLevel1ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel1ID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                </component>
+                <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors_DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors_DimOrganizationUnitLevel1ID">
+                  <inputs>
+                    <input hasSideEffects="true" name="DC_AddErrorDetails_DimOrganizationUnitLevel1ID_Output_RC_CountErrors_DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors_DimOrganizationUnitLevel1ID.Inputs[DC_AddErrorDetails_DimOrganizationUnitLevel1ID_Output_RC_CountErrors_DimOrganizationUnitLevel1ID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors_DimOrganizationUnitLevel1ID.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors_DimOrganizationUnitLevel1ID.Inputs[DC_AddErrorDetails_DimOrganizationUnitLevel1ID_Output_RC_CountErrors_DimOrganizationUnitLevel1ID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{2C3E7E8F-26FE-46EC-83AC-2F8FC8506F95}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[QueueID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[SSISErrorCode]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[SSISErrorColumn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[PackageName]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[ErrorType]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="DimOrganizationUnitLevel1SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[DimOrganizationUnitLevel1SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimOrganizationUnitTypeSourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[DimOrganizationUnitTypeSourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="20" name="IdentificationNumber" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[IdentificationNumber]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[PackageName]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[PackageName]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].Columns[PackageName]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[QueueID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[QueueID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].Columns[QueueID]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[ErrorType]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[ErrorType]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].Columns[ErrorType]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[SSISErrorCode]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[SSISErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].Columns[SSISErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[SSISErrorColumn]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].Columns[SSISErrorColumn]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="20" cachedName="IdentificationNumber" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[IdentificationNumber]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[IdentificationNumber]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].Columns[IdentificationNumber]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].Columns[SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="DimOrganizationUnitLevel1SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[DimOrganizationUnitLevel1SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitLevel1SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].Columns[DimOrganizationUnitLevel1SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="DimOrganizationUnitTypeSourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].ExternalColumns[DimOrganizationUnitTypeSourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output].Columns[DimOrganizationUnitTypeSourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID].Columns[DimOrganizationUnitTypeSourceKey]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Shared_DimOrganizationUnitLevel2]</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+                  </properties>
+                </component>
+              </components>
+              <paths>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Inputs[OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2_Output_LKP_DimOrganizationUnitLevel1ID]" name="OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2_Output_LKP_DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2_Output_LKP_DimOrganizationUnitLevel1ID]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_SRC_Staging_Shared_DimOrganizationUnitLevel2.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Inputs[LKP_DimOrganizationUnitLevel1ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel1ID]" name="LKP_DimOrganizationUnitLevel1ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[LKP_DimOrganizationUnitLevel1ID_Error_DC_AddErrorDetails_DimOrganizationUnitLevel1ID]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors_DimOrganizationUnitLevel1ID.Inputs[DC_AddErrorDetails_DimOrganizationUnitLevel1ID_Output_RC_CountErrors_DimOrganizationUnitLevel1ID]" name="DC_AddErrorDetails_DimOrganizationUnitLevel1ID_Output_RC_CountErrors_DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[DC_AddErrorDetails_DimOrganizationUnitLevel1ID_Output_RC_CountErrors_DimOrganizationUnitLevel1ID]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitLevel1ID.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID.Inputs[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID]" name="RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[RC_CountErrors_DimOrganizationUnitLevel1ID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors_DimOrganizationUnitLevel1ID.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitLevel1ID_Match_LKP_DimOrganizationUnitTypeID]" name="LKP_DimOrganizationUnitLevel1ID_Match_LKP_DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[LKP_DimOrganizationUnitLevel1ID_Match_LKP_DimOrganizationUnitTypeID]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitLevel1ID.Outputs[Match]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Inputs[LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID]" name="LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[LKP_DimOrganizationUnitTypeID_Error_DC_AddErrorDetails_DimOrganizationUnitTypeID]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors_DimOrganizationUnitTypeID.Inputs[DC_AddErrorDetails_DimOrganizationUnitTypeID_Output_RC_CountErrors_DimOrganizationUnitTypeID]" name="DC_AddErrorDetails_DimOrganizationUnitTypeID_Output_RC_CountErrors_DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[DC_AddErrorDetails_DimOrganizationUnitTypeID_Output_RC_CountErrors_DimOrganizationUnitTypeID]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails_DimOrganizationUnitTypeID.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID.Inputs[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID]" name="RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[RC_CountErrors_DimOrganizationUnitTypeID_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors_DimOrganizationUnitTypeID.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Inputs[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2]" name="LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[LKP_DimOrganizationUnitTypeID_Match_OLE_DST_Shared_DimOrganizationUnitLevel2]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\LKP_DimOrganizationUnitTypeID.Outputs[Match]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Inputs[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2]" name="OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[OLE_DST_Shared_DimOrganizationUnitLevel2_Error_OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Shared_DimOrganizationUnitLevel2.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2_Error_DC_AddErrorDetails]" name="OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2_Error_DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2_Error_DC_AddErrorDetails]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Singleton_Shared_DimOrganizationUnitLevel2.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[DC_AddErrorDetails_Output_RC_CountErrors]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\DC_AddErrorDetails.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\OLE_DST_Error_Shared_DimOrganizationUnitLevel2.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2]" name="RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2.Paths[RC_CountErrors_Output_OLE_DST_Error_Shared_DimOrganizationUnitLevel2]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2\RC_CountErrors.Outputs[Output]">
+                </path>
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{8A344076-42EF-4E0A-BC27-B1B45A3B152E}" DTS:From="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts" DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts]" DTS:To="Package\SEQ_Load_New_Rows\EST_CheckForInserts">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{476D31E2-FBCC-477E-B13E-8E2EFBA9C27F}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Load_New_Rows\EST_CheckForInserts" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForInserts_To_DFT_Load_Shared_DimOrganizationUnitLevel2" DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_EST_CheckForInserts_To_DFT_Load_Shared_DimOrganizationUnitLevel2]" DTS:To="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimOrganizationUnitLevel2">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{573B0262-32BF-4103-9E20-F1137DB83EB0}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Update_Changed_Rows" DTS:refId="Package\SEQ_Update_Changed_Rows">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{BC5F7A65-B1A7-41FF-86AC-33D41CDF49D3}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;U&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{61D73447-6EFD-4B3D-9F8D-B5FCE141FF69}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{957CEB18-1A7A-4333-BDE5-9C3844B7367E}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_UpdateChangedRows" DTS:refId="Package\SEQ_Update_Changed_Rows\EST_UpdateChangedRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_EDW" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="SELECT 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{4C9EE98B-B124-4620-8E0D-BE019C72A1DE}" DTS:From="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates]" DTS:To="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{38CBC3B5-2B7B-463A-B513-7581E52C9307}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForUpdates_To_EST_UpdateChangedRows" DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_EST_CheckForUpdates_To_EST_UpdateChangedRows]" DTS:To="Package\SEQ_Update_Changed_Rows\EST_UpdateChangedRows">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{BB252470-5E71-43A7-903E-1CBF56BDE231}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Set_Deleted_Rows_Inactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{C1135902-AD2C-45C2-BD60-77CDF0C1D455}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;D&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{B2565DDA-0D10-41FC-949A-F69F245CACEC}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForDeletes" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{63FD345C-DE9E-4309-AD4E-7F2EF4A32335}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_SetDeletedRowsToInactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_EDW" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::InactiveQuery" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{7B64CBDD-30AF-4F9E-9F13-316BD7DB7210}" DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{D0E3D753-0F7F-4CA7-A9FE-2267075DF8F6}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{A3E6ADEC-96A3-4F84-8219-F29931521887}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{2D21684B-F476-481A-8F91-244FA01C8616}" DTS:From="Package\SQL_Truncate_Error_Shared_DimOrganizationUnitLevel2" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Shared_DimOrganizationUnitLevel2_To_SEQ_Load_New_Rows" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Shared_DimOrganizationUnitLevel2_To_SEQ_Load_New_Rows]" DTS:To="Package\SEQ_Load_New_Rows">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{A5578741-1D27-4C5D-8740-C454F99AA7D9}" DTS:From="Package\SEQ_Load_New_Rows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows" DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows]" DTS:To="Package\SEQ_Update_Changed_Rows">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{B605CC31-CA13-4EFF-A813-55CD40F2DFAB}" DTS:From="Package\SEQ_Update_Changed_Rows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive" DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive">
+    </DTS:PrecedenceConstraint>
+  </DTS:PrecedenceConstraints>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EBE83D92-5264-457B-B32C-290368095438}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{65EAEEB3-FA79-44A1-8B55-ECCD1719B7C1}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5C89EEFE-7825-46D6-8A2B-1070036CAEC8}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+      <DTS:VariableValue DTS:DataType="8">2404_Shared_DimOrganizationUnitLevel2</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8F8A3D3F-E797-4B13-9EFA-DF5D0C59D9FA}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="ChangeOperation">
+      <DTS:VariableValue DTS:DataType="8">I</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{78E15EC5-31FE-4421-979F-1EE88761B241}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Shared_DimOrganizationUnitLevel2&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Shared_DimOrganizationUnitLevel2</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6EDEC687-4A02-4791-9AA3-E5A32C858892}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;WHERE SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] +&quot; AND SYS_CHANGE_OPERATION = '&quot; + @[User::ChangeOperation] +&quot;'&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="EndOfQuery">
+      <DTS:VariableValue DTS:DataType="8">WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E9D08716-32A0-4DFD-90AE-FBD33E2DDB14}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DB10BAB5-28FB-4B4F-9D28-FEDD3FC92F9C}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT * FROM [Staging].[Shared_DimOrganizationUnitLevel2] &quot; + @[User::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetData">
+      <DTS:VariableValue DTS:DataType="8">SELECT * FROM [Staging].[Shared_DimOrganizationUnitLevel2] WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{ED8337D6-B6E0-45DD-9DF2-6DF23F902185}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;UPDATE [Shared].[DimOrganizationUnitLevel2] SET IsActive = 0  WHERE  	EXISTS 	( 		SELECT 1  		FROM Paga_Staging.Staging.Shared_DimOrganizationUnitLevel2 as stg 		WHERE  			stg.SourceKey = sourceKey 			AND SYS_CHANGE_OPERATION = 'D' 			AND SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] 	)" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="InactiveQuery">
+      <DTS:VariableValue DTS:DataType="8">UPDATE [Shared].[DimOrganizationUnitLevel2] SET IsActive = 0  WHERE  	EXISTS 	( 		SELECT 1  		FROM Paga_Staging.Staging.Shared_DimOrganizationUnitLevel2 as stg 		WHERE  			stg.SourceKey = sourceKey 			AND SYS_CHANGE_OPERATION = 'D' 			AND SYS_CHANGE_VERSION = 0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>
