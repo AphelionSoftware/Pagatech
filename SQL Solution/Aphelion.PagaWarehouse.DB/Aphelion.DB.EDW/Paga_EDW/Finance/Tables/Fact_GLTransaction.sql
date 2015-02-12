@@ -31,13 +31,17 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_FactGLTransaction_SourceKey]
     ON [Finance].[FactGLTransaction]([SourceKey] ASC);
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'3100', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'3300', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
+
+
 
 
 
