@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/04/2015 16:46:06" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{8D1AA11F-C0A2-4A01-AECE-7883EF26EEF5}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2004_Classification_DimFinancialTransactionType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{3680578A-C6C6-4258-887B-373629ADF262}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/12/2015 09:48:57" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{1F24E830-3147-4887-9F6A-6D6FEC18F8C3}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2004_Classification_DimFinancialTransactionType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{560B9189-56BB-43FF-8133-C8DB70B0C201}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{C2F3F207-E077-44DC-9B0F-81274B91BD1D}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimFinancialTransactionType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimFinancialTransactionType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{B66C6AA9-CAFC-462B-90FD-BC218D602D07}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimFinancialTransactionType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimFinancialTransactionType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimFinancialTransactionType]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{583A6D17-2F3C-4D7B-B418-94247A61F7B3}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimFinancialTransactionType" DTS:refId="Package\DFT_Load_Classification_DimFinancialTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{7DE0F7FD-28F4-4C45-9301-060278A5DD5B}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimFinancialTransactionType" DTS:refId="Package\DFT_Load_Classification_DimFinancialTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -25,6 +25,10 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].ExternalColumns[SourceKey]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].ExternalColumns[FinancialTxCategory]" length="255" lineageId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].Columns[FinancialTxCategory]" name="FinancialTxCategory" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].Columns[FinancialTxCategory]" truncationRowDisposition="FailComponent">
@@ -32,6 +36,10 @@
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].ExternalColumns[SourceKey]" length="255" lineageId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                   </outputColumns>
                 </output>
@@ -44,6 +52,10 @@
                     <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Error].Columns[Name]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Error].Columns[SourceKey]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_SRC_Staging_Classification_DimFinancialTransactionType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -87,10 +99,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="FinancialTxCategory" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Classification_DimFinancialTransactionType.Inputs[OLE_SRC_Staging_Classification_DimFinancialTransactionType_Output_OLE_DST_Classification_DimFinancialTransactionType].ExternalColumns[FinancialTxCategory]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Classification_DimFinancialTransactionType.Inputs[OLE_SRC_Staging_Classification_DimFinancialTransactionType_Output_OLE_DST_Classification_DimFinancialTransactionType].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Classification_DimFinancialTransactionType.Inputs[OLE_SRC_Staging_Classification_DimFinancialTransactionType_Output_OLE_DST_Classification_DimFinancialTransactionType].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Classification_DimFinancialTransactionType.Inputs[OLE_SRC_Staging_Classification_DimFinancialTransactionType_Output_OLE_DST_Classification_DimFinancialTransactionType].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Classification_DimFinancialTransactionType.Inputs[OLE_SRC_Staging_Classification_DimFinancialTransactionType_Output_OLE_DST_Classification_DimFinancialTransactionType].ExternalColumns[sys_ModifiedOn]">
@@ -98,6 +106,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Classification_DimFinancialTransactionType.Inputs[OLE_SRC_Staging_Classification_DimFinancialTransactionType_Output_OLE_DST_Classification_DimFinancialTransactionType].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Classification_DimFinancialTransactionType.Inputs[OLE_SRC_Staging_Classification_DimFinancialTransactionType_Output_OLE_DST_Classification_DimFinancialTransactionType].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Classification_DimFinancialTransactionType.Inputs[OLE_SRC_Staging_Classification_DimFinancialTransactionType_Output_OLE_DST_Classification_DimFinancialTransactionType].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -154,10 +164,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="FinancialTxCategory" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Singleton_Classification_DimFinancialTransactionType.Inputs[OLE_DST_Classification_DimFinancialTransactionType_Error_OLE_DST_Singleton_Classification_DimFinancialTransactionType].ExternalColumns[FinancialTxCategory]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Singleton_Classification_DimFinancialTransactionType.Inputs[OLE_DST_Classification_DimFinancialTransactionType_Error_OLE_DST_Singleton_Classification_DimFinancialTransactionType].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Singleton_Classification_DimFinancialTransactionType.Inputs[OLE_DST_Classification_DimFinancialTransactionType_Error_OLE_DST_Singleton_Classification_DimFinancialTransactionType].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Singleton_Classification_DimFinancialTransactionType.Inputs[OLE_DST_Classification_DimFinancialTransactionType_Error_OLE_DST_Singleton_Classification_DimFinancialTransactionType].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Singleton_Classification_DimFinancialTransactionType.Inputs[OLE_DST_Classification_DimFinancialTransactionType_Error_OLE_DST_Singleton_Classification_DimFinancialTransactionType].ExternalColumns[sys_ModifiedOn]">
@@ -165,6 +171,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Singleton_Classification_DimFinancialTransactionType.Inputs[OLE_DST_Classification_DimFinancialTransactionType_Error_OLE_DST_Singleton_Classification_DimFinancialTransactionType].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Singleton_Classification_DimFinancialTransactionType.Inputs[OLE_DST_Classification_DimFinancialTransactionType_Error_OLE_DST_Singleton_Classification_DimFinancialTransactionType].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Classification_DimFinancialTransactionType\OLE_DST_Singleton_Classification_DimFinancialTransactionType.Inputs[OLE_DST_Classification_DimFinancialTransactionType_Error_OLE_DST_Singleton_Classification_DimFinancialTransactionType].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -375,18 +383,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{E3A3FB56-FBD3-4B7B-A41D-8B60E4614F6D}" DTS:From="Package\SQL_Truncate_Error_Classification_DimFinancialTransactionType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimFinancialTransactionType_To_DFT_Load_Classification_DimFinancialTransactionType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimFinancialTransactionType_To_DFT_Load_Classification_DimFinancialTransactionType]" DTS:To="Package\DFT_Load_Classification_DimFinancialTransactionType">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{F39B38C1-0E34-4BCB-A4BC-FA9B65A0CE92}" DTS:From="Package\SQL_Truncate_Error_Classification_DimFinancialTransactionType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimFinancialTransactionType_To_DFT_Load_Classification_DimFinancialTransactionType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimFinancialTransactionType_To_DFT_Load_Classification_DimFinancialTransactionType]" DTS:To="Package\DFT_Load_Classification_DimFinancialTransactionType">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FBEC47E1-75AD-4669-B28A-E2642C287104}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FD55E9BE-62C0-430E-9368-757C154556D6}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7B4D14B3-7B3E-41EC-B095-6ED576BBF58C}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D3D8D102-C3E6-479F-B23C-29E9658E382A}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{28F0B88D-CFEE-426D-8718-80C1953F183E}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{913A47A6-A1D2-4AA4-9436-97775E7539D5}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2004_Classification_DimFinancialTransactionType</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

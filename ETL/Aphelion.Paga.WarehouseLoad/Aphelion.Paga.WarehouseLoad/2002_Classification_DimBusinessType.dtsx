@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/04/2015 16:46:06" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{B1B6D049-43FB-48DD-8179-1A5D6826CB23}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2002_Classification_DimBusinessType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{409B7C03-714F-4DCC-B9E1-4D8F779E5461}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/12/2015 09:48:57" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{DF9C8D00-6E0B-412F-8022-57ADE5E10081}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2002_Classification_DimBusinessType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{2A860C27-6489-43A3-BA03-DA9F87EF62CB}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{A2B04C9E-F0E3-49F8-8FC6-866148D4B9C7}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimBusinessType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimBusinessType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{3DC6F02D-CE60-45C1-B275-49BC83D8F831}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimBusinessType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimBusinessType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimBusinessType]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{287A8161-7DAA-4324-A5F9-1DC70B687290}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimBusinessType" DTS:refId="Package\DFT_Load_Classification_DimBusinessType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{F2C72D4D-04ED-4263-8A6B-54ECB0A85DFB}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimBusinessType" DTS:refId="Package\DFT_Load_Classification_DimBusinessType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -23,11 +23,19 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].ExternalColumns[SourceKey]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <outputColumns>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].ExternalColumns[SourceKey]" length="255" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                   </outputColumns>
                 </output>
@@ -38,6 +46,10 @@
                     <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Error].Columns[Name]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Error].Columns[SourceKey]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
                     </outputColumn>
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_SRC_Staging_Classification_DimBusinessType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
                     </outputColumn>
@@ -79,10 +91,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Classification_DimBusinessType.Inputs[OLE_SRC_Staging_Classification_DimBusinessType_Output_OLE_DST_Classification_DimBusinessType].ExternalColumns[Name]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Classification_DimBusinessType.Inputs[OLE_SRC_Staging_Classification_DimBusinessType_Output_OLE_DST_Classification_DimBusinessType].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Classification_DimBusinessType.Inputs[OLE_SRC_Staging_Classification_DimBusinessType_Output_OLE_DST_Classification_DimBusinessType].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Classification_DimBusinessType.Inputs[OLE_SRC_Staging_Classification_DimBusinessType_Output_OLE_DST_Classification_DimBusinessType].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Classification_DimBusinessType.Inputs[OLE_SRC_Staging_Classification_DimBusinessType_Output_OLE_DST_Classification_DimBusinessType].ExternalColumns[sys_ModifiedOn]">
@@ -90,6 +98,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Classification_DimBusinessType.Inputs[OLE_SRC_Staging_Classification_DimBusinessType_Output_OLE_DST_Classification_DimBusinessType].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Classification_DimBusinessType.Inputs[OLE_SRC_Staging_Classification_DimBusinessType_Output_OLE_DST_Classification_DimBusinessType].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Classification_DimBusinessType.Inputs[OLE_SRC_Staging_Classification_DimBusinessType_Output_OLE_DST_Classification_DimBusinessType].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -142,10 +152,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Singleton_Classification_DimBusinessType.Inputs[OLE_DST_Classification_DimBusinessType_Error_OLE_DST_Singleton_Classification_DimBusinessType].ExternalColumns[Name]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Singleton_Classification_DimBusinessType.Inputs[OLE_DST_Classification_DimBusinessType_Error_OLE_DST_Singleton_Classification_DimBusinessType].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Singleton_Classification_DimBusinessType.Inputs[OLE_DST_Classification_DimBusinessType_Error_OLE_DST_Singleton_Classification_DimBusinessType].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Singleton_Classification_DimBusinessType.Inputs[OLE_DST_Classification_DimBusinessType_Error_OLE_DST_Singleton_Classification_DimBusinessType].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Singleton_Classification_DimBusinessType.Inputs[OLE_DST_Classification_DimBusinessType_Error_OLE_DST_Singleton_Classification_DimBusinessType].ExternalColumns[sys_ModifiedOn]">
@@ -153,6 +159,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Singleton_Classification_DimBusinessType.Inputs[OLE_DST_Classification_DimBusinessType_Error_OLE_DST_Singleton_Classification_DimBusinessType].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Singleton_Classification_DimBusinessType.Inputs[OLE_DST_Classification_DimBusinessType_Error_OLE_DST_Singleton_Classification_DimBusinessType].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Classification_DimBusinessType\OLE_DST_Singleton_Classification_DimBusinessType.Inputs[OLE_DST_Classification_DimBusinessType_Error_OLE_DST_Singleton_Classification_DimBusinessType].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -357,18 +365,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{29222297-54FC-44FC-9B06-058B8EA4278E}" DTS:From="Package\SQL_Truncate_Error_Classification_DimBusinessType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimBusinessType_To_DFT_Load_Classification_DimBusinessType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimBusinessType_To_DFT_Load_Classification_DimBusinessType]" DTS:To="Package\DFT_Load_Classification_DimBusinessType">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{C90212DE-EC56-4077-AA09-90578379EF08}" DTS:From="Package\SQL_Truncate_Error_Classification_DimBusinessType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimBusinessType_To_DFT_Load_Classification_DimBusinessType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimBusinessType_To_DFT_Load_Classification_DimBusinessType]" DTS:To="Package\DFT_Load_Classification_DimBusinessType">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B03D8F9F-3CB2-47D6-84D8-982CA9E3D058}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5BD5C046-DA0F-4F99-8B6E-4890E5CEBC66}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{150D74EA-91A5-431C-B58D-E39E1F68BA66}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3F1779CE-C846-4A09-A4D3-D4C129D8BAA3}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A88123D6-2BB3-4007-B2FB-A8FCF85D694C}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EAF819C5-16D9-46C2-B00A-BCAF21D39E06}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2002_Classification_DimBusinessType</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

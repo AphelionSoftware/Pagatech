@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/04/2015 16:46:09" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{4558B83B-620A-48BD-B7D4-C0199B00F985}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2302_Finance_DimGLCode" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{AA79964B-FC3A-42BC-B7DB-19B109B4B206}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/12/2015 09:49:00" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{51BADE02-C1F1-4781-8A95-83B5B0376C0B}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2302_Finance_DimGLCode" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{72E998AE-CCB5-479B-96A2-92CCAEA66A54}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{3B7AE659-2D79-4D71-8FA4-CF9939680801}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimGLCode" DTS:refId="Package\SQL_Truncate_Error_Finance_DimGLCode" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{6F258690-58AF-4179-88C3-0288A840B1A5}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimGLCode" DTS:refId="Package\SQL_Truncate_Error_Finance_DimGLCode" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Finance_DimGLCode]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{64DB8F98-4AEB-4842-BFFA-DA01D344B9D7}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimGLCode" DTS:refId="Package\DFT_Load_Finance_DimGLCode" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{2557F83D-9ACF-4FE7-A083-0C0C93E1A87D}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimGLCode" DTS:refId="Package\DFT_Load_Finance_DimGLCode" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -190,10 +190,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="bool" name="IsNormalDebit" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Finance_DimGLCode.Inputs[LKP_DimGLCodeSubGroupID_Match_OLE_DST_Finance_DimGLCode].ExternalColumns[IsNormalDebit]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Finance_DimGLCode.Inputs[LKP_DimGLCodeSubGroupID_Match_OLE_DST_Finance_DimGLCode].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Finance_DimGLCode.Inputs[LKP_DimGLCodeSubGroupID_Match_OLE_DST_Finance_DimGLCode].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Finance_DimGLCode.Inputs[LKP_DimGLCodeSubGroupID_Match_OLE_DST_Finance_DimGLCode].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Finance_DimGLCode.Inputs[LKP_DimGLCodeSubGroupID_Match_OLE_DST_Finance_DimGLCode].ExternalColumns[sys_ModifiedOn]">
@@ -201,6 +197,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Finance_DimGLCode.Inputs[LKP_DimGLCodeSubGroupID_Match_OLE_DST_Finance_DimGLCode].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Finance_DimGLCode.Inputs[LKP_DimGLCodeSubGroupID_Match_OLE_DST_Finance_DimGLCode].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Finance_DimGLCode.Inputs[LKP_DimGLCodeSubGroupID_Match_OLE_DST_Finance_DimGLCode].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -269,10 +267,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="bool" name="IsNormalDebit" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Singleton_Finance_DimGLCode.Inputs[OLE_DST_Finance_DimGLCode_Error_OLE_DST_Singleton_Finance_DimGLCode].ExternalColumns[IsNormalDebit]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Singleton_Finance_DimGLCode.Inputs[OLE_DST_Finance_DimGLCode_Error_OLE_DST_Singleton_Finance_DimGLCode].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Singleton_Finance_DimGLCode.Inputs[OLE_DST_Finance_DimGLCode_Error_OLE_DST_Singleton_Finance_DimGLCode].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Singleton_Finance_DimGLCode.Inputs[OLE_DST_Finance_DimGLCode_Error_OLE_DST_Singleton_Finance_DimGLCode].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Singleton_Finance_DimGLCode.Inputs[OLE_DST_Finance_DimGLCode_Error_OLE_DST_Singleton_Finance_DimGLCode].ExternalColumns[sys_ModifiedOn]">
@@ -280,6 +274,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Singleton_Finance_DimGLCode.Inputs[OLE_DST_Finance_DimGLCode_Error_OLE_DST_Singleton_Finance_DimGLCode].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Singleton_Finance_DimGLCode.Inputs[OLE_DST_Finance_DimGLCode_Error_OLE_DST_Singleton_Finance_DimGLCode].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Finance_DimGLCode\OLE_DST_Singleton_Finance_DimGLCode.Inputs[OLE_DST_Finance_DimGLCode_Error_OLE_DST_Singleton_Finance_DimGLCode].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -680,18 +676,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{F4A01FBC-E776-423A-BE05-FB5C7F3EAB23}" DTS:From="Package\SQL_Truncate_Error_Finance_DimGLCode" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimGLCode_To_DFT_Load_Finance_DimGLCode" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimGLCode_To_DFT_Load_Finance_DimGLCode]" DTS:To="Package\DFT_Load_Finance_DimGLCode">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{1733E718-40F9-4F0C-A7B4-64353F669FE5}" DTS:From="Package\SQL_Truncate_Error_Finance_DimGLCode" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimGLCode_To_DFT_Load_Finance_DimGLCode" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimGLCode_To_DFT_Load_Finance_DimGLCode]" DTS:To="Package\DFT_Load_Finance_DimGLCode">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3BE42ACF-CA85-4BD1-9363-AC800C7E6B37}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EA816DE2-B9B1-400D-9D6F-D81467A8548A}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{69522CA9-B8D4-4D9A-BB53-613FA58FEEDF}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A9D01C1F-CA31-436E-B35D-66EAADD5AB3B}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D04B57F3-210B-4D0F-BEE9-D64472AC4FD3}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3B3E50D7-0FED-43FD-9403-1D318A53A705}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2302_Finance_DimGLCode</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

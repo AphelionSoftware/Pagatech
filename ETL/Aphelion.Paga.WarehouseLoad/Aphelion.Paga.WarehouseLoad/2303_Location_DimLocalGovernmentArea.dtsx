@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/04/2015 16:46:09" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{3338B4FD-4D6D-4A49-AA11-AE78F7FAC095}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2303_Location_DimLocalGovernmentArea" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{1D0E34C1-024D-47EC-86EB-A6C2964A935D}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/12/2015 09:49:00" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{F7D5889E-A241-4CF7-8775-49A972C344E6}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2303_Location_DimLocalGovernmentArea" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{E72E5A9E-31F5-4FB9-8C03-D05E0A48FAB8}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{1E7182EE-EFCB-4855-9E3D-85E53555BFAC}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Location_DimLocalGovernmentArea" DTS:refId="Package\SQL_Truncate_Error_Location_DimLocalGovernmentArea" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{28A36A04-6C9F-4439-873E-650317CFE212}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Location_DimLocalGovernmentArea" DTS:refId="Package\SQL_Truncate_Error_Location_DimLocalGovernmentArea" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Location_DimLocalGovernmentArea]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{7EC558BA-5718-408C-860D-6CF28E17CB57}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Location_DimLocalGovernmentArea" DTS:refId="Package\DFT_Load_Location_DimLocalGovernmentArea" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{C4255E4D-718E-4CA8-B1E7-A8FA1F4B078B}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Location_DimLocalGovernmentArea" DTS:refId="Package\DFT_Load_Location_DimLocalGovernmentArea" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -174,10 +174,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="DimRegionID" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Location_DimLocalGovernmentArea.Inputs[LKP_DimRegionID_Match_OLE_DST_Location_DimLocalGovernmentArea].ExternalColumns[DimRegionID]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Location_DimLocalGovernmentArea.Inputs[LKP_DimRegionID_Match_OLE_DST_Location_DimLocalGovernmentArea].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Location_DimLocalGovernmentArea.Inputs[LKP_DimRegionID_Match_OLE_DST_Location_DimLocalGovernmentArea].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Location_DimLocalGovernmentArea.Inputs[LKP_DimRegionID_Match_OLE_DST_Location_DimLocalGovernmentArea].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Location_DimLocalGovernmentArea.Inputs[LKP_DimRegionID_Match_OLE_DST_Location_DimLocalGovernmentArea].ExternalColumns[sys_ModifiedOn]">
@@ -185,6 +181,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Location_DimLocalGovernmentArea.Inputs[LKP_DimRegionID_Match_OLE_DST_Location_DimLocalGovernmentArea].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Location_DimLocalGovernmentArea.Inputs[LKP_DimRegionID_Match_OLE_DST_Location_DimLocalGovernmentArea].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Location_DimLocalGovernmentArea.Inputs[LKP_DimRegionID_Match_OLE_DST_Location_DimLocalGovernmentArea].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -245,10 +243,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i4" name="DimRegionID" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Singleton_Location_DimLocalGovernmentArea.Inputs[OLE_DST_Location_DimLocalGovernmentArea_Error_OLE_DST_Singleton_Location_DimLocalGovernmentArea].ExternalColumns[DimRegionID]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Singleton_Location_DimLocalGovernmentArea.Inputs[OLE_DST_Location_DimLocalGovernmentArea_Error_OLE_DST_Singleton_Location_DimLocalGovernmentArea].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Singleton_Location_DimLocalGovernmentArea.Inputs[OLE_DST_Location_DimLocalGovernmentArea_Error_OLE_DST_Singleton_Location_DimLocalGovernmentArea].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Singleton_Location_DimLocalGovernmentArea.Inputs[OLE_DST_Location_DimLocalGovernmentArea_Error_OLE_DST_Singleton_Location_DimLocalGovernmentArea].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Singleton_Location_DimLocalGovernmentArea.Inputs[OLE_DST_Location_DimLocalGovernmentArea_Error_OLE_DST_Singleton_Location_DimLocalGovernmentArea].ExternalColumns[sys_ModifiedOn]">
@@ -256,6 +250,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Singleton_Location_DimLocalGovernmentArea.Inputs[OLE_DST_Location_DimLocalGovernmentArea_Error_OLE_DST_Singleton_Location_DimLocalGovernmentArea].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Singleton_Location_DimLocalGovernmentArea.Inputs[OLE_DST_Location_DimLocalGovernmentArea_Error_OLE_DST_Singleton_Location_DimLocalGovernmentArea].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Location_DimLocalGovernmentArea\OLE_DST_Singleton_Location_DimLocalGovernmentArea.Inputs[OLE_DST_Location_DimLocalGovernmentArea_Error_OLE_DST_Singleton_Location_DimLocalGovernmentArea].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -636,18 +632,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{A55C1B15-9A20-469B-AE78-543F66DD2150}" DTS:From="Package\SQL_Truncate_Error_Location_DimLocalGovernmentArea" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Location_DimLocalGovernmentArea_To_DFT_Load_Location_DimLocalGovernmentArea" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Location_DimLocalGovernmentArea_To_DFT_Load_Location_DimLocalGovernmentArea]" DTS:To="Package\DFT_Load_Location_DimLocalGovernmentArea">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{9B3273EA-3E91-4275-A2CA-8B90438004D4}" DTS:From="Package\SQL_Truncate_Error_Location_DimLocalGovernmentArea" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Location_DimLocalGovernmentArea_To_DFT_Load_Location_DimLocalGovernmentArea" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Location_DimLocalGovernmentArea_To_DFT_Load_Location_DimLocalGovernmentArea]" DTS:To="Package\DFT_Load_Location_DimLocalGovernmentArea">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F9479472-1348-4094-BF03-A6E0950C2181}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{013D8D2E-5606-4A46-9094-749640B25D78}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{739F76FE-77D6-4A1B-9962-1E56D73CB495}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0D18ED58-B08A-40A2-A985-2034BA4DF932}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3545AF98-706F-4305-88B2-18906FF8E33D}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{67E5D6B6-11B5-41F9-B28B-49D771ACBAB0}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2303_Location_DimLocalGovernmentArea</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

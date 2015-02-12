@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/04/2015 16:46:10" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{BFC7A346-98F3-4AC6-885E-6AD6A5B3CB26}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2501_Finance_DimFinancialAccount" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{9DB62883-90C1-47C4-B76A-27A625592767}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/12/2015 09:49:00" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{C37DFBDA-6336-434C-9659-C7AEF03DC129}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2501_Finance_DimFinancialAccount" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{363B29BC-51B7-46C4-BABC-BEFE0EC6EA4D}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{E45ACA18-7FE0-4F17-B8D4-09A106F7FC9E}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimFinancialAccount" DTS:refId="Package\SQL_Truncate_Error_Finance_DimFinancialAccount" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{32CF2334-B7AE-4291-81E1-2D2DC6B71D3D}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Finance_DimFinancialAccount" DTS:refId="Package\SQL_Truncate_Error_Finance_DimFinancialAccount" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Finance_DimFinancialAccount]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{AC94ECA4-DBFF-435B-AFB4-AEF7A461513A}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimFinancialAccount" DTS:refId="Package\DFT_Load_Finance_DimFinancialAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{9586036C-EA1F-490D-922E-CA04D3E64283}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Finance_DimFinancialAccount" DTS:refId="Package\DFT_Load_Finance_DimFinancialAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -498,10 +498,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="numeric" name="TotalBalance" precision="18" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Finance_DimFinancialAccount.Inputs[LKP_DimPagaAccountID_Match_OLE_DST_Finance_DimFinancialAccount].ExternalColumns[TotalBalance]" scale="2">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Finance_DimFinancialAccount.Inputs[LKP_DimPagaAccountID_Match_OLE_DST_Finance_DimFinancialAccount].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Finance_DimFinancialAccount.Inputs[LKP_DimPagaAccountID_Match_OLE_DST_Finance_DimFinancialAccount].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Finance_DimFinancialAccount.Inputs[LKP_DimPagaAccountID_Match_OLE_DST_Finance_DimFinancialAccount].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Finance_DimFinancialAccount.Inputs[LKP_DimPagaAccountID_Match_OLE_DST_Finance_DimFinancialAccount].ExternalColumns[sys_ModifiedOn]">
@@ -509,6 +505,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Finance_DimFinancialAccount.Inputs[LKP_DimPagaAccountID_Match_OLE_DST_Finance_DimFinancialAccount].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Finance_DimFinancialAccount.Inputs[LKP_DimPagaAccountID_Match_OLE_DST_Finance_DimFinancialAccount].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Finance_DimFinancialAccount.Inputs[LKP_DimPagaAccountID_Match_OLE_DST_Finance_DimFinancialAccount].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -597,10 +595,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="numeric" name="TotalBalance" precision="18" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Singleton_Finance_DimFinancialAccount.Inputs[OLE_DST_Finance_DimFinancialAccount_Error_OLE_DST_Singleton_Finance_DimFinancialAccount].ExternalColumns[TotalBalance]" scale="2">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Singleton_Finance_DimFinancialAccount.Inputs[OLE_DST_Finance_DimFinancialAccount_Error_OLE_DST_Singleton_Finance_DimFinancialAccount].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Singleton_Finance_DimFinancialAccount.Inputs[OLE_DST_Finance_DimFinancialAccount_Error_OLE_DST_Singleton_Finance_DimFinancialAccount].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Singleton_Finance_DimFinancialAccount.Inputs[OLE_DST_Finance_DimFinancialAccount_Error_OLE_DST_Singleton_Finance_DimFinancialAccount].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Singleton_Finance_DimFinancialAccount.Inputs[OLE_DST_Finance_DimFinancialAccount_Error_OLE_DST_Singleton_Finance_DimFinancialAccount].ExternalColumns[sys_ModifiedOn]">
@@ -608,6 +602,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Singleton_Finance_DimFinancialAccount.Inputs[OLE_DST_Finance_DimFinancialAccount_Error_OLE_DST_Singleton_Finance_DimFinancialAccount].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Singleton_Finance_DimFinancialAccount.Inputs[OLE_DST_Finance_DimFinancialAccount_Error_OLE_DST_Singleton_Finance_DimFinancialAccount].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Finance_DimFinancialAccount\OLE_DST_Singleton_Finance_DimFinancialAccount.Inputs[OLE_DST_Finance_DimFinancialAccount_Error_OLE_DST_Singleton_Finance_DimFinancialAccount].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -1636,18 +1632,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{F7E18868-0EF5-48AE-A3B7-91CF41AC4F0D}" DTS:From="Package\SQL_Truncate_Error_Finance_DimFinancialAccount" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimFinancialAccount_To_DFT_Load_Finance_DimFinancialAccount" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimFinancialAccount_To_DFT_Load_Finance_DimFinancialAccount]" DTS:To="Package\DFT_Load_Finance_DimFinancialAccount">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{F60675D1-E2DB-4020-A9E5-7B853D2E5626}" DTS:From="Package\SQL_Truncate_Error_Finance_DimFinancialAccount" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Finance_DimFinancialAccount_To_DFT_Load_Finance_DimFinancialAccount" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Finance_DimFinancialAccount_To_DFT_Load_Finance_DimFinancialAccount]" DTS:To="Package\DFT_Load_Finance_DimFinancialAccount">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CE369251-30D0-4E38-9E17-6DFC67F5D667}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F5BFDE4D-9E71-4A2E-8E9D-22BA33F61918}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8651F88C-226F-42CA-8BE4-B258EFE10127}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A522AF59-DF82-453E-85EB-5B434C3E4886}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FC238E93-ED8A-4246-A62A-AEDBF4651F5B}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AB1E9538-6C39-45F0-B51F-7524A7A3787D}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2501_Finance_DimFinancialAccount</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

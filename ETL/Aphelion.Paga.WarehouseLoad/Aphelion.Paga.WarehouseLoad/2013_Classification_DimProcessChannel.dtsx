@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/04/2015 16:46:07" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{18CD9268-559F-4EB6-958A-C06399CF2EF8}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2013_Classification_DimProcessChannel" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{B7EA7E6C-B6AB-4A41-9861-522C12B0D43A}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/12/2015 09:48:58" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{5D8428F9-34F4-4C5D-A91D-6998A28E9BD2}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2013_Classification_DimProcessChannel" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{918C657F-EBF4-402A-B140-71E2796D9FDC}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{D8DBD509-4DBC-432F-A0BF-E62A46B0CEC5}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimProcessChannel" DTS:refId="Package\SQL_Truncate_Error_Classification_DimProcessChannel" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{BE0962FA-D2FF-4D79-9B76-8E2FD89A48CF}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimProcessChannel" DTS:refId="Package\SQL_Truncate_Error_Classification_DimProcessChannel" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimProcessChannel]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{214856F2-060B-4219-8344-0127BB040F3C}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimProcessChannel" DTS:refId="Package\DFT_Load_Classification_DimProcessChannel" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{9D18308B-7F7E-4CA6-973A-4DBC702892DD}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimProcessChannel" DTS:refId="Package\DFT_Load_Classification_DimProcessChannel" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -99,10 +99,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[TextDesciption]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[sys_ModifiedOn]">
@@ -110,6 +106,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Classification_DimProcessChannel.Inputs[OLE_SRC_Staging_Classification_DimProcessChannel_Output_OLE_DST_Classification_DimProcessChannel].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -166,10 +164,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[TextDesciption]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[sys_ModifiedOn]">
@@ -177,6 +171,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Classification_DimProcessChannel\OLE_DST_Singleton_Classification_DimProcessChannel.Inputs[OLE_DST_Classification_DimProcessChannel_Error_OLE_DST_Singleton_Classification_DimProcessChannel].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -387,18 +383,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{DA65AADC-B597-4AC4-8773-B93D47F51030}" DTS:From="Package\SQL_Truncate_Error_Classification_DimProcessChannel" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimProcessChannel_To_DFT_Load_Classification_DimProcessChannel" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimProcessChannel_To_DFT_Load_Classification_DimProcessChannel]" DTS:To="Package\DFT_Load_Classification_DimProcessChannel">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{64479D74-C5FE-47CE-8F70-B84F78712820}" DTS:From="Package\SQL_Truncate_Error_Classification_DimProcessChannel" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimProcessChannel_To_DFT_Load_Classification_DimProcessChannel" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimProcessChannel_To_DFT_Load_Classification_DimProcessChannel]" DTS:To="Package\DFT_Load_Classification_DimProcessChannel">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{59EAEAD9-B0FC-4052-BED5-07D73E99FF03}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0356AA75-694D-4DD4-83F7-FD4849A77A30}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0235064E-73B9-4A4B-B47F-E8610E8550D7}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B9973B76-A60F-4781-98F6-4339704D6A7D}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{480088D5-1918-49F4-A40B-90D25C647C45}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DD657D87-6501-4015-A435-9645EF2DBAC3}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2013_Classification_DimProcessChannel</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

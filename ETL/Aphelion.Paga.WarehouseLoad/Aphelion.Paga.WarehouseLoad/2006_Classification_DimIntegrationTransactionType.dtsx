@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/04/2015 16:46:07" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{19E3C884-3419-46AB-B061-CC7822B5EFF0}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2006_Classification_DimIntegrationTransactionType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{A064AD21-457E-401D-B179-F77C1CBC1944}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/12/2015 09:48:57" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{9801C4FB-0DAD-47E4-A27F-B6D49B63A5FF}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2006_Classification_DimIntegrationTransactionType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{8C2F02C9-40A6-42F1-A8FD-D83D1A032B60}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{08EDD0B3-EA5A-4D89-951B-667D19C46A0E}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimIntegrationTransactionType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimIntegrationTransactionType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{9D3C30FA-9D8C-409C-BA70-75243442BDD9}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimIntegrationTransactionType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimIntegrationTransactionType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimIntegrationTransactionType]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{A19AD65E-E139-4C3B-B395-A658A1AF405C}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimIntegrationTransactionType" DTS:refId="Package\DFT_Load_Classification_DimIntegrationTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{8E777A49-E7F9-40D3-B14A-D64414F3BC1C}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimIntegrationTransactionType" DTS:refId="Package\DFT_Load_Classification_DimIntegrationTransactionType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -91,10 +91,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Classification_DimIntegrationTransactionType.Inputs[OLE_SRC_Staging_Classification_DimIntegrationTransactionType_Output_OLE_DST_Classification_DimIntegrationTransactionType].ExternalColumns[Name]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Classification_DimIntegrationTransactionType.Inputs[OLE_SRC_Staging_Classification_DimIntegrationTransactionType_Output_OLE_DST_Classification_DimIntegrationTransactionType].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Classification_DimIntegrationTransactionType.Inputs[OLE_SRC_Staging_Classification_DimIntegrationTransactionType_Output_OLE_DST_Classification_DimIntegrationTransactionType].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Classification_DimIntegrationTransactionType.Inputs[OLE_SRC_Staging_Classification_DimIntegrationTransactionType_Output_OLE_DST_Classification_DimIntegrationTransactionType].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Classification_DimIntegrationTransactionType.Inputs[OLE_SRC_Staging_Classification_DimIntegrationTransactionType_Output_OLE_DST_Classification_DimIntegrationTransactionType].ExternalColumns[sys_CreatedOn]">
@@ -102,6 +98,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Classification_DimIntegrationTransactionType.Inputs[OLE_SRC_Staging_Classification_DimIntegrationTransactionType_Output_OLE_DST_Classification_DimIntegrationTransactionType].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Classification_DimIntegrationTransactionType.Inputs[OLE_SRC_Staging_Classification_DimIntegrationTransactionType_Output_OLE_DST_Classification_DimIntegrationTransactionType].ExternalColumns[sys_ModifiedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Classification_DimIntegrationTransactionType.Inputs[OLE_SRC_Staging_Classification_DimIntegrationTransactionType_Output_OLE_DST_Classification_DimIntegrationTransactionType].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -154,10 +152,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Singleton_Classification_DimIntegrationTransactionType.Inputs[OLE_DST_Classification_DimIntegrationTransactionType_Error_OLE_DST_Singleton_Classification_DimIntegrationTransactionType].ExternalColumns[Name]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Singleton_Classification_DimIntegrationTransactionType.Inputs[OLE_DST_Classification_DimIntegrationTransactionType_Error_OLE_DST_Singleton_Classification_DimIntegrationTransactionType].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Singleton_Classification_DimIntegrationTransactionType.Inputs[OLE_DST_Classification_DimIntegrationTransactionType_Error_OLE_DST_Singleton_Classification_DimIntegrationTransactionType].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Singleton_Classification_DimIntegrationTransactionType.Inputs[OLE_DST_Classification_DimIntegrationTransactionType_Error_OLE_DST_Singleton_Classification_DimIntegrationTransactionType].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Singleton_Classification_DimIntegrationTransactionType.Inputs[OLE_DST_Classification_DimIntegrationTransactionType_Error_OLE_DST_Singleton_Classification_DimIntegrationTransactionType].ExternalColumns[sys_CreatedOn]">
@@ -165,6 +159,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Singleton_Classification_DimIntegrationTransactionType.Inputs[OLE_DST_Classification_DimIntegrationTransactionType_Error_OLE_DST_Singleton_Classification_DimIntegrationTransactionType].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Singleton_Classification_DimIntegrationTransactionType.Inputs[OLE_DST_Classification_DimIntegrationTransactionType_Error_OLE_DST_Singleton_Classification_DimIntegrationTransactionType].ExternalColumns[sys_ModifiedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Classification_DimIntegrationTransactionType\OLE_DST_Singleton_Classification_DimIntegrationTransactionType.Inputs[OLE_DST_Classification_DimIntegrationTransactionType_Error_OLE_DST_Singleton_Classification_DimIntegrationTransactionType].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -369,18 +365,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{6FA513F0-504D-424A-A92A-4F6F63FEA25E}" DTS:From="Package\SQL_Truncate_Error_Classification_DimIntegrationTransactionType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimIntegrationTransactionType_To_DFT_Load_Classification_DimIntegrationTransactionType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimIntegrationTransactionType_To_DFT_Load_Classification_DimIntegrationTransactionType]" DTS:To="Package\DFT_Load_Classification_DimIntegrationTransactionType">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{BFED8B71-76F2-4F07-8F29-CB08E33ACABB}" DTS:From="Package\SQL_Truncate_Error_Classification_DimIntegrationTransactionType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimIntegrationTransactionType_To_DFT_Load_Classification_DimIntegrationTransactionType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimIntegrationTransactionType_To_DFT_Load_Classification_DimIntegrationTransactionType]" DTS:To="Package\DFT_Load_Classification_DimIntegrationTransactionType">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D4DCEA4C-D924-4191-87C8-37967E6DD447}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A8104071-8E4E-4A9B-8685-84520A5D332C}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BC43EC7C-5246-431E-9EB1-FF412D151CBF}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{78196806-9814-46E6-808D-2CEBC326F77A}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{426DDE62-B420-4E3A-AD92-333E7A3EFB6F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{835B1FF6-2731-4F2E-B0AE-1A9181582253}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2006_Classification_DimIntegrationTransactionType</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

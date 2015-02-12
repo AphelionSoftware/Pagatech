@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/04/2015 16:46:07" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{E75381B9-8FD6-4074-830A-BE6826132B6E}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2012_Classification_DimPagaAccountUserType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{35375088-C415-4BDB-BF30-F4775B7EF2E1}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/12/2015 09:48:58" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{4F476C40-67C5-4204-A8D7-2C3909181F41}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2012_Classification_DimPagaAccountUserType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{5BAA4B29-9D6C-425B-ABBA-5A96C450220E}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{1632807E-3D2D-4542-B85D-1252FC60312E}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimPagaAccountUserType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimPagaAccountUserType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{BDC7BB08-1EF9-4B05-B463-7D6DC02D2FDF}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimPagaAccountUserType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimPagaAccountUserType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimPagaAccountUserType]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{09EC1A39-A238-4D15-84F1-16A41BAD203A}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimPagaAccountUserType" DTS:refId="Package\DFT_Load_Classification_DimPagaAccountUserType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DTSID="{4AE2B717-E3B2-4E61-B076-AE051B6D18B8}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimPagaAccountUserType" DTS:refId="Package\DFT_Load_Classification_DimPagaAccountUserType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -91,10 +91,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[Name]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[sys_ModifiedOn]">
@@ -102,6 +98,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -154,10 +152,6 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[Name]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[SourceKeyHash]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[DeltaHash]">
-                    </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[sys_ModifiedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[sys_ModifiedOn]">
@@ -165,6 +159,8 @@
                     <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[sys_CreatedBy]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[sys_CreatedOn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[IsActive]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
@@ -369,18 +365,18 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{A97CBFB1-79F8-41F5-80AB-03699DF67C45}" DTS:From="Package\SQL_Truncate_Error_Classification_DimPagaAccountUserType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimPagaAccountUserType_To_DFT_Load_Classification_DimPagaAccountUserType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimPagaAccountUserType_To_DFT_Load_Classification_DimPagaAccountUserType]" DTS:To="Package\DFT_Load_Classification_DimPagaAccountUserType">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{E4F1A61B-82C5-4BFC-B8ED-8A7A8C3B74C4}" DTS:From="Package\SQL_Truncate_Error_Classification_DimPagaAccountUserType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimPagaAccountUserType_To_DFT_Load_Classification_DimPagaAccountUserType" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimPagaAccountUserType_To_DFT_Load_Classification_DimPagaAccountUserType]" DTS:To="Package\DFT_Load_Classification_DimPagaAccountUserType">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{671F190C-8E04-4793-A270-5FE6BA438170}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5A6C781A-0DF7-4187-A363-B9F72D0C73F2}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DA8B2687-9C97-4050-B37C-2FA7BC493CE7}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{45C2BB7C-120A-41F5-BFC3-66C518F9CCE2}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A2CEB31B-C890-4580-898F-06FFEBC4CE99}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4E89A89B-DED6-4893-8DCC-1E2EA025EEB1}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
       <DTS:VariableValue DTS:DataType="8">2012_Classification_DimPagaAccountUserType</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
