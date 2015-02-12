@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="02/12/2015 11:26:58" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{E26535BB-6308-4548-B25C-7FA657130C87}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2203_Shared_DimOrganization" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{9D64A485-D8AA-4426-BB60-4513F8BB5B53}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{9E5E660D-9BA3-4447-98B3-9706A5527A9A}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="ChangeLog" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+          </SQLTask:ResultBinding>
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{D4765B72-A36E-47FA-B8A2-8754D3029006}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimOrganization" DTS:refId="Package\DFT_Load Shared_DimOrganization" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+          <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData_Shared_DimOrganization" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="100" name="DisplayName" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[DisplayName]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="10" name="OrganizationCode" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[OrganizationCode]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="RcName" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[RcName]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="30" name="ReferenceNumber" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[ReferenceNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="30" name="TaxIDNumber" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[TaxIDNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[TextDesciption]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="30" name="VATCertificationNumber" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[VATCertificationNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="100" name="WebsiteURL" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[WebsiteURL]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="DimBusinessTypeSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[DimBusinessTypeSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[DimPagaAccountSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="DimOrganizationSubscriptionStatusSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[DimOrganizationSubscriptionStatusSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="DimOrganizationVerificationStatusSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[DimOrganizationVerificationStatusSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="DimMerchantCategorySourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[DimMerchantCategorySourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[DisplayName]" length="100" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DisplayName]" name="DisplayName" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DisplayName]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[OrganizationCode]" length="10" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[OrganizationCode]" name="OrganizationCode" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[OrganizationCode]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[RcName]" length="50" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[RcName]" name="RcName" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[RcName]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[ReferenceNumber]" length="30" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[ReferenceNumber]" name="ReferenceNumber" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[ReferenceNumber]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[TaxIDNumber]" length="30" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[TaxIDNumber]" name="TaxIDNumber" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[TaxIDNumber]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[TextDesciption]" length="1000" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[TextDesciption]" name="TextDesciption" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[TextDesciption]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[VATCertificationNumber]" length="30" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[VATCertificationNumber]" name="VATCertificationNumber" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[VATCertificationNumber]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[WebsiteURL]" length="100" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[WebsiteURL]" name="WebsiteURL" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[WebsiteURL]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[DimBusinessTypeSourceKey]" length="50" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimBusinessTypeSourceKey]" name="DimBusinessTypeSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimBusinessTypeSourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[DimPagaAccountSourceKey]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimPagaAccountSourceKey]" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimPagaAccountSourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[DimOrganizationSubscriptionStatusSourceKey]" length="50" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimOrganizationSubscriptionStatusSourceKey]" name="DimOrganizationSubscriptionStatusSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimOrganizationSubscriptionStatusSourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[DimOrganizationVerificationStatusSourceKey]" length="50" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimOrganizationVerificationStatusSourceKey]" name="DimOrganizationVerificationStatusSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimOrganizationVerificationStatusSourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[DimMerchantCategorySourceKey]" length="50" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimMerchantCategorySourceKey]" name="DimMerchantCategorySourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimMerchantCategorySourceKey]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[SourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="100" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[DisplayName]" name="DisplayName" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[DisplayName]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[Name]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="10" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[OrganizationCode]" name="OrganizationCode" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[OrganizationCode]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[RcName]" name="RcName" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[RcName]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="30" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[ReferenceNumber]" name="ReferenceNumber" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[ReferenceNumber]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="30" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[TaxIDNumber]" name="TaxIDNumber" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[TaxIDNumber]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1000" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[TextDesciption]" name="TextDesciption" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[TextDesciption]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="30" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[VATCertificationNumber]" name="VATCertificationNumber" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[VATCertificationNumber]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="100" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[WebsiteURL]" name="WebsiteURL" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[WebsiteURL]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[DimBusinessTypeSourceKey]" name="DimBusinessTypeSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[DimBusinessTypeSourceKey]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[DimPagaAccountSourceKey]" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[DimPagaAccountSourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[DimOrganizationSubscriptionStatusSourceKey]" name="DimOrganizationSubscriptionStatusSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[DimOrganizationSubscriptionStatusSourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[DimOrganizationVerificationStatusSourceKey]" name="DimOrganizationVerificationStatusSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[DimOrganizationVerificationStatusSourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[DimMerchantCategorySourceKey]" name="DimMerchantCategorySourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[DimMerchantCategorySourceKey]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging_Shared_DimOrganization" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization" usesDispositions="true" version="4">
+              <connections>
+                <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <inputs>
+                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn codePage="1252" dataType="str" length="100" name="DisplayName" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[DisplayName]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[Name]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="10" name="OrganizationCode" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[OrganizationCode]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="RcName" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[RcName]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="30" name="ReferenceNumber" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[ReferenceNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[SourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="30" name="TaxIDNumber" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[TaxIDNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[TextDesciption]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="30" name="VATCertificationNumber" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[VATCertificationNumber]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="100" name="WebsiteURL" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[WebsiteURL]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimBusinessTypeSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[DimBusinessTypeSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimOrganizationSubscriptionStatusSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[DimOrganizationSubscriptionStatusSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimOrganizationVerificationStatusSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[DimOrganizationVerificationStatusSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[DimPagaAccountSourceKey]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[SourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="100" cachedName="DisplayName" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[DisplayName]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DisplayName]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[DisplayName]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[Name]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[Name]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[Name]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="10" cachedName="OrganizationCode" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[OrganizationCode]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[OrganizationCode]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[OrganizationCode]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="RcName" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[RcName]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[RcName]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[RcName]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="30" cachedName="ReferenceNumber" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[ReferenceNumber]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[ReferenceNumber]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[ReferenceNumber]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="30" cachedName="TaxIDNumber" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[TaxIDNumber]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[TaxIDNumber]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[TaxIDNumber]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[TextDesciption]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[TextDesciption]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[TextDesciption]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="30" cachedName="VATCertificationNumber" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[VATCertificationNumber]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[VATCertificationNumber]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[VATCertificationNumber]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="100" cachedName="WebsiteURL" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[WebsiteURL]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[WebsiteURL]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[WebsiteURL]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="DimBusinessTypeSourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[DimBusinessTypeSourceKey]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimBusinessTypeSourceKey]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[DimBusinessTypeSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="DimPagaAccountSourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[DimPagaAccountSourceKey]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimPagaAccountSourceKey]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[DimPagaAccountSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="DimOrganizationSubscriptionStatusSourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[DimOrganizationSubscriptionStatusSourceKey]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimOrganizationSubscriptionStatusSourceKey]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[DimOrganizationSubscriptionStatusSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="DimOrganizationVerificationStatusSourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[DimOrganizationVerificationStatusSourceKey]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[DimOrganizationVerificationStatusSourceKey]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[DimOrganizationVerificationStatusSourceKey]">
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization].Columns[SYS_CHANGE_VERSION]">
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Outputs[Error]" synchronousInputId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Staging.Shared_DimOrganization</property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
+                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+            </component>
+          </components>
+          <paths>
+            <path endId="Package\DFT_Load Shared_DimOrganization\OLEDB_InsertIntoStaging_Shared_DimOrganization.Inputs[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization]" name="OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization" refId="Package\DFT_Load Shared_DimOrganization.Paths[OLEDB_GetData_Shared_DimOrganization_Output_OLEDB_InsertIntoStaging_Shared_DimOrganization]" startId="Package\DFT_Load Shared_DimOrganization\OLEDB_GetData_Shared_DimOrganization.Outputs[Output]">
+            </path>
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{5613D9A9-7009-4FBF-87E8-A17277BABEED}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.Organization AS ct ON ct.OrganizationId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{EEBA137D-FA80-47BA-B096-5D61D1822A3C}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
+      </DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{D7603FBA-9457-47E7-A285-9530CDA4D84B}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{FFBD7980-23F9-4EAF-B30C-8BDFD760B727}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Shared_DimOrganization" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Shared_DimOrganization]" DTS:To="Package\DFT_Load Shared_DimOrganization">
+    </DTS:PrecedenceConstraint>
+  </DTS:PrecedenceConstraints>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{9A41B8F8-E63B-4E06-9E10-4B9A2205A0FA}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	DisplayName,  	Name,  	OrganizationCode,  	RcName,  	ReferenceNumber,  	TaxIDNumber,  	TextDesciption,  	VATCertificationNumber,  	WebsiteURL,  	
+DimBusinessTypeSourceKey,  	DimPagaAccountSourceKey,  	DimOrganizationSubscriptionStatusSourceKey,  	DimOrganizationVerificationStatusSourceKey, 	DimMerchantCategorySourceKey, 	
+ ct.SYS_CHANGE_OPERATION, 	SYS_CHANGE_VERSION = ct.as_of_change_version 	 
+FROM  ( 	SELECT  		SourceKey = o.OrganizationId, 		DisplayName = CONVERT(VARCHAR(100),o.DisplayName),  		
+Name = CONVERT(VARCHAR(255),o.Name),  		OrganizationCode = o.Code,  		o.RcName,  		o.ReferenceNumber,  		o.TaxIDNumber,  		
+TextDesciption = CONVERT(VARCHAR(1000), o.Description), 		o.VATCertificationNumber,  		o.WebsiteURL,  		
+DimBusinessTypeSourceKey = COALESCE(o.BusinessTypeId, 'UNKNOWN'),  		
+DimPagaAccountSourceKey = o.PagaAccountId,  		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId,  		
+DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId, 		
+DimMerchantCategorySourceKey = CONVERT(VARCHAR(50), COALESCE(omc.MerchantCategoryId, 'UNKNOWN'))		
+	
+FROM dbo.Organization AS o 	LEFT JOIN dbo.OrganizationMerchantCategory AS omc ON 		
+o.OrganizationId = omc.OrganizationId 	 ) 
+AS base_query</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BA697A12-2A27-49E4-96D9-2D1B05526E1E}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	DisplayName,  	Name,  	OrganizationCode,  	RcName,  	ReferenceNumber,  	TaxIDNumber,  	TextDesciption,  	VATCertificationNumber,  	WebsiteURL,  	
+DimBusinessTypeSourceKey,  	DimPagaAccountSourceKey,  	DimOrganizationSubscriptionStatusSourceKey,  	DimOrganizationVerificationStatusSourceKey, 	DimMerchantCategorySourceKey, 	
+ ct.SYS_CHANGE_OPERATION, 	SYS_CHANGE_VERSION = ct.as_of_change_version 	 
+FROM  ( 	SELECT  		SourceKey = o.OrganizationId, 		DisplayName = CONVERT(VARCHAR(100),o.DisplayName),  		
+Name = CONVERT(VARCHAR(255),o.Name),  		OrganizationCode = o.Code,  		o.RcName,  		o.ReferenceNumber,  		o.TaxIDNumber,  		
+TextDesciption = CONVERT(VARCHAR(1000), o.Description), 		o.VATCertificationNumber,  		o.WebsiteURL,  		
+DimBusinessTypeSourceKey = COALESCE(o.BusinessTypeId, 'UNKNOWN'),  		
+DimPagaAccountSourceKey = o.PagaAccountId,  		DimOrganizationSubscriptionStatusSourceKey = o.OrganizationSubscriptionStatusId,  		
+DimOrganizationVerificationStatusSourceKey = o.OrganizationVerificationStatusId, 		
+DimMerchantCategorySourceKey = CONVERT(VARCHAR(50), COALESCE(omc.MerchantCategoryId, 'UNKNOWN'))		
+	
+FROM dbo.Organization AS o 	LEFT JOIN dbo.OrganizationMerchantCategory AS omc ON 		
+o.OrganizationId = omc.OrganizationId 	 ) 
+AS base_query INNER JOIN paga_change_log.dbo.Organization AS ct ON ct.OrganizationId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1A24F28C-5FFB-4D63-89E3-893FC23DD393}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= OrganizationId FROM dbo.Organization) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= OrganizationId FROM dbo.Organization) AS base_query INNER JOIN paga_change_log.dbo.Organization AS ct ON ct.OrganizationId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0C9AF415-2DEB-49FA-B10B-E4D59A7C3C82}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>

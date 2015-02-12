@@ -5,14 +5,15 @@
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="PAGA01SV015"
   DTS:CreatorName="MYPAGA\christina.leo.apheli"
+  DTS:DelayValidation="True"
   DTS:DTSID="{2B993404-3A06-4027-AE6F-1A45E9DC6014}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="000_LoadStagingInLevels"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{E3DE61C2-8FED-48F5-918B-0B7136724C93}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{2D900AA8-840D-4BC7-9C3C-5499980B8E59}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -131,7 +132,7 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <ExpressionTask
-              Expression="@[User::LoadGroupFilter] = ( @[User::LevelLoop] == 1 ? &quot;WHERE LoadGroup &lt; 3000&quot;:  @[User::LevelLoop] == 2 ? &quot;WHERE LoadGroup = 3000&quot;  : @[User::LevelLoop] == 3 ? &quot;WHERE LoadGroup = 3100&quot;: &quot;&quot;)" />
+              Expression="@[User::LoadGroupFilter] = ( @[User::LevelLoop] == 1 ? &quot;WHERE LoadGroup &lt; 3000&quot;:  @[User::LevelLoop] == 2 ? &quot;WHERE LoadGroup = 3000&quot;  : @[User::LevelLoop] == 3 ? &quot;WHERE LoadGroup &gt; 3000&quot;: &quot;&quot;)" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
