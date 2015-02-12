@@ -35,6 +35,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimBankAccount_SourceKey]
     ON [Finance].[DimBankAccount]([SourceKey] ASC);
@@ -69,7 +71,9 @@ EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'4', @level0type 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2300', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBankAccount';
+EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'2400', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBankAccount';
+
+
 
 
 GO
