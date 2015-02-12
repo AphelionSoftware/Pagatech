@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[ProcessChannel] (
+﻿CREATE TABLE [dbo].[ProcessChannel] (
     [row_id]                      INT          IDENTITY (1, 1) NOT NULL,
     [sys_created_on]              DATETIME     DEFAULT (getdate()) NOT NULL,
     [SYS_CHANGE_VERSION]          BIGINT       NULL,
@@ -17,16 +17,20 @@ CREATE TABLE [dbo].[ProcessChannel] (
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'
+		-- ProcessChannel
 		SET NOCOUNT ON;
 		SELECT 
 			SYS_CHANGE_VERSION,
 			SYS_CHANGE_CREATION_VERSION,
-			SYS_CHANGE_OPERATION,
-			CHANGE_TRACKING_CURRENT_VERSION = CHANGE_TRACKING_CURRENT_VERSION(),
+			SYS_CHANGE_OPERATION = CONVERT(CHAR(1),SYS_CHANGE_OPERATION),  
 			ProcessChannelId
-		FROM CHANGETABLE(CHANGES [dbo].[ProcessChannel],0)  AS change_log', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProcessChannel';
+		FROM CHANGETABLE(CHANGES [dbo].[ProcessChannel] ', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProcessChannel';
+
+
 
 
 
@@ -37,18 +41,21 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'
 
 GO
 CREATE UNIQUE CLUSTERED INDEX [ix_ProcessChannel]
-    ON [dbo].[ProcessChannel]([ProcessChannelId] ASC, [row_id] ASC) WITH (DATA_COMPRESSION = PAGE);
+    ON [dbo].[ProcessChannel]([as_of_change_version] ASC, [SYS_CHANGE_OPERATION] ASC, [ProcessChannelId] ASC, [row_id] ASC) WITH (DATA_COMPRESSION = PAGE);
+
+
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'Stream3', @value = N'
+		--ProcessChannel
 		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 3
 
 		SELECT
 			stream.*,
-			c.SYS_CHANGE_VERSION AS InitialVersion
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
@@ -67,19 +74,22 @@ EXECUTE sp_addextendedproperty @name = N'Stream3', @value = N'
 					g.grp = @grp
 		) AS stream
 		CROSS APPLY 
-			CHANGETABLE (VERSION ProcessChannel, (ProcessChannelId), (stream.ProcessChannelId)) AS c
+			CHANGETABLE (VERSION [ProcessChannel], (ProcessChannelId), (stream.ProcessChannelId)) AS c
 		OPTION (MAXDOP 1)', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProcessChannel';
+
+
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'Stream2', @value = N'
+		--ProcessChannel
 		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 2
 
 		SELECT
 			stream.*,
-			c.SYS_CHANGE_VERSION AS InitialVersion
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
@@ -98,19 +108,22 @@ EXECUTE sp_addextendedproperty @name = N'Stream2', @value = N'
 					g.grp = @grp
 		) AS stream
 		CROSS APPLY 
-			CHANGETABLE (VERSION ProcessChannel, (ProcessChannelId), (stream.ProcessChannelId)) AS c
+			CHANGETABLE (VERSION [ProcessChannel], (ProcessChannelId), (stream.ProcessChannelId)) AS c
 		OPTION (MAXDOP 1)', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProcessChannel';
+
+
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'Stream1', @value = N'
+		--ProcessChannel
 		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 1
 
 		SELECT
 			stream.*,
-			c.SYS_CHANGE_VERSION AS InitialVersion
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
@@ -129,19 +142,22 @@ EXECUTE sp_addextendedproperty @name = N'Stream1', @value = N'
 					g.grp = @grp
 		) AS stream
 		CROSS APPLY 
-			CHANGETABLE (VERSION ProcessChannel, (ProcessChannelId), (stream.ProcessChannelId)) AS c
+			CHANGETABLE (VERSION [ProcessChannel], (ProcessChannelId), (stream.ProcessChannelId)) AS c
 		OPTION (MAXDOP 1)', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProcessChannel';
+
+
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'Stream0', @value = N'
+		--ProcessChannel
 		SET NOCOUNT ON;
 			
 		DECLARE @grp AS TINYINT = 0
 
 		SELECT
 			stream.*,
-			c.SYS_CHANGE_VERSION AS InitialVersion
+			c.SYS_CHANGE_VERSION
 		FROM
 		(
 			SELECT
@@ -160,6 +176,8 @@ EXECUTE sp_addextendedproperty @name = N'Stream0', @value = N'
 					g.grp = @grp
 		) AS stream
 		CROSS APPLY 
-			CHANGETABLE (VERSION ProcessChannel, (ProcessChannelId), (stream.ProcessChannelId)) AS c
+			CHANGETABLE (VERSION [ProcessChannel], (ProcessChannelId), (stream.ProcessChannelId)) AS c
 		OPTION (MAXDOP 1)', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProcessChannel';
+
+
 
