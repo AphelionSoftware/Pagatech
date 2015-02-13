@@ -1,4 +1,4 @@
-CREATE TABLE [Staging].[Finance_FactGLTransaction] (
+﻿CREATE TABLE [Staging].[Finance_FactGLTransaction] (
     [CreditAmount]                 DECIMAL (18, 2) NULL,
     [DebitAmount]                  DECIMAL (18, 2) NULL,
     [Movement]                     DECIMAL (19, 2) NULL,
@@ -9,8 +9,12 @@ CREATE TABLE [Staging].[Finance_FactGLTransaction] (
     [DimGLCodeSourceKey]           INT             NULL,
     [FactFinancialTxSourceKey]     INT             NULL,
     [SYS_CHANGE_VERSION]           BIGINT          DEFAULT ((0)) NOT NULL,
-    [SYS_CHANGE_OPERATION]         CHAR (1)        DEFAULT ('I') NOT NULL
+    [SYS_CHANGE_OPERATION]         CHAR (1)        DEFAULT ('I') NOT NULL,
+    [paga_change_log_id]           INT             NULL,
+    [row_id]                       INT             IDENTITY (1, 1) NOT NULL
 );
+
+
 
 
 
@@ -33,5 +37,7 @@ CREATE TABLE [Staging].[Finance_FactGLTransaction] (
 
 GO
 CREATE UNIQUE CLUSTERED INDEX [ix_Finance_FactGLTransaction]
-    ON [Staging].[Finance_FactGLTransaction]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+    ON [Staging].[Finance_FactGLTransaction]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC, [row_id] ASC);
+
+
 

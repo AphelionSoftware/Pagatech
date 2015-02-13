@@ -1,4 +1,4 @@
-CREATE TABLE [Staging].[Shared_DimUser] (
+﻿CREATE TABLE [Staging].[Shared_DimUser] (
     [Email]                   VARCHAR (100) NULL,
     [FirstName]               VARCHAR (255) NULL,
     [Gender]                  VARCHAR (50)  NULL,
@@ -10,8 +10,12 @@ CREATE TABLE [Staging].[Shared_DimUser] (
     [DimDateOfBirthID]        INT           NULL,
     [DimPrimaryRoleSourceKey] INT           NULL,
     [SYS_CHANGE_VERSION]      BIGINT        DEFAULT ((0)) NOT NULL,
-    [SYS_CHANGE_OPERATION]    CHAR (1)      DEFAULT ('I') NOT NULL
+    [SYS_CHANGE_OPERATION]    CHAR (1)      DEFAULT ('I') NOT NULL,
+    [paga_change_log_id]      INT           NULL,
+    [row_id]                  INT           IDENTITY (1, 1) NOT NULL
 );
+
+
 
 
 
@@ -40,5 +44,7 @@ CREATE TABLE [Staging].[Shared_DimUser] (
 
 GO
 CREATE UNIQUE CLUSTERED INDEX [ix_Shared_DimUser]
-    ON [Staging].[Shared_DimUser]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+    ON [Staging].[Shared_DimUser]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC, [row_id] ASC);
+
+
 

@@ -1,4 +1,4 @@
-CREATE TABLE [Staging].[Shared_FactProcessEvent] (
+﻿CREATE TABLE [Staging].[Shared_FactProcessEvent] (
     [AgentCommissionAmount]                  DECIMAL (18, 2) NULL,
     [ATMReferenceNumber]                     VARCHAR (200)   NULL,
     [CardProcessorName]                      VARCHAR (200)   NULL,
@@ -38,8 +38,12 @@ CREATE TABLE [Staging].[Shared_FactProcessEvent] (
     [FactDependentProcessEventSourceKey]     INT             NULL,
     [FactOriginalProcessEventSourceKey]      INT             NULL,
     [SYS_CHANGE_VERSION]                     BIGINT          DEFAULT ((0)) NOT NULL,
-    [SYS_CHANGE_OPERATION]                   CHAR (1)        DEFAULT ('I') NOT NULL
+    [SYS_CHANGE_OPERATION]                   CHAR (1)        DEFAULT ('I') NOT NULL,
+    [paga_change_log_id]                     INT             NULL,
+    [row_id]                                 INT             IDENTITY (1, 1) NOT NULL
 );
+
+
 
 
 
@@ -66,5 +70,7 @@ CREATE TABLE [Staging].[Shared_FactProcessEvent] (
 
 GO
 CREATE UNIQUE CLUSTERED INDEX [ix_Shared_FactProcessEvent]
-    ON [Staging].[Shared_FactProcessEvent]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+    ON [Staging].[Shared_FactProcessEvent]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC, [row_id] ASC);
+
+
 

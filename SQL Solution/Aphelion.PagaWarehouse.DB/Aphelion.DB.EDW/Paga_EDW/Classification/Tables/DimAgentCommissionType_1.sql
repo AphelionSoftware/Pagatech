@@ -19,6 +19,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimAgentCommissionType_SourceKey]
     ON [Classification].[DimAgentCommissionType]([SourceKey] ASC);
@@ -61,7 +63,9 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'AgentCommissionT
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 	base_query.*, ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version FROM ( 	SELECT  		AgentCommissionTypeId AS SourceKey,  		CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name  	FROM dbo.AgentCommissionType ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimAgentCommissionType';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 	base_query.*, ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version FROM ( 	SELECT  		AgentCommissionTypeId AS SourceKey,  		CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name  	FROM dbo.AgentCommissionType ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimAgentCommissionType';
+
+
 
 
 

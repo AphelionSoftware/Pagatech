@@ -22,6 +22,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.ProcessType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessType';
 
@@ -46,7 +48,7 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'ProcessTypeID', 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT   
-	ct.SYS_CHANGE_OPERATION, 
+	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, 
 	SYS_CHANGE_VERSION = ct.as_of_change_version,	
 	SourceKey , 	
 	base_query.name
@@ -67,6 +69,8 @@ FROM
 	) AS bq 
 ) as base_query
 ', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessType';
+
+
 
 
 

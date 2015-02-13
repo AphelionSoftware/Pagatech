@@ -44,6 +44,7 @@
     [sys_CreatedOn]                   DATETIME               DEFAULT (getdate()) NOT NULL,
     [sys_ModifiedBy]                  VARCHAR (255)          DEFAULT (user_name()) NOT NULL,
     [sys_ModifiedOn]                  DATETIME               DEFAULT (getdate()) NOT NULL,
+    [IsActive]                        BIT                    DEFAULT ((1)) NOT NULL,
     CONSTRAINT [pk_FactProcessEvent] PRIMARY KEY CLUSTERED ([FactProcessEventID] ASC),
     CONSTRAINT [fk_FactFinancialTransaction_DimAgentCommissionTypeID] FOREIGN KEY ([DimAgentCommissionTypeID]) REFERENCES [Classification].[DimAgentCommissionType] ([DimAgentCommissionTypeID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimApprovedByUserID] FOREIGN KEY ([DimApprovedByUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
@@ -64,6 +65,8 @@
     CONSTRAINT [fk_FactFinancialTransaction_FactDependentProcessEventID] FOREIGN KEY ([FactDependentProcessEventID]) REFERENCES [Shared].[FactProcessEvent] ([FactProcessEventID]),
     CONSTRAINT [fk_FactFinancialTransaction_FactOriginalProcessEventID] FOREIGN KEY ([FactOriginalProcessEventID]) REFERENCES [Shared].[FactProcessEvent] ([FactProcessEventID])
 );
+
+
 
 
 

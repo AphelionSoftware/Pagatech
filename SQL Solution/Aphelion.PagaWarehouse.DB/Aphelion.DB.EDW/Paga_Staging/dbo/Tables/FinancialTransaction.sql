@@ -21,8 +21,11 @@
     [ForeignCurrencyAmount]         DECIMAL (18, 2) NULL,
     [FinancialTransactionSubTypeId] VARCHAR (50)    NULL,
     [SYS_CHANGE_VERSION]            BIGINT          NOT NULL,
-    [SYS_CHANGE_OPERATION]          CHAR (1)        NULL
+    [SYS_CHANGE_OPERATION]          CHAR (1)        NULL,
+    [paga_change_log_id]            INT             NULL
 );
+
+
 
 
 GO

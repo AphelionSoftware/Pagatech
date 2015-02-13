@@ -19,6 +19,7 @@
     [sys_CreatedOn]             DATETIME        DEFAULT (getdate()) NOT NULL,
     [sys_ModifiedBy]            VARCHAR (255)   DEFAULT (user_name()) NOT NULL,
     [sys_ModifiedOn]            DATETIME        DEFAULT (getdate()) NOT NULL,
+    [IsActive]                  BIT             DEFAULT ((1)) NOT NULL,
     CONSTRAINT [pk_FactIntegrationTx] PRIMARY KEY CLUSTERED ([FactIntegrationTxID] ASC),
     CONSTRAINT [fk_FactIntegrationTransaction_DimExternalOrganizationID] FOREIGN KEY ([DimExternalOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
     CONSTRAINT [fk_FactIntegrationTransaction_DimIntegrationTxDateID] FOREIGN KEY ([DimIntegrationTxDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
@@ -29,6 +30,8 @@
     CONSTRAINT [fk_FactIntegrationTransaction_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactIntegrationTransaction_FactFinancialTxID] FOREIGN KEY ([FactFinancialTxID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTxID])
 );
+
+
 
 
 

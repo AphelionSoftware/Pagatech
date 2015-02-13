@@ -28,6 +28,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGLCode_SourceKey]
     ON [Finance].[DimGLCode]([SourceKey] ASC);
@@ -56,7 +58,9 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'AccountCodeId', 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey , 	base_query.DimGLCodeSubGroupSourceKey,  	base_query.name, 	base_query.TextDescription, 	base_query.GLCode, 	base_query.IsNormalDebit FROM  ( 	SELECT 		SourceKey = AccountCodeId, 		DimGLCodeSubGroupSourceKey = AccountCodeGroupId, 		Name, 		TextDescription = CONVERT(VARCHAR(1000),[Description]), 		GLCode = Code, 		IsNormalDebit 	FROM dbo.AccountCode ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey , 	base_query.DimGLCodeSubGroupSourceKey,  	base_query.name, 	base_query.TextDescription, 	base_query.GLCode, 	base_query.IsNormalDebit FROM  ( 	SELECT 		SourceKey = AccountCodeId, 		DimGLCodeSubGroupSourceKey = AccountCodeGroupId, 		Name, 		TextDescription = CONVERT(VARCHAR(1000),[Description]), 		GLCode = Code, 		IsNormalDebit 	FROM dbo.AccountCode ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode';
+
+
 
 
 

@@ -11,10 +11,13 @@
     [sys_CreatedOn]  DATETIME      DEFAULT (getdate()) NOT NULL,
     [sys_ModifiedBy] VARCHAR (255) DEFAULT (user_name()) NOT NULL,
     [sys_ModifiedOn] DATETIME      DEFAULT (getdate()) NOT NULL,
+    [IsActive]       BIT           DEFAULT ((1)) NOT NULL,
     CONSTRAINT [pk_DimUserRole] PRIMARY KEY CLUSTERED ([DimUserRoleID] ASC),
     CONSTRAINT [fk_DimUserRole_DimRoleID] FOREIGN KEY ([DimRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID]),
     CONSTRAINT [fk_DimUserRole_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID])
 );
+
+
 
 
 
@@ -40,7 +43,9 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'UserRoleId', @le
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 	ct.SYS_CHANGE_OPERATION,  	SYS_CHANGE_VERSION = ct.as_of_change_version, 	SourceKey, 	DimUserSourceKey, 	DimRoleSourceKey, 	RolePriority FROM ( 	SELECT 		SourceKey = ur.UserRoleId, 		DimUserSourceKey = UserID, 		DimRoleSourceKey = ur.RoleID, 		RolePriority = ur.roleNum 	FROM  	( 		SELECT  			ROW_NUMBER() OVER (PARTITION BY u.UserID ORDER BY u.RoleID DESC) AS roleNum, 			u.[UserId], 			u.[RoleId], 			u.userRoleId 		FROM [dbo].[UserRole] AS u 	) AS ur ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUserRole';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id,  	SYS_CHANGE_VERSION = ct.as_of_change_version, 	SourceKey, 	DimUserSourceKey, 	DimRoleSourceKey, 	RolePriority FROM ( 	SELECT 		SourceKey = ur.UserRoleId, 		DimUserSourceKey = UserID, 		DimRoleSourceKey = ur.RoleID, 		RolePriority = ur.roleNum 	FROM  	( 		SELECT  			ROW_NUMBER() OVER (PARTITION BY u.UserID ORDER BY u.RoleID DESC) AS roleNum, 			u.[UserId], 			u.[RoleId], 			u.userRoleId 		FROM [dbo].[UserRole] AS u 	) AS ur ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUserRole';
+
+
 
 
 

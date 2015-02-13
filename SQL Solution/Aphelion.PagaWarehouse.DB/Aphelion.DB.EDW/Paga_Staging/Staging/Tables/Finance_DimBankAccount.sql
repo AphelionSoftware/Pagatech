@@ -1,4 +1,4 @@
-CREATE TABLE [Staging].[Finance_DimBankAccount] (
+﻿CREATE TABLE [Staging].[Finance_DimBankAccount] (
     [AccountAlias]                 VARCHAR (20)    NULL,
     [AccountHolderName]            VARCHAR (255)   NULL,
     [AccountLinkIdentifier]        VARCHAR (30)    NULL,
@@ -16,8 +16,12 @@ CREATE TABLE [Staging].[Finance_DimBankAccount] (
     [TransactionLimit]             DECIMAL (18, 2) NULL,
     [DimBankSourceKey]             INT             NOT NULL,
     [SYS_CHANGE_VERSION]           BIGINT          DEFAULT ((0)) NOT NULL,
-    [SYS_CHANGE_OPERATION]         CHAR (1)        DEFAULT ('I') NOT NULL
+    [SYS_CHANGE_OPERATION]         CHAR (1)        DEFAULT ('I') NOT NULL,
+    [paga_change_log_id]           INT             NULL,
+    [row_id]                       INT             IDENTITY (1, 1) NOT NULL
 );
+
+
 
 
 
@@ -40,5 +44,7 @@ CREATE TABLE [Staging].[Finance_DimBankAccount] (
 
 GO
 CREATE UNIQUE CLUSTERED INDEX [ix_Finance_DimBankAccount]
-    ON [Staging].[Finance_DimBankAccount]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+    ON [Staging].[Finance_DimBankAccount]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC, [row_id] ASC);
+
+
 

@@ -1,4 +1,4 @@
-CREATE TABLE [Staging].[Finance_FactFinancialTransaction] (
+﻿CREATE TABLE [Staging].[Finance_FactFinancialTransaction] (
     [Cancelled]                        INT             NULL,
     [ExchangeRate]                     DECIMAL (16, 4) NULL,
     [ExternalReferenceNumber]          VARCHAR (100)   NULL,
@@ -23,8 +23,12 @@ CREATE TABLE [Staging].[Finance_FactFinancialTransaction] (
     [FactProcessEventSourceKey]        INT             NULL,
     [FactRelatedFinancialTxSourceKey]  INT             NULL,
     [SYS_CHANGE_VERSION]               BIGINT          DEFAULT ((0)) NOT NULL,
-    [SYS_CHANGE_OPERATION]             CHAR (1)        DEFAULT ('I') NOT NULL
+    [SYS_CHANGE_OPERATION]             CHAR (1)        DEFAULT ('I') NOT NULL,
+    [paga_change_log_id]               INT             NULL,
+    [row_id]                           INT             IDENTITY (1, 1) NOT NULL
 );
+
+
 
 
 
@@ -51,5 +55,7 @@ CREATE TABLE [Staging].[Finance_FactFinancialTransaction] (
 
 GO
 CREATE UNIQUE CLUSTERED INDEX [ix_Finance_FactFinancialTransaction]
-    ON [Staging].[Finance_FactFinancialTransaction]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC);
+    ON [Staging].[Finance_FactFinancialTransaction]([SourceKey] ASC, [SYS_CHANGE_VERSION] ASC, [SYS_CHANGE_OPERATION] ASC, [row_id] ASC);
+
+
 

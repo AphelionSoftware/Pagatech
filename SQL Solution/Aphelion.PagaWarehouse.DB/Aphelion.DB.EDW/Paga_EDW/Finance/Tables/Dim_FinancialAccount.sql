@@ -55,6 +55,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialAccount_SourceKey]
     ON [Finance].[DimFinancialAccount]([SourceKey] ASC, [DimFinancialAccountID] ASC);
@@ -130,7 +132,7 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'WITH cte AS
 	WHERE fa1.HoldingFinancialAccountId IS NOT NULL 
 )  
 SELECT	 	
-	ct.SYS_CHANGE_OPERATION, 
+	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, 
 	SYS_CHANGE_VERSION = ct.as_of_change_version, 
 	SourceKey, 	
 	base_query.AccountNumber, 	
@@ -159,6 +161,8 @@ FROM
 		cte.DimHoldingFinancialAccountSourceKey 	
 		FROM cte  	
 ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount';
+
+
 
 
 

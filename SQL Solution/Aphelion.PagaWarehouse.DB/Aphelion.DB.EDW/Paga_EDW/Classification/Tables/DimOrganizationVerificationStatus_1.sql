@@ -19,6 +19,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationVerificationStatus_SourceKey]
     ON [Classification].[DimOrganizationVerificationStatus]([SourceKey] ASC);
@@ -61,7 +63,9 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'OrganizationVeri
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  		ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version,	SourceKey, 			base_query.name 		FROM  		 	(SELECT 	OrganizationVerificationStatusID AS SourceKey,  	 CONVERT(VARCHAR(255),Description) AS Name FROM dbo.OrganizationVerificationStatus) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationVerificationStatus';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  		ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version,	SourceKey, 			base_query.name 		FROM  		 	(SELECT 	OrganizationVerificationStatusID AS SourceKey,  	 CONVERT(VARCHAR(255),Description) AS Name FROM dbo.OrganizationVerificationStatus) as base_query', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimOrganizationVerificationStatus';
+
+
 
 
 
