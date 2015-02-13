@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/12/2015 11:26:58" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{D21359E9-1177-450A-B724-823683752543}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2204_Shared_DimUserRole" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{7EA97A5F-9149-4F4F-AFCE-948884480A2E}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/13/2015 10:17:09" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{2C72D8C1-8577-4870-B375-48A5A2BEB191}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2204_Shared_DimUserRole" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{2321ED2D-33F7-4ACB-9CA7-6CA741F54221}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{36C0B602-1BBD-4974-B472-59DBF9A478F8}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{A02F595B-6FA3-43C3-91F4-9C53D110AC71}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="ChangeLog" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
@@ -9,7 +9,7 @@
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{C6696522-73E1-43FF-B7E0-67E6DB2843BC}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimUserRole" DTS:refId="Package\DFT_Load Shared_DimUserRole" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{F59624F9-247B-49C0-BF61-1BBEF4546AF5}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimUserRole" DTS:refId="Package\DFT_Load Shared_DimUserRole" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -22,6 +22,8 @@
                 <output name="Output" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].ExternalColumns[paga_change_log_id]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
@@ -36,6 +38,8 @@
                   </externalMetadataColumns>
                   <outputColumns>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -54,6 +58,8 @@
                   </externalMetadataColumns>
                   <outputColumns>
                     <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Error].Columns[paga_change_log_id]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
@@ -110,9 +116,15 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_InsertIntoStaging_Shared_DimUserRole.Inputs[OLEDB_GetData_Shared_DimUserRole_Output_OLEDB_InsertIntoStaging_Shared_DimUserRole].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_InsertIntoStaging_Shared_DimUserRole.Inputs[OLEDB_GetData_Shared_DimUserRole_Output_OLEDB_InsertIntoStaging_Shared_DimUserRole].ExternalColumns[paga_change_log_id]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_InsertIntoStaging_Shared_DimUserRole.Inputs[OLEDB_GetData_Shared_DimUserRole_Output_OLEDB_InsertIntoStaging_Shared_DimUserRole].ExternalColumns[row_id]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Shared_DimUserRole\OLEDB_InsertIntoStaging_Shared_DimUserRole.Inputs[OLEDB_GetData_Shared_DimUserRole_Output_OLEDB_InsertIntoStaging_Shared_DimUserRole].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_InsertIntoStaging_Shared_DimUserRole.Inputs[OLEDB_GetData_Shared_DimUserRole_Output_OLEDB_InsertIntoStaging_Shared_DimUserRole].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="paga_change_log_id" externalMetadataColumnId="Package\DFT_Load Shared_DimUserRole\OLEDB_InsertIntoStaging_Shared_DimUserRole.Inputs[OLEDB_GetData_Shared_DimUserRole_Output_OLEDB_InsertIntoStaging_Shared_DimUserRole].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].Columns[paga_change_log_id]" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_InsertIntoStaging_Shared_DimUserRole.Inputs[OLEDB_GetData_Shared_DimUserRole_Output_OLEDB_InsertIntoStaging_Shared_DimUserRole].Columns[paga_change_log_id]">
                     </inputColumn>
                     <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Shared_DimUserRole\OLEDB_InsertIntoStaging_Shared_DimUserRole.Inputs[OLEDB_GetData_Shared_DimUserRole_Output_OLEDB_InsertIntoStaging_Shared_DimUserRole].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Shared_DimUserRole\OLEDB_GetData_Shared_DimUserRole.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Shared_DimUserRole\OLEDB_InsertIntoStaging_Shared_DimUserRole.Inputs[OLEDB_GetData_Shared_DimUserRole_Output_OLEDB_InsertIntoStaging_Shared_DimUserRole].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
@@ -165,33 +177,33 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{EC788842-1FC9-4F7A-A1DC-C069D399DB99}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.UserRole AS ct ON ct.UserRoleId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:Property>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{FAA617D1-5A99-4443-82A0-9FE352D014D8}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.UserRole AS ct ON ct.UserRoleId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{53726D3C-711A-4E56-A8CC-FC3A4270BAA9}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{A79E740A-9482-4FB4-8876-C4BD00937449}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{7EEA9BD6-A2AE-4DA3-A2DA-2BC6AC49BEB4}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{D49E4A70-9DD0-4757-B068-02B1509FC0CC}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{E0AA4BDD-B539-419D-8CE7-23873BDECC52}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Shared_DimUserRole" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Shared_DimUserRole]" DTS:To="Package\DFT_Load Shared_DimUserRole">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{C8D39B19-BD23-47F4-95E7-23807F48B85F}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Shared_DimUserRole" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Shared_DimUserRole]" DTS:To="Package\DFT_Load Shared_DimUserRole">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CFDD549D-26AE-4C44-AF07-B9A0A481FDD9}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">SELECT 	ct.SYS_CHANGE_OPERATION,  	SYS_CHANGE_VERSION = ct.as_of_change_version, 	SourceKey, 	DimUserSourceKey, 	DimRoleSourceKey, 	RolePriority FROM ( 	SELECT 		SourceKey = ur.UserRoleId, 		DimUserSourceKey = UserID, 		DimRoleSourceKey = ur.RoleID, 		RolePriority = ur.roleNum 	FROM  	( 		SELECT  			ROW_NUMBER() OVER (PARTITION BY u.UserID ORDER BY u.RoleID DESC) AS roleNum, 			u.[UserId], 			u.[RoleId], 			u.userRoleId 		FROM [dbo].[UserRole] AS u 	) AS ur ) AS base_query</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0A14C8E3-7165-45E0-B412-87022358D373}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT 	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id,  	SYS_CHANGE_VERSION = ct.as_of_change_version, 	SourceKey, 	DimUserSourceKey, 	DimRoleSourceKey, 	RolePriority FROM ( 	SELECT 		SourceKey = ur.UserRoleId, 		DimUserSourceKey = UserID, 		DimRoleSourceKey = ur.RoleID, 		RolePriority = ur.roleNum 	FROM  	( 		SELECT  			ROW_NUMBER() OVER (PARTITION BY u.UserID ORDER BY u.RoleID DESC) AS roleNum, 			u.[UserId], 			u.[RoleId], 			u.userRoleId 		FROM [dbo].[UserRole] AS u 	) AS ur ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{11B88FE7-96DB-47E8-954F-D23E60A82F1A}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT 	ct.SYS_CHANGE_OPERATION,  	SYS_CHANGE_VERSION = ct.as_of_change_version, 	SourceKey, 	DimUserSourceKey, 	DimRoleSourceKey, 	RolePriority FROM ( 	SELECT 		SourceKey = ur.UserRoleId, 		DimUserSourceKey = UserID, 		DimRoleSourceKey = ur.RoleID, 		RolePriority = ur.roleNum 	FROM  	( 		SELECT  			ROW_NUMBER() OVER (PARTITION BY u.UserID ORDER BY u.RoleID DESC) AS roleNum, 			u.[UserId], 			u.[RoleId], 			u.userRoleId 		FROM [dbo].[UserRole] AS u 	) AS ur ) AS base_query INNER JOIN paga_change_log.dbo.UserRole AS ct ON ct.UserRoleId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F804BD70-860C-4518-918A-500CDD3BD51E}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT 	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id,  	SYS_CHANGE_VERSION = ct.as_of_change_version, 	SourceKey, 	DimUserSourceKey, 	DimRoleSourceKey, 	RolePriority FROM ( 	SELECT 		SourceKey = ur.UserRoleId, 		DimUserSourceKey = UserID, 		DimRoleSourceKey = ur.RoleID, 		RolePriority = ur.roleNum 	FROM  	( 		SELECT  			ROW_NUMBER() OVER (PARTITION BY u.UserID ORDER BY u.RoleID DESC) AS roleNum, 			u.[UserId], 			u.[RoleId], 			u.userRoleId 		FROM [dbo].[UserRole] AS u 	) AS ur ) AS base_query INNER JOIN paga_change_log.dbo.UserRole AS ct ON ct.UserRoleId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{C9547097-7984-4456-B315-681A8F06CB9E}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= UserRoleId FROM dbo.UserRole) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
-      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= UserRoleId FROM dbo.UserRole) AS base_query INNER JOIN paga_change_log.dbo.UserRole AS ct ON ct.UserRoleId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{259CD583-6E6B-4436-9B23-B1E58AA40801}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= UserRoleId FROM dbo.UserRole) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= UserRoleId FROM dbo.UserRole) AS base_query INNER JOIN paga_change_log.dbo.UserRole AS ct ON ct.UserRoleId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BAFF407F-3C5B-4CF3-B5ED-11D43A8DB127}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F221D14F-FE34-4EA0-9B51-1789AAF98591}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

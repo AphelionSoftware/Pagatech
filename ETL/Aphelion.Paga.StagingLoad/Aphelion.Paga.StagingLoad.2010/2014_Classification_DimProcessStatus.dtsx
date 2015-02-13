@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/12/2015 11:26:57" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{B3C546FC-2668-4F6A-9C34-54AEDDBBEE95}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2014_Classification_DimProcessStatus" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{938961C2-97D7-42F7-9700-2B16E914E241}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/13/2015 10:17:08" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{508FB2D6-646F-447C-8555-BD6490A1F3E3}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2014_Classification_DimProcessStatus" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{87172343-AAE7-47FD-A664-82746E852330}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{F57AA596-B9B7-4940-962F-2F9ED60897FF}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{D1B9DF43-AD2C-4134-9BB8-16F22F324228}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="ChangeLog" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
@@ -9,7 +9,7 @@
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{D085C4E6-A6BD-4D0B-98FD-4E62947999E4}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimProcessStatus" DTS:refId="Package\DFT_Load Classification_DimProcessStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{9A7F80C8-3AE9-429C-BF16-09D9FA33E9AB}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Classification_DimProcessStatus" DTS:refId="Package\DFT_Load Classification_DimProcessStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -23,6 +23,8 @@
                   <externalMetadataColumns isUsed="True">
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].ExternalColumns[paga_change_log_id]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="50" name="SourceKey" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].ExternalColumns[SourceKey]">
@@ -32,6 +34,8 @@
                   </externalMetadataColumns>
                   <outputColumns>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -46,6 +50,8 @@
                   </externalMetadataColumns>
                   <outputColumns>
                     <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Error].Columns[paga_change_log_id]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
@@ -92,9 +98,15 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_InsertIntoStaging_Classification_DimProcessStatus.Inputs[OLEDB_GetData_Classification_DimProcessStatus_Output_OLEDB_InsertIntoStaging_Classification_DimProcessStatus].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_InsertIntoStaging_Classification_DimProcessStatus.Inputs[OLEDB_GetData_Classification_DimProcessStatus_Output_OLEDB_InsertIntoStaging_Classification_DimProcessStatus].ExternalColumns[paga_change_log_id]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_InsertIntoStaging_Classification_DimProcessStatus.Inputs[OLEDB_GetData_Classification_DimProcessStatus_Output_OLEDB_InsertIntoStaging_Classification_DimProcessStatus].ExternalColumns[row_id]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_InsertIntoStaging_Classification_DimProcessStatus.Inputs[OLEDB_GetData_Classification_DimProcessStatus_Output_OLEDB_InsertIntoStaging_Classification_DimProcessStatus].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_InsertIntoStaging_Classification_DimProcessStatus.Inputs[OLEDB_GetData_Classification_DimProcessStatus_Output_OLEDB_InsertIntoStaging_Classification_DimProcessStatus].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="paga_change_log_id" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_InsertIntoStaging_Classification_DimProcessStatus.Inputs[OLEDB_GetData_Classification_DimProcessStatus_Output_OLEDB_InsertIntoStaging_Classification_DimProcessStatus].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].Columns[paga_change_log_id]" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_InsertIntoStaging_Classification_DimProcessStatus.Inputs[OLEDB_GetData_Classification_DimProcessStatus_Output_OLEDB_InsertIntoStaging_Classification_DimProcessStatus].Columns[paga_change_log_id]">
                     </inputColumn>
                     <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_InsertIntoStaging_Classification_DimProcessStatus.Inputs[OLEDB_GetData_Classification_DimProcessStatus_Output_OLEDB_InsertIntoStaging_Classification_DimProcessStatus].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_GetData_Classification_DimProcessStatus.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Classification_DimProcessStatus\OLEDB_InsertIntoStaging_Classification_DimProcessStatus.Inputs[OLEDB_GetData_Classification_DimProcessStatus_Output_OLEDB_InsertIntoStaging_Classification_DimProcessStatus].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
@@ -143,33 +155,33 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{428435C1-6790-421E-8E5A-461FB0870FCF}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.ProcessStatus AS ct ON ct.ProcessStatusID = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:Property>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{2BC05DEC-E297-4098-8F75-CBB475603C76}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.ProcessStatus AS ct ON ct.ProcessStatusID = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{7408EA80-C362-4E0E-BB08-A337D737EBE4}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{3F16D8FB-24BF-48E2-8C3F-5BE6470B0375}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{EDA17395-A667-436B-9270-5B34C8E700E0}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{7E3A9C74-D8F8-417D-8FCD-07A7FABF1372}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{F59C28E7-0E99-4606-A0B7-2C77C18443E6}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Classification_DimProcessStatus" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Classification_DimProcessStatus]" DTS:To="Package\DFT_Load Classification_DimProcessStatus">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{06E24EA0-3993-47CB-AF89-43212A7D9970}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Classification_DimProcessStatus" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Classification_DimProcessStatus]" DTS:To="Package\DFT_Load Classification_DimProcessStatus">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D68DE62F-3924-494B-AC65-0C8E989E7907}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">SELECT  ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version,			SourceKey , 			base_query.name 		FROM  		  	(SELECT 	ProcessStatusID AS SourceKey,  	 CONVERT(VARCHAR(255),ProcessStatusID) AS Name FROM dbo.ProcessStatus) as base_query</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8D23EFE0-0DAD-4B58-A578-BCD6DA99E568}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT  ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version,			SourceKey , 			base_query.name 		FROM  		  	(SELECT 	ProcessStatusID AS SourceKey,  	 CONVERT(VARCHAR(255),ProcessStatusID) AS Name FROM dbo.ProcessStatus) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{978EB3F1-F33A-423B-B870-62254AC09260}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT  ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version,			SourceKey , 			base_query.name 		FROM  		  	(SELECT 	ProcessStatusID AS SourceKey,  	 CONVERT(VARCHAR(255),ProcessStatusID) AS Name FROM dbo.ProcessStatus) as base_query INNER JOIN paga_change_log.dbo.ProcessStatus AS ct ON ct.ProcessStatusID = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A2A0C86D-2DA2-4C57-8D38-6A77A8FA693E}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT  ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version,			SourceKey , 			base_query.name 		FROM  		  	(SELECT 	ProcessStatusID AS SourceKey,  	 CONVERT(VARCHAR(255),ProcessStatusID) AS Name FROM dbo.ProcessStatus) as base_query INNER JOIN paga_change_log.dbo.ProcessStatus AS ct ON ct.ProcessStatusID = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{28043E34-65C5-475F-85DC-B2896A4DB8DB}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= ProcessStatusID FROM dbo.ProcessStatus) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
-      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= ProcessStatusID FROM dbo.ProcessStatus) AS base_query INNER JOIN paga_change_log.dbo.ProcessStatus AS ct ON ct.ProcessStatusID = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{95F60085-FD86-4E96-B2F7-4A881B78EC09}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= ProcessStatusID FROM dbo.ProcessStatus) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= ProcessStatusID FROM dbo.ProcessStatus) AS base_query INNER JOIN paga_change_log.dbo.ProcessStatus AS ct ON ct.ProcessStatusID = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{103E57CE-A478-4129-A4C9-B970D37E7D50}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CC569953-8FCD-4929-B2D8-E500CF5C56A1}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/12/2015 11:26:58" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{0755CDD4-F97B-4E44-AA92-37B00248EB01}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2402_Finance_DimFinancialAccountType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{7BC64BA0-4C71-4B5C-9412-A949C463C6A8}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/13/2015 10:17:10" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{CB36877D-72B5-4347-AAC9-F066F074C60E}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2402_Finance_DimFinancialAccountType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{B294A0FD-3ABE-482C-8EF4-6714B14818F0}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{1037ECED-EDDC-4959-9317-2BA703FA94DC}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{ACF60802-FD3F-4B0C-A1F8-3DA826914122}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="ChangeLog" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
@@ -9,7 +9,7 @@
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{8E8A7F41-C495-44D2-9CC9-BE7127C307FB}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimFinancialAccountType" DTS:refId="Package\DFT_Load Finance_DimFinancialAccountType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{8C4F0A9E-FEF6-4206-9192-6B07C8683D5C}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimFinancialAccountType" DTS:refId="Package\DFT_Load Finance_DimFinancialAccountType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -22,6 +22,8 @@
                 <output name="Output" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output]">
                   <externalMetadataColumns isUsed="True">
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[paga_change_log_id]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
@@ -36,6 +38,8 @@
                   </externalMetadataColumns>
                   <outputColumns>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -54,6 +58,8 @@
                   </externalMetadataColumns>
                   <outputColumns>
                     <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Error].Columns[paga_change_log_id]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
@@ -108,9 +114,15 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType.Inputs[OLEDB_GetData_Finance_DimFinancialAccountType_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType.Inputs[OLEDB_GetData_Finance_DimFinancialAccountType_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType].ExternalColumns[paga_change_log_id]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType.Inputs[OLEDB_GetData_Finance_DimFinancialAccountType_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType].ExternalColumns[row_id]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType.Inputs[OLEDB_GetData_Finance_DimFinancialAccountType_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType.Inputs[OLEDB_GetData_Finance_DimFinancialAccountType_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="paga_change_log_id" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType.Inputs[OLEDB_GetData_Finance_DimFinancialAccountType_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].Columns[paga_change_log_id]" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType.Inputs[OLEDB_GetData_Finance_DimFinancialAccountType_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType].Columns[paga_change_log_id]">
                     </inputColumn>
                     <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType.Inputs[OLEDB_GetData_Finance_DimFinancialAccountType_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_GetData_Finance_DimFinancialAccountType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Finance_DimFinancialAccountType\OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType.Inputs[OLEDB_GetData_Finance_DimFinancialAccountType_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccountType].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
@@ -161,33 +173,33 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{8070905D-0AB3-4568-9D7B-093F7EE89CAC}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.FinancialAccountType AS ct ON ct.FinancialAccountTypeId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:Property>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{81FE12AE-735C-43A9-BE85-A3956D17E822}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.FinancialAccountType AS ct ON ct.FinancialAccountTypeId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{4B04B45F-FEEA-4AFC-A99F-98D231EC8586}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{5537F0A6-8C1D-4C18-8FB7-ECFDA90C2BEA}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{C86A78B9-ECC3-4E54-8E91-356A70C36279}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{CA2BE76E-0497-4DE5-AACB-3BC28E4CB985}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{2C916E14-E14C-431E-9AA5-2561668F7BA9}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Finance_DimFinancialAccountType" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Finance_DimFinancialAccountType]" DTS:To="Package\DFT_Load Finance_DimFinancialAccountType">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{33D42107-DD1D-4954-B2FB-639991E6B6DE}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Finance_DimFinancialAccountType" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Finance_DimFinancialAccountType]" DTS:To="Package\DFT_Load Finance_DimFinancialAccountType">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{31536399-23EC-4FF5-9F5C-095216AC7B78}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey , 	base_query.name, 	base_query.TextDescription, 	base_query.DimGLCodeSourceKey FROM  ( 	SELECT DISTINCT 		SourceKey = fat.FinancialAccountTypeId, 		Name = fat.FinancialAccountTypeId, 		TextDescription = [Description], 		DimGLCodeSourceKey = fa.AccountCodeId 	FROM dbo.FinancialAccountType as fat 	INNER JOIN dbo.FinancialAccount AS fa ON 		fat.FinancialAccountTypeId = fa.FinancialAccountTypeId ) AS base_query</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EE867E18-6230-4976-8EAA-404BF3FC5A3A}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey , 	base_query.name, 	base_query.TextDescription, 	base_query.DimGLCodeSourceKey FROM  ( 	SELECT DISTINCT 		SourceKey = fat.FinancialAccountTypeId, 		Name = fat.FinancialAccountTypeId, 		TextDescription = [Description], 		DimGLCodeSourceKey = fa.AccountCodeId 	FROM dbo.FinancialAccountType as fat 	INNER JOIN dbo.FinancialAccount AS fa ON 		fat.FinancialAccountTypeId = fa.FinancialAccountTypeId ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3432F4D9-882F-44A9-9929-AD986C045C40}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey , 	base_query.name, 	base_query.TextDescription, 	base_query.DimGLCodeSourceKey FROM  ( 	SELECT DISTINCT 		SourceKey = fat.FinancialAccountTypeId, 		Name = fat.FinancialAccountTypeId, 		TextDescription = [Description], 		DimGLCodeSourceKey = fa.AccountCodeId 	FROM dbo.FinancialAccountType as fat 	INNER JOIN dbo.FinancialAccount AS fa ON 		fat.FinancialAccountTypeId = fa.FinancialAccountTypeId ) AS base_query INNER JOIN paga_change_log.dbo.FinancialAccountType AS ct ON ct.FinancialAccountTypeId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{32307CD5-87DD-48D6-8A0F-8EFEF2B8E7A4}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey , 	base_query.name, 	base_query.TextDescription, 	base_query.DimGLCodeSourceKey FROM  ( 	SELECT DISTINCT 		SourceKey = fat.FinancialAccountTypeId, 		Name = fat.FinancialAccountTypeId, 		TextDescription = [Description], 		DimGLCodeSourceKey = fa.AccountCodeId 	FROM dbo.FinancialAccountType as fat 	INNER JOIN dbo.FinancialAccount AS fa ON 		fat.FinancialAccountTypeId = fa.FinancialAccountTypeId ) AS base_query INNER JOIN paga_change_log.dbo.FinancialAccountType AS ct ON ct.FinancialAccountTypeId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A6D0E7E0-2C49-49D6-93AE-2A7B596B6D4A}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= FinancialAccountTypeId FROM dbo.FinancialAccountType) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
-      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= FinancialAccountTypeId FROM dbo.FinancialAccountType) AS base_query INNER JOIN paga_change_log.dbo.FinancialAccountType AS ct ON ct.FinancialAccountTypeId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{308F806A-83DA-43B1-9A9C-71485E018690}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= FinancialAccountTypeId FROM dbo.FinancialAccountType) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= FinancialAccountTypeId FROM dbo.FinancialAccountType) AS base_query INNER JOIN paga_change_log.dbo.FinancialAccountType AS ct ON ct.FinancialAccountTypeId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D1EA16E5-C025-49A3-A033-1C4706C79179}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{68C0ECDA-7F11-4B76-8616-CC5620F39510}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

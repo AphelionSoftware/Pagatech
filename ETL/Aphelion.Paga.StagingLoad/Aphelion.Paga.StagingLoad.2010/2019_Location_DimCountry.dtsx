@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/12/2015 11:26:58" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{4E4E4742-2DB0-43D1-8C77-50AD5D0F15D1}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2019_Location_DimCountry" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{B51342DD-E266-4AF9-974C-8DE2E33831E1}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/13/2015 10:17:08" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{A2206E78-9020-4046-87CE-ABBAB318308C}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2019_Location_DimCountry" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{64466FF2-3F97-4748-BDD7-A736E2B58825}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{940A5D45-1812-4A79-BCA4-C7000DF35FAB}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{9349EC01-3DE3-4260-AC39-1778BFBE17FF}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="ChangeLog" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
@@ -9,7 +9,7 @@
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{6950B4FD-16B5-459B-B647-E8EC20233508}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Location_DimCountry" DTS:refId="Package\DFT_Load Location_DimCountry" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{485D42F5-BCE1-4882-936B-41E61AFB5D44}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Location_DimCountry" DTS:refId="Package\DFT_Load Location_DimCountry" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -29,6 +29,8 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].ExternalColumns[paga_change_log_id]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -40,6 +42,8 @@
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].ExternalColumns[code]" length="3" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[code]" name="code" refId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[code]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -56,6 +60,8 @@
                     <outputColumn codePage="1252" dataType="str" length="3" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Error].Columns[code]" name="code" refId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Error].Columns[code]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Error].Columns[paga_change_log_id]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
@@ -100,6 +106,10 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].ExternalColumns[paga_change_log_id]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].ExternalColumns[row_id]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
                     <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].Columns[SourceKey]">
@@ -109,6 +119,8 @@
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="3" cachedName="code" externalMetadataColumnId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].ExternalColumns[Code]" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[code]" refId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].Columns[code]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="paga_change_log_id" externalMetadataColumnId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[paga_change_log_id]" refId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].Columns[paga_change_log_id]">
                     </inputColumn>
                     <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Location_DimCountry\OLEDB_GetData_Location_DimCountry.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Location_DimCountry\OLEDB_InsertIntoStaging_Location_DimCountry.Inputs[OLEDB_GetData_Location_DimCountry_Output_OLEDB_InsertIntoStaging_Location_DimCountry].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
@@ -153,33 +165,33 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{8D19E2E9-6BD8-4E6F-84E4-E225E252A8F5}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.Country AS ct ON ct.CountryID = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:Property>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{1300FF14-0E7C-4382-A4BA-1590DB67D5ED}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.Country AS ct ON ct.CountryID = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{E149E935-B026-4754-95EF-D7DD00D87F54}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{2FF962AD-6BFF-418C-8A92-39D814F70462}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{CE1D2CAD-C324-48FE-A978-EC0F615078BE}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{5C089420-24AA-4836-A790-A74399BA3CEF}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{90200EA1-AD35-4E01-A2BC-11F55677FC8C}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Location_DimCountry" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Location_DimCountry]" DTS:To="Package\DFT_Load Location_DimCountry">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{C9944F3D-4C54-4DD8-8CDF-0342EEE45A12}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Location_DimCountry" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Location_DimCountry]" DTS:To="Package\DFT_Load Location_DimCountry">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{16DB3F6E-6AE8-4C3F-8EC1-9D9306D12B3F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	base_query.name,     base_query.code, ct.SYS_CHANGE_OPERATION, 	SYS_CHANGE_VERSION = ct.as_of_change_version FROM   (SELECT CountryId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, 'NGA' AS Code FROM dbo.Country) as base_query</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F8EBB5BE-D917-4692-AADC-1A0E075F3B73}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	base_query.name,     base_query.code, ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION = ct.as_of_change_version FROM   (SELECT CountryId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, 'NGA' AS Code FROM dbo.Country) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FDB8F16A-ED2C-42BC-A161-C06D8D9FC93E}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	base_query.name,     base_query.code, ct.SYS_CHANGE_OPERATION, 	SYS_CHANGE_VERSION = ct.as_of_change_version FROM   (SELECT CountryId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, 'NGA' AS Code FROM dbo.Country) as base_query INNER JOIN paga_change_log.dbo.Country AS ct ON ct.CountryID = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7A986127-EA0F-408D-8B4B-B16A9DB7A955}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey , 	base_query.name,     base_query.code, ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION = ct.as_of_change_version FROM   (SELECT CountryId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, 'NGA' AS Code FROM dbo.Country) as base_query INNER JOIN paga_change_log.dbo.Country AS ct ON ct.CountryID = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{08EF4F8C-A6DE-4344-AE9A-07A67CE35421}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= CountryID FROM dbo.Country) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
-      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= CountryID FROM dbo.Country) AS base_query INNER JOIN paga_change_log.dbo.Country AS ct ON ct.CountryID = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{727D8CC1-CA2E-47AB-B29A-084FFFB14ED3}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= CountryID FROM dbo.Country) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= CountryID FROM dbo.Country) AS base_query INNER JOIN paga_change_log.dbo.Country AS ct ON ct.CountryID = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6D1E5A86-F5B1-4F7D-900C-466BE5C34589}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{90CAAF8F-F9A4-4310-B223-A43A268E3328}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

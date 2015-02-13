@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadWarehouse"
   DTS:PackageType="5"
-  DTS:VersionBuild="434"
-  DTS:VersionGUID="{EEA2E6A3-D33F-4421-B202-AB385CA39E4B}">
+  DTS:VersionBuild="438"
+  DTS:VersionGUID="{74C18BB4-354F-4E15-A494-0BD0C6C06DF8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -24,7 +24,7 @@
       DTS:ObjectName="LoadGroupFilter">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">AND LoadGroup = 3100</DTS:Property>
+        DTS:Name="ParameterValue">AND LoadGroup = 2000</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -34,7 +34,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">3</DTS:Property>
+        DTS:Name="ParameterValue">1</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -45,7 +45,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">Changes</DTS:Property>
+        DTS:Name="ParameterValue">Initial</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -57,15 +57,6 @@
         DTS:DataType="8"
         DTS:Name="ParameterValue"
         xml:space="preserve"></DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="11"
-      DTS:DTSID="{4AAEBDF8-C407-4B44-AF4E-BF76F4437B0B}"
-      DTS:ObjectName="TruncateStaging">
-      <DTS:Property
-        DTS:DataType="11"
-        DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -107,7 +98,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ConvertSystemStart">
       <DTS:VariableValue
-        DTS:DataType="8">2015-02-12 10:56:08.000</DTS:VariableValue>
+        DTS:DataType="8">2015-02-12 16:46:45.000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -213,7 +204,7 @@ WHERE ct.as_of_change_version = 0' FROM
 	) as prefix ON 
 		base.TABLE_SCHEMA = prefix.TABLE_SCHEMA
 		AND base.HasBaseQueryDef = 1
-		AND LoadGroup = 3100
+		AND LoadGroup = 2000
 ) AS x
 </DTS:VariableValue>
     </DTS:Variable>
@@ -230,7 +221,7 @@ WHERE ct.as_of_change_version = 0' FROM
 	ChangeVersion
 FROM [ChangeTracking].[Load_History]
 WHERE 
-	PushedToWarehouse= 2
+	PushedToWarehouse= 0
 ORDER BY
 	LoadID</DTS:VariableValue>
     </DTS:Variable>
@@ -252,7 +243,7 @@ ORDER BY
       DTS:Namespace="User"
       DTS:ObjectName="LoadLevelLess1">
       <DTS:VariableValue
-        DTS:DataType="8">2</DTS:VariableValue>
+        DTS:DataType="8">0</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -326,7 +317,7 @@ ORDER BY
 	) as prefix ON 
 		base.TABLE_SCHEMA = prefix.TABLE_SCHEMA
 		AND base.HasBaseQueryDef = 1
-		AND LoadGroup = 3100
+		AND LoadGroup = 2000
 ) AS x
 </DTS:VariableValue>
     </DTS:Variable>
@@ -359,17 +350,6 @@ WHERE ct.as_of_change_version = 0'</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{18F0FC82-71A4-4F32-8535-BE2E98264E70}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[$Package::TruncateStaging]  ? &quot;EXEC dbo.truncate_staging_tables;&quot;: &quot;SELECT 1&quot;"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="TruncateStaging">
-      <DTS:VariableValue
-        DTS:DataType="8">SELECT 1</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
       DTS:DTSID="{B08DADD1-C3F8-4412-9BCB-523D75142E47}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;UPDATE [ChangeTracking].[Load_History]&#xA;SET PushedToWarehouse = &quot; + @[$Package::LoadLevel] +&quot;&#xA;WHERE&#xA; ChangeVersion = &quot; + (DT_WSTR, 20) @[User::ChangeVersion]"
@@ -378,7 +358,7 @@ WHERE ct.as_of_change_version = 0'</DTS:VariableValue>
       DTS:ObjectName="UpdateLoadQueue">
       <DTS:VariableValue
         DTS:DataType="8">UPDATE [ChangeTracking].[Load_History]
-SET PushedToWarehouse = 3
+SET PushedToWarehouse = 1
 WHERE
  ChangeVersion = 0</DTS:VariableValue>
     </DTS:Variable>
@@ -448,7 +428,7 @@ WHERE
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>010_RunStagingInParallel.dtsx</PackageName>
+          <PackageName>010_RunWarehouseInParallel.dtsx</PackageName>
           <ParameterAssignment>
             <ParameterName>parmInnerQuery</ParameterName>
             <BindedVariableOrParameterName>User::GetInnerQuery</BindedVariableOrParameterName>
@@ -503,7 +483,7 @@ WHERE
       </DTS:LoggingOptions>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{58D08405-99FD-49DC-8B1E-FF6A419E845A}"
+          SQLTask:Connection="{69CD59E7-777C-491E-9A60-52675BDDCE56}"
           SQLTask:SqlStmtSourceType="Variable"
           SQLTask:SqlStatementSource="User::GetVersionNumbers"
           SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -520,13 +500,13 @@ WHERE
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\EST_Update_PushedToStagingFlag"
+      DTS:refId="Package\EST_Update_PushedToWarehouseFlag"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{1443EDFA-3424-42F3-BB71-27297373453C}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
-      DTS:ObjectName="EST_Update_PushedToStagingFlag"
+      DTS:ObjectName="EST_Update_PushedToWarehouseFlag"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -609,7 +589,7 @@ WHERE
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>010_RunStagingInParallel.dtsx</PackageName>
+              <PackageName>010_RunWarehouseInParallel.dtsx</PackageName>
               <ParameterAssignment>
                 <ParameterName>parmInnerQuery</ParameterName>
                 <BindedVariableOrParameterName>User::GetInnerQuery</BindedVariableOrParameterName>
@@ -644,7 +624,7 @@ WHERE
       DTS:From="Package\FLC_ChangeVersion"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\EST_Update_PushedToStagingFlag" />
+      DTS:To="Package\EST_Update_PushedToWarehouseFlag" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -687,8 +667,8 @@ WHERE
           Id="Package\EST_GetVersionNumbers"
           TopLeft="305,107.5" />
         <NodeLayout
-          Size="245,42"
-          Id="Package\EST_Update_PushedToStagingFlag"
+          Size="263,42"
+          Id="Package\EST_Update_PushedToWarehouseFlag"
           TopLeft="5.50000000000006,415.5" />
         <NodeLayout
           Size="216,42"
@@ -707,14 +687,26 @@ WHERE
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="8.99999999999994,60"
               Start="0,0"
-              End="0,52.5">
+              End="8.99999999999994,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="4.99999999999994,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.99999999999994,30"
+                    Point2="8.99999999999994,30"
+                    Point3="8.99999999999994,34" />
+                  <mssgle:LineSegment
+                    End="8.99999999999994,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

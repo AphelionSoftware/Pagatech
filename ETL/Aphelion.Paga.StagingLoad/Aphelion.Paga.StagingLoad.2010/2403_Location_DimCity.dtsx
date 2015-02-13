@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/12/2015 11:26:59" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{BD69871B-69CC-4E5D-8A50-E9380EA13DB2}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2403_Location_DimCity" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{FF269091-E40C-4700-A9E6-0AA0AC356AEF}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/13/2015 10:17:10" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{4CE5EE74-29F1-4352-A422-B2FE46A5EB08}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2403_Location_DimCity" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{98FEC59A-D7EE-4AC3-AFAF-8871077FF363}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{6BFDB5E5-6E37-4C11-89C6-E0B9D5645627}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{3A880A6D-9B70-4C7C-A2FF-D0AF599E43BA}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="ChangeLog" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
@@ -9,7 +9,7 @@
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{8615F77A-4A7B-4DB9-A4AF-C1790A4A6481}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Location_DimCity" DTS:refId="Package\DFT_Load Location_DimCity" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{9F3D8DFE-5E82-432D-A312-10F80A420FBE}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Location_DimCity" DTS:refId="Package\DFT_Load Location_DimCity" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -31,6 +31,8 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].ExternalColumns[paga_change_log_id]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -44,6 +46,8 @@
                     <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].ExternalColumns[DimLocalGovernmentAreaSourceKey]" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[DimLocalGovernmentAreaSourceKey]" name="DimLocalGovernmentAreaSourceKey" refId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[DimLocalGovernmentAreaSourceKey]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -62,6 +66,8 @@
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Error].Columns[DimLocalGovernmentAreaSourceKey]" name="DimLocalGovernmentAreaSourceKey" refId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Error].Columns[DimLocalGovernmentAreaSourceKey]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Error].Columns[paga_change_log_id]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
@@ -108,6 +114,10 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].ExternalColumns[paga_change_log_id]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].ExternalColumns[row_id]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
                     <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].Columns[SourceKey]">
@@ -119,6 +129,8 @@
                     <inputColumn cachedDataType="i4" cachedName="DimLocalGovernmentAreaSourceKey" externalMetadataColumnId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].ExternalColumns[DimLocalGovernmentAreaSourceKey]" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[DimLocalGovernmentAreaSourceKey]" refId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].Columns[DimLocalGovernmentAreaSourceKey]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="paga_change_log_id" externalMetadataColumnId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[paga_change_log_id]" refId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].Columns[paga_change_log_id]">
                     </inputColumn>
                     <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Location_DimCity\OLEDB_GetData_Location_DimCity.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Location_DimCity\OLEDB_InsertIntoStaging_Location_DimCity.Inputs[OLEDB_GetData_Location_DimCity_Output_OLEDB_InsertIntoStaging_Location_DimCity].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
@@ -163,33 +175,33 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{FE1B3860-4081-4217-B731-304C197AC152}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.City AS ct ON ct.CityId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:Property>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{AAF34C30-1653-4293-9659-430828BA6199}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.City AS ct ON ct.CityId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{CC2B6435-AEAF-4733-82D2-5DBC5751B3F9}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{7A8FDE57-96BB-4986-A0D7-591F211BB157}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{F5B01F34-7E38-44D8-99C0-896DF7CB72A2}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{1D5C2E63-B65A-4429-AD72-C1866A119F34}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{FA191DF0-E2A1-48B9-91A0-FBA9541D021D}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Location_DimCity" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Location_DimCity]" DTS:To="Package\DFT_Load Location_DimCity">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{52B88372-56F0-464B-8F27-28B8E5AA0970}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Location_DimCity" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Location_DimCity]" DTS:To="Package\DFT_Load Location_DimCity">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FBDFD081-86F0-4099-B6FD-40AD0A83BA0D}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	PostalCode = COALESCE(base_query.PostalCode, -1), 	DimLocalGovernmentAreaSourceKey= COALESCE(base_query.DimLocalGovernmentAreaSourceKey, -1), ct.SYS_CHANGE_OPERATION, 	SYS_CHANGE_VERSION = ct.as_of_change_version FROM   (SELECT CityId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, PostalCode as PostalCode, LocalGovernmentAreaId AS DimLocalGovernmentAreaSourceKey FROM dbo.City) as base_query</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{04B6E91F-DDF2-4307-A4BE-02FA5DE842BB}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	PostalCode = COALESCE(base_query.PostalCode, -1), 	DimLocalGovernmentAreaSourceKey= COALESCE(base_query.DimLocalGovernmentAreaSourceKey, -1), ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION = ct.as_of_change_version FROM   (SELECT CityId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, PostalCode as PostalCode, LocalGovernmentAreaId AS DimLocalGovernmentAreaSourceKey FROM dbo.City) as base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6C993491-88A8-499D-97B6-B3809C50E584}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	PostalCode = COALESCE(base_query.PostalCode, -1), 	DimLocalGovernmentAreaSourceKey= COALESCE(base_query.DimLocalGovernmentAreaSourceKey, -1), ct.SYS_CHANGE_OPERATION, 	SYS_CHANGE_VERSION = ct.as_of_change_version FROM   (SELECT CityId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, PostalCode as PostalCode, LocalGovernmentAreaId AS DimLocalGovernmentAreaSourceKey FROM dbo.City) as base_query INNER JOIN paga_change_log.dbo.City AS ct ON ct.CityId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DC69B5BF-BEB8-40FD-9ACA-5D1564014E5C}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	base_query.name, 	PostalCode = COALESCE(base_query.PostalCode, -1), 	DimLocalGovernmentAreaSourceKey= COALESCE(base_query.DimLocalGovernmentAreaSourceKey, -1), ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION = ct.as_of_change_version FROM   (SELECT CityId AS SourceKey,  CONVERT(VARCHAR(255),Name) AS Name, PostalCode as PostalCode, LocalGovernmentAreaId AS DimLocalGovernmentAreaSourceKey FROM dbo.City) as base_query INNER JOIN paga_change_log.dbo.City AS ct ON ct.CityId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0F2B4280-B269-441C-84CD-025D21E36E2E}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= CityId FROM dbo.City) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
-      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= CityId FROM dbo.City) AS base_query INNER JOIN paga_change_log.dbo.City AS ct ON ct.CityId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DC0848FF-317B-4103-B0D9-0D26086B3AB9}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= CityId FROM dbo.City) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= CityId FROM dbo.City) AS base_query INNER JOIN paga_change_log.dbo.City AS ct ON ct.CityId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EA283593-C76B-458C-BC85-0E0744E8BD2A}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{39436AB4-1226-45A8-9135-2957E6E8D760}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>

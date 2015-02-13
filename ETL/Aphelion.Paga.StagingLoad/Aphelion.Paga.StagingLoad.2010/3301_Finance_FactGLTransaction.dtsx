@@ -11,8 +11,8 @@
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="3301_Finance_FactGLTransaction"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{7711A445-06A9-45F7-AD07-DF51D7D8E64D}"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{15E0501A-E52F-4BBB-AB7E-1D49B79DCB3F}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -41,14 +41,14 @@
       DTS:CreationName=""
       DTS:DTSID="{C7AD3664-B38C-4C7B-B1F5-43BFB3268122}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;base_query.*, &#x9;ct.SYS_CHANGE_OPERATION,&#xA;&#x9;SYS_CHANGE_VERSION&#xA; = ct.as_of_change_version  &#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;[Movement],&#xA;&#x9;&#x9;[SourceKey],&#xA;&#x9;&#x9;[TextDescription],&#xA;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;[DimFinancialAccountSourceKey],&#xA;&#x9;&#x9;[DimGLCodeSourceKey],&#xA;&#x9;&#x9;[FactFinancialTransactionSourceKey]&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;SourceKey = [FinancialTransactionItemId],&#xA;&#x9;&#x9;&#x9;[DimGLCodeSourceKey] = [AccountCodeId],&#xA;&#x9;&#x9;&#x9;TextDescription = [Description],&#xA;&#x9;&#x9;&#x9;[DimFinancialAccountSourceKey] = [FinancialAccountId],&#xA;&#x9;&#x9;&#x9;[FactFinancialTransactionSourceKey] = [FinancialTransactionId],&#xA;&#x9;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;&#x9;[Movement] = ([CreditAmount]+[DebitAmount])&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;FROM [dbo].[FinancialTransactionItem]&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([FinancialTransactionItemId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;base_query.*, &#x9;ct.SYS_CHANGE_OPERATION,&#xA; paga_change_log_id = ct.row_id, &#x9;SYS_CHANGE_VERSION&#xA; = ct.as_of_change_version  &#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;[Movement],&#xA;&#x9;&#x9;[SourceKey],&#xA;&#x9;&#x9;[TextDescription],&#xA;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;[DimFinancialAccountSourceKey],&#xA;&#x9;&#x9;[DimGLCodeSourceKey],&#xA;&#x9;&#x9;[FactFinancialTransactionSourceKey]&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;SourceKey = [FinancialTransactionItemId],&#xA;&#x9;&#x9;&#x9;[DimGLCodeSourceKey] = [AccountCodeId],&#xA;&#x9;&#x9;&#x9;TextDescription = [Description],&#xA;&#x9;&#x9;&#x9;[DimFinancialAccountSourceKey] = [FinancialAccountId],&#xA;&#x9;&#x9;&#x9;[FactFinancialTransactionSourceKey] = [FinancialTransactionId],&#xA;&#x9;&#x9;&#x9;[TransactionLineNumber],&#xA;&#x9;&#x9;&#x9;[CreditAmount],&#xA;&#x9;&#x9;&#x9;[DebitAmount],&#xA;&#x9;&#x9;&#x9;[Movement] = ([CreditAmount]+[DebitAmount])&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;FROM [dbo].[FinancialTransactionItem]&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST([FinancialTransactionItemId] AS VARCHAR) % 4) AS grp) as g&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;g.grp = @grp&#xA;&#x9;) AS stream &#xA;) AS base_query &quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="BaseQuery">
       <DTS:VariableValue
         DTS:DataType="8">SELECT
 	base_query.*, 	ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version  
 FROM
 (
@@ -116,7 +116,7 @@ INNER JOIN paga_change_log.dbo.[FinancialTransactionItem] as ct ON 	ct.[Financia
         DTS:DataType="8">DECLARE @grp AS INT = 0
  SELECT
 	base_query.*, 	ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version  
 FROM
 (
@@ -161,7 +161,7 @@ FROM
         DTS:DataType="8">DECLARE @grp AS INT = 1
  SELECT
 	base_query.*, 	ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version  
 FROM
 (
@@ -206,7 +206,7 @@ FROM
         DTS:DataType="8">DECLARE @grp AS INT = 2
  SELECT
 	base_query.*, 	ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version  
 FROM
 (
@@ -251,7 +251,7 @@ FROM
         DTS:DataType="8">DECLARE @grp AS INT = 3
  SELECT
 	base_query.*, 	ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version  
 FROM
 (
@@ -2515,24 +2515,24 @@ FROM
           <paths>
             <path
               refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3]"
-              name="Output"
-              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 2]"
-              name="Output"
-              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
               endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1]"
               name="Output"
               startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
+              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
               endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5]"
               name="Output"
               startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
+              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3]"
+              name="Output"
+              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
+              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 2]"
+              name="Output"
+              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output]" />
             <path
               refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Union All Output 1]"
               endId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -2650,7 +2650,7 @@ FROM
           Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0"
           TopLeft="5.5,5.5" />
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
           TopLeft="550,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2710,7 +2710,7 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
           TopLeft="320,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2746,7 +2746,7 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
           TopLeft="780,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2782,7 +2782,7 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
           TopLeft="90,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve

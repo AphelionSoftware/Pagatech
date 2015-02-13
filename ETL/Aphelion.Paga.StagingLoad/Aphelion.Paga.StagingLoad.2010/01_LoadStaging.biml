@@ -10,8 +10,8 @@
 	<Connections>
 	 <Connection Name="Aphelion.DB.LoadQueue" ConnectionString="Data Source=.\sql2012;Initial Catalog=Aphelion.DB.LoadQueue;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
 	 <Connection Name="Paga_Staging" ConnectionString="Data Source=.\sql2012;Initial Catalog=Paga_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
-	 <Connection Name="SourceDB" ConnectionString="Data Source=.\sql2012;Initial Catalog=paga_bi;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
-	 <Connection Name="ChangeLog" ConnectionString="Data Source=.\sql2012;Initial Catalog=paga_change_log;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="SourceDB" ConnectionString="Data Source=10.0.20.15;Initial Catalog=paga_bi;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
+	 <Connection Name="ChangeLog" ConnectionString="Data Source=10.0.20.15;Initial Catalog=paga_change_log;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" CreateInProject="true"/>
 	</Connections>
 	<PackageProjects>
 		<PackageProject Name="Aphelion.Paga.StagingLoad.2010">
@@ -131,7 +131,7 @@
 				string KeyColumn = row[4].ToString();
 				string SourceTable = row[5].ToString();
 				string CountQuery = "&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= "+KeyColumn +" FROM " +SourceTable +") AS base_query &quot;";
-				string EndOfQuery = "INNER JOIN paga_change_log."+SourceTable +" AS ct ON ct."+KeyColumn +" = base_query.SourceKey WHERE ct.as_of_change_version = 0";
+				string EndOfQuery = "INNER JOIN paga_change_log."+SourceTable +" AS ct ON ct."+KeyColumn +" = base_query.SourceKey WHERE ct.as_of_change_version > 0";
 		#>	
 				<Package Name="<#=PackageName#>" ConstraintMode="Linear"  ProtectionLevel="EncryptSensitiveWithUserKey"  AutoCreateConfigurationsType="None" DelayValidation="true">
 				<Parameters>

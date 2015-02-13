@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="3001_Shared_FactProcessEvent"
   DTS:PackageType="5"
-  DTS:VersionBuild="214"
-  DTS:VersionGUID="{D53B8F96-44EF-4B1D-9682-A92A83ED9F1A}">
+  DTS:VersionBuild="215"
+  DTS:VersionGUID="{50270687-611D-45AD-82D5-C670755B3010}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -41,7 +41,7 @@
       DTS:CreationName=""
       DTS:DTSID="{700315F4-8614-416C-B163-4A66DDB1B97A}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT &#xA;&#x9;base_query.*,&#xA;&#x9;ct.SYS_CHANGE_OPERATION,&#xA;&#x9;SYS_CHANGE_VERSION&#xA; = ct.as_of_change_version &#xA;FROM  &#xA;( &#xA;&#x9;SELECT &#xA;&#x9;&#x9;p.ProcessId, &#xA;&#x9;&#x9;p.Amount, &#xA;&#x9;&#x9;p.CompletedTimestamp, &#xA;&#x9;&#x9;p.CreatedDate, &#xA;&#x9;&#x9;p.Fee, &#xA;&#x9;&#x9;p.FinancialTransactionId, &#xA;&#x9;&#x9;p.ForUserId, &#xA;&#x9;&#x9;p.IsShortLived, &#xA;&#x9;&#x9;p.ProcessChannelId, &#xA;&#x9;&#x9;p.ProcessCode, &#xA;&#x9;&#x9;p.ProcessStatusId, &#xA;&#x9;&#x9;p.ProcessTypeId, &#xA;&#x9;&#x9;p.StartedTimestamp, &#xA;&#x9;&#x9;p.ToUserId, &#xA;&#x9;&#x9;p.UpdatedDate, &#xA;&#x9;&#x9;p.UserId, &#xA;&#x9;&#x9;p.AgentCommissionAmount, &#xA;&#x9;&#x9;p.AgentCommissionTypeId, &#xA;&#x9;&#x9;p.StatusMessage,&#xA;&#x9;&#x9;CASE  &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;WHEN&#x9;has_ft.FinancialTransactionId is NOT NULL THEN 1 &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;ELSE 0 &#x9;&#x9;&#xA;&#x9;&#x9;END AS HasFinancialTransaction,&#x9;&#x9; &#x9;&#x9;&#xA;&#x9;&#x9;SourceKey = p.ProcessID &#x9; &#x9;&#xA;&#x9;FROM dbo.Process AS p &#x9;&#xA;&#x9;CROSS APPLY &#x9;&#xA;&#x9;(  &#x9;&#x9;&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;(CAST(ProcessID AS VARCHAR) % 4) AS grp &#x9;&#xA;&#x9;) AS g &#xA;&#x9;OUTER APPLY &#x9;&#xA;&#x9;( &#x9;&#x9;&#xA;&#x9;&#x9;SELECT TOP 1 &#xA;&#x9;&#x9;&#x9;ft.FinancialTransactionId &#x9;&#x9;&#xA;&#x9;&#x9;FROM dbo.FinancialTransaction AS ft &#x9;&#x9;&#xA;&#x9;&#x9;WHERE  &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;ft.ProcessId = p.ProcessID &#x9;&#xA;&#x9;) as has_ft &quot;"
+      DTS:Expression="&quot;SELECT &#xA;&#x9;base_query.*,&#xA;&#x9;ct.SYS_CHANGE_OPERATION,&#xA; paga_change_log_id = ct.row_id, &#x9;SYS_CHANGE_VERSION&#xA; = ct.as_of_change_version &#xA;FROM  &#xA;( &#xA;&#x9;SELECT &#xA;&#x9;&#x9;p.ProcessId, &#xA;&#x9;&#x9;p.Amount, &#xA;&#x9;&#x9;p.CompletedTimestamp, &#xA;&#x9;&#x9;p.CreatedDate, &#xA;&#x9;&#x9;p.Fee, &#xA;&#x9;&#x9;p.FinancialTransactionId, &#xA;&#x9;&#x9;p.ForUserId, &#xA;&#x9;&#x9;p.IsShortLived, &#xA;&#x9;&#x9;p.ProcessChannelId, &#xA;&#x9;&#x9;p.ProcessCode, &#xA;&#x9;&#x9;p.ProcessStatusId, &#xA;&#x9;&#x9;p.ProcessTypeId, &#xA;&#x9;&#x9;p.StartedTimestamp, &#xA;&#x9;&#x9;p.ToUserId, &#xA;&#x9;&#x9;p.UpdatedDate, &#xA;&#x9;&#x9;p.UserId, &#xA;&#x9;&#x9;p.AgentCommissionAmount, &#xA;&#x9;&#x9;p.AgentCommissionTypeId, &#xA;&#x9;&#x9;p.StatusMessage,&#xA;&#x9;&#x9;CASE  &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;WHEN&#x9;has_ft.FinancialTransactionId is NOT NULL THEN 1 &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;ELSE 0 &#x9;&#x9;&#xA;&#x9;&#x9;END AS HasFinancialTransaction,&#x9;&#x9; &#x9;&#x9;&#xA;&#x9;&#x9;SourceKey = p.ProcessID &#x9; &#x9;&#xA;&#x9;FROM dbo.Process AS p &#x9;&#xA;&#x9;CROSS APPLY &#x9;&#xA;&#x9;(  &#x9;&#x9;&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;(CAST(ProcessID AS VARCHAR) % 4) AS grp &#x9;&#xA;&#x9;) AS g &#xA;&#x9;OUTER APPLY &#x9;&#xA;&#x9;( &#x9;&#x9;&#xA;&#x9;&#x9;SELECT TOP 1 &#xA;&#x9;&#x9;&#x9;ft.FinancialTransactionId &#x9;&#x9;&#xA;&#x9;&#x9;FROM dbo.FinancialTransaction AS ft &#x9;&#x9;&#xA;&#x9;&#x9;WHERE  &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;ft.ProcessId = p.ProcessID &#x9;&#xA;&#x9;) as has_ft &quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="GetProcess">
@@ -49,7 +49,7 @@
         DTS:DataType="8">SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version 
 FROM  
 ( 
@@ -97,7 +97,7 @@ FROM
       DTS:CreationName=""
       DTS:DTSID="{79DB54BC-C79C-407E-988A-5ED8B5E73994}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;&#x9;base_query.*&#xA;,&#xA;ct.SYS_CHANGE_OPERATION,&#xA;&#x9;SYS_CHANGE_VERSION&#xA; = ct.as_of_change_version &#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;pd0.ProcessDataId,&#xA;&#x9;&#x9;pd0.ProcessId,&#xA;&#x9;&#x9;pd0.Name,&#xA;&#x9;&#x9;pd0.Value,&#xA;&#x9;&#x9;pd0.UpdatedDate,&#xA;&#x9;&#x9;pd0.SourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;[ProcessDataID],&#xA;&#x9;&#x9;&#x9;[ProcessId],&#xA;&#x9;&#x9;&#x9;SourceKey = ProcessDataID,&#xA;&#x9;&#x9;&#x9;Name = CONVERT(VARCHAR(255),[Name]),&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;Value = CONVERT(VARCHAR(8000),[Value]),&#xA;&#x9;&#x9;&#x9;UpdatedDate&#xA;&#x9;&#x9;FROM [dbo].[ProcessData]&#xA;&#x9;) AS pd0&#xA;&#x9;CROSS APPLY (SELECT grp = (CAST(ProcessDataID AS VARCHAR) %&quot; + @[User::Streams]+&quot; ) ) AS g&#xA;&quot;"
+      DTS:Expression="&quot;SELECT&#xA;&#x9;base_query.*&#xA;,&#xA;ct.SYS_CHANGE_OPERATION,&#xA; paga_change_log_id = ct.row_id, &#x9;SYS_CHANGE_VERSION&#xA; = ct.as_of_change_version &#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;pd0.ProcessDataId,&#xA;&#x9;&#x9;pd0.ProcessId,&#xA;&#x9;&#x9;pd0.Name,&#xA;&#x9;&#x9;pd0.Value,&#xA;&#x9;&#x9;pd0.UpdatedDate,&#xA;&#x9;&#x9;pd0.SourceKey&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;[ProcessDataID],&#xA;&#x9;&#x9;&#x9;[ProcessId],&#xA;&#x9;&#x9;&#x9;SourceKey = ProcessDataID,&#xA;&#x9;&#x9;&#x9;Name = CONVERT(VARCHAR(255),[Name]),&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;Value = CONVERT(VARCHAR(8000),[Value]),&#xA;&#x9;&#x9;&#x9;UpdatedDate&#xA;&#x9;&#x9;FROM [dbo].[ProcessData]&#xA;&#x9;) AS pd0&#xA;&#x9;CROSS APPLY (SELECT grp = (CAST(ProcessDataID AS VARCHAR) %&quot; + @[User::Streams]+&quot; ) ) AS g&#xA;&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="GetProcessData">
@@ -106,7 +106,7 @@ FROM
 	base_query.*
 ,
 ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version 
 FROM
 (
@@ -184,7 +184,7 @@ FROM
 		VerificationStatus = pd.VerificationStatus, 
 		WithdrawalCode = pd.WithdrawalCode,
 		p.SYS_CHANGE_OPERATION,
-		p.SYS_CHANGE_VERSION
+		p.SYS_CHANGE_VERSION, p.paga_change_log_id
 	FROM
 	(
 	
@@ -299,7 +299,7 @@ FROM
 		VerificationStatus = pd.VerificationStatus, 
 		WithdrawalCode = pd.WithdrawalCode,
 		p.SYS_CHANGE_OPERATION,
-		p.SYS_CHANGE_VERSION
+		p.SYS_CHANGE_VERSION, p.paga_change_log_id
 	FROM
 	(
 	
@@ -415,7 +415,7 @@ FROM
 		VerificationStatus = pd.VerificationStatus, 
 		WithdrawalCode = pd.WithdrawalCode,
 		p.SYS_CHANGE_OPERATION,
-		p.SYS_CHANGE_VERSION
+		p.SYS_CHANGE_VERSION, p.paga_change_log_id
 	FROM
 	(
 	
@@ -530,7 +530,7 @@ FROM
 		VerificationStatus = pd.VerificationStatus, 
 		WithdrawalCode = pd.WithdrawalCode,
 		p.SYS_CHANGE_OPERATION,
-		p.SYS_CHANGE_VERSION
+		p.SYS_CHANGE_VERSION, p.paga_change_log_id
 	FROM
 	(
 	
@@ -596,7 +596,7 @@ FROM
       DTS:CreationName=""
       DTS:DTSID="{55816D42-19CC-4C28-BB0D-97213FDFDB40}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT &#xA;&#x9;*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;SourceKey = driver.ProcessID,&#xA;&#x9;&#x9;DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), &#xA;&#x9;&#x9;DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),&#xA;&#x9;&#x9;DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, &#xA;&#x9;&#x9;DimForUserSourceKey = p.ForUserId,&#xA;&#x9;&#x9;DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), &#xA;&#x9;&#x9;DimProcessChannelSourceKey = p.ProcessChannelId, &#xA;&#x9;&#x9;DimProcessStatusSourceKey = p.ProcessStatusId, &#xA;&#x9;&#x9;DimProcessTypeSourceKey = p.ProcessTypeId, &#xA;&#x9;&#x9;DimToUserSourceKey = p.ToUserId, &#xA;&#x9;&#x9;DimUserSourceKey = COALESCE(p.UserID, -1), &#xA;&#x9;&#x9;DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), &#xA;&#x9;&#x9;DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),&#xA;&#x9;&#x9;AgentCommissionAmount = p.AgentCommissionAmount, &#xA;&#x9;&#x9;ProcessAmount = p.Amount, &#xA;&#x9;&#x9;ProcessCode = p.ProcessCode, &#xA;&#x9;&#x9;ProcessFee = p.Fee, &#xA;&#x9;&#x9;FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, &#xA;&#x9;&#x9;FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,&#xA;&#x9;&#x9;DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, &#xA;&#x9;&#x9;DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, &#xA;&#x9;&#x9;DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, &#xA;&#x9;&#x9;DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, &#xA;&#x9;&#x9;ATMReferenceNumber = pd.ATMReferenceNumber, &#xA;&#x9;&#x9;CardProcessorName = pd.CardProcessorName, &#xA;&#x9;&#x9;CustomerBillerAccount = pd.CustomerBillerAccount, &#xA;&#x9;&#x9;CustomerPhoneNumber = pd.CustomerPhoneNumber, &#xA;&#x9;&#x9;DepositNumber = pd.DepositNumber, &#xA;&#x9;&#x9;IntegrationReferenceNumber = pd.IntegrationReferenceNumber, &#xA;&#x9;&#x9;LinkedPhoneNumber = pd.LinkedPhoneNumber, &#xA;&#x9;&#x9;MerchantConfirmationCode = pd.MerchantConfirmationCode, &#xA;&#x9;&#x9;MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,&#xA;&#x9;&#x9;PaymentSource = pd.PaymentSource, &#xA;&#x9;&#x9;ReferenceNumber = pd.ReferenceNumber, &#xA;&#x9;&#x9;SenderPhoneNumber= pd.SenderPhoneNumber, &#xA;&#x9;&#x9;VerificationStatus = pd.VerificationStatus, &#xA;&#x9;&#x9;WithdrawalCode = pd.WithdrawalCode,&#xA;&#x9;&#x9;p.SYS_CHANGE_OPERATION,&#xA;&#x9;&#x9;p.SYS_CHANGE_VERSION&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#xA;&#x9;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;&#x9;ProcessID&#xA;&#x9;&#x9;FROM dbo.Process&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;grp.g = @grp&#xA;&#x9;) AS driver&#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#x9;&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;FROM dbo.Process&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ProcessID = driver.ProcessId&#xA;&#x9;) AS p&#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT  &#x9;&#xA;&#x9;&#x9;&#x9;WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9;&#xA;&#x9;&#x9;&#x9;RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) &#x9; &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;pd1.*&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[Name],&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[ProcessId],&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[Value]&#xA;&#x9;&#x9;&#x9;&#x9;FROM [dbo].[ProcessData] AS pd0&#xA;&#x9;&#x9;&#x9;&#x9;WHERE pd0.ProcessID = driver.ProcessId&#xA;&#x9;&#x9;&#x9;) AS pd1&#xA;&#x9;&#x9;&#x9;WHERE pd1.rn = 1&#xA;&#x9;&#x9;) AS pd2&#xA;&#x9;) AS pd&#xA;) AS base_query&quot;"
+      DTS:Expression="&quot;SELECT &#xA;&#x9;*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;SourceKey = driver.ProcessID,&#xA;&#x9;&#x9;DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), &#xA;&#x9;&#x9;DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),&#xA;&#x9;&#x9;DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, &#xA;&#x9;&#x9;DimForUserSourceKey = p.ForUserId,&#xA;&#x9;&#x9;DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), &#xA;&#x9;&#x9;DimProcessChannelSourceKey = p.ProcessChannelId, &#xA;&#x9;&#x9;DimProcessStatusSourceKey = p.ProcessStatusId, &#xA;&#x9;&#x9;DimProcessTypeSourceKey = p.ProcessTypeId, &#xA;&#x9;&#x9;DimToUserSourceKey = p.ToUserId, &#xA;&#x9;&#x9;DimUserSourceKey = COALESCE(p.UserID, -1), &#xA;&#x9;&#x9;DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), &#xA;&#x9;&#x9;DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),&#xA;&#x9;&#x9;AgentCommissionAmount = p.AgentCommissionAmount, &#xA;&#x9;&#x9;ProcessAmount = p.Amount, &#xA;&#x9;&#x9;ProcessCode = p.ProcessCode, &#xA;&#x9;&#x9;ProcessFee = p.Fee, &#xA;&#x9;&#x9;FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, &#xA;&#x9;&#x9;FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,&#xA;&#x9;&#x9;DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, &#xA;&#x9;&#x9;DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, &#xA;&#x9;&#x9;DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, &#xA;&#x9;&#x9;DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, &#xA;&#x9;&#x9;ATMReferenceNumber = pd.ATMReferenceNumber, &#xA;&#x9;&#x9;CardProcessorName = pd.CardProcessorName, &#xA;&#x9;&#x9;CustomerBillerAccount = pd.CustomerBillerAccount, &#xA;&#x9;&#x9;CustomerPhoneNumber = pd.CustomerPhoneNumber, &#xA;&#x9;&#x9;DepositNumber = pd.DepositNumber, &#xA;&#x9;&#x9;IntegrationReferenceNumber = pd.IntegrationReferenceNumber, &#xA;&#x9;&#x9;LinkedPhoneNumber = pd.LinkedPhoneNumber, &#xA;&#x9;&#x9;MerchantConfirmationCode = pd.MerchantConfirmationCode, &#xA;&#x9;&#x9;MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,&#xA;&#x9;&#x9;PaymentSource = pd.PaymentSource, &#xA;&#x9;&#x9;ReferenceNumber = pd.ReferenceNumber, &#xA;&#x9;&#x9;SenderPhoneNumber= pd.SenderPhoneNumber, &#xA;&#x9;&#x9;VerificationStatus = pd.VerificationStatus, &#xA;&#x9;&#x9;WithdrawalCode = pd.WithdrawalCode,&#xA;&#x9;&#x9;p.SYS_CHANGE_OPERATION,&#xA;&#x9;&#x9;p.SYS_CHANGE_VERSION, p.paga_change_log_id&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#xA;&#x9;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;&#x9;ProcessID&#xA;&#x9;&#x9;FROM dbo.Process&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;grp.g = @grp&#xA;&#x9;) AS driver&#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#x9;&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;FROM dbo.Process&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ProcessID = driver.ProcessId&#xA;&#x9;) AS p&#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT  &#x9;&#xA;&#x9;&#x9;&#x9;WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9;&#xA;&#x9;&#x9;&#x9;RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) &#x9; &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;pd1.*&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[Name],&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[ProcessId],&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[Value]&#xA;&#x9;&#x9;&#x9;&#x9;FROM [dbo].[ProcessData] AS pd0&#xA;&#x9;&#x9;&#x9;&#x9;WHERE pd0.ProcessID = driver.ProcessId&#xA;&#x9;&#x9;&#x9;) AS pd1&#xA;&#x9;&#x9;&#x9;WHERE pd1.rn = 1&#xA;&#x9;&#x9;) AS pd2&#xA;&#x9;) AS pd&#xA;) AS base_query&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="LoadQuery">
@@ -644,7 +644,7 @@ FROM
 		VerificationStatus = pd.VerificationStatus, 
 		WithdrawalCode = pd.WithdrawalCode,
 		p.SYS_CHANGE_OPERATION,
-		p.SYS_CHANGE_VERSION
+		p.SYS_CHANGE_VERSION, p.paga_change_log_id
 	FROM
 	(
 	
@@ -757,7 +757,7 @@ WHERE ct.as_of_change_version = 0</DTS:VariableValue>
 	base_query.*
 ,
 ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version 
 FROM
 (
@@ -803,7 +803,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
 	base_query.*
 ,
 ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version 
 FROM
 (
@@ -849,7 +849,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
 	base_query.*
 ,
 ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version 
 FROM
 (
@@ -895,7 +895,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
 	base_query.*
 ,
 ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version 
 FROM
 (
@@ -963,7 +963,7 @@ INNER JOIN paga_change_log.dbo.Process as ct ON 	ct.ProcessId = base_query.Sourc
         DTS:DataType="8">SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version 
 FROM  
 ( 
@@ -1023,7 +1023,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
         DTS:DataType="8">SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version 
 FROM  
 ( 
@@ -1083,7 +1083,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
         DTS:DataType="8">SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version 
 FROM  
 ( 
@@ -1143,7 +1143,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
         DTS:DataType="8">SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
-	SYS_CHANGE_VERSION
+ paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
  = ct.as_of_change_version 
 FROM  
 ( 
@@ -8080,24 +8080,24 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           <paths>
             <path
               refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output2]"
-              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 3]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
-              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 2]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 1]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 5]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 3]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
+              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 2]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[Union All Output 1]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -12220,24 +12220,24 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
               <paths>
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output2]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 3]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 2]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 1]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 5]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 3]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 2]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Union All Output 1]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_InsertIntoPrestaging.Inputs[OLE DB Destination Input]"
@@ -13890,24 +13890,24 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
               <paths>
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output]" />
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Union All Output 1]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_InsertIntoPreStaging.Inputs[OLE DB Destination Input]"
@@ -13925,7 +13925,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_CheckForRows_P"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -13947,7 +13947,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_CheckForRows_PD"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -13970,7 +13970,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_DropProcessDataIndex"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -13987,7 +13987,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_DropProcessIndex"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -14004,7 +14004,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_IndexProcess"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -14021,7 +14021,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_IndexProcessData"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -14376,7 +14376,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent"
           TopLeft="5.5,5.5" />
         <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
           TopLeft="401,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14412,7 +14412,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output2]"
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
           TopLeft="969,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14472,7 +14472,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
           TopLeft="117,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14508,7 +14508,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output2]"
           TopLeft="685,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14657,7 +14657,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
           TopLeft="87.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14693,7 +14693,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output2]"
           TopLeft="312.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14729,7 +14729,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
           TopLeft="537.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14765,7 +14765,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output2]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
           TopLeft="762.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14878,7 +14878,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0"
           TopLeft="230.5,5.49999999999989" />
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
           TopLeft="762.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14914,7 +14914,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
           TopLeft="87.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14950,7 +14950,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
           TopLeft="312.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15010,7 +15010,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
           TopLeft="537.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve

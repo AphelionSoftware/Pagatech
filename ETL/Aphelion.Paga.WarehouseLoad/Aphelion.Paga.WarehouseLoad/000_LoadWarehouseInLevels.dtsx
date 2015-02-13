@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="000_LoadWarehouseInLevels"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{88EDE5A2-A8FB-476A-BFC5-0386AE0794B3}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{A742A573-E249-4CF8-B690-09938EFD0C5F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -25,17 +25,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">Changes</DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="11"
-      DTS:DTSID="{CF74F3A3-F9AE-407B-8C8F-A9D58614D972}"
-      DTS:ObjectName="TruncateStaging"
-      DTS:Required="True">
-      <DTS:Property
-        DTS:DataType="11"
-        DTS:Name="ParameterValue">0</DTS:Property>
+        DTS:Name="ParameterValue">Initial</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -78,7 +68,7 @@
       DTS:CreationName="STOCK:FORLOOP"
       DTS:Description="For Loop Container"
       DTS:DTSID="{4CDE8B8D-0B1D-49A4-803C-063A5BD74698}"
-      DTS:EvalExpression="@LevelLoop &lt; 12"
+      DTS:EvalExpression="@LevelLoop &lt; 2"
       DTS:ExecutableType="STOCK:FORLOOP"
       DTS:InitExpression="@LevelLoop = 1"
       DTS:LocaleID="-1"
@@ -111,10 +101,6 @@
               <ParameterAssignment>
                 <ParameterName>LoadType</ParameterName>
                 <BindedVariableOrParameterName>$Package::LoadType</BindedVariableOrParameterName>
-              </ParameterAssignment>
-              <ParameterAssignment>
-                <ParameterName>TruncateStaging</ParameterName>
-                <BindedVariableOrParameterName>$Package::TruncateStaging</BindedVariableOrParameterName>
               </ParameterAssignment>
             </ExecutePackageTask>
           </DTS:ObjectData>
@@ -243,7 +229,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="298,306"
+          PanelSize="298,307"
           Size="298,350"
           Id="Package\FLC_LoadWarehouseLevels"
           TopLeft="5.50000000000006,5.5" />

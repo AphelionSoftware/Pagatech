@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/12/2015 11:26:58" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="CLEO" DTS:CreatorName="Administrator" DTS:DelayValidation="True" DTS:DTSID="{A6333BCC-33FD-44A6-91F6-136D010D2E7E}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2103_Shared_DimPagaAccount" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{1A904BC5-1B9E-482E-9ADB-8680C36F7B75}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="02/13/2015 10:17:09" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{AAB34C33-83B9-4D3E-BE9A-C08249C870C6}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2103_Shared_DimPagaAccount" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{154DEAC4-A10E-423C-8857-429EE5985640}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{0C4309EF-513A-4543-9F24-3104039350B8}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{657554B0-5DEB-4722-921B-01BA6AE8595C}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <SQLTask:SqlTaskData SQLTask:Connection="ChangeLog" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
@@ -9,7 +9,7 @@
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{86CBBCB2-876B-4C52-97BB-8E1BD69452CC}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimPagaAccount" DTS:refId="Package\DFT_Load Shared_DimPagaAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{72DD5B2A-87ED-48ED-A7F8-61AE68D41E30}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimPagaAccount" DTS:refId="Package\DFT_Load Shared_DimPagaAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
@@ -39,7 +39,7 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="bool" name="hasOnlineAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[hasOnlineAccount]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsActive]">
+                    <externalMetadataColumn dataType="bool" name="IsActivePagaAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsActivePagaAccount]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="bool" name="IsEnabled" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsEnabled]">
                     </externalMetadataColumn>
@@ -69,6 +69,8 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[paga_change_log_id]">
+                    </externalMetadataColumn>
                     <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -91,7 +93,7 @@
                     </outputColumn>
                     <outputColumn dataType="bool" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[hasOnlineAccount]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[hasOnlineAccount]" name="hasOnlineAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[hasOnlineAccount]" truncationRowDisposition="FailComponent">
                     </outputColumn>
-                    <outputColumn dataType="bool" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsActive]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsActive]" name="IsActive" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsActive]" truncationRowDisposition="FailComponent">
+                    <outputColumn dataType="bool" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsActivePagaAccount]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsActivePagaAccount]" name="IsActivePagaAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsActivePagaAccount]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                     <outputColumn dataType="bool" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsEnabled]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsEnabled]" name="IsEnabled" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsEnabled]" truncationRowDisposition="FailComponent">
                     </outputColumn>
@@ -121,6 +123,8 @@
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
                     </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
                     <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
                     </outputColumn>
                   </outputColumns>
@@ -147,7 +151,7 @@
                     </outputColumn>
                     <outputColumn dataType="bool" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[hasOnlineAccount]" name="hasOnlineAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[hasOnlineAccount]">
                     </outputColumn>
-                    <outputColumn dataType="bool" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsActive]" name="IsActive" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsActive]">
+                    <outputColumn dataType="bool" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsActivePagaAccount]" name="IsActivePagaAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsActivePagaAccount]">
                     </outputColumn>
                     <outputColumn dataType="bool" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsEnabled]" name="IsEnabled" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsEnabled]">
                     </outputColumn>
@@ -176,6 +180,8 @@
                     <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsServiceAggregator]" name="IsServiceAggregator" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsServiceAggregator]">
                     </outputColumn>
                     <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[paga_change_log_id]">
                     </outputColumn>
                     <outputColumn dataType="i8" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
                     </outputColumn>
@@ -218,7 +224,7 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="bool" name="hasOnlineAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[hasOnlineAccount]">
                     </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsActive]">
+                    <externalMetadataColumn dataType="bool" name="IsActivePagaAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsActivePagaAccount]">
                     </externalMetadataColumn>
                     <externalMetadataColumn dataType="bool" name="IsAffiliate" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsAffiliate]">
                     </externalMetadataColumn>
@@ -260,6 +266,10 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_OPERATION]">
                     </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[paga_change_log_id]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[row_id]">
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                   <inputColumns>
                     <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[SourceKey]">
@@ -280,7 +290,7 @@
                     </inputColumn>
                     <inputColumn cachedDataType="bool" cachedName="hasOnlineAccount" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[hasOnlineAccount]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[hasOnlineAccount]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[hasOnlineAccount]">
                     </inputColumn>
-                    <inputColumn cachedDataType="bool" cachedName="IsActive" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsActive]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsActive]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsActive]">
+                    <inputColumn cachedDataType="bool" cachedName="IsActivePagaAccount" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsActivePagaAccount]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsActivePagaAccount]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsActivePagaAccount]">
                     </inputColumn>
                     <inputColumn cachedDataType="bool" cachedName="IsEnabled" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsEnabled]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsEnabled]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsEnabled]">
                     </inputColumn>
@@ -309,6 +319,8 @@
                     <inputColumn cachedDataType="i4" cachedName="IsServiceAggregator" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsServiceAggregator]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsServiceAggregator]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsServiceAggregator]">
                     </inputColumn>
                     <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[SYS_CHANGE_OPERATION]">
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="paga_change_log_id" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[paga_change_log_id]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[paga_change_log_id]">
                     </inputColumn>
                     <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[SYS_CHANGE_VERSION]">
                     </inputColumn>
@@ -353,33 +365,173 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{5AD45243-044A-4A61-8C04-EC8886D8AE9D}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.PagaAccount AS ct ON ct.PagaAccountId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:Property>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{25DE717F-6ABF-436E-91C6-F67DB1F6E558}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.PagaAccount AS ct ON ct.PagaAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{D1FC94AE-7675-4B24-98F9-911D0B9E465D}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{84E0758C-ED50-4128-A06F-0CA948791AA6}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
       </DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{E18307A8-BA22-4856-BB16-9886A0678E44}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{9CD8D3F9-0A69-4749-8AD5-15D6C4274D3E}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
       <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{E4921B88-D850-438F-B550-9F3EB9B1DC3E}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Shared_DimPagaAccount" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Shared_DimPagaAccount]" DTS:To="Package\DFT_Load Shared_DimPagaAccount">
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{B7559C68-145C-4D36-A9A0-17759B86517A}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Shared_DimPagaAccount" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Shared_DimPagaAccount]" DTS:To="Package\DFT_Load Shared_DimPagaAccount">
     </DTS:PrecedenceConstraint>
   </DTS:PrecedenceConstraints>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F4A78EA7-190D-42FE-BBE8-989277494602}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	Name,  	DimPagaAccountStatusSourceKey,  	CreatedDateID, 	RegistrationDateID,  	PagaAccountNumber,  	ExternalAccountNumber,  	BankingStatus,  	hasOnlineAccount,  	IsActive,  	IsEnabled,  	IsAffiliate,  	IsAgent,  	IsBank,  	IsBusiness,  	IsCardProcessor,  	IsCashCollector,  	IsCustomer,  	IsMerchant,  	IsMobileOperator,  	IsPaga,  	IsRemittanceProcessor,  	IsServiceAggregator, ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version FROM  ( 	SELECT 		SourceKey = pa1.PagaAccountId, 		Name = pa1.PagaAccountNumber, 		DimPagaAccountStatusSourceKey = pa1.PagaAccountStatusId, 		CreatedDateID = CONVERT(INT,(CONVERT(VARCHAR(8),pa1.CreatedDate,112))),  		RegistrationDateID = COALESCE(CONVERT(INT,(CONVERT(VARCHAR(8),pa1.RegistrationDate,112))),NULL), 		pa1.PagaAccountNumber,  		pa1.ExternalAccountNumber,  		BankingStatus = pa1.BankingStatusId,  		pa1.hasOnlineAccount,  		pa1.IsActive,  		pa1.IsEnabled,  		IsAffiliate = pa2.affiliate, 		IsAgent = pa2.agent, 		IsBank = pa2.bank, 		IsBusiness = pa2.business, 		IsCardProcessor = pa2.card_processor, 		IsCashCollector = pa2.cash_collector, 		IsCustomer = pa2.customer, 		IsMerchant = pa2.merchant, 		IsMobileOperator = pa2.mobile_operator, 		IsPaga = pa2.paga, 		IsRemittanceProcessor = pa2.remittance_processor, 		IsServiceAggregator = pa2.service_aggregator 	FROM dbo.PagaAccount as pa1 	LEFT JOIN 	( 		SELECT 			pa.PagaAccountId,  			MAX(CASE WHEN pan.NatureId = 'AFFILIATE' THEN 1 ELSE NULL END) AS 'affiliate', 			MAX(CASE WHEN pan.NatureId = 'AGENT' THEN 1 ELSE NULL END) AS 'agent', 			MAX(CASE WHEN pan.NatureId = 'BANK' THEN 1 ELSE NULL END) AS 'bank', 			MAX(CASE WHEN pan.NatureId = 'BUSINESS' THEN 1 ELSE NULL END) AS 'business', 			MAX(CASE WHEN pan.NatureId = 'CARD_PROCESSOR' THEN 1 ELSE NULL END) AS 'card_processor', 			MAX(CASE WHEN pan.NatureId = 'CASH_COLLECTOR' THEN 1 ELSE NULL END) AS 'cash_collector', 			MAX(CASE WHEN pan.NatureId = 'CUSTOMER' THEN 1 ELSE NULL END) AS 'customer', 			MAX(CASE WHEN pan.NatureId = 'MERCHANT' THEN 1 ELSE NULL END) AS 'merchant', 			MAX(CASE WHEN pan.NatureId = 'MOBILE_OPERATOR' THEN 1 ELSE NULL END) AS 'mobile_operator', 			MAX(CASE WHEN pan.NatureId = 'PAGA' THEN 1 ELSE NULL END) AS 'paga', 			MAX(CASE WHEN pan.NatureId = 'REMITTANCE_PROCESSOR' THEN 1 ELSE NULL END) AS 'remittance_processor', 			MAX(CASE WHEN pan.NatureId = 'SERVICE_AGGREGATOR' THEN 1 ELSE NULL END) AS 'service_aggregator' 		FROM dbo.PagaAccount AS pa 		INNER JOIN dbo.PagaAccountNature as pan ON 			pa.PagaAccountId = pan.PagaAccountId 		GROUP BY 			pa.PagaAccountId 		) AS pa2 ON 			pa1.PagaAccountId = pa2.PagaAccountId ) AS base_query</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{80E3BD61-7E64-4F85-BF94-514E6A8710B2}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	
+	SourceKey, 
+	Name,  
+	DimPagaAccountStatusSourceKey,  	
+	CreatedDateID, 	
+	RegistrationDateID,  	
+	PagaAccountNumber,  	
+	ExternalAccountNumber,  	
+	BankingStatus,  	
+	hasOnlineAccount,  	
+	IsActivePagaAccount,  	
+	IsEnabled,  	
+	IsAffiliate,  	
+	IsAgent,  	
+	IsBank,  	
+	IsBusiness,  	
+	IsCardProcessor,  	
+	IsCashCollector,  	
+	IsCustomer,  	
+	IsMerchant,  	
+	IsMobileOperator,  	
+	IsPaga,  	
+	IsRemittanceProcessor,  	
+	IsServiceAggregator, 
+	ct.SYS_CHANGE_OPERATION, 
+	paga_change_log_id = ct.row_id, 
+	SYS_CHANGE_VERSION = ct.as_of_change_version 
+FROM  ( 	
+SELECT 		
+
+SourceKey = pa1.PagaAccountId, 		
+Name = pa1.PagaAccountNumber, 		
+DimPagaAccountStatusSourceKey = pa1.PagaAccountStatusId, 		
+CreatedDateID = CONVERT(INT,(CONVERT(VARCHAR(8),pa1.CreatedDate,112))),  		
+RegistrationDateID = COALESCE(CONVERT(INT,(CONVERT(VARCHAR(8),pa1.RegistrationDate,112))),NULL), 		
+pa1.PagaAccountNumber,  		
+pa1.ExternalAccountNumber,  		
+BankingStatus = pa1.BankingStatusId,  		
+pa1.hasOnlineAccount,  		
+IsActivePagaAccount = pa1.IsActive,  		
+pa1.IsEnabled,  		
+IsAffiliate = pa2.affiliate, 		
+IsAgent = pa2.agent, 		
+IsBank = pa2.bank, 		
+IsBusiness = pa2.business, 		
+IsCardProcessor = pa2.card_processor, 		
+IsCashCollector = pa2.cash_collector, 		
+IsCustomer = pa2.customer, 		
+IsMerchant = pa2.merchant, 		
+IsMobileOperator = pa2.mobile_operator, 		
+IsPaga = pa2.paga, 		
+IsRemittanceProcessor = pa2.remittance_processor, 		
+IsServiceAggregator = pa2.service_aggregator 	
+FROM dbo.PagaAccount as pa1 	
+LEFT JOIN 	( 		
+SELECT 			
+pa.PagaAccountId,  			
+MAX(CASE WHEN pan.NatureId = 'AFFLIATE' THEN 1 ELSE NULL END) AS 'affiliate', 			
+MAX(CASE WHEN pan.NatureId = 'AGENT' THEN 1 ELSE NULL END) AS 'agent', 			
+MAX(CASE WHEN pan.NatureId = 'BANK' THEN 1 ELSE NULL END) AS 'bank', 			
+MAX(CASE WHEN pan.NatureId = 'BUSINESS' THEN 1 ELSE NULL END) AS 'business', 			
+MAX(CASE WHEN pan.NatureId = 'CARD_PROCESSOR' THEN 1 ELSE NULL END) AS 'card_processor', 			
+MAX(CASE WHEN pan.NatureId = 'CASH_COLLECTOR' THEN 1 ELSE NULL END) AS 'cash_collector', 			
+MAX(CASE WHEN pan.NatureId = 'CUSTOMER' THEN 1 ELSE NULL END) AS 'customer', 			
+MAX(CASE WHEN pan.NatureId = 'MERCHANT' THEN 1 ELSE NULL END) AS 'merchant', 			
+MAX(CASE WHEN pan.NatureId = 'MOBILE_OPERATOR' THEN 1 ELSE NULL END) AS 'mobile_operator', 			
+MAX(CASE WHEN pan.NatureId = 'PAGA' THEN 1 ELSE NULL END) AS 'paga', 			
+MAX(CASE WHEN pan.NatureId = 'REMITTANCE_PROCESSOR' THEN 1 ELSE NULL END) AS 'remittance_processor', 			
+MAX(CASE WHEN pan.NatureId = 'SERVICE_AGGREGATOR' THEN 1 ELSE NULL END) AS 'service_aggregator' 		
+FROM dbo.PagaAccount AS pa 		INNER JOIN dbo.PagaAccountNature as pan ON 			pa.PagaAccountId = pan.PagaAccountId 		
+GROUP BY 			pa.PagaAccountId 		) AS pa2 ON 			pa1.PagaAccountId = pa2.PagaAccountId ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{740BD645-0F02-44AC-9C6C-5C2F92A7EF6B}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	SourceKey, 	Name,  	DimPagaAccountStatusSourceKey,  	CreatedDateID, 	RegistrationDateID,  	PagaAccountNumber,  	ExternalAccountNumber,  	BankingStatus,  	hasOnlineAccount,  	IsActive,  	IsEnabled,  	IsAffiliate,  	IsAgent,  	IsBank,  	IsBusiness,  	IsCardProcessor,  	IsCashCollector,  	IsCustomer,  	IsMerchant,  	IsMobileOperator,  	IsPaga,  	IsRemittanceProcessor,  	IsServiceAggregator, ct.SYS_CHANGE_OPERATION, SYS_CHANGE_VERSION = ct.as_of_change_version FROM  ( 	SELECT 		SourceKey = pa1.PagaAccountId, 		Name = pa1.PagaAccountNumber, 		DimPagaAccountStatusSourceKey = pa1.PagaAccountStatusId, 		CreatedDateID = CONVERT(INT,(CONVERT(VARCHAR(8),pa1.CreatedDate,112))),  		RegistrationDateID = COALESCE(CONVERT(INT,(CONVERT(VARCHAR(8),pa1.RegistrationDate,112))),NULL), 		pa1.PagaAccountNumber,  		pa1.ExternalAccountNumber,  		BankingStatus = pa1.BankingStatusId,  		pa1.hasOnlineAccount,  		pa1.IsActive,  		pa1.IsEnabled,  		IsAffiliate = pa2.affiliate, 		IsAgent = pa2.agent, 		IsBank = pa2.bank, 		IsBusiness = pa2.business, 		IsCardProcessor = pa2.card_processor, 		IsCashCollector = pa2.cash_collector, 		IsCustomer = pa2.customer, 		IsMerchant = pa2.merchant, 		IsMobileOperator = pa2.mobile_operator, 		IsPaga = pa2.paga, 		IsRemittanceProcessor = pa2.remittance_processor, 		IsServiceAggregator = pa2.service_aggregator 	FROM dbo.PagaAccount as pa1 	LEFT JOIN 	( 		SELECT 			pa.PagaAccountId,  			MAX(CASE WHEN pan.NatureId = 'AFFILIATE' THEN 1 ELSE NULL END) AS 'affiliate', 			MAX(CASE WHEN pan.NatureId = 'AGENT' THEN 1 ELSE NULL END) AS 'agent', 			MAX(CASE WHEN pan.NatureId = 'BANK' THEN 1 ELSE NULL END) AS 'bank', 			MAX(CASE WHEN pan.NatureId = 'BUSINESS' THEN 1 ELSE NULL END) AS 'business', 			MAX(CASE WHEN pan.NatureId = 'CARD_PROCESSOR' THEN 1 ELSE NULL END) AS 'card_processor', 			MAX(CASE WHEN pan.NatureId = 'CASH_COLLECTOR' THEN 1 ELSE NULL END) AS 'cash_collector', 			MAX(CASE WHEN pan.NatureId = 'CUSTOMER' THEN 1 ELSE NULL END) AS 'customer', 			MAX(CASE WHEN pan.NatureId = 'MERCHANT' THEN 1 ELSE NULL END) AS 'merchant', 			MAX(CASE WHEN pan.NatureId = 'MOBILE_OPERATOR' THEN 1 ELSE NULL END) AS 'mobile_operator', 			MAX(CASE WHEN pan.NatureId = 'PAGA' THEN 1 ELSE NULL END) AS 'paga', 			MAX(CASE WHEN pan.NatureId = 'REMITTANCE_PROCESSOR' THEN 1 ELSE NULL END) AS 'remittance_processor', 			MAX(CASE WHEN pan.NatureId = 'SERVICE_AGGREGATOR' THEN 1 ELSE NULL END) AS 'service_aggregator' 		FROM dbo.PagaAccount AS pa 		INNER JOIN dbo.PagaAccountNature as pan ON 			pa.PagaAccountId = pan.PagaAccountId 		GROUP BY 			pa.PagaAccountId 		) AS pa2 ON 			pa1.PagaAccountId = pa2.PagaAccountId ) AS base_query INNER JOIN paga_change_log.dbo.PagaAccount AS ct ON ct.PagaAccountId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{03085DF8-DC49-4311-9C12-DBD76F2CB58E}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue DTS:DataType="8">SELECT  	
+	SourceKey, 
+	Name,  
+	DimPagaAccountStatusSourceKey,  	
+	CreatedDateID, 	
+	RegistrationDateID,  	
+	PagaAccountNumber,  	
+	ExternalAccountNumber,  	
+	BankingStatus,  	
+	hasOnlineAccount,  	
+	IsActivePagaAccount,  	
+	IsEnabled,  	
+	IsAffiliate,  	
+	IsAgent,  	
+	IsBank,  	
+	IsBusiness,  	
+	IsCardProcessor,  	
+	IsCashCollector,  	
+	IsCustomer,  	
+	IsMerchant,  	
+	IsMobileOperator,  	
+	IsPaga,  	
+	IsRemittanceProcessor,  	
+	IsServiceAggregator, 
+	ct.SYS_CHANGE_OPERATION, 
+	paga_change_log_id = ct.row_id, 
+	SYS_CHANGE_VERSION = ct.as_of_change_version 
+FROM  ( 	
+SELECT 		
+
+SourceKey = pa1.PagaAccountId, 		
+Name = pa1.PagaAccountNumber, 		
+DimPagaAccountStatusSourceKey = pa1.PagaAccountStatusId, 		
+CreatedDateID = CONVERT(INT,(CONVERT(VARCHAR(8),pa1.CreatedDate,112))),  		
+RegistrationDateID = COALESCE(CONVERT(INT,(CONVERT(VARCHAR(8),pa1.RegistrationDate,112))),NULL), 		
+pa1.PagaAccountNumber,  		
+pa1.ExternalAccountNumber,  		
+BankingStatus = pa1.BankingStatusId,  		
+pa1.hasOnlineAccount,  		
+IsActivePagaAccount = pa1.IsActive,  		
+pa1.IsEnabled,  		
+IsAffiliate = pa2.affiliate, 		
+IsAgent = pa2.agent, 		
+IsBank = pa2.bank, 		
+IsBusiness = pa2.business, 		
+IsCardProcessor = pa2.card_processor, 		
+IsCashCollector = pa2.cash_collector, 		
+IsCustomer = pa2.customer, 		
+IsMerchant = pa2.merchant, 		
+IsMobileOperator = pa2.mobile_operator, 		
+IsPaga = pa2.paga, 		
+IsRemittanceProcessor = pa2.remittance_processor, 		
+IsServiceAggregator = pa2.service_aggregator 	
+FROM dbo.PagaAccount as pa1 	
+LEFT JOIN 	( 		
+SELECT 			
+pa.PagaAccountId,  			
+MAX(CASE WHEN pan.NatureId = 'AFFLIATE' THEN 1 ELSE NULL END) AS 'affiliate', 			
+MAX(CASE WHEN pan.NatureId = 'AGENT' THEN 1 ELSE NULL END) AS 'agent', 			
+MAX(CASE WHEN pan.NatureId = 'BANK' THEN 1 ELSE NULL END) AS 'bank', 			
+MAX(CASE WHEN pan.NatureId = 'BUSINESS' THEN 1 ELSE NULL END) AS 'business', 			
+MAX(CASE WHEN pan.NatureId = 'CARD_PROCESSOR' THEN 1 ELSE NULL END) AS 'card_processor', 			
+MAX(CASE WHEN pan.NatureId = 'CASH_COLLECTOR' THEN 1 ELSE NULL END) AS 'cash_collector', 			
+MAX(CASE WHEN pan.NatureId = 'CUSTOMER' THEN 1 ELSE NULL END) AS 'customer', 			
+MAX(CASE WHEN pan.NatureId = 'MERCHANT' THEN 1 ELSE NULL END) AS 'merchant', 			
+MAX(CASE WHEN pan.NatureId = 'MOBILE_OPERATOR' THEN 1 ELSE NULL END) AS 'mobile_operator', 			
+MAX(CASE WHEN pan.NatureId = 'PAGA' THEN 1 ELSE NULL END) AS 'paga', 			
+MAX(CASE WHEN pan.NatureId = 'REMITTANCE_PROCESSOR' THEN 1 ELSE NULL END) AS 'remittance_processor', 			
+MAX(CASE WHEN pan.NatureId = 'SERVICE_AGGREGATOR' THEN 1 ELSE NULL END) AS 'service_aggregator' 		
+FROM dbo.PagaAccount AS pa 		INNER JOIN dbo.PagaAccountNature as pan ON 			pa.PagaAccountId = pan.PagaAccountId 		
+GROUP BY 			pa.PagaAccountId 		) AS pa2 ON 			pa1.PagaAccountId = pa2.PagaAccountId ) AS base_query INNER JOIN paga_change_log.dbo.PagaAccount AS ct ON ct.PagaAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BD8D0D8B-CF13-4DFE-BB0A-92F592DCDCF3}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= PagaAccountId FROM dbo.PagaAccount) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
-      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= PagaAccountId FROM dbo.PagaAccount) AS base_query INNER JOIN paga_change_log.dbo.PagaAccount AS ct ON ct.PagaAccountId = base_query.SourceKey WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4179F24B-7929-47E7-8B42-295DBC6E0CF2}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= PagaAccountId FROM dbo.PagaAccount) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= PagaAccountId FROM dbo.PagaAccount) AS base_query INNER JOIN paga_change_log.dbo.PagaAccount AS ct ON ct.PagaAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CCD04325-5B50-4536-8C9B-2536C7067966}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BE274F34-1D42-4F6C-A837-F5B871A076F0}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
