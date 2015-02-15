@@ -24,6 +24,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.ProcessType', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessType';
 
@@ -75,4 +77,14 @@ FROM
 
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DescriptionText = stg.DescriptionText
+	FROM Classification.DimProcessType AS edw
+	INNER JOIN Paga_Staging.Updates.Classification_DimProcessType AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessType';
 

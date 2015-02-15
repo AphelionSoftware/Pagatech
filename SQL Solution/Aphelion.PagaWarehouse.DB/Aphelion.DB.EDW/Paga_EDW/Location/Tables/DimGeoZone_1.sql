@@ -24,6 +24,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGeoZone_SourceKey]
     ON [Location].[DimGeoZone]([SourceKey] ASC);
@@ -77,4 +79,14 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	SourceK
 
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.Code = stg.Code,edw.DimCountryID = stg.DimCountryID
+	FROM Location.DimGeoZone AS edw
+	INNER JOIN Paga_Staging.Updates.Location_DimGeoZone AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimGeoZone';
 

@@ -23,6 +23,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimIntegrationTransactionResult_SourceKey]
     ON [Classification].[DimIntegrationTransactionResult]([SourceKey] ASC);
@@ -55,4 +57,14 @@ SELECT 	 	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id,  	SYS_CHANGE_
 
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name
+	FROM Classification.DimIntegrationTransactionResult AS edw
+	INNER JOIN Paga_Staging.Updates.Classification_DimIntegrationTransactionResult AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimIntegrationTransactionResult';
 

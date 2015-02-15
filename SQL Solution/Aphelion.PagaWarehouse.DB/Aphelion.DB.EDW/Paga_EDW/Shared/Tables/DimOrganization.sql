@@ -49,6 +49,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'DeltaHash';
 
@@ -125,4 +127,14 @@ CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganization_SourceKey]
     ON [Shared].[DimOrganization]([SourceKey] ASC);
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimBusinessTypeID = stg.DimBusinessTypeID,edw.DimOrganizationSubscriptionStatusID = stg.DimOrganizationSubscriptionStatusID,edw.DimOrganizationVerificationStatusID = stg.DimOrganizationVerificationStatusID,edw.DimPagaAccountID = stg.DimPagaAccountID,edw.TextDesciption = stg.TextDesciption,edw.ReferenceNumber = stg.ReferenceNumber,edw.TaxIDNumber = stg.TaxIDNumber,edw.VATCertificationNumber = stg.VATCertificationNumber,edw.RcName = stg.RcName,edw.WebsiteURL = stg.WebsiteURL,edw.OrganizationCode = stg.OrganizationCode,edw.DisplayName = stg.DisplayName
+	FROM Shared.DimOrganization AS edw
+	INNER JOIN Paga_Staging.Updates.Shared_DimOrganization AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
 

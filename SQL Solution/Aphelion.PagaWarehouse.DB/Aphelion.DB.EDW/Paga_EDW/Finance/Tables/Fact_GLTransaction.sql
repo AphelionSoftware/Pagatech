@@ -33,6 +33,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_FactGLTransaction_SourceKey]
     ON [Finance].[FactGLTransaction]([SourceKey] ASC);
@@ -68,4 +70,14 @@ GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'PlaceHolder', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.DimGLCodeID = stg.DimGLCodeID,edw.TextDescription = stg.TextDescription,edw.DimFinancialAccountID = stg.DimFinancialAccountID,edw.FactFinancialTxID = stg.FactFinancialTxID,edw.TransactionLineNumber = stg.TransactionLineNumber,edw.CreditAmount = stg.CreditAmount,edw.DebitAmount = stg.DebitAmount,edw.Movement = stg.Movement
+	FROM Finance.FactGLTransaction AS edw
+	INNER JOIN Paga_Staging.Updates.Finance_FactGLTransaction AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
 

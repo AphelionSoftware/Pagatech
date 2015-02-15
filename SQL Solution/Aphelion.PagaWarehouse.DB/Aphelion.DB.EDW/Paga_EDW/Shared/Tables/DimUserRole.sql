@@ -24,6 +24,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.UserRole', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUserRole';
 
@@ -48,4 +50,14 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 	ct.SYS_C
 
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimUserID = stg.DimUserID,edw.DimRoleID = stg.DimRoleID,edw.RolePriority = stg.RolePriority
+	FROM Shared.DimUserRole AS edw
+	INNER JOIN Paga_Staging.Updates.Shared_DimUserRole AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUserRole';
 

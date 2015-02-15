@@ -81,6 +81,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.Process', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactProcessEvent';
 
@@ -105,4 +107,14 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'ProcessId', @lev
 
 GO
 EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'PlaceHolder', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactProcessEvent';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.DimProcessTypeID = stg.DimProcessTypeID,edw.DimUserID = stg.DimUserID,edw.DimForUserID = stg.DimForUserID,edw.DimToUserID = stg.DimToUserID,edw.DimInitiatingUserID = stg.DimInitiatingUserID,edw.DimProcessChannelID = stg.DimProcessChannelID,edw.DimRequestedProcessChannelID = stg.DimRequestedProcessChannelID,edw.DimProcessStatusID = stg.DimProcessStatusID,edw.HasFinancialTransaction = stg.HasFinancialTransaction,edw.DimStartedDateID = stg.DimStartedDateID,edw.DimStartedTimeID = stg.DimStartedTimeID,edw.DimCompletedDateID = stg.DimCompletedDateID,edw.DimCompletedTimeID = stg.DimCompletedTimeID,edw.ProcessAmount = stg.ProcessAmount,edw.ProcessFee = stg.ProcessFee,edw.DimAgentCommissionTypeID = stg.DimAgentCommissionTypeID,edw.AgentCommissionAmount = stg.AgentCommissionAmount,edw.ProcessCode = stg.ProcessCode,edw.WithdrawalCode = stg.WithdrawalCode,edw.ATMReferenceNumber = stg.ATMReferenceNumber,edw.CardProcessorName = stg.CardProcessorName,edw.CustomerBillerAccount = stg.CustomerBillerAccount,edw.CustomerPhoneNumber = stg.CustomerPhoneNumber,edw.DepositNumber = stg.DepositNumber,edw.LinkedPhoneNumber = stg.LinkedPhoneNumber,edw.MerchantConfirmationCode = stg.MerchantConfirmationCode,edw.MerchantCustomerAccountNumber = stg.MerchantCustomerAccountNumber,edw.PaymentSource = stg.PaymentSource,edw.ReferenceNumber = stg.ReferenceNumber,edw.SenderPhoneNumber = stg.SenderPhoneNumber,edw.FactDependentProcessEventID = stg.FactDependentProcessEventID,edw.FactOriginalProcessEventID = stg.FactOriginalProcessEventID,edw.VerificationStatus = stg.VerificationStatus,edw.DimApprovedByUserID = stg.DimApprovedByUserID,edw.DimVerifiedByUserID = stg.DimVerifiedByUserID,edw.DimCancellationApprovedByUserID = stg.DimCancellationApprovedByUserID,edw.IntegrationReferenceNumber = stg.IntegrationReferenceNumber
+	FROM Shared.FactProcessEvent AS edw
+	INNER JOIN Paga_Staging.Updates.Shared_FactProcessEvent AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactProcessEvent';
 

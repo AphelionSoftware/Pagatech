@@ -28,6 +28,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimCity_SourceKey]
     ON [Location].[DimCity]([SourceKey] ASC);
@@ -85,4 +87,14 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	SourceK
 
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimLocalGovernmentAreaID = stg.DimLocalGovernmentAreaID,edw.PostalCode = stg.PostalCode
+	FROM Location.DimCity AS edw
+	INNER JOIN Paga_Staging.Updates.Location_DimCity AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Location', @level1type = N'TABLE', @level1name = N'DimCity';
 

@@ -45,6 +45,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimPagaAccount_SourceKey]
     ON [Shared].[DimPagaAccount]([SourceKey] ASC, [DimPagaAccountID] ASC);
@@ -164,4 +166,14 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level
 
 GO
 EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'Name';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimPagaAccountStatusID = stg.DimPagaAccountStatusID,edw.CreatedDateID = stg.CreatedDateID,edw.RegistrationDateID = stg.RegistrationDateID,edw.PagaAccountNumber = stg.PagaAccountNumber,edw.ExternalAccountNumber = stg.ExternalAccountNumber,edw.BankingStatus = stg.BankingStatus,edw.hasOnlineAccount = stg.hasOnlineAccount,edw.IsActivePagaAccount = stg.IsActivePagaAccount,edw.IsEnabled = stg.IsEnabled,edw.IsAffiliate = stg.IsAffiliate,edw.IsAgent = stg.IsAgent,edw.IsBank = stg.IsBank,edw.IsBusiness = stg.IsBusiness,edw.IsCardProcessor = stg.IsCardProcessor,edw.IsCashCollector = stg.IsCashCollector,edw.IsCustomer = stg.IsCustomer,edw.IsMerchant = stg.IsMerchant,edw.IsMobileOperator = stg.IsMobileOperator,edw.IsPaga = stg.IsPaga,edw.IsRemittanceProcessor = stg.IsRemittanceProcessor,edw.IsServiceAggregator = stg.IsServiceAggregator
+	FROM Shared.DimPagaAccount AS edw
+	INNER JOIN Paga_Staging.Updates.Shared_DimPagaAccount AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount';
 

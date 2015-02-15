@@ -23,6 +23,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimCurrency_SourceKey]
     ON [Finance].[DimCurrency]([SourceKey] ASC);
@@ -72,4 +74,14 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	ct.SYS_
 
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.ISOCode = stg.ISOCode,edw.Symbol = stg.Symbol
+	FROM Finance.DimCurrency AS edw
+	INNER JOIN Paga_Staging.Updates.Finance_DimCurrency AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimCurrency';
 

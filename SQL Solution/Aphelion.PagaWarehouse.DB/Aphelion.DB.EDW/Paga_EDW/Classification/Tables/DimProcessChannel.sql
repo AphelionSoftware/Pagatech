@@ -20,6 +20,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimChannel_SourceKey]
     ON [Classification].[DimProcessChannel]([SourceKey] ASC);
@@ -67,4 +69,14 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	ct.SYS_
 
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.TextDesciption = stg.TextDesciption
+	FROM Classification.DimProcessChannel AS edw
+	INNER JOIN Paga_Staging.Updates.Classification_DimProcessChannel AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessChannel';
 

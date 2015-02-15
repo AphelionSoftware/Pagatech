@@ -21,6 +21,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimPagaAccountStatus_SourceKey]
     ON [Classification].[DimPagaAccountStatus]([SourceKey] ASC);
@@ -70,4 +72,14 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  		ct.SYS
 
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name
+	FROM Classification.DimPagaAccountStatus AS edw
+	INNER JOIN Paga_Staging.Updates.Classification_DimPagaAccountStatus AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimPagaAccountStatus';
 

@@ -34,6 +34,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitLevel3_SourceKey]
     ON [Shared].[DimOrganizationUnitLevel3]([SourceKey] ASC);
@@ -97,4 +99,14 @@ FROM cte 	WHERE  		cte.OrgLevel = @OrgLevel 	 	 	SELECT  		ct.SYS_CHANGE_OPERATI
 
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimOrganizationUnitLevel2ID = stg.DimOrganizationUnitLevel2ID,edw.DimOrganizationUnitTypeID = stg.DimOrganizationUnitTypeID,edw.IdentificationNumber = stg.IdentificationNumber
+	FROM Shared.DimOrganizationUnitLevel3 AS edw
+	INNER JOIN Paga_Staging.Updates.Shared_DimOrganizationUnitLevel3 AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel3';
 

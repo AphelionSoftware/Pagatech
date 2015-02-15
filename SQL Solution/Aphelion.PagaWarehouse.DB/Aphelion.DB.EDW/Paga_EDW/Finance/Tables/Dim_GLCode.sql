@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Finance].[DimGLCode] (
+CREATE TABLE [Finance].[DimGLCode] (
     [DimGLCodeID]         INT            IDENTITY (1, 1) NOT NULL,
     [SourceKey]           INT            NOT NULL,
     [Name]                VARCHAR (255)  NOT NULL,
@@ -14,6 +14,8 @@
     CONSTRAINT [pk_DimGLCodeID] PRIMARY KEY CLUSTERED ([DimGLCodeID] ASC),
     CONSTRAINT [fk_DimGLCode_DimGLCodeSubGroupID] FOREIGN KEY ([DimGLCodeSubGroupID]) REFERENCES [Finance].[DimGLCodeSubGroup] ([DimGLCodeSubGroupID])
 );
+
+
 
 
 
@@ -80,5 +82,11 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimGLCodeSubGroupID = stg.DimGLCodeSubGroupID,edw.GLCode = stg.GLCode,edw.TextDesciption = stg.TextDesciption,edw.IsNormalDebit = stg.IsNormalDebit
+	FROM Finance.DimGLCode AS edw
+	INNER JOIN Paga_Staging.Updates.Finance_DimGLCode AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCode';
 

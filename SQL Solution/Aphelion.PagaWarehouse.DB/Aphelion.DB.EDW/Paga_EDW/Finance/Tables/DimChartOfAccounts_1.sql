@@ -22,6 +22,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimChartOfAccounts_SourceKey]
     ON [Finance].[DimChartOfAccounts]([SourceKey] ASC);
@@ -70,4 +72,14 @@ SELECT  	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VER
 
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.GLCodeRange = stg.GLCodeRange
+	FROM Finance.DimChartOfAccounts AS edw
+	INNER JOIN Paga_Staging.Updates.Finance_DimChartOfAccounts AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimChartOfAccounts';
 

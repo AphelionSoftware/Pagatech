@@ -50,6 +50,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_FactIntegrationTransaction_SourceKey]
     ON [Shared].[FactIntegrationTransaction]([SourceKey] ASC);
@@ -91,4 +93,14 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'PlaceHolder', @l
 
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.DimIntegrationTxDateID = stg.DimIntegrationTxDateID,edw.DimIntegrationTxTimeID = stg.DimIntegrationTxTimeID,edw.DimExternalOrganizationID = stg.DimExternalOrganizationID,edw.DimUserID = stg.DimUserID,edw.DimIntegrationTxTypeID = stg.DimIntegrationTxTypeID,edw.DimProcessTypeID = stg.DimProcessTypeID,edw.DimIntegrationTxResultID = stg.DimIntegrationTxResultID,edw.ExternalReferenceNumber = stg.ExternalReferenceNumber,edw.MessageText = stg.MessageText,edw.IntegrationTx_Amount = stg.IntegrationTx_Amount,edw.HasFinancialTx = stg.HasFinancialTx,edw.FactFinancialTxID = stg.FactFinancialTxID
+	FROM Shared.FactIntegrationTransaction AS edw
+	INNER JOIN Paga_Staging.Updates.Shared_FactIntegrationTransaction AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'FactIntegrationTransaction';
 

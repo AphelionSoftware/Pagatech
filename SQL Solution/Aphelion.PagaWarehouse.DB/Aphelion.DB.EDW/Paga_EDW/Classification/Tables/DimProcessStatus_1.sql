@@ -21,6 +21,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimProcessStatus_SourceKey]
     ON [Classification].[DimProcessStatus]([SourceKey] ASC);
@@ -70,4 +72,14 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  ct.SYS_C
 
 
 
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name
+	FROM Classification.DimProcessStatus AS edw
+	INNER JOIN Paga_Staging.Updates.Classification_DimProcessStatus AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Classification', @level1type = N'TABLE', @level1name = N'DimProcessStatus';
 

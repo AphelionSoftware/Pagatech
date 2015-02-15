@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Shared].[DimUser] (
+CREATE TABLE [Shared].[DimUser] (
     [DimUserID]        INT             IDENTITY (1, 1) NOT NULL,
     [SourceKey]        INT             NOT NULL,
     [DimDateOfBirthID] INT             NULL,
@@ -23,6 +23,8 @@
     CONSTRAINT [fk_DimUser_DateOfBirthID] FOREIGN KEY ([DimDateOfBirthID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_DimUser_DimPrimaryRoleID] FOREIGN KEY ([DimPrimaryRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID])
 );
+
+
 
 
 
@@ -108,5 +110,11 @@ SELECT 	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERS
 
 
 GO
-
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.SourceKey = stg.SourceKey,edw.DimDateOfBirthID = stg.DimDateOfBirthID,edw.FirstName = stg.FirstName,edw.MiddleName = stg.MiddleName,edw.LastName = stg.LastName,edw.Gender = stg.Gender,edw.PhoneNumber = stg.PhoneNumber,edw.Email = stg.Email,edw.IsEnabled = stg.IsEnabled,edw.DimPrimaryRoleID = stg.DimPrimaryRoleID,edw.DimCreatedDateID = stg.DimCreatedDateID
+	FROM Shared.DimUser AS edw
+	INNER JOIN Paga_Staging.Updates.Shared_DimUser AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
 

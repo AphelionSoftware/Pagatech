@@ -18,10 +18,22 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Mapping', @level1type = N'TABLE', @level1name = N'PaymentUseCaseToTxTypeMap';
 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Mapping', @level1type = N'TABLE', @level1name = N'PaymentUseCaseToTxTypeMap';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
+	SET 
+	edw.DimPaymentUseCaseID = stg.DimPaymentUseCaseID,edw.DimFinancialTxTypeID = stg.DimFinancialTxTypeID,edw.FinancialTxTypeName = stg.FinancialTxTypeName
+	FROM Mapping.PaymentUseCaseToTxTypeMap AS edw
+	INNER JOIN Paga_Staging.Updates.Mapping_PaymentUseCaseToTxTypeMap AS stg ON
+		edw.SourceKey = stg.SourceKey;
+	GO', @level0type = N'SCHEMA', @level0name = N'Mapping', @level1type = N'TABLE', @level1name = N'PaymentUseCaseToTxTypeMap';
 
