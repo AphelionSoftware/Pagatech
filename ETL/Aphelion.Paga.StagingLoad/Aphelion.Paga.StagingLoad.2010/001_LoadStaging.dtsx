@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="436"
-  DTS:VersionGUID="{F31155EC-23E5-4DD5-B475-A2141D5842EB}">
+  DTS:VersionBuild="441"
+  DTS:VersionGUID="{0590AE78-8E9C-40B9-8E93-A695167DC1AC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -24,7 +24,7 @@
       DTS:ObjectName="LoadGroupFilter">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">AND LoadGroup = 3100</DTS:Property>
+        DTS:Name="ParameterValue">AND LoadGroup = 2100</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -45,7 +45,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">Changes</DTS:Property>
+        DTS:Name="ParameterValue">Initial</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -107,7 +107,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ConvertSystemStart">
       <DTS:VariableValue
-        DTS:DataType="8">2015-02-13 12:48:14.000</DTS:VariableValue>
+        DTS:DataType="8">2015-02-16 11:46:05.000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -150,7 +150,7 @@
 	TABLE_SCHEMA,
 	strParm1 = 'INNER JOIN paga_change_log.' +x.SourceTable +' AS ct ON		
 	base_query.SourceKey = ct.' +x.KeyColumn  +'
-WHERE ct.as_of_change_version =  0' FROM
+WHERE ct.as_of_change_version &gt;= 0' FROM
 (
 	SELECT
 		ROW_NUMBER() OVER (PARTITION BY base.LoadGroup ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
@@ -213,7 +213,7 @@ WHERE ct.as_of_change_version =  0' FROM
 	) as prefix ON 
 		base.TABLE_SCHEMA = prefix.TABLE_SCHEMA
 		AND base.HasBaseQueryDef = 1
-		AND LoadGroup = 3100
+		AND LoadGroup = 2100
 ) AS x
 </DTS:VariableValue>
     </DTS:Variable>
@@ -326,7 +326,7 @@ ORDER BY
 	) as prefix ON 
 		base.TABLE_SCHEMA = prefix.TABLE_SCHEMA
 		AND base.HasBaseQueryDef = 1
-		AND LoadGroup = 3100
+		AND LoadGroup = 2100
 ) AS x
 </DTS:VariableValue>
     </DTS:Variable>
@@ -344,18 +344,18 @@ ORDER BY
 	TABLE_SCHEMA,
 	strParm1 = 'INNER JOIN paga_change_log.' +x.SourceTable +' AS ct ON		
 	base_query.SourceKey = ct.' +x.KeyColumn  +'
-WHERE ct.as_of_change_version =  0'</DTS:VariableValue>
+WHERE ct.as_of_change_version &gt;= 0'</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{570E83A4-F5C7-4F89-BC80-F8DF21E166E1}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;WHERE ct.as_of_change_version =  &quot; + (DT_WSTR, 20) @[User::ChangeVersion]"
+      DTS:Expression="@[$Package::LoadType]==&quot;Initial&quot;  ? &quot;WHERE ct.as_of_change_version &gt;= 0&quot;:  &quot;WHERE ct.as_of_change_version =  &quot; + (DT_WSTR, 20) @[User::ChangeVersion]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strVersionFilter">
       <DTS:VariableValue
-        DTS:DataType="8">WHERE ct.as_of_change_version =  0</DTS:VariableValue>
+        DTS:DataType="8">WHERE ct.as_of_change_version &gt;= 0</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""

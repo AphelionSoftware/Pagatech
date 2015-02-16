@@ -1,272 +1,1017 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/13/2015 10:17:09" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{2A2AA1CB-3B80-47DE-BE5D-1A406FA534A1}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2104_Shared_DimUser" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{A9FA10B4-2B35-47CD-948F-7BE943B5CD1B}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/13/2015 10:17:09 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="PAGA01SV015"
+  DTS:CreatorName="christina.leo.apheli"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{2A2AA1CB-3B80-47DE-BE5D-1A406FA534A1}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="2104_Shared_DimUser"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{0F161F5E-AB84-4DEF-8283-8111F8CEC356}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{6679CD59-2516-4B5F-82E3-58AFE552E2E8}"
+      DTS:ObjectName="ChangeOperation">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="14"
+      DTS:DTSID="{78EA784B-998B-495C-B546-4B15D1C085CE}"
+      DTS:ObjectName="ChangeVersion">
+      <DTS:Property
+        DTS:DataType="14"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{D383BDE9-6367-46D3-AE48-489315C66E09}"
+      DTS:ObjectName="EndOfQuery">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.Users AS ct ON ct.UserId = base_query.SourceKey WHERE ct.as_of_change_version &gt;= 0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7482E358-82B7-4DBE-980A-BF1A2A4FF2D2}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;--DimUser &#xA;SELECT &#x9;&#xA;&#x9;ct.SYS_CHANGE_OPERATION, &#xA;&#x9;SYS_CHANGE_VERSION = ct.as_of_change_version, &#xA;&#x9;paga_change_log_id = ct.row_id,&#xA;&#x9;SourceKey , &#x9;&#xA;&#x9;Name = CONVERT(VARCHAR(255), &#xA;&#x9;&#x9;CASE  &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;WHEN (FirstName IS NULL AND LastName IS NULL) THEN  &#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;CASE &#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;WHEN UserType = 'organization' THEN COALESCE((OrgName +' User'), 'Unidentified Organization User') &#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;WHEN UserType IS NULL THEN 'Unidentified User' &#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;ELSE 'Unidentified ' +UserType +' User' &#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;END &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;WHEN (FirstName IS NULL AND LastName IS NOT NULL) THEN LastName &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;WHEN (LastName IS NULL AND FirstName IS NOT NULL) THEN FirstName &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;WHEN (LastName IS NOT NULL AND FirstName IS NOT NULL) THEN FirstName + ' ' + LastName &#x9;&#x9;&#xA;&#x9;&#x9;END &#x9;&#x9;&#xA;&#x9;), &#x9;&#xA;&#x9;DateOfBirthID = COALESCE(DateOfBirthID, 18991231),  &#x9;&#xA;&#x9;DimPrimaryRoleID = COALESCE(DimPrimaryRoleID,-1), &#x9;&#xA;&#x9;FirstName,  &#x9;&#xA;&#x9;MiddleName,  &#x9;&#xA;&#x9;LastName,  &#x9;&#xA;&#x9;Gender,  &#x9;&#xA;&#x9;IsEnabled, &#x9;&#xA;&#x9;CreatedDateID =COALESCE(CreatedDateID, 18991231)&#xA;FROM&#xA;( &#x9;&#xA;&#x9;SELECT  &#x9;&#x9;&#xA;&#x9;&#x9;SourceKey = u.UserId, &#x9;&#x9;&#xA;&#x9;&#x9;FirstName = CASE WHEN LEN(u.FirstName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255), u.FirstName) END, &#x9;&#x9;&#xA;&#x9;&#x9;MiddleName = CASE WHEN LEN(u.MiddleName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.MiddleName) END, &#x9;&#x9;&#xA;&#x9;&#x9;LastName = CASE WHEN LEN(u.LastName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.LastName) END, &#x9;&#x9;&#xA;&#x9;&#x9;Gender = u.GenderId, &#x9;&#x9;&#xA;&#x9;&#x9;DateofBirthID = CONVERT(INT,CONVERT(VARCHAR(8),u.dateOfBirth,112)), &#x9;&#x9;&#xA;&#x9;&#x9;CreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)), &#x9;&#x9;&#xA;&#x9;&#x9;UserType = u.Namespace, &#x9;&#x9;&#xA;&#x9;&#x9;DimPrimaryRoleID = pr.RoleId,&#x9;&#x9;&#xA;&#x9;&#x9;u.IsEnabled,&#xA;&#x9;&#x9;ouu.OrgName &#x9;&#xA;&#x9;FROM dbo.Users as u  &#x9;&#xA;&#x9;OUTER APPLY&#xA;&#x9;( &#x9;&#x9;&#xA;&#x9;&#x9;SELECT TOP 1&#xA;&#x9;&#x9;&#x9;RoleId&#xA;&#x9;&#x9;FROM dbo.UserRole as ur&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;ur.userID = u.userID&#xA;&#x9;&#x9;ORDER BY&#xA;&#x9;&#x9;&#x9; RoleID DESC&#x9;&#x9;&#x9;&#xA;&#x9;) as PR&#x9;&#xA;&#x9;LEFT JOIN  &#x9;&#xA;&#x9;( &#x9;&#x9;&#xA;&#x9;&#x9;SELECT &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;OrgName = o.Name, &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;ouu1.UserId, &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;ou.OrganizationUnitId &#x9;&#x9;&#xA;&#x9;&#x9;FROM dbo.OrganizationUnitUser AS ouu1 &#x9;&#x9;&#xA;&#x9;&#x9;INNER JOIN dbo.organizationUnit AS ou ON  &#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;ouu1.OrganizationUnitId = ou.OrganizationUnitId &#x9;&#x9;&#xA;&#x9;&#x9;INNER JOIN dbo.Organization AS o ON &#xA;&#x9;&#x9;&#x9;ou.OrganizationId = o.OrganizationId &#x9;&#xA;&#x9;) AS ouu ON  &#x9;&#x9;&#xA;&#x9;&#x9;&#x9;u.UserId = ouu.userId&#xA;) AS base_query&#xA;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">--DimUser 
+SELECT 	
+	ct.SYS_CHANGE_OPERATION, 
+	SYS_CHANGE_VERSION = ct.as_of_change_version, 
+	paga_change_log_id = ct.row_id,
+	SourceKey , 	
+	Name = CONVERT(VARCHAR(255), 
+		CASE  			
+			WHEN (FirstName IS NULL AND LastName IS NULL) THEN  				
+			CASE 					
+				WHEN UserType = 'organization' THEN COALESCE((OrgName +' User'), 'Unidentified Organization User') 					
+				WHEN UserType IS NULL THEN 'Unidentified User' 					
+				ELSE 'Unidentified ' +UserType +' User' 				
+			END 			
+		WHEN (FirstName IS NULL AND LastName IS NOT NULL) THEN LastName 			
+		WHEN (LastName IS NULL AND FirstName IS NOT NULL) THEN FirstName 			
+		WHEN (LastName IS NOT NULL AND FirstName IS NOT NULL) THEN FirstName + ' ' + LastName 		
+		END 		
+	), 	
+	DateOfBirthID = COALESCE(DateOfBirthID, 18991231),  	
+	DimPrimaryRoleID = COALESCE(DimPrimaryRoleID,-1), 	
+	FirstName,  	
+	MiddleName,  	
+	LastName,  	
+	Gender,  	
+	IsEnabled, 	
+	CreatedDateID =COALESCE(CreatedDateID, 18991231)
+FROM
+( 	
+	SELECT  		
+		SourceKey = u.UserId, 		
+		FirstName = CASE WHEN LEN(u.FirstName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255), u.FirstName) END, 		
+		MiddleName = CASE WHEN LEN(u.MiddleName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.MiddleName) END, 		
+		LastName = CASE WHEN LEN(u.LastName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.LastName) END, 		
+		Gender = u.GenderId, 		
+		DateofBirthID = CONVERT(INT,CONVERT(VARCHAR(8),u.dateOfBirth,112)), 		
+		CreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)), 		
+		UserType = u.Namespace, 		
+		DimPrimaryRoleID = pr.RoleId,		
+		u.IsEnabled,
+		ouu.OrgName 	
+	FROM dbo.Users as u  	
+	OUTER APPLY
+	( 		
+		SELECT TOP 1
+			RoleId
+		FROM dbo.UserRole as ur
+		WHERE
+			ur.userID = u.userID
+		ORDER BY
+			 RoleID DESC			
+	) as PR	
+	LEFT JOIN  	
+	( 		
+		SELECT 			
+			OrgName = o.Name, 			
+			ouu1.UserId, 			
+			ou.OrganizationUnitId 		
+		FROM dbo.OrganizationUnitUser AS ouu1 		
+		INNER JOIN dbo.organizationUnit AS ou ON  			
+			ouu1.OrganizationUnitId = ou.OrganizationUnitId 		
+		INNER JOIN dbo.Organization AS o ON 
+			ou.OrganizationId = o.OrganizationId 	
+	) AS ouu ON  		
+			u.UserId = ouu.userId
+) AS base_query
+</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{90C13596-375B-406B-B970-018ECBB0D706}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue
+        DTS:DataType="8">--DimUser 
+SELECT 	
+	ct.SYS_CHANGE_OPERATION, 
+	SYS_CHANGE_VERSION = ct.as_of_change_version, 
+	paga_change_log_id = ct.row_id,
+	SourceKey , 	
+	Name = CONVERT(VARCHAR(255), 
+		CASE  			
+			WHEN (FirstName IS NULL AND LastName IS NULL) THEN  				
+			CASE 					
+				WHEN UserType = 'organization' THEN COALESCE((OrgName +' User'), 'Unidentified Organization User') 					
+				WHEN UserType IS NULL THEN 'Unidentified User' 					
+				ELSE 'Unidentified ' +UserType +' User' 				
+			END 			
+		WHEN (FirstName IS NULL AND LastName IS NOT NULL) THEN LastName 			
+		WHEN (LastName IS NULL AND FirstName IS NOT NULL) THEN FirstName 			
+		WHEN (LastName IS NOT NULL AND FirstName IS NOT NULL) THEN FirstName + ' ' + LastName 		
+		END 		
+	), 	
+	DateOfBirthID = COALESCE(DateOfBirthID, 18991231),  	
+	DimPrimaryRoleID = COALESCE(DimPrimaryRoleID,-1), 	
+	FirstName,  	
+	MiddleName,  	
+	LastName,  	
+	Gender,  	
+	IsEnabled, 	
+	CreatedDateID =COALESCE(CreatedDateID, 18991231)
+FROM
+( 	
+	SELECT  		
+		SourceKey = u.UserId, 		
+		FirstName = CASE WHEN LEN(u.FirstName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255), u.FirstName) END, 		
+		MiddleName = CASE WHEN LEN(u.MiddleName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.MiddleName) END, 		
+		LastName = CASE WHEN LEN(u.LastName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.LastName) END, 		
+		Gender = u.GenderId, 		
+		DateofBirthID = CONVERT(INT,CONVERT(VARCHAR(8),u.dateOfBirth,112)), 		
+		CreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)), 		
+		UserType = u.Namespace, 		
+		DimPrimaryRoleID = pr.RoleId,		
+		u.IsEnabled,
+		ouu.OrgName 	
+	FROM dbo.Users as u  	
+	OUTER APPLY
+	( 		
+		SELECT TOP 1
+			RoleId
+		FROM dbo.UserRole as ur
+		WHERE
+			ur.userID = u.userID
+		ORDER BY
+			 RoleID DESC			
+	) as PR	
+	LEFT JOIN  	
+	( 		
+		SELECT 			
+			OrgName = o.Name, 			
+			ouu1.UserId, 			
+			ou.OrganizationUnitId 		
+		FROM dbo.OrganizationUnitUser AS ouu1 		
+		INNER JOIN dbo.organizationUnit AS ou ON  			
+			ouu1.OrganizationUnitId = ou.OrganizationUnitId 		
+		INNER JOIN dbo.Organization AS o ON 
+			ou.OrganizationId = o.OrganizationId 	
+	) AS ouu ON  		
+			u.UserId = ouu.userId
+) AS base_query
+ INNER JOIN paga_change_log.dbo.Users AS ct ON ct.UserId = base_query.SourceKey WHERE ct.as_of_change_version &gt;= 0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{131BC51D-EAB8-46F1-9D05-DA21C59E70DA}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= UserId FROM dbo.Users) AS base_query &quot; + @[$Package::EndOfQuery]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= UserId FROM dbo.Users) AS base_query INNER JOIN paga_change_log.dbo.Users AS ct ON ct.UserId = base_query.SourceKey WHERE ct.as_of_change_version &gt;= 0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8556561B-BF24-49BE-BDA4-614C2699A711}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{7DF5B890-23D2-48DA-83DB-C1EED0B3C593}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load Shared_DimUser"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{A9793B60-338B-4449-BF8D-7ED517DD72F3}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load Shared_DimUser"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="ChangeLog" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
-          </SQLTask:ResultBinding>
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{A9793B60-338B-4449-BF8D-7ED517DD72F3}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimUser" DTS:refId="Package\DFT_Load Shared_DimUser" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:ObjectData>
-        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
           <components>
-            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData_Shared_DimUser" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser" usesDispositions="true" version="7">
+            <component
+              refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLEDB_GetData_Shared_DimUser"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::FullQueryText</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
               <connections>
-                <connection connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Connections[OleDbConnection]">
-                </connection>
+                <connection
+                  refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Connections[OleDbConnection]"
+                  connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SourceDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <outputs>
-                <output name="Output" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[paga_change_log_id]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[SourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[Name]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="100" name="UserType" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[UserType]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DateOfBirthID" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[DateOfBirthID]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[DimPagaAccountSourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimOrganizationUnitLevel4SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[DimOrganizationUnitLevel4SourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="FirstName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[FirstName]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="MiddleName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[MiddleName]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="LastName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[LastName]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="Sex" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[Sex]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsEnabled" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[IsEnabled]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="CreatedDateID" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[CreatedDateID]">
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
+                <output
+                  refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output]"
+                  name="Output">
                   <outputColumns>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[UserType]" length="100" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[UserType]" name="UserType" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[UserType]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[DateOfBirthID]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[DateOfBirthID]" name="DateOfBirthID" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[DateOfBirthID]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[DimPagaAccountSourceKey]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[DimPagaAccountSourceKey]" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[DimPagaAccountSourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[DimOrganizationUnitLevel4SourceKey]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[DimOrganizationUnitLevel4SourceKey]" name="DimOrganizationUnitLevel4SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[DimOrganizationUnitLevel4SourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[FirstName]" length="255" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[FirstName]" name="FirstName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[FirstName]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[MiddleName]" length="255" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[MiddleName]" name="MiddleName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[MiddleName]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[LastName]" length="255" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[LastName]" name="LastName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[LastName]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[Sex]" length="50" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[Sex]" name="Sex" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[Sex]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="bool" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[IsEnabled]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[IsEnabled]" name="IsEnabled" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[IsEnabled]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[CreatedDateID]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[CreatedDateID]" name="CreatedDateID" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[CreatedDateID]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SourceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[SourceKey]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SourceKey]"
+                      name="SourceKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[DateOfBirthID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[DateOfBirthID]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[DateOfBirthID]"
+                      name="DateOfBirthID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[FirstName]"
+                      length="255"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[MiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[MiddleName]"
+                      length="255"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[MiddleName]"
+                      name="MiddleName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[LastName]"
+                      length="255"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[IsEnabled]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[IsEnabled]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[IsEnabled]"
+                      name="IsEnabled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[CreatedDateID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[CreatedDateID]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[CreatedDateID]"
+                      name="CreatedDateID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[DimPrimaryRoleID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[DimPrimaryRoleID]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[DimPrimaryRoleID]"
+                      name="DimPrimaryRoleID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[Gender]"
+                      length="50"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[paga_change_log_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[paga_change_log_id]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[paga_change_log_id]"
+                      name="paga_change_log_id"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[SourceKey]"
+                      dataType="i4"
+                      name="SourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[DateOfBirthID]"
+                      dataType="i4"
+                      name="DateOfBirthID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[MiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[IsEnabled]"
+                      dataType="bool"
+                      name="IsEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[CreatedDateID]"
+                      dataType="i4"
+                      name="CreatedDateID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[DimPrimaryRoleID]"
+                      dataType="i4"
+                      name="DimPrimaryRoleID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].ExternalColumns[paga_change_log_id]"
+                      dataType="i4"
+                      name="paga_change_log_id" />
+                  </externalMetadataColumns>
                 </output>
-                <output isErrorOut="true" name="Error" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
+                <output
+                  refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
                   <outputColumns>
-                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[paga_change_log_id]">
-                    </outputColumn>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[SourceKey]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[Name]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="100" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[UserType]" name="UserType" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[UserType]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[DateOfBirthID]" name="DateOfBirthID" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[DateOfBirthID]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[DimPagaAccountSourceKey]" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[DimPagaAccountSourceKey]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[DimOrganizationUnitLevel4SourceKey]" name="DimOrganizationUnitLevel4SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[DimOrganizationUnitLevel4SourceKey]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[FirstName]" name="FirstName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[FirstName]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[MiddleName]" name="MiddleName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[MiddleName]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[LastName]" name="LastName" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[LastName]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[Sex]" name="Sex" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[Sex]">
-                    </outputColumn>
-                    <outputColumn dataType="bool" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[IsEnabled]" name="IsEnabled" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[IsEnabled]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[CreatedDateID]" name="CreatedDateID" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[CreatedDateID]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[paga_change_log_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[paga_change_log_id]"
+                      name="paga_change_log_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[SourceKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[SourceKey]"
+                      name="SourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[DateOfBirthID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[DateOfBirthID]"
+                      name="DateOfBirthID" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[DimPrimaryRoleID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[DimPrimaryRoleID]"
+                      name="DimPrimaryRoleID" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[MiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[MiddleName]"
+                      name="MiddleName" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[IsEnabled]"
+                      dataType="bool"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[IsEnabled]"
+                      name="IsEnabled" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[CreatedDateID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[CreatedDateID]"
+                      name="CreatedDateID" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
+                  <externalMetadataColumns />
                 </output>
               </outputs>
-              <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
-                </property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
-                </property>
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-                </property>
-                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
-                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
-                </property>
-              </properties>
             </component>
-            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging_Shared_DimUser" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser" usesDispositions="true" version="4">
+            <component
+              refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDB_InsertIntoStaging_Shared_DimUser"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Staging.Shared_DimUser</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
               <connections>
-                <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Connections[OleDbConnection]">
-                </connection>
+                <connection
+                  refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Connections[OleDbConnection]"
+                  connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <inputs>
-                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn codePage="1252" dataType="str" length="100" name="Email" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[Email]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="FirstName" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[FirstName]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="Gender" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[Gender]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsEnabled" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[IsEnabled]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="LastName" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[LastName]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="MiddleName" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[MiddleName]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[SourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimCreatedDateID" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[DimCreatedDateID]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimDateOfBirthID" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[DimDateOfBirthID]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimPrimaryRoleSourceKey" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[DimPrimaryRoleSourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[SYS_CHANGE_VERSION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[SYS_CHANGE_OPERATION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[paga_change_log_id]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[row_id]">
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
+                <input
+                  refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser">
                   <inputColumns>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[SYS_CHANGE_OPERATION]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="paga_change_log_id" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[paga_change_log_id]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[paga_change_log_id]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[SYS_CHANGE_VERSION]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[SourceKey]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="FirstName" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[FirstName]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[FirstName]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[FirstName]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="MiddleName" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[MiddleName]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[MiddleName]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[MiddleName]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="LastName" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[LastName]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[LastName]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[LastName]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="bool" cachedName="IsEnabled" externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[IsEnabled]" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[IsEnabled]" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[IsEnabled]">
-                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[SYS_CHANGE_OPERATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="SYS_CHANGE_OPERATION"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[paga_change_log_id]"
+                      cachedDataType="i4"
+                      cachedName="paga_change_log_id"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[paga_change_log_id]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[paga_change_log_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[SourceKey]"
+                      cachedDataType="i4"
+                      cachedName="SourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[SourceKey]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[SourceKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[FirstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[FirstName]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[MiddleName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="MiddleName"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[MiddleName]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[MiddleName]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[LastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[LastName]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[IsEnabled]"
+                      cachedDataType="bool"
+                      cachedName="IsEnabled"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[IsEnabled]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[IsEnabled]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[CreatedDateID]"
+                      cachedDataType="i4"
+                      cachedName="CreatedDateID"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[DimCreatedDateID]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[CreatedDateID]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[DateOfBirthID]"
+                      cachedDataType="i4"
+                      cachedName="DateOfBirthID"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[DimDateOfBirthID]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[DateOfBirthID]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[DimPrimaryRoleID]"
+                      cachedDataType="i4"
+                      cachedName="DimPrimaryRoleID"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[DimPrimaryRoleSourceKey]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[DimPrimaryRoleID]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[Gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[Gender]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[Name]"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output].Columns[Name]" />
                   </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[IsEnabled]"
+                      dataType="bool"
+                      name="IsEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[MiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[SourceKey]"
+                      dataType="i4"
+                      name="SourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[DimCreatedDateID]"
+                      dataType="i4"
+                      name="DimCreatedDateID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[DimDateOfBirthID]"
+                      dataType="i4"
+                      name="DimDateOfBirthID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[DimPrimaryRoleSourceKey]"
+                      dataType="i4"
+                      name="DimPrimaryRoleSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[paga_change_log_id]"
+                      dataType="i4"
+                      name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[row_id]"
+                      dataType="i4"
+                      name="row_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                  </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Outputs[Error]" synchronousInputId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
+                <output
+                  refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser]">
                   <outputColumns>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
+                  <externalMetadataColumns />
                 </output>
               </outputs>
-              <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Staging.Shared_DimUser</property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
-                </property>
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-                </property>
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
-                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
-                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
-                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
-                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
             </component>
           </components>
           <paths>
-            <path endId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser]" name="OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser" refId="Package\DFT_Load Shared_DimUser.Paths[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser]" startId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output]">
-            </path>
+            <path
+              refId="Package\DFT_Load Shared_DimUser.Paths[Output]"
+              endId="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser.Inputs[OLEDB_GetData_Shared_DimUser_Output_OLEDB_InsertIntoStaging_Shared_DimUser]"
+              name="Output"
+              startId="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser.Outputs[Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_CheckForRows"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:DTSID="{7DF5B890-23D2-48DA-83DB-C1EED0B3C593}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_CheckForRows"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5e3060d2-3c35-4110-91af-8b5e0538b3d8}"
+          SQLTask:SqlStmtSourceType="Variable"
+          SQLTask:SqlStatementSource="User::GetRowCount"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="_count"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
-  <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{D383BDE9-6367-46D3-AE48-489315C66E09}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.Users AS ct ON ct.UserId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{6679CD59-2516-4B5F-82E3-58AFE552E2E8}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
-      </DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{78EA784B-998B-495C-B546-4B15D1C085CE}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
-    </DTS:PackageParameter>
-  </DTS:PackageParameters>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{F1B91CAE-8E6B-4EF1-86F1-68743D3190F9}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Shared_DimUser" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Shared_DimUser]" DTS:To="Package\DFT_Load Shared_DimUser">
-    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Shared_DimUser]"
+      DTS:CreationName=""
+      DTS:DTSID="{F1B91CAE-8E6B-4EF1-86F1-68743D3190F9}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::RowCount] &gt; 0"
+      DTS:From="Package\EST_CheckForRows"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Shared_DimUser"
+      DTS:To="Package\DFT_Load Shared_DimUser" />
   </DTS:PrecedenceConstraints>
-  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
-  <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7482E358-82B7-4DBE-980A-BF1A2A4FF2D2}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">--DimUser  
-SELECT 	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey , 	Name = CONVERT(VARCHAR(255), 		CASE  			WHEN (FirstName IS NULL AND LastName IS NULL) THEN  				CASE 					WHEN UserType = 'organization' THEN COALESCE((OrgName +' User'), 'Unidentified Organization User') 					WHEN UserType IS NULL THEN 'Unidentified User' 					ELSE 'Unidentified ' +UserType +' User' 				END 			WHEN (FirstName IS NULL AND LastName IS NOT NULL) THEN LastName 			WHEN (LastName IS NULL AND FirstName IS NOT NULL) THEN FirstName 			WHEN (LastName IS NOT NULL AND FirstName IS NOT NULL) THEN FirstName + ' ' + LastName 		END 		), 	UserType= COALESCE(UserType, 'UNKNOWN'), 	DateOfBirthID = COALESCE(DateOfBirthID, 18991231),  	DimPagaAccountSourceKey = COALESCE(DimPagaAccountSourceKey,-1), 	DimOrganizationUnitLevel4SourceKey, 	FirstName,  	MiddleName,  	LastName,  	Sex,  	IsEnabled, 	CreatedDateID FROM ( 	SELECT  		SourceKey = u.UserId, 		ouu.OrgName, 		FirstName = CASE WHEN LEN(u.FirstName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255), u.FirstName) END, 		MiddleName = CASE WHEN LEN(u.MiddleName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.MiddleName) END, 		LastName = CASE WHEN LEN(u.LastName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.LastName) END, 		Sex = u.GenderId, 		DateofBirthID = CONVERT(INT,CONVERT(VARCHAR(8),u.dateOfBirth,112)), 		CreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)), 		UserType = u.Namespace, 		DimPagaAccountSourceKey, 		DimOrganizationUnitLevel4SourceKey = ouu.OrganizationUnitId, 		u.IsEnabled 	FROM dbo.Users as u  	LEFT JOIN 	 	( 		SELECT  			pau.UserId, 			MAX(pa.PagaAccountId) AS DimPagaAccountSourceKey 			 		FROM [dbo].[PagaAccount] AS pa 		LEFT JOIN dbo.PagaAccountUser AS pau ON 			pa.PagaAccountId = pau.PagaAccountId 			AND pau.PagaAccountUserTypeId = 'PRIMARY' 		GROUP BY 			pau.userID 	) AS pa ON 		pa.UserId = u.UserId 	LEFT JOIN  	( 		SELECT 			OrgName = o.Name, 			ouu1.UserId, 			ou.OrganizationUnitId 		FROM dbo.OrganizationUnitUser AS ouu1 		INNER JOIN dbo.organizationUnit AS ou ON  			ouu1.OrganizationUnitId = ou.OrganizationUnitId 		INNER JOIN dbo.Organization AS o 			ON ou.OrganizationId = o.OrganizationId 	) AS ouu ON  		u.UserId = ouu.userId ) AS base_query</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{90C13596-375B-406B-B970-018ECBB0D706}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">--DimUser  
-SELECT 	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey , 	Name = CONVERT(VARCHAR(255), 		CASE  			WHEN (FirstName IS NULL AND LastName IS NULL) THEN  				CASE 					WHEN UserType = 'organization' THEN COALESCE((OrgName +' User'), 'Unidentified Organization User') 					WHEN UserType IS NULL THEN 'Unidentified User' 					ELSE 'Unidentified ' +UserType +' User' 				END 			WHEN (FirstName IS NULL AND LastName IS NOT NULL) THEN LastName 			WHEN (LastName IS NULL AND FirstName IS NOT NULL) THEN FirstName 			WHEN (LastName IS NOT NULL AND FirstName IS NOT NULL) THEN FirstName + ' ' + LastName 		END 		), 	UserType= COALESCE(UserType, 'UNKNOWN'), 	DateOfBirthID = COALESCE(DateOfBirthID, 18991231),  	DimPagaAccountSourceKey = COALESCE(DimPagaAccountSourceKey,-1), 	DimOrganizationUnitLevel4SourceKey, 	FirstName,  	MiddleName,  	LastName,  	Sex,  	IsEnabled, 	CreatedDateID FROM ( 	SELECT  		SourceKey = u.UserId, 		ouu.OrgName, 		FirstName = CASE WHEN LEN(u.FirstName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255), u.FirstName) END, 		MiddleName = CASE WHEN LEN(u.MiddleName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.MiddleName) END, 		LastName = CASE WHEN LEN(u.LastName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.LastName) END, 		Sex = u.GenderId, 		DateofBirthID = CONVERT(INT,CONVERT(VARCHAR(8),u.dateOfBirth,112)), 		CreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)), 		UserType = u.Namespace, 		DimPagaAccountSourceKey, 		DimOrganizationUnitLevel4SourceKey = ouu.OrganizationUnitId, 		u.IsEnabled 	FROM dbo.Users as u  	LEFT JOIN 	 	( 		SELECT  			pau.UserId, 			MAX(pa.PagaAccountId) AS DimPagaAccountSourceKey 			 		FROM [dbo].[PagaAccount] AS pa 		LEFT JOIN dbo.PagaAccountUser AS pau ON 			pa.PagaAccountId = pau.PagaAccountId 			AND pau.PagaAccountUserTypeId = 'PRIMARY' 		GROUP BY 			pau.userID 	) AS pa ON 		pa.UserId = u.UserId 	LEFT JOIN  	( 		SELECT 			OrgName = o.Name, 			ouu1.UserId, 			ou.OrganizationUnitId 		FROM dbo.OrganizationUnitUser AS ouu1 		INNER JOIN dbo.organizationUnit AS ou ON  			ouu1.OrganizationUnitId = ou.OrganizationUnitId 		INNER JOIN dbo.Organization AS o 			ON ou.OrganizationId = o.OrganizationId 	) AS ouu ON  		u.UserId = ouu.userId ) AS base_query INNER JOIN paga_change_log.dbo.Users AS ct ON ct.UserId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{131BC51D-EAB8-46F1-9D05-DA21C59E70DA}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= UserId FROM dbo.Users) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
-      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= UserId FROM dbo.Users) AS base_query INNER JOIN paga_change_log.dbo.Users AS ct ON ct.UserId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8556561B-BF24-49BE-BDA4-614C2699A711}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
-      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-  </DTS:Variables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="210,42"
+          Id="Package\DFT_Load Shared_DimUser"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\EST_CheckForRows"
+          TopLeft="24,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Shared_DimUser]"
+          TopLeft="110.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load Shared_DimUser">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="286,42"
+          Id="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="242,42"
+          Id="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser"
+          TopLeft="27.5,5.5" />
+        <EdgeLayout
+          Id="Package\DFT_Load Shared_DimUser.Paths[Output]"
+          TopLeft="148.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load Shared_DimUser\OLEDB_GetData_Shared_DimUser">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load Shared_DimUser\OLEDB_InsertIntoStaging_Shared_DimUser">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

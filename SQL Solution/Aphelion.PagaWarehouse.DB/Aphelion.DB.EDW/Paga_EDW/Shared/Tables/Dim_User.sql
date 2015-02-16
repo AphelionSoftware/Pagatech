@@ -1,4 +1,4 @@
-CREATE TABLE [Shared].[DimUser] (
+﻿CREATE TABLE [Shared].[DimUser] (
     [DimUserID]        INT             IDENTITY (1, 1) NOT NULL,
     [SourceKey]        INT             NOT NULL,
     [DimDateOfBirthID] INT             NULL,
@@ -18,11 +18,14 @@ CREATE TABLE [Shared].[DimUser] (
     [sys_CreatedBy]    VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]    DATETIME        DEFAULT (getdate()) NOT NULL,
     [IsActive]         BIT             DEFAULT ((1)) NOT NULL,
+    [Name]             VARCHAR (255)   NULL,
     CONSTRAINT [pk_DimUserID] PRIMARY KEY CLUSTERED ([DimUserID] ASC),
     CONSTRAINT [fk_DimUser_CreatedDateID] FOREIGN KEY ([DimCreatedDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_DimUser_DateOfBirthID] FOREIGN KEY ([DimDateOfBirthID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
     CONSTRAINT [fk_DimUser_DimPrimaryRoleID] FOREIGN KEY ([DimPrimaryRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID])
 );
+
+
 
 
 
@@ -89,8 +92,74 @@ EXECUTE sp_addextendedproperty @name = N'ExcludeFromCube', @value = N'True', @le
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--DimUser  
-SELECT 	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey , 	Name = CONVERT(VARCHAR(255), 		CASE  			WHEN (FirstName IS NULL AND LastName IS NULL) THEN  				CASE 					WHEN UserType = ''organization'' THEN COALESCE((OrgName +'' User''), ''Unidentified Organization User'') 					WHEN UserType IS NULL THEN ''Unidentified User'' 					ELSE ''Unidentified '' +UserType +'' User'' 				END 			WHEN (FirstName IS NULL AND LastName IS NOT NULL) THEN LastName 			WHEN (LastName IS NULL AND FirstName IS NOT NULL) THEN FirstName 			WHEN (LastName IS NOT NULL AND FirstName IS NOT NULL) THEN FirstName + '' '' + LastName 		END 		), 	UserType= COALESCE(UserType, ''UNKNOWN''), 	DateOfBirthID = COALESCE(DateOfBirthID, 18991231),  	DimPagaAccountSourceKey = COALESCE(DimPagaAccountSourceKey,-1), 	DimOrganizationUnitLevel4SourceKey, 	FirstName,  	MiddleName,  	LastName,  	Sex,  	IsEnabled, 	CreatedDateID FROM ( 	SELECT  		SourceKey = u.UserId, 		ouu.OrgName, 		FirstName = CASE WHEN LEN(u.FirstName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255), u.FirstName) END, 		MiddleName = CASE WHEN LEN(u.MiddleName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.MiddleName) END, 		LastName = CASE WHEN LEN(u.LastName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.LastName) END, 		Sex = u.GenderId, 		DateofBirthID = CONVERT(INT,CONVERT(VARCHAR(8),u.dateOfBirth,112)), 		CreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)), 		UserType = u.Namespace, 		DimPagaAccountSourceKey, 		DimOrganizationUnitLevel4SourceKey = ouu.OrganizationUnitId, 		u.IsEnabled 	FROM dbo.Users as u  	LEFT JOIN 	 	( 		SELECT  			pau.UserId, 			MAX(pa.PagaAccountId) AS DimPagaAccountSourceKey 			 		FROM [dbo].[PagaAccount] AS pa 		LEFT JOIN dbo.PagaAccountUser AS pau ON 			pa.PagaAccountId = pau.PagaAccountId 			AND pau.PagaAccountUserTypeId = ''PRIMARY'' 		GROUP BY 			pau.userID 	) AS pa ON 		pa.UserId = u.UserId 	LEFT JOIN  	( 		SELECT 			OrgName = o.Name, 			ouu1.UserId, 			ou.OrganizationUnitId 		FROM dbo.OrganizationUnitUser AS ouu1 		INNER JOIN dbo.organizationUnit AS ou ON  			ouu1.OrganizationUnitId = ou.OrganizationUnitId 		INNER JOIN dbo.Organization AS o 			ON ou.OrganizationId = o.OrganizationId 	) AS ouu ON  		u.UserId = ouu.userId ) AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'--DimUser 
+SELECT 	
+	ct.SYS_CHANGE_OPERATION, 
+	SYS_CHANGE_VERSION = ct.as_of_change_version, 
+	SourceKey , 	
+	Name = CONVERT(VARCHAR(255), 
+		CASE  			
+			WHEN (FirstName IS NULL AND LastName IS NULL) THEN  				
+			CASE 					
+				WHEN UserType = ''organization'' THEN COALESCE((OrgName +'' User''), ''Unidentified Organization User'') 					
+				WHEN UserType IS NULL THEN ''Unidentified User'' 					
+				ELSE ''Unidentified '' +UserType +'' User'' 				
+			END 			
+		WHEN (FirstName IS NULL AND LastName IS NOT NULL) THEN LastName 			
+		WHEN (LastName IS NULL AND FirstName IS NOT NULL) THEN FirstName 			
+		WHEN (LastName IS NOT NULL AND FirstName IS NOT NULL) THEN FirstName + '' '' + LastName 		
+		END 		
+	), 	
+	DateOfBirthID = COALESCE(DateOfBirthID, 18991231),  	
+	DimPrimaryRoleID = COALESCE(DimPrimaryRoleID,-1), 	
+	FirstName,  	
+	MiddleName,  	
+	LastName,  	
+	Gender,  	
+	IsEnabled, 	
+	CreatedDateID =COALESCE(CreatedDateID, 18991231)
+FROM
+( 	
+	SELECT  		
+		SourceKey = u.UserId, 		
+		FirstName = CASE WHEN LEN(u.FirstName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255), u.FirstName) END, 		
+		MiddleName = CASE WHEN LEN(u.MiddleName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.MiddleName) END, 		
+		LastName = CASE WHEN LEN(u.LastName) = 0 THEN NULL ELSE CONVERT(VARCHAR(255),u.LastName) END, 		
+		Gender = u.GenderId, 		
+		DateofBirthID = CONVERT(INT,CONVERT(VARCHAR(8),u.dateOfBirth,112)), 		
+		CreatedDateID = CONVERT(INT,CONVERT(VARCHAR(8),u.CreatedDate,112)), 		
+		UserType = u.Namespace, 		
+		DimPrimaryRoleID = pr.RoleId,		
+		u.IsEnabled,
+		ouu.OrgName 	
+	FROM dbo.Users as u  	
+	CROSS APPLY
+	( 		
+		SELECT TOP 1
+			RoleId
+		FROM dbo.UserRole as ur
+		WHERE
+			ur.userID = u.userID
+		ORDER BY
+			 RoleID DESC			
+	) as PR	
+	LEFT JOIN  	
+	( 		
+		SELECT 			
+			OrgName = o.Name, 			
+			ouu1.UserId, 			
+			ou.OrganizationUnitId 		
+		FROM dbo.OrganizationUnitUser AS ouu1 		
+		INNER JOIN dbo.organizationUnit AS ou ON  			
+			ouu1.OrganizationUnitId = ou.OrganizationUnitId 		
+		INNER JOIN dbo.Organization AS o ON 
+			ou.OrganizationId = o.OrganizationId 	
+	) AS ouu ON  		
+			u.UserId = ouu.userId
+) AS base_query
+', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+
+
 
 
 
@@ -110,11 +179,22 @@ SELECT 	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERS
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET 
-	edw.SourceKey = stg.SourceKey,edw.DimDateOfBirthID = stg.DimDateOfBirthID,edw.FirstName = stg.FirstName,edw.MiddleName = stg.MiddleName,edw.LastName = stg.LastName,edw.Gender = stg.Gender,edw.PhoneNumber = stg.PhoneNumber,edw.Email = stg.Email,edw.IsEnabled = stg.IsEnabled,edw.DimPrimaryRoleID = stg.DimPrimaryRoleID,edw.DimCreatedDateID = stg.DimCreatedDateID
-	FROM Shared.DimUser AS edw
-	INNER JOIN Paga_Staging.Updates.Shared_DimUser AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw SET 
+	edw.SourceKey = stg.SourceKey,
+	edw.DimDateOfBirthID = stg.DimDateOfBirthID,
+	edw.FirstName = stg.FirstName,
+	edw.MiddleName = stg.MiddleName,
+	edw.LastName = stg.LastName,
+	edw.Gender = stg.Gender,
+	edw.PhoneNumber = stg.PhoneNumber,
+	edw.Email = stg.Email,
+	edw.IsEnabled = stg.IsEnabled,
+	edw.DimPrimaryRoleID = stg.DimPrimaryRoleID,
+	edw.DimCreatedDateID = stg.DimCreatedDateID,
+	edw.Name = stg.Name
+FROM Shared.DimUser AS edw
+INNER JOIN Paga_Staging.Updates.Shared_DimUser AS stg ON
+		edw.SourceKey = stg.SourceKey;', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+
+
 

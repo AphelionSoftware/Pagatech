@@ -9,6 +9,9 @@
     [Email]            VARCHAR (100)   NULL,
     [IsEnabled]        BIT             NULL,
     [DimPrimaryRoleID] INT             NOT NULL,
-    [DimCreatedDateID] INT             NOT NULL
+    [DimCreatedDateID] INT             NOT NULL,
+    [Name]             VARCHAR (255)   NULL
 );
+
+
 
