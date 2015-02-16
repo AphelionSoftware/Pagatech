@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadWarehouse"
   DTS:PackageType="5"
-  DTS:VersionBuild="438"
-  DTS:VersionGUID="{74C18BB4-354F-4E15-A494-0BD0C6C06DF8}">
+  DTS:VersionBuild="439"
+  DTS:VersionGUID="{B916892A-E36E-436F-A863-F3614F5050FD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -98,7 +98,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ConvertSystemStart">
       <DTS:VariableValue
-        DTS:DataType="8">2015-02-12 16:46:45.000</DTS:VariableValue>
+        DTS:DataType="8">2015-02-16 12:07:57.000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -141,7 +141,7 @@
 	TABLE_SCHEMA,
 	strParm1 = 'INNER JOIN paga_change_log.' +x.SourceTable +' AS ct ON		
 	base_query.SourceKey = ct.' +x.KeyColumn  +'
-WHERE ct.as_of_change_version = 0' FROM
+WHERE SYS_CHANGE_VERSION &gt;=  0' FROM
 (
 	SELECT
 		ROW_NUMBER() OVER (PARTITION BY base.LoadGroup ORDER BY base.StagingTableName) AS rn,		base.StagingTableName,
@@ -335,18 +335,18 @@ ORDER BY
 	TABLE_SCHEMA,
 	strParm1 = 'INNER JOIN paga_change_log.' +x.SourceTable +' AS ct ON		
 	base_query.SourceKey = ct.' +x.KeyColumn  +'
-WHERE ct.as_of_change_version = 0'</DTS:VariableValue>
+WHERE SYS_CHANGE_VERSION &gt;=  0'</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{12B3C9DD-64CD-4BB9-86F0-64C497599072}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;WHERE ct.as_of_change_version = &quot; + (DT_WSTR, 20) @[User::ChangeVersion]"
+      DTS:Expression="@[$Package::LoadType]== &quot;Initial&quot;  ?  &quot;WHERE SYS_CHANGE_VERSION &gt;=  0&quot; : &quot;WHERE SYS_CHANGE_VERSION = &quot; + (DT_WSTR, 20) @[User::ChangeVersion]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strVersionFilter">
       <DTS:VariableValue
-        DTS:DataType="8">WHERE ct.as_of_change_version = 0</DTS:VariableValue>
+        DTS:DataType="8">WHERE SYS_CHANGE_VERSION &gt;=  0</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""

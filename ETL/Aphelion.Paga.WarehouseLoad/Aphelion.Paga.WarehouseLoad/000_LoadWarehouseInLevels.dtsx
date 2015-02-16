@@ -12,11 +12,20 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="000_LoadWarehouseInLevels"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{A742A573-E249-4CF8-B690-09938EFD0C5F}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{29E0624E-C4C4-4F07-A436-E9E606C8AA7A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{86D16733-090F-4BE8-AC5A-AF4B61B5DB55}"
+      DTS:ObjectName="edw_MaxLoadLevel">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">2</DTS:Property>
+    </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
@@ -29,6 +38,17 @@
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1FED1F7E-FEE5-459B-BFB4-D61CD6BAEED0}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::edw_MaxLoadLevel]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="edw_MaxLoadLevel">
+      <DTS:VariableValue
+        DTS:DataType="3">2</DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{9E8E97FC-6D58-410A-8F21-7154C15B6D26}"
@@ -68,7 +88,7 @@
       DTS:CreationName="STOCK:FORLOOP"
       DTS:Description="For Loop Container"
       DTS:DTSID="{4CDE8B8D-0B1D-49A4-803C-063A5BD74698}"
-      DTS:EvalExpression="@LevelLoop &lt; 2"
+      DTS:EvalExpression="@LevelLoop &lt;= @edw_MaxLoadLevel"
       DTS:ExecutableType="STOCK:FORLOOP"
       DTS:InitExpression="@LevelLoop = 1"
       DTS:LocaleID="-1"
