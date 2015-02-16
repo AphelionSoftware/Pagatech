@@ -32,7 +32,8 @@
 											"list.BaseQuery, "+
 											"list.KeyColumn, "+
 											"list.SourceTable, "+
-											"ErrorTable = StagingTableName "+
+											"ErrorTable = StagingTableName, "+
+											"list.UpdateQuery "+
 										"FROM "+
 										"(  "+
 											"SELECT  "+
@@ -43,13 +44,14 @@
 												"BaseQuery = pl.bq,  "+
 												"KeyColumn = pl.kc,  "+
 												"LoadGroup = pl.lg, "+
-												"SourceTable = pl.st  "+
+												"SourceTable = pl.st,  "+
+												"UpdateQuery = pl.uq  "+
 											"FROM  "+
 											"(  "+
 												"SELECT  "+
 													"package_list.TABLE_SCHEMA,  "+
 													"package_list.TABLE_NAME,  "+
-													"CONVERT(CHAR(1),MAX(packageType)) AS pt,  "+
+													"CONVERT(VARCHAR(MAX),MAX(UpdateQuery)) AS uq,  "+
 													"CONVERT(VARCHAR(MAX),MAX(BaseQuery)) AS bq,  "+
 													"CONVERT(VARCHAR(MAX),MAX(KeyColumn)) AS kc,  "+
 													"CONVERT(INT ,MAX(LoadGroup)) AS lg,  "+
@@ -61,9 +63,9 @@
 														"table_list.TABLE_SCHEMA,  "+
 														"table_list.TABLE_NAME, "+ 
 														"CASE  "+
-																"WHEN ext_prop.name =  'PackageType'  "+
-																"THEN CONVERT(CHAR(1),ext_prop.value)  "+
-														"END as PackageType,  "+
+																"WHEN ext_prop.name =  'UpdateQuery'  "+
+																"THEN CONVERT(VARCHAR(MAX),ext_prop.value)  "+
+														"END as UpdateQuery,  "+
 														"CASE	 "+
 																"WHEN ext_prop.name =  'BaseQuery'  "+
 																"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
@@ -92,7 +94,7 @@
 													"INNER JOIN sys.extended_properties AS ext_prop ON   "+
 														"table_list.object_id = ext_prop.major_id  "+
 													"WHERE  "+ 
-														"ext_prop.name = 'PackageType' OR ext_prop.name = 'BaseQuery' OR ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'LoadGroup' "+
+														"ext_prop.name = 'UpdateQuery' OR ext_prop.name = 'BaseQuery' OR ext_prop.name = 'KeyColumn' OR ext_prop.name = 'SourceTable' OR ext_prop.name = 'LoadGroup' "+
 												") AS package_list  "+
 												"GROUP BY  "+
 													"package_list.TABLE_SCHEMA,  "+
@@ -130,7 +132,8 @@
 				string TableSchema = row[1].ToString();
 				string TableName = row[2].ToString();
 				string errTable = row[6].ToString();
-				string CountQuery = "&quot;SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging." +TableSchema +"_" +TableName +"&quot;";
+				string UpdateQuery = "&quot;" + row[7].ToString()+"&quot;";
+				string CountQuery = "&quot;SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging." +TableSchema +"_" +TableName +" &quot; +@[User::EndOfQuery]";
 				string SetInactiveQuery =	"&quot;UPDATE ["+TableSchema +"].["+TableName+"] " +
 											"SET IsActive = 0  " +
 											"WHERE  " +
@@ -141,8 +144,8 @@
 											"		WHERE  " +
 											"			stg.SourceKey = sourceKey " +
 											"			AND SYS_CHANGE_OPERATION = 'D' " +
-											"			AND SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] " +
-											"	)";
+											"			AND SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] +&quot;" +
+											"	)&quot;";
 #>	
 	<Package Name="<#=PackageName#>" ConstraintMode="Parallel" ProtectionLevel="EncryptSensitiveWithUserKey"  MaxErrorCount="2000"  DelayValidation="true">
 		<Parameters>
@@ -159,11 +162,12 @@
 			<Variable Name="RowCount" DataType="Int32">0</Variable>
 			<Variable Name="GetData" DataType="String" EvaluateAsExpression="true">"SELECT * FROM [Staging].[<#=TableSchema#>_<#=TableName#>] " + @[User::EndOfQuery]</Variable>
 			<Variable Name="InactiveQuery" DataType="String" EvaluateAsExpression="true"><#=SetInactiveQuery#></Variable>
+			<Variable Name="UpdateQuery" DataType="String" EvaluateAsExpression="true"><#=UpdateQuery#></Variable>
  		</Variables>
 
 	   <Tasks>
 			<!-- This needs to go -->
-			<ExecuteSQL Name="SQL_Truncate_Error_<#=errTable#>" ConnectionName="Paga_Errors">
+			<ExecuteSQL Name="SQL_Truncate_Error_<#=errTable#>" ConnectionName="Paga_Errors" DelayValidation="true">
 			  <DirectInput>TRUNCATE TABLE [Errors].[<#=errTable#>]
 			  </DirectInput>
 			</ExecuteSQL>
@@ -175,8 +179,8 @@
 					</Inputs>
 				</PrecedenceConstraints>
 				<Tasks>
-					<Expression Name="ET_Set_ChangeOperation" Expression="@[User::ChangeOperation] = &quot;I&quot;"></Expression>
-					<ExecuteSQL Name="EST_CheckForInserts" ConnectionName="Paga_Staging" ResultSet="SingleRow">
+					<Expression Name="ET_Set_ChangeOperation" Expression="@[User::ChangeOperation] = &quot;I&quot;" DelayValidation="true"> </Expression>
+					<ExecuteSQL Name="EST_CheckForInserts" ConnectionName="Paga_Staging" ResultSet="SingleRow" DelayValidation="true">
 						<VariableInput VariableName="User.GetRowCount" /><Results><Result Name="_count" VariableName="User.RowCount"/></Results>
 						<PrecedenceConstraints>
 							<Inputs>
@@ -184,7 +188,7 @@
 							</Inputs>
 						</PrecedenceConstraints>
 					</ExecuteSQL>
-					<Dataflow Name="DFT_Load_<#=TableSchema#>_<#=TableName#>"  MaxErrorCount="2000">
+					<Dataflow Name="DFT_Load_<#=TableSchema#>_<#=TableName#>"  MaxErrorCount="2000" DelayValidation="true">
 						<PrecedenceConstraints>
 						<Inputs>
 							<Input OutputPathName="EST_CheckForInserts.Output" EvaluationOperation="ExpressionAndConstraint" EvaluationValue="Success" Expression="@[User::RowCount] > 0"/>
@@ -320,8 +324,8 @@
 					</Inputs>
 				</PrecedenceConstraints>
 				<Tasks>
-					<Expression Name="ET_Set_ChangeOperation" Expression="@[User::ChangeOperation] = &quot;U&quot;"></Expression>
-					<ExecuteSQL Name="EST_CheckForUpdates" ConnectionName="Paga_Staging" ResultSet="SingleRow">
+					<Expression Name="ET_Set_ChangeOperation" Expression="@[User::ChangeOperation] = &quot;U&quot;" DelayValidation="true"></Expression>
+					<ExecuteSQL Name="EST_CheckForUpdates" ConnectionName="Paga_Staging" ResultSet="SingleRow" DelayValidation="true">
 						<VariableInput VariableName="User.GetRowCount" /><Results><Result Name="_count" VariableName="User.RowCount"/></Results>
 						<PrecedenceConstraints>
 							<Inputs>
@@ -329,132 +333,143 @@
 							</Inputs>
 						</PrecedenceConstraints>
 					</ExecuteSQL>
-					<Dataflow Name="DFT_Load_<#=TableSchema#>_<#=TableName#>"  MaxErrorCount="2000">
-						<PrecedenceConstraints>
+					<Container Name="SEQ_LoadUpdates" ConstraintMode="Parallel" DelayValidation="true">
+					<PrecedenceConstraints>
 						<Inputs>
 							<Input OutputPathName="EST_CheckForUpdates.Output" EvaluationOperation="ExpressionAndConstraint" EvaluationValue="Success" Expression="@[User::RowCount] > 0"/>
 						</Inputs>
 						</PrecedenceConstraints>
-						
-						<Transformations>
-							<OleDbSource Name="OLE_SRC_Staging_<#=TableSchema#>_<#=TableName#>" ConnectionName="Paga_Staging">
-							  <VariableInput VariableName="User.GetData"></VariableInput>
-							</OleDbSource>
-							<# 
-								strLookup_U ="OLE_SRC_Staging_" + TableSchema +"_" + TableName + ".Output";
-								string FKColumnQuery_U = "SELECT DISTINCT "+
-															"C.name AS ForeignKeyColumn, "+
-															"'[' + FS.name + '].[' + FT.name + ']' AS ForeignTable, "+
-															"FC.name AS ForeignTableColumn, "+
-															"LEFT(C.Name, len(C.name)-2) + 'SourceKey' AS SourceLookupColumn, "+
-															"CAST(C.is_nullable AS VARCHAR) AS IsNullable_U "+
-														"FROM sys.foreign_key_columns AS FK "+
-														"INNER JOIN sys.tables AS T ON "+
-															"FK.parent_object_id = T.object_id "+
-														"INNER JOIN sys.columns AS C ON "+
-															"FK.parent_object_id = C.object_id "+
-															"AND FK.parent_column_id = C.column_id "+
-														"INNER JOIN sys.tables AS FT ON "+
-															"FK.referenced_object_id = FT.object_id "+
-														"INNER JOIN sys.columns AS FC ON "+
-															"FK.referenced_object_id = FC.object_id "+
-															"AND FK.referenced_column_id = FC.column_id "+
-														"INNER JOIN sys.schemas AS FS ON "+
-															"FT.schema_id = FS.schema_id "+
-														"WHERE "+
-															"C.name != ('Active') "+
-															"AND FT.Name NOT IN ('DimDate', 'DimTime') "+
-															"AND T.name = '"+ TableName + "'";
-								DataTable FKColumns_U = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, FKColumnQuery_U);
-								string IsNullable_U ="" ;
+						<Tasks>
+							<Dataflow Name="DFT_Load_<#=TableSchema#>_<#=TableName#>"  MaxErrorCount="2000" DelayValidation="true">
+											
+								<Transformations>
+									<OleDbSource Name="OLE_SRC_Staging_<#=TableSchema#>_<#=TableName#>" ConnectionName="Paga_Staging">
+									  <VariableInput VariableName="User.GetData"></VariableInput>
+									</OleDbSource>
+									<# 
+										strLookup_U ="OLE_SRC_Staging_" + TableSchema +"_" + TableName + ".Output";
+										string FKColumnQuery_U = "SELECT DISTINCT "+
+																	"C.name AS ForeignKeyColumn, "+
+																	"'[' + FS.name + '].[' + FT.name + ']' AS ForeignTable, "+
+																	"FC.name AS ForeignTableColumn, "+
+																	"LEFT(C.Name, len(C.name)-2) + 'SourceKey' AS SourceLookupColumn, "+
+																	"CAST(C.is_nullable AS VARCHAR) AS IsNullable_U "+
+																"FROM sys.foreign_key_columns AS FK "+
+																"INNER JOIN sys.tables AS T ON "+
+																	"FK.parent_object_id = T.object_id "+
+																"INNER JOIN sys.columns AS C ON "+
+																	"FK.parent_object_id = C.object_id "+
+																	"AND FK.parent_column_id = C.column_id "+
+																"INNER JOIN sys.tables AS FT ON "+
+																	"FK.referenced_object_id = FT.object_id "+
+																"INNER JOIN sys.columns AS FC ON "+
+																	"FK.referenced_object_id = FC.object_id "+
+																	"AND FK.referenced_column_id = FC.column_id "+
+																"INNER JOIN sys.schemas AS FS ON "+
+																	"FT.schema_id = FS.schema_id "+
+																"WHERE "+
+																	"C.name != ('Active') "+
+																	"AND FT.Name NOT IN ('DimDate', 'DimTime') "+
+																	"AND T.name = '"+ TableName + "'";
+										DataTable FKColumns_U = ExternalDataAccess.GetDataTable(DestConnection.ConnectionString, FKColumnQuery_U);
+										string IsNullable_U ="" ;
 
-								foreach (DataRow FKColumn in FKColumns_U.Rows) { 
-									IsNullable_U = "" + FKColumn["IsNullable_U"];
-									if(IsNullable_U=="1") { #>
-									<Lookup Name="LKP_<#=FKColumn["ForeignKeyColumn"]#>" OleDbConnectionName="Paga_EDW" NoMatchBehavior="IgnoreFailure">
-									<InputPath OutputPathName="<#=strLookup_U#>" />
-									  <DirectInput>SELECT SourceKey, <#=FKColumn["ForeignTableColumn"]#> FROM <#=FKColumn["ForeignTable"]#></DirectInput>
-									  <Inputs>
-										<Column SourceColumn="<#=FKColumn["SourceLookupColumn"]#>" TargetColumn="SourceKey" />
-									  </Inputs>
-									  <Outputs>
-										<Column SourceColumn="<#=FKColumn["ForeignTableColumn"]#>" TargetColumn="<#=FKColumn["ForeignKeyColumn"]#>" />
-									  </Outputs>
-									</Lookup>
-								<#	} else
-									 { #>
-										<Lookup Name="LKP_<#=FKColumn["ForeignKeyColumn"]#>" OleDbConnectionName="Paga_EDW" NoMatchBehavior="RedirectRowsToErrorOutput">
-										<InputPath OutputPathName="<#=strLookup_U#>" />
-										  <DirectInput>SELECT SourceKey, <#=FKColumn["ForeignTableColumn"]#> FROM <#=FKColumn["ForeignTable"]#></DirectInput>
-										  <Inputs>
-											<Column SourceColumn="<#=FKColumn["SourceLookupColumn"]#>" TargetColumn="SourceKey" />
-										  </Inputs>
-										  <Outputs>
-											<Column SourceColumn="<#=FKColumn["ForeignTableColumn"]#>" TargetColumn="<#=FKColumn["ForeignKeyColumn"]#>" />
-										  </Outputs>
-										</Lookup>
-									 <DerivedColumns Name="DC_AddErrorDetails_<#=FKColumn["ForeignKeyColumn"]#>">
-										<InputPath OutputPathName="LKP_<#=FKColumn["ForeignKeyColumn"]#>.Error" />
-              							<Columns>
-											<Column Name="PackageName" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)@[System::PackageName]</Column>
-											<Column Name="QueueID" DataType="Int32" >@[User::intQueueID]</Column>
-											<Column Name="ErrorType" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)("Failed Lookup <#=FKColumn["ForeignKeyColumn"]#>")</Column>
-											<Column Name="SSISErrorCode" DataType="Int32" >ErrorCode</Column>
-											<Column Name="SSISErrorColumn" DataType="Int32" >ErrorColumn</Column>
-										</Columns>
-									</DerivedColumns>
-									<RowCount Name="RC_CountErrors_<#=FKColumn["ForeignKeyColumn"]#>" VariableName="User.intErrorCount">
-										 <InputPath OutputPathName="DC_AddErrorDetails_<#=FKColumn["ForeignKeyColumn"]#>.Output" />
-									</RowCount>
-									<OleDbDestination Name="OLE_DST_Error_<#=TableSchema#>_<#=TableName#>_<#=FKColumn["ForeignKeyColumn"]#>" ConnectionName="Paga_Errors" MaximumInsertCommitSize="200"  TableLock="false">
-										  <InputPath OutputPathName="RC_CountErrors_<#=FKColumn["ForeignKeyColumn"]#>.Output" />
-										<ExternalTableOutput Table="[Errors].[<#=errTable#>]" />
-									</OleDbDestination>
-									<# } 					 
-										strLookup_U = "LKP_" + FKColumn["ForeignKeyColumn"] + ".Match";
-									#>
-										<!-- end lookup for each-->
-							<# } 
+										foreach (DataRow FKColumn in FKColumns_U.Rows) { 
+											IsNullable_U = "" + FKColumn["IsNullable_U"];
+											if(IsNullable_U=="1") { #>
+											<Lookup Name="LKP_<#=FKColumn["ForeignKeyColumn"]#>" OleDbConnectionName="Paga_EDW" NoMatchBehavior="IgnoreFailure">
+											<InputPath OutputPathName="<#=strLookup_U#>" />
+											  <DirectInput>SELECT SourceKey, <#=FKColumn["ForeignTableColumn"]#> FROM <#=FKColumn["ForeignTable"]#></DirectInput>
+											  <Inputs>
+												<Column SourceColumn="<#=FKColumn["SourceLookupColumn"]#>" TargetColumn="SourceKey" />
+											  </Inputs>
+											  <Outputs>
+												<Column SourceColumn="<#=FKColumn["ForeignTableColumn"]#>" TargetColumn="<#=FKColumn["ForeignKeyColumn"]#>" />
+											  </Outputs>
+											</Lookup>
+										<#	} else
+											 { #>
+												<Lookup Name="LKP_<#=FKColumn["ForeignKeyColumn"]#>" OleDbConnectionName="Paga_EDW" NoMatchBehavior="RedirectRowsToErrorOutput">
+												<InputPath OutputPathName="<#=strLookup_U#>" />
+												  <DirectInput>SELECT SourceKey, <#=FKColumn["ForeignTableColumn"]#> FROM <#=FKColumn["ForeignTable"]#></DirectInput>
+												  <Inputs>
+													<Column SourceColumn="<#=FKColumn["SourceLookupColumn"]#>" TargetColumn="SourceKey" />
+												  </Inputs>
+												  <Outputs>
+													<Column SourceColumn="<#=FKColumn["ForeignTableColumn"]#>" TargetColumn="<#=FKColumn["ForeignKeyColumn"]#>" />
+												  </Outputs>
+												</Lookup>
+											 <DerivedColumns Name="DC_AddErrorDetails_<#=FKColumn["ForeignKeyColumn"]#>">
+												<InputPath OutputPathName="LKP_<#=FKColumn["ForeignKeyColumn"]#>.Error" />
+              									<Columns>
+													<Column Name="PackageName" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)@[System::PackageName]</Column>
+													<Column Name="QueueID" DataType="Int32" >@[User::intQueueID]</Column>
+													<Column Name="ErrorType" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)("Failed Lookup <#=FKColumn["ForeignKeyColumn"]#>")</Column>
+													<Column Name="SSISErrorCode" DataType="Int32" >ErrorCode</Column>
+													<Column Name="SSISErrorColumn" DataType="Int32" >ErrorColumn</Column>
+												</Columns>
+											</DerivedColumns>
+											<RowCount Name="RC_CountErrors_<#=FKColumn["ForeignKeyColumn"]#>" VariableName="User.intErrorCount">
+												 <InputPath OutputPathName="DC_AddErrorDetails_<#=FKColumn["ForeignKeyColumn"]#>.Output" />
+											</RowCount>
+											<OleDbDestination Name="OLE_DST_Error_<#=TableSchema#>_<#=TableName#>_<#=FKColumn["ForeignKeyColumn"]#>" ConnectionName="Paga_Errors" MaximumInsertCommitSize="200"  TableLock="false">
+												  <InputPath OutputPathName="RC_CountErrors_<#=FKColumn["ForeignKeyColumn"]#>.Output" />
+												<ExternalTableOutput Table="[Errors].[<#=errTable#>]" />
+											</OleDbDestination>
+											<# } 					 
+												strLookup_U = "LKP_" + FKColumn["ForeignKeyColumn"] + ".Match";
+											#>
+												<!-- end lookup for each-->
+									<# } 
 					
-								string Schema_Table_U = TableSchema +"_" +TableName;
-								string SchemaQualifiedName_U = "Updates." +TableSchema +"_" +TableName;
-							#> 
-							<OleDbDestination Name="OLE_DST_<#=Schema_Table_U#>" ConnectionName="Paga_Staging">
-								<InputPath OutputPathName="<#=strLookup_U#>" />
-								<ExternalTableOutput Table="<#=SchemaQualifiedName_U#>" />
-								<ErrorHandling ErrorRowDisposition="RedirectRow" TruncationRowDisposition="RedirectRow" />
-							</OleDbDestination>
+										string Schema_Table_U = TableSchema +"_" +TableName;
+										string SchemaQualifiedName_U = "Updates." +TableSchema +"_" +TableName;
+									#> 
+									<OleDbDestination Name="OLE_DST_<#=Schema_Table_U#>" ConnectionName="Paga_Staging">
+										<InputPath OutputPathName="<#=strLookup_U#>" />
+										<ExternalTableOutput Table="<#=SchemaQualifiedName_U#>" />
+										<ErrorHandling ErrorRowDisposition="RedirectRow" TruncationRowDisposition="RedirectRow" />
+									</OleDbDestination>
 
 		
-							<OleDbDestination Name="OLE_DST_Singleton_<#=Schema_Table_U#>" ConnectionName="Paga_Staging" MaximumInsertCommitSize="1">
-							  <InputPath OutputPathName="OLE_DST_<#=Schema_Table_U#>.Error" />
-							  <ExternalTableOutput Table="<#=SchemaQualifiedName_U#>" />
-							  <ErrorHandling ErrorRowDisposition="RedirectRow" TruncationRowDisposition="RedirectRow" />
-							</OleDbDestination>
+									<OleDbDestination Name="OLE_DST_Singleton_<#=Schema_Table_U#>" ConnectionName="Paga_Staging" MaximumInsertCommitSize="1">
+									  <InputPath OutputPathName="OLE_DST_<#=Schema_Table_U#>.Error" />
+									  <ExternalTableOutput Table="<#=SchemaQualifiedName_U#>" />
+									  <ErrorHandling ErrorRowDisposition="RedirectRow" TruncationRowDisposition="RedirectRow" />
+									</OleDbDestination>
 
-							<DerivedColumns Name="DC_AddErrorDetails">
-							  <InputPath OutputPathName="OLE_DST_Singleton_<#=Schema_Table_U#>.Error" />
-							  <Columns>
-								<Column Name="PackageName" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)@[System::PackageName]</Column>
-								<Column Name="QueueID" DataType="Int32" >@[User::intQueueID]</Column>
-								<Column Name="ErrorType" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)("Insert")</Column>
-								<Column Name="SSISErrorCode" DataType="Int32" >OLE_DST_Singleton_<#=Schema_Table_U#>.ErrorCode</Column>
-								<Column Name="SSISErrorColumn" DataType="Int32" >OLE_DST_Singleton_<#=Schema_Table_U#>.ErrorColumn</Column>
-							  </Columns>
-							</DerivedColumns>
-							<RowCount Name="RC_CountErrors" VariableName="User.intErrorCount">
-							  <InputPath OutputPathName="DC_AddErrorDetails.Output" />
-							</RowCount>
+									<DerivedColumns Name="DC_AddErrorDetails">
+									  <InputPath OutputPathName="OLE_DST_Singleton_<#=Schema_Table_U#>.Error" />
+									  <Columns>
+										<Column Name="PackageName" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)@[System::PackageName]</Column>
+										<Column Name="QueueID" DataType="Int32" >@[User::intQueueID]</Column>
+										<Column Name="ErrorType" DataType="AnsiString" Length="255" >(DT_STR, 255, 1252)("Insert")</Column>
+										<Column Name="SSISErrorCode" DataType="Int32" >OLE_DST_Singleton_<#=Schema_Table_U#>.ErrorCode</Column>
+										<Column Name="SSISErrorColumn" DataType="Int32" >OLE_DST_Singleton_<#=Schema_Table_U#>.ErrorColumn</Column>
+									  </Columns>
+									</DerivedColumns>
+									<RowCount Name="RC_CountErrors" VariableName="User.intErrorCount">
+									  <InputPath OutputPathName="DC_AddErrorDetails.Output" />
+									</RowCount>
 
-							<OleDbDestination Name="OLE_DST_Error_<#=Schema_Table_U#>" ConnectionName="Paga_Errors" MaximumInsertCommitSize="200" TableLock="false">
-								  <InputPath OutputPathName="RC_CountErrors.Output" />
-								  <ExternalTableOutput Table="[Errors].[<#=Schema_Table_U#>]" />
-							</OleDbDestination>
+									<OleDbDestination Name="OLE_DST_Error_<#=Schema_Table_U#>" ConnectionName="Paga_Errors" MaximumInsertCommitSize="200" TableLock="false">
+										  <InputPath OutputPathName="RC_CountErrors.Output" />
+										  <ExternalTableOutput Table="[Errors].[<#=Schema_Table_U#>]" />
+									</OleDbDestination>
 							
-							</Transformations>
+									</Transformations>
 				
-					</Dataflow>
-					
+							</Dataflow>
+							<ExecuteSQL Name="EST_UpdateChangedRows" ConnectionName="Paga_EDW" DelayValidation="true">
+								 <VariableInput VariableName="User.UpdateQuery"></VariableInput>
+								<PrecedenceConstraints>
+									<Inputs>
+										<Input OutputPathName="DFT_Load_<#=TableSchema#>_<#=TableName#>.Output" />
+									</Inputs>
+								</PrecedenceConstraints>
+							</ExecuteSQL>
+						</Tasks>
+					</Container>
 				</Tasks>
 			</Container>
 			
@@ -465,7 +480,7 @@
 					</Inputs>
 				</PrecedenceConstraints>
 				<Tasks>
-					<Expression Name="ET_Set_ChangeOperation" Expression="@[User::ChangeOperation] = &quot;D&quot;"></Expression>
+					<Expression Name="ET_Set_ChangeOperation" Expression="@[User::ChangeOperation] = &quot;D&quot;" DelayValidation="true"></Expression>
 					<ExecuteSQL Name="EST_CheckForDeletes" ConnectionName="Paga_Staging" ResultSet="SingleRow">
 						<VariableInput VariableName="User.GetRowCount" /><Results><Result Name="_count" VariableName="User.RowCount"/></Results>
 						<PrecedenceConstraints>
@@ -474,7 +489,7 @@
 							</Inputs>
 						</PrecedenceConstraints>
 					</ExecuteSQL>
-					<ExecuteSQL Name="EST_SetDeletedRowsToInactive" ConnectionName="Paga_EDW" ResultSet="SingleRow">
+					<ExecuteSQL Name="EST_SetDeletedRowsToInactive" ConnectionName="Paga_EDW" DelayValidation="true">
 						 <VariableInput VariableName="User.InactiveQuery"></VariableInput>
 						<PrecedenceConstraints>
 							<Inputs>

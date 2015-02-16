@@ -1,0 +1,855 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="02/13/2015 14:57:52" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{76A7EE4A-6413-4829-8AF3-BED8AD8381B2}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2012_Classification_DimPagaAccountUserType" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{55B316AF-66B0-4EDD-864C-81F3B1F925DA}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{C6933799-96DB-4F2A-A1EF-B89D013CE484}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Classification_DimPagaAccountUserType" DTS:refId="Package\SQL_Truncate_Error_Classification_DimPagaAccountUserType" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Classification_DimPagaAccountUserType]&#xA;     " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{033E4EF6-9179-4387-BC40-762F74C9BE4E}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Load_New_Rows" DTS:refId="Package\SEQ_Load_New_Rows">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{EA761250-D648-45CE-B41D-AB6AB91C3C66}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;I&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{252409F0-1A18-4A2F-905A-7ADE0E4BCB03}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForInserts" DTS:refId="Package\SEQ_Load_New_Rows\EST_CheckForInserts" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{1F77D473-9AC0-432B-A563-F7FBD4D2703C}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimPagaAccountUserType" DTS:refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+              <components>
+                <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLE_SRC_Staging_Classification_DimPagaAccountUserType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType" usesDispositions="true" version="7">
+                  <connections>
+                    <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[paga_change_log_id]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="row_id" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[row_id]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[Name]" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[SourceKey]" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[row_id]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[row_id]" name="row_id" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[row_id]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[Name]" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[Name]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[SourceKey]">
+                        </outputColumn>
+                        <outputColumn dataType="i8" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[paga_change_log_id]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[row_id]" name="row_id" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[row_id]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                    </property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::GetData</property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                    <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                    </property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Classification_DimPagaAccountUserType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="DimPagaAccountUserTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[DimPagaAccountUserTypeID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[sys_ModifiedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[sys_ModifiedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[sys_CreatedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[sys_CreatedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[IsActive]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].Columns[SourceKey]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Classification.DimPagaAccountUserType</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Singleton_Classification_DimPagaAccountUserType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="DimPagaAccountUserTypeID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[DimPagaAccountUserTypeID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[sys_ModifiedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[sys_ModifiedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[sys_CreatedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[sys_CreatedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[IsActive]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].Columns[SourceKey]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Classification.DimPagaAccountUserType</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">1</property>
+                  </properties>
+                </component>
+                <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails" usesDispositions="true">
+                  <inputs>
+                    <input name="OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimPagaAccountUserType.ErrorCode</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimPagaAccountUserType.ErrorColumn</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                </component>
+                <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\RC_CountErrors">
+                  <inputs>
+                    <input hasSideEffects="true" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\RC_CountErrors.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Classification_DimPagaAccountUserType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{2C3E7E8F-26FE-46EC-83AC-2F8FC8506F95}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[QueueID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[SSISErrorCode]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[SSISErrorColumn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[PackageName]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[ErrorType]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[PackageName]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[PackageName]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[QueueID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[QueueID]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[ErrorType]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[ErrorType]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[SSISErrorCode]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[SSISErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[SSISErrorColumn]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[SSISErrorColumn]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[SourceKey]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Classification_DimPagaAccountUserType]</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+                  </properties>
+                </component>
+              </components>
+              <paths>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType]" name="OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType.Paths[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType]" name="OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType.Paths[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails]" name="OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType.Paths[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType.Paths[DC_AddErrorDetails_Output_RC_CountErrors]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType]" name="RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType.Paths[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType\RC_CountErrors.Outputs[Output]">
+                </path>
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{B1159A23-43DA-4CF4-81B6-BE0B1AFD065F}" DTS:From="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts" DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts]" DTS:To="Package\SEQ_Load_New_Rows\EST_CheckForInserts">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{C15F4CA9-CB98-47A2-B03D-E475F1020F6F}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Load_New_Rows\EST_CheckForInserts" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForInserts_To_DFT_Load_Classification_DimPagaAccountUserType" DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_EST_CheckForInserts_To_DFT_Load_Classification_DimPagaAccountUserType]" DTS:To="Package\SEQ_Load_New_Rows\DFT_Load_Classification_DimPagaAccountUserType">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{963CCAAA-1DEC-46B3-8147-EA0CCE80FEA3}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Update_Changed_Rows" DTS:refId="Package\SEQ_Update_Changed_Rows">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{9241A400-790F-4B5F-970C-B5CB8FFF51BE}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;U&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{DA6B3987-4EA4-4809-A923-31C5C7BDFC0B}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{7BF3D68D-3BDC-4F14-B728-C3189DAD4BFA}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_LoadUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates">
+          <DTS:Executables>
+            <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{486A13E1-FBC8-4005-AA22-750959644792}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Classification_DimPagaAccountUserType" DTS:refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:ObjectData>
+                <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+                  <components>
+                    <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLE_SRC_Staging_Classification_DimPagaAccountUserType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType" usesDispositions="true" version="7">
+                      <connections>
+                        <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Connections[OleDbConnection]">
+                        </connection>
+                      </connections>
+                      <outputs>
+                        <output name="Output" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output]">
+                          <externalMetadataColumns isUsed="True">
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[Name]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[SourceKey]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[paga_change_log_id]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn dataType="i4" name="row_id" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[row_id]">
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[Name]" name="Name" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                            <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[SourceKey]" length="255" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                            <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                            <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                            <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                            <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].ExternalColumns[row_id]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[row_id]" name="row_id" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[row_id]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                        <output isErrorOut="true" name="Error" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[Name]" name="Name" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[Name]">
+                            </outputColumn>
+                            <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[SourceKey]">
+                            </outputColumn>
+                            <outputColumn dataType="i8" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                            </outputColumn>
+                            <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[paga_change_log_id]">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[row_id]" name="row_id" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[row_id]">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                      </outputs>
+                      <properties>
+                        <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                        <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                        </property>
+                        <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                        </property>
+                        <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                        </property>
+                        <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::GetData</property>
+                        <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                        <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                        <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                        <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                        </property>
+                      </properties>
+                    </component>
+                    <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Classification_DimPagaAccountUserType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType" usesDispositions="true" version="4">
+                      <connections>
+                        <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Connections[OleDbConnection]">
+                        </connection>
+                      </connections>
+                      <inputs>
+                        <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType]">
+                          <externalMetadataColumns isUsed="True">
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[SourceKey]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[Name]">
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                          <inputColumns>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[Name]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[Name]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].Columns[Name]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType].Columns[SourceKey]">
+                            </inputColumn>
+                          </inputColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Outputs[Error]" synchronousInputId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                      </outputs>
+                      <properties>
+                        <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                        <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Updates.Classification_DimPagaAccountUserType</property>
+                        <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                        </property>
+                        <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                        </property>
+                        <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                        <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                        <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                        <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                        <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                        <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                    </component>
+                    <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Singleton_Classification_DimPagaAccountUserType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType" usesDispositions="true" version="4">
+                      <connections>
+                        <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Connections[OleDbConnection]">
+                        </connection>
+                      </connections>
+                      <inputs>
+                        <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType]">
+                          <externalMetadataColumns isUsed="True">
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[SourceKey]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[Name]">
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                          <inputColumns>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[Name]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[Name]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].Columns[Name]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType].Columns[SourceKey]">
+                            </inputColumn>
+                          </inputColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error]" synchronousInputId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                      </outputs>
+                      <properties>
+                        <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                        <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Updates.Classification_DimPagaAccountUserType</property>
+                        <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                        </property>
+                        <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                        </property>
+                        <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                        <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                        <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                        <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                        <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                        <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">1</property>
+                      </properties>
+                    </component>
+                    <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails" usesDispositions="true">
+                      <inputs>
+                        <input name="OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <inputColumns>
+                            <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                            </inputColumn>
+                            <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                            </inputColumn>
+                          </inputColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output exclusionGroup="1" name="Output" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output]" synchronousInputId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                                <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                                <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
+                                <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]}</property>
+                                <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimPagaAccountUserType.ErrorCode</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]}</property>
+                                <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Classification_DimPagaAccountUserType.ErrorColumn</property>
+                              </properties>
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                        <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Error]" synchronousInputId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                      </outputs>
+                    </component>
+                    <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\RC_CountErrors">
+                      <inputs>
+                        <input hasSideEffects="true" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output name="Output" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\RC_CountErrors.Outputs[Output]" synchronousInputId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                        </output>
+                      </outputs>
+                      <properties>
+                        <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+                      </properties>
+                    </component>
+                    <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Classification_DimPagaAccountUserType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType" usesDispositions="true" version="4">
+                      <connections>
+                        <connection connectionManagerID="{2C3E7E8F-26FE-46EC-83AC-2F8FC8506F95}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Connections[OleDbConnection]">
+                        </connection>
+                      </connections>
+                      <inputs>
+                        <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType]">
+                          <externalMetadataColumns isUsed="True">
+                            <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[QueueID]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[SSISErrorCode]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[SSISErrorColumn]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[PackageName]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[ErrorType]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[Name]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SourceKey" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[SourceKey]">
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                          <inputColumns>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[PackageName]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[PackageName]">
+                            </inputColumn>
+                            <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[QueueID]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[QueueID]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[ErrorType]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[ErrorType]">
+                            </inputColumn>
+                            <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[SSISErrorCode]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[SSISErrorCode]">
+                            </inputColumn>
+                            <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[SSISErrorColumn]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[SSISErrorColumn]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[Name]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[Name]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[Name]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType].Columns[SourceKey]">
+                            </inputColumn>
+                          </inputColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Outputs[Error]" synchronousInputId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                      </outputs>
+                      <properties>
+                        <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                        <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Classification_DimPagaAccountUserType]</property>
+                        <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                        </property>
+                        <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                        </property>
+                        <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                        <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                        <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                        <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                        <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                        <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                        <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+                      </properties>
+                    </component>
+                  </components>
+                  <paths>
+                    <path endId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Inputs[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType]" name="OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType.Paths[OLE_SRC_Staging_Classification_DimPagaAccountUserType_Output_OLE_DST_Classification_DimPagaAccountUserType]" startId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_SRC_Staging_Classification_DimPagaAccountUserType.Outputs[Output]">
+                    </path>
+                    <path endId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Inputs[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType]" name="OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType.Paths[OLE_DST_Classification_DimPagaAccountUserType_Error_OLE_DST_Singleton_Classification_DimPagaAccountUserType]" startId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Classification_DimPagaAccountUserType.Outputs[Error]">
+                    </path>
+                    <path endId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails]" name="OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType.Paths[OLE_DST_Singleton_Classification_DimPagaAccountUserType_Error_DC_AddErrorDetails]" startId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Singleton_Classification_DimPagaAccountUserType.Outputs[Error]">
+                    </path>
+                    <path endId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType.Paths[DC_AddErrorDetails_Output_RC_CountErrors]" startId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\DC_AddErrorDetails.Outputs[Output]">
+                    </path>
+                    <path endId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\OLE_DST_Error_Classification_DimPagaAccountUserType.Inputs[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType]" name="RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType.Paths[RC_CountErrors_Output_OLE_DST_Error_Classification_DimPagaAccountUserType]" startId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType\RC_CountErrors.Outputs[Output]">
+                    </path>
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{59B142C0-CC8E-4E73-B02F-476D63339E2F}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_UpdateChangedRows" DTS:refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\EST_UpdateChangedRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData SQLTask:Connection="Paga_EDW" SQLTask:SqlStatementSource="User::UpdateQuery" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{59BA4090-AA25-44A0-B2DA-26D58EF09875}" DTS:From="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Classification_DimPagaAccountUserType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_DFT_Load_Classification_DimPagaAccountUserType_To_EST_UpdateChangedRows" DTS:refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates.PrecedenceConstraints[Constraint_DFT_Load_Classification_DimPagaAccountUserType_To_EST_UpdateChangedRows]" DTS:To="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\EST_UpdateChangedRows">
+            </DTS:PrecedenceConstraint>
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{340E5255-3570-4D4F-8D73-F71589DDBE6B}" DTS:From="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates]" DTS:To="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{B297E504-C04E-4531-AB5E-33EAE07DC223}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForUpdates_To_SEQ_LoadUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_EST_CheckForUpdates_To_SEQ_LoadUpdates]" DTS:To="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{FFFEF494-511A-4DCD-A490-BD93F6351FB8}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Set_Deleted_Rows_Inactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{B6B08036-12F8-457C-82AC-BDDC6E58DCDF}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;D&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{03CA0575-A7F5-4B12-8AEF-3909268DCC2D}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForDeletes" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{4C42F50D-B1F0-456E-9FF2-89DAD1D577E4}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_SetDeletedRowsToInactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_EDW" SQLTask:SqlStatementSource="User::InactiveQuery" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{D13F24FB-50D6-414E-B3BA-9945D0BC4C78}" DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{EFC278CE-D7DB-4783-9464-F3638B85EA5E}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{3BD50774-8785-45A0-8DDA-0680ABA7672A}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{1E302905-02E7-4132-B68D-4D99DE5A1B7F}" DTS:From="Package\SQL_Truncate_Error_Classification_DimPagaAccountUserType" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Classification_DimPagaAccountUserType_To_SEQ_Load_New_Rows" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Classification_DimPagaAccountUserType_To_SEQ_Load_New_Rows]" DTS:To="Package\SEQ_Load_New_Rows">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{B2F33AEF-103D-415F-8B02-E4C0885F04CB}" DTS:From="Package\SEQ_Load_New_Rows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows" DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows]" DTS:To="Package\SEQ_Update_Changed_Rows">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{5D0C7947-860F-4AFF-BCA1-70EF33B43B7B}" DTS:From="Package\SEQ_Update_Changed_Rows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive" DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive">
+    </DTS:PrecedenceConstraint>
+  </DTS:PrecedenceConstraints>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{46B7707F-2C62-4316-99D2-602717DAB188}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E34DB60E-B6F8-42E3-A9AF-99C1D28B57BE}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8D7A62B3-3811-4B9E-9A41-0FDB764A4384}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+      <DTS:VariableValue DTS:DataType="8">2012_Classification_DimPagaAccountUserType</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{397B04F1-A63A-4E0C-A9A7-AE142859B671}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="ChangeOperation">
+      <DTS:VariableValue DTS:DataType="8">I</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7E50C58C-A055-41A9-9568-BE41083370F6}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Classification_DimPagaAccountUserType &quot; +@[User::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Classification_DimPagaAccountUserType WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E2A21232-FA2F-49E4-9707-59B85A61C512}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;WHERE SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] +&quot; AND SYS_CHANGE_OPERATION = '&quot; + @[User::ChangeOperation] +&quot;'&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="EndOfQuery">
+      <DTS:VariableValue DTS:DataType="8">WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7F8EB02B-8AA6-46A8-84C7-15E5BBE9AD92}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B257EE1A-023D-4907-83DB-CB309EFC9C98}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT * FROM [Staging].[Classification_DimPagaAccountUserType] &quot; + @[User::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetData">
+      <DTS:VariableValue DTS:DataType="8">SELECT * FROM [Staging].[Classification_DimPagaAccountUserType] WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7B7B0434-9CFE-45F6-91DB-99B711491035}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;UPDATE [Classification].[DimPagaAccountUserType] SET IsActive = 0  WHERE  	EXISTS 	( 		SELECT 1  		FROM Paga_Staging.Staging.Classification_DimPagaAccountUserType as stg 		WHERE  			stg.SourceKey = sourceKey 			AND SYS_CHANGE_OPERATION = 'D' 			AND SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] +&quot;	)&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="InactiveQuery">
+      <DTS:VariableValue DTS:DataType="8">UPDATE [Classification].[DimPagaAccountUserType] SET IsActive = 0  WHERE  	EXISTS 	( 		SELECT 1  		FROM Paga_Staging.Staging.Classification_DimPagaAccountUserType as stg 		WHERE  			stg.SourceKey = sourceKey 			AND SYS_CHANGE_OPERATION = 'D' 			AND SYS_CHANGE_VERSION = 0	)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B99A3434-8780-4142-BA58-D9B359946183}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;UPDATE edw &#xA;	SET &#xA;	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name&#xA;	FROM Classification.DimPagaAccountUserType AS edw&#xA;	INNER JOIN Paga_Staging.Updates.Classification_DimPagaAccountUserType AS stg ON&#xA;		edw.SourceKey = stg.SourceKey;&#xA;	GO&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="UpdateQuery">
+      <DTS:VariableValue DTS:DataType="8">UPDATE edw 	SET 	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name	FROM Classification.DimPagaAccountUserType AS edw	INNER JOIN Paga_Staging.Updates.Classification_DimPagaAccountUserType AS stg ON		edw.SourceKey = stg.SourceKey;	GO</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>

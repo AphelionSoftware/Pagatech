@@ -1,0 +1,26 @@
+﻿CREATE TABLE [Updates].[Shared_DimPagaAccount] (
+    [SourceKey]              INT           NOT NULL,
+    [Name]                   VARCHAR (255) NOT NULL,
+    [DimPagaAccountStatusID] INT           NOT NULL,
+    [CreatedDateID]          INT           NOT NULL,
+    [RegistrationDateID]     INT           NULL,
+    [PagaAccountNumber]      VARCHAR (12)  NULL,
+    [ExternalAccountNumber]  VARCHAR (12)  NULL,
+    [BankingStatus]          VARCHAR (50)  NOT NULL,
+    [hasOnlineAccount]       BIT           NULL,
+    [IsActivePagaAccount]    BIT           NULL,
+    [IsEnabled]              BIT           NULL,
+    [IsAffiliate]            BIT           NULL,
+    [IsAgent]                BIT           NULL,
+    [IsBank]                 BIT           NULL,
+    [IsBusiness]             BIT           NULL,
+    [IsCardProcessor]        BIT           NULL,
+    [IsCashCollector]        BIT           NULL,
+    [IsCustomer]             BIT           NULL,
+    [IsMerchant]             BIT           NULL,
+    [IsMobileOperator]       BIT           NULL,
+    [IsPaga]                 BIT           NULL,
+    [IsRemittanceProcessor]  BIT           NULL,
+    [IsServiceAggregator]    BIT           NULL
+);
+

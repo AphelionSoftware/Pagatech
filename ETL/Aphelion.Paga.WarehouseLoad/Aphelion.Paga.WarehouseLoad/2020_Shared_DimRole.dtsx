@@ -1,0 +1,935 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="02/13/2015 14:57:55" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{E3FC262E-7DBD-4D4C-B09E-AD870AB9AC68}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:MaxErrorCount="2000" DTS:ObjectName="2020_Shared_DimRole" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{1EE7E671-E1FF-453F-BCF2-E596C6B231F5}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{21D7DA3C-FD9E-40AC-A6DF-4E34CF101B8F}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="SQL_Truncate_Error_Shared_DimRole" DTS:refId="Package\SQL_Truncate_Error_Shared_DimRole" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData SQLTask:Connection="Paga_Errors" SQLTask:SqlStatementSource="TRUNCATE TABLE [Errors].[Shared_DimRole]&#xA;     " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{E3BE73F6-0292-4D6D-B318-20C72FC8E236}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Load_New_Rows" DTS:refId="Package\SEQ_Load_New_Rows">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{A0614239-5280-4FA5-81FA-2ED6881B2473}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;I&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{CF9B72DA-17D9-4EC3-8497-9D0AAA3AA2CF}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForInserts" DTS:refId="Package\SEQ_Load_New_Rows\EST_CheckForInserts" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{38ABC2A6-5E32-4D8B-9F25-7E7D811A0E55}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Shared_DimRole" DTS:refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+              <components>
+                <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLE_SRC_Staging_Shared_DimRole" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole" usesDispositions="true" version="7">
+                  <connections>
+                    <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SystemDescription" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SystemDescription]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[TextDesciption]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[paga_change_log_id]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="row_id" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[row_id]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[Name]" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SystemDescription]" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SystemDescription]" name="SystemDescription" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SystemDescription]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[TextDesciption]" length="1000" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[TextDesciption]" name="TextDesciption" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[TextDesciption]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[row_id]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[row_id]" name="row_id" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[row_id]" truncationRowDisposition="FailComponent">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[Name]" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[Name]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SourceKey]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SystemDescription]" name="SystemDescription" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SystemDescription]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="1000" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[TextDesciption]" name="TextDesciption" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[TextDesciption]">
+                        </outputColumn>
+                        <outputColumn dataType="i8" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[paga_change_log_id]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[row_id]" name="row_id" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[row_id]">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                    </property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::GetData</property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                    <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                    </property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Shared_DimRole" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="DimRoleID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[DimRoleID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SystemDescription" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[SystemDescription]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[TextDesciption]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[SourceKeyHash]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[DeltaHash]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[sys_ModifiedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[sys_ModifiedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[sys_CreatedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[sys_CreatedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[IsActive]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].Columns[SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SystemDescription" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[SystemDescription]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SystemDescription]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].Columns[SystemDescription]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[TextDesciption]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[TextDesciption]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].Columns[TextDesciption]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Shared.DimRole</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Singleton_Shared_DimRole" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{BDBE38A5-9065-49C2-90D6-3EBB281160F7}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_EDW]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="DimRoleID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[DimRoleID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SystemDescription" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[SystemDescription]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[TextDesciption]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="SourceKeyHash" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[SourceKeyHash]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i8" name="DeltaHash" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[DeltaHash]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_ModifiedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[sys_ModifiedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_ModifiedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[sys_ModifiedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="sys_CreatedBy" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[sys_CreatedBy]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="dbTimeStamp" name="sys_CreatedOn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[sys_CreatedOn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="bool" name="IsActive" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[IsActive]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].Columns[SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SystemDescription" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[SystemDescription]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SystemDescription]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].Columns[SystemDescription]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[TextDesciption]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[TextDesciption]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].Columns[TextDesciption]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Shared.DimRole</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">1</property>
+                  </properties>
+                </component>
+                <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails" usesDispositions="true">
+                  <inputs>
+                    <input name="OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
+                            <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorCode]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Shared_DimRole.ErrorCode</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]}</property>
+                            <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Shared_DimRole.ErrorColumn</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                </component>
+                <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\RC_CountErrors">
+                  <inputs>
+                    <input hasSideEffects="true" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output name="Output" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\RC_CountErrors.Outputs[Output]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+                  </properties>
+                </component>
+                <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Shared_DimRole" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole" usesDispositions="true" version="4">
+                  <connections>
+                    <connection connectionManagerID="{2C3E7E8F-26FE-46EC-83AC-2F8FC8506F95}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Connections[OleDbConnection]">
+                    </connection>
+                  </connections>
+                  <inputs>
+                    <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole]">
+                      <externalMetadataColumns isUsed="True">
+                        <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[QueueID]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SSISErrorCode]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SSISErrorColumn]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[PackageName]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[ErrorType]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[Name]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SourceKey]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SystemDescription" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SystemDescription]">
+                        </externalMetadataColumn>
+                        <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[TextDesciption]">
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                      <inputColumns>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[PackageName]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[PackageName]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[QueueID]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[QueueID]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[ErrorType]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[ErrorType]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SSISErrorCode]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[SSISErrorCode]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SSISErrorColumn]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[SSISErrorColumn]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[Name]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[Name]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[Name]">
+                        </inputColumn>
+                        <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[SourceKey]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SystemDescription" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SystemDescription]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SystemDescription]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[SystemDescription]">
+                        </inputColumn>
+                        <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[TextDesciption]" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[TextDesciption]" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[TextDesciption]">
+                        </inputColumn>
+                      </inputColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Outputs[Error]" synchronousInputId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole]">
+                      <externalMetadataColumns>
+                      </externalMetadataColumns>
+                      <outputColumns>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                        </outputColumn>
+                        <outputColumn dataType="i4" lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                        </outputColumn>
+                      </outputColumns>
+                    </output>
+                  </outputs>
+                  <properties>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Shared_DimRole]</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                    </property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                    </property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+                  </properties>
+                </component>
+              </components>
+              <paths>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole]" name="OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole.Paths[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole]" name="OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole.Paths[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails]" name="OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole.Paths[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole.Paths[DC_AddErrorDetails_Output_RC_CountErrors]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output]">
+                </path>
+                <path endId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole]" name="RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole" refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole.Paths[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole]" startId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole\RC_CountErrors.Outputs[Output]">
+                </path>
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{8CE568D3-C83C-4088-84AC-14985AD16F27}" DTS:From="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts" DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts]" DTS:To="Package\SEQ_Load_New_Rows\EST_CheckForInserts">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{85F2692A-2405-44B3-81E9-D131A5618191}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Load_New_Rows\EST_CheckForInserts" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForInserts_To_DFT_Load_Shared_DimRole" DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_EST_CheckForInserts_To_DFT_Load_Shared_DimRole]" DTS:To="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimRole">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{FD1786F6-4484-4453-824F-8B10B2E1EA21}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Update_Changed_Rows" DTS:refId="Package\SEQ_Update_Changed_Rows">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{4E9907AB-A27E-4B1E-9B49-251785C1D303}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;U&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{2D0F1FC3-DD15-4B56-A8F9-9016E8FCD006}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{03992CE3-10CA-42BC-BC2E-FE44F84C8374}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_LoadUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates">
+          <DTS:Executables>
+            <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{98EAF9E5-E55F-4EC3-83DE-13F889A2254D}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:MaxErrorCount="2000" DTS:ObjectName="DFT_Load_Shared_DimRole" DTS:refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:ObjectData>
+                <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+                  <components>
+                    <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLE_SRC_Staging_Shared_DimRole" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole" usesDispositions="true" version="7">
+                      <connections>
+                        <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Connections[OleDbConnection]">
+                        </connection>
+                      </connections>
+                      <outputs>
+                        <output name="Output" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output]">
+                          <externalMetadataColumns isUsed="True">
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[Name]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SourceKey]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SystemDescription" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SystemDescription]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[TextDesciption]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[paga_change_log_id]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn dataType="i4" name="row_id" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[row_id]">
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[Name]" length="255" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[Name]" name="Name" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                            <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                            <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SystemDescription]" length="255" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SystemDescription]" name="SystemDescription" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SystemDescription]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                            <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[TextDesciption]" length="1000" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[TextDesciption]" name="TextDesciption" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[TextDesciption]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                            <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                            <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                            <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                            <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].ExternalColumns[row_id]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[row_id]" name="row_id" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[row_id]" truncationRowDisposition="FailComponent">
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                        <output isErrorOut="true" name="Error" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[Name]" name="Name" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[Name]">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SourceKey]">
+                            </outputColumn>
+                            <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SystemDescription]" name="SystemDescription" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SystemDescription]">
+                            </outputColumn>
+                            <outputColumn codePage="1252" dataType="str" length="1000" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[TextDesciption]" name="TextDesciption" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[TextDesciption]">
+                            </outputColumn>
+                            <outputColumn dataType="i8" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                            </outputColumn>
+                            <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[paga_change_log_id]">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[row_id]" name="row_id" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[row_id]">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                      </outputs>
+                      <properties>
+                        <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                        <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                        </property>
+                        <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                        </property>
+                        <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                        </property>
+                        <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::GetData</property>
+                        <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                        <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                        <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                        <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                        </property>
+                      </properties>
+                    </component>
+                    <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Shared_DimRole" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole" usesDispositions="true" version="4">
+                      <connections>
+                        <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Connections[OleDbConnection]">
+                        </connection>
+                      </connections>
+                      <inputs>
+                        <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole]">
+                          <externalMetadataColumns isUsed="True">
+                            <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[SourceKey]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SystemDescription" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[SystemDescription]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[Name]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[TextDesciption]">
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                          <inputColumns>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[Name]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[Name]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].Columns[Name]">
+                            </inputColumn>
+                            <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].Columns[SourceKey]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SystemDescription" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[SystemDescription]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SystemDescription]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].Columns[SystemDescription]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].ExternalColumns[TextDesciption]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[TextDesciption]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole].Columns[TextDesciption]">
+                            </inputColumn>
+                          </inputColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Outputs[Error]" synchronousInputId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                      </outputs>
+                      <properties>
+                        <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                        <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Updates.Shared_DimRole</property>
+                        <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                        </property>
+                        <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                        </property>
+                        <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                        <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                        <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                        <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                        <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                        <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                    </component>
+                    <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Singleton_Shared_DimRole" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole" usesDispositions="true" version="4">
+                      <connections>
+                        <connection connectionManagerID="{4D674A89-EBB5-44C3-9C12-AE8F0E001766}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Connections[OleDbConnection]">
+                        </connection>
+                      </connections>
+                      <inputs>
+                        <input errorOrTruncationOperation="Insert" errorRowDisposition="RedirectRow" hasSideEffects="true" name="OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole]">
+                          <externalMetadataColumns isUsed="True">
+                            <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[SourceKey]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SystemDescription" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[SystemDescription]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[Name]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[TextDesciption]">
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                          <inputColumns>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[Name]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[Name]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].Columns[Name]">
+                            </inputColumn>
+                            <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].Columns[SourceKey]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SystemDescription" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[SystemDescription]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SystemDescription]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].Columns[SystemDescription]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].ExternalColumns[TextDesciption]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[TextDesciption]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole].Columns[TextDesciption]">
+                            </inputColumn>
+                          </inputColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error]" synchronousInputId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                      </outputs>
+                      <properties>
+                        <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                        <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Updates.Shared_DimRole</property>
+                        <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                        </property>
+                        <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                        </property>
+                        <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                        <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                        <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                        <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                        <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                        <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">1</property>
+                      </properties>
+                    </component>
+                    <component componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}" contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="DC_AddErrorDetails" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails" usesDispositions="true">
+                      <inputs>
+                        <input name="OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <inputColumns>
+                            <inputColumn cachedDataType="i4" cachedName="ErrorCode" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails].Columns[ErrorCode]">
+                            </inputColumn>
+                            <inputColumn cachedDataType="i4" cachedName="ErrorColumn" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails].Columns[ErrorColumn]">
+                            </inputColumn>
+                          </inputColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output exclusionGroup="1" name="Output" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output]" synchronousInputId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" name="PackageName" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                                <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)@[System::PackageName]</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" name="QueueID" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property dataType="System.String" description="Derived Column Expression" name="Expression">@[User::intQueueID]</property>
+                                <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">@[User::intQueueID]</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" length="255" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" name="ErrorType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property dataType="System.String" description="Derived Column Expression" name="Expression">(DT_STR, 255, 1252)("Insert")</property>
+                                <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">(DT_STR, 255, 1252)("Insert")</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" name="SSISErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorCode]}</property>
+                                <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Shared_DimRole.ErrorCode</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn dataType="i4" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" name="SSISErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property containsID="true" dataType="System.String" description="Derived Column Expression" name="Expression">#{Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]}</property>
+                                <property containsID="true" dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">OLE_DST_Singleton_Shared_DimRole.ErrorColumn</property>
+                              </properties>
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                        <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Error]" synchronousInputId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                      </outputs>
+                    </component>
+                    <component componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}" contactInfo="Row Count;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="RC_CountErrors" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\RC_CountErrors">
+                      <inputs>
+                        <input hasSideEffects="true" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output name="Output" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\RC_CountErrors.Outputs[Output]" synchronousInputId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                        </output>
+                      </outputs>
+                      <properties>
+                        <property dataType="System.String" description="Specifies the variable to hold the row count." name="VariableName">User::intErrorCount</property>
+                      </properties>
+                    </component>
+                    <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLE_DST_Error_Shared_DimRole" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole" usesDispositions="true" version="4">
+                      <connections>
+                        <connection connectionManagerID="{2C3E7E8F-26FE-46EC-83AC-2F8FC8506F95}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Errors]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Connections[OleDbConnection]">
+                        </connection>
+                      </connections>
+                      <inputs>
+                        <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole]">
+                          <externalMetadataColumns isUsed="True">
+                            <externalMetadataColumn dataType="i4" name="QueueID" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[QueueID]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn dataType="i4" name="SSISErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SSISErrorCode]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn dataType="i4" name="SSISErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SSISErrorColumn]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="PackageName" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[PackageName]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="ErrorType" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[ErrorType]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[Name]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SourceKey]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="255" name="SystemDescription" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SystemDescription]">
+                            </externalMetadataColumn>
+                            <externalMetadataColumn codePage="1252" dataType="str" length="1000" name="TextDesciption" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[TextDesciption]">
+                            </externalMetadataColumn>
+                          </externalMetadataColumns>
+                          <inputColumns>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="PackageName" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[PackageName]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[PackageName]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[PackageName]">
+                            </inputColumn>
+                            <inputColumn cachedDataType="i4" cachedName="QueueID" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[QueueID]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[QueueID]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[QueueID]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="ErrorType" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[ErrorType]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[ErrorType]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[ErrorType]">
+                            </inputColumn>
+                            <inputColumn cachedDataType="i4" cachedName="SSISErrorCode" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SSISErrorCode]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorCode]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[SSISErrorCode]">
+                            </inputColumn>
+                            <inputColumn cachedDataType="i4" cachedName="SSISErrorColumn" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SSISErrorColumn]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output].Columns[SSISErrorColumn]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[SSISErrorColumn]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="Name" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[Name]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[Name]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[Name]">
+                            </inputColumn>
+                            <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SourceKey]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SourceKey]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[SourceKey]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="SystemDescription" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[SystemDescription]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[SystemDescription]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[SystemDescription]">
+                            </inputColumn>
+                            <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1000" cachedName="TextDesciption" externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].ExternalColumns[TextDesciption]" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output].Columns[TextDesciption]" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole].Columns[TextDesciption]">
+                            </inputColumn>
+                          </inputColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Outputs[Error]" synchronousInputId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole]">
+                          <externalMetadataColumns>
+                          </externalMetadataColumns>
+                          <outputColumns>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                            </outputColumn>
+                            <outputColumn dataType="i4" lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                            </outputColumn>
+                          </outputColumns>
+                        </output>
+                      </outputs>
+                      <properties>
+                        <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                        <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[Errors].[Shared_DimRole]</property>
+                        <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                        </property>
+                        <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                        </property>
+                        <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                        <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                        <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
+                        <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                        <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                        <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                        <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">200</property>
+                      </properties>
+                    </component>
+                  </components>
+                  <paths>
+                    <path endId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Inputs[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole]" name="OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole.Paths[OLE_SRC_Staging_Shared_DimRole_Output_OLE_DST_Shared_DimRole]" startId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_SRC_Staging_Shared_DimRole.Outputs[Output]">
+                    </path>
+                    <path endId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Inputs[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole]" name="OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole.Paths[OLE_DST_Shared_DimRole_Error_OLE_DST_Singleton_Shared_DimRole]" startId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Shared_DimRole.Outputs[Error]">
+                    </path>
+                    <path endId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Inputs[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails]" name="OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole.Paths[OLE_DST_Singleton_Shared_DimRole_Error_DC_AddErrorDetails]" startId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Singleton_Shared_DimRole.Outputs[Error]">
+                    </path>
+                    <path endId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\RC_CountErrors.Inputs[DC_AddErrorDetails_Output_RC_CountErrors]" name="DC_AddErrorDetails_Output_RC_CountErrors" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole.Paths[DC_AddErrorDetails_Output_RC_CountErrors]" startId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\DC_AddErrorDetails.Outputs[Output]">
+                    </path>
+                    <path endId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\OLE_DST_Error_Shared_DimRole.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole]" name="RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole" refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole.Paths[RC_CountErrors_Output_OLE_DST_Error_Shared_DimRole]" startId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole\RC_CountErrors.Outputs[Output]">
+                    </path>
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{AAA21AD0-3545-48C5-80A7-FBF3EF17B3BA}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_UpdateChangedRows" DTS:refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\EST_UpdateChangedRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData SQLTask:Connection="Paga_EDW" SQLTask:SqlStatementSource="User::UpdateQuery" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{856AF2A6-557E-4E26-AC2C-1FF78ECBE163}" DTS:From="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimRole" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_DFT_Load_Shared_DimRole_To_EST_UpdateChangedRows" DTS:refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates.PrecedenceConstraints[Constraint_DFT_Load_Shared_DimRole_To_EST_UpdateChangedRows]" DTS:To="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\EST_UpdateChangedRows">
+            </DTS:PrecedenceConstraint>
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{81B862A0-27D8-49C8-A6F7-88C80C4BE0B9}" DTS:From="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates]" DTS:To="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{6C447443-09F0-4D09-A3C5-CA4AD4BA45B6}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForUpdates_To_SEQ_LoadUpdates" DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_EST_CheckForUpdates_To_SEQ_LoadUpdates]" DTS:To="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="STOCK:SEQUENCE" DTS:DelayValidation="True" DTS:DTSID="{1D983F25-8845-4AB4-BF11-99483294CD30}" DTS:ExecutableType="STOCK:SEQUENCE" DTS:LocaleID="-1" DTS:ObjectName="SEQ_Set_Deleted_Rows_Inactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive">
+      <DTS:Executables>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{FDB4389F-2AC4-49F9-AEEF-41F018E4342D}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="ET_Set_ChangeOperation" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation" DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <ExpressionTask Expression="@[User::ChangeOperation] = &quot;D&quot;">
+            </ExpressionTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{9FC60BDA-960A-48C9-B8B2-079F7EF6E03A}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForDeletes" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_Staging" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
+              </SQLTask:ResultBinding>
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DelayValidation="True" DTS:DTSID="{C2C65086-A121-4C05-ABA0-F11F44E7EB4C}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_SetDeletedRowsToInactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData SQLTask:Connection="Paga_EDW" SQLTask:SqlStatementSource="User::InactiveQuery" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{66D381AC-07EA-460A-B43D-5432C6ACB1EB}" DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes">
+        </DTS:PrecedenceConstraint>
+        <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{8302E405-D214-44D9-8B63-99DA04D2EA2F}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive" DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive">
+        </DTS:PrecedenceConstraint>
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{90BE61DC-2E4C-4B59-B35B-2E387E085806}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
+      <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{6345D7FE-258C-469A-8469-F4D8B9D026DA}" DTS:From="Package\SQL_Truncate_Error_Shared_DimRole" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SQL_Truncate_Error_Shared_DimRole_To_SEQ_Load_New_Rows" DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Shared_DimRole_To_SEQ_Load_New_Rows]" DTS:To="Package\SEQ_Load_New_Rows">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{548A38A4-7FB4-46D4-A769-51F3186455AE}" DTS:From="Package\SEQ_Load_New_Rows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows" DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows]" DTS:To="Package\SEQ_Update_Changed_Rows">
+    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{F95E612F-EE20-4B72-A25C-986E11CF7174}" DTS:From="Package\SEQ_Update_Changed_Rows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive" DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive]" DTS:To="Package\SEQ_Set_Deleted_Rows_Inactive">
+    </DTS:PrecedenceConstraint>
+  </DTS:PrecedenceConstraints>
+  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EBB3C428-B2A1-40B2-A821-81D3B55BF943}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intQueueID">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EAEA1F9C-09C6-42CB-BF6C-6F44F78A6F41}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="intErrorCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F7AA995F-F2A1-45F1-AEC8-6F3F5B2EF141}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="strPackageName">
+      <DTS:VariableValue DTS:DataType="8">2020_Shared_DimRole</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D460AAB0-AC5A-459B-9CE7-3435CBB07F93}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="ChangeOperation">
+      <DTS:VariableValue DTS:DataType="8">I</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A27DAACF-1BFE-4185-AFE5-A519C61EC1EA}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Shared_DimRole &quot; +@[User::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Shared_DimRole WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7DF55015-00B4-4BCE-ADA1-401C38909EDE}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;WHERE SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] +&quot; AND SYS_CHANGE_OPERATION = '&quot; + @[User::ChangeOperation] +&quot;'&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="EndOfQuery">
+      <DTS:VariableValue DTS:DataType="8">WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1DEE5B34-A5F7-4BAF-8028-11C8FD3AA4E6}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B6F55649-2521-42FF-8549-3FB72BCFAEED}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT * FROM [Staging].[Shared_DimRole] &quot; + @[User::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetData">
+      <DTS:VariableValue DTS:DataType="8">SELECT * FROM [Staging].[Shared_DimRole] WHERE SYS_CHANGE_VERSION = 0 AND SYS_CHANGE_OPERATION = 'I'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CA2CBA76-249B-490A-AFAC-89992F3C1C72}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;UPDATE [Shared].[DimRole] SET IsActive = 0  WHERE  	EXISTS 	( 		SELECT 1  		FROM Paga_Staging.Staging.Shared_DimRole as stg 		WHERE  			stg.SourceKey = sourceKey 			AND SYS_CHANGE_OPERATION = 'D' 			AND SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] +&quot;	)&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="InactiveQuery">
+      <DTS:VariableValue DTS:DataType="8">UPDATE [Shared].[DimRole] SET IsActive = 0  WHERE  	EXISTS 	( 		SELECT 1  		FROM Paga_Staging.Staging.Shared_DimRole as stg 		WHERE  			stg.SourceKey = sourceKey 			AND SYS_CHANGE_OPERATION = 'D' 			AND SYS_CHANGE_VERSION = 0	)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7EBF5B25-C51A-4F4A-A7C9-58AEC44F1202}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;UPDATE edw &#xA;	SET &#xA;	edw.SourceKey = stg.SourceKey,edw.SystemDescription = stg.SystemDescription,edw.Name = stg.Name,edw.TextDesciption = stg.TextDesciption&#xA;	FROM Shared.DimRole AS edw&#xA;	INNER JOIN Paga_Staging.Updates.Shared_DimRole AS stg ON&#xA;		edw.SourceKey = stg.SourceKey;&#xA;	GO&quot;" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="UpdateQuery">
+      <DTS:VariableValue DTS:DataType="8">UPDATE edw 	SET 	edw.SourceKey = stg.SourceKey,edw.SystemDescription = stg.SystemDescription,edw.Name = stg.Name,edw.TextDesciption = stg.TextDesciption	FROM Shared.DimRole AS edw	INNER JOIN Paga_Staging.Updates.Shared_DimRole AS stg ON		edw.SourceKey = stg.SourceKey;	GO</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+</DTS:Executable>
