@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="3201_Finance_FactFinancialTransaction"
   DTS:PackageType="5"
-  DTS:VersionBuild="196"
-  DTS:VersionGUID="{533E42DD-CE4E-483B-B534-A4E8EF756469}">
+  DTS:VersionBuild="197"
+  DTS:VersionGUID="{38832A0F-4AB9-4460-86F2-B92BCBE8913C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -3066,6 +3066,14 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
                       dataType="str"
                       length="1"
                       name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[paga_change_log_id]"
+                      dataType="i4"
+                      name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[row_id]"
+                      dataType="i4"
+                      name="row_id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4463,24 +4471,24 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           <paths>
             <path
               refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output2]"
-              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 3]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 3.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
-              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 2]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 2.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 1]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 1.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 5]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 3]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 3.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
+              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 2]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 2.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Union All Output 1]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -4625,74 +4633,6 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
-          TopLeft="722.5,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="51.75,162"
-              Start="0,0"
-              End="51.75,154.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,102.676875957121" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,102.676875957121"
-                    Point2="0,106.676875957121"
-                    Point3="4,106.676875957121" />
-                  <mssgle:LineSegment
-                    End="47.75,106.676875957121" />
-                  <mssgle:CubicBezierSegment
-                    Point1="47.75,106.676875957121"
-                    Point2="51.75,106.676875957121"
-                    Point3="51.75,110.676875957121" />
-                  <mssgle:LineSegment
-                    End="51.75,154.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output2]"
-          TopLeft="1017.5,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-232.9,162"
-              Start="0,0"
-              End="-232.9,154.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,109.897972531066" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,109.897972531066"
-                    Point2="0,113.897972531066"
-                    Point3="-4,113.897972531066" />
-                  <mssgle:LineSegment
-                    End="-228.9,113.897972531066" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-228.9,113.897972531066"
-                    Point2="-232.9,113.897972531066"
-                    Point3="-232.9,117.897972531066" />
-                  <mssgle:LineSegment
-                    End="-232.9,154.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
           TopLeft="122.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4726,7 +4666,7 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output2]"
           TopLeft="422.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4751,6 +4691,74 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
                     Point3="334.5,100.481994459834" />
                   <mssgle:LineSegment
                     End="334.5,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
+          TopLeft="722.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="51.75,162"
+              Start="0,0"
+              End="51.75,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,102.676875957121" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,102.676875957121"
+                    Point2="0,106.676875957121"
+                    Point3="4,106.676875957121" />
+                  <mssgle:LineSegment
+                    End="47.75,106.676875957121" />
+                  <mssgle:CubicBezierSegment
+                    Point1="47.75,106.676875957121"
+                    Point2="51.75,106.676875957121"
+                    Point3="51.75,110.676875957121" />
+                  <mssgle:LineSegment
+                    End="51.75,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
+          TopLeft="1017.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-232.9,162"
+              Start="0,0"
+              End="-232.9,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,109.897972531066" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,109.897972531066"
+                    Point2="0,113.897972531066"
+                    Point3="-4,113.897972531066" />
+                  <mssgle:LineSegment
+                    End="-228.9,113.897972531066" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-228.9,113.897972531066"
+                    Point2="-232.9,113.897972531066"
+                    Point3="-232.9,117.897972531066" />
+                  <mssgle:LineSegment
+                    End="-232.9,154.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="001_LoadStaging"
   DTS:PackageType="5"
-  DTS:VersionBuild="441"
-  DTS:VersionGUID="{0590AE78-8E9C-40B9-8E93-A695167DC1AC}">
+  DTS:VersionBuild="442"
+  DTS:VersionGUID="{30571490-E7E5-43C4-818D-ED43E31C6AE8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -24,7 +24,7 @@
       DTS:ObjectName="LoadGroupFilter">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">AND LoadGroup = 2100</DTS:Property>
+        DTS:Name="ParameterValue">AND LoadGroup = 3100</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -34,7 +34,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">3</DTS:Property>
+        DTS:Name="ParameterValue">4</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -107,7 +107,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ConvertSystemStart">
       <DTS:VariableValue
-        DTS:DataType="8">2015-02-16 11:46:05.000</DTS:VariableValue>
+        DTS:DataType="8">2015-02-16 17:07:10.000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -213,7 +213,7 @@ WHERE ct.as_of_change_version &gt;= 0' FROM
 	) as prefix ON 
 		base.TABLE_SCHEMA = prefix.TABLE_SCHEMA
 		AND base.HasBaseQueryDef = 1
-		AND LoadGroup = 2100
+		AND LoadGroup = 3100
 ) AS x
 </DTS:VariableValue>
     </DTS:Variable>
@@ -230,7 +230,7 @@ WHERE ct.as_of_change_version &gt;= 0' FROM
 	ChangeVersion
 FROM [ChangeTracking].[Load_History]
 WHERE 
-	PushedToStaging = 2
+	PushedToStaging = 3
 ORDER BY
 	LoadID</DTS:VariableValue>
     </DTS:Variable>
@@ -252,7 +252,7 @@ ORDER BY
       DTS:Namespace="User"
       DTS:ObjectName="LoadLevelLess1">
       <DTS:VariableValue
-        DTS:DataType="8">2</DTS:VariableValue>
+        DTS:DataType="8">3</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -326,7 +326,7 @@ ORDER BY
 	) as prefix ON 
 		base.TABLE_SCHEMA = prefix.TABLE_SCHEMA
 		AND base.HasBaseQueryDef = 1
-		AND LoadGroup = 2100
+		AND LoadGroup = 3100
 ) AS x
 </DTS:VariableValue>
     </DTS:Variable>
@@ -389,7 +389,7 @@ WHERE ct.as_of_change_version &gt;= 0'</DTS:VariableValue>
       DTS:ObjectName="UpdateLoadQueue">
       <DTS:VariableValue
         DTS:DataType="8">UPDATE [ChangeTracking].[Load_History]
-SET PushedToStaging = 3
+SET PushedToStaging = 4
 WHERE
  ChangeVersion = 0</DTS:VariableValue>
     </DTS:Variable>

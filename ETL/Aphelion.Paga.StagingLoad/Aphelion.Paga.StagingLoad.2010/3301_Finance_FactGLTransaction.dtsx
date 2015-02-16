@@ -11,8 +11,8 @@
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="3301_Finance_FactGLTransaction"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{15E0501A-E52F-4BBB-AB7E-1D49B79DCB3F}"
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{015D15A4-52F3-4D9A-ABD4-E91736F88C95}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -1753,6 +1753,14 @@ FROM
                       refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[FactFinancialTxSourceKey]"
                       dataType="i4"
                       name="FactFinancialTxSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[paga_change_log_id]"
+                      dataType="i4"
+                      name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[row_id]"
+                      dataType="i4"
+                      name="row_id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2515,24 +2523,24 @@ FROM
           <paths>
             <path
               refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1]"
-              name="Output"
-              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
-              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5]"
-              name="Output"
-              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output]" />
-            <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
               endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 3]"
               name="Output"
               startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_3.Outputs[Output]" />
             <path
-              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
+              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
               endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 2]"
               name="Output"
               startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_2.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
+              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 1]"
+              name="Output"
+              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1.Outputs[Output]" />
+            <path
+              refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
+              endId="Package\DFT_Load Finance_FactGLTransaction\UA_FactGLTransaction.Inputs[Union All Input 5]"
+              name="Output"
+              startId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0.Outputs[Output]" />
             <path
               refId="Package\DFT_Load Finance_FactGLTransaction.Paths[Union All Output 1]"
               endId="Package\DFT_Load Finance_FactGLTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -2624,7 +2632,7 @@ FROM
     design-time-name="Package\DFT_Load Finance_FactGLTransaction">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="169,42"
           Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_1"
@@ -2650,7 +2658,7 @@ FROM
           Id="Package\DFT_Load Finance_FactGLTransaction\OLEDB_GetData_0"
           TopLeft="5.5,5.5" />
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
           TopLeft="550,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2680,9 +2688,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2704,13 +2710,11 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
           TopLeft="320,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2740,13 +2744,11 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output]"
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output2]"
           TopLeft="780,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2776,13 +2778,11 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output3]"
+          Id="Package\DFT_Load Finance_FactGLTransaction.Paths[Output1]"
           TopLeft="90,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2812,9 +2812,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

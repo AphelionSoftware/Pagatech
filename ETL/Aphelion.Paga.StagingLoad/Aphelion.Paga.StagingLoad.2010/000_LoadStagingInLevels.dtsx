@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="000_LoadStagingInLevels"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{9AABFB14-8229-40F3-B201-A49A57ED2F34}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{B9F1E0EE-BA09-4ACB-A660-8C6101405620}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -52,7 +52,7 @@
       DTS:CreationName=""
       DTS:DTSID="{85668CF5-8A68-4BEA-8CF3-10D05E88A747}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="WHERE LoadGroup = 2100"
+      DTS:Expression="WHERE LoadGroup = 3100"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="LoadGroupFilter">
@@ -64,31 +64,31 @@
       DTS:CreationName=""
       DTS:DTSID="{EC0A4754-3CB9-4138-BFE1-E018420848C5}"
       DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;4&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="LoadLevel">
       <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
+        DTS:DataType="8">4</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\For Loop Container"
+      DTS:refId="Package\FLC_LoadStagingInLevels"
       DTS:AssignExpression="@LevelLoop = @LevelLoop +1"
       DTS:CreationName="STOCK:FORLOOP"
       DTS:Description="For Loop Container"
       DTS:DTSID="{008A2900-5677-4329-861C-2B8B0445DF51}"
-      DTS:EvalExpression="@LevelLoop &lt; 4"
+      DTS:EvalExpression="@LevelLoop &lt;= 4"
       DTS:ExecutableType="STOCK:FORLOOP"
-      DTS:InitExpression="@LevelLoop = 1"
+      DTS:InitExpression="@LevelLoop = 4"
       DTS:LocaleID="-1"
       DTS:MaxConcurrent="1"
-      DTS:ObjectName="For Loop Container">
+      DTS:ObjectName="FLC_LoadStagingInLevels">
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\For Loop Container\EPT_LoadStaging"
+          DTS:refId="Package\FLC_LoadStagingInLevels\EPT_LoadStaging"
           DTS:CreationName="SSIS.ExecutePackageTask.3"
           DTS:Description="Execute Package Task"
           DTS:DTSID="{E906D1A3-5D1C-4737-A0FB-B41096CFED6D}"
@@ -121,7 +121,7 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\For Loop Container\FT_LoadGroupFilter"
+          DTS:refId="Package\FLC_LoadStagingInLevels\FT_LoadGroupFilter"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:Description="Expression Task"
           DTS:DTSID="{34686300-c43c-4116-bc7d-ac4ba0720404}"
@@ -133,13 +133,14 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <ExpressionTask
-              Expression="@[User::LoadGroupFilter] = ( @[User::LevelLoop] == 1 ? &quot;WHERE LoadGroup &lt; 3000&quot;:  @[User::LevelLoop] == 2 ? &quot;WHERE LoadGroup = 3000&quot;  : @[User::LevelLoop] == 3 ? &quot;WHERE LoadGroup &gt; 3000&quot;: &quot;&quot;)" />
+              Expression="@[User::LoadGroupFilter] = ( &#xA;@[User::LevelLoop] == 1 ? &quot;WHERE LoadGroup &lt; 3000&quot;:  &#xA;@[User::LevelLoop] == 2 ? &quot;WHERE LoadGroup = 3000&quot;  :&#xA;@[User::LevelLoop] == 3 ? &quot;WHERE LoadGroup &gt; 3000&quot; :&#xA;@[User::LevelLoop] == 4 ? &quot;WHERE LoadGroup =3100&quot;:&#xA; &quot;&quot;)" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\For Loop Container\FT_LoadLevel"
+          DTS:refId="Package\FLC_LoadStagingInLevels\FT_LoadLevel"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:Description="Expression Task"
+          DTS:Disabled="True"
           DTS:DTSID="{ED6772A5-1A85-46E0-8857-6EE539338E92}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
@@ -155,21 +156,21 @@
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:refId="Package\FLC_LoadStagingInLevels.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
           DTS:DTSID="{CDAFD053-FB75-418B-B1C2-E3D13EC06E93}"
-          DTS:From="Package\For Loop Container\FT_LoadLevel"
+          DTS:From="Package\FLC_LoadStagingInLevels\FT_LoadLevel"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\For Loop Container\FT_LoadGroupFilter" />
+          DTS:To="Package\FLC_LoadStagingInLevels\FT_LoadGroupFilter" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:refId="Package\FLC_LoadStagingInLevels.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
           DTS:DTSID="{B2361382-12DE-4BDB-B0A3-5A2328FE6AFC}"
-          DTS:From="Package\For Loop Container\FT_LoadGroupFilter"
+          DTS:From="Package\FLC_LoadStagingInLevels\FT_LoadGroupFilter"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\For Loop Container\EPT_LoadStaging" />
+          DTS:To="Package\FLC_LoadStagingInLevels\EPT_LoadStaging" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -187,18 +188,18 @@
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="163,42"
-          Id="Package\For Loop Container\EPT_LoadStaging"
+          Id="Package\FLC_LoadStagingInLevels\EPT_LoadStaging"
           TopLeft="10.5,209.5" />
         <NodeLayout
           Size="173,42"
-          Id="Package\For Loop Container\FT_LoadGroupFilter"
+          Id="Package\FLC_LoadStagingInLevels\FT_LoadGroupFilter"
           TopLeft="5.50000000000003,107.5" />
         <NodeLayout
           Size="145,42"
-          Id="Package\For Loop Container\FT_LoadLevel"
+          Id="Package\FLC_LoadStagingInLevels\FT_LoadLevel"
           TopLeft="19.5,5.5" />
         <EdgeLayout
-          Id="Package\For Loop Container.PrecedenceConstraints[Constraint]"
+          Id="Package\FLC_LoadStagingInLevels.PrecedenceConstraints[Constraint]"
           TopLeft="92,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -220,7 +221,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 1]"
+          Id="Package\FLC_LoadStagingInLevels.PrecedenceConstraints[Constraint 1]"
           TopLeft="92,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -245,8 +246,8 @@
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="193,307"
-          Size="193,350"
-          Id="Package\For Loop Container"
+          Size="223,350"
+          Id="Package\FLC_LoadStagingInLevels"
           TopLeft="5.50000000000004,5.5" />
       </GraphLayout>
     </LayoutInfo>
