@@ -38,6 +38,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitLevel4_SourceKey]
     ON [Shared].[DimOrganizationUnitLevel4]([SourceKey] ASC);
@@ -103,16 +105,17 @@ FROM [dbo].OrganizationUnit AS ou1 	INNER JOIN cte AS ST ON  		ou1.ParentOrganiz
 ou1.OrganizationUnitTypeId = ot1.OrganizationUnitTypeId 	WHERE ou1.ParentOrganizationUnitId IS NOT NULL )  	
 INSERT INTO @OrgUnit 	( 		SourceKey, 		Name, 		DimOrganizationSourceKey, 		DimOrganizationUnitTypeSourceKey, 		IdentificationNumber 	)  	
 SELECT 		
-	ct.SYS_CHANGE_OPERATION, 
-	SYS_CHANGE_VERSION = ct.as_of_change_version,
-	paga_change_log_id = ct.row_id,
+	
 SourceKey = cte.OrganizationUnitId, 		Name = CONVERT(VARCHAR(255),cte.UnitName), 		DimOrganizationSourceKey = cte.OrganizationId, 		
 DimOrganizationTypeSourceKey = COALESCE(((cte.OrganizationUnitTypeId)), 0), 		IdentificationNumber 	FROM cte 	WHERE  		cte.OrgLevel = @OrgLevel 	 	 	
-SELECT  		SourceKey, 		base_query.Name, 		base_query.DimOrganizationSourceKey, 		base_query.DimOrganizationUnitTypeSourceKey, 		base_query.IdentificationNumber
+SELECT  		ct.SYS_CHANGE_OPERATION, 
+	SYS_CHANGE_VERSION = ct.as_of_change_version,
+	paga_change_log_id = ct.row_id, SourceKey, 		base_query.Name, 		base_query.DimOrganizationSourceKey, 		base_query.DimOrganizationUnitTypeSourceKey, 		base_query.IdentificationNumber
 		
 	
-	FROM @OrgUnit AS base_query
-', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4';
+	FROM @OrgUnit AS base_query', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel4';
+
+
 
 
 
