@@ -11,8 +11,8 @@
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="2304_Shared_DimOrganizationUnitLevel1"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{63DCEECB-F73A-431F-9996-2343F4DF8204}"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{89A05FAE-C0F9-462A-9E74-0D055DBDA387}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -1003,7 +1003,7 @@ FROM @OrgUnit AS base_query
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}"
-          SQLTask:SqlStatementSource="TRUNCATE dbo.OrganizationUnitType" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.OrganizationUnitType" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -1059,6 +1059,10 @@ FROM @OrgUnit AS base_query
           Size="173,42"
           Id="Package\EST_CheckForRows"
           TopLeft="67.5,209.5" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\EST_TruncatePreStaging"
+          TopLeft="55.5,5.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="154,149.5">
@@ -1105,10 +1109,6 @@ FROM @OrgUnit AS base_query
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="197,42"
-          Id="Package\EST_TruncatePreStaging"
-          TopLeft="55.5,5.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="154,47.5">
