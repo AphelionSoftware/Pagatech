@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="000_LoadStagingInLevels"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{B9F1E0EE-BA09-4ACB-A660-8C6101405620}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{6E8D285B-0D6B-47AE-9DEC-A2DA63A5A61E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -52,7 +52,7 @@
       DTS:CreationName=""
       DTS:DTSID="{85668CF5-8A68-4BEA-8CF3-10D05E88A747}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="WHERE LoadGroup = 3100"
+      DTS:Expression="WHERE LoadGroup &lt; 3000"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="LoadGroupFilter">
@@ -140,7 +140,6 @@
           DTS:refId="Package\FLC_LoadStagingInLevels\FT_LoadLevel"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:Description="Expression Task"
-          DTS:Disabled="True"
           DTS:DTSID="{ED6772A5-1A85-46E0-8857-6EE539338E92}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
@@ -245,7 +244,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="193,307"
+          PanelSize="223,307"
           Size="223,350"
           Id="Package\FLC_LoadStagingInLevels"
           TopLeft="5.50000000000004,5.5" />
