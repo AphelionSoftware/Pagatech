@@ -7,11 +7,11 @@
   DTS:CreatorName="Administrator"
   DTS:DTSID="{64AD0B50-16D5-4CC3-A171-6463D6E21E5F}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="100_DummyTablePackage"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{BDD10389-A9F6-45F5-9659-CCDE98F702F6}"
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{F2D5AC27-BBD6-4F8F-B99B-3FC2BC1C0B99}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -49,32 +49,64 @@
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{0B2EA41D-2A64-49D6-8994-67FCC51D365B}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT &#xA;&#x9;bq.FinancialTransactionId,&#xA;&#x9;bq.EffDate,&#xA;&#x9;bq.OrigTxID,&#xA;&#x9;bq.RelatedTxID&#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;ft1.FinancialTransactionId,&#xA;&#x9;&#x9;&#x9;ft1.TransactionDate AS EffDate,&#xA;&#x9;&#x9;&#x9;ft1.FinancialTransactionId AS OrigTxID,&#xA;&#x9;&#x9;&#x9;ft1.__Reverses AS RelatedTxID,&#xA;&#x9;&#x9;&#x9;SourceKey = ft1.FinancialTransactionId&#xA;&#x9;FROM dbo.FinancialTransaction AS ft1&#xA;) AS bq&#xA;&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="BaseQuery">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT 	* FROM ( 	SELECT  		AgentCommissionTypeId AS SourceKey,  		CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name  	FROM dbo.AgentCommissionType ) AS base_query</DTS:VariableValue>
+        DTS:DataType="8">SELECT 
+	bq.FinancialTransactionId,
+	bq.EffDate,
+	bq.OrigTxID,
+	bq.RelatedTxID
+FROM
+(
+	SELECT
+			ft1.FinancialTransactionId,
+			ft1.TransactionDate AS EffDate,
+			ft1.FinancialTransactionId AS OrigTxID,
+			ft1.__Reverses AS RelatedTxID,
+			SourceKey = ft1.FinancialTransactionId
+	FROM dbo.FinancialTransaction AS ft1
+) AS bq
+</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{384F7762-F476-4582-BFDD-8F14B375D588}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::BaseQuery]+ @[$Package::EndOfQuery]"
+      DTS:Expression="@[User::BaseQuery]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="FullQueryText">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT 	* FROM ( 	SELECT  		AgentCommissionTypeId AS SourceKey,  		CONVERT(VARCHAR(255),AgentCommissionTypeId) AS Name  	FROM dbo.AgentCommissionType ) AS base_query</DTS:VariableValue>
+        DTS:DataType="8">SELECT 
+	bq.FinancialTransactionId,
+	bq.EffDate,
+	bq.OrigTxID,
+	bq.RelatedTxID
+FROM
+(
+	SELECT
+			ft1.FinancialTransactionId,
+			ft1.TransactionDate AS EffDate,
+			ft1.FinancialTransactionId AS OrigTxID,
+			ft1.__Reverses AS RelatedTxID,
+			SourceKey = ft1.FinancialTransactionId
+	FROM dbo.FinancialTransaction AS ft1
+) AS bq
+</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DFT_Load Classification_DimAgentCommissionType"
+      DTS:refId="Package\DFT_LoadReversals"
       DTS:CreationName="SSIS.Pipeline.3"
       DTS:DTSID="{E5A65486-F55B-4130-8D28-5A427BA7CBD3}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DFT_Load Classification_DimAgentCommissionType"
+      DTS:ObjectName="DFT_LoadReversals"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -84,104 +116,7 @@
           version="1">
           <components>
             <component
-              refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData"
-              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="dc_ChangeData"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output].Columns[SYS_CHANGE_OPERATION]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="1"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output].Columns[SYS_CHANGE_OPERATION]"
-                      name="SYS_CHANGE_OPERATION"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_STR,1,1252)@[$Package::ChangeOperation]</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_STR,1,1252)@[$Package::ChangeOperation]</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output].Columns[SYS_CHANGE_VERSION]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output].Columns[SYS_CHANGE_VERSION]"
-                      name="SYS_CHANGE_VERSION"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::ChangeVersion]</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::ChangeVersion]</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData"
+              refId="Package\DFT_LoadReversals\OLEDB_GetData"
               componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               name="OLEDB_GetData"
@@ -229,7 +164,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Connections[OleDbConnection]"
+                  refId="Package\DFT_LoadReversals\OLEDB_GetData.Connections[OleDbConnection]"
                   connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external"
                   connectionManagerRefId="Project.ConnectionManagers[SourceDB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -237,77 +172,101 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output]"
+                  refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output]"
                   name="Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].Columns[FinancialTransactionId]"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]"
-                      length="50"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]"
-                      name="SourceKey"
+                      externalMetadataColumnId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].ExternalColumns[FinancialTransactionId]"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].Columns[FinancialTransactionId]"
+                      name="FinancialTransactionId"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].Columns[Name]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].Columns[EffDate]"
+                      dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]"
-                      length="255"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].Columns[Name]"
-                      name="Name"
+                      externalMetadataColumnId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].ExternalColumns[EffDate]"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].Columns[EffDate]"
+                      name="EffDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].Columns[OrigTxID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].ExternalColumns[OrigTxID]"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].Columns[OrigTxID]"
+                      name="OrigTxID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].Columns[RelatedTxID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].ExternalColumns[RelatedTxID]"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].Columns[RelatedTxID]"
+                      name="RelatedTxID"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].ExternalColumns[SourceKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="SourceKey" />
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].ExternalColumns[FinancialTransactionId]"
+                      dataType="i4"
+                      name="FinancialTransactionId" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].ExternalColumns[Name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="Name" />
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].ExternalColumns[EffDate]"
+                      dataType="dbTimeStamp"
+                      name="EffDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].ExternalColumns[OrigTxID]"
+                      dataType="i4"
+                      name="OrigTxID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].ExternalColumns[RelatedTxID]"
+                      dataType="i4"
+                      name="RelatedTxID" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Error]"
+                  refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error]"
                   isErrorOut="true"
                   name="Error">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Error].Columns[SourceKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Error].Columns[SourceKey]"
-                      name="SourceKey" />
-                    <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Error].Columns[Name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Error].Columns[Name]"
-                      name="Name" />
-                    <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error].Columns[FinancialTransactionId]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error].Columns[FinancialTransactionId]"
+                      name="FinancialTransactionId" />
+                    <outputColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error].Columns[EffDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error].Columns[EffDate]"
+                      name="EffDate" />
+                    <outputColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error].Columns[OrigTxID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error].Columns[OrigTxID]"
+                      name="OrigTxID" />
+                    <outputColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error].Columns[RelatedTxID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error].Columns[RelatedTxID]"
+                      name="RelatedTxID" />
+                    <outputColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      refId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -316,7 +275,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging"
+              refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging"
               componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               name="OLEDB_InsertIntoStaging"
@@ -330,7 +289,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">Staging.Classification_DimAgentCommissionType</property>
+                  name="OpenRowset">[dbo].[Reversals]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -371,7 +330,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Connections[OleDbConnection]"
+                  refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Connections[OleDbConnection]"
                   connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]"
                   description="The OLE DB runtime connection used to access the database."
@@ -379,100 +338,94 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]"
+                  refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLEDB_GetData_Output_OLEDB_InsertIntoStaging">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[SourceKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="SourceKey"
-                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].Columns[SourceKey]" />
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[FinancialTransactionId]"
+                      cachedDataType="i4"
+                      cachedName="FinancialTransactionId"
+                      externalMetadataColumnId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[FinancialTransactionId]"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].Columns[FinancialTransactionId]" />
                     <inputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[Name]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="255"
-                      cachedName="Name"
-                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output].Columns[Name]" />
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[EffDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EffDate"
+                      externalMetadataColumnId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[EffDate]"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].Columns[EffDate]" />
                     <inputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_OPERATION]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1"
-                      cachedName="SYS_CHANGE_OPERATION"
-                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output].Columns[SYS_CHANGE_OPERATION]" />
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[OrigTxID]"
+                      cachedDataType="i4"
+                      cachedName="OrigTxID"
+                      externalMetadataColumnId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[OrigTxID]"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].Columns[OrigTxID]" />
                     <inputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[SYS_CHANGE_VERSION]"
-                      cachedDataType="i8"
-                      cachedName="SYS_CHANGE_VERSION"
-                      externalMetadataColumnId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output].Columns[SYS_CHANGE_VERSION]" />
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].Columns[RelatedTxID]"
+                      cachedDataType="i4"
+                      cachedName="RelatedTxID"
+                      externalMetadataColumnId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[RelatedTxID]"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output].Columns[RelatedTxID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DimAgentCommissionTypeID]"
-                      dataType="i4"
-                      name="DimAgentCommissionTypeID" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[DeltaHash]"
-                      dataType="i8"
-                      name="DeltaHash" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[Name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="Name" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="SourceKey" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SourceKeyHash]"
-                      dataType="i8"
-                      name="SourceKeyHash" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_OPERATION]"
                       codePage="1252"
                       dataType="str"
                       length="1"
                       name="SYS_CHANGE_OPERATION" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[SYS_CHANGE_VERSION]"
                       dataType="i8"
                       name="SYS_CHANGE_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[paga_change_log_id]"
+                      dataType="i4"
+                      name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[row_id]"
+                      dataType="i4"
+                      name="row_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[FinancialTransactionId]"
+                      dataType="i4"
+                      name="FinancialTransactionId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[EffDate]"
+                      dataType="dbTimeStamp"
+                      name="EffDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[OrigTxID]"
+                      dataType="i4"
+                      name="OrigTxID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging].ExternalColumns[RelatedTxID]"
+                      dataType="i4"
+                      name="RelatedTxID" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Outputs[Error]"
+                  refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Outputs[Error]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Error"
-                  synchronousInputId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]">
+                  synchronousInputId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]"
+                      refId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Outputs[Error].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -483,15 +436,10 @@
           </components>
           <paths>
             <path
-              refId="Package\DFT_Load Classification_DimAgentCommissionType.Paths[Derived Column Output]"
-              endId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]"
-              name="Derived Column Output"
-              startId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\DFT_Load Classification_DimAgentCommissionType.Paths[Output]"
-              endId="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData.Inputs[Derived Column Input]"
+              refId="Package\DFT_LoadReversals.Paths[Output]"
+              endId="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging.Inputs[OLEDB_GetData_Output_OLEDB_InsertIntoStaging]"
               name="Output"
-              startId="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData.Outputs[Output]" />
+              startId="Package\DFT_LoadReversals\OLEDB_GetData.Outputs[Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -510,89 +458,51 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="321,42"
-          Id="Package\DFT_Load Classification_DimAgentCommissionType"
+          Size="173,42"
+          Id="Package\DFT_LoadReversals"
           TopLeft="5.5,5.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT_Load Classification_DimAgentCommissionType">
+    design-time-name="Package\DFT_LoadReversals">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="199,42"
-          Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging"
+          Id="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging"
           TopLeft="49.5,264.5" />
         <NodeLayout
-          Size="153,42"
-          Id="Package\DFT_Load Classification_DimAgentCommissionType\dc_ChangeData"
-          TopLeft="93,161" />
-        <NodeLayout
           Size="155,42"
-          Id="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData"
+          Id="Package\DFT_LoadReversals\OLEDB_GetData"
           TopLeft="34.5,5.5" />
         <EdgeLayout
-          Id="Package\DFT_Load Classification_DimAgentCommissionType.Paths[Output]"
+          Id="Package\DFT_LoadReversals.Paths[Output]"
           TopLeft="112,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="57.5,113.5"
+              EndConnector="37,217"
               Start="0,0"
-              End="57.5,106">
+              End="37,209.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.75" />
+                    End="0,104.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,52.75"
-                    Point2="0,56.75"
-                    Point3="4,56.75" />
+                    Point1="0,104.5"
+                    Point2="0,108.5"
+                    Point3="4,108.5" />
                   <mssgle:LineSegment
-                    End="53.5,56.75" />
+                    End="33,108.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="53.5,56.75"
-                    Point2="57.5,56.75"
-                    Point3="57.5,60.75" />
+                    Point1="33,108.5"
+                    Point2="37,108.5"
+                    Point3="37,112.5" />
                   <mssgle:LineSegment
-                    End="57.5,106" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load Classification_DimAgentCommissionType.Paths[Derived Column Output]"
-          TopLeft="169.5,203">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-20.5,61.5"
-              Start="0,0"
-              End="-20.5,54">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.75"
-                    Point2="0,30.75"
-                    Point3="-4,30.75" />
-                  <mssgle:LineSegment
-                    End="-16.5,30.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-16.5,30.75"
-                    Point2="-20.5,30.75"
-                    Point3="-20.5,34.75" />
-                  <mssgle:LineSegment
-                    End="-20.5,54" />
+                    End="37,209.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -605,7 +515,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_InsertIntoStaging">
+    design-time-name="Package\DFT_LoadReversals\OLEDB_InsertIntoStaging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -618,7 +528,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load Classification_DimAgentCommissionType\OLEDB_GetData">
+    design-time-name="Package\DFT_LoadReversals\OLEDB_GetData">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

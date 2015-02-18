@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="3201_Finance_FactFinancialTransaction"
   DTS:PackageType="5"
-  DTS:VersionBuild="197"
-  DTS:VersionGUID="{38832A0F-4AB9-4460-86F2-B92BCBE8913C}">
+  DTS:VersionBuild="198"
+  DTS:VersionGUID="{52CE63EA-F770-4899-94A8-5AFA716F7386}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -41,16 +41,18 @@
       DTS:CreationName=""
       DTS:DTSID="{3B6CC437-5D1F-41D3-A747-427E93D38ACF}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT &#xA;&#x9;base_query.*,&#xA;&#x9;ct.SYS_CHANGE_OPERATION,&#xA; paga_change_log_id = ct.row_id, &#x9;SYS_CHANGE_VERSION&#xA; = ct.as_of_change_version FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;Cancelled, &#xA;&#x9;&#x9;ExchangeRate, &#xA;&#x9;&#x9;ExternalReferenceNumber, &#xA;&#x9;&#x9;FinancialTx_Amount, &#xA;&#x9;&#x9;FinancialTx_Fee, &#xA;&#x9;&#x9;ForeignCurrencyAmount, &#xA;&#x9;&#x9;IsIntegrationTx, &#xA;&#x9;&#x9;ReferenceNumber, &#xA;&#x9;&#x9;Reversed, &#xA;&#x9;&#x9;ShortCode, &#xA;&#x9;&#x9;SourceKey, &#xA;&#x9;&#x9;TextDescription,&#xA;&#x9;&#x9;DimFinancialTxDateID, &#xA;&#x9;&#x9;DimFinancialTxTimeID, &#xA;&#x9;&#x9;DimCurrencySourceKey, &#xA;&#x9;&#x9;DimFinancialTxTypeSourceKey, &#xA;&#x9;&#x9;DimUserSourceKey, &#xA;&#x9;&#x9;FactIntegrationTxSourceKey, &#xA;&#x9;&#x9;FactProcessEventSourceKey&#xA;&#xA;&#x9;FROM &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;&#x9;g.grp,&#xA;&#x9;&#x9;&#x9;FinancialTransactionId&#xA;&#x9;&#x9;FROM dbo.FinancialTransaction&#xA;&#x9;&#x9;CROSS APPLY (SELECT grp = (CAST(financialTransactionId AS VARCHAR) %4) ) AS g&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;grp  = @grp&#xA;&#x9;) AS driver&#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;SourceKey = ft.FinancialTransactionId, &#xA;&#x9;&#x9;&#x9;[DimFinancialTxDateID] = CONVERT(INT,CONVERT(VARCHAR(8),ft.TransactionDate,112)),&#xA;&#x9;&#x9;&#x9;[DimFinancialTxTimeID] =  CONVERT(INT,REPLACE(CONVERT(TIME(0),ft.TransactionDate),':','')),&#xA;&#x9;&#x9;&#x9;DimFinancialTxTypeSourceKey = FinancialTransactionTypeId, &#xA;&#x9;&#x9;&#x9;DimUserSourceKey = UserId, &#xA;&#x9;&#x9;&#x9;FactProcessEventSourceKey = COALESCE(ProcessId, -1), &#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN FT.__ReversedBy IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;ELSE 1&#xA;&#x9;&#x9;&#x9;END AS [Reversed],&#xA;&#x9;&#x9;&#x9;DimCurrencySourceKey = CurrencyId, &#xA;&#x9;&#x9;&#x9;TextDescription = CONVERT(VARCHAR(100),[Description]), &#xA;&#x9;&#x9;&#x9;FinancialTx_Amount = &#xA;&#x9;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN (FT.Reverses IS NOT NULL OR FT.__Reverses IS NOT NULL) THEN -FT.Amount &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ELSE FT.Amount &#xA;&#x9;&#x9;&#x9;&#x9;END, &#xA;&#x9;&#x9;&#x9;ExchangeRate, &#xA;&#x9;&#x9;&#x9;ExternalReferenceNumber,&#xA;&#x9;&#x9;&#x9;FinancialTx_Fee = Fee, &#xA;&#x9;&#x9;&#x9;ForeignCurrencyAmount, &#xA;&#x9;&#x9;&#x9;ReferenceNumber, &#xA;&#x9;&#x9;&#x9;ShortCode,&#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NOT NULL AND FT.Reverses IS NOT NULL) THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NOT NULL AND FT.Reverses IS NULL) THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NULL AND FT.Reverses IS NOT NULL) THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NULL AND FT.Reverses IS NULL) THEN 0&#xA;&#x9;&#x9;&#x9;END  AS [Cancelled],&#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN it.FactIntegrationTxSourceKey IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;ELSE 1&#xA;&#x9;&#x9;&#x9;END AS [IsIntegrationTx],&#xA;&#x9;&#x9;&#x9;it.FactIntegrationTxSourceKey&#xA;&#x9;&#x9;FROM dbo.financialTransaction AS ft&#xA;&#x9;&#x9;CROSS APPLY (SELECT grp = (CAST(financialTransactionId AS VARCHAR) %4) ) AS g&#xA;&#x9;&#x9;OUTER APPLY&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;FactIntegrationTxSourceKey = intTx.IntegrationTransactionId&#xA;&#x9;&#x9;&#x9;FROM dbo.IntegrationTransaction as intTx&#xA;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;intTx.FinancialTransactionId = ft.FinancialTransactionId&#xA;&#x9;&#x9;&#x9;&#x9;AND inttx.ExternalReferenceNumber = ft.ReferenceNumber&#xA;&#x9;&#x9;) AS it&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;g.grp = driver.grp&#xA;&#x9;&#x9;&#x9;AND ft.FinancialTransactionId = driver.FinancialTransactionId&#xA;&#x9;) as bq&#xA;) AS base_query &quot;"
+      DTS:Expression="&quot;&#xA;SELECT &#xA;&#x9;base_query.*,&#xA;&#x9;ct.SYS_CHANGE_OPERATION,&#xA;&#x9;paga_change_log_id = ct.row_id, &#x9;&#xA;&#x9;SYS_CHANGE_VERSION = ct.as_of_change_version &#xA;FROM&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;Cancelled, &#xA;&#x9;&#x9;ExchangeRate, &#xA;&#x9;&#x9;ExternalReferenceNumber, &#xA;&#x9;&#x9;FinancialTx_Amount, &#xA;&#x9;&#x9;FinancialTx_Fee, &#xA;&#x9;&#x9;ForeignCurrencyAmount, &#xA;&#x9;&#x9;IsIntegrationTx, &#xA;&#x9;&#x9;ReferenceNumber, &#xA;&#x9;&#x9;Reversed, &#xA;&#x9;&#x9;ShortCode, &#xA;&#x9;&#x9;SourceKey, &#xA;&#x9;&#x9;TextDescription,&#xA;&#x9;&#x9;DimFinancialTxDateID, &#xA;&#x9;&#x9;DimFinancialTxTimeID, &#xA;&#x9;&#x9;DimCurrencySourceKey, &#xA;&#x9;&#x9;DimFinancialTxTypeSourceKey, &#xA;&#x9;&#x9;DimUserSourceKey, &#xA;&#x9;&#x9;FactIntegrationTxSourceKey, &#xA;&#x9;&#x9;FactProcessEventSourceKey,&#xA;&#x9;&#x9;FactOriginalFinancialTxID,&#xA;&#x9;&#x9;FactRelatedFinancialTxID,&#xA;&#x9;&#x9;DimEffectiveDateID,&#xA;&#x9;&#x9;DimEffectiveTimeID&#xA;&#xA;&#x9;FROM &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;&#x9;g.grp,&#xA;&#x9;&#x9;&#x9;FinancialTransactionId&#xA;&#x9;&#x9;FROM dbo.FinancialTransaction&#xA;&#x9;&#x9;CROSS APPLY (SELECT grp = (CAST(financialTransactionId AS VARCHAR) %4) ) AS g&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;grp  = @grp&#xA;&#x9;) AS driver&#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;SourceKey = ft.FinancialTransactionId, &#xA;&#x9;&#x9;&#x9;[DimFinancialTxDateID] = CONVERT(INT,CONVERT(VARCHAR(8),ft.TransactionDate,112)),&#xA;&#x9;&#x9;&#x9;[DimFinancialTxTimeID] =  CONVERT(INT,REPLACE(CONVERT(TIME(0),ft.TransactionDate),':','')),&#xA;&#x9;&#x9;&#x9;DimFinancialTxTypeSourceKey = FinancialTransactionTypeId, &#xA;&#x9;&#x9;&#x9;DimUserSourceKey = UserId, &#xA;&#x9;&#x9;&#x9;FactProcessEventSourceKey = COALESCE(ProcessId, -1), &#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN FT.__ReversedBy IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;ELSE 1&#xA;&#x9;&#x9;&#x9;END AS [Reversed],&#xA;&#x9;&#x9;&#x9;DimCurrencySourceKey = CurrencyId, &#xA;&#x9;&#x9;&#x9;TextDescription = CONVERT(VARCHAR(100),[Description]), &#xA;&#x9;&#x9;&#x9;FinancialTx_Amount = &#xA;&#x9;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN (FT.Reverses IS NOT NULL OR FT.__Reverses IS NOT NULL) THEN -FT.Amount &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ELSE FT.Amount &#xA;&#x9;&#x9;&#x9;&#x9;END, &#xA;&#x9;&#x9;&#x9;ExchangeRate, &#xA;&#x9;&#x9;&#x9;ExternalReferenceNumber,&#xA;&#x9;&#x9;&#x9;FinancialTx_Fee = Fee, &#xA;&#x9;&#x9;&#x9;ForeignCurrencyAmount, &#xA;&#x9;&#x9;&#x9;ReferenceNumber, &#xA;&#x9;&#x9;&#x9;ShortCode,&#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NOT NULL AND FT.Reverses IS NOT NULL) THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NOT NULL AND FT.Reverses IS NULL) THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NULL AND FT.Reverses IS NOT NULL) THEN 1&#xA;&#x9;&#x9;&#x9;&#x9;WHEN (FT.ReversedBy IS NULL AND FT.Reverses IS NULL) THEN 0&#xA;&#x9;&#x9;&#x9;END  AS [Cancelled],&#xA;&#x9;&#x9;&#x9;CASE &#xA;&#x9;&#x9;&#x9;&#x9;WHEN it.FactIntegrationTxSourceKey IS NULL THEN 0&#xA;&#x9;&#x9;&#x9;&#x9;ELSE 1&#xA;&#x9;&#x9;&#x9;END AS [IsIntegrationTx],&#xA;&#x9;&#x9;&#x9;it.FactIntegrationTxSourceKey,&#xA;&#x9;&#x9;&#x9;ft.__Reverses AS RelatedTxID1,&#xA;&#x9;&#x9;&#x9;COALESCE(r4.RelatedTxID4,r3.RelatedTxID3,r2.RelatedTxID2,ft.__Reverses,ft.FinancialTransactionId) AS FactOriginalFinancialTxID,&#xA;&#x9;&#x9;&#x9;ft.__Reverses AS  FactRelatedFinancialTxID&#xA;&#x9;&#x9;FROM dbo.financialTransaction AS ft&#xA;&#x9;&#x9;CROSS APPLY (SELECT grp = (CAST(financialTransactionId AS VARCHAR) %4) ) AS g&#xA;&#x9;&#x9;OUTER APPLY&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;FactIntegrationTxSourceKey = intTx.IntegrationTransactionId&#xA;&#x9;&#x9;&#x9;FROM dbo.IntegrationTransaction as intTx&#xA;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;intTx.FinancialTransactionId = ft.FinancialTransactionId&#xA;&#x9;&#x9;&#x9;&#x9;AND inttx.ExternalReferenceNumber = ft.ReferenceNumber&#xA;&#x9;&#x9;) AS it&#xA;&#x9;&#x9;OUTER APPLY&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ft2.__Reverses AS RelatedTxID2&#xA;&#x9;&#x9;&#x9;FROM dbo.FinancialTransaction AS ft2&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;ft2.FinancialTransactionId = ft.__Reverses&#xA;&#x9;&#x9;) as r2&#xA;&#x9;&#x9;OUTER APPLY&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ft3.__Reverses AS RelatedTxID3&#xA;&#x9;&#x9;&#x9;FROM dbo.FinancialTransaction AS ft3&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;ft3.FinancialTransactionId = r2.RelatedTxID2&#xA;&#x9;&#x9;) as r3&#xA;&#x9;&#x9;OUTER APPLY&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ft4.__Reverses AS RelatedTxID4&#xA;&#x9;&#x9;&#x9;FROM dbo.FinancialTransaction AS ft4&#xA;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;ft4.FinancialTransactionId = r3.RelatedTxID3&#xA;&#x9;&#x9;) as r4&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;g.grp = driver.grp&#xA;&#x9;&#x9;&#x9;AND ft.FinancialTransactionId = driver.FinancialTransactionId&#xA;&#x9;) as bq&#xA;&#x9;OUTER APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;DimEffectiveDateID = CONVERT(INT,CONVERT(VARCHAR(8),ft0.TransactionDate,112)), &#xA;&#x9;&#x9;&#x9;DimEffectiveTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), ft0.TransactionDate, 114),':',''))&#xA;&#x9;&#x9;FROM dbo.FinancialTransaction AS ft0&#xA;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;ft0.FinancialTransactionId = bq.FactOriginalFinancialTxID&#xA;&#x9;) AS ed&#xA;) AS base_query &#xA;&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="FinancialTransactions">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT 
+        DTS:DataType="8">
+SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
- paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
- = ct.as_of_change_version FROM
+	paga_change_log_id = ct.row_id, 	
+	SYS_CHANGE_VERSION = ct.as_of_change_version 
+FROM
 (
 	SELECT
 		Cancelled, 
@@ -71,7 +73,11 @@
 		DimFinancialTxTypeSourceKey, 
 		DimUserSourceKey, 
 		FactIntegrationTxSourceKey, 
-		FactProcessEventSourceKey
+		FactProcessEventSourceKey,
+		FactOriginalFinancialTxID,
+		FactRelatedFinancialTxID,
+		DimEffectiveDateID,
+		DimEffectiveTimeID
 
 	FROM 
 	(
@@ -119,7 +125,10 @@
 				WHEN it.FactIntegrationTxSourceKey IS NULL THEN 0
 				ELSE 1
 			END AS [IsIntegrationTx],
-			it.FactIntegrationTxSourceKey
+			it.FactIntegrationTxSourceKey,
+			ft.__Reverses AS RelatedTxID1,
+			COALESCE(r4.RelatedTxID4,r3.RelatedTxID3,r2.RelatedTxID2,ft.__Reverses,ft.FinancialTransactionId) AS FactOriginalFinancialTxID,
+			ft.__Reverses AS  FactRelatedFinancialTxID
 		FROM dbo.financialTransaction AS ft
 		CROSS APPLY (SELECT grp = (CAST(financialTransactionId AS VARCHAR) %4) ) AS g
 		OUTER APPLY
@@ -131,11 +140,45 @@
 				intTx.FinancialTransactionId = ft.FinancialTransactionId
 				AND inttx.ExternalReferenceNumber = ft.ReferenceNumber
 		) AS it
+		OUTER APPLY
+		(
+			SELECT
+					ft2.__Reverses AS RelatedTxID2
+			FROM dbo.FinancialTransaction AS ft2
+			WHERE
+				ft2.FinancialTransactionId = ft.__Reverses
+		) as r2
+		OUTER APPLY
+		(
+			SELECT
+					ft3.__Reverses AS RelatedTxID3
+			FROM dbo.FinancialTransaction AS ft3
+			WHERE
+				ft3.FinancialTransactionId = r2.RelatedTxID2
+		) as r3
+		OUTER APPLY
+		(
+			SELECT
+					ft4.__Reverses AS RelatedTxID4
+			FROM dbo.FinancialTransaction AS ft4
+			WHERE
+				ft4.FinancialTransactionId = r3.RelatedTxID3
+		) as r4
 		WHERE 
 			g.grp = driver.grp
 			AND ft.FinancialTransactionId = driver.FinancialTransactionId
 	) as bq
-) AS base_query </DTS:VariableValue>
+	OUTER APPLY
+	(
+		SELECT
+			DimEffectiveDateID = CONVERT(INT,CONVERT(VARCHAR(8),ft0.TransactionDate,112)), 
+			DimEffectiveTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), ft0.TransactionDate, 114),':',''))
+		FROM dbo.FinancialTransaction AS ft0
+		WHERE
+			ft0.FinancialTransactionId = bq.FactOriginalFinancialTxID
+	) AS ed
+) AS base_query 
+</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -147,11 +190,13 @@
       DTS:ObjectName="FT_Stream0">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT =0 
+
 SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
- paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
- = ct.as_of_change_version FROM
+	paga_change_log_id = ct.row_id, 	
+	SYS_CHANGE_VERSION = ct.as_of_change_version 
+FROM
 (
 	SELECT
 		Cancelled, 
@@ -172,7 +217,11 @@ SELECT
 		DimFinancialTxTypeSourceKey, 
 		DimUserSourceKey, 
 		FactIntegrationTxSourceKey, 
-		FactProcessEventSourceKey
+		FactProcessEventSourceKey,
+		FactOriginalFinancialTxID,
+		FactRelatedFinancialTxID,
+		DimEffectiveDateID,
+		DimEffectiveTimeID
 
 	FROM 
 	(
@@ -220,7 +269,10 @@ SELECT
 				WHEN it.FactIntegrationTxSourceKey IS NULL THEN 0
 				ELSE 1
 			END AS [IsIntegrationTx],
-			it.FactIntegrationTxSourceKey
+			it.FactIntegrationTxSourceKey,
+			ft.__Reverses AS RelatedTxID1,
+			COALESCE(r4.RelatedTxID4,r3.RelatedTxID3,r2.RelatedTxID2,ft.__Reverses,ft.FinancialTransactionId) AS FactOriginalFinancialTxID,
+			ft.__Reverses AS  FactRelatedFinancialTxID
 		FROM dbo.financialTransaction AS ft
 		CROSS APPLY (SELECT grp = (CAST(financialTransactionId AS VARCHAR) %4) ) AS g
 		OUTER APPLY
@@ -232,11 +284,45 @@ SELECT
 				intTx.FinancialTransactionId = ft.FinancialTransactionId
 				AND inttx.ExternalReferenceNumber = ft.ReferenceNumber
 		) AS it
+		OUTER APPLY
+		(
+			SELECT
+					ft2.__Reverses AS RelatedTxID2
+			FROM dbo.FinancialTransaction AS ft2
+			WHERE
+				ft2.FinancialTransactionId = ft.__Reverses
+		) as r2
+		OUTER APPLY
+		(
+			SELECT
+					ft3.__Reverses AS RelatedTxID3
+			FROM dbo.FinancialTransaction AS ft3
+			WHERE
+				ft3.FinancialTransactionId = r2.RelatedTxID2
+		) as r3
+		OUTER APPLY
+		(
+			SELECT
+					ft4.__Reverses AS RelatedTxID4
+			FROM dbo.FinancialTransaction AS ft4
+			WHERE
+				ft4.FinancialTransactionId = r3.RelatedTxID3
+		) as r4
 		WHERE 
 			g.grp = driver.grp
 			AND ft.FinancialTransactionId = driver.FinancialTransactionId
 	) as bq
-) AS base_query  INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransactionId = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
+	OUTER APPLY
+	(
+		SELECT
+			DimEffectiveDateID = CONVERT(INT,CONVERT(VARCHAR(8),ft0.TransactionDate,112)), 
+			DimEffectiveTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), ft0.TransactionDate, 114),':',''))
+		FROM dbo.FinancialTransaction AS ft0
+		WHERE
+			ft0.FinancialTransactionId = bq.FactOriginalFinancialTxID
+	) AS ed
+) AS base_query 
+ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransactionId = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -248,11 +334,13 @@ SELECT
       DTS:ObjectName="FT_stream1">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 1 
+
 SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
- paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
- = ct.as_of_change_version FROM
+	paga_change_log_id = ct.row_id, 	
+	SYS_CHANGE_VERSION = ct.as_of_change_version 
+FROM
 (
 	SELECT
 		Cancelled, 
@@ -273,7 +361,11 @@ SELECT
 		DimFinancialTxTypeSourceKey, 
 		DimUserSourceKey, 
 		FactIntegrationTxSourceKey, 
-		FactProcessEventSourceKey
+		FactProcessEventSourceKey,
+		FactOriginalFinancialTxID,
+		FactRelatedFinancialTxID,
+		DimEffectiveDateID,
+		DimEffectiveTimeID
 
 	FROM 
 	(
@@ -321,7 +413,10 @@ SELECT
 				WHEN it.FactIntegrationTxSourceKey IS NULL THEN 0
 				ELSE 1
 			END AS [IsIntegrationTx],
-			it.FactIntegrationTxSourceKey
+			it.FactIntegrationTxSourceKey,
+			ft.__Reverses AS RelatedTxID1,
+			COALESCE(r4.RelatedTxID4,r3.RelatedTxID3,r2.RelatedTxID2,ft.__Reverses,ft.FinancialTransactionId) AS FactOriginalFinancialTxID,
+			ft.__Reverses AS  FactRelatedFinancialTxID
 		FROM dbo.financialTransaction AS ft
 		CROSS APPLY (SELECT grp = (CAST(financialTransactionId AS VARCHAR) %4) ) AS g
 		OUTER APPLY
@@ -333,11 +428,45 @@ SELECT
 				intTx.FinancialTransactionId = ft.FinancialTransactionId
 				AND inttx.ExternalReferenceNumber = ft.ReferenceNumber
 		) AS it
+		OUTER APPLY
+		(
+			SELECT
+					ft2.__Reverses AS RelatedTxID2
+			FROM dbo.FinancialTransaction AS ft2
+			WHERE
+				ft2.FinancialTransactionId = ft.__Reverses
+		) as r2
+		OUTER APPLY
+		(
+			SELECT
+					ft3.__Reverses AS RelatedTxID3
+			FROM dbo.FinancialTransaction AS ft3
+			WHERE
+				ft3.FinancialTransactionId = r2.RelatedTxID2
+		) as r3
+		OUTER APPLY
+		(
+			SELECT
+					ft4.__Reverses AS RelatedTxID4
+			FROM dbo.FinancialTransaction AS ft4
+			WHERE
+				ft4.FinancialTransactionId = r3.RelatedTxID3
+		) as r4
 		WHERE 
 			g.grp = driver.grp
 			AND ft.FinancialTransactionId = driver.FinancialTransactionId
 	) as bq
-) AS base_query  INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransactionId = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
+	OUTER APPLY
+	(
+		SELECT
+			DimEffectiveDateID = CONVERT(INT,CONVERT(VARCHAR(8),ft0.TransactionDate,112)), 
+			DimEffectiveTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), ft0.TransactionDate, 114),':',''))
+		FROM dbo.FinancialTransaction AS ft0
+		WHERE
+			ft0.FinancialTransactionId = bq.FactOriginalFinancialTxID
+	) AS ed
+) AS base_query 
+ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransactionId = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -349,11 +478,13 @@ SELECT
       DTS:ObjectName="FT_Stream2">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 2 
+
 SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
- paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
- = ct.as_of_change_version FROM
+	paga_change_log_id = ct.row_id, 	
+	SYS_CHANGE_VERSION = ct.as_of_change_version 
+FROM
 (
 	SELECT
 		Cancelled, 
@@ -374,7 +505,11 @@ SELECT
 		DimFinancialTxTypeSourceKey, 
 		DimUserSourceKey, 
 		FactIntegrationTxSourceKey, 
-		FactProcessEventSourceKey
+		FactProcessEventSourceKey,
+		FactOriginalFinancialTxID,
+		FactRelatedFinancialTxID,
+		DimEffectiveDateID,
+		DimEffectiveTimeID
 
 	FROM 
 	(
@@ -422,7 +557,10 @@ SELECT
 				WHEN it.FactIntegrationTxSourceKey IS NULL THEN 0
 				ELSE 1
 			END AS [IsIntegrationTx],
-			it.FactIntegrationTxSourceKey
+			it.FactIntegrationTxSourceKey,
+			ft.__Reverses AS RelatedTxID1,
+			COALESCE(r4.RelatedTxID4,r3.RelatedTxID3,r2.RelatedTxID2,ft.__Reverses,ft.FinancialTransactionId) AS FactOriginalFinancialTxID,
+			ft.__Reverses AS  FactRelatedFinancialTxID
 		FROM dbo.financialTransaction AS ft
 		CROSS APPLY (SELECT grp = (CAST(financialTransactionId AS VARCHAR) %4) ) AS g
 		OUTER APPLY
@@ -434,11 +572,45 @@ SELECT
 				intTx.FinancialTransactionId = ft.FinancialTransactionId
 				AND inttx.ExternalReferenceNumber = ft.ReferenceNumber
 		) AS it
+		OUTER APPLY
+		(
+			SELECT
+					ft2.__Reverses AS RelatedTxID2
+			FROM dbo.FinancialTransaction AS ft2
+			WHERE
+				ft2.FinancialTransactionId = ft.__Reverses
+		) as r2
+		OUTER APPLY
+		(
+			SELECT
+					ft3.__Reverses AS RelatedTxID3
+			FROM dbo.FinancialTransaction AS ft3
+			WHERE
+				ft3.FinancialTransactionId = r2.RelatedTxID2
+		) as r3
+		OUTER APPLY
+		(
+			SELECT
+					ft4.__Reverses AS RelatedTxID4
+			FROM dbo.FinancialTransaction AS ft4
+			WHERE
+				ft4.FinancialTransactionId = r3.RelatedTxID3
+		) as r4
 		WHERE 
 			g.grp = driver.grp
 			AND ft.FinancialTransactionId = driver.FinancialTransactionId
 	) as bq
-) AS base_query  INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransactionId = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
+	OUTER APPLY
+	(
+		SELECT
+			DimEffectiveDateID = CONVERT(INT,CONVERT(VARCHAR(8),ft0.TransactionDate,112)), 
+			DimEffectiveTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), ft0.TransactionDate, 114),':',''))
+		FROM dbo.FinancialTransaction AS ft0
+		WHERE
+			ft0.FinancialTransactionId = bq.FactOriginalFinancialTxID
+	) AS ed
+) AS base_query 
+ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransactionId = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -450,11 +622,13 @@ SELECT
       DTS:ObjectName="FT_Stream3">
       <DTS:VariableValue
         DTS:DataType="8">DECLARE @grp AS INT = 3
+
 SELECT 
 	base_query.*,
 	ct.SYS_CHANGE_OPERATION,
- paga_change_log_id = ct.row_id, 	SYS_CHANGE_VERSION
- = ct.as_of_change_version FROM
+	paga_change_log_id = ct.row_id, 	
+	SYS_CHANGE_VERSION = ct.as_of_change_version 
+FROM
 (
 	SELECT
 		Cancelled, 
@@ -475,7 +649,11 @@ SELECT
 		DimFinancialTxTypeSourceKey, 
 		DimUserSourceKey, 
 		FactIntegrationTxSourceKey, 
-		FactProcessEventSourceKey
+		FactProcessEventSourceKey,
+		FactOriginalFinancialTxID,
+		FactRelatedFinancialTxID,
+		DimEffectiveDateID,
+		DimEffectiveTimeID
 
 	FROM 
 	(
@@ -523,7 +701,10 @@ SELECT
 				WHEN it.FactIntegrationTxSourceKey IS NULL THEN 0
 				ELSE 1
 			END AS [IsIntegrationTx],
-			it.FactIntegrationTxSourceKey
+			it.FactIntegrationTxSourceKey,
+			ft.__Reverses AS RelatedTxID1,
+			COALESCE(r4.RelatedTxID4,r3.RelatedTxID3,r2.RelatedTxID2,ft.__Reverses,ft.FinancialTransactionId) AS FactOriginalFinancialTxID,
+			ft.__Reverses AS  FactRelatedFinancialTxID
 		FROM dbo.financialTransaction AS ft
 		CROSS APPLY (SELECT grp = (CAST(financialTransactionId AS VARCHAR) %4) ) AS g
 		OUTER APPLY
@@ -535,11 +716,45 @@ SELECT
 				intTx.FinancialTransactionId = ft.FinancialTransactionId
 				AND inttx.ExternalReferenceNumber = ft.ReferenceNumber
 		) AS it
+		OUTER APPLY
+		(
+			SELECT
+					ft2.__Reverses AS RelatedTxID2
+			FROM dbo.FinancialTransaction AS ft2
+			WHERE
+				ft2.FinancialTransactionId = ft.__Reverses
+		) as r2
+		OUTER APPLY
+		(
+			SELECT
+					ft3.__Reverses AS RelatedTxID3
+			FROM dbo.FinancialTransaction AS ft3
+			WHERE
+				ft3.FinancialTransactionId = r2.RelatedTxID2
+		) as r3
+		OUTER APPLY
+		(
+			SELECT
+					ft4.__Reverses AS RelatedTxID4
+			FROM dbo.FinancialTransaction AS ft4
+			WHERE
+				ft4.FinancialTransactionId = r3.RelatedTxID3
+		) as r4
 		WHERE 
 			g.grp = driver.grp
 			AND ft.FinancialTransactionId = driver.FinancialTransactionId
 	) as bq
-) AS base_query  INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransactionId = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
+	OUTER APPLY
+	(
+		SELECT
+			DimEffectiveDateID = CONVERT(INT,CONVERT(VARCHAR(8),ft0.TransactionDate,112)), 
+			DimEffectiveTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), ft0.TransactionDate, 114),':',''))
+		FROM dbo.FinancialTransaction AS ft0
+		WHERE
+			ft0.FinancialTransactionId = bq.FactOriginalFinancialTxID
+	) AS ed
+) AS base_query 
+ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransactionId = base_query.SourceKey WHERE ct.as_of_change_version = 6006276</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -4471,24 +4686,24 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           <paths>
             <path
               refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output2]"
-              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 1]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 1.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
-              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 5]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 3]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 3.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 2]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 2.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 1.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
+              endId="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction.Inputs[Union All Input 5]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Union All Output 1]"
               endId="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -4590,6 +4805,10 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           Id="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 3"
           TopLeft="900.5,5.49999999999989" />
         <NodeLayout
+          Size="215,42"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction"
+          TopLeft="615,209.5" />
+        <NodeLayout
           Size="244,42"
           Id="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 1"
           TopLeft="300.5,5.5" />
@@ -4602,27 +4821,35 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           Id="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction 2"
           TopLeft="605.5,5.49999999999989" />
         <NodeLayout
-          Size="215,42"
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction\UA_FactFinancialTransaction"
-          TopLeft="615,209.5" />
-        <NodeLayout
           Size="234,42"
           Id="Package\DFT_Load_Finance_FactFinancialTransaction\OLEDB_FactFinancialTransaction"
           TopLeft="5.5,5.5" />
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Union All Output 1]"
-          TopLeft="722.5,251.5">
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output2]"
+          TopLeft="1017.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-232.9,162"
               Start="0,0"
-              End="0,52.5">
+              End="-232.9,154.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,109.897972531066" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,109.897972531066"
+                    Point2="0,113.897972531066"
+                    Point3="-4,113.897972531066" />
+                  <mssgle:LineSegment
+                    End="-228.9,113.897972531066" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-228.9,113.897972531066"
+                    Point2="-232.9,113.897972531066"
+                    Point3="-232.9,117.897972531066" />
+                  <mssgle:LineSegment
+                    End="-232.9,154.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4632,7 +4859,7 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
           TopLeft="122.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4666,7 +4893,7 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output2]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
           TopLeft="422.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4700,7 +4927,29 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output1]"
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[Union All Output 1]"
+          TopLeft="722.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output3]"
           TopLeft="722.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4725,40 +4974,6 @@ INNER JOIN paga_change_log.dbo.FinancialTransaction as ct ON 	ct.FinancialTransa
                     Point3="51.75,110.676875957121" />
                   <mssgle:LineSegment
                     End="51.75,154.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Finance_FactFinancialTransaction.Paths[OLE DB Source Output]"
-          TopLeft="1017.5,47.4999999999999">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-232.9,162"
-              Start="0,0"
-              End="-232.9,154.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,109.897972531066" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,109.897972531066"
-                    Point2="0,113.897972531066"
-                    Point3="-4,113.897972531066" />
-                  <mssgle:LineSegment
-                    End="-228.9,113.897972531066" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-228.9,113.897972531066"
-                    Point2="-232.9,113.897972531066"
-                    Point3="-232.9,117.897972531066" />
-                  <mssgle:LineSegment
-                    End="-232.9,154.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
