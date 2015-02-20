@@ -97,7 +97,8 @@ SET IDENTITY_INSERT Classification.DimProcessType ON;
 	
 	
 SET IDENTITY_INSERT Finance.DimChartOfAccounts ON; 
-	INSERT INTO Finance.DimChartOfAccounts (DimChartOfAccountsID,Name,SourceKey) VALUES (-1,'UNKNOWN',-1); 
+	--INSERT INTO Finance.DimChartOfAccounts (DimChartOfAccountsID,Name,SourceKey) VALUES (-1,'UNKNOWN',-1); 
+	INSERT INTO Finance.DimChartOfAccounts (DimChartOfAccountsID,Name,SourceKey) VALUES (0,'Other',0);
 	SET IDENTITY_INSERT Finance.DimChartOfAccounts OFF;
 	GO
 	
@@ -127,8 +128,16 @@ SET IDENTITY_INSERT Shared.DimRole ON;
 	
 	
 SET IDENTITY_INSERT Finance.DimGLCodeGroup ON; 
-	INSERT INTO Finance.DimGLCodeGroup (DimChartofAccountsID,DimGLCodeGroupID,Name,SourceKey) VALUES (-1,-1,'UNKNOWN',-1); 
+	--INSERT INTO Finance.DimGLCodeGroup (DimChartofAccountsID,DimGLCodeGroupID,Name,SourceKey) VALUES (-1,-1,'UNKNOWN',-1); 
+	INSERT INTO Finance.DimGLCodeGroup (DimChartofAccountsID,DimGLCodeGroupID,Name,SourceKey) VALUES (0,0,'Other',0); 
 	SET IDENTITY_INSERT Finance.DimGLCodeGroup OFF;
+	GO
+
+	
+SET IDENTITY_INSERT Finance.DimGLCodeSubGroup ON; 
+	--INSERT INTO Finance.DimGLCodeSubGroup (DimGLCodeGroupID,DimGLCodeSubGroupID,Name,SourceKey) VALUES (-1,-1,'UNKNOWN',-1); 
+	INSERT INTO Finance.DimGLCodeSubGroup (DimGLCodeGroupID,DimGLCodeSubGroupID,Name,SourceKey) VALUES (0,0,'Other',0); 
+	SET IDENTITY_INSERT Finance.DimGLCodeSubGroup OFF;
 	GO
 	
 	
@@ -149,12 +158,7 @@ SET IDENTITY_INSERT Shared.DimUser ON;
 	SET IDENTITY_INSERT Shared.DimUser OFF;
 	GO
 	
-	
-SET IDENTITY_INSERT Finance.DimGLCodeSubGroup ON; 
-	INSERT INTO Finance.DimGLCodeSubGroup (DimGLCodeGroupID,DimGLCodeSubGroupID,Name,SourceKey) VALUES (-1,-1,'UNKNOWN',-1); 
-	SET IDENTITY_INSERT Finance.DimGLCodeSubGroup OFF;
-	GO
-	
+
 	
 SET IDENTITY_INSERT Location.DimRegion ON; 
 	INSERT INTO Location.DimRegion (DimGeoZoneID,DimRegionID,Name,SourceKey) VALUES (-1,-1,'UNKNOWN',-1); 
