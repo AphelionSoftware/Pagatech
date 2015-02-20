@@ -1,6 +1,6 @@
 ﻿
 	
-CREATE VIEW [OLAP].Shared_OrganizationUnitHierarcy AS
+CREATE VIEW [OLAP].[Shared_OrganizationUnitHierarchy] AS
 	(
 		
 		SELECT

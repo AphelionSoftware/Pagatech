@@ -1,8 +1,8 @@
 ﻿
-CREATE VIEW [OLAP].[Shared_DimDate] AS
+CREATE VIEW [OLAP].[Shared_DimEffectiveDate] AS
 	(
-		SELECT TOP 10
-			edw.DimDateID,
+		SELECT 
+			edw.DimDateID AS DimEffectiveDateID,
 			edw.FullDate,
 			edw.DayOfMonth,
 			edw.DayName,

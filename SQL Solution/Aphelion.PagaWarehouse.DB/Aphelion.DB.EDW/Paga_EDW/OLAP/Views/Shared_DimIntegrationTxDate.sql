@@ -1,8 +1,8 @@
 ﻿
-CREATE VIEW [OLAP].[Shared_DimDate] AS
+CREATE VIEW [OLAP].[Shared_DimIntegrationTxDate] AS
 	(
-		SELECT TOP 10
-			edw.DimDateID,
+		SELECT 
+			edw.DimDateID AS DimIntegrationTxDateID,
 			edw.FullDate,
 			edw.DayOfMonth,
 			edw.DayName,
