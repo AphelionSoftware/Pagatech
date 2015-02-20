@@ -1,0 +1,21 @@
+WHERE DateID >= CAST(CAST(year(getdate()) - 5 AS CHAR(4)) +'0101' AS INT)
+AND DateID <= CAST(CONVERT(VARCHAR(*), EOMONTH(getdate()),112) AS INT)
+
+Maximum of MonthNumber:=MAX([MonthNumber])
+
+Minimum of MonthNumber:=MIN([MonthNumber])
+
+MinDate:=Min(DatePeriodSelector[Date])
+
+MaxDate:=MAX(DatePeriodSelector[Date])
+
+CREATE VIEW [OLAP].[DatePeriods] AS
+SELECT
+      [PeriodType]
+      ,[Period]
+      ,[Aggregate]
+      ,[Number]
+      ,[PeriodName]
+      ,[OrderNumber]
+  FROM [Shared].[DatePeriods]
+GO

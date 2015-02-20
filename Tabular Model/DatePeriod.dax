@@ -1,0 +1,619 @@
+PeriodValue:=IF( HASONEVALUE(DatePeriods[PeriodName]) ,
+							LASTNONBLANK(DatePeriods[Period],1=1)
+							)
+							
+							PeriodNumber:=IF( HASONEVALUE(DatePeriods[PeriodName]) ,
+							MAX(DatePeriods[Number])
+							)
+							
+							PeriodAggregate:=IF( HASONEVALUE(DatePeriods[PeriodName]) ,
+							LASTNONBLANK(DatePeriods[Aggregate],1=1)
+							)
+							
+							PeriodTypeVal:=IF( HASONEVALUE(DatePeriods[PeriodName]) ,
+							LASTNONBLANK(DatePeriods[PeriodType],1=1)
+							)
+							
+							
+							FilterStartDateID:=IF ( [PeriodTypeVal] = "CAL" ,
+
+							SWITCH ( [PeriodAggregate] 
+							, "ToDate" ,
+								SWITCH ( [PeriodValue]
+								
+								, "Day"
+								, CALCULATE
+								( 
+									MIN( DimDate[DateID] ) ,
+									FILTER ( KEEPFIlters (  Values(DimDate[Date]) ), DimDate[Date] <= Max(DatePeriodSelector[Date]) ),
+									FILTER ( KEEPFIlters (  Values(DimDate[Date]) ), DATEADD(DimDate[Date],[PeriodNumber],DAY)>=   Max(DatePeriodSelector[Date]))
+								)
+								
+								, "Month"
+								,SWITCH 
+								(
+								[PeriodNumber]
+
+								,6
+								, CALCULATE
+									( 
+										MIN( DimDate[DateID] ),
+										FILTER
+										( 
+											KEEPFILTERS(DimDate), 
+											(DimDate[MonthAllTime] + [PeriodNumber] - 1 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] >  Max(DatePeriodSelector[DayOfYear])) ||
+											(DimDate[MonthAllTime] + [PeriodNumber] - 2 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] >  Max(DatePeriodSelector[DayOfYear]))||
+											(DimDate[MonthAllTime] + [PeriodNumber] - 3 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] >  Max(DatePeriodSelector[DayOfYear]))||
+											(DimDate[MonthAllTime] + [PeriodNumber] - 4 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear]))||
+											(DimDate[MonthAllTime] + [PeriodNumber] - 5 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear]))||
+											(DimDate[MonthAllTime] + [PeriodNumber] - 6 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear]))||
+											(DimDate[MonthAllTime] + [PeriodNumber] - 4 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear]))||
+											(DimDate[MonthAllTime] + [PeriodNumber] - 5 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear]))
+										)
+									)
+					
+								,2
+								, CALCULATE
+									( 
+										MIN( DimDate[DateID] ),
+										FILTER
+										( 
+											KEEPFILTERS(DimDate), 
+											(DimDate[MonthAllTime] + [PeriodNumber] - 1 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] <=  Max(DatePeriodSelector[DayOfYear])) ||
+											(DimDate[MonthAllTime] + [PeriodNumber] - 2 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] <=  Max(DatePeriodSelector[DayOfYear]))
+										)
+									)
+								,3
+								, CALCULATE
+									( 
+										MIN( DimDate[DateID] ),
+										FILTER
+										( 
+											KEEPFILTERS(DimDate), 
+											(DimDate[MonthAllTime] + [PeriodNumber] - 1 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] <=  Max(DatePeriodSelector[DayOfYear])) ||
+											(DimDate[MonthAllTime] + [PeriodNumber] - 2 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] <=  Max(DatePeriodSelector[DayOfYear]))||
+											(DimDate[MonthAllTime] + [PeriodNumber] - 3 = Max(DatePeriodSelector[MonthAllTime])
+											&& DimDate[DayOfYear] <=  Max(DatePeriodSelector[DayOfYear]))
+										)
+									)
+								)	
+								
+							, "Year"
+							,SWITCH 
+							(
+								[PeriodNumber]
+
+								,1
+									, CALCULATE
+									( 
+										MIN( DimDate[DateID] ),
+										FILTER
+										( 
+											KEEPFILTERS(DimDate), 
+											(
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 1 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 2 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 3 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 4 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 5 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 6 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 7 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 8 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 9 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 10 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 11 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 12 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 11 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 10 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 9 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 8 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 7 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 6 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 5 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 4 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 3 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 2 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 1 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])
+											)
+											
+										)
+									)
+
+								,2
+									, CALCULATE
+									( 
+										MIN( DimDate[DateID] ),
+										FILTER
+										( 
+											KEEPFILTERS(DimDate), 
+											(
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 1 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 2 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 3 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 4 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 5 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 6 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 7 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 8 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 9 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 10 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 11 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 12 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 13 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 14 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 15 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 16 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 17 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 18 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 19 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 20 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 21 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 22 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 23 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 24 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 23 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 22 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 21 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 20 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 19 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 18 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 17 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 16 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 15 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 14 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 13 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 12 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 11 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 10 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 9 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 8 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 7 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 6 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 5 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 4 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 3 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 2 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+												DimDate[MonthAllTime] + ([PeriodNumber]*12) - 1 = Max(DatePeriodSelector[MonthAllTime])&&
+												DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])
+											)
+										)
+									)
+								)	
+
+								, "YTD"
+								, CALCULATE
+								( 
+									MIN( DimDate[DateID] ),
+									FILTER 
+									( 
+										KEEPFIlters ( Values(DimDate) ),
+										DimDate[YearNumber] + [PeriodNumber] = Max(DatePeriodSelector[YearNumber]) &&
+										DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])
+									)
+								)
+
+								, "MTD"
+								, CALCULATE
+								( 
+									MIN( DimDate[DateID] ) ,
+									FILTER ( KEEPFIlters (  Values(DimDate[Date]) ),DATEADD(DimDate[Date],[PeriodNumber],Month) >= Min(DatePeriodSelector[Date]) ),
+									FILTER ( KEEPFIlters (  Values(DimDate) ), DimDate[MonthNumber]  =  Max(DatePeriodSelector[MonthNumber]) - [PeriodNumber]
+								)
+							)
+							)
+							, "Offset"
+							,SWITCH ( [PeriodValue]
+							, "Month"
+							, CALCULATE( MIN( DimDate[DateID] ) ,
+							FILTER ( KEEPFilters( Values(DimDate[MonthAllTime]) )
+							, DimDate[MonthAllTime] + [PeriodNumber]
+							=   Max(DatePeriodSelector[MonthAllTime]))
+							)
+							, "Quarter"
+							, CALCULATE( MIN( DimDate[DateID] ) ,
+							FILTER ( KEEPFilters( Values(DimDate[QuarterAllTime]) )
+							, DimDate[QuarterAllTime] + [PeriodNumber]
+							=   Max(DatePeriodSelector[QuarterAllTime]))
+							)
+							, "Year"
+							, CALCULATE( MIN( DimDate[DateID] ) ,
+							FILTER ( KEEPFilters( Values(DimDate[YearNumber]) )
+							, DimDate[YearNumber] + [PeriodNumber]
+							=   Max(DatePeriodSelector[YearNumber]))
+							)
+
+							)
+							)
+
+							,CALCULATE( MIN( DimDate[DateID] ) ,
+							FILTER ( KEEPFIlters (  Values(DimDate[Date]) ), DimDate[Date] <= Max(DatePeriodSelector[Date]) ),
+							FILTER ( KEEPFIlters (  Values(DimDate[Date]) ), DimDate[Date] >=   Min(DatePeriodSelector[Date]))
+							)
+
+							)
+							
+							
+							FilterEndDateID:=IF 
+(
+	[PeriodTypeVal] = "CAL" ,
+
+	SWITCH ( [PeriodAggregate] , 
+	"ToDate" ,
+		SWITCH 
+		( 
+			[PeriodValue]
+
+			, "Day"
+			, CALCULATE
+			( 
+				MAX( DimDate[DateID] ),
+				FILTER ( KEEPFilters ( Values(DimDate[Date]) ), DimDate[Date] <= Max(DatePeriodSelector[Date]) ),
+				FILTER ( KEEPFilters ( Values(DimDate[Date]) ), DATEADD(DimDate[Date],[PeriodNumber],DAY) >=   Max(DatePeriodSelector[Date]))
+			)
+
+			, "Month"
+			,SWITCH 
+			(
+				[PeriodNumber]
+
+				,6
+				, CALCULATE
+					( 
+						MAX( DimDate[DateID] ),
+						FILTER
+						( 
+							KEEPFILTERS(DimDate), 
+							(DimDate[MonthAllTime] + [PeriodNumber] - 1 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] >  Max(DatePeriodSelector[DayOfYear])) ||
+							(DimDate[MonthAllTime] + [PeriodNumber] - 2 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] >  Max(DatePeriodSelector[DayOfYear]))||
+							(DimDate[MonthAllTime] + [PeriodNumber] - 3 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] >  Max(DatePeriodSelector[DayOfYear]))||
+							(DimDate[MonthAllTime] + [PeriodNumber] - 4 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear]))||
+							(DimDate[MonthAllTime] + [PeriodNumber] - 5 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear]))||
+							(DimDate[MonthAllTime] + [PeriodNumber] - 6 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear]))||
+							(DimDate[MonthAllTime] + [PeriodNumber] - 4 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear]))||
+							(DimDate[MonthAllTime] + [PeriodNumber] - 5 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear]))
+						)
+					)
+					
+				,2
+				, CALCULATE
+					( 
+						MAX( DimDate[DateID] ),
+						FILTER
+						( 
+							KEEPFILTERS(DimDate), 
+							(DimDate[MonthAllTime] + [PeriodNumber] - 1 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] <=  Max(DatePeriodSelector[DayOfYear])) ||
+							(DimDate[MonthAllTime] + [PeriodNumber] - 2 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] <=  Max(DatePeriodSelector[DayOfYear]))
+						)
+					)
+				,3
+				, CALCULATE
+					( 
+						MAX( DimDate[DateID] ),
+						FILTER
+						( 
+							KEEPFILTERS(DimDate), 
+							(DimDate[MonthAllTime] + [PeriodNumber] - 1 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] <=  Max(DatePeriodSelector[DayOfYear])) ||
+							(DimDate[MonthAllTime] + [PeriodNumber] - 2 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] <=  Max(DatePeriodSelector[DayOfYear]))||
+							(DimDate[MonthAllTime] + [PeriodNumber] - 3 = Max(DatePeriodSelector[MonthAllTime])
+							&& DimDate[DayOfYear] <=  Max(DatePeriodSelector[DayOfYear]))
+						)
+					)
+				)						
+					
+				, "Year"
+				,SWITCH 
+				(
+					[PeriodNumber]
+
+					,1
+						, CALCULATE
+						( 
+							MAX( DimDate[DateID] ),
+							FILTER
+							( 
+								KEEPFILTERS(DimDate), 
+								(
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 1 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 2 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 3 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 4 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 5 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 6 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 7 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 8 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 9 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 10 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 11 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 12 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 11 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 10 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 9 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 8 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 7 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 6 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 5 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 4 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 3 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 2 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 1 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])
+								)
+								
+							)
+						)
+
+					,2
+						, CALCULATE
+						( 
+							MAX( DimDate[DateID] ),
+							FILTER
+							( 
+								KEEPFILTERS(DimDate), 
+								(
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 1 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 2 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 3 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 4 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 5 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 6 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 7 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 8 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 9 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 10 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 11 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 12 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 13 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 14 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 15 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 16 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 17 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 18 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 19 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 20 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 21 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 22 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 23 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] > Max(DatePeriodSelector[DayOfYear])||
+
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 24 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 23 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 22 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 21 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 20 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 19 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 18 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 17 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 16 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 15 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 14 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 13 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 12 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 11 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 10 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 9 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 8 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 7 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 6 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 5 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 4 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 3 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 2 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])||
+									DimDate[MonthAllTime] + ([PeriodNumber]*12) - 1 = Max(DatePeriodSelector[MonthAllTime])&&
+									DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])
+								)
+								
+							)
+						)
+				)
+														
+							, "YTD"
+							, CALCULATE( MAX( DimDate[DateID] ),
+							FILTER ( KEEPFIlters ( Values(DimDate) ),
+							DimDate[YearNumber] + [PeriodNumber] = Max(DatePeriodSelector[YearNumber])
+							&& 							DimDate[DayOfYear] <= Max(DatePeriodSelector[DayOfYear])
+							)
+							)
+							, "MTD"
+							, CALCULATE( MAX( DimDate[DateID] ),
+							FILTER ( KEEPFilters ( Values(DimDate[Date]) ),
+							DATEADD(DimDate[Date],[PeriodNumber],Month) <= Max(DatePeriodSelector[Date]) ),
+							FILTER ( KEEPFIlters ( Values(DimDate) ),
+							DimDate[MonthNumber]  =  Max(DatePeriodSelector[MonthNumber]) - [PeriodNumber]
+							)
+							)
+							)
+							, "Offset"
+							,SWITCH ( [PeriodValue]
+							, "Month"
+							, CALCULATE( MAX( DimDate[DateID] ),
+							FILTER ( KEEPFilters( Values(DimDate[MonthAllTime]) )
+							, DimDate[MonthAllTime] + [PeriodNumber]
+							=   Max(DatePeriodSelector[MonthAllTime]))
+							)
+							, "Quarter"
+							, CALCULATE( MAX( DimDate[DateID] ),
+							FILTER ( KEEPFILTERS( Values(DimDate[QuarterAllTime]) )
+							, DimDate[QuarterAllTime] + [PeriodNumber]
+							=   Max(DatePeriodSelector[QuarterAllTime]))
+							)
+							, "Year"
+							, CALCULATE( MAX( DimDate[DateID] ),
+							FILTER ( Values(DimDate[YearNumber])
+							, DimDate[YearNumber] + [PeriodNumber]
+							=   Max(DatePeriodSelector[YearNumber]))
+							)
+
+							)
+							)
+
+							,CALCULATE( MAX( DimDate[DateID] ) ,
+							FILTER ( KEEPFIlters (  Values(DimDate[Date]) ), DimDate[Date] <= Max(DatePeriodSelector[Date]) ),
+							FILTER ( KEEPFIlters (  Values(DimDate[Date]) ), DimDate[Date] >=   Min(DatePeriodSelector[Date]))
+							)
+
+							)
