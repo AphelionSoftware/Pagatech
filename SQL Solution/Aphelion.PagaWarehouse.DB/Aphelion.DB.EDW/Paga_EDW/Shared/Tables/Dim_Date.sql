@@ -3,27 +3,27 @@
     [FullDate]                DATETIME      NULL,
     [FullDateUK]              CHAR (10)     NULL,
     [FullDateUSA]             CHAR (10)     NULL,
-    [DayOfMonth]              VARCHAR (2)   NULL,
+    [DayOfMonth]              TINYINT       NULL,
     [DaySuffix]               VARCHAR (4)   NULL,
     [DayName]                 VARCHAR (9)   NULL,
     [DayOfWeekUSA]            CHAR (1)      NULL,
     [DayOfWeekUK]             CHAR (1)      NULL,
     [DayOfWeekInMonth]        VARCHAR (2)   NULL,
     [DayOfWeekInYear]         VARCHAR (2)   NULL,
-    [DayOfQuarter]            VARCHAR (3)   NULL,
-    [DayOfYear]               VARCHAR (3)   NULL,
-    [WeekOfMonth]             VARCHAR (1)   NULL,
-    [WeekOfQuarter]           VARCHAR (2)   NULL,
-    [WeekOfYear]              VARCHAR (2)   NULL,
-    [Month]                   VARCHAR (2)   NULL,
+    [DayOfQuarter]            TINYINT       NULL,
+    [DayOfYear]               SMALLINT      NULL,
+    [WeekOfMonth]             TINYINT       NULL,
+    [WeekOfQuarter]           TINYINT       NULL,
+    [WeekOfYear]              TINYINT       NULL,
+    [Month]                   TINYINT       NULL,
     [MonthName]               VARCHAR (9)   NULL,
-    [MonthOfQuarter]          VARCHAR (2)   NULL,
-    [Quarter]                 CHAR (1)      NULL,
+    [MonthOfQuarter]          TINYINT       NULL,
+    [Quarter]                 TINYINT       NULL,
     [QuarterName]             VARCHAR (9)   NULL,
-    [Year]                    CHAR (4)      NULL,
+    [Year]                    SMALLINT      NULL,
     [YearName]                CHAR (7)      NULL,
     [MonthYear]               CHAR (10)     NULL,
-    [MMYYYY]                  CHAR (6)      NULL,
+    [MMYYYY]                  INT           NULL,
     [FirstDayOfMonth]         DATE          NULL,
     [LastDayOfMonth]          DATE          NULL,
     [FirstDayOfQuarter]       DATE          NULL,
@@ -58,6 +58,8 @@
     [sys_CreatedOn]           DATETIME      DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [pk_DimDateID] PRIMARY KEY CLUSTERED ([DimDateID] ASC)
 );
+
+
 
 
 
