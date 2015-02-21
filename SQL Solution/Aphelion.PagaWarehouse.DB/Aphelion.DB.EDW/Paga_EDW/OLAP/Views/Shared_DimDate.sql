@@ -2,6 +2,7 @@
 
 
 
+
 CREATE VIEW [OLAP].[Shared_DimDate] AS
 	(
 		SELECT  TOP 2147483647 
@@ -33,8 +34,8 @@ CREATE VIEW [OLAP].[Shared_DimDate] AS
 			  ,FinancialPeriodName
 			  ,FinancialPeriodAllTime = DENSE_RANK() over (order by FinancialYearNumber, FinancialPeriodNumber)
 	  
-		FROM Shared.DimDate2
-		WHERE DimDate2.DateID >= (SELEct MIN(FP.DimCompletedDateID) FROM shared.FactProcessEvent FP)
-		AND DimDate2.Date < dateadd(year, 1, getdate()) 
+		FROM Shared.DimDate
+		WHERE DimDate.DateID >= (SELEct MIN(FP.DimCompletedDateID) FROM shared.FactProcessEvent FP)
+		AND DimDate.Date < dateadd(year, 1, getdate()) 
 		ORDER BY DateID
 		);
