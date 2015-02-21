@@ -30,9 +30,9 @@
     [IsActive]                  BIT             DEFAULT ((1)) NOT NULL,
     CONSTRAINT [pk_FactFinancialTx] PRIMARY KEY CLUSTERED ([FactFinancialTxID] ASC),
     CONSTRAINT [fk_FactFinancialTransaction_DimCurrencyID] FOREIGN KEY ([DimCurrencyID]) REFERENCES [Finance].[DimCurrency] ([DimCurrencyID]),
-    CONSTRAINT [fk_FactFinancialTransaction_DimEffectiveDateID] FOREIGN KEY ([DimEffectiveDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimEffectiveDateID] FOREIGN KEY ([DimEffectiveDateID]) REFERENCES [Shared].[DimDate] ([DateID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimEffectiveTimeID] FOREIGN KEY ([DimEffectiveTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
-    CONSTRAINT [fk_FactFinancialTransaction_DimFinancialTxDateID] FOREIGN KEY ([DimFinancialTxDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
+    CONSTRAINT [fk_FactFinancialTransaction_DimFinancialTxDateID] FOREIGN KEY ([DimFinancialTxDateID]) REFERENCES [Shared].[DimDate] ([DateID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimFinancialTxTimeID] FOREIGN KEY ([DimFinancialTxTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimFinancialTxTypeID] FOREIGN KEY ([DimFinancialTxTypeID]) REFERENCES [Classification].[DimFinancialTransactionType] ([DimFinancialTxTypeID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
@@ -41,6 +41,8 @@
     CONSTRAINT [fk_FactFinancialTransaction_FactProcessEventID] FOREIGN KEY ([FactProcessEventID]) REFERENCES [Shared].[FactProcessEvent] ([FactProcessEventID]),
     CONSTRAINT [fk_FactFinancialTransaction_FactRelatedFinancialTxID] FOREIGN KEY ([FactRelatedFinancialTxID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTxID])
 );
+
+
 
 
 

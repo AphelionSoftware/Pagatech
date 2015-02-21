@@ -1,7 +1,40 @@
-﻿CREATE VIEW OLAP.Shared_DimDate AS
-	(
-		SELECT 
-			edw.DimDateID,edw.FullDate,edw.FullDateUK,edw.FullDateUSA,edw.DayOfMonth,edw.DaySuffix,edw.DayName,edw.DayOfWeekUSA,edw.DayOfWeekUK,edw.DayOfWeekInMonth,edw.DayOfWeekInYear,edw.DayOfQuarter,edw.DayOfYear,edw.WeekOfMonth,edw.WeekOfQuarter,edw.WeekOfYear,edw.Month,edw.MonthName,edw.MonthOfQuarter,edw.Quarter,edw.QuarterName,edw.Year,edw.YearName,edw.MonthYear,edw.MMYYYY,edw.FirstDayOfMonth,edw.LastDayOfMonth,edw.FirstDayOfQuarter,edw.LastDayOfQuarter,edw.FirstDayOfYear,edw.LastDayOfYear,edw.IsWeekday,edw.IsHolidayUSA,edw.HolidayUSA,edw.IsHolidayUK,edw.HolidayUK,edw.IsHolidayNG,edw.HolidayNG,edw.FiscalDayOfYear,edw.FiscalWeekOfYear,edw.FiscalMonth,edw.FiscalQuarter,edw.FiscalQuarterName,edw.FiscalYear,edw.FiscalYearName,edw.FiscalMonthYear,edw.FiscalMMYYYY,edw.FiscalFirstDayOfMonth,edw.FiscalLastDayOfMonth,edw.FiscalFirstDayOfQuarter,edw.FiscalLastDayOfQuarter,edw.FiscalFirstDayOfYear,edw.FiscalLastDayOfYear
-		FROM Shared.DimDate AS edw
+﻿
 
-	);
+
+
+CREATE VIEW [OLAP].[Shared_DimDate] AS
+	(
+		SELECT  TOP 2147483647 
+			DateSK
+			  ,DateID
+			  ,Date
+			  ,Day
+			  ,DaySuffix
+			  ,USDayOfWeek
+			  ,DayOfWeek
+			  ,DOWInMonth
+			  ,DayOfYear
+			  ,WeekOfYear
+			  ,WeekOfMonth
+			  ,MonthNumber
+			  ,MonthName
+			  ,MonthAllTime = DENSE_RANK() over (order by YearNumber, MonthNumber)
+			  ,Quarter
+			  ,QuarterName
+			  ,QuarterAllTime = DENSE_RANK() over (order by YearNumber, Quarter)
+			  ,YearName
+			  ,YearNumber
+			  ,StandardDate
+			  ,IsPublicHoliday
+			  ,HolidayText
+			  ,FinancialYearNumber
+			  ,FinancialYearName
+			  ,FinancialPeriodNumber
+			  ,FinancialPeriodName
+			  ,FinancialPeriodAllTime = DENSE_RANK() over (order by FinancialYearNumber, FinancialPeriodNumber)
+	  
+		FROM Shared.DimDate2
+		WHERE DimDate2.DateID >= (SELEct MIN(FP.DimCompletedDateID) FROM shared.FactProcessEvent FP)
+		AND DimDate2.Date < dateadd(year, 1, getdate()) 
+		ORDER BY DateID
+		);

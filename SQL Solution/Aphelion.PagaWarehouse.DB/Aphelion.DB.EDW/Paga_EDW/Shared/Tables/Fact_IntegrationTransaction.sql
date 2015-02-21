@@ -13,8 +13,6 @@
     [IntegrationTx_Amount]      DECIMAL (18, 2) NULL,
     [HasFinancialTx]            INT             NOT NULL,
     [FactFinancialTxID]         INT             NULL,
-    [SourceKeyHash]             BIGINT          NULL,
-    [DeltaHash]                 BIGINT          NULL,
     [sys_CreatedBy]             VARCHAR (255)   DEFAULT (user_name()) NOT NULL,
     [sys_CreatedOn]             DATETIME        DEFAULT (getdate()) NOT NULL,
     [sys_ModifiedBy]            VARCHAR (255)   DEFAULT (user_name()) NOT NULL,
@@ -22,7 +20,7 @@
     [IsActive]                  BIT             DEFAULT ((1)) NOT NULL,
     CONSTRAINT [pk_FactIntegrationTx] PRIMARY KEY CLUSTERED ([FactIntegrationTxID] ASC),
     CONSTRAINT [fk_FactIntegrationTransaction_DimExternalOrganizationID] FOREIGN KEY ([DimExternalOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID]),
-    CONSTRAINT [fk_FactIntegrationTransaction_DimIntegrationTxDateID] FOREIGN KEY ([DimIntegrationTxDateID]) REFERENCES [Shared].[DimDate] ([DimDateID]),
+    CONSTRAINT [fk_FactIntegrationTransaction_DimIntegrationTxDateID] FOREIGN KEY ([DimIntegrationTxDateID]) REFERENCES [Shared].[DimDate] ([DateID]),
     CONSTRAINT [fk_FactIntegrationTransaction_DimIntegrationTxResultID] FOREIGN KEY ([DimIntegrationTxResultID]) REFERENCES [Classification].[DimIntegrationTransactionResult] ([DimIntegrationTxResultID]),
     CONSTRAINT [fk_FactIntegrationTransaction_DimIntegrationTxTimeID] FOREIGN KEY ([DimIntegrationTxTimeID]) REFERENCES [Shared].[DimTime] ([DimTimeID]),
     CONSTRAINT [fk_FactIntegrationTransaction_DimIntegrationTxTypeID] FOREIGN KEY ([DimIntegrationTxTypeID]) REFERENCES [Classification].[DimIntegrationTransactionType] ([DimIntegrationTxTypeID]),
@@ -30,6 +28,8 @@
     CONSTRAINT [fk_FactIntegrationTransaction_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID]),
     CONSTRAINT [fk_FactIntegrationTransaction_FactFinancialTxID] FOREIGN KEY ([FactFinancialTxID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTxID])
 );
+
+
 
 
 

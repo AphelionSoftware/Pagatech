@@ -5,8 +5,6 @@
     [DimUserID]      INT           NOT NULL,
     [DimRoleID]      INT           NOT NULL,
     [RolePriority]   SMALLINT      NOT NULL,
-    [SourceKeyHash]  BIGINT        NULL,
-    [DeltaHash]      BIGINT        NULL,
     [sys_CreatedBy]  VARCHAR (255) DEFAULT (user_name()) NOT NULL,
     [sys_CreatedOn]  DATETIME      DEFAULT (getdate()) NOT NULL,
     [sys_ModifiedBy] VARCHAR (255) DEFAULT (user_name()) NOT NULL,
@@ -16,6 +14,8 @@
     CONSTRAINT [fk_DimUserRole_DimRoleID] FOREIGN KEY ([DimRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID]),
     CONSTRAINT [fk_DimUserRole_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID])
 );
+
+
 
 
 

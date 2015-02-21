@@ -14,8 +14,6 @@
     [WebsiteURL]                          VARCHAR (100)  NULL,
     [OrganizationCode]                    VARCHAR (10)   NULL,
     [DisplayName]                         VARCHAR (100)  NULL,
-    [SourceKeyHash]                       BIGINT         NULL,
-    [DeltaHash]                           BIGINT         NULL,
     [sys_ModifiedBy]                      VARCHAR (255)  DEFAULT (suser_sname()) NOT NULL,
     [sys_ModifiedOn]                      DATETIME       DEFAULT (getdate()) NOT NULL,
     [sys_CreatedBy]                       VARCHAR (255)  DEFAULT (suser_sname()) NOT NULL,
@@ -51,12 +49,14 @@
 
 
 
-GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'DeltaHash';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization', @level2type = N'COLUMN', @level2name = N'SourceKeyHash';
+
+
+
+GO
+
 
 
 GO

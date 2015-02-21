@@ -3,8 +3,8 @@
     [SourceKey]              INT           NOT NULL,
     [Name]                   VARCHAR (255) NOT NULL,
     [DimPagaAccountStatusID] INT           NOT NULL,
-    [CreatedDateID]          INT           NOT NULL,
-    [RegistrationDateID]     INT           NULL,
+    [DimCreatedDateID]       INT           NOT NULL,
+    [DimRegistrationDateID]  INT           NULL,
     [PagaAccountNumber]      VARCHAR (12)  NULL,
     [ExternalAccountNumber]  VARCHAR (12)  NULL,
     [BankingStatus]          VARCHAR (50)  NOT NULL,
@@ -23,16 +23,18 @@
     [IsPaga]                 BIT SPARSE    NULL,
     [IsRemittanceProcessor]  BIT SPARSE    NULL,
     [IsServiceAggregator]    BIT SPARSE    NULL,
-    [SourceKeyHash]          BIGINT        NULL,
-    [DeltaHash]              BIGINT        NULL,
     [sys_ModifiedBy]         VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_ModifiedOn]         DATETIME      DEFAULT (getdate()) NOT NULL,
     [sys_CreatedBy]          VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]          DATETIME      DEFAULT (getdate()) NOT NULL,
     [IsActive]               BIT           DEFAULT ((1)) NOT NULL,
     CONSTRAINT [pk_DimPagaAccountID] PRIMARY KEY CLUSTERED ([DimPagaAccountID] ASC),
-    CONSTRAINT [fk_DimPagaAccount_DimPagaAccountStatusID] FOREIGN KEY ([DimPagaAccountStatusID]) REFERENCES [Classification].[DimPagaAccountStatus] ([DimPagaAccountStatusID])
+    CONSTRAINT [fk_DimPagaAccount_DimCreatedDateID] FOREIGN KEY ([DimCreatedDateID]) REFERENCES [Shared].[DimDate] ([DateID]),
+    CONSTRAINT [fk_DimPagaAccount_DimPagaAccountStatusID] FOREIGN KEY ([DimPagaAccountStatusID]) REFERENCES [Classification].[DimPagaAccountStatus] ([DimPagaAccountStatusID]),
+    CONSTRAINT [fk_DimPagaAccount_DimRegistrationDateID] FOREIGN KEY ([DimRegistrationDateID]) REFERENCES [Shared].[DimDate] ([DateID])
 );
+
+
 
 
 
@@ -153,7 +155,7 @@ GROUP BY 			pa.PagaAccountId 		) AS pa2 ON 			pa1.PagaAccountId = pa2.PagaAccoun
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKeyHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'SourceKeyHash';
+
 
 
 GO
@@ -161,7 +163,7 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'BusinessKey', @lev
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'DeltaHash', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount', @level2type = N'COLUMN', @level2name = N'DeltaHash';
+
 
 
 GO
