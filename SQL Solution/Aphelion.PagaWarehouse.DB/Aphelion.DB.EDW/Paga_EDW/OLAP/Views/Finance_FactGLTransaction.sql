@@ -1,8 +1,4 @@
-﻿
-
-
-	
-CREATE VIEW [OLAP].[Finance_FactGLTransaction] AS
+﻿CREATE VIEW [OLAP].[Finance_FactGLTransaction] AS
 	(
 		SELECT 
 			edw.FactGLTxID,
@@ -19,5 +15,7 @@ CREATE VIEW [OLAP].[Finance_FactGLTransaction] AS
 			FinancialTransactionID = ft.SourceKey
 		FROM Finance.FactGLTransaction AS edw
 		INNER JOIN Finance.FactFinancialTransaction AS ft ON edw.FactFinancialTxID = ft.FactFinancialTxID
-		WHERE edw.IsActive = 1
+		WHERE 
+			edw.IsActive = 1
+			AND ft.DimFinancialTxDateID >= 20150101
 	);

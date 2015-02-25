@@ -1,8 +1,21 @@
-﻿	
-CREATE VIEW OLAP.Shared_DimUser AS
+﻿
+	
+CREATE VIEW [OLAP].[Shared_DimUser] AS
 	(
 		SELECT 
-			edw.DimUserID,edw.SourceKey,edw.DimDateOfBirthID,edw.FirstName,edw.MiddleName,edw.LastName,edw.Gender,edw.PhoneNumber,edw.Email,edw.IsEnabled,edw.DimPrimaryRoleID,edw.DimCreatedDateID,edw.Name
+			edw.DimUserID,
+			edw.SourceKey,
+			edw.DimDateOfBirthID,
+			edw.FirstName,
+			edw.MiddleName,
+			edw.LastName,
+			edw.Gender,
+			edw.IsEnabled,
+			RoleName = r.Name,
+			edw.DimCreatedDateID,
+			edw.Name
 		FROM Shared.DimUser AS edw
+		INNER JOIN shared.DimRole AS r ON 
+			edw.DimPrimaryRoleID = r.DimRoleID
 		WHERE edw.IsActive = 1
 	);
