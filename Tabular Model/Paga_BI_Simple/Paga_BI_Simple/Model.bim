@@ -2908,6 +2908,7 @@
           <Source xsi:type="DataSourceViewBinding">
             <DataSourceViewID>Sandbox</DataSourceViewID>
           </Source>
+          <Type>Time</Type>
           <UnknownMember valuens="ddl200_200">AutomaticNull</UnknownMember>
           <ErrorConfiguration>
             <KeyNotFound>IgnoreError</KeyNotFound>
@@ -2922,7 +2923,6 @@
               <ID>RowNumber</ID>
               <Name>RowNumber</Name>
               <Type valuens="ddl200_200">RowNumber</Type>
-              <Usage>Key</Usage>
               <KeyColumns>
                 <KeyColumn>
                   <DataType>Integer</DataType>
@@ -2948,11 +2948,6 @@
                   <Cardinality>One</Cardinality>
                   <OverrideBehavior>None</OverrideBehavior>
                   <Name>DateID</Name>
-                </AttributeRelationship>
-                <AttributeRelationship>
-                  <AttributeID>Date</AttributeID>
-                  <OverrideBehavior>None</OverrideBehavior>
-                  <Name>Date</Name>
                 </AttributeRelationship>
                 <AttributeRelationship>
                   <AttributeID>Day</AttributeID>
@@ -3159,11 +3154,12 @@
               </Annotations>
               <ID>Date</ID>
               <Name>Date</Name>
+              <Usage>Key</Usage>
               <KeyColumns>
                 <KeyColumn>
                   <DataType>Date</DataType>
                   <DataSize>-1</DataSize>
-                  <NullProcessing>Preserve</NullProcessing>
+                  <NullProcessing>Error</NullProcessing>
                   <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                   <Source xsi:type="ColumnBinding">
                     <TableID>Shared_DimTransactionDate_2d5bb4df-1dea-40d7-8ade-21cdf85571cc</TableID>
@@ -3181,6 +3177,14 @@
                   <ColumnID>Date</ColumnID>
                 </Source>
               </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>RowNumber</AttributeID>
+                  <Cardinality>One</Cardinality>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>RowNumber</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
               <OrderBy>Key</OrderBy>
               <ddl300_300:FormatString>General Date</ddl300_300:FormatString>
             </Attribute>
@@ -12877,6 +12881,2314 @@
             <Source xsi:type="ProactiveCachingInheritedBinding" />
           </ProactiveCaching>
         </Dimension>
+        <Dimension>
+          <ID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</ID>
+          <Name>ProcessCompletedDate</Name>
+          <Annotations>
+            <Annotation>
+              <Name>IsQueryEditorUsed</Name>
+              <Value>False</Value>
+            </Annotation>
+            <Annotation>
+              <Name>QueryEditorSerialization</Name>
+            </Annotation>
+            <Annotation>
+              <Name>TableWidgetSerialization</Name>
+            </Annotation>
+            <Annotation>
+              <Name>DataMarketWebBaseUrl</Name>
+            </Annotation>
+            <Annotation>
+              <Name>DataMarketWebQueryUrl</Name>
+            </Annotation>
+          </Annotations>
+          <Source xsi:type="DataSourceViewBinding">
+            <DataSourceViewID>Sandbox</DataSourceViewID>
+          </Source>
+          <Type>Time</Type>
+          <UnknownMember valuens="ddl200_200">AutomaticNull</UnknownMember>
+          <ErrorConfiguration>
+            <KeyNotFound>IgnoreError</KeyNotFound>
+            <KeyDuplicate>ReportAndStop</KeyDuplicate>
+            <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+          </ErrorConfiguration>
+          <StorageMode valuens="ddl200_200">InMemory</StorageMode>
+          <Language>1033</Language>
+          <UnknownMemberName>Unknown</UnknownMemberName>
+          <Attributes>
+            <Attribute>
+              <ID>RowNumber</ID>
+              <Name>RowNumber</Name>
+              <Type valuens="ddl200_200">RowNumber</Type>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Integer</DataType>
+                  <DataSize>4</DataSize>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ddl200_200:RowNumberBinding" />
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>4</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <Source xsi:type="ddl200_200:RowNumberBinding" />
+              </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>DateSK</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DateSK</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>DateID</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DateID</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>Day</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>Day</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>DaySuffix</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DaySuffix</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>USDayOfWeek</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>USDayOfWeek</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>DayOfWeek</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DayOfWeek</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>DOWInMonth</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DOWInMonth</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>DayOfYear</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DayOfYear</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>WeekOfYear</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>WeekOfYear</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>WeekOfMonth</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>WeekOfMonth</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>MonthNumber</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>MonthNumber</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>MonthName</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>MonthName</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>MonthAllTime</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>MonthAllTime</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>Quarter</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>Quarter</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>QuarterName</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>QuarterName</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>QuarterAllTime</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>QuarterAllTime</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>YearName</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>YearName</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>YearNumber</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>YearNumber</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>StandardDate</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>StandardDate</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>IsPublicHoliday</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>IsPublicHoliday</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>HolidayText</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>HolidayText</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>FinancialYearNumber</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>FinancialYearNumber</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>FinancialYearName</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>FinancialYearName</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>FinancialPeriodNumber</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>FinancialPeriodNumber</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>FinancialPeriodName</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>FinancialPeriodName</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>FinancialPeriodAllTime</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>FinancialPeriodAllTime</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
+              <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DateSK</ID>
+              <Name>DateSK</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>DateSK</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>DateSK</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DateID</ID>
+              <Name>DateID</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>DateID</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>DateID</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="DateTimeGeneral" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>Date</ID>
+              <Name>Date</Name>
+              <Usage>Key</Usage>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Date</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Error</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>Date</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>Date</ColumnID>
+                </Source>
+              </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>RowNumber</AttributeID>
+                  <Cardinality>One</Cardinality>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>RowNumber</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
+              <OrderBy>Key</OrderBy>
+              <ddl300_300:FormatString>General Date</ddl300_300:FormatString>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>Day</ID>
+              <Name>Day</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>Day</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>Day</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DaySuffix</ID>
+              <Name>DaySuffix</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>DaySuffix</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>DaySuffix</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>USDayOfWeek</ID>
+              <Name>USDayOfWeek</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>USDayOfWeek</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>USDayOfWeek</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DayOfWeek</ID>
+              <Name>DayOfWeek</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>DayOfWeek</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>DayOfWeek</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DOWInMonth</ID>
+              <Name>DOWInMonth</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>DOWInMonth</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>DOWInMonth</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DayOfYear</ID>
+              <Name>DayOfYear</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>DayOfYear</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>DayOfYear</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>WeekOfYear</ID>
+              <Name>WeekOfYear</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>WeekOfYear</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>WeekOfYear</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>WeekOfMonth</ID>
+              <Name>WeekOfMonth</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>WeekOfMonth</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>WeekOfMonth</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>MonthNumber</ID>
+              <Name>MonthNumber</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>MonthNumber</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>MonthNumber</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>MonthName</ID>
+              <Name>MonthName</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>MonthName</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>MonthName</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>AttributeKey</OrderBy>
+              <OrderByAttributeID>MonthNumber</OrderByAttributeID>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>MonthAllTime</ID>
+              <Name>MonthAllTime</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>MonthAllTime</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>MonthAllTime</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>Quarter</ID>
+              <Name>Quarter</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>Quarter</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>Quarter</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>QuarterName</ID>
+              <Name>QuarterName</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>QuarterName</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>QuarterName</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>QuarterAllTime</ID>
+              <Name>QuarterAllTime</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>QuarterAllTime</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>QuarterAllTime</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>YearName</ID>
+              <Name>YearName</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>YearName</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>YearName</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>YearNumber</ID>
+              <Name>YearNumber</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>YearNumber</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>YearNumber</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>StandardDate</ID>
+              <Name>StandardDate</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>StandardDate</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>StandardDate</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Boolean" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>IsPublicHoliday</ID>
+              <Name>IsPublicHoliday</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Boolean</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>IsPublicHoliday</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>IsPublicHoliday</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+              <ddl300_300:FormatString>"TRUE";"TRUE";"FALSE"</ddl300_300:FormatString>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>HolidayText</ID>
+              <Name>HolidayText</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>HolidayText</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>HolidayText</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>FinancialYearNumber</ID>
+              <Name>FinancialYearNumber</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>FinancialYearNumber</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>FinancialYearNumber</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>FinancialYearName</ID>
+              <Name>FinancialYearName</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>FinancialYearName</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>FinancialYearName</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>FinancialPeriodNumber</ID>
+              <Name>FinancialPeriodNumber</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>FinancialPeriodNumber</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>FinancialPeriodNumber</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>FinancialPeriodName</ID>
+              <Name>FinancialPeriodName</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>FinancialPeriodName</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>FinancialPeriodName</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>FinancialPeriodAllTime</ID>
+              <Name>FinancialPeriodAllTime</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    <ColumnID>FinancialPeriodAllTime</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                  <ColumnID>FinancialPeriodAllTime</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+          </Attributes>
+          <ProactiveCaching>
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" />
+          </ProactiveCaching>
+        </Dimension>
+        <Dimension>
+          <ID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</ID>
+          <Name>ProcessStartedDate</Name>
+          <Annotations>
+            <Annotation>
+              <Name>IsQueryEditorUsed</Name>
+              <Value>False</Value>
+            </Annotation>
+            <Annotation>
+              <Name>QueryEditorSerialization</Name>
+            </Annotation>
+            <Annotation>
+              <Name>TableWidgetSerialization</Name>
+            </Annotation>
+            <Annotation>
+              <Name>DataMarketWebBaseUrl</Name>
+            </Annotation>
+            <Annotation>
+              <Name>DataMarketWebQueryUrl</Name>
+            </Annotation>
+          </Annotations>
+          <Source xsi:type="DataSourceViewBinding">
+            <DataSourceViewID>Sandbox</DataSourceViewID>
+          </Source>
+          <Type>Time</Type>
+          <UnknownMember valuens="ddl200_200">AutomaticNull</UnknownMember>
+          <ErrorConfiguration>
+            <KeyNotFound>IgnoreError</KeyNotFound>
+            <KeyDuplicate>ReportAndStop</KeyDuplicate>
+            <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+          </ErrorConfiguration>
+          <StorageMode valuens="ddl200_200">InMemory</StorageMode>
+          <Language>1033</Language>
+          <UnknownMemberName>Unknown</UnknownMemberName>
+          <Attributes>
+            <Attribute>
+              <ID>RowNumber</ID>
+              <Name>RowNumber</Name>
+              <Type valuens="ddl200_200">RowNumber</Type>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Integer</DataType>
+                  <DataSize>4</DataSize>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ddl200_200:RowNumberBinding" />
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>4</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <Source xsi:type="ddl200_200:RowNumberBinding" />
+              </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>DateSK</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DateSK</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>DateID</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DateID</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>Day</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>Day</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>DaySuffix</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DaySuffix</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>USDayOfWeek</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>USDayOfWeek</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>DayOfWeek</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DayOfWeek</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>DOWInMonth</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DOWInMonth</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>DayOfYear</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DayOfYear</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>WeekOfYear</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>WeekOfYear</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>WeekOfMonth</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>WeekOfMonth</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>MonthNumber</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>MonthNumber</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>MonthName</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>MonthName</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>MonthAllTime</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>MonthAllTime</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>Quarter</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>Quarter</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>QuarterName</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>QuarterName</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>QuarterAllTime</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>QuarterAllTime</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>YearName</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>YearName</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>YearNumber</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>YearNumber</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>StandardDate</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>StandardDate</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>IsPublicHoliday</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>IsPublicHoliday</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>HolidayText</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>HolidayText</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>FinancialYearNumber</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>FinancialYearNumber</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>FinancialYearName</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>FinancialYearName</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>FinancialPeriodNumber</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>FinancialPeriodNumber</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>FinancialPeriodName</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>FinancialPeriodName</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>FinancialPeriodAllTime</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>FinancialPeriodAllTime</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
+              <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DateSK</ID>
+              <Name>DateSK</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>DateSK</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>DateSK</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DateID</ID>
+              <Name>DateID</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>DateID</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>DateID</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="DateTimeGeneral" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>Date</ID>
+              <Name>Date</Name>
+              <Usage>Key</Usage>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Date</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Error</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>Date</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>Date</ColumnID>
+                </Source>
+              </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>RowNumber</AttributeID>
+                  <Cardinality>One</Cardinality>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>RowNumber</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
+              <OrderBy>Key</OrderBy>
+              <ddl300_300:FormatString>General Date</ddl300_300:FormatString>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>Day</ID>
+              <Name>Day</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>Day</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>Day</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DaySuffix</ID>
+              <Name>DaySuffix</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>DaySuffix</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>DaySuffix</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>USDayOfWeek</ID>
+              <Name>USDayOfWeek</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>USDayOfWeek</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>USDayOfWeek</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DayOfWeek</ID>
+              <Name>DayOfWeek</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>DayOfWeek</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>DayOfWeek</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DOWInMonth</ID>
+              <Name>DOWInMonth</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>DOWInMonth</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>DOWInMonth</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DayOfYear</ID>
+              <Name>DayOfYear</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>DayOfYear</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>DayOfYear</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>WeekOfYear</ID>
+              <Name>WeekOfYear</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>WeekOfYear</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>WeekOfYear</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>WeekOfMonth</ID>
+              <Name>WeekOfMonth</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>WeekOfMonth</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>WeekOfMonth</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>MonthNumber</ID>
+              <Name>MonthNumber</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>MonthNumber</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>MonthNumber</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>MonthName</ID>
+              <Name>MonthName</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>MonthName</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>MonthName</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>AttributeKey</OrderBy>
+              <OrderByAttributeID>MonthNumber</OrderByAttributeID>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>MonthAllTime</ID>
+              <Name>MonthAllTime</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>MonthAllTime</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>MonthAllTime</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>Quarter</ID>
+              <Name>Quarter</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>Quarter</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>Quarter</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>QuarterName</ID>
+              <Name>QuarterName</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>QuarterName</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>QuarterName</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>QuarterAllTime</ID>
+              <Name>QuarterAllTime</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>QuarterAllTime</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>QuarterAllTime</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>YearName</ID>
+              <Name>YearName</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>YearName</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>YearName</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>YearNumber</ID>
+              <Name>YearNumber</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>YearNumber</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>YearNumber</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>StandardDate</ID>
+              <Name>StandardDate</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>StandardDate</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>StandardDate</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Boolean" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>IsPublicHoliday</ID>
+              <Name>IsPublicHoliday</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Boolean</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>IsPublicHoliday</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>IsPublicHoliday</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+              <ddl300_300:FormatString>"TRUE";"TRUE";"FALSE"</ddl300_300:FormatString>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>HolidayText</ID>
+              <Name>HolidayText</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>HolidayText</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>HolidayText</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>FinancialYearNumber</ID>
+              <Name>FinancialYearNumber</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>FinancialYearNumber</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>FinancialYearNumber</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>FinancialYearName</ID>
+              <Name>FinancialYearName</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>FinancialYearName</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>FinancialYearName</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>FinancialPeriodNumber</ID>
+              <Name>FinancialPeriodNumber</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>FinancialPeriodNumber</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>FinancialPeriodNumber</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>FinancialPeriodName</ID>
+              <Name>FinancialPeriodName</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>FinancialPeriodName</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>FinancialPeriodName</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>FinancialPeriodAllTime</ID>
+              <Name>FinancialPeriodAllTime</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    <ColumnID>FinancialPeriodAllTime</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                  <ColumnID>FinancialPeriodAllTime</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
+          </Attributes>
+          <ProactiveCaching>
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" />
+          </ProactiveCaching>
+        </Dimension>
       </Dimensions>
       <Cubes>
         <Cube>
@@ -13840,6 +16152,190 @@
                 </Attribute>
                 <Attribute>
                   <AttributeID>DescriptionText</AttributeID>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension>
+              <ID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</ID>
+              <Name>ProcessCompletedDate</Name>
+              <DimensionID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</DimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>RowNumber</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DateSK</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DateID</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Date</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Day</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DaySuffix</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>USDayOfWeek</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DayOfWeek</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DOWInMonth</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DayOfYear</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>WeekOfYear</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>WeekOfMonth</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>MonthNumber</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>MonthName</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>MonthAllTime</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Quarter</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>QuarterName</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>QuarterAllTime</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>YearName</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>YearNumber</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>StandardDate</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>IsPublicHoliday</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>HolidayText</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>FinancialYearNumber</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>FinancialYearName</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>FinancialPeriodNumber</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>FinancialPeriodName</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>FinancialPeriodAllTime</AttributeID>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension>
+              <ID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</ID>
+              <Name>ProcessStartedDate</Name>
+              <DimensionID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</DimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>RowNumber</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DateSK</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DateID</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Date</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Day</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DaySuffix</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>USDayOfWeek</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DayOfWeek</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DOWInMonth</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DayOfYear</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>WeekOfYear</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>WeekOfMonth</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>MonthNumber</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>MonthName</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>MonthAllTime</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Quarter</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>QuarterName</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>QuarterAllTime</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>YearName</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>YearNumber</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>StandardDate</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>IsPublicHoliday</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>HolidayText</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>FinancialYearNumber</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>FinancialYearName</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>FinancialPeriodNumber</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>FinancialPeriodName</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>FinancialPeriodAllTime</AttributeID>
                 </Attribute>
               </Attributes>
             </Dimension>
@@ -23470,6 +25966,998 @@
                 <Source xsi:type="ProactiveCachingInheritedBinding" />
               </ProactiveCaching>
             </MeasureGroup>
+            <MeasureGroup>
+              <ID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</ID>
+              <Name>ProcessCompletedDate</Name>
+              <Measures>
+                <Measure>
+                  <ID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</ID>
+                  <Name>_Count ProcessCompletedDate</Name>
+                  <AggregateFunction>Count</AggregateFunction>
+                  <DataType>BigInt</DataType>
+                  <Source>
+                    <DataType>BigInt</DataType>
+                    <DataSize>8</DataSize>
+                    <Source xsi:type="RowBinding">
+                      <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                    </Source>
+                  </Source>
+                  <Visible>false</Visible>
+                </Measure>
+              </Measures>
+              <StorageMode valuens="ddl200_200">InMemory</StorageMode>
+              <ErrorConfiguration>
+                <KeyNotFound>IgnoreError</KeyNotFound>
+                <KeyDuplicate>ReportAndStop</KeyDuplicate>
+                <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+              </ErrorConfiguration>
+              <ProcessingMode>Regular</ProcessingMode>
+              <Dimensions>
+                <Dimension xsi:type="DegenerateMeasureGroupDimension">
+                  <CubeDimensionID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>RowNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate</TableID>
+                            <ColumnID>RowNumber</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DateSK</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>DateSK</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DateID</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>DateID</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>Date</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Date</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Error</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>Date</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>Day</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>Day</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DaySuffix</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>DaySuffix</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>USDayOfWeek</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>USDayOfWeek</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DayOfWeek</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>DayOfWeek</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DOWInMonth</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>DOWInMonth</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DayOfYear</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>DayOfYear</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>WeekOfYear</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>WeekOfYear</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>WeekOfMonth</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>WeekOfMonth</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>MonthNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>MonthNumber</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>MonthName</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>MonthName</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>MonthAllTime</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>MonthAllTime</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>Quarter</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>Quarter</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>QuarterName</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>QuarterName</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>QuarterAllTime</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>QuarterAllTime</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>YearName</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>YearName</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>YearNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>YearNumber</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>StandardDate</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>StandardDate</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>IsPublicHoliday</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Boolean</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>IsPublicHoliday</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>HolidayText</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>HolidayText</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>FinancialYearNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>FinancialYearNumber</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>FinancialYearName</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>FinancialYearName</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>FinancialPeriodNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>FinancialPeriodNumber</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>FinancialPeriodName</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>FinancialPeriodName</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>FinancialPeriodAllTime</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</TableID>
+                            <ColumnID>FinancialPeriodAllTime</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                  </Attributes>
+                  <ddl200_200:ShareDimensionStorage>Shared</ddl200_200:ShareDimensionStorage>
+                </Dimension>
+              </Dimensions>
+              <Partitions>
+                <Partition>
+                  <ID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</ID>
+                  <Name>ProcessCompletedDate</Name>
+                  <Annotations>
+                    <Annotation>
+                      <Name>IsQueryEditorUsed</Name>
+                      <Value>False</Value>
+                    </Annotation>
+                    <Annotation>
+                      <Name>QueryEditorSerialization</Name>
+                    </Annotation>
+                    <Annotation>
+                      <Name>TableWidgetSerialization</Name>
+                    </Annotation>
+                  </Annotations>
+                  <Source xsi:type="QueryBinding">
+                    <DataSourceID>06bd047d-3ac6-4651-be9f-b58a20db8708</DataSourceID>
+                    <QueryDefinition>SELECT [OLAP].[Shared_DimCompletedDate].* 		FROM [OLAP].[Shared_DimCompletedDate]</QueryDefinition>
+                  </Source>
+                  <StorageMode valuens="ddl200_200">InMemory</StorageMode>
+                  <ProcessingMode>Regular</ProcessingMode>
+                  <ErrorConfiguration>
+                    <KeyNotFound>IgnoreError</KeyNotFound>
+                    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+                    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+                  </ErrorConfiguration>
+                  <ProactiveCaching>
+                    <SilenceInterval>-PT1S</SilenceInterval>
+                    <Latency>-PT1S</Latency>
+                    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+                    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+                    <Source xsi:type="ProactiveCachingInheritedBinding" />
+                  </ProactiveCaching>
+                </Partition>
+              </Partitions>
+              <ProactiveCaching>
+                <SilenceInterval>-PT1S</SilenceInterval>
+                <Latency>-PT1S</Latency>
+                <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+                <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+                <Source xsi:type="ProactiveCachingInheritedBinding" />
+              </ProactiveCaching>
+            </MeasureGroup>
+            <MeasureGroup>
+              <ID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</ID>
+              <Name>ProcessStartedDate</Name>
+              <Measures>
+                <Measure>
+                  <ID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</ID>
+                  <Name>_Count ProcessStartedDate</Name>
+                  <AggregateFunction>Count</AggregateFunction>
+                  <DataType>BigInt</DataType>
+                  <Source>
+                    <DataType>BigInt</DataType>
+                    <DataSize>8</DataSize>
+                    <Source xsi:type="RowBinding">
+                      <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                    </Source>
+                  </Source>
+                  <Visible>false</Visible>
+                </Measure>
+              </Measures>
+              <StorageMode valuens="ddl200_200">InMemory</StorageMode>
+              <ErrorConfiguration>
+                <KeyNotFound>IgnoreError</KeyNotFound>
+                <KeyDuplicate>ReportAndStop</KeyDuplicate>
+                <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+              </ErrorConfiguration>
+              <ProcessingMode>Regular</ProcessingMode>
+              <Dimensions>
+                <Dimension xsi:type="DegenerateMeasureGroupDimension">
+                  <CubeDimensionID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>RowNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate</TableID>
+                            <ColumnID>RowNumber</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DateSK</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>DateSK</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DateID</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>DateID</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>Date</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Date</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Error</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>Date</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>Day</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>Day</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DaySuffix</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>DaySuffix</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>USDayOfWeek</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>USDayOfWeek</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DayOfWeek</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>DayOfWeek</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DOWInMonth</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>DOWInMonth</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DayOfYear</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>DayOfYear</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>WeekOfYear</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>WeekOfYear</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>WeekOfMonth</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>WeekOfMonth</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>MonthNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>MonthNumber</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>MonthName</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>MonthName</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>MonthAllTime</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>MonthAllTime</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>Quarter</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>Quarter</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>QuarterName</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>QuarterName</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>QuarterAllTime</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>QuarterAllTime</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>YearName</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>YearName</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>YearNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>YearNumber</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>StandardDate</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>StandardDate</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>IsPublicHoliday</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Boolean</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>IsPublicHoliday</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>HolidayText</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>HolidayText</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>FinancialYearNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>FinancialYearNumber</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>FinancialYearName</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>FinancialYearName</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>FinancialPeriodNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>FinancialPeriodNumber</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>FinancialPeriodName</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>FinancialPeriodName</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>FinancialPeriodAllTime</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</TableID>
+                            <ColumnID>FinancialPeriodAllTime</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                  </Attributes>
+                  <ddl200_200:ShareDimensionStorage>Shared</ddl200_200:ShareDimensionStorage>
+                </Dimension>
+              </Dimensions>
+              <Partitions>
+                <Partition>
+                  <ID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</ID>
+                  <Name>ProcessStartedDate</Name>
+                  <Annotations>
+                    <Annotation>
+                      <Name>IsQueryEditorUsed</Name>
+                      <Value>False</Value>
+                    </Annotation>
+                    <Annotation>
+                      <Name>QueryEditorSerialization</Name>
+                    </Annotation>
+                    <Annotation>
+                      <Name>TableWidgetSerialization</Name>
+                    </Annotation>
+                  </Annotations>
+                  <Source xsi:type="QueryBinding">
+                    <DataSourceID>06bd047d-3ac6-4651-be9f-b58a20db8708</DataSourceID>
+                    <QueryDefinition>SELECT [OLAP].[Shared_DimStartedDate].* 		FROM [OLAP].[Shared_DimStartedDate]</QueryDefinition>
+                  </Source>
+                  <StorageMode valuens="ddl200_200">InMemory</StorageMode>
+                  <ProcessingMode>Regular</ProcessingMode>
+                  <ErrorConfiguration>
+                    <KeyNotFound>IgnoreError</KeyNotFound>
+                    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+                    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+                  </ErrorConfiguration>
+                  <ProactiveCaching>
+                    <SilenceInterval>-PT1S</SilenceInterval>
+                    <Latency>-PT1S</Latency>
+                    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+                    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+                    <Source xsi:type="ProactiveCachingInheritedBinding" />
+                  </ProactiveCaching>
+                </Partition>
+              </Partitions>
+              <ProactiveCaching>
+                <SilenceInterval>-PT1S</SilenceInterval>
+                <Latency>-PT1S</Latency>
+                <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+                <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+                <Source xsi:type="ProactiveCachingInheritedBinding" />
+              </ProactiveCaching>
+            </MeasureGroup>
           </MeasureGroups>
           <Source>
             <DataSourceViewID>Sandbox</DataSourceViewID>
@@ -24631,6 +28119,192 @@ CREATE MEASURE 'GLTransaction'[Balance]=SUM(GLTransaction[Bal]);
                               </xs:restriction>
                             </xs:simpleType>
                           </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="ProcessCompletedDate" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimCompletedDate" msprop:TableType="View" msprop:Description="ProcessCompletedDate" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimCompletedDate].*   FROM [OLAP].[Shared_DimCompletedDate] ">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="DateSK" msprop:DbColumnName="DateSK" msprop:FriendlyName="DateSK" type="xs:long" minOccurs="0" />
+                          <xs:element name="DateID" msprop:DbColumnName="DateID" msprop:FriendlyName="DateID" type="xs:long" minOccurs="0" />
+                          <xs:element name="Date" msprop:DbColumnName="Date" msprop:FriendlyName="Date" type="xs:dateTime" minOccurs="0" />
+                          <xs:element name="Day" msprop:DbColumnName="Day" msprop:FriendlyName="Day" type="xs:long" minOccurs="0" />
+                          <xs:element name="DaySuffix" msprop:DbColumnName="DaySuffix" msprop:FriendlyName="DaySuffix" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="USDayOfWeek" msprop:DbColumnName="USDayOfWeek" msprop:FriendlyName="USDayOfWeek" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="DayOfWeek" msprop:DbColumnName="DayOfWeek" msprop:FriendlyName="DayOfWeek" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="DOWInMonth" msprop:DbColumnName="DOWInMonth" msprop:FriendlyName="DOWInMonth" type="xs:long" minOccurs="0" />
+                          <xs:element name="DayOfYear" msprop:DbColumnName="DayOfYear" msprop:FriendlyName="DayOfYear" type="xs:long" minOccurs="0" />
+                          <xs:element name="WeekOfYear" msprop:DbColumnName="WeekOfYear" msprop:FriendlyName="WeekOfYear" type="xs:long" minOccurs="0" />
+                          <xs:element name="WeekOfMonth" msprop:DbColumnName="WeekOfMonth" msprop:FriendlyName="WeekOfMonth" type="xs:long" minOccurs="0" />
+                          <xs:element name="MonthNumber" msprop:DbColumnName="MonthNumber" msprop:FriendlyName="MonthNumber" type="xs:long" minOccurs="0" />
+                          <xs:element name="MonthName" msprop:DbColumnName="MonthName" msprop:FriendlyName="MonthName" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="MonthAllTime" msprop:DbColumnName="MonthAllTime" msprop:FriendlyName="MonthAllTime" type="xs:long" minOccurs="0" />
+                          <xs:element name="Quarter" msprop:DbColumnName="Quarter" msprop:FriendlyName="Quarter" type="xs:long" minOccurs="0" />
+                          <xs:element name="QuarterName" msprop:DbColumnName="QuarterName" msprop:FriendlyName="QuarterName" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="QuarterAllTime" msprop:DbColumnName="QuarterAllTime" msprop:FriendlyName="QuarterAllTime" type="xs:long" minOccurs="0" />
+                          <xs:element name="YearName" msprop:DbColumnName="YearName" msprop:FriendlyName="YearName" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="YearNumber" msprop:DbColumnName="YearNumber" msprop:FriendlyName="YearNumber" type="xs:long" minOccurs="0" />
+                          <xs:element name="StandardDate" msprop:DbColumnName="StandardDate" msprop:FriendlyName="StandardDate" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="IsPublicHoliday" msprop:DbColumnName="IsPublicHoliday" msprop:FriendlyName="IsPublicHoliday" type="xs:boolean" minOccurs="0" />
+                          <xs:element name="HolidayText" msprop:DbColumnName="HolidayText" msprop:FriendlyName="HolidayText" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="FinancialYearNumber" msprop:DbColumnName="FinancialYearNumber" msprop:FriendlyName="FinancialYearNumber" type="xs:long" minOccurs="0" />
+                          <xs:element name="FinancialYearName" msprop:DbColumnName="FinancialYearName" msprop:FriendlyName="FinancialYearName" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="FinancialPeriodNumber" msprop:DbColumnName="FinancialPeriodNumber" msprop:FriendlyName="FinancialPeriodNumber" type="xs:long" minOccurs="0" />
+                          <xs:element name="FinancialPeriodName" msprop:DbColumnName="FinancialPeriodName" msprop:FriendlyName="FinancialPeriodName" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="FinancialPeriodAllTime" msprop:DbColumnName="FinancialPeriodAllTime" msprop:FriendlyName="FinancialPeriodAllTime" type="xs:long" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="ProcessStartedDate" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimStartedDate" msprop:TableType="View" msprop:Description="ProcessStartedDate" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimStartedDate].*   FROM [OLAP].[Shared_DimStartedDate] ">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="DateSK" msprop:DbColumnName="DateSK" msprop:FriendlyName="DateSK" type="xs:long" minOccurs="0" />
+                          <xs:element name="DateID" msprop:DbColumnName="DateID" msprop:FriendlyName="DateID" type="xs:long" minOccurs="0" />
+                          <xs:element name="Date" msprop:DbColumnName="Date" msprop:FriendlyName="Date" type="xs:dateTime" minOccurs="0" />
+                          <xs:element name="Day" msprop:DbColumnName="Day" msprop:FriendlyName="Day" type="xs:long" minOccurs="0" />
+                          <xs:element name="DaySuffix" msprop:DbColumnName="DaySuffix" msprop:FriendlyName="DaySuffix" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="USDayOfWeek" msprop:DbColumnName="USDayOfWeek" msprop:FriendlyName="USDayOfWeek" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="DayOfWeek" msprop:DbColumnName="DayOfWeek" msprop:FriendlyName="DayOfWeek" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="DOWInMonth" msprop:DbColumnName="DOWInMonth" msprop:FriendlyName="DOWInMonth" type="xs:long" minOccurs="0" />
+                          <xs:element name="DayOfYear" msprop:DbColumnName="DayOfYear" msprop:FriendlyName="DayOfYear" type="xs:long" minOccurs="0" />
+                          <xs:element name="WeekOfYear" msprop:DbColumnName="WeekOfYear" msprop:FriendlyName="WeekOfYear" type="xs:long" minOccurs="0" />
+                          <xs:element name="WeekOfMonth" msprop:DbColumnName="WeekOfMonth" msprop:FriendlyName="WeekOfMonth" type="xs:long" minOccurs="0" />
+                          <xs:element name="MonthNumber" msprop:DbColumnName="MonthNumber" msprop:FriendlyName="MonthNumber" type="xs:long" minOccurs="0" />
+                          <xs:element name="MonthName" msprop:DbColumnName="MonthName" msprop:FriendlyName="MonthName" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="MonthAllTime" msprop:DbColumnName="MonthAllTime" msprop:FriendlyName="MonthAllTime" type="xs:long" minOccurs="0" />
+                          <xs:element name="Quarter" msprop:DbColumnName="Quarter" msprop:FriendlyName="Quarter" type="xs:long" minOccurs="0" />
+                          <xs:element name="QuarterName" msprop:DbColumnName="QuarterName" msprop:FriendlyName="QuarterName" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="QuarterAllTime" msprop:DbColumnName="QuarterAllTime" msprop:FriendlyName="QuarterAllTime" type="xs:long" minOccurs="0" />
+                          <xs:element name="YearName" msprop:DbColumnName="YearName" msprop:FriendlyName="YearName" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="YearNumber" msprop:DbColumnName="YearNumber" msprop:FriendlyName="YearNumber" type="xs:long" minOccurs="0" />
+                          <xs:element name="StandardDate" msprop:DbColumnName="StandardDate" msprop:FriendlyName="StandardDate" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="IsPublicHoliday" msprop:DbColumnName="IsPublicHoliday" msprop:FriendlyName="IsPublicHoliday" type="xs:boolean" minOccurs="0" />
+                          <xs:element name="HolidayText" msprop:DbColumnName="HolidayText" msprop:FriendlyName="HolidayText" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="FinancialYearNumber" msprop:DbColumnName="FinancialYearNumber" msprop:FriendlyName="FinancialYearNumber" type="xs:long" minOccurs="0" />
+                          <xs:element name="FinancialYearName" msprop:DbColumnName="FinancialYearName" msprop:FriendlyName="FinancialYearName" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="FinancialPeriodNumber" msprop:DbColumnName="FinancialPeriodNumber" msprop:FriendlyName="FinancialPeriodNumber" type="xs:long" minOccurs="0" />
+                          <xs:element name="FinancialPeriodName" msprop:DbColumnName="FinancialPeriodName" msprop:FriendlyName="FinancialPeriodName" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="FinancialPeriodAllTime" msprop:DbColumnName="FinancialPeriodAllTime" msprop:FriendlyName="FinancialPeriodAllTime" type="xs:long" minOccurs="0" />
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
