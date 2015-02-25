@@ -1,5 +1,6 @@
 ﻿
 
+
 	
 CREATE VIEW [OLAP].[Finance_FactGLTransaction] AS
 	(
@@ -15,7 +16,7 @@ CREATE VIEW [OLAP].[Finance_FactGLTransaction] AS
 			edw.DebitAmount,
 			edw.Movement,
 			Balance = (edw.DebitAmount - edw.CreditAmount),
-			DimTransactionDateID = ft.DimFinancialTxDateID
+			FinancialTransactionID = ft.SourceKey
 		FROM Finance.FactGLTransaction AS edw
 		INNER JOIN Finance.FactFinancialTransaction AS ft ON edw.FactFinancialTxID = ft.FactFinancialTxID
 		WHERE edw.IsActive = 1
