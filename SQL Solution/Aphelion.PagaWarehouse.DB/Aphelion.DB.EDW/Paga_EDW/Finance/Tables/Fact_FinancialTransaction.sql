@@ -20,7 +20,7 @@
     [ForeignCurrencyAmount]     DECIMAL (18, 2) NULL,
     [ReferenceNumber]           VARCHAR (50)    NULL,
     [ShortCode]                 VARCHAR (10)    NULL,
-    [Cancelled]                 INT             NULL,
+    [Cancelled]                 BIT             DEFAULT ((0)) NULL,
     [IsIntegrationTx]           BIT             NULL,
     [FactIntegrationTxID]       INT             NULL,
     [sys_CreatedBy]             VARCHAR (255)   DEFAULT (user_name()) NOT NULL,
@@ -61,10 +61,10 @@
 
 
 
+
+
 GO
-CREATE NONCLUSTERED INDEX [ix_FactFinancialTransaction_TxDate_NotCancelled]
-    ON [Finance].[FactFinancialTransaction]([DimFinancialTxDateID] ASC, [Cancelled] ASC)
-    INCLUDE([DimFinancialTxTypeID], [FactProcessEventID]) WHERE ([Cancelled]=(0));
+
 
 
 GO
