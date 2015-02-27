@@ -82,7 +82,7 @@
                 <AttributeRelationship>
                   <AttributeID>SourceKey</AttributeID>
                   <OverrideBehavior>None</OverrideBehavior>
-                  <Name>SourceKey</Name>
+                  <Name>FinancialTransactionType</Name>
                 </AttributeRelationship>
                 <AttributeRelationship>
                   <AttributeID>Name</AttributeID>
@@ -132,6 +132,7 @@
                 </Source>
               </NameColumn>
               <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
             </Attribute>
             <Attribute>
               <Annotations>
@@ -143,7 +144,7 @@
                 </Annotation>
               </Annotations>
               <ID>SourceKey</ID>
-              <Name>SourceKey</Name>
+              <Name>FinancialTransactionType</Name>
               <KeyColumns>
                 <KeyColumn>
                   <DataType>WChar</DataType>
@@ -202,6 +203,7 @@
                 </Source>
               </NameColumn>
               <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
             </Attribute>
             <Attribute>
               <Annotations>
@@ -237,194 +239,7 @@
                 </Source>
               </NameColumn>
               <OrderBy>Key</OrderBy>
-            </Attribute>
-          </Attributes>
-          <ProactiveCaching>
-            <SilenceInterval>-PT1S</SilenceInterval>
-            <Latency>-PT1S</Latency>
-            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
-            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
-            <Source xsi:type="ProactiveCachingInheritedBinding" />
-          </ProactiveCaching>
-        </Dimension>
-        <Dimension>
-          <ID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</ID>
-          <Name>ChartOfAccounts</Name>
-          <Annotations>
-            <Annotation>
-              <Name>IsQueryEditorUsed</Name>
-              <Value>False</Value>
-            </Annotation>
-            <Annotation>
-              <Name>QueryEditorSerialization</Name>
-            </Annotation>
-            <Annotation>
-              <Name>TableWidgetSerialization</Name>
-            </Annotation>
-            <Annotation>
-              <Name>DataMarketWebBaseUrl</Name>
-            </Annotation>
-            <Annotation>
-              <Name>DataMarketWebQueryUrl</Name>
-            </Annotation>
-          </Annotations>
-          <Source xsi:type="DataSourceViewBinding">
-            <DataSourceViewID>Sandbox</DataSourceViewID>
-          </Source>
-          <UnknownMember valuens="ddl200_200">AutomaticNull</UnknownMember>
-          <ErrorConfiguration>
-            <KeyNotFound>IgnoreError</KeyNotFound>
-            <KeyDuplicate>ReportAndStop</KeyDuplicate>
-            <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
-          </ErrorConfiguration>
-          <StorageMode valuens="ddl200_200">InMemory</StorageMode>
-          <Language>1033</Language>
-          <UnknownMemberName>Unknown</UnknownMemberName>
-          <Attributes>
-            <Attribute>
-              <ID>RowNumber</ID>
-              <Name>RowNumber</Name>
-              <Type valuens="ddl200_200">RowNumber</Type>
-              <Usage>Key</Usage>
-              <KeyColumns>
-                <KeyColumn>
-                  <DataType>Integer</DataType>
-                  <DataSize>4</DataSize>
-                  <NullProcessing>Error</NullProcessing>
-                  <Source xsi:type="ddl200_200:RowNumberBinding" />
-                </KeyColumn>
-              </KeyColumns>
-              <NameColumn>
-                <DataType>WChar</DataType>
-                <DataSize>4</DataSize>
-                <NullProcessing>ZeroOrBlank</NullProcessing>
-                <Source xsi:type="ddl200_200:RowNumberBinding" />
-              </NameColumn>
-              <AttributeRelationships>
-                <AttributeRelationship>
-                  <AttributeID>DimChartOfAccountsID</AttributeID>
-                  <Cardinality>One</Cardinality>
-                  <OverrideBehavior>None</OverrideBehavior>
-                  <Name>DimChartOfAccountsID</Name>
-                </AttributeRelationship>
-                <AttributeRelationship>
-                  <AttributeID>COA_CodeRange</AttributeID>
-                  <OverrideBehavior>None</OverrideBehavior>
-                  <Name>COA_CodeRange</Name>
-                </AttributeRelationship>
-                <AttributeRelationship>
-                  <AttributeID>COA_Name</AttributeID>
-                  <OverrideBehavior>None</OverrideBehavior>
-                  <Name>COA_Name</Name>
-                </AttributeRelationship>
-              </AttributeRelationships>
-              <OrderBy>Key</OrderBy>
               <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
-            </Attribute>
-            <Attribute>
-              <Annotations>
-                <Annotation>
-                  <Name>Format</Name>
-                  <Value>
-                    <Format Format="General" xmlns="" />
-                  </Value>
-                </Annotation>
-              </Annotations>
-              <ID>DimChartOfAccountsID</ID>
-              <Name>DimChartOfAccountsID</Name>
-              <KeyColumns>
-                <KeyColumn>
-                  <DataType>BigInt</DataType>
-                  <DataSize>-1</DataSize>
-                  <NullProcessing>Error</NullProcessing>
-                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                  <Source xsi:type="ColumnBinding">
-                    <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                    <ColumnID>DimChartOfAccountsID</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <NameColumn>
-                <DataType>WChar</DataType>
-                <DataSize>-1</DataSize>
-                <NullProcessing>ZeroOrBlank</NullProcessing>
-                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                <Source xsi:type="ColumnBinding">
-                  <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                  <ColumnID>DimChartOfAccountsID</ColumnID>
-                </Source>
-              </NameColumn>
-              <OrderBy>Key</OrderBy>
-            </Attribute>
-            <Attribute>
-              <Annotations>
-                <Annotation>
-                  <Name>Format</Name>
-                  <Value>
-                    <Format Format="Text" xmlns="" />
-                  </Value>
-                </Annotation>
-              </Annotations>
-              <ID>COA_CodeRange</ID>
-              <Name>COA_CodeRange</Name>
-              <KeyColumns>
-                <KeyColumn>
-                  <DataType>WChar</DataType>
-                  <DataSize>32768</DataSize>
-                  <NullProcessing>Preserve</NullProcessing>
-                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                  <Source xsi:type="ColumnBinding">
-                    <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                    <ColumnID>COA_CodeRange</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <NameColumn>
-                <DataType>WChar</DataType>
-                <DataSize>32768</DataSize>
-                <NullProcessing>ZeroOrBlank</NullProcessing>
-                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                <Source xsi:type="ColumnBinding">
-                  <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                  <ColumnID>COA_CodeRange</ColumnID>
-                </Source>
-              </NameColumn>
-              <OrderBy>Key</OrderBy>
-            </Attribute>
-            <Attribute>
-              <Annotations>
-                <Annotation>
-                  <Name>Format</Name>
-                  <Value>
-                    <Format Format="Text" xmlns="" />
-                  </Value>
-                </Annotation>
-              </Annotations>
-              <ID>COA_Name</ID>
-              <Name>COA_Name</Name>
-              <KeyColumns>
-                <KeyColumn>
-                  <DataType>WChar</DataType>
-                  <DataSize>32768</DataSize>
-                  <NullProcessing>Preserve</NullProcessing>
-                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                  <Source xsi:type="ColumnBinding">
-                    <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                    <ColumnID>COA_Name</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <NameColumn>
-                <DataType>WChar</DataType>
-                <DataSize>32768</DataSize>
-                <NullProcessing>ZeroOrBlank</NullProcessing>
-                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                <Source xsi:type="ColumnBinding">
-                  <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                  <ColumnID>COA_Name</ColumnID>
-                </Source>
-              </NameColumn>
-              <OrderBy>Key</OrderBy>
             </Attribute>
           </Attributes>
           <ProactiveCaching>
@@ -498,7 +313,7 @@
                 <AttributeRelationship>
                   <AttributeID>SourceKey</AttributeID>
                   <OverrideBehavior>None</OverrideBehavior>
-                  <Name>SourceKey</Name>
+                  <Name>FinancialAccountID</Name>
                 </AttributeRelationship>
                 <AttributeRelationship>
                   <AttributeID>Name</AttributeID>
@@ -599,7 +414,7 @@
                 </Annotation>
               </Annotations>
               <ID>SourceKey</ID>
-              <Name>SourceKey</Name>
+              <Name>FinancialAccountID</Name>
               <KeyColumns>
                 <KeyColumn>
                   <DataType>BigInt</DataType>
@@ -728,6 +543,7 @@
                 </Source>
               </NameColumn>
               <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
             </Attribute>
             <Attribute>
               <Annotations>
@@ -763,6 +579,7 @@
                 </Source>
               </NameColumn>
               <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
             </Attribute>
             <Attribute>
               <Annotations>
@@ -798,6 +615,7 @@
                 </Source>
               </NameColumn>
               <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
             </Attribute>
             <Attribute>
               <Annotations>
@@ -833,6 +651,7 @@
                 </Source>
               </NameColumn>
               <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
             </Attribute>
             <Attribute>
               <Annotations>
@@ -2501,7 +2320,6 @@
                 <KeyColumn>
                   <DataType>BigInt</DataType>
                   <DataSize>-1</DataSize>
-                  <NullProcessing>Preserve</NullProcessing>
                   <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                   <Source xsi:type="ColumnBinding">
                     <TableID>Finance_FactGLTransaction_93bd22fb-039d-48a1-878c-f7df4be3abb3</TableID>
@@ -2837,29 +2655,6 @@
           </ProactiveCaching>
           <ddl300_300:Relationships>
             <ddl300_300:Relationship>
-              <ID>a83f5d01-e960-41dc-a6bf-5b2008c9d417</ID>
-              <ddl300_300:FromRelationshipEnd>
-                <ddl300_300:Multiplicity>Many</ddl300_300:Multiplicity>
-                <ddl300:VisualizationProperties />
-                <DimensionID>Finance_FactGLTransaction_93bd22fb-039d-48a1-878c-f7df4be3abb3</DimensionID>
-                <Attributes>
-                  <Attribute>
-                    <AttributeID>DimGLCodeID</AttributeID>
-                  </Attribute>
-                </Attributes>
-              </ddl300_300:FromRelationshipEnd>
-              <ddl300_300:ToRelationshipEnd>
-                <ddl300_300:Multiplicity>One</ddl300_300:Multiplicity>
-                <ddl300:VisualizationProperties />
-                <DimensionID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</DimensionID>
-                <Attributes>
-                  <Attribute>
-                    <AttributeID>DimGLCodeID</AttributeID>
-                  </Attribute>
-                </Attributes>
-              </ddl300_300:ToRelationshipEnd>
-            </ddl300_300:Relationship>
-            <ddl300_300:Relationship>
               <ID>ecaa312e-3852-4a23-bc63-bee0c7c4f080</ID>
               <ddl300_300:FromRelationshipEnd>
                 <ddl300_300:Multiplicity>Many</ddl300_300:Multiplicity>
@@ -2901,6 +2696,29 @@
                 <Attributes>
                   <Attribute>
                     <AttributeID>FactFinancialTxID</AttributeID>
+                  </Attribute>
+                </Attributes>
+              </ddl300_300:ToRelationshipEnd>
+            </ddl300_300:Relationship>
+            <ddl300_300:Relationship>
+              <ID>ed42cdc4-f637-4583-b409-91c08d187b16</ID>
+              <ddl300_300:FromRelationshipEnd>
+                <ddl300_300:Multiplicity>Many</ddl300_300:Multiplicity>
+                <ddl300:VisualizationProperties />
+                <DimensionID>Finance_FactGLTransaction_93bd22fb-039d-48a1-878c-f7df4be3abb3</DimensionID>
+                <Attributes>
+                  <Attribute>
+                    <AttributeID>DimGLCodeID</AttributeID>
+                  </Attribute>
+                </Attributes>
+              </ddl300_300:FromRelationshipEnd>
+              <ddl300_300:ToRelationshipEnd>
+                <ddl300_300:Multiplicity>One</ddl300_300:Multiplicity>
+                <ddl300:VisualizationProperties />
+                <DimensionID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</DimensionID>
+                <Attributes>
+                  <Attribute>
+                    <AttributeID>DimGLCodeID</AttributeID>
                   </Attribute>
                 </Attributes>
               </ddl300_300:ToRelationshipEnd>
@@ -4067,20 +3885,202 @@
           <Name>GLCodeHierarchy</Name>
           <Annotations>
             <Annotation>
-              <Name>IsQueryEditorUsed</Name>
-              <Value>False</Value>
+              <Name>TableWidgetSerialization</Name>
+              <Value>&lt;?xml version="1.0" encoding="UTF-16"?&gt;&lt;Gemini xmlns="TableWidgetSerialization"&gt;&lt;AnnotationContent&gt;&lt;![CDATA[&lt;?xml version="1.0"?&gt;
+&lt;TableWidgetGridSerialization xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ColumnSuggestedType /&gt;
+  &lt;ColumnFormat /&gt;
+  &lt;ColumnAccuracy /&gt;
+  &lt;ColumnCurrencySymbol /&gt;
+  &lt;ColumnPositivePattern /&gt;
+  &lt;ColumnNegativePattern /&gt;
+  &lt;ColumnWidths&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;Name&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;57&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GLCodeRange&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;98&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header1&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;89&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header2&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;89&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header3&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;89&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GLCode&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;67&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;DimGLCodeID&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;95&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+  &lt;/ColumnWidths&gt;
+  &lt;ColumnDisplayIndex&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;Name&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;4&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GLCodeRange&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;3&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header1&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;0&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header2&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;1&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header3&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;2&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GLCode&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;5&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;DimGLCodeID&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;6&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+  &lt;/ColumnDisplayIndex&gt;
+  &lt;ColumnFrozen /&gt;
+  &lt;ColumnChecked&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header1&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header2&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header3&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GLCodeRange&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;Name&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GLCode&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;DimGLCodeID&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+  &lt;/ColumnChecked&gt;
+  &lt;ColumnFilter /&gt;
+  &lt;SelectionFilter /&gt;
+  &lt;FilterParameters /&gt;
+  &lt;IsSortDescending&gt;false&lt;/IsSortDescending&gt;
+&lt;/TableWidgetGridSerialization&gt;]]&gt;&lt;/AnnotationContent&gt;&lt;/Gemini&gt;</Value>
             </Annotation>
             <Annotation>
               <Name>QueryEditorSerialization</Name>
             </Annotation>
             <Annotation>
-              <Name>TableWidgetSerialization</Name>
-            </Annotation>
-            <Annotation>
-              <Name>DataMarketWebBaseUrl</Name>
-            </Annotation>
-            <Annotation>
-              <Name>DataMarketWebQueryUrl</Name>
+              <Name>IsQueryEditorUsed</Name>
+              <Value>False</Value>
             </Annotation>
           </Annotations>
           <Source xsi:type="DataSourceViewBinding">
@@ -4117,14 +4117,19 @@
               </NameColumn>
               <AttributeRelationships>
                 <AttributeRelationship>
-                  <AttributeID>GLCodeGroupRange</AttributeID>
+                  <AttributeID>GL_Header1</AttributeID>
                   <OverrideBehavior>None</OverrideBehavior>
-                  <Name>GLCodeGroupRange</Name>
+                  <Name>GL_Header1</Name>
                 </AttributeRelationship>
                 <AttributeRelationship>
-                  <AttributeID>GLCodeGroup</AttributeID>
+                  <AttributeID>GL_Header2</AttributeID>
                   <OverrideBehavior>None</OverrideBehavior>
-                  <Name>GLCodeGroup</Name>
+                  <Name>GL_Header2</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>GL_Header3</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>GL_Header3</Name>
                 </AttributeRelationship>
                 <AttributeRelationship>
                   <AttributeID>GLCodeRange</AttributeID>
@@ -4132,9 +4137,9 @@
                   <Name>GLCodeRange</Name>
                 </AttributeRelationship>
                 <AttributeRelationship>
-                  <AttributeID>GLCodeSubGroup</AttributeID>
+                  <AttributeID>Name</AttributeID>
                   <OverrideBehavior>None</OverrideBehavior>
-                  <Name>GLCodeSubGroup</Name>
+                  <Name>COA_Name</Name>
                 </AttributeRelationship>
                 <AttributeRelationship>
                   <AttributeID>GLCode</AttributeID>
@@ -4142,45 +4147,26 @@
                   <Name>GLCode</Name>
                 </AttributeRelationship>
                 <AttributeRelationship>
-                  <AttributeID>GLDescription</AttributeID>
-                  <OverrideBehavior>None</OverrideBehavior>
-                  <Name>GLDescription</Name>
-                </AttributeRelationship>
-                <AttributeRelationship>
                   <AttributeID>DimGLCodeID</AttributeID>
                   <Cardinality>One</Cardinality>
                   <OverrideBehavior>None</OverrideBehavior>
                   <Name>DimGLCodeID</Name>
-                </AttributeRelationship>
-                <AttributeRelationship>
-                  <AttributeID>DimChartofAccountsID</AttributeID>
-                  <OverrideBehavior>None</OverrideBehavior>
-                  <Name>DimChartofAccountsID</Name>
                 </AttributeRelationship>
               </AttributeRelationships>
               <OrderBy>Key</OrderBy>
               <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
             </Attribute>
             <Attribute>
-              <Annotations>
-                <Annotation>
-                  <Name>Format</Name>
-                  <Value>
-                    <Format Format="Text" xmlns="" />
-                  </Value>
-                </Annotation>
-              </Annotations>
-              <ID>GLCodeGroupRange</ID>
-              <Name>GLCodeGroupRange</Name>
+              <ID>GL_Header1</ID>
+              <Name>GL_Header1</Name>
               <KeyColumns>
                 <KeyColumn>
                   <DataType>WChar</DataType>
                   <DataSize>32768</DataSize>
                   <NullProcessing>Preserve</NullProcessing>
-                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                   <Source xsi:type="ColumnBinding">
                     <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                    <ColumnID>GLCodeGroupRange</ColumnID>
+                    <ColumnID>GL_Header1</ColumnID>
                   </Source>
                 </KeyColumn>
               </KeyColumns>
@@ -4188,34 +4174,25 @@
                 <DataType>WChar</DataType>
                 <DataSize>32768</DataSize>
                 <NullProcessing>ZeroOrBlank</NullProcessing>
-                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                 <Source xsi:type="ColumnBinding">
                   <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                  <ColumnID>GLCodeGroupRange</ColumnID>
+                  <ColumnID>GL_Header1</ColumnID>
                 </Source>
               </NameColumn>
               <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
             </Attribute>
             <Attribute>
-              <Annotations>
-                <Annotation>
-                  <Name>Format</Name>
-                  <Value>
-                    <Format Format="Text" xmlns="" />
-                  </Value>
-                </Annotation>
-              </Annotations>
-              <ID>GLCodeGroup</ID>
-              <Name>GLCodeGroup</Name>
+              <ID>GL_Header2</ID>
+              <Name>GL_Header2</Name>
               <KeyColumns>
                 <KeyColumn>
                   <DataType>WChar</DataType>
                   <DataSize>32768</DataSize>
                   <NullProcessing>Preserve</NullProcessing>
-                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                   <Source xsi:type="ColumnBinding">
                     <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                    <ColumnID>GLCodeGroup</ColumnID>
+                    <ColumnID>GL_Header2</ColumnID>
                   </Source>
                 </KeyColumn>
               </KeyColumns>
@@ -4223,23 +4200,41 @@
                 <DataType>WChar</DataType>
                 <DataSize>32768</DataSize>
                 <NullProcessing>ZeroOrBlank</NullProcessing>
-                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                 <Source xsi:type="ColumnBinding">
                   <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                  <ColumnID>GLCodeGroup</ColumnID>
+                  <ColumnID>GL_Header2</ColumnID>
                 </Source>
               </NameColumn>
               <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
             </Attribute>
             <Attribute>
-              <Annotations>
-                <Annotation>
-                  <Name>Format</Name>
-                  <Value>
-                    <Format Format="Text" xmlns="" />
-                  </Value>
-                </Annotation>
-              </Annotations>
+              <ID>GL_Header3</ID>
+              <Name>GL_Header3</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
+                    <ColumnID>GL_Header3</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
+                  <ColumnID>GL_Header3</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+            </Attribute>
+            <Attribute>
               <ID>GLCodeRange</ID>
               <Name>GLCodeRange</Name>
               <KeyColumns>
@@ -4247,7 +4242,6 @@
                   <DataType>WChar</DataType>
                   <DataSize>32768</DataSize>
                   <NullProcessing>Preserve</NullProcessing>
-                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                   <Source xsi:type="ColumnBinding">
                     <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
                     <ColumnID>GLCodeRange</ColumnID>
@@ -4258,7 +4252,6 @@
                 <DataType>WChar</DataType>
                 <DataSize>32768</DataSize>
                 <NullProcessing>ZeroOrBlank</NullProcessing>
-                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                 <Source xsi:type="ColumnBinding">
                   <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
                   <ColumnID>GLCodeRange</ColumnID>
@@ -4267,25 +4260,16 @@
               <OrderBy>Key</OrderBy>
             </Attribute>
             <Attribute>
-              <Annotations>
-                <Annotation>
-                  <Name>Format</Name>
-                  <Value>
-                    <Format Format="Text" xmlns="" />
-                  </Value>
-                </Annotation>
-              </Annotations>
-              <ID>GLCodeSubGroup</ID>
-              <Name>GLCodeSubGroup</Name>
+              <ID>Name</ID>
+              <Name>COA_Name</Name>
               <KeyColumns>
                 <KeyColumn>
                   <DataType>WChar</DataType>
                   <DataSize>32768</DataSize>
                   <NullProcessing>Preserve</NullProcessing>
-                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                   <Source xsi:type="ColumnBinding">
                     <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                    <ColumnID>GLCodeSubGroup</ColumnID>
+                    <ColumnID>Name</ColumnID>
                   </Source>
                 </KeyColumn>
               </KeyColumns>
@@ -4293,31 +4277,21 @@
                 <DataType>WChar</DataType>
                 <DataSize>32768</DataSize>
                 <NullProcessing>ZeroOrBlank</NullProcessing>
-                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                 <Source xsi:type="ColumnBinding">
                   <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                  <ColumnID>GLCodeSubGroup</ColumnID>
+                  <ColumnID>Name</ColumnID>
                 </Source>
               </NameColumn>
               <OrderBy>Key</OrderBy>
             </Attribute>
             <Attribute>
-              <Annotations>
-                <Annotation>
-                  <Name>Format</Name>
-                  <Value>
-                    <Format Format="Text" xmlns="" />
-                  </Value>
-                </Annotation>
-              </Annotations>
               <ID>GLCode</ID>
               <Name>GLCode</Name>
               <KeyColumns>
                 <KeyColumn>
-                  <DataType>WChar</DataType>
-                  <DataSize>32768</DataSize>
+                  <DataType>Integer</DataType>
+                  <DataSize>-1</DataSize>
                   <NullProcessing>Preserve</NullProcessing>
-                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                   <Source xsi:type="ColumnBinding">
                     <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
                     <ColumnID>GLCode</ColumnID>
@@ -4326,9 +4300,8 @@
               </KeyColumns>
               <NameColumn>
                 <DataType>WChar</DataType>
-                <DataSize>32768</DataSize>
+                <DataSize>-1</DataSize>
                 <NullProcessing>ZeroOrBlank</NullProcessing>
-                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                 <Source xsi:type="ColumnBinding">
                   <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
                   <ColumnID>GLCode</ColumnID>
@@ -4337,57 +4310,13 @@
               <OrderBy>Key</OrderBy>
             </Attribute>
             <Attribute>
-              <Annotations>
-                <Annotation>
-                  <Name>Format</Name>
-                  <Value>
-                    <Format Format="Text" xmlns="" />
-                  </Value>
-                </Annotation>
-              </Annotations>
-              <ID>GLDescription</ID>
-              <Name>GLDescription</Name>
-              <KeyColumns>
-                <KeyColumn>
-                  <DataType>WChar</DataType>
-                  <DataSize>32768</DataSize>
-                  <NullProcessing>Preserve</NullProcessing>
-                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                  <Source xsi:type="ColumnBinding">
-                    <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                    <ColumnID>GLDescription</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <NameColumn>
-                <DataType>WChar</DataType>
-                <DataSize>32768</DataSize>
-                <NullProcessing>ZeroOrBlank</NullProcessing>
-                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                <Source xsi:type="ColumnBinding">
-                  <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                  <ColumnID>GLDescription</ColumnID>
-                </Source>
-              </NameColumn>
-              <OrderBy>Key</OrderBy>
-            </Attribute>
-            <Attribute>
-              <Annotations>
-                <Annotation>
-                  <Name>Format</Name>
-                  <Value>
-                    <Format Format="General" xmlns="" />
-                  </Value>
-                </Annotation>
-              </Annotations>
               <ID>DimGLCodeID</ID>
               <Name>DimGLCodeID</Name>
               <KeyColumns>
                 <KeyColumn>
-                  <DataType>BigInt</DataType>
+                  <DataType>Integer</DataType>
                   <DataSize>-1</DataSize>
                   <NullProcessing>Error</NullProcessing>
-                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                   <Source xsi:type="ColumnBinding">
                     <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
                     <ColumnID>DimGLCodeID</ColumnID>
@@ -4398,48 +4327,13 @@
                 <DataType>WChar</DataType>
                 <DataSize>-1</DataSize>
                 <NullProcessing>ZeroOrBlank</NullProcessing>
-                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                 <Source xsi:type="ColumnBinding">
                   <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
                   <ColumnID>DimGLCodeID</ColumnID>
                 </Source>
               </NameColumn>
               <OrderBy>Key</OrderBy>
-            </Attribute>
-            <Attribute>
-              <Annotations>
-                <Annotation>
-                  <Name>Format</Name>
-                  <Value>
-                    <Format Format="General" xmlns="" />
-                  </Value>
-                </Annotation>
-              </Annotations>
-              <ID>DimChartofAccountsID</ID>
-              <Name>DimChartofAccountsID</Name>
-              <KeyColumns>
-                <KeyColumn>
-                  <DataType>BigInt</DataType>
-                  <DataSize>-1</DataSize>
-                  <NullProcessing>Preserve</NullProcessing>
-                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                  <Source xsi:type="ColumnBinding">
-                    <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                    <ColumnID>DimChartofAccountsID</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <NameColumn>
-                <DataType>WChar</DataType>
-                <DataSize>-1</DataSize>
-                <NullProcessing>ZeroOrBlank</NullProcessing>
-                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                <Source xsi:type="ColumnBinding">
-                  <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                  <ColumnID>DimChartofAccountsID</ColumnID>
-                </Source>
-              </NameColumn>
-              <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
             </Attribute>
           </Attributes>
           <Hierarchies>
@@ -4448,19 +4342,19 @@
               <Name>GLCodes</Name>
               <Levels>
                 <Level>
-                  <ID>GLCodeGroup</ID>
-                  <Name>GLCodeGroup</Name>
-                  <SourceAttributeID>GLCodeGroup</SourceAttributeID>
+                  <ID>GL_Header</ID>
+                  <Name>GL_Header</Name>
+                  <SourceAttributeID>GL_Header1</SourceAttributeID>
                 </Level>
                 <Level>
-                  <ID>GLCodeSubGroup</ID>
-                  <Name>GLCodeSubGroup</Name>
-                  <SourceAttributeID>GLCodeSubGroup</SourceAttributeID>
+                  <ID>GL_CodeGroup</ID>
+                  <Name>GL_CodeGroup</Name>
+                  <SourceAttributeID>GL_Header2</SourceAttributeID>
                 </Level>
                 <Level>
-                  <ID>GLCode</ID>
-                  <Name>GLCode</Name>
-                  <SourceAttributeID>GLCode</SourceAttributeID>
+                  <ID>GL_Code</ID>
+                  <Name>GL_Code</Name>
+                  <SourceAttributeID>GL_Header3</SourceAttributeID>
                 </Level>
               </Levels>
             </Hierarchy>
@@ -4472,31 +4366,6 @@
             <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
             <Source xsi:type="ProactiveCachingInheritedBinding" />
           </ProactiveCaching>
-          <ddl300_300:Relationships>
-            <ddl300_300:Relationship>
-              <ID>bb264991-2e74-41c4-b373-89a0e56f7257</ID>
-              <ddl300_300:FromRelationshipEnd>
-                <ddl300_300:Multiplicity>Many</ddl300_300:Multiplicity>
-                <ddl300:VisualizationProperties />
-                <DimensionID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</DimensionID>
-                <Attributes>
-                  <Attribute>
-                    <AttributeID>DimChartofAccountsID</AttributeID>
-                  </Attribute>
-                </Attributes>
-              </ddl300_300:FromRelationshipEnd>
-              <ddl300_300:ToRelationshipEnd>
-                <ddl300_300:Multiplicity>One</ddl300_300:Multiplicity>
-                <ddl300:VisualizationProperties />
-                <DimensionID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</DimensionID>
-                <Attributes>
-                  <Attribute>
-                    <AttributeID>DimChartOfAccountsID</AttributeID>
-                  </Attribute>
-                </Attributes>
-              </ddl300_300:ToRelationshipEnd>
-            </ddl300_300:Relationship>
-          </ddl300_300:Relationships>
         </Dimension>
         <Dimension>
           <ID>Shared_DimForUser_887c071d-2983-403c-8665-91fe4f60624d</ID>
@@ -15384,6 +15253,239 @@
             <Source xsi:type="ProactiveCachingInheritedBinding" />
           </ProactiveCaching>
         </Dimension>
+        <Dimension>
+          <ID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</ID>
+          <Name>PaymentUseCase</Name>
+          <Annotations>
+            <Annotation>
+              <Name>IsQueryEditorUsed</Name>
+              <Value>False</Value>
+            </Annotation>
+            <Annotation>
+              <Name>QueryEditorSerialization</Name>
+            </Annotation>
+            <Annotation>
+              <Name>TableWidgetSerialization</Name>
+            </Annotation>
+            <Annotation>
+              <Name>DataMarketWebBaseUrl</Name>
+            </Annotation>
+            <Annotation>
+              <Name>DataMarketWebQueryUrl</Name>
+            </Annotation>
+          </Annotations>
+          <Source xsi:type="DataSourceViewBinding">
+            <DataSourceViewID>Sandbox</DataSourceViewID>
+          </Source>
+          <UnknownMember valuens="ddl200_200">AutomaticNull</UnknownMember>
+          <ErrorConfiguration>
+            <KeyNotFound>IgnoreError</KeyNotFound>
+            <KeyDuplicate>ReportAndStop</KeyDuplicate>
+            <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+          </ErrorConfiguration>
+          <StorageMode valuens="ddl200_200">InMemory</StorageMode>
+          <Language>1033</Language>
+          <UnknownMemberName>Unknown</UnknownMemberName>
+          <Attributes>
+            <Attribute>
+              <ID>RowNumber</ID>
+              <Name>RowNumber</Name>
+              <Type valuens="ddl200_200">RowNumber</Type>
+              <Usage>Key</Usage>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Integer</DataType>
+                  <DataSize>4</DataSize>
+                  <NullProcessing>Error</NullProcessing>
+                  <Source xsi:type="ddl200_200:RowNumberBinding" />
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>4</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <Source xsi:type="ddl200_200:RowNumberBinding" />
+              </NameColumn>
+              <AttributeRelationships>
+                <AttributeRelationship>
+                  <AttributeID>PaymentUseCaseType</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>PaymentUseCaseType</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>PaymentUseCase</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>PaymentUseCase</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>DimFinancialTxTypeID</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>DimFinancialTxTypeID</Name>
+                </AttributeRelationship>
+              </AttributeRelationships>
+              <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>PaymentUseCaseType</ID>
+              <Name>PaymentUseCaseType</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</TableID>
+                    <ColumnID>PaymentUseCaseType</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</TableID>
+                  <ColumnID>PaymentUseCaseType</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>PaymentUseCase</ID>
+              <Name>PaymentUseCase</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>WChar</DataType>
+                  <DataSize>32768</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</TableID>
+                    <ColumnID>PaymentUseCase</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>32768</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</TableID>
+                  <ColumnID>PaymentUseCase</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+            </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="General" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>DimFinancialTxTypeID</ID>
+              <Name>DimFinancialTxTypeID</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>BigInt</DataType>
+                  <DataSize>-1</DataSize>
+                  <NullProcessing>Preserve</NullProcessing>
+                  <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                  <Source xsi:type="ColumnBinding">
+                    <TableID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</TableID>
+                    <ColumnID>DimFinancialTxTypeID</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <DataSize>-1</DataSize>
+                <NullProcessing>ZeroOrBlank</NullProcessing>
+                <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</TableID>
+                  <ColumnID>DimFinancialTxTypeID</ColumnID>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+              <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+            </Attribute>
+          </Attributes>
+          <Hierarchies>
+            <Hierarchy>
+              <ID>PaymentUseCases</ID>
+              <Name>PaymentUseCases</Name>
+              <Levels>
+                <Level>
+                  <ID>PaymentUseCaseType</ID>
+                  <Name>PaymentUseCaseType</Name>
+                  <SourceAttributeID>PaymentUseCaseType</SourceAttributeID>
+                </Level>
+                <Level>
+                  <ID>PaymentUseCase</ID>
+                  <Name>PaymentUseCase</Name>
+                  <SourceAttributeID>PaymentUseCase</SourceAttributeID>
+                </Level>
+              </Levels>
+            </Hierarchy>
+          </Hierarchies>
+          <ProactiveCaching>
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" />
+          </ProactiveCaching>
+          <ddl300_300:Relationships>
+            <ddl300_300:Relationship>
+              <ID>61b6e5f6-e500-43bf-9c00-3b49bec273ed</ID>
+              <ddl300_300:FromRelationshipEnd>
+                <ddl300_300:Multiplicity>Many</ddl300_300:Multiplicity>
+                <ddl300:VisualizationProperties />
+                <DimensionID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</DimensionID>
+                <Attributes>
+                  <Attribute>
+                    <AttributeID>DimFinancialTxTypeID</AttributeID>
+                  </Attribute>
+                </Attributes>
+              </ddl300_300:FromRelationshipEnd>
+              <ddl300_300:ToRelationshipEnd>
+                <ddl300_300:Multiplicity>One</ddl300_300:Multiplicity>
+                <ddl300:VisualizationProperties />
+                <DimensionID>Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2</DimensionID>
+                <Attributes>
+                  <Attribute>
+                    <AttributeID>DimFinancialTxTypeID</AttributeID>
+                  </Attribute>
+                </Attributes>
+              </ddl300_300:ToRelationshipEnd>
+            </ddl300_300:Relationship>
+          </ddl300_300:Relationships>
+        </Dimension>
       </Dimensions>
       <Cubes>
         <Cube>
@@ -15408,35 +15510,18 @@
                 </Attribute>
                 <Attribute>
                   <AttributeID>DimFinancialTxTypeID</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
                 </Attribute>
                 <Attribute>
                   <AttributeID>SourceKey</AttributeID>
                 </Attribute>
                 <Attribute>
                   <AttributeID>Name</AttributeID>
-                </Attribute>
-                <Attribute>
-                  <AttributeID>FinancialTxCategory</AttributeID>
-                </Attribute>
-              </Attributes>
-            </Dimension>
-            <Dimension>
-              <ID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</ID>
-              <Name>ChartOfAccounts</Name>
-              <DimensionID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</DimensionID>
-              <Attributes>
-                <Attribute>
-                  <AttributeID>RowNumber</AttributeID>
                   <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
                 </Attribute>
                 <Attribute>
-                  <AttributeID>DimChartOfAccountsID</AttributeID>
-                </Attribute>
-                <Attribute>
-                  <AttributeID>COA_CodeRange</AttributeID>
-                </Attribute>
-                <Attribute>
-                  <AttributeID>COA_Name</AttributeID>
+                  <AttributeID>FinancialTxCategory</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
                 </Attribute>
               </Attributes>
             </Dimension>
@@ -15463,15 +15548,19 @@
                 </Attribute>
                 <Attribute>
                   <AttributeID>DimFinancialHoldingAccountID</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
                 </Attribute>
                 <Attribute>
                   <AttributeID>DimBankAccountID</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
                 </Attribute>
                 <Attribute>
                   <AttributeID>DimPagaAccountID</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
                 </Attribute>
                 <Attribute>
                   <AttributeID>DimCurrencyID</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
                 </Attribute>
                 <Attribute>
                   <AttributeID>AccountNumber</AttributeID>
@@ -15720,28 +15809,29 @@
                   <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
                 </Attribute>
                 <Attribute>
-                  <AttributeID>GLCodeGroupRange</AttributeID>
+                  <AttributeID>GL_Header1</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
                 </Attribute>
                 <Attribute>
-                  <AttributeID>GLCodeGroup</AttributeID>
+                  <AttributeID>GL_Header2</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>GL_Header3</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
                 </Attribute>
                 <Attribute>
                   <AttributeID>GLCodeRange</AttributeID>
                 </Attribute>
                 <Attribute>
-                  <AttributeID>GLCodeSubGroup</AttributeID>
+                  <AttributeID>Name</AttributeID>
                 </Attribute>
                 <Attribute>
                   <AttributeID>GLCode</AttributeID>
                 </Attribute>
                 <Attribute>
-                  <AttributeID>GLDescription</AttributeID>
-                </Attribute>
-                <Attribute>
                   <AttributeID>DimGLCodeID</AttributeID>
-                </Attribute>
-                <Attribute>
-                  <AttributeID>DimChartofAccountsID</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
                 </Attribute>
               </Attributes>
               <Hierarchies>
@@ -16500,6 +16590,34 @@
                 </Attribute>
               </Attributes>
             </Dimension>
+            <Dimension>
+              <ID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</ID>
+              <Name>PaymentUseCase</Name>
+              <DimensionID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</DimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>RowNumber</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>PaymentUseCaseType</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>PaymentUseCase</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>DimFinancialTxTypeID</AttributeID>
+                  <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+                </Attribute>
+              </Attributes>
+              <Hierarchies>
+                <Hierarchy>
+                  <HierarchyID>PaymentUseCases</HierarchyID>
+                </Hierarchy>
+              </Hierarchies>
+            </Dimension>
           </Dimensions>
           <MeasureGroups>
             <MeasureGroup>
@@ -16628,142 +16746,6 @@
                   <Source xsi:type="QueryBinding">
                     <DataSourceID>06bd047d-3ac6-4651-be9f-b58a20db8708</DataSourceID>
                     <QueryDefinition>SELECT [OLAP].[Classification_DimFinancialTransactionType].* 		FROM [OLAP].[Classification_DimFinancialTransactionType]</QueryDefinition>
-                  </Source>
-                  <StorageMode valuens="ddl200_200">InMemory</StorageMode>
-                  <ProcessingMode>Regular</ProcessingMode>
-                  <ErrorConfiguration>
-                    <KeyNotFound>IgnoreError</KeyNotFound>
-                    <KeyDuplicate>ReportAndStop</KeyDuplicate>
-                    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
-                  </ErrorConfiguration>
-                  <ProactiveCaching>
-                    <SilenceInterval>-PT1S</SilenceInterval>
-                    <Latency>-PT1S</Latency>
-                    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
-                    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
-                    <Source xsi:type="ProactiveCachingInheritedBinding" />
-                  </ProactiveCaching>
-                </Partition>
-              </Partitions>
-              <ProactiveCaching>
-                <SilenceInterval>-PT1S</SilenceInterval>
-                <Latency>-PT1S</Latency>
-                <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
-                <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
-                <Source xsi:type="ProactiveCachingInheritedBinding" />
-              </ProactiveCaching>
-            </MeasureGroup>
-            <MeasureGroup>
-              <ID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</ID>
-              <Name>ChartOfAccounts</Name>
-              <Measures>
-                <Measure>
-                  <ID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</ID>
-                  <Name>_Count ChartOfAccounts</Name>
-                  <AggregateFunction>Count</AggregateFunction>
-                  <DataType>BigInt</DataType>
-                  <Source>
-                    <DataType>BigInt</DataType>
-                    <DataSize>8</DataSize>
-                    <Source xsi:type="RowBinding">
-                      <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                    </Source>
-                  </Source>
-                  <Visible>false</Visible>
-                </Measure>
-              </Measures>
-              <StorageMode valuens="ddl200_200">InMemory</StorageMode>
-              <ErrorConfiguration>
-                <KeyNotFound>IgnoreError</KeyNotFound>
-                <KeyDuplicate>ReportAndStop</KeyDuplicate>
-                <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
-              </ErrorConfiguration>
-              <ProcessingMode>Regular</ProcessingMode>
-              <Dimensions>
-                <Dimension xsi:type="DegenerateMeasureGroupDimension">
-                  <CubeDimensionID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</CubeDimensionID>
-                  <Attributes>
-                    <Attribute>
-                      <AttributeID>RowNumber</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>Integer</DataType>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_ChartOfAccounts</TableID>
-                            <ColumnID>RowNumber</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                      <Type>Granularity</Type>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>DimChartOfAccountsID</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>BigInt</DataType>
-                          <DataSize>-1</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                            <ColumnID>DimChartOfAccountsID</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>COA_CodeRange</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                            <ColumnID>COA_CodeRange</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>COA_Name</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                            <ColumnID>COA_Name</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                  </Attributes>
-                  <ddl200_200:ShareDimensionStorage>Shared</ddl200_200:ShareDimensionStorage>
-                </Dimension>
-              </Dimensions>
-              <Partitions>
-                <Partition>
-                  <ID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</ID>
-                  <Name>Finance_ChartOfAccounts</Name>
-                  <Annotations>
-                    <Annotation>
-                      <Name>IsQueryEditorUsed</Name>
-                      <Value>False</Value>
-                    </Annotation>
-                    <Annotation>
-                      <Name>QueryEditorSerialization</Name>
-                    </Annotation>
-                    <Annotation>
-                      <Name>TableWidgetSerialization</Name>
-                    </Annotation>
-                  </Annotations>
-                  <Source xsi:type="QueryBinding">
-                    <DataSourceID>06bd047d-3ac6-4651-be9f-b58a20db8708</DataSourceID>
-                    <QueryDefinition>SELECT [OLAP].[Finance_ChartOfAccounts].* 		FROM [OLAP].[Finance_ChartOfAccounts]</QueryDefinition>
                   </Source>
                   <StorageMode valuens="ddl200_200">InMemory</StorageMode>
                   <ProcessingMode>Regular</ProcessingMode>
@@ -21154,211 +21136,6 @@
                   <IntermediateGranularityAttributeID>DimFinancialTxDateID</IntermediateGranularityAttributeID>
                 </Dimension>
                 <Dimension xsi:type="ReferenceMeasureGroupDimension">
-                  <CubeDimensionID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</CubeDimensionID>
-                  <Attributes>
-                    <Attribute>
-                      <AttributeID>RowNumber</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>Integer</DataType>
-                          <DataSize>4</DataSize>
-                          <NullProcessing>Error</NullProcessing>
-                          <Source xsi:type="ddl200_200:RowNumberBinding" />
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>GLCodeGroupRange</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>GLCodeGroupRange</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>GLCodeGroup</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>GLCodeGroup</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>GLCodeRange</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>GLCodeRange</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>GLCodeSubGroup</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>GLCodeSubGroup</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>GLCode</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>GLCode</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>GLDescription</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>GLDescription</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>DimGLCodeID</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>BigInt</DataType>
-                          <DataSize>-1</DataSize>
-                          <NullProcessing>Error</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>DimGLCodeID</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                      <Type>Granularity</Type>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>DimChartofAccountsID</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>BigInt</DataType>
-                          <DataSize>-1</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>DimChartofAccountsID</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                  </Attributes>
-                  <IntermediateCubeDimensionID>Finance_FactGLTransaction_93bd22fb-039d-48a1-878c-f7df4be3abb3</IntermediateCubeDimensionID>
-                  <IntermediateGranularityAttributeID>DimGLCodeID</IntermediateGranularityAttributeID>
-                  <Materialization>Regular</Materialization>
-                  <ddl300:RelationshipID>a83f5d01-e960-41dc-a6bf-5b2008c9d417</ddl300:RelationshipID>
-                </Dimension>
-                <Dimension xsi:type="ReferenceMeasureGroupDimension">
-                  <CubeDimensionID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</CubeDimensionID>
-                  <Attributes>
-                    <Attribute>
-                      <AttributeID>RowNumber</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>Integer</DataType>
-                          <DataSize>4</DataSize>
-                          <NullProcessing>Error</NullProcessing>
-                          <Source xsi:type="ddl200_200:RowNumberBinding" />
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>DimChartOfAccountsID</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>BigInt</DataType>
-                          <DataSize>-1</DataSize>
-                          <NullProcessing>Error</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                            <ColumnID>DimChartOfAccountsID</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                      <Type>Granularity</Type>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>COA_CodeRange</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                            <ColumnID>COA_CodeRange</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>COA_Name</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                            <ColumnID>COA_Name</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                  </Attributes>
-                  <IntermediateCubeDimensionID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</IntermediateCubeDimensionID>
-                  <IntermediateGranularityAttributeID>DimChartofAccountsID</IntermediateGranularityAttributeID>
-                </Dimension>
-                <Dimension xsi:type="ReferenceMeasureGroupDimension">
                   <CubeDimensionID>Finance_DimFinancialAccount_7b341a67-cdb6-437d-830e-269d853dca19</CubeDimensionID>
                   <Attributes>
                     <Attribute>
@@ -24345,6 +24122,125 @@
                   <IntermediateCubeDimensionID>Shared_FactProcessEvent_7087ac98-fada-4355-969a-1d89a38dbce9</IntermediateCubeDimensionID>
                   <IntermediateGranularityAttributeID>DimProcessTypeID</IntermediateGranularityAttributeID>
                 </Dimension>
+                <Dimension xsi:type="ReferenceMeasureGroupDimension">
+                  <CubeDimensionID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>RowNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <DataSize>4</DataSize>
+                          <NullProcessing>Error</NullProcessing>
+                          <Source xsi:type="ddl200_200:RowNumberBinding" />
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>GL_Header1</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
+                            <ColumnID>GL_Header1</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>GL_Header2</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
+                            <ColumnID>GL_Header2</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>GL_Header3</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
+                            <ColumnID>GL_Header3</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>GLCodeRange</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
+                            <ColumnID>GLCodeRange</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>Name</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
+                            <ColumnID>Name</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>GLCode</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
+                            <ColumnID>GLCode</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DimGLCodeID</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Error</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
+                            <ColumnID>DimGLCodeID</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                  </Attributes>
+                  <IntermediateCubeDimensionID>Finance_FactGLTransaction_93bd22fb-039d-48a1-878c-f7df4be3abb3</IntermediateCubeDimensionID>
+                  <IntermediateGranularityAttributeID>DimGLCodeID</IntermediateGranularityAttributeID>
+                  <Materialization>Regular</Materialization>
+                  <ddl300:RelationshipID>ed42cdc4-f637-4583-b409-91c08d187b16</ddl300:RelationshipID>
+                </Dimension>
               </Dimensions>
               <Partitions>
                 <Partition>
@@ -25153,31 +25049,43 @@
                       <Type>Granularity</Type>
                     </Attribute>
                     <Attribute>
-                      <AttributeID>GLCodeGroupRange</AttributeID>
+                      <AttributeID>GL_Header1</AttributeID>
                       <KeyColumns>
                         <KeyColumn>
                           <DataType>WChar</DataType>
                           <DataSize>32768</DataSize>
                           <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                           <Source xsi:type="ColumnBinding">
                             <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>GLCodeGroupRange</ColumnID>
+                            <ColumnID>GL_Header1</ColumnID>
                           </Source>
                         </KeyColumn>
                       </KeyColumns>
                     </Attribute>
                     <Attribute>
-                      <AttributeID>GLCodeGroup</AttributeID>
+                      <AttributeID>GL_Header2</AttributeID>
                       <KeyColumns>
                         <KeyColumn>
                           <DataType>WChar</DataType>
                           <DataSize>32768</DataSize>
                           <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                           <Source xsi:type="ColumnBinding">
                             <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>GLCodeGroup</ColumnID>
+                            <ColumnID>GL_Header2</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>GL_Header3</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
+                            <ColumnID>GL_Header3</ColumnID>
                           </Source>
                         </KeyColumn>
                       </KeyColumns>
@@ -25189,7 +25097,6 @@
                           <DataType>WChar</DataType>
                           <DataSize>32768</DataSize>
                           <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                           <Source xsi:type="ColumnBinding">
                             <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
                             <ColumnID>GLCodeRange</ColumnID>
@@ -25198,16 +25105,15 @@
                       </KeyColumns>
                     </Attribute>
                     <Attribute>
-                      <AttributeID>GLCodeSubGroup</AttributeID>
+                      <AttributeID>Name</AttributeID>
                       <KeyColumns>
                         <KeyColumn>
                           <DataType>WChar</DataType>
                           <DataSize>32768</DataSize>
                           <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                           <Source xsi:type="ColumnBinding">
                             <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>GLCodeSubGroup</ColumnID>
+                            <ColumnID>Name</ColumnID>
                           </Source>
                         </KeyColumn>
                       </KeyColumns>
@@ -25216,10 +25122,9 @@
                       <AttributeID>GLCode</AttributeID>
                       <KeyColumns>
                         <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
+                          <DataType>Integer</DataType>
+                          <DataSize>-1</DataSize>
                           <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                           <Source xsi:type="ColumnBinding">
                             <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
                             <ColumnID>GLCode</ColumnID>
@@ -25228,28 +25133,12 @@
                       </KeyColumns>
                     </Attribute>
                     <Attribute>
-                      <AttributeID>GLDescription</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>GLDescription</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
                       <AttributeID>DimGLCodeID</AttributeID>
                       <KeyColumns>
                         <KeyColumn>
-                          <DataType>BigInt</DataType>
+                          <DataType>Integer</DataType>
                           <DataSize>-1</DataSize>
                           <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
                           <Source xsi:type="ColumnBinding">
                             <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
                             <ColumnID>DimGLCodeID</ColumnID>
@@ -25257,89 +25146,8 @@
                         </KeyColumn>
                       </KeyColumns>
                     </Attribute>
-                    <Attribute>
-                      <AttributeID>DimChartofAccountsID</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>BigInt</DataType>
-                          <DataSize>-1</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</TableID>
-                            <ColumnID>DimChartofAccountsID</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
                   </Attributes>
                   <ddl200_200:ShareDimensionStorage>Shared</ddl200_200:ShareDimensionStorage>
-                </Dimension>
-                <Dimension xsi:type="ReferenceMeasureGroupDimension">
-                  <CubeDimensionID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</CubeDimensionID>
-                  <Attributes>
-                    <Attribute>
-                      <AttributeID>RowNumber</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>Integer</DataType>
-                          <DataSize>4</DataSize>
-                          <NullProcessing>Error</NullProcessing>
-                          <Source xsi:type="ddl200_200:RowNumberBinding" />
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>DimChartOfAccountsID</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>BigInt</DataType>
-                          <DataSize>-1</DataSize>
-                          <NullProcessing>Error</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                            <ColumnID>DimChartOfAccountsID</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                      <Type>Granularity</Type>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>COA_CodeRange</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                            <ColumnID>COA_CodeRange</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                    <Attribute>
-                      <AttributeID>COA_Name</AttributeID>
-                      <KeyColumns>
-                        <KeyColumn>
-                          <DataType>WChar</DataType>
-                          <DataSize>32768</DataSize>
-                          <NullProcessing>Preserve</NullProcessing>
-                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
-                          <Source xsi:type="ColumnBinding">
-                            <TableID>Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7</TableID>
-                            <ColumnID>COA_Name</ColumnID>
-                          </Source>
-                        </KeyColumn>
-                      </KeyColumns>
-                    </Attribute>
-                  </Attributes>
-                  <IntermediateCubeDimensionID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</IntermediateCubeDimensionID>
-                  <IntermediateGranularityAttributeID>DimChartofAccountsID</IntermediateGranularityAttributeID>
-                  <Materialization>Regular</Materialization>
-                  <ddl300:RelationshipID>bb264991-2e74-41c4-b373-89a0e56f7257</ddl300:RelationshipID>
                 </Dimension>
               </Dimensions>
               <Partitions>
@@ -25348,14 +25156,205 @@
                   <Name>Finance_GLCodeHierarchy</Name>
                   <Annotations>
                     <Annotation>
-                      <Name>IsQueryEditorUsed</Name>
-                      <Value>False</Value>
+                      <Name>TableWidgetSerialization</Name>
+                      <Value>&lt;?xml version="1.0" encoding="UTF-16"?&gt;&lt;Gemini xmlns="TableWidgetSerialization"&gt;&lt;AnnotationContent&gt;&lt;![CDATA[&lt;?xml version="1.0"?&gt;
+&lt;TableWidgetGridSerialization xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ColumnSuggestedType /&gt;
+  &lt;ColumnFormat /&gt;
+  &lt;ColumnAccuracy /&gt;
+  &lt;ColumnCurrencySymbol /&gt;
+  &lt;ColumnPositivePattern /&gt;
+  &lt;ColumnNegativePattern /&gt;
+  &lt;ColumnWidths&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;Name&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;57&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GLCodeRange&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;98&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header1&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;89&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header2&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;89&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header3&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;89&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GLCode&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;67&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;DimGLCodeID&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;95&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+  &lt;/ColumnWidths&gt;
+  &lt;ColumnDisplayIndex&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;Name&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;4&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GLCodeRange&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;3&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header1&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;0&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header2&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;1&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header3&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;2&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GLCode&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;5&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;DimGLCodeID&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;int&gt;6&lt;/int&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+  &lt;/ColumnDisplayIndex&gt;
+  &lt;ColumnFrozen /&gt;
+  &lt;ColumnChecked&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header1&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header2&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GL_Header3&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GLCodeRange&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;Name&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;GLCode&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;string&gt;DimGLCodeID&lt;/string&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;boolean&gt;true&lt;/boolean&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+  &lt;/ColumnChecked&gt;
+  &lt;ColumnFilter /&gt;
+  &lt;SelectionFilter /&gt;
+  &lt;FilterParameters /&gt;
+  &lt;IsSortDescending&gt;false&lt;/IsSortDescending&gt;
+&lt;/TableWidgetGridSerialization&gt;]]&gt;&lt;/AnnotationContent&gt;&lt;/Gemini&gt;</Value>
+                    </Annotation>
+                    <Annotation>
+                      <Name>TableWidgetSourceTable</Name>
                     </Annotation>
                     <Annotation>
                       <Name>QueryEditorSerialization</Name>
                     </Annotation>
                     <Annotation>
-                      <Name>TableWidgetSerialization</Name>
+                      <Name>IsQueryEditorUsed</Name>
+                      <Value>False</Value>
                     </Annotation>
                   </Annotations>
                   <Source xsi:type="QueryBinding">
@@ -33454,6 +33453,223 @@
                 <Source xsi:type="ProactiveCachingInheritedBinding" />
               </ProactiveCaching>
             </MeasureGroup>
+            <MeasureGroup>
+              <ID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</ID>
+              <Name>PaymentUseCase</Name>
+              <Measures>
+                <Measure>
+                  <ID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</ID>
+                  <Name>_Count PaymentUseCase</Name>
+                  <AggregateFunction>Count</AggregateFunction>
+                  <DataType>BigInt</DataType>
+                  <Source>
+                    <DataType>BigInt</DataType>
+                    <DataSize>8</DataSize>
+                    <Source xsi:type="RowBinding">
+                      <TableID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</TableID>
+                    </Source>
+                  </Source>
+                  <Visible>false</Visible>
+                </Measure>
+              </Measures>
+              <StorageMode valuens="ddl200_200">InMemory</StorageMode>
+              <ErrorConfiguration>
+                <KeyNotFound>IgnoreError</KeyNotFound>
+                <KeyDuplicate>ReportAndStop</KeyDuplicate>
+                <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+              </ErrorConfiguration>
+              <ProcessingMode>Regular</ProcessingMode>
+              <Dimensions>
+                <Dimension xsi:type="DegenerateMeasureGroupDimension">
+                  <CubeDimensionID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>RowNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Finance_DimPaymentUseCase</TableID>
+                            <ColumnID>RowNumber</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>PaymentUseCaseType</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</TableID>
+                            <ColumnID>PaymentUseCaseType</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>PaymentUseCase</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</TableID>
+                            <ColumnID>PaymentUseCase</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DimFinancialTxTypeID</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</TableID>
+                            <ColumnID>DimFinancialTxTypeID</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                  </Attributes>
+                  <ddl200_200:ShareDimensionStorage>Shared</ddl200_200:ShareDimensionStorage>
+                </Dimension>
+                <Dimension xsi:type="ReferenceMeasureGroupDimension">
+                  <CubeDimensionID>Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>RowNumber</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Integer</DataType>
+                          <DataSize>4</DataSize>
+                          <NullProcessing>Error</NullProcessing>
+                          <Source xsi:type="ddl200_200:RowNumberBinding" />
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>DimFinancialTxTypeID</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>BigInt</DataType>
+                          <DataSize>-1</DataSize>
+                          <NullProcessing>Error</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2</TableID>
+                            <ColumnID>DimFinancialTxTypeID</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                      <Type>Granularity</Type>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>SourceKey</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2</TableID>
+                            <ColumnID>SourceKey</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>Name</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2</TableID>
+                            <ColumnID>Name</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>FinancialTxCategory</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>WChar</DataType>
+                          <DataSize>32768</DataSize>
+                          <NullProcessing>Preserve</NullProcessing>
+                          <InvalidXmlCharacters>Remove</InvalidXmlCharacters>
+                          <Source xsi:type="ColumnBinding">
+                            <TableID>Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2</TableID>
+                            <ColumnID>FinancialTxCategory</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                  </Attributes>
+                  <IntermediateCubeDimensionID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</IntermediateCubeDimensionID>
+                  <IntermediateGranularityAttributeID>DimFinancialTxTypeID</IntermediateGranularityAttributeID>
+                  <Materialization>Regular</Materialization>
+                  <ddl300:RelationshipID>61b6e5f6-e500-43bf-9c00-3b49bec273ed</ddl300:RelationshipID>
+                </Dimension>
+              </Dimensions>
+              <Partitions>
+                <Partition>
+                  <ID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</ID>
+                  <Name>Finance_DimPaymentUseCase</Name>
+                  <Annotations>
+                    <Annotation>
+                      <Name>IsQueryEditorUsed</Name>
+                      <Value>False</Value>
+                    </Annotation>
+                    <Annotation>
+                      <Name>QueryEditorSerialization</Name>
+                    </Annotation>
+                    <Annotation>
+                      <Name>TableWidgetSerialization</Name>
+                    </Annotation>
+                  </Annotations>
+                  <Source xsi:type="QueryBinding">
+                    <DataSourceID>06bd047d-3ac6-4651-be9f-b58a20db8708</DataSourceID>
+                    <QueryDefinition>SELECT [OLAP].[Finance_DimPaymentUseCase].* 		FROM [OLAP].[Finance_DimPaymentUseCase]</QueryDefinition>
+                  </Source>
+                  <StorageMode valuens="ddl200_200">InMemory</StorageMode>
+                  <ProcessingMode>Regular</ProcessingMode>
+                  <ErrorConfiguration>
+                    <KeyNotFound>IgnoreError</KeyNotFound>
+                    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+                    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+                  </ErrorConfiguration>
+                  <ProactiveCaching>
+                    <SilenceInterval>-PT1S</SilenceInterval>
+                    <Latency>-PT1S</Latency>
+                    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+                    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+                    <Source xsi:type="ProactiveCachingInheritedBinding" />
+                  </ProactiveCaching>
+                </Partition>
+              </Partitions>
+              <ProactiveCaching>
+                <SilenceInterval>-PT1S</SilenceInterval>
+                <Latency>-PT1S</Latency>
+                <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+                <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+                <Source xsi:type="ProactiveCachingInheritedBinding" />
+              </ProactiveCaching>
+            </MeasureGroup>
           </MeasureGroups>
           <Source>
             <DataSourceViewID>Sandbox</DataSourceViewID>
@@ -33863,27 +34079,6 @@ CREATE MEASURE 'ProcessEvent'[ProcessTxAmt]=(SUM(ProcessEvent[ProcessTx_Amount])
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Finance_ChartOfAccounts_5241deb8-6547-4589-9628-6caceac12df7" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="ChartOfAccounts" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_ChartOfAccounts" msprop:TableType="View" msprop:Description="Finance_ChartOfAccounts" msprop:QueryDefinition="      SELECT [OLAP].[Finance_ChartOfAccounts].*   FROM [OLAP].[Finance_ChartOfAccounts] ">
-                      <xs:complexType>
-                        <xs:sequence>
-                          <xs:element name="DimChartOfAccountsID" msprop:DbColumnName="DimChartOfAccountsID" msprop:FriendlyName="DimChartOfAccountsID" type="xs:long" minOccurs="0" />
-                          <xs:element name="COA_CodeRange" msprop:DbColumnName="COA_CodeRange" msprop:FriendlyName="COA_CodeRange" minOccurs="0">
-                            <xs:simpleType>
-                              <xs:restriction base="xs:string">
-                                <xs:maxLength value="32768" />
-                              </xs:restriction>
-                            </xs:simpleType>
-                          </xs:element>
-                          <xs:element name="COA_Name" msprop:DbColumnName="COA_Name" msprop:FriendlyName="COA_Name" minOccurs="0">
-                            <xs:simpleType>
-                              <xs:restriction base="xs:string">
-                                <xs:maxLength value="32768" />
-                              </xs:restriction>
-                            </xs:simpleType>
-                          </xs:element>
-                        </xs:sequence>
-                      </xs:complexType>
-                    </xs:element>
                     <xs:element name="Finance_DimFinancialAccount_7b341a67-cdb6-437d-830e-269d853dca19" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="FinancialAccount" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_DimFinancialAccount" msprop:TableType="View" msprop:Description="Finance_DimFinancialAccount" msprop:QueryDefinition="      SELECT [OLAP].[Finance_DimFinancialAccount].*   FROM [OLAP].[Finance_DimFinancialAccount] ">
                       <xs:complexType>
                         <xs:sequence>
@@ -34094,14 +34289,21 @@ CREATE MEASURE 'ProcessEvent'[ProcessTxAmt]=(SUM(ProcessEvent[ProcessTx_Amount])
                     <xs:element name="Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="GLCodeHierarchy" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_GLCodeHierarchy" msprop:TableType="View" msprop:Description="Finance_GLCodeHierarchy" msprop:QueryDefinition="      SELECT [OLAP].[Finance_GLCodeHierarchy].*   FROM [OLAP].[Finance_GLCodeHierarchy] ">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="GLCodeGroupRange" msprop:DbColumnName="GLCodeGroupRange" msprop:FriendlyName="GLCodeGroupRange" minOccurs="0">
+                          <xs:element name="GL_Header1" msprop:DbColumnName="GL_Header1" msprop:FriendlyName="GL_Header1" minOccurs="0">
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
                                 <xs:maxLength value="32768" />
                               </xs:restriction>
                             </xs:simpleType>
                           </xs:element>
-                          <xs:element name="GLCodeGroup" msprop:DbColumnName="GLCodeGroup" msprop:FriendlyName="GLCodeGroup" minOccurs="0">
+                          <xs:element name="GL_Header2" msprop:DbColumnName="GL_Header2" msprop:FriendlyName="GL_Header2" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="GL_Header3" msprop:DbColumnName="GL_Header3" msprop:FriendlyName="GL_Header3" minOccurs="0">
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
                                 <xs:maxLength value="32768" />
@@ -34115,29 +34317,15 @@ CREATE MEASURE 'ProcessEvent'[ProcessTxAmt]=(SUM(ProcessEvent[ProcessTx_Amount])
                               </xs:restriction>
                             </xs:simpleType>
                           </xs:element>
-                          <xs:element name="GLCodeSubGroup" msprop:DbColumnName="GLCodeSubGroup" msprop:FriendlyName="GLCodeSubGroup" minOccurs="0">
+                          <xs:element name="Name" msprop:DbColumnName="Name" msprop:FriendlyName="Name" minOccurs="0">
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
                                 <xs:maxLength value="32768" />
                               </xs:restriction>
                             </xs:simpleType>
                           </xs:element>
-                          <xs:element name="GLCode" msprop:DbColumnName="GLCode" msprop:FriendlyName="GLCode" minOccurs="0">
-                            <xs:simpleType>
-                              <xs:restriction base="xs:string">
-                                <xs:maxLength value="32768" />
-                              </xs:restriction>
-                            </xs:simpleType>
-                          </xs:element>
-                          <xs:element name="GLDescription" msprop:DbColumnName="GLDescription" msprop:FriendlyName="GLDescription" minOccurs="0">
-                            <xs:simpleType>
-                              <xs:restriction base="xs:string">
-                                <xs:maxLength value="32768" />
-                              </xs:restriction>
-                            </xs:simpleType>
-                          </xs:element>
-                          <xs:element name="DimGLCodeID" msprop:DbColumnName="DimGLCodeID" msprop:FriendlyName="DimGLCodeID" type="xs:long" minOccurs="0" />
-                          <xs:element name="DimChartofAccountsID" msprop:DbColumnName="DimChartofAccountsID" msprop:FriendlyName="DimChartofAccountsID" type="xs:long" minOccurs="0" />
+                          <xs:element name="GLCode" msprop:DbColumnName="GLCode" msprop:FriendlyName="GLCode" type="xs:int" minOccurs="0" />
+                          <xs:element name="DimGLCodeID" msprop:DbColumnName="DimGLCodeID" msprop:FriendlyName="DimGLCodeID" type="xs:int" minOccurs="0" />
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
@@ -34933,6 +35121,27 @@ CREATE MEASURE 'ProcessEvent'[ProcessTxAmt]=(SUM(ProcessEvent[ProcessTx_Amount])
                             </xs:simpleType>
                           </xs:element>
                           <xs:element name="FinancialPeriodAllTime" msprop:DbColumnName="FinancialPeriodAllTime" msprop:FriendlyName="FinancialPeriodAllTime" type="xs:long" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="PaymentUseCase" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_DimPaymentUseCase" msprop:TableType="View" msprop:Description="Finance_DimPaymentUseCase" msprop:QueryDefinition="      SELECT [OLAP].[Finance_DimPaymentUseCase].*   FROM [OLAP].[Finance_DimPaymentUseCase] ">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="PaymentUseCaseType" msprop:DbColumnName="PaymentUseCaseType" msprop:FriendlyName="PaymentUseCaseType" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="PaymentUseCase" msprop:DbColumnName="PaymentUseCase" msprop:FriendlyName="PaymentUseCase" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="32768" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="DimFinancialTxTypeID" msprop:DbColumnName="DimFinancialTxTypeID" msprop:FriendlyName="DimFinancialTxTypeID" type="xs:long" minOccurs="0" />
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>

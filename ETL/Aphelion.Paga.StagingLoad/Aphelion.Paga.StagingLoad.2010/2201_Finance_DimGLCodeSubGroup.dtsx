@@ -1,208 +1,621 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/13/2015 10:17:09" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{6E17C7FC-640C-492B-B493-6C20CAEEC046}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2201_Finance_DimGLCodeSubGroup" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{12E7BFF4-B61D-4D24-848B-06D2A33A4A4E}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/13/2015 10:17:09 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="PAGA01SV015"
+  DTS:CreatorName="christina.leo.apheli"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{6E17C7FC-640C-492B-B493-6C20CAEEC046}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="2201_Finance_DimGLCodeSubGroup"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{AD2494F5-682D-4EE5-B754-34602AD45610}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{F689CC04-CEC2-49C2-8FF1-A9C19E72C716}"
+      DTS:ObjectName="ChangeOperation">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="14"
+      DTS:DTSID="{23A189A1-33C4-48C9-8162-2F5021AD39BD}"
+      DTS:ObjectName="ChangeVersion">
+      <DTS:Property
+        DTS:DataType="14"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{92B58DA8-0B6C-41D6-957E-B3E1F0873DC0}"
+      DTS:ObjectName="EndOfQuery">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.AccountCodeGroup AS ct ON ct.AccountCodeGroupId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3F7EA54D-0C53-477B-B60E-91FF0DDC71C4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SET NOCOUNT ON; DECLARE @COA AS TABLE ( 	SourceKey INT, 	Name VARCHAR(255), 	GLCodeRange VARCHAR(50), 	DimGLCodeGroupSourceKey INT );   WITH cte AS (  	SELECT  		AccountCodeGroupId, 		AccountCodeGroupStart, 		AccountCodeGroupEnd, 		Description, 		ParentAccountCodeGroupId =AccountCodeGroupId, 		1 AS COA_Level 	FROM [dbo].[AccountCodeGroup] 	WHERE  		ParentAccountCodeGroupId IS NULL 	UNION ALL 	SELECT  		sub_group.AccountCodeGroupId, 		sub_group.AccountCodeGroupStart, 		sub_group.AccountCodeGroupEnd, 		sub_group.Description, 		sub_group.ParentAccountCodeGroupId, 		coa.COA_Level +1 	FROM [dbo].[AccountCodeGroup] as sub_group 	INNER JOIN cte AS COA ON 		sub_group.ParentAccountCodeGroupId = coa.AccountCodeGroupID 	WHERE  		sub_Group.ParentAccountCodeGroupId IS NOT NULL )  	INSERT INTO @COA 	(	 		SourceKey, 		Name, 		GLCodeRange, 		DimGLCodeGroupSourceKey 	) 	SELECT 		SourceKey = AccountCodeGroupId, 		Name = [Description], 		GLCodeRange = CONVERT(VARCHAR(50), (AccountCodeGroupStart + ' - ' + AccountCodeGroupEnd)), 		ParentAccountCodeGroupId 	FROM cte 	WHERE COA_Level BETWEEN 0 AND 4  	SELECT  		ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey, 		base_query.name, 		base_query.GLCodeRange, 		base_query.DimGLCodeGroupSourceKey 	FROM @COA AS base_query</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{440A6685-AB04-490D-A50C-83348F4F996F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue
+        DTS:DataType="8">SET NOCOUNT ON; DECLARE @COA AS TABLE ( 	SourceKey INT, 	Name VARCHAR(255), 	GLCodeRange VARCHAR(50), 	DimGLCodeGroupSourceKey INT );   WITH cte AS (  	SELECT  		AccountCodeGroupId, 		AccountCodeGroupStart, 		AccountCodeGroupEnd, 		Description, 		ParentAccountCodeGroupId =AccountCodeGroupId, 		1 AS COA_Level 	FROM [dbo].[AccountCodeGroup] 	WHERE  		ParentAccountCodeGroupId IS NULL 	UNION ALL 	SELECT  		sub_group.AccountCodeGroupId, 		sub_group.AccountCodeGroupStart, 		sub_group.AccountCodeGroupEnd, 		sub_group.Description, 		sub_group.ParentAccountCodeGroupId, 		coa.COA_Level +1 	FROM [dbo].[AccountCodeGroup] as sub_group 	INNER JOIN cte AS COA ON 		sub_group.ParentAccountCodeGroupId = coa.AccountCodeGroupID 	WHERE  		sub_Group.ParentAccountCodeGroupId IS NOT NULL )  	INSERT INTO @COA 	(	 		SourceKey, 		Name, 		GLCodeRange, 		DimGLCodeGroupSourceKey 	) 	SELECT 		SourceKey = AccountCodeGroupId, 		Name = [Description], 		GLCodeRange = CONVERT(VARCHAR(50), (AccountCodeGroupStart + ' - ' + AccountCodeGroupEnd)), 		ParentAccountCodeGroupId 	FROM cte 	WHERE COA_Level BETWEEN 0 AND 4  	SELECT  		ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey, 		base_query.name, 		base_query.GLCodeRange, 		base_query.DimGLCodeGroupSourceKey 	FROM @COA AS base_query INNER JOIN paga_change_log.dbo.AccountCodeGroup AS ct ON ct.AccountCodeGroupId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{76F0362C-C8F5-46E4-A88C-8FC677E779FF}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= AccountCodeGroupId FROM dbo.AccountCodeGroup) AS base_query &quot; + @[$Package::EndOfQuery]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= AccountCodeGroupId FROM dbo.AccountCodeGroup) AS base_query INNER JOIN paga_change_log.dbo.AccountCodeGroup AS ct ON ct.AccountCodeGroupId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{ABBA124B-BB10-488C-A07A-3F3D926D1222}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{21541267-5828-4EC7-B8F3-32E0C1EBC580}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load Finance_DimGLCodeSubGroup"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DelayValidation="True"
+      DTS:Disabled="True"
+      DTS:DTSID="{32AE1AB2-421C-4CB5-86BD-C686D3415F3D}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load Finance_DimGLCodeSubGroup"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="ChangeLog" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
-          </SQLTask:ResultBinding>
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{32AE1AB2-421C-4CB5-86BD-C686D3415F3D}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimGLCodeSubGroup" DTS:refId="Package\DFT_Load Finance_DimGLCodeSubGroup" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:ObjectData>
-        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
           <components>
-            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData_Finance_DimGLCodeSubGroup" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup" usesDispositions="true" version="7">
+            <component
+              refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLEDB_GetData_Finance_DimGLCodeSubGroup"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::FullQueryText</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
               <connections>
-                <connection connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Connections[OleDbConnection]">
-                </connection>
+                <connection
+                  refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Connections[OleDbConnection]"
+                  connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SourceDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <outputs>
-                <output name="Output" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[paga_change_log_id]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[SourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="name" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[name]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="GLCodeRange" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[GLCodeRange]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimGLCodeGroupSourceKey" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[DimGLCodeGroupSourceKey]">
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
+                <output
+                  refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output]"
+                  name="Output">
                   <outputColumns>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[name]" length="255" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[name]" name="name" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[name]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[GLCodeRange]" length="50" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[GLCodeRange]" name="GLCodeRange" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[GLCodeRange]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[DimGLCodeGroupSourceKey]" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[DimGLCodeGroupSourceKey]" name="DimGLCodeGroupSourceKey" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[DimGLCodeGroupSourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[paga_change_log_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[paga_change_log_id]"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[paga_change_log_id]"
+                      name="paga_change_log_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SourceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[SourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SourceKey]"
+                      name="SourceKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[name]"
+                      length="255"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[GLCodeRange]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[GLCodeRange]"
+                      length="50"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[GLCodeRange]"
+                      name="GLCodeRange"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[DimGLCodeGroupSourceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[DimGLCodeGroupSourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[DimGLCodeGroupSourceKey]"
+                      name="DimGLCodeGroupSourceKey"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[paga_change_log_id]"
+                      dataType="i4"
+                      name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[SourceKey]"
+                      dataType="i4"
+                      name="SourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[GLCodeRange]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="GLCodeRange" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].ExternalColumns[DimGLCodeGroupSourceKey]"
+                      dataType="i4"
+                      name="DimGLCodeGroupSourceKey" />
+                  </externalMetadataColumns>
                 </output>
-                <output isErrorOut="true" name="Error" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
+                <output
+                  refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
                   <outputColumns>
-                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[paga_change_log_id]">
-                    </outputColumn>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[SourceKey]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="255" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[name]" name="name" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[name]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[GLCodeRange]" name="GLCodeRange" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[GLCodeRange]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[DimGLCodeGroupSourceKey]" name="DimGLCodeGroupSourceKey" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[DimGLCodeGroupSourceKey]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[paga_change_log_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[paga_change_log_id]"
+                      name="paga_change_log_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[SourceKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[SourceKey]"
+                      name="SourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[GLCodeRange]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[GLCodeRange]"
+                      name="GLCodeRange" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[DimGLCodeGroupSourceKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[DimGLCodeGroupSourceKey]"
+                      name="DimGLCodeGroupSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
+                  <externalMetadataColumns />
                 </output>
               </outputs>
-              <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
-                </property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
-                </property>
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-                </property>
-                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
-                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
-                </property>
-              </properties>
             </component>
-            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup" usesDispositions="true" version="4">
+            <component
+              refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Staging.Finance_DimGLCodeSubGroup</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
               <connections>
-                <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Connections[OleDbConnection]">
-                </connection>
+                <connection
+                  refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Connections[OleDbConnection]"
+                  connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <inputs>
-                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="GLCodeRange" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[GLCodeRange]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[Name]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[SourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimGLCodeGroupSourceKey" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[DimGLCodeGroupSourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[SYS_CHANGE_VERSION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[SYS_CHANGE_OPERATION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[paga_change_log_id]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[row_id]">
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
+                <input
+                  refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup">
                   <inputColumns>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[SYS_CHANGE_OPERATION]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="paga_change_log_id" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[paga_change_log_id]" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[paga_change_log_id]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[SYS_CHANGE_VERSION]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[SourceKey]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="255" cachedName="name" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[Name]" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[name]" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[name]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="GLCodeRange" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[GLCodeRange]" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[GLCodeRange]" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[GLCodeRange]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="DimGLCodeGroupSourceKey" externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[DimGLCodeGroupSourceKey]" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[DimGLCodeGroupSourceKey]" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[DimGLCodeGroupSourceKey]">
-                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[SYS_CHANGE_OPERATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="SYS_CHANGE_OPERATION"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[paga_change_log_id]"
+                      cachedDataType="i4"
+                      cachedName="paga_change_log_id"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[paga_change_log_id]"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[paga_change_log_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[SourceKey]"
+                      cachedDataType="i4"
+                      cachedName="SourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[SourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[SourceKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[Name]"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[GLCodeRange]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="GLCodeRange"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[GLCodeRange]"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[GLCodeRange]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].Columns[DimGLCodeGroupSourceKey]"
+                      cachedDataType="i4"
+                      cachedName="DimGLCodeGroupSourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[DimGLCodeGroupSourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output].Columns[DimGLCodeGroupSourceKey]" />
                   </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[GLCodeRange]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="GLCodeRange" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[SourceKey]"
+                      dataType="i4"
+                      name="SourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[DimGLCodeGroupSourceKey]"
+                      dataType="i4"
+                      name="DimGLCodeGroupSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[paga_change_log_id]"
+                      dataType="i4"
+                      name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup].ExternalColumns[row_id]"
+                      dataType="i4"
+                      name="row_id" />
+                  </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Outputs[Error]" synchronousInputId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
+                <output
+                  refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup]">
                   <outputColumns>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
+                  <externalMetadataColumns />
                 </output>
               </outputs>
-              <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Staging.Finance_DimGLCodeSubGroup</property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
-                </property>
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-                </property>
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
-                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
-                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
-                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
-                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
             </component>
           </components>
           <paths>
-            <path endId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup]" name="OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup" refId="Package\DFT_Load Finance_DimGLCodeSubGroup.Paths[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup]" startId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output]">
-            </path>
+            <path
+              refId="Package\DFT_Load Finance_DimGLCodeSubGroup.Paths[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup]"
+              endId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup.Inputs[OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup]"
+              name="OLEDB_GetData_Finance_DimGLCodeSubGroup_Output_OLEDB_InsertIntoStaging_Finance_DimGLCodeSubGroup"
+              startId="Package\DFT_Load Finance_DimGLCodeSubGroup\OLEDB_GetData_Finance_DimGLCodeSubGroup.Outputs[Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_CheckForRows"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:DTSID="{21541267-5828-4EC7-B8F3-32E0C1EBC580}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_CheckForRows"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5e3060d2-3c35-4110-91af-8b5e0538b3d8}"
+          SQLTask:SqlStmtSourceType="Variable"
+          SQLTask:SqlStatementSource="User::GetRowCount"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="_count"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
-  <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{92B58DA8-0B6C-41D6-957E-B3E1F0873DC0}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.AccountCodeGroup AS ct ON ct.AccountCodeGroupId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{F689CC04-CEC2-49C2-8FF1-A9C19E72C716}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
-      </DTS:Property>
-    </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{23A189A1-33C4-48C9-8162-2F5021AD39BD}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
-    </DTS:PackageParameter>
-  </DTS:PackageParameters>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{64515882-5F37-4DE8-9BD6-9508B16C6563}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Finance_DimGLCodeSubGroup" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Finance_DimGLCodeSubGroup]" DTS:To="Package\DFT_Load Finance_DimGLCodeSubGroup">
-    </DTS:PrecedenceConstraint>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Finance_DimGLCodeSubGroup]"
+      DTS:CreationName=""
+      DTS:DTSID="{64515882-5F37-4DE8-9BD6-9508B16C6563}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::RowCount] &gt; 0"
+      DTS:From="Package\EST_CheckForRows"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Finance_DimGLCodeSubGroup"
+      DTS:To="Package\DFT_Load Finance_DimGLCodeSubGroup" />
   </DTS:PrecedenceConstraints>
-  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
-  <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3F7EA54D-0C53-477B-B60E-91FF0DDC71C4}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON; DECLARE @COA AS TABLE ( 	SourceKey INT, 	Name VARCHAR(255), 	GLCodeRange VARCHAR(50), 	DimGLCodeGroupSourceKey INT );   WITH cte AS (  	SELECT  		AccountCodeGroupId, 		AccountCodeGroupStart, 		AccountCodeGroupEnd, 		Description, 		ParentAccountCodeGroupId =AccountCodeGroupId, 		1 AS COA_Level 	FROM [dbo].[AccountCodeGroup] 	WHERE  		ParentAccountCodeGroupId IS NULL 	UNION ALL 	SELECT  		sub_group.AccountCodeGroupId, 		sub_group.AccountCodeGroupStart, 		sub_group.AccountCodeGroupEnd, 		sub_group.Description, 		sub_group.ParentAccountCodeGroupId, 		coa.COA_Level +1 	FROM [dbo].[AccountCodeGroup] as sub_group 	INNER JOIN cte AS COA ON 		sub_group.ParentAccountCodeGroupId = coa.AccountCodeGroupID 	WHERE  		sub_Group.ParentAccountCodeGroupId IS NOT NULL )  	INSERT INTO @COA 	(	 		SourceKey, 		Name, 		GLCodeRange, 		DimGLCodeGroupSourceKey 	) 	SELECT 		SourceKey = AccountCodeGroupId, 		Name = [Description], 		GLCodeRange = CONVERT(VARCHAR(50), (AccountCodeGroupStart + ' - ' + AccountCodeGroupEnd)), 		ParentAccountCodeGroupId 	FROM cte 	WHERE COA_Level BETWEEN 0 AND 4  	SELECT  		ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey, 		base_query.name, 		base_query.GLCodeRange, 		base_query.DimGLCodeGroupSourceKey 	FROM @COA AS base_query</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{440A6685-AB04-490D-A50C-83348F4F996F}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SET NOCOUNT ON; DECLARE @COA AS TABLE ( 	SourceKey INT, 	Name VARCHAR(255), 	GLCodeRange VARCHAR(50), 	DimGLCodeGroupSourceKey INT );   WITH cte AS (  	SELECT  		AccountCodeGroupId, 		AccountCodeGroupStart, 		AccountCodeGroupEnd, 		Description, 		ParentAccountCodeGroupId =AccountCodeGroupId, 		1 AS COA_Level 	FROM [dbo].[AccountCodeGroup] 	WHERE  		ParentAccountCodeGroupId IS NULL 	UNION ALL 	SELECT  		sub_group.AccountCodeGroupId, 		sub_group.AccountCodeGroupStart, 		sub_group.AccountCodeGroupEnd, 		sub_group.Description, 		sub_group.ParentAccountCodeGroupId, 		coa.COA_Level +1 	FROM [dbo].[AccountCodeGroup] as sub_group 	INNER JOIN cte AS COA ON 		sub_group.ParentAccountCodeGroupId = coa.AccountCodeGroupID 	WHERE  		sub_Group.ParentAccountCodeGroupId IS NOT NULL )  	INSERT INTO @COA 	(	 		SourceKey, 		Name, 		GLCodeRange, 		DimGLCodeGroupSourceKey 	) 	SELECT 		SourceKey = AccountCodeGroupId, 		Name = [Description], 		GLCodeRange = CONVERT(VARCHAR(50), (AccountCodeGroupStart + ' - ' + AccountCodeGroupEnd)), 		ParentAccountCodeGroupId 	FROM cte 	WHERE COA_Level BETWEEN 0 AND 4  	SELECT  		ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VERSION = ct.as_of_change_version, SourceKey, 		base_query.name, 		base_query.GLCodeRange, 		base_query.DimGLCodeGroupSourceKey 	FROM @COA AS base_query INNER JOIN paga_change_log.dbo.AccountCodeGroup AS ct ON ct.AccountCodeGroupId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{76F0362C-C8F5-46E4-A88C-8FC677E779FF}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= AccountCodeGroupId FROM dbo.AccountCodeGroup) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
-      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= AccountCodeGroupId FROM dbo.AccountCodeGroup) AS base_query INNER JOIN paga_change_log.dbo.AccountCodeGroup AS ct ON ct.AccountCodeGroupId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{ABBA124B-BB10-488C-A07A-3F3D926D1222}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
-      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-  </DTS:Variables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="275,42"
+          Id="Package\DFT_Load Finance_DimGLCodeSubGroup"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\EST_CheckForRows"
+          TopLeft="56.5,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Finance_DimGLCodeSubGroup]"
+          TopLeft="143,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

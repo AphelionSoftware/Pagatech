@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="3001_Shared_FactProcessEvent"
   DTS:PackageType="5"
-  DTS:VersionBuild="216"
-  DTS:VersionGUID="{CD63B003-0B96-4523-856F-FE2E09EE5B3E}">
+  DTS:VersionBuild="218"
+  DTS:VersionGUID="{49223FC2-248F-4734-A434-075DF380A525}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -183,7 +183,7 @@ FROM
 		SenderPhoneNumber= pd.SenderPhoneNumber, 
 		VerificationStatus = pd.VerificationStatus, 
 		WithdrawalCode = pd.WithdrawalCode,
-		p.SYS_CHANGE_OPERATION,
+ p.HasFinancialTransaction,		p.SYS_CHANGE_OPERATION,
 		p.SYS_CHANGE_VERSION, p.paga_change_log_id
 	FROM
 	(
@@ -298,7 +298,7 @@ FROM
 		SenderPhoneNumber= pd.SenderPhoneNumber, 
 		VerificationStatus = pd.VerificationStatus, 
 		WithdrawalCode = pd.WithdrawalCode,
-		p.SYS_CHANGE_OPERATION,
+ p.HasFinancialTransaction,		p.SYS_CHANGE_OPERATION,
 		p.SYS_CHANGE_VERSION, p.paga_change_log_id
 	FROM
 	(
@@ -414,7 +414,7 @@ FROM
 		SenderPhoneNumber= pd.SenderPhoneNumber, 
 		VerificationStatus = pd.VerificationStatus, 
 		WithdrawalCode = pd.WithdrawalCode,
-		p.SYS_CHANGE_OPERATION,
+ p.HasFinancialTransaction,		p.SYS_CHANGE_OPERATION,
 		p.SYS_CHANGE_VERSION, p.paga_change_log_id
 	FROM
 	(
@@ -529,7 +529,7 @@ FROM
 		SenderPhoneNumber= pd.SenderPhoneNumber, 
 		VerificationStatus = pd.VerificationStatus, 
 		WithdrawalCode = pd.WithdrawalCode,
-		p.SYS_CHANGE_OPERATION,
+ p.HasFinancialTransaction,		p.SYS_CHANGE_OPERATION,
 		p.SYS_CHANGE_VERSION, p.paga_change_log_id
 	FROM
 	(
@@ -596,7 +596,7 @@ FROM
       DTS:CreationName=""
       DTS:DTSID="{55816D42-19CC-4C28-BB0D-97213FDFDB40}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT &#xA;&#x9;*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;SourceKey = driver.ProcessID,&#xA;&#x9;&#x9;DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), &#xA;&#x9;&#x9;DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),&#xA;&#x9;&#x9;DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, &#xA;&#x9;&#x9;DimForUserSourceKey = p.ForUserId,&#xA;&#x9;&#x9;DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), &#xA;&#x9;&#x9;DimProcessChannelSourceKey = p.ProcessChannelId, &#xA;&#x9;&#x9;DimProcessStatusSourceKey = p.ProcessStatusId, &#xA;&#x9;&#x9;DimProcessTypeSourceKey = p.ProcessTypeId, &#xA;&#x9;&#x9;DimToUserSourceKey = p.ToUserId, &#xA;&#x9;&#x9;DimUserSourceKey = COALESCE(p.UserID, -1), &#xA;&#x9;&#x9;DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), &#xA;&#x9;&#x9;DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),&#xA;&#x9;&#x9;AgentCommissionAmount = p.AgentCommissionAmount, &#xA;&#x9;&#x9;ProcessAmount = p.Amount, &#xA;&#x9;&#x9;ProcessCode = p.ProcessCode, &#xA;&#x9;&#x9;ProcessFee = p.Fee, &#xA;&#x9;&#x9;FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, &#xA;&#x9;&#x9;FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,&#xA;&#x9;&#x9;DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, &#xA;&#x9;&#x9;DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, &#xA;&#x9;&#x9;DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, &#xA;&#x9;&#x9;DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, &#xA;&#x9;&#x9;ATMReferenceNumber = pd.ATMReferenceNumber, &#xA;&#x9;&#x9;CardProcessorName = pd.CardProcessorName, &#xA;&#x9;&#x9;CustomerBillerAccount = pd.CustomerBillerAccount, &#xA;&#x9;&#x9;CustomerPhoneNumber = pd.CustomerPhoneNumber, &#xA;&#x9;&#x9;DepositNumber = pd.DepositNumber, &#xA;&#x9;&#x9;IntegrationReferenceNumber = pd.IntegrationReferenceNumber, &#xA;&#x9;&#x9;LinkedPhoneNumber = pd.LinkedPhoneNumber, &#xA;&#x9;&#x9;MerchantConfirmationCode = pd.MerchantConfirmationCode, &#xA;&#x9;&#x9;MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,&#xA;&#x9;&#x9;PaymentSource = pd.PaymentSource, &#xA;&#x9;&#x9;ReferenceNumber = pd.ReferenceNumber, &#xA;&#x9;&#x9;SenderPhoneNumber= pd.SenderPhoneNumber, &#xA;&#x9;&#x9;VerificationStatus = pd.VerificationStatus, &#xA;&#x9;&#x9;WithdrawalCode = pd.WithdrawalCode,&#xA;&#x9;&#x9;p.SYS_CHANGE_OPERATION,&#xA;&#x9;&#x9;p.SYS_CHANGE_VERSION, p.paga_change_log_id&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#xA;&#x9;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;&#x9;ProcessID&#xA;&#x9;&#x9;FROM dbo.Process&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;grp.g = @grp&#xA;&#x9;) AS driver&#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#x9;&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;FROM dbo.Process&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ProcessID = driver.ProcessId&#xA;&#x9;) AS p&#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT  &#x9;&#xA;&#x9;&#x9;&#x9;WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9;&#xA;&#x9;&#x9;&#x9;RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) &#x9; &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;pd1.*&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[Name],&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[ProcessId],&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[Value]&#xA;&#x9;&#x9;&#x9;&#x9;FROM [dbo].[ProcessData] AS pd0&#xA;&#x9;&#x9;&#x9;&#x9;WHERE pd0.ProcessID = driver.ProcessId&#xA;&#x9;&#x9;&#x9;) AS pd1&#xA;&#x9;&#x9;&#x9;WHERE pd1.rn = 1&#xA;&#x9;&#x9;) AS pd2&#xA;&#x9;) AS pd&#xA;) AS base_query&quot;"
+      DTS:Expression="&quot;SELECT &#xA;&#x9;*&#xA;FROM&#xA;(&#xA;&#x9;SELECT &#xA;&#x9;&#x9;SourceKey = driver.ProcessID,&#xA;&#x9;&#x9;DimCompletedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.CompletedTimestamp,112)), &#xA;&#x9;&#x9;DimCompletedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.CompletedTimestamp, 114),':','')),&#xA;&#x9;&#x9;DimAgentCommissionTypeSourceKey = p.AgentCommissionTypeId, &#xA;&#x9;&#x9;DimForUserSourceKey = p.ForUserId,&#xA;&#x9;&#x9;DimInitiatingUserSourceKey = COALESCE(p.ForUserId, p.UserID, -1), &#xA;&#x9;&#x9;DimProcessChannelSourceKey = p.ProcessChannelId, &#xA;&#x9;&#x9;DimProcessStatusSourceKey = p.ProcessStatusId, &#xA;&#x9;&#x9;DimProcessTypeSourceKey = p.ProcessTypeId, &#xA;&#x9;&#x9;DimToUserSourceKey = p.ToUserId, &#xA;&#x9;&#x9;DimUserSourceKey = COALESCE(p.UserID, -1), &#xA;&#x9;&#x9;DimStartedDateID = CONVERT(INT,CONVERT(VARCHAR(8),p.StartedTimestamp,112)), &#xA;&#x9;&#x9;DimStartedTimeID = CONVERT(INT,REPLACE(CONVERT(VARCHAR(8), p.StartedTimestamp, 114),':','')),&#xA;&#x9;&#x9;AgentCommissionAmount = p.AgentCommissionAmount, &#xA;&#x9;&#x9;ProcessAmount = p.Amount, &#xA;&#x9;&#x9;ProcessCode = p.ProcessCode, &#xA;&#x9;&#x9;ProcessFee = p.Fee, &#xA;&#x9;&#x9;FactDependentProcessEventSourceKey = pd.DependentFactProcessTxSourceKey, &#xA;&#x9;&#x9;FactOriginalProcessEventSourceKey = pd.OriginalFactProcessTxSourceKey,&#xA;&#x9;&#x9;DimRequestedProcessChannelSourceKey = pd.RequestedProcessChannel, &#xA;&#x9;&#x9;DimVerifiedByUserSourceKey = pd.DimVerifiedByUserSourceKey, &#xA;&#x9;&#x9;DimApprovedByUserSourceKey = pd.DimApprovedByUserSourceKey, &#xA;&#x9;&#x9;DimCancellationApprovedByUserSourceKey = pd.DimCancellationApprovedByUserSourceKey, &#xA;&#x9;&#x9;ATMReferenceNumber = pd.ATMReferenceNumber, &#xA;&#x9;&#x9;CardProcessorName = pd.CardProcessorName, &#xA;&#x9;&#x9;CustomerBillerAccount = pd.CustomerBillerAccount, &#xA;&#x9;&#x9;CustomerPhoneNumber = pd.CustomerPhoneNumber, &#xA;&#x9;&#x9;DepositNumber = pd.DepositNumber, &#xA;&#x9;&#x9;IntegrationReferenceNumber = pd.IntegrationReferenceNumber, &#xA;&#x9;&#x9;LinkedPhoneNumber = pd.LinkedPhoneNumber, &#xA;&#x9;&#x9;MerchantConfirmationCode = pd.MerchantConfirmationCode, &#xA;&#x9;&#x9;MerchantCustomerAccountNumber = pd.MerchantCustomerAccountNumber,&#xA;&#x9;&#x9;PaymentSource = pd.PaymentSource, &#xA;&#x9;&#x9;ReferenceNumber = pd.ReferenceNumber, &#xA;&#x9;&#x9;SenderPhoneNumber= pd.SenderPhoneNumber, &#xA;&#x9;&#x9;VerificationStatus = pd.VerificationStatus, &#xA;&#x9;&#x9;WithdrawalCode = pd.WithdrawalCode,&#xA; p.HasFinancialTransaction,&#x9;&#x9;p.SYS_CHANGE_OPERATION,&#xA;&#x9;&#x9;p.SYS_CHANGE_VERSION, p.paga_change_log_id&#xA;&#x9;FROM&#xA;&#x9;(&#xA;&#x9;&#xA;&#x9;&#x9;SELECT DISTINCT &#xA;&#x9;&#x9;&#x9;ProcessID&#xA;&#x9;&#x9;FROM dbo.Process&#xA;&#x9;&#x9;CROSS APPLY (SELECT (CAST(ProcessID AS VARCHAR) %4) AS g) AS grp&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;grp.g = @grp&#xA;&#x9;) AS driver&#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#x9;&#xA;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;FROM dbo.Process&#xA;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;ProcessID = driver.ProcessId&#xA;&#x9;) AS p&#xA;&#x9;CROSS APPLY&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT  &#x9;&#xA;&#x9;&#x9;&#x9;WithdrawalCode=MAX(CASE WHEN pd2.Name='WithdrawalCode' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;ATMReferenceNumber=MAX(CASE WHEN pd2.Name='ATMReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CardProcessorName=MAX(CASE WHEN pd2.Name='CardProcessorName' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CustomerBillerAccount=MAX(CASE WHEN pd2.Name='CustomerBillerAccount' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;CustomerPhoneNumber=MAX(CASE WHEN pd2.Name='CustomerPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DepositNumber=MAX(CASE WHEN pd2.Name='DepositNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;LinkedPhoneNumber=MAX(CASE WHEN pd2.Name='LinkedPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;MerchantConfirmationCode=MAX(CASE WHEN pd2.Name='MerchantConfirmationCode' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;MerchantCustomerAccountNumber=MAX(CASE WHEN pd2.Name='MerchantCustomerAccountNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;PaymentSource=MAX(CASE WHEN pd2.Name='PaymentSource' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;ReferenceNumber=MAX(CASE WHEN pd2.Name='ReferenceNumber' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9;&#xA;&#x9;&#x9;&#x9;RequestedProcessChannel=MAX(CASE WHEN pd2.Name='RequestedProcessChannel' THEN CONVERT(VARCHAR(200),pd2.value) END),  &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;SenderPhoneNumber=MAX(CASE WHEN pd2.Name='SenderPhoneNumber' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DependentFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='dependentProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;OriginalFactProcessTxSourceKey=MAX(CASE WHEN pd2.Name='originalProcessId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;VerificationStatus=MAX(CASE WHEN pd2.Name='verificationStatus' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimVerifiedByUserSourceKey=MAX(CASE WHEN pd2.Name='verifiedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;IntegrationReferenceNumber= MAX(CASE WHEN pd2.Name='integrationTransactionId' THEN CONVERT(VARCHAR(200),pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimApprovedByUserSourceKey= MAX(CASE WHEN pd2.Name='approvedByUserId' THEN CONVERT(INT,pd2.value) END), &#x9;&#x9; &#xA;&#x9;&#x9;&#x9;DimCancellationApprovedByUserSourceKey=MAX(CASE WHEN pd2.Name='cancelledByUserId' THEN CONVERT(INT,pd2.value) END) &#x9; &#xA;&#x9;&#x9;FROM &#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;SELECT &#xA;&#x9;&#x9;&#x9;&#x9;pd1.*&#xA;&#x9;&#x9;&#x9;FROM&#xA;&#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER () OVER(PARTITION BY  pd0.[ProcessId], pd0.[Name] ORDER BY pd0.UpdatedDate DESC) AS rn,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[Name],&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[ProcessId],&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;pd0.[Value]&#xA;&#x9;&#x9;&#x9;&#x9;FROM [dbo].[ProcessData] AS pd0&#xA;&#x9;&#x9;&#x9;&#x9;WHERE pd0.ProcessID = driver.ProcessId&#xA;&#x9;&#x9;&#x9;) AS pd1&#xA;&#x9;&#x9;&#x9;WHERE pd1.rn = 1&#xA;&#x9;&#x9;) AS pd2&#xA;&#x9;) AS pd&#xA;) AS base_query&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="LoadQuery">
@@ -643,7 +643,7 @@ FROM
 		SenderPhoneNumber= pd.SenderPhoneNumber, 
 		VerificationStatus = pd.VerificationStatus, 
 		WithdrawalCode = pd.WithdrawalCode,
-		p.SYS_CHANGE_OPERATION,
+ p.HasFinancialTransaction,		p.SYS_CHANGE_OPERATION,
 		p.SYS_CHANGE_VERSION, p.paga_change_log_id
 	FROM
 	(
@@ -1694,6 +1694,15 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Output].Columns[paga_change_log_id]"
                       name="paga_change_log_id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Output].ExternalColumns[HasFinancialTransaction]"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]"
+                      name="HasFinancialTransaction"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1905,6 +1914,10 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Output].ExternalColumns[paga_change_log_id]"
                       dataType="i4"
                       name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Output].ExternalColumns[HasFinancialTransaction]"
+                      dataType="bool"
+                      name="HasFinancialTransaction" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2143,6 +2156,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       length="200"
                       lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Error Output].Columns[WithdrawalCode]"
                       name="WithdrawalCode" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Error Output].Columns[HasFinancialTransaction]"
+                      dataType="bool"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Error Output].Columns[HasFinancialTransaction]"
+                      name="HasFinancialTransaction" />
                     <outputColumn
                       refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
                       codePage="1252"
@@ -2646,6 +2664,15 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Output].Columns[paga_change_log_id]"
                       name="paga_change_log_id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Output].ExternalColumns[HasFinancialTransaction]"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]"
+                      name="HasFinancialTransaction"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2857,6 +2884,10 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Output].ExternalColumns[paga_change_log_id]"
                       dataType="i4"
                       name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Output].ExternalColumns[HasFinancialTransaction]"
+                      dataType="bool"
+                      name="HasFinancialTransaction" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3095,6 +3126,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       length="200"
                       lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Error Output].Columns[WithdrawalCode]"
                       name="WithdrawalCode" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Error Output].Columns[HasFinancialTransaction]"
+                      dataType="bool"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Error Output].Columns[HasFinancialTransaction]"
+                      name="HasFinancialTransaction" />
                     <outputColumn
                       refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
                       codePage="1252"
@@ -3598,6 +3634,15 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output].Columns[paga_change_log_id]"
                       name="paga_change_log_id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output].ExternalColumns[HasFinancialTransaction]"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]"
+                      name="HasFinancialTransaction"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3809,6 +3854,10 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output].ExternalColumns[paga_change_log_id]"
                       dataType="i4"
                       name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output].ExternalColumns[HasFinancialTransaction]"
+                      dataType="bool"
+                      name="HasFinancialTransaction" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -4047,6 +4096,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       length="200"
                       lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Error Output].Columns[WithdrawalCode]"
                       name="WithdrawalCode" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Error Output].Columns[HasFinancialTransaction]"
+                      dataType="bool"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Error Output].Columns[HasFinancialTransaction]"
+                      name="HasFinancialTransaction" />
                     <outputColumn
                       refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
                       codePage="1252"
@@ -4550,6 +4604,15 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output].Columns[paga_change_log_id]"
                       name="paga_change_log_id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output].ExternalColumns[HasFinancialTransaction]"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]"
+                      name="HasFinancialTransaction"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4761,6 +4824,10 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output].ExternalColumns[paga_change_log_id]"
                       dataType="i4"
                       name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output].ExternalColumns[HasFinancialTransaction]"
+                      dataType="bool"
+                      name="HasFinancialTransaction" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -4999,6 +5066,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       length="200"
                       lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Error Output].Columns[WithdrawalCode]"
                       name="WithdrawalCode" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Error Output].Columns[HasFinancialTransaction]"
+                      dataType="bool"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Error Output].Columns[HasFinancialTransaction]"
+                      name="HasFinancialTransaction" />
                     <outputColumn
                       refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
                       codePage="1252"
@@ -5393,6 +5465,12 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       cachedName="paga_change_log_id"
                       externalMetadataColumnId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[paga_change_log_id]"
                       lineageId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Outputs[Union All Output 1].Columns[paga_change_log_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].Columns[HasFinancialTransaction]"
+                      cachedDataType="bool"
+                      cachedName="HasFinancialTransaction"
+                      externalMetadataColumnId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input].ExternalColumns[HasFinancialTransaction]"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Outputs[Union All Output 1].Columns[HasFinancialTransaction]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6221,6 +6299,19 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           name="OutputColumnLineageID">#{Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Outputs[Union All Output 1].Columns[paga_change_log_id]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 5].Columns[HasFinancialTransaction]"
+                      cachedDataType="bool"
+                      cachedName="HasFinancialTransaction"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Outputs[Union All Output 1].Columns[HasFinancialTransaction]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -6797,6 +6888,19 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           name="OutputColumnLineageID">#{Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Outputs[Union All Output 1].Columns[paga_change_log_id]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 1].Columns[HasFinancialTransaction]"
+                      cachedDataType="bool"
+                      cachedName="HasFinancialTransaction"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Outputs[Union All Output 1].Columns[HasFinancialTransaction]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -7371,6 +7475,19 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Outputs[Union All Output 1].Columns[paga_change_log_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 2].Columns[HasFinancialTransaction]"
+                      cachedDataType="bool"
+                      cachedName="HasFinancialTransaction"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output].Columns[HasFinancialTransaction]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Outputs[Union All Output 1].Columns[HasFinancialTransaction]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -8213,6 +8330,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                       dataType="i4"
                       lineageId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Outputs[Union All Output 1].Columns[paga_change_log_id]"
                       name="paga_change_log_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Outputs[Union All Output 1].Columns[HasFinancialTransaction]"
+                      dataType="bool"
+                      lineageId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Outputs[Union All Output 1].Columns[HasFinancialTransaction]"
+                      name="HasFinancialTransaction" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -8222,24 +8344,24 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           <paths>
             <path
               refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output2]"
-              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 3]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
-              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 2]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 1]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 5]"
               name="OLE DB Source Output"
               startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 3]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
+              endId="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent.Inputs[Union All Input 2]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DFT_Load_Shared_FactProcessEvent.Paths[Union All Output 1]"
               endId="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_InsertIntoStaging.Inputs[OLE DB Destination Input]"
@@ -8624,6 +8746,10 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           dataType="str"
                           length="1"
                           name="SYS_CHANGE_OPERATION" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_InsertIntoPrestaging.Inputs[OLE DB Destination Input].ExternalColumns[paga_change_log_id]"
+                          dataType="i4"
+                          name="paga_change_log_id" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -10060,6 +10186,15 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[SYS_CHANGE_VERSION]"
                           name="SYS_CHANGE_VERSION"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[paga_change_log_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Output].ExternalColumns[paga_change_log_id]"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Output].Columns[paga_change_log_id]"
+                          name="paga_change_log_id"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -10174,6 +10309,10 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Output].ExternalColumns[SYS_CHANGE_VERSION]"
                           dataType="i8"
                           name="SYS_CHANGE_VERSION" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Output].ExternalColumns[paga_change_log_id]"
+                          dataType="i4"
+                          name="paga_change_log_id" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -10310,6 +10449,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
                           length="1"
                           lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_OPERATION]"
                           name="SYS_CHANGE_OPERATION" />
+                        <outputColumn
+                          refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Error Output].Columns[paga_change_log_id]"
+                          dataType="i4"
+                          lineageId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Error Output].Columns[paga_change_log_id]"
+                          name="paga_change_log_id" />
                         <outputColumn
                           refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Error Output].Columns[SYS_CHANGE_VERSION]"
                           dataType="i8"
@@ -12360,24 +12504,24 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
               <paths>
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output2]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 3]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 2]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 1]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 5]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_2.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 3]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\UA_Process.Inputs[Union All Input 2]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[Union All Output 1]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_InsertIntoPrestaging.Inputs[OLE DB Destination Input]"
@@ -14030,24 +14174,24 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
               <paths>
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
-                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 3]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_2.Outputs[OLE DB Source Output]" />
                 <path
-                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 2]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_1.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
+                  endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\UA_ProcessData.Inputs[Union All Input 5]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_3.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[Union All Output 1]"
                   endId="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_InsertIntoPreStaging.Inputs[OLE DB Destination Input]"
@@ -14493,18 +14637,6 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="223,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1"
-          TopLeft="573.5,5.49999999999989" />
-        <NodeLayout
-          Size="182,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent"
-          TopLeft="594,107.5" />
-        <NodeLayout
-          Size="223,42"
-          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2"
-          TopLeft="289.5,5.5" />
-        <NodeLayout
-          Size="223,42"
           Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3"
           TopLeft="857.5,5.49999999999989" />
         <NodeLayout
@@ -14512,11 +14644,45 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_InsertIntoStaging"
           TopLeft="584.5,209.5" />
         <NodeLayout
+          Size="182,42"
+          Id="Package\DFT_Load_Shared_FactProcessEvent\UA_FactProcessEvent"
+          TopLeft="594,107.5" />
+        <NodeLayout
           Size="223,42"
           Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent"
           TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1"
+          TopLeft="573.5,5.49999999999989" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2"
+          TopLeft="289.5,5.5" />
         <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Union All Output 1]"
+          TopLeft="685,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
           TopLeft="117,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14550,7 +14716,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output2]"
           TopLeft="685,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14584,29 +14750,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[Union All Output 1]"
-          TopLeft="685,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output3]"
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output1]"
           TopLeft="401,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14640,7 +14784,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output2]"
+          Id="Package\DFT_Load_Shared_FactProcessEvent.Paths[OLE DB Source Output]"
           TopLeft="969,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14677,22 +14821,6 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 3">
     <Properties>
       <Property>
@@ -14721,11 +14849,27 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Shared_FactProcessEvent\OLEDB_Get_FactProcessEvent 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\SEQ_Load_PreStaging\DFT_Populate_Process">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="164,42"
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process\OLEDB_Stream_0"
@@ -14781,13 +14925,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
           TopLeft="87.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14817,13 +14959,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output2]"
           TopLeft="312.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14853,13 +14993,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output3]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output1]"
           TopLeft="537.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14889,13 +15027,11 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output2]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_Process.Paths[OLE DB Source Output]"
           TopLeft="762.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14925,9 +15061,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -15008,7 +15142,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData\OLEDB_Stream_0"
           TopLeft="230.5,5.49999999999989" />
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
           TopLeft="762.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15044,7 +15178,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
           TopLeft="87.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15080,7 +15214,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output2]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output]"
           TopLeft="312.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -15140,7 +15274,7 @@ OPTION (MAXDOP 1)</DTS:VariableValue>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output1]"
+          Id="Package\SEQ_Load_PreStaging\DFT_Populate_ProcessData.Paths[OLE DB Source Output3]"
           TopLeft="537.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
