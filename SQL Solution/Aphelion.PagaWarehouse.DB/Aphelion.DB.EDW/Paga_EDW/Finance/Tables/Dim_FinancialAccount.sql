@@ -16,6 +16,8 @@
     [sys_CreatedBy]                VARCHAR (255)   DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]                DATETIME        DEFAULT (getdate()) NOT NULL,
     [IsActive]                     BIT             DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]           BIGINT          DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]         CHAR (1)        DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_DimFinancialAccountID] PRIMARY KEY CLUSTERED ([DimFinancialAccountID] ASC),
     CONSTRAINT [fk_DimFinancialAccount_DimBankAccountID] FOREIGN KEY ([DimBankAccountID]) REFERENCES [Finance].[DimBankAccount] ([DimBankAccountID]),
     CONSTRAINT [fk_DimFinancialAccount_DimCurrencyID] FOREIGN KEY ([DimCurrencyID]) REFERENCES [Finance].[DimCurrency] ([DimCurrencyID]),
@@ -23,6 +25,8 @@
     CONSTRAINT [fk_DimFinancialAccount_DimFinancialHoldingAccount] FOREIGN KEY ([DimFinancialHoldingAccountID]) REFERENCES [Finance].[DimFinancialHoldingAccount] ([DimFinancialHoldingAccountID]),
     CONSTRAINT [fk_DimFinancialAccount_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
 
 
 

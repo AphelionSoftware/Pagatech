@@ -1,16 +1,20 @@
 ﻿CREATE TABLE [Location].[DimRegion] (
-    [DimRegionID]    INT           IDENTITY (1, 1) NOT NULL,
-    [SourceKey]      INT           NOT NULL,
-    [Name]           VARCHAR (255) NOT NULL,
-    [DimGeoZoneID]   INT           NOT NULL,
-    [sys_ModifiedBy] VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn] DATETIME      DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]  VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]  DATETIME      DEFAULT (getdate()) NOT NULL,
-    [IsActive]       BIT           DEFAULT ((1)) NOT NULL,
+    [DimRegionID]          INT           IDENTITY (1, 1) NOT NULL,
+    [SourceKey]            INT           NOT NULL,
+    [Name]                 VARCHAR (255) NOT NULL,
+    [DimGeoZoneID]         INT           NOT NULL,
+    [sys_ModifiedBy]       VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]       DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]        VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]        DATETIME      DEFAULT (getdate()) NOT NULL,
+    [IsActive]             BIT           DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]   BIGINT        DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION] CHAR (1)      DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_DimRegionID] PRIMARY KEY CLUSTERED ([DimRegionID] ASC),
     CONSTRAINT [fk_DimRegion_DimGeoZoneID] FOREIGN KEY ([DimGeoZoneID]) REFERENCES [Location].[DimGeoZone] ([DimGeoZoneID])
 );
+
+
 
 
 

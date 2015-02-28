@@ -14,11 +14,15 @@
     [sys_ModifiedBy]        VARCHAR (255)   DEFAULT (user_name()) NOT NULL,
     [sys_ModifiedOn]        DATETIME        DEFAULT (getdate()) NOT NULL,
     [IsActive]              BIT             DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]    BIGINT          DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]  CHAR (1)        DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_FactGLTx] PRIMARY KEY CLUSTERED ([FactGLTxID] ASC),
     CONSTRAINT [fk_FactGLTransaction_DimFinancialAccountID] FOREIGN KEY ([DimFinancialAccountID]) REFERENCES [Finance].[DimFinancialAccount] ([DimFinancialAccountID]),
     CONSTRAINT [fk_FactGLTransaction_DimGLCodeID] FOREIGN KEY ([DimGLCodeID]) REFERENCES [Finance].[DimGLCode] ([DimGLCodeID]),
     CONSTRAINT [fk_FactGLTransaction_FactFinancialTxID] FOREIGN KEY ([FactFinancialTxID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTxID])
 );
+
+
 
 
 

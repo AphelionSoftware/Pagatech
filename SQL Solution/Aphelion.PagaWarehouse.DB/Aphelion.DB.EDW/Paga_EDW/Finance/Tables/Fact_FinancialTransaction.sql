@@ -28,6 +28,8 @@
     [sys_ModifiedBy]            VARCHAR (255)   DEFAULT (user_name()) NOT NULL,
     [sys_ModifiedOn]            DATETIME        DEFAULT (getdate()) NOT NULL,
     [IsActive]                  BIT             DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]        BIGINT          DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]      CHAR (1)        DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_FactFinancialTx] PRIMARY KEY CLUSTERED ([FactFinancialTxID] ASC),
     CONSTRAINT [fk_FactFinancialTransaction_DimCurrencyID] FOREIGN KEY ([DimCurrencyID]) REFERENCES [Finance].[DimCurrency] ([DimCurrencyID]),
     CONSTRAINT [fk_FactFinancialTransaction_DimEffectiveDateID] FOREIGN KEY ([DimEffectiveDateID]) REFERENCES [Shared].[DimDate] ([DateID]),
@@ -41,6 +43,8 @@
     CONSTRAINT [fk_FactFinancialTransaction_FactProcessEventID] FOREIGN KEY ([FactProcessEventID]) REFERENCES [Shared].[FactProcessEvent] ([FactProcessEventID]),
     CONSTRAINT [fk_FactFinancialTransaction_FactRelatedFinancialTxID] FOREIGN KEY ([FactRelatedFinancialTxID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTxID])
 );
+
+
 
 
 

@@ -29,8 +29,12 @@
     [sys_ModifiedOn]        DATETIME       CONSTRAINT [DF_DimDate_sys_ModifiedOn] DEFAULT (getdate()) NOT NULL,
     [sys_ModifiedBy]        NVARCHAR (255) CONSTRAINT [DF_DimDate_sys_ModifiedBy] DEFAULT (user_name()) NOT NULL,
     [IsActive]              INT            CONSTRAINT [DF_DimDate_Active] DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]    BIGINT         DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]  CHAR (1)       DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_DateID] PRIMARY KEY CLUSTERED ([DateID] ASC)
 );
+
+
 
 
 

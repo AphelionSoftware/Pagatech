@@ -1,17 +1,21 @@
 ﻿CREATE TABLE [Finance].[DimGLCodeSubGroup] (
-    [DimGLCodeSubGroupID] INT           IDENTITY (1, 1) NOT NULL,
-    [SourceKey]           INT           NOT NULL,
-    [Name]                VARCHAR (255) NOT NULL,
-    [DimGLCodeGroupID]    INT           NOT NULL,
-    [GLCodeRange]         VARCHAR (255) NULL,
-    [sys_ModifiedBy]      VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn]      DATETIME      DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]       VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]       DATETIME      DEFAULT (getdate()) NOT NULL,
-    [IsActive]            BIT           DEFAULT ((1)) NOT NULL,
+    [DimGLCodeSubGroupID]  INT           IDENTITY (1, 1) NOT NULL,
+    [SourceKey]            INT           NOT NULL,
+    [Name]                 VARCHAR (255) NOT NULL,
+    [DimGLCodeGroupID]     INT           NOT NULL,
+    [GLCodeRange]          VARCHAR (255) NULL,
+    [sys_ModifiedBy]       VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]       DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]        VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]        DATETIME      DEFAULT (getdate()) NOT NULL,
+    [IsActive]             BIT           DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]   BIGINT        DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION] CHAR (1)      DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_DimGLCodeSubGroupID] PRIMARY KEY CLUSTERED ([DimGLCodeSubGroupID] ASC),
     CONSTRAINT [fk_DimGLCodeSubGroup_DimChartofAccountsID] FOREIGN KEY ([DimGLCodeGroupID]) REFERENCES [Finance].[DimGLCodeGroup] ([DimGLCodeGroupID])
 );
+
+
 
 
 

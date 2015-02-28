@@ -8,9 +8,13 @@
     [sys_CreatedBy]           VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]           DATETIME      DEFAULT (getdate()) NOT NULL,
     [IsActive]                BIT           DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]      BIGINT        DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]    CHAR (1)      DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_DimPaymentUseCaseID] PRIMARY KEY CLUSTERED ([DimPaymentUseCaseID] ASC),
     CONSTRAINT [FK_DimPaymentUseCaseTypeID] FOREIGN KEY ([DimPaymentUseCaseTypeID]) REFERENCES [Finance].[DimPaymentUseCaseType] ([DimPaymentUseCaseTypeID])
 );
+
+
 
 
 

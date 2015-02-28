@@ -1,19 +1,23 @@
-CREATE TABLE [Finance].[DimGLCode] (
-    [DimGLCodeID]         INT            IDENTITY (1, 1) NOT NULL,
-    [SourceKey]           INT            NOT NULL,
-    [Name]                VARCHAR (255)  NOT NULL,
-    [DimGLCodeSubGroupID] INT            NOT NULL,
-    [GLCode]              VARCHAR (255)  NULL,
-    [TextDesciption]      VARCHAR (1000) NULL,
-    [IsNormalDebit]       BIT            NULL,
-    [sys_ModifiedBy]      VARCHAR (255)  DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn]      DATETIME       DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]       VARCHAR (255)  DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]       DATETIME       DEFAULT (getdate()) NOT NULL,
-    [IsActive]            BIT            DEFAULT ((1)) NOT NULL,
+﻿CREATE TABLE [Finance].[DimGLCode] (
+    [DimGLCodeID]          INT            IDENTITY (1, 1) NOT NULL,
+    [SourceKey]            INT            NOT NULL,
+    [Name]                 VARCHAR (255)  NOT NULL,
+    [DimGLCodeSubGroupID]  INT            NOT NULL,
+    [GLCode]               VARCHAR (255)  NULL,
+    [TextDesciption]       VARCHAR (1000) NULL,
+    [IsNormalDebit]        BIT            NULL,
+    [sys_ModifiedBy]       VARCHAR (255)  DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]       DATETIME       DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]        VARCHAR (255)  DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]        DATETIME       DEFAULT (getdate()) NOT NULL,
+    [IsActive]             BIT            DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]   BIGINT         DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION] CHAR (1)       DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_DimGLCodeID] PRIMARY KEY CLUSTERED ([DimGLCodeID] ASC),
     CONSTRAINT [fk_DimGLCode_DimGLCodeSubGroupID] FOREIGN KEY ([DimGLCodeSubGroupID]) REFERENCES [Finance].[DimGLCodeSubGroup] ([DimGLCodeSubGroupID])
 );
+
+
 
 
 

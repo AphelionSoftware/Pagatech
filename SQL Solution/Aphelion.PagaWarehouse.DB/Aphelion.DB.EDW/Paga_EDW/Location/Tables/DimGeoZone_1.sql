@@ -1,17 +1,21 @@
 ﻿CREATE TABLE [Location].[DimGeoZone] (
-    [DimGeoZoneID]   INT           IDENTITY (1, 1) NOT NULL,
-    [SourceKey]      INT           NOT NULL,
-    [Name]           VARCHAR (255) NOT NULL,
-    [Code]           VARCHAR (50)  NOT NULL,
-    [DimCountryID]   INT           NOT NULL,
-    [sys_ModifiedBy] VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn] DATETIME      DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]  VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]  DATETIME      DEFAULT (getdate()) NOT NULL,
-    [IsActive]       BIT           DEFAULT ((1)) NOT NULL,
+    [DimGeoZoneID]         INT           IDENTITY (1, 1) NOT NULL,
+    [SourceKey]            INT           NOT NULL,
+    [Name]                 VARCHAR (255) NOT NULL,
+    [Code]                 VARCHAR (50)  NOT NULL,
+    [DimCountryID]         INT           NOT NULL,
+    [sys_ModifiedBy]       VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]       DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]        VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]        DATETIME      DEFAULT (getdate()) NOT NULL,
+    [IsActive]             BIT           DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]   BIGINT        DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION] CHAR (1)      DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_DimGeoZoneID] PRIMARY KEY CLUSTERED ([DimGeoZoneID] ASC),
     CONSTRAINT [fk_DimGeoZone_DimCountryID] FOREIGN KEY ([DimCountryID]) REFERENCES [Location].[DimCountry] ([DimCountryID])
 );
+
+
 
 
 

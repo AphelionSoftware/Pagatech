@@ -1,19 +1,23 @@
 ﻿CREATE TABLE [Shared].[DimUserRole] (
-    [DimUserRoleID]  INT           IDENTITY (1, 1) NOT NULL,
-    [SourceKey]      INT           NOT NULL,
-    [Name]           VARCHAR (255) NULL,
-    [DimUserID]      INT           NOT NULL,
-    [DimRoleID]      INT           NOT NULL,
-    [RolePriority]   SMALLINT      NOT NULL,
-    [sys_CreatedBy]  VARCHAR (255) DEFAULT (user_name()) NOT NULL,
-    [sys_CreatedOn]  DATETIME      DEFAULT (getdate()) NOT NULL,
-    [sys_ModifiedBy] VARCHAR (255) DEFAULT (user_name()) NOT NULL,
-    [sys_ModifiedOn] DATETIME      DEFAULT (getdate()) NOT NULL,
-    [IsActive]       BIT           DEFAULT ((1)) NOT NULL,
+    [DimUserRoleID]        INT           IDENTITY (1, 1) NOT NULL,
+    [SourceKey]            INT           NOT NULL,
+    [Name]                 VARCHAR (255) NULL,
+    [DimUserID]            INT           NOT NULL,
+    [DimRoleID]            INT           NOT NULL,
+    [RolePriority]         SMALLINT      NOT NULL,
+    [sys_CreatedBy]        VARCHAR (255) DEFAULT (user_name()) NOT NULL,
+    [sys_CreatedOn]        DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_ModifiedBy]       VARCHAR (255) DEFAULT (user_name()) NOT NULL,
+    [sys_ModifiedOn]       DATETIME      DEFAULT (getdate()) NOT NULL,
+    [IsActive]             BIT           DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]   BIGINT        DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION] CHAR (1)      DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_DimUserRole] PRIMARY KEY CLUSTERED ([DimUserRoleID] ASC),
     CONSTRAINT [fk_DimUserRole_DimRoleID] FOREIGN KEY ([DimRoleID]) REFERENCES [Shared].[DimRole] ([DimRoleID]),
     CONSTRAINT [fk_DimUserRole_DimUserID] FOREIGN KEY ([DimUserID]) REFERENCES [Shared].[DimUser] ([DimUserID])
 );
+
+
 
 
 

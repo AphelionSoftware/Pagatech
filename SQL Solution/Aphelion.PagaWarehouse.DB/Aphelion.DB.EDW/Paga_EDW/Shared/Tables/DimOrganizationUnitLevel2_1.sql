@@ -10,10 +10,14 @@
     [sys_CreatedBy]               VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]               DATETIME      DEFAULT (getdate()) NOT NULL,
     [IsActive]                    BIT           DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]          BIGINT        DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]        CHAR (1)      DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_DimOrganizationUnitLevel2ID] PRIMARY KEY CLUSTERED ([DimOrganizationUnitLevel2ID] ASC),
     CONSTRAINT [fk_DimOrganizationUnitLevel2_DimOrganizationUnitLevel1ID] FOREIGN KEY ([DimOrganizationUnitLevel1ID]) REFERENCES [Shared].[DimOrganizationUnitLevel1] ([DimOrganizationUnitLevel1ID]),
     CONSTRAINT [fk_DimOrganizationUnitLevel2_DimOrganizationUnitTypeID] FOREIGN KEY ([DimOrganizationUnitTypeID]) REFERENCES [Classification].[DimOrganizationUnitType] ([DimOrganizationUnitTypeID])
 );
+
+
 
 
 

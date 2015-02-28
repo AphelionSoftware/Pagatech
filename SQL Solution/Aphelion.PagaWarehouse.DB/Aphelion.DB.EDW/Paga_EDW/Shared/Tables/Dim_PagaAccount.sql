@@ -28,11 +28,15 @@
     [sys_CreatedBy]          VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
     [sys_CreatedOn]          DATETIME      DEFAULT (getdate()) NOT NULL,
     [IsActive]               BIT           DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]     BIGINT        DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]   CHAR (1)      DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_DimPagaAccountID] PRIMARY KEY CLUSTERED ([DimPagaAccountID] ASC),
     CONSTRAINT [fk_DimPagaAccount_DimCreatedDateID] FOREIGN KEY ([DimCreatedDateID]) REFERENCES [Shared].[DimDate] ([DateID]),
     CONSTRAINT [fk_DimPagaAccount_DimPagaAccountStatusID] FOREIGN KEY ([DimPagaAccountStatusID]) REFERENCES [Classification].[DimPagaAccountStatus] ([DimPagaAccountStatusID]),
     CONSTRAINT [fk_DimPagaAccount_DimRegistrationDateID] FOREIGN KEY ([DimRegistrationDateID]) REFERENCES [Shared].[DimDate] ([DateID])
 );
+
+
 
 
 

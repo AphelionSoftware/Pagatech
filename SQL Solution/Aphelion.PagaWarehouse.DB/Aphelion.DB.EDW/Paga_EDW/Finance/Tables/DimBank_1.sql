@@ -1,19 +1,23 @@
 ﻿CREATE TABLE [Finance].[DimBank] (
-    [DimBankID]           INT           IDENTITY (1, 1) NOT NULL,
-    [SourceKey]           INT           NOT NULL,
-    [Name]                VARCHAR (255) NOT NULL,
-    [BankAccountLinkType] VARCHAR (255) NOT NULL,
-    [DimOrganizationID]   INT           NOT NULL,
-    [SupportsDebit]       BIT           NULL,
-    [SupportsCredit]      BIT           NULL,
-    [sys_ModifiedBy]      VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_ModifiedOn]      DATETIME      DEFAULT (getdate()) NOT NULL,
-    [sys_CreatedBy]       VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
-    [sys_CreatedOn]       DATETIME      DEFAULT (getdate()) NOT NULL,
-    [IsActive]            BIT           DEFAULT ((1)) NOT NULL,
+    [DimBankID]            INT           IDENTITY (1, 1) NOT NULL,
+    [SourceKey]            INT           NOT NULL,
+    [Name]                 VARCHAR (255) NOT NULL,
+    [BankAccountLinkType]  VARCHAR (255) NOT NULL,
+    [DimOrganizationID]    INT           NOT NULL,
+    [SupportsDebit]        BIT           NULL,
+    [SupportsCredit]       BIT           NULL,
+    [sys_ModifiedBy]       VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_ModifiedOn]       DATETIME      DEFAULT (getdate()) NOT NULL,
+    [sys_CreatedBy]        VARCHAR (255) DEFAULT (suser_sname()) NOT NULL,
+    [sys_CreatedOn]        DATETIME      DEFAULT (getdate()) NOT NULL,
+    [IsActive]             BIT           DEFAULT ((1)) NOT NULL,
+    [SYS_CHANGE_VERSION]   BIGINT        DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION] CHAR (1)      DEFAULT ('I') NOT NULL,
     CONSTRAINT [pk_DimBankID] PRIMARY KEY CLUSTERED ([DimBankID] ASC),
     CONSTRAINT [fk_DimBank_DimOrganizationID] FOREIGN KEY ([DimOrganizationID]) REFERENCES [Shared].[DimOrganization] ([DimOrganizationID])
 );
+
+
 
 
 
