@@ -63,6 +63,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimFinancialAccount_SourceKey]
     ON [Finance].[DimFinancialAccount]([SourceKey] ASC, [DimFinancialAccountID] ASC);
@@ -209,10 +211,12 @@ EXECUTE sp_addextendedproperty @name = N'ExcludeFromFlattenedViews', @value = N'
 
 GO
 EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET 
+	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
 	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimFinancialHoldingAccountID = stg.DimFinancialHoldingAccountID,edw.DimBankAccountID = stg.DimBankAccountID,edw.DimPagaAccountID = stg.DimPagaAccountID,edw.DimCurrencyID = stg.DimCurrencyID,edw.DimFinancialAccountTypeID = stg.DimFinancialAccountTypeID,edw.AccountNumber = stg.AccountNumber,edw.RestrictedBalance = stg.RestrictedBalance,edw.OpeningBalance = stg.OpeningBalance,edw.TotalBalance = stg.TotalBalance
 	FROM Finance.DimFinancialAccount AS edw
 	INNER JOIN Paga_Staging.Updates.Finance_DimFinancialAccount AS stg ON
 		edw.SourceKey = stg.SourceKey;
 	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount';
+
+
 

@@ -67,6 +67,8 @@
 
 
 
+
+
 GO
 
 
@@ -107,10 +109,12 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'PlaceHolder', @l
 
 GO
 EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET 
+	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
 	edw.SourceKey = stg.SourceKey,edw.DimEffectiveDateID = stg.DimEffectiveDateID,edw.DimEffectiveTimeID = stg.DimEffectiveTimeID,edw.DimFinancialTxDateID = stg.DimFinancialTxDateID,edw.DimFinancialTxTimeID = stg.DimFinancialTxTimeID,edw.DimFinancialTxTypeID = stg.DimFinancialTxTypeID,edw.DimUserID = stg.DimUserID,edw.FactProcessEventID = stg.FactProcessEventID,edw.Reversed = stg.Reversed,edw.FactRelatedFinancialTxID = stg.FactRelatedFinancialTxID,edw.FactOriginalFinancialTxID = stg.FactOriginalFinancialTxID,edw.DimCurrencyID = stg.DimCurrencyID,edw.TextDescription = stg.TextDescription,edw.FinancialTx_Amount = stg.FinancialTx_Amount,edw.ExchangeRate = stg.ExchangeRate,edw.ExternalReferenceNumber = stg.ExternalReferenceNumber,edw.FinancialTx_Fee = stg.FinancialTx_Fee,edw.ForeignCurrencyAmount = stg.ForeignCurrencyAmount,edw.ReferenceNumber = stg.ReferenceNumber,edw.ShortCode = stg.ShortCode,edw.Cancelled = stg.Cancelled,edw.IsIntegrationTx = stg.IsIntegrationTx,edw.FactIntegrationTxID = stg.FactIntegrationTxID
 	FROM Finance.FactFinancialTransaction AS edw
 	INNER JOIN Paga_Staging.Updates.Finance_FactFinancialTransaction AS stg ON
 		edw.SourceKey = stg.SourceKey;
 	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
+
+
 

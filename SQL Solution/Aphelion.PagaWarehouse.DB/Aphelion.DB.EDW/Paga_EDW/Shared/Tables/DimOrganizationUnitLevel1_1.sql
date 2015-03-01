@@ -46,6 +46,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitLevel1_SourceKey]
     ON [Shared].[DimOrganizationUnitLevel1]([SourceKey] ASC);
@@ -154,10 +156,12 @@ FROM @OrgUnit AS base_query
 
 GO
 EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET 
+	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
 	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimOrganizationID = stg.DimOrganizationID,edw.DimOrganizationUnitTypeID = stg.DimOrganizationUnitTypeID,edw.IdentificationNumber = stg.IdentificationNumber
 	FROM Shared.DimOrganizationUnitLevel1 AS edw
 	INNER JOIN Paga_Staging.Updates.Shared_DimOrganizationUnitLevel1 AS stg ON
 		edw.SourceKey = stg.SourceKey;
 	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel1';
+
+
 

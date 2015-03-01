@@ -34,6 +34,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimBank_SourceKey]
     ON [Finance].[DimBank]([SourceKey] ASC);
@@ -89,10 +91,12 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	ct.SYS_
 
 GO
 EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET 
+	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
 	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.BankAccountLinkType = stg.BankAccountLinkType,edw.DimOrganizationID = stg.DimOrganizationID,edw.SupportsDebit = stg.SupportsDebit,edw.SupportsCredit = stg.SupportsCredit
 	FROM Finance.DimBank AS edw
 	INNER JOIN Paga_Staging.Updates.Finance_DimBank AS stg ON
 		edw.SourceKey = stg.SourceKey;
 	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBank';
+
+
 

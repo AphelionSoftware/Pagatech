@@ -45,6 +45,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimBankAccount_SourceKey]
     ON [Finance].[DimBankAccount]([SourceKey] ASC);
@@ -100,10 +102,12 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT ct.SYS_CH
 
 GO
 EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET 
+	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
 	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimBankID = stg.DimBankID,edw.BankAccountLinkStatusType = stg.BankAccountLinkStatusType,edw.TextDesciption = stg.TextDesciption,edw.AccountHolderName = stg.AccountHolderName,edw.BranchName = stg.BranchName,edw.KYC_Rating = stg.KYC_Rating,edw.MobilePhoneNumber = stg.MobilePhoneNumber,edw.BankAccountLinkStatusComment = stg.BankAccountLinkStatusComment,edw.AccountNumber = stg.AccountNumber,edw.AccountAlias = stg.AccountAlias,edw.TransactionLimit = stg.TransactionLimit,edw.DurationLimit = stg.DurationLimit,edw.DurationLimitSeconds = stg.DurationLimitSeconds,edw.IsEnabled = stg.IsEnabled,edw.AccountLinkIdentifier = stg.AccountLinkIdentifier
 	FROM Finance.DimBankAccount AS edw
 	INNER JOIN Paga_Staging.Updates.Finance_DimBankAccount AS stg ON
 		edw.SourceKey = stg.SourceKey;
 	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBankAccount';
+
+
 

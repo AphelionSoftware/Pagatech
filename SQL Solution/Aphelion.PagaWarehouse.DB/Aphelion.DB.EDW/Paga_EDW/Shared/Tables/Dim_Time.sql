@@ -26,6 +26,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'PackageType', @value = N'1', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimTime';
 
@@ -44,10 +46,12 @@ EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'0', @level0type 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET 
+	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
 	edw.FullTime = stg.FullTime,edw.HourNumber = stg.HourNumber,edw.MinuteNumber = stg.MinuteNumber,edw.SecondNumber = stg.SecondNumber,edw.TimeInSecond = stg.TimeInSecond,edw.HourlyBucket = stg.HourlyBucket,edw.DayTimeBucketGroupKey = stg.DayTimeBucketGroupKey,edw.DayTimeBucket = stg.DayTimeBucket
 	FROM Shared.DimTime AS edw
 	INNER JOIN Paga_Staging.Updates.Shared_DimTime AS stg ON
 		edw.SourceKey = stg.SourceKey;
 	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimTime';
+
+
 

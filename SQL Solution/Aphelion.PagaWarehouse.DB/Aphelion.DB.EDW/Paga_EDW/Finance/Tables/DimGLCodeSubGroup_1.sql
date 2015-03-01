@@ -30,6 +30,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGLCodeSubGroup_SourceKey]
     ON [Finance].[DimGLCodeSubGroup]([SourceKey] ASC);
@@ -83,10 +85,12 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SET NOCOUNT ON; 
 
 GO
 EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET 
+	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
 	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimGLCodeGroupID = stg.DimGLCodeGroupID,edw.GLCodeRange = stg.GLCodeRange
 	FROM Finance.DimGLCodeSubGroup AS edw
 	INNER JOIN Paga_Staging.Updates.Finance_DimGLCodeSubGroup AS stg ON
 		edw.SourceKey = stg.SourceKey;
 	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCodeSubGroup';
+
+
 

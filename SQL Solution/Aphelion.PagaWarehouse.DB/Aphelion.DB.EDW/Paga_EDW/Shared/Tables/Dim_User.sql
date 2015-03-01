@@ -60,6 +60,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimUser_SourceKey]
     ON [Shared].[DimUser]([SourceKey] ASC);
@@ -183,7 +185,7 @@ FROM
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw SET 
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
 	edw.SourceKey = stg.SourceKey,
 	edw.DimDateOfBirthID = stg.DimDateOfBirthID,
 	edw.FirstName = stg.FirstName,
@@ -199,6 +201,8 @@ EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw SET
 FROM Shared.DimUser AS edw
 INNER JOIN Paga_Staging.Updates.Shared_DimUser AS stg ON
 		edw.SourceKey = stg.SourceKey;', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+
+
 
 
 
