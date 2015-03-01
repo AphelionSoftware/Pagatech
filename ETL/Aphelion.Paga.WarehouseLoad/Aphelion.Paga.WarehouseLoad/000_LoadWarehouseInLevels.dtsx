@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="000_LoadWarehouseInLevels"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{29E0624E-C4C4-4F07-A436-E9E606C8AA7A}">
+  DTS:VersionBuild="83"
+  DTS:VersionGUID="{3BC362CD-3CC7-4E78-BF27-B0E06453379A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -21,23 +21,33 @@
       DTS:CreationName=""
       DTS:DataType="3"
       DTS:DTSID="{86D16733-090F-4BE8-AC5A-AF4B61B5DB55}"
-      DTS:ObjectName="edw_MaxLoadLevel">
+      DTS:ObjectName="edw_MaxLoadLevel"
+      DTS:Required="True">
       <DTS:Property
         DTS:DataType="3"
-        DTS:Name="ParameterValue">2</DTS:Property>
+        DTS:Name="ParameterValue">11</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{81B2D6F8-FF82-49FF-A21D-F2DD9203295E}"
+      DTS:DTSID="{11E66D10-912C-4F37-A047-1A3E9DF6520D}"
       DTS:ObjectName="LoadType"
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">Initial</DTS:Property>
+        DTS:Name="ParameterValue">Changes</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3E25AD8E-C2D5-470F-91E6-C9383C66759C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ChangeVersion">
+      <DTS:VariableValue
+        DTS:DataType="14">0</DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{1FED1F7E-FEE5-459B-BFB4-D61CD6BAEED0}"
@@ -47,14 +57,28 @@
       DTS:Namespace="User"
       DTS:ObjectName="edw_MaxLoadLevel">
       <DTS:VariableValue
-        DTS:DataType="3">2</DTS:VariableValue>
+        DTS:DataType="3">11</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D2B074DD-C28E-4059-878F-167654B34D4F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot;  ?  &quot;SELECT &#xA;&#x9;ChangeVersion  = COALESCE(MIN(ChangeVersion), -1)&#xA;FROM [ChangeTracking].[Load_History] WHERE &#xA;&#x9;ChangeVersion  &lt; 1 AND PushedToWarehouse= &quot; + (DT_WSTR, 2) @[User::LoadLevelLess1]: &quot;SELECT &#xA;&#x9;ChangeVersion  = COALESCE(MIN(ChangeVersion), -1)&#xA;FROM [ChangeTracking].[Load_History] WHERE &#xA;&#x9;PushedToWarehouse= &quot; + (DT_WSTR, 2) @[User::LoadLevelLess1]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="GetVersionNumbers">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT 
+	ChangeVersion  = COALESCE(MIN(ChangeVersion), -1)
+FROM [ChangeTracking].[Load_History] WHERE 
+	PushedToWarehouse= -1</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{9E8E97FC-6D58-410A-8F21-7154C15B6D26}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
-      DTS:ObjectName="LevelLoop">
+      DTS:ObjectName="LevelLoop_000">
       <DTS:VariableValue
         DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
@@ -71,39 +95,52 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3E476145-AA6A-48C5-84C6-AA1B8303A44C}"
+      DTS:DTSID="{E8001C7E-144A-430F-96EA-305D106D83D8}"
       DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::LevelLoop_000] -1"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="LoadLevel">
+      DTS:ObjectName="LoadLevelLess1">
       <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
+        DTS:DataType="3">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{96F508CB-3118-471C-82E8-7E3541A109C1}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::LoadType] == &quot;Initial&quot;  ? &quot;UPDATE [ChangeTracking].[Load_History]&#xA;SET PushedToWarehouse = &quot; + (DT_WSTR, 2) @[User::LevelLoop_000] +&quot;&#xA;WHERE changeVersion = 0&quot;  : &quot;UPDATE [ChangeTracking].[Load_History]&#xA;SET PushedToWarehouse = &quot; + (DT_WSTR, 2) @[User::LevelLoop_000] +&quot;&#xA;WHERE changeVersion &gt;= &quot; + (DT_WSTR, 25)@[User::ChangeVersion]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="UpdatePushedToWarehouse">
+      <DTS:VariableValue
+        DTS:DataType="8">UPDATE [ChangeTracking].[Load_History]
+SET PushedToWarehouse = 0
+WHERE changeVersion &gt;= 0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\FLC_LoadWarehouseLevels"
-      DTS:AssignExpression="@LevelLoop = @LevelLoop +1"
+      DTS:AssignExpression="@LevelLoop_000 = @LevelLoop_000 +1"
       DTS:CreationName="STOCK:FORLOOP"
       DTS:Description="For Loop Container"
       DTS:DTSID="{4CDE8B8D-0B1D-49A4-803C-063A5BD74698}"
-      DTS:EvalExpression="@LevelLoop &lt;= @edw_MaxLoadLevel"
+      DTS:EvalExpression="@LevelLoop_000 &lt;= @edw_MaxLoadLevel"
       DTS:ExecutableType="STOCK:FORLOOP"
-      DTS:InitExpression="@LevelLoop = 1"
+      DTS:InitExpression="@LevelLoop_000 = 1"
       DTS:LocaleID="-1"
       DTS:MaxConcurrent="1"
       DTS:ObjectName="FLC_LoadWarehouseLevels">
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\FLC_LoadWarehouseLevels\EPT_LoadWarehouse"
+          DTS:refId="Package\FLC_LoadWarehouseLevels\EPT_LoadCurrentLevel"
           DTS:CreationName="SSIS.ExecutePackageTask.3"
           DTS:Description="Execute Package Task"
-          DTS:DTSID="{80B5FE11-9AC5-4FD1-9263-D71792FB35C8}"
+          DTS:DTSID="{8DD08CCE-AD70-4896-B8DE-BA8C41559D15}"
           DTS:ExecutableType="SSIS.ExecutePackageTask.3"
           DTS:LocaleID="-1"
-          DTS:ObjectName="EPT_LoadWarehouse"
+          DTS:ObjectName="EPT_LoadCurrentLevel"
           DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
@@ -111,18 +148,117 @@
               <UseProjectReference>True</UseProjectReference>
               <PackageName>001_LoadWarehouse.dtsx</PackageName>
               <ParameterAssignment>
+                <ParameterName>ChangeVersion</ParameterName>
+                <BindedVariableOrParameterName>User::ChangeVersion</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
                 <ParameterName>LoadGroupFilter</ParameterName>
                 <BindedVariableOrParameterName>User::LoadGroupFilter</BindedVariableOrParameterName>
               </ParameterAssignment>
               <ParameterAssignment>
-                <ParameterName>LoadLevel</ParameterName>
-                <BindedVariableOrParameterName>User::LoadLevel</BindedVariableOrParameterName>
-              </ParameterAssignment>
-              <ParameterAssignment>
-                <ParameterName>LoadType</ParameterName>
-                <BindedVariableOrParameterName>$Package::LoadType</BindedVariableOrParameterName>
+                <ParameterName>LoadLevel_001</ParameterName>
+                <BindedVariableOrParameterName>User::LevelLoop_000</BindedVariableOrParameterName>
               </ParameterAssignment>
             </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\FLC_LoadWarehouseLevels\EST_GetVersionNumbers"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{c98fc1f3-9fe5-4274-82f2-5ce953a1aaff}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_GetVersionNumbers"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="2">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnVariableValueChanged"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{69CD59E7-777C-491E-9A60-52675BDDCE56}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::GetVersionNumbers"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="ChangeVersion"
+                SQLTask:DtsVariableName="User::ChangeVersion" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::LoadLevelLess1"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\FLC_LoadWarehouseLevels\EST_Update_PushedToWarehouse"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{b5aff9b8-c76b-4d13-8ef5-e63373abfa8e}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_Update_PushedToWarehouse"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="2">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,22,OnVariableValueChanged</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnVariableValueChanged"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{69CD59E7-777C-491E-9A60-52675BDDCE56}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::UpdatePushedToWarehouse" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -138,14 +274,14 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <ExpressionTask
-              Expression="@[User::LoadGroupFilter] = &#xA;( &#xA;&#x9;@[User::LevelLoop] == 1 ? &quot;WHERE LoadGroup = 2000&quot;:  &#xA;&#x9;@[User::LevelLoop] == 2 ? &quot;WHERE LoadGroup = 2100&quot;: &#xA;&#x9;@[User::LevelLoop] == 3 ? &quot;WHERE LoadGroup = 2200&quot;:&#xA;&#x9;@[User::LevelLoop] == 4 ? &quot;WHERE LoadGroup = 2300&quot;:&#xA;&#x9;@[User::LevelLoop] == 5 ? &quot;WHERE LoadGroup = 2400&quot;:&#xA;&#x9;@[User::LevelLoop] == 6 ? &quot;WHERE LoadGroup = 2500&quot;:&#xA;&#x9;@[User::LevelLoop] == 7 ? &quot;WHERE LoadGroup = 2600&quot;:&#x9;&#xA;&#x9;@[User::LevelLoop] == 8 ? &quot;WHERE LoadGroup = 3000&quot;:&#x9;&#xA;&#x9;@[User::LevelLoop] == 9 ? &quot;WHERE LoadGroup = 3100&quot;:&#x9;&#xA;&#x9;@[User::LevelLoop] == 10 ? &quot;WHERE LoadGroup = 3200&quot;:&#xA;&#x9;@[User::LevelLoop] == 11 ? &quot;WHERE LoadGroup = 3300&quot;:&#x9;&#xA;&#x9;&quot;&quot;&#xA;)" />
+              Expression="@[User::LoadGroupFilter] = &#xA;( &#xA;&#x9;@[User::LevelLoop_000] == 1 ? &quot;WHERE LoadGroup = 2000&quot;:  &#xA;&#x9;@[User::LevelLoop_000] == 2 ? &quot;WHERE LoadGroup = 2100&quot;: &#xA;&#x9;@[User::LevelLoop_000] == 3 ? &quot;WHERE LoadGroup = 2200&quot;:&#xA;&#x9;@[User::LevelLoop_000] == 4 ? &quot;WHERE LoadGroup = 2300&quot;:&#xA;&#x9;@[User::LevelLoop_000] == 5 ? &quot;WHERE LoadGroup = 2400&quot;:&#xA;&#x9;@[User::LevelLoop_000] == 6 ? &quot;WHERE LoadGroup = 2500&quot;:&#xA;&#x9;@[User::LevelLoop_000] == 7 ? &quot;WHERE LoadGroup = 2600&quot;:&#x9;&#xA;&#x9;@[User::LevelLoop_000] == 8 ? &quot;WHERE LoadGroup = 3000&quot;:&#x9;&#xA;&#x9;@[User::LevelLoop_000] == 9 ? &quot;WHERE LoadGroup = 3100&quot;:&#x9;&#xA;&#x9;@[User::LevelLoop_000] == 10 ? &quot;WHERE LoadGroup = 3200&quot;:&#xA;&#x9;@[User::LevelLoop_000] == 11 ? &quot;WHERE LoadGroup = 3300&quot;:&#x9;&#xA;&#x9;&quot;&quot;&#xA;)" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\FLC_LoadWarehouseLevels\FT_LoadLevel"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:Description="Expression Task"
-          DTS:DTSID="{A218B660-B841-4E9C-B95D-1B1985F44A02}"
+          DTS:DTSID="{b5313683-4155-4cf7-8be0-2d31a16c161c}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="FT_LoadLevel"
@@ -154,7 +290,7 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <ExpressionTask
-              Expression="@[User::LoadLevel] = &#xA;( &#xA;&#x9;@[User::LevelLoop] == 1 ?  (DT_WSTR, 2) 1 :&#xA;&#x9;@[User::LevelLoop] == 2 ?  (DT_WSTR, 2) 2 : &#xA;&#x9;@[User::LevelLoop] == 3 ?  (DT_WSTR, 2) 3 :&#xA;&#x9;@[User::LevelLoop] == 4 ?  (DT_WSTR, 2) 4 :&#xA;&#x9;@[User::LevelLoop] == 5 ?  (DT_WSTR, 2) 5 :&#xA;&#x9;@[User::LevelLoop] == 6 ?  (DT_WSTR, 2) 6 :&#xA;&#x9;@[User::LevelLoop] == 7 ?  (DT_WSTR, 2) 7 :&#xA;&#x9;@[User::LevelLoop] == 8 ?  (DT_WSTR, 2) 8 :&#xA;&#x9;@[User::LevelLoop] == 9 ?  (DT_WSTR, 2) 9 :&#xA;&#x9;@[User::LevelLoop] == 10 ?  (DT_WSTR, 2) 10 :&#xA;&#x9;@[User::LevelLoop] == 11 ?  (DT_WSTR, 2) 11 :&#xA;&#x9;(DT_WSTR, 2) 12&#xA;)" />
+              Expression="@[User::LevelLoop_000]" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -162,7 +298,7 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\FLC_LoadWarehouseLevels.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{6700922A-015D-4613-A1E8-C8B4BF16799A}"
+          DTS:DTSID="{923B63EB-90BD-4980-96BA-913B81E6E70A}"
           DTS:From="Package\FLC_LoadWarehouseLevels\FT_LoadLevel"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
@@ -170,11 +306,29 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\FLC_LoadWarehouseLevels.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{F1E32E95-E0E6-43BE-96F7-7ABF447B13B7}"
+          DTS:DTSID="{35A93EF8-358C-4C07-8266-D1B924B88883}"
           DTS:From="Package\FLC_LoadWarehouseLevels\FT_LoadGroupFilter"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\FLC_LoadWarehouseLevels\EPT_LoadWarehouse" />
+          DTS:To="Package\FLC_LoadWarehouseLevels\EST_GetVersionNumbers" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FLC_LoadWarehouseLevels.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{61A1549C-8512-4228-BE18-9CAF64B68627}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::ChangeVersion] &gt; -1"
+          DTS:From="Package\FLC_LoadWarehouseLevels\EST_GetVersionNumbers"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\FLC_LoadWarehouseLevels\EPT_LoadCurrentLevel" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FLC_LoadWarehouseLevels.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{B9E8B8BF-DCD7-4E95-86E8-6F9C3D2F7B88}"
+          DTS:From="Package\FLC_LoadWarehouseLevels\EPT_LoadCurrentLevel"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\FLC_LoadWarehouseLevels\EST_Update_PushedToWarehouse" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -189,22 +343,30 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="180,42"
-          Id="Package\FLC_LoadWarehouseLevels\EPT_LoadWarehouse"
-          TopLeft="5.50000000000003,209.5" />
+          Size="187,42"
+          Id="Package\FLC_LoadWarehouseLevels\EPT_LoadCurrentLevel"
+          TopLeft="33.5,311.5" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\FLC_LoadWarehouseLevels\EST_GetVersionNumbers"
+          TopLeft="28,209.5" />
+        <NodeLayout
+          Size="243,42"
+          Id="Package\FLC_LoadWarehouseLevels\EST_Update_PushedToWarehouse"
+          TopLeft="5.50000000000004,413.5" />
         <NodeLayout
           Size="173,42"
           Id="Package\FLC_LoadWarehouseLevels\FT_LoadGroupFilter"
-          TopLeft="9.00000000000003,107.5" />
+          TopLeft="40.5,107.5" />
         <NodeLayout
           Size="145,42"
           Id="Package\FLC_LoadWarehouseLevels\FT_LoadLevel"
-          TopLeft="23,5.5" />
+          TopLeft="54.5,5.5" />
         <EdgeLayout
           Id="Package\FLC_LoadWarehouseLevels.PrecedenceConstraints[Constraint]"
-          TopLeft="95.5,47.5">
+          TopLeft="127,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -226,7 +388,53 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\FLC_LoadWarehouseLevels.PrecedenceConstraints[Constraint 1]"
-          TopLeft="95.5,149.5">
+          TopLeft="127,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FLC_LoadWarehouseLevels.PrecedenceConstraints[Constraint 2]"
+          TopLeft="127,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FLC_LoadWarehouseLevels.PrecedenceConstraints[Constraint 3]"
+          TopLeft="127,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -249,10 +457,10 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="298,307"
-          Size="298,350"
+          PanelSize="254,511"
+          Size="254,554"
           Id="Package\FLC_LoadWarehouseLevels"
-          TopLeft="5.50000000000006,5.5" />
+          TopLeft="5.50000000000009,5.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

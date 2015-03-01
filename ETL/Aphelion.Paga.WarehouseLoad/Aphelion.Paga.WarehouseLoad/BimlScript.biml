@@ -158,7 +158,7 @@
 			<Variable Name="strPackageName" DataType="String"><#=PackageName#></Variable>
 			<Variable Name="ChangeOperation" DataType="String">I</Variable>
 			<Variable Name="GetRowCount" DataType="String" EvaluateAsExpression="true"><#=CountQuery#></Variable>
-			<Variable Name="EndOfQuery" DataType="String" EvaluateAsExpression="true">"WHERE SYS_CHANGE_VERSION = " +(DT_WSTR, 20)@[$Package::ChangeVersion] +" AND SYS_CHANGE_OPERATION = '" + @[User::ChangeOperation] +"'"</Variable>
+			<Variable Name="EndOfQuery" DataType="String" EvaluateAsExpression="true">"WHERE SYS_CHANGE_VERSION >= " +(DT_WSTR, 20)@[$Package::ChangeVersion] +" AND SYS_CHANGE_OPERATION = '" + @[User::ChangeOperation] +"'"</Variable>
 			<Variable Name="RowCount" DataType="Int32">0</Variable>
 			<Variable Name="GetData" DataType="String" EvaluateAsExpression="true">"SELECT * FROM [Staging].[<#=TableSchema#>_<#=TableName#>] " + @[User::EndOfQuery]</Variable>
 			<Variable Name="InactiveQuery" DataType="String" EvaluateAsExpression="true"><#=SetInactiveQuery#></Variable>
