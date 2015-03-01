@@ -8,52 +8,52 @@ GO
 --GO
 
 /****** Object:  Table [Mapping].[PaymentUseCaseToTxTypeMap]    Script Date: 10/29/2014 12:58:36 PM ******/
-DROP TABLE [Mapping].[PaymentUseCaseToTxTypeMap]
-GO
+--DROP TABLE [Mapping].[PaymentUseCaseToTxTypeMap]
+--GO
 
-/****** Object:  Table [Mapping].[PaymentUseCaseToTxTypeMap]    Script Date: 10/29/2014 12:58:36 PM ******/
-SET ANSI_NULLS ON
-GO
+--/****** Object:  Table [Mapping].[PaymentUseCaseToTxTypeMap]    Script Date: 10/29/2014 12:58:36 PM ******/
+--SET ANSI_NULLS ON
+--GO
 
-SET QUOTED_IDENTIFIER ON
-GO
+--SET QUOTED_IDENTIFIER ON
+--GO
 
-SET ANSI_PADDING ON
-GO
+--SET ANSI_PADDING ON
+--GO
 
-CREATE TABLE [Mapping].[PaymentUseCaseToTxTypeMap](
-	[PaymentUseCaseToTxTypeMapID] [int] IDENTITY(1,1) NOT NULL,
-	[DimPaymentUseCaseID] [int] NOT NULL,
-	[DimFinancialTxTypeID] [int] NOT NULL,
-	[FinancialTransactionTypeName] [varchar](255) NULL,
-	[sys_ModifiedBy] [varchar](255) NOT NULL DEFAULT (suser_sname()),
-	[sys_ModifiedOn] [datetime] NOT NULL DEFAULT (getdate()),
-	[sys_CreatedBy] [varchar](255) NOT NULL DEFAULT (suser_sname()),
-	[sys_CreatedOn] [datetime] NOT NULL DEFAULT (getdate()),
- CONSTRAINT [pk_DimPaymentUseCaseID] PRIMARY KEY CLUSTERED 
-(
-	[PaymentUseCaseToTxTypeMapID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+--CREATE TABLE [Mapping].[PaymentUseCaseToTxTypeMap](
+--	[PaymentUseCaseToTxTypeMapID] [int] IDENTITY(1,1) NOT NULL,
+--	[DimPaymentUseCaseID] [int] NOT NULL,
+--	[DimFinancialTxTypeID] [int] NOT NULL,
+--	[FinancialTransactionTypeName] [varchar](255) NULL,
+--	[sys_ModifiedBy] [varchar](255) NOT NULL DEFAULT (suser_sname()),
+--	[sys_ModifiedOn] [datetime] NOT NULL DEFAULT (getdate()),
+--	[sys_CreatedBy] [varchar](255) NOT NULL DEFAULT (suser_sname()),
+--	[sys_CreatedOn] [datetime] NOT NULL DEFAULT (getdate()),
+-- CONSTRAINT [pk_DimPaymentUseCaseID] PRIMARY KEY CLUSTERED 
+--(
+--	[PaymentUseCaseToTxTypeMapID] ASC
+--)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+--) ON [PRIMARY]
 
-GO
+--GO
 
-SET ANSI_PADDING ON
-GO
+--SET ANSI_PADDING ON
+--GO
 
-ALTER TABLE [Mapping].[PaymentUseCaseToTxTypeMap]  WITH CHECK ADD  CONSTRAINT [FK_PaymentUseCaseToTxTypeMap_DimFinancialTxTypeID] FOREIGN KEY([DimFinancialTxTypeID])
-REFERENCES Classification.DimFinancialTransactionType ([DimFinancialTxTypeID])
-GO
+--ALTER TABLE [Mapping].[PaymentUseCaseToTxTypeMap]  WITH CHECK ADD  CONSTRAINT [FK_PaymentUseCaseToTxTypeMap_DimFinancialTxTypeID] FOREIGN KEY([DimFinancialTxTypeID])
+--REFERENCES Classification.DimFinancialTransactionType ([DimFinancialTxTypeID])
+--GO
 
-ALTER TABLE [Mapping].[PaymentUseCaseToTxTypeMap] CHECK CONSTRAINT [FK_PaymentUseCaseToTxTypeMap_DimFinancialTxTypeID]
-GO
+--ALTER TABLE [Mapping].[PaymentUseCaseToTxTypeMap] CHECK CONSTRAINT [FK_PaymentUseCaseToTxTypeMap_DimFinancialTxTypeID]
+--GO
 
-ALTER TABLE [Mapping].[PaymentUseCaseToTxTypeMap]  WITH CHECK ADD  CONSTRAINT [FK_PaymentUseCaseToTxTypeMap_DimPaymentUseCaseID] FOREIGN KEY([DimPaymentUseCaseID])
-REFERENCES Finance.[DimPaymentUseCase] ([DimPaymentUseCaseID])
-GO
+--ALTER TABLE [Mapping].[PaymentUseCaseToTxTypeMap]  WITH CHECK ADD  CONSTRAINT [FK_PaymentUseCaseToTxTypeMap_DimPaymentUseCaseID] FOREIGN KEY([DimPaymentUseCaseID])
+--REFERENCES Finance.[DimPaymentUseCase] ([DimPaymentUseCaseID])
+--GO
 
-ALTER TABLE [Mapping].[PaymentUseCaseToTxTypeMap] CHECK CONSTRAINT [FK_PaymentUseCaseToTxTypeMap_DimPaymentUseCaseID]
-GO
+--ALTER TABLE [Mapping].[PaymentUseCaseToTxTypeMap] CHECK CONSTRAINT [FK_PaymentUseCaseToTxTypeMap_DimPaymentUseCaseID]
+--GO
 
 
 

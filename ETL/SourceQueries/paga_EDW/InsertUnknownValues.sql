@@ -55,7 +55,9 @@ SET IDENTITY_INSERT Classification.DimOrganizationSubscriptionStatus ON;
 	
 	
 SET IDENTITY_INSERT Classification.DimOrganizationUnitType ON; 
-	INSERT INTO Classification.DimOrganizationUnitType (DimOrganizationUnitTypeID,Name,SourceKey) VALUES (-1,'UNKNOWN','UNKNOWN'); 
+	INSERT INTO Classification.DimOrganizationUnitType 
+	(DimOrganizationUnitTypeID,Name,SourceKey) 
+	VALUES (-1,'UNKNOWN','UNKNOWN'), (0,'PARENT ORGANIZATION','PARENT ORGANIZATION'); 
 	SET IDENTITY_INSERT Classification.DimOrganizationUnitType OFF;
 	GO
 	
@@ -139,15 +141,12 @@ SET IDENTITY_INSERT Location.DimGeoZone ON;
 	
 	
 SET IDENTITY_INSERT Shared.DimPagaAccount ON; 
-	INSERT INTO Shared.DimPagaAccount (BankingStatus,CreatedDateID,DimPagaAccountID,DimPagaAccountStatusID,Name,SourceKey) VALUES ('UNKNOWN',-1,-1,-1,'UNKNOWN',-1); 
+	INSERT INTO Shared.DimPagaAccount (BankingStatus,DimCreatedDateID,DimPagaAccountID,DimPagaAccountStatusID,Name,SourceKey) VALUES ('UNKNOWN',18991231,-1,-1,'UNKNOWN',-1); 
 	SET IDENTITY_INSERT Shared.DimPagaAccount OFF;
 	GO
 	
 	
-SET IDENTITY_INSERT Shared.DimUser ON; 
-	INSERT INTO Shared.DimUser (DimCreatedDateID,DimPrimaryRoleID,DimUserID,SourceKey) VALUES (18991231,-1,-1,-1); 
-	SET IDENTITY_INSERT Shared.DimUser OFF;
-	GO
+
 	
 	
 SET IDENTITY_INSERT Finance.DimGLCodeSubGroup ON; 
@@ -268,6 +267,9 @@ SET IDENTITY_INSERT Finance.FactGLTransaction ON;
 	INSERT INTO Finance.FactGLTransaction (FactGLTxID,SourceKey) VALUES (-1,-1); 
 	SET IDENTITY_INSERT Finance.FactGLTransaction OFF;
 	GO
+
+INSERT INTO [Shared].[DimDate]([DateID], [Date], [Day], [DaySuffix], [USDayOfWeek], [DayOfWeek], [DOWInMonth], [DayOfYear], [WeekOfYear], [WeekOfMonth], [MonthNumber], [MonthName], [Quarter], [QuarterName], [YearName], [YearNumber], [StandardDate], [IsPublicHoliday], [HolidayText], [FinancialYearNumber], [FinancialYearName], [FinancialPeriodNumber], [FinancialPeriodName], [Version])
+SELECT 18991231, '18991231 00:00:00.000', 31, N'Sun', N'1', N'1', 31, 365, 53, 5, 12, N'December', 4, N'Quarter 4', N'1899', 1899, NULL, NULL, NULL, 1899, N'FY 1899', 12, N'FY 1899 - December', 0
 	
 	
 
