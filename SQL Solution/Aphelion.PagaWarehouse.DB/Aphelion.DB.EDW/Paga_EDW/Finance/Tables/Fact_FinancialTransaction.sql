@@ -69,6 +69,8 @@
 
 
 
+
+
 GO
 
 
@@ -108,13 +110,50 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'PlaceHolder', @l
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,edw.DimEffectiveDateID = stg.DimEffectiveDateID,edw.DimEffectiveTimeID = stg.DimEffectiveTimeID,edw.DimFinancialTxDateID = stg.DimFinancialTxDateID,edw.DimFinancialTxTimeID = stg.DimFinancialTxTimeID,edw.DimFinancialTxTypeID = stg.DimFinancialTxTypeID,edw.DimUserID = stg.DimUserID,edw.FactProcessEventID = stg.FactProcessEventID,edw.Reversed = stg.Reversed,edw.FactRelatedFinancialTxID = stg.FactRelatedFinancialTxID,edw.FactOriginalFinancialTxID = stg.FactOriginalFinancialTxID,edw.DimCurrencyID = stg.DimCurrencyID,edw.TextDescription = stg.TextDescription,edw.FinancialTx_Amount = stg.FinancialTx_Amount,edw.ExchangeRate = stg.ExchangeRate,edw.ExternalReferenceNumber = stg.ExternalReferenceNumber,edw.FinancialTx_Fee = stg.FinancialTx_Fee,edw.ForeignCurrencyAmount = stg.ForeignCurrencyAmount,edw.ReferenceNumber = stg.ReferenceNumber,edw.ShortCode = stg.ShortCode,edw.Cancelled = stg.Cancelled,edw.IsIntegrationTx = stg.IsIntegrationTx,edw.FactIntegrationTxID = stg.FactIntegrationTxID
-	FROM Finance.FactFinancialTransaction AS edw
-	INNER JOIN Paga_Staging.Updates.Finance_FactFinancialTransaction AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Finance].[FactFinancialTransaction] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Finance_FactFinancialTransaction AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
 
 
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.DimEffectiveDateID = Source.DimEffectiveDateID,Target.DimEffectiveTimeID = Source.DimEffectiveTimeID,Target.DimFinancialTxDateID = Source.DimFinancialTxDateID,Target.DimFinancialTxTimeID = Source.DimFinancialTxTimeID,Target.DimFinancialTxTypeID = Source.DimFinancialTxTypeID,Target.DimUserID = Source.DimUserID,Target.FactProcessEventID = Source.FactProcessEventID,Target.Reversed = Source.Reversed,Target.FactRelatedFinancialTxID = Source.FactRelatedFinancialTxID,Target.FactOriginalFinancialTxID = Source.FactOriginalFinancialTxID,Target.DimCurrencyID = Source.DimCurrencyID,Target.TextDescription = Source.TextDescription,Target.FinancialTx_Amount = Source.FinancialTx_Amount,Target.ExchangeRate = Source.ExchangeRate,Target.ExternalReferenceNumber = Source.ExternalReferenceNumber,Target.FinancialTx_Fee = Source.FinancialTx_Fee,Target.ForeignCurrencyAmount = Source.ForeignCurrencyAmount,Target.ReferenceNumber = Source.ReferenceNumber,Target.ShortCode = Source.ShortCode,Target.Cancelled = Source.Cancelled,Target.IsIntegrationTx = Source.IsIntegrationTx,Target.FactIntegrationTxID = Source.FactIntegrationTxID,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,DimEffectiveDateID,DimEffectiveTimeID,DimFinancialTxDateID,DimFinancialTxTimeID,DimFinancialTxTypeID,DimUserID,FactProcessEventID,Reversed,FactRelatedFinancialTxID,FactOriginalFinancialTxID,DimCurrencyID,TextDescription,FinancialTx_Amount,ExchangeRate,ExternalReferenceNumber,FinancialTx_Fee,ForeignCurrencyAmount,ReferenceNumber,ShortCode,Cancelled,IsIntegrationTx,FactIntegrationTxID,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.DimEffectiveDateID,Source.DimEffectiveTimeID,Source.DimFinancialTxDateID,Source.DimFinancialTxTimeID,Source.DimFinancialTxTypeID,Source.DimUserID,Source.FactProcessEventID,Source.Reversed,Source.FactRelatedFinancialTxID,Source.FactOriginalFinancialTxID,Source.DimCurrencyID,Source.TextDescription,Source.FinancialTx_Amount,Source.ExchangeRate,Source.ExternalReferenceNumber,Source.FinancialTx_Fee,Source.ForeignCurrencyAmount,Source.ReferenceNumber,Source.ShortCode,Source.Cancelled,Source.IsIntegrationTx,Source.FactIntegrationTxID,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactFinancialTransaction';
+
+
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_FactFinancialTransaction_DimUserID]
+    ON [Finance].[FactFinancialTransaction]([DimUserID] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_FactFinancialTransaction_ChangeVersion]
+    ON [Finance].[FactFinancialTransaction]([SYS_CHANGE_VERSION] ASC);
 

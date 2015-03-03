@@ -25,6 +25,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'LoadOrder', @value = N'0', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimPaymentUseCaseType';
 
@@ -34,13 +36,50 @@ EXECUTE sp_addextendedproperty @name = N'LoadGroup', @value = N'0', @level0type 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name
-	FROM Finance.DimPaymentUseCaSET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION,ype AS edw
-	INNER JOIN Paga_Staging.Updates.Finance_DimPaymentUseCaSET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION,ype AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimPaymentUseCaseType';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Finance].[DimPaymentUseCaseType] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Finance_DimPaymentUseCaseType AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
 
 
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,Name,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.Name,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimPaymentUseCaseType';
+
+
+
+
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [ix_DimPaymentUseCaseType_SourceKey]
+    ON [Finance].[DimPaymentUseCaseType]([SourceKey] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimPaymentUseCaseType_ChangeVersion]
+    ON [Finance].[DimPaymentUseCaseType]([SYS_CHANGE_VERSION] ASC);
 

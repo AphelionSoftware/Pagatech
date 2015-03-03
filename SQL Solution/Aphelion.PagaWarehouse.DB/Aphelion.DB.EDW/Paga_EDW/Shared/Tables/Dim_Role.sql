@@ -39,6 +39,8 @@
 
 
 
+
+
 GO
 
 
@@ -103,13 +105,50 @@ GO
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,edw.SystemDescription = stg.SystemDescription,edw.Name = stg.Name,edw.TextDesciption = stg.TextDesciption
-	FROM Shared.DimRole AS edw
-	INNER JOIN Paga_Staging.Updates.Shared_DimRole AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimRole';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Shared].[DimRole] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Shared_DimRole AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
 
 
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.SystemDescription = Source.SystemDescription,Target.Name = Source.Name,Target.TextDesciption = Source.TextDesciption,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,SystemDescription,Name,TextDesciption,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.SystemDescription,Source.Name,Source.TextDesciption,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimRole';
+
+
+
+
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [ix_DimRole_SourceKey]
+    ON [Shared].[DimRole]([SourceKey] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimRole_ChangeVersion]
+    ON [Shared].[DimRole]([SYS_CHANGE_VERSION] ASC);
 

@@ -30,6 +30,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimChartOfAccounts_SourceKey]
     ON [Finance].[DimChartOfAccounts]([SourceKey] ASC);
@@ -81,13 +83,45 @@ SELECT  	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, SYS_CHANGE_VER
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.GLCodeRange = stg.GLCodeRange
-	FROM Finance.DimChartOfAccounts AS edw
-	INNER JOIN Paga_Staging.Updates.Finance_DimChartOfAccounts AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimChartOfAccounts';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Finance].[DimChartOfAccounts] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Finance_DimChartOfAccounts AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
 
 
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.GLCodeRange = Source.GLCodeRange,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,Name,GLCodeRange,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.Name,Source.GLCodeRange,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimChartOfAccounts';
+
+
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimChartOfAccounts_ChangeVersion]
+    ON [Finance].[DimChartOfAccounts]([SYS_CHANGE_VERSION] ASC);
 

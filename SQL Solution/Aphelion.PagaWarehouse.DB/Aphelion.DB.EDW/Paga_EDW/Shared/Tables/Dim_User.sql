@@ -62,6 +62,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimUser_SourceKey]
     ON [Shared].[DimUser]([SourceKey] ASC);
@@ -185,24 +187,53 @@ FROM
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,
-	edw.DimDateOfBirthID = stg.DimDateOfBirthID,
-	edw.FirstName = stg.FirstName,
-	edw.MiddleName = stg.MiddleName,
-	edw.LastName = stg.LastName,
-	edw.Gender = stg.Gender,
-	edw.PhoneNumber = stg.PhoneNumber,
-	edw.Email = stg.Email,
-	edw.IsEnabled = stg.IsEnabled,
-	edw.DimPrimaryRoleID = stg.DimPrimaryRoleID,
-	edw.DimCreatedDateID = stg.DimCreatedDateID,
-	edw.Name = stg.Name
-FROM Shared.DimUser AS edw
-INNER JOIN Paga_Staging.Updates.Shared_DimUser AS stg ON
-		edw.SourceKey = stg.SourceKey;', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Shared].[DimUser] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Shared_DimUser AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
+
+
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.DimDateOfBirthID = Source.DimDateOfBirthID,Target.FirstName = Source.FirstName,Target.MiddleName = Source.MiddleName,Target.LastName = Source.LastName,Target.Gender = Source.Gender,Target.PhoneNumber = Source.PhoneNumber,Target.Email = Source.Email,Target.IsEnabled = Source.IsEnabled,Target.DimPrimaryRoleID = Source.DimPrimaryRoleID,Target.DimCreatedDateID = Source.DimCreatedDateID,Target.Name = Source.Name,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,DimDateOfBirthID,FirstName,MiddleName,LastName,Gender,PhoneNumber,Email,IsEnabled,DimPrimaryRoleID,DimCreatedDateID,Name,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.DimDateOfBirthID,Source.FirstName,Source.MiddleName,Source.LastName,Source.Gender,Source.PhoneNumber,Source.Email,Source.IsEnabled,Source.DimPrimaryRoleID,Source.DimCreatedDateID,Source.Name,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUser';
 
 
 
 
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_userID_Delete]
+    ON [Shared].[DimUser]([SYS_CHANGE_OPERATION] ASC, [SYS_CHANGE_VERSION] ASC)
+    INCLUDE([DimUserID]);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimUser_ChangeVersion]
+    ON [Shared].[DimUser]([SYS_CHANGE_VERSION] ASC);
 

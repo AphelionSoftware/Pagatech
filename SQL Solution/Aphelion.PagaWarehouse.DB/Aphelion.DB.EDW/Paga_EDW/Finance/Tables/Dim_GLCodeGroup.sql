@@ -36,6 +36,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimGLCodeGroup_SourceKey]
     ON [Finance].[DimGLCodeGroup]([SourceKey] ASC);
@@ -86,13 +88,45 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimChartofAccountsID = stg.DimChartofAccountsID,edw.GLCodeRange = stg.GLCodeRange
-	FROM Finance.DimGLCodeGroup AS edw
-	INNER JOIN Paga_Staging.Updates.Finance_DimGLCodeGroup AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCodeGroup';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Finance].[DimGLCodeGroup] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Finance_DimGLCodeGroup AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
 
 
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.DimChartofAccountsID = Source.DimChartofAccountsID,Target.GLCodeRange = Source.GLCodeRange,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,Name,DimChartofAccountsID,GLCodeRange,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.Name,Source.DimChartofAccountsID,Source.GLCodeRange,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimGLCodeGroup';
+
+
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimGLCodeGroup_ChangeVersion]
+    ON [Finance].[DimGLCodeGroup]([SYS_CHANGE_VERSION] ASC);
 

@@ -57,6 +57,8 @@
 
 
 
+
+
 GO
 
 
@@ -136,13 +138,45 @@ CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganization_SourceKey]
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimBusinessTypeID = stg.DimBusinessTypeID,edw.DimOrganizationSubscriptionStatusID = stg.DimOrganizationSubscriptionStatusID,edw.DimOrganizationVerificationStatusID = stg.DimOrganizationVerificationStatusID,edw.DimPagaAccountID = stg.DimPagaAccountID,edw.TextDesciption = stg.TextDesciption,edw.ReferenceNumber = stg.ReferenceNumber,edw.TaxIDNumber = stg.TaxIDNumber,edw.VATCertificationNumber = stg.VATCertificationNumber,edw.RcName = stg.RcName,edw.WebsiteURL = stg.WebsiteURL,edw.OrganizationCode = stg.OrganizationCode,edw.DisplayName = stg.DisplayName
-	FROM Shared.DimOrganization AS edw
-	INNER JOIN Paga_Staging.Updates.Shared_DimOrganization AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Shared].[DimOrganization] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Shared_DimOrganization AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
 
 
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.DimBusinessTypeID = Source.DimBusinessTypeID,Target.DimOrganizationSubscriptionStatusID = Source.DimOrganizationSubscriptionStatusID,Target.DimOrganizationVerificationStatusID = Source.DimOrganizationVerificationStatusID,Target.DimPagaAccountID = Source.DimPagaAccountID,Target.TextDesciption = Source.TextDesciption,Target.ReferenceNumber = Source.ReferenceNumber,Target.TaxIDNumber = Source.TaxIDNumber,Target.VATCertificationNumber = Source.VATCertificationNumber,Target.RcName = Source.RcName,Target.WebsiteURL = Source.WebsiteURL,Target.OrganizationCode = Source.OrganizationCode,Target.DisplayName = Source.DisplayName,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,Name,DimBusinessTypeID,DimOrganizationSubscriptionStatusID,DimOrganizationVerificationStatusID,DimPagaAccountID,TextDesciption,ReferenceNumber,TaxIDNumber,VATCertificationNumber,RcName,WebsiteURL,OrganizationCode,DisplayName,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.Name,Source.DimBusinessTypeID,Source.DimOrganizationSubscriptionStatusID,Source.DimOrganizationVerificationStatusID,Source.DimPagaAccountID,Source.TextDesciption,Source.ReferenceNumber,Source.TaxIDNumber,Source.VATCertificationNumber,Source.RcName,Source.WebsiteURL,Source.OrganizationCode,Source.DisplayName,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganization';
+
+
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimOrganization_ChangeVersion]
+    ON [Shared].[DimOrganization]([SYS_CHANGE_VERSION] ASC);
 

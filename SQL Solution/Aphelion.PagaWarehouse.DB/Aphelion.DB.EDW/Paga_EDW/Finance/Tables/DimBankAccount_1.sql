@@ -47,6 +47,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimBankAccount_SourceKey]
     ON [Finance].[DimBankAccount]([SourceKey] ASC);
@@ -101,13 +103,45 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT ct.SYS_CH
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimBankID = stg.DimBankID,edw.BankAccountLinkStatusType = stg.BankAccountLinkStatusType,edw.TextDesciption = stg.TextDesciption,edw.AccountHolderName = stg.AccountHolderName,edw.BranchName = stg.BranchName,edw.KYC_Rating = stg.KYC_Rating,edw.MobilePhoneNumber = stg.MobilePhoneNumber,edw.BankAccountLinkStatusComment = stg.BankAccountLinkStatusComment,edw.AccountNumber = stg.AccountNumber,edw.AccountAlias = stg.AccountAlias,edw.TransactionLimit = stg.TransactionLimit,edw.DurationLimit = stg.DurationLimit,edw.DurationLimitSeconds = stg.DurationLimitSeconds,edw.IsEnabled = stg.IsEnabled,edw.AccountLinkIdentifier = stg.AccountLinkIdentifier
-	FROM Finance.DimBankAccount AS edw
-	INNER JOIN Paga_Staging.Updates.Finance_DimBankAccount AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBankAccount';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Finance].[DimBankAccount] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Finance_DimBankAccount AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
 
 
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.DimBankID = Source.DimBankID,Target.BankAccountLinkStatusType = Source.BankAccountLinkStatusType,Target.TextDesciption = Source.TextDesciption,Target.AccountHolderName = Source.AccountHolderName,Target.BranchName = Source.BranchName,Target.KYC_Rating = Source.KYC_Rating,Target.MobilePhoneNumber = Source.MobilePhoneNumber,Target.BankAccountLinkStatusComment = Source.BankAccountLinkStatusComment,Target.AccountNumber = Source.AccountNumber,Target.AccountAlias = Source.AccountAlias,Target.TransactionLimit = Source.TransactionLimit,Target.DurationLimit = Source.DurationLimit,Target.DurationLimitSeconds = Source.DurationLimitSeconds,Target.IsEnabled = Source.IsEnabled,Target.AccountLinkIdentifier = Source.AccountLinkIdentifier,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,Name,DimBankID,BankAccountLinkStatusType,TextDesciption,AccountHolderName,BranchName,KYC_Rating,MobilePhoneNumber,BankAccountLinkStatusComment,AccountNumber,AccountAlias,TransactionLimit,DurationLimit,DurationLimitSeconds,IsEnabled,AccountLinkIdentifier,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.Name,Source.DimBankID,Source.BankAccountLinkStatusType,Source.TextDesciption,Source.AccountHolderName,Source.BranchName,Source.KYC_Rating,Source.MobilePhoneNumber,Source.BankAccountLinkStatusComment,Source.AccountNumber,Source.AccountAlias,Source.TransactionLimit,Source.DurationLimit,Source.DurationLimitSeconds,Source.IsEnabled,Source.AccountLinkIdentifier,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBankAccount';
+
+
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimBankAccount_ChangeVersion]
+    ON [Finance].[DimBankAccount]([SYS_CHANGE_VERSION] ASC);
 

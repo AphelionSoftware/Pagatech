@@ -32,6 +32,8 @@
 
 
 
+
+
 GO
 EXECUTE sp_addextendedproperty @name = N'SourceTable', @value = N'dbo.UserRole', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUserRole';
 
@@ -59,13 +61,60 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT 	ct.SYS_C
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimUserID = stg.DimUserID,edw.DimRoleID = stg.DimRoleID,edw.RolePriority = stg.RolePriority
-	FROM Shared.DimUserRole AS edw
-	INNER JOIN Paga_Staging.Updates.Shared_DimUserRole AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUserRole';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Shared].[DimUserRole] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Shared_DimUserRole AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
 
 
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.DimUserID = Source.DimUserID,Target.DimRoleID = Source.DimRoleID,Target.RolePriority = Source.RolePriority,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,Name,DimUserID,DimRoleID,RolePriority,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.Name,Source.DimUserID,Source.DimRoleID,Source.RolePriority,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimUserRole';
+
+
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimUserRole_UserID]
+    ON [Shared].[DimUserRole]([DimUserRoleID] ASC);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [ix_DimUserRole_SourceKey]
+    ON [Shared].[DimUserRole]([SourceKey] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimUserRole_DimUserID]
+    ON [Shared].[DimUserRole]([DimUserID] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimUserRole_ChangeVersion]
+    ON [Shared].[DimUserRole]([SYS_CHANGE_VERSION] ASC);
 

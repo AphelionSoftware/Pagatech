@@ -48,6 +48,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimOrganizationUnitLevel3_SourceKey]
     ON [Shared].[DimOrganizationUnitLevel3]([SourceKey] ASC);
@@ -155,13 +157,45 @@ FROM @OrgUnit AS base_query
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimOrganizationUnitLevel2ID = stg.DimOrganizationUnitLevel2ID,edw.DimOrganizationUnitTypeID = stg.DimOrganizationUnitTypeID,edw.IdentificationNumber = stg.IdentificationNumber
-	FROM Shared.DimOrganizationUnitLevel3 AS edw
-	INNER JOIN Paga_Staging.Updates.Shared_DimOrganizationUnitLevel3 AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel3';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Shared].[DimOrganizationUnitLevel3] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Shared_DimOrganizationUnitLevel3 AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
 
 
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.DimOrganizationUnitLevel2ID = Source.DimOrganizationUnitLevel2ID,Target.DimOrganizationUnitTypeID = Source.DimOrganizationUnitTypeID,Target.IdentificationNumber = Source.IdentificationNumber,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,Name,DimOrganizationUnitLevel2ID,DimOrganizationUnitTypeID,IdentificationNumber,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.Name,Source.DimOrganizationUnitLevel2ID,Source.DimOrganizationUnitTypeID,Source.IdentificationNumber,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimOrganizationUnitLevel3';
+
+
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimOrganizationUnitLevel3_ChangeVersion]
+    ON [Shared].[DimOrganizationUnitLevel3]([SYS_CHANGE_VERSION] ASC);
 

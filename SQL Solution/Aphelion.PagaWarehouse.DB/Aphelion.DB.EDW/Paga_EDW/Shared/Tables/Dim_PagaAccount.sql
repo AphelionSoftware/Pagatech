@@ -55,9 +55,13 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimPagaAccount_SourceKey]
-    ON [Shared].[DimPagaAccount]([SourceKey] ASC, [DimPagaAccountID] ASC);
+    ON [Shared].[DimPagaAccount]([SourceKey] ASC);
+
+
 
 
 
@@ -177,13 +181,60 @@ EXECUTE sp_addextendedproperty @name = N'SCDType', @value = N'2', @level0type = 
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.DimPagaAccountStatusID = stg.DimPagaAccountStatusID,edw.CreatedDateID = stg.CreatedDateID,edw.RegistrationDateID = stg.RegistrationDateID,edw.PagaAccountNumber = stg.PagaAccountNumber,edw.ExternalAccountNumber = stg.ExternalAccountNumber,edw.BankingStatus = stg.BankingStatus,edw.hasOnlineAccount = stg.hasOnlineAccount,edw.IsActivePagaAccount = stg.IsActivePagaAccount,edw.IsEnabled = stg.IsEnabled,edw.IsAffiliate = stg.IsAffiliate,edw.IsAgent = stg.IsAgent,edw.IsBank = stg.IsBank,edw.IsBusiness = stg.IsBusiness,edw.IsCardProcessor = stg.IsCardProcessor,edw.IsCashCollector = stg.IsCashCollector,edw.IsCustomer = stg.IsCustomer,edw.IsMerchant = stg.IsMerchant,edw.IsMobileOperator = stg.IsMobileOperator,edw.IsPaga = stg.IsPaga,edw.IsRemittanceProcessor = stg.IsRemittanceProcessor,edw.IsServiceAggregator = stg.IsServiceAggregator
-	FROM Shared.DimPagaAccount AS edw
-	INNER JOIN Paga_Staging.Updates.Shared_DimPagaAccount AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Shared].[DimPagaAccount] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Shared_DimPagaAccount AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
 
 
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.DimPagaAccountStatusID = Source.DimPagaAccountStatusID,Target.DimCreatedDateID = Source.DimCreatedDateID,Target.DimRegistrationDateID = Source.DimRegistrationDateID,Target.PagaAccountNumber = Source.PagaAccountNumber,Target.ExternalAccountNumber = Source.ExternalAccountNumber,Target.BankingStatus = Source.BankingStatus,Target.hasOnlineAccount = Source.hasOnlineAccount,Target.IsActivePagaAccount = Source.IsActivePagaAccount,Target.IsEnabled = Source.IsEnabled,Target.IsAffiliate = Source.IsAffiliate,Target.IsAgent = Source.IsAgent,Target.IsBank = Source.IsBank,Target.IsBusiness = Source.IsBusiness,Target.IsCardProcessor = Source.IsCardProcessor,Target.IsCashCollector = Source.IsCashCollector,Target.IsCustomer = Source.IsCustomer,Target.IsMerchant = Source.IsMerchant,Target.IsMobileOperator = Source.IsMobileOperator,Target.IsPaga = Source.IsPaga,Target.IsRemittanceProcessor = Source.IsRemittanceProcessor,Target.IsServiceAggregator = Source.IsServiceAggregator,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,Name,DimPagaAccountStatusID,DimCreatedDateID,DimRegistrationDateID,PagaAccountNumber,ExternalAccountNumber,BankingStatus,hasOnlineAccount,IsActivePagaAccount,IsEnabled,IsAffiliate,IsAgent,IsBank,IsBusiness,IsCardProcessor,IsCashCollector,IsCustomer,IsMerchant,IsMobileOperator,IsPaga,IsRemittanceProcessor,IsServiceAggregator,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.Name,Source.DimPagaAccountStatusID,Source.DimCreatedDateID,Source.DimRegistrationDateID,Source.PagaAccountNumber,Source.ExternalAccountNumber,Source.BankingStatus,Source.hasOnlineAccount,Source.IsActivePagaAccount,Source.IsEnabled,Source.IsAffiliate,Source.IsAgent,Source.IsBank,Source.IsBusiness,Source.IsCardProcessor,Source.IsCashCollector,Source.IsCustomer,Source.IsMerchant,Source.IsMobileOperator,Source.IsPaga,Source.IsRemittanceProcessor,Source.IsServiceAggregator,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Shared', @level1type = N'TABLE', @level1name = N'DimPagaAccount';
+
+
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimPagaAccount_RegistrationDate]
+    ON [Shared].[DimPagaAccount]([DimRegistrationDateID] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimPagaAccount_PagaAccountStatus]
+    ON [Shared].[DimPagaAccount]([DimPagaAccountStatusID] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimPagaAccount_CreatedDate]
+    ON [Shared].[DimPagaAccount]([DimCreatedDateID] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimPagaAccount_ChangeVersion]
+    ON [Shared].[DimPagaAccount]([SYS_CHANGE_VERSION] ASC);
 

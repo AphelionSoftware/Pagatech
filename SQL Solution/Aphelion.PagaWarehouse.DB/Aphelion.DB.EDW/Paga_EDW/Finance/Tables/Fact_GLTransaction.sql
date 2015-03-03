@@ -41,6 +41,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_FactGLTransaction_SourceKey]
     ON [Finance].[FactGLTransaction]([SourceKey] ASC);
@@ -79,13 +81,50 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'PlaceHolder', @l
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,edw.DimGLCodeID = stg.DimGLCodeID,edw.TextDescription = stg.TextDescription,edw.DimFinancialAccountID = stg.DimFinancialAccountID,edw.FactFinancialTxID = stg.FactFinancialTxID,edw.TransactionLineNumber = stg.TransactionLineNumber,edw.CreditAmount = stg.CreditAmount,edw.DebitAmount = stg.DebitAmount,edw.Movement = stg.Movement
-	FROM Finance.FactGLTransaction AS edw
-	INNER JOIN Paga_Staging.Updates.Finance_FactGLTransaction AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Finance].[FactGLTransaction] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Finance_FactGLTransaction AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
 
 
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.DimGLCodeID = Source.DimGLCodeID,Target.TextDescription = Source.TextDescription,Target.DimFinancialAccountID = Source.DimFinancialAccountID,Target.FactFinancialTxID = Source.FactFinancialTxID,Target.TransactionLineNumber = Source.TransactionLineNumber,Target.CreditAmount = Source.CreditAmount,Target.DebitAmount = Source.DebitAmount,Target.Movement = Source.Movement,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,DimGLCodeID,TextDescription,DimFinancialAccountID,FactFinancialTxID,TransactionLineNumber,CreditAmount,DebitAmount,Movement,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.DimGLCodeID,Source.TextDescription,Source.DimFinancialAccountID,Source.FactFinancialTxID,Source.TransactionLineNumber,Source.CreditAmount,Source.DebitAmount,Source.Movement,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'FactGLTransaction';
+
+
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_FactGLTransaction_FinancialAccountID]
+    ON [Finance].[FactGLTransaction]([DimFinancialAccountID] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_FactGLTransaction_ChangeVersion]
+    ON [Finance].[FactGLTransaction]([SYS_CHANGE_VERSION] ASC);
 

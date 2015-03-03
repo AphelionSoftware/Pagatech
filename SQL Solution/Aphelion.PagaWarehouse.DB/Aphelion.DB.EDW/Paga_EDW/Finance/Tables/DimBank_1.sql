@@ -36,6 +36,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_DimBank_SourceKey]
     ON [Finance].[DimBank]([SourceKey] ASC);
@@ -90,13 +92,50 @@ EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT  	ct.SYS_
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = N'UPDATE edw 
-	SET edw.SYS_CHANGE_OPERATION = stg.SYS_CHANGE_OPERATION,edw.SYS_CHANGE_VERSION = stg.SYS_CHANGE_VERSION, 
-	edw.SourceKey = stg.SourceKey,edw.Name = stg.Name,edw.BankAccountLinkType = stg.BankAccountLinkType,edw.DimOrganizationID = stg.DimOrganizationID,edw.SupportsDebit = stg.SupportsDebit,edw.SupportsCredit = stg.SupportsCredit
-	FROM Finance.DimBank AS edw
-	INNER JOIN Paga_Staging.Updates.Finance_DimBank AS stg ON
-		edw.SourceKey = stg.SourceKey;
-	GO', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBank';
+EXECUTE sp_addextendedproperty @name = N'UpdateQuery', @value = 'MERGE  Paga_EDW.[Finance].[DimBank] AS Target
+			USING 
+			(
+				SELECT
+						x.*
+				FROM
+				(
+					SELECT
+						ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+						stg.*
+					FROM Paga_Staging.Updates.Finance_DimBank AS stg
+				) as x
+				WHERE x.rn = 1
+
+			) AS Source ON 
+				Target.sourcekey = Source.sourcekey
 
 
+			WHEN MATCHED  
+			THEN
+				UPDATE SET 
+				Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.BankAccountLinkType = Source.BankAccountLinkType,Target.DimOrganizationID = Source.DimOrganizationID,Target.SupportsDebit = Source.SupportsDebit,Target.SupportsCredit = Source.SupportsCredit,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+			WHEN NOT MATCHED BY TARGET
+			THEN
+				INSERT 
+				(
+					SourceKey,Name,BankAccountLinkType,DimOrganizationID,SupportsDebit,SupportsCredit,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+				)
+			VALUES 
+			(
+				Source.SourceKey,Source.Name,Source.BankAccountLinkType,Source.DimOrganizationID,Source.SupportsDebit,Source.SupportsCredit,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+			);', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimBank';
+
+
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimBank_DimOrganizationID]
+    ON [Finance].[DimBank]([DimOrganizationID] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimBank_ChangeVersion]
+    ON [Finance].[DimBank]([SYS_CHANGE_VERSION] ASC);
 
