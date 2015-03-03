@@ -166,6 +166,14 @@ SET IDENTITY_INSERT Shared.DimOrganization ON;
 	SET IDENTITY_INSERT Shared.DimOrganization OFF;
 	GO
 	
+SET IDENTITY_INSERT Shared.DimUser ON; 
+	INSERT INTO [Shared].[DimUser]
+           (DimUserID,[SourceKey] ,[DimPrimaryRoleID] ,[DimCreatedDateID]) VALUES (-1,-1,-1,'18991231'); 
+SET IDENTITY_INSERT Shared.DimUser OFF;
+GO
+	
+
+	
 	
 SET IDENTITY_INSERT Shared.DimUserRole ON; 
 	INSERT INTO Shared.DimUserRole (DimRoleID,DimUserID,DimUserRoleID,RolePriority,SourceKey) VALUES (-1,-1,-1,-1,-1); 
