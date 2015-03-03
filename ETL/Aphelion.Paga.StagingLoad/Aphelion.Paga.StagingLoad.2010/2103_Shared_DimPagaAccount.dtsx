@@ -1,394 +1,67 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/13/2015 10:17:09" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{AAB34C33-83B9-4D3E-BE9A-C08249C870C6}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2103_Shared_DimPagaAccount" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{154DEAC4-A10E-423C-8857-429EE5985640}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
-  <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{657554B0-5DEB-4722-921B-01BA6AE8595C}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="ChangeLog" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
-          </SQLTask:ResultBinding>
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{72DD5B2A-87ED-48ED-A7F8-61AE68D41E30}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Shared_DimPagaAccount" DTS:refId="Package\DFT_Load Shared_DimPagaAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:ObjectData>
-        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
-          <components>
-            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData_Shared_DimPagaAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount" usesDispositions="true" version="7">
-              <connections>
-                <connection connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Connections[OleDbConnection]">
-                </connection>
-              </connections>
-              <outputs>
-                <output name="Output" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="12" name="Name" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[Name]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="DimPagaAccountStatusSourceKey" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimPagaAccountStatusSourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="CreatedDateID" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[CreatedDateID]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="RegistrationDateID" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[RegistrationDateID]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="12" name="PagaAccountNumber" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[PagaAccountNumber]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="12" name="ExternalAccountNumber" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[ExternalAccountNumber]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="BankingStatus" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[BankingStatus]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="hasOnlineAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[hasOnlineAccount]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsActivePagaAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsActivePagaAccount]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsEnabled" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsEnabled]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="IsAffiliate" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsAffiliate]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="IsAgent" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsAgent]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="IsBank" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsBank]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="IsBusiness" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsBusiness]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="IsCardProcessor" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsCardProcessor]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="IsCashCollector" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsCashCollector]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="IsCustomer" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsCustomer]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="IsMerchant" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsMerchant]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="IsMobileOperator" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsMobileOperator]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="IsPaga" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsPaga]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="IsRemittanceProcessor" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsRemittanceProcessor]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="IsServiceAggregator" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsServiceAggregator]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[paga_change_log_id]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
-                  <outputColumns>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[Name]" length="12" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimPagaAccountStatusSourceKey]" length="50" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[DimPagaAccountStatusSourceKey]" name="DimPagaAccountStatusSourceKey" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[DimPagaAccountStatusSourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[CreatedDateID]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]" name="CreatedDateID" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[RegistrationDateID]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]" name="RegistrationDateID" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[PagaAccountNumber]" length="12" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]" name="PagaAccountNumber" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[ExternalAccountNumber]" length="12" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[ExternalAccountNumber]" name="ExternalAccountNumber" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[ExternalAccountNumber]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[BankingStatus]" length="50" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]" name="BankingStatus" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="bool" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[hasOnlineAccount]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[hasOnlineAccount]" name="hasOnlineAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[hasOnlineAccount]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="bool" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsActivePagaAccount]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsActivePagaAccount]" name="IsActivePagaAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsActivePagaAccount]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="bool" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsEnabled]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsEnabled]" name="IsEnabled" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsEnabled]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsAffiliate]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsAffiliate]" name="IsAffiliate" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsAffiliate]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsAgent]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsAgent]" name="IsAgent" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsAgent]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsBank]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsBank]" name="IsBank" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsBank]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsBusiness]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsBusiness]" name="IsBusiness" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsBusiness]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsCardProcessor]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCardProcessor]" name="IsCardProcessor" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCardProcessor]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsCashCollector]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCashCollector]" name="IsCashCollector" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCashCollector]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsCustomer]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCustomer]" name="IsCustomer" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCustomer]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsMerchant]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsMerchant]" name="IsMerchant" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsMerchant]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsMobileOperator]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsMobileOperator]" name="IsMobileOperator" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsMobileOperator]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsPaga]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsPaga]" name="IsPaga" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsPaga]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsRemittanceProcessor]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsRemittanceProcessor]" name="IsRemittanceProcessor" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsRemittanceProcessor]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsServiceAggregator]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsServiceAggregator]" name="IsServiceAggregator" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsServiceAggregator]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                  </outputColumns>
-                </output>
-                <output isErrorOut="true" name="Error" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
-                  <outputColumns>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SourceKey]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="12" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[Name]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[DimPagaAccountStatusSourceKey]" name="DimPagaAccountStatusSourceKey" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[DimPagaAccountStatusSourceKey]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[CreatedDateID]" name="CreatedDateID" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[CreatedDateID]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[RegistrationDateID]" name="RegistrationDateID" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[RegistrationDateID]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="12" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[PagaAccountNumber]" name="PagaAccountNumber" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[PagaAccountNumber]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="12" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[ExternalAccountNumber]" name="ExternalAccountNumber" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[ExternalAccountNumber]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[BankingStatus]" name="BankingStatus" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[BankingStatus]">
-                    </outputColumn>
-                    <outputColumn dataType="bool" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[hasOnlineAccount]" name="hasOnlineAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[hasOnlineAccount]">
-                    </outputColumn>
-                    <outputColumn dataType="bool" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsActivePagaAccount]" name="IsActivePagaAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsActivePagaAccount]">
-                    </outputColumn>
-                    <outputColumn dataType="bool" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsEnabled]" name="IsEnabled" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsEnabled]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsAffiliate]" name="IsAffiliate" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsAffiliate]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsAgent]" name="IsAgent" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsAgent]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsBank]" name="IsBank" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsBank]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsBusiness]" name="IsBusiness" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsBusiness]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsCardProcessor]" name="IsCardProcessor" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsCardProcessor]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsCashCollector]" name="IsCashCollector" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsCashCollector]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsCustomer]" name="IsCustomer" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsCustomer]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsMerchant]" name="IsMerchant" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsMerchant]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsMobileOperator]" name="IsMobileOperator" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsMobileOperator]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsPaga]" name="IsPaga" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsPaga]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsRemittanceProcessor]" name="IsRemittanceProcessor" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsRemittanceProcessor]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsServiceAggregator]" name="IsServiceAggregator" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsServiceAggregator]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[paga_change_log_id]">
-                    </outputColumn>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
-                  </outputColumns>
-                </output>
-              </outputs>
-              <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
-                </property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
-                </property>
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-                </property>
-                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
-                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
-                </property>
-              </properties>
-            </component>
-            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging_Shared_DimPagaAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount" usesDispositions="true" version="4">
-              <connections>
-                <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Connections[OleDbConnection]">
-                </connection>
-              </connections>
-              <inputs>
-                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="BankingStatus" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[BankingStatus]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="CreatedDateID" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[CreatedDateID]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="12" name="ExternalAccountNumber" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[ExternalAccountNumber]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="hasOnlineAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[hasOnlineAccount]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsActivePagaAccount" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsActivePagaAccount]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsAffiliate" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsAffiliate]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsAgent" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsAgent]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsBank" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsBank]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsBusiness" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsBusiness]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsCardProcessor" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsCardProcessor]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsCashCollector" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsCashCollector]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsCustomer" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsCustomer]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsEnabled" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsEnabled]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsMerchant" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsMerchant]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsMobileOperator" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsMobileOperator]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsPaga" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsPaga]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsRemittanceProcessor" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsRemittanceProcessor]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="bool" name="IsServiceAggregator" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsServiceAggregator]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[Name]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="12" name="PagaAccountNumber" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[PagaAccountNumber]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="RegistrationDateID" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[RegistrationDateID]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimPagaAccountStatusSourceKey" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[DimPagaAccountStatusSourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_VERSION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_OPERATION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[paga_change_log_id]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[row_id]">
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
-                  <inputColumns>
-                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[SourceKey]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="12" cachedName="Name" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[Name]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[Name]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[Name]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="DimPagaAccountStatusSourceKey" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[DimPagaAccountStatusSourceKey]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[DimPagaAccountStatusSourceKey]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[DimPagaAccountStatusSourceKey]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="CreatedDateID" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[CreatedDateID]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[CreatedDateID]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="RegistrationDateID" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[RegistrationDateID]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[RegistrationDateID]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="12" cachedName="PagaAccountNumber" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[PagaAccountNumber]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[PagaAccountNumber]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="12" cachedName="ExternalAccountNumber" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[ExternalAccountNumber]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[ExternalAccountNumber]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[ExternalAccountNumber]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="BankingStatus" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[BankingStatus]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[BankingStatus]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="bool" cachedName="hasOnlineAccount" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[hasOnlineAccount]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[hasOnlineAccount]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[hasOnlineAccount]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="bool" cachedName="IsActivePagaAccount" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsActivePagaAccount]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsActivePagaAccount]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsActivePagaAccount]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="bool" cachedName="IsEnabled" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsEnabled]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsEnabled]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsEnabled]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="IsAffiliate" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsAffiliate]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsAffiliate]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsAffiliate]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="IsAgent" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsAgent]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsAgent]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsAgent]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="IsBank" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsBank]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsBank]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsBank]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="IsBusiness" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsBusiness]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsBusiness]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsBusiness]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="IsCardProcessor" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsCardProcessor]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCardProcessor]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsCardProcessor]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="IsCashCollector" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsCashCollector]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCashCollector]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsCashCollector]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="IsCustomer" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsCustomer]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCustomer]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsCustomer]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="IsMerchant" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsMerchant]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsMerchant]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsMerchant]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="IsMobileOperator" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsMobileOperator]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsMobileOperator]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsMobileOperator]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="IsPaga" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsPaga]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsPaga]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsPaga]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="IsRemittanceProcessor" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsRemittanceProcessor]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsRemittanceProcessor]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsRemittanceProcessor]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="IsServiceAggregator" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsServiceAggregator]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsServiceAggregator]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsServiceAggregator]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[SYS_CHANGE_OPERATION]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="paga_change_log_id" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[paga_change_log_id]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[paga_change_log_id]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[SYS_CHANGE_VERSION]">
-                    </inputColumn>
-                  </inputColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Outputs[Error]" synchronousInputId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
-                  <outputColumns>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
-                  </outputColumns>
-                </output>
-              </outputs>
-              <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Staging.Shared_DimPagaAccount</property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
-                </property>
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-                </property>
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
-                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
-                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
-                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
-                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-            </component>
-          </components>
-          <paths>
-            <path endId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount]" name="OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount" refId="Package\DFT_Load Shared_DimPagaAccount.Paths[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount]" startId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output]">
-            </path>
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-  </DTS:Executables>
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/13/2015 10:17:09 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="PAGA01SV015"
+  DTS:CreatorName="christina.leo.apheli"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{AAB34C33-83B9-4D3E-BE9A-C08249C870C6}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="2103_Shared_DimPagaAccount"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{126D045B-8243-45E6-95AD-2386A35F84FA}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{25DE717F-6ABF-436E-91C6-F67DB1F6E558}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.PagaAccount AS ct ON ct.PagaAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{84E0758C-ED50-4128-A06F-0CA948791AA6}"
+      DTS:ObjectName="ChangeOperation">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{84E0758C-ED50-4128-A06F-0CA948791AA6}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
-      </DTS:Property>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="14"
+      DTS:DTSID="{9CD8D3F9-0A69-4749-8AD5-15D6C4274D3E}"
+      DTS:ObjectName="ChangeVersion">
+      <DTS:Property
+        DTS:DataType="14"
+        DTS:Name="ParameterValue">9833171</DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{9CD8D3F9-0A69-4749-8AD5-15D6C4274D3E}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{25DE717F-6ABF-436E-91C6-F67DB1F6E558}"
+      DTS:ObjectName="EndOfQuery">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.PagaAccount AS ct ON ct.PagaAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
-  <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{B7559C68-145C-4D36-A9A0-17759B86517A}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Shared_DimPagaAccount" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Shared_DimPagaAccount]" DTS:To="Package\DFT_Load Shared_DimPagaAccount">
-    </DTS:PrecedenceConstraint>
-  </DTS:PrecedenceConstraints>
-  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{80E3BD61-7E64-4F85-BF94-514E6A8710B2}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{80E3BD61-7E64-4F85-BF94-514E6A8710B2}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT  &#x9;&#xA;&#x9;SourceKey, &#xA;&#x9;Name,  &#xA;&#x9;DimPagaAccountStatusSourceKey,  &#x9;&#xA;&#x9;DimCreatedDateID, &#x9;&#xA;&#x9;DimRegistrationDateID, &#x9;&#xA;&#x9;PagaAccountNumber,  &#x9;&#xA;&#x9;ExternalAccountNumber,  &#x9;&#xA;&#x9;BankingStatus,  &#x9;&#xA;&#x9;hasOnlineAccount,  &#x9;&#xA;&#x9;IsActivePagaAccount,  &#x9;&#xA;&#x9;IsEnabled,  &#x9;&#xA;&#x9;IsAffiliate,  &#x9;&#xA;&#x9;IsAgent,  &#x9;&#xA;&#x9;IsBank,  &#x9;&#xA;&#x9;IsBusiness,  &#x9;&#xA;&#x9;IsCardProcessor,  &#x9;&#xA;&#x9;IsCashCollector,  &#x9;&#xA;&#x9;IsCustomer,  &#x9;&#xA;&#x9;IsMerchant,  &#x9;&#xA;&#x9;IsMobileOperator,  &#x9;&#xA;&#x9;IsPaga,  &#x9;&#xA;&#x9;IsRemittanceProcessor,  &#x9;&#xA;&#x9;IsServiceAggregator, &#xA;&#x9;ct.SYS_CHANGE_OPERATION, &#xA;&#x9;paga_change_log_id = ct.row_id, &#xA;&#x9;SYS_CHANGE_VERSION = ct.as_of_change_version &#xA;FROM  ( &#x9;&#xA;SELECT &#x9;&#x9;&#xA;&#xA;SourceKey = pa1.PagaAccountId, &#x9;&#x9;&#xA;Name = pa1.PagaAccountNumber, &#x9;&#x9;&#xA;DimPagaAccountStatusSourceKey = pa1.PagaAccountStatusId, &#x9;&#x9;&#xA;DimCreatedDateID = CONVERT(INT,(CONVERT(VARCHAR(8),pa1.CreatedDate,112))),  &#x9;DimRegistrationDateID= COALESCE(CONVERT(INT,(CONVERT(VARCHAR(8),pa1.RegistrationDate,112))), 18991231), &#x9;&#x9;&#xA;pa1.PagaAccountNumber,  &#x9;&#x9;&#xA;pa1.ExternalAccountNumber,  &#x9;&#x9;&#xA;BankingStatus = pa1.BankingStatusId,  &#x9;&#x9;&#xA;pa1.hasOnlineAccount,  &#x9;&#x9;&#xA;IsActivePagaAccount = pa1.IsActive,  &#x9;&#x9;&#xA;pa1.IsEnabled,  &#x9;&#x9;&#xA;IsAffiliate = pa2.affiliate, &#x9;&#x9;&#xA;IsAgent = pa2.agent, &#x9;&#x9;&#xA;IsBank = pa2.bank, &#x9;&#x9;&#xA;IsBusiness = pa2.business, &#x9;&#x9;&#xA;IsCardProcessor = pa2.card_processor, &#x9;&#x9;&#xA;IsCashCollector = pa2.cash_collector, &#x9;&#x9;&#xA;IsCustomer = pa2.customer, &#x9;&#x9;&#xA;IsMerchant = pa2.merchant, &#x9;&#x9;&#xA;IsMobileOperator = pa2.mobile_operator, &#x9;&#x9;&#xA;IsPaga = pa2.paga, &#x9;&#x9;&#xA;IsRemittanceProcessor = pa2.remittance_processor, &#x9;&#x9;&#xA;IsServiceAggregator = pa2.service_aggregator &#x9;&#xA;FROM dbo.PagaAccount as pa1 &#x9;&#xA;LEFT JOIN &#x9;( &#x9;&#x9;&#xA;SELECT &#x9;&#x9;&#x9;&#xA;pa.PagaAccountId,  &#x9;&#x9;&#x9;&#xA;MAX(CASE WHEN pan.NatureId = 'AFFLIATE' THEN 1 ELSE NULL END) AS 'affiliate', &#x9;&#x9;&#x9;&#xA;MAX(CASE WHEN pan.NatureId = 'AGENT' THEN 1 ELSE NULL END) AS 'agent', &#x9;&#x9;&#x9;&#xA;MAX(CASE WHEN pan.NatureId = 'BANK' THEN 1 ELSE NULL END) AS 'bank', &#x9;&#x9;&#x9;&#xA;MAX(CASE WHEN pan.NatureId = 'BUSINESS' THEN 1 ELSE NULL END) AS 'business', &#x9;&#x9;&#x9;&#xA;MAX(CASE WHEN pan.NatureId = 'CARD_PROCESSOR' THEN 1 ELSE NULL END) AS 'card_processor', &#x9;&#x9;&#x9;&#xA;MAX(CASE WHEN pan.NatureId = 'CASH_COLLECTOR' THEN 1 ELSE NULL END) AS 'cash_collector', &#x9;&#x9;&#x9;&#xA;MAX(CASE WHEN pan.NatureId = 'CUSTOMER' THEN 1 ELSE NULL END) AS 'customer', &#x9;&#x9;&#x9;&#xA;MAX(CASE WHEN pan.NatureId = 'MERCHANT' THEN 1 ELSE NULL END) AS 'merchant', &#x9;&#x9;&#x9;&#xA;MAX(CASE WHEN pan.NatureId = 'MOBILE_OPERATOR' THEN 1 ELSE NULL END) AS 'mobile_operator', &#x9;&#x9;&#x9;&#xA;MAX(CASE WHEN pan.NatureId = 'PAGA' THEN 1 ELSE NULL END) AS 'paga', &#x9;&#x9;&#x9;&#xA;MAX(CASE WHEN pan.NatureId = 'REMITTANCE_PROCESSOR' THEN 1 ELSE NULL END) AS 'remittance_processor', &#x9;&#x9;&#x9;&#xA;MAX(CASE WHEN pan.NatureId = 'SERVICE_AGGREGATOR' THEN 1 ELSE NULL END) AS 'service_aggregator' &#x9;&#x9;&#xA;FROM dbo.PagaAccount AS pa &#x9;&#x9;INNER JOIN dbo.PagaAccountNature as pan ON &#x9;&#x9;&#x9;pa.PagaAccountId = pan.PagaAccountId &#x9;&#x9;&#xA;GROUP BY &#x9;&#x9;&#x9;pa.PagaAccountId &#x9;&#x9;) AS pa2 ON &#x9;&#x9;&#x9;pa1.PagaAccountId = pa2.PagaAccountId ) AS base_query&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT  	
 	SourceKey, 
 	Name,  
 	DimPagaAccountStatusSourceKey,  	
-	CreatedDateID, 	
-	RegistrationDateID,  	
+	DimCreatedDateID, 	
+	DimRegistrationDateID, 	
 	PagaAccountNumber,  	
 	ExternalAccountNumber,  	
 	BankingStatus,  	
@@ -416,8 +89,7 @@ SELECT
 SourceKey = pa1.PagaAccountId, 		
 Name = pa1.PagaAccountNumber, 		
 DimPagaAccountStatusSourceKey = pa1.PagaAccountStatusId, 		
-CreatedDateID = CONVERT(INT,(CONVERT(VARCHAR(8),pa1.CreatedDate,112))),  		
-RegistrationDateID = COALESCE(CONVERT(INT,(CONVERT(VARCHAR(8),pa1.RegistrationDate,112))),NULL), 		
+DimCreatedDateID = CONVERT(INT,(CONVERT(VARCHAR(8),pa1.CreatedDate,112))),  	DimRegistrationDateID= COALESCE(CONVERT(INT,(CONVERT(VARCHAR(8),pa1.RegistrationDate,112))), 18991231), 		
 pa1.PagaAccountNumber,  		
 pa1.ExternalAccountNumber,  		
 BankingStatus = pa1.BankingStatusId,  		
@@ -455,13 +127,21 @@ MAX(CASE WHEN pan.NatureId = 'SERVICE_AGGREGATOR' THEN 1 ELSE NULL END) AS 'serv
 FROM dbo.PagaAccount AS pa 		INNER JOIN dbo.PagaAccountNature as pan ON 			pa.PagaAccountId = pan.PagaAccountId 		
 GROUP BY 			pa.PagaAccountId 		) AS pa2 ON 			pa1.PagaAccountId = pa2.PagaAccountId ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{03085DF8-DC49-4311-9C12-DBD76F2CB58E}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">SELECT  	
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{03085DF8-DC49-4311-9C12-DBD76F2CB58E}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT  	
 	SourceKey, 
 	Name,  
 	DimPagaAccountStatusSourceKey,  	
-	CreatedDateID, 	
-	RegistrationDateID,  	
+	DimCreatedDateID, 	
+	DimRegistrationDateID, 	
 	PagaAccountNumber,  	
 	ExternalAccountNumber,  	
 	BankingStatus,  	
@@ -489,8 +169,7 @@ SELECT
 SourceKey = pa1.PagaAccountId, 		
 Name = pa1.PagaAccountNumber, 		
 DimPagaAccountStatusSourceKey = pa1.PagaAccountStatusId, 		
-CreatedDateID = CONVERT(INT,(CONVERT(VARCHAR(8),pa1.CreatedDate,112))),  		
-RegistrationDateID = COALESCE(CONVERT(INT,(CONVERT(VARCHAR(8),pa1.RegistrationDate,112))),NULL), 		
+DimCreatedDateID = CONVERT(INT,(CONVERT(VARCHAR(8),pa1.CreatedDate,112))),  	DimRegistrationDateID= COALESCE(CONVERT(INT,(CONVERT(VARCHAR(8),pa1.RegistrationDate,112))), 18991231), 		
 pa1.PagaAccountNumber,  		
 pa1.ExternalAccountNumber,  		
 BankingStatus = pa1.BankingStatusId,  		
@@ -528,11 +207,1175 @@ MAX(CASE WHEN pan.NatureId = 'SERVICE_AGGREGATOR' THEN 1 ELSE NULL END) AS 'serv
 FROM dbo.PagaAccount AS pa 		INNER JOIN dbo.PagaAccountNature as pan ON 			pa.PagaAccountId = pan.PagaAccountId 		
 GROUP BY 			pa.PagaAccountId 		) AS pa2 ON 			pa1.PagaAccountId = pa2.PagaAccountId ) AS base_query INNER JOIN paga_change_log.dbo.PagaAccount AS ct ON ct.PagaAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4179F24B-7929-47E7-8B42-295DBC6E0CF2}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= PagaAccountId FROM dbo.PagaAccount) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
-      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= PagaAccountId FROM dbo.PagaAccount) AS base_query INNER JOIN paga_change_log.dbo.PagaAccount AS ct ON ct.PagaAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4179F24B-7929-47E7-8B42-295DBC6E0CF2}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= PagaAccountId FROM dbo.PagaAccount) AS base_query &quot; + @[$Package::EndOfQuery]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= PagaAccountId FROM dbo.PagaAccount) AS base_query INNER JOIN paga_change_log.dbo.PagaAccount AS ct ON ct.PagaAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BE274F34-1D42-4F6C-A837-F5B871A076F0}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
-      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BE274F34-1D42-4F6C-A837-F5B871A076F0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load Shared_DimPagaAccount"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{72DD5B2A-87ED-48ED-A7F8-61AE68D41E30}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load Shared_DimPagaAccount"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLEDB_GetData_Shared_DimPagaAccount"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::FullQueryText</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Connections[OleDbConnection]"
+                  connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SourceDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SourceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SourceKey]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SourceKey]"
+                      name="SourceKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[Name]"
+                      length="12"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[DimPagaAccountStatusSourceKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimPagaAccountStatusSourceKey]"
+                      length="50"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[DimPagaAccountStatusSourceKey]"
+                      name="DimPagaAccountStatusSourceKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[PagaAccountNumber]"
+                      length="12"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]"
+                      name="PagaAccountNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[ExternalAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[ExternalAccountNumber]"
+                      length="12"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[ExternalAccountNumber]"
+                      name="ExternalAccountNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[BankingStatus]"
+                      length="50"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]"
+                      name="BankingStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[hasOnlineAccount]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[hasOnlineAccount]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[hasOnlineAccount]"
+                      name="hasOnlineAccount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsActivePagaAccount]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsActivePagaAccount]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsActivePagaAccount]"
+                      name="IsActivePagaAccount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsEnabled]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsEnabled]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsEnabled]"
+                      name="IsEnabled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsAffiliate]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsAffiliate]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsAffiliate]"
+                      name="IsAffiliate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsAgent]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsAgent]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsAgent]"
+                      name="IsAgent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsBank]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsBank]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsBank]"
+                      name="IsBank"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsBusiness]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsBusiness]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsBusiness]"
+                      name="IsBusiness"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCardProcessor]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsCardProcessor]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCardProcessor]"
+                      name="IsCardProcessor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCashCollector]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsCashCollector]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCashCollector]"
+                      name="IsCashCollector"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCustomer]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsCustomer]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCustomer]"
+                      name="IsCustomer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsMerchant]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsMerchant]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsMerchant]"
+                      name="IsMerchant"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsMobileOperator]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsMobileOperator]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsMobileOperator]"
+                      name="IsMobileOperator"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsPaga]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsPaga]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsPaga]"
+                      name="IsPaga"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsRemittanceProcessor]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsRemittanceProcessor]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsRemittanceProcessor]"
+                      name="IsRemittanceProcessor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsServiceAggregator]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsServiceAggregator]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsServiceAggregator]"
+                      name="IsServiceAggregator"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[paga_change_log_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[paga_change_log_id]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[paga_change_log_id]"
+                      name="paga_change_log_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimCreatedDateID]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]"
+                      name="DimCreatedDateID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[DimRegistrationDateID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimRegistrationDateID]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[DimRegistrationDateID]"
+                      name="DimRegistrationDateID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SourceKey]"
+                      dataType="i4"
+                      name="SourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimPagaAccountStatusSourceKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DimPagaAccountStatusSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[PagaAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="PagaAccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[ExternalAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="ExternalAccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[BankingStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="BankingStatus" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[hasOnlineAccount]"
+                      dataType="bool"
+                      name="hasOnlineAccount" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsActivePagaAccount]"
+                      dataType="bool"
+                      name="IsActivePagaAccount" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsEnabled]"
+                      dataType="bool"
+                      name="IsEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsAffiliate]"
+                      dataType="i4"
+                      name="IsAffiliate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsAgent]"
+                      dataType="i4"
+                      name="IsAgent" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsBank]"
+                      dataType="i4"
+                      name="IsBank" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsBusiness]"
+                      dataType="i4"
+                      name="IsBusiness" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsCardProcessor]"
+                      dataType="i4"
+                      name="IsCardProcessor" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsCashCollector]"
+                      dataType="i4"
+                      name="IsCashCollector" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsCustomer]"
+                      dataType="i4"
+                      name="IsCustomer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsMerchant]"
+                      dataType="i4"
+                      name="IsMerchant" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsMobileOperator]"
+                      dataType="i4"
+                      name="IsMobileOperator" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsPaga]"
+                      dataType="i4"
+                      name="IsPaga" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsRemittanceProcessor]"
+                      dataType="i4"
+                      name="IsRemittanceProcessor" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[IsServiceAggregator]"
+                      dataType="i4"
+                      name="IsServiceAggregator" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[paga_change_log_id]"
+                      dataType="i4"
+                      name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimCreatedDateID]"
+                      dataType="i4"
+                      name="DimCreatedDateID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimRegistrationDateID]"
+                      dataType="i4"
+                      name="DimRegistrationDateID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SourceKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SourceKey]"
+                      name="SourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[DimPagaAccountStatusSourceKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[DimPagaAccountStatusSourceKey]"
+                      name="DimPagaAccountStatusSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[DimCreatedDateID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[DimCreatedDateID]"
+                      name="DimCreatedDateID" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[DimRegistrationDateID]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[DimRegistrationDateID]"
+                      name="DimRegistrationDateID" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[PagaAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[PagaAccountNumber]"
+                      name="PagaAccountNumber" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[ExternalAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[ExternalAccountNumber]"
+                      name="ExternalAccountNumber" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[BankingStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[BankingStatus]"
+                      name="BankingStatus" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[hasOnlineAccount]"
+                      dataType="bool"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[hasOnlineAccount]"
+                      name="hasOnlineAccount" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsActivePagaAccount]"
+                      dataType="bool"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsActivePagaAccount]"
+                      name="IsActivePagaAccount" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsEnabled]"
+                      dataType="bool"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsEnabled]"
+                      name="IsEnabled" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsAffiliate]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsAffiliate]"
+                      name="IsAffiliate" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsAgent]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsAgent]"
+                      name="IsAgent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsBank]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsBank]"
+                      name="IsBank" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsBusiness]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsBusiness]"
+                      name="IsBusiness" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsCardProcessor]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsCardProcessor]"
+                      name="IsCardProcessor" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsCashCollector]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsCashCollector]"
+                      name="IsCashCollector" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsCustomer]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsCustomer]"
+                      name="IsCustomer" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsMerchant]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsMerchant]"
+                      name="IsMerchant" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsMobileOperator]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsMobileOperator]"
+                      name="IsMobileOperator" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsPaga]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsPaga]"
+                      name="IsPaga" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsRemittanceProcessor]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsRemittanceProcessor]"
+                      name="IsRemittanceProcessor" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsServiceAggregator]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[IsServiceAggregator]"
+                      name="IsServiceAggregator" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[paga_change_log_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[paga_change_log_id]"
+                      name="paga_change_log_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDB_InsertIntoStaging_Shared_DimPagaAccount"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Staging.Shared_DimPagaAccount</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Connections[OleDbConnection]"
+                  connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[SourceKey]"
+                      cachedDataType="i4"
+                      cachedName="SourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SourceKey]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SourceKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[Name]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[DimPagaAccountStatusSourceKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DimPagaAccountStatusSourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[DimPagaAccountStatusSourceKey]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[DimPagaAccountStatusSourceKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[PagaAccountNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="PagaAccountNumber"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[PagaAccountNumber]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[ExternalAccountNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="ExternalAccountNumber"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[ExternalAccountNumber]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[ExternalAccountNumber]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[BankingStatus]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="BankingStatus"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[BankingStatus]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[hasOnlineAccount]"
+                      cachedDataType="bool"
+                      cachedName="hasOnlineAccount"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[hasOnlineAccount]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[hasOnlineAccount]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsActivePagaAccount]"
+                      cachedDataType="bool"
+                      cachedName="IsActivePagaAccount"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsActivePagaAccount]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsActivePagaAccount]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsEnabled]"
+                      cachedDataType="bool"
+                      cachedName="IsEnabled"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsEnabled]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsEnabled]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsAffiliate]"
+                      cachedDataType="i4"
+                      cachedName="IsAffiliate"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsAffiliate]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsAffiliate]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsAgent]"
+                      cachedDataType="i4"
+                      cachedName="IsAgent"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsAgent]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsAgent]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsBank]"
+                      cachedDataType="i4"
+                      cachedName="IsBank"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsBank]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsBank]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsBusiness]"
+                      cachedDataType="i4"
+                      cachedName="IsBusiness"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsBusiness]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsBusiness]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsCardProcessor]"
+                      cachedDataType="i4"
+                      cachedName="IsCardProcessor"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsCardProcessor]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCardProcessor]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsCashCollector]"
+                      cachedDataType="i4"
+                      cachedName="IsCashCollector"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsCashCollector]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCashCollector]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsCustomer]"
+                      cachedDataType="i4"
+                      cachedName="IsCustomer"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsCustomer]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsCustomer]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsMerchant]"
+                      cachedDataType="i4"
+                      cachedName="IsMerchant"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsMerchant]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsMerchant]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsMobileOperator]"
+                      cachedDataType="i4"
+                      cachedName="IsMobileOperator"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsMobileOperator]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsMobileOperator]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsPaga]"
+                      cachedDataType="i4"
+                      cachedName="IsPaga"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsPaga]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsPaga]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsRemittanceProcessor]"
+                      cachedDataType="i4"
+                      cachedName="IsRemittanceProcessor"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsRemittanceProcessor]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsRemittanceProcessor]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[IsServiceAggregator]"
+                      cachedDataType="i4"
+                      cachedName="IsServiceAggregator"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsServiceAggregator]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[IsServiceAggregator]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[SYS_CHANGE_OPERATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="SYS_CHANGE_OPERATION"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[paga_change_log_id]"
+                      cachedDataType="i4"
+                      cachedName="paga_change_log_id"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[paga_change_log_id]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[paga_change_log_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[DimCreatedDateID]"
+                      cachedDataType="i4"
+                      cachedName="DimCreatedDateID"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].Columns[DimRegistrationDateID]"
+                      cachedDataType="i4"
+                      cachedName="DimRegistrationDateID"
+                      externalMetadataColumnId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output].Columns[DimRegistrationDateID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[BankingStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="BankingStatus" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[ExternalAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="ExternalAccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[hasOnlineAccount]"
+                      dataType="bool"
+                      name="hasOnlineAccount" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsActivePagaAccount]"
+                      dataType="bool"
+                      name="IsActivePagaAccount" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsAffiliate]"
+                      dataType="bool"
+                      name="IsAffiliate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsAgent]"
+                      dataType="bool"
+                      name="IsAgent" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsBank]"
+                      dataType="bool"
+                      name="IsBank" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsBusiness]"
+                      dataType="bool"
+                      name="IsBusiness" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsCardProcessor]"
+                      dataType="bool"
+                      name="IsCardProcessor" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsCashCollector]"
+                      dataType="bool"
+                      name="IsCashCollector" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsCustomer]"
+                      dataType="bool"
+                      name="IsCustomer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsEnabled]"
+                      dataType="bool"
+                      name="IsEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsMerchant]"
+                      dataType="bool"
+                      name="IsMerchant" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsMobileOperator]"
+                      dataType="bool"
+                      name="IsMobileOperator" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsPaga]"
+                      dataType="bool"
+                      name="IsPaga" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsRemittanceProcessor]"
+                      dataType="bool"
+                      name="IsRemittanceProcessor" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[IsServiceAggregator]"
+                      dataType="bool"
+                      name="IsServiceAggregator" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[PagaAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="PagaAccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SourceKey]"
+                      dataType="i4"
+                      name="SourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[DimPagaAccountStatusSourceKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="DimPagaAccountStatusSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[paga_change_log_id]"
+                      dataType="i4"
+                      name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[row_id]"
+                      dataType="i4"
+                      name="row_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
+                      dataType="i4"
+                      name="DimCreatedDateID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
+                      dataType="i4"
+                      name="DimRegistrationDateID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load Shared_DimPagaAccount.Paths[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount]"
+              endId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount.Inputs[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount]"
+              name="OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount"
+              startId="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_CheckForRows"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:DTSID="{657554B0-5DEB-4722-921B-01BA6AE8595C}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_CheckForRows"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5e3060d2-3c35-4110-91af-8b5e0538b3d8}"
+          SQLTask:SqlStmtSourceType="Variable"
+          SQLTask:SqlStatementSource="User::GetRowCount"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="_count"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Shared_DimPagaAccount]"
+      DTS:CreationName=""
+      DTS:DTSID="{B7559C68-145C-4D36-A9A0-17759B86517A}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::RowCount] &gt; 0"
+      DTS:From="Package\EST_CheckForRows"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Shared_DimPagaAccount"
+      DTS:To="Package\DFT_Load Shared_DimPagaAccount" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="250,42"
+          Id="Package\DFT_Load Shared_DimPagaAccount"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\EST_CheckForRows"
+          TopLeft="44,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Shared_DimPagaAccount]"
+          TopLeft="130.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load Shared_DimPagaAccount">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="325,42"
+          Id="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="281,42"
+          Id="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount"
+          TopLeft="27.5,5.5" />
+        <EdgeLayout
+          Id="Package\DFT_Load Shared_DimPagaAccount.Paths[OLEDB_GetData_Shared_DimPagaAccount_Output_OLEDB_InsertIntoStaging_Shared_DimPagaAccount]"
+          TopLeft="168,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load Shared_DimPagaAccount\OLEDB_GetData_Shared_DimPagaAccount">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load Shared_DimPagaAccount\OLEDB_InsertIntoStaging_Shared_DimPagaAccount">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

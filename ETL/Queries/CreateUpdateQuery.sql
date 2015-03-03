@@ -278,12 +278,10 @@ ORDER BY
 			THEN
 				INSERT 
 				(
-					SourceKey,
-				'+t2.col_def +'
+					' +t2.col_def +'
 				)
 			VALUES 
 			(
-				Source.SourceKey, 
 				'+ t3.col_def +'
 			);' AS QueryText
 

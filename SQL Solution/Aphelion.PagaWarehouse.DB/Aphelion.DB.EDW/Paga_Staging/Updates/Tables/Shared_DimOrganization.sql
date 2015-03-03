@@ -12,6 +12,15 @@
     [RcName]                              VARCHAR (50)   NULL,
     [WebsiteURL]                          VARCHAR (100)  NULL,
     [OrganizationCode]                    VARCHAR (10)   NULL,
-    [DisplayName]                         VARCHAR (100)  NULL
+    [DisplayName]                         VARCHAR (100)  NULL,
+    [SYS_CHANGE_VERSION]                  BIGINT         DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]                CHAR (1)       DEFAULT ('I') NOT NULL
 );
+
+
+
+
+GO
+CREATE CLUSTERED INDEX [ix_Shared_DimOrganization_SourceKey]
+    ON [Updates].[Shared_DimOrganization]([SourceKey] ASC, [SYS_CHANGE_VERSION] DESC);
 

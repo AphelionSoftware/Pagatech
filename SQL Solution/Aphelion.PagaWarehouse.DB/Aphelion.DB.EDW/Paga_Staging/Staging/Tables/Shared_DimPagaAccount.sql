@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Staging].[Shared_DimPagaAccount] (
     [BankingStatus]                 VARCHAR (50)  NOT NULL,
-    [CreatedDateID]                 INT           NOT NULL,
+    [DimCreatedDateID]              INT           NOT NULL,
     [ExternalAccountNumber]         VARCHAR (12)  NULL,
     [hasOnlineAccount]              BIT           NULL,
     [IsActivePagaAccount]           BIT           NULL,
@@ -19,7 +19,7 @@
     [IsServiceAggregator]           BIT           NULL,
     [Name]                          VARCHAR (255) NOT NULL,
     [PagaAccountNumber]             VARCHAR (12)  NULL,
-    [RegistrationDateID]            INT           NULL,
+    [DimRegistrationDateID]         INT           NULL,
     [SourceKey]                     INT           NOT NULL,
     [DimPagaAccountStatusSourceKey] VARCHAR (255) NOT NULL,
     [SYS_CHANGE_VERSION]            BIGINT        DEFAULT ((0)) NOT NULL,
@@ -27,6 +27,8 @@
     [paga_change_log_id]            INT           NULL,
     [row_id]                        INT           IDENTITY (1, 1) NOT NULL
 );
+
+
 
 
 

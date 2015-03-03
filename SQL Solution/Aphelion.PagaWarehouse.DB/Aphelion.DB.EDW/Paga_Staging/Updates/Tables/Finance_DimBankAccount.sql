@@ -15,6 +15,15 @@
     [DurationLimit]                DECIMAL (18, 2) NULL,
     [DurationLimitSeconds]         INT             NULL,
     [IsEnabled]                    BIT             NULL,
-    [AccountLinkIdentifier]        VARCHAR (30)    NULL
+    [AccountLinkIdentifier]        VARCHAR (30)    NULL,
+    [SYS_CHANGE_VERSION]           BIGINT          DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]         CHAR (1)        DEFAULT ('I') NOT NULL
 );
+
+
+
+
+GO
+CREATE CLUSTERED INDEX [ix_Finance_DimBankAccount_SourceKey]
+    ON [Updates].[Finance_DimBankAccount]([SourceKey] ASC, [SYS_CHANGE_VERSION] DESC);
 

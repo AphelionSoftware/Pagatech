@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="3/3/2015 12:56:03 PM"
+  DTS:CreationDate="3/3/2015 3:52:17 PM"
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="PAGA01SV015"
   DTS:CreatorName="christina.leo.apheli"
   DTS:DelayValidation="True"
-  DTS:DTSID="{7F10B7C9-D8DE-42E0-BE7D-394241F37DD7}"
+  DTS:DTSID="{0DE315CB-FA54-47FB-A3C0-F4836CF3F481}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.5058.0"
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="2000"
   DTS:ObjectName="2103_Shared_DimPagaAccount"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{CE5F8485-190E-4C3F-86E4-93CE773F330E}"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{2E955D72-B561-4210-826F-146103EA3415}"
   DTS:VersionMajor="0">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
@@ -21,7 +21,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="14"
-      DTS:DTSID="{3323AEA9-ABFD-4941-BB5C-5E21905B3EFA}"
+      DTS:DTSID="{C2EB2BAE-B0AA-46C2-A861-0A9180438EEF}"
       DTS:ObjectName="ChangeVersion">
       <DTS:Property
         DTS:DataType="14"
@@ -31,7 +31,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{F3B18E6A-BBA3-4232-8DDB-53F7BF1928E2}"
+      DTS:DTSID="{9427F1BB-EC3A-4BFE-80DA-74383013AEDF}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ChangeOperation">
@@ -40,7 +40,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B90D3420-EED6-4E18-A27C-5F1D9C370E67}"
+      DTS:DTSID="{8D76588D-6456-4CDF-87A4-0E2507CBCC76}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;WHERE SYS_CHANGE_VERSION &gt;= &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] +&quot; AND SYS_CHANGE_OPERATION = '&quot; + @[User::ChangeOperation] +&quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
@@ -51,7 +51,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B1BBAFB8-0842-4DFC-897D-56A52F2A0E68}"
+      DTS:DTSID="{80AC18FF-5A54-4CFB-AE41-2FE8EA597E5F}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;SELECT * FROM [Staging].[Shared_DimPagaAccount] &quot; + @[User::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
@@ -62,7 +62,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{F2492071-B188-4D44-A0CC-0465D38A2920}"
+      DTS:DTSID="{C5C83D58-5DFD-4845-BFC9-A0D79AE3CF32}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count FROM Staging.Shared_DimPagaAccount &quot; +@[User::EndOfQuery]"
       DTS:IncludeInDebugDump="2345"
@@ -73,7 +73,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{9FE5B1FB-8148-42CF-8BFA-508AB00422F7}"
+      DTS:DTSID="{C8B74726-B005-4416-BB97-46A48DA70B0A}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;UPDATE [Shared].[DimPagaAccount] SET IsActive = 0  WHERE  &#x9;EXISTS &#x9;( &#x9;&#x9;SELECT 1  &#x9;&#x9;FROM Paga_Staging.Staging.Shared_DimPagaAccount as stg &#x9;&#x9;WHERE  &#x9;&#x9;&#x9;stg.SourceKey = sourceKey &#x9;&#x9;&#x9;AND SYS_CHANGE_OPERATION = 'D' &#x9;&#x9;&#x9;AND SYS_CHANGE_VERSION = &quot; +(DT_WSTR, 20)@[$Package::ChangeVersion] +&quot;&#x9;)&quot;"
       DTS:IncludeInDebugDump="2345"
@@ -84,7 +84,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{CEDBBF42-964A-4EB1-91E1-39D7940435D6}"
+      DTS:DTSID="{70E82B57-D901-4373-8CC3-D381D71F407E}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="intErrorCount">
@@ -93,7 +93,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{9E3373F6-E547-40BF-97E4-E76B3902D63B}"
+      DTS:DTSID="{DF473A9B-0A90-4B10-ABC0-CC008CEABFBC}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="intQueueID">
@@ -102,7 +102,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B0897022-9798-44A4-9AEF-290F5AE49C41}"
+      DTS:DTSID="{2EA70239-7964-40AF-8739-825D2CE171F7}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="RowCount">
@@ -111,7 +111,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{90B69751-5853-4A76-816B-E0923A9866AA}"
+      DTS:DTSID="{443CF496-53AB-4E2F-8348-A41DA7962102}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strPackageName">
@@ -120,9 +120,9 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{EDA060DF-85B3-4935-9E84-BA1112821564}"
+      DTS:DTSID="{A29FDF21-1C58-471B-B4FC-7EA46C9F4D91}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;MERGE  Paga_EDW.[Shared].[DimPagaAccount] AS Target&#xA;&#x9;&#x9;&#x9;USING &#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;x.*&#xA;&#x9;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;stg.*&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;FROM Paga_Staging.Updates.Shared_DimPagaAccount AS stg&#xA;&#x9;&#x9;&#x9;&#x9;) as x&#xA;&#x9;&#x9;&#x9;&#x9;WHERE x.rn = 1&#xA;&#xA;&#x9;&#x9;&#x9;) AS Source ON &#xA;&#x9;&#x9;&#x9;&#x9;Target.sourcekey = Source.sourcekey&#xA;&#xA;&#xA;&#x9;&#x9;&#x9;WHEN MATCHED  &#xA;&#x9;&#x9;&#x9;THEN&#xA;&#x9;&#x9;&#x9;&#x9;UPDATE SET &#xA;&#x9;&#x9;&#x9;&#x9;Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.DimPagaAccountStatusID = Source.DimPagaAccountStatusID,Target.DimCreatedDateID = Source.CreatedDateID,Target.DimRegistrationDateID = Source.RegistrationDateID,Target.PagaAccountNumber = Source.PagaAccountNumber,Target.ExternalAccountNumber = Source.ExternalAccountNumber,Target.BankingStatus = Source.BankingStatus,Target.hasOnlineAccount = Source.hasOnlineAccount,Target.IsActivePagaAccount = Source.IsActivePagaAccount,Target.IsEnabled = Source.IsEnabled,Target.IsAffiliate = Source.IsAffiliate,Target.IsAgent = Source.IsAgent,Target.IsBank = Source.IsBank,Target.IsBusiness = Source.IsBusiness,Target.IsCardProcessor = Source.IsCardProcessor,Target.IsCashCollector = Source.IsCashCollector,Target.IsCustomer = Source.IsCustomer,Target.IsMerchant = Source.IsMerchant,Target.IsMobileOperator = Source.IsMobileOperator,Target.IsPaga = Source.IsPaga,Target.IsRemittanceProcessor = Source.IsRemittanceProcessor,Target.IsServiceAggregator = Source.IsServiceAggregator,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION&#xA;&#x9;&#x9;&#x9;WHEN NOT MATCHED BY TARGET&#xA;&#x9;&#x9;&#x9;THEN&#xA;&#x9;&#x9;&#x9;&#x9;INSERT &#xA;&#x9;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SourceKey,&#xA;&#x9;&#x9;&#x9;&#x9;SourceKey,Name,DimPagaAccountStatusID,DimCreatedDateID,DimRegistrationDateID,PagaAccountNumber,ExternalAccountNumber,BankingStatus,hasOnlineAccount,IsActivePagaAccount,IsEnabled,IsAffiliate,IsAgent,IsBank,IsBusiness,IsCardProcessor,IsCashCollector,IsCustomer,IsMerchant,IsMobileOperator,IsPaga,IsRemittanceProcessor,IsServiceAggregator,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION&#xA;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;VALUES &#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;Source.SourceKey, &#xA;&#x9;&#x9;&#x9;&#x9;Source.SourceKey,Source.Name,Source.DimPagaAccountStatusID,Source.CreatedDateID,Source.RegistrationDateID,Source.PagaAccountNumber,Source.ExternalAccountNumber,Source.BankingStatus,Source.hasOnlineAccount,Source.IsActivePagaAccount,Source.IsEnabled,Source.IsAffiliate,Source.IsAgent,Source.IsBank,Source.IsBusiness,Source.IsCardProcessor,Source.IsCashCollector,Source.IsCustomer,Source.IsMerchant,Source.IsMobileOperator,Source.IsPaga,Source.IsRemittanceProcessor,Source.IsServiceAggregator,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION&#xA;&#x9;&#x9;&#x9;);&quot;"
+      DTS:Expression="&quot;MERGE  Paga_EDW.[Shared].[DimPagaAccount] AS Target&#xA;&#x9;&#x9;&#x9;USING &#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;x.*&#xA;&#x9;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;stg.*&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;FROM Paga_Staging.Updates.Shared_DimPagaAccount AS stg&#xA;&#x9;&#x9;&#x9;&#x9;) as x&#xA;&#x9;&#x9;&#x9;&#x9;WHERE x.rn = 1&#xA;&#xA;&#x9;&#x9;&#x9;) AS Source ON &#xA;&#x9;&#x9;&#x9;&#x9;Target.sourcekey = Source.sourcekey&#xA;&#xA;&#xA;&#x9;&#x9;&#x9;WHEN MATCHED  &#xA;&#x9;&#x9;&#x9;THEN&#xA;&#x9;&#x9;&#x9;&#x9;UPDATE SET &#xA;&#x9;&#x9;&#x9;&#x9;Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.DimPagaAccountStatusID = Source.DimPagaAccountStatusID,Target.DimCreatedDateID = Source.DimCreatedDateID,Target.DimRegistrationDateID = Source.DimRegistrationDateID,Target.PagaAccountNumber = Source.PagaAccountNumber,Target.ExternalAccountNumber = Source.ExternalAccountNumber,Target.BankingStatus = Source.BankingStatus,Target.hasOnlineAccount = Source.hasOnlineAccount,Target.IsActivePagaAccount = Source.IsActivePagaAccount,Target.IsEnabled = Source.IsEnabled,Target.IsAffiliate = Source.IsAffiliate,Target.IsAgent = Source.IsAgent,Target.IsBank = Source.IsBank,Target.IsBusiness = Source.IsBusiness,Target.IsCardProcessor = Source.IsCardProcessor,Target.IsCashCollector = Source.IsCashCollector,Target.IsCustomer = Source.IsCustomer,Target.IsMerchant = Source.IsMerchant,Target.IsMobileOperator = Source.IsMobileOperator,Target.IsPaga = Source.IsPaga,Target.IsRemittanceProcessor = Source.IsRemittanceProcessor,Target.IsServiceAggregator = Source.IsServiceAggregator,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION&#xA;&#x9;&#x9;&#x9;WHEN NOT MATCHED BY TARGET&#xA;&#x9;&#x9;&#x9;THEN&#xA;&#x9;&#x9;&#x9;&#x9;INSERT &#xA;&#x9;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SourceKey,Name,DimPagaAccountStatusID,DimCreatedDateID,DimRegistrationDateID,PagaAccountNumber,ExternalAccountNumber,BankingStatus,hasOnlineAccount,IsActivePagaAccount,IsEnabled,IsAffiliate,IsAgent,IsBank,IsBusiness,IsCardProcessor,IsCashCollector,IsCustomer,IsMerchant,IsMobileOperator,IsPaga,IsRemittanceProcessor,IsServiceAggregator,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION&#xA;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;VALUES &#xA;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;Source.SourceKey,Source.Name,Source.DimPagaAccountStatusID,Source.DimCreatedDateID,Source.DimRegistrationDateID,Source.PagaAccountNumber,Source.ExternalAccountNumber,Source.BankingStatus,Source.hasOnlineAccount,Source.IsActivePagaAccount,Source.IsEnabled,Source.IsAffiliate,Source.IsAgent,Source.IsBank,Source.IsBusiness,Source.IsCardProcessor,Source.IsCashCollector,Source.IsCustomer,Source.IsMerchant,Source.IsMobileOperator,Source.IsPaga,Source.IsRemittanceProcessor,Source.IsServiceAggregator,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION&#xA;&#x9;&#x9;&#x9;);&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="UpdateQuery">
@@ -148,18 +148,16 @@
 			WHEN MATCHED  
 			THEN
 				UPDATE SET 
-				Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.DimPagaAccountStatusID = Source.DimPagaAccountStatusID,Target.DimCreatedDateID = Source.CreatedDateID,Target.DimRegistrationDateID = Source.RegistrationDateID,Target.PagaAccountNumber = Source.PagaAccountNumber,Target.ExternalAccountNumber = Source.ExternalAccountNumber,Target.BankingStatus = Source.BankingStatus,Target.hasOnlineAccount = Source.hasOnlineAccount,Target.IsActivePagaAccount = Source.IsActivePagaAccount,Target.IsEnabled = Source.IsEnabled,Target.IsAffiliate = Source.IsAffiliate,Target.IsAgent = Source.IsAgent,Target.IsBank = Source.IsBank,Target.IsBusiness = Source.IsBusiness,Target.IsCardProcessor = Source.IsCardProcessor,Target.IsCashCollector = Source.IsCashCollector,Target.IsCustomer = Source.IsCustomer,Target.IsMerchant = Source.IsMerchant,Target.IsMobileOperator = Source.IsMobileOperator,Target.IsPaga = Source.IsPaga,Target.IsRemittanceProcessor = Source.IsRemittanceProcessor,Target.IsServiceAggregator = Source.IsServiceAggregator,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
+				Target.SourceKey = Source.SourceKey,Target.Name = Source.Name,Target.DimPagaAccountStatusID = Source.DimPagaAccountStatusID,Target.DimCreatedDateID = Source.DimCreatedDateID,Target.DimRegistrationDateID = Source.DimRegistrationDateID,Target.PagaAccountNumber = Source.PagaAccountNumber,Target.ExternalAccountNumber = Source.ExternalAccountNumber,Target.BankingStatus = Source.BankingStatus,Target.hasOnlineAccount = Source.hasOnlineAccount,Target.IsActivePagaAccount = Source.IsActivePagaAccount,Target.IsEnabled = Source.IsEnabled,Target.IsAffiliate = Source.IsAffiliate,Target.IsAgent = Source.IsAgent,Target.IsBank = Source.IsBank,Target.IsBusiness = Source.IsBusiness,Target.IsCardProcessor = Source.IsCardProcessor,Target.IsCashCollector = Source.IsCashCollector,Target.IsCustomer = Source.IsCustomer,Target.IsMerchant = Source.IsMerchant,Target.IsMobileOperator = Source.IsMobileOperator,Target.IsPaga = Source.IsPaga,Target.IsRemittanceProcessor = Source.IsRemittanceProcessor,Target.IsServiceAggregator = Source.IsServiceAggregator,Target.SYS_CHANGE_VERSION = Source.SYS_CHANGE_VERSION,Target.SYS_CHANGE_OPERATION = Source.SYS_CHANGE_OPERATION
 			WHEN NOT MATCHED BY TARGET
 			THEN
 				INSERT 
 				(
-					SourceKey,
-				SourceKey,Name,DimPagaAccountStatusID,DimCreatedDateID,DimRegistrationDateID,PagaAccountNumber,ExternalAccountNumber,BankingStatus,hasOnlineAccount,IsActivePagaAccount,IsEnabled,IsAffiliate,IsAgent,IsBank,IsBusiness,IsCardProcessor,IsCashCollector,IsCustomer,IsMerchant,IsMobileOperator,IsPaga,IsRemittanceProcessor,IsServiceAggregator,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
+					SourceKey,Name,DimPagaAccountStatusID,DimCreatedDateID,DimRegistrationDateID,PagaAccountNumber,ExternalAccountNumber,BankingStatus,hasOnlineAccount,IsActivePagaAccount,IsEnabled,IsAffiliate,IsAgent,IsBank,IsBusiness,IsCardProcessor,IsCashCollector,IsCustomer,IsMerchant,IsMobileOperator,IsPaga,IsRemittanceProcessor,IsServiceAggregator,SYS_CHANGE_VERSION,SYS_CHANGE_OPERATION
 				)
 			VALUES 
 			(
-				Source.SourceKey, 
-				Source.SourceKey,Source.Name,Source.DimPagaAccountStatusID,Source.CreatedDateID,Source.RegistrationDateID,Source.PagaAccountNumber,Source.ExternalAccountNumber,Source.BankingStatus,Source.hasOnlineAccount,Source.IsActivePagaAccount,Source.IsEnabled,Source.IsAffiliate,Source.IsAgent,Source.IsBank,Source.IsBusiness,Source.IsCardProcessor,Source.IsCashCollector,Source.IsCustomer,Source.IsMerchant,Source.IsMobileOperator,Source.IsPaga,Source.IsRemittanceProcessor,Source.IsServiceAggregator,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
+				Source.SourceKey,Source.Name,Source.DimPagaAccountStatusID,Source.DimCreatedDateID,Source.DimRegistrationDateID,Source.PagaAccountNumber,Source.ExternalAccountNumber,Source.BankingStatus,Source.hasOnlineAccount,Source.IsActivePagaAccount,Source.IsEnabled,Source.IsAffiliate,Source.IsAgent,Source.IsBank,Source.IsBusiness,Source.IsCardProcessor,Source.IsCashCollector,Source.IsCustomer,Source.IsMerchant,Source.IsMobileOperator,Source.IsPaga,Source.IsRemittanceProcessor,Source.IsServiceAggregator,Source.SYS_CHANGE_VERSION,Source.SYS_CHANGE_OPERATION
 			);</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
@@ -168,7 +166,7 @@
       DTS:refId="Package\SEQ_Load_New_Rows"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:DelayValidation="True"
-      DTS:DTSID="{25294D55-24D1-4703-8B9E-9169E806CA65}"
+      DTS:DTSID="{56EF742E-1846-46F6-8059-C10783B55C7A}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ_Load_New_Rows">
@@ -178,7 +176,7 @@
           DTS:refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount"
           DTS:CreationName="SSIS.Pipeline.3"
           DTS:DelayValidation="True"
-          DTS:DTSID="{193E4464-B475-4EE6-86A7-815FE9FD959D}"
+          DTS:DTSID="{D884C9E8-8B79-4E11-83DE-1C1B0AB57E3A}"
           DTS:ExecutableType="SSIS.Pipeline.3"
           DTS:LocaleID="-1"
           DTS:MaxErrorCount="2000"
@@ -801,12 +799,6 @@
                           externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[BankingStatus]"
                           lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]" />
                         <inputColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].Columns[CreatedDateID]"
-                          cachedDataType="i4"
-                          cachedName="CreatedDateID"
-                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[CreatedDateID]"
-                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]" />
-                        <inputColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].Columns[ExternalAccountNumber]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -915,12 +907,6 @@
                           externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[PagaAccountNumber]"
                           lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]" />
                         <inputColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].Columns[RegistrationDateID]"
-                          cachedDataType="i4"
-                          cachedName="RegistrationDateID"
-                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[RegistrationDateID]"
-                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]" />
-                        <inputColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].Columns[SourceKey]"
                           cachedDataType="i4"
                           cachedName="SourceKey"
@@ -934,6 +920,18 @@
                           cachedName="DimPagaAccountStatusSourceKey"
                           externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[DimPagaAccountStatusSourceKey]"
                           lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimPagaAccountStatusSourceKey]" />
+                        <inputColumn
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].Columns[DimCreatedDateID]"
+                          cachedDataType="i4"
+                          cachedName="DimCreatedDateID"
+                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
+                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].Columns[IsActivePagaAccount]"
+                          cachedDataType="bool"
+                          cachedName="IsActivePagaAccount"
+                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
+                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[IsActivePagaAccount]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -967,10 +965,6 @@
                           dataType="str"
                           length="50"
                           name="BankingStatus" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[CreatedDateID]"
-                          dataType="i4"
-                          name="CreatedDateID" />
                         <externalMetadataColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[DimPagaAccountStatusSourceKey]"
                           codePage="1252"
@@ -1056,13 +1050,17 @@
                           length="12"
                           name="PagaAccountNumber" />
                         <externalMetadataColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[RegistrationDateID]"
-                          dataType="i4"
-                          name="RegistrationDateID" />
-                        <externalMetadataColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[SourceKey]"
                           dataType="i4"
                           name="SourceKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
+                          dataType="i4"
+                          name="DimCreatedDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
+                          dataType="i4"
+                          name="DimRegistrationDateID" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1204,12 +1202,6 @@
                           externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].ExternalColumns[BankingStatus]"
                           lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]" />
                         <inputColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].Columns[CreatedDateID]"
-                          cachedDataType="i4"
-                          cachedName="CreatedDateID"
-                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].ExternalColumns[CreatedDateID]"
-                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]" />
-                        <inputColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].Columns[ExternalAccountNumber]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -1317,12 +1309,6 @@
                           cachedName="PagaAccountNumber"
                           externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].ExternalColumns[PagaAccountNumber]"
                           lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]" />
-                        <inputColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].Columns[RegistrationDateID]"
-                          cachedDataType="i4"
-                          cachedName="RegistrationDateID"
-                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].ExternalColumns[RegistrationDateID]"
-                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]" />
                         <inputColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].Columns[SourceKey]"
                           cachedDataType="i4"
@@ -1579,6 +1565,12 @@
                           externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[BankingStatus]"
                           lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]" />
                         <inputColumn
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].Columns[DimCreatedDateID]"
+                          cachedDataType="i4"
+                          cachedName="DimCreatedDateID"
+                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
+                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]" />
+                        <inputColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].Columns[ExternalAccountNumber]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -1693,6 +1685,12 @@
                           externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[PagaAccountNumber]"
                           lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]" />
                         <inputColumn
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].Columns[DimRegistrationDateID]"
+                          cachedDataType="i4"
+                          cachedName="DimRegistrationDateID"
+                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
+                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimRegistrationDateID]" />
+                        <inputColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].Columns[SourceKey]"
                           cachedDataType="i4"
                           cachedName="SourceKey"
@@ -1712,18 +1710,6 @@
                           cachedName="SYS_CHANGE_OPERATION"
                           externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_OPERATION]"
                           lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
-                        <inputColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].Columns[CreatedDateID]"
-                          cachedDataType="i4"
-                          cachedName="CreatedDateID"
-                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
-                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]" />
-                        <inputColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].Columns[RegistrationDateID]"
-                          cachedDataType="i4"
-                          cachedName="RegistrationDateID"
-                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
-                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1978,6 +1964,12 @@
                           externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[BankingStatus]"
                           lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]" />
                         <inputColumn
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].Columns[DimCreatedDateID]"
+                          cachedDataType="i4"
+                          cachedName="DimCreatedDateID"
+                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
+                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]" />
+                        <inputColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].Columns[ExternalAccountNumber]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -2091,6 +2083,12 @@
                           cachedName="PagaAccountNumber"
                           externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[PagaAccountNumber]"
                           lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]" />
+                        <inputColumn
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].Columns[DimRegistrationDateID]"
+                          cachedDataType="i4"
+                          cachedName="DimRegistrationDateID"
+                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
+                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimRegistrationDateID]" />
                         <inputColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].Columns[SourceKey]"
                           cachedDataType="i4"
@@ -2352,13 +2350,13 @@
                           name="BankingStatus"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]"
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[CreatedDateID]"
-                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]"
-                          name="CreatedDateID"
+                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimCreatedDateID]"
+                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]"
+                          name="DimCreatedDateID"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[ExternalAccountNumber]"
@@ -2529,13 +2527,13 @@
                           name="PagaAccountNumber"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]"
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimRegistrationDateID]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[RegistrationDateID]"
-                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]"
-                          name="RegistrationDateID"
+                          externalMetadataColumnId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimRegistrationDateID]"
+                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimRegistrationDateID]"
+                          name="DimRegistrationDateID"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[SourceKey]"
@@ -2605,9 +2603,9 @@
                           length="50"
                           name="BankingStatus" />
                         <externalMetadataColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[CreatedDateID]"
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimCreatedDateID]"
                           dataType="i4"
-                          name="CreatedDateID" />
+                          name="DimCreatedDateID" />
                         <externalMetadataColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[ExternalAccountNumber]"
                           codePage="1252"
@@ -2687,9 +2685,9 @@
                           length="12"
                           name="PagaAccountNumber" />
                         <externalMetadataColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[RegistrationDateID]"
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimRegistrationDateID]"
                           dataType="i4"
-                          name="RegistrationDateID" />
+                          name="DimRegistrationDateID" />
                         <externalMetadataColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SourceKey]"
                           dataType="i4"
@@ -2733,10 +2731,10 @@
                           lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[BankingStatus]"
                           name="BankingStatus" />
                         <outputColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[CreatedDateID]"
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[DimCreatedDateID]"
                           dataType="i4"
-                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[CreatedDateID]"
-                          name="CreatedDateID" />
+                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[DimCreatedDateID]"
+                          name="DimCreatedDateID" />
                         <outputColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[ExternalAccountNumber]"
                           codePage="1252"
@@ -2834,10 +2832,10 @@
                           lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[PagaAccountNumber]"
                           name="PagaAccountNumber" />
                         <outputColumn
-                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[RegistrationDateID]"
+                          refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[DimRegistrationDateID]"
                           dataType="i4"
-                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[RegistrationDateID]"
-                          name="RegistrationDateID" />
+                          lineageId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[DimRegistrationDateID]"
+                          name="DimRegistrationDateID" />
                         <outputColumn
                           refId="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[SourceKey]"
                           dataType="i4"
@@ -3000,7 +2998,7 @@
           DTS:refId="Package\SEQ_Load_New_Rows\EST_CheckForInserts"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:DelayValidation="True"
-          DTS:DTSID="{0C964744-850E-4A16-A556-958726F88AC0}"
+          DTS:DTSID="{D0524AAC-1930-42E0-BE66-94D4C9711015}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_CheckForInserts"
@@ -3023,7 +3021,7 @@
           DTS:refId="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:DelayValidation="True"
-          DTS:DTSID="{E4C417AD-D423-4FF7-92E9-F8A38AF13B01}"
+          DTS:DTSID="{A4EB378C-FC57-437B-A83B-E64AAFE7CAF5}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="ET_Set_ChangeOperation"
@@ -3040,7 +3038,7 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_EST_CheckForInserts_To_DFT_Load_Shared_DimPagaAccount]"
           DTS:CreationName=""
-          DTS:DTSID="{386B8588-7D70-4702-A502-2803756640B4}"
+          DTS:DTSID="{508319DA-21DD-4AF6-91FB-B9F1DA46F438}"
           DTS:EvalOp="3"
           DTS:Expression="@[User::RowCount] &gt; 0"
           DTS:From="Package\SEQ_Load_New_Rows\EST_CheckForInserts"
@@ -3050,7 +3048,7 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ_Load_New_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts]"
           DTS:CreationName=""
-          DTS:DTSID="{731330D6-4287-4723-A187-65A1AF5F4E4E}"
+          DTS:DTSID="{2F5ABCD8-1424-4BDB-91B5-5091566D1431}"
           DTS:From="Package\SEQ_Load_New_Rows\ET_Set_ChangeOperation"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForInserts"
@@ -3061,7 +3059,7 @@
       DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:DelayValidation="True"
-      DTS:DTSID="{B16D19BC-B437-4B32-9A7D-5935F110F705}"
+      DTS:DTSID="{C0CC3F49-0796-4E7B-BC80-A7215AAB5798}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ_Set_Deleted_Rows_Inactive">
@@ -3070,7 +3068,7 @@
         <DTS:Executable
           DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:DTSID="{219729A5-B3C8-4410-BB03-0965283ADF57}"
+          DTS:DTSID="{34578C1B-8F2E-4BAC-9F5D-F0B99BC7DA87}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_CheckForDeletes"
@@ -3093,7 +3091,7 @@
           DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\EST_SetDeletedRowsToInactive"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:DelayValidation="True"
-          DTS:DTSID="{31288350-1E7C-4993-A2B0-992D1B057BE5}"
+          DTS:DTSID="{547B3A44-6EC3-469D-A100-CEE16F51A110}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_SetDeletedRowsToInactive"
@@ -3111,7 +3109,7 @@
           DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:DelayValidation="True"
-          DTS:DTSID="{7EBF655B-4FF5-4644-80A2-CF6B2BC9219D}"
+          DTS:DTSID="{E8E778E9-872B-4FD5-A770-8BD7318CF302}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="ET_Set_ChangeOperation"
@@ -3128,7 +3126,7 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_EST_CheckForDeletes_To_EST_SetDeletedRowsToInactive]"
           DTS:CreationName=""
-          DTS:DTSID="{89411483-E046-43D1-9D5E-4D6517D0F7F2}"
+          DTS:DTSID="{81B3319C-569E-4263-9E6D-EC829504C78E}"
           DTS:EvalOp="3"
           DTS:Expression="@[User::RowCount] &gt; 0"
           DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\EST_CheckForDeletes"
@@ -3138,7 +3136,7 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ_Set_Deleted_Rows_Inactive.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes]"
           DTS:CreationName=""
-          DTS:DTSID="{89AE70BC-50AD-4B13-A8E0-253054EDD605}"
+          DTS:DTSID="{E884BFCB-A312-416B-9595-4E48ABC3AACE}"
           DTS:From="Package\SEQ_Set_Deleted_Rows_Inactive\ET_Set_ChangeOperation"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForDeletes"
@@ -3149,7 +3147,7 @@
       DTS:refId="Package\SEQ_Update_Changed_Rows"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:DelayValidation="True"
-      DTS:DTSID="{0BAB90C3-C50F-4BB1-8110-964B190ECFB3}"
+      DTS:DTSID="{C78DA1E3-8B82-404A-BAF7-1B16C811EFF2}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ_Update_Changed_Rows">
@@ -3159,7 +3157,7 @@
           DTS:refId="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:DelayValidation="True"
-          DTS:DTSID="{EB30089B-62C1-4803-AE21-6B77DB5CF271}"
+          DTS:DTSID="{A318C034-C03C-4A8E-9A80-8D621605D8EB}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_CheckForUpdates"
@@ -3182,7 +3180,7 @@
           DTS:refId="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:DelayValidation="True"
-          DTS:DTSID="{2BB5DCDF-E335-4F4F-BE19-5C6F13C3C3F8}"
+          DTS:DTSID="{4E36792E-5E90-4C8F-A7BD-C64DD25AE286}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="ET_Set_ChangeOperation"
@@ -3198,7 +3196,7 @@
           DTS:refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates"
           DTS:CreationName="STOCK:SEQUENCE"
           DTS:DelayValidation="True"
-          DTS:DTSID="{D7B55F79-FCC8-4D4A-B84A-918049291F51}"
+          DTS:DTSID="{246D4118-E68D-49E6-A358-28AE3707D2F2}"
           DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
           DTS:ObjectName="SEQ_LoadUpdates">
@@ -3208,7 +3206,7 @@
               DTS:refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount"
               DTS:CreationName="SSIS.Pipeline.3"
               DTS:DelayValidation="True"
-              DTS:DTSID="{D397E9F4-C865-4976-B9E8-C6445D62C266}"
+              DTS:DTSID="{C4805A10-7489-4013-B38B-93552B04F767}"
               DTS:ExecutableType="SSIS.Pipeline.3"
               DTS:LocaleID="-1"
               DTS:MaxErrorCount="2000"
@@ -3831,12 +3829,6 @@
                               externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[BankingStatus]"
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]" />
                             <inputColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].Columns[CreatedDateID]"
-                              cachedDataType="i4"
-                              cachedName="CreatedDateID"
-                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[CreatedDateID]"
-                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]" />
-                            <inputColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].Columns[ExternalAccountNumber]"
                               cachedCodepage="1252"
                               cachedDataType="str"
@@ -3945,12 +3937,6 @@
                               externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[PagaAccountNumber]"
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]" />
                             <inputColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].Columns[RegistrationDateID]"
-                              cachedDataType="i4"
-                              cachedName="RegistrationDateID"
-                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[RegistrationDateID]"
-                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]" />
-                            <inputColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].Columns[SourceKey]"
                               cachedDataType="i4"
                               cachedName="SourceKey"
@@ -3964,6 +3950,18 @@
                               cachedName="DimPagaAccountStatusSourceKey"
                               externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[DimPagaAccountStatusSourceKey]"
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimPagaAccountStatusSourceKey]" />
+                            <inputColumn
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].Columns[DimCreatedDateID]"
+                              cachedDataType="i4"
+                              cachedName="DimCreatedDateID"
+                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
+                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]" />
+                            <inputColumn
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].Columns[DimRegistrationDateID]"
+                              cachedDataType="i4"
+                              cachedName="DimRegistrationDateID"
+                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
+                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimRegistrationDateID]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -3997,10 +3995,6 @@
                               dataType="str"
                               length="50"
                               name="BankingStatus" />
-                            <externalMetadataColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[CreatedDateID]"
-                              dataType="i4"
-                              name="CreatedDateID" />
                             <externalMetadataColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[DimPagaAccountStatusSourceKey]"
                               codePage="1252"
@@ -4086,13 +4080,17 @@
                               length="12"
                               name="PagaAccountNumber" />
                             <externalMetadataColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[RegistrationDateID]"
-                              dataType="i4"
-                              name="RegistrationDateID" />
-                            <externalMetadataColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[SourceKey]"
                               dataType="i4"
                               name="SourceKey" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
+                              dataType="i4"
+                              name="DimCreatedDateID" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount.Inputs[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
+                              dataType="i4"
+                              name="DimRegistrationDateID" />
                           </externalMetadataColumns>
                         </input>
                       </inputs>
@@ -4234,12 +4232,6 @@
                               externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].ExternalColumns[BankingStatus]"
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]" />
                             <inputColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].Columns[CreatedDateID]"
-                              cachedDataType="i4"
-                              cachedName="CreatedDateID"
-                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].ExternalColumns[CreatedDateID]"
-                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]" />
-                            <inputColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].Columns[ExternalAccountNumber]"
                               cachedCodepage="1252"
                               cachedDataType="str"
@@ -4347,12 +4339,6 @@
                               cachedName="PagaAccountNumber"
                               externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].ExternalColumns[PagaAccountNumber]"
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]" />
-                            <inputColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].Columns[RegistrationDateID]"
-                              cachedDataType="i4"
-                              cachedName="RegistrationDateID"
-                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].ExternalColumns[RegistrationDateID]"
-                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]" />
                             <inputColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID.Inputs[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID].Columns[SourceKey]"
                               cachedDataType="i4"
@@ -4609,12 +4595,6 @@
                               externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[BankingStatus]"
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]" />
                             <inputColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].Columns[CreatedDateID]"
-                              cachedDataType="i4"
-                              cachedName="CreatedDateID"
-                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[CreatedDateID]"
-                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]" />
-                            <inputColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].Columns[ExternalAccountNumber]"
                               cachedCodepage="1252"
                               cachedDataType="str"
@@ -4729,12 +4709,6 @@
                               externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[PagaAccountNumber]"
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]" />
                             <inputColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].Columns[RegistrationDateID]"
-                              cachedDataType="i4"
-                              cachedName="RegistrationDateID"
-                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[RegistrationDateID]"
-                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]" />
-                            <inputColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].Columns[SourceKey]"
                               cachedDataType="i4"
                               cachedName="SourceKey"
@@ -4754,6 +4728,18 @@
                               cachedName="SYS_CHANGE_OPERATION"
                               externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_OPERATION]"
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
+                            <inputColumn
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].Columns[DimCreatedDateID]"
+                              cachedDataType="i4"
+                              cachedName="DimCreatedDateID"
+                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
+                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]" />
+                            <inputColumn
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].Columns[DimRegistrationDateID]"
+                              cachedDataType="i4"
+                              cachedName="DimRegistrationDateID"
+                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
+                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimRegistrationDateID]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -4771,14 +4757,6 @@
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[DimPagaAccountStatusID]"
                               dataType="i4"
                               name="DimPagaAccountStatusID" />
-                            <externalMetadataColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[CreatedDateID]"
-                              dataType="i4"
-                              name="CreatedDateID" />
-                            <externalMetadataColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[RegistrationDateID]"
-                              dataType="i4"
-                              name="RegistrationDateID" />
                             <externalMetadataColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[PagaAccountNumber]"
                               codePage="1252"
@@ -4867,6 +4845,14 @@
                               dataType="str"
                               length="1"
                               name="SYS_CHANGE_OPERATION" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
+                              dataType="i4"
+                              name="DimCreatedDateID" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount.Inputs[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
+                              dataType="i4"
+                              name="DimRegistrationDateID" />
                           </externalMetadataColumns>
                         </input>
                       </inputs>
@@ -4979,12 +4965,6 @@
                               cachedName="BankingStatus"
                               externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[BankingStatus]"
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[BankingStatus]" />
-                            <inputColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].Columns[CreatedDateID]"
-                              cachedDataType="i4"
-                              cachedName="CreatedDateID"
-                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[CreatedDateID]"
-                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]" />
                             <inputColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].Columns[ExternalAccountNumber]"
                               cachedCodepage="1252"
@@ -5100,12 +5080,6 @@
                               externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[PagaAccountNumber]"
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[PagaAccountNumber]" />
                             <inputColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].Columns[RegistrationDateID]"
-                              cachedDataType="i4"
-                              cachedName="RegistrationDateID"
-                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[RegistrationDateID]"
-                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]" />
-                            <inputColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].Columns[SourceKey]"
                               cachedDataType="i4"
                               cachedName="SourceKey"
@@ -5125,6 +5099,18 @@
                               cachedName="SYS_CHANGE_OPERATION"
                               externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[SYS_CHANGE_OPERATION]"
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
+                            <inputColumn
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].Columns[DimCreatedDateID]"
+                              cachedDataType="i4"
+                              cachedName="DimCreatedDateID"
+                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
+                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]" />
+                            <inputColumn
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].Columns[DimRegistrationDateID]"
+                              cachedDataType="i4"
+                              cachedName="DimRegistrationDateID"
+                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
+                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimRegistrationDateID]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
@@ -5142,14 +5128,6 @@
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[DimPagaAccountStatusID]"
                               dataType="i4"
                               name="DimPagaAccountStatusID" />
-                            <externalMetadataColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[CreatedDateID]"
-                              dataType="i4"
-                              name="CreatedDateID" />
-                            <externalMetadataColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[RegistrationDateID]"
-                              dataType="i4"
-                              name="RegistrationDateID" />
                             <externalMetadataColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[PagaAccountNumber]"
                               codePage="1252"
@@ -5238,6 +5216,14 @@
                               dataType="str"
                               length="1"
                               name="SYS_CHANGE_OPERATION" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[DimCreatedDateID]"
+                              dataType="i4"
+                              name="DimCreatedDateID" />
+                            <externalMetadataColumn
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount.Inputs[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount].ExternalColumns[DimRegistrationDateID]"
+                              dataType="i4"
+                              name="DimRegistrationDateID" />
                           </externalMetadataColumns>
                         </input>
                       </inputs>
@@ -5338,13 +5324,13 @@
                               name="BankingStatus"
                               truncationRowDisposition="FailComponent" />
                             <outputColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]"
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]"
                               dataType="i4"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[CreatedDateID]"
-                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[CreatedDateID]"
-                              name="CreatedDateID"
+                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimCreatedDateID]"
+                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimCreatedDateID]"
+                              name="DimCreatedDateID"
                               truncationRowDisposition="FailComponent" />
                             <outputColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[ExternalAccountNumber]"
@@ -5515,13 +5501,13 @@
                               name="PagaAccountNumber"
                               truncationRowDisposition="FailComponent" />
                             <outputColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]"
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimRegistrationDateID]"
                               dataType="i4"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[RegistrationDateID]"
-                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[RegistrationDateID]"
-                              name="RegistrationDateID"
+                              externalMetadataColumnId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimRegistrationDateID]"
+                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[DimRegistrationDateID]"
+                              name="DimRegistrationDateID"
                               truncationRowDisposition="FailComponent" />
                             <outputColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].Columns[SourceKey]"
@@ -5591,9 +5577,9 @@
                               length="50"
                               name="BankingStatus" />
                             <externalMetadataColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[CreatedDateID]"
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimCreatedDateID]"
                               dataType="i4"
-                              name="CreatedDateID" />
+                              name="DimCreatedDateID" />
                             <externalMetadataColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[ExternalAccountNumber]"
                               codePage="1252"
@@ -5673,9 +5659,9 @@
                               length="12"
                               name="PagaAccountNumber" />
                             <externalMetadataColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[RegistrationDateID]"
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[DimRegistrationDateID]"
                               dataType="i4"
-                              name="RegistrationDateID" />
+                              name="DimRegistrationDateID" />
                             <externalMetadataColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Output].ExternalColumns[SourceKey]"
                               dataType="i4"
@@ -5719,10 +5705,10 @@
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[BankingStatus]"
                               name="BankingStatus" />
                             <outputColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[CreatedDateID]"
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[DimCreatedDateID]"
                               dataType="i4"
-                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[CreatedDateID]"
-                              name="CreatedDateID" />
+                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[DimCreatedDateID]"
+                              name="DimCreatedDateID" />
                             <outputColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[ExternalAccountNumber]"
                               codePage="1252"
@@ -5820,10 +5806,10 @@
                               lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[PagaAccountNumber]"
                               name="PagaAccountNumber" />
                             <outputColumn
-                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[RegistrationDateID]"
+                              refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[DimRegistrationDateID]"
                               dataType="i4"
-                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[RegistrationDateID]"
-                              name="RegistrationDateID" />
+                              lineageId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[DimRegistrationDateID]"
+                              name="DimRegistrationDateID" />
                             <outputColumn
                               refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount.Outputs[Error].Columns[SourceKey]"
                               dataType="i4"
@@ -5986,7 +5972,7 @@
               DTS:refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\EST_UpdateChangedRows"
               DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
               DTS:DelayValidation="True"
-              DTS:DTSID="{F8E948E5-37D0-455B-AA88-931737F6BF86}"
+              DTS:DTSID="{D767C16D-8043-4BF0-9B64-8A82A0298340}"
               DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
               DTS:LocaleID="-1"
               DTS:ObjectName="EST_UpdateChangedRows"
@@ -6005,7 +5991,7 @@
             <DTS:PrecedenceConstraint
               DTS:refId="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates.PrecedenceConstraints[Constraint_DFT_Load_Shared_DimPagaAccount_To_EST_UpdateChangedRows]"
               DTS:CreationName=""
-              DTS:DTSID="{CE1F4713-FFD0-43BE-BA19-F8ACDBA696DF}"
+              DTS:DTSID="{BCA1520A-DF95-49D7-8556-EEB82DF89CC1}"
               DTS:From="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint_DFT_Load_Shared_DimPagaAccount_To_EST_UpdateChangedRows"
@@ -6017,7 +6003,7 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_EST_CheckForUpdates_To_SEQ_LoadUpdates]"
           DTS:CreationName=""
-          DTS:DTSID="{E6B41806-70AE-417B-86A0-282B74D1299E}"
+          DTS:DTSID="{3F2222E0-4D28-4C40-84F8-17D5253EB3D3}"
           DTS:EvalOp="3"
           DTS:Expression="@[User::RowCount] &gt; 0"
           DTS:From="Package\SEQ_Update_Changed_Rows\EST_CheckForUpdates"
@@ -6027,7 +6013,7 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ_Update_Changed_Rows.PrecedenceConstraints[Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates]"
           DTS:CreationName=""
-          DTS:DTSID="{48538142-56FF-41C8-8ADD-B0FBA4B714E4}"
+          DTS:DTSID="{F1AFE231-4F31-43FD-B4FA-7FEA127EF51C}"
           DTS:From="Package\SEQ_Update_Changed_Rows\ET_Set_ChangeOperation"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint_ET_Set_ChangeOperation_To_EST_CheckForUpdates"
@@ -6038,7 +6024,7 @@
       DTS:refId="Package\SQL_Truncate_Error_Shared_DimPagaAccount"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:DelayValidation="True"
-      DTS:DTSID="{5B18F7EB-0FB7-4320-9675-E222B4CA929C}"
+      DTS:DTSID="{550D7FB2-BB2A-401C-8932-BC8E97AE5F5E}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL_Truncate_Error_Shared_DimPagaAccount"
@@ -6056,7 +6042,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows]"
       DTS:CreationName=""
-      DTS:DTSID="{E6716546-4983-4D4C-BA42-49C1820B3CDC}"
+      DTS:DTSID="{86CBC16E-C98C-4694-854D-E26A68FECE18}"
       DTS:From="Package\SEQ_Load_New_Rows"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint_SEQ_Load_New_Rows_To_SEQ_Update_Changed_Rows"
@@ -6064,7 +6050,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive]"
       DTS:CreationName=""
-      DTS:DTSID="{EE35BB89-9419-4213-94CB-A8A123A45B0E}"
+      DTS:DTSID="{EF54E15B-2E1B-44B1-854D-EA7EAD5B6F79}"
       DTS:From="Package\SEQ_Update_Changed_Rows"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint_SEQ_Update_Changed_Rows_To_SEQ_Set_Deleted_Rows_Inactive"
@@ -6072,7 +6058,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint_SQL_Truncate_Error_Shared_DimPagaAccount_To_SEQ_Load_New_Rows]"
       DTS:CreationName=""
-      DTS:DTSID="{83305338-73AC-44E9-8B0B-5BC13F790EA4}"
+      DTS:DTSID="{4B605D23-71BC-4985-A9CC-8ABDB01DF284}"
       DTS:From="Package\SQL_Truncate_Error_Shared_DimPagaAccount"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint_SQL_Truncate_Error_Shared_DimPagaAccount_To_SEQ_Load_New_Rows"
@@ -6397,14 +6383,6 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="156,42"
-          Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\RC_CountErrors"
-          TopLeft="76.5000000000001,515.5" />
-        <NodeLayout
-          Size="224,42"
-          Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\LKP_DimPagaAccountStatusID"
-          TopLeft="392.5,107.5" />
-        <NodeLayout
           Size="299,42"
           Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\DC_AddErrorDetails_DimPagaAccountStatusID"
           TopLeft="355,209.5" />
@@ -6417,25 +6395,33 @@
           Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\DC_AddErrorDetails"
           TopLeft="67.5000000000001,413.5" />
         <NodeLayout
+          Size="224,42"
+          Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\LKP_DimPagaAccountStatusID"
+          TopLeft="392.5,107.5" />
+        <NodeLayout
+          Size="403,42"
+          Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID"
+          TopLeft="303,413.5" />
+        <NodeLayout
           Size="298,42"
           Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount"
           TopLeft="5.50000000000006,311.5" />
-        <NodeLayout
-          Size="249,42"
-          Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount"
-          TopLeft="45.0000000000001,209.5" />
         <NodeLayout
           Size="278,42"
           Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount"
           TopLeft="15.5000000000001,617.5" />
         <NodeLayout
+          Size="249,42"
+          Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount"
+          TopLeft="45.0000000000001,209.5" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\RC_CountErrors"
+          TopLeft="76.5000000000001,515.5" />
+        <NodeLayout
           Size="289,42"
           Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount"
           TopLeft="360,5.5" />
-        <NodeLayout
-          Size="403,42"
-          Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID"
-          TopLeft="303,413.5" />
         <EdgeLayout
           Id="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount.Paths[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount]"
           TopLeft="154.5,557.5">
@@ -6682,6 +6668,32 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\SEQ_Load_New_Rows\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount">
     <Properties>
       <Property>
@@ -6700,48 +6712,48 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="299,42"
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\DC_AddErrorDetails_DimPagaAccountStatusID"
-          TopLeft="72.5,209.5" />
-        <NodeLayout
-          Size="224,42"
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\LKP_DimPagaAccountStatusID"
-          TopLeft="445,107.5" />
-        <NodeLayout
-          Size="278,42"
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount"
-          TopLeft="418,617.5" />
-        <NodeLayout
-          Size="403,42"
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID"
-          TopLeft="5.5,413.5" />
+          Size="281,42"
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\RC_CountErrors_DimPagaAccountStatusID"
+          TopLeft="364,311.5" />
         <NodeLayout
           Size="174,42"
           Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\DC_AddErrorDetails"
-          TopLeft="470,413.5" />
+          TopLeft="67.5000000000001,413.5" />
         <NodeLayout
-          Size="281,42"
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\RC_CountErrors_DimPagaAccountStatusID"
-          TopLeft="66.5,311.5" />
+          Size="224,42"
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\LKP_DimPagaAccountStatusID"
+          TopLeft="392.5,107.5" />
         <NodeLayout
-          Size="249,42"
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount"
-          TopLeft="432.5,209.5" />
-        <NodeLayout
-          Size="298,42"
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount"
-          TopLeft="408,311.5" />
-        <NodeLayout
-          Size="289,42"
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount"
-          TopLeft="412.5,5.5" />
+          Size="299,42"
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\DC_AddErrorDetails_DimPagaAccountStatusID"
+          TopLeft="355,209.5" />
         <NodeLayout
           Size="156,42"
           Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\RC_CountErrors"
-          TopLeft="479,515.5" />
+          TopLeft="76.5000000000001,515.5" />
+        <NodeLayout
+          Size="278,42"
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount"
+          TopLeft="15.5000000000001,617.5" />
+        <NodeLayout
+          Size="249,42"
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount"
+          TopLeft="45.0000000000001,209.5" />
+        <NodeLayout
+          Size="403,42"
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID"
+          TopLeft="303,413.5" />
+        <NodeLayout
+          Size="289,42"
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount"
+          TopLeft="360,5.5" />
+        <NodeLayout
+          Size="298,42"
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount"
+          TopLeft="5.50000000000006,311.5" />
         <EdgeLayout
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID]"
-          TopLeft="207,353.5">
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount]"
+          TopLeft="154.5,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6762,8 +6774,54 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[DC_AddErrorDetails_DimPagaAccountStatusID_Output_RC_CountErrors_DimPagaAccountStatusID]"
-          TopLeft="222,251.5">
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[DC_AddErrorDetails_Output_RC_CountErrors]"
+          TopLeft="154.5,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[OLE_DST_Singleton_Shared_DimPagaAccount_Error_DC_AddErrorDetails]"
+          TopLeft="154.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-162.29509765625,20.41845703125,324.5901953125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount]"
+          TopLeft="169.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6792,12 +6850,14 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-205.06890625,35,395.1378125,11.6630859375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[LKP_DimPagaAccountStatusID_Error_DC_AddErrorDetails_DimPagaAccountStatusID]"
-          TopLeft="521,149.5">
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount]"
+          TopLeft="468.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6827,13 +6887,13 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-335.6212109375,29.2553191489362,372.242421875,11.6630859375"
+              BoundingBox="-163.06193359375,29.2553191489362,27.1238671875,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[OLE_SRC_Staging_Shared_DimPagaAccount_Output_LKP_DimPagaAccountStatusID]"
-          TopLeft="557,47.5">
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[RC_CountErrors_DimPagaAccountStatusID_Output_OLE_DST_Error_Shared_DimPagaAccount_DimPagaAccountStatusID]"
+          TopLeft="504.5,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6854,8 +6914,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[RC_CountErrors_Output_OLE_DST_Error_Shared_DimPagaAccount]"
-          TopLeft="557,557.5">
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[DC_AddErrorDetails_DimPagaAccountStatusID_Output_RC_CountErrors_DimPagaAccountStatusID]"
+          TopLeft="504.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6876,84 +6936,14 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[DC_AddErrorDetails_Output_RC_CountErrors]"
-          TopLeft="557,455.5">
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[LKP_DimPagaAccountStatusID_Error_DC_AddErrorDetails_DimPagaAccountStatusID]"
+          TopLeft="540.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-35.9999999999999,60"
               Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[OLE_DST_Singleton_Shared_DimPagaAccount_Error_DC_AddErrorDetails]"
-          TopLeft="557,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-162.29509765625,20.41845703125,324.5901953125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[OLE_DST_Shared_DimPagaAccount_Error_OLE_DST_Singleton_Shared_DimPagaAccount]"
-          TopLeft="557,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-197.56890625,20.41845703125,395.1378125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[LKP_DimPagaAccountStatusID_Match_OLE_DST_Shared_DimPagaAccount]"
-          TopLeft="593,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-36,60"
-              Start="0,0"
-              End="-36,52.5">
+              End="-35.9999999999999,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -6964,28 +6954,84 @@
                     Point2="0,24.2553191489362"
                     Point3="-4,24.2553191489362" />
                   <mssgle:LineSegment
-                    End="-32,24.2553191489362" />
+                    End="-31.9999999999999,24.2553191489362" />
                   <mssgle:CubicBezierSegment
-                    Point1="-32,24.2553191489362"
-                    Point2="-36,24.2553191489362"
-                    Point3="-36,28.2553191489362" />
+                    Point1="-31.9999999999999,24.2553191489362"
+                    Point2="-35.9999999999999,24.2553191489362"
+                    Point3="-35.9999999999999,28.2553191489362" />
                   <mssgle:LineSegment
-                    End="-36,52.5" />
+                    End="-35.9999999999999,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-31.56193359375,29.2553191489362,27.1238671875,9.7490234375"
+              BoundingBox="-204.1212109375,29.2553191489362,372.242421875,11.6630859375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount.Paths[OLE_SRC_Staging_Shared_DimPagaAccount_Output_LKP_DimPagaAccountStatusID]"
+          TopLeft="504.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Error_Shared_DimPagaAccount">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Shared_DimPagaAccount">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_SRC_Staging_Shared_DimPagaAccount">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ_Update_Changed_Rows\SEQ_LoadUpdates\DFT_Load_Shared_DimPagaAccount\OLE_DST_Singleton_Shared_DimPagaAccount">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

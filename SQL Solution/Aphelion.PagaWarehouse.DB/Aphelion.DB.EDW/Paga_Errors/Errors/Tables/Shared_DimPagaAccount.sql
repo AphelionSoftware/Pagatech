@@ -5,7 +5,7 @@
     [PackageName]                   VARCHAR (255) NOT NULL,
     [ErrorType]                     VARCHAR (255) NOT NULL,
     [BankingStatus]                 VARCHAR (50)  NOT NULL,
-    [CreatedDateID]                 INT           NOT NULL,
+    [DimCreatedDateID]              INT           NOT NULL,
     [DimPagaAccountStatusSourceKey] VARCHAR (255) NOT NULL,
     [ExternalAccountNumber]         VARCHAR (12)  NULL,
     [hasOnlineAccount]              BIT           NULL,
@@ -25,9 +25,11 @@
     [IsServiceAggregator]           BIT           NULL,
     [Name]                          VARCHAR (255) NOT NULL,
     [PagaAccountNumber]             VARCHAR (12)  NULL,
-    [RegistrationDateID]            INT           NULL,
+    [DimRegistrationDateID]         INT           NULL,
     [SourceKey]                     INT           NOT NULL
 );
+
+
 
 
 

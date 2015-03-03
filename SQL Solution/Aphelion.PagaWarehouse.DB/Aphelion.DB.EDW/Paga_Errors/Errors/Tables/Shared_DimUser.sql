@@ -6,7 +6,7 @@
     [ErrorType]               VARCHAR (255) NOT NULL,
     [DimCreatedDateID]        INT           NOT NULL,
     [DimDateOfBirthID]        INT           NULL,
-    [DimimPraryRoleSourceKey] INT           NOT NULL,
+    [DimPrimaryRoleSourceKey] INT           NOT NULL,
     [Email]                   VARCHAR (100) NULL,
     [FirstName]               VARCHAR (255) NULL,
     [Gender]                  VARCHAR (50)  NULL,
@@ -15,6 +15,8 @@
     [MiddleName]              VARCHAR (255) NULL,
     [SourceKey]               INT           NOT NULL
 );
+
+
 
 
 

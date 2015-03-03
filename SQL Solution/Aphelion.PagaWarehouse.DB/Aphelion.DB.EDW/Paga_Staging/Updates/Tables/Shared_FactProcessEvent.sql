@@ -36,6 +36,15 @@
     [DimApprovedByUserID]             INT             NULL,
     [DimVerifiedByUserID]             INT             NULL,
     [DimCancellationApprovedByUserID] INT             NULL,
-    [IntegrationReferenceNumber]      VARCHAR (200)   NULL
+    [IntegrationReferenceNumber]      VARCHAR (200)   NULL,
+    [SYS_CHANGE_VERSION]              BIGINT          DEFAULT ((0)) NOT NULL,
+    [SYS_CHANGE_OPERATION]            CHAR (1)        DEFAULT ('I') NOT NULL
 );
+
+
+
+
+GO
+CREATE CLUSTERED INDEX [ix_Shared_FactProcessEvent_SourceKey]
+    ON [Updates].[Shared_FactProcessEvent]([SourceKey] ASC, [SYS_CHANGE_VERSION] DESC);
 

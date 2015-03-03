@@ -40,22 +40,22 @@
 
 	
 
-	--SELECT
-	--	*
-	--FROM
-	--(
-	--	SELECT
-	--		ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
-	--		stg.*
-	--	FROM Paga_Staging.staging.Shared_DimUser AS stg
-	--	INNER JOIN
-	--	(
-	--	SELECT DISTINCT SourceKey from Paga_Staging.staging.Shared_DimUser WHERE SYS_CHANGE_VERSION > 0
-	--	EXCEPT
-	--	SELECT edw.sourcekey FROM shared.DimUser as edw
-	--	) AS list ON 
-	--		stg.sourcekey = list.sourcekey
-	--) as x
+	SELECT
+		*
+	FROM
+	(
+		SELECT
+			ROW_NUMBER() OVER (PARTITION BY stg.SourceKey ORDER BY stg.SYS_CHANGE_VERSION DESC) AS rn,
+			stg.*
+		FROM Paga_Staging.staging.Shared_DimUser AS stg
+		INNER JOIN
+		(
+		SELECT DISTINCT SourceKey from Paga_Staging.staging.Shared_DimUser WHERE SYS_CHANGE_VERSION > 0
+		EXCEPT
+		SELECT edw.sourcekey FROM shared.DimUser as edw
+		) AS list ON 
+			stg.sourcekey = list.sourcekey
+	) as x
 
 
 --	SELECT
