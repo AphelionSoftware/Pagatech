@@ -1,4 +1,5 @@
 ﻿
+
 /****** Object:  View [OLAP].[Finance_FactFinancialTransaction]    Script Date: 2/27/2015 1:45:59 PM ******/
 
 
@@ -8,8 +9,7 @@ CREATE VIEW [OLAP].[LatestFinancialTransaction] AS
 		
 		SELECT
 			ft.FactFinancialTxID, 
-			TransactionDate = CAST(d.Date AS Date),
-			TransactionTime = CAST(t.FullTime AS Time(0))
+			LatestFinancialTx = CONVERT(VARCHAR(10),CAST(d.Date AS Date)) + ' ' + CONVERT(VARCHAR(5),CAST(t.FullTime AS Time(0)))
 		FROM Finance.FactFinancialTransaction as ft
 		INNER JOIN shared.DimDate AS d ON
 			ft.DimFinancialTxDateID = d.DateID

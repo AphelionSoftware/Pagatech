@@ -43,6 +43,8 @@
 
 
 
+
+
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [ix_FactGLTransaction_SourceKey]
     ON [Finance].[FactGLTransaction]([SourceKey] ASC);
@@ -127,4 +129,10 @@ CREATE NONCLUSTERED INDEX [ix_FactGLTransaction_FinancialAccountID]
 GO
 CREATE NONCLUSTERED INDEX [ix_FactGLTransaction_ChangeVersion]
     ON [Finance].[FactGLTransaction]([SYS_CHANGE_VERSION] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_FactGLTransaction_IsActive]
+    ON [Finance].[FactGLTransaction]([IsActive] ASC)
+    INCLUDE([SourceKey], [DimGLCodeID], [FactFinancialTxID]) WHERE ([IsActive]=(1));
 

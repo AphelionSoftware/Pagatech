@@ -18,13 +18,17 @@
     [IsActive]                     BIT             DEFAULT ((1)) NOT NULL,
     [SYS_CHANGE_VERSION]           BIGINT          DEFAULT ((0)) NOT NULL,
     [SYS_CHANGE_OPERATION]         CHAR (1)        DEFAULT ('I') NOT NULL,
+    [DimGLCodeID]                  INT             DEFAULT ((-1)) NOT NULL,
     CONSTRAINT [pk_DimFinancialAccountID] PRIMARY KEY CLUSTERED ([DimFinancialAccountID] ASC),
     CONSTRAINT [fk_DimFinancialAccount_DimBankAccountID] FOREIGN KEY ([DimBankAccountID]) REFERENCES [Finance].[DimBankAccount] ([DimBankAccountID]),
     CONSTRAINT [fk_DimFinancialAccount_DimCurrencyID] FOREIGN KEY ([DimCurrencyID]) REFERENCES [Finance].[DimCurrency] ([DimCurrencyID]),
-    CONSTRAINT [fk_DimFinancialAccount_DimFinancialAccountTypeID] FOREIGN KEY ([DimFinancialAccountTypeID]) REFERENCES [Finance].[DimFinancialAccountType] ([DimFinancialAccountTypeID]),
+    CONSTRAINT [fk_DimFinancialAccount_DimFinancialAccountTypeID] FOREIGN KEY ([DimFinancialAccountTypeID]) REFERENCES [Classification].[DimFinancialAccountType] ([DimFinancialAccountTypeID]),
     CONSTRAINT [fk_DimFinancialAccount_DimFinancialHoldingAccount] FOREIGN KEY ([DimFinancialHoldingAccountID]) REFERENCES [Finance].[DimFinancialHoldingAccount] ([DimFinancialHoldingAccountID]),
+    CONSTRAINT [fk_DimFinancialAccount_DimGLCodeID] FOREIGN KEY ([DimGLCodeID]) REFERENCES [Finance].[DimGLCode] ([DimGLCodeID]),
     CONSTRAINT [fk_DimFinancialAccount_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
 
 
 
@@ -260,4 +264,10 @@ CREATE NONCLUSTERED INDEX [ix_DimFinancialAccount_DimBankAccountID]
 GO
 CREATE NONCLUSTERED INDEX [ix_DimFinancialAccount_ChangeVersion]
     ON [Finance].[DimFinancialAccount]([SYS_CHANGE_VERSION] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [ix_DimFinancialAccount_DimFinancialAccountTypeID]
+    ON [Finance].[DimFinancialAccount]([DimFinancialAccountTypeID] ASC)
+    INCLUDE([DimFinancialAccountID]);
 

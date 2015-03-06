@@ -1,4 +1,6 @@
 ﻿
+
+
 CREATE VIEW [OLAP].[Finance_FactGLTransaction] AS
 	(
 		SELECT 
@@ -13,10 +15,16 @@ CREATE VIEW [OLAP].[Finance_FactGLTransaction] AS
 			edw.DebitAmount,
 			edw.Movement,
 			Balance = (edw.DebitAmount - edw.CreditAmount),
-			FinancialTransactionID = ft.SourceKey
+			FinancialTransactionID = COALESCE(ft0.SourceKey, -1)
 		FROM Finance.FactGLTransaction AS edw
-		INNER JOIN Finance.FactFinancialTransaction AS ft ON edw.FactFinancialTxID = ft.FactFinancialTxID
+		OUTER APPLY
+		(
+			SELECT TOP 1 ft.SourceKey FROM Finance.FactFinancialTransaction AS ft 
+			WHERE 
+				edw.FactFinancialTxID = ft.FactFinancialTxID
+			
+		) AS ft0
 		WHERE 
 			edw.IsActive = 1
-			--AND ft.DimFinancialTxDateID >= 20150101
+		
 	);
