@@ -1,272 +1,64 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="02/13/2015 10:17:10" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{83061E6D-405A-4F31-B3B6-184EE197368A}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="2501_Finance_DimFinancialAccount" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{6E73C059-D5B2-490E-B3E3-7A473F0FC175}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
-  <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:DTSID="{C4E50598-48EA-48F4-9B24-58A3F729723F}" DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" DTS:LocaleID="-1" DTS:ObjectName="EST_CheckForRows" DTS:refId="Package\EST_CheckForRows" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="ChangeLog" SQLTask:ResultType="ResultSetType_SingleRow" SQLTask:SqlStatementSource="User::GetRowCount" SQLTask:SqlStmtSourceType="Variable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ResultBinding SQLTask:DtsVariableName="User::RowCount" SQLTask:ResultName="_count">
-          </SQLTask:ResultBinding>
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{FF87028E-EA4D-4D6D-AC50-8DDFFAAB0257}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load Finance_DimFinancialAccount" DTS:refId="Package\DFT_Load Finance_DimFinancialAccount" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:ObjectData>
-        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
-          <components>
-            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData_Finance_DimFinancialAccount" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount" usesDispositions="true" version="7">
-              <connections>
-                <connection connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external" connectionManagerRefId="Project.ConnectionManagers[SourceDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Connections[OleDbConnection]">
-                </connection>
-              </connections>
-              <outputs>
-                <output name="Output" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[paga_change_log_id]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[SourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="20" name="AccountNumber" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[AccountNumber]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="20" name="Name" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[Name]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="numeric" name="OpeningBalance" precision="18" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[OpeningBalance]" scale="2">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="numeric" name="RestrictedBalance" precision="18" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[RestrictedBalance]" scale="2">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="numeric" name="TotalBalance" precision="18" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[TotalBalance]" scale="2">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimBankAccountSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimBankAccountSourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="DimCurrencySourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimCurrencySourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="70" name="DimFinancialAccountTypeSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimFinancialAccountTypeSourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimHoldingFinancialAccountSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimHoldingFinancialAccountSourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimPagaAccountSourceKey]">
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
-                  <outputColumns>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]" length="1" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[paga_change_log_id]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[AccountNumber]" length="20" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[AccountNumber]" name="AccountNumber" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[AccountNumber]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[Name]" length="20" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[Name]" name="Name" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="numeric" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[OpeningBalance]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[OpeningBalance]" name="OpeningBalance" precision="18" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[OpeningBalance]" scale="2" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="numeric" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[RestrictedBalance]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[RestrictedBalance]" name="RestrictedBalance" precision="18" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[RestrictedBalance]" scale="2" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="numeric" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[TotalBalance]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[TotalBalance]" name="TotalBalance" precision="18" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[TotalBalance]" scale="2" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimBankAccountSourceKey]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimBankAccountSourceKey]" name="DimBankAccountSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimBankAccountSourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimCurrencySourceKey]" length="50" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimCurrencySourceKey]" name="DimCurrencySourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimCurrencySourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimFinancialAccountTypeSourceKey]" length="70" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimFinancialAccountTypeSourceKey]" name="DimFinancialAccountTypeSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimFinancialAccountTypeSourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimHoldingFinancialAccountSourceKey]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimHoldingFinancialAccountSourceKey]" name="DimHoldingFinancialAccountSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimHoldingFinancialAccountSourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimPagaAccountSourceKey]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimPagaAccountSourceKey]" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimPagaAccountSourceKey]" truncationRowDisposition="FailComponent">
-                    </outputColumn>
-                  </outputColumns>
-                </output>
-                <output isErrorOut="true" name="Error" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
-                  <outputColumns>
-                    <outputColumn codePage="1252" dataType="str" length="1" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[SYS_CHANGE_OPERATION]" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[SYS_CHANGE_OPERATION]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[paga_change_log_id]" name="paga_change_log_id" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[paga_change_log_id]">
-                    </outputColumn>
-                    <outputColumn dataType="i8" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[SourceKey]" name="SourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[SourceKey]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="20" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[AccountNumber]" name="AccountNumber" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[AccountNumber]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="20" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[Name]" name="Name" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[Name]">
-                    </outputColumn>
-                    <outputColumn dataType="numeric" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[OpeningBalance]" name="OpeningBalance" precision="18" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[OpeningBalance]" scale="2">
-                    </outputColumn>
-                    <outputColumn dataType="numeric" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[RestrictedBalance]" name="RestrictedBalance" precision="18" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[RestrictedBalance]" scale="2">
-                    </outputColumn>
-                    <outputColumn dataType="numeric" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[TotalBalance]" name="TotalBalance" precision="18" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[TotalBalance]" scale="2">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimBankAccountSourceKey]" name="DimBankAccountSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimBankAccountSourceKey]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimCurrencySourceKey]" name="DimCurrencySourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimCurrencySourceKey]">
-                    </outputColumn>
-                    <outputColumn codePage="1252" dataType="str" length="70" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimFinancialAccountTypeSourceKey]" name="DimFinancialAccountTypeSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimFinancialAccountTypeSourceKey]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimHoldingFinancialAccountSourceKey]" name="DimHoldingFinancialAccountSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimHoldingFinancialAccountSourceKey]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimPagaAccountSourceKey]" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimPagaAccountSourceKey]">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
-                  </outputColumns>
-                </output>
-              </outputs>
-              <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
-                </property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
-                </property>
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-                </property>
-                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::FullQueryText</property>
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
-                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
-                </property>
-              </properties>
-            </component>
-            <component componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDB_InsertIntoStaging_Finance_DimFinancialAccount" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount" usesDispositions="true" version="4">
-              <connections>
-                <connection connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external" connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Connections[OleDbConnection]">
-                </connection>
-              </connections>
-              <inputs>
-                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn codePage="1252" dataType="str" length="20" name="AccountNumber" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[AccountNumber]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="Name" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[Name]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="numeric" name="OpeningBalance" precision="18" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[OpeningBalance]" scale="2">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="numeric" name="RestrictedBalance" precision="18" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[RestrictedBalance]" scale="2">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="SourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[SourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="numeric" name="TotalBalance" precision="18" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[TotalBalance]" scale="2">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimBankAccountSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimBankAccountSourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimCurrencySourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimCurrencySourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="255" name="DimFinancialAccountTypeSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimFinancialAccountTypeSourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimFinancialHoldingAccountSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimFinancialHoldingAccountSourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="DimPagaAccountSourceKey" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimPagaAccountSourceKey]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[SYS_CHANGE_VERSION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn codePage="1252" dataType="str" length="1" name="SYS_CHANGE_OPERATION" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[SYS_CHANGE_OPERATION]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="paga_change_log_id" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[paga_change_log_id]">
-                    </externalMetadataColumn>
-                    <externalMetadataColumn dataType="i4" name="row_id" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[row_id]">
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
-                  <inputColumns>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="1" cachedName="SYS_CHANGE_OPERATION" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[SYS_CHANGE_OPERATION]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[SYS_CHANGE_OPERATION]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="paga_change_log_id" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[paga_change_log_id]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[paga_change_log_id]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[paga_change_log_id]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[SYS_CHANGE_VERSION]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="SourceKey" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[SourceKey]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SourceKey]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[SourceKey]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="20" cachedName="AccountNumber" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[AccountNumber]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[AccountNumber]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[AccountNumber]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="20" cachedName="Name" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[Name]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[Name]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[Name]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="numeric" cachedName="OpeningBalance" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[OpeningBalance]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[OpeningBalance]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[OpeningBalance]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="numeric" cachedName="RestrictedBalance" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[RestrictedBalance]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[RestrictedBalance]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[RestrictedBalance]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="numeric" cachedName="TotalBalance" cachedPrecision="18" cachedScale="2" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[TotalBalance]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[TotalBalance]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[TotalBalance]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="DimBankAccountSourceKey" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimBankAccountSourceKey]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimBankAccountSourceKey]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[DimBankAccountSourceKey]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="DimCurrencySourceKey" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimCurrencySourceKey]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimCurrencySourceKey]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[DimCurrencySourceKey]">
-                    </inputColumn>
-                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="70" cachedName="DimFinancialAccountTypeSourceKey" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimFinancialAccountTypeSourceKey]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimFinancialAccountTypeSourceKey]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[DimFinancialAccountTypeSourceKey]">
-                    </inputColumn>
-                    <inputColumn cachedDataType="i4" cachedName="DimPagaAccountSourceKey" externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimPagaAccountSourceKey]" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimPagaAccountSourceKey]" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[DimPagaAccountSourceKey]">
-                    </inputColumn>
-                  </inputColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Outputs[Error]" synchronousInputId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount]">
-                  <externalMetadataColumns>
-                  </externalMetadataColumns>
-                  <outputColumns>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
-                    </outputColumn>
-                    <outputColumn dataType="i4" lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
-                    </outputColumn>
-                  </outputColumns>
-                </output>
-              </outputs>
-              <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">Staging.Finance_DimFinancialAccount</property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
-                </property>
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-                </property>
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
-                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
-                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
-                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
-                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-            </component>
-          </components>
-          <paths>
-            <path endId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount]" name="OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount" refId="Package\DFT_Load Finance_DimFinancialAccount.Paths[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount]" startId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output]">
-            </path>
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-  </DTS:Executables>
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/6/2015 9:52:12 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="PAGA01SV015"
+  DTS:CreatorName="christina.leo.apheli"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{EFDCEA4F-38FE-4E6E-A242-01ACDB72C24F}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.5058.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="2501_Finance_DimFinancialAccount"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{03A7654C-3F3B-4FC3-958C-6062175069BE}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{BFD53348-4A21-4FA5-AA5D-D14D9EA69444}" DTS:ObjectName="EndOfQuery" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.FinancialAccount AS ct ON ct.FinancialAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{44897263-89AA-4DEF-9E44-71819837B237}"
+      DTS:ObjectName="ChangeOperation">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="8" DTS:Description="" DTS:DTSID="{5B20DE95-5F13-4202-8837-EF2AAFAAB622}" DTS:ObjectName="ChangeOperation" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="8" DTS:Name="ParameterValue">
-      </DTS:Property>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="14"
+      DTS:DTSID="{ABC2B4C7-3642-4DB8-865E-553E785AE35B}"
+      DTS:ObjectName="ChangeVersion">
+      <DTS:Property
+        DTS:DataType="14"
+        DTS:Name="ParameterValue">0</DTS:Property>
     </DTS:PackageParameter>
-    <DTS:PackageParameter DTS:CreationName="" DTS:DataType="14" DTS:Description="" DTS:DTSID="{51512C35-6EE4-4BD3-BA57-314584779084}" DTS:ObjectName="ChangeVersion" DTS:Required="0" DTS:Sensitive="0">
-      <DTS:Property DTS:DataType="14" DTS:Name="ParameterValue">0</DTS:Property>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{7FCE38E3-C012-4F2A-8F4E-37EBE3DC03C1}"
+      DTS:ObjectName="EndOfQuery">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">INNER JOIN paga_change_log.dbo.FinancialAccount AS ct ON ct.FinancialAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
-  <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{F6B6462D-89EC-4776-863D-440A92AEFB3C}" DTS:EvalOp="3" DTS:Expression="@[User::RowCount] &gt; 0" DTS:From="Package\EST_CheckForRows" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Finance_DimFinancialAccount" DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Finance_DimFinancialAccount]" DTS:To="Package\DFT_Load Finance_DimFinancialAccount">
-    </DTS:PrecedenceConstraint>
-  </DTS:PrecedenceConstraints>
-  <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7E87EC8F-887E-4321-B4DA-441416160EED}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="BaseQuery">
-      <DTS:VariableValue DTS:DataType="8">WITH cte AS 
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{87880D29-18BF-42CB-B99C-0386CC26BD5B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BaseQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">WITH cte AS 
 (  	
-	SELECT  		
+	SELECT
 		SourceKey = fa.FinancialAccountId, 		
 		AccountNumber =  CONVERT(VARCHAR(20), fa.AccountNumber), 		
-		Name = CONVERT(VARCHAR(20), fa.AccountNumber), 		
 		fa.OpeningBalance, 		
 		fa.RestrictedBalance, 		
 		fa.TotalBalance, 		
@@ -274,7 +66,8 @@
 		DimCurrencySourceKey =  COALESCE(fa.CurrencyId, 'UNKNOWN'), 		
 		DimFinancialAccountTypeSourceKey = fa.FinancialAccountTypeId, 		
 		DimHoldingFinancialAccountSourceKey = fa.FinancialAccountId, 		
-		fa.PagaAccountId, 		
+		fa.PagaAccountId,
+		fa.AccountCodeId, 		
 		1 AS OrgLevel 	
 	FROM dbo.FinancialAccount AS fa  	
 	WHERE  		
@@ -283,7 +76,6 @@
 	SELECT  		
 		SourceKey = fa1.FinancialAccountId, 		
 		AccountNumber =  CONVERT(VARCHAR(20), fa1.AccountNumber), 		
-		Name = CONVERT(VARCHAR(20), fa1.AccountNumber), 		
 		fa1.OpeningBalance, 		
 		fa1.RestrictedBalance, 		
 		fa1.TotalBalance, 		
@@ -291,19 +83,20 @@
 		DimCurrencySourceKey =  COALESCE(fa1.CurrencyId, 'UNKNOWN'), 		
 		DimFinancialAccountTypeSourceKey = fa1.FinancialAccountTypeId,		 		
 		DimHoldingFinancialAccountSourceKey = fa1.HoldingFinancialAccountId, 		
-		fa1.PagaAccountId, 		
+		fa1.PagaAccountId, 
+		fa1.AccountCodeId,		
 		st.OrgLevel + 1 AS OrgLevel 	
 	FROM [dbo].FinancialAccount AS fa1 	
 	INNER JOIN cte AS ST ON  		
 		fa1.HoldingFinancialAccountId = st.SourceKey 	
 	WHERE fa1.HoldingFinancialAccountId IS NOT NULL 
 )  
-SELECT	 	
+SELECT	
 	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, 
 	SYS_CHANGE_VERSION = ct.as_of_change_version, 
 	SourceKey, 	
 	base_query.AccountNumber, 	
-	base_query.Name, 	
+	Name = base_query.AccountNumber, 	
 	base_query.OpeningBalance, 	
 	base_query.RestrictedBalance, 	
 	base_query.TotalBalance, 	
@@ -311,31 +104,42 @@ SELECT
 	base_query.DimCurrencySourceKey, 	
 	base_query.DimFinancialAccountTypeSourceKey, 	
 	base_query.DimHoldingFinancialAccountSourceKey, 	
-	base_query.DimPagaAccountSourceKey 
+	base_query.DimPagaAccountSourceKey,
+	base_query.DimGLCodeSourceKey 
 FROM  
 ( 	
 	SELECT  		
 		SourceKey = cte.SourceKey, 		
-		AccountNumber =  cte.AccountNumber, 		
-		Name = cte.AccountNumber, 		
+		AccountNumber =  CASE 
+							WHEN datalength(cte.AccountNumber) = 0 THEN 'UNKNOWN'
+							ELSE cte.AccountNumber
+						END, 		
 		cte.OpeningBalance, 		
 		cte.RestrictedBalance, 		
 		cte.TotalBalance, 		
 		DimBankAccountSourceKey =  COALESCE(cte.dimBankAccountSourceKey,-1), 		
 		DimCurrencySourceKey =  COALESCE(cte.DimCurrencySourceKey, 'UNKNOWN'), 		
 		DimFinancialAccountTypeSourceKey = cte.DimFinancialAccountTypeSourceKey, 		
-		DimPagaAccountSourceKey = COALESCE(cte.PagaAccountId,-1), 		
+		DimPagaAccountSourceKey = COALESCE(cte.PagaAccountId,-1), 
+		DimGLCodeSourceKey = COALESCE(cte.AccountCodeId,-1), 			
 		cte.DimHoldingFinancialAccountSourceKey 	
 		FROM cte  	
 ) AS base_query</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{07B2A164-2AA7-41CB-B97B-C4361EA59C97}" DTS:EvaluateAsExpression="True" DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="FullQueryText">
-      <DTS:VariableValue DTS:DataType="8">WITH cte AS 
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{24A6E3B1-A4F1-42C8-B966-9E12A966A934}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::BaseQuery] +&quot; &quot; +@[$Package::EndOfQuery]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FullQueryText">
+      <DTS:VariableValue
+        DTS:DataType="8">WITH cte AS 
 (  	
-	SELECT  		
+	SELECT
 		SourceKey = fa.FinancialAccountId, 		
 		AccountNumber =  CONVERT(VARCHAR(20), fa.AccountNumber), 		
-		Name = CONVERT(VARCHAR(20), fa.AccountNumber), 		
 		fa.OpeningBalance, 		
 		fa.RestrictedBalance, 		
 		fa.TotalBalance, 		
@@ -343,7 +147,8 @@ FROM
 		DimCurrencySourceKey =  COALESCE(fa.CurrencyId, 'UNKNOWN'), 		
 		DimFinancialAccountTypeSourceKey = fa.FinancialAccountTypeId, 		
 		DimHoldingFinancialAccountSourceKey = fa.FinancialAccountId, 		
-		fa.PagaAccountId, 		
+		fa.PagaAccountId,
+		fa.AccountCodeId, 		
 		1 AS OrgLevel 	
 	FROM dbo.FinancialAccount AS fa  	
 	WHERE  		
@@ -352,7 +157,6 @@ FROM
 	SELECT  		
 		SourceKey = fa1.FinancialAccountId, 		
 		AccountNumber =  CONVERT(VARCHAR(20), fa1.AccountNumber), 		
-		Name = CONVERT(VARCHAR(20), fa1.AccountNumber), 		
 		fa1.OpeningBalance, 		
 		fa1.RestrictedBalance, 		
 		fa1.TotalBalance, 		
@@ -360,19 +164,20 @@ FROM
 		DimCurrencySourceKey =  COALESCE(fa1.CurrencyId, 'UNKNOWN'), 		
 		DimFinancialAccountTypeSourceKey = fa1.FinancialAccountTypeId,		 		
 		DimHoldingFinancialAccountSourceKey = fa1.HoldingFinancialAccountId, 		
-		fa1.PagaAccountId, 		
+		fa1.PagaAccountId, 
+		fa1.AccountCodeId,		
 		st.OrgLevel + 1 AS OrgLevel 	
 	FROM [dbo].FinancialAccount AS fa1 	
 	INNER JOIN cte AS ST ON  		
 		fa1.HoldingFinancialAccountId = st.SourceKey 	
 	WHERE fa1.HoldingFinancialAccountId IS NOT NULL 
 )  
-SELECT	 	
+SELECT	
 	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, 
 	SYS_CHANGE_VERSION = ct.as_of_change_version, 
 	SourceKey, 	
 	base_query.AccountNumber, 	
-	base_query.Name, 	
+	Name = base_query.AccountNumber, 	
 	base_query.OpeningBalance, 	
 	base_query.RestrictedBalance, 	
 	base_query.TotalBalance, 	
@@ -380,29 +185,909 @@ SELECT
 	base_query.DimCurrencySourceKey, 	
 	base_query.DimFinancialAccountTypeSourceKey, 	
 	base_query.DimHoldingFinancialAccountSourceKey, 	
-	base_query.DimPagaAccountSourceKey 
+	base_query.DimPagaAccountSourceKey,
+	base_query.DimGLCodeSourceKey 
 FROM  
 ( 	
 	SELECT  		
 		SourceKey = cte.SourceKey, 		
-		AccountNumber =  cte.AccountNumber, 		
-		Name = cte.AccountNumber, 		
+		AccountNumber =  CASE 
+							WHEN datalength(cte.AccountNumber) = 0 THEN 'UNKNOWN'
+							ELSE cte.AccountNumber
+						END, 		
 		cte.OpeningBalance, 		
 		cte.RestrictedBalance, 		
 		cte.TotalBalance, 		
 		DimBankAccountSourceKey =  COALESCE(cte.dimBankAccountSourceKey,-1), 		
 		DimCurrencySourceKey =  COALESCE(cte.DimCurrencySourceKey, 'UNKNOWN'), 		
 		DimFinancialAccountTypeSourceKey = cte.DimFinancialAccountTypeSourceKey, 		
-		DimPagaAccountSourceKey = COALESCE(cte.PagaAccountId,-1), 		
+		DimPagaAccountSourceKey = COALESCE(cte.PagaAccountId,-1), 
+		DimGLCodeSourceKey = COALESCE(cte.AccountCodeId,-1), 			
 		cte.DimHoldingFinancialAccountSourceKey 	
 		FROM cte  	
 ) AS base_query INNER JOIN paga_change_log.dbo.FinancialAccount AS ct ON ct.FinancialAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3996F2D0-B6DC-4E8A-8EBE-0A2BAA052999}" DTS:EvaluateAsExpression="True" DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= FinancialAccountId FROM dbo.FinancialAccount) AS base_query &quot; + @[$Package::EndOfQuery]" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="GetRowCount">
-      <DTS:VariableValue DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= FinancialAccountId FROM dbo.FinancialAccount) AS base_query INNER JOIN paga_change_log.dbo.FinancialAccount AS ct ON ct.FinancialAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C3EBA470-2C20-47D8-B87B-4CEB069630F4}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= FinancialAccountId FROM dbo.FinancialAccount) AS base_query &quot; + @[$Package::EndOfQuery]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="GetRowCount">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT CAST(COUNT(*) AS INT) AS _count  FROM (SELECT SourceKey= FinancialAccountId FROM dbo.FinancialAccount) AS base_query INNER JOIN paga_change_log.dbo.FinancialAccount AS ct ON ct.FinancialAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{CE97ED8C-093C-4DF0-862C-C502C5935425}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="RowCount">
-      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CFBB5B87-288B-4CA3-808C-EC63DC71CC2C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load Finance_DimFinancialAccount"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{ECAF9846-DCC5-4EDD-835F-F67EB9A29762}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load Finance_DimFinancialAccount"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLEDB_GetData_Finance_DimFinancialAccount"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::FullQueryText</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Connections[OleDbConnection]"
+                  connectionManagerID="{80F91B65-61AA-4178-AD02-3719F4D72015}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SourceDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      length="1"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[paga_change_log_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[paga_change_log_id]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[paga_change_log_id]"
+                      name="paga_change_log_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SourceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[SourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SourceKey]"
+                      name="SourceKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[AccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[AccountNumber]"
+                      length="20"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[AccountNumber]"
+                      name="AccountNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[Name]"
+                      length="20"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[OpeningBalance]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[OpeningBalance]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[OpeningBalance]"
+                      name="OpeningBalance"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[RestrictedBalance]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[RestrictedBalance]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[RestrictedBalance]"
+                      name="RestrictedBalance"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[TotalBalance]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[TotalBalance]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[TotalBalance]"
+                      name="TotalBalance"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimBankAccountSourceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimBankAccountSourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimBankAccountSourceKey]"
+                      name="DimBankAccountSourceKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimCurrencySourceKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimCurrencySourceKey]"
+                      length="50"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimCurrencySourceKey]"
+                      name="DimCurrencySourceKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimFinancialAccountTypeSourceKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimFinancialAccountTypeSourceKey]"
+                      length="70"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimFinancialAccountTypeSourceKey]"
+                      name="DimFinancialAccountTypeSourceKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimHoldingFinancialAccountSourceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimHoldingFinancialAccountSourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimHoldingFinancialAccountSourceKey]"
+                      name="DimHoldingFinancialAccountSourceKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimPagaAccountSourceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimPagaAccountSourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimPagaAccountSourceKey]"
+                      name="DimPagaAccountSourceKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimGLCodeSourceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimGLCodeSourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimGLCodeSourceKey]"
+                      name="DimGLCodeSourceKey"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[paga_change_log_id]"
+                      dataType="i4"
+                      name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[SourceKey]"
+                      dataType="i4"
+                      name="SourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[AccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[OpeningBalance]"
+                      dataType="numeric"
+                      name="OpeningBalance"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[RestrictedBalance]"
+                      dataType="numeric"
+                      name="RestrictedBalance"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[TotalBalance]"
+                      dataType="numeric"
+                      name="TotalBalance"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimBankAccountSourceKey]"
+                      dataType="i4"
+                      name="DimBankAccountSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimCurrencySourceKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DimCurrencySourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimFinancialAccountTypeSourceKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      name="DimFinancialAccountTypeSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimHoldingFinancialAccountSourceKey]"
+                      dataType="i4"
+                      name="DimHoldingFinancialAccountSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimPagaAccountSourceKey]"
+                      dataType="i4"
+                      name="DimPagaAccountSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].ExternalColumns[DimGLCodeSourceKey]"
+                      dataType="i4"
+                      name="DimGLCodeSourceKey" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[SYS_CHANGE_OPERATION]"
+                      name="SYS_CHANGE_OPERATION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[paga_change_log_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[paga_change_log_id]"
+                      name="paga_change_log_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[SYS_CHANGE_VERSION]"
+                      name="SYS_CHANGE_VERSION" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[SourceKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[SourceKey]"
+                      name="SourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[AccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[AccountNumber]"
+                      name="AccountNumber" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[OpeningBalance]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[OpeningBalance]"
+                      name="OpeningBalance"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[RestrictedBalance]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[RestrictedBalance]"
+                      name="RestrictedBalance"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[TotalBalance]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[TotalBalance]"
+                      name="TotalBalance"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimBankAccountSourceKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimBankAccountSourceKey]"
+                      name="DimBankAccountSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimCurrencySourceKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimCurrencySourceKey]"
+                      name="DimCurrencySourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimFinancialAccountTypeSourceKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimFinancialAccountTypeSourceKey]"
+                      name="DimFinancialAccountTypeSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimHoldingFinancialAccountSourceKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimHoldingFinancialAccountSourceKey]"
+                      name="DimHoldingFinancialAccountSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimPagaAccountSourceKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimPagaAccountSourceKey]"
+                      name="DimPagaAccountSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimGLCodeSourceKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[DimGLCodeSourceKey]"
+                      name="DimGLCodeSourceKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDB_InsertIntoStaging_Finance_DimFinancialAccount"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Staging.Finance_DimFinancialAccount</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 100000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Connections[OleDbConnection]"
+                  connectionManagerID="{73296ECE-33B6-4352-AA29-6B4DF859BEFF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Paga_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[SYS_CHANGE_OPERATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="SYS_CHANGE_OPERATION"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SYS_CHANGE_OPERATION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[paga_change_log_id]"
+                      cachedDataType="i4"
+                      cachedName="paga_change_log_id"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[paga_change_log_id]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[paga_change_log_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[SYS_CHANGE_VERSION]"
+                      cachedDataType="i8"
+                      cachedName="SYS_CHANGE_VERSION"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[SYS_CHANGE_VERSION]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SYS_CHANGE_VERSION]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[SourceKey]"
+                      cachedDataType="i4"
+                      cachedName="SourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[SourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[SourceKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[AccountNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="AccountNumber"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[AccountNumber]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[AccountNumber]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[Name]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[OpeningBalance]"
+                      cachedDataType="numeric"
+                      cachedName="OpeningBalance"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[OpeningBalance]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[OpeningBalance]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[RestrictedBalance]"
+                      cachedDataType="numeric"
+                      cachedName="RestrictedBalance"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[RestrictedBalance]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[RestrictedBalance]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[TotalBalance]"
+                      cachedDataType="numeric"
+                      cachedName="TotalBalance"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[TotalBalance]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[TotalBalance]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[DimBankAccountSourceKey]"
+                      cachedDataType="i4"
+                      cachedName="DimBankAccountSourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimBankAccountSourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimBankAccountSourceKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[DimCurrencySourceKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DimCurrencySourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimCurrencySourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimCurrencySourceKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[DimFinancialAccountTypeSourceKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="DimFinancialAccountTypeSourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimFinancialAccountTypeSourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimFinancialAccountTypeSourceKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[DimPagaAccountSourceKey]"
+                      cachedDataType="i4"
+                      cachedName="DimPagaAccountSourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimPagaAccountSourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimPagaAccountSourceKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[DimGLCodeSourceKey]"
+                      cachedDataType="i4"
+                      cachedName="DimGLCodeSourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimGLCodeSourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimGLCodeSourceKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].Columns[DimHoldingFinancialAccountSourceKey]"
+                      cachedDataType="i4"
+                      cachedName="DimHoldingFinancialAccountSourceKey"
+                      externalMetadataColumnId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimFinancialHoldingAccountSourceKey]"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output].Columns[DimHoldingFinancialAccountSourceKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[AccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[OpeningBalance]"
+                      dataType="numeric"
+                      name="OpeningBalance"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[RestrictedBalance]"
+                      dataType="numeric"
+                      name="RestrictedBalance"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[SourceKey]"
+                      dataType="i4"
+                      name="SourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[TotalBalance]"
+                      dataType="numeric"
+                      name="TotalBalance"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimBankAccountSourceKey]"
+                      dataType="i4"
+                      name="DimBankAccountSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimCurrencySourceKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="DimCurrencySourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimFinancialAccountTypeSourceKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="DimFinancialAccountTypeSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimFinancialHoldingAccountSourceKey]"
+                      dataType="i4"
+                      name="DimFinancialHoldingAccountSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimPagaAccountSourceKey]"
+                      dataType="i4"
+                      name="DimPagaAccountSourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[SYS_CHANGE_VERSION]"
+                      dataType="i8"
+                      name="SYS_CHANGE_VERSION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[SYS_CHANGE_OPERATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SYS_CHANGE_OPERATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[paga_change_log_id]"
+                      dataType="i4"
+                      name="paga_change_log_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[row_id]"
+                      dataType="i4"
+                      name="row_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount].ExternalColumns[DimGLCodeSourceKey]"
+                      dataType="i4"
+                      name="DimGLCodeSourceKey" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load Finance_DimFinancialAccount.Paths[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount]"
+              endId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount.Inputs[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount]"
+              name="OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount"
+              startId="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_CheckForRows"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:DTSID="{6A5B1329-4481-4D38-8311-38F0A23591F1}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_CheckForRows"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5e3060d2-3c35-4110-91af-8b5e0538b3d8}"
+          SQLTask:SqlStmtSourceType="Variable"
+          SQLTask:SqlStatementSource="User::GetRowCount"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="_count"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Finance_DimFinancialAccount]"
+      DTS:CreationName=""
+      DTS:DTSID="{DFDCC6FD-B8E7-46F5-A0F0-D2CB0D4E148F}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::RowCount] &gt; 0"
+      DTS:From="Package\EST_CheckForRows"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_EST_CheckForRows_To_DFT_Load Finance_DimFinancialAccount"
+      DTS:To="Package\DFT_Load Finance_DimFinancialAccount" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="271,42"
+          Id="Package\DFT_Load Finance_DimFinancialAccount"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\EST_CheckForRows"
+          TopLeft="54.5,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint_EST_CheckForRows_To_DFT_Load Finance_DimFinancialAccount]"
+          TopLeft="141,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load Finance_DimFinancialAccount">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="346,42"
+          Id="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="302,42"
+          Id="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount"
+          TopLeft="27.5,5.5" />
+        <EdgeLayout
+          Id="Package\DFT_Load Finance_DimFinancialAccount.Paths[OLEDB_GetData_Finance_DimFinancialAccount_Output_OLEDB_InsertIntoStaging_Finance_DimFinancialAccount]"
+          TopLeft="178.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_GetData_Finance_DimFinancialAccount">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load Finance_DimFinancialAccount\OLEDB_InsertIntoStaging_Finance_DimFinancialAccount">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">WIN-TDGNUUDMOVR</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACntRdDU+RkO2JBwb2LhbVAAAAAACAAAAAAADZgAAwAAAABAAAADLGWepD2iiima1aGdSysnJAAAAAASAAACgAAAAEAAAAJiG4zai13TCOLANEyzzIjuIAAAASB6yXBJkKmycq2tRphSKrsi+LWkBCSJFJUKPknOREkpnhZfdHyxknxzCZ1KvbpnWC2bJlTGAWUvC39GuocDOnSyxOKnw+DdIr4rZRglIZvmr9o9OvaJQt9lkCPYOE5Qzr30sehbpfhJIvQiWJgqG5yQnKATmgw7QGgd0fRUwdyWyMwGBlMHdTRQAAADou+27mDS5XUCDs9sR+QxKe6SVbA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACntRdDU+RkO2JBwb2LhbVAAAAAACAAAAAAADZgAAwAAAABAAAADKCSrIcdlwFcJtE4/9lEJBAAAAAASAAACgAAAAEAAAALBQtOGUGW98u2D/3fVvqoGIAAAAmBa7lLgm7l8PZ/WknxppVH6C6a24rxeuDUcwfQSOzaEI0qPZCW5+ZnWybV5W1qNSQ+/XETZpGjws6Tq635w0BzUKPYba6wCl3cYNKK0KZLQcSvhIhGc7GXPPR7E9cw8+v6/uwBUS7Yrjwi+saN81Z1jvjcjSj4YP+r8otfACQYTjWeXn/MdiGhQAAACF4VttZzvXXswQ7x2kLBL/u/rNBQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -70,13 +70,13 @@
           <SSIS:Package SSIS:Name="2302_Finance_DimGLCode.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2303_Location_DimLocalGovernmentArea.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2304_Shared_DimOrganizationUnitLevel1.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="2401_Finance_DimBankAccount.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="2402_Finance_DimFinancialAccountType.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2403_Location_DimCity.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2404_Shared_DimOrganizationUnitLevel2.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="2501_Finance_DimFinancialAccount.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2502_Shared_DimOrganizationUnitLevel3.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="2601_Shared_DimOrganizationUnitLevel4.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="2401_Classification_DimFinancialAccountType.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="2501_Finance_DimFinancialAccount.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="2402_Finance_DimBankAccount.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="Aphelion.DB.LoadQueue.conmgr" />
@@ -2388,8 +2388,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -2954,124 +2952,6 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2401_Finance_DimBankAccount.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{CE9372BF-8527-4E89-9D03-A8C16B67BB24}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2401_Finance_DimBankAccount</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1AF6EFAC-FFCC-4624-B362-ACE313646774}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="ChangeOperation">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{37047632-D987-4A08-A1E7-B1C791DA746A}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="ChangeVersion">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{001F0DFC-B1C6-4119-896C-7A2FA69CB8D1}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">15</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="EndOfQuery">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{73F09438-78B0-4198-8329-E5AA0357C5BF}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">INNER JOIN paga_change_log.dbo.BankAccount AS ct ON ct.BankAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2402_Finance_DimFinancialAccountType.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{CB36877D-72B5-4347-AAC9-F066F074C60E}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2402_Finance_DimFinancialAccountType</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B294A0FD-3ABE-482C-8EF4-6714B14818F0}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="ChangeOperation">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{5537F0A6-8C1D-4C18-8FB7-ECFDA90C2BEA}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="ChangeVersion">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{CA2BE76E-0497-4DE5-AACB-3BC28E4CB985}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">15</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="EndOfQuery">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{81FE12AE-735C-43A9-BE85-A3956D17E822}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">INNER JOIN paga_change_log.dbo.FinancialAccountType AS ct ON ct.FinancialAccountTypeId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="2403_Location_DimCity.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{4CE5EE74-29F1-4352-A422-B2FE46A5EB08}</SSIS:Property>
@@ -3185,65 +3065,6 @@
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Value">INNER JOIN paga_change_log.dbo.OrganizationUnit AS ct ON ct.OrganizationUnitId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="2501_Finance_DimFinancialAccount.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{83061E6D-405A-4F31-B3B6-184EE197368A}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">2501_Finance_DimFinancialAccount</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6E73C059-D5B2-490E-B3E3-7A473F0FC175}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="ChangeOperation">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{5B20DE95-5F13-4202-8837-EF2AAFAAB622}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="ChangeVersion">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{51512C35-6EE4-4BD3-BA57-314584779084}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">15</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="EndOfQuery">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{BFD53348-4A21-4FA5-AA5D-D14D9EA69444}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">INNER JOIN paga_change_log.dbo.FinancialAccount AS ct ON ct.FinancialAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -3367,6 +3188,189 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2401_Classification_DimFinancialAccountType.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{671E7E9A-ADF3-4F9C-BF97-F7B801822A1D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2401_Classification_DimFinancialAccountType</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{18C20093-EF90-481C-BF6E-76A101003D8A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="ChangeOperation">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{780B90ED-5161-4A89-B741-C91494F79554}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="ChangeVersion">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{B825BC64-F97B-4B10-8CED-15FD4597D60A}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">15</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{A9D3502E-247A-4A32-BAEB-78D13A760A5C}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">INNER JOIN paga_change_log.dbo.FinancialAccountType AS ct ON ct.FinancialAccountTypeId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2501_Finance_DimFinancialAccount.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{EFDCEA4F-38FE-4E6E-A242-01ACDB72C24F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2501_Finance_DimFinancialAccount</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{72CACCAB-99CE-41BB-8FF2-A24AD233968E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="ChangeOperation">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{44897263-89AA-4DEF-9E44-71819837B237}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="ChangeVersion">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{ABC2B4C7-3642-4DB8-865E-553E785AE35B}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">15</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{7FCE38E3-C012-4F2A-8F4E-37EBE3DC03C1}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">INNER JOIN paga_change_log.dbo.FinancialAccount AS ct ON ct.FinancialAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="2402_Finance_DimBankAccount.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{6D648B04-2124-4F0A-998F-B24D281C0F99}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">2402_Finance_DimBankAccount</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{BCBF988B-F683-462F-BFF5-AE2E82F03BA5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="ChangeOperation">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{37047632-D987-4A08-A1E7-B1C791DA746A}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="ChangeVersion">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{001F0DFC-B1C6-4119-896C-7A2FA69CB8D1}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">15</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="EndOfQuery">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{73F09438-78B0-4198-8329-E5AA0357C5BF}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">INNER JOIN paga_change_log.dbo.BankAccount AS ct ON ct.BankAccountId = base_query.SourceKey WHERE ct.as_of_change_version &gt; 0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
       </SSIS:Project>
@@ -3376,14 +3380,6 @@
     <ProjectItem>
       <Name>01_LoadStaging.biml</Name>
       <FullPath>01_LoadStaging.biml</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>02_BIMLLoad_EDW.biml</Name>
-      <FullPath>02_BIMLLoad_EDW.biml</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>CreateLinearEDWLoad.biml</Name>
-      <FullPath>CreateLinearEDWLoad.biml</FullPath>
     </ProjectItem>
   </Miscellaneous>
   <Configurations>
