@@ -86,7 +86,7 @@ TRUNCATE TABLE [Staging].[Finance_DimCurrency];
 TRUNCATE TABLE [Staging].[Finance_DimFinancialAccount]; 
 					
 					
-TRUNCATE TABLE [Staging].[Finance_DimFinancialAccountType]; 
+TRUNCATE TABLE [Staging].[Classification_DimFinancialAccountType]; 
 					
 					
 TRUNCATE TABLE [Staging].[Finance_DimFinancialHoldingAccount]; 

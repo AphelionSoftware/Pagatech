@@ -3,6 +3,7 @@
 
 
 
+
 CREATE VIEW [OLAP].[Finance_GLCodeHierarchy]
 AS
 (
@@ -49,12 +50,8 @@ AS
 			INNER JOIN Finance.DimChartOfAccounts AS coa ON
 				cg.DimChartofAccountsID = coa.DimChartOfAccountsID
 		) AS x
-		INNER JOIN Finance.DimFinancialAccountType AS fat ON
-			fat.DimGLCodeID = x.DimGLCodeID
 		INNER JOIN finance.DimFinancialAccount AS fa ON
+			fa.DimGLCodeID = x.DimGLCodeID
+		INNER JOIN Classification.DimFinancialAccountType AS fat ON
 			fa.DimFinancialAccountTypeID = fat.DimFinancialAccountTypeID
-
-		
-
-
 )
