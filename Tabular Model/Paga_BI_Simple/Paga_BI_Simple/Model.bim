@@ -21,7 +21,7 @@
       <Dimensions>
         <Dimension>
           <ID>Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2</ID>
-          <Name>FinancialTransactionType</Name>
+          <Name>DimFinancialTransactionType</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -252,7 +252,7 @@
         </Dimension>
         <Dimension>
           <ID>Finance_FactFinancialTransaction_ee0707f1-2dbc-47ec-a1c4-036ac7b5fec9</ID>
-          <Name>FinancialTransaction</Name>
+          <Name>FactFinancialTransaction</Name>
           <Annotations>
             <Annotation>
               <Name>TableWidgetSerialization</Name>
@@ -830,6 +830,11 @@
                   <AttributeID>Cancelled</AttributeID>
                   <OverrideBehavior>None</OverrideBehavior>
                   <Name>Cancelled</Name>
+                </AttributeRelationship>
+                <AttributeRelationship>
+                  <AttributeID>CalculatedColumn1</AttributeID>
+                  <OverrideBehavior>None</OverrideBehavior>
+                  <Name>TrxType</Name>
                 </AttributeRelationship>
               </AttributeRelationships>
               <OrderBy>Key</OrderBy>
@@ -1667,6 +1672,33 @@
               </NameColumn>
               <OrderBy>Key</OrderBy>
             </Attribute>
+            <Attribute>
+              <Annotations>
+                <Annotation>
+                  <Name>Format</Name>
+                  <Value>
+                    <Format Format="Text" xmlns="" />
+                  </Value>
+                </Annotation>
+              </Annotations>
+              <ID>CalculatedColumn1</ID>
+              <Name>TrxType</Name>
+              <KeyColumns>
+                <KeyColumn>
+                  <DataType>Empty</DataType>
+                  <Source xsi:type="ddl200_200:ExpressionBinding">
+                    <Expression>RELATED(DimFinancialTransactionType[FinancialTransactionType])</Expression>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <NameColumn>
+                <DataType>WChar</DataType>
+                <Source xsi:type="ddl200_200:ExpressionBinding">
+                  <Expression>RELATED(DimFinancialTransactionType[FinancialTransactionType])</Expression>
+                </Source>
+              </NameColumn>
+              <OrderBy>Key</OrderBy>
+            </Attribute>
           </Attributes>
           <ProactiveCaching>
             <SilenceInterval>-PT1S</SilenceInterval>
@@ -1749,7 +1781,7 @@
         </Dimension>
         <Dimension>
           <ID>Finance_FactGLTransaction_93bd22fb-039d-48a1-878c-f7df4be3abb3</ID>
-          <Name>GLTransaction</Name>
+          <Name>FactGLTransaction</Name>
           <Annotations>
             <Annotation>
               <Name>TableWidgetSerialization</Name>
@@ -2636,7 +2668,7 @@
         </Dimension>
         <Dimension>
           <ID>Shared_DimTransactionDate_2d5bb4df-1dea-40d7-8ade-21cdf85571cc</ID>
-          <Name>TransactionDate</Name>
+          <Name>DimTransactionDate</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -3791,7 +3823,7 @@
         </Dimension>
         <Dimension>
           <ID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</ID>
-          <Name>GLCodeHierarchy</Name>
+          <Name>DimGLCodeHierarchy</Name>
           <Annotations>
             <Annotation>
               <Name>TableWidgetSerialization</Name>
@@ -4973,7 +5005,7 @@
         </Dimension>
         <Dimension>
           <ID>Shared_DimForUser_887c071d-2983-403c-8665-91fe4f60624d</ID>
-          <Name>ForUser</Name>
+          <Name>DimForUser</Name>
           <Annotations>
             <Annotation>
               <Name>TableWidgetSerialization</Name>
@@ -5670,7 +5702,7 @@
         </Dimension>
         <Dimension>
           <ID>Shared_DimInitiatingUser_2e447019-c855-4bf7-93ee-9768676ce05c</ID>
-          <Name>InitiatingUser</Name>
+          <Name>DimInitiatingUser</Name>
           <Annotations>
             <Annotation>
               <Name>TableWidgetSerialization</Name>
@@ -6367,7 +6399,7 @@
         </Dimension>
         <Dimension>
           <ID>Shared_DimToUser_c1304c45-1826-4145-ba14-29e89d1f865e</ID>
-          <Name>ToUser</Name>
+          <Name>DimToUser</Name>
           <Annotations>
             <Annotation>
               <Name>TableWidgetSerialization</Name>
@@ -7064,7 +7096,7 @@
         </Dimension>
         <Dimension>
           <ID>Shared_DimUser_5944f5bf-2c55-4028-b093-c8a9f062c2c5</ID>
-          <Name>User</Name>
+          <Name>DimUser</Name>
           <Annotations>
             <Annotation>
               <Name>TableWidgetSerialization</Name>
@@ -7841,7 +7873,7 @@
         </Dimension>
         <Dimension>
           <ID>Shared_FactProcessEvent_7087ac98-fada-4355-969a-1d89a38dbce9</ID>
-          <Name>ProcessEvent</Name>
+          <Name>FactProcessEvent</Name>
           <Annotations>
             <Annotation>
               <Name>TableWidgetSerialization</Name>
@@ -10649,7 +10681,7 @@
         </Dimension>
         <Dimension>
           <ID>Shared_Organization_a5a64cd8-3c7b-4faf-a284-4c3aa48347dc</ID>
-          <Name>Organization</Name>
+          <Name>DimOrganization</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -11316,7 +11348,7 @@
         </Dimension>
         <Dimension>
           <ID>Shared_DimPagaAccount_861fbdf1-b3ae-49de-bdb9-b1fb753a97ea</ID>
-          <Name>PagaAccount</Name>
+          <Name>DimPagaAccount</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -12384,7 +12416,7 @@
         </Dimension>
         <Dimension>
           <ID>Classification_DimBankingStatus_686f8bb1-7b5e-4d14-a29d-b1895b51778e</ID>
-          <Name>BankingStatus</Name>
+          <Name>DimBankingStatus</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -12531,7 +12563,7 @@
         </Dimension>
         <Dimension>
           <ID>Classification_DimPagaAccountStatus_6a2e502b-3dca-44e2-a1b8-339f98a8fac1</ID>
-          <Name>PagaAccountStatus</Name>
+          <Name>DimPagaAccountStatus</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -12719,7 +12751,7 @@
         </Dimension>
         <Dimension>
           <ID>Classification_DimPagaAccountUserType_7a166db3-5261-4561-9fa9-cf7ed2372b27</ID>
-          <Name>PagaAccountUserType</Name>
+          <Name>DimPagaAccountUserType</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -12906,7 +12938,7 @@
         </Dimension>
         <Dimension>
           <ID>Classification_DimProcessChannel_8cab861f-0af6-48e8-b3c6-175015a730d5</ID>
-          <Name>ProcessChannel</Name>
+          <Name>DimProcessChannel</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -13134,7 +13166,7 @@
         </Dimension>
         <Dimension>
           <ID>Classification_DimProcessStatus_31790731-ca41-415b-83c7-fcbb25c48905</ID>
-          <Name>ProcessStatus</Name>
+          <Name>DimProcessStatus</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -13322,7 +13354,7 @@
         </Dimension>
         <Dimension>
           <ID>Classification_DimProcessType_4732b69d-c5da-4a69-874a-3b9def0c09f5</ID>
-          <Name>ProcessType</Name>
+          <Name>DimProcessType</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -13550,7 +13582,7 @@
         </Dimension>
         <Dimension>
           <ID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</ID>
-          <Name>ProcessCompletedDate</Name>
+          <Name>DimProcessCompletedDate</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -14705,7 +14737,7 @@
         </Dimension>
         <Dimension>
           <ID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</ID>
-          <Name>ProcessStartedDate</Name>
+          <Name>DimProcessStartedDate</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -15860,7 +15892,7 @@
         </Dimension>
         <Dimension>
           <ID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</ID>
-          <Name>PaymentUseCase</Name>
+          <Name>DimPaymentUseCase</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -16093,7 +16125,7 @@
         </Dimension>
         <Dimension>
           <ID>LatestFinancialTransaction_b90a5d4e-770a-4de4-a8e7-9dd9fce78026</ID>
-          <Name>LatestFinancialTransaction</Name>
+          <Name>FactLatestFinancialTransaction</Name>
           <Annotations>
             <Annotation>
               <Name>TableWidgetSerialization</Name>
@@ -16284,7 +16316,7 @@
         </Dimension>
         <Dimension>
           <ID>Finance_DimFinancialHoldingAccount_103d1548-0213-44cd-a219-5009a284c7e4</ID>
-          <Name>FinancialHoldingAccount</Name>
+          <Name>DimFinancialHoldingAccount</Name>
           <Annotations>
             <Annotation>
               <Name>IsQueryEditorUsed</Name>
@@ -16652,7 +16684,7 @@
           <Dimensions>
             <Dimension>
               <ID>Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2</ID>
-              <Name>FinancialTransactionType</Name>
+              <Name>DimFinancialTransactionType</Name>
               <DimensionID>Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2</DimensionID>
               <Attributes>
                 <Attribute>
@@ -16678,7 +16710,7 @@
             </Dimension>
             <Dimension>
               <ID>Finance_FactFinancialTransaction_ee0707f1-2dbc-47ec-a1c4-036ac7b5fec9</ID>
-              <Name>FinancialTransaction</Name>
+              <Name>FactFinancialTransaction</Name>
               <DimensionID>Finance_FactFinancialTransaction_ee0707f1-2dbc-47ec-a1c4-036ac7b5fec9</DimensionID>
               <Attributes>
                 <Attribute>
@@ -16757,11 +16789,14 @@
                 <Attribute>
                   <AttributeID>Cancelled</AttributeID>
                 </Attribute>
+                <Attribute>
+                  <AttributeID>CalculatedColumn1</AttributeID>
+                </Attribute>
               </Attributes>
             </Dimension>
             <Dimension>
               <ID>Finance_FactGLTransaction_93bd22fb-039d-48a1-878c-f7df4be3abb3</ID>
-              <Name>GLTransaction</Name>
+              <Name>FactGLTransaction</Name>
               <DimensionID>Finance_FactGLTransaction_93bd22fb-039d-48a1-878c-f7df4be3abb3</DimensionID>
               <Attributes>
                 <Attribute>
@@ -16809,7 +16844,7 @@
             </Dimension>
             <Dimension>
               <ID>Shared_DimTransactionDate_2d5bb4df-1dea-40d7-8ade-21cdf85571cc</ID>
-              <Name>TransactionDate</Name>
+              <Name>DimTransactionDate</Name>
               <DimensionID>Shared_DimTransactionDate_2d5bb4df-1dea-40d7-8ade-21cdf85571cc</DimensionID>
               <Attributes>
                 <Attribute>
@@ -16901,7 +16936,7 @@
             </Dimension>
             <Dimension>
               <ID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</ID>
-              <Name>GLCodeHierarchy</Name>
+              <Name>DimGLCodeHierarchy</Name>
               <DimensionID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</DimensionID>
               <Attributes>
                 <Attribute>
@@ -16970,7 +17005,7 @@
             </Dimension>
             <Dimension>
               <ID>Shared_DimForUser_887c071d-2983-403c-8665-91fe4f60624d</ID>
-              <Name>ForUser</Name>
+              <Name>DimForUser</Name>
               <DimensionID>Shared_DimForUser_887c071d-2983-403c-8665-91fe4f60624d</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17014,7 +17049,7 @@
             </Dimension>
             <Dimension>
               <ID>Shared_DimInitiatingUser_2e447019-c855-4bf7-93ee-9768676ce05c</ID>
-              <Name>InitiatingUser</Name>
+              <Name>DimInitiatingUser</Name>
               <DimensionID>Shared_DimInitiatingUser_2e447019-c855-4bf7-93ee-9768676ce05c</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17058,7 +17093,7 @@
             </Dimension>
             <Dimension>
               <ID>Shared_DimToUser_c1304c45-1826-4145-ba14-29e89d1f865e</ID>
-              <Name>ToUser</Name>
+              <Name>DimToUser</Name>
               <DimensionID>Shared_DimToUser_c1304c45-1826-4145-ba14-29e89d1f865e</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17102,7 +17137,7 @@
             </Dimension>
             <Dimension>
               <ID>Shared_DimUser_5944f5bf-2c55-4028-b093-c8a9f062c2c5</ID>
-              <Name>User</Name>
+              <Name>DimUser</Name>
               <DimensionID>Shared_DimUser_5944f5bf-2c55-4028-b093-c8a9f062c2c5</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17146,7 +17181,7 @@
             </Dimension>
             <Dimension>
               <ID>Shared_FactProcessEvent_7087ac98-fada-4355-969a-1d89a38dbce9</ID>
-              <Name>ProcessEvent</Name>
+              <Name>FactProcessEvent</Name>
               <DimensionID>Shared_FactProcessEvent_7087ac98-fada-4355-969a-1d89a38dbce9</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17274,7 +17309,7 @@
             </Dimension>
             <Dimension>
               <ID>Shared_Organization_a5a64cd8-3c7b-4faf-a284-4c3aa48347dc</ID>
-              <Name>Organization</Name>
+              <Name>DimOrganization</Name>
               <DimensionID>Shared_Organization_a5a64cd8-3c7b-4faf-a284-4c3aa48347dc</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17330,7 +17365,7 @@
             </Dimension>
             <Dimension>
               <ID>Shared_DimPagaAccount_861fbdf1-b3ae-49de-bdb9-b1fb753a97ea</ID>
-              <Name>PagaAccount</Name>
+              <Name>DimPagaAccount</Name>
               <DimensionID>Shared_DimPagaAccount_861fbdf1-b3ae-49de-bdb9-b1fb753a97ea</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17413,7 +17448,7 @@
             </Dimension>
             <Dimension>
               <ID>Classification_DimBankingStatus_686f8bb1-7b5e-4d14-a29d-b1895b51778e</ID>
-              <Name>BankingStatus</Name>
+              <Name>DimBankingStatus</Name>
               <DimensionID>Classification_DimBankingStatus_686f8bb1-7b5e-4d14-a29d-b1895b51778e</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17430,7 +17465,7 @@
             </Dimension>
             <Dimension>
               <ID>Classification_DimPagaAccountStatus_6a2e502b-3dca-44e2-a1b8-339f98a8fac1</ID>
-              <Name>PagaAccountStatus</Name>
+              <Name>DimPagaAccountStatus</Name>
               <DimensionID>Classification_DimPagaAccountStatus_6a2e502b-3dca-44e2-a1b8-339f98a8fac1</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17450,7 +17485,7 @@
             </Dimension>
             <Dimension>
               <ID>Classification_DimPagaAccountUserType_7a166db3-5261-4561-9fa9-cf7ed2372b27</ID>
-              <Name>PagaAccountUserType</Name>
+              <Name>DimPagaAccountUserType</Name>
               <DimensionID>Classification_DimPagaAccountUserType_7a166db3-5261-4561-9fa9-cf7ed2372b27</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17470,7 +17505,7 @@
             </Dimension>
             <Dimension>
               <ID>Classification_DimProcessChannel_8cab861f-0af6-48e8-b3c6-175015a730d5</ID>
-              <Name>ProcessChannel</Name>
+              <Name>DimProcessChannel</Name>
               <DimensionID>Classification_DimProcessChannel_8cab861f-0af6-48e8-b3c6-175015a730d5</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17493,7 +17528,7 @@
             </Dimension>
             <Dimension>
               <ID>Classification_DimProcessStatus_31790731-ca41-415b-83c7-fcbb25c48905</ID>
-              <Name>ProcessStatus</Name>
+              <Name>DimProcessStatus</Name>
               <DimensionID>Classification_DimProcessStatus_31790731-ca41-415b-83c7-fcbb25c48905</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17513,7 +17548,7 @@
             </Dimension>
             <Dimension>
               <ID>Classification_DimProcessType_4732b69d-c5da-4a69-874a-3b9def0c09f5</ID>
-              <Name>ProcessType</Name>
+              <Name>DimProcessType</Name>
               <DimensionID>Classification_DimProcessType_4732b69d-c5da-4a69-874a-3b9def0c09f5</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17536,7 +17571,7 @@
             </Dimension>
             <Dimension>
               <ID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</ID>
-              <Name>ProcessCompletedDate</Name>
+              <Name>DimProcessCompletedDate</Name>
               <DimensionID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17628,7 +17663,7 @@
             </Dimension>
             <Dimension>
               <ID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</ID>
-              <Name>ProcessStartedDate</Name>
+              <Name>DimProcessStartedDate</Name>
               <DimensionID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17720,7 +17755,7 @@
             </Dimension>
             <Dimension>
               <ID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</ID>
-              <Name>PaymentUseCase</Name>
+              <Name>DimPaymentUseCase</Name>
               <DimensionID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17748,7 +17783,7 @@
             </Dimension>
             <Dimension>
               <ID>LatestFinancialTransaction_b90a5d4e-770a-4de4-a8e7-9dd9fce78026</ID>
-              <Name>LatestFinancialTransaction</Name>
+              <Name>FactLatestFinancialTransaction</Name>
               <DimensionID>LatestFinancialTransaction_b90a5d4e-770a-4de4-a8e7-9dd9fce78026</DimensionID>
               <Attributes>
                 <Attribute>
@@ -17765,7 +17800,7 @@
             </Dimension>
             <Dimension>
               <ID>Finance_DimFinancialHoldingAccount_103d1548-0213-44cd-a219-5009a284c7e4</ID>
-              <Name>FinancialHoldingAccount</Name>
+              <Name>DimFinancialHoldingAccount</Name>
               <DimensionID>Finance_DimFinancialHoldingAccount_103d1548-0213-44cd-a219-5009a284c7e4</DimensionID>
               <Visible>false</Visible>
               <Attributes>
@@ -17807,11 +17842,11 @@
           <MeasureGroups>
             <MeasureGroup>
               <ID>Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2</ID>
-              <Name>FinancialTransactionType</Name>
+              <Name>DimFinancialTransactionType</Name>
               <Measures>
                 <Measure>
                   <ID>Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2</ID>
-                  <Name>_Count FinancialTransactionType</Name>
+                  <Name>_Count DimFinancialTransactionType</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -17958,11 +17993,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Finance_FactFinancialTransaction_ee0707f1-2dbc-47ec-a1c4-036ac7b5fec9</ID>
-              <Name>FinancialTransaction</Name>
+              <Name>FactFinancialTransaction</Name>
               <Measures>
                 <Measure>
                   <ID>Finance_FactFinancialTransaction_ee0707f1-2dbc-47ec-a1c4-036ac7b5fec9</ID>
-                  <Name>_Count FinancialTransaction</Name>
+                  <Name>_Count FactFinancialTransaction</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -18354,6 +18389,17 @@
                           <Source xsi:type="ColumnBinding">
                             <TableID>Finance_FactFinancialTransaction_ee0707f1-2dbc-47ec-a1c4-036ac7b5fec9</TableID>
                             <ColumnID>Cancelled</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>CalculatedColumn1</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Empty</DataType>
+                          <Source xsi:type="ddl200_200:ExpressionBinding">
+                            <Expression>RELATED(FinancialTransactionType[FinancialTransactionType])</Expression>
                           </Source>
                         </KeyColumn>
                       </KeyColumns>
@@ -21737,11 +21783,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Finance_FactGLTransaction_93bd22fb-039d-48a1-878c-f7df4be3abb3</ID>
-              <Name>GLTransaction</Name>
+              <Name>FactGLTransaction</Name>
               <Measures>
                 <Measure>
                   <ID>Finance_FactGLTransaction_93bd22fb-039d-48a1-878c-f7df4be3abb3</ID>
-                  <Name>_Count GLTransaction</Name>
+                  <Name>_Count FactGLTransaction</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -22833,6 +22879,17 @@
                           <Source xsi:type="ColumnBinding">
                             <TableID>Finance_FactFinancialTransaction_ee0707f1-2dbc-47ec-a1c4-036ac7b5fec9</TableID>
                             <ColumnID>Cancelled</ColumnID>
+                          </Source>
+                        </KeyColumn>
+                      </KeyColumns>
+                    </Attribute>
+                    <Attribute>
+                      <AttributeID>CalculatedColumn1</AttributeID>
+                      <KeyColumns>
+                        <KeyColumn>
+                          <DataType>Empty</DataType>
+                          <Source xsi:type="ddl200_200:ExpressionBinding">
+                            <Expression>RELATED(FinancialTransactionType[FinancialTransactionType])</Expression>
                           </Source>
                         </KeyColumn>
                       </KeyColumns>
@@ -26458,11 +26515,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Shared_DimTransactionDate_2d5bb4df-1dea-40d7-8ade-21cdf85571cc</ID>
-              <Name>TransactionDate</Name>
+              <Name>DimTransactionDate</Name>
               <Measures>
                 <Measure>
                   <ID>Shared_DimTransactionDate_2d5bb4df-1dea-40d7-8ade-21cdf85571cc</ID>
-                  <Name>_Count TransactionDate</Name>
+                  <Name>_Count DimTransactionDate</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -26954,11 +27011,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</ID>
-              <Name>GLCodeHierarchy</Name>
+              <Name>DimGLCodeHierarchy</Name>
               <Measures>
                 <Measure>
                   <ID>Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9</ID>
-                  <Name>_Count GLCodeHierarchy</Name>
+                  <Name>_Count DimGLCodeHierarchy</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -28388,11 +28445,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Shared_DimForUser_887c071d-2983-403c-8665-91fe4f60624d</ID>
-              <Name>ForUser</Name>
+              <Name>DimForUser</Name>
               <Measures>
                 <Measure>
                   <ID>Shared_DimForUser_887c071d-2983-403c-8665-91fe4f60624d</ID>
-                  <Name>_Count ForUser</Name>
+                  <Name>_Count DimForUser</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -28850,11 +28907,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Shared_DimInitiatingUser_2e447019-c855-4bf7-93ee-9768676ce05c</ID>
-              <Name>InitiatingUser</Name>
+              <Name>DimInitiatingUser</Name>
               <Measures>
                 <Measure>
                   <ID>Shared_DimInitiatingUser_2e447019-c855-4bf7-93ee-9768676ce05c</ID>
-                  <Name>_Count InitiatingUser</Name>
+                  <Name>_Count DimInitiatingUser</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -29312,11 +29369,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Shared_DimToUser_c1304c45-1826-4145-ba14-29e89d1f865e</ID>
-              <Name>ToUser</Name>
+              <Name>DimToUser</Name>
               <Measures>
                 <Measure>
                   <ID>Shared_DimToUser_c1304c45-1826-4145-ba14-29e89d1f865e</ID>
-                  <Name>_Count ToUser</Name>
+                  <Name>_Count DimToUser</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -29774,11 +29831,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Shared_DimUser_5944f5bf-2c55-4028-b093-c8a9f062c2c5</ID>
-              <Name>User</Name>
+              <Name>DimUser</Name>
               <Measures>
                 <Measure>
                   <ID>Shared_DimUser_5944f5bf-2c55-4028-b093-c8a9f062c2c5</ID>
-                  <Name>_Count User</Name>
+                  <Name>_Count DimUser</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -30316,11 +30373,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Shared_FactProcessEvent_7087ac98-fada-4355-969a-1d89a38dbce9</ID>
-              <Name>ProcessEvent</Name>
+              <Name>FactProcessEvent</Name>
               <Measures>
                 <Measure>
                   <ID>Shared_FactProcessEvent_7087ac98-fada-4355-969a-1d89a38dbce9</ID>
-                  <Name>_Count ProcessEvent</Name>
+                  <Name>_Count FactProcessEvent</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -33800,11 +33857,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Shared_Organization_a5a64cd8-3c7b-4faf-a284-4c3aa48347dc</ID>
-              <Name>Organization</Name>
+              <Name>DimOrganization</Name>
               <Measures>
                 <Measure>
                   <ID>Shared_Organization_a5a64cd8-3c7b-4faf-a284-4c3aa48347dc</ID>
-                  <Name>_Count Organization</Name>
+                  <Name>_Count DimOrganization</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -34116,11 +34173,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Shared_DimPagaAccount_861fbdf1-b3ae-49de-bdb9-b1fb753a97ea</ID>
-              <Name>PagaAccount</Name>
+              <Name>DimPagaAccount</Name>
               <Measures>
                 <Measure>
                   <ID>Shared_DimPagaAccount_861fbdf1-b3ae-49de-bdb9-b1fb753a97ea</ID>
-                  <Name>_Count PagaAccount</Name>
+                  <Name>_Count DimPagaAccount</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -34633,11 +34690,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Classification_DimBankingStatus_686f8bb1-7b5e-4d14-a29d-b1895b51778e</ID>
-              <Name>BankingStatus</Name>
+              <Name>DimBankingStatus</Name>
               <Measures>
                 <Measure>
                   <ID>Classification_DimBankingStatus_686f8bb1-7b5e-4d14-a29d-b1895b51778e</ID>
-                  <Name>_Count BankingStatus</Name>
+                  <Name>_Count DimBankingStatus</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -34754,11 +34811,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Classification_DimPagaAccountStatus_6a2e502b-3dca-44e2-a1b8-339f98a8fac1</ID>
-              <Name>PagaAccountStatus</Name>
+              <Name>DimPagaAccountStatus</Name>
               <Measures>
                 <Measure>
                   <ID>Classification_DimPagaAccountStatus_6a2e502b-3dca-44e2-a1b8-339f98a8fac1</ID>
-                  <Name>_Count PagaAccountStatus</Name>
+                  <Name>_Count DimPagaAccountStatus</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -34890,11 +34947,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Classification_DimPagaAccountUserType_7a166db3-5261-4561-9fa9-cf7ed2372b27</ID>
-              <Name>PagaAccountUserType</Name>
+              <Name>DimPagaAccountUserType</Name>
               <Measures>
                 <Measure>
                   <ID>Classification_DimPagaAccountUserType_7a166db3-5261-4561-9fa9-cf7ed2372b27</ID>
-                  <Name>_Count PagaAccountUserType</Name>
+                  <Name>_Count DimPagaAccountUserType</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -35026,11 +35083,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Classification_DimProcessChannel_8cab861f-0af6-48e8-b3c6-175015a730d5</ID>
-              <Name>ProcessChannel</Name>
+              <Name>DimProcessChannel</Name>
               <Measures>
                 <Measure>
                   <ID>Classification_DimProcessChannel_8cab861f-0af6-48e8-b3c6-175015a730d5</ID>
-                  <Name>_Count ProcessChannel</Name>
+                  <Name>_Count DimProcessChannel</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -35177,11 +35234,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Classification_DimProcessStatus_31790731-ca41-415b-83c7-fcbb25c48905</ID>
-              <Name>ProcessStatus</Name>
+              <Name>DimProcessStatus</Name>
               <Measures>
                 <Measure>
                   <ID>Classification_DimProcessStatus_31790731-ca41-415b-83c7-fcbb25c48905</ID>
-                  <Name>_Count ProcessStatus</Name>
+                  <Name>_Count DimProcessStatus</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -35313,11 +35370,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Classification_DimProcessType_4732b69d-c5da-4a69-874a-3b9def0c09f5</ID>
-              <Name>ProcessType</Name>
+              <Name>DimProcessType</Name>
               <Measures>
                 <Measure>
                   <ID>Classification_DimProcessType_4732b69d-c5da-4a69-874a-3b9def0c09f5</ID>
-                  <Name>_Count ProcessType</Name>
+                  <Name>_Count DimProcessType</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -35464,11 +35521,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</ID>
-              <Name>ProcessCompletedDate</Name>
+              <Name>DimProcessCompletedDate</Name>
               <Measures>
                 <Measure>
                   <ID>ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c</ID>
-                  <Name>_Count ProcessCompletedDate</Name>
+                  <Name>_Count DimProcessCompletedDate</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -35960,11 +36017,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</ID>
-              <Name>ProcessStartedDate</Name>
+              <Name>DimProcessStartedDate</Name>
               <Measures>
                 <Measure>
                   <ID>ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82</ID>
-                  <Name>_Count ProcessStartedDate</Name>
+                  <Name>_Count DimProcessStartedDate</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -36456,11 +36513,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</ID>
-              <Name>PaymentUseCase</Name>
+              <Name>DimPaymentUseCase</Name>
               <Measures>
                 <Measure>
                   <ID>Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b</ID>
-                  <Name>_Count PaymentUseCase</Name>
+                  <Name>_Count DimPaymentUseCase</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -36673,11 +36730,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>LatestFinancialTransaction_b90a5d4e-770a-4de4-a8e7-9dd9fce78026</ID>
-              <Name>LatestFinancialTransaction</Name>
+              <Name>FactLatestFinancialTransaction</Name>
               <Measures>
                 <Measure>
                   <ID>LatestFinancialTransaction_b90a5d4e-770a-4de4-a8e7-9dd9fce78026</ID>
-                  <Name>_Count LatestFinancialTransaction</Name>
+                  <Name>_Count FactLatestFinancialTransaction</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -36856,11 +36913,11 @@
             </MeasureGroup>
             <MeasureGroup>
               <ID>Finance_DimFinancialHoldingAccount_103d1548-0213-44cd-a219-5009a284c7e4</ID>
-              <Name>FinancialHoldingAccount</Name>
+              <Name>DimFinancialHoldingAccount</Name>
               <Measures>
                 <Measure>
                   <ID>Finance_DimFinancialHoldingAccount_103d1548-0213-44cd-a219-5009a284c7e4</ID>
-                  <Name>_Count FinancialHoldingAccount</Name>
+                  <Name>_Count DimFinancialHoldingAccount</Name>
                   <AggregateFunction>Count</AggregateFunction>
                   <DataType>BigInt</DataType>
                   <Source>
@@ -37070,7 +37127,7 @@ ALTER CUBE CURRENTCUBE UPDATE DIMENSION Measures, Default_Member = [__No measure
 ----------------------------------------------------------
 
 
-CREATE MEASURE 'GLTransaction'[TxCount]=CALCULATE(DISTINCTCOUNT(GLTransaction[FactFinancialTxID]));
+CREATE MEASURE 'FactGLTransaction'[TxCount]=CALCULATE(DISTINCTCOUNT(FactGLTransaction[FactFinancialTxID]));
 </Text>
                   <Annotations>
                     <Annotation>
@@ -37079,7 +37136,7 @@ CREATE MEASURE 'GLTransaction'[TxCount]=CALCULATE(DISTINCTCOUNT(GLTransaction[Fa
                     </Annotation>
                     <Annotation>
                       <Name>Table</Name>
-                      <Value>GLTransaction</Value>
+                      <Value>FactGLTransaction</Value>
                     </Annotation>
                   </Annotations>
                 </Command>
@@ -37089,7 +37146,7 @@ CREATE MEASURE 'GLTransaction'[TxCount]=CALCULATE(DISTINCTCOUNT(GLTransaction[Fa
 ----------------------------------------------------------
 
 
-CREATE MEASURE 'GLTransaction'[Credits]=SUM(GLTransaction[CreditAmount]);
+CREATE MEASURE 'FactGLTransaction'[Credits]=SUM(FactGLTransaction[CreditAmount]);
 </Text>
                   <Annotations>
                     <Annotation>
@@ -37098,7 +37155,7 @@ CREATE MEASURE 'GLTransaction'[Credits]=SUM(GLTransaction[CreditAmount]);
                     </Annotation>
                     <Annotation>
                       <Name>Table</Name>
-                      <Value>GLTransaction</Value>
+                      <Value>FactGLTransaction</Value>
                     </Annotation>
                   </Annotations>
                 </Command>
@@ -37108,7 +37165,7 @@ CREATE MEASURE 'GLTransaction'[Credits]=SUM(GLTransaction[CreditAmount]);
 ----------------------------------------------------------
 
 
-CREATE MEASURE 'GLTransaction'[Debits]=SUM(GLTransaction[DebitAmount]);
+CREATE MEASURE 'FactGLTransaction'[Debits]=SUM(FactGLTransaction[DebitAmount]);
 </Text>
                   <Annotations>
                     <Annotation>
@@ -37117,7 +37174,7 @@ CREATE MEASURE 'GLTransaction'[Debits]=SUM(GLTransaction[DebitAmount]);
                     </Annotation>
                     <Annotation>
                       <Name>Table</Name>
-                      <Value>GLTransaction</Value>
+                      <Value>FactGLTransaction</Value>
                     </Annotation>
                   </Annotations>
                 </Command>
@@ -37127,7 +37184,7 @@ CREATE MEASURE 'GLTransaction'[Debits]=SUM(GLTransaction[DebitAmount]);
 ----------------------------------------------------------
 
 
-CREATE MEASURE 'GLTransaction'[Balance]=SUM(GLTransaction[Bal]);
+CREATE MEASURE 'FactGLTransaction'[Balance]=SUM(FactGLTransaction[Bal]);
 </Text>
                   <Annotations>
                     <Annotation>
@@ -37136,7 +37193,7 @@ CREATE MEASURE 'GLTransaction'[Balance]=SUM(GLTransaction[Bal]);
                     </Annotation>
                     <Annotation>
                       <Name>Table</Name>
-                      <Value>GLTransaction</Value>
+                      <Value>FactGLTransaction</Value>
                     </Annotation>
                   </Annotations>
                 </Command>
@@ -37146,7 +37203,7 @@ CREATE MEASURE 'GLTransaction'[Balance]=SUM(GLTransaction[Bal]);
 ----------------------------------------------------------
 
 
-CREATE MEASURE 'ProcessEvent'[ProcessEventCount]=COUNT(ProcessEvent[FactProcessEventID]);
+CREATE MEASURE 'FactProcessEvent'[ProcessEventCount]=COUNT(FactProcessEvent[FactProcessEventID]);
 </Text>
                   <Annotations>
                     <Annotation>
@@ -37155,7 +37212,7 @@ CREATE MEASURE 'ProcessEvent'[ProcessEventCount]=COUNT(ProcessEvent[FactProcessE
                     </Annotation>
                     <Annotation>
                       <Name>Table</Name>
-                      <Value>ProcessEvent</Value>
+                      <Value>FactProcessEvent</Value>
                     </Annotation>
                   </Annotations>
                 </Command>
@@ -37165,7 +37222,7 @@ CREATE MEASURE 'ProcessEvent'[ProcessEventCount]=COUNT(ProcessEvent[FactProcessE
 ----------------------------------------------------------
 
 
-CREATE MEASURE 'FinancialTransaction'[BaseTransaction]=CALCULATE(SUM(FinancialTransaction[FinancialTx_Amount]));
+CREATE MEASURE 'FactFinancialTransaction'[BaseTransaction]=CALCULATE(SUM(FactFinancialTransaction[FinancialTx_Amount]));
 </Text>
                   <Annotations>
                     <Annotation>
@@ -37174,7 +37231,7 @@ CREATE MEASURE 'FinancialTransaction'[BaseTransaction]=CALCULATE(SUM(FinancialTr
                     </Annotation>
                     <Annotation>
                       <Name>Table</Name>
-                      <Value>FinancialTransaction</Value>
+                      <Value>FactFinancialTransaction</Value>
                     </Annotation>
                   </Annotations>
                 </Command>
@@ -37184,7 +37241,7 @@ CREATE MEASURE 'FinancialTransaction'[BaseTransaction]=CALCULATE(SUM(FinancialTr
 ----------------------------------------------------------
 
 
-CREATE MEASURE 'GLTransaction'[TxAmount]=CALCULATE(SUM(GLTransaction[Movement]));
+CREATE MEASURE 'FactGLTransaction'[TxAmount]=CALCULATE(SUM(factGLTransaction[Movement]));
 </Text>
                   <Annotations>
                     <Annotation>
@@ -37193,7 +37250,7 @@ CREATE MEASURE 'GLTransaction'[TxAmount]=CALCULATE(SUM(GLTransaction[Movement]))
                     </Annotation>
                     <Annotation>
                       <Name>Table</Name>
-                      <Value>GLTransaction</Value>
+                      <Value>FactGLTransaction</Value>
                     </Annotation>
                   </Annotations>
                 </Command>
@@ -37203,7 +37260,7 @@ CREATE MEASURE 'GLTransaction'[TxAmount]=CALCULATE(SUM(GLTransaction[Movement]))
 ----------------------------------------------------------
 
 
-CREATE MEASURE 'ProcessEvent'[ProcessTxAmt]=(SUM(ProcessEvent[ProcessTx_Amount]));
+CREATE MEASURE 'FactProcessEvent'[ProcessTxAmt]=(SUM(FactProcessEvent[ProcessTx_Amount]));
 </Text>
                   <Annotations>
                     <Annotation>
@@ -37212,7 +37269,7 @@ CREATE MEASURE 'ProcessEvent'[ProcessTxAmt]=(SUM(ProcessEvent[ProcessTx_Amount])
                     </Annotation>
                     <Annotation>
                       <Name>Table</Name>
-                      <Value>ProcessEvent</Value>
+                      <Value>FactProcessEvent</Value>
                     </Annotation>
                   </Annotations>
                 </Command>
@@ -37222,7 +37279,7 @@ CREATE MEASURE 'ProcessEvent'[ProcessTxAmt]=(SUM(ProcessEvent[ProcessTx_Amount])
 ----------------------------------------------------------
 
 
-CREATE MEASURE 'GLTransaction'[LineItemCount]=CALCULATE(COUNT(GLTransaction[FactGLTxID]));
+CREATE MEASURE 'FactGLTransaction'[LineItemCount]=CALCULATE(COUNT(FactGLTransaction[FactGLTxID]));
 </Text>
                   <Annotations>
                     <Annotation>
@@ -37231,7 +37288,7 @@ CREATE MEASURE 'GLTransaction'[LineItemCount]=CALCULATE(COUNT(GLTransaction[Fact
                     </Annotation>
                     <Annotation>
                       <Name>Table</Name>
-                      <Value>GLTransaction</Value>
+                      <Value>FactGLTransaction</Value>
                     </Annotation>
                   </Annotations>
                 </Command>
@@ -37241,7 +37298,7 @@ CREATE MEASURE 'GLTransaction'[LineItemCount]=CALCULATE(COUNT(GLTransaction[Fact
 ----------------------------------------------------------
 
 
-CREATE MEASURE 'GLCodeHierarchy'[OpeningBal]=SUM(GLCodeHierarchy[OpeningBalance]);
+CREATE MEASURE 'DimGLCodeHierarchy'[OpeningBal]=SUM(DimGLCodeHierarchy[OpeningBalance]);
 </Text>
                   <Annotations>
                     <Annotation>
@@ -37250,7 +37307,7 @@ CREATE MEASURE 'GLCodeHierarchy'[OpeningBal]=SUM(GLCodeHierarchy[OpeningBalance]
                     </Annotation>
                     <Annotation>
                       <Name>Table</Name>
-                      <Value>GLCodeHierarchy</Value>
+                      <Value>DimGLCodeHierarchy</Value>
                     </Annotation>
                   </Annotations>
                 </Command>
@@ -37260,7 +37317,7 @@ CREATE MEASURE 'GLCodeHierarchy'[OpeningBal]=SUM(GLCodeHierarchy[OpeningBalance]
 ----------------------------------------------------------
 
 
-CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
+CREATE MEASURE 'DimGLCodeHierarchy'[TotalBal]=SUM(DimGLCodeHierarchy[TotalBalance]);
 </Text>
                   <Annotations>
                     <Annotation>
@@ -37269,7 +37326,26 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                     </Annotation>
                     <Annotation>
                       <Name>Table</Name>
-                      <Value>GLCodeHierarchy</Value>
+                      <Value>DimGLCodeHierarchy</Value>
+                    </Annotation>
+                  </Annotations>
+                </Command>
+                <Command>
+                  <Text>----------------------------------------------------------
+-- PowerPivot measures command (do not modify manually) --
+----------------------------------------------------------
+
+
+CREATE MEASURE 'FactFinancialTransaction'[TrxTypeTextMeasure]=IF(HASONEVALUE(FactFinancialTransaction[FactFinancialTxID]) &amp;&amp; NOT ISBLANK([TxAmount]), FIRSTNONBLANK(FactFinancialTransaction[TrxType], 1));
+</Text>
+                  <Annotations>
+                    <Annotation>
+                      <Name>FullName</Name>
+                      <Value>TrxTypeTextMeasure</Value>
+                    </Annotation>
+                    <Annotation>
+                      <Name>Table</Name>
+                      <Value>FactFinancialTransaction</Value>
                     </Annotation>
                   </Annotations>
                 </Command>
@@ -37507,6 +37583,27 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                   <FormatString>''</FormatString>
                 </CalculationProperty>
                 <CalculationProperty>
+                  <Annotations>
+                    <Annotation>
+                      <Name>Type</Name>
+                      <Value>User</Value>
+                    </Annotation>
+                    <Annotation>
+                      <Name>IsPrivate</Name>
+                      <Value>False</Value>
+                    </Annotation>
+                    <Annotation>
+                      <Name>Format</Name>
+                      <Value>
+                        <Format Format="General" xmlns="" />
+                      </Value>
+                    </Annotation>
+                  </Annotations>
+                  <CalculationReference>[TrxTypeTextMeasure]</CalculationReference>
+                  <CalculationType>Member</CalculationType>
+                  <FormatString>''</FormatString>
+                </CalculationProperty>
+                <CalculationProperty>
                   <CalculationReference>Measures.[__No measures defined]</CalculationReference>
                   <CalculationType>Member</CalculationType>
                   <Visible>false</Visible>
@@ -37551,7 +37648,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
               <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:Locale="en-US">
                 <xs:complexType>
                   <xs:choice minOccurs="0" maxOccurs="unbounded">
-                    <xs:element name="Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="FinancialTransactionType" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimFinancialTransactionType" msprop:TableType="View" msprop:Description="Classification_DimFinancialTransactionType" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimFinancialTransactionType].*   FROM [OLAP].[Classification_DimFinancialTransactionType] ">
+                    <xs:element name="Classification_DimFinancialTransactionType_2689794f-8006-4c49-bd46-8f8ae7f968d2" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimFinancialTransactionType" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimFinancialTransactionType" msprop:TableType="View" msprop:Description="Classification_DimFinancialTransactionType" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimFinancialTransactionType].*   FROM [OLAP].[Classification_DimFinancialTransactionType] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimFinancialTxTypeID" msprop:DbColumnName="DimFinancialTxTypeID" msprop:FriendlyName="DimFinancialTxTypeID" type="xs:long" minOccurs="0" />
@@ -37579,7 +37676,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Finance_FactFinancialTransaction_ee0707f1-2dbc-47ec-a1c4-036ac7b5fec9" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="FinancialTransaction" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_FactFinancialTransaction" msprop:TableType="View" msprop:Description="Finance_FactFinancialTransaction" msprop:QueryDefinition="      SELECT [OLAP].[Finance_FactFinancialTransaction].*   FROM [OLAP].[Finance_FactFinancialTransaction] ">
+                    <xs:element name="Finance_FactFinancialTransaction_ee0707f1-2dbc-47ec-a1c4-036ac7b5fec9" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="FactFinancialTransaction" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_FactFinancialTransaction" msprop:TableType="View" msprop:Description="Finance_FactFinancialTransaction" msprop:QueryDefinition="      SELECT [OLAP].[Finance_FactFinancialTransaction].*   FROM [OLAP].[Finance_FactFinancialTransaction] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="FactFinancialTxID" msprop:DbColumnName="FactFinancialTxID" msprop:FriendlyName="FactFinancialTxID" type="xs:long" minOccurs="0" />
@@ -37633,7 +37730,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Finance_FactGLTransaction_93bd22fb-039d-48a1-878c-f7df4be3abb3" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="GLTransaction" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_FactGLTransaction" msprop:TableType="View" msprop:Description="Finance_FactGLTransaction" msprop:QueryDefinition="      SELECT [OLAP].[Finance_FactGLTransaction].*   FROM [OLAP].[Finance_FactGLTransaction] ">
+                    <xs:element name="Finance_FactGLTransaction_93bd22fb-039d-48a1-878c-f7df4be3abb3" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="FactGLTransaction" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_FactGLTransaction" msprop:TableType="View" msprop:Description="Finance_FactGLTransaction" msprop:QueryDefinition="      SELECT [OLAP].[Finance_FactGLTransaction].*   FROM [OLAP].[Finance_FactGLTransaction] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="FactGLTxID" msprop:DbColumnName="FactGLTxID" msprop:FriendlyName="FactGLTxID" type="xs:long" minOccurs="0" />
@@ -37657,7 +37754,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Shared_DimTransactionDate_2d5bb4df-1dea-40d7-8ade-21cdf85571cc" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="TransactionDate" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimTransactionDate" msprop:TableType="View" msprop:Description="Shared_DimTransactionDate" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimTransactionDate].*   FROM [OLAP].[Shared_DimTransactionDate] ">
+                    <xs:element name="Shared_DimTransactionDate_2d5bb4df-1dea-40d7-8ade-21cdf85571cc" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimTransactionDate" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimTransactionDate" msprop:TableType="View" msprop:Description="Shared_DimTransactionDate" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimTransactionDate].*   FROM [OLAP].[Shared_DimTransactionDate] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DateSK" msprop:DbColumnName="DateSK" msprop:FriendlyName="DateSK" type="xs:long" minOccurs="0" />
@@ -37750,7 +37847,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="GLCodeHierarchy" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_GLCodeHierarchy" msprop:TableType="View" msprop:Description="Finance_GLCodeHierarchy" msprop:QueryDefinition="      SELECT [OLAP].[Finance_GLCodeHierarchy].*   FROM [OLAP].[Finance_GLCodeHierarchy] ">
+                    <xs:element name="Finance_GLCodeHierarchy_a1972e28-1bff-4065-b55b-7acfb3cf41c9" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimGLCodeHierarchy" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_GLCodeHierarchy" msprop:TableType="View" msprop:Description="Finance_GLCodeHierarchy" msprop:QueryDefinition="      SELECT [OLAP].[Finance_GLCodeHierarchy].*   FROM [OLAP].[Finance_GLCodeHierarchy] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="GLCode" msprop:DbColumnName="GLCode" msprop:FriendlyName="GLCode" type="xs:int" minOccurs="0" />
@@ -37823,7 +37920,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Shared_DimForUser_887c071d-2983-403c-8665-91fe4f60624d" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="ForUser" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimForUser" msprop:TableType="View" msprop:Description="Shared_DimForUser" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimForUser].*   FROM [OLAP].[Shared_DimForUser] ">
+                    <xs:element name="Shared_DimForUser_887c071d-2983-403c-8665-91fe4f60624d" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimForUser" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimForUser" msprop:TableType="View" msprop:Description="Shared_DimForUser" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimForUser].*   FROM [OLAP].[Shared_DimForUser] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimForUserID" msprop:DbColumnName="DimForUserID" msprop:FriendlyName="DimForUserID" type="xs:long" minOccurs="0" />
@@ -37876,7 +37973,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Shared_DimInitiatingUser_2e447019-c855-4bf7-93ee-9768676ce05c" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="InitiatingUser" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimInitiatingUser" msprop:TableType="View" msprop:Description="Shared_DimInitiatingUser" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimInitiatingUser].*   FROM [OLAP].[Shared_DimInitiatingUser] ">
+                    <xs:element name="Shared_DimInitiatingUser_2e447019-c855-4bf7-93ee-9768676ce05c" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimInitiatingUser" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimInitiatingUser" msprop:TableType="View" msprop:Description="Shared_DimInitiatingUser" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimInitiatingUser].*   FROM [OLAP].[Shared_DimInitiatingUser] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimInitiatingUserID" msprop:DbColumnName="DimInitiatingUserID" msprop:FriendlyName="DimInitiatingUserID" type="xs:long" minOccurs="0" />
@@ -37929,7 +38026,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Shared_DimToUser_c1304c45-1826-4145-ba14-29e89d1f865e" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="ToUser" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimToUser" msprop:TableType="View" msprop:Description="Shared_DimToUser" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimToUser].*   FROM [OLAP].[Shared_DimToUser] ">
+                    <xs:element name="Shared_DimToUser_c1304c45-1826-4145-ba14-29e89d1f865e" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimToUser" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimToUser" msprop:TableType="View" msprop:Description="Shared_DimToUser" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimToUser].*   FROM [OLAP].[Shared_DimToUser] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimToUserID" msprop:DbColumnName="DimToUserID" msprop:FriendlyName="DimToUserID" type="xs:long" minOccurs="0" />
@@ -37982,7 +38079,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Shared_DimUser_5944f5bf-2c55-4028-b093-c8a9f062c2c5" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="User" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimUser" msprop:TableType="View" msprop:Description="Shared_DimUser" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimUser].*   FROM [OLAP].[Shared_DimUser] ">
+                    <xs:element name="Shared_DimUser_5944f5bf-2c55-4028-b093-c8a9f062c2c5" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimUser" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimUser" msprop:TableType="View" msprop:Description="Shared_DimUser" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimUser].*   FROM [OLAP].[Shared_DimUser] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimUserID" msprop:DbColumnName="DimUserID" msprop:FriendlyName="DimUserID" type="xs:long" minOccurs="0" />
@@ -38035,7 +38132,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Shared_FactProcessEvent_7087ac98-fada-4355-969a-1d89a38dbce9" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="ProcessEvent" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_FactProcessEvent" msprop:TableType="View" msprop:Description="Shared_FactProcessEvent" msprop:QueryDefinition="      SELECT [OLAP].[Shared_FactProcessEvent].*   FROM [OLAP].[Shared_FactProcessEvent]  WHERE ([DimStartedDateID] &gt; 20150101) ">
+                    <xs:element name="Shared_FactProcessEvent_7087ac98-fada-4355-969a-1d89a38dbce9" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="FactProcessEvent" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_FactProcessEvent" msprop:TableType="View" msprop:Description="Shared_FactProcessEvent" msprop:QueryDefinition="      SELECT [OLAP].[Shared_FactProcessEvent].*   FROM [OLAP].[Shared_FactProcessEvent]  WHERE ([DimStartedDateID] &gt; 20150101) ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="FactProcessEventID" msprop:DbColumnName="FactProcessEventID" msprop:FriendlyName="FactProcessEventID" type="xs:long" minOccurs="0" />
@@ -38170,7 +38267,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Shared_Organization_a5a64cd8-3c7b-4faf-a284-4c3aa48347dc" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="Organization" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_Organization" msprop:TableType="View" msprop:Description="Shared_Organization" msprop:QueryDefinition="      SELECT [OLAP].[Shared_Organization].*   FROM [OLAP].[Shared_Organization] ">
+                    <xs:element name="Shared_Organization_a5a64cd8-3c7b-4faf-a284-4c3aa48347dc" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimOrganization" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_Organization" msprop:TableType="View" msprop:Description="Shared_Organization" msprop:QueryDefinition="      SELECT [OLAP].[Shared_Organization].*   FROM [OLAP].[Shared_Organization] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimOrganizationID" msprop:DbColumnName="DimOrganizationID" msprop:FriendlyName="DimOrganizationID" type="xs:long" minOccurs="0" />
@@ -38245,7 +38342,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Shared_DimPagaAccount_861fbdf1-b3ae-49de-bdb9-b1fb753a97ea" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="PagaAccount" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimPagaAccount" msprop:TableType="View" msprop:Description="Shared_DimPagaAccount" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimPagaAccount].*   FROM [OLAP].[Shared_DimPagaAccount] ">
+                    <xs:element name="Shared_DimPagaAccount_861fbdf1-b3ae-49de-bdb9-b1fb753a97ea" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimPagaAccount" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimPagaAccount" msprop:TableType="View" msprop:Description="Shared_DimPagaAccount" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimPagaAccount].*   FROM [OLAP].[Shared_DimPagaAccount] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimPagaAccountID" msprop:DbColumnName="DimPagaAccountID" msprop:FriendlyName="DimPagaAccountID" type="xs:long" minOccurs="0" />
@@ -38299,7 +38396,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Classification_DimBankingStatus_686f8bb1-7b5e-4d14-a29d-b1895b51778e" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="BankingStatus" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimBankingStatus" msprop:TableType="View" msprop:Description="Classification_DimBankingStatus" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimBankingStatus].*   FROM [OLAP].[Classification_DimBankingStatus] ">
+                    <xs:element name="Classification_DimBankingStatus_686f8bb1-7b5e-4d14-a29d-b1895b51778e" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimBankingStatus" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimBankingStatus" msprop:TableType="View" msprop:Description="Classification_DimBankingStatus" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimBankingStatus].*   FROM [OLAP].[Classification_DimBankingStatus] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimBankingStatusID" msprop:DbColumnName="DimBankingStatusID" msprop:FriendlyName="DimBankingStatusID" type="xs:long" minOccurs="0" />
@@ -38313,7 +38410,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Classification_DimPagaAccountStatus_6a2e502b-3dca-44e2-a1b8-339f98a8fac1" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="PagaAccountStatus" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimPagaAccountStatus" msprop:TableType="View" msprop:Description="Classification_DimPagaAccountStatus" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimPagaAccountStatus].*   FROM [OLAP].[Classification_DimPagaAccountStatus] ">
+                    <xs:element name="Classification_DimPagaAccountStatus_6a2e502b-3dca-44e2-a1b8-339f98a8fac1" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimPagaAccountStatus" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimPagaAccountStatus" msprop:TableType="View" msprop:Description="Classification_DimPagaAccountStatus" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimPagaAccountStatus].*   FROM [OLAP].[Classification_DimPagaAccountStatus] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimPagaAccountStatusID" msprop:DbColumnName="DimPagaAccountStatusID" msprop:FriendlyName="DimPagaAccountStatusID" type="xs:long" minOccurs="0" />
@@ -38334,7 +38431,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Classification_DimPagaAccountUserType_7a166db3-5261-4561-9fa9-cf7ed2372b27" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="PagaAccountUserType" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimPagaAccountUserType" msprop:TableType="View" msprop:Description="Classification_DimPagaAccountUserType" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimPagaAccountUserType].*   FROM [OLAP].[Classification_DimPagaAccountUserType] ">
+                    <xs:element name="Classification_DimPagaAccountUserType_7a166db3-5261-4561-9fa9-cf7ed2372b27" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimPagaAccountUserType" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimPagaAccountUserType" msprop:TableType="View" msprop:Description="Classification_DimPagaAccountUserType" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimPagaAccountUserType].*   FROM [OLAP].[Classification_DimPagaAccountUserType] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimPagaAccountUserTypeID" msprop:DbColumnName="DimPagaAccountUserTypeID" msprop:FriendlyName="DimPagaAccountUserTypeID" type="xs:long" minOccurs="0" />
@@ -38355,7 +38452,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Classification_DimProcessChannel_8cab861f-0af6-48e8-b3c6-175015a730d5" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="ProcessChannel" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimProcessChannel" msprop:TableType="View" msprop:Description="Classification_DimProcessChannel" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimProcessChannel].*   FROM [OLAP].[Classification_DimProcessChannel] ">
+                    <xs:element name="Classification_DimProcessChannel_8cab861f-0af6-48e8-b3c6-175015a730d5" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimProcessChannel" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimProcessChannel" msprop:TableType="View" msprop:Description="Classification_DimProcessChannel" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimProcessChannel].*   FROM [OLAP].[Classification_DimProcessChannel] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimProcessChannelID" msprop:DbColumnName="DimProcessChannelID" msprop:FriendlyName="DimProcessChannelID" type="xs:long" minOccurs="0" />
@@ -38383,7 +38480,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Classification_DimProcessStatus_31790731-ca41-415b-83c7-fcbb25c48905" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="ProcessStatus" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimProcessStatus" msprop:TableType="View" msprop:Description="Classification_DimProcessStatus" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimProcessStatus].*   FROM [OLAP].[Classification_DimProcessStatus] ">
+                    <xs:element name="Classification_DimProcessStatus_31790731-ca41-415b-83c7-fcbb25c48905" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimProcessStatus" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimProcessStatus" msprop:TableType="View" msprop:Description="Classification_DimProcessStatus" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimProcessStatus].*   FROM [OLAP].[Classification_DimProcessStatus] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimProcessStatusID" msprop:DbColumnName="DimProcessStatusID" msprop:FriendlyName="DimProcessStatusID" type="xs:long" minOccurs="0" />
@@ -38404,7 +38501,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Classification_DimProcessType_4732b69d-c5da-4a69-874a-3b9def0c09f5" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="ProcessType" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimProcessType" msprop:TableType="View" msprop:Description="Classification_DimProcessType" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimProcessType].*   FROM [OLAP].[Classification_DimProcessType] ">
+                    <xs:element name="Classification_DimProcessType_4732b69d-c5da-4a69-874a-3b9def0c09f5" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimProcessType" msprop:DbSchemaName="OLAP" msprop:DbTableName="Classification_DimProcessType" msprop:TableType="View" msprop:Description="Classification_DimProcessType" msprop:QueryDefinition="      SELECT [OLAP].[Classification_DimProcessType].*   FROM [OLAP].[Classification_DimProcessType] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimProcessTypeID" msprop:DbColumnName="DimProcessTypeID" msprop:FriendlyName="DimProcessTypeID" type="xs:long" minOccurs="0" />
@@ -38432,7 +38529,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="ProcessCompletedDate" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimCompletedDate" msprop:TableType="View" msprop:Description="ProcessCompletedDate" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimCompletedDate].*   FROM [OLAP].[Shared_DimCompletedDate] ">
+                    <xs:element name="ProcessCompletedDate_779712aa-dca5-4a80-aaa4-13e32fdb423c" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimProcessCompletedDate" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimCompletedDate" msprop:TableType="View" msprop:Description="ProcessCompletedDate" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimCompletedDate].*   FROM [OLAP].[Shared_DimCompletedDate] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DateSK" msprop:DbColumnName="DateSK" msprop:FriendlyName="DateSK" type="xs:long" minOccurs="0" />
@@ -38525,7 +38622,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="ProcessStartedDate" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimStartedDate" msprop:TableType="View" msprop:Description="ProcessStartedDate" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimStartedDate].*   FROM [OLAP].[Shared_DimStartedDate] ">
+                    <xs:element name="ProcessStartedDate_0bc48654-3cbf-4feb-a37a-8e366c2d4d82" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimProcessStartedDate" msprop:DbSchemaName="OLAP" msprop:DbTableName="Shared_DimStartedDate" msprop:TableType="View" msprop:Description="ProcessStartedDate" msprop:QueryDefinition="      SELECT [OLAP].[Shared_DimStartedDate].*   FROM [OLAP].[Shared_DimStartedDate] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DateSK" msprop:DbColumnName="DateSK" msprop:FriendlyName="DateSK" type="xs:long" minOccurs="0" />
@@ -38618,7 +38715,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="PaymentUseCase" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_DimPaymentUseCase" msprop:TableType="View" msprop:Description="Finance_DimPaymentUseCase" msprop:QueryDefinition="      SELECT [OLAP].[Finance_DimPaymentUseCase].*   FROM [OLAP].[Finance_DimPaymentUseCase] ">
+                    <xs:element name="Finance_DimPaymentUseCase_aecb51c4-0a9f-46c9-960a-07574a74691b" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimPaymentUseCase" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_DimPaymentUseCase" msprop:TableType="View" msprop:Description="Finance_DimPaymentUseCase" msprop:QueryDefinition="      SELECT [OLAP].[Finance_DimPaymentUseCase].*   FROM [OLAP].[Finance_DimPaymentUseCase] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="PaymentUseCaseType" msprop:DbColumnName="PaymentUseCaseType" msprop:FriendlyName="PaymentUseCaseType" minOccurs="0">
@@ -38639,7 +38736,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="LatestFinancialTransaction_b90a5d4e-770a-4de4-a8e7-9dd9fce78026" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="LatestFinancialTransaction" msprop:DbSchemaName="OLAP" msprop:DbTableName="LatestFinancialTransaction" msprop:TableType="View" msprop:Description="LatestFinancialTransaction" msprop:QueryDefinition="      SELECT [OLAP].[LatestFinancialTransaction].*   FROM [OLAP].[LatestFinancialTransaction] ">
+                    <xs:element name="LatestFinancialTransaction_b90a5d4e-770a-4de4-a8e7-9dd9fce78026" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="FactLatestFinancialTransaction" msprop:DbSchemaName="OLAP" msprop:DbTableName="LatestFinancialTransaction" msprop:TableType="View" msprop:Description="LatestFinancialTransaction" msprop:QueryDefinition="      SELECT [OLAP].[LatestFinancialTransaction].*   FROM [OLAP].[LatestFinancialTransaction] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="FactFinancialTxID" msprop:DbColumnName="FactFinancialTxID" msprop:FriendlyName="FactFinancialTxID" type="xs:long" minOccurs="0" />
@@ -38653,7 +38750,7 @@ CREATE MEASURE 'GLCodeHierarchy'[TotalBal]=SUM(GLCodeHierarchy[TotalBalance]);
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="Finance_DimFinancialHoldingAccount_103d1548-0213-44cd-a219-5009a284c7e4" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="FinancialHoldingAccount" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_DimFinancialHoldingAccount" msprop:TableType="View" msprop:Description="Finance_DimFinancialHoldingAccount" msprop:QueryDefinition="      SELECT [OLAP].[Finance_DimFinancialHoldingAccount].*   FROM [OLAP].[Finance_DimFinancialHoldingAccount] ">
+                    <xs:element name="Finance_DimFinancialHoldingAccount_103d1548-0213-44cd-a219-5009a284c7e4" msdata:Locale="" msprop:IsLogical="True" msprop:FriendlyName="DimFinancialHoldingAccount" msprop:DbSchemaName="OLAP" msprop:DbTableName="Finance_DimFinancialHoldingAccount" msprop:TableType="View" msprop:Description="Finance_DimFinancialHoldingAccount" msprop:QueryDefinition="      SELECT [OLAP].[Finance_DimFinancialHoldingAccount].*   FROM [OLAP].[Finance_DimFinancialHoldingAccount] ">
                       <xs:complexType>
                         <xs:sequence>
                           <xs:element name="DimFinancialHoldingAccountID" msprop:DbColumnName="DimFinancialHoldingAccountID" msprop:FriendlyName="DimFinancialHoldingAccountID" type="xs:long" minOccurs="0" />
