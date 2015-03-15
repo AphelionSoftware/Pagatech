@@ -3,7 +3,7 @@
     [SourceKey]             INT             NOT NULL,
     [DimGLCodeID]           INT             NULL,
     [TextDescription]       NVARCHAR (200)  NULL,
-    [DimFinancialAccountID] INT             NULL,
+    [DimFinancialAccountID] INT             CONSTRAINT [DF_FactGLTransaction_DimFinancialAccountID] DEFAULT ((-1)) NULL,
     [FactFinancialTxID]     INT             NULL,
     [TransactionLineNumber] INT             NULL,
     [CreditAmount]          DECIMAL (18, 2) NULL,
@@ -21,6 +21,8 @@
     CONSTRAINT [fk_FactGLTransaction_DimGLCodeID] FOREIGN KEY ([DimGLCodeID]) REFERENCES [Finance].[DimGLCode] ([DimGLCodeID]),
     CONSTRAINT [fk_FactGLTransaction_FactFinancialTxID] FOREIGN KEY ([FactFinancialTxID]) REFERENCES [Finance].[FactFinancialTransaction] ([FactFinancialTxID])
 );
+
+
 
 
 

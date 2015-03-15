@@ -1,8 +1,9 @@
 ﻿
 
 
+
 	
-CREATE VIEW [OLAP].[Finance_DimFinancialAccount] AS
+CREATE VIEW [OLAP].[Classification_DimFinancialAccount] AS
 	(
 		SELECT 
 			edw.DimFinancialAccountID,
@@ -22,9 +23,9 @@ CREATE VIEW [OLAP].[Finance_DimFinancialAccount] AS
 			edw.RestrictedBalance,
 			edw.OpeningBalance,
 			edw.TotalBalance,
-			fat.DimGLCodeID
+			edw.DimGLCodeID
 		FROM Finance.DimFinancialAccount AS edw
-		INNER JOIN Finance.DimFinancialAccountType as fat ON
+		INNER JOIN Classification.DimFinancialAccountType as fat ON
 			edw.DimFinancialAccountTypeID = fat.DimFinancialAccountTypeID
 		WHERE 
 			edw.IsActive = 1
