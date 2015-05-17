@@ -4,6 +4,7 @@
 
 
 
+
 CREATE VIEW [OLAP].[Finance_GLCodeHierarchy]
 AS
 (
@@ -16,6 +17,10 @@ AS
 			SubHeading_3 = COALESCE(GL_Header2, (CAST(x.GLCode AS VARCHAR) )),
 			SubHeading_4 = COALESCE(GL_Header3, (CAST(x.GLCode AS VARCHAR) )),
 			x.DimGLCodeID,
+			AccountTypePrefix = CASE 
+				WHEN CHARINDEX('_',fat.SourceKey,1) = 0 THEN fat.SourceKey
+				ELSE LEFT(fat.SourceKey, CHARINDEX('_',fat.SourceKey,0)-1)
+			END,
 			AccountType = fat.SourceKey,
 			fa.AccountNumber,
 			AccountName = 
