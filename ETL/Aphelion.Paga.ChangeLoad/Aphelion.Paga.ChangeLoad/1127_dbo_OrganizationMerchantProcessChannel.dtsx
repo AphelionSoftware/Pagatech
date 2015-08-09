@@ -1,10 +1,286 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/30/2015 14:50:28" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{B3D7C716-FC7F-461E-8CD3-157AAADD71CE}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1127_dbo_OrganizationMerchantProcessChannel" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{22E66D12-9DC0-44A5-BC0C-A3CB18A6CD03}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="08/09/2015 14:21:18" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{D9FCD496-77B0-4E56-A123-E8238D23123B}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1127_dbo_OrganizationMerchantProcessChannel" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{8CB263A4-0436-4C1A-9FA3-2B23CDD17472}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{D696F610-5755-4B76-9BF9-03C34E6BF678}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_OrganizationMerchantProcessChannel" DTS:refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{9BBF6924-3A68-44A6-AF8B-58B1A6A08253}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_OrganizationMerchantProcessChannel" DTS:refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData7" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].ExternalColumns[OrganizationMerchantProcessChannelId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].ExternalColumns[OrganizationMerchantProcessChannelId]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[OrganizationMerchantProcessChannelId]" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[OrganizationMerchantProcessChannelId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData6" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].ExternalColumns[OrganizationMerchantProcessChannelId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].ExternalColumns[OrganizationMerchantProcessChannelId]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[OrganizationMerchantProcessChannelId]" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[OrganizationMerchantProcessChannelId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData5" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].ExternalColumns[OrganizationMerchantProcessChannelId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].ExternalColumns[OrganizationMerchantProcessChannelId]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[OrganizationMerchantProcessChannelId]" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[OrganizationMerchantProcessChannelId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData4" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].ExternalColumns[OrganizationMerchantProcessChannelId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].ExternalColumns[OrganizationMerchantProcessChannelId]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[OrganizationMerchantProcessChannelId]" name="OrganizationMerchantProcessChannelId" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[OrganizationMerchantProcessChannelId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
             <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData3" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData3" usesDispositions="true" version="7">
               <connections>
                 <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData3.Connections[OleDbConnection]">
@@ -407,6 +683,130 @@
                     </inputColumn>
                   </inputColumns>
                 </input>
+                <input hasSideEffects="true" name="OLEDB_GetData4_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="OrganizationMerchantProcessChannelId" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[OrganizationMerchantProcessChannelId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+                <input hasSideEffects="true" name="OLEDB_GetData5_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="OrganizationMerchantProcessChannelId" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[OrganizationMerchantProcessChannelId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+                <input hasSideEffects="true" name="OLEDB_GetData6_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="OrganizationMerchantProcessChannelId" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[OrganizationMerchantProcessChannelId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+                <input hasSideEffects="true" name="OLEDB_GetData7_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="OrganizationMerchantProcessChannelId" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[OrganizationMerchantProcessChannelId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[OrganizationMerchantProcessChannelId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
                 <input dangling="true" hasSideEffects="true" name="Input1" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[Input1]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
@@ -502,6 +902,14 @@
             </path>
             <path endId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams]" name="OLEDB_GetData3_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel.Paths[OLEDB_GetData3_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData3.Outputs[Output]">
             </path>
+            <path endId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams]" name="OLEDB_GetData4_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel.Paths[OLEDB_GetData4_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData4.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams]" name="OLEDB_GetData5_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel.Paths[OLEDB_GetData5_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData5.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams]" name="OLEDB_GetData6_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel.Paths[OLEDB_GetData6_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData6.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams]" name="OLEDB_GetData7_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel.Paths[OLEDB_GetData7_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_GetData7.Outputs[Output]">
+            </path>
             <path endId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]" name="UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel.Paths[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_OrganizationMerchantProcessChannel\UA_JoinStreams.Outputs[Output]">
             </path>
           </paths>
@@ -511,13 +919,13 @@
   </DTS:Executables>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DCE668EB-7D1D-4DF1-A5B8-03E6E064506E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{54B3B126-0AA2-4C03-94DE-B110E1F66AD1}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{FB0707A4-D869-4325-9E43-45CE117DEC0B}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
-      <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{60731677-D19F-4637-A52C-D91E37EE539A}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{BBBCABDC-E91B-44DC-B130-0BAF4D95437B}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{DE5242C2-E993-46CF-BD5A-875DC6FCA311}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
       <DTS:VariableValue DTS:DataType="8">--OrganizationMerchantProcessChannel
 		SET NOCOUNT ON;
 			
@@ -547,7 +955,7 @@
 			CHANGETABLE (VERSION [OrganizationMerchantProcessChannel], (OrganizationMerchantProcessChannelId), (stream.OrganizationMerchantProcessChannelId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5CFE78B6-2CD7-46AC-841C-355C1CC3E217}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0B6C5B68-0E31-4830-BDB5-843A675ABAA7}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
       <DTS:VariableValue DTS:DataType="8">--OrganizationMerchantProcessChannel
 		SET NOCOUNT ON;
 			
@@ -577,7 +985,7 @@
 			CHANGETABLE (VERSION [OrganizationMerchantProcessChannel], (OrganizationMerchantProcessChannelId), (stream.OrganizationMerchantProcessChannelId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E004C01C-1022-4C5B-82E3-02F74B8BAEDD}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3B324EE3-D4E2-4029-8375-11311F063B9E}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
       <DTS:VariableValue DTS:DataType="8">--OrganizationMerchantProcessChannel
 		SET NOCOUNT ON;
 			
@@ -607,7 +1015,7 @@
 			CHANGETABLE (VERSION [OrganizationMerchantProcessChannel], (OrganizationMerchantProcessChannelId), (stream.OrganizationMerchantProcessChannelId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EE482FB2-6104-4862-AF15-6BAEFFF24B1B}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E11C7EA7-4211-4351-9529-F487BEE23F48}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
       <DTS:VariableValue DTS:DataType="8">--OrganizationMerchantProcessChannel
 		SET NOCOUNT ON;
 			
@@ -636,6 +1044,22 @@
 		CROSS APPLY 
 			CHANGETABLE (VERSION [OrganizationMerchantProcessChannel], (OrganizationMerchantProcessChannelId), (stream.OrganizationMerchantProcessChannelId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{A78934E5-A583-485E-B744-3301BE348F6C}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream4">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{15D2E7C8-8FFB-4B55-B20E-80F48DF6FF46}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream5">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8C4C81DF-D1FC-4637-A235-1DB6E2358C6F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream6">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E6C2FA33-B816-4BCA-ABE5-52CAEF2F4129}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream7">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>

@@ -1,10 +1,286 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/30/2015 14:50:25" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{9D40DED9-6047-438F-B5DE-4DE0164245B1}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1109_dbo_Currency" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{61559470-4EB4-4FA5-9FC3-8843F91E70B1}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="08/09/2015 14:21:15" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{C00CBDB0-FDFD-4B5D-B0F5-346FF9BB75CF}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1109_dbo_Currency" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{17560EA6-D0FB-442F-9C41-8C39E0318BE1}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{8ADDABB3-5E2C-4089-AD11-FD627A995687}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_Currency" DTS:refId="Package\DFT_Load dbo_Currency" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{FB4EB9DA-7CFD-45E9-8B98-82BE5BF262F5}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_Currency" DTS:refId="Package\DFT_Load dbo_Currency" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData7" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="CurrencyId" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].ExternalColumns[CurrencyId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].ExternalColumns[CurrencyId]" length="50" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[CurrencyId]" name="CurrencyId" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[CurrencyId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[CurrencyId]" name="CurrencyId" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[CurrencyId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData6" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="CurrencyId" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].ExternalColumns[CurrencyId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].ExternalColumns[CurrencyId]" length="50" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[CurrencyId]" name="CurrencyId" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[CurrencyId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[CurrencyId]" name="CurrencyId" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[CurrencyId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData5" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="CurrencyId" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].ExternalColumns[CurrencyId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].ExternalColumns[CurrencyId]" length="50" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[CurrencyId]" name="CurrencyId" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[CurrencyId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[CurrencyId]" name="CurrencyId" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[CurrencyId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData4" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="CurrencyId" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].ExternalColumns[CurrencyId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].ExternalColumns[CurrencyId]" length="50" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[CurrencyId]" name="CurrencyId" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[CurrencyId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[CurrencyId]" name="CurrencyId" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[CurrencyId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
             <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData3" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData3" usesDispositions="true" version="7">
               <connections>
                 <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_Currency\OLEDB_GetData3.Connections[OleDbConnection]">
@@ -407,6 +683,130 @@
                     </inputColumn>
                   </inputColumns>
                 </input>
+                <input hasSideEffects="true" name="OLEDB_GetData4_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="CurrencyId" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[CurrencyId]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[CurrencyId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[CurrencyId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+                <input hasSideEffects="true" name="OLEDB_GetData5_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="CurrencyId" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[CurrencyId]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[CurrencyId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[CurrencyId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+                <input hasSideEffects="true" name="OLEDB_GetData6_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="CurrencyId" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[CurrencyId]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[CurrencyId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[CurrencyId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+                <input hasSideEffects="true" name="OLEDB_GetData7_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="CurrencyId" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[CurrencyId]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[CurrencyId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[CurrencyId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
                 <input dangling="true" hasSideEffects="true" name="Input1" refId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[Input1]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
@@ -502,6 +902,14 @@
             </path>
             <path endId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams]" name="OLEDB_GetData3_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_Currency.Paths[OLEDB_GetData3_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_Currency\OLEDB_GetData3.Outputs[Output]">
             </path>
+            <path endId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams]" name="OLEDB_GetData4_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_Currency.Paths[OLEDB_GetData4_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_Currency\OLEDB_GetData4.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams]" name="OLEDB_GetData5_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_Currency.Paths[OLEDB_GetData5_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_Currency\OLEDB_GetData5.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams]" name="OLEDB_GetData6_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_Currency.Paths[OLEDB_GetData6_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_Currency\OLEDB_GetData6.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams]" name="OLEDB_GetData7_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_Currency.Paths[OLEDB_GetData7_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_Currency\OLEDB_GetData7.Outputs[Output]">
+            </path>
             <path endId="Package\DFT_Load dbo_Currency\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]" name="UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_Currency.Paths[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_Currency\UA_JoinStreams.Outputs[Output]">
             </path>
           </paths>
@@ -511,13 +919,13 @@
   </DTS:Executables>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{269CDDD5-D347-4C04-87D4-399DBF719E4A}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{55A1CD3F-ED1D-40D1-919B-5E57B04139B6}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F2FBE17D-42CC-4AF7-9928-8B855B476172}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
-      <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E4A53365-3408-4E3D-AB31-1DEDDD141721}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2B17917D-D68F-4AF0-8956-FC6BEBDCA1C7}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{9EC8891E-0DB5-47A3-8A87-5AFFB29FD2C7}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
       <DTS:VariableValue DTS:DataType="8">--Currency
 		SET NOCOUNT ON;
 			
@@ -547,7 +955,7 @@
 			CHANGETABLE (VERSION [Currency], (CurrencyId), (stream.CurrencyId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{B2011684-D68E-45D4-9024-5216443B677B}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F05A4C14-7E0C-4ABC-A41E-303981E2554F}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
       <DTS:VariableValue DTS:DataType="8">--Currency
 		SET NOCOUNT ON;
 			
@@ -577,7 +985,7 @@
 			CHANGETABLE (VERSION [Currency], (CurrencyId), (stream.CurrencyId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{583F2DD9-6466-4204-AA50-CE925DC403F5}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0A89F12B-73E3-4AAA-A6A7-98197017D740}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
       <DTS:VariableValue DTS:DataType="8">--Currency
 		SET NOCOUNT ON;
 			
@@ -607,7 +1015,7 @@
 			CHANGETABLE (VERSION [Currency], (CurrencyId), (stream.CurrencyId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EE10F31F-30E9-4294-981C-873BB42A2000}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AAEE1C75-C41B-46C2-AA76-7697B1500533}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
       <DTS:VariableValue DTS:DataType="8">--Currency
 		SET NOCOUNT ON;
 			
@@ -636,6 +1044,22 @@
 		CROSS APPLY 
 			CHANGETABLE (VERSION [Currency], (CurrencyId), (stream.CurrencyId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{93DD7C0A-AEE4-427C-8A49-A0B715596439}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream4">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5B07116B-7EB1-42AE-89C0-4B27F5F8BAA5}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream5">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0652FE31-2C12-4AFD-AE86-EA97ABA35A69}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream6">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{3A3804C9-4FB4-42D7-ADF8-F63307044B24}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream7">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>

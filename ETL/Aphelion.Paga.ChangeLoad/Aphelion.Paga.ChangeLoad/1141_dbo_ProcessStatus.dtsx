@@ -1,10 +1,286 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/30/2015 14:50:29" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{1E623F48-62FD-4CDF-9E06-0900D57C8A4F}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1141_dbo_ProcessStatus" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{84B397AA-3AEE-4329-BE82-90C8EF883BC9}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="08/09/2015 14:21:20" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{8AB6E0CC-BF62-4B0C-A398-F50A3FB41025}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1141_dbo_ProcessStatus" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{A59D7A4C-6DB3-4A7A-A7EB-BDC316117040}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{15485088-4DE7-41D7-A85B-93A552E7C850}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_ProcessStatus" DTS:refId="Package\DFT_Load dbo_ProcessStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{6D71D4D3-3004-497A-B914-F6BD1395A876}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_ProcessStatus" DTS:refId="Package\DFT_Load dbo_ProcessStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData7" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="ProcessStatusId" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[ProcessStatusId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[ProcessStatusId]" length="50" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[ProcessStatusId]" name="ProcessStatusId" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[ProcessStatusId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[ProcessStatusId]" name="ProcessStatusId" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[ProcessStatusId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData6" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="ProcessStatusId" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[ProcessStatusId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[ProcessStatusId]" length="50" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[ProcessStatusId]" name="ProcessStatusId" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[ProcessStatusId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[ProcessStatusId]" name="ProcessStatusId" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[ProcessStatusId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData5" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="ProcessStatusId" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[ProcessStatusId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[ProcessStatusId]" length="50" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[ProcessStatusId]" name="ProcessStatusId" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[ProcessStatusId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[ProcessStatusId]" name="ProcessStatusId" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[ProcessStatusId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData4" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="ProcessStatusId" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[ProcessStatusId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[ProcessStatusId]" length="50" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[ProcessStatusId]" name="ProcessStatusId" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[ProcessStatusId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[ProcessStatusId]" name="ProcessStatusId" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[ProcessStatusId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
             <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData3" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData3" usesDispositions="true" version="7">
               <connections>
                 <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData3.Connections[OleDbConnection]">
@@ -407,6 +683,130 @@
                     </inputColumn>
                   </inputColumns>
                 </input>
+                <input hasSideEffects="true" name="OLEDB_GetData4_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="ProcessStatusId" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[ProcessStatusId]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[ProcessStatusId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[ProcessStatusId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+                <input hasSideEffects="true" name="OLEDB_GetData5_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="ProcessStatusId" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[ProcessStatusId]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[ProcessStatusId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[ProcessStatusId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+                <input hasSideEffects="true" name="OLEDB_GetData6_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="ProcessStatusId" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[ProcessStatusId]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[ProcessStatusId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[ProcessStatusId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+                <input hasSideEffects="true" name="OLEDB_GetData7_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="ProcessStatusId" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[ProcessStatusId]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[ProcessStatusId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[ProcessStatusId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
                 <input dangling="true" hasSideEffects="true" name="Input1" refId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[Input1]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
@@ -502,6 +902,14 @@
             </path>
             <path endId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams]" name="OLEDB_GetData3_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_ProcessStatus.Paths[OLEDB_GetData3_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData3.Outputs[Output]">
             </path>
+            <path endId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams]" name="OLEDB_GetData4_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_ProcessStatus.Paths[OLEDB_GetData4_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData4.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams]" name="OLEDB_GetData5_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_ProcessStatus.Paths[OLEDB_GetData5_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData5.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams]" name="OLEDB_GetData6_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_ProcessStatus.Paths[OLEDB_GetData6_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData6.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams]" name="OLEDB_GetData7_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_ProcessStatus.Paths[OLEDB_GetData7_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_ProcessStatus\OLEDB_GetData7.Outputs[Output]">
+            </path>
             <path endId="Package\DFT_Load dbo_ProcessStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]" name="UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_ProcessStatus.Paths[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_ProcessStatus\UA_JoinStreams.Outputs[Output]">
             </path>
           </paths>
@@ -511,13 +919,13 @@
   </DTS:Executables>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E21E3CFD-A88F-40C9-A355-A7BF6753A88C}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{8EF7C266-651E-465D-86D5-35C3F4C1C569}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{70536B54-58DB-455D-B892-76ECBD9AAF59}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
-      <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{818C233E-A25B-4C77-8C1C-72B84F855D07}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{030EBCF1-0A2A-4071-9311-8658CF6C6536}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{4379F79C-247B-4255-87AA-BC4B14D63664}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
       <DTS:VariableValue DTS:DataType="8">--ProcessStatus
 		SET NOCOUNT ON;
 			
@@ -547,7 +955,7 @@
 			CHANGETABLE (VERSION [ProcessStatus], (ProcessStatusId), (stream.ProcessStatusId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{5716BA32-D30D-40CE-91AF-532D4E290343}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{273C13DA-7A43-43F7-8F9C-CB6C41341E36}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
       <DTS:VariableValue DTS:DataType="8">--ProcessStatus
 		SET NOCOUNT ON;
 			
@@ -577,7 +985,7 @@
 			CHANGETABLE (VERSION [ProcessStatus], (ProcessStatusId), (stream.ProcessStatusId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{84546735-4D7E-4ED4-976B-9508BE70C6EF}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{42CFFEA8-5673-446F-8F94-3C0C8D2CDB56}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
       <DTS:VariableValue DTS:DataType="8">--ProcessStatus
 		SET NOCOUNT ON;
 			
@@ -607,7 +1015,7 @@
 			CHANGETABLE (VERSION [ProcessStatus], (ProcessStatusId), (stream.ProcessStatusId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{878799F3-7A36-4EA4-B165-B00B6C30EA13}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F1E48403-02D1-407F-976D-6A6699AE1B1A}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
       <DTS:VariableValue DTS:DataType="8">--ProcessStatus
 		SET NOCOUNT ON;
 			
@@ -636,6 +1044,22 @@
 		CROSS APPLY 
 			CHANGETABLE (VERSION [ProcessStatus], (ProcessStatusId), (stream.ProcessStatusId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{74436DC5-5074-4327-AE15-92112A0E3C96}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream4">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2713D0AB-946B-4F40-BBD4-557432BAC381}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream5">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{46B4D103-0D24-435A-B0BC-85D1CC09C558}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream6">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F173CF07-D7C4-4418-9F24-E069E533E082}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream7">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>

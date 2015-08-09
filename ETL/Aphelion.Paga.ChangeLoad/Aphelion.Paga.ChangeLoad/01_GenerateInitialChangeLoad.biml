@@ -27,7 +27,11 @@
 			"list.Stream0, "+
 			"list.Stream1, "+
 			"list.Stream2, "+
-			"list.Stream3 "+
+			"list.Stream3, "+
+			"list.Stream4, "+
+			"list.Stream5, "+
+			"list.Stream6, "+
+			"list.Stream7 "+
 			"FROM "+
 			"(  "+
 			"SELECT  "+
@@ -38,7 +42,11 @@
 			"Stream0 = pl.s0,  "+
 			"Stream1 = pl.s1,  "+
 			"Stream2 = pl.s2,  "+
-			"Stream3 = pl.s3  "+
+			"Stream3 = pl.s3,  "+
+			"Stream4 = pl.s4,  "+
+			"Stream5 = pl.s5,  "+
+			"Stream6 = pl.s6,  "+
+			"Stream7 = pl.s7  "+
 			"FROM  "+
 			"(  "+
 			"SELECT  "+
@@ -48,7 +56,11 @@
 			"CONVERT(VARCHAR(MAX),MAX(Stream0)) AS s0,  "+
 			"CONVERT(VARCHAR(MAX),MAX(Stream1)) AS s1,  "+
 			"CONVERT(VARCHAR(MAX),MAX(Stream2)) AS s2,  "+
-			"CONVERT(VARCHAR(MAX),MAX(Stream3)) AS s3  "+
+			"CONVERT(VARCHAR(MAX),MAX(Stream3)) AS s3,  "+
+			"CONVERT(VARCHAR(MAX),MAX(Stream4)) AS s4,  "+
+			"CONVERT(VARCHAR(MAX),MAX(Stream5)) AS s5,  "+
+			"CONVERT(VARCHAR(MAX),MAX(Stream6)) AS s6,  "+
+			"CONVERT(VARCHAR(MAX),MAX(Stream7)) AS s7  "+
 			"FROM  "+
 			"(  "+
 			"SELECT  "+
@@ -74,7 +86,23 @@
 			"CASE	 "+
 			"WHEN ext_prop.name =  'Stream3'  "+
 			"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
-			"END as Stream3  "+
+			"END as Stream3,  "+
+			"CASE	 "+
+			"WHEN ext_prop.name =  'Stream4'  "+
+			"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
+			"END as Stream4,  "+
+			"CASE	 "+
+			"WHEN ext_prop.name =  'Stream5'  "+
+			"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
+			"END as Stream5,  "+
+			"CASE	 "+
+			"WHEN ext_prop.name =  'Stream6'  "+
+			"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
+			"END as Stream6,  "+
+			"CASE	 "+
+			"WHEN ext_prop.name =  'Stream7'  "+
+			"THEN CONVERT(VARCHAR(max),ext_prop.value)  "+
+			"END as Stream7  "+
 			"FROM  "+
 			"(  "+
 			"SELECT   "+
@@ -131,6 +159,10 @@
 				string Stream1 = row[4].ToString();
 				string Stream2 = row[5].ToString();
 				string Stream3 = row[6].ToString();
+				string Stream4 = row[7].ToString();
+				string Stream5 = row[8].ToString();
+				string Stream6 = row[9].ToString();
+				string Stream7 = row[10].ToString();
 				string KeyColumn = row[2].ToString() +"Id";
 			#>
 			<Package Name="<#=PackageName#>" ConstraintMode="Linear"  ProtectionLevel="DontSaveSensitive"  AutoCreateConfigurationsType="None" DelayValidation = "true">
@@ -138,7 +170,7 @@
 						
 						<Variables>
 						  <Variable Name="CurrentVersion" DataType="Int32">0</Variable>
-						  <Variable Name="LastSyncVersion" DataType="Int32">6</Variable>
+						  <Variable Name="LastSyncVersion" DataType="Int32">0</Variable>
 						  <Variable Name="Stream0" DataType="String"><#=Stream0#></Variable>
 							<Variable Name="Stream1" DataType="String">
 								<#=Stream1#>
@@ -148,6 +180,18 @@
 							</Variable>
 							<Variable Name="Stream3" DataType="String">
 								<#=Stream3#>
+							</Variable>
+							<Variable Name="Stream4" DataType="String">
+								<#=Stream4#>
+							</Variable>
+							<Variable Name="Stream5" DataType="String">
+								<#=Stream5#>
+							</Variable>
+							<Variable Name="Stream6" DataType="String">
+								<#=Stream6#>
+							</Variable>
+							<Variable Name="Stream7" DataType="String">
+								<#=Stream7#>
 							</Variable>
 						  
 					  </Variables>
@@ -167,6 +211,18 @@
 								  <OleDbSource Name="OLEDB_GetData3" ConnectionName="PrimaryDB">
 									  <VariableInput VariableName="User.Stream3"></VariableInput>
 								  </OleDbSource>
+								   <OleDbSource Name="OLEDB_GetData4" ConnectionName="PrimaryDB">
+									  <VariableInput VariableName="User.Stream3"></VariableInput>
+								  </OleDbSource>
+								   <OleDbSource Name="OLEDB_GetData5" ConnectionName="PrimaryDB">
+									  <VariableInput VariableName="User.Stream3"></VariableInput>
+								  </OleDbSource>
+								   <OleDbSource Name="OLEDB_GetData6" ConnectionName="PrimaryDB">
+									  <VariableInput VariableName="User.Stream3"></VariableInput>
+								  </OleDbSource>
+								   <OleDbSource Name="OLEDB_GetData7" ConnectionName="PrimaryDB">
+									  <VariableInput VariableName="User.Stream3"></VariableInput>
+								  </OleDbSource>
 								  <UnionAll Name="UA_JoinStreams">
 									<InputPaths>
 										
@@ -177,6 +233,10 @@
 										<InputPath OutputPathName="OLEDB_GetData2.Output" />
 													
 										<InputPath OutputPathName="OLEDB_GetData3.Output" />
+										<InputPath OutputPathName="OLEDB_GetData4.Output" />
+										<InputPath OutputPathName="OLEDB_GetData5.Output" />
+										<InputPath OutputPathName="OLEDB_GetData6.Output" />
+										<InputPath OutputPathName="OLEDB_GetData7.Output" />
 									</InputPaths>
 								</UnionAll>
 								  <OleDbDestination Name="OLEDB_InsertIntoChangeLog" ConnectionName="ChangeLogDB" KeepIdentity="false" UseFastLoadIfAvailable="true" BatchSize = "100000" >

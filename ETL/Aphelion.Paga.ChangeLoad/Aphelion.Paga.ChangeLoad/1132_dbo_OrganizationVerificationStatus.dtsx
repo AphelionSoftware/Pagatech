@@ -1,10 +1,286 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="01/30/2015 14:50:29" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{8C7FB8A9-8D7F-4027-A04C-32AD40E4470D}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1132_dbo_OrganizationVerificationStatus" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{E4F75348-D4CE-4619-A24A-4337E578AB8F}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+<DTS:Executable DTS:CreationDate="08/09/2015 14:21:19" DTS:CreationName="SSIS.Package.3" DTS:CreatorComputerName="PAGA01SV015" DTS:CreatorName="christina.leo.apheli" DTS:DelayValidation="True" DTS:DTSID="{F7427A65-3858-4446-9F3A-652E94F2F7BA}" DTS:ExecutableType="SSIS.Package.3" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="1132_dbo_OrganizationVerificationStatus" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{B302800E-BB76-4F3F-93D8-98F4AC345B6A}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{63E941C1-34CB-4102-9CE5-EA560C1CA362}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_OrganizationVerificationStatus" DTS:refId="Package\DFT_Load dbo_OrganizationVerificationStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable DTS:CreationName="SSIS.Pipeline.3" DTS:DelayValidation="True" DTS:DTSID="{D0BA838E-05C2-414A-ADDF-6F72D19EC8BD}" DTS:ExecutableType="SSIS.Pipeline.3" DTS:LocaleID="-1" DTS:ObjectName="DFT_Load dbo_OrganizationVerificationStatus" DTS:refId="Package\DFT_Load dbo_OrganizationVerificationStatus" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:ObjectData>
         <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" version="1">
           <components>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData7" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[OrganizationVerificationStatusId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[OrganizationVerificationStatusId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData6" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[OrganizationVerificationStatusId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[OrganizationVerificationStatusId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData5" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[OrganizationVerificationStatusId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[OrganizationVerificationStatusId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
+            <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData4" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4" usesDispositions="true" version="7">
+              <connections>
+                <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Connections[OleDbConnection]">
+                </connection>
+              </connections>
+              <outputs>
+                <output name="Output" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output]">
+                  <externalMetadataColumns isUsed="True">
+                    <externalMetadataColumn dataType="i8" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[as_of_change_version]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn codePage="1252" dataType="str" length="50" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[rn]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i4" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[grp]">
+                    </externalMetadataColumn>
+                    <externalMetadataColumn dataType="i8" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]">
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[as_of_change_version]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[as_of_change_version]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[OrganizationVerificationStatusId]" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[OrganizationVerificationStatusId]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[rn]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[rn]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i4" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[grp]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[grp]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                    <outputColumn dataType="i8" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].ExternalColumns[SYS_CHANGE_VERSION]" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[SYS_CHANGE_VERSION]" truncationRowDisposition="FailComponent">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+                <output isErrorOut="true" name="Error" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <outputColumns>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[as_of_change_version]" name="as_of_change_version" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[as_of_change_version]">
+                    </outputColumn>
+                    <outputColumn codePage="1252" dataType="str" length="50" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[OrganizationVerificationStatusId]" name="OrganizationVerificationStatusId" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[OrganizationVerificationStatusId]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[rn]" name="rn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[rn]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[grp]" name="grp" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[grp]">
+                    </outputColumn>
+                    <outputColumn dataType="i8" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[SYS_CHANGE_VERSION]" name="SYS_CHANGE_VERSION" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[SYS_CHANGE_VERSION]">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[ErrorCode]" specialFlags="1">
+                    </outputColumn>
+                    <outputColumn dataType="i4" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Error].Columns[ErrorColumn]" specialFlags="2">
+                    </outputColumn>
+                  </outputColumns>
+                </output>
+              </outputs>
+              <properties>
+                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">
+                </property>
+                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable">
+                </property>
+                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+                </property>
+                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable">User::Stream3</property>
+                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
+                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping">
+                </property>
+              </properties>
+            </component>
             <component componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLEDB_GetData3" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3" usesDispositions="true" version="7">
               <connections>
                 <connection connectionManagerID="{FEF7BC34-776E-4B48-8123-6BAC7A499774}:external" connectionManagerRefId="Project.ConnectionManagers[PrimaryDB]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Connections[OleDbConnection]">
@@ -407,6 +683,130 @@
                     </inputColumn>
                   </inputColumns>
                 </input>
+                <input hasSideEffects="true" name="OLEDB_GetData4_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="OrganizationVerificationStatusId" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[OrganizationVerificationStatusId]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[OrganizationVerificationStatusId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[OrganizationVerificationStatusId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+                <input hasSideEffects="true" name="OLEDB_GetData5_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="OrganizationVerificationStatusId" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[OrganizationVerificationStatusId]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[OrganizationVerificationStatusId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[OrganizationVerificationStatusId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+                <input hasSideEffects="true" name="OLEDB_GetData6_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="OrganizationVerificationStatusId" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[OrganizationVerificationStatusId]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[OrganizationVerificationStatusId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[OrganizationVerificationStatusId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
+                <input hasSideEffects="true" name="OLEDB_GetData7_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams]">
+                  <externalMetadataColumns>
+                  </externalMetadataColumns>
+                  <inputColumns>
+                    <inputColumn cachedDataType="i8" cachedName="as_of_change_version" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[as_of_change_version]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[as_of_change_version]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[as_of_change_version]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedCodepage="1252" cachedDataType="str" cachedLength="50" cachedName="OrganizationVerificationStatusId" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[OrganizationVerificationStatusId]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[OrganizationVerificationStatusId]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[OrganizationVerificationStatusId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="rn" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[rn]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[rn]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[rn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i4" cachedName="grp" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[grp]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[grp]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[grp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn cachedDataType="i8" cachedName="SYS_CHANGE_VERSION" lineageId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output].Columns[SYS_CHANGE_VERSION]" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams].Columns[SYS_CHANGE_VERSION]">
+                      <properties>
+                        <property containsID="true" dataType="System.Int32" description="Output column lineage ID" name="OutputColumnLineageID">#{Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output].Columns[SYS_CHANGE_VERSION]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                </input>
                 <input dangling="true" hasSideEffects="true" name="Input1" refId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[Input1]">
                   <externalMetadataColumns>
                   </externalMetadataColumns>
@@ -502,6 +902,14 @@
             </path>
             <path endId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData3_Output_UA_JoinStreams]" name="OLEDB_GetData3_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationVerificationStatus.Paths[OLEDB_GetData3_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData3.Outputs[Output]">
             </path>
+            <path endId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData4_Output_UA_JoinStreams]" name="OLEDB_GetData4_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationVerificationStatus.Paths[OLEDB_GetData4_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData4.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData5_Output_UA_JoinStreams]" name="OLEDB_GetData5_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationVerificationStatus.Paths[OLEDB_GetData5_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData5.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData6_Output_UA_JoinStreams]" name="OLEDB_GetData6_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationVerificationStatus.Paths[OLEDB_GetData6_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData6.Outputs[Output]">
+            </path>
+            <path endId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Inputs[OLEDB_GetData7_Output_UA_JoinStreams]" name="OLEDB_GetData7_Output_UA_JoinStreams" refId="Package\DFT_Load dbo_OrganizationVerificationStatus.Paths[OLEDB_GetData7_Output_UA_JoinStreams]" startId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_GetData7.Outputs[Output]">
+            </path>
             <path endId="Package\DFT_Load dbo_OrganizationVerificationStatus\OLEDB_InsertIntoChangeLog.Inputs[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]" name="UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog" refId="Package\DFT_Load dbo_OrganizationVerificationStatus.Paths[UA_JoinStreams_Output_OLEDB_InsertIntoChangeLog]" startId="Package\DFT_Load dbo_OrganizationVerificationStatus\UA_JoinStreams.Outputs[Output]">
             </path>
           </paths>
@@ -511,13 +919,13 @@
   </DTS:Executables>
   <DTS:Property DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{713BE0C6-5F55-4DE7-8601-F9D587827780}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{688455D5-25F6-48F5-8B52-B4F316043FFB}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="CurrentVersion">
       <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{93364CC9-9360-4F20-9AED-E5D7D251BC4E}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
-      <DTS:VariableValue DTS:DataType="3">6</DTS:VariableValue>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{7EA82294-EB5D-46E0-845F-A80D40CCA3EB}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="LastSyncVersion">
+      <DTS:VariableValue DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{2B83668C-7E80-4788-966B-18EE7D8BD416}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{85EB4C64-BF1C-4725-B118-66876A81FA89}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream0">
       <DTS:VariableValue DTS:DataType="8">--OrganizationVerificationStatus
 		SET NOCOUNT ON;
 			
@@ -547,7 +955,7 @@
 			CHANGETABLE (VERSION [OrganizationVerificationStatus], (OrganizationVerificationStatusId), (stream.OrganizationVerificationStatusId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{AE6555D1-3FC2-43C8-A440-4E89CC75A494}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{D73B4C8C-3BB3-45CB-B77D-A2EA4A63F841}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream1">
       <DTS:VariableValue DTS:DataType="8">--OrganizationVerificationStatus
 		SET NOCOUNT ON;
 			
@@ -577,7 +985,7 @@
 			CHANGETABLE (VERSION [OrganizationVerificationStatus], (OrganizationVerificationStatusId), (stream.OrganizationVerificationStatusId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1124414D-E1BD-4398-A387-1E4B4FEC3761}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{F07BC062-9D6B-4688-BB69-7F238AA3ECE8}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream2">
       <DTS:VariableValue DTS:DataType="8">--OrganizationVerificationStatus
 		SET NOCOUNT ON;
 			
@@ -607,7 +1015,7 @@
 			CHANGETABLE (VERSION [OrganizationVerificationStatus], (OrganizationVerificationStatusId), (stream.OrganizationVerificationStatusId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable DTS:CreationName="" DTS:DTSID="{13350947-D862-4E2A-A6AA-EE8B7462D092}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{0407FDE5-5658-4C6B-8939-EA43F7993DA8}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream3">
       <DTS:VariableValue DTS:DataType="8">--OrganizationVerificationStatus
 		SET NOCOUNT ON;
 			
@@ -636,6 +1044,22 @@
 		CROSS APPLY 
 			CHANGETABLE (VERSION [OrganizationVerificationStatus], (OrganizationVerificationStatusId), (stream.OrganizationVerificationStatusId)) AS c
 		OPTION (MAXDOP 1)</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{6A77BA31-E1BA-4ECE-9CA2-537C00EF0E59}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream4">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{E8952B63-7276-4748-B25A-30C6A0FEBAEF}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream5">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{1F8DCC30-311D-4B4A-B89B-5AB80F734C78}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream6">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable DTS:CreationName="" DTS:DTSID="{EA342E37-37B4-436F-9AF4-3F755AE314C0}" DTS:IncludeInDebugDump="2345" DTS:Namespace="User" DTS:ObjectName="Stream7">
+      <DTS:VariableValue DTS:DataType="8">
+      </DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
 </DTS:Executable>

@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="000_LoadWarehouseInLevels"
   DTS:PackageType="5"
-  DTS:VersionBuild="84"
-  DTS:VersionGUID="{D688935C-9B6A-442C-97CA-68378557587B}">
+  DTS:VersionBuild="86"
+  DTS:VersionGUID="{A94F7EB3-028B-4999-B08C-40BB7445F58C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:PackageParameters>
@@ -71,7 +71,7 @@
         DTS:DataType="8">SELECT 
 	ChangeVersion  = COALESCE(MIN(ChangeVersion), -1)
 FROM [ChangeTracking].[Load_History] WHERE 
-	PushedToWarehouse= -1</DTS:VariableValue>
+	PushedToWarehouse= 2</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -80,7 +80,7 @@ FROM [ChangeTracking].[Load_History] WHERE
       DTS:Namespace="User"
       DTS:ObjectName="LevelLoop_000">
       <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
+        DTS:DataType="3">3</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -102,7 +102,7 @@ FROM [ChangeTracking].[Load_History] WHERE
       DTS:Namespace="User"
       DTS:ObjectName="LoadLevelLess1">
       <DTS:VariableValue
-        DTS:DataType="3">-1</DTS:VariableValue>
+        DTS:DataType="3">2</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -114,7 +114,7 @@ FROM [ChangeTracking].[Load_History] WHERE
       DTS:ObjectName="UpdatePushedToWarehouse">
       <DTS:VariableValue
         DTS:DataType="8">UPDATE [ChangeTracking].[Load_History]
-SET PushedToWarehouse = 0
+SET PushedToWarehouse = 3
 WHERE changeVersion &gt;= 0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
