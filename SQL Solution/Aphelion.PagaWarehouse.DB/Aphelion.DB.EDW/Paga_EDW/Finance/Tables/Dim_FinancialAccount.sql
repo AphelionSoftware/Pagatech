@@ -23,10 +23,11 @@
     CONSTRAINT [fk_DimFinancialAccount_DimBankAccountID] FOREIGN KEY ([DimBankAccountID]) REFERENCES [Finance].[DimBankAccount] ([DimBankAccountID]),
     CONSTRAINT [fk_DimFinancialAccount_DimCurrencyID] FOREIGN KEY ([DimCurrencyID]) REFERENCES [Finance].[DimCurrency] ([DimCurrencyID]),
     CONSTRAINT [fk_DimFinancialAccount_DimFinancialAccountTypeID] FOREIGN KEY ([DimFinancialAccountTypeID]) REFERENCES [Classification].[DimFinancialAccountType] ([DimFinancialAccountTypeID]),
-    CONSTRAINT [fk_DimFinancialAccount_DimFinancialHoldingAccount] FOREIGN KEY ([DimFinancialHoldingAccountID]) REFERENCES [Finance].[DimFinancialHoldingAccount] ([DimFinancialHoldingAccountID]),
     CONSTRAINT [fk_DimFinancialAccount_DimGLCodeID] FOREIGN KEY ([DimGLCodeID]) REFERENCES [Finance].[DimGLCode] ([DimGLCodeID]),
     CONSTRAINT [fk_DimFinancialAccount_DimPagaAccountID] FOREIGN KEY ([DimPagaAccountID]) REFERENCES [Shared].[DimPagaAccount] ([DimPagaAccountID])
 );
+
+
 
 
 
@@ -118,77 +119,9 @@ EXECUTE sp_addextendedproperty @name = N'KeyColumn', @value = N'FinancialAccount
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'WITH cte AS 
-(  	
-	SELECT
-		SourceKey = fa.FinancialAccountId, 		
-		AccountNumber =  CONVERT(VARCHAR(20), fa.AccountNumber), 		
-		fa.OpeningBalance, 		
-		fa.RestrictedBalance, 		
-		fa.TotalBalance, 		
-		DimBankAccountSourceKey =  COALESCE(fa.BankAccountId, -1), 		
-		DimCurrencySourceKey =  COALESCE(fa.CurrencyId, ''UNKNOWN''), 		
-		DimFinancialAccountTypeSourceKey = fa.FinancialAccountTypeId, 		
-		DimHoldingFinancialAccountSourceKey = fa.FinancialAccountId, 		
-		fa.PagaAccountId,
-		fa.AccountCodeId, 		
-		1 AS OrgLevel 	
-	FROM dbo.FinancialAccount AS fa  	
-	WHERE  		
-		fa.HoldingFinancialAccountId IS NULL 	
-	UNION ALL 	
-	SELECT  		
-		SourceKey = fa1.FinancialAccountId, 		
-		AccountNumber =  CONVERT(VARCHAR(20), fa1.AccountNumber), 		
-		fa1.OpeningBalance, 		
-		fa1.RestrictedBalance, 		
-		fa1.TotalBalance, 		
-		DimBankAccountSourceKey =  COALESCE(fa1.BankAccountId, -1), 		
-		DimCurrencySourceKey =  COALESCE(fa1.CurrencyId, ''UNKNOWN''), 		
-		DimFinancialAccountTypeSourceKey = fa1.FinancialAccountTypeId,		 		
-		DimHoldingFinancialAccountSourceKey = fa1.HoldingFinancialAccountId, 		
-		fa1.PagaAccountId, 
-		fa1.AccountCodeId,		
-		st.OrgLevel + 1 AS OrgLevel 	
-	FROM [dbo].FinancialAccount AS fa1 	
-	INNER JOIN cte AS ST ON  		
-		fa1.HoldingFinancialAccountId = st.SourceKey 	
-	WHERE fa1.HoldingFinancialAccountId IS NOT NULL 
-)  
-SELECT	
-	ct.SYS_CHANGE_OPERATION, paga_change_log_id = ct.row_id, 
-	SYS_CHANGE_VERSION = ct.as_of_change_version, 
-	SourceKey, 	
-	base_query.AccountNumber, 	
-	Name = base_query.AccountNumber, 	
-	base_query.OpeningBalance, 	
-	base_query.RestrictedBalance, 	
-	base_query.TotalBalance, 	
-	base_query.DimBankAccountSourceKey, 	
-	base_query.DimCurrencySourceKey, 	
-	base_query.DimFinancialAccountTypeSourceKey, 	
-	base_query.DimHoldingFinancialAccountSourceKey, 	
-	base_query.DimPagaAccountSourceKey,
-	base_query.DimGLCodeSourceKey 
-FROM  
-( 	
-	SELECT  		
-		SourceKey = cte.SourceKey, 		
-		AccountNumber =  CASE 
-							WHEN datalength(cte.AccountNumber) = 0 THEN ''UNKNOWN''
-							ELSE cte.AccountNumber
-						END, 		
-		cte.OpeningBalance, 		
-		cte.RestrictedBalance, 		
-		cte.TotalBalance, 		
-		DimBankAccountSourceKey =  COALESCE(cte.dimBankAccountSourceKey,-1), 		
-		DimCurrencySourceKey =  COALESCE(cte.DimCurrencySourceKey, ''UNKNOWN''), 		
-		DimFinancialAccountTypeSourceKey = cte.DimFinancialAccountTypeSourceKey, 		
-		DimPagaAccountSourceKey = COALESCE(cte.PagaAccountId,-1), 
-		DimGLCodeSourceKey = COALESCE(cte.AccountCodeId,-1), 			
-		cte.DimHoldingFinancialAccountSourceKey 	
-		FROM cte  	
-) AS base_query ', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount';
+EXECUTE sp_addextendedproperty @name = N'BaseQuery', @value = N'SELECT	', @level0type = N'SCHEMA', @level0name = N'Finance', @level1type = N'TABLE', @level1name = N'DimFinancialAccount';
+
+
 
 
 
