@@ -1,6 +1,6 @@
 ﻿
-$GitFolder = "E:\Github\Pagatech"
-$BranchPrefix = "R02_Joint"
+$GitFolder = "E:\Github\Meerkat"
+$BranchPrefix = "r03_CARE_Reports"
 
 cd $GitFolder
 
